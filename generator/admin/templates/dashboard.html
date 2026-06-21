@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<div class="page-head">
+  <h1>Dashboard</h1>
+  <a class="btn primary" href="/generate">+ Generate articles</a>
+</div>
+
+<div class="stat-row">
+  <div class="stat"><span class="num">{{ sites|length }}</span><span class="lbl">Sites</span></div>
+  <div class="stat"><span class="num">{{ total }}</span><span class="lbl">Articles published</span></div>
+  <div class="stat"><span class="num">{{ 'DeepSeek' if has_llm else 'Mock' }}</span><span class="lbl">Writer engine</span></div>
+</div>
+
+<h2 class="section">Your sites</h2>
+<div class="cards">
+  {% for s in sites %}
+  <div class="card site theme-{{ s.theme }}">
+    <div class="site-top">
+      <h3>{{ s.name }}</h3>
+      <span class="pill">{{ counts.get(s.id, 0) }} posts</span>
+    </div>
+    <p class="muted">{{ s.tagline }}</p>
+    <p class="niche">{{ s.niche }}</p>
+    <div class="card-actions">
+      <a class="btn small" href="/generate?site={{ s.id }}">Generate</a>
+      <a class="btn small ghost" href="/articles?site={{ s.id }}">View posts</a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<h2 class="section">Recent articles</h2>
+{% if recent %}
+<table class="tbl">
+  <thead><tr><th>Title</th><th>Site</th><th>Words</th><th>When</th><th></th></tr></thead>
+  <tbody>
+  {% for a in recent %}
+    <tr>
+      <td>{{ a.title }}{% if a.is_mock %} <span class="pill warn">mock</span>{% endif %}</td>
+      <td>{{ a.site_id }}</td>
+      <td>{{ a.word_count }}</td>
+      <td class="muted">{{ a.created_at[:10] }}</td>
+      <td><a class="btn small ghost" href="/preview/{{ a.id }}" target="_blank">Preview</a></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p class="empty">No articles yet. <a href="/generate">Generate your first one →</a></p>
+{% endif %}
+{% endblock %}

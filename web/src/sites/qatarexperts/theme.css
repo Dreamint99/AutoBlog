@@ -1,0 +1,1419 @@
+/* ============================================================
+   QatarExperts — theme id: qatar-maroon
+   A premium Qatar-lifestyle magazine for expats & newcomers.
+   Refined, warm, aspirational, trustworthy insider. Desert-modern
+   luxe: Qatar maroon (#8A1538) + warm sand/gold (#C8A24B) on soft
+   cream surfaces, deep charcoal text, classy serif display.
+   EVERY selector is scoped under `.site-qatarexperts`.
+   The shared globals.css reads the CSS variables set below to
+   theme `.article-content` typography + the premium tables.
+   ============================================================ */
+
+.site-qatarexperts {
+  /* ── shared variables consumed by globals.css ── */
+  --accent: #8a1538;
+  --accent-soft: #fbeef0;
+  --accent-line: #eccfd3;
+  --table-head: #f6e7ea;
+  --table-border: #ead9c4;
+  --table-zebra: #fbf6ee;
+  --table-hover: #f6ecd9;
+
+  /* ── local design tokens ── */
+  --qx-maroon: #8a1538;
+  --qx-maroon-deep: #6a0f2b;
+  --qx-maroon-dark: #4d0a1f;
+  --qx-maroon-hover: #a01a44;
+  --qx-gold: #c8a24b;
+  --qx-gold-deep: #a8842f;
+  --qx-gold-soft: #ecd9a8;
+
+  --qx-ink: #221a1c;
+  --qx-ink-soft: #5b4d50;
+  --qx-ink-muted: #8a7d80;
+
+  --qx-cream: #fbf7f0;
+  --qx-cream-deep: #f5edde;
+  --qx-surface: #ffffff;
+
+  --qx-line: #ece2d3;
+  --qx-line-soft: #f3ecdf;
+  --qx-tint: #fbeef0;
+  --qx-tint-line: #eccfd3;
+  --qx-sand: #f8f0e2;
+  --qx-sand-line: #ead9c4;
+
+  --qx-shadow-sm: 0 1px 2px rgba(77, 10, 31, 0.06);
+  --qx-shadow-md: 0 8px 26px rgba(77, 10, 31, 0.1);
+  --qx-shadow-lg: 0 22px 56px rgba(77, 10, 31, 0.18);
+  --qx-shadow-gold: 0 10px 30px rgba(168, 132, 47, 0.18);
+
+  --qx-radius: 14px;
+  --qx-radius-lg: 20px;
+  --qx-serif: "Playfair Display", "Iowan Old Style", "Palatino Linotype", Georgia, "Times New Roman", serif;
+  --qx-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --qx-maxw: 1180px;
+  --qx-measure: 720px;
+
+  color: var(--qx-ink);
+  font-family: var(--qx-sans);
+  background: var(--qx-cream);
+}
+
+.site-qatarexperts *,
+.site-qatarexperts *::before,
+.site-qatarexperts *::after {
+  box-sizing: border-box;
+}
+
+.site-qatarexperts a {
+  color: var(--qx-maroon);
+  text-decoration: none;
+}
+.site-qatarexperts a:hover {
+  color: var(--qx-maroon-hover);
+}
+
+.site-qatarexperts :focus-visible {
+  outline: 3px solid var(--qx-gold);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* generic layout shell */
+.site-qatarexperts .qx-wrap {
+  width: 100%;
+  max-width: var(--qx-maxw);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* thin gold/maroon decorative rule used in a few spots */
+.site-qatarexperts .qx-rule {
+  display: inline-block;
+  width: 46px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--qx-gold) 0%, var(--qx-maroon) 100%);
+}
+
+/* ============================================================
+   HEADER  (sticky cream/maroon bar + CSS checkbox hamburger)
+   ============================================================ */
+.site-qatarexperts .qx-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(251, 247, 240, 0.94);
+  -webkit-backdrop-filter: saturate(170%) blur(10px);
+  backdrop-filter: saturate(170%) blur(10px);
+  border-bottom: 1px solid var(--qx-line);
+}
+/* gold hairline accent under the header */
+.site-qatarexperts .qx-header::after {
+  content: "";
+  display: block;
+  height: 2px;
+  background: linear-gradient(90deg, var(--qx-maroon) 0%, var(--qx-gold) 50%, var(--qx-maroon) 100%);
+  opacity: 0.85;
+}
+.site-qatarexperts .qx-topnote {
+  background: var(--qx-maroon-deep);
+  color: var(--qx-gold-soft);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+}
+.site-qatarexperts .qx-topnote .qx-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 34px;
+  text-align: center;
+}
+.site-qatarexperts .qx-topnote svg {
+  flex: none;
+  color: var(--qx-gold);
+}
+.site-qatarexperts .qx-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 70px;
+}
+
+/* wordmark + pearl/geometric motif */
+.site-qatarexperts .qx-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--qx-ink);
+}
+.site-qatarexperts .qx-brand:hover {
+  color: var(--qx-ink);
+}
+.site-qatarexperts .qx-logo {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: linear-gradient(155deg, var(--qx-maroon) 0%, var(--qx-maroon-deep) 100%);
+  color: var(--qx-gold-soft);
+  box-shadow: var(--qx-shadow-sm);
+  border: 1px solid rgba(200, 162, 75, 0.4);
+  flex: none;
+}
+.site-qatarexperts .qx-logo svg {
+  width: 24px;
+  height: 24px;
+}
+.site-qatarexperts .qx-wordmark {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
+.site-qatarexperts .qx-wordmark b {
+  font-family: var(--qx-serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.005em;
+}
+.site-qatarexperts .qx-wordmark b span {
+  color: var(--qx-maroon);
+}
+.site-qatarexperts .qx-wordmark small {
+  font-size: 0.66rem;
+  color: var(--qx-gold-deep);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-top: 0.15rem;
+}
+
+/* CSS-only mobile nav (checkbox hack) */
+.site-qatarexperts .qx-nav-toggle {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.site-qatarexperts .qx-burger {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 11px;
+  border: 1px solid var(--qx-line);
+  background: var(--qx-surface);
+  color: var(--qx-maroon);
+  cursor: pointer;
+  flex: none;
+  box-shadow: var(--qx-shadow-sm);
+}
+.site-qatarexperts .qx-burger svg {
+  width: 22px;
+  height: 22px;
+}
+.site-qatarexperts .qx-burger .qx-burger-close {
+  display: none;
+}
+.site-qatarexperts .qx-nav-toggle:checked ~ .qx-burger .qx-burger-open {
+  display: none;
+}
+.site-qatarexperts .qx-nav-toggle:checked ~ .qx-burger .qx-burger-close {
+  display: block;
+}
+
+.site-qatarexperts .qx-nav {
+  display: none;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.site-qatarexperts .qx-nav a {
+  padding: 0.6rem 0.9rem;
+  border-radius: 9px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--qx-ink-soft);
+  letter-spacing: 0.01em;
+  transition: background 0.15s, color 0.15s;
+}
+.site-qatarexperts .qx-nav a:hover {
+  background: var(--qx-tint);
+  color: var(--qx-maroon);
+}
+.site-qatarexperts .qx-nav .qx-nav-cta {
+  margin-top: 0.3rem;
+  color: #fff;
+  background: var(--qx-maroon);
+  text-align: center;
+  border: 1px solid var(--qx-maroon-deep);
+}
+.site-qatarexperts .qx-nav .qx-nav-cta:hover {
+  background: var(--qx-maroon-hover);
+  color: #fff;
+}
+
+/* mobile: open drawer when checkbox checked */
+.site-qatarexperts .qx-nav-toggle:checked ~ .qx-nav {
+  display: flex;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  padding: 0.8rem 20px 1.1rem;
+  background: var(--qx-cream);
+  border-bottom: 1px solid var(--qx-line);
+  box-shadow: var(--qx-shadow-md);
+}
+
+@media (min-width: 880px) {
+  .site-qatarexperts .qx-burger {
+    display: none;
+  }
+  .site-qatarexperts .qx-nav,
+  .site-qatarexperts .qx-nav-toggle:checked ~ .qx-nav {
+    display: flex;
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0;
+    background: none;
+    border: 0;
+    box-shadow: none;
+  }
+  .site-qatarexperts .qx-nav .qx-nav-cta {
+    margin-top: 0;
+    margin-left: 0.4rem;
+  }
+}
+
+/* ============================================================
+   HERO — magazine cover featuring the latest article
+   ============================================================ */
+.site-qatarexperts .qx-hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(900px 480px at 88% -20%, #fbeef0 0%, rgba(251, 238, 240, 0) 62%),
+    radial-gradient(700px 420px at 6% 110%, #f8f0e2 0%, rgba(248, 240, 226, 0) 60%),
+    linear-gradient(180deg, var(--qx-cream) 0%, var(--qx-surface) 100%);
+  border-bottom: 1px solid var(--qx-line);
+}
+/* faint Islamic-geometry dot lattice */
+.site-qatarexperts .qx-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(168, 132, 47, 0.16) 1.2px, transparent 1.3px);
+  background-size: 26px 26px;
+  -webkit-mask-image: radial-gradient(640px 420px at 82% 10%, #000 0%, transparent 72%);
+  mask-image: radial-gradient(640px 420px at 82% 10%, #000 0%, transparent 72%);
+  opacity: 0.8;
+  pointer-events: none;
+}
+.site-qatarexperts .qx-hero .qx-wrap {
+  position: relative;
+  padding: 46px 20px 54px;
+}
+.site-qatarexperts .qx-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.8rem;
+  align-items: center;
+}
+
+.site-qatarexperts .qx-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.36rem 0.85rem;
+  border-radius: 999px;
+  background: var(--qx-surface);
+  border: 1px solid var(--qx-gold-soft);
+  color: var(--qx-maroon);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  box-shadow: var(--qx-shadow-sm);
+}
+.site-qatarexperts .qx-eyebrow svg {
+  color: var(--qx-gold-deep);
+}
+
+.site-qatarexperts .qx-hero-feat {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+.site-qatarexperts .qx-hero-media {
+  position: relative;
+  display: block;
+  min-width: 0;
+  border-radius: var(--qx-radius-lg);
+  overflow: hidden;
+  background: var(--qx-tint);
+  aspect-ratio: 16 / 11;
+  border: 1px solid var(--qx-line);
+  box-shadow: var(--qx-shadow-lg);
+}
+.site-qatarexperts .qx-hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.site-qatarexperts .qx-hero-media:hover img {
+  transform: scale(1.035);
+}
+.site-qatarexperts .qx-hero-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(77, 10, 31, 0) 45%, rgba(77, 10, 31, 0.42) 100%);
+}
+.site-qatarexperts .qx-hero-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+}
+
+.site-qatarexperts .qx-hero-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+.site-qatarexperts .qx-hero-copy h1 {
+  font-family: var(--qx-serif);
+  font-size: clamp(2.05rem, 6vw, 3.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  margin: 1rem 0 0;
+  color: var(--qx-ink);
+}
+.site-qatarexperts .qx-hero-copy h1 a {
+  color: inherit;
+}
+.site-qatarexperts .qx-hero-copy h1 a:hover {
+  color: var(--qx-maroon);
+}
+.site-qatarexperts .qx-hero-copy .qx-hero-excerpt {
+  margin: 1.05rem 0 0;
+  max-width: 54ch;
+  font-size: 1.12rem;
+  line-height: 1.65;
+  color: var(--qx-ink-soft);
+}
+.site-qatarexperts .qx-hero-copy .qx-readmore {
+  margin-top: 1.4rem;
+}
+
+/* hero CTA / read link */
+.site-qatarexperts .qx-readmore {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  color: var(--qx-maroon);
+  align-self: flex-start;
+}
+.site-qatarexperts .qx-readmore::after {
+  content: "";
+  width: 0;
+  height: 2px;
+  margin-left: -0.2rem;
+  background: var(--qx-gold);
+  transition: width 0.2s ease;
+}
+.site-qatarexperts .qx-readmore:hover::after {
+  width: 22px;
+}
+.site-qatarexperts .qx-readmore svg {
+  transition: transform 0.18s ease;
+}
+.site-qatarexperts .qx-readmore:hover svg {
+  transform: translateX(3px);
+}
+
+/* hero stat / trust ribbon */
+.site-qatarexperts .qx-hero-ribbon {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem 1.6rem;
+  margin-top: 1.7rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--qx-sand-line);
+}
+.site-qatarexperts .qx-hero-ribbon span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--qx-ink-soft);
+}
+.site-qatarexperts .qx-hero-ribbon svg {
+  color: var(--qx-gold-deep);
+  flex: none;
+}
+
+@media (min-width: 920px) {
+  .site-qatarexperts .qx-hero .qx-wrap {
+    padding: 60px 20px 66px;
+  }
+  .site-qatarexperts .qx-hero-feat {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 2.6rem;
+  }
+  .site-qatarexperts .qx-hero-media {
+    aspect-ratio: auto;   /* let the grid column set the width; avoids overflow onto the copy */
+    width: 100%;
+    height: 100%;
+    min-height: 420px;
+  }
+}
+
+/* ============================================================
+   SECTION HEADINGS
+   ============================================================ */
+.site-qatarexperts .qx-section {
+  padding: 54px 0;
+}
+.site-qatarexperts .qx-section.alt {
+  background: var(--qx-sand);
+  border-top: 1px solid var(--qx-sand-line);
+  border-bottom: 1px solid var(--qx-sand-line);
+}
+.site-qatarexperts .qx-sec-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.8rem;
+}
+.site-qatarexperts .qx-sec-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--qx-gold-deep);
+  margin-bottom: 0.55rem;
+}
+.site-qatarexperts .qx-sec-kicker::before {
+  content: "";
+  width: 22px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--qx-gold);
+}
+.site-qatarexperts .qx-sec-head h2 {
+  font-family: var(--qx-serif);
+  font-size: clamp(1.6rem, 3.6vw, 2.2rem);
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: var(--qx-ink);
+}
+.site-qatarexperts .qx-sec-head p {
+  margin: 0.4rem 0 0;
+  color: var(--qx-ink-muted);
+  font-size: 0.98rem;
+  max-width: 56ch;
+}
+.site-qatarexperts .qx-sec-link {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--qx-maroon);
+  white-space: nowrap;
+}
+.site-qatarexperts .qx-sec-link svg {
+  transition: transform 0.18s ease;
+}
+.site-qatarexperts .qx-sec-link:hover svg {
+  transform: translateX(3px);
+}
+
+/* ============================================================
+   CHIPS / META  (shared)
+   ============================================================ */
+.site-qatarexperts .qx-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.site-qatarexperts .qx-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.72rem;
+  border-radius: 999px;
+  background: var(--qx-tint);
+  border: 1px solid var(--qx-tint-line);
+  color: var(--qx-maroon-deep);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: capitalize;
+}
+/* gold-trimmed category chip variant */
+.site-qatarexperts .qx-chip.qx-chip-cat {
+  background: var(--qx-surface);
+  border-color: var(--qx-gold-soft);
+  color: var(--qx-gold-deep);
+}
+.site-qatarexperts .qx-chip.qx-chip-cat::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--qx-gold);
+}
+
+.site-qatarexperts .qx-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.9rem;
+  color: var(--qx-ink-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.site-qatarexperts .qx-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.site-qatarexperts .qx-meta svg {
+  color: var(--qx-gold-deep);
+}
+.site-qatarexperts .qx-meta .qx-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: currentColor;
+  opacity: 0.5;
+}
+.site-qatarexperts .qx-meta .qx-kw {
+  color: var(--qx-maroon);
+}
+
+/* badge (editor's pick etc.) */
+.site-qatarexperts .qx-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  padding: 0.36rem 0.78rem;
+  border-radius: 999px;
+  background: rgba(77, 10, 31, 0.82);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  color: var(--qx-gold-soft);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid rgba(200, 162, 75, 0.45);
+}
+.site-qatarexperts .qx-badge svg {
+  color: var(--qx-gold);
+}
+
+/* ============================================================
+   STORY GRID (home)
+   ============================================================ */
+.site-qatarexperts .qx-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.4rem;
+}
+@media (min-width: 620px) {
+  .site-qatarexperts .qx-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1000px) {
+  .site-qatarexperts .qx-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.site-qatarexperts .qx-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--qx-surface);
+  border: 1px solid var(--qx-line);
+  border-radius: var(--qx-radius);
+  overflow: hidden;
+  box-shadow: var(--qx-shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.site-qatarexperts .qx-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--qx-shadow-md);
+  border-color: var(--qx-gold-soft);
+}
+.site-qatarexperts .qx-card-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: var(--qx-tint);
+  overflow: hidden;
+}
+.site-qatarexperts .qx-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+.site-qatarexperts .qx-card:hover .qx-card-media img {
+  transform: scale(1.05);
+}
+.site-qatarexperts .qx-card-media .qx-card-cat {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  z-index: 2;
+}
+.site-qatarexperts .qx-card-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(77, 10, 31, 0) 55%, rgba(77, 10, 31, 0.34) 100%);
+}
+.site-qatarexperts .qx-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.15rem 1.2rem 1.3rem;
+}
+.site-qatarexperts .qx-card-body h3 {
+  font-family: var(--qx-serif);
+  font-size: 1.24rem;
+  line-height: 1.26;
+  letter-spacing: -0.005em;
+  margin: 0;
+}
+.site-qatarexperts .qx-card-body h3 a {
+  color: var(--qx-ink);
+}
+.site-qatarexperts .qx-card-body h3 a:hover {
+  color: var(--qx-maroon);
+}
+.site-qatarexperts .qx-card-body .qx-excerpt {
+  margin: 0.55rem 0 0;
+  color: var(--qx-ink-soft);
+  font-size: 0.94rem;
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.site-qatarexperts .qx-card-foot {
+  margin-top: auto;
+}
+.site-qatarexperts .qx-card-foot .qx-meta {
+  font-size: 0.8rem;
+  padding-top: 1rem;
+  margin-top: 1.05rem;
+  border-top: 1px solid var(--qx-line-soft);
+}
+
+/* ============================================================
+   FEATURED / EDITOR'S PICKS  (large landscape card)
+   ============================================================ */
+.site-qatarexperts .qx-feature {
+  display: grid;
+  grid-template-columns: 1fr;
+  background: var(--qx-surface);
+  border: 1px solid var(--qx-line);
+  border-radius: var(--qx-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--qx-shadow-md);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.site-qatarexperts .qx-feature:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--qx-shadow-lg);
+  border-color: var(--qx-gold-soft);
+}
+.site-qatarexperts .qx-feature-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: var(--qx-tint);
+  overflow: hidden;
+}
+.site-qatarexperts .qx-feature-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.site-qatarexperts .qx-feature:hover .qx-feature-media img {
+  transform: scale(1.04);
+}
+.site-qatarexperts .qx-feature-media .qx-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+}
+.site-qatarexperts .qx-feature-body {
+  padding: 1.8rem 1.7rem 2rem;
+  display: flex;
+  flex-direction: column;
+}
+.site-qatarexperts .qx-feature-body h3 {
+  font-family: var(--qx-serif);
+  font-size: clamp(1.5rem, 3vw, 2.05rem);
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+  margin: 0.75rem 0 0;
+}
+.site-qatarexperts .qx-feature-body h3 a {
+  color: var(--qx-ink);
+}
+.site-qatarexperts .qx-feature-body h3 a:hover {
+  color: var(--qx-maroon);
+}
+.site-qatarexperts .qx-feature-body .qx-excerpt {
+  margin: 0.85rem 0 0;
+  color: var(--qx-ink-soft);
+  font-size: 1.04rem;
+  line-height: 1.62;
+}
+.site-qatarexperts .qx-feature-body .qx-meta {
+  margin-top: 1.1rem;
+}
+.site-qatarexperts .qx-feature-body .qx-readmore {
+  margin-top: 1.4rem;
+}
+
+@media (min-width: 880px) {
+  .site-qatarexperts .qx-feature {
+    grid-template-columns: 1.08fr 0.92fr;
+  }
+  .site-qatarexperts .qx-feature-media {
+    aspect-ratio: auto;
+    min-height: 100%;
+  }
+  .site-qatarexperts .qx-feature-body {
+    padding: 2.4rem 2.5rem;
+    justify-content: center;
+  }
+}
+
+/* ============================================================
+   EMPTY STATE
+   ============================================================ */
+.site-qatarexperts .qx-emptywrap {
+  text-align: center;
+  padding: 3.2rem 1.5rem;
+  border: 1px dashed var(--qx-sand-line);
+  border-radius: var(--qx-radius-lg);
+  background: var(--qx-cream);
+}
+.site-qatarexperts .qx-empty-ico {
+  display: grid;
+  place-items: center;
+  width: 66px;
+  height: 66px;
+  margin: 0 auto 1.1rem;
+  border-radius: 999px;
+  background: var(--qx-tint);
+  color: var(--qx-maroon);
+  border: 1px solid var(--qx-gold-soft);
+}
+.site-qatarexperts .qx-emptywrap h3 {
+  font-family: var(--qx-serif);
+  font-size: 1.5rem;
+  margin: 0 0 0.4rem;
+  color: var(--qx-ink);
+}
+.site-qatarexperts .qx-emptywrap p {
+  margin: 0 auto;
+  color: var(--qx-ink-muted);
+  max-width: 44ch;
+}
+
+/* ============================================================
+   "WHY" / VALUE STRIP
+   ============================================================ */
+.site-qatarexperts .qx-value-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+}
+@media (min-width: 720px) {
+  .site-qatarexperts .qx-value-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.site-qatarexperts .qx-value-card {
+  background: var(--qx-surface);
+  border: 1px solid var(--qx-line);
+  border-radius: var(--qx-radius);
+  padding: 1.5rem 1.5rem;
+  box-shadow: var(--qx-shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+.site-qatarexperts .qx-value-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--qx-maroon) 0%, var(--qx-gold) 100%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.site-qatarexperts .qx-value-card:hover::before {
+  opacity: 1;
+}
+.site-qatarexperts .qx-value-ico {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: var(--qx-tint);
+  color: var(--qx-maroon);
+  border: 1px solid var(--qx-tint-line);
+  margin-bottom: 1rem;
+}
+.site-qatarexperts .qx-value-card h3 {
+  font-family: var(--qx-serif);
+  font-size: 1.2rem;
+  margin: 0 0 0.4rem;
+  color: var(--qx-ink);
+}
+.site-qatarexperts .qx-value-card p {
+  margin: 0;
+  font-size: 0.93rem;
+  line-height: 1.58;
+  color: var(--qx-ink-soft);
+}
+
+/* ============================================================
+   ARTICLE PAGE
+   ============================================================ */
+.site-qatarexperts .qx-article {
+  padding: 0 0 64px;
+}
+.site-qatarexperts .qx-article-head {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(820px 380px at 86% -20%, #fbeef0 0%, rgba(251, 238, 240, 0) 60%),
+    linear-gradient(180deg, var(--qx-cream) 0%, var(--qx-surface) 100%);
+  border-bottom: 1px solid var(--qx-line);
+}
+.site-qatarexperts .qx-article-head::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(168, 132, 47, 0.14) 1.2px, transparent 1.3px);
+  background-size: 26px 26px;
+  -webkit-mask-image: radial-gradient(560px 360px at 84% 6%, #000 0%, transparent 74%);
+  mask-image: radial-gradient(560px 360px at 84% 6%, #000 0%, transparent 74%);
+  opacity: 0.7;
+  pointer-events: none;
+}
+.site-qatarexperts .qx-article-head .qx-wrap {
+  position: relative;
+  padding: 26px 20px 36px;
+}
+
+/* breadcrumb */
+.site-qatarexperts .qx-crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: var(--qx-ink-muted);
+  margin-bottom: 1.1rem;
+}
+.site-qatarexperts .qx-crumbs a {
+  color: var(--qx-ink-soft);
+}
+.site-qatarexperts .qx-crumbs a:hover {
+  color: var(--qx-maroon);
+}
+.site-qatarexperts .qx-crumbs svg {
+  color: var(--qx-gold-deep);
+  opacity: 0.7;
+}
+.site-qatarexperts .qx-crumbs .qx-crumb-current {
+  color: var(--qx-ink);
+}
+
+.site-qatarexperts .qx-article-head h1 {
+  font-family: var(--qx-serif);
+  font-size: clamp(1.9rem, 4.8vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  margin: 0.5rem 0 0;
+  max-width: 22ch;
+  color: var(--qx-ink);
+}
+.site-qatarexperts .qx-article-head .qx-lede {
+  margin: 1rem 0 0;
+  max-width: 60ch;
+  font-size: 1.12rem;
+  line-height: 1.62;
+  color: var(--qx-ink-soft);
+}
+.site-qatarexperts .qx-article-head .qx-meta {
+  margin-top: 1.2rem;
+  font-size: 0.9rem;
+}
+.site-qatarexperts .qx-article-head .qx-chips {
+  margin-top: 1.15rem;
+}
+
+/* hero image */
+.site-qatarexperts .qx-hero-img {
+  position: relative;
+  margin-top: 1.5rem;
+  border-radius: var(--qx-radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--qx-line);
+  box-shadow: var(--qx-shadow-lg);
+  background: var(--qx-tint);
+  aspect-ratio: 21 / 9;
+}
+.site-qatarexperts .qx-hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 2-column body layout */
+.site-qatarexperts .qx-article-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.8rem;
+  margin-top: 2.2rem;
+}
+
+/* TOC */
+.site-qatarexperts .qx-toc {
+  background: var(--qx-surface);
+  border: 1px solid var(--qx-line);
+  border-radius: var(--qx-radius);
+  box-shadow: var(--qx-shadow-sm);
+  overflow: hidden;
+}
+.site-qatarexperts .qx-toc > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.95rem 1.1rem;
+  font-family: var(--qx-serif);
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--qx-ink);
+  background: var(--qx-sand);
+  border-bottom: 1px solid var(--qx-sand-line);
+}
+.site-qatarexperts .qx-toc > summary::-webkit-details-marker {
+  display: none;
+}
+.site-qatarexperts .qx-toc > summary .qx-toc-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.site-qatarexperts .qx-toc > summary .qx-toc-title svg {
+  color: var(--qx-gold-deep);
+}
+.site-qatarexperts .qx-toc .qx-chevron {
+  transition: transform 0.2s ease;
+  color: var(--qx-maroon);
+}
+.site-qatarexperts .qx-toc[open] .qx-chevron {
+  transform: rotate(180deg);
+}
+.site-qatarexperts .qx-toc nav {
+  padding: 0.6rem 0.6rem 0.85rem;
+}
+.site-qatarexperts .qx-toc ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.site-qatarexperts .qx-toc li {
+  margin: 0;
+}
+.site-qatarexperts .qx-toc a {
+  display: block;
+  padding: 0.44rem 0.7rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--qx-ink-soft);
+  border-left: 2px solid transparent;
+  transition: background 0.14s, color 0.14s, border-color 0.14s;
+}
+.site-qatarexperts .qx-toc a:hover {
+  background: var(--qx-tint);
+  color: var(--qx-maroon);
+  border-left-color: var(--qx-gold);
+}
+.site-qatarexperts .qx-toc .qx-toc-l3 a {
+  margin-left: 0.9rem;
+  font-size: 0.85rem;
+  color: var(--qx-ink-muted);
+}
+
+/* insider note box */
+.site-qatarexperts .qx-note {
+  display: flex;
+  gap: 0.85rem;
+  margin: 0 0 1.6rem;
+  padding: 1.05rem 1.15rem;
+  background: var(--qx-sand);
+  border: 1px solid var(--qx-sand-line);
+  border-left: 4px solid var(--qx-gold);
+  border-radius: 12px;
+}
+.site-qatarexperts .qx-note .qx-note-ico {
+  flex: none;
+  color: var(--qx-maroon);
+  margin-top: 0.1rem;
+}
+.site-qatarexperts .qx-note b {
+  display: block;
+  color: var(--qx-ink);
+  font-size: 0.95rem;
+  margin-bottom: 0.15rem;
+}
+.site-qatarexperts .qx-note p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--qx-ink-soft);
+}
+
+/* article main column */
+.site-qatarexperts .qx-article-main {
+  min-width: 0;
+}
+.site-qatarexperts .qx-article-body {
+  max-width: var(--qx-measure);
+}
+
+/* author / updated footer of article */
+.site-qatarexperts .qx-article-foot {
+  margin-top: 2.4rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--qx-line);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.8rem 1.1rem;
+  color: var(--qx-ink-muted);
+  font-size: 0.9rem;
+  max-width: var(--qx-measure);
+}
+.site-qatarexperts .qx-article-foot .qx-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 700;
+  color: var(--qx-maroon-deep);
+}
+.site-qatarexperts .qx-article-foot .qx-verified svg {
+  color: var(--qx-gold-deep);
+}
+
+.site-qatarexperts .qx-backlink {
+  margin-top: 2rem;
+  max-width: var(--qx-measure);
+}
+
+@media (min-width: 1000px) {
+  .site-qatarexperts .qx-article-grid {
+    grid-template-columns: 290px minmax(0, 1fr);
+    gap: 2.8rem;
+    align-items: start;
+  }
+  .site-qatarexperts .qx-toc-col {
+    position: sticky;
+    top: 96px;
+  }
+  .site-qatarexperts .qx-toc {
+    max-height: calc(100vh - 124px);
+    display: flex;
+    flex-direction: column;
+  }
+  .site-qatarexperts .qx-toc > summary {
+    cursor: default;
+  }
+  .site-qatarexperts .qx-toc .qx-chevron {
+    display: none;
+  }
+  .site-qatarexperts .qx-toc nav {
+    overflow-y: auto;
+  }
+}
+
+/* ============================================================
+   RELATED ("More from QatarExperts")
+   ============================================================ */
+.site-qatarexperts .qx-related {
+  margin-top: 3.2rem;
+  padding-top: 2.4rem;
+  border-top: 1px solid var(--qx-line);
+}
+.site-qatarexperts .qx-related > h2 {
+  font-family: var(--qx-serif);
+  font-size: clamp(1.45rem, 3vw, 1.9rem);
+  letter-spacing: -0.01em;
+  margin: 0 0 1.4rem;
+  color: var(--qx-ink);
+}
+
+/* ============================================================
+   FOOTER — warm maroon
+   ============================================================ */
+.site-qatarexperts .qx-footer {
+  background: linear-gradient(180deg, var(--qx-maroon-deep) 0%, var(--qx-maroon-dark) 100%);
+  color: #e9d8cd;
+  margin-top: 0;
+  border-top: 3px solid var(--qx-gold);
+}
+.site-qatarexperts .qx-footer .qx-wrap {
+  padding: 50px 20px 32px;
+}
+.site-qatarexperts .qx-foot-top {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.8rem;
+  padding-bottom: 1.9rem;
+  border-bottom: 1px solid rgba(233, 216, 205, 0.16);
+}
+.site-qatarexperts .qx-footer .qx-brand,
+.site-qatarexperts .qx-footer .qx-brand:hover {
+  color: #fff;
+}
+.site-qatarexperts .qx-footer .qx-logo {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(200, 162, 75, 0.5);
+  color: var(--qx-gold);
+}
+.site-qatarexperts .qx-footer .qx-wordmark b {
+  color: #fff;
+}
+.site-qatarexperts .qx-footer .qx-wordmark b span {
+  color: var(--qx-gold);
+}
+.site-qatarexperts .qx-footer .qx-wordmark small {
+  color: var(--qx-gold-soft);
+}
+.site-qatarexperts .qx-foot-about {
+  margin: 1rem 0 0;
+  max-width: 46ch;
+  font-size: 0.92rem;
+  line-height: 1.62;
+  color: #d8bfb4;
+}
+.site-qatarexperts .qx-foot-cols {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.4rem;
+}
+.site-qatarexperts .qx-foot-cols h4 {
+  color: var(--qx-gold-soft);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0 0 0.8rem;
+}
+.site-qatarexperts .qx-foot-cols ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.site-qatarexperts .qx-foot-cols li {
+  margin: 0.45rem 0;
+}
+.site-qatarexperts .qx-foot-cols a {
+  color: #ddc7bc;
+  font-size: 0.92rem;
+}
+.site-qatarexperts .qx-foot-cols a:hover {
+  color: #fff;
+}
+.site-qatarexperts .qx-foot-disclaimer {
+  margin-top: 1.7rem;
+  padding: 1.05rem 1.15rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(233, 216, 205, 0.14);
+  border-radius: 12px;
+  font-size: 0.82rem;
+  line-height: 1.62;
+  color: #cdb1a6;
+}
+.site-qatarexperts .qx-foot-disclaimer b {
+  color: var(--qx-gold-soft);
+}
+.site-qatarexperts .qx-foot-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin-top: 1.7rem;
+  font-size: 0.82rem;
+  color: #c2a499;
+}
+
+@media (min-width: 760px) {
+  .site-qatarexperts .qx-foot-top {
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2.6rem;
+  }
+}
+
+/* ============================================================
+   ARTICLE-CONTENT brand overrides (scoped)
+   ============================================================ */
+.site-qatarexperts .qx-article-body .article-content {
+  margin-top: 0.4rem;
+}
+
+/* refined H2 with maroon gold underline */
+.site-qatarexperts .article-content h2 {
+  font-family: var(--qx-serif);
+  letter-spacing: -0.01em;
+  color: var(--qx-ink);
+  padding-bottom: 0.4rem;
+  position: relative;
+}
+.site-qatarexperts .article-content h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 64px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--qx-maroon) 0%, var(--qx-gold) 100%);
+}
+.site-qatarexperts .article-content h3 {
+  font-family: var(--qx-serif);
+  color: var(--qx-ink);
+}
+
+/* maroon drop-cap on the opening paragraph */
+.site-qatarexperts .article-content > p:first-of-type::first-letter {
+  float: left;
+  font-family: var(--qx-serif);
+  font-size: 3.35rem;
+  line-height: 0.82;
+  font-weight: 700;
+  color: var(--qx-maroon);
+  margin: 0.32rem 0.6rem 0 0;
+}
+
+.site-qatarexperts .article-content a {
+  text-decoration-color: var(--qx-gold);
+  text-underline-offset: 3px;
+}
+.site-qatarexperts .article-content a:hover {
+  color: var(--qx-maroon-hover);
+}
+
+.site-qatarexperts .article-content blockquote {
+  background: var(--qx-sand);
+  border-left: 4px solid var(--qx-gold);
+  border-radius: 0 12px 12px 0;
+  color: var(--qx-ink-soft);
+}
+
+/* key-takeaways box */
+.site-qatarexperts .article-content .key-takeaways {
+  box-shadow: var(--qx-shadow-sm);
+  position: relative;
+}
+.site-qatarexperts .article-content .key-takeaways h2 {
+  color: var(--qx-maroon-deep);
+  padding-bottom: 0;
+}
+.site-qatarexperts .article-content .key-takeaways h2::after {
+  display: none;
+}
+
+/* FAQ */
+.site-qatarexperts .article-content .faq h2 {
+  color: var(--qx-ink);
+}
+.site-qatarexperts .article-content .faq h3 {
+  color: var(--qx-maroon-deep);
+}
+
+/* inline post-image figures — rounded, soft shadow, centered caption */
+.site-qatarexperts .article-content .post-image,
+.site-qatarexperts .article-content figure {
+  margin: 1.8rem 0;
+  text-align: center;
+}
+.site-qatarexperts .article-content .post-image img,
+.site-qatarexperts .article-content figure img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--qx-radius);
+  border: 1px solid var(--qx-line);
+  box-shadow: var(--qx-shadow-md);
+}
+.site-qatarexperts .article-content .post-image figcaption,
+.site-qatarexperts .article-content figure figcaption {
+  margin-top: 0.65rem;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--qx-ink-muted);
+  text-align: center;
+}
+
+/* premium tables: maroon header text, gold/cream zebra (vars set above;
+   these tune the header foreground the shared globals don't control) */
+.site-qatarexperts .article-content thead th {
+  color: var(--qx-maroon-deep);
+  border-bottom-color: var(--qx-gold-soft);
+}
+.site-qatarexperts .article-content .table-wrap {
+  box-shadow: var(--qx-shadow-sm);
+}
+
+/* reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .site-qatarexperts * {
+    transition: none !important;
+  }
+  .site-qatarexperts .qx-card:hover,
+  .site-qatarexperts .qx-feature:hover,
+  .site-qatarexperts .qx-hero-media:hover img,
+  .site-qatarexperts .qx-card:hover .qx-card-media img,
+  .site-qatarexperts .qx-feature:hover .qx-feature-media img {
+    transform: none;
+  }
+}

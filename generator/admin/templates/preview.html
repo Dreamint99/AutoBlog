@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="{{ site.language if site else 'en' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ a.meta_title }}</title>
+  <meta name="description" content="{{ a.meta_description }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script type="application/ld+json">{{ a.schema | tojson }}</script>
+</head>
+<body class="reader theme-{{ site.theme if site else 'trust-blue' }}">
+  <div class="reader-bar">
+    <a href="/articles?site={{ a.site_id }}">← back to {{ site.name if site else a.site_id }}</a>
+    <span class="muted">preview · this is how the published page looks</span>
+  </div>
+
+  <article class="post">
+    <header class="post-head">
+      <div class="post-site">{{ site.name if site else a.site_id }}</div>
+      <h1>{{ a.title }}</h1>
+      <div class="post-meta">
+        {{ a.word_count }} words · {{ a.reading_time }} min read · 🎯 {{ a.keyword }}
+        {% if a.is_mock %} · <span class="pill warn">mock content</span>{% endif %}
+      </div>
+      {% if a.tags %}<div class="post-tags">{% for t in a.tags %}<span class="tag">#{{ t }}</span>{% endfor %}</div>{% endif %}
+    </header>
+
+    {% if a.image_url %}<img class="hero" src="{{ a.image_url }}" alt="{{ a.title }}">{% endif %}
+
+    <div class="post-body">{{ a.body_html | safe }}</div>
+  </article>
+</body>
+</html>

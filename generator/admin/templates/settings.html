@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Settings{% endblock %}
+{% block content %}
+<div class="page-head"><h1>Settings</h1></div>
+
+<div class="card">
+  <h3>API keys & providers</h3>
+  <p class="muted">Edit these in <code>generator/.env</code>, then restart the server.</p>
+  <table class="tbl">
+    <tbody>
+      <tr><td>DeepSeek (writer)</td><td>{{ '✅ connected' if env.DEEPSEEK_API_KEY else '❌ missing — mock mode' }}</td></tr>
+      <tr><td>Semrush (keywords)</td><td>{{ '✅ connected' if env.SEMRUSH_API_KEY else '— using LLM/heuristic' }}</td></tr>
+      <tr><td>Image provider</td><td>{{ env.IMAGE_PROVIDER }}{{ ' ✅' if (env.IMAGE_PROVIDER != 'openai') or env.OPENAI_API_KEY }}</td></tr>
+      <tr><td>Storage backend</td><td>{{ env.STORAGE_BACKEND }}{{ ' → Supabase ✅' if env.SUPABASE_URL and env.STORAGE_BACKEND == 'supabase' }}</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card">
+  <h3>Sites ({{ sites|length }})</h3>
+  <table class="tbl">
+    <thead><tr><th>Name</th><th>Domain</th><th>Niche</th><th>Theme</th></tr></thead>
+    <tbody>
+      {% for s in sites %}
+      <tr><td>{{ s.name }}</td><td class="muted">{{ s.domain }}</td><td>{{ s.niche.split(',')[0] }}</td><td>{{ s.theme }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p class="muted">Add or edit sites in <code>generator/sites/sites_config.json</code>.</p>
+</div>
+{% endblock %}

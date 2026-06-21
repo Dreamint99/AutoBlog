@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}Generate{% endblock %}
+{% block content %}
+<div class="page-head"><h1>Generate articles</h1></div>
+
+<div class="gen-grid">
+  <div>
+    <!-- BULK: N per each selected site, AI picks the keyword-driven topics -->
+    <div class="card">
+      <h3>⚡ Bulk — N articles per website</h3>
+      <p class="muted" style="font-size:13px">AI finds the best keywords for each niche, writes a full SEO article (3-agent), and publishes it live.</p>
+      <label class="field"><span>Websites</span>
+        <div class="checks">
+          {% for s in sites %}
+          <label class="chk"><input type="checkbox" class="bsite" value="{{ s.id }}" checked> {{ s.name }}</label>
+          {% endfor %}
+        </div>
+      </label>
+      <div class="row">
+        <label class="field grow"><span>How many per website?</span>
+          <input id="bcount" type="number" min="1" max="100" value="5"></label>
+        <label class="field grow"><span>Focus / seed <small class="muted">(optional)</small></span>
+          <input id="bseed" type="text" placeholder="e.g. student visa"></label>
+      </div>
+      <button class="btn primary" id="bulkBtn">🚀 Generate &amp; publish</button>
+    </div>
+
+    <!-- MANUAL: one site, your own titles -->
+    <div class="card" style="margin-top:16px">
+      <h3>✍️ Manual — your own titles (one site)</h3>
+      <label class="field"><span>Site</span>
+        <select id="site">
+          {% for s in sites %}<option value="{{ s.id }}" {{ 'selected' if s.id == current }}>{{ s.name }}</option>{% endfor %}
+        </select>
+      </label>
+      <label class="field"><span>Titles <small class="muted">(one per line)</small></span>
+        <textarea id="titles" rows="4" placeholder="UK Skilled Worker visa requirements 2025"></textarea>
+      </label>
+      <div class="row">
+        <button class="btn ghost" id="planBtn">✨ Suggest titles</button>
+        <button class="btn" id="goBtn">Generate these</button>
+      </div>
+    </div>
+    {% if not has_llm %}<p class="hint warn">No DeepSeek key — output will be mock. Add <code>DEEPSEEK_API_KEY</code> to <code>.env</code>.</p>{% endif %}
+  </div>
+
+  <div class="card">
+    <div class="prog-head"><h3>Progress</h3><span id="progLabel" class="muted">idle</span></div>
+    <div class="progbar"><div id="progFill"></div></div>
+    <div id="log" class="log"></div>
+    <div id="results" class="results"></div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}<script>initGenerate();</script>{% endblock %}

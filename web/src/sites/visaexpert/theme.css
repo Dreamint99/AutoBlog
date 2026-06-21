@@ -1,0 +1,1070 @@
+/* ============================================================
+   VisaExpert — theme id: trust-blue
+   Authoritative visa/immigration guide. Trustworthy, official,
+   reassuring, precise. Serif headings + clean sans body.
+   EVERY selector is scoped under `.site-visaexpert`.
+   The shared globals.css reads the CSS variables set below to
+   theme `.article-content` typography + the premium tables.
+   ============================================================ */
+
+.site-visaexpert {
+  /* ── shared variables consumed by globals.css ── */
+  --accent: #1b50c4;
+  --accent-soft: #eef3ff;
+  --accent-line: #d6e1fb;
+  --table-head: #eef3ff;
+  --table-border: #d9e2f4;
+  --table-zebra: #f7f9ff;
+  --table-hover: #e6eeff;
+
+  /* ── local design tokens ── */
+  --vx-accent: #1b50c4;
+  --vx-accent-hover: #2657d6;
+  --vx-accent-deep: #143a8f;
+  --vx-ink: #16203a;
+  --vx-ink-soft: #46506a;
+  --vx-ink-muted: #6b7488;
+  --vx-line: #e4e8f1;
+  --vx-line-soft: #eef1f7;
+  --vx-surface: #ffffff;
+  --vx-surface-alt: #f6f8fc;
+  --vx-tint: #eef3ff;
+  --vx-tint-line: #d6e1fb;
+  --vx-shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.05);
+  --vx-shadow-md: 0 6px 22px rgba(16, 24, 40, 0.08);
+  --vx-shadow-lg: 0 18px 48px rgba(16, 32, 80, 0.16);
+  --vx-radius: 14px;
+  --vx-radius-lg: 20px;
+  --vx-serif: Georgia, "Times New Roman", "Iowan Old Style", serif;
+  --vx-sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --vx-maxw: 1180px;
+
+  color: var(--vx-ink);
+  font-family: var(--vx-sans);
+  background: var(--vx-surface);
+}
+
+.site-visaexpert *,
+.site-visaexpert *::before,
+.site-visaexpert *::after {
+  box-sizing: border-box;
+}
+
+.site-visaexpert a {
+  color: var(--vx-accent);
+  text-decoration: none;
+}
+.site-visaexpert a:hover {
+  color: var(--vx-accent-hover);
+}
+
+.site-visaexpert :focus-visible {
+  outline: 3px solid var(--vx-accent-hover);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* generic layout shell */
+.site-visaexpert .vx-wrap {
+  width: 100%;
+  max-width: var(--vx-maxw);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-visaexpert .vx-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.92);
+  -webkit-backdrop-filter: saturate(180%) blur(10px);
+  backdrop-filter: saturate(180%) blur(10px);
+  border-bottom: 1px solid var(--vx-line);
+}
+.site-visaexpert .vx-topnote {
+  background: var(--vx-accent-deep);
+  color: #dce6ff;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+}
+.site-visaexpert .vx-topnote .vx-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 34px;
+  text-align: center;
+}
+.site-visaexpert .vx-topnote svg {
+  flex: none;
+}
+.site-visaexpert .vx-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 68px;
+}
+.site-visaexpert .vx-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--vx-ink);
+}
+.site-visaexpert .vx-brand:hover {
+  color: var(--vx-ink);
+}
+.site-visaexpert .vx-logo {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  background: linear-gradient(160deg, var(--vx-accent) 0%, var(--vx-accent-deep) 100%);
+  color: #fff;
+  box-shadow: var(--vx-shadow-sm);
+  flex: none;
+}
+.site-visaexpert .vx-logo svg {
+  width: 22px;
+  height: 22px;
+}
+.site-visaexpert .vx-wordmark {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
+.site-visaexpert .vx-wordmark b {
+  font-family: var(--vx-serif);
+  font-size: 1.32rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.site-visaexpert .vx-wordmark b span {
+  color: var(--vx-accent);
+}
+.site-visaexpert .vx-wordmark small {
+  font-size: 0.7rem;
+  color: var(--vx-ink-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.site-visaexpert .vx-nav {
+  display: none;
+  align-items: center;
+  gap: 0.4rem;
+}
+.site-visaexpert .vx-nav a {
+  padding: 0.5rem 0.85rem;
+  border-radius: 9px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--vx-ink-soft);
+  transition: background 0.15s, color 0.15s;
+}
+.site-visaexpert .vx-nav a:hover {
+  background: var(--vx-tint);
+  color: var(--vx-accent);
+}
+.site-visaexpert .vx-nav .vx-nav-cta {
+  margin-left: 0.3rem;
+  color: #fff;
+  background: var(--vx-accent);
+}
+.site-visaexpert .vx-nav .vx-nav-cta:hover {
+  background: var(--vx-accent-hover);
+  color: #fff;
+}
+
+@media (min-width: 760px) {
+  .site-visaexpert .vx-nav {
+    display: flex;
+  }
+}
+
+/* ============================================================
+   HERO (home)
+   ============================================================ */
+.site-visaexpert .vx-hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(1100px 460px at 80% -10%, #e6eeff 0%, rgba(230, 238, 255, 0) 60%),
+    linear-gradient(180deg, #f8faff 0%, #ffffff 100%);
+  border-bottom: 1px solid var(--vx-line);
+}
+.site-visaexpert .vx-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(var(--vx-line-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--vx-line-soft) 1px, transparent 1px);
+  background-size: 44px 44px;
+  -webkit-mask-image: radial-gradient(700px 420px at 78% 8%, #000 0%, transparent 72%);
+  mask-image: radial-gradient(700px 420px at 78% 8%, #000 0%, transparent 72%);
+  opacity: 0.7;
+  pointer-events: none;
+}
+.site-visaexpert .vx-hero .vx-wrap {
+  position: relative;
+  padding: 54px 20px 60px;
+}
+.site-visaexpert .vx-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.34rem 0.8rem;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid var(--vx-tint-line);
+  color: var(--vx-accent-deep);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  box-shadow: var(--vx-shadow-sm);
+}
+.site-visaexpert .vx-eyebrow svg {
+  color: var(--vx-accent);
+}
+.site-visaexpert .vx-hero h1 {
+  font-family: var(--vx-serif);
+  font-size: clamp(2rem, 6vw, 3.3rem);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  margin: 1.1rem 0 0;
+  max-width: 18ch;
+  color: var(--vx-ink);
+}
+.site-visaexpert .vx-hero h1 em {
+  font-style: normal;
+  color: var(--vx-accent);
+}
+.site-visaexpert .vx-hero .vx-sub {
+  margin: 1.1rem 0 0;
+  max-width: 56ch;
+  font-size: 1.12rem;
+  line-height: 1.65;
+  color: var(--vx-ink-soft);
+}
+
+/* faux search bar (visual only) */
+.site-visaexpert .vx-search {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: min(560px, 100%);
+  margin-top: 1.7rem;
+  padding: 0.55rem 0.6rem 0.55rem 1rem;
+  background: #fff;
+  border: 1px solid var(--vx-line);
+  border-radius: 14px;
+  box-shadow: var(--vx-shadow-md);
+}
+.site-visaexpert .vx-search svg {
+  color: var(--vx-ink-muted);
+  flex: none;
+}
+.site-visaexpert .vx-search .vx-search-text {
+  flex: 1;
+  color: var(--vx-ink-muted);
+  font-size: 1rem;
+}
+.site-visaexpert .vx-search .vx-search-btn {
+  flex: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  background: var(--vx-accent);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+.site-visaexpert .vx-search .vx-search-btn:hover {
+  background: var(--vx-accent-hover);
+  color: #fff;
+}
+
+.site-visaexpert .vx-trustrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.4rem;
+  margin-top: 1.6rem;
+}
+.site-visaexpert .vx-trustrow span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--vx-ink-soft);
+}
+.site-visaexpert .vx-check {
+  display: grid;
+  place-items: center;
+  width: 19px;
+  height: 19px;
+  border-radius: 999px;
+  background: var(--vx-accent);
+  color: #fff;
+  flex: none;
+}
+.site-visaexpert .vx-check svg {
+  width: 11px;
+  height: 11px;
+}
+
+/* ============================================================
+   SECTION HEADINGS
+   ============================================================ */
+.site-visaexpert .vx-section {
+  padding: 52px 0;
+}
+.site-visaexpert .vx-section.alt {
+  background: var(--vx-surface-alt);
+  border-top: 1px solid var(--vx-line);
+  border-bottom: 1px solid var(--vx-line);
+}
+.site-visaexpert .vx-sec-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.6rem;
+}
+.site-visaexpert .vx-sec-head h2 {
+  font-family: var(--vx-serif);
+  font-size: clamp(1.5rem, 3.4vw, 2rem);
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: var(--vx-ink);
+}
+.site-visaexpert .vx-sec-head p {
+  margin: 0.35rem 0 0;
+  color: var(--vx-ink-muted);
+  font-size: 0.98rem;
+}
+.site-visaexpert .vx-sec-kicker {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--vx-accent);
+  margin-bottom: 0.4rem;
+}
+
+/* ============================================================
+   FEATURED GUIDE
+   ============================================================ */
+.site-visaexpert .vx-featured {
+  display: grid;
+  grid-template-columns: 1fr;
+  background: #fff;
+  border: 1px solid var(--vx-line);
+  border-radius: var(--vx-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--vx-shadow-md);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+.site-visaexpert .vx-featured:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--vx-shadow-lg);
+  border-color: var(--vx-tint-line);
+}
+.site-visaexpert .vx-featured-media {
+  position: relative;
+  background: var(--vx-tint);
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+.site-visaexpert .vx-featured-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.site-visaexpert .vx-featured-media .vx-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+}
+.site-visaexpert .vx-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.34rem 0.7rem;
+  border-radius: 999px;
+  background: var(--vx-accent);
+  color: #fff;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  box-shadow: var(--vx-shadow-sm);
+}
+.site-visaexpert .vx-featured-body {
+  padding: 1.8rem 1.7rem 2rem;
+  display: flex;
+  flex-direction: column;
+}
+.site-visaexpert .vx-featured-body h3 {
+  font-family: var(--vx-serif);
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+  margin: 0.7rem 0 0;
+}
+.site-visaexpert .vx-featured-body h3 a {
+  color: var(--vx-ink);
+}
+.site-visaexpert .vx-featured-body h3 a:hover {
+  color: var(--vx-accent);
+}
+.site-visaexpert .vx-featured-body .vx-excerpt {
+  margin: 0.85rem 0 0;
+  color: var(--vx-ink-soft);
+  font-size: 1.04rem;
+  line-height: 1.6;
+}
+.site-visaexpert .vx-featured-body .vx-readmore {
+  margin-top: 1.3rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 700;
+  color: var(--vx-accent);
+  align-self: flex-start;
+}
+.site-visaexpert .vx-featured-body .vx-readmore svg {
+  transition: transform 0.15s ease;
+}
+.site-visaexpert .vx-featured:hover .vx-readmore svg {
+  transform: translateX(3px);
+}
+
+@media (min-width: 880px) {
+  .site-visaexpert .vx-featured {
+    grid-template-columns: 1.05fr 0.95fr;
+  }
+  .site-visaexpert .vx-featured-media {
+    aspect-ratio: auto;
+    min-height: 100%;
+  }
+  .site-visaexpert .vx-featured-body {
+    padding: 2.4rem 2.4rem;
+    justify-content: center;
+  }
+}
+
+/* ============================================================
+   META / CHIPS (shared)
+   ============================================================ */
+.site-visaexpert .vx-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.site-visaexpert .vx-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  background: var(--vx-tint);
+  border: 1px solid var(--vx-tint-line);
+  color: var(--vx-accent-deep);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: capitalize;
+}
+.site-visaexpert .vx-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.9rem;
+  color: var(--vx-ink-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.site-visaexpert .vx-meta .vx-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: currentColor;
+  opacity: 0.5;
+}
+.site-visaexpert .vx-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.site-visaexpert .vx-meta svg {
+  color: var(--vx-accent);
+}
+
+/* ============================================================
+   ARTICLE GRID (home)
+   ============================================================ */
+.site-visaexpert .vx-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.3rem;
+}
+@media (min-width: 620px) {
+  .site-visaexpert .vx-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1000px) {
+  .site-visaexpert .vx-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.site-visaexpert .vx-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--vx-line);
+  border-radius: var(--vx-radius);
+  overflow: hidden;
+  box-shadow: var(--vx-shadow-sm);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+.site-visaexpert .vx-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--vx-shadow-md);
+  border-color: var(--vx-tint-line);
+}
+.site-visaexpert .vx-card-media {
+  aspect-ratio: 16 / 9;
+  background: var(--vx-tint);
+  overflow: hidden;
+}
+.site-visaexpert .vx-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.site-visaexpert .vx-card:hover .vx-card-media img {
+  transform: scale(1.04);
+}
+.site-visaexpert .vx-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.1rem 1.15rem 1.25rem;
+}
+.site-visaexpert .vx-card-body h3 {
+  font-family: var(--vx-serif);
+  font-size: 1.2rem;
+  line-height: 1.28;
+  letter-spacing: -0.005em;
+  margin: 0.7rem 0 0;
+}
+.site-visaexpert .vx-card-body h3 a {
+  color: var(--vx-ink);
+}
+.site-visaexpert .vx-card-body h3 a:hover {
+  color: var(--vx-accent);
+}
+.site-visaexpert .vx-card-body .vx-excerpt {
+  margin: 0.55rem 0 0;
+  color: var(--vx-ink-soft);
+  font-size: 0.94rem;
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.site-visaexpert .vx-card-foot {
+  margin-top: auto;
+  padding-top: 1rem;
+}
+.site-visaexpert .vx-card-foot .vx-meta {
+  font-size: 0.8rem;
+}
+
+/* simple link-list fallback / dense option */
+.site-visaexpert .vx-emptywrap {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  border: 1px dashed var(--vx-tint-line);
+  border-radius: var(--vx-radius-lg);
+  background: var(--vx-surface-alt);
+}
+.site-visaexpert .vx-empty-ico {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1rem;
+  border-radius: 999px;
+  background: var(--vx-tint);
+  color: var(--vx-accent);
+  border: 1px solid var(--vx-tint-line);
+}
+.site-visaexpert .vx-emptywrap h3 {
+  font-family: var(--vx-serif);
+  font-size: 1.4rem;
+  margin: 0 0 0.4rem;
+  color: var(--vx-ink);
+}
+.site-visaexpert .vx-emptywrap p {
+  margin: 0;
+  color: var(--vx-ink-muted);
+  max-width: 42ch;
+  margin-inline: auto;
+}
+
+/* ============================================================
+   TRUST STRIP
+   ============================================================ */
+.site-visaexpert .vx-trust-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.1rem;
+}
+@media (min-width: 720px) {
+  .site-visaexpert .vx-trust-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.site-visaexpert .vx-trust-card {
+  background: #fff;
+  border: 1px solid var(--vx-line);
+  border-radius: var(--vx-radius);
+  padding: 1.4rem 1.4rem;
+  box-shadow: var(--vx-shadow-sm);
+}
+.site-visaexpert .vx-trust-card .vx-trust-ico {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--vx-tint);
+  color: var(--vx-accent);
+  border: 1px solid var(--vx-tint-line);
+  margin-bottom: 0.9rem;
+}
+.site-visaexpert .vx-trust-card h3 {
+  font-family: var(--vx-serif);
+  font-size: 1.15rem;
+  margin: 0 0 0.35rem;
+  color: var(--vx-ink);
+}
+.site-visaexpert .vx-trust-card p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--vx-ink-soft);
+}
+
+/* ============================================================
+   ARTICLE PAGE
+   ============================================================ */
+.site-visaexpert .vx-article {
+  padding: 0 0 60px;
+}
+.site-visaexpert .vx-article-head {
+  background:
+    radial-gradient(900px 360px at 85% -20%, #e6eeff 0%, rgba(230, 238, 255, 0) 60%),
+    linear-gradient(180deg, #f8faff 0%, #ffffff 100%);
+  border-bottom: 1px solid var(--vx-line);
+}
+.site-visaexpert .vx-article-head .vx-wrap {
+  padding: 26px 20px 34px;
+}
+
+/* breadcrumb */
+.site-visaexpert .vx-crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--vx-ink-muted);
+  margin-bottom: 1.1rem;
+}
+.site-visaexpert .vx-crumbs a {
+  color: var(--vx-ink-soft);
+}
+.site-visaexpert .vx-crumbs a:hover {
+  color: var(--vx-accent);
+}
+.site-visaexpert .vx-crumbs svg {
+  opacity: 0.55;
+}
+.site-visaexpert .vx-crumbs .vx-crumb-current {
+  color: var(--vx-ink);
+}
+
+.site-visaexpert .vx-article-head h1 {
+  font-family: var(--vx-serif);
+  font-size: clamp(1.8rem, 4.6vw, 2.85rem);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  margin: 0.4rem 0 0;
+  max-width: 24ch;
+  color: var(--vx-ink);
+}
+.site-visaexpert .vx-article-head .vx-lede {
+  margin: 0.95rem 0 0;
+  max-width: 62ch;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--vx-ink-soft);
+}
+.site-visaexpert .vx-article-head .vx-meta {
+  margin-top: 1.15rem;
+  font-size: 0.9rem;
+}
+.site-visaexpert .vx-article-head .vx-chips {
+  margin-top: 1.1rem;
+}
+
+/* hero image */
+.site-visaexpert .vx-hero-img {
+  margin-top: 1.4rem;
+  border-radius: var(--vx-radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--vx-line);
+  box-shadow: var(--vx-shadow-md);
+  background: var(--vx-tint);
+  aspect-ratio: 21 / 9;
+}
+.site-visaexpert .vx-hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 2-column body layout */
+.site-visaexpert .vx-article-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.8rem;
+  margin-top: 2.2rem;
+}
+
+/* TOC */
+.site-visaexpert .vx-toc {
+  background: #fff;
+  border: 1px solid var(--vx-line);
+  border-radius: var(--vx-radius);
+  box-shadow: var(--vx-shadow-sm);
+  overflow: hidden;
+}
+.site-visaexpert .vx-toc > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.95rem 1.1rem;
+  font-family: var(--vx-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--vx-ink);
+  background: var(--vx-tint);
+  border-bottom: 1px solid var(--vx-tint-line);
+}
+.site-visaexpert .vx-toc > summary::-webkit-details-marker {
+  display: none;
+}
+.site-visaexpert .vx-toc > summary .vx-toc-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.site-visaexpert .vx-toc > summary svg {
+  color: var(--vx-accent);
+}
+.site-visaexpert .vx-toc .vx-chevron {
+  transition: transform 0.2s ease;
+}
+.site-visaexpert .vx-toc[open] .vx-chevron {
+  transform: rotate(180deg);
+}
+.site-visaexpert .vx-toc nav {
+  padding: 0.6rem 0.6rem 0.8rem;
+}
+.site-visaexpert .vx-toc ol {
+  list-style: none;
+  counter-reset: vxtoc;
+  margin: 0;
+  padding: 0;
+}
+.site-visaexpert .vx-toc li {
+  margin: 0;
+}
+.site-visaexpert .vx-toc a {
+  display: block;
+  padding: 0.42rem 0.7rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--vx-ink-soft);
+  border-left: 2px solid transparent;
+  transition: background 0.14s, color 0.14s, border-color 0.14s;
+}
+.site-visaexpert .vx-toc a:hover {
+  background: var(--vx-tint);
+  color: var(--vx-accent);
+  border-left-color: var(--vx-accent);
+}
+.site-visaexpert .vx-toc .vx-toc-l3 a {
+  margin-left: 0.85rem;
+  font-size: 0.85rem;
+  color: var(--vx-ink-muted);
+}
+
+/* disclaimer / key-facts note */
+.site-visaexpert .vx-note {
+  display: flex;
+  gap: 0.8rem;
+  margin: 1.6rem 0 0;
+  padding: 1rem 1.1rem;
+  background: var(--vx-tint);
+  border: 1px solid var(--vx-tint-line);
+  border-left: 4px solid var(--vx-accent);
+  border-radius: 12px;
+}
+.site-visaexpert .vx-note .vx-note-ico {
+  flex: none;
+  color: var(--vx-accent);
+  margin-top: 0.1rem;
+}
+.site-visaexpert .vx-note b {
+  display: block;
+  color: var(--vx-ink);
+  font-size: 0.95rem;
+  margin-bottom: 0.15rem;
+}
+.site-visaexpert .vx-note p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--vx-ink-soft);
+}
+
+/* article main column */
+.site-visaexpert .vx-article-main {
+  min-width: 0;
+}
+.site-visaexpert .vx-article-main .article-content {
+  margin-top: 0.4rem;
+}
+
+/* author / share footer of article */
+.site-visaexpert .vx-article-foot {
+  margin-top: 2.2rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--vx-line);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.8rem 1.1rem;
+  color: var(--vx-ink-muted);
+  font-size: 0.9rem;
+}
+.site-visaexpert .vx-article-foot .vx-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 700;
+  color: var(--vx-accent-deep);
+}
+.site-visaexpert .vx-article-foot .vx-verified svg {
+  color: var(--vx-accent);
+}
+
+@media (min-width: 1000px) {
+  .site-visaexpert .vx-article-grid {
+    grid-template-columns: 290px minmax(0, 1fr);
+    gap: 2.6rem;
+    align-items: start;
+  }
+  .site-visaexpert .vx-toc-col {
+    position: sticky;
+    top: 92px;
+  }
+  .site-visaexpert .vx-toc {
+    max-height: calc(100vh - 120px);
+    display: flex;
+    flex-direction: column;
+  }
+  .site-visaexpert .vx-toc > summary {
+    cursor: default;
+  }
+  .site-visaexpert .vx-toc .vx-chevron {
+    display: none;
+  }
+  .site-visaexpert .vx-toc nav {
+    overflow-y: auto;
+  }
+  /* keep TOC always open on desktop regardless of toggle state */
+  .site-visaexpert .vx-toc > nav {
+    display: block;
+  }
+}
+
+/* ============================================================
+   RELATED GUIDES
+   ============================================================ */
+.site-visaexpert .vx-related {
+  margin-top: 3rem;
+  padding-top: 2.2rem;
+  border-top: 1px solid var(--vx-line);
+}
+.site-visaexpert .vx-related > h2 {
+  font-family: var(--vx-serif);
+  font-size: clamp(1.4rem, 3vw, 1.85rem);
+  letter-spacing: -0.01em;
+  margin: 0 0 1.3rem;
+  color: var(--vx-ink);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-visaexpert .vx-footer {
+  background: #0e1830;
+  color: #c3cde4;
+  margin-top: 0;
+}
+.site-visaexpert .vx-footer .vx-wrap {
+  padding: 48px 20px 30px;
+}
+.site-visaexpert .vx-foot-top {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.6rem;
+  padding-bottom: 1.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.site-visaexpert .vx-footer .vx-brand b {
+  color: #fff;
+}
+.site-visaexpert .vx-footer .vx-brand small {
+  color: #8ea0c6;
+}
+.site-visaexpert .vx-footer .vx-foot-about {
+  margin: 0.9rem 0 0;
+  max-width: 46ch;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #9fb0d2;
+}
+.site-visaexpert .vx-foot-cols {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.4rem;
+}
+.site-visaexpert .vx-foot-cols h4 {
+  color: #fff;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0 0 0.7rem;
+}
+.site-visaexpert .vx-foot-cols ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.site-visaexpert .vx-foot-cols li {
+  margin: 0.4rem 0;
+}
+.site-visaexpert .vx-foot-cols a {
+  color: #b7c4de;
+  font-size: 0.92rem;
+}
+.site-visaexpert .vx-foot-cols a:hover {
+  color: #fff;
+}
+.site-visaexpert .vx-foot-disclaimer {
+  margin-top: 1.6rem;
+  padding: 1rem 1.1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: #93a3c6;
+}
+.site-visaexpert .vx-foot-disclaimer b {
+  color: #d7e0f3;
+}
+.site-visaexpert .vx-foot-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin-top: 1.6rem;
+  font-size: 0.82rem;
+  color: #8294b8;
+}
+
+@media (min-width: 720px) {
+  .site-visaexpert .vx-foot-top {
+    grid-template-columns: 1.4fr 1fr;
+    gap: 2.4rem;
+  }
+  .site-visaexpert .vx-foot-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============================================================
+   ARTICLE-CONTENT brand overrides (scoped)
+   ============================================================ */
+.site-visaexpert .article-content h2 {
+  font-family: var(--vx-serif);
+  letter-spacing: -0.01em;
+  color: var(--vx-ink);
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid var(--vx-tint-line);
+}
+.site-visaexpert .article-content h3 {
+  font-family: var(--vx-serif);
+  color: var(--vx-ink);
+}
+.site-visaexpert .article-content .key-takeaways {
+  box-shadow: var(--vx-shadow-sm);
+}
+.site-visaexpert .article-content .key-takeaways h2 {
+  border-bottom: none;
+  padding-bottom: 0;
+  color: var(--vx-accent-deep);
+}
+.site-visaexpert .article-content blockquote {
+  background: var(--vx-tint);
+  border-radius: 0 12px 12px 0;
+  color: var(--vx-ink-soft);
+}
+.site-visaexpert .article-content .faq h3 {
+  border-bottom: none;
+}
+
+/* reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .site-visaexpert * {
+    transition: none !important;
+  }
+  .site-visaexpert .vx-card:hover {
+    transform: none;
+  }
+  .site-visaexpert .vx-featured:hover {
+    transform: none;
+  }
+}

@@ -1,0 +1,8 @@
+# AutoBlog generator — Python deps
+flask>=3.0.0
+python-dotenv>=1.0.0
+openai>=1.0.0          # used as the DeepSeek client (OpenAI-compatible API)
+requests>=2.31.0
+json-repair>=0.25.0    # tolerant JSON parsing for LLM output
+python-slugify>=8.0.0  # URL slugs from titles
+pytrends>=4.9.2        # Google Trends keyword discovery (best-effort, unofficial)

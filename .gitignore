@@ -1,0 +1,23 @@
+# Secrets — NEVER commit
+.env
+.env.*
+!.env.example
+generator/.env
+web/.env.local
+
+# Python
+__pycache__/
+*.py[cod]
+generator/.venv/
+generator/output/
+
+# Node / Next.js
+node_modules/
+web/.next/
+web/out/
+.vercel/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log

@@ -1,0 +1,64 @@
+{
+  "sites": [
+    {
+      "id": "visaexpert",
+      "name": "VisaExpert",
+      "domain": "visaexpert.com",
+      "tagline": "Your trusted guide to visas, immigration & moving abroad",
+      "niche": "Visas, immigration, work permits, study abroad, permanent residency, citizenship",
+      "language": "en",
+      "tone": "authoritative, accurate, reassuring; step-by-step guides for real visa applicants.",
+      "audience": "people applying for visas, international students, migrant workers, families relocating",
+      "theme": "trust-blue",
+      "default_word_count": 1600
+    },
+    {
+      "id": "ainews",
+      "name": "AINews",
+      "domain": "ainews.com",
+      "tagline": "AI, decoded — news, tools & explainers",
+      "niche": "Artificial intelligence news, large language models, AI tools, machine learning, tech industry",
+      "language": "en",
+      "tone": "sharp, current, confident; news + explainer voice for an AI-savvy reader.",
+      "audience": "developers, founders, tech enthusiasts, AI practitioners",
+      "theme": "tech-dark",
+      "default_word_count": 1200
+    },
+    {
+      "id": "bangladeshexpert",
+      "name": "BangladeshExpert",
+      "domain": "bangladeshexpert.com",
+      "tagline": "Bangladesh, by people who know it",
+      "niche": "Bangladesh travel, culture, food, business, how-to guides, local life and tips",
+      "language": "en",
+      "tone": "warm, practical local expert; honest first-hand guides about Bangladesh for visitors and locals.",
+      "audience": "tourists, expats, the Bangladeshi diaspora, curious locals",
+      "theme": "bd-green",
+      "default_word_count": 1500
+    },
+    {
+      "id": "qatarexperts",
+      "name": "QatarExperts",
+      "domain": "qatarexperts.com",
+      "tagline": "Your insider guide to life in Qatar",
+      "niche": "Qatar lifestyle, living in Qatar, Doha, expat life, culture, food, things to do, housing, jobs, cost of living",
+      "language": "en",
+      "tone": "warm insider expat/local voice; practical, vivid first-hand guides to living and thriving in Qatar.",
+      "audience": "expats in Qatar, newcomers and professionals moving to Doha, tourists",
+      "theme": "qatar-maroon",
+      "default_word_count": 1500
+    },
+    {
+      "id": "infkey",
+      "name": "InfKey",
+      "domain": "infkey.com",
+      "tagline": "Know the real cost before you build.",
+      "niche": "AI API cost, LLM & model pricing, cost calculators, model comparisons, AI video/image/voice API pricing, automation cost, RAG & embedding cost, AI cost optimization",
+      "language": "en",
+      "tone": "data-driven cost analyst; lead with the direct answer and a verified-pricing table, show the math, cite official pricing pages, give a clear cheapest-vs-best verdict, and always note prices change.",
+      "audience": "AI product builders, founders, developers, indie hackers and businesses estimating and optimizing AI/LLM API spend",
+      "theme": "infkey-noir",
+      "default_word_count": 1500
+    }
+  ]
+}

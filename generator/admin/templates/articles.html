@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Articles{% endblock %}
+{% block content %}
+<div class="page-head">
+  <h1>Articles</h1>
+  <a class="btn primary" href="/generate">+ Generate</a>
+</div>
+
+<div class="filters">
+  <a class="chip {{ 'on' if not current }}" href="/articles">All</a>
+  {% for s in sites %}
+  <a class="chip {{ 'on' if current == s.id }}" href="/articles?site={{ s.id }}">{{ s.name }}</a>
+  {% endfor %}
+</div>
+
+{% if articles %}
+<div class="cards">
+  {% for a in articles %}
+  <div class="card article">
+    <img class="thumb" src="{{ a.image_url }}" alt="" loading="lazy">
+    <div class="article-body">
+      <span class="pill">{{ a.site_id }}</span>
+      {% if a.is_mock %}<span class="pill warn">mock</span>{% endif %}
+      <h3>{{ a.title }}</h3>
+      <p class="muted">{{ a.meta_description }}</p>
+      <div class="meta-line muted">{{ a.word_count }} words · {{ a.reading_time }} min · {{ a.created_at[:10] }}</div>
+      <div class="card-actions">
+        <a class="btn small" href="/preview/{{ a.id }}" target="_blank">Preview</a>
+        <span class="kw">🎯 {{ a.keyword }}</span>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% else %}
+<p class="empty">No articles{{ ' for this site' if current }} yet. <a href="/generate">Generate some →</a></p>
+{% endif %}
+{% endblock %}

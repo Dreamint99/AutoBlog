@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Edit{% endblock %}
+{% block content %}
+<div class="page-head">
+  <h1>Edit post</h1>
+  <a class="btn ghost" href="/manage?site={{ a.site_id }}">← back</a>
+</div>
+
+<div class="card" data-id="{{ a.id }}">
+  <div class="row">
+    <label class="field grow"><span>Title</span><input id="f-title" value="{{ a.title }}"></label>
+    <label class="field" style="width:160px"><span>Status</span>
+      <select id="f-status">
+        <option value="published" {{ 'selected' if a.status=='published' }}>published</option>
+        <option value="draft" {{ 'selected' if a.status=='draft' }}>draft</option>
+      </select>
+    </label>
+  </div>
+  <label class="field"><span>Meta title</span><input id="f-meta_title" value="{{ a.meta_title }}"></label>
+  <label class="field"><span>Meta description</span><input id="f-meta_description" value="{{ a.meta_description }}"></label>
+  <div class="row">
+    <label class="field grow"><span>Excerpt</span><input id="f-excerpt" value="{{ a.excerpt }}"></label>
+    <label class="field grow"><span>Primary keyword</span><input id="f-keyword" value="{{ a.keyword }}"></label>
+  </div>
+  <label class="field"><span>Body HTML</span>
+    <textarea id="f-body_html" rows="18" style="font:13px ui-monospace,monospace">{{ a.body_html }}</textarea>
+  </label>
+  <div class="row">
+    <button class="btn primary" id="saveBtn">💾 Save</button>
+    <a class="btn ghost" href="https://autoblog-{{ a.site_id }}.vercel.app/{{ a.slug }}" target="_blank">View live</a>
+    <span id="saveMsg" class="muted"></span>
+  </div>
+  <p class="hint">Status <code>draft</code> hides it from the live site (only <code>published</code> shows).</p>
+</div>
+{% endblock %}
+{% block scripts %}<script>
+document.getElementById("saveBtn").onclick = async () => {
+  const id = document.querySelector(".card").dataset.id;
+  const f = k => document.getElementById("f-"+k).value;
+  const body = {title:f("title"), meta_title:f("meta_title"), meta_description:f("meta_description"),
+                excerpt:f("excerpt"), keyword:f("keyword"), status:f("status"), body_html:f("body_html")};
+  const msg = document.getElementById("saveMsg"); msg.textContent = "saving…";
+  try {
+    const r = await fetch("/api/article/"+id+"/update",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
+    const d = await r.json();
+    msg.textContent = d.ok ? "✅ saved — live in seconds" : "❌ "+(d.error||"failed");
+  } catch(e){ msg.textContent = "❌ "+e; }
+};
+</script>{% endblock %}

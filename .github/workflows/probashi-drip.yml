@@ -1,0 +1,53 @@
+name: Probashi daily auto-post
+
+# Runs in GitHub's cloud — posts even when your PC is OFF.
+# 7 runs/day at different times (cron is UTC; Bangladesh = UTC+6).
+#   00:30 UTC = 06:30 BST   |   03:30 UTC = 09:30 BST
+#   06:30 UTC = 12:30 BST   |   09:30 UTC = 15:30 BST
+#   12:30 UTC = 18:30 BST   |   15:00 UTC = 21:00 BST
+#   17:00 UTC = 23:00 BST
+on:
+  schedule:
+    - cron: "30 0 * * *"
+    - cron: "30 3 * * *"
+    - cron: "30 6 * * *"
+    - cron: "30 9 * * *"
+    - cron: "30 12 * * *"
+    - cron: "0 15 * * *"
+    - cron: "0 17 * * *"
+  workflow_dispatch: {}   # lets you trigger a run manually from the Actions tab
+
+concurrency:
+  group: probashi-drip
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: generator
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+          cache-dependency-path: generator/requirements.txt
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Generate + publish 1 Bengali post
+        env:
+          STORAGE_BACKEND: supabase
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          LLM_PROVIDER: deepseek
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          IMAGE_PROVIDER: pixabay
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+          PROBASHIINFO_WP_URL: ${{ secrets.PROBASHIINFO_WP_URL }}
+          PROBASHIINFO_WP_USER: ${{ secrets.PROBASHIINFO_WP_USER }}
+          PROBASHIINFO_WP_APP_PASSWORD: ${{ secrets.PROBASHIINFO_WP_APP_PASSWORD }}
+          PROBASHIINFO_WP_RANKMATH: "1"
+          PYTHONUTF8: "1"
+        run: python drip.py probashiinfo 1 999999
