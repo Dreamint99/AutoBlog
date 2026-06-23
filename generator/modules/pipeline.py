@@ -171,6 +171,7 @@ def suggest_titles(site: dict, count: int = 10, seed: str = "", avoid: list | No
                   "search on Google.\n\n" + SEO_PLAYBOOK + "\n\nReturn ONLY a JSON array of strings.")
         recent = "; ".join(list(avoid_set)[-40:])
         user = (f'Niche: {site["niche"]}\nAudience: {site["audience"]}\n'
+                + f'Language: {site["language"]} — write EVERY title in this language, not the audience\'s native tongue.\n'
                 + (f'Focus area / seed keyword: {seed}\n' if seed else "")
                 + (f'HIGH-PRIORITY trending Bangladesh search terms (Google Trends) — prefer topics around '
                    f'these where they fit the niche: {", ".join(hot)}\n' if hot else "")

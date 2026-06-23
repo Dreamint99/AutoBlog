@@ -25,12 +25,6 @@ SITE_ID = "walvi"
 LOG = os.path.join(os.path.dirname(os.path.abspath(__file__)), "output", "walvi_gen.log")
 
 TITLES = [
-    "Qatar to Europe Work Permit: Routes, Cost and Process in 2026",
-    "Qatar to Serbia Work Permit: Step-by-Step Guide for Workers",
-    "Bangladesh to Serbia Work Permit: Documents, Cost and Timeline",
-    "Saudi Arabia to Serbia Work Visa: How Migrant Workers Move",
-    "Saudi Arabia to Portugal Work Visa: Complete 2026 Guide",
-    "Bangladesh to Portugal Work Visa: Process, Cost and Jobs",
     "Bangladesh to Moldova Work Permit: What Workers Should Know",
     "Qatar to France Work Visa: Routes for Skilled Workers",
     "Bangladesh to Croatia Work Permit: Full Step-by-Step Guide",
