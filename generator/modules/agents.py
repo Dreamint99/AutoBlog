@@ -22,10 +22,11 @@ def strategize(site: dict, topic: str) -> dict:
     )
     user = (
         f"Site: {site['name']} — niche: {site['niche']}\nAudience: {site['audience']}\n"
+        f"Language: {site['language']}\n"
         f"Topic / working title: \"{topic}\"\n\n"
         "Plan the article. Return JSON:\n"
         "{\n"
-        '  "primary_keyword": "the ONE focus keyword people search — MUST be SHORT (2-4 words max), in the article\'s language; NOT the full title, no year unless essential",\n'
+        '  "primary_keyword": "the ONE focus keyword people search — MUST be SHORT (2-4 words max), in the SAME language as the Language above (do NOT translate it into the audience\'s native language); NOT the full title, no year unless essential",\n'
         '  "secondary_keywords": ["6-10 long-tail + semantic keywords/entities to include"],\n'
         '  "search_intent": "informational|commercial|transactional",\n'
         '  "target_word_count": integer (>=1500 to beat the top results),\n'
@@ -43,6 +44,10 @@ def write_draft(site: dict, topic: str, strategy: dict) -> dict:
     system = (
         "You are an elite subject-matter expert writer. You write genuinely useful, original, "
         "people-first articles in clean semantic HTML.\n\n" + SEO_PLAYBOOK + "\n\n"
+        "LANGUAGE (critical): write the ENTIRE article — title, headings, body, tables, FAQ and key "
+        "takeaways — in the language given in the 'Language:' field below, REGARDLESS of the audience's "
+        "nationality or which country the topic is about. If Language says English, write 100% in English "
+        "even for a Bangladeshi/South-Asian audience. Never switch or code-switch to another language.\n"
         "HTML rules: body only. Allowed: <h2> <h3> <p> <ul> <ol> <li> <strong> <em> <blockquote> "
         "<table> <thead> <tbody> <tr> <th> <td> <a>. NO <h1>, NO markdown, NO page wrappers.\n"
         "Start with a 2-3 sentence direct 'quick answer'. Cover every outline heading. "
@@ -88,6 +93,8 @@ def optimize(site: dict, topic: str, strategy: dict, draft: dict) -> dict:
     system = (
         "You are a meticulous SEO editor. You upgrade a draft to maximise Google ranking and "
         "AI-Overview citation without changing the facts.\n\n" + SEO_PLAYBOOK + "\n\n"
+        "LANGUAGE: keep the article in the EXACT same language as the draft you receive — never translate "
+        "it into another language.\n"
         "Keep the same HTML rules and KEEP the [[IMG: ...]] markers, the external dofollow link, and "
         "tables. Ensure a direct quick-answer opener, strong scannable structure, and tighten weak/fluffy "
         "sentences (a key-takeaways box is added later — don't add one).\n"

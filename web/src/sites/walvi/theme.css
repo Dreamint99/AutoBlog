@@ -1,0 +1,1681 @@
+/* ════════════════════════════════════════════════════════════════════════
+   Walvi — theme id: walvi-atlas
+   "Europe Work, Salary & Visa Intelligence."
+   An OFFICIAL EUROPEAN-INSTITUTION look: EU reflex-blue, 12-gold-star motif,
+   serif institutional headings, flat bordered "register" surfaces, yellow
+   notice callouts. Deliberately NOT a dark fintech dashboard — squarer,
+   formal, document-like. EVERY selector scoped under `.site-walvi`.
+   (Aesthetic only — Walvi is an INDEPENDENT resource, not a government body.)
+   ════════════════════════════════════════════════════════════════════════ */
+
+.site-walvi {
+  --eu-blue: #003399; /* EU reflex blue */
+  --eu-blue-d: #0b2566; /* header band */
+  --eu-blue-2: #1d4ed1;
+  --eu-ink: #0a1b3d;
+  --gold: #f6c700; /* EU yellow (stars) */
+  --gold-d: #cf9f00;
+  --gold-soft: #fdf6db;
+
+  --text: #1d2733;
+  --muted: #54606f;
+  --faint: #7d8896;
+  --line: #cfd6e1; /* institutional grey rules */
+  --line-2: #e4e9f0;
+
+  --bg: #ffffff;
+  --soft: #f2f5fa; /* official grey panel */
+  --soft-2: #e7edf7; /* blue-grey panel */
+  --notice: #fff7da; /* EU-yellow notice */
+  --notice-line: #ecd27a;
+  --ok: #1f7a3d;
+  --ok-soft: #e6f4ea;
+  --warn: #9a3412;
+
+  --serif: Georgia, "Times New Roman", "Noto Serif", "Cambria", serif;
+  --sans: "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+
+  --radius: 4px;
+  --radius-lg: 6px;
+  --shadow-sm: 0 1px 2px rgba(10, 27, 61, 0.06);
+  --shadow: 0 2px 10px rgba(10, 27, 61, 0.08);
+
+  /* shared article-content contract (globals.css reads these) */
+  --accent: #003399;
+  --accent-soft: #eaf0fb;
+  --accent-line: #c6d4ef;
+  --table-head: #0b2566;
+  --table-border: #d3dae5;
+  --table-zebra: #f4f7fc;
+  --table-hover: #eaf0fb;
+
+  color: var(--text);
+  background: var(--bg);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.site-walvi *,
+.site-walvi *::before,
+.site-walvi *::after {
+  box-sizing: border-box;
+}
+.site-walvi a {
+  color: inherit;
+  text-decoration: none;
+}
+.site-walvi img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+.site-walvi .shell {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 22px;
+}
+.site-walvi .hero-band > *,
+.site-walvi .tile-grid > *,
+.site-walvi .coverage > *,
+.site-walvi .grid > *,
+.site-walvi .savings > *,
+.site-walvi .article-grid > *,
+.site-walvi .facts > *,
+.site-walvi .calc-out > *,
+.site-walvi .calc-controls > * {
+  min-width: 0;
+}
+.site-walvi a:focus-visible,
+.site-walvi button:focus-visible,
+.site-walvi select:focus-visible,
+.site-walvi input:focus-visible,
+.site-walvi summary:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+.site-walvi .accent {
+  color: var(--gold);
+}
+.site-walvi .skip-link {
+  position: absolute;
+  left: -9999px;
+}
+.site-walvi .skip-link:focus {
+  left: 12px;
+  top: 12px;
+  z-index: 60;
+  background: var(--eu-blue);
+  color: #fff;
+  padding: 9px 15px;
+}
+
+/* ════════ official top bar ════════ */
+.site-walvi .govbar {
+  background: var(--eu-blue-d);
+  color: #cdd9f2;
+  font-size: 0.78rem;
+  border-bottom: 3px solid var(--gold);
+}
+.site-walvi .govbar-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 7px 22px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 14px;
+}
+.site-walvi .govbar .gb-emblem {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 600;
+  color: #fff;
+}
+.site-walvi .govbar .gb-emblem svg {
+  width: 16px;
+  height: 16px;
+}
+.site-walvi .govbar .gb-note {
+  color: #9fb2d8;
+  margin-left: auto;
+}
+
+/* ════════ masthead (EU-blue institutional band) ════════ */
+.site-walvi .masthead {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: var(--eu-blue);
+  border-bottom: 3px solid var(--gold);
+}
+.site-walvi .masthead-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  height: 70px;
+}
+.site-walvi .nav-toggle {
+  display: none;
+}
+.site-walvi .logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.site-walvi .logomark {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--eu-blue-d);
+  border: 1px solid rgba(246, 199, 0, 0.5);
+}
+.site-walvi .logomark svg {
+  width: 30px;
+  height: 30px;
+}
+.site-walvi .wordmark {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #fff;
+  line-height: 1;
+}
+.site-walvi .wordmark b {
+  color: var(--gold);
+  font-weight: 700;
+}
+.site-walvi .wordmark .tld {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #acc0ea;
+  display: block;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+.site-walvi .nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.site-walvi .nav a {
+  color: #dbe5f8;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+}
+.site-walvi .nav a:hover {
+  color: #fff;
+  border-bottom-color: var(--gold);
+}
+.site-walvi .nav .cta {
+  border: 1px solid var(--gold);
+  color: var(--eu-ink);
+  background: var(--gold);
+  padding: 9px 15px;
+  border-radius: var(--radius);
+  letter-spacing: 0.04em;
+}
+.site-walvi .nav .cta:hover {
+  background: #fff;
+  border-color: #fff;
+  color: var(--eu-blue);
+}
+.site-walvi .nav-burger {
+  display: none;
+  margin-left: auto;
+  width: 44px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius);
+  cursor: pointer;
+  position: relative;
+  background: transparent;
+}
+.site-walvi .nav-burger span,
+.site-walvi .nav-burger span::before,
+.site-walvi .nav-burger span::after {
+  position: absolute;
+  left: 12px;
+  width: 18px;
+  height: 2px;
+  background: #fff;
+}
+.site-walvi .nav-burger span {
+  top: 19px;
+}
+.site-walvi .nav-burger span::before {
+  content: "";
+  top: -6px;
+}
+.site-walvi .nav-burger span::after {
+  content: "";
+  top: 6px;
+}
+@media (max-width: 900px) {
+  .site-walvi .nav-burger {
+    display: block;
+  }
+  .site-walvi .nav {
+    position: fixed;
+    inset: 70px 0 auto 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: var(--eu-blue);
+    border-bottom: 3px solid var(--gold);
+    padding: 6px 22px 16px;
+    display: none;
+  }
+  .site-walvi .nav a {
+    padding: 13px 2px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .site-walvi .nav .cta {
+    margin-top: 12px;
+    text-align: center;
+  }
+  .site-walvi .nav-toggle:checked ~ .nav {
+    display: flex;
+  }
+}
+
+/* ════════ hero band (official blue banner) ════════ */
+.site-walvi .hero-band {
+  position: relative;
+  background:
+    radial-gradient(120% 140% at 88% -20%, rgba(246, 199, 0, 0.14), transparent 55%),
+    linear-gradient(180deg, rgba(0, 51, 153, 0.9) 0%, rgba(11, 37, 102, 0.95) 100%),
+    url("/walvi-hero.jpg") center 30% / cover no-repeat;
+  color: #eaf1ff;
+  overflow: hidden;
+  border-bottom: 1px solid var(--eu-blue-d);
+}
+.site-walvi .hero-band::before {
+  /* faint circle-of-stars watermark */
+  content: "";
+  position: absolute;
+  right: -90px;
+  top: -90px;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  border: 2px dashed rgba(246, 199, 0, 0.18);
+  pointer-events: none;
+}
+.site-walvi .hero-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 52px 22px 46px;
+  position: relative;
+  z-index: 1;
+}
+.site-walvi .hero-flag {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.site-walvi .hero-flag svg {
+  width: 22px;
+  height: 22px;
+}
+.site-walvi .hero-band h1 {
+  font-family: var(--serif);
+  font-size: clamp(2.1rem, 4.6vw, 3.25rem);
+  line-height: 1.12;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 16px;
+  max-width: 20ch;
+}
+.site-walvi .hero-band h1 .grad {
+  color: var(--gold);
+}
+.site-walvi .hero-sub {
+  font-size: 1.12rem;
+  line-height: 1.62;
+  color: #c9d6f0;
+  max-width: 44rem;
+  margin: 0 0 26px;
+}
+.site-walvi .hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 26px;
+}
+.site-walvi .hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 26px;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  padding-top: 18px;
+}
+.site-walvi .hero-meta .hm {
+  font-size: 0.86rem;
+  color: #b9c8e8;
+}
+.site-walvi .hero-meta .hm b {
+  display: block;
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  color: #fff;
+  font-weight: 700;
+}
+
+/* hero two-column with European star emblem */
+.site-walvi .hero-grid {
+  display: grid;
+  grid-template-columns: 1.18fr 0.82fr;
+  gap: 34px;
+  align-items: center;
+}
+.site-walvi .hero-emblem {
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+.site-walvi .hero-emblem .ring {
+  position: relative;
+  width: min(290px, 70vw);
+  height: min(290px, 70vw);
+  display: grid;
+  place-items: center;
+}
+.site-walvi .hero-emblem .ring::before {
+  content: "";
+  position: absolute;
+  inset: 14%;
+  border-radius: 50%;
+  border: 1px solid rgba(246, 199, 0, 0.28);
+}
+.site-walvi .hero-emblem .ring::after {
+  content: "";
+  position: absolute;
+  inset: 30%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 40%, rgba(246, 199, 0, 0.16), transparent 70%);
+}
+.site-walvi .hero-emblem svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 8px 22px rgba(0, 0, 0, 0.3));
+}
+.site-walvi .hero-emblem .em-core {
+  position: absolute;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 4vw, 2.1rem);
+  letter-spacing: 0.02em;
+  color: #fff;
+}
+.site-walvi .hero-emblem .em-core b {
+  color: var(--gold);
+}
+@media (max-width: 860px) {
+  .site-walvi .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .site-walvi .hero-emblem {
+    order: -1;
+  }
+  .site-walvi .hero-emblem .ring {
+    width: 168px;
+    height: 168px;
+  }
+}
+
+/* institutional "file" banner for country / job detail pages */
+.site-walvi .page-banner {
+  background:
+    radial-gradient(120% 160% at 92% -30%, rgba(246, 199, 0, 0.14), transparent 55%),
+    linear-gradient(180deg, var(--eu-blue) 0%, var(--eu-blue-d) 100%);
+  color: #eaf1ff;
+  border: 1px solid var(--eu-blue-d);
+  border-top: 3px solid var(--gold);
+  border-radius: var(--radius-lg);
+  padding: 26px 28px;
+  margin: 8px 0 16px;
+  position: relative;
+  overflow: hidden;
+}
+.site-walvi .page-banner::before {
+  content: "";
+  position: absolute;
+  right: -70px;
+  top: -70px;
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  border: 2px dashed rgba(246, 199, 0, 0.16);
+  pointer-events: none;
+}
+.site-walvi .pb-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+  position: relative;
+}
+.site-walvi .pb-flag {
+  font-size: 2.7rem;
+  line-height: 1;
+}
+.site-walvi .pb-kicker {
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--gold);
+  margin-bottom: 5px;
+}
+.site-walvi .pb-title {
+  font-family: var(--serif);
+  font-size: clamp(1.7rem, 3.2vw, 2.3rem);
+  color: #fff;
+  margin: 0;
+  line-height: 1.1;
+}
+.site-walvi .pb-dek {
+  color: #c9d6f0;
+  line-height: 1.6;
+  margin: 0 0 14px;
+  max-width: 48rem;
+  position: relative;
+}
+.site-walvi .pb-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  position: relative;
+}
+.site-walvi .pb-chip {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  padding: 5px 11px;
+  border-radius: var(--radius);
+}
+
+/* buttons */
+.site-walvi .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 12px 22px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.site-walvi .btn-primary {
+  background: var(--gold);
+  color: var(--eu-ink);
+  border-color: var(--gold);
+}
+.site-walvi .btn-primary:hover {
+  background: #ffd633;
+}
+.site-walvi .btn-ghost {
+  border-color: rgba(255, 255, 255, 0.6);
+  color: #fff;
+  background: transparent;
+}
+.site-walvi .btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
+}
+.site-walvi .btn-solid {
+  background: var(--eu-blue);
+  color: #fff;
+  border-color: var(--eu-blue);
+}
+.site-walvi .btn-solid:hover {
+  background: var(--eu-blue-d);
+}
+
+/* ════════ notice strip (EU-yellow) ════════ */
+.site-walvi .notice {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: var(--notice);
+  border: 1px solid var(--notice-line);
+  border-left: 5px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  font-size: 0.9rem;
+  color: #4a3d10;
+  line-height: 1.55;
+  margin: 26px 0;
+}
+.site-walvi .notice .ni {
+  font-size: 1.1rem;
+  line-height: 1.3;
+}
+.site-walvi .notice b {
+  color: #3a2f08;
+}
+
+/* ════════ section heads ════════ */
+.site-walvi main {
+  padding: 0 0 70px;
+}
+.site-walvi .section-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 44px 0 18px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--eu-blue);
+}
+.site-walvi .section-head h2 {
+  font-family: var(--serif);
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--eu-blue);
+  margin: 0;
+  white-space: nowrap;
+}
+.site-walvi .section-head .rule {
+  flex: 1;
+}
+.site-walvi .section-head .count {
+  color: var(--faint);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.site-walvi .lead {
+  font-size: 1.02rem;
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 52rem;
+  margin: 0 0 18px;
+}
+
+.site-walvi .chip {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--eu-blue);
+  background: var(--soft-2);
+  border: 1px solid var(--accent-line);
+  padding: 3px 9px;
+  border-radius: var(--radius);
+}
+
+/* ════════ pillar / coverage cards (flat institutional) ════════ */
+.site-walvi .coverage {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #fff;
+}
+.site-walvi .cov {
+  display: block;
+  padding: 22px 20px;
+  border-right: 1px solid var(--line-2);
+  position: relative;
+  background: #fff;
+}
+.site-walvi .coverage > .cov:last-child {
+  border-right: none;
+}
+.site-walvi .cov:hover {
+  background: var(--soft);
+}
+.site-walvi .cov .ico {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius);
+  background: var(--soft-2);
+  color: var(--eu-blue);
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+  border: 1px solid var(--accent-line);
+}
+.site-walvi .cov h3 {
+  font-family: var(--serif);
+  font-size: 1.04rem;
+  color: var(--eu-blue);
+  margin: 0 0 6px;
+}
+.site-walvi .cov p {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin: 0 0 12px;
+  line-height: 1.55;
+}
+.site-walvi .cov .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.site-walvi .cov.is-soon {
+  opacity: 0.9;
+}
+.site-walvi .soon-pill {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--warn);
+  background: var(--notice);
+  border: 1px solid var(--notice-line);
+  padding: 3px 8px;
+  border-radius: var(--radius);
+}
+
+/* ════════ directory tiles (countries / jobs) — flat register style ════════ */
+.site-walvi .tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #fff;
+}
+.site-walvi .tile {
+  display: block;
+  padding: 18px 20px;
+  border-right: 1px solid var(--line-2);
+  border-bottom: 1px solid var(--line-2);
+  background: #fff;
+  position: relative;
+}
+.site-walvi .tile::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: transparent;
+}
+.site-walvi .tile:hover {
+  background: var(--soft);
+}
+.site-walvi .tile:hover::before {
+  background: var(--gold);
+}
+.site-walvi .tile-top {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: 10px;
+}
+.site-walvi .tile-flag {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+.site-walvi .tile-ico {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius);
+  background: var(--soft-2);
+  border: 1px solid var(--accent-line);
+  font-size: 1.2rem;
+}
+.site-walvi .tile-name {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--eu-blue);
+}
+.site-walvi .tile-meta {
+  font-size: 0.78rem;
+  color: var(--faint);
+  font-weight: 600;
+}
+.site-walvi .tile-blurb {
+  font-size: 0.87rem;
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0 0 12px;
+}
+.site-walvi .tile-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-top: 1px solid var(--line-2);
+  padding-top: 10px;
+  font-size: 0.84rem;
+}
+.site-walvi .tile-stat b {
+  font-family: var(--serif);
+  color: var(--eu-blue);
+  font-size: 1.05rem;
+}
+.site-walvi .tile-stat .lab {
+  color: var(--muted);
+}
+.site-walvi .demand-high {
+  color: var(--ok);
+  font-weight: 700;
+}
+
+/* ════════ savings strip ════════ */
+.site-walvi .savings {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.site-walvi .save-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--eu-blue);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+}
+.site-walvi .save-card .combo {
+  font-family: var(--serif);
+  font-weight: 700;
+  color: var(--eu-blue);
+  margin-bottom: 6px;
+}
+.site-walvi .save-card .combo .flag {
+  margin-right: 5px;
+}
+.site-walvi .save-card .amt {
+  font-family: var(--serif);
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--ok);
+}
+.site-walvi .save-card .amt small {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+.site-walvi .save-card .sub {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+/* ════════ methodology block (institutional) ════════ */
+.site-walvi .method {
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--eu-blue);
+  border-radius: var(--radius-lg);
+  padding: 30px 34px;
+}
+.site-walvi .method h3 {
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  margin: 0 0 8px;
+  color: var(--eu-blue);
+}
+.site-walvi .method > p {
+  color: var(--muted);
+  max-width: 46rem;
+  margin: 0 0 22px;
+  line-height: 1.62;
+}
+.site-walvi .method-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+.site-walvi .method-item .n {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gold-d);
+  margin-bottom: 6px;
+}
+.site-walvi .method-item h4 {
+  margin: 0 0 5px;
+  font-size: 0.98rem;
+  color: var(--eu-ink);
+}
+.site-walvi .method-item p {
+  margin: 0;
+  font-size: 0.86rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ════════ article guide cards ════════ */
+.site-walvi .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 18px;
+}
+.site-walvi .card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.site-walvi .card:hover {
+  border-color: var(--eu-blue);
+}
+.site-walvi .card-media {
+  display: block;
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: var(--soft-2);
+  overflow: hidden;
+}
+.site-walvi .card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.site-walvi .card-cat {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #fff;
+  background: var(--eu-blue);
+  padding: 4px 9px;
+  border-radius: var(--radius);
+}
+.site-walvi .card-body {
+  padding: 16px 18px 18px;
+}
+.site-walvi .card-title {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  line-height: 1.3;
+  margin: 0 0 8px;
+}
+.site-walvi .card-title a {
+  color: var(--eu-blue);
+}
+.site-walvi .card-title a:hover {
+  text-decoration: underline;
+}
+.site-walvi .card-excerpt {
+  font-size: 0.89rem;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0 0 12px;
+}
+.site-walvi .card-foot {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--faint);
+}
+.site-walvi .card-foot .read {
+  color: var(--gold-d);
+  font-weight: 700;
+}
+
+/* ════════ empty state ════════ */
+.site-walvi .empty {
+  text-align: center;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 48px 24px;
+  background: var(--soft);
+}
+.site-walvi .empty-mark {
+  font-size: 2.4rem;
+  margin-bottom: 8px;
+}
+.site-walvi .empty h2 {
+  font-family: var(--serif);
+  color: var(--eu-blue);
+  margin: 0 0 6px;
+}
+.site-walvi .empty p {
+  color: var(--muted);
+  margin: 0;
+}
+
+/* ════════ page head (data pages) ════════ */
+.site-walvi .page-head {
+  padding: 34px 0 6px;
+}
+.site-walvi .article-cat {
+  display: inline-block;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gold-d);
+  margin-bottom: 10px;
+}
+.site-walvi .page-title {
+  font-family: var(--serif);
+  font-size: clamp(1.85rem, 3.4vw, 2.5rem);
+  color: var(--eu-blue);
+  margin: 0 0 12px;
+  line-height: 1.14;
+}
+.site-walvi .page-dek {
+  font-size: 1.04rem;
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 50rem;
+  margin: 0 0 16px;
+}
+
+/* ════════ data verified band ════════ */
+.site-walvi .data-band {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  margin: 8px 0 18px;
+  font-size: 0.85rem;
+}
+.site-walvi .vb-tag {
+  font-weight: 700;
+  color: var(--eu-blue);
+}
+.site-walvi .vb-date {
+  color: var(--gold-d);
+  font-weight: 700;
+}
+.site-walvi .vb-note {
+  color: var(--muted);
+}
+
+/* ════════ data tables ════════ */
+.site-walvi .dtable-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--table-border);
+  border-radius: var(--radius-lg);
+  margin: 6px 0 16px;
+}
+.site-walvi .dtable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.93rem;
+  min-width: 560px;
+  background: #fff;
+}
+.site-walvi .dtable thead th {
+  background: var(--eu-blue-d);
+  color: #eaf1ff;
+  text-align: left;
+  font-weight: 600;
+  padding: 11px 14px;
+  white-space: nowrap;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.site-walvi .dtable thead th.num {
+  text-align: right;
+}
+.site-walvi .dtable tbody td {
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--line-2);
+  vertical-align: middle;
+}
+.site-walvi .dtable tbody tr:nth-child(even) {
+  background: var(--table-zebra);
+}
+.site-walvi .dtable tbody tr:hover {
+  background: var(--table-hover);
+}
+.site-walvi .dtable tbody tr:last-child td {
+  border-bottom: none;
+}
+.site-walvi .dtable td.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.site-walvi .dtable td.gross {
+  color: var(--eu-blue);
+  font-weight: 700;
+}
+.site-walvi .dtable td.save {
+  color: var(--ok);
+  font-weight: 700;
+}
+.site-walvi .dtable .m-name {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+.site-walvi .dtable .m-name b {
+  color: var(--eu-blue);
+  font-family: var(--serif);
+}
+.site-walvi .dtable .m-name .m-vendor {
+  font-size: 0.78rem;
+  color: var(--faint);
+  font-family: var(--sans);
+}
+.site-walvi .dtable .m-name a:hover b {
+  text-decoration: underline;
+}
+.site-walvi .rowflag {
+  margin-right: 7px;
+}
+.site-walvi .src-note,
+.site-walvi .disclaimer {
+  font-size: 0.84rem;
+  color: #4a3d10;
+  line-height: 1.55;
+  background: var(--notice);
+  border: 1px solid var(--notice-line);
+  border-left: 5px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  margin: 4px 0 20px;
+}
+.site-walvi .disclaimer b {
+  color: #3a2f08;
+}
+
+/* ════════ facts grid ════════ */
+.site-walvi .facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin: 6px 0 18px;
+}
+.site-walvi .fact {
+  background: #fff;
+  border-right: 1px solid var(--line-2);
+  border-bottom: 1px solid var(--line-2);
+  padding: 13px 16px;
+}
+.site-walvi .fact .fk {
+  font-size: 0.74rem;
+  color: var(--faint);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.site-walvi .fact .fv {
+  font-family: var(--serif);
+  font-size: 1.02rem;
+  color: var(--eu-blue);
+  font-weight: 700;
+  margin-top: 3px;
+}
+.site-walvi .prose {
+  font-size: 1rem;
+  line-height: 1.72;
+  color: var(--text);
+  max-width: 52rem;
+}
+.site-walvi .prose a {
+  color: var(--eu-blue);
+  text-decoration: underline;
+}
+.site-walvi .source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: var(--eu-blue);
+  text-decoration: underline;
+}
+
+/* breadcrumb */
+.site-walvi .breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.84rem;
+  color: var(--muted);
+  padding: 16px 0 2px;
+}
+.site-walvi .breadcrumb a:hover {
+  color: var(--eu-blue);
+  text-decoration: underline;
+}
+.site-walvi .breadcrumb .sep {
+  color: var(--faint);
+}
+.site-walvi .breadcrumb .here {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ════════ calculators (official estimator panel) ════════ */
+.site-walvi .calc {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.site-walvi .calc-top {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 13px 18px;
+  background: var(--eu-blue);
+  color: #fff;
+  border-bottom: 2px solid var(--gold);
+}
+.site-walvi .calc-top .dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+.site-walvi .calc-top h3 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 1.04rem;
+  flex: 1;
+}
+.site-walvi .calc-top .pill {
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.16);
+  padding: 3px 9px;
+  border-radius: var(--radius);
+  color: #e7eefc;
+}
+.site-walvi .calc-body {
+  padding: 18px;
+}
+.site-walvi .calc-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 13px;
+}
+.site-walvi .field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.site-walvi .field.full {
+  grid-column: 1 / -1;
+}
+.site-walvi .field label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--eu-blue);
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+.site-walvi .field .hint {
+  color: var(--faint);
+  font-weight: 500;
+}
+.site-walvi .field select,
+.site-walvi .field input[type="number"] {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 10px 11px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: var(--text);
+  background: #fff;
+}
+.site-walvi .field select:focus,
+.site-walvi .field input:focus {
+  outline: none;
+  border-color: var(--eu-blue);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+.site-walvi .field input[type="range"] {
+  width: 100%;
+  accent-color: var(--eu-blue);
+}
+.site-walvi .check {
+  flex-direction: row;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.9rem;
+  color: var(--text);
+  cursor: pointer;
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+}
+.site-walvi .check input {
+  width: 17px;
+  height: 17px;
+  accent-color: var(--eu-blue);
+}
+.site-walvi .calc-out {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  gap: 10px;
+  margin: 16px 0;
+}
+.site-walvi .readout {
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+}
+.site-walvi .readout.primary {
+  background: var(--ok-soft);
+  border-color: #bfe2c8;
+}
+.site-walvi .readout .k {
+  font-size: 0.76rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+.site-walvi .readout .v {
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--eu-blue);
+  margin-top: 2px;
+}
+.site-walvi .readout.primary .v {
+  color: var(--ok);
+}
+.site-walvi .readout .v small {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--faint);
+  font-weight: 600;
+}
+.site-walvi .breakdown {
+  display: grid;
+  gap: 0;
+  margin: 4px 0 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.site-walvi .brow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  padding: 9px 13px;
+  border-bottom: 1px solid var(--line-2);
+}
+.site-walvi .brow .bl {
+  color: var(--muted);
+}
+.site-walvi .brow .bv {
+  font-weight: 700;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+.site-walvi .brow.minus .bv {
+  color: var(--warn);
+}
+.site-walvi .brow.total {
+  border-bottom: none;
+  background: var(--ok-soft);
+}
+.site-walvi .brow.total .bl,
+.site-walvi .brow.total .bv {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  color: var(--ok);
+  font-weight: 700;
+}
+.site-walvi .calc-note {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.55;
+  background: var(--soft);
+  border-radius: var(--radius);
+  padding: 11px 13px;
+  margin: 0;
+}
+.site-walvi .calc-note b {
+  color: var(--eu-ink);
+}
+
+/* compare calculator */
+.site-walvi .vs-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 12px;
+  align-items: stretch;
+  margin: 14px 0;
+}
+.site-walvi .vs-col {
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px;
+  text-align: center;
+}
+.site-walvi .vs-col.win {
+  border-color: var(--ok);
+  border-top: 3px solid var(--ok);
+  background: var(--ok-soft);
+}
+.site-walvi .vs-col .vflag {
+  font-size: 1.9rem;
+}
+.site-walvi .vs-col .vname {
+  font-family: var(--serif);
+  font-weight: 700;
+  color: var(--eu-blue);
+  margin: 4px 0 10px;
+}
+.site-walvi .vs-col .vbig {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ok);
+}
+.site-walvi .vs-col .vbig small {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+.site-walvi .vs-col .vrow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  padding: 5px 0;
+  border-top: 1px solid var(--line-2);
+  margin-top: 8px;
+}
+.site-walvi .vs-col .vrow span:last-child {
+  font-weight: 700;
+  color: var(--text);
+}
+.site-walvi .vs-mid {
+  display: grid;
+  place-items: center;
+  font-family: var(--serif);
+  font-weight: 700;
+  color: var(--faint);
+}
+.site-walvi .win-banner {
+  text-align: center;
+  font-weight: 700;
+  color: var(--ok);
+  background: var(--ok-soft);
+  border: 1px solid #bfe2c8;
+  border-radius: var(--radius);
+  padding: 10px;
+  margin: 6px 0 12px;
+}
+
+/* ════════ article view ════════ */
+.site-walvi .article-wrap {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 22px;
+}
+.site-walvi .article-head {
+  margin: 6px 0 18px;
+}
+.site-walvi .article-title {
+  font-family: var(--serif);
+  font-size: clamp(1.9rem, 3.6vw, 2.6rem);
+  line-height: 1.14;
+  color: var(--eu-blue);
+  margin: 0 0 12px;
+}
+.site-walvi .article-dek {
+  font-size: 1.12rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0 0 14px;
+  max-width: 50rem;
+}
+.site-walvi .article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.86rem;
+  color: var(--faint);
+  margin-bottom: 12px;
+}
+.site-walvi .article-meta .kw {
+  color: var(--gold-d);
+  font-weight: 600;
+  display: inline-flex;
+  gap: 5px;
+}
+.site-walvi .article-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.site-walvi .hero-figure {
+  margin: 8px 0 24px;
+}
+.site-walvi .hero-figure .frame {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+.site-walvi .hero-figure img {
+  width: 100%;
+  display: block;
+}
+.site-walvi .article-grid {
+  display: grid;
+  grid-template-columns: 1fr 250px;
+  gap: 40px;
+  align-items: start;
+}
+.site-walvi .article-main {
+  min-width: 0;
+}
+.site-walvi .toc {
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--eu-blue);
+  border-radius: var(--radius);
+  background: var(--soft);
+  margin-bottom: 22px;
+}
+.site-walvi .toc summary {
+  cursor: pointer;
+  font-family: var(--serif);
+  font-weight: 700;
+  color: var(--eu-blue);
+  padding: 12px 16px;
+  list-style: none;
+}
+.site-walvi .toc summary::-webkit-details-marker {
+  display: none;
+}
+.site-walvi .toc summary::before {
+  content: "▸";
+  margin-right: 8px;
+  color: var(--gold-d);
+}
+.site-walvi .toc[open] summary::before {
+  content: "▾";
+}
+.site-walvi .toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 16px 12px;
+}
+.site-walvi .toc-list li {
+  margin: 4px 0;
+}
+.site-walvi .toc-list li.lvl-3 {
+  padding-left: 14px;
+}
+.site-walvi .toc-list a {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.site-walvi .toc-list a:hover {
+  color: var(--eu-blue);
+  text-decoration: underline;
+}
+.site-walvi .toc-rail {
+  position: sticky;
+  top: 90px;
+}
+.site-walvi .toc-inline {
+  display: none;
+}
+.site-walvi .related {
+  margin-top: 44px;
+}
+@media (max-width: 980px) {
+  .site-walvi .article-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .site-walvi .toc-rail {
+    display: none;
+  }
+  .site-walvi .toc-inline {
+    display: block;
+  }
+}
+
+/* ════════ footer (official register) ════════ */
+.site-walvi .footer {
+  background: var(--eu-blue-d);
+  color: #b9c8e8;
+  padding: 44px 0 26px;
+  border-top: 3px solid var(--gold);
+}
+.site-walvi .footer .logo .wordmark {
+  color: #fff;
+}
+.site-walvi .footer .logo .tld {
+  color: #93a8d4;
+}
+.site-walvi .footer-row {
+  display: grid;
+  grid-template-columns: 1.2fr 2fr;
+  gap: 30px;
+}
+.site-walvi .footer-tag {
+  color: #9fb2d8;
+  font-size: 0.92rem;
+  max-width: 24rem;
+  line-height: 1.6;
+}
+.site-walvi .footer-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.site-walvi .footer-col h5 {
+  font-family: var(--serif);
+  color: #fff;
+  font-size: 0.92rem;
+  margin: 0 0 12px;
+}
+.site-walvi .footer-col a {
+  display: block;
+  color: #a8bce0;
+  font-size: 0.9rem;
+  padding: 4px 0;
+}
+.site-walvi .footer-col a:hover {
+  color: var(--gold);
+}
+.site-walvi .footer-disclaimer {
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  margin-top: 28px;
+  padding-top: 18px;
+  font-size: 0.8rem;
+  color: #93a8d4;
+  line-height: 1.6;
+}
+.site-walvi .footer-base {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+  font-size: 0.82rem;
+  color: #8298c6;
+}
+
+/* ════════ responsive ════════ */
+@media (max-width: 980px) {
+  .site-walvi .coverage,
+  .site-walvi .method-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .site-walvi .coverage > .cov:nth-child(2) {
+    border-right: none;
+  }
+  .site-walvi .coverage > .cov:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--line-2);
+  }
+  .site-walvi .savings {
+    grid-template-columns: 1fr;
+  }
+  .site-walvi .footer-row {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .site-walvi .govbar .gb-note {
+    margin-left: 0;
+    flex-basis: 100%;
+  }
+}
+@media (max-width: 560px) {
+  .site-walvi .coverage,
+  .site-walvi .method-grid,
+  .site-walvi .calc-controls,
+  .site-walvi .calc-out {
+    grid-template-columns: 1fr;
+  }
+  .site-walvi .coverage > .cov {
+    border-right: none;
+  }
+  .site-walvi .vs-grid {
+    grid-template-columns: 1fr;
+  }
+  .site-walvi .method {
+    padding: 24px 20px;
+  }
+  .site-walvi .hero-inner {
+    padding: 40px 22px 36px;
+  }
+}

@@ -73,6 +73,31 @@
       "audience": "বিদেশে চাকরিপ্রত্যাশী ও কর্মরত বাংলাদেশি প্রবাসী, তাদের পরিবার, বিদেশগামী নতুন কর্মী",
       "theme": "wordpress",
       "default_word_count": 1400
+    },
+    {
+      "id": "walvi",
+      "name": "Walvi",
+      "domain": "walvi.io",
+      "tagline": "Know before you move.",
+      "niche": "Europe work and skilled-trade jobs, salaries by country and occupation, cost of living and realistic monthly savings, work permits and work visas, recruitment and relocation for foreign workers; electrician, welder, tiles/ceramic, plumber, carpenter, truck driver, cook/chef, HVAC, construction and machine-operator jobs across Poland, Croatia, Romania, Lithuania, Slovakia, Bulgaria, Hungary, Portugal, Italy and North Macedonia",
+      "trend_seeds": ["jobs in Europe", "Europe work permit", "Europe salary", "Poland work visa", "Croatia work permit", "electrician salary Europe", "welder jobs Europe", "truck driver Europe", "Romania work visa", "Europe jobs without degree"],
+      "language": "English. Write the ENTIRE article in English only — title, headings, body, tables, FAQ and key takeaways. Do NOT write in Bengali/Bangla or any other language even though the audience includes Bangladeshi and South-Asian workers.",
+      "tone": "first-hand Europe-recruitment insider crossed with a data analyst; lead with the direct answer and an indicative salary/cost table (monthly gross, net after tax, living cost and realistic savings), always state which figures are official vs estimated, link an official government or EU source, add a 'last verified' date, and warn that wages, living costs and visa rules change and must be confirmed with the official source or embassy. Warn clearly about recruitment scams and fake job offers, and add your own real-world experience and downloadable checklists.",
+      "audience": "skilled and semi-skilled workers (electricians, welders, drivers, cooks, construction and factory workers) from Bangladesh, South Asia and beyond looking for jobs in Europe, plus recruiters, agencies and families researching salary, cost of living, savings and work-permit options by country and occupation",
+      "theme": "walvi-atlas",
+      "default_word_count": 1600
+    },
+    {
+      "id": "countly",
+      "name": "Countly",
+      "domain": "countly.net",
+      "tagline": "The World in Numbers",
+      "niche": "Global statistics, rankings and data: AI and ChatGPT usage, social media users by country, internet and ecommerce data, global company stats (employees, stores, revenue, subscribers), country digital data, and market rankings",
+      "language": "en",
+      "tone": "data-journalist voice. Open with a direct numeric answer ('As of 2026, approximately X ...'). ALWAYS include a data table (year-by-year and/or by-country) and a short historical-growth note. CRITICAL HONESTY RULE: distinguish official/reported figures from estimates — label estimates clearly, give ranges not false precision, and NEVER invent exact numbers you cannot source. Add a short Methodology note (what is official vs estimated and how it was compiled) and cite source TYPES (company filings, government databases, industry reports such as DataReportal). State 'Last updated: <month year>' and warn that statistics change and should be verified before citing.",
+      "audience": "researchers, journalists, marketers, students, analysts and the data-curious looking for quick, sourced statistics about technology, AI, social media, companies, countries and global markets",
+      "theme": "countly-data",
+      "default_word_count": 1600
     }
   ]
 }

@@ -59,6 +59,30 @@
       "audience": "AI product builders, founders, developers, indie hackers and businesses estimating and optimizing AI/LLM API spend",
       "theme": "infkey-noir",
       "default_word_count": 1500
+    },
+    {
+      "id": "walvi",
+      "name": "Walvi",
+      "domain": "walvi.io",
+      "tagline": "Know before you move.",
+      "niche": "Europe work and skilled-trade jobs, salaries by country and occupation, cost of living and realistic monthly savings, work permits and work visas, recruitment and relocation for foreign workers",
+      "language": "en",
+      "tone": "first-hand Europe-recruitment insider crossed with a data analyst; lead with the direct answer and an indicative salary/cost table, mark estimates vs official figures, link an official source, date every figure, and warn that wages and visa rules change. Warn about recruitment scams.",
+      "audience": "skilled and semi-skilled workers looking for jobs in Europe, plus recruiters, agencies and families researching salary, cost of living, savings and work-permit options by country and occupation",
+      "theme": "walvi-atlas",
+      "default_word_count": 1600
+    },
+    {
+      "id": "countly",
+      "name": "Countly",
+      "domain": "countly.net",
+      "tagline": "The World in Numbers",
+      "niche": "Global statistics, rankings and data: AI and ChatGPT usage, social media users by country, internet and ecommerce data, global company stats, country digital data, and market rankings",
+      "language": "en",
+      "tone": "data-journalist voice; lead with a direct numeric answer, always include a sourced data table and a methodology note, label estimates vs official figures, and note that statistics change and must be verified.",
+      "audience": "researchers, journalists, marketers, students, analysts and the data-curious looking for quick, sourced statistics about technology, companies, countries and global markets",
+      "theme": "countly-data",
+      "default_word_count": 1600
     }
   ]
 }

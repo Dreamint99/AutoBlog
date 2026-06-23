@@ -1,28 +1,33 @@
-// infkey-generate — serverless daily SEO article generator for InfKey.
+// countly-generate — serverless daily statistics-article generator for Countly.
 //
 // Runs entirely in Supabase (no local PC). pg_cron pings this every ~30 min;
-// a state row (infkey_autogen_state) self-paces it to 10–12 articles/day at
-// random 60–120 min gaps. One DeepSeek call writes a full SEO article, a free
+// a state row (countly_autogen_state) self-paces it to a daily target at random
+// gaps. One DeepSeek call writes a full, SOURCED SEO statistics article, a free
 // Pollinations URL is the AI feature image, dedup is enforced against existing
 // titles/keywords, then it publishes to `articles` and pings IndexNow.
+//
+// Honesty contract (this niche is statistics — fabricated numbers are the #1
+// failure mode): the playbook forces the model to lead with a direct figure,
+// build a real data table, LABEL estimates vs official figures, avoid false
+// precision, add a Methodology note + source types, and date everything.
 //
 // Env: SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY (auto), DEEPSEEK_API_KEY (secret).
 
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
 const SERVICE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 const DEEPSEEK_KEY = Deno.env.get("DEEPSEEK_API_KEY") ?? "";
-const INDEXNOW_KEY = "7cb730425493bd6250188aee25110d83";
+const INDEXNOW_KEY = "9f2c7a1be4d05836c1a9e7402d6b8f51";
 
 const SITE = {
-  id: "infkey",
-  name: "InfKey",
-  domain: "infkey.com",
+  id: "countly",
+  name: "Countly",
+  domain: "countly.net",
   niche:
-    "AI API cost, LLM & model pricing, cost calculators, model comparisons, AI video/image/voice API pricing, automation cost, RAG & embedding cost, AI cost optimization",
+    "Global statistics, rankings and data: AI and ChatGPT usage, social media users by country, internet and ecommerce data, global company stats (employees, stores, revenue, subscribers), country digital data, and market rankings",
   audience:
-    "AI product builders, founders, developers, indie hackers and businesses estimating and optimizing AI/LLM API spend",
+    "researchers, journalists, marketers, students, analysts and the data-curious looking for quick, sourced statistics about technology, AI, social media, companies, countries and global markets",
   tone:
-    "data-driven cost analyst; lead with the direct answer in the first 50 words, show the math, give a clear cheapest-vs-best verdict, and note that AI prices change and must be re-verified",
+    "data-journalist voice; open with a direct numeric answer, always include a real data table and a short historical-growth note, distinguish official figures from estimates, and state that statistics change and must be verified",
 };
 
 const PGRST = `${SUPABASE_URL}/rest/v1`;
@@ -40,7 +45,7 @@ async function sel(path: string): Promise<any[]> {
   return r.ok ? await r.json() : [];
 }
 async function patchState(patch: Record<string, unknown>) {
-  await fetch(`${PGRST}/infkey_autogen_state?id=eq.1`, {
+  await fetch(`${PGRST}/countly_autogen_state?id=eq.1`, {
     method: "PATCH",
     headers: { ...H, Prefer: "return=minimal" },
     body: JSON.stringify(patch),
@@ -76,7 +81,7 @@ async function deepseek(system: string, user: string, key: string, maxTokens = 8
     body: JSON.stringify({
       model: "deepseek-chat",
       messages: [{ role: "system", content: system }, { role: "user", content: user }],
-      temperature: 0.7,
+      temperature: 0.6,
       max_tokens: maxTokens,
       response_format: { type: "json_object" },
     }),
@@ -86,28 +91,69 @@ async function deepseek(system: string, user: string, key: string, maxTokens = 8
   return j.choices?.[0]?.message?.content ?? "";
 }
 
-const PLAYBOOK = `You write helpful, people-first, original SEO articles that rank on Google AND get cited by AI answer engines (AI Overviews, ChatGPT, Perplexity).
-Rules: open with a 2-3 sentence DIRECT answer (first 50 words). Put the primary keyword in the first paragraph and in one H2. Use clean SEMANTIC HTML only: <h2> <h3> <p> <ul> <ol> <li> <strong> <em> <blockquote> <table> <thead> <tbody> <tr> <th> <td>. NO <h1>, NO markdown. Include at least one real data/comparison <table>. Be specific with numbers, give a clear "cheapest / best quality / best for high volume" verdict, and state that AI prices change and must be re-verified. Human voice, no fluff, no keyword stuffing. Target ~1700-2100 words.`;
+const PLAYBOOK = `You write in-depth, people-first, original STATISTICS reports that rank on Google AND get cited by AI answer engines (AI Overviews, ChatGPT, Perplexity).
 
-async function generateArticle(avoidTitles: string[], key: string) {
-  const system = `You are an SEO content engine for ${SITE.name} (${SITE.niche}). Audience: ${SITE.audience}. Tone: ${SITE.tone}.\n\n${PLAYBOOK}\n\nReturn ONLY JSON.`;
+LENGTH: this is a LONG-FORM data report — write 1500-2200 words of real substance. Do NOT write a short article; thin posts are rejected.
+
+REQUIRED STRUCTURE (use these as H2/H3 sections, in order):
+1. A 2-3 sentence DIRECT numeric answer in the first 50 words ("As of {year}, approximately X ..."). Put the primary keyword here and in one H2.
+2. "<subject> by the numbers ({year})" — the headline figures, with context.
+3. A year-by-year TREND table (e.g. 2019→{year}) inside <table><thead>…</thead><tbody>…</tbody></table>.
+4. A by-country / by-region / by-segment BREAKDOWN table (a SECOND distinct <table>).
+5. "Historical growth" — 1-2 paragraphs on how the number changed and why.
+6. "What's driving the change" — drivers, context, notable shifts.
+7. "Methodology" — 2-3 sentences: what is official vs estimated and how figures were compiled.
+Then key takeaways + an FAQ are appended automatically.
+
+You MUST include TWO real <table> elements. Clean SEMANTIC HTML only: <h2> <h3> <p> <ul> <ol> <li> <strong> <em> <blockquote> <table> <thead> <tbody> <tr> <th> <td>. NO <h1>, NO markdown, NO code fences.
+
+HONESTY RULES (critical — this is a statistics publication):
+- DISTINGUISH official/reported figures from estimates. When a number is an estimate, say "estimated" or give a RANGE (e.g. "800-900 million"). Do NOT invent exact precise figures you cannot reasonably source.
+- Prefer round, defensible numbers over false precision. If unsure, give a range or say the exact figure is not publicly disclosed.
+- Cite SOURCE TYPES (company filings/annual reports, government & regulator databases, industry reports such as DataReportal) — name the type, do not fabricate exact URLs or quotes.
+- State "Last updated: {month} {year}" and note that statistics change and should be re-verified before citing.
+
+VOICE: human, authoritative, specific. No fluff, no keyword stuffing.`;
+
+const CATEGORY_HINTS: Record<string, string> = {
+  ai: 'the AI category — ChatGPT/Gemini/Claude users, AI adoption by country, AI market size, most-used AI tools',
+  social: 'the SOCIAL MEDIA category — platform users by country, time spent, most-followed accounts (pick a platform/angle NOT already covered)',
+  companies: 'the GLOBAL COMPANIES category — employees, stores/locations, revenue, subscribers (e.g. McDonald\'s restaurants, Amazon employees, Starbucks stores, Netflix subscribers)',
+  internet: 'the INTERNET category — internet users by country, number of websites, most-visited sites, ecommerce penetration, mobile vs desktop',
+  countries: 'the COUNTRY DATA category — a country or region\'s digital/economic statistics, or "X by country" rankings',
+  rankings: 'the RANKINGS category — largest/most-valuable/fastest-growing lists (largest companies, most valuable brands, biggest ecommerce markets)',
+};
+
+async function generateArticle(
+  avoidTitles: string[],
+  key: string,
+  year: number,
+  monthYear: string,
+  category?: string,
+) {
+  const system = `You are a data-journalism content engine for ${SITE.name} (${SITE.niche}). Audience: ${SITE.audience}. Tone: ${SITE.tone}.\n\n${PLAYBOOK}\n\nCurrent period: ${monthYear}. Use ${year} as "now". Return ONLY JSON.`;
   const avoid = avoidTitles.slice(0, 120).join(" | ");
-  const user = `Pick ONE fresh, specific, search-driven topic in this niche that real people Google, and write a complete long article.
+  const hint = category && CATEGORY_HINTS[category] ? CATEGORY_HINTS[category] : "";
+  const focus = hint
+    ? `Choose your topic from ${hint}.`
+    : `Pick ONE fresh, specific, search-driven STATISTICS topic in this niche that real people Google (e.g. "how many people use ChatGPT", "TikTok users by country", "how many McDonald's restaurants", "internet users by country", "largest ecommerce markets").`;
+  const user = `${focus}
+Write a complete, sourced, LONG-FORM report (1500-2200 words, two data tables).
 The topic MUST be clearly DIFFERENT from every existing title/keyword below — no duplicates, no near-rephrasings, cover a NEW subtopic/angle:
 ${avoid}
 
 Return JSON:
 {
- "title": "SEO title <=60 chars with the primary keyword",
+ "title": "SEO title <=60 chars with the primary keyword (a real question or 'X by country/year' framing)",
  "primary_keyword": "the main keyword people search",
  "secondary_keywords": ["6-10 long-tail/semantic keywords"],
  "meta_title": "<=60 chars",
- "meta_description": "<=155 chars, compelling, includes primary keyword",
- "excerpt": "<=155 char summary",
+ "meta_description": "<=155 chars, compelling, includes primary keyword and a headline number",
+ "excerpt": "<=155 char summary that leads with the key figure",
  "tags": ["5-8 tags"],
- "image_prompt": "a vivid, concrete prompt for an AI image generator that fits the article (no text in image)",
- "body_html": "the full article in semantic HTML with a quick-answer opener and at least one comparison <table>",
- "key_takeaways": ["3-5 bullet takeaways"],
+ "image_prompt": "a vivid, concrete prompt for an AI image generator — a clean data/infographic or thematic scene, NO text or numbers in the image",
+ "body_html": "the full long-form article in semantic HTML following the REQUIRED STRUCTURE, with TWO real data <table> elements (a year-by-year trend table and a by-country/segment table)",
+ "key_takeaways": ["3-5 bullet takeaways, each with a number"],
  "faq": [{"q":"...","a":"..."}]
 }`;
   return parseJSON(await deepseek(system, user, key));
@@ -204,10 +250,15 @@ async function indexNow(url: string) {
   } catch (_e) { /* non-fatal */ }
 }
 
-Deno.serve(async (_req: Request) => {
+Deno.serve(async (req: Request) => {
   const now = new Date();
+  let category: string | undefined;
   try {
-    const st = (await sel("infkey_autogen_state?id=eq.1&select=*"))[0];
+    const b = await req.json().catch(() => ({}));
+    if (b && typeof b.category === "string") category = b.category.toLowerCase();
+  } catch (_e) { /* no body */ }
+  try {
+    const st = (await sel("countly_autogen_state?id=eq.1&select=*"))[0];
     if (!st) return json({ error: "no state row" }, 500);
     if (!st.enabled) return json({ skipped: "disabled" });
 
@@ -232,7 +283,9 @@ Deno.serve(async (_req: Request) => {
     );
     const avoid = rows.flatMap((r: any) => [r.title, r.keyword]).filter(Boolean);
 
-    const a = await generateArticle(avoid, dsKey);
+    const year = now.getUTCFullYear();
+    const monthYear = now.toLocaleDateString("en-US", { year: "numeric", month: "long", timeZone: "UTC" });
+    const a = await generateArticle(avoid, dsKey, year, monthYear, category);
     if (!a?.title || !a?.body_html) throw new Error("LLM returned no title/body");
 
     const nowISO = now.toISOString();

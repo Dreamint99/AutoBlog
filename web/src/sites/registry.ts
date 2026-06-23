@@ -11,6 +11,10 @@ import QatarHome from "./qatarexperts/Home";
 import QatarArticle from "./qatarexperts/Article";
 import InfKeyHome from "./infkey/Home";
 import InfKeyArticle from "./infkey/Article";
+import CountlyHome from "./countly/Home";
+import CountlyArticle from "./countly/Article";
+import WalviHome from "./walvi/Home";
+import WalviArticle from "./walvi/Article";
 
 export interface SiteComponents {
   Home: ComponentType<SiteHomeProps>;
@@ -23,4 +27,6 @@ export const SITE_COMPONENTS: Record<string, SiteComponents> = {
   bangladeshexpert: { Home: BdHome, Article: BdArticle },
   qatarexperts: { Home: QatarHome, Article: QatarArticle },
   infkey: { Home: InfKeyHome, Article: InfKeyArticle },
+  countly: { Home: CountlyHome, Article: CountlyArticle },
+  walvi: { Home: WalviHome, Article: WalviArticle },
 };

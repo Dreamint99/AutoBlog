@@ -12,6 +12,10 @@ export const DOMAIN_TO_SITE: Record<string, string> = {
   "www.qatarexperts.com": "qatarexperts",
   "infkey.com": "infkey",
   "www.infkey.com": "infkey",
+  "countly.net": "countly",
+  "www.countly.net": "countly",
+  "walvi.io": "walvi",
+  "www.walvi.io": "walvi",
 };
 
 /**
