@@ -158,11 +158,16 @@ function Countries({ site }: { site: Site }) {
         every entry linking an official source to verify against.
       </p>
       <div className="tile-grid">
-        {COUNTRIES.map((c) => {
+        {COUNTRIES.slice(0, 12).map((c) => {
           const minGross = Math.min(...JOBS.map((j) => estimate(c, j).grossEUR));
           return <CountryCard key={c.id} site={site} country={c} headline={`${eur(minGross)}/mo`} />;
         })}
       </div>
+      <p style={{ marginTop: "16px" }}>
+        <Link href={`/s/${site.id}/countries`} className="btn btn-solid">
+          View all {COUNTRIES.length} countries →
+        </Link>
+      </p>
     </section>
   );
 }
