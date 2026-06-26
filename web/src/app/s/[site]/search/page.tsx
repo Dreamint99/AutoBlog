@@ -29,7 +29,7 @@ export default async function SearchPage({
     const all = await getArticles(site.id);
     results = all
       .map((a) => {
-        const hay = `${a.title} ${a.excerpt} ${a.keyword} ${(a.tags || []).join(" ")}`.toLowerCase();
+        const hay = `${a.title} ${a.excerpt} ${a.keyword} ${(a.tags || []).join(" ")} ${a.body_html || ""}`.toLowerCase();
         const score = tokens.reduce((s, t) => s + (hay.includes(t) ? 1 : 0), 0);
         return { a, score };
       })
