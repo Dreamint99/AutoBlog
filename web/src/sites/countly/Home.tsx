@@ -1,6 +1,7 @@
 import "./theme.css";
 import Link from "next/link";
 import { fontVars } from "./fonts";
+import { top10Articles, topNumber } from "./categories";
 import type { SiteHomeProps, Article } from "@/lib/types";
 
 /* ────────────────────────────────────────────────────────────
@@ -319,6 +320,7 @@ export function StatCard({ siteId, article, index }: { siteId: string; article: 
 export default function Home({ site, articles }: SiteHomeProps) {
   const featured: Article | undefined = articles[0];
   const rest: Article[] = articles.slice(1);
+  const top10: Article[] = top10Articles(articles).slice(0, 6);
   const latestDate = featured ? fmtDate(featured.created_at) : fmtDate(new Date().toISOString());
 
   return (
@@ -421,23 +423,69 @@ export default function Home({ site, articles }: SiteHomeProps) {
         </div>
       </section>
 
-      {/* ── TOP 10 BANNER ── */}
+      {/* ── TOP 10 HIGHLIGHT ── */}
       <section className="cn-section">
         <div className="cn-wrap">
-          <div className="cn-top10-banner">
+          <div className="cn-sec-head">
             <div>
-              <h2>
-                Explore our <em>Top 10</em> lists
-              </h2>
-              <p>
-                Worldwide rankings — top banks, universities, companies, hotels and travel agencies, country by country
-                and city by city. Sourced, dated and updated.
-              </p>
+              <span className="cn-sec-kicker">Rankings</span>
+              <h2>Trending Top 10 lists</h2>
+              <p>Worldwide rankings — banks, universities, companies, hotels and more, country by country.</p>
             </div>
-            <Link href={`/s/${site.id}/top10`} className="cn-top10-cta">
-              <IconTrophy /> Browse Top 10 lists
+            <Link href={`/s/${site.id}/top10`} className="cn-readmore">
+              View all Top 10 <IconArrow />
             </Link>
           </div>
+
+          {top10.length > 0 ? (
+            <div className="cn-top10-grid">
+              {top10.map((a) => {
+                const href = `/s/${site.id}/${a.slug}`;
+                const n = topNumber(a.title);
+                return (
+                  <article className="cn-top10-card" key={a.id}>
+                    <Link href={href} className="cn-top10-media" aria-label={a.title}>
+                      {a.image_url ? (
+                        <img src={a.image_url} alt={a.title} loading="lazy" />
+                      ) : (
+                        <span aria-hidden="true" />
+                      )}
+                      <span className="cn-top10-ribbon">
+                        <IconTrophy /> Top {n}
+                      </span>
+                      <span className="cn-top10-rank" aria-hidden="true">
+                        {n}
+                      </span>
+                    </Link>
+                    <div className="cn-top10-body">
+                      <h3>
+                        <Link href={href}>{a.title}</Link>
+                      </h3>
+                      <p className="cn-excerpt">{a.excerpt || a.meta_description}</p>
+                      <div className="cn-top10-foot">
+                        <Link href={href} className="cn-top10-view">
+                          View ranking <IconArrow />
+                        </Link>
+                        <span className="cn-top10-date">{fmtDate(a.created_at)}</span>
+                      </div>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="cn-top10-banner">
+              <div>
+                <h2>
+                  Explore our <em>Top 10</em> lists
+                </h2>
+                <p>Worldwide rankings — banks, universities, companies, hotels and more. Sourced, dated and updated.</p>
+              </div>
+              <Link href={`/s/${site.id}/top10`} className="cn-top10-cta">
+                <IconTrophy /> Browse Top 10 lists
+              </Link>
+            </div>
+          )}
         </div>
       </section>
 
