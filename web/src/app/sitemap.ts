@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { getArticles } from "@/lib/data";
 import { getModels } from "@/lib/models";
 import { COUNTRIES, JOBS, DATA_VERIFIED } from "@/lib/walvi";
+import { CN_CATEGORIES } from "@/sites/countly/categories";
 import { activeSite } from "@/lib/site-context";
 import { siteBaseUrl } from "@/lib/sites.config";
 
@@ -37,6 +38,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         changeFrequency: "weekly",
         priority: 0.7,
       });
+    }
+  }
+
+  // Countly: Top 10 hub + topic/category landing pages.
+  if (site.id === "countly") {
+    entries.push({ url: `${base}/top10`, changeFrequency: "daily", priority: 0.9 });
+    for (const c of CN_CATEGORIES) {
+      entries.push({ url: `${base}/topic/${c.slug}`, changeFrequency: "weekly", priority: 0.8 });
     }
   }
 
