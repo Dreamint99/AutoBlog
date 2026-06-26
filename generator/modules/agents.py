@@ -8,14 +8,32 @@ Every agent is "trained" on modules/seo_playbook.SEO_PLAYBOOK so output follows
 current Google ranking + AI-answer-engine (GEO/AEO) best practice.
 Inline images are marked in the body as `[[IMG: <keyword>]]` and resolved later.
 """
+from datetime import datetime, timezone
+
 from modules.llm import chat
 from modules.json_utils import parse_llm_json
 from modules.seo_playbook import SEO_PLAYBOOK
 
 
+def time_context() -> str:
+    """Dynamic 'today' line injected into every agent so articles always use the
+    CURRENT year + latest framing, instead of the model defaulting to an old year."""
+    now = datetime.now(timezone.utc)
+    today = now.strftime("%B %Y")          # e.g. "June 2026"
+    year = now.year
+    return (
+        f"CURRENT DATE: today is {today}. Write for the CURRENT year ({year}). "
+        f"Use {year} (NOT an older year like 2025) in titles, headings and content wherever a year "
+        f"is relevant, and present information as the latest available, stated 'as of {today}'. "
+        "Keep following the honesty rules: estimate when unsure, cite official sources, and note that "
+        "figures/rules change over time."
+    )
+
+
 # ── Agent 1: SEO Strategist ──────────────────────────────
 def strategize(site: dict, topic: str) -> dict:
     system = (
+        time_context() + "\n\n"
         "You are a senior SEO content strategist. You plan articles that rank #1 on Google "
         "AND get cited by AI answer engines (Google AI Overviews, ChatGPT, Perplexity).\n\n"
         + SEO_PLAYBOOK + "\n\nReturn ONLY JSON."
@@ -42,6 +60,7 @@ def strategize(site: dict, topic: str) -> dict:
 # ── Agent 2: Expert Writer ───────────────────────────────
 def write_draft(site: dict, topic: str, strategy: dict) -> dict:
     system = (
+        time_context() + "\n\n"
         "You are an elite subject-matter expert writer. You write genuinely useful, original, "
         "people-first articles in clean semantic HTML.\n\n" + SEO_PLAYBOOK + "\n\n"
         "LANGUAGE (critical): write the ENTIRE article — title, headings, body, tables, FAQ and key "
@@ -91,6 +110,7 @@ def write_draft(site: dict, topic: str, strategy: dict) -> dict:
 # ── Agent 3: SEO Optimizer / Editor ──────────────────────
 def optimize(site: dict, topic: str, strategy: dict, draft: dict) -> dict:
     system = (
+        time_context() + "\n\n"
         "You are a meticulous SEO editor. You upgrade a draft to maximise Google ranking and "
         "AI-Overview citation without changing the facts.\n\n" + SEO_PLAYBOOK + "\n\n"
         "LANGUAGE: keep the article in the EXACT same language as the draft you receive — never translate "

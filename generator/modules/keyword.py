@@ -5,6 +5,8 @@ Priority:
   2. DeepSeek brainstorm (if key)       ← realistic keyword cluster from the title
   3. Heuristic fallback                 ← derived from the title, always works
 """
+from datetime import datetime, timezone
+
 from config.settings import SEMRUSH_API_KEY
 from modules.llm import have_llm, chat
 from modules.json_utils import parse_llm_json
@@ -12,9 +14,10 @@ from modules.json_utils import parse_llm_json
 
 def _fallback(title: str) -> dict:
     base = title.strip().rstrip("?.!").lower()
+    year = datetime.now(timezone.utc).year
     return {
         "primary": base,
-        "secondary": [f"{base} guide", f"how to {base}", f"{base} 2025", f"best {base}"],
+        "secondary": [f"{base} guide", f"how to {base}", f"{base} {year}", f"best {base}"],
         "intent": "informational",
         "source": "heuristic",
     }

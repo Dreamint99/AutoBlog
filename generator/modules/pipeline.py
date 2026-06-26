@@ -10,7 +10,7 @@ import uuid
 from datetime import datetime, timezone
 
 from modules import store, seo, indexnow
-from modules.agents import strategize, write_draft, optimize
+from modules.agents import strategize, write_draft, optimize, time_context
 from modules.image import feature_image, embed_inline_images
 from modules.internal_links import apply_internal_links
 from modules.writer import write_article as _mock_write
@@ -167,7 +167,8 @@ def suggest_titles(site: dict, count: int = 10, seed: str = "", avoid: list | No
     while len(titles) < count and tries < (count // 10 + 4):
         tries += 1
         need = min(12, count - len(titles))
-        system = ("You are an SEO editor planning a content calendar around keywords people actually "
+        system = (time_context() + "\n\n"
+                  "You are an SEO editor planning a content calendar around keywords people actually "
                   "search on Google.\n\n" + SEO_PLAYBOOK + "\n\nReturn ONLY a JSON array of strings.")
         recent = "; ".join(list(avoid_set)[-40:])
         user = (f'Niche: {site["niche"]}\nAudience: {site["audience"]}\n'
