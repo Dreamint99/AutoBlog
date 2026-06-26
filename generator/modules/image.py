@@ -70,6 +70,41 @@ def _pollinations(prompt: str, w: int, h: int) -> str:
     return f"https://image.pollinations.ai/prompt/{quote(prompt)}?width={w}&height={h}&nologo=true"
 
 
+_WIKI_UA = "AutoBlog/1.0 (https://countly.net; contact admin)"
+# Drop these words before a Wikipedia lookup — they hurt the entity match.
+_WIKI_DROP = re.compile(r"\b(logo|building|exterior|interior|office|headquarters|hq|campus|"
+                        r"photo|image|picture|aerial|view|sign|signage)\b", re.IGNORECASE)
+
+
+def _wikimedia(query: str) -> str | None:
+    """Real, on-topic image for a NAMED entity (a bank, university, company, place)
+    from Wikipedia's page image — e.g. 'Bangladesh Bank logo' → the actual
+    Bangladesh Bank logo/building. Returns an upload.wikimedia.org URL, or None."""
+    q = _WIKI_DROP.sub(" ", query or "").strip()
+    q = re.sub(r"\s+", " ", q)
+    if len(q) < 3:
+        return None
+    try:
+        r = requests.get(
+            "https://en.wikipedia.org/w/api.php",
+            params={
+                "action": "query", "format": "json", "prop": "pageimages",
+                "piprop": "thumbnail", "pithumbsize": 1000,
+                "generator": "search", "gsrsearch": q, "gsrlimit": 4,
+            },
+            headers={"User-Agent": _WIKI_UA},
+            timeout=15,
+        )
+        pages = (r.json().get("query") or {}).get("pages") or {}
+        for p in sorted(pages.values(), key=lambda x: x.get("index", 99)):
+            thumb = (p.get("thumbnail") or {}).get("source")
+            if thumb:
+                return thumb
+    except Exception:
+        pass
+    return None
+
+
 def _subject_terms(title: str) -> list[str]:
     """For listicle titles 'Top N <subject> in <place>' / 'Best <subject> in <place>'
     return ON-TOPIC search terms for the subject (with a richer synonym first).
@@ -129,8 +164,14 @@ def feature_image(title: str, site: dict, query: str | None = None) -> str:
 
 
 def inline_image(keyword: str) -> str:
-    """Reliable, on-topic in-article image. Keeps the subject (no random single-word
-    fallback); AI generation only as a last resort."""
+    """Reliable, on-topic in-article image. For NAMED entities (banks, universities,
+    companies, places, logos) use Wikipedia's real image first; otherwise a relevant
+    Pixabay photo; AI generation only as a last resort."""
+    # 1) Wikipedia real image — best for the specific named thing in the caption.
+    wiki = _wikimedia(keyword)
+    if wiki:
+        return wiki
+    # 2) Pixabay stock photo (keep the subject; no random single-word fallback).
     words = keyword.split()
     candidates = [keyword]
     if len(words) > 2:

@@ -17,10 +17,10 @@ from modules.image import feature_image, inline_image, short_query, _subject_ter
 
 
 def _fix_body(body: str, site: dict) -> str:
+    """Recompute EVERY inline <img> from its alt/caption so named entities (banks,
+    universities, companies) get a real Wikipedia image instead of a random photo."""
     def repl(m: re.Match) -> str:
         tag = m.group(0)
-        if "pollinations" not in tag:
-            return tag
         alt_m = re.search(r'alt="([^"]*)"', tag)
         alt = (alt_m.group(1) if alt_m else "").strip() or "statistics data"
         new = inline_image(alt)
@@ -42,8 +42,10 @@ def main():
         if "pollinations" in fu or _subject_terms(title):
             fields["image_url"] = feature_image(title, site)
         body = a.get("body_html", "") or ""
-        if "pollinations" in body:
-            fields["body_html"] = _fix_body(body, site)
+        if "<img" in body:
+            new_body = _fix_body(body, site)
+            if new_body != body:
+                fields["body_html"] = new_body
         if fields:
             try:
                 store.update_article(a["id"], fields)
