@@ -1578,3 +1578,34 @@
 @media (max-width: 640px) {
   .site-countly .cn-statband-grid { grid-template-columns: repeat(2, 1fr); gap: 1.3rem 1rem; }
 }
+
+/* ── Live data ticker (homepage top) ── */
+.site-countly .cn-ticker {
+  display: flex; align-items: center; gap: 0.75rem;
+  background: #070b18; color: #e8ecf8;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  font-size: 0.82rem; padding: 0.45rem 0;
+  overflow: hidden;
+}
+.site-countly .cn-tick-live {
+  flex: none; display: inline-flex; align-items: center; gap: 0.35rem;
+  font-weight: 800; letter-spacing: 0.1em; font-size: 0.7rem; color: #fca5a5;
+  padding-left: 14px;
+}
+.site-countly .cn-tick-dot {
+  width: 7px; height: 7px; border-radius: 50%; background: #ef4444;
+  box-shadow: 0 0 0 0 rgba(239,68,68,.7); animation: cn-pulse 1.6s infinite;
+}
+@keyframes cn-pulse { 0%{box-shadow:0 0 0 0 rgba(239,68,68,.6)} 70%{box-shadow:0 0 0 7px rgba(239,68,68,0)} 100%{box-shadow:0 0 0 0 rgba(239,68,68,0)} }
+.site-countly .cn-tick-track {
+  display: flex; align-items: center; gap: 1.4rem;
+  overflow-x: auto; white-space: nowrap; padding-right: 14px;
+  scrollbar-width: none; -ms-overflow-style: none;
+}
+.site-countly .cn-tick-track::-webkit-scrollbar { display: none; }
+.site-countly .cn-tick-item { display: inline-flex; align-items: center; gap: 0.4rem; flex: none; }
+.site-countly .cn-tick-label { color: #94a3c4; font-weight: 600; font-size: 0.72rem; letter-spacing: 0.03em; }
+.site-countly .cn-tick-val { font-variant-numeric: tabular-nums; font-weight: 700; }
+.site-countly .cn-up { color: #34d399; font-weight: 700; }
+.site-countly .cn-down { color: #f87171; font-weight: 700; }
+.site-countly .cn-tick-muted { color: #94a3c4; font-weight: 500; }

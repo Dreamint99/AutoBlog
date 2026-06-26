@@ -2,6 +2,7 @@ import "./theme.css";
 import Link from "next/link";
 import { fontVars } from "./fonts";
 import { top10Articles, topNumber } from "./categories";
+import LiveTicker from "./LiveTicker";
 import type { SiteHomeProps, Article } from "@/lib/types";
 
 /* ────────────────────────────────────────────────────────────
@@ -329,6 +330,7 @@ export default function Home({ site, articles }: SiteHomeProps) {
 
   return (
     <div className={`cn-root ${fontVars}`}>
+      <LiveTicker />
       {/* ── HEADER ── */}
       <CnHeader site={site} />
 
