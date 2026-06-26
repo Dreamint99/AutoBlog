@@ -45,24 +45,56 @@ def _pollinations(prompt: str, w: int, h: int) -> str:
     return f"https://image.pollinations.ai/prompt/{quote(prompt)}?width={w}&height={h}&nologo=true"
 
 
-def feature_image(title: str, site: dict, query: str | None = None) -> str:
-    q = query or short_query(title, site.get("niche", ""))
-    if IMAGE_PROVIDER == "pixabay":
-        url = _pixabay(q, horizontal=True)
+def _pixabay_first(query: str, horizontal: bool = True) -> str | None:
+    """Try the query, then progressively BROADER versions (fewer words), so a
+    real Pixabay photo is found even when the original query is very specific
+    (e.g. 'Toyota assembly line Japan' → 'Toyota assembly' → 'Toyota'). Returns a
+    reliable static CDN URL, or None."""
+    if not PIXABAY_API_KEY:
+        return None
+    words = [w for w in (query or "").split() if w]
+    candidates: list[str] = []
+    if query:
+        candidates.append(query)
+    if len(words) > 2:
+        candidates.append(" ".join(words[:2]))
+    if words:
+        candidates.append(words[0])
+    seen: set[str] = set()
+    for c in candidates:
+        c = c.strip()
+        key = c.lower()
+        if not c or key in seen:
+            continue
+        seen.add(key)
+        url = _pixabay(c, horizontal)
         if url:
             return url
-    if IMAGE_PROVIDER in ("pixabay", "pollinations"):
-        return _pollinations(f"editorial photo, {q}, {site.get('niche','')}, no text", 1200, 630)
-    seed = quote(title)[:40] or "blog"
-    return f"https://picsum.photos/seed/{seed}/1200/630"
+    return None
+
+
+def feature_image(title: str, site: dict, query: str | None = None) -> str:
+    """Reliable hero image. Real Pixabay photo first (progressively broadened so it
+    almost always hits), then AI generation as a last resort."""
+    niche = site.get("niche", "")
+    primary = (niche.split(",")[0].strip() if niche else "") or "infographic"
+    url = (
+        _pixabay_first(query or "", True)
+        or _pixabay_first(short_query(title, niche, n=2), True)
+        or _pixabay_first(primary, True)
+    )
+    if url:
+        return url
+    # last resort — AI generation
+    q = query or short_query(title, niche) or primary
+    return _pollinations(f"editorial photo, {q}, no text", 1200, 630)
 
 
 def inline_image(keyword: str) -> str:
-    q = short_query(keyword) or keyword
-    if IMAGE_PROVIDER == "pixabay":
-        url = _pixabay(q, horizontal=True)
-        if url:
-            return url
+    """Reliable in-article image — broadened Pixabay first, AI generation last."""
+    url = _pixabay_first(keyword, True) or _pixabay_first(short_query(keyword, n=2), True)
+    if url:
+        return url
     return _pollinations(f"editorial photo, {keyword}, no text", 1000, 560)
 
 
