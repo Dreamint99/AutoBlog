@@ -24,9 +24,9 @@ const SITE = {
   name: "Walvi",
   domain: "walvi.io",
   niche:
-    "Europe work and skilled-trade jobs, salaries by country and occupation, cost of living and realistic monthly savings, work permits and work visas, recruitment and relocation for foreign workers moving from Asia and the Gulf to Europe",
+    "Europe work and skilled-trade jobs, salaries by country and occupation, cost of living and realistic monthly savings, work permits and work visas, requirements and documents, and relocation for foreign workers moving to Europe from ANYWHERE in the world — South Asia, the Gulf, Africa, Southeast Asia, the Balkans and beyond",
   audience:
-    "skilled and semi-skilled workers from Bangladesh, South Asia and the Gulf looking for jobs in Europe, plus their families and recruiters",
+    "skilled and semi-skilled workers WORLDWIDE (Bangladesh, Nepal, India, Pakistan, Sri Lanka, the Philippines, Indonesia, the Gulf, Egypt, North & West Africa, the Balkans and elsewhere) looking for jobs and work permits in Europe, plus their families and recruiters",
   tone:
     "first-hand Europe-recruitment insider crossed with a data analyst; lead with the direct answer, show indicative salary/cost/savings, mark estimates vs official figures, link the official source, date everything, and warn about recruitment scams",
 };
@@ -132,14 +132,66 @@ const CATEGORY_HINTS: Record<string, string> = {
     'a visa-process guide — documents checklist, processing time, or one step (medical, biometrics, work-contract attestation, BMET/clearance) for a European work visa',
 };
 
-async function generateArticle(avoidTitles: string[], key: string, monthYear: string, category?: string) {
+// Worldwide variety pools — rotated each run so the feed is NOT all "Bangladesh to X".
+const ORIGINS = [
+  "Bangladesh", "Nepal", "India", "Pakistan", "Sri Lanka", "the Philippines", "Indonesia",
+  "Vietnam", "Saudi Arabia", "Oman", "Qatar", "the UAE", "Kuwait", "Egypt", "Morocco",
+  "Tunisia", "Nigeria", "Kenya", "Ghana", "Serbia", "Moldova", "Ukraine", "Albania",
+  "Kosovo", "North Macedonia", "Turkey", "Georgia", "Uzbekistan",
+];
+const DESTS = [
+  "Poland", "Croatia", "Romania", "Lithuania", "Slovakia", "Bulgaria", "Hungary", "Portugal",
+  "Italy", "Germany", "Czechia", "Slovenia", "Malta", "the Netherlands", "Estonia", "Latvia", "Serbia",
+];
+const TRADES = [
+  "electrician", "welder", "truck driver", "cook", "chef", "construction worker", "plumber",
+  "carpenter", "HVAC technician", "machine operator", "tiles and ceramic worker", "warehouse worker",
+  "farm worker", "caregiver", "cleaner", "painter", "mason",
+];
+function rand<T>(a: T[]): T {
+  return a[Math.floor(Math.random() * a.length)];
+}
+// Build a varied focus instruction. Manual `category` overrides; otherwise rotate type + origin.
+function pickFocus(category?: string): string {
+  if (category && CATEGORY_HINTS[category]) return `Choose your topic from ${CATEGORY_HINTS[category]}.`;
+  const dest = rand(DESTS);
+  const r = Math.random();
+  if (r < 0.42) {
+    const origin = rand(ORIGINS);
+    return `Write an "${origin} to ${dest} work permit / work visa" guide — the route, who can apply, documents, cost, salary and timeline for a worker from ${origin}. This site is WORLDWIDE: use ${origin} as the origin (NOT Bangladesh unless it is literally ${origin}).`;
+  }
+  if (r < 0.60) {
+    const t = rand([
+      "work visa requirements and the full documents checklist",
+      "work visa processing time and the step-by-step process",
+      "eligibility — who can apply and the qualifications/certificates needed",
+      "the work-permit vs residence-permit difference and how to switch",
+    ]);
+    return `Write about ${t} for a ${dest} work visa, for foreign workers from around the world.`;
+  }
+  if (r < 0.74) {
+    return `Write a salary guide: "${rand(TRADES)} salary in ${dest}" — monthly gross, estimated net, living cost and realistic monthly savings (indicative).`;
+  }
+  if (r < 0.84) {
+    return `Write a cost-of-living and savings guide: how much a foreign worker can realistically save per month in ${dest}, with a breakdown.`;
+  }
+  if (r < 0.93) {
+    let d2 = rand(DESTS);
+    if (d2 === dest) d2 = rand(DESTS);
+    return `Write a comparison: "${dest} vs ${d2} for foreign workers" — salary, cost of living, savings and the work-permit route.`;
+  }
+  return rand([
+    `Write a guide: how to spot and avoid fake European job offers and recruitment scams (verifying the employer, recruitment-fee red flags, what a real work contract looks like).`,
+    `Write a guide: how to get a Europe work permit WITHOUT IELTS — which countries and routes accept workers with no English test.`,
+    `Write a guide: the cheapest and easiest European countries to get a work visa from Asia, the Gulf or Africa right now.`,
+    `Write a guide: the documents and steps to fly out AFTER a European work visa is approved (attestation, medical, contract, what to do on arrival).`,
+  ]);
+}
+
+async function generateArticle(avoidTitles: string[], key: string, monthYear: string, focus: string) {
   const system =
     `You are an expert Europe-migration content engine for ${SITE.name} (${SITE.niche}). Audience: ${SITE.audience}. Tone: ${SITE.tone}.\n\n${PLAYBOOK}\n\nCurrent period: ${monthYear}. Return ONLY JSON.`;
   const avoid = avoidTitles.slice(0, 140).join(" | ");
-  const hint = category && CATEGORY_HINTS[category] ? CATEGORY_HINTS[category] : "";
-  const focus = hint
-    ? `Choose your topic from ${hint}.`
-    : `Pick ONE fresh, specific, search-driven topic real workers Google about moving to Europe for work (e.g. "Bangladesh to Poland work permit", "welder salary in Croatia", "how much can a worker save in Romania", "how to spot a fake Europe job offer", "Romania vs Lithuania for foreign workers", "documents for a Croatia work visa").`;
   const user = `${focus}
 Write a complete, English, practical guide (1300-1900 words, at least one indicative salary/cost table).
 The topic MUST be clearly DIFFERENT from every existing title/keyword below — no duplicates, no near-rephrasings, cover a NEW origin/destination/trade/angle:
@@ -283,7 +335,8 @@ Deno.serve(async (req: Request) => {
     const avoid = rows.flatMap((r: any) => [r.title, r.keyword]).filter(Boolean);
 
     const monthYear = now.toLocaleDateString("en-US", { year: "numeric", month: "long", timeZone: "UTC" });
-    const a = await generateArticle(avoid, dsKey, monthYear, category);
+    const focus = pickFocus(category);
+    const a = await generateArticle(avoid, dsKey, monthYear, focus);
     if (!a?.title || !a?.body_html) throw new Error("LLM returned no title/body");
 
     const nowISO = now.toISOString();
