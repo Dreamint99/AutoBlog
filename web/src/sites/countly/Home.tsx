@@ -243,10 +243,11 @@ export function CnHeader({ site }: { site: { id: string; name: string } }) {
           </Link>
           <nav className="cn-nav" aria-label="Primary">
             <Link href={`/s/${site.id}`}>Statistics</Link>
+            <Link href={`/s/${site.id}/top10`}>Top 10</Link>
             <Link href={`/s/${site.id}/topic/companies`}>Companies</Link>
             <Link href={`/s/${site.id}/topic/rankings`}>Rankings</Link>
-            <Link href={`/s/${site.id}/topic/ai-chatgpt`} className="cn-nav-cta">
-              Browse data <IconArrowUR />
+            <Link href={`/s/${site.id}/top10`} className="cn-nav-cta">
+              Top 10 lists <IconArrowUR />
             </Link>
           </nav>
         </div>
@@ -416,6 +417,26 @@ export default function Home({ site, articles }: SiteHomeProps) {
                 </span>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── TOP 10 BANNER ── */}
+      <section className="cn-section">
+        <div className="cn-wrap">
+          <div className="cn-top10-banner">
+            <div>
+              <h2>
+                Explore our <em>Top 10</em> lists
+              </h2>
+              <p>
+                Worldwide rankings — top banks, universities, companies, hotels and travel agencies, country by country
+                and city by city. Sourced, dated and updated.
+              </p>
+            </div>
+            <Link href={`/s/${site.id}/top10`} className="cn-top10-cta">
+              <IconTrophy /> Browse Top 10 lists
+            </Link>
           </div>
         </div>
       </section>

@@ -74,3 +74,22 @@ export function articlesInCategory(articles: Article[], slug: string): Article[]
   if (!cat) return [];
   return articles.filter((a) => matchCategory(a, cat));
 }
+
+/* ── Top 10 (dedicated, premium ranked page) ─────────────────────────────── */
+const TOP10_MATCH = ["top 10", "top ten", "top-10", "10 best", "best 10", "top 100"];
+
+export function isTop10(a: Article): boolean {
+  const hay = haystack(a);
+  return TOP10_MATCH.some((m) => hay.includes(m));
+}
+
+export function top10Articles(articles: Article[]): Article[] {
+  return articles.filter(isTop10);
+}
+
+/** Pull the leading number out of a "Top 10 …" title for the rank badge. */
+export function topNumber(title: string): string {
+  const m = title.match(/top\s*(\d{1,3})/i) || title.match(/(\d{1,3})\s*best/i);
+  return m ? m[1] : "10";
+}
+

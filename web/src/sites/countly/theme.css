@@ -1363,3 +1363,145 @@
     transform: none;
   }
 }
+
+/* ============================================================
+   TOP 10 — dedicated premium "rankings" page
+   Gold accents, trophy, ranked ribbons, podium vibe.
+   ============================================================ */
+.site-countly {
+  --cn-gold: #e7a417;
+  --cn-gold-2: #f7c948;
+  --cn-gold-deep: #b6790a;
+}
+
+/* hero */
+.site-countly .cn-top10-hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 140% at 85% -10%, rgba(247, 201, 72, 0.18), transparent 55%),
+    radial-gradient(120% 140% at 0% 0%, rgba(124, 109, 242, 0.16), transparent 50%),
+    linear-gradient(180deg, #0b1020 0%, #131a31 100%);
+  color: #fff;
+  padding: clamp(3rem, 6vw, 5.5rem) 0 clamp(2.5rem, 5vw, 4rem);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.site-countly .cn-top10-hero .cn-wrap { position: relative; z-index: 1; }
+.site-countly .cn-top10-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font: 600 0.82rem/1 var(--cn-font-sans, Inter), sans-serif;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--cn-gold-2);
+  padding: 0.5rem 0.9rem; border-radius: 999px;
+  background: rgba(247, 201, 72, 0.12);
+  border: 1px solid rgba(247, 201, 72, 0.3);
+}
+.site-countly .cn-top10-eyebrow svg { width: 18px; height: 18px; }
+.site-countly .cn-top10-hero h1 {
+  font-family: var(--cn-font-display, Fraunces), serif;
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  line-height: 1.02; letter-spacing: -0.02em; margin: 1.1rem 0 0.6rem;
+}
+.site-countly .cn-top10-hero h1 em {
+  font-style: italic;
+  background: linear-gradient(90deg, var(--cn-gold-2), var(--cn-gold));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.site-countly .cn-top10-hero p {
+  max-width: 56ch; color: #c7cde0; font-size: 1.06rem; line-height: 1.6;
+}
+.site-countly .cn-top10-stats {
+  display: flex; flex-wrap: wrap; gap: 1.6rem; margin-top: 1.6rem;
+}
+.site-countly .cn-top10-stats b {
+  font-family: var(--cn-font-display, Fraunces), serif;
+  font-size: 1.5rem; color: var(--cn-gold-2); display: block;
+}
+.site-countly .cn-top10-stats span { font-size: 0.82rem; color: #aeb6cd; }
+
+/* grid */
+.site-countly .cn-top10-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.4rem;
+}
+.site-countly .cn-top10-card {
+  position: relative; display: flex; flex-direction: column;
+  background: var(--cn-surface, #fff);
+  border: 1px solid var(--cn-line, #e7e9f2);
+  border-radius: 18px; overflow: hidden;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+.site-countly .cn-top10-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px -22px rgba(20, 26, 49, 0.45);
+  border-color: var(--cn-gold);
+}
+.site-countly .cn-top10-media {
+  position: relative; aspect-ratio: 16 / 9; min-width: 0;
+  background: linear-gradient(135deg, #1a2240, #131a31);
+  display: block; overflow: hidden;
+}
+.site-countly .cn-top10-media img { width: 100%; height: 100%; object-fit: cover; }
+.site-countly .cn-top10-ribbon {
+  position: absolute; top: 0; left: 0; z-index: 2;
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  font: 800 0.74rem/1 var(--cn-font-sans, Inter), sans-serif;
+  letter-spacing: 0.08em; text-transform: uppercase; color: #2a1c00;
+  padding: 0.5rem 0.85rem;
+  background: linear-gradient(135deg, var(--cn-gold-2), var(--cn-gold));
+  border-bottom-right-radius: 14px;
+  box-shadow: 0 6px 16px -6px rgba(183, 121, 10, 0.6);
+}
+.site-countly .cn-top10-ribbon svg { width: 15px; height: 15px; }
+.site-countly .cn-top10-rank {
+  position: absolute; right: 12px; bottom: -18px; z-index: 2;
+  width: 52px; height: 52px; border-radius: 50%;
+  display: grid; place-items: center;
+  font-family: var(--cn-font-display, Fraunces), serif; font-weight: 700;
+  font-size: 1.5rem; color: #2a1c00;
+  background: linear-gradient(135deg, var(--cn-gold-2), var(--cn-gold));
+  border: 3px solid var(--cn-surface, #fff);
+  box-shadow: 0 8px 18px -8px rgba(183, 121, 10, 0.7);
+}
+.site-countly .cn-top10-body { padding: 1.5rem 1.25rem 1.25rem; display: flex; flex-direction: column; gap: 0.6rem; flex: 1; }
+.site-countly .cn-top10-body h3 {
+  font-family: var(--cn-font-display, Fraunces), serif;
+  font-size: 1.18rem; line-height: 1.25; letter-spacing: -0.01em; margin: 0;
+}
+.site-countly .cn-top10-body h3 a { color: var(--cn-ink, #0b1020); text-decoration: none; }
+.site-countly .cn-top10-body h3 a:hover { color: var(--cn-gold-deep); }
+.site-countly .cn-top10-body .cn-excerpt { color: var(--cn-ink-soft, #475569); font-size: 0.94rem; line-height: 1.55; flex: 1; }
+.site-countly .cn-top10-foot {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 0.4rem; padding-top: 0.85rem; border-top: 1px solid var(--cn-line-soft, #eef0f7);
+}
+.site-countly .cn-top10-view {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  font: 700 0.86rem/1 var(--cn-font-sans, Inter), sans-serif; color: var(--cn-gold-deep);
+  text-decoration: none;
+}
+.site-countly .cn-top10-view svg { width: 15px; height: 15px; }
+.site-countly .cn-top10-date { font-size: 0.8rem; color: var(--cn-ink-muted, #6b7488); }
+
+/* home highlight banner linking to /top10 */
+.site-countly .cn-top10-banner {
+  position: relative; overflow: hidden; border-radius: 20px;
+  background: linear-gradient(120deg, #131a31, #1f2547);
+  border: 1px solid rgba(247, 201, 72, 0.25);
+  padding: clamp(1.6rem, 3vw, 2.4rem);
+  display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+}
+.site-countly .cn-top10-banner h2 {
+  font-family: var(--cn-font-display, Fraunces), serif; color: #fff;
+  font-size: clamp(1.5rem, 3vw, 2.1rem); margin: 0 0 0.35rem;
+}
+.site-countly .cn-top10-banner h2 em { font-style: italic; color: var(--cn-gold-2); }
+.site-countly .cn-top10-banner p { color: #c7cde0; margin: 0; max-width: 52ch; }
+.site-countly .cn-top10-cta {
+  display: inline-flex; align-items: center; gap: 0.5rem; white-space: nowrap;
+  font: 700 0.95rem/1 var(--cn-font-sans, Inter), sans-serif; color: #2a1c00;
+  padding: 0.85rem 1.4rem; border-radius: 999px;
+  background: linear-gradient(135deg, var(--cn-gold-2), var(--cn-gold));
+  text-decoration: none; box-shadow: 0 10px 24px -10px rgba(183, 121, 10, 0.7);
+}
+.site-countly .cn-top10-cta:hover { filter: brightness(1.05); }
