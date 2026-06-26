@@ -72,11 +72,34 @@ def main():
     for t in titles:
         try:
             art = generate_article(site, t)
+            ensure_top10(art, t)
             done += 1
             log(f"[countly/top10] OK {art['title']} ({art['word_count']}w)")
         except Exception as e:
             log(f"[countly/top10] FAIL {t} - {e}")
     log(f"=== countly top10 done +{done} ===")
+
+
+def ensure_top10(art: dict, original_title: str):
+    """The 3-agent optimizer often rewrites the title and drops the 'Top 10'
+    prefix — which would keep the article off the /top10 page. Restore it and tag
+    the article so it's reliably categorised. Patches Supabase in place."""
+    fields = {}
+    title = art.get("title", "")
+    if "top 10" not in title.lower() and "top ten" not in title.lower():
+        new_title = original_title if "top 10" in original_title.lower() else f"Top 10 {title}"
+        art["title"] = new_title
+        fields["title"] = new_title
+    tags = list(art.get("tags") or [])
+    if not any("top 10" in str(x).lower() for x in tags):
+        tags = ["Top 10"] + tags
+        art["tags"] = tags
+        fields["tags"] = tags
+    if fields and art.get("id"):
+        try:
+            store.update_article(art["id"], fields)
+        except Exception as e:
+            log(f"[countly/top10] patch failed {art.get('id')} - {e}")
 
 
 if __name__ == "__main__":
