@@ -1554,3 +1554,27 @@
   .site-countly .cn-rich-podium { grid-template-columns: 1fr; }
   .site-countly .cn-rich-1 { transform: none; }
 }
+
+/* ── By the numbers (Forbes-style stat band) ── */
+.site-countly .cn-statband {
+  background: linear-gradient(180deg, #0d1227 0%, #141a3c 100%);
+  border-bottom: 1px solid var(--cn-night-line, rgba(255,255,255,.1));
+  padding: clamp(1.4rem, 3vw, 2.2rem) 0;
+}
+.site-countly .cn-statband-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; text-align: center;
+}
+.site-countly .cn-stat { display: flex; flex-direction: column; gap: 0.25rem; }
+.site-countly .cn-stat b {
+  font-family: var(--cn-font-display, Fraunces), Georgia, serif;
+  font-size: clamp(1.7rem, 4vw, 2.8rem); line-height: 1; color: #fff;
+  letter-spacing: -0.02em;
+  background: linear-gradient(90deg, #c4b5fd, #818cf8);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+.site-countly .cn-stat span {
+  font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: #aeb6cd;
+}
+@media (max-width: 640px) {
+  .site-countly .cn-statband-grid { grid-template-columns: repeat(2, 1fr); gap: 1.3rem 1rem; }
+}

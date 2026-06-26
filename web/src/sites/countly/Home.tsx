@@ -322,6 +322,10 @@ export default function Home({ site, articles }: SiteHomeProps) {
   const rest: Article[] = articles.slice(1);
   const top10: Article[] = top10Articles(articles).slice(0, 6);
   const latestDate = featured ? fmtDate(featured.created_at) : fmtDate(new Date().toISOString());
+  // Real, derived "by the numbers" stats (no fake counters).
+  const reportsCount = articles.length;
+  const countryCount = articles.filter((a) => /richest people in /i.test(a.title)).length;
+  const topListCount = articles.filter((a) => /\btop\s*\d/i.test(a.title)).length;
 
   return (
     <div className={`cn-root ${fontVars}`}>
@@ -389,6 +393,30 @@ export default function Home({ site, articles }: SiteHomeProps) {
                 </div>
               </div>
             </aside>
+          </div>
+        </div>
+      </section>
+
+      {/* ── BY THE NUMBERS (Forbes-style stat band) ── */}
+      <section className="cn-statband">
+        <div className="cn-wrap">
+          <div className="cn-statband-grid">
+            <div className="cn-stat">
+              <b>{reportsCount}+</b>
+              <span>Data reports</span>
+            </div>
+            <div className="cn-stat">
+              <b>{countryCount}+</b>
+              <span>Countries ranked</span>
+            </div>
+            <div className="cn-stat">
+              <b>{topListCount}+</b>
+              <span>Top 10 lists</span>
+            </div>
+            <div className="cn-stat">
+              <b>Daily</b>
+              <span>Updated · {latestDate}</span>
+            </div>
           </div>
         </div>
       </section>
