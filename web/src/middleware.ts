@@ -6,8 +6,15 @@ const FORCED_SITE = process.env.SITE_ID || "";
 
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
-  // Let Next internals and real files (sitemap.xml, robots.txt, favicon…) through.
-  if (pathname.startsWith("/_next") || pathname.includes(".")) {
+  // Let Next internals, real files (sitemap.xml, robots.txt, favicon…) and the
+  // root metadata icon routes through untouched (they live at the domain root,
+  // not under /s/<site>, so they must NOT be rewritten).
+  if (
+    pathname.startsWith("/_next") ||
+    pathname.includes(".") ||
+    pathname === "/icon" ||
+    pathname === "/apple-icon"
+  ) {
     return NextResponse.next();
   }
 
