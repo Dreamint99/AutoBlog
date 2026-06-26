@@ -29,6 +29,13 @@ export async function generateMetadata({
       yandex: "b55bc7a4b327f2b1",
     };
   }
+  // Countly: Google verified via DNS (domain property); Bing + Yandex via meta tag.
+  if (site.id === "countly") {
+    meta.verification = {
+      yandex: "d98b701bc2457bd8",
+      other: { "msvalidate.01": "E7D0AADC1BF5C8F0A380539539FD8AB0" },
+    };
+  }
   return meta;
 }
 

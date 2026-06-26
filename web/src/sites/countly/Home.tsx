@@ -51,7 +51,7 @@ function IconCalendar() {
     </svg>
   );
 }
-function IconArrow() {
+export function IconArrow() {
   return (
     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M5 12h13M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -137,7 +137,7 @@ function IconScale() {
     </svg>
   );
 }
-function IconCompass() {
+export function IconCompass() {
   return (
     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.7" />
@@ -202,18 +202,58 @@ function HeroMotif() {
 /* ────────────────────────────────────────────────────────────
    Helpers
    ──────────────────────────────────────────────────────────── */
-function fmtDate(iso: string): string {
+export function fmtDate(iso: string): string {
   return new Date(iso).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
 }
 
 const CATEGORIES = [
-  { icon: <IconCpu />, label: "AI & ChatGPT", blurb: "Users, adoption and AI-market numbers." },
-  { icon: <IconUsers />, label: "Social Media", blurb: "Platform users and time-spent by country." },
-  { icon: <IconBuilding />, label: "Companies", blurb: "Employees, stores, revenue and subscribers." },
-  { icon: <IconWifi />, label: "Internet", blurb: "Connectivity, websites and ecommerce data." },
-  { icon: <IconGlobe />, label: "Countries", blurb: "Digital and market data, country by country." },
-  { icon: <IconTrophy />, label: "Rankings", blurb: "Largest, fastest-growing and most valuable." },
+  { icon: <IconCpu />, slug: "ai-chatgpt", label: "AI & ChatGPT", blurb: "Users, adoption and AI-market numbers." },
+  { icon: <IconUsers />, slug: "social-media", label: "Social Media", blurb: "Platform users and time-spent by country." },
+  { icon: <IconBuilding />, slug: "companies", label: "Companies", blurb: "Employees, stores, revenue and subscribers." },
+  { icon: <IconWifi />, slug: "internet", label: "Internet", blurb: "Connectivity, websites and ecommerce data." },
+  { icon: <IconGlobe />, slug: "countries", label: "Countries", blurb: "Digital and market data, country by country." },
+  { icon: <IconTrophy />, slug: "rankings", label: "Rankings", blurb: "Largest, fastest-growing and most valuable." },
 ];
+
+/* Shared header (brand + primary nav) — used by Home and the topic pages so the
+   nav links resolve to real category pages everywhere. */
+export function CnHeader({ site }: { site: { id: string; name: string } }) {
+  return (
+    <header className="cn-header">
+      <div className="cn-topnote">
+        <div className="cn-wrap">
+          <IconDatabase />
+          <span>
+            Independent data &amp; statistics — figures are best-available estimates compiled from public sources; verify before citing.
+          </span>
+        </div>
+      </div>
+      <div className="cn-wrap">
+        <div className="cn-bar">
+          <Link href={`/s/${site.id}`} className="cn-brand" aria-label={`${site.name} home`}>
+            <span className="cn-logo">
+              <IconChart />
+            </span>
+            <span className="cn-wordmark">
+              <b>
+                Count<span>ly</span>
+              </b>
+              <small>The World in Numbers</small>
+            </span>
+          </Link>
+          <nav className="cn-nav" aria-label="Primary">
+            <Link href={`/s/${site.id}`}>Statistics</Link>
+            <Link href={`/s/${site.id}/topic/companies`}>Companies</Link>
+            <Link href={`/s/${site.id}/topic/rankings`}>Rankings</Link>
+            <Link href={`/s/${site.id}/topic/ai-chatgpt`} className="cn-nav-cta">
+              Browse data <IconArrowUR />
+            </Link>
+          </nav>
+        </div>
+      </div>
+    </header>
+  );
+}
 
 function ArticleMeta({ article }: { article: Article }) {
   return (
@@ -244,7 +284,7 @@ function CardChips({ tags }: { tags: string[] }) {
   );
 }
 
-function StatCard({ siteId, article, index }: { siteId: string; article: Article; index: number }) {
+export function StatCard({ siteId, article, index }: { siteId: string; article: Article; index: number }) {
   const href = `/s/${siteId}/${article.slug}`;
   return (
     <article className="cn-card">
@@ -283,39 +323,7 @@ export default function Home({ site, articles }: SiteHomeProps) {
   return (
     <div className={`cn-root ${fontVars}`}>
       {/* ── HEADER ── */}
-      <header className="cn-header">
-        <div className="cn-topnote">
-          <div className="cn-wrap">
-            <IconDatabase />
-            <span>
-              Independent data &amp; statistics — figures are best-available estimates compiled from public sources; verify before citing.
-            </span>
-          </div>
-        </div>
-        <div className="cn-wrap">
-          <div className="cn-bar">
-            <Link href={`/s/${site.id}`} className="cn-brand" aria-label={`${site.name} home`}>
-              <span className="cn-logo">
-                <IconChart />
-              </span>
-              <span className="cn-wordmark">
-                <b>
-                  Count<span>ly</span>
-                </b>
-                <small>The World in Numbers</small>
-              </span>
-            </Link>
-            <nav className="cn-nav" aria-label="Primary">
-              <Link href={`/s/${site.id}`}>Statistics</Link>
-              <Link href={`/s/${site.id}`}>Companies</Link>
-              <Link href={`/s/${site.id}`}>Rankings</Link>
-              <Link href={`/s/${site.id}`} className="cn-nav-cta">
-                Browse data <IconArrowUR />
-              </Link>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <CnHeader site={site} />
 
       {/* ── HERO (dark, editorial) ── */}
       <section className="cn-hero">
@@ -394,7 +402,7 @@ export default function Home({ site, articles }: SiteHomeProps) {
           </div>
           <div className="cn-cat-grid">
             {CATEGORIES.map((c, i) => (
-              <Link href={`/s/${site.id}`} className="cn-cat-card" key={c.label}>
+              <Link href={`/s/${site.id}/topic/${c.slug}`} className="cn-cat-card" key={c.label}>
                 <span className="cn-cat-num" aria-hidden="true">
                   {String(i + 1).padStart(2, "0")}
                 </span>
@@ -546,7 +554,7 @@ export default function Home({ site, articles }: SiteHomeProps) {
 /* ────────────────────────────────────────────────────────────
    Footer (shared shape with Article)
    ──────────────────────────────────────────────────────────── */
-function SiteFooter({ siteName, siteId, domain }: { siteName: string; siteId: string; domain: string }) {
+export function SiteFooter({ siteName, siteId, domain }: { siteName: string; siteId: string; domain: string }) {
   const year = new Date().getFullYear();
   return (
     <footer className="cn-footer">
@@ -574,13 +582,13 @@ function SiteFooter({ siteName, siteId, domain }: { siteName: string; siteId: st
               <h4>Topics</h4>
               <ul>
                 <li>
-                  <Link href={`/s/${siteId}`}>AI &amp; internet</Link>
+                  <Link href={`/s/${siteId}/topic/ai-chatgpt`}>AI &amp; ChatGPT</Link>
                 </li>
                 <li>
-                  <Link href={`/s/${siteId}`}>Social media</Link>
+                  <Link href={`/s/${siteId}/topic/social-media`}>Social media</Link>
                 </li>
                 <li>
-                  <Link href={`/s/${siteId}`}>Companies</Link>
+                  <Link href={`/s/${siteId}/topic/companies`}>Companies</Link>
                 </li>
               </ul>
             </div>
