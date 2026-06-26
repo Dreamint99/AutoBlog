@@ -4,6 +4,9 @@ import { activeSite } from "../lib/site-context";
 // Per-site favicon, generated at build/runtime from the deployment's SITE_ID.
 // One file → every site in the network gets its own branded icon (theme colour
 // + the site name's initial). Next.js auto-injects the <link rel="icon"> for it.
+// Generate per request so the icon uses the deployment's runtime SITE_ID
+// (these projects pass SITE_ID via `vercel deploy -e`, not stored project env).
+export const dynamic = "force-dynamic";
 export const size = { width: 64, height: 64 };
 export const contentType = "image/png";
 
