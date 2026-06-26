@@ -13,7 +13,7 @@ for _s in (sys.stdout, sys.stderr):
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from modules import store
-from modules.image import feature_image, inline_image, short_query
+from modules.image import feature_image, inline_image, short_query, _subject_terms
 
 
 def _fix_body(body: str, site: dict) -> str:
@@ -35,10 +35,12 @@ def main():
     fixed = 0
     for a in arts:
         fields = {}
+        title = a.get("title", "")
         fu = a.get("image_url", "") or ""
-        if "pollinations" in fu:
-            q = a.get("keyword") or short_query(a.get("title", ""), site.get("niche", ""))
-            fields["image_url"] = feature_image(a.get("title", ""), site, q)
+        # Re-image the hero if it's a flaky Pollinations URL OR a listicle whose
+        # hero should be on-topic (subject-relevant). Leave good storage images alone.
+        if "pollinations" in fu or _subject_terms(title):
+            fields["image_url"] = feature_image(title, site)
         body = a.get("body_html", "") or ""
         if "pollinations" in body:
             fields["body_html"] = _fix_body(body, site)

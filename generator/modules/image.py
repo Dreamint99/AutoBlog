@@ -10,8 +10,33 @@ import requests
 
 from config.settings import IMAGE_PROVIDER, PIXABAY_API_KEY
 
-_STOP = set("the a an of for to in on and or with how what why best guide your you 2024 2025 "
-            "from is are can do does requirements complete step by".split())
+_STOP = set("the a an of for to in on and or with how what why best guide your you 2024 2025 2026 "
+            "from is are can do does requirements complete step by top ten largest biggest ranked "
+            "ranking rankings list lists world worlds vs review reviews near me most".split())
+
+# Subjects that are sparse or ambiguous on stock libraries → map to a richer,
+# still-relevant search term (keeps the photo ON TOPIC).
+IMG_SYNONYMS = {
+    "hypermarket": "supermarket", "hypermarkets": "supermarket",
+    "grocery": "grocery store", "groceries": "grocery store",
+    "bank": "bank building", "banks": "bank building",
+    "university": "university campus", "universities": "university campus",
+    "college": "university campus", "colleges": "university campus",
+    "travel agency": "airport travel", "travel agencies": "airport travel",
+    "hospital": "hospital building", "hospitals": "hospital building",
+    "company": "office building", "companies": "office building",
+    "startup": "startup office", "startups": "startup office",
+    "airline": "airplane", "airlines": "airplane",
+    "hotel": "hotel building", "hotels": "hotel building",
+    "restaurant": "restaurant interior", "restaurants": "restaurant interior",
+    "school": "school building", "schools": "school building",
+    "gym": "gym fitness", "gyms": "gym fitness",
+    "car brand": "car", "car brands": "car",
+    "real estate company": "real estate", "real estate companies": "real estate",
+    "insurance company": "insurance office", "insurance companies": "insurance office",
+    "richest people": "luxury wealth", "billionaires": "luxury wealth",
+    "shopping mall": "shopping mall", "shopping malls": "shopping mall",
+}
 
 
 def short_query(text: str, niche: str = "", n: int = 3) -> str:
@@ -45,26 +70,36 @@ def _pollinations(prompt: str, w: int, h: int) -> str:
     return f"https://image.pollinations.ai/prompt/{quote(prompt)}?width={w}&height={h}&nologo=true"
 
 
-def _pixabay_first(query: str, horizontal: bool = True) -> str | None:
-    """Try the query, then progressively BROADER versions (fewer words), so a
-    real Pixabay photo is found even when the original query is very specific
-    (e.g. 'Toyota assembly line Japan' → 'Toyota assembly' → 'Toyota'). Returns a
-    reliable static CDN URL, or None."""
+def _subject_terms(title: str) -> list[str]:
+    """For listicle titles 'Top N <subject> in <place>' / 'Best <subject> in <place>'
+    return ON-TOPIC search terms for the subject (with a richer synonym first).
+    e.g. 'Top 10 Hypermarkets in Qatar 2026' → ['supermarket', 'hypermarket']."""
+    m = re.search(r"(?:top|best)\s*\d*\s+(.+?)\s+in\s+", title, re.IGNORECASE)
+    if not m:
+        return []
+    subj = re.sub(r"[^a-z &]", "", m.group(1).strip().lower()).strip()
+    if not subj:
+        return []
+    sing = subj[:-1] if subj.endswith("s") and len(subj) > 3 else subj
+    out: list[str] = []
+    for key in (subj, sing):
+        syn = IMG_SYNONYMS.get(key)
+        if syn and syn not in out:
+            out.append(syn)
+    for term in (subj, sing):
+        if term and term not in out:
+            out.append(term)
+    return out
+
+
+def _first_hit(candidates: list[str], horizontal: bool = True) -> str | None:
     if not PIXABAY_API_KEY:
         return None
-    words = [w for w in (query or "").split() if w]
-    candidates: list[str] = []
-    if query:
-        candidates.append(query)
-    if len(words) > 2:
-        candidates.append(" ".join(words[:2]))
-    if words:
-        candidates.append(words[0])
     seen: set[str] = set()
     for c in candidates:
-        c = c.strip()
+        c = (c or "").strip()
         key = c.lower()
-        if not c or key in seen:
+        if len(c) < 3 or key in seen:
             continue
         seen.add(key)
         url = _pixabay(c, horizontal)
@@ -74,25 +109,36 @@ def _pixabay_first(query: str, horizontal: bool = True) -> str | None:
 
 
 def feature_image(title: str, site: dict, query: str | None = None) -> str:
-    """Reliable hero image. Real Pixabay photo first (progressively broadened so it
-    almost always hits), then AI generation as a last resort."""
+    """Reliable AND on-topic hero image. Tries the article's actual subject first
+    (so a 'Top 10 Hypermarkets' piece gets a supermarket photo, not a random one),
+    then the supplied query, then a niche-generic, then AI as a last resort."""
     niche = site.get("niche", "")
     primary = (niche.split(",")[0].strip() if niche else "") or "infographic"
-    url = (
-        _pixabay_first(query or "", True)
-        or _pixabay_first(short_query(title, niche, n=2), True)
-        or _pixabay_first(primary, True)
-    )
+    candidates = _subject_terms(title)
+    if query:
+        candidates.append(query)
+    sq = short_query(title, niche, n=2)
+    if sq:
+        candidates.append(sq)
+    candidates.append(primary)
+    url = _first_hit(candidates, True)
     if url:
         return url
-    # last resort — AI generation
-    q = query or short_query(title, niche) or primary
+    q = candidates[0] if candidates else primary
     return _pollinations(f"editorial photo, {q}, no text", 1200, 630)
 
 
 def inline_image(keyword: str) -> str:
-    """Reliable in-article image — broadened Pixabay first, AI generation last."""
-    url = _pixabay_first(keyword, True) or _pixabay_first(short_query(keyword, n=2), True)
+    """Reliable, on-topic in-article image. Keeps the subject (no random single-word
+    fallback); AI generation only as a last resort."""
+    words = keyword.split()
+    candidates = [keyword]
+    if len(words) > 2:
+        candidates.append(" ".join(words[:2]))
+    sq = short_query(keyword, n=2)
+    if sq:
+        candidates.append(sq)
+    url = _first_hit(candidates, True)
     if url:
         return url
     return _pollinations(f"editorial photo, {keyword}, no text", 1000, 560)
