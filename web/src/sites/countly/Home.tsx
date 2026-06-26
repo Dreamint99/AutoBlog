@@ -29,7 +29,7 @@ function IconCheck() {
     </svg>
   );
 }
-function IconSearch() {
+export function IconSearch() {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <circle cx="11" cy="11" r="6.5" stroke="currentColor" strokeWidth="1.8" />
@@ -352,12 +352,20 @@ export default function Home({ site, articles }: SiteHomeProps) {
                 countries and global markets — with sources and a clear methodology on every page.
               </p>
 
-              {/* faux search — visual only, no client JS */}
-              <div className="cn-search" role="presentation" aria-hidden="true">
+              {/* real search — HTML GET form, no client JS needed */}
+              <form className="cn-search" action={`/s/${site.id}/search`} method="get" role="search">
                 <IconSearch />
-                <span className="cn-search-text">Search a statistic, company or country…</span>
-                <span className="cn-search-btn">Search</span>
-              </div>
+                <input
+                  className="cn-search-input"
+                  type="search"
+                  name="q"
+                  placeholder="Search a statistic, company or country…"
+                  aria-label="Search"
+                />
+                <button className="cn-search-btn" type="submit">
+                  Search
+                </button>
+              </form>
 
               <div className="cn-trustrow">
                 <span>
