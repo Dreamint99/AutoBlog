@@ -53,7 +53,44 @@ export default async function ArticlePage({
   if (!components) notFound();
 
   const { html, toc } = processBody(article.body_html);
-  const related = (await getArticles(id)).filter((a) => a.slug !== slug).slice(0, 6);
+
+  // Relevance-ranked related (shared topic words) → more pages/session, lower bounce.
+  const all = (await getArticles(id)).filter((a) => a.slug !== slug);
+  const STOP = new Set(
+    "best top ten list lists 2024 2025 2026 data statistics report rankings ranking world worldwide by country countries most largest update updated guide".split(" ")
+  );
+  const toks = (a: typeof article) =>
+    new Set(
+      (`${a.title} ${a.keyword} ${(a.tags || []).join(" ")}`.toLowerCase().match(/[a-z]{4,}/g) || []).filter(
+        (w) => !STOP.has(w)
+      )
+    );
+  const cur = toks(article);
+  const related = all
+    .map((a) => {
+      const t = toks(a);
+      let s = 0;
+      t.forEach((w) => {
+        if (cur.has(w)) s += 1;
+      });
+      return { a, s };
+    })
+    .sort((x, y) => y.s - x.s)
+    .slice(0, 6)
+    .map((x) => x.a);
+
+  // Evergreen high-value pages (Countly) to keep visitors exploring.
+  const POP = [
+    "richest people in the world",
+    "cryptocurrencies by market cap",
+    "us dollar exchange rates",
+    "countries by gdp",
+    "countries by population",
+  ];
+  const popular = POP.map((p) => all.find((a) => a.title.toLowerCase().includes(p)))
+    .filter((a): a is typeof article => Boolean(a))
+    .slice(0, 5);
+
   const { Article } = components;
   const base = siteBaseUrl(site);
 
@@ -69,7 +106,7 @@ export default async function ArticlePage({
           { name: article.title, url: `${base}/${slug}` },
         ])}
       />
-      <Article site={site} article={article} related={related} bodyHtml={html} toc={toc} />
+      <Article site={site} article={article} related={related} bodyHtml={html} toc={toc} popular={popular} />
     </>
   );
 }

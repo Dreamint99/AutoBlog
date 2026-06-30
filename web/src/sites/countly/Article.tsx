@@ -157,7 +157,7 @@ function RelatedCard({ siteId, article }: { siteId: string; article: Article }) 
 /* ────────────────────────────────────────────────────────────
    Page
    ──────────────────────────────────────────────────────────── */
-export default function Article({ site, article, related, bodyHtml, toc }: SiteArticleProps) {
+export default function Article({ site, article, related, bodyHtml, toc, popular = [] }: SiteArticleProps) {
   const primaryTag = article.tags[0];
   const updated = fmtDate(article.created_at);
 
@@ -301,6 +301,10 @@ export default function Article({ site, article, related, bodyHtml, toc }: SiteA
                 </div>
               </div>
 
+              <p className="cn-bookmark-tip">
+                🔖 <strong>Tip:</strong> bookmark this page — the figures here are kept up to date automatically.
+              </p>
+
               <div className="article-content" dangerouslySetInnerHTML={{ __html: bodyHtml }} />
 
               <div className="cn-article-foot">
@@ -317,7 +321,7 @@ export default function Article({ site, article, related, bodyHtml, toc }: SiteA
                 <section className="cn-related" aria-label="Related reports">
                   <h2>Related data</h2>
                   <div className="cn-grid">
-                    {related.slice(0, 3).map((a) => (
+                    {related.slice(0, 6).map((a) => (
                       <RelatedCard key={a.id} siteId={site.id} article={a} />
                     ))}
                   </div>
@@ -334,6 +338,21 @@ export default function Article({ site, article, related, bodyHtml, toc }: SiteA
                   </div>
                 </section>
               )}
+
+              {popular.filter((p) => p.slug !== article.slug).length > 0 ? (
+                <section className="cn-popular" aria-label={`Popular on ${site.name}`}>
+                  <h2>Popular on {site.name}</h2>
+                  <ul className="cn-popular-list">
+                    {popular
+                      .filter((p) => p.slug !== article.slug)
+                      .map((p) => (
+                        <li key={p.id}>
+                          <Link href={`/s/${site.id}/${p.slug}`}>{p.title}</Link>
+                        </li>
+                      ))}
+                  </ul>
+                </section>
+              ) : null}
 
               <p style={{ marginTop: "2rem" }}>
                 <Link

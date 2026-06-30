@@ -1632,3 +1632,28 @@
 .site-countly .cn-search-page .cn-search-input { color: var(--cn-ink, #0b1020); }
 .site-countly .cn-search-page .cn-search-input::placeholder { color: var(--cn-ink-muted, #6b7488); }
 .site-countly .cn-search-page svg { color: var(--cn-ink-muted, #6b7488); }
+
+/* ── Bookmark tip + Popular list (engagement) ── */
+.site-countly .cn-bookmark-tip {
+  display: flex; align-items: center; gap: 0.5rem;
+  background: linear-gradient(90deg, #fff8e6, #fffdf7);
+  border: 1px solid #f0e2b8; border-left: 4px solid var(--cn-gold, #e7a417);
+  border-radius: 10px; padding: 0.7rem 1rem; margin: 0 0 1.4rem;
+  font-size: 0.92rem; color: #6b5b1f;
+}
+.site-countly .cn-popular { margin-top: 2.4rem; }
+.site-countly .cn-popular h2 {
+  font-family: var(--cn-font-display, Fraunces), serif; font-size: 1.3rem; margin: 0 0 0.8rem;
+}
+.site-countly .cn-popular-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.55rem; }
+.site-countly .cn-popular-list li {
+  border: 1px solid var(--cn-line, #e7e9f2); border-radius: 10px; background: var(--cn-surface, #fff);
+  transition: border-color 0.15s, transform 0.15s;
+}
+.site-countly .cn-popular-list li:hover { border-color: var(--cn-accent, #4f46e5); transform: translateX(3px); }
+.site-countly .cn-popular-list a {
+  display: flex; align-items: center; gap: 0.5rem; padding: 0.7rem 0.95rem;
+  color: var(--cn-ink, #0b1020); font-weight: 600; font-size: 0.96rem; text-decoration: none;
+}
+.site-countly .cn-popular-list a::before { content: "→"; color: var(--cn-accent, #4f46e5); font-weight: 800; }
+.site-countly .cn-popular-list a:hover { color: var(--cn-accent, #4f46e5); }

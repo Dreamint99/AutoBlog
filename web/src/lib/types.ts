@@ -77,4 +77,6 @@ export interface SiteArticleProps {
   related: Article[];
   bodyHtml: string;
   toc: TocItem[];
+  /** Evergreen high-value pages to surface for more pages/session (optional). */
+  popular?: Article[];
 }
