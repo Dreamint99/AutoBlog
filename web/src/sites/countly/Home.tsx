@@ -706,13 +706,13 @@ export function SiteFooter({ siteName, siteId, domain }: { siteName: string; sit
               <h4>About</h4>
               <ul>
                 <li>
-                  <Link href={`/s/${siteId}`}>Methodology</Link>
+                  <Link href={`/s/${siteId}/contact`}>Contact</Link>
                 </li>
                 <li>
-                  <Link href={`/s/${siteId}`}>Sources</Link>
+                  <Link href={`/s/${siteId}/privacy`}>Privacy Policy</Link>
                 </li>
                 <li>
-                  <Link href={`/s/${siteId}`}>Contact</Link>
+                  <Link href={`/s/${siteId}/terms`}>Terms of Service</Link>
                 </li>
               </ul>
             </div>

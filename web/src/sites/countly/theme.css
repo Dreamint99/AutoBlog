@@ -1698,3 +1698,35 @@
 .site-countly .cn-news-form button:disabled { opacity: 0.6; }
 .site-countly .cn-news-ok { color: #34d399; font-weight: 700; }
 .site-countly .cn-news-err { color: #fca5a5; font-size: 0.85rem; width: 100%; margin: 0.4rem 0 0; }
+
+/* ── Smooth in-page scrolling (TOC anchors) ── */
+html { scroll-behavior: smooth; }
+
+/* ── Mobile nav: scrollable strip instead of hidden ── */
+@media (max-width: 819px) {
+  .site-countly .cn-bar { flex-wrap: wrap; min-height: auto; padding: 0.55rem 0; gap: 0.4rem; }
+  .site-countly .cn-nav {
+    display: flex; width: 100%; overflow-x: auto; gap: 0.15rem;
+    padding-bottom: 0.15rem; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+  }
+  .site-countly .cn-nav::-webkit-scrollbar { display: none; }
+  .site-countly .cn-nav a { padding: 0.45rem 0.7rem; font-size: 0.88rem; white-space: nowrap; }
+  .site-countly .cn-nav .cn-nav-cta { margin-left: 0.2rem; }
+}
+
+/* ── Contact form ── */
+.site-countly .cn-contact { display: flex; flex-direction: column; gap: 1rem; max-width: 640px; margin-top: 1.4rem; }
+.site-countly .cn-contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.site-countly .cn-contact .cn-tool-field { display: flex; flex-direction: column; gap: 0.3rem; }
+.site-countly .cn-contact .cn-tool-field span { font-size: 0.78rem; font-weight: 600; color: var(--cn-ink-muted, #6b7488); text-transform: uppercase; letter-spacing: 0.04em; }
+.site-countly .cn-contact input, .site-countly .cn-contact textarea {
+  font: inherit; font-size: 1rem; padding: 0.7rem 0.85rem; border-radius: 10px;
+  border: 1px solid var(--cn-line, #e7e9f2); background: #fff; color: var(--cn-ink, #0b1020); width: 100%; resize: vertical;
+}
+.site-countly .cn-contact input:focus, .site-countly .cn-contact textarea:focus { outline: 2px solid var(--cn-accent, #4f46e5); border-color: var(--cn-accent, #4f46e5); }
+.site-countly .cn-contact-btn {
+  align-self: flex-start; cursor: pointer; border: 0; border-radius: 999px; padding: 0.75rem 1.6rem;
+  font-weight: 700; color: #fff; background: linear-gradient(135deg, #818cf8, #6366f1);
+}
+.site-countly .cn-contact-btn:disabled { opacity: 0.6; }
+@media (max-width: 560px) { .site-countly .cn-contact-grid { grid-template-columns: 1fr; } }

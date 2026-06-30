@@ -46,6 +46,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     entries.push({ url: `${base}/top10`, changeFrequency: "daily", priority: 0.9 });
     entries.push({ url: `${base}/currency-converter`, changeFrequency: "daily", priority: 0.9 });
     entries.push({ url: `${base}/crypto`, changeFrequency: "hourly", priority: 0.9 });
+    entries.push({ url: `${base}/contact`, changeFrequency: "yearly", priority: 0.3 });
+    entries.push({ url: `${base}/privacy`, changeFrequency: "yearly", priority: 0.2 });
+    entries.push({ url: `${base}/terms`, changeFrequency: "yearly", priority: 0.2 });
     for (const c of CN_CATEGORIES) {
       entries.push({ url: `${base}/topic/${c.slug}`, changeFrequency: "weekly", priority: 0.8 });
     }
