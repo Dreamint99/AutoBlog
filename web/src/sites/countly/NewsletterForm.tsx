@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 
-// Free email capture via Web3Forms (no backend needed). Get a free access key at
-// https://web3forms.com (just enter your email — no account) and set it here or in
-// NEXT_PUBLIC_WEB3FORMS_KEY. Until a key is set, the form shows a gentle notice.
-const ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "";
+// Subscriptions are stored in our OWN Supabase `subscribers` table (RLS: anon may
+// insert only — emails are private). View them in the Supabase dashboard → Table
+// Editor → subscribers. Uses the public anon key (safe to expose client-side).
+const SB_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
+const SB_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
 
 export default function NewsletterForm() {
   const [email, setEmail] = useState("");
@@ -14,13 +15,18 @@ export default function NewsletterForm() {
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     if (!email) return;
-    if (!ACCESS_KEY) { setState("err"); return; }
+    if (!SB_URL || !SB_KEY) { setState("err"); return; }
     setState("loading");
     try {
-      const r = await fetch("https://api.web3forms.com/submit", {
+      const r = await fetch(`${SB_URL}/rest/v1/subscribers`, {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ access_key: ACCESS_KEY, email, subject: "New Countly subscriber", from_name: "Countly" }),
+        headers: {
+          apikey: SB_KEY,
+          Authorization: `Bearer ${SB_KEY}`,
+          "Content-Type": "application/json",
+          Prefer: "return=minimal",
+        },
+        body: JSON.stringify({ email: email.trim(), site: "countly", source: "newsletter" }),
       });
       setState(r.ok ? "ok" : "err");
       if (r.ok) setEmail("");
