@@ -1657,3 +1657,44 @@
 }
 .site-countly .cn-popular-list a::before { content: "→"; color: var(--cn-accent, #4f46e5); font-weight: 800; }
 .site-countly .cn-popular-list a:hover { color: var(--cn-accent, #4f46e5); }
+
+/* ── Interactive tools (currency converter / crypto) ── */
+.site-countly .cn-tool {
+  background: var(--cn-surface, #fff); border: 1px solid var(--cn-line, #e7e9f2);
+  border-radius: 16px; padding: 1.4rem; box-shadow: var(--cn-shadow-sm);
+}
+.site-countly .cn-tool-row { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 0.8rem; }
+.site-countly .cn-tool-field { display: flex; flex-direction: column; gap: 0.3rem; }
+.site-countly .cn-tool-field label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--cn-ink-muted, #6b7488); font-weight: 600; }
+.site-countly .cn-tool input, .site-countly .cn-tool select {
+  font: inherit; font-size: 1rem; padding: 0.6rem 0.7rem; border-radius: 10px;
+  border: 1px solid var(--cn-line, #e7e9f2); background: #fff; color: var(--cn-ink, #0b1020); min-width: 110px;
+}
+.site-countly .cn-tool input:focus, .site-countly .cn-tool select:focus { outline: 2px solid var(--cn-accent, #4f46e5); border-color: var(--cn-accent, #4f46e5); }
+.site-countly .cn-tool-swap { align-self: flex-end; cursor: pointer; border: 1px solid var(--cn-line, #e7e9f2); background: var(--cn-tint, #eef2ff); color: var(--cn-accent, #4f46e5); font-size: 1.1rem; border-radius: 10px; width: 42px; height: 42px; }
+.site-countly .cn-tool-swap:hover { background: var(--cn-accent, #4f46e5); color: #fff; }
+.site-countly .cn-tool-result { margin-top: 1.1rem; padding-top: 1rem; border-top: 1px solid var(--cn-line-soft, #eef0f7); display: flex; flex-direction: column; gap: 0.25rem; }
+.site-countly .cn-tool-result b { font-family: var(--cn-font-display, Fraunces), serif; font-size: clamp(1.2rem, 3vw, 1.7rem); font-variant-numeric: tabular-nums; }
+.site-countly .cn-tool-out { color: var(--cn-accent, #4f46e5); }
+.site-countly .cn-tool-muted { color: var(--cn-ink-muted, #6b7488); font-size: 0.85rem; font-weight: 500; }
+.site-countly .cn-tool-quick { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 1rem; }
+.site-countly .cn-tool-quick button { cursor: pointer; border: 1px solid var(--cn-line, #e7e9f2); background: #fff; color: var(--cn-ink-soft, #475569); font-weight: 600; font-size: 0.82rem; padding: 0.35rem 0.7rem; border-radius: 999px; }
+.site-countly .cn-tool-quick button:hover { border-color: var(--cn-accent, #4f46e5); color: var(--cn-accent, #4f46e5); }
+.site-countly .cn-tool-live { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; color: #ef4444; margin-left: auto; align-self: center; }
+
+/* ── Newsletter ── */
+.site-countly .cn-news { padding: clamp(2rem, 4vw, 3rem) 0; }
+.site-countly .cn-news-card {
+  display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+  background: linear-gradient(120deg, #131a31, #1f2547); border: 1px solid var(--cn-night-line, rgba(255,255,255,.1));
+  border-radius: 20px; padding: clamp(1.5rem, 3vw, 2.2rem);
+}
+.site-countly .cn-news-copy h2 { color: #fff; font-family: var(--cn-font-display, Fraunces), serif; margin: 0 0 0.3rem; font-size: clamp(1.4rem, 3vw, 1.9rem); }
+.site-countly .cn-news-copy p { color: #c7cde0; margin: 0; }
+.site-countly .cn-news-form { display: flex; gap: 0.5rem; flex: 1; min-width: 260px; max-width: 420px; }
+.site-countly .cn-news-form input { flex: 1; min-width: 0; font: inherit; padding: 0.75rem 1rem; border-radius: 999px; border: 1px solid rgba(255,255,255,.2); background: rgba(255,255,255,.08); color: #fff; }
+.site-countly .cn-news-form input::placeholder { color: #9aa3c0; }
+.site-countly .cn-news-form button { cursor: pointer; border: 0; border-radius: 999px; padding: 0.75rem 1.4rem; font-weight: 700; background: linear-gradient(135deg, #818cf8, #6366f1); color: #fff; white-space: nowrap; }
+.site-countly .cn-news-form button:disabled { opacity: 0.6; }
+.site-countly .cn-news-ok { color: #34d399; font-weight: 700; }
+.site-countly .cn-news-err { color: #fca5a5; font-size: 0.85rem; width: 100%; margin: 0.4rem 0 0; }

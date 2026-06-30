@@ -3,6 +3,7 @@ import Link from "next/link";
 import { fontVars } from "./fonts";
 import { top10Articles, topNumber } from "./categories";
 import LiveTicker from "./LiveTicker";
+import NewsletterForm from "./NewsletterForm";
 import type { SiteHomeProps, Article } from "@/lib/types";
 
 /* ────────────────────────────────────────────────────────────
@@ -246,7 +247,8 @@ export function CnHeader({ site }: { site: { id: string; name: string } }) {
           <nav className="cn-nav" aria-label="Primary">
             <Link href={`/s/${site.id}`}>Statistics</Link>
             <Link href={`/s/${site.id}/top10`}>Top 10</Link>
-            <Link href={`/s/${site.id}/topic/companies`}>Companies</Link>
+            <Link href={`/s/${site.id}/crypto`}>Crypto</Link>
+            <Link href={`/s/${site.id}/currency-converter`}>Converter</Link>
             <Link href={`/s/${site.id}/topic/rankings`}>Rankings</Link>
             <Link href={`/s/${site.id}/top10`} className="cn-nav-cta">
               Top 10 lists <IconArrowUR />
@@ -653,6 +655,7 @@ export default function Home({ site, articles }: SiteHomeProps) {
         </div>
       </section>
 
+      <NewsletterForm />
       <SiteFooter siteName={site.name} siteId={site.id} domain={site.domain} />
     </div>
   );
