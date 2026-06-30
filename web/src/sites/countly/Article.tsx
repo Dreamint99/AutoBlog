@@ -2,6 +2,7 @@ import "./theme.css";
 import Link from "next/link";
 import { fontVars } from "./fonts";
 import ShareButtons from "./ShareButtons";
+import ReadingProgress from "./ReadingProgress";
 import type { SiteArticleProps, Article, TocItem } from "@/lib/types";
 
 /* ────────────────────────────────────────────────────────────
@@ -164,6 +165,7 @@ export default function Article({ site, article, related, bodyHtml, toc, popular
 
   return (
     <div className={`cn-root ${fontVars}`}>
+      <ReadingProgress />
       {/* ── HEADER ── */}
       <header className="cn-header">
         <div className="cn-topnote">
@@ -309,6 +311,11 @@ export default function Article({ site, article, related, bodyHtml, toc, popular
               </p>
 
               <div className="article-content" dangerouslySetInnerHTML={{ __html: bodyHtml }} />
+
+              <div className="cn-share-bottom">
+                <span className="cn-share-bottom-label">Found this useful? Share it:</span>
+                <ShareButtons url={`https://${site.domain}/${article.slug}`} title={article.title} />
+              </div>
 
               <div className="cn-article-foot">
                 <span className="cn-verified">
