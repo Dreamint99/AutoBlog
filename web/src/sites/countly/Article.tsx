@@ -3,6 +3,7 @@ import Link from "next/link";
 import { fontVars } from "./fonts";
 import ShareButtons from "./ShareButtons";
 import ReadingProgress from "./ReadingProgress";
+import HouseAd from "./HouseAd";
 import type { SiteArticleProps, Article, TocItem } from "@/lib/types";
 
 /* ────────────────────────────────────────────────────────────
@@ -391,6 +392,7 @@ function SiteFooter({ siteName, siteId, domain }: { siteName: string; siteId: st
   return (
     <footer className="cn-footer">
       <div className="cn-wrap">
+        <HouseAd />
         <div className="cn-foot-top">
           <div>
             <Link href={`/s/${siteId}`} className="cn-brand" aria-label={`${siteName} home`}>
