@@ -1730,3 +1730,20 @@ html { scroll-behavior: smooth; }
 }
 .site-countly .cn-contact-btn:disabled { opacity: 0.6; }
 @media (max-width: 560px) { .site-countly .cn-contact-grid { grid-template-columns: 1fr; } }
+
+/* ── Share buttons ── */
+.site-countly .cn-share { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin: 1.2rem 0 0.4rem; }
+.site-countly .cn-share-label { font-size: 0.82rem; font-weight: 700; color: var(--cn-ink-muted, #6b7488); margin-right: 0.2rem; }
+.site-countly .cn-share-btn {
+  cursor: pointer; border: 1px solid var(--cn-line, #e7e9f2); background: #fff; color: var(--cn-ink-soft, #475569);
+  font: inherit; font-size: 0.82rem; font-weight: 600; padding: 0.4rem 0.8rem; border-radius: 999px;
+  text-decoration: none; line-height: 1.4; transition: all 0.15s;
+}
+.site-countly .cn-share-btn:hover { color: #fff; border-color: transparent; transform: translateY(-1px); }
+.site-countly .cn-share-x:hover { background: #000; }
+.site-countly .cn-share-facebook:hover { background: #1877f2; }
+.site-countly .cn-share-whatsapp:hover { background: #25d366; color: #06351a; }
+.site-countly .cn-share-linkedin:hover { background: #0a66c2; }
+.site-countly .cn-share-copy:hover, .site-countly .cn-share-native:hover { background: var(--cn-accent, #4f46e5); }
+.site-countly .cn-share-native { display: none; }
+@media (max-width: 700px) { .site-countly .cn-share-native { display: inline-block; } }

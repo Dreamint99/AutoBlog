@@ -1,6 +1,7 @@
 import "./theme.css";
 import Link from "next/link";
 import { fontVars } from "./fonts";
+import ShareButtons from "./ShareButtons";
 import type { SiteArticleProps, Article, TocItem } from "@/lib/types";
 
 /* ────────────────────────────────────────────────────────────
@@ -247,6 +248,8 @@ export default function Article({ site, article, related, bodyHtml, toc, popular
                 ))}
               </div>
             ) : null}
+
+            <ShareButtons url={`https://${site.domain}/${article.slug}`} title={article.title} />
 
             {article.image_url ? (
               <div className="cn-hero-img">
