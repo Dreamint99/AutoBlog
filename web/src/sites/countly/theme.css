@@ -1807,3 +1807,14 @@ html { scroll-behavior: smooth; }
   background: linear-gradient(135deg, #6ee7b7, #34d399); padding: 0.6rem 1.1rem; border-radius: 999px;
 }
 .site-countly .cn-housead:hover .cn-housead-cta { filter: brightness(1.06); }
+
+/* ── In-article images: reserve space to prevent layout shift (CLS) ── */
+.site-countly .article-content img { max-width: 100%; height: auto; }
+.site-countly .article-content figure.post-image { margin: 1.6rem 0; }
+.site-countly .article-content figure.post-image img {
+  width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 12px; display: block;
+  background: var(--cn-surface-alt, #f7f8fc);
+}
+.site-countly .article-content figure.post-image figcaption {
+  font-size: 0.85rem; color: var(--cn-ink-muted, #6b7488); margin-top: 0.4rem; text-align: center;
+}
