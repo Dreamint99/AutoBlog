@@ -144,9 +144,10 @@ def _first_hit(candidates: list[str], horizontal: bool = True) -> str | None:
 
 
 def feature_image(title: str, site: dict, query: str | None = None) -> str:
-    """Reliable AND on-topic hero image. Tries the article's actual subject first
-    (so a 'Top 10 Hypermarkets' piece gets a supermarket photo, not a random one),
-    then the supplied query, then a niche-generic, then AI as a last resort."""
+    """PERMANENT, on-topic hero image. Pixabay hotlink URLs EXPIRE (start 400-ing),
+    so we use Wikipedia's permanent image (upload.wikimedia.org) first — matched to
+    the article's real subject — then Pollinations AI (also a permanent URL) as a
+    relevant fallback. Both render in browsers and never break later."""
     niche = site.get("niche", "")
     primary = (niche.split(",")[0].strip() if niche else "") or "infographic"
     candidates = _subject_terms(title)
@@ -156,32 +157,21 @@ def feature_image(title: str, site: dict, query: str | None = None) -> str:
     if sq:
         candidates.append(sq)
     candidates.append(primary)
-    url = _first_hit(candidates, True)
-    if url:
-        return url
+    for c in candidates:
+        w = _wikimedia(c)
+        if w:
+            return w
     q = candidates[0] if candidates else primary
     return _pollinations(f"editorial photo, {q}, no text", 1200, 630)
 
 
 def inline_image(keyword: str) -> str:
-    """Reliable, on-topic in-article image. For NAMED entities (banks, universities,
-    companies, places, logos) use Wikipedia's real image first; otherwise a relevant
-    Pixabay photo; AI generation only as a last resort."""
-    # 1) Wikipedia real image — best for the specific named thing in the caption.
+    """PERMANENT, on-topic in-article image. Wikipedia's real image first (great for
+    named entities), Pollinations AI as a permanent fallback. No Pixabay — its
+    hotlink URLs expire and start returning 400."""
     wiki = _wikimedia(keyword)
     if wiki:
         return wiki
-    # 2) Pixabay stock photo (keep the subject; no random single-word fallback).
-    words = keyword.split()
-    candidates = [keyword]
-    if len(words) > 2:
-        candidates.append(" ".join(words[:2]))
-    sq = short_query(keyword, n=2)
-    if sq:
-        candidates.append(sq)
-    url = _first_hit(candidates, True)
-    if url:
-        return url
     return _pollinations(f"editorial photo, {keyword}, no text", 1000, 560)
 
 

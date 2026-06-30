@@ -21,6 +21,9 @@ def _fix_body(body: str, site: dict) -> str:
     universities, companies) get a real Wikipedia image instead of a random photo."""
     def repl(m: re.Match) -> str:
         tag = m.group(0)
+        # only replace images from sources that break/expire (Pixabay 400s, Pollinations flaky)
+        if "pixabay" not in tag and "pollinations" not in tag:
+            return tag
         alt_m = re.search(r'alt="([^"]*)"', tag)
         alt = (alt_m.group(1) if alt_m else "").strip() or "statistics data"
         new = inline_image(alt)
@@ -37,9 +40,9 @@ def main():
         fields = {}
         title = a.get("title", "")
         fu = a.get("image_url", "") or ""
-        # Re-image the hero if it's a flaky Pollinations URL OR a listicle whose
-        # hero should be on-topic (subject-relevant). Leave good storage images alone.
-        if "pollinations" in fu or _subject_terms(title):
+        # Re-image the hero if it's broken/expiring (Pixabay 400s, Pollinations flaky)
+        # or missing. Leave permanent Wikimedia / Supabase-storage images alone.
+        if (not fu) or ("pixabay" in fu) or ("pollinations" in fu):
             fields["image_url"] = feature_image(title, site)
         body = a.get("body_html", "") or ""
         if "<img" in body:
