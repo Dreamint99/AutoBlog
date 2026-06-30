@@ -12,6 +12,12 @@ const AHREFS_KEYS: Record<string, string> = {
 };
 const ahrefsKey = AHREFS_KEYS[process.env.SITE_ID || ""] || "";
 
+// Google Analytics 4 — per-property measurement ID, loaded only on its own site.
+const GA4_IDS: Record<string, string> = {
+  countly: "G-6RX4BLWGKH",
+};
+const ga4Id = GA4_IDS[process.env.SITE_ID || ""] || "";
+
 // Search-engine site verification, per-deployment via env (set on Vercel).
 //   GOOGLE_SITE_VERIFICATION  → <meta name="google-site-verification">
 //   YANDEX_VERIFICATION       → <meta name="yandex-verification">
@@ -44,6 +50,21 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             data-key={ahrefsKey}
             strategy="afterInteractive"
           />
+        ) : null}
+        {ga4Id ? (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}
+              strategy="afterInteractive"
+            />
+            <Script
+              id="ga4-init"
+              strategy="afterInteractive"
+              dangerouslySetInnerHTML={{
+                __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${ga4Id}');`,
+              }}
+            />
+          </>
         ) : null}
       </body>
     </html>
