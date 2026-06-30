@@ -1785,3 +1785,25 @@ html { scroll-behavior: smooth; }
 }
 .site-countly .cn-totop.show { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
 .site-countly .cn-totop:hover { background: linear-gradient(135deg, #818cf8, #6366f1); }
+
+/* ── House ad / sister-site cross-promo (footer) ── */
+.site-countly .cn-housead {
+  display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+  margin: 0 0 2rem; padding: 1rem 1.3rem; border-radius: 16px;
+  background: linear-gradient(120deg, #0b3d1f, #0f5a2e);
+  border: 1px solid rgba(52, 211, 153, 0.35); text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.site-countly .cn-housead:hover { transform: translateY(-2px); box-shadow: 0 14px 30px -16px rgba(15, 90, 46, 0.8); }
+.site-countly .cn-housead-badge {
+  flex: none; width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center;
+  font-size: 1.5rem; background: rgba(255, 255, 255, 0.12);
+}
+.site-countly .cn-housead-copy { display: flex; flex-direction: column; line-height: 1.25; flex: 1; min-width: 180px; }
+.site-countly .cn-housead-copy b { color: #fff; font-size: 1.05rem; font-weight: 800; letter-spacing: -0.01em; }
+.site-countly .cn-housead-copy small { color: #b6e7cb; font-size: 0.85rem; }
+.site-countly .cn-housead-cta {
+  flex: none; white-space: nowrap; font-weight: 700; font-size: 0.9rem; color: #06351a;
+  background: linear-gradient(135deg, #6ee7b7, #34d399); padding: 0.6rem 1.1rem; border-radius: 999px;
+}
+.site-countly .cn-housead:hover .cn-housead-cta { filter: brightness(1.06); }

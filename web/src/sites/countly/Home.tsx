@@ -4,6 +4,7 @@ import { fontVars } from "./fonts";
 import { top10Articles, topNumber } from "./categories";
 import LiveTicker from "./LiveTicker";
 import NewsletterForm from "./NewsletterForm";
+import HouseAd from "./HouseAd";
 import type { SiteHomeProps, Article } from "@/lib/types";
 
 /* ────────────────────────────────────────────────────────────
@@ -669,6 +670,7 @@ export function SiteFooter({ siteName, siteId, domain }: { siteName: string; sit
   return (
     <footer className="cn-footer">
       <div className="cn-wrap">
+        <HouseAd />
         <div className="cn-foot-top">
           <div>
             <Link href={`/s/${siteId}`} className="cn-brand" aria-label={`${siteName} home`}>
