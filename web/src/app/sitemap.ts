@@ -43,6 +43,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Countly: Top 10 hub + topic/category landing pages + free tools.
   if (site.id === "countly") {
+    entries.push({ url: `${base}/best-ai-tools`, changeFrequency: "daily", priority: 0.9 });
     entries.push({ url: `${base}/top10`, changeFrequency: "daily", priority: 0.9 });
     entries.push({ url: `${base}/currency-converter`, changeFrequency: "daily", priority: 0.9 });
     entries.push({ url: `${base}/crypto`, changeFrequency: "hourly", priority: 0.9 });

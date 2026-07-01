@@ -1,0 +1,2540 @@
+{
+  "categories": [
+    {
+      "category": "AI Chatbots & Assistants",
+      "key": "chatbots",
+      "heading_keyword": "Best AI Chatbots & Assistants",
+      "blurb": "The top conversational AI assistants of 2026 for chat, research, coding help, and everyday productivity.",
+      "tools": [
+        {
+          "name": "ChatGPT",
+          "slug": "chatbots-chatgpt",
+          "url": "https://chatgpt.com",
+          "blurb": "OpenAI's flagship assistant for writing, research, coding, voice, and image tasks; the most-used AI chatbot in the world.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "900M+ weekly",
+          "tags": [
+            "chatgpt",
+            "openai",
+            "gpt",
+            "assistant",
+            "conversational ai"
+          ],
+          "highlight": "Largest user base"
+        },
+        {
+          "name": "Google Gemini",
+          "slug": "chatbots-google-gemini",
+          "url": "https://gemini.google.com",
+          "blurb": "Google's multimodal assistant with deep Search, Workspace, and Android integration plus long-context reasoning.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "gemini",
+            "google",
+            "multimodal",
+            "assistant",
+            "workspace"
+          ],
+          "highlight": "Deep Google integration"
+        },
+        {
+          "name": "Microsoft Copilot",
+          "slug": "chatbots-microsoft-copilot",
+          "url": "https://copilot.microsoft.com",
+          "blurb": "Microsoft's AI companion built into Windows, Edge, and Microsoft 365 for everyday tasks and enterprise workflows.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "copilot",
+            "microsoft",
+            "windows",
+            "microsoft 365",
+            "assistant"
+          ],
+          "highlight": "Built into Windows & Office"
+        },
+        {
+          "name": "Meta AI",
+          "slug": "chatbots-meta-ai",
+          "url": "https://www.meta.ai",
+          "blurb": "Meta's Llama-powered assistant embedded across WhatsApp, Instagram, and Messenger, plus a standalone app.",
+          "pricing": "Free",
+          "github": "",
+          "users_est": "1B+ MAU",
+          "tags": [
+            "meta ai",
+            "llama",
+            "whatsapp",
+            "instagram",
+            "assistant"
+          ],
+          "highlight": "Reaches billions in-app"
+        },
+        {
+          "name": "Claude",
+          "slug": "chatbots-claude",
+          "url": "https://claude.ai",
+          "blurb": "Anthropic's assistant known for strong reasoning, long documents, coding, and a safety-focused approach.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "claude",
+            "anthropic",
+            "reasoning",
+            "coding",
+            "assistant"
+          ],
+          "highlight": "Excellent for long docs & code"
+        },
+        {
+          "name": "Perplexity",
+          "slug": "chatbots-perplexity",
+          "url": "https://www.perplexity.ai",
+          "blurb": "An answer engine that combines live web search with AI, returning cited, up-to-date responses.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "perplexity",
+            "answer engine",
+            "search",
+            "citations",
+            "research"
+          ],
+          "highlight": "Cited, real-time answers"
+        },
+        {
+          "name": "Grok",
+          "slug": "chatbots-grok",
+          "url": "https://grok.com",
+          "blurb": "xAI's assistant with real-time knowledge from X and a candid, less-filtered conversational style.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "grok",
+            "xai",
+            "x",
+            "real-time",
+            "assistant"
+          ],
+          "highlight": "Live X integration"
+        },
+        {
+          "name": "DeepSeek",
+          "slug": "chatbots-deepseek",
+          "url": "https://www.deepseek.com",
+          "blurb": "A high-performance, low-cost assistant from China with strong reasoning and open model weights.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "deepseek",
+            "reasoning",
+            "open weights",
+            "low cost",
+            "assistant"
+          ],
+          "highlight": "Strong reasoning, low cost"
+        },
+        {
+          "name": "Mistral Le Chat",
+          "slug": "chatbots-mistral-le-chat",
+          "url": "https://chat.mistral.ai",
+          "blurb": "Mistral AI's European assistant (now branded Vibe) with fast responses, agents, and a privacy-first stance.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "mistral",
+            "le chat",
+            "vibe",
+            "europe",
+            "privacy"
+          ],
+          "highlight": "Privacy-first EU assistant"
+        },
+        {
+          "name": "Poe",
+          "slug": "chatbots-poe",
+          "url": "https://poe.com",
+          "blurb": "Quora's aggregator that lets you chat with many top models and custom bots from a single interface.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "poe",
+            "quora",
+            "multi-model",
+            "bots",
+            "aggregator"
+          ],
+          "highlight": "Many models in one app"
+        },
+        {
+          "name": "Pi",
+          "slug": "chatbots-pi-inflection",
+          "url": "https://pi.ai",
+          "blurb": "Inflection's empathetic personal AI focused on supportive, emotionally intelligent conversation and voice chat.",
+          "pricing": "Free",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "pi",
+            "inflection",
+            "empathetic",
+            "personal ai",
+            "voice"
+          ],
+          "highlight": "Warm, empathetic personality"
+        },
+        {
+          "name": "LibreChat",
+          "slug": "chatbots-librechat",
+          "url": "https://www.librechat.ai",
+          "blurb": "Open-source, self-hosted chat platform that unifies ChatGPT, Claude, Gemini, DeepSeek and more with agents and MCP.",
+          "pricing": "Open source",
+          "github": "danny-avila/LibreChat",
+          "users_est": "",
+          "tags": [
+            "librechat",
+            "open source",
+            "self-hosted",
+            "multi-model",
+            "mcp"
+          ],
+          "highlight": "Self-hosted, all models"
+        }
+      ]
+    },
+    {
+      "category": "AI Coding Tools",
+      "key": "coding",
+      "heading_keyword": "Best AI Tools for Coding",
+      "blurb": "The top AI coding assistants and agentic dev tools developers actually use in 2026, from IDE copilots to terminal agents.",
+      "tools": [
+        {
+          "name": "Cursor",
+          "slug": "coding-cursor",
+          "url": "https://cursor.com",
+          "blurb": "The most popular AI-native code editor. A VS Code fork with agentic multi-file edits, codebase-aware chat, and tab autocomplete.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "ai code editor",
+            "ide",
+            "autocomplete",
+            "agentic",
+            "vscode fork",
+            "pair programming"
+          ],
+          "highlight": "Most polished AI IDE"
+        },
+        {
+          "name": "Claude Code",
+          "slug": "coding-claude-code",
+          "url": "https://claude.com/claude-code",
+          "blurb": "Anthropic's terminal-based agentic coding tool. Strong project-level planning and coherent multi-file changes across a whole codebase.",
+          "pricing": "Paid",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "terminal agent",
+            "cli",
+            "anthropic",
+            "agentic coding",
+            "codebase context",
+            "mcp"
+          ],
+          "highlight": "Best terminal coding agent"
+        },
+        {
+          "name": "GitHub Copilot",
+          "slug": "coding-github-copilot",
+          "url": "https://github.com/features/copilot",
+          "blurb": "The original AI pair programmer, deeply integrated into VS Code, JetBrains, and GitHub with agent mode and multi-model choice.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "20M+ users",
+          "tags": [
+            "autocomplete",
+            "vscode",
+            "jetbrains",
+            "agent mode",
+            "microsoft",
+            "github"
+          ],
+          "highlight": "Deepest IDE integration"
+        },
+        {
+          "name": "OpenAI Codex CLI",
+          "slug": "coding-openai-codex-cli",
+          "url": "https://developers.openai.com/codex/cli",
+          "blurb": "OpenAI's lightweight, open-source coding agent that runs locally in your terminal to execute tasks with tight CI/CD hooks.",
+          "pricing": "Free + Paid",
+          "github": "openai/codex",
+          "users_est": "",
+          "tags": [
+            "terminal agent",
+            "cli",
+            "openai",
+            "codex",
+            "open source",
+            "agentic"
+          ],
+          "highlight": "Lightweight local agent"
+        },
+        {
+          "name": "Gemini CLI",
+          "slug": "coding-gemini-cli",
+          "url": "https://github.com/google-gemini/gemini-cli",
+          "blurb": "Google's open-source terminal AI agent with a 1M-token context, MCP support, and one of the most generous free tiers available.",
+          "pricing": "Open source",
+          "github": "google-gemini/gemini-cli",
+          "users_est": "",
+          "tags": [
+            "terminal agent",
+            "cli",
+            "google",
+            "gemini",
+            "open source",
+            "1m context"
+          ],
+          "highlight": "Generous free tier"
+        },
+        {
+          "name": "Cline",
+          "slug": "coding-cline",
+          "url": "https://cline.bot",
+          "blurb": "Open-source agentic coding assistant for VS Code, JetBrains, and CLI with bring-your-own-key model flexibility and full tool use.",
+          "pricing": "Open source",
+          "github": "cline/cline",
+          "users_est": "",
+          "tags": [
+            "open source",
+            "vscode",
+            "byok",
+            "agentic",
+            "jetbrains",
+            "cli"
+          ],
+          "highlight": "Vendor-independent BYOK"
+        },
+        {
+          "name": "Windsurf",
+          "slug": "coding-windsurf",
+          "url": "https://windsurf.com",
+          "blurb": "Agentic AI IDE (formerly Codeium) known for its Cascade agent and codemaps, now developed by Cognition and transitioning to Devin Desktop.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "ai ide",
+            "agentic",
+            "cascade",
+            "codeium",
+            "cognition",
+            "codemaps"
+          ],
+          "highlight": "Cascade agentic flow"
+        },
+        {
+          "name": "Aider",
+          "slug": "coding-aider",
+          "url": "https://aider.chat",
+          "blurb": "Open-source AI pair programming in your terminal with bulletproof Git integration and precise, reviewable edits across any LLM.",
+          "pricing": "Open source",
+          "github": "Aider-AI/aider",
+          "users_est": "",
+          "tags": [
+            "terminal",
+            "cli",
+            "git",
+            "open source",
+            "pair programming",
+            "byok"
+          ],
+          "highlight": "Best Git integration"
+        },
+        {
+          "name": "Kiro",
+          "slug": "coding-kiro",
+          "url": "https://kiro.dev",
+          "blurb": "AWS's agentic IDE and CLI built for spec-driven development, planning and verifying changes from structured specifications. Successor to Amazon Q Developer.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "aws",
+            "agentic ide",
+            "spec-driven",
+            "cli",
+            "amazon",
+            "mcp"
+          ],
+          "highlight": "Spec-driven engineering"
+        },
+        {
+          "name": "Tabnine",
+          "slug": "coding-tabnine",
+          "url": "https://tabnine.com",
+          "blurb": "Privacy-first AI code assistant for teams, with self-hosted deployment options and code completion trained on permissively licensed code.",
+          "pricing": "Paid",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "autocomplete",
+            "enterprise",
+            "privacy",
+            "self-hosted",
+            "code completion",
+            "teams"
+          ],
+          "highlight": "Privacy-first for teams"
+        },
+        {
+          "name": "v0 by Vercel",
+          "slug": "coding-v0-vercel",
+          "url": "https://v0.app",
+          "blurb": "Vercel's AI app builder that generates React, Tailwind, and shadcn/ui interfaces from natural-language prompts and images.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "ui generation",
+            "react",
+            "tailwind",
+            "vercel",
+            "frontend",
+            "shadcn"
+          ],
+          "highlight": "Prompt-to-UI generation"
+        },
+        {
+          "name": "Bolt.new",
+          "slug": "coding-bolt-new",
+          "url": "https://bolt.new",
+          "blurb": "StackBlitz's in-browser AI web dev agent that scaffolds, edits, runs, and deploys full-stack apps entirely from the browser.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "ai app builder",
+            "full-stack",
+            "browser ide",
+            "stackblitz",
+            "web dev",
+            "deploy"
+          ],
+          "highlight": "Full-stack in the browser"
+        }
+      ]
+    },
+    {
+      "category": "AI Image Generators",
+      "key": "image",
+      "heading_keyword": "Best AI Image Generation Tools",
+      "blurb": "The best AI image generators of 2026 for creating art, photorealistic visuals, logos, and marketing assets from text prompts.",
+      "tools": [
+        {
+          "name": "Midjourney",
+          "slug": "image-midjourney",
+          "url": "https://www.midjourney.com",
+          "blurb": "Industry-leading text-to-image generator known for its striking, highly aesthetic art style and photorealism, now with web editor and video.",
+          "pricing": "Paid",
+          "github": "",
+          "users_est": "20M+ users",
+          "tags": [
+            "text-to-image",
+            "ai art",
+            "photorealistic",
+            "creative",
+            "discord"
+          ],
+          "highlight": "Best-in-class aesthetics"
+        },
+        {
+          "name": "DALL-E 3",
+          "slug": "image-dalle-3",
+          "url": "https://openai.com/index/dall-e-3",
+          "blurb": "OpenAI's image generator built into ChatGPT, excelling at prompt adherence, in-image text rendering, and conversational editing.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "text-to-image",
+            "openai",
+            "chatgpt",
+            "prompt-adherence",
+            "text-in-image"
+          ],
+          "highlight": "Best prompt following"
+        },
+        {
+          "name": "Flux",
+          "slug": "image-flux",
+          "url": "https://bfl.ai",
+          "blurb": "Black Forest Labs' state-of-the-art open-weight model family (FLUX.1) with exceptional detail, prompt accuracy, and hand/text rendering.",
+          "pricing": "Free + Paid",
+          "github": "black-forest-labs/flux",
+          "users_est": "",
+          "tags": [
+            "open-weight",
+            "text-to-image",
+            "high-detail",
+            "black-forest-labs",
+            "diffusion"
+          ],
+          "highlight": "SOTA open-weight quality"
+        },
+        {
+          "name": "Stable Diffusion",
+          "slug": "image-stable-diffusion",
+          "url": "https://stability.ai/stable-image",
+          "blurb": "Stability AI's foundational open-source model powering countless tools, endlessly fine-tunable and free to run locally.",
+          "pricing": "Open source",
+          "github": "Stability-AI/generative-models",
+          "users_est": "",
+          "tags": [
+            "open-source",
+            "text-to-image",
+            "local",
+            "fine-tuning",
+            "stability-ai"
+          ],
+          "highlight": "The open-source foundation"
+        },
+        {
+          "name": "Adobe Firefly",
+          "slug": "image-adobe-firefly",
+          "url": "https://www.adobe.com/products/firefly.html",
+          "blurb": "Adobe's commercially-safe generative AI trained on licensed content, deeply integrated into Photoshop with Generative Fill.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "adobe",
+            "commercially-safe",
+            "photoshop",
+            "generative-fill",
+            "enterprise"
+          ],
+          "highlight": "Commercially safe & integrated"
+        },
+        {
+          "name": "Ideogram",
+          "slug": "image-ideogram",
+          "url": "https://ideogram.ai",
+          "blurb": "Standout generator for rendering legible text in images, making it a favorite for logos, posters, and typography-heavy designs.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "text-in-image",
+            "typography",
+            "logos",
+            "posters",
+            "text-to-image"
+          ],
+          "highlight": "Best in-image text"
+        },
+        {
+          "name": "Leonardo AI",
+          "slug": "image-leonardo-ai",
+          "url": "https://leonardo.ai",
+          "blurb": "Feature-rich platform popular with game artists and designers, offering fine-tuned models, real-time canvas, and consistent characters.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "game-art",
+            "design",
+            "fine-tuned-models",
+            "canvas",
+            "character-consistency"
+          ],
+          "highlight": "Creator-focused toolkit"
+        },
+        {
+          "name": "Recraft",
+          "slug": "image-recraft",
+          "url": "https://www.recraft.ai",
+          "blurb": "Design-first generator producing vector art, SVG, brand-consistent styles, and precise text, built for professional graphic workflows.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "vector",
+            "svg",
+            "brand-design",
+            "graphic-design",
+            "text-to-image"
+          ],
+          "highlight": "Vector & brand design"
+        },
+        {
+          "name": "ComfyUI",
+          "slug": "image-comfyui",
+          "url": "https://www.comfy.org",
+          "blurb": "Powerful node-based interface for building custom Stable Diffusion and Flux pipelines with total control over every generation step.",
+          "pricing": "Open source",
+          "github": "comfyanonymous/ComfyUI",
+          "users_est": "",
+          "tags": [
+            "node-based",
+            "open-source",
+            "workflow",
+            "local",
+            "advanced"
+          ],
+          "highlight": "Node-based power tool"
+        },
+        {
+          "name": "AUTOMATIC1111 Stable Diffusion WebUI",
+          "slug": "image-automatic1111-webui",
+          "url": "https://github.com/AUTOMATIC1111/stable-diffusion-webui",
+          "blurb": "The most popular open-source web UI for running Stable Diffusion locally, with extensions, inpainting, and a vast community.",
+          "pricing": "Open source",
+          "github": "AUTOMATIC1111/stable-diffusion-webui",
+          "users_est": "",
+          "tags": [
+            "open-source",
+            "web-ui",
+            "local",
+            "stable-diffusion",
+            "extensions"
+          ],
+          "highlight": "Most popular local WebUI"
+        }
+      ]
+    },
+    {
+      "category": "AI Video Generation & Editing",
+      "key": "video",
+      "heading_keyword": "Best AI Video Editing & Generation Tools",
+      "blurb": "The top AI tools for generating cinematic video from text and images, creating avatar presenters, and editing footage into polished, share-ready clips.",
+      "tools": [
+        {
+          "name": "Google Veo",
+          "slug": "video-google-veo",
+          "url": "https://deepmind.google/models/veo",
+          "blurb": "Google DeepMind's flagship video model with native audio, strong prompt adherence and up to 4K output; a 2026 all-round quality leader.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "text-to-video",
+            "image-to-video",
+            "native-audio",
+            "4k",
+            "deepmind"
+          ],
+          "highlight": "Best overall cinematic quality"
+        },
+        {
+          "name": "Runway",
+          "slug": "video-runway",
+          "url": "https://runwayml.com",
+          "blurb": "Pro creative suite (Gen-4/Gen-4.5) with granular camera control, motion brush and reference-driven character consistency plus a built-in editor.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "text-to-video",
+            "image-to-video",
+            "motion-brush",
+            "camera-control",
+            "editor"
+          ],
+          "highlight": "Granular creative control"
+        },
+        {
+          "name": "Kling AI",
+          "slug": "video-kling-ai",
+          "url": "https://kling.ai",
+          "blurb": "Kuaishou's model (Kling 3.0) excels at cinematic lighting, complex motion and multi-shot storyboards with subject consistency at low per-second cost.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "text-to-video",
+            "image-to-video",
+            "multi-shot",
+            "character-consistency",
+            "cinematic"
+          ],
+          "highlight": "Cheap premium multi-shot video"
+        },
+        {
+          "name": "Synthesia",
+          "slug": "video-synthesia",
+          "url": "https://www.synthesia.io",
+          "blurb": "Enterprise AI avatar platform turning scripts into studio-quality presenter videos in 160+ languages, with LMS integration for training content.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "ai-avatar",
+            "text-to-video",
+            "corporate-training",
+            "multilingual",
+            "voiceover"
+          ],
+          "highlight": "Enterprise avatar video at scale"
+        },
+        {
+          "name": "HeyGen",
+          "slug": "video-heygen",
+          "url": "https://www.heygen.com",
+          "blurb": "Hyper-realistic AI avatars built from a short recording, plus lip-sync translation and social clips for marketing and sales.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "ai-avatar",
+            "lip-sync",
+            "translation",
+            "marketing",
+            "social"
+          ],
+          "highlight": "Most realistic marketing avatars"
+        },
+        {
+          "name": "Pika",
+          "slug": "video-pika",
+          "url": "https://pika.art",
+          "blurb": "Idea-to-video platform loved by social creators for playful effects like Pikaffects, Pikaswaps and Pikadditions plus lip-sync.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "text-to-video",
+            "image-to-video",
+            "social",
+            "effects",
+            "lip-sync"
+          ],
+          "highlight": "Fun effects for social creators"
+        },
+        {
+          "name": "Luma Dream Machine",
+          "slug": "video-luma-dream-machine",
+          "url": "https://lumalabs.ai",
+          "blurb": "Luma Labs' fast, fluid text- and image-to-video model with natural motion and camera moves, wrapped in an approachable creative agent workflow.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "text-to-video",
+            "image-to-video",
+            "camera-motion",
+            "fast",
+            "luma-labs"
+          ],
+          "highlight": "Fast, fluid motion"
+        },
+        {
+          "name": "Hailuo (MiniMax)",
+          "slug": "video-hailuo-minimax",
+          "url": "https://hailuoai.video",
+          "blurb": "MiniMax's Hailuo model delivers realistic, stable image-to-video with expressive motion and a one-click Media Agent for hands-off creation.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "text-to-video",
+            "image-to-video",
+            "minimax",
+            "media-agent",
+            "realistic"
+          ],
+          "highlight": "Expressive, stable motion"
+        },
+        {
+          "name": "Descript",
+          "slug": "video-descript",
+          "url": "https://www.descript.com",
+          "blurb": "Edit video and podcasts by editing the transcript; includes AI voices, filler-word removal, Overdub and Studio Sound for conversation-heavy content.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "text-based-editing",
+            "transcript",
+            "podcast",
+            "ai-voice",
+            "captions"
+          ],
+          "highlight": "Edit video by editing text"
+        },
+        {
+          "name": "OpusClip",
+          "slug": "video-opusclip",
+          "url": "https://www.opus.pro",
+          "blurb": "Turns long videos into multiple viral short clips automatically, detecting highlights, reframing to vertical and adding animated captions.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "clipping",
+            "short-form",
+            "highlights",
+            "captions",
+            "repurposing"
+          ],
+          "highlight": "Long video to viral shorts"
+        },
+        {
+          "name": "CapCut",
+          "slug": "video-capcut",
+          "url": "https://www.capcut.com",
+          "blurb": "ByteDance's popular editor with AI auto-reframe, captions, effects and templates built for fast TikTok, Reels and Shorts turnaround.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "video-editor",
+            "short-form",
+            "captions",
+            "templates",
+            "auto-reframe"
+          ],
+          "highlight": "Fast short-form editing"
+        },
+        {
+          "name": "Veed.io",
+          "slug": "video-veed-io",
+          "url": "https://www.veed.io",
+          "blurb": "Browser-based video editor with AI subtitles, avatars, background removal and team collaboration, requiring no download for remote workflows.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "video-editor",
+            "browser-based",
+            "subtitles",
+            "collaboration",
+            "no-download"
+          ],
+          "highlight": "Browser-based collaborative editing"
+        }
+      ]
+    },
+    {
+      "category": "AI Audio, Music & Voice",
+      "key": "audio",
+      "heading_keyword": "Best AI Music & Voice Tools",
+      "blurb": "The top AI tools for generating music, cloning voices, producing speech, and cleaning up audio in 2026.",
+      "tools": [
+        {
+          "name": "ElevenLabs",
+          "slug": "audio-elevenlabs",
+          "url": "https://elevenlabs.io",
+          "blurb": "Industry-leading AI voice platform for hyper-realistic text-to-speech, voice cloning, dubbing, and commercial-safe music generation.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "text-to-speech",
+            "voice cloning",
+            "dubbing",
+            "voiceover",
+            "ai music"
+          ],
+          "highlight": "Most realistic AI voices"
+        },
+        {
+          "name": "Suno",
+          "slug": "audio-suno",
+          "url": "https://suno.com",
+          "blurb": "The most popular AI music generator, creating full songs with vocals, lyrics, and instrumentation from a text prompt.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "2M+ paid subscribers",
+          "tags": [
+            "ai music",
+            "song generator",
+            "vocals",
+            "music production",
+            "text-to-music"
+          ],
+          "highlight": "Top-quality full songs"
+        },
+        {
+          "name": "Udio",
+          "slug": "audio-udio",
+          "url": "https://www.udio.com",
+          "blurb": "High-fidelity AI music generator known for section-level inpainting, now backed by a UMG settlement and a licensed platform in the works.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "ai music",
+            "song generator",
+            "inpainting",
+            "music production",
+            "licensing"
+          ],
+          "highlight": "Section-level track editing"
+        },
+        {
+          "name": "OpenAI Whisper",
+          "slug": "audio-whisper",
+          "url": "https://github.com/openai/whisper",
+          "blurb": "Open-source speech-recognition model for robust multilingual transcription and translation, trained on 680k hours of audio.",
+          "pricing": "Open source",
+          "github": "openai/whisper",
+          "users_est": "",
+          "tags": [
+            "speech recognition",
+            "transcription",
+            "asr",
+            "open source",
+            "multilingual"
+          ],
+          "highlight": "Best open-source ASR"
+        },
+        {
+          "name": "Descript",
+          "slug": "audio-descript",
+          "url": "https://www.descript.com",
+          "blurb": "All-in-one audio and video editor that edits recordings by editing text, with AI transcription, filler-word removal, and Overdub voice cloning.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "audio editing",
+            "transcription",
+            "podcast",
+            "voice cloning",
+            "text-based editing"
+          ],
+          "highlight": "Edit audio like a doc"
+        },
+        {
+          "name": "Murf AI",
+          "slug": "audio-murf-ai",
+          "url": "https://murf.ai",
+          "blurb": "AI voiceover studio with 200+ natural voices across languages, built for e-learning, ads, presentations, and video narration.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "text-to-speech",
+            "voiceover",
+            "narration",
+            "e-learning",
+            "ai voices"
+          ],
+          "highlight": "Studio-grade voiceovers"
+        },
+        {
+          "name": "Resemble AI",
+          "slug": "audio-resemble-ai",
+          "url": "https://www.resemble.ai",
+          "blurb": "Enterprise voice-cloning and generative speech platform with real-time voice conversion and deepfake audio detection.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "voice cloning",
+            "text-to-speech",
+            "voice conversion",
+            "enterprise",
+            "deepfake detection"
+          ],
+          "highlight": "Enterprise voice cloning"
+        },
+        {
+          "name": "Adobe Podcast",
+          "slug": "audio-adobe-podcast",
+          "url": "https://podcast.adobe.com",
+          "blurb": "Adobe's AI audio suite whose Enhance Speech tool removes noise and echo to make recordings sound studio-quality.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "audio enhancement",
+            "noise removal",
+            "podcast",
+            "speech enhance",
+            "post-production"
+          ],
+          "highlight": "Studio-quality speech cleanup"
+        },
+        {
+          "name": "Speechify",
+          "slug": "audio-speechify",
+          "url": "https://speechify.com",
+          "blurb": "Popular text-to-speech reader that turns documents, articles, and PDFs into natural spoken audio with celebrity and custom voices.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "text-to-speech",
+            "reader",
+            "accessibility",
+            "audiobook",
+            "productivity"
+          ],
+          "highlight": "Read anything aloud"
+        },
+        {
+          "name": "LALAL.AI",
+          "slug": "audio-lalal-ai",
+          "url": "https://www.lalal.ai",
+          "blurb": "AI stem-separation service that splits tracks into vocals, drums, bass, and instruments with high-quality isolation.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "stem separation",
+            "vocal remover",
+            "music production",
+            "remix",
+            "audio isolation"
+          ],
+          "highlight": "Clean stem separation"
+        },
+        {
+          "name": "Play.ht",
+          "slug": "audio-play-ht",
+          "url": "https://play.ht",
+          "blurb": "AI voice generator and low-latency voice API offering ultra-realistic text-to-speech and real-time conversational voice agents.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "text-to-speech",
+            "voice api",
+            "voice agents",
+            "voiceover",
+            "real-time"
+          ],
+          "highlight": "Low-latency voice API"
+        },
+        {
+          "name": "Stable Audio",
+          "slug": "audio-stable-audio",
+          "url": "https://stableaudio.com",
+          "blurb": "Stability AI's generative model for creating high-quality music and sound effects from text prompts, with commercial-friendly licensing.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "ai music",
+            "sound effects",
+            "text-to-audio",
+            "music production",
+            "generative audio"
+          ],
+          "highlight": "Music and SFX generation"
+        }
+      ]
+    },
+    {
+      "category": "AI Writing & Content",
+      "key": "writing",
+      "heading_keyword": "Best AI Writing Tools",
+      "blurb": "The top AI writing and content tools of 2026 for drafting, editing, paraphrasing, and marketing copy at scale.",
+      "tools": [
+        {
+          "name": "Grammarly",
+          "slug": "writing-grammarly",
+          "url": "https://www.grammarly.com",
+          "blurb": "AI writing assistant for grammar, clarity, tone, and generative drafting across email, docs, and the web.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "30M+ daily users",
+          "tags": [
+            "grammar",
+            "editing",
+            "proofreading",
+            "writing assistant",
+            "tone"
+          ],
+          "highlight": "Ubiquitous grammar + AI editing"
+        },
+        {
+          "name": "Notion AI",
+          "slug": "writing-notion-ai",
+          "url": "https://www.notion.com/product/ai",
+          "blurb": "AI writing and knowledge assistant built into Notion for drafting, summarizing, and Q&A across your workspace.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "100M+ users",
+          "tags": [
+            "notes",
+            "workspace",
+            "summarize",
+            "drafting",
+            "productivity"
+          ],
+          "highlight": "Writing inside your workspace"
+        },
+        {
+          "name": "Jasper",
+          "slug": "writing-jasper",
+          "url": "https://www.jasper.ai",
+          "blurb": "Enterprise AI content platform for marketing teams with brand voice, campaigns, and workflow automation.",
+          "pricing": "Paid",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "marketing copy",
+            "brand voice",
+            "content generation",
+            "campaigns",
+            "enterprise"
+          ],
+          "highlight": "Enterprise marketing content"
+        },
+        {
+          "name": "QuillBot",
+          "slug": "writing-quillbot",
+          "url": "https://quillbot.com",
+          "blurb": "Popular AI paraphraser, grammar checker, and summarizer for rewriting and polishing text.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "paraphrase",
+            "rewrite",
+            "summarize",
+            "grammar",
+            "citation"
+          ],
+          "highlight": "Best-in-class paraphrasing"
+        },
+        {
+          "name": "Copy.ai",
+          "slug": "writing-copy-ai",
+          "url": "https://www.copy.ai",
+          "blurb": "AI go-to-market platform generating marketing and sales copy with automated content workflows.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "copywriting",
+            "marketing",
+            "sales",
+            "workflows",
+            "gtm"
+          ],
+          "highlight": "GTM copy automation"
+        },
+        {
+          "name": "Writesonic",
+          "slug": "writing-writesonic",
+          "url": "https://writesonic.com",
+          "blurb": "AI writing and SEO content suite for articles, blogs, and ads with built-in optimization and fact-checking.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "seo",
+            "blog writing",
+            "articles",
+            "ads",
+            "content"
+          ],
+          "highlight": "SEO-focused article writing"
+        },
+        {
+          "name": "Wordtune",
+          "slug": "writing-wordtune",
+          "url": "https://www.wordtune.com",
+          "blurb": "AI rewriting and editing assistant that rephrases, shortens, and adjusts tone to sharpen your writing.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "rewrite",
+            "rephrase",
+            "tone",
+            "editing",
+            "clarity"
+          ],
+          "highlight": "Smart rephrasing + tone"
+        },
+        {
+          "name": "Sudowrite",
+          "slug": "writing-sudowrite",
+          "url": "https://sudowrite.com",
+          "blurb": "AI writing tool built for fiction authors, with Story Bible, drafting, and rewriting to finish novels faster.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "fiction",
+            "creative writing",
+            "novels",
+            "storytelling",
+            "authors"
+          ],
+          "highlight": "Purpose-built for novelists"
+        },
+        {
+          "name": "Anyword",
+          "slug": "writing-anyword",
+          "url": "https://www.anyword.com",
+          "blurb": "Performance-driven AI copywriting platform that predicts and optimizes copy for marketing conversions.",
+          "pricing": "Paid",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "copywriting",
+            "marketing",
+            "conversion",
+            "predictive",
+            "ad copy"
+          ],
+          "highlight": "Predictive performance copy"
+        },
+        {
+          "name": "HyperWrite",
+          "slug": "writing-hyperwrite",
+          "url": "https://www.hyperwriteai.com",
+          "blurb": "Personal AI writing assistant with autowrite, research, and custom AI agents for tasks and drafting.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "autowrite",
+            "assistant",
+            "research",
+            "agents",
+            "drafting"
+          ],
+          "highlight": "Personal AI writing agents"
+        },
+        {
+          "name": "Surfer SEO",
+          "slug": "writing-surfer-seo",
+          "url": "https://surferseo.com",
+          "blurb": "AI content optimization tool that scores and guides writing against SERP data to rank higher on Google.",
+          "pricing": "Paid",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "seo",
+            "content optimization",
+            "serp",
+            "keywords",
+            "ranking"
+          ],
+          "highlight": "Data-driven SEO writing"
+        },
+        {
+          "name": "Rytr",
+          "slug": "writing-rytr",
+          "url": "https://rytr.me",
+          "blurb": "Affordable AI writing assistant for short-form copy, emails, and blog content across many use cases.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "copywriting",
+            "short-form",
+            "affordable",
+            "blog",
+            "email"
+          ],
+          "highlight": "Budget-friendly copywriting"
+        }
+      ]
+    },
+    {
+      "category": "AI Productivity & Meetings",
+      "key": "productivity",
+      "heading_keyword": "Best AI Productivity Tools",
+      "blurb": "AI assistants that automate note-taking, scheduling, meeting transcription, and daily workflows to reclaim your time.",
+      "tools": [
+        {
+          "name": "Notion AI",
+          "slug": "productivity-notion-ai",
+          "url": "https://www.notion.com/product/ai",
+          "blurb": "AI built into the Notion workspace for writing, summarizing, and searching across docs, wikis, and connected apps.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "100M+ users",
+          "tags": [
+            "notes",
+            "workspace",
+            "writing",
+            "search",
+            "summarization",
+            "docs"
+          ],
+          "highlight": "AI inside your workspace"
+        },
+        {
+          "name": "Otter.ai",
+          "slug": "productivity-otter-ai",
+          "url": "https://otter.ai",
+          "blurb": "Real-time meeting transcription and AI notes with automated summaries and action items across Zoom, Meet, and Teams.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "25M+ users",
+          "tags": [
+            "transcription",
+            "meeting-notes",
+            "summaries",
+            "voice",
+            "action-items"
+          ],
+          "highlight": "Live meeting transcription"
+        },
+        {
+          "name": "Fireflies.ai",
+          "slug": "productivity-fireflies-ai",
+          "url": "https://fireflies.ai",
+          "blurb": "AI meeting notetaker that records, transcribes, and syncs summaries to CRMs, with searchable conversation intelligence.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "meeting-notes",
+            "transcription",
+            "crm",
+            "sales",
+            "conversation-intelligence"
+          ],
+          "highlight": "Best CRM integrations"
+        },
+        {
+          "name": "Fathom",
+          "slug": "productivity-fathom",
+          "url": "https://fathom.video",
+          "blurb": "Free AI meeting assistant that records, transcribes, and generates instant summaries and action items in seconds.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "meeting-notes",
+            "transcription",
+            "summaries",
+            "free",
+            "action-items"
+          ],
+          "highlight": "Top-rated, generous free tier"
+        },
+        {
+          "name": "Motion",
+          "slug": "productivity-motion",
+          "url": "https://www.usemotion.com",
+          "blurb": "AI calendar and project manager that automatically schedules tasks, meetings, and deadlines into an optimized daily plan.",
+          "pricing": "Paid",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "calendar",
+            "scheduling",
+            "task-management",
+            "planning",
+            "time-blocking"
+          ],
+          "highlight": "Auto-plans your whole day"
+        },
+        {
+          "name": "Reclaim.ai",
+          "slug": "productivity-reclaim-ai",
+          "url": "https://reclaim.ai",
+          "blurb": "AI scheduling assistant that defends focus time, auto-books habits and tasks, and smart-syncs calendars for teams.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "scheduling",
+            "calendar",
+            "focus-time",
+            "habits",
+            "time-management"
+          ],
+          "highlight": "Protects your focus time"
+        },
+        {
+          "name": "tl;dv",
+          "slug": "productivity-tldv",
+          "url": "https://tldv.io",
+          "blurb": "AI meeting recorder for Zoom, Meet, and Teams with timestamped highlights, transcripts, and multi-meeting insights.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "meeting-recorder",
+            "transcription",
+            "highlights",
+            "zoom",
+            "insights"
+          ],
+          "highlight": "Unlimited free recording"
+        },
+        {
+          "name": "Fellow",
+          "slug": "productivity-fellow",
+          "url": "https://fellow.app",
+          "blurb": "AI meeting management platform with agendas, notes, and an AI notetaker that captures decisions and follow-ups.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "meeting-management",
+            "agendas",
+            "notes",
+            "action-items",
+            "collaboration"
+          ],
+          "highlight": "Agendas plus AI notes"
+        },
+        {
+          "name": "Taskade",
+          "slug": "productivity-taskade",
+          "url": "https://www.taskade.com",
+          "blurb": "AI-powered workspace combining tasks, notes, mind maps, and autonomous agents to plan and automate team projects.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "tasks",
+            "agents",
+            "mind-maps",
+            "collaboration",
+            "automation",
+            "notes"
+          ],
+          "highlight": "Build AI agents for tasks"
+        },
+        {
+          "name": "Mem",
+          "slug": "productivity-mem",
+          "url": "https://get.mem.ai",
+          "blurb": "AI notes app that self-organizes and surfaces relevant knowledge automatically, so you never file or search manually.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "notes",
+            "knowledge-management",
+            "self-organizing",
+            "search",
+            "ai-notes"
+          ],
+          "highlight": "Notes that organize themselves"
+        },
+        {
+          "name": "Superhuman",
+          "slug": "productivity-superhuman",
+          "url": "https://superhuman.com",
+          "blurb": "AI-powered email client built for speed, with auto-drafting, triage, and instant scheduling to hit inbox zero fast.",
+          "pricing": "Paid",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "email",
+            "inbox",
+            "productivity",
+            "scheduling",
+            "triage"
+          ],
+          "highlight": "Fastest AI email experience"
+        }
+      ]
+    },
+    {
+      "category": "AI Search & Research",
+      "key": "search",
+      "heading_keyword": "Best AI Search Engines & Research Tools",
+      "blurb": "AI answer engines and research assistants that search the web and academic literature, then synthesize cited, source-grounded answers.",
+      "tools": [
+        {
+          "name": "Perplexity",
+          "slug": "search-perplexity",
+          "url": "https://www.perplexity.ai",
+          "blurb": "The leading AI answer engine, returning cited, real-time answers from the web with follow-up questions and Deep Research modes.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "ai search",
+            "answer engine",
+            "cited answers",
+            "web search",
+            "deep research",
+            "rag"
+          ],
+          "highlight": "Category-defining answer engine"
+        },
+        {
+          "name": "Google NotebookLM",
+          "slug": "search-notebooklm",
+          "url": "https://notebooklm.google",
+          "blurb": "Source-grounded research assistant that answers only from your uploaded docs, with Audio and Video Overviews for synthesis.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "research assistant",
+            "source grounded",
+            "notebooklm",
+            "document analysis",
+            "audio overview"
+          ],
+          "highlight": "Grounded in your own sources"
+        },
+        {
+          "name": "Kagi",
+          "slug": "search-kagi",
+          "url": "https://kagi.com",
+          "blurb": "Premium, ad-free, privacy-first search with customizable ranking, Lenses, and an AI assistant spanning many models.",
+          "pricing": "Paid",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "privacy search",
+            "ad-free",
+            "paid search",
+            "ai assistant",
+            "customizable ranking"
+          ],
+          "highlight": "Ad-free privacy-first search"
+        },
+        {
+          "name": "Exa",
+          "slug": "search-exa",
+          "url": "https://exa.ai",
+          "blurb": "Neural, embeddings-first web search API built for AI agents and RAG, with deep research and fast Instant search modes.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "neural search",
+            "search api",
+            "embeddings",
+            "rag",
+            "ai agents",
+            "semantic search"
+          ],
+          "highlight": "Neural search for developers"
+        },
+        {
+          "name": "You.com",
+          "slug": "search-you-com",
+          "url": "https://you.com",
+          "blurb": "Enterprise AI search infrastructure with Search, Content, and multi-step Research APIs for grounding agents in real-time web data.",
+          "pricing": "Free + Paid",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "ai search",
+            "search api",
+            "enterprise",
+            "agentic research",
+            "web intelligence"
+          ],
+          "highlight": "Search API for AI agents"
+        },
+        {
+          "name": "Consensus",
+          "slug": "search-consensus",
+          "url": "https://consensus.app",
+          "blurb": "AI academic search over 200M+ peer-reviewed papers with a Consensus Meter that shows how much studies agree.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "academic search",
+            "research papers",
+            "consensus meter",
+            "evidence",
+            "science search"
+          ],
+          "highlight": "Consensus meter across studies"
+        },
+        {
+          "name": "Elicit",
+          "slug": "search-elicit",
+          "url": "https://elicit.com",
+          "blurb": "AI research assistant over 125M+ papers that finds studies, extracts structured data into tables, and speeds systematic reviews.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "research assistant",
+            "systematic review",
+            "data extraction",
+            "literature review",
+            "science"
+          ],
+          "highlight": "Automated systematic reviews"
+        },
+        {
+          "name": "SciSpace",
+          "slug": "search-scispace",
+          "url": "https://scispace.com",
+          "blurb": "AI research super-agent over hundreds of millions of papers that runs literature reviews, mines data, and drafts cited writing.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "research assistant",
+            "literature review",
+            "academic writing",
+            "copilot",
+            "science search"
+          ],
+          "highlight": "All-in-one research agent"
+        },
+        {
+          "name": "Semantic Scholar",
+          "slug": "search-semantic-scholar",
+          "url": "https://www.semanticscholar.org",
+          "blurb": "Free academic search engine from Ai2 over 200M+ papers with AI TL;DRs, citation context, and influential-citation ranking.",
+          "pricing": "Free",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "academic search",
+            "citations",
+            "tldr",
+            "paper discovery",
+            "free",
+            "ai2"
+          ],
+          "highlight": "Free scholarly search"
+        },
+        {
+          "name": "Scite",
+          "slug": "search-scite",
+          "url": "https://scite.ai",
+          "blurb": "Smart Citations tool that shows whether later papers support, contrast, or merely mention a finding for citation verification.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "smart citations",
+            "citation verification",
+            "research integrity",
+            "evidence",
+            "academic"
+          ],
+          "highlight": "Verify how findings are cited"
+        },
+        {
+          "name": "Genspark",
+          "slug": "search-genspark",
+          "url": "https://www.genspark.ai",
+          "blurb": "AI Super Agent that runs multi-source searches and cross-checks answers, then acts on them to build decks, sites, and reports.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "ai agent",
+            "super agent",
+            "ai search",
+            "autonomous research",
+            "multi-model"
+          ],
+          "highlight": "Search plus autonomous agent"
+        },
+        {
+          "name": "Scholarcy",
+          "slug": "search-scholarcy",
+          "url": "https://www.scholarcy.com",
+          "blurb": "AI summarizer that turns papers, reports, and chapters into flashcard summaries with a Literature Matrix for fast screening.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "summarization",
+            "flashcards",
+            "literature matrix",
+            "paper screening",
+            "research"
+          ],
+          "highlight": "Flashcard paper summaries"
+        }
+      ]
+    },
+    {
+      "category": "AI Agents & Automation",
+      "key": "agents",
+      "heading_keyword": "Best AI Agent & Automation Tools",
+      "blurb": "The top platforms and frameworks for building, orchestrating, and running autonomous AI agents and automated workflows in 2026.",
+      "tools": [
+        {
+          "name": "n8n",
+          "slug": "agents-n8n",
+          "url": "https://n8n.io",
+          "blurb": "Fair-code workflow automation platform with native AI agent nodes, 400+ integrations, and self-hosting; the de facto action layer for AI agents.",
+          "pricing": "Freemium",
+          "github": "n8n-io/n8n",
+          "users_est": "",
+          "tags": [
+            "workflow automation",
+            "self-hosted",
+            "ai agents",
+            "no-code",
+            "integrations",
+            "open source"
+          ],
+          "highlight": "Self-hostable action layer"
+        },
+        {
+          "name": "Zapier",
+          "slug": "agents-zapier",
+          "url": "https://zapier.com",
+          "blurb": "The largest automation platform, now with Zapier Agents and Canvas for AI-driven workflows across 7,000+ connected apps.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "automation",
+            "ai agents",
+            "no-code",
+            "integrations",
+            "business",
+            "workflows"
+          ],
+          "highlight": "7,000+ app integrations"
+        },
+        {
+          "name": "LangGraph",
+          "slug": "agents-langgraph",
+          "url": "https://www.langchain.com/langgraph",
+          "blurb": "Low-level orchestration framework from LangChain for building stateful, controllable multi-agent systems with durable execution and human-in-the-loop.",
+          "pricing": "Open source",
+          "github": "langchain-ai/langgraph",
+          "users_est": "",
+          "tags": [
+            "agent framework",
+            "orchestration",
+            "stateful",
+            "python",
+            "developers",
+            "open source"
+          ],
+          "highlight": "Precise stateful control"
+        },
+        {
+          "name": "CrewAI",
+          "slug": "agents-crewai",
+          "url": "https://www.crewai.com",
+          "blurb": "Role-based multi-agent framework where agents collaborate as a crew; popular for research, content, and analysis pipelines with a low barrier to entry.",
+          "pricing": "Open source",
+          "github": "crewAIInc/crewAI",
+          "users_est": "",
+          "tags": [
+            "multi-agent",
+            "agent framework",
+            "python",
+            "orchestration",
+            "role-playing",
+            "open source"
+          ],
+          "highlight": "Team-of-agents paradigm"
+        },
+        {
+          "name": "Make",
+          "slug": "agents-make",
+          "url": "https://www.make.com",
+          "blurb": "Visual, node-based automation platform with AI agents and modules for complex branching workflows across thousands of apps.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "automation",
+            "visual",
+            "no-code",
+            "workflows",
+            "integrations",
+            "ai agents"
+          ],
+          "highlight": "Visual branching workflows"
+        },
+        {
+          "name": "Dify",
+          "slug": "agents-dify",
+          "url": "https://dify.ai",
+          "blurb": "Open-source, production-ready platform for agentic workflow development with a GUI builder, RAG pipeline, and LLM app orchestration.",
+          "pricing": "Open source",
+          "github": "langgenius/dify",
+          "users_est": "",
+          "tags": [
+            "llm app",
+            "agentic workflow",
+            "rag",
+            "gui builder",
+            "self-hosted",
+            "open source"
+          ],
+          "highlight": "GUI agentic workflows"
+        },
+        {
+          "name": "Microsoft Agent Framework",
+          "slug": "agents-microsoft-agent-framework",
+          "url": "https://github.com/microsoft/agent-framework",
+          "blurb": "Microsoft's enterprise-ready successor to AutoGen and Semantic Kernel for building and orchestrating multi-agent systems in Python and .NET.",
+          "pricing": "Open source",
+          "github": "microsoft/agent-framework",
+          "users_est": "",
+          "tags": [
+            "agent framework",
+            "multi-agent",
+            "enterprise",
+            "microsoft",
+            "dotnet",
+            "python"
+          ],
+          "highlight": "Enterprise agent orchestration"
+        },
+        {
+          "name": "Lindy",
+          "slug": "agents-lindy",
+          "url": "https://www.lindy.ai",
+          "blurb": "No-code AI employee platform for building agents that handle email, meetings, CRM, and lead gen with ready-made templates.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "ai agents",
+            "no-code",
+            "business automation",
+            "ai employee",
+            "crm",
+            "email"
+          ],
+          "highlight": "No-code AI employees"
+        },
+        {
+          "name": "Flowise",
+          "slug": "agents-flowise",
+          "url": "https://flowiseai.com",
+          "blurb": "Open-source low-code tool to build AI agents and LLM apps visually by dragging and connecting nodes, with self-hosting support.",
+          "pricing": "Open source",
+          "github": "FlowiseAI/Flowise",
+          "users_est": "",
+          "tags": [
+            "low-code",
+            "visual builder",
+            "llm app",
+            "ai agents",
+            "self-hosted",
+            "open source"
+          ],
+          "highlight": "Drag-and-drop agent builder"
+        },
+        {
+          "name": "AutoGen",
+          "slug": "agents-autogen",
+          "url": "https://microsoft.github.io/autogen",
+          "blurb": "Microsoft's widely-used multi-agent conversation framework; now in community-maintained mode with users pointed to the Agent Framework successor.",
+          "pricing": "Open source",
+          "github": "microsoft/autogen",
+          "users_est": "",
+          "tags": [
+            "multi-agent",
+            "agent framework",
+            "conversation",
+            "python",
+            "microsoft",
+            "open source"
+          ],
+          "highlight": "Conversational multi-agent"
+        },
+        {
+          "name": "Relay.app",
+          "slug": "agents-relay-app",
+          "url": "https://www.relay.app",
+          "blurb": "Human-in-the-loop AI automation builder that blends agents with approval steps, great for marketing, lead qualification, and ops workflows.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "automation",
+            "ai agents",
+            "human-in-the-loop",
+            "no-code",
+            "workflows",
+            "marketing"
+          ],
+          "highlight": "Human-in-the-loop automation"
+        },
+        {
+          "name": "AutoGPT",
+          "slug": "agents-autogpt",
+          "url": "https://agpt.co",
+          "blurb": "One of the first autonomous agent projects, now a low-code platform for building, deploying, and running continuous AI agents.",
+          "pricing": "Open source",
+          "github": "Significant-Gravitas/AutoGPT",
+          "users_est": "",
+          "tags": [
+            "autonomous agents",
+            "low-code",
+            "agent platform",
+            "open source",
+            "workflows",
+            "ai agents"
+          ],
+          "highlight": "Pioneering autonomous agents"
+        }
+      ]
+    },
+    {
+      "category": "AI Design & UI",
+      "key": "design",
+      "heading_keyword": "Best AI Design Tools",
+      "blurb": "The top AI-powered tools for UI/UX design, generating interfaces, graphics, color, and web layouts from prompts in 2026.",
+      "tools": [
+        {
+          "name": "Figma AI",
+          "slug": "design-figma-ai",
+          "url": "https://www.figma.com/ai",
+          "blurb": "AI features built directly into Figma — generate designs, edit visuals, rename layers and prototype without leaving the industry-standard design tool.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "ui design",
+            "figma",
+            "prototyping",
+            "collaboration",
+            "ui/ux"
+          ],
+          "highlight": "Industry-standard design suite"
+        },
+        {
+          "name": "Canva Magic Studio",
+          "slug": "design-canva-magic-studio",
+          "url": "https://www.canva.com/canva-ai",
+          "blurb": "Canva's bundle of brand-aware AI tools for generating designs, images, text and layouts — the global reference point for accessible AI design.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "265M+ MAU",
+          "tags": [
+            "graphic design",
+            "canva",
+            "templates",
+            "social media",
+            "branding"
+          ],
+          "highlight": "Easiest all-in-one AI design"
+        },
+        {
+          "name": "Framer AI",
+          "slug": "design-framer-ai",
+          "url": "https://www.framer.com/ai",
+          "blurb": "Design and publish responsive websites from a prompt — AI wireframing, layout generation and one-step publishing in a Figma-like canvas.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "web design",
+            "no-code",
+            "website builder",
+            "responsive",
+            "publishing"
+          ],
+          "highlight": "Fastest design-to-live-site"
+        },
+        {
+          "name": "v0 by Vercel",
+          "slug": "design-v0-vercel",
+          "url": "https://v0.app",
+          "blurb": "Generates production-ready React and Tailwind UI (shadcn/ui) from text prompts, with one-click deploy — a favorite of frontend developers.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "4M+ users",
+          "tags": [
+            "ui generator",
+            "react",
+            "tailwind",
+            "shadcn",
+            "frontend"
+          ],
+          "highlight": "Best prompt-to-React UI"
+        },
+        {
+          "name": "Uizard",
+          "slug": "design-uizard",
+          "url": "https://uizard.io",
+          "blurb": "AI UI design and prototyping built for non-designers; Autodesigner turns text prompts and sketches into editable wireframes and mockups.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "ui design",
+            "wireframes",
+            "prototyping",
+            "mockups",
+            "no-code"
+          ],
+          "highlight": "Fast mockups for non-designers"
+        },
+        {
+          "name": "Recraft",
+          "slug": "design-recraft",
+          "url": "https://www.recraft.ai",
+          "blurb": "AI graphics generator built for designers — brand-consistent vectors, icons, illustrations and mockups with fine style control.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "image generation",
+            "vector",
+            "icons",
+            "illustration",
+            "branding"
+          ],
+          "highlight": "Vector & brand-style control"
+        },
+        {
+          "name": "Microsoft Designer",
+          "slug": "design-microsoft-designer",
+          "url": "https://designer.microsoft.com",
+          "blurb": "Microsoft's AI graphic design app that generates layouts, social posts and images, tightly integrated with Microsoft 365.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "graphic design",
+            "microsoft",
+            "social media",
+            "image generation",
+            "templates"
+          ],
+          "highlight": "Deep Microsoft 365 integration"
+        },
+        {
+          "name": "Relume",
+          "slug": "design-relume",
+          "url": "https://www.relume.io",
+          "blurb": "AI website builder that generates sitemaps and wireframes from a prompt, then exports to Figma, Webflow, React or HTML.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "web design",
+            "wireframes",
+            "sitemap",
+            "webflow",
+            "figma"
+          ],
+          "highlight": "Prompt-to-sitemap & wireframes"
+        },
+        {
+          "name": "Visily",
+          "slug": "design-visily",
+          "url": "https://www.visily.ai",
+          "blurb": "AI-powered wireframing and UI design tool that turns text, screenshots or sketches into editable app and web designs.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "wireframes",
+            "ui design",
+            "prototyping",
+            "screenshot-to-design",
+            "no-code"
+          ],
+          "highlight": "Screenshot & sketch to design"
+        },
+        {
+          "name": "Google Stitch",
+          "slug": "design-google-stitch",
+          "url": "https://stitch.withgoogle.com",
+          "blurb": "Google's Gemini-powered UI generator (formerly Galileo AI) that turns prompts into multi-screen, high-fidelity UI plus HTML/Tailwind code.",
+          "pricing": "Free",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "ui generator",
+            "gemini",
+            "text-to-ui",
+            "google",
+            "prototyping"
+          ],
+          "highlight": "Gemini-powered text-to-UI"
+        },
+        {
+          "name": "Khroma",
+          "slug": "design-khroma",
+          "url": "https://www.khroma.co",
+          "blurb": "AI color tool that learns the palettes you like and generates personalized, endless color combinations for designers.",
+          "pricing": "Free",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "color",
+            "palettes",
+            "color scheme",
+            "design tools",
+            "branding"
+          ],
+          "highlight": "Personalized AI color palettes"
+        },
+        {
+          "name": "Krea AI",
+          "slug": "design-krea-ai",
+          "url": "https://www.krea.ai",
+          "blurb": "Real-time creative studio packing 60+ AI models for image, video and 3D generation, with a live canvas that renders as you draw.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "image generation",
+            "real-time",
+            "creative",
+            "video",
+            "upscaling"
+          ],
+          "highlight": "Real-time generative canvas"
+        }
+      ]
+    },
+    {
+      "category": "AI Developer Frameworks & LLM Ops",
+      "key": "devframeworks",
+      "heading_keyword": "Best AI Developer Frameworks",
+      "blurb": "The top open-source frameworks and LLM ops tools for building, serving, and orchestrating AI agents and LLM apps in 2026.",
+      "tools": [
+        {
+          "name": "LangChain",
+          "slug": "devframeworks-langchain",
+          "url": "https://www.langchain.com",
+          "blurb": "The most widely adopted framework for building LLM-powered apps and agents, with chains, tools, memory, and a huge integration ecosystem.",
+          "pricing": "Open source",
+          "github": "langchain-ai/langchain",
+          "users_est": "",
+          "tags": [
+            "agents",
+            "orchestration",
+            "python",
+            "rag",
+            "llm-framework",
+            "javascript"
+          ],
+          "highlight": "Largest agent framework ecosystem"
+        },
+        {
+          "name": "Hugging Face Transformers",
+          "slug": "devframeworks-huggingface-transformers",
+          "url": "https://huggingface.co",
+          "blurb": "The de facto library for downloading, running, and fine-tuning state-of-the-art transformer models across PyTorch, TensorFlow, and JAX.",
+          "pricing": "Open source",
+          "github": "huggingface/transformers",
+          "users_est": "",
+          "tags": [
+            "models",
+            "transformers",
+            "fine-tuning",
+            "nlp",
+            "pytorch",
+            "inference"
+          ],
+          "highlight": "Standard model hub library"
+        },
+        {
+          "name": "Ollama",
+          "slug": "devframeworks-ollama",
+          "url": "https://ollama.com",
+          "blurb": "Run open LLMs like Llama, Mistral, and Gemma locally with a single command; the easiest on-ramp to local model inference.",
+          "pricing": "Open source",
+          "github": "ollama/ollama",
+          "users_est": "",
+          "tags": [
+            "local-llm",
+            "inference",
+            "self-hosted",
+            "models",
+            "cli",
+            "privacy"
+          ],
+          "highlight": "Simplest local LLM runner"
+        },
+        {
+          "name": "vLLM",
+          "slug": "devframeworks-vllm",
+          "url": "https://docs.vllm.ai",
+          "blurb": "High-throughput, memory-efficient inference and serving engine for LLMs, powered by PagedAttention; a production serving standard.",
+          "pricing": "Open source",
+          "github": "vllm-project/vllm",
+          "users_est": "",
+          "tags": [
+            "inference",
+            "serving",
+            "throughput",
+            "gpu",
+            "production",
+            "paged-attention"
+          ],
+          "highlight": "Fastest open LLM serving"
+        },
+        {
+          "name": "LlamaIndex",
+          "slug": "devframeworks-llamaindex",
+          "url": "https://www.llamaindex.ai",
+          "blurb": "Data framework for connecting LLMs to your data with best-in-class ingestion, indexing, and retrieval for RAG and agentic apps.",
+          "pricing": "Freemium",
+          "github": "run-llama/llama_index",
+          "users_est": "",
+          "tags": [
+            "rag",
+            "retrieval",
+            "data-framework",
+            "agents",
+            "indexing",
+            "python"
+          ],
+          "highlight": "Leading RAG data framework"
+        },
+        {
+          "name": "LiteLLM",
+          "slug": "devframeworks-litellm",
+          "url": "https://www.litellm.ai",
+          "blurb": "A unified gateway and SDK to call 100+ LLM APIs in OpenAI format, with cost tracking, load balancing, guardrails, and logging.",
+          "pricing": "Free + Paid",
+          "github": "BerriAI/litellm",
+          "users_est": "",
+          "tags": [
+            "gateway",
+            "proxy",
+            "llm-ops",
+            "cost-tracking",
+            "load-balancing",
+            "openai-compatible"
+          ],
+          "highlight": "Unified 100+ LLM gateway"
+        },
+        {
+          "name": "Pydantic AI",
+          "slug": "devframeworks-pydantic-ai",
+          "url": "https://ai.pydantic.dev",
+          "blurb": "Type-safe, provider-agnostic Python agent framework from the Pydantic team, bringing a FastAPI-style developer experience to GenAI.",
+          "pricing": "Open source",
+          "github": "pydantic/pydantic-ai",
+          "users_est": "",
+          "tags": [
+            "agents",
+            "type-safe",
+            "python",
+            "structured-output",
+            "validation",
+            "llm-framework"
+          ],
+          "highlight": "Type-safe Python agents"
+        },
+        {
+          "name": "Weaviate",
+          "slug": "devframeworks-weaviate",
+          "url": "https://weaviate.io",
+          "blurb": "Open-source vector database with built-in hybrid search and generative modules, purpose-built for scalable RAG and semantic search.",
+          "pricing": "Free + Paid",
+          "github": "weaviate/weaviate",
+          "users_est": "",
+          "tags": [
+            "vector-database",
+            "rag",
+            "semantic-search",
+            "hybrid-search",
+            "embeddings",
+            "retrieval"
+          ],
+          "highlight": "Production vector database"
+        },
+        {
+          "name": "Langflow",
+          "slug": "devframeworks-langflow",
+          "url": "https://www.langflow.org",
+          "blurb": "Visual, low-code builder for AI agents and RAG pipelines with a drag-and-drop canvas that exports every flow as an API or MCP server.",
+          "pricing": "Free + Paid",
+          "github": "langflow-ai/langflow",
+          "users_est": "",
+          "tags": [
+            "low-code",
+            "visual-builder",
+            "agents",
+            "rag",
+            "workflows",
+            "drag-and-drop"
+          ],
+          "highlight": "Visual drag-and-drop agent builder"
+        },
+        {
+          "name": "Haystack",
+          "slug": "devframeworks-haystack",
+          "url": "https://haystack.deepset.ai",
+          "blurb": "Production-ready open-source framework from deepset for building composable LLM pipelines, RAG systems, and search applications.",
+          "pricing": "Open source",
+          "github": "deepset-ai/haystack",
+          "users_est": "",
+          "tags": [
+            "rag",
+            "pipelines",
+            "search",
+            "llm-framework",
+            "production",
+            "python"
+          ],
+          "highlight": "Composable production LLM pipelines"
+        },
+        {
+          "name": "LangGraph",
+          "slug": "devframeworks-langgraph",
+          "url": "https://www.langchain.com/langgraph",
+          "blurb": "Low-level orchestration framework for stateful, multi-agent workflows with durable execution, human-in-the-loop, and streaming.",
+          "pricing": "Free + Paid",
+          "github": "langchain-ai/langgraph",
+          "users_est": "",
+          "tags": [
+            "agents",
+            "orchestration",
+            "multi-agent",
+            "stateful",
+            "graph",
+            "workflows"
+          ],
+          "highlight": "Stateful multi-agent orchestration"
+        },
+        {
+          "name": "LangSmith",
+          "slug": "devframeworks-langsmith",
+          "url": "https://www.langchain.com/langsmith",
+          "blurb": "Observability and evaluation platform for LLM apps, offering tracing, prompt testing, dataset evals, and production monitoring.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "observability",
+            "llm-ops",
+            "evaluation",
+            "tracing",
+            "monitoring",
+            "debugging"
+          ],
+          "highlight": "LLM observability and evals"
+        }
+      ]
+    },
+    {
+      "category": "AI Presentations & Docs",
+      "key": "presentations",
+      "heading_keyword": "Best AI Presentation Tools",
+      "blurb": "The best AI presentation and document tools of 2026 that turn a prompt into polished, on-brand slides and docs in seconds.",
+      "tools": [
+        {
+          "name": "Gamma",
+          "slug": "presentations-gamma",
+          "url": "https://gamma.app",
+          "blurb": "AI-native maker that turns a prompt into fully designed presentations, docs, and websites in under a minute; category leader with a natural-language editing agent.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "70M+ users",
+          "tags": [
+            "ai presentations",
+            "slides",
+            "decks",
+            "documents",
+            "websites",
+            "no-code"
+          ],
+          "highlight": "Category leader, prompt-to-deck"
+        },
+        {
+          "name": "Canva Magic Design (Presentations)",
+          "slug": "presentations-canva-magic",
+          "url": "https://www.canva.com/presentations",
+          "blurb": "Canva's AI presentation generator paired with the largest template and asset library, brand kits, and image generation, strongest for marketing teams.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "265M+ MAU",
+          "tags": [
+            "ai presentations",
+            "design",
+            "templates",
+            "brand kit",
+            "marketing",
+            "slides"
+          ],
+          "highlight": "Massive asset library"
+        },
+        {
+          "name": "Microsoft Copilot in PowerPoint",
+          "slug": "presentations-copilot-powerpoint",
+          "url": "https://www.microsoft.com/en-us/microsoft-365/powerpoint",
+          "blurb": "Generates and rewrites full PowerPoint decks from prompts or documents inside Microsoft 365, with native Office fidelity and enterprise deployment.",
+          "pricing": "Paid",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "ai presentations",
+            "powerpoint",
+            "microsoft 365",
+            "enterprise",
+            "office"
+          ],
+          "highlight": "Native PowerPoint + enterprise"
+        },
+        {
+          "name": "Beautiful.ai",
+          "slug": "presentations-beautiful-ai",
+          "url": "https://www.beautiful.ai",
+          "blurb": "Smart Slide engine applies professional design rules to every slide automatically, producing presentation-ready first drafts for business decks.",
+          "pricing": "Paid",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "ai presentations",
+            "design automation",
+            "smart slides",
+            "business decks",
+            "branding"
+          ],
+          "highlight": "Best design consistency"
+        },
+        {
+          "name": "Plus AI",
+          "slug": "presentations-plus-ai",
+          "url": "https://plusai.com",
+          "blurb": "AI add-in that generates and edits presentations directly inside Google Slides and PowerPoint, so decks stay in the tools teams already use.",
+          "pricing": "Paid",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "ai presentations",
+            "google slides",
+            "powerpoint",
+            "add-in",
+            "editing"
+          ],
+          "highlight": "Works inside Slides & PPT"
+        },
+        {
+          "name": "Google Gemini in Slides",
+          "slug": "presentations-gemini-slides",
+          "url": "https://workspace.google.com/resources/presentation-ai",
+          "blurb": "Gemini generates fully native, editable slides, images, and speaker content inside Google Slides and Workspace for Google users.",
+          "pricing": "Paid",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "ai presentations",
+            "google slides",
+            "workspace",
+            "gemini",
+            "docs"
+          ],
+          "highlight": "Native Google Workspace AI"
+        },
+        {
+          "name": "Pitch",
+          "slug": "presentations-pitch",
+          "url": "https://pitch.com",
+          "blurb": "Collaboration-first presentation platform with AI assistance, real-time editing, deck analytics, and video recording, built for sales and revenue teams.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "presentations",
+            "collaboration",
+            "analytics",
+            "sales decks",
+            "real-time"
+          ],
+          "highlight": "Collaboration + deck analytics"
+        },
+        {
+          "name": "Decktopus",
+          "slug": "presentations-decktopus",
+          "url": "https://www.decktopus.com",
+          "blurb": "Guided AI deck builder that auto-generates slide content, speaker notes, and layouts from a topic, aimed at non-designers who want quick polished results.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "ai presentations",
+            "slide generator",
+            "speaker notes",
+            "no-design",
+            "templates"
+          ],
+          "highlight": "Auto notes & layouts"
+        },
+        {
+          "name": "Chronicle",
+          "slug": "presentations-chronicle",
+          "url": "https://chroniclehq.com",
+          "blurb": "Design-forward AI presentation builder with premium templates and smart blocks, focused on high-polish decks for teams.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "ai presentations",
+            "design",
+            "templates",
+            "teams",
+            "smart blocks"
+          ],
+          "highlight": "Premium design templates"
+        },
+        {
+          "name": "Genially",
+          "slug": "presentations-genially",
+          "url": "https://genially.com",
+          "blurb": "Interactive presentation and visual-content platform with AI generation, animations, and clickable elements, strong for engaging, non-linear decks.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "interactive presentations",
+            "animation",
+            "visual content",
+            "engagement",
+            "education"
+          ],
+          "highlight": "Interactive, animated decks"
+        },
+        {
+          "name": "SlidesAI",
+          "slug": "presentations-slidesai",
+          "url": "https://www.slidesai.io",
+          "blurb": "Google Slides and PowerPoint add-on that converts text into structured slides in a few clicks, popular for turning notes and articles into quick decks.",
+          "pricing": "Freemium",
+          "github": "",
+          "users_est": "",
+          "tags": [
+            "ai presentations",
+            "google slides",
+            "text to slides",
+            "add-on",
+            "powerpoint"
+          ],
+          "highlight": "Text-to-slides add-on"
+        },
+        {
+          "name": "Presenton",
+          "slug": "presentations-presenton",
+          "url": "https://presenton.ai",
+          "blurb": "Open-source, self-hostable AI presentation generator and API that supports multiple model providers and exports fully editable PowerPoint files.",
+          "pricing": "Open source",
+          "github": "presenton/presenton",
+          "users_est": "",
+          "tags": [
+            "ai presentations",
+            "open source",
+            "self-hosted",
+            "api",
+            "powerpoint"
+          ],
+          "highlight": "Open-source, self-hostable"
+        }
+      ]
+    }
+  ]
+}

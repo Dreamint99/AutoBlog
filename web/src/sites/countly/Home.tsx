@@ -254,11 +254,12 @@ export function CnHeader({ site }: { site: { id: string; name: string } }) {
           <nav className="cn-nav" aria-label="Primary">
             <Link href={`/s/${site.id}`}>Statistics</Link>
             <Link href={`/s/${site.id}/top10`}>Top 10</Link>
+            <Link href={`/s/${site.id}/best-ai-tools`}>AI Tools</Link>
             <Link href={`/s/${site.id}/crypto`}>Crypto</Link>
             <Link href={`/s/${site.id}/currency-converter`}>Converter</Link>
             <Link href={`/s/${site.id}/topic/rankings`}>Rankings</Link>
-            <Link href={`/s/${site.id}/top10`} className="cn-nav-cta">
-              Top 10 lists <IconArrowUR />
+            <Link href={`/s/${site.id}/best-ai-tools`} className="cn-nav-cta">
+              Best AI Tools <IconArrowUR />
             </Link>
           </nav>
         </div>

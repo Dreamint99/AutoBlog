@@ -55,3 +55,41 @@ export async function getArticle(siteId: string, slug: string): Promise<Article 
   const items = await getArticles(siteId);
   return items.find((a) => a.slug === slug);
 }
+
+// ── AI Tools directory (countly best-ai-tools page) ──
+export interface AiTool {
+  slug: string;
+  name: string;
+  category: string;
+  category_key: string;
+  heading_keyword: string;
+  category_blurb: string;
+  url: string;
+  blurb: string;
+  pricing: string;
+  github_repo: string;
+  users_est: string;
+  tags: string[];
+  highlight: string;
+  stars: number;
+  stars_prev: number;
+  growth_pct: number;
+  forks: number;
+  score: number;
+  rank: number;
+  url_ok: boolean;
+  featured: boolean;
+  cat_order: number;
+  updated_at: string;
+}
+
+export async function getAiTools(): Promise<AiTool[]> {
+  if (!useSupabase) return [];
+  const url = `${SUPABASE_URL}/rest/v1/ai_tools?select=*&order=cat_order.asc,rank.asc`;
+  const r = await fetch(url, {
+    headers: { apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${SUPABASE_ANON_KEY}` },
+    cache: "no-store",
+  });
+  if (!r.ok) return [];
+  return (await r.json()) as AiTool[];
+}
