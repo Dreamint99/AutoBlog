@@ -93,3 +93,30 @@ export async function getAiTools(): Promise<AiTool[]> {
   if (!r.ok) return [];
   return (await r.json()) as AiTool[];
 }
+
+export interface AiRising {
+  pos: number;
+  repo: string;
+  name: string;
+  url: string;
+  description: string;
+  stars: number;
+  forks: number;
+  language: string;
+  topics: string[];
+  owner_avatar: string;
+  repo_created: string | null;
+  visible: boolean;
+  updated_at: string;
+}
+
+export async function getAiRising(): Promise<AiRising[]> {
+  if (!useSupabase) return [];
+  const url = `${SUPABASE_URL}/rest/v1/ai_rising?select=*&visible=eq.true&order=pos.asc`;
+  const r = await fetch(url, {
+    headers: { apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${SUPABASE_ANON_KEY}` },
+    cache: "no-store",
+  });
+  if (!r.ok) return [];
+  return (await r.json()) as AiRising[];
+}

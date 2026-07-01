@@ -1,9 +1,95 @@
 import "./theme.css";
 import { fontVars } from "./fonts";
 import type { Site } from "@/lib/types";
-import type { AiTool } from "@/lib/data";
+import type { AiTool, AiRising } from "@/lib/data";
 import { CnHeader, SiteFooter, fmtDate } from "./Home";
 import AiToolsBrowser, { type CatMeta } from "./AiToolsBrowser";
+
+function fmtStars(n: number): string {
+  if (n >= 1000) return (n / 1000).toFixed(n >= 10000 ? 0 : 1) + "k";
+  return String(n);
+}
+
+function riseAge(iso: string | null): string {
+  if (!iso) return "";
+  const d = new Date(iso);
+  if (isNaN(d.getTime())) return "";
+  const now = new Date();
+  const months = (now.getFullYear() - d.getFullYear()) * 12 + (now.getMonth() - d.getMonth());
+  if (months < 1) return "brand new";
+  if (months < 12) return `${months} mo old`;
+  return `${Math.floor(months / 12)}y old`;
+}
+
+const LANG_COLOR: Record<string, string> = {
+  TypeScript: "#3178c6",
+  JavaScript: "#f1e05a",
+  Python: "#3572A5",
+  Rust: "#dea584",
+  Go: "#00ADD8",
+  "C++": "#f34b7d",
+  Java: "#b07219",
+  Swift: "#F05138",
+  Kotlin: "#A97BFF",
+  "Jupyter Notebook": "#DA5B0B",
+};
+
+function RisingBoard({ rising }: { rising: AiRising[] }) {
+  if (!rising.length) return null;
+  return (
+    <section className="cn-rise">
+      <div className="cn-wrap">
+        <div className="cn-rise-head">
+          <span className="cn-rise-kicker">🚀 Rising &amp; underrated</span>
+          <h2>New AI tools trending on GitHub</h2>
+          <p>
+            Fast-growing, less-hyped open-source AI projects worth watching — ranked by their live
+            GitHub star count and refreshed every day.
+          </p>
+        </div>
+        <div className="cn-rise-grid">
+          {rising.map((r) => (
+            <a
+              key={r.repo || r.pos}
+              className="cn-rise-card"
+              href={r.url}
+              target="_blank"
+              rel="noopener nofollow"
+            >
+              <div className="cn-rise-top">
+                <span className="cn-rise-avatar" data-letter={r.name.charAt(0)}>
+                  {r.owner_avatar ? <img src={r.owner_avatar} alt="" loading="lazy" /> : null}
+                </span>
+                <div className="cn-rise-id">
+                  <h3 className="cn-rise-name">{r.name}</h3>
+                  <span className="cn-rise-repo">{r.repo}</span>
+                </div>
+                <span className="cn-rise-badge">NEW</span>
+              </div>
+              <p className="cn-rise-desc">{r.description}</p>
+              <div className="cn-rise-meta">
+                {r.stars > 0 ? (
+                  <span className="cn-rise-stars">★ {fmtStars(r.stars)}</span>
+                ) : (
+                  <span className="cn-rise-stars new">◆ new repo</span>
+                )}
+                {r.language ? (
+                  <span className="cn-rise-lang">
+                    <i style={{ background: LANG_COLOR[r.language] || "#8b93a7" }} />
+                    {r.language}
+                  </span>
+                ) : null}
+                {riseAge(r.repo_created) ? (
+                  <span className="cn-rise-age">{riseAge(r.repo_created)}</span>
+                ) : null}
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export const AI_FAQS: { q: string; a: string }[] = [
   {
@@ -46,7 +132,15 @@ function buildCats(tools: AiTool[]): CatMeta[] {
   return Array.from(map.values());
 }
 
-export default function AiTools({ site, tools }: { site: Site; tools: AiTool[] }) {
+export default function AiTools({
+  site,
+  tools,
+  rising,
+}: {
+  site: Site;
+  tools: AiTool[];
+  rising: AiRising[];
+}) {
   const live = tools.filter((t) => t.url_ok);
   const categories = buildCats(live);
   const tracked = live.filter((t) => t.github_repo && t.stars > 0).length;
@@ -92,6 +186,9 @@ export default function AiTools({ site, tools }: { site: Site; tools: AiTool[] }
           </div>
         </div>
       </section>
+
+      {/* ── Rising & underrated (auto GitHub, daily) ── */}
+      <RisingBoard rising={rising} />
 
       {/* ── Interactive directory (search + filter + cards) ── */}
       <AiToolsBrowser tools={live} categories={categories} />

@@ -28,6 +28,7 @@ SEED_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "ai
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN", "")
 UA = "Mozilla/5.0 (compatible; AutoBlog-AiTools/1.0; +https://countly.net)"
 TABLE = f"{SUPABASE_URL}/rest/v1/ai_tools"
+RISING_TABLE = f"{SUPABASE_URL}/rest/v1/ai_rising"
 
 
 def _sb_headers(extra: dict | None = None) -> dict:
@@ -153,14 +154,90 @@ def refresh():
     print(f"Refreshed {updated}/{len(rows)} tools (GitHub stars + url liveness).")
 
 
+# ── Rising / underrated AI tools (curated set, live GitHub metadata, refreshed daily) ──
+RISING_SEED = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "ai_rising_seed.json")
+
+
+def github_repo_info(repo: str) -> dict | None:
+    """Full public metadata for 'owner/repo' (follows renames/redirects), or None."""
+    if not repo or "/" not in repo:
+        return None
+    headers = {"Accept": "application/vnd.github+json", "User-Agent": UA}
+    if GITHUB_TOKEN:
+        headers["Authorization"] = f"Bearer {GITHUB_TOKEN}"
+    try:
+        r = requests.get(f"https://api.github.com/repos/{repo}", headers=headers, timeout=20)
+        if r.status_code != 200:
+            return None
+        d = r.json()
+        owner = d.get("owner") or {}
+        return {
+            "stars": int(d.get("stargazers_count", 0)),
+            "forks": int(d.get("forks_count", 0)),
+            "language": d.get("language") or "",
+            "owner_avatar": owner.get("avatar_url", ""),
+            "created": (d.get("created_at") or "")[:10] or None,
+            "topics": (d.get("topics") or [])[:5],
+        }
+    except Exception:
+        return None
+
+
+def refresh_rising():
+    """Curated 'rising & underrated' AI tools — real, recognizable up-and-comers. Their
+    live GitHub stars, language, repo age and avatar are pulled from the real repos API and
+    refreshed daily, then ranked by stars. (Raw GitHub *search* for brand-new repos surfaces
+    too much noise/unknown projects to put on a credibility page, so the set is vetted.)"""
+    with open(RISING_SEED, encoding="utf-8") as f:
+        seed_items = json.load(f)
+
+    rows = []
+    for it in seed_items:
+        info = github_repo_info(it.get("repo", "")) or {}
+        rows.append({
+            "repo": it.get("repo", ""),
+            "name": it.get("name", ""),
+            "url": it.get("url", "").rstrip("/"),
+            "description": (it.get("description") or "")[:240],
+            "stars": info.get("stars", 0),
+            "forks": info.get("forks", 0),
+            "language": info.get("language", ""),
+            "topics": info.get("topics", []),
+            "owner_avatar": info.get("owner_avatar", ""),
+            "repo_created": info.get("created"),
+            "visible": True,
+            "updated_at": "now()",
+        })
+        time.sleep(0.4)
+
+    # Rank by live star count (most-adopted rising tool first).
+    rows.sort(key=lambda r: r["stars"], reverse=True)
+    for i, r in enumerate(rows):
+        r["pos"] = i + 1
+
+    resp = requests.post(
+        RISING_TABLE,
+        headers=_sb_headers({"Prefer": "resolution=merge-duplicates,return=minimal"}),
+        json=rows,
+        timeout=60,
+    )
+    resp.raise_for_status()
+    got = sum(1 for r in rows if r["stars"] > 0)
+    print(f"Rising: upserted {len(rows)} curated tools ({got} with live GitHub stars).")
+
+
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--seed", action="store_true")
     ap.add_argument("--refresh", action="store_true")
+    ap.add_argument("--rising", action="store_true")
     args = ap.parse_args()
     if args.seed:
         seed()
     elif args.refresh:
         refresh()
+        refresh_rising()
+    elif args.rising:
+        refresh_rising()
     else:
-        print("Use --seed or --refresh")
+        print("Use --seed, --refresh or --rising")

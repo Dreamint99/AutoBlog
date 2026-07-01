@@ -1,0 +1,16 @@
+[
+  { "name": "Open WebUI", "repo": "open-webui/open-webui", "url": "https://openwebui.com", "pricing": "Open source", "description": "Self-hosted, offline ChatGPT-style interface for Ollama and any OpenAI-compatible API — the most popular local AI front-end." },
+  { "name": "Browser Use", "repo": "browser-use/browser-use", "url": "https://browser-use.com", "pricing": "Open source", "description": "Let AI agents control a real browser — the fast-rising standard for web automation and agentic browsing." },
+  { "name": "Firecrawl", "repo": "mendableai/firecrawl", "url": "https://firecrawl.dev", "pricing": "Free + Paid", "description": "Turn any website into clean, LLM-ready markdown or structured data — a favourite for RAG and agent pipelines." },
+  { "name": "Zed", "repo": "zed-industries/zed", "url": "https://zed.dev", "pricing": "Open source", "description": "Blazing-fast, AI-native code editor from the creators of Atom, with collaborative editing and agentic panels." },
+  { "name": "Void", "repo": "voideditor/void", "url": "https://voideditor.com", "pricing": "Open source", "description": "Open-source Cursor alternative — an AI code editor you can host yourself and point at any model." },
+  { "name": "Cherry Studio", "repo": "CherryHQ/cherry-studio", "url": "https://cherry-ai.com", "pricing": "Open source", "description": "Desktop client that unifies ChatGPT, Claude, Gemini and local models with knowledge bases and agents." },
+  { "name": "Roo Code", "repo": "RooCodeInc/Roo-Code", "url": "https://roocode.com", "pricing": "Open source", "description": "Autonomous AI coding agent inside VS Code — a rapidly growing, model-agnostic Cline fork." },
+  { "name": "Onlook", "repo": "onlook-dev/onlook", "url": "https://onlook.com", "pricing": "Open source", "description": "The 'Cursor for designers' — a visual, AI-powered editor for React apps that writes real code." },
+  { "name": "Jan", "repo": "menloresearch/jan", "url": "https://jan.ai", "pricing": "Open source", "description": "Offline, open-source ChatGPT alternative that runs 100% on your own device — a rising local-AI app." },
+  { "name": "Continue", "repo": "continuedev/continue", "url": "https://continue.dev", "pricing": "Open source", "description": "Open-source autopilot for VS Code and JetBrains — build custom AI code assistants with any model." },
+  { "name": "LiteLLM", "repo": "BerriAI/litellm", "url": "https://litellm.ai", "pricing": "Open source", "description": "Call 100+ LLM APIs (OpenAI, Anthropic, Bedrock, local) using one OpenAI-format interface — the go-to LLM gateway." },
+  { "name": "Suna", "repo": "kortix-ai/suna", "url": "https://suna.so", "pricing": "Open source", "description": "Open-source generalist AI agent that browses, codes and researches for you — a fast-rising AutoGPT successor." },
+  { "name": "Khoj", "repo": "khoj-ai/khoj", "url": "https://khoj.dev", "pricing": "Open source", "description": "Self-hostable AI 'second brain' that searches your notes, docs and the web from any device." },
+  { "name": "Marker", "repo": "datalab-to/marker", "url": "https://www.datalab.to", "pricing": "Open source", "description": "Convert PDFs, docs and slides into clean markdown and structured data for LLMs — quickly and accurately." }
+]

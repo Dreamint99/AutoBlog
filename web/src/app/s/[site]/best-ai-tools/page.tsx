@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { getSite, getAiTools } from "@/lib/data";
+import { getSite, getAiTools, getAiRising } from "@/lib/data";
 import { siteBaseUrl } from "@/lib/sites.config";
 import { JsonLd, organizationSchema } from "@/lib/seo";
 import AiTools, { AI_FAQS } from "@/sites/countly/AiTools";
@@ -57,7 +57,8 @@ export default async function BestAiToolsPage({
   const site = getSite(id);
   if (!site || !SUPPORTED.has(site.id)) notFound();
 
-  const tools = (await getAiTools()).filter((t) => t.url_ok);
+  const [toolsAll, rising] = await Promise.all([getAiTools(), getAiRising()]);
+  const tools = toolsAll.filter((t) => t.url_ok);
   const base = siteBaseUrl(site);
 
   const itemList = {
@@ -102,7 +103,7 @@ export default async function BestAiToolsPage({
           breadcrumb,
         ]}
       />
-      <AiTools site={site} tools={tools} />
+      <AiTools site={site} tools={tools} rising={rising} />
     </>
   );
 }

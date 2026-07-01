@@ -25,33 +25,54 @@ function pricingClass(p: string): string {
   return "cn-ai-price freemium";
 }
 
+function faviconFor(url: string): string {
+  try {
+    const h = new URL(url).hostname.replace(/^www\./, "");
+    return `https://www.google.com/s2/favicons?domain=${h}&sz=64`;
+  } catch {
+    return "";
+  }
+}
+
 function ToolCard({ t }: { t: AiTool }) {
   const hasStars = Boolean(t.github_repo) && t.stars > 0;
   const showGrowth = hasStars && t.stars_prev > 0 && t.growth_pct !== 0;
   const up = t.growth_pct > 0;
+  const fav = faviconFor(t.url);
   return (
     <article className="cn-ai-card">
-      <div className="cn-ai-card-top">
-        <span className="cn-ai-rank" aria-hidden="true">
-          #{t.rank}
+      <div className="cn-ai-card-head">
+        <span className="cn-ai-logo" data-letter={t.name.charAt(0)}>
+          {fav ? (
+            <img
+              src={fav}
+              alt=""
+              loading="lazy"
+              onError={(e) => {
+                e.currentTarget.style.display = "none";
+              }}
+            />
+          ) : null}
         </span>
         <div className="cn-ai-titlewrap">
           <h3 className="cn-ai-name">{t.name}</h3>
           {t.highlight ? <span className="cn-ai-tagline">{t.highlight}</span> : null}
         </div>
-        <span className={pricingClass(t.pricing)}>{t.pricing}</span>
+        <span className="cn-ai-rank" aria-hidden="true">
+          #{t.rank}
+        </span>
       </div>
 
       <p className="cn-ai-blurb">{t.blurb}</p>
 
-      <div className="cn-ai-metrics">
+      <div className="cn-ai-chipsrow">
+        <span className={pricingClass(t.pricing)}>{t.pricing}</span>
         {hasStars ? (
           <span className="cn-ai-metric" title="Live GitHub stars — refreshed daily">
             <span className="cn-ai-star" aria-hidden="true">
               ★
             </span>
             <b>{fmtNum(t.stars)}</b>
-            <span className="cn-ai-metric-lbl">GitHub stars</span>
             {showGrowth ? (
               <span className={up ? "cn-ai-growth up" : "cn-ai-growth down"}>
                 {up ? "▲" : "▼"} {Math.abs(t.growth_pct).toFixed(2)}%
@@ -64,13 +85,9 @@ function ToolCard({ t }: { t: AiTool }) {
               ◕
             </span>
             <b>{t.users_est}</b>
-            <span className="cn-ai-metric-lbl">est. users</span>
+            <span className="cn-ai-metric-lbl">est.</span>
           </span>
-        ) : (
-          <span className="cn-ai-metric muted">
-            <span className="cn-ai-metric-lbl">Proprietary tool</span>
-          </span>
-        )}
+        ) : null}
       </div>
 
       <a
