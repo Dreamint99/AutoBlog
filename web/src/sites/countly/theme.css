@@ -1818,3 +1818,30 @@ html { scroll-behavior: smooth; }
 .site-countly .article-content figure.post-image figcaption {
   font-size: 0.85rem; color: var(--cn-ink-muted, #6b7488); margin-top: 0.4rem; text-align: center;
 }
+
+/* ── Mobile hamburger menu (CSS-only, overrides earlier scroll-strip) ── */
+.site-countly .cn-nav-toggle { display: none; }
+.site-countly .cn-burger { display: none; }
+@media (max-width: 819px) {
+  .site-countly .cn-bar { flex-wrap: nowrap; position: relative; min-height: 60px; padding: 0; gap: 0.5rem; }
+  .site-countly .cn-burger {
+    display: inline-flex; flex-direction: column; gap: 5px; margin-left: auto;
+    width: 44px; height: 44px; align-items: center; justify-content: center; cursor: pointer;
+    background: none; border: 0; flex: none;
+  }
+  .site-countly .cn-burger span { width: 24px; height: 2.5px; background: var(--cn-ink, #0b1020); border-radius: 2px; transition: transform 0.22s, opacity 0.22s; }
+  .site-countly .cn-nav {
+    display: flex; flex-direction: column; align-items: stretch; gap: 0; width: auto;
+    position: absolute; top: 100%; left: 0; right: 0; z-index: 40;
+    background: #fff; border-bottom: 1px solid var(--cn-line, #e7e9f2);
+    box-shadow: 0 22px 34px -18px rgba(17, 24, 60, 0.28);
+    max-height: 0; overflow: hidden; padding: 0 22px; transition: max-height 0.28s ease;
+  }
+  .site-countly .cn-nav-toggle:checked ~ .cn-nav { max-height: 70vh; padding: 0.4rem 22px 1.1rem; overflow-y: auto; }
+  .site-countly .cn-nav a { padding: 0.9rem 0.2rem; font-size: 1.02rem; border-radius: 0; border-bottom: 1px solid var(--cn-line-soft, #eef0f7); }
+  .site-countly .cn-nav a:hover { background: none; color: var(--cn-accent, #4f46e5); }
+  .site-countly .cn-nav .cn-nav-cta { margin: 0.8rem 0 0; justify-content: center; border-radius: 10px; border-bottom: 0; }
+  .site-countly .cn-nav-toggle:checked ~ .cn-burger span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+  .site-countly .cn-nav-toggle:checked ~ .cn-burger span:nth-child(2) { opacity: 0; }
+  .site-countly .cn-nav-toggle:checked ~ .cn-burger span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+}

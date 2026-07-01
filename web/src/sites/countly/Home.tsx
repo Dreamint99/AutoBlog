@@ -245,6 +245,12 @@ export function CnHeader({ site }: { site: { id: string; name: string } }) {
               <small>The World in Numbers</small>
             </span>
           </Link>
+          <input type="checkbox" id="cn-nav-toggle" className="cn-nav-toggle" aria-label="Toggle menu" />
+          <label htmlFor="cn-nav-toggle" className="cn-burger" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
           <nav className="cn-nav" aria-label="Primary">
             <Link href={`/s/${site.id}`}>Statistics</Link>
             <Link href={`/s/${site.id}/top10`}>Top 10</Link>
