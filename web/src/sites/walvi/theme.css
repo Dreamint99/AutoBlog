@@ -1679,3 +1679,17 @@
     padding: 40px 22px 36px;
   }
 }
+
+/* ════════ mobile heading + calc-header fixes ════════ */
+@media (max-width: 680px) {
+  /* Numbered section headings clipped because h2 was white-space:nowrap. */
+  .site-walvi .section-head { flex-wrap: wrap; gap: 8px; margin: 30px 0 14px; }
+  .site-walvi .section-head h2 { white-space: normal; overflow-wrap: anywhere; font-size: 1.2rem; line-height: 1.22; flex-basis: 100%; }
+  .site-walvi .section-head .rule { display: none; }
+  .site-walvi .section-head .count { order: 2; }
+
+  /* Calculator card header: title full-width, review pill drops below (no overlap). */
+  .site-walvi .calc-top { flex-wrap: wrap; }
+  .site-walvi .calc-top h3 { flex: 1 1 100%; min-width: 0; }
+  .site-walvi .calc-top .pill { order: 3; }
+}
