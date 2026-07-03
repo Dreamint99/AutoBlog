@@ -68,7 +68,7 @@ def main(path: str, site: str = "walvi"):
             "faq": a.get("faq", []),
             "keyword": a.get("keyword", ""),
             "secondary_keywords": a.get("secondary_keywords", []),
-            "image_url": image_url(a["image_prompt"]),
+            "image_url": a.get("image_url") or image_url(a.get("image_prompt", "")),
             "word_count": wc,
             "reading_time": max(4, round(wc / 210)),
             "status": "published",
