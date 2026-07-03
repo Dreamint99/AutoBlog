@@ -1693,3 +1693,7 @@
   .site-walvi .calc-top h3 { flex: 1 1 100%; min-width: 0; }
   .site-walvi .calc-top .pill { order: 3; }
 }
+
+/* article-body table header is dark-blue (--table-head:#0b2566) — force light text (globals hardcodes dark #1f2430) */
+.site-walvi .article-content thead th { color: #eaf1ff; }
+.site-walvi .article-content thead th { border-color: rgba(255,255,255,0.14); }
