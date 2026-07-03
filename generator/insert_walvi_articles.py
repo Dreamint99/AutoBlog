@@ -40,15 +40,15 @@ def image_url(prompt: str) -> str:
     return f"https://image.pollinations.ai/prompt/{p}?width=1200&height=630&nologo=true"
 
 
-def existing_slug(slug: str) -> bool:
+def existing_slug(slug: str, site: str) -> bool:
     r = requests.get(
-        f"{TABLE}?select=id&site_id=eq.walvi&slug=eq.{quote(slug)}",
+        f"{TABLE}?select=id&site_id=eq.{site}&slug=eq.{quote(slug)}",
         headers=_headers(), timeout=30,
     )
     return r.ok and len(r.json()) > 0
 
 
-def main(path: str):
+def main(path: str, site: str = "walvi"):
     with open(path, encoding="utf-8") as f:
         arts = json.load(f).get("articles", [])
     now = datetime.now(timezone.utc)
@@ -57,7 +57,7 @@ def main(path: str):
     for i, a in enumerate(arts):
         wc = int(a.get("word_count") or 0) or max(1700, len(a.get("body_html", "")) // 6)
         fields = {
-            "site_id": "walvi",
+            "site_id": site,
             "title": a["title"],
             "slug": a["slug"],
             "meta_title": a.get("meta_title", a["title"])[:70],
@@ -75,9 +75,9 @@ def main(path: str):
             "is_mock": False,
         }
 
-        if existing_slug(a["slug"]):
+        if existing_slug(a["slug"], site):
             r = requests.patch(
-                f"{TABLE}?site_id=eq.walvi&slug=eq.{quote(a['slug'])}",
+                f"{TABLE}?site_id=eq.{site}&slug=eq.{quote(a['slug'])}",
                 headers=_headers({"Prefer": "return=minimal"}), json=fields, timeout=60,
             )
             r.raise_for_status()
@@ -98,4 +98,6 @@ def main(path: str):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1] if len(sys.argv) > 1 else "data/walvi_articles.json")
+    path = sys.argv[1] if len(sys.argv) > 1 else "data/walvi_articles.json"
+    site = sys.argv[2] if len(sys.argv) > 2 else "walvi"
+    main(path, site)
