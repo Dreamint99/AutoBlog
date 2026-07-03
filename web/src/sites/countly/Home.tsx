@@ -255,7 +255,6 @@ export function CnHeader({ site }: { site: { id: string; name: string } }) {
             <Link href={`/s/${site.id}`}>Statistics</Link>
             <Link href={`/s/${site.id}/top10`}>Top 10</Link>
             <Link href={`/s/${site.id}/best-ai-tools`}>AI Tools</Link>
-            <Link href={`/s/${site.id}/visit-bangladesh`}>Visit BD</Link>
             <Link href={`/s/${site.id}/crypto`}>Crypto</Link>
             <Link href={`/s/${site.id}/currency-converter`}>Converter</Link>
             <Link href={`/s/${site.id}/topic/rankings`}>Rankings</Link>
