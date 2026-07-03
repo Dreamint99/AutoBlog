@@ -1,0 +1,80 @@
+{
+ "bandarban": {
+  "feature": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Nilgiri%2C_Bandarban%2C_Bangladesh.jpg/1280px-Nilgiri%2C_Bandarban%2C_Bangladesh.jpg",
+  "feature_alt": "Nilgiri hills, Bandarban",
+  "figs": [
+   {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Boga_Lake%2C_Bandarban.jpg/1280px-Boga_Lake%2C_Bandarban.jpg",
+    "alt": "Boga Lake, Bandarban",
+    "cap": "Boga Lake — a high crater lake in the Bandarban hills."
+   },
+   {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Nafa-khum_waterfalls_at_Bandarban.jpg/1280px-Nafa-khum_waterfalls_at_Bandarban.jpg",
+    "alt": "Nafakhum waterfall, Bandarban",
+    "cap": "Nafakhum, one of Bangladesh's largest waterfalls, deep in the Bandarban hills."
+   },
+   {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Buddha_Dhatu_Jadi_%2801%29.jpg/1280px-Buddha_Dhatu_Jadi_%2801%29.jpg",
+    "alt": "Buddha Dhatu Jadi (Golden Temple), Bandarban",
+    "cap": "Buddha Dhatu Jadi (the Golden Temple) above Bandarban town."
+   }
+  ]
+ },
+ "rajshahi": {
+  "feature": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Bagha_Mosque%2C_Rajshahi%2C_Bangladesh_03.jpg/1280px-Bagha_Mosque%2C_Rajshahi%2C_Bangladesh_03.jpg",
+  "feature_alt": "Bagha Mosque, Rajshahi",
+  "figs": [
+   {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Life_in_Padma_River%2C_Rajshahi_01.jpg/1280px-Life_in_Padma_River%2C_Rajshahi_01.jpg",
+    "alt": "Padma River at Rajshahi",
+    "cap": "Life along the Padma river at Rajshahi."
+   },
+   {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Varendra_Research_Museum_%283%29.jpg/1280px-Varendra_Research_Museum_%283%29.jpg",
+    "alt": "Varendra Research Museum, Rajshahi",
+    "cap": "Varendra Research Museum — the country's oldest museum, in Rajshahi city."
+   },
+   {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Bagha_Mosque_02.jpg/1280px-Bagha_Mosque_02.jpg",
+    "alt": "Bagha Mosque terracotta, Rajshahi",
+    "cap": "The terracotta-decorated Bagha Mosque, a highlight of any Rajshahi trip."
+   }
+  ]
+ },
+ "kuakata": {
+  "feature": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Kuakata_Sea_Beach.jpg/1280px-Kuakata_Sea_Beach.jpg",
+  "feature_alt": "Kuakata sea beach",
+  "figs": [
+   {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Kuakata%2C_Beach.jpg/1280px-Kuakata%2C_Beach.jpg",
+    "alt": "Kuakata beach",
+    "cap": "Kuakata — 'Sagar Kanya', famed for both sunrise and sunset over the Bay of Bengal."
+   },
+   {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Kuakata_Sea_Beach_01.jpg/1280px-Kuakata_Sea_Beach_01.jpg",
+    "alt": "Kuakata Sea Beach",
+    "cap": "The wide, quiet sands of Kuakata in southern Bangladesh."
+   }
+  ]
+ },
+ "resorts_figs": [
+  {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/At_the_beach_of_Cox%27s_Bazar_02.jpg/1280px-At_the_beach_of_Cox%27s_Bazar_02.jpg",
+   "alt": "Cox's Bazar beach",
+   "cap": "Many of Bangladesh's top resorts line the Cox's Bazar coast."
+  },
+  {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Sreemangal_tea_garden_2017-08-20.jpg/1280px-Sreemangal_tea_garden_2017-08-20.jpg",
+   "alt": "Sreemangal tea garden",
+   "cap": "Tea-country resorts cluster around Sreemangal and Moulvibazar."
+  }
+ ],
+ "hero_candidates": {
+  "nilgiri": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Nilgiri%2C_Bandarban%2C_Bangladesh_14.jpg/1280px-Nilgiri%2C_Bandarban%2C_Bangladesh_14.jpg",
+  "tea": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Sreemangal_tea_garden_2017-08-20.jpg/1280px-Sreemangal_tea_garden_2017-08-20.jpg",
+  "sundarbans": "https://upload.wikimedia.org/wikipedia/commons/5/58/Boat%2C_trees_and_water_in_Sundarbans.jpg",
+  "coxsbazar": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/At_the_beach_of_Cox%27s_Bazar_02.jpg/1280px-At_the_beach_of_Cox%27s_Bazar_02.jpg"
+ },
+ "hero": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Sreemangal_tea_garden_2017-08-20.jpg/1280px-Sreemangal_tea_garden_2017-08-20.jpg",
+ "hero_alt": "Green tea gardens in Sreemangal, Sylhet — Bangladesh"
+}

@@ -1968,3 +1968,38 @@ html { scroll-behavior: smooth; }
 .site-countly .cn-rise-lang i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
 .site-countly .cn-rise-age { color: var(--cn-ink-muted); }
 @media (max-width: 640px) { .site-countly .cn-rise-grid { grid-template-columns: 1fr; } }
+
+/* ════════ Visit Bangladesh landing (.cn-vb-*) ════════ */
+.site-countly .cn-vb-hero { position: relative; min-height: 460px; display: flex; align-items: flex-end; overflow: hidden; }
+.site-countly .cn-vb-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.site-countly .cn-vb-hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10, 14, 34, 0.25) 0%, rgba(10, 14, 34, 0.55) 55%, rgba(10, 14, 34, 0.86) 100%); }
+.site-countly .cn-vb-hero-inner { position: relative; z-index: 1; padding: 3.4rem 22px; color: #fff; width: 100%; margin: 0 auto; max-width: var(--cn-maxw); }
+.site-countly .cn-vb-eyebrow { display: inline-block; font: 700 0.76rem/1 var(--cn-sans); letter-spacing: 0.14em; text-transform: uppercase; color: #ffd76a; }
+.site-countly .cn-vb-hero-inner h1 { font: 600 clamp(2.3rem, 5.5vw, 3.9rem)/1.05 var(--cn-display); margin: 0.7rem 0 0.6rem; letter-spacing: -0.02em; text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35); }
+.site-countly .cn-vb-hero-inner h1 em { font-style: italic; color: #ffd76a; }
+.site-countly .cn-vb-hero-inner > p { max-width: 640px; font: 400 1.08rem/1.6 var(--cn-sans); color: #eef1fb; text-shadow: 0 1px 12px rgba(0, 0, 0, 0.4); }
+.site-countly .cn-vb-herostats { display: flex; flex-wrap: wrap; gap: 1.8rem; margin-top: 1.6rem; }
+.site-countly .cn-vb-herostats span { font: 500 0.9rem/1 var(--cn-sans); color: #cfd6ee; }
+.site-countly .cn-vb-herostats b { display: block; font: 600 1.5rem/1.1 var(--cn-display); color: #fff; margin-bottom: 0.15rem; }
+
+.site-countly .cn-vb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.4rem; }
+.site-countly .cn-vb-card { display: flex; flex-direction: column; background: var(--cn-surface); border: 1px solid var(--cn-line); border-radius: var(--cn-radius-lg); overflow: hidden; transition: 0.18s; }
+.site-countly .cn-vb-card:hover { border-color: var(--cn-tint-line); box-shadow: var(--cn-shadow-md); transform: translateY(-3px); }
+.site-countly .cn-vb-card-media { display: block; width: 100%; aspect-ratio: 16 / 10; background: var(--cn-surface-alt); overflow: hidden; }
+.site-countly .cn-vb-card-media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+.site-countly .cn-vb-card:hover .cn-vb-card-media img { transform: scale(1.05); }
+.site-countly .cn-vb-card-body { display: flex; flex-direction: column; gap: 0.5rem; padding: 1.1rem 1.2rem 1.2rem; flex: 1; }
+.site-countly .cn-vb-card-body h3 { font: 600 1.18rem/1.25 var(--cn-display); }
+.site-countly .cn-vb-card-body h3 a { color: var(--cn-ink); }
+.site-countly .cn-vb-card-body h3 a:hover { color: var(--cn-accent); }
+.site-countly .cn-vb-excerpt { font: 400 0.92rem/1.5 var(--cn-sans); color: var(--cn-ink-soft); flex: 1; }
+.site-countly .cn-vb-card-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 0.3rem; }
+.site-countly .cn-vb-read { display: inline-flex; align-items: center; gap: 0.35rem; font: 600 0.9rem var(--cn-sans); color: var(--cn-accent); }
+.site-countly .cn-vb-read svg { width: 15px; height: 15px; }
+.site-countly .cn-vb-card-foot > span { font: 500 0.8rem var(--cn-sans); color: var(--cn-ink-muted); }
+
+@media (max-width: 640px) {
+  .site-countly .cn-vb-hero { min-height: 380px; }
+  .site-countly .cn-vb-hero-inner { padding: 2.4rem 20px; }
+  .site-countly .cn-vb-grid { grid-template-columns: 1fr; }
+}

@@ -54,6 +54,15 @@ export const CN_CATEGORIES: CnCategory[] = [
     match: ["largest", "biggest", "top 10", "top 20", "ranking", "most ", "richest",
       "fastest-growing", "fastest growing", "leading", "highest", "world's", "best "],
   },
+  {
+    slug: "bangladesh-travel",
+    label: "Visit Bangladesh",
+    blurb: "Travel guides, beaches, hills and trips across Bangladesh.",
+    match: ["bangladesh travel", "travel guide", "tour guide", "cox's bazar", "coxs bazar",
+      "sylhet", "tanguar", "bandarban", "rajshahi", "kuakata", "sundarban", "sajek",
+      "saint martin", "sea beach", "resorts in bangladesh", "resort in bangladesh",
+      "star hotels in bangladesh", "5-star hotel"],
+  },
 ];
 
 export function getCategory(slug: string): CnCategory | undefined {
