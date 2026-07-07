@@ -1,0 +1,9 @@
+{
+  "name": "autoblog-pulse",
+  "main": "worker.js",
+  "compatibility_date": "2026-06-01",
+  "workers_dev": true,
+  "routes": [{ "pattern": "pulse.countly.net", "custom_domain": true }],
+  "vars": { "ADMIN_EMAIL": "admin@dreamintcs.com" },
+  "kv_namespaces": [{ "binding": "PULSE", "id": "3987a5253d994eea89caaef8a80b724b" }]
+}
