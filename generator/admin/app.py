@@ -51,6 +51,22 @@ def dashboard():
                            recent=recent, total=total, has_llm=have_llm())
 
 
+# ── Network analytics dashboard ────────────────────────
+@app.route("/network")
+def network_page():
+    return render_template("network.html")
+
+
+@app.route("/api/network")
+def network_api():
+    from modules.net_analytics import network_snapshot
+    rng = request.args.get("range", "7d")
+    try:
+        return jsonify(network_snapshot(rng))
+    except Exception as e:
+        return jsonify({"error": str(e)[:300]}), 500
+
+
 @app.route("/generate")
 def generate_page():
     sites = store.load_sites()

@@ -12,6 +12,7 @@
     <nav>
       <a href="/" class="{{ 'active' if request.path == '/' }}">Dashboard</a>
       <a href="/generate" class="{{ 'active' if request.path.startswith('/generate') }}">Generate</a>
+      <a href="/network" class="{{ 'active' if request.path.startswith('/network') }}">Network</a>
       <a href="/manage" class="{{ 'active' if request.path.startswith('/manage') or request.path.startswith('/edit') }}">Manage</a>
       <a href="/settings" class="{{ 'active' if request.path.startswith('/settings') }}">Settings</a>
     </nav>

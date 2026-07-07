@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+{% block title %}Network Analytics{% endblock %}
+{% block content %}
+<style>
+  .na-wrap { max-width: 1200px; margin: 0 auto; }
+  .na-head { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-bottom:18px; }
+  .na-head h1 { margin:0; font-size:1.5rem; }
+  .na-filters { display:flex; gap:6px; }
+  .na-filters button { padding:7px 14px; border-radius:8px; border:1px solid #2c3350; background:#161b2e; color:#cfd6ee; cursor:pointer; font-size:.9rem; }
+  .na-filters button.on { background:#4f46e5; border-color:#4f46e5; color:#fff; }
+  .na-tabs { display:flex; gap:6px; margin:14px 0; flex-wrap:wrap; }
+  .na-tabs button { padding:6px 13px; border-radius:999px; border:1px solid #2c3350; background:#161b2e; color:#cfd6ee; cursor:pointer; font-size:.86rem; }
+  .na-tabs button.on { background:#22c55e; border-color:#22c55e; color:#06210f; font-weight:700; }
+  .na-cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:12px; margin-bottom:16px; }
+  .na-card { background:#161b2e; border:1px solid #262c47; border-radius:12px; padding:14px 16px; }
+  .na-card b { display:block; font-size:1.6rem; margin-top:2px; }
+  .na-card small { color:#8b93b8; }
+  .na-grid { display:grid; grid-template-columns:2fr 1fr; gap:14px; }
+  .na-panel { background:#161b2e; border:1px solid #262c47; border-radius:12px; padding:14px 16px; margin-bottom:14px; }
+  .na-panel h3 { margin:0 0 10px; font-size:1rem; color:#e6e9f8; }
+  .na-panel table { width:100%; border-collapse:collapse; font-size:.86rem; }
+  .na-panel td { padding:5px 4px; border-bottom:1px solid #232946; color:#cfd6ee; }
+  .na-panel td.num { text-align:right; font-variant-numeric:tabular-nums; }
+  .na-health { display:flex; gap:8px; flex-wrap:wrap; }
+  .na-pill { padding:4px 10px; border-radius:999px; font-size:.8rem; font-weight:600; }
+  .ok { background:#10331f; color:#4ade80; } .bad { background:#3a1420; color:#f87171; }
+  .na-note { color:#8b93b8; font-size:.78rem; margin-top:10px; line-height:1.5; }
+  .na-trend-up { color:#4ade80; } .na-trend-down { color:#f87171; }
+  #na-loading { color:#8b93b8; padding:30px 0; text-align:center; }
+  @media (max-width: 900px) { .na-grid { grid-template-columns:1fr; } }
+</style>
+
+<div class="na-wrap">
+  <div class="na-head">
+    <h1>🌐 Network Analytics</h1>
+    <div class="na-filters" id="na-filters">
+      <button data-r="24h">24 hours</button>
+      <button data-r="7d" class="on">1 week</button>
+      <button data-r="14d">2 weeks</button>
+      <button data-r="30d">1 month</button>
+      <button data-r="1y">1 year</button>
+    </div>
+  </div>
+
+  <div class="na-tabs" id="na-tabs">
+    <button data-s="all" class="on">All sites</button>
+    <button data-s="countly">countly.net</button>
+    <button data-s="walvi">walvi.io</button>
+    <button data-s="infkey">infkey.com</button>
+    <button data-s="ninetymins">ninetymins.com</button>
+  </div>
+
+  <div id="na-loading">Loading Cloudflare analytics…</div>
+  <div id="na-body" style="display:none">
+    <div class="na-cards" id="na-cards"></div>
+
+    <div class="na-panel"><h3>Visitors over time</h3><canvas id="na-chart" height="90"></canvas></div>
+
+    <div class="na-grid">
+      <div>
+        <div class="na-panel"><h3>🔥 Top pages <small style="color:#8b93b8">(last ~3 days, sampled)</small></h3>
+          <table id="na-paths"></table></div>
+        <div class="na-panel"><h3>🔗 Traffic sources (referrers)</h3><table id="na-refs"></table></div>
+      </div>
+      <div>
+        <div class="na-panel"><h3>🌍 Countries</h3><table id="na-countries"></table></div>
+        <div class="na-panel"><h3>❤️ Site health</h3><div id="na-health"></div></div>
+        <div class="na-panel"><h3>🔮 Next 7 days (guess)</h3><div id="na-forecast"></div></div>
+      </div>
+    </div>
+    <div class="na-note" id="na-notes"></div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<script>
+let RANGE = '7d', SITE = 'all', DATA = null, CHART = null;
+
+async function load() {
+  document.getElementById('na-loading').style.display = 'block';
+  const r = await fetch(`/api/network?range=${RANGE}`);
+  DATA = await r.json();
+  document.getElementById('na-loading').style.display = 'none';
+  document.getElementById('na-body').style.display = 'block';
+  render();
+}
+
+function sel() {
+  if (SITE === 'all') return null;
+  return DATA.sites.find(s => s.id === SITE);
+}
+
+function render() {
+  if (!DATA || DATA.error) { document.getElementById('na-loading').textContent = 'Error: ' + (DATA && DATA.error); return; }
+  const s = sel();
+  const tot = s ? {uniques: s.uniques||0, pageviews: s.pageviews||0, requests: s.requests||0} : DATA.total;
+
+  // cards
+  const fc = s ? (s.forecast||{}) : null;
+  document.getElementById('na-cards').innerHTML = `
+    <div class="na-card"><small>Visitors (unique)</small><b>${(tot.uniques||0).toLocaleString()}</b></div>
+    <div class="na-card"><small>Pageviews</small><b>${(tot.pageviews||0).toLocaleString()}</b></div>
+    <div class="na-card"><small>Requests</small><b>${(tot.requests||0).toLocaleString()}</b></div>
+    <div class="na-card"><small>Range</small><b>${DATA.range}</b></div>`;
+
+  // chart — merged or single series
+  const sites = s ? [s] : DATA.sites.filter(x => x.series);
+  const labels = (sites[0] && sites[0].series || []).map(p => p.t);
+  const datasets = sites.map((x,i) => ({
+    label: x.domain, data: (x.series||[]).map(p => p.uniques), tension:.3, borderWidth:2, pointRadius:2,
+    borderColor: ['#4f46e5','#22c55e','#eab308','#f87171'][i%4],
+  }));
+  if (CHART) CHART.destroy();
+  CHART = new Chart(document.getElementById('na-chart'), {
+    type:'line', data:{labels, datasets},
+    options:{plugins:{legend:{labels:{color:'#cfd6ee'}}}, scales:{x:{ticks:{color:'#8b93b8',maxTicksLimit:12}}, y:{ticks:{color:'#8b93b8'}, beginAtZero:true}}}
+  });
+
+  // top pages / referrers / countries — merge across sites when All
+  const merge = (key, k1, k2) => {
+    const m = {};
+    sites.forEach(x => (x[key]||[]).forEach(it => {
+      const label = (sites.length>1 ? x.domain : '') + it[k1];
+      m[label] = (m[label]||0) + it[k2];
+    }));
+    return Object.entries(m).sort((a,b)=>b[1]-a[1]).slice(0,12);
+  };
+  document.getElementById('na-paths').innerHTML = merge('topPaths','path','views')
+    .map(([p,v])=>`<tr><td>${p}</td><td class="num">${v.toLocaleString()}</td></tr>`).join('') || '<tr><td>No data yet</td></tr>';
+  document.getElementById('na-refs').innerHTML = merge('referers','referer','hits')
+    .map(([p,v])=>`<tr><td>${p}</td><td class="num">${v.toLocaleString()}</td></tr>`).join('') || '<tr><td>No data yet</td></tr>';
+  document.getElementById('na-countries').innerHTML = merge('countries','country','requests')
+    .map(([p,v])=>`<tr><td>${p}</td><td class="num">${v.toLocaleString()}</td></tr>`).join('') || '<tr><td>No data yet</td></tr>';
+
+  // health
+  document.getElementById('na-health').innerHTML = DATA.sites.map(x => {
+    const h = x.health || {};
+    return `<div style="margin-bottom:8px"><b style="font-size:.85rem">${x.domain}</b><div class="na-health" style="margin-top:4px">
+      <span class="na-pill ${h.live?'ok':'bad'}">${h.live?'LIVE':'DOWN '+(h.status||'')}</span>
+      <span class="na-pill ${h.sitemap?'ok':'bad'}">sitemap</span>
+      <span class="na-pill ${h.robots?'ok':'bad'}">robots</span></div></div>`;
+  }).join('');
+
+  // forecast
+  document.getElementById('na-forecast').innerHTML = DATA.sites.map(x => {
+    const f = x.forecast || {};
+    const tr = f.trendPct == null ? '' :
+      `<span class="${f.trendPct>=0?'na-trend-up':'na-trend-down'}">${f.trendPct>=0?'▲':'▼'} ${Math.abs(f.trendPct)}%</span>`;
+    return `<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #232946;font-size:.86rem">
+      <span>${x.domain}</span><span>${f.next7d!=null ? '~'+f.next7d.toLocaleString()+' visitors ' : 'need more data '} ${tr}</span></div>`;
+  }).join('');
+
+  document.getElementById('na-notes').innerHTML = (DATA.notes||[]).map(n=>'ⓘ '+n).join('<br>');
+}
+
+document.getElementById('na-filters').addEventListener('click', e => {
+  if (!e.target.dataset.r) return;
+  RANGE = e.target.dataset.r;
+  document.querySelectorAll('#na-filters button').forEach(b=>b.classList.toggle('on', b===e.target));
+  load();
+});
+document.getElementById('na-tabs').addEventListener('click', e => {
+  if (!e.target.dataset.s) return;
+  SITE = e.target.dataset.s;
+  document.querySelectorAll('#na-tabs button').forEach(b=>b.classList.toggle('on', b===e.target));
+  render();
+});
+load();
+setInterval(load, 5 * 60 * 1000);   // refresh every 5 min
+</script>
+{% endblock %}
