@@ -7,3 +7,5 @@ next-env.d.ts
 *.tsbuildinfo
 
 .vercel
+wrangler.jsonc
+.open-next
