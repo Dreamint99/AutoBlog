@@ -15,6 +15,8 @@ const ahrefsKey = AHREFS_KEYS[process.env.SITE_ID || ""] || "";
 // Google Analytics 4 — per-property measurement ID, loaded only on its own site.
 const GA4_IDS: Record<string, string> = {
   countly: "G-6RX4BLWGKH",
+  walvi: "G-QM8RG2SLKK",
+  infkey: "G-0G8JDFETNP",
 };
 const ga4Id = GA4_IDS[process.env.SITE_ID || ""] || "";
 
