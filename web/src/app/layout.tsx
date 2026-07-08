@@ -33,6 +33,21 @@ beat();setInterval(beat,25000);
 document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')beat();});
 }catch(e){}})();`;
 
+// Adsterra ads — per-site ad-unit codes (Native Banner + Social Bar), keyed by
+// SITE_ID so the shared bundle serves the right units per worker. A site with
+// no entry gets no ad scripts. Native Banner = invoke.js + a container div;
+// Social Bar = a single floating script (no placement needed).
+type AdsterraUnits = { socialBar?: string; nativeInvoke?: string; nativeContainer?: string };
+const ADSTERRA: Record<string, AdsterraUnits> = {
+  countly: {
+    socialBar: "https://pl30263461.effectivecpmnetwork.com/a5/a1/01/a5a10138c46d0ce013195ab1c038ee3d.js",
+    nativeInvoke: "https://pl30263460.effectivecpmnetwork.com/07db29087a1a24463680898243b16f48/invoke.js",
+    nativeContainer: "container-07db29087a1a24463680898243b16f48",
+  },
+  // walvi + infkey: pending — add their Native Banner + Social Bar codes here.
+};
+const ads = ADSTERRA[process.env.SITE_ID || ""] || {};
+
 // Search-engine site verification, per-deployment via env (set on Vercel).
 //   GOOGLE_SITE_VERIFICATION  → <meta name="google-site-verification">
 //   YANDEX_VERIFICATION       → <meta name="yandex-verification">
@@ -87,6 +102,18 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               }}
             />
           </>
+        ) : null}
+        {ads.nativeContainer && ads.nativeInvoke ? (
+          <>
+            <div
+              id={ads.nativeContainer}
+              style={{ maxWidth: "100%", margin: "28px auto", textAlign: "center" }}
+            />
+            <Script src={ads.nativeInvoke} strategy="afterInteractive" data-cfasync="false" />
+          </>
+        ) : null}
+        {ads.socialBar ? (
+          <Script src={ads.socialBar} strategy="afterInteractive" />
         ) : null}
       </body>
     </html>
