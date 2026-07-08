@@ -4,6 +4,11 @@
   "compatibility_date": "2026-06-01",
   "workers_dev": true,
   "routes": [{ "pattern": "pulse.countly.net", "custom_domain": true }],
-  "vars": { "ADMIN_EMAIL": "admin@dreamintcs.com" },
-  "kv_namespaces": [{ "binding": "PULSE", "id": "3987a5253d994eea89caaef8a80b724b" }]
+  "vars": {
+    "ADMIN_EMAIL": "admin@dreamintcs.com",
+    "ASSETLINKS_SHA": "2C:78:8A:CA:ED:7F:18:21:E3:2C:D1:90:A3:45:FE:E5:80:D5:94:68:53:19:C6:90:CB:CD:FC:F7:7D:71:F6:2A"
+  },
+  "kv_namespaces": [{ "binding": "PULSE", "id": "3987a5253d994eea89caaef8a80b724b" }],
+  "durable_objects": { "bindings": [{ "name": "LIVE", "class_name": "LiveRoom" }] },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["LiveRoom"] }]
 }

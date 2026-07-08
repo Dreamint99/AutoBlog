@@ -11,6 +11,43 @@
  */
 
 const SESSION_DAYS = 30;
+const SITE_IDS = new Set(["countly", "walvi", "infkey", "ninetymins"]);
+const LIVE_WINDOW_MS = 65e3; // visitor counts as "live" for ~1 min after last beat
+
+// ── realtime presence (Durable Object, SQLite class = free plan) ──
+// One global room; sites' pages send anonymous beats every ~25s.
+export class LiveRoom {
+  constructor() { this.sessions = new Map(); } // id -> {site, path, c, t}
+
+  prune(now) {
+    for (const [k, v] of this.sessions) if (now - v.t > LIVE_WINDOW_MS) this.sessions.delete(k);
+  }
+
+  async fetch(request) {
+    const now = Date.now();
+    if (request.method === "POST") {
+      const b = await request.json();
+      this.sessions.set(b.id, { site: b.site, path: b.path, c: b.c || "", t: now });
+      if (this.sessions.size > 8000) this.prune(now);
+      return new Response(null, { status: 204 });
+    }
+    this.prune(now);
+    const bySite = {}, pages = {}, countries = {};
+    for (const v of this.sessions.values()) {
+      bySite[v.site] = (bySite[v.site] || 0) + 1;
+      const pk = v.site + "|" + v.path;
+      pages[pk] = (pages[pk] || 0) + 1;
+      if (v.c) countries[v.c] = (countries[v.c] || 0) + 1;
+    }
+    const top = (o, n) => Object.entries(o).sort((a, b) => b[1] - a[1]).slice(0, n);
+    return new Response(JSON.stringify({
+      total: this.sessions.size,
+      bySite,
+      pages: top(pages, 10).map(([k, n]) => { const i = k.indexOf("|"); return { site: k.slice(0, i), path: k.slice(i + 1), n }; }),
+      countries: top(countries, 8).map(([c, n]) => ({ c, n })),
+    }), { headers: { "content-type": "application/json" } });
+  }
+}
 
 // ── crypto helpers ─────────────────────────────────────
 const enc = new TextEncoder();
@@ -135,10 +172,61 @@ async function handleHealth(env) {
 }
 
 // ── router ─────────────────────────────────────────────
+// ── realtime endpoints ─────────────────────────────────
+async function handleBeat(request, env) {
+  // Public ingest from the 4 sites (sendBeacon, text/plain = no preflight).
+  let b;
+  try { b = JSON.parse(await request.text()); } catch { return new Response(null, { status: 400 }); }
+  const id = String(b.id || "").slice(0, 64);
+  const site = String(b.site || "");
+  const path = String(b.path || "/").slice(0, 200);
+  if (!id || !SITE_IDS.has(site)) return new Response(null, { status: 400 });
+  const stub = env.LIVE.get(env.LIVE.idFromName("global"));
+  await stub.fetch("https://do/beat", {
+    method: "POST",
+    body: JSON.stringify({ id, site, path, c: request.cf && request.cf.country || "" }),
+  });
+  return new Response(null, { status: 204, headers: { "access-control-allow-origin": "*" } });
+}
+
+async function handleLive(env) {
+  const stub = env.LIVE.get(env.LIVE.idFromName("global"));
+  const r = await stub.fetch("https://do/live");
+  return new Response(r.body, { headers: { "content-type": "application/json" } });
+}
+
+const MANIFEST = JSON.stringify({
+  name: "Pulse", short_name: "Pulse", start_url: "/", display: "standalone",
+  background_color: "#070b14", theme_color: "#070b14",
+  icons: [{ src: "/icon-512.png", sizes: "512x512", type: "image/png", purpose: "any" },
+          { src: "/icon-512.png", sizes: "512x512", type: "image/png", purpose: "maskable" }],
+});
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     const p = url.pathname;
+
+    if (p === "/api/beat" && request.method === "POST") return handleBeat(request, env);
+    if (p === "/api/beat" && request.method === "OPTIONS")
+      return new Response(null, { status: 204, headers: {
+        "access-control-allow-origin": "*", "access-control-allow-methods": "POST",
+        "access-control-allow-headers": "content-type" } });
+    if (p === "/manifest.webmanifest")
+      return new Response(MANIFEST, { headers: { "content-type": "application/manifest+json",
+        "cache-control": "public, max-age=3600" } });
+    if (p === "/icon-512.png") {
+      const png = await env.PULSE.get("asset:icon512", "arrayBuffer");
+      if (png) return new Response(png, { headers: { "content-type": "image/png",
+        "cache-control": "public, max-age=86400" } });
+      return new Response("no icon", { status: 404 });
+    }
+    if (p === "/.well-known/assetlinks.json")
+      return new Response(JSON.stringify([{
+        relation: ["delegate_permission/common.handle_all_urls"],
+        target: { namespace: "android_app", package_name: "com.dreamint.pulse",
+                  sha256_cert_fingerprints: [String(env.ASSETLINKS_SHA || "")] },
+      }]), { headers: { "content-type": "application/json", "cache-control": "public, max-age=3600" } });
 
     if (p === "/api/login" && request.method === "POST") return handleLogin(request, env);
     if (p === "/api/logout" && request.method === "POST") return handleLogout();
@@ -149,6 +237,7 @@ export default {
       if (!authed) return json({ error: "unauthorized" }, 401);
       if (p === "/api/data") return handleData(env, url.searchParams.get("range") || "7d");
       if (p === "/api/health") return handleHealth(env);
+      if (p === "/api/live") return handleLive(env);
       return json({ error: "not found" }, 404);
     }
     if (p !== "/") return new Response("not found", { status: 404 });
@@ -197,7 +286,8 @@ const HEAD_COMMON = `
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%23818cf8'/><stop offset='1' stop-color='%2322d3ee'/></linearGradient></defs><rect rx='24' width='100' height='100' fill='%23101528'/><path d='M54 12 26 56h20l-8 32 36-48H52z' fill='url(%23g)'/></svg>">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="manifest" href='data:application/json,{"name":"Pulse","short_name":"Pulse","display":"standalone","start_url":"/","background_color":"%23070b14","theme_color":"%23070b14"}'>
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/icon-512.png">
 `;
 
 // ═══════════════════════════════════════════════════════
@@ -354,6 +444,22 @@ const DASH_HTML = `<!doctype html>
 .frow b{font-variant-numeric:tabular-nums}
 .note{color:var(--mut2);font-size:11.5px;line-height:1.7;margin-top:16px;padding:0 4px}
 .skel{opacity:.45;pointer-events:none;filter:saturate(.6)}
+/* realtime */
+.live{margin-top:16px;background:linear-gradient(135deg,rgba(52,211,153,.09),rgba(34,211,238,.05));
+  border:1px solid rgba(52,211,153,.25);border-radius:18px;padding:14px 16px}
+.live-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.ldot{width:10px;height:10px;border-radius:50%;background:var(--good);flex:none;
+  box-shadow:0 0 0 0 rgba(52,211,153,.5);animation:lp 1.6s ease-out infinite}
+@keyframes lp{0%{box-shadow:0 0 0 0 rgba(52,211,153,.45)}100%{box-shadow:0 0 0 12px rgba(52,211,153,0)}}
+.live-head b{font-size:24px;font-weight:800;letter-spacing:-.5px}
+.live-lbl{color:var(--mut);font-size:12.5px;font-weight:600}
+.live-sites{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+.lchip{display:flex;align-items:center;gap:5px;padding:4px 10px;border-radius:999px;
+  background:rgba(255,255,255,.06);font-size:11px;font-weight:700}
+.lchip .dot{width:6px;height:6px;border-radius:50%}
+.live-pages{margin-top:8px;display:none;font-size:11.5px;color:var(--mut);line-height:1.9}
+.live-pages.has{display:block}
+.live-pages span{color:#cfd6ee}
 #load{position:fixed;inset:0;display:grid;place-items:center;background:var(--bg);z-index:50;transition:opacity .4s}
 #load.off{opacity:0;pointer-events:none}
 .spin{width:38px;height:38px;border-radius:50%;border:3px solid rgba(129,140,248,.2);border-top-color:#818cf8;animation:rot .8s linear infinite}
@@ -379,6 +485,14 @@ const DASH_HTML = `<!doctype html>
   <div class="row tabs" id="tabs"></div>
 
   <div id="main" class="skel">
+    <div class="live" id="live">
+      <div class="live-head">
+        <span class="ldot"></span>
+        <b id="live-n">—</b><span class="live-lbl">visitors right now</span>
+        <span class="live-sites" id="live-sites"></span>
+      </div>
+      <div class="live-pages" id="live-pages"></div>
+    </div>
     <div class="stats" id="stats"></div>
     <div class="sites" id="sitecards"></div>
     <div class="panel"><h3>📈 Visitors <small id="chart-cap"></small></h3><canvas id="ch" height="150"></canvas></div>
@@ -419,6 +533,24 @@ function load(){
 function loadHealth(){
   fetch('/api/health').then(function(r){return r.ok?r.json():null;}).then(function(h){
     if(h){HEALTH=h;renderHealth();}
+  }).catch(function(){});
+}
+function loadLive(){
+  fetch('/api/live').then(function(r){return r.ok?r.json():null;}).then(function(L){
+    if(!L)return;
+    document.getElementById('live-n').textContent=L.total;
+    var chips='';
+    Object.keys(COLORS).forEach(function(k){
+      var n=(L.bySite||{})[k]||0;if(!n)return;
+      chips+='<span class="lchip"><span class="dot" style="background:'+COLORS[k]+'"></span>'+k+' '+n+'</span>';
+    });
+    document.getElementById('live-sites').innerHTML=chips||'<span class="lchip" style="color:var(--mut2)">waiting for visitors…</span>';
+    var pg=document.getElementById('live-pages');
+    var items=(L.pages||[]).slice(0,6).map(function(p){
+      return '<span>'+esc(p.path)+'</span> ('+p.site+') ×'+p.n;
+    });
+    pg.innerHTML=items.join(' · ');
+    pg.className='live-pages'+(items.length?' has':'');
   }).catch(function(){});
 }
 
@@ -552,10 +684,10 @@ document.getElementById('ranges').addEventListener('click',function(e){
 document.addEventListener('click',function(e){
   var b=e.target.closest('[data-s]');if(!b)return;SITE=b.dataset.s;render();
 });
-document.getElementById('rf').addEventListener('click',function(){load();loadHealth();});
+document.getElementById('rf').addEventListener('click',function(){load();loadHealth();loadLive();});
 document.getElementById('out').addEventListener('click',function(){
   fetch('/api/logout',{method:'POST'}).then(function(){location.reload();});
 });
-load();loadHealth();
-setInterval(load,120000);setInterval(loadHealth,180000);
+load();loadHealth();loadLive();
+setInterval(load,120000);setInterval(loadHealth,180000);setInterval(loadLive,10000);
 </script></body></html>`;

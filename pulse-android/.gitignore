@@ -1,0 +1,5 @@
+# Ignore everything (keystore + build output must never be committed)
+*
+# Except these
+!.gitignore
+!twa-manifest.json
