@@ -38,7 +38,7 @@ export default async function Page({ params }: { params: Promise<{ site: string 
           <div className="cn-sec-head">
             <div>
               <span className="cn-sec-kicker">Free tool</span>
-              <h2>Live Currency Converter</h2>
+              <h1>Live Currency Converter</h1>
               <p>Convert any amount between world currencies at today&apos;s live exchange rates.</p>
             </div>
           </div>

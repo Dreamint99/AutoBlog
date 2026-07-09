@@ -23,7 +23,7 @@ export default function InfoPage({
           <div className="cn-sec-head">
             <div>
               <span className="cn-sec-kicker">{kicker}</span>
-              <h2>{title}</h2>
+              <h1>{title}</h1>
             </div>
           </div>
           <div className="article-content">{children}</div>

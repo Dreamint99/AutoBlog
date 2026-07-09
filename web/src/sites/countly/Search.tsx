@@ -21,7 +21,7 @@ export default function Search({
           <div className="cn-sec-head">
             <div>
               <span className="cn-sec-kicker">Search</span>
-              <h2>{q ? `Results for “${q}”` : "Search the data"}</h2>
+              <h1>{q ? `Results for “${q}”` : "Search the data"}</h1>
               {q ? <p>{results.length} report(s) found.</p> : <p>Find a statistic, company, country or ranking.</p>}
             </div>
           </div>

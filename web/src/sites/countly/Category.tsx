@@ -27,7 +27,7 @@ export default function Category({
           <div className="cn-sec-head">
             <div>
               <span className="cn-sec-kicker">Topic</span>
-              <h2>{category.label}</h2>
+              <h1>{category.label}</h1>
               <p>{category.blurb}</p>
             </div>
             <Link href={`/s/${site.id}`} className="cn-readmore">

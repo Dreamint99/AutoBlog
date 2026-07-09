@@ -38,7 +38,7 @@ export default async function Page({ params }: { params: Promise<{ site: string 
           <div className="cn-sec-head">
             <div>
               <span className="cn-sec-kicker">Live tracker</span>
-              <h2>Live Crypto Prices</h2>
+              <h1>Live Crypto Prices</h1>
               <p>Real-time prices, 24-hour change and market caps for the top 50 cryptocurrencies.</p>
             </div>
           </div>
