@@ -8,6 +8,18 @@ import { JsonLd, breadcrumbSchema } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
+// Keep the <title> and meta description within the lengths search engines
+// display (≈60 / ≈158 chars) so Ahrefs/Google don't flag or truncate them.
+// Cuts on a word boundary and trims trailing punctuation.
+function clamp(s: string, max: number): string {
+  if (!s) return s;
+  const t = s.trim();
+  if (t.length <= max) return t;
+  const cut = t.slice(0, max);
+  const sp = cut.lastIndexOf(" ");
+  return (sp > max * 0.6 ? cut.slice(0, sp) : cut).replace(/[\s.,;:–—-]+$/, "");
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -17,23 +29,26 @@ export async function generateMetadata({
   const site = getSite(id);
   const article = await getArticle(id, slug);
   if (!site || !article) return {};
+  const title = clamp(article.meta_title || article.title, 60);
+  const description = clamp(article.meta_description || article.excerpt || "", 158);
   return {
-    title: article.meta_title || article.title,
-    description: article.meta_description,
+    title,
+    description,
     metadataBase: new URL(siteBaseUrl(site)),
     alternates: { canonical: `/${slug}` },
     keywords: article.tags,
     openGraph: {
-      title: article.title,
-      description: article.meta_description,
+      title: clamp(article.title, 60),
+      description,
       type: "article",
+      siteName: site.name,
       url: `/${slug}`,
       images: article.image_url ? [article.image_url] : [],
     },
     twitter: {
       card: "summary_large_image",
-      title: article.title,
-      description: article.meta_description,
+      title: clamp(article.title, 60),
+      description,
       images: article.image_url ? [article.image_url] : [],
     },
   };

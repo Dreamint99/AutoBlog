@@ -15,7 +15,11 @@
 import worker from "./.open-next/worker.js";
 export { DOQueueHandler, DOShardedTagCache, BucketCachePurge } from "./.open-next/worker.js";
 
-const TTL = 300;
+// 30 min per-colo cache. Longer TTL = far fewer SSR renders, which keeps the
+// free-plan 10ms-CPU limit (error 1102 → 5XX) from firing during aggressive
+// crawls (e.g. Ahrefs Site Audit). Content is drip-published, so 30 min stale
+// is fine; new posts still appear within the window.
+const TTL = 1800;
 const CACHEABLE_CT = /text\/html|text\/x-component|application\/(xml|rss)|text\/xml/;
 
 export default {
