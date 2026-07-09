@@ -98,6 +98,16 @@ export function Footer({ site }: { site: Site }) {
           excludes taxes, prompt-caching discounts and failed-generation retries, and can change at
           any time — always confirm against the provider&apos;s official pricing before you commit spend.
         </p>
+        <div
+          className="footer-legal"
+          style={{ display: "flex", flexWrap: "wrap", gap: "6px 16px", margin: "14px 0", fontSize: "13px", opacity: 0.85 }}
+        >
+          <Link href={`${b}/about`}>About</Link>
+          <Link href={`${b}/contact`}>Contact</Link>
+          <Link href={`${b}/privacy`}>Privacy Policy</Link>
+          <Link href={`${b}/terms`}>Terms</Link>
+          <Link href={`${b}/disclaimer`}>Disclaimer</Link>
+        </div>
         <div className="footer-base">
           <span>
             © {year} <span className="accent">{site.name}</span>

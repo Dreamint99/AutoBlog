@@ -715,6 +715,9 @@ export function SiteFooter({ siteName, siteId, domain }: { siteName: string; sit
               <h4>About</h4>
               <ul>
                 <li>
+                  <Link href={`/s/${siteId}/about`}>About us</Link>
+                </li>
+                <li>
                   <Link href={`/s/${siteId}/contact`}>Contact</Link>
                 </li>
                 <li>
@@ -722,6 +725,9 @@ export function SiteFooter({ siteName, siteId, domain }: { siteName: string; sit
                 </li>
                 <li>
                   <Link href={`/s/${siteId}/terms`}>Terms of Service</Link>
+                </li>
+                <li>
+                  <Link href={`/s/${siteId}/disclaimer`}>Disclaimer</Link>
                 </li>
               </ul>
             </div>
