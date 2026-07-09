@@ -9,6 +9,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 // belongs to (countly) to avoid mixing data across the network.
 const AHREFS_KEYS: Record<string, string> = {
   countly: "zC07+zoO7RVGL92RRb6zdg",
+  walvi: "pR+KnDZlDBlS2qiWfQIfBg",
 };
 const ahrefsKey = AHREFS_KEYS[process.env.SITE_ID || ""] || "";
 
