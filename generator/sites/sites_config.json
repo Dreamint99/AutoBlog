@@ -67,7 +67,14 @@
       "publish_target": "wordpress",
       "tagline": "প্রবাসীদের জন্য নির্ভরযোগ্য তথ্য",
       "niche": "প্রবাসী কর্মী, বিদেশে চাকরি, ওয়ার্ক ভিসা ও ওয়ার্ক পারমিট, রেমিট্যান্স পাঠানো, পাসপোর্ট ও বিএমইটি, বিদেশগামী কর্মীদের প্রশিক্ষণ, বিভিন্ন দেশে বেতন ও জীবনযাত্রার খরচ, প্রবাসে জীবনযাপন ও আইনি অধিকার",
-      "trend_seeds": ["সৌদি ভিসা", "ভিসা চেক", "প্রবাসী", "বিদেশে চাকরি", "ওয়ার্ক পারমিট", "রেমিট্যান্স"],
+      "trend_seeds": [
+        "সৌদি ভিসা",
+        "ভিসা চেক",
+        "প্রবাসী",
+        "বিদেশে চাকরি",
+        "ওয়ার্ক পারমিট",
+        "রেমিট্যান্স"
+      ],
       "language": "Bengali (Bangla). Write the ENTIRE article in Bengali script (বাংলা) — title, headings, body, tables, FAQ, key takeaways, everything. Use natural, everyday Bangla, not stiff translation.",
       "tone": "বিশ্বস্ত, সহানুভূতিশীল ও বাস্তবমুখী পরামর্শকের কণ্ঠ; সাধারণ বাংলাভাষী প্রবাসী ও বিদেশগামী কর্মীদের জন্য ধাপে ধাপে সহজ গাইড। মনে করিয়ে দিন যে নিয়ম ও খরচ বদলায় এবং সরকারি/দূতাবাসের অফিসিয়াল সূত্রে যাচাই করতে বলুন। প্রতারণা থেকে সাবধান করুন।",
       "audience": "বিদেশে চাকরিপ্রত্যাশী ও কর্মরত বাংলাদেশি প্রবাসী, তাদের পরিবার, বিদেশগামী নতুন কর্মী",
@@ -80,7 +87,18 @@
       "domain": "walvi.io",
       "tagline": "Know before you move.",
       "niche": "Europe work and skilled-trade jobs, salaries by country and occupation, cost of living and realistic monthly savings, work permits and work visas, recruitment and relocation for foreign workers; electrician, welder, tiles/ceramic, plumber, carpenter, truck driver, cook/chef, HVAC, construction and machine-operator jobs across Poland, Croatia, Romania, Lithuania, Slovakia, Bulgaria, Hungary, Portugal, Italy and North Macedonia",
-      "trend_seeds": ["jobs in Europe", "Europe work permit", "Europe salary", "Poland work visa", "Croatia work permit", "electrician salary Europe", "welder jobs Europe", "truck driver Europe", "Romania work visa", "Europe jobs without degree"],
+      "trend_seeds": [
+        "jobs in Europe",
+        "Europe work permit",
+        "Europe salary",
+        "Poland work visa",
+        "Croatia work permit",
+        "electrician salary Europe",
+        "welder jobs Europe",
+        "truck driver Europe",
+        "Romania work visa",
+        "Europe jobs without degree"
+      ],
       "language": "English. Write the ENTIRE article in English only — title, headings, body, tables, FAQ and key takeaways. Do NOT write in Bengali/Bangla or any other language even though the audience includes Bangladeshi and South-Asian workers.",
       "tone": "first-hand Europe-recruitment insider crossed with a data analyst; lead with the direct answer and an indicative salary/cost table (monthly gross, net after tax, living cost and realistic savings), always state which figures are official vs estimated, link an official government or EU source, add a 'last verified' date, and warn that wages, living costs and visa rules change and must be confirmed with the official source or embassy. Warn clearly about recruitment scams and fake job offers, and add your own real-world experience and downloadable checklists.",
       "audience": "skilled and semi-skilled workers (electricians, welders, drivers, cooks, construction and factory workers) from Bangladesh, South Asia and beyond looking for jobs in Europe, plus recruiters, agencies and families researching salary, cost of living, savings and work-permit options by country and occupation",
@@ -98,6 +116,34 @@
       "audience": "researchers, journalists, marketers, students, analysts and the data-curious looking for quick, sourced statistics about technology, AI, social media, companies, countries and global markets",
       "theme": "countly-data",
       "default_word_count": 1600
+    },
+    {
+      "id": "ninetymins",
+      "name": "NinetyMins",
+      "domain": "ninetymins.com",
+      "tagline": "Never miss a match.",
+      "niche": "global sports viewing guides, schedules and how-to-watch content - how to watch football, cricket, basketball, tennis, Formula 1 and major events live; fixtures and kickoff times by country and timezone, TV channels and legal streaming options, match previews and where-to-watch guides for the Premier League, Champions League, La Liga, Serie A, IPL, NBA, F1 and international tournaments",
+      "trend_seeds": [
+        "how to watch football today",
+        "Premier League fixtures today",
+        "Champions League schedule",
+        "how to watch El Clasico",
+        "football matches today",
+        "how to watch cricket live",
+        "IPL schedule",
+        "how to watch NBA",
+        "Formula 1 schedule",
+        "live football streaming",
+        "how to watch La Liga",
+        "Champions League final how to watch",
+        "football on TV today",
+        "sports schedule today"
+      ],
+      "language": "English. Write the ENTIRE article in English only - title, headings, body, tables, FAQ and key takeaways. Do NOT write in Bengali/Bangla or any other language.",
+      "tone": "an expert sports-viewing guide crossed with a schedule desk: lead with the direct answer - the date, kickoff time (with timezone), the competition and exactly where/how to watch (TV channel + legal streaming) - then a clean fixtures/schedule table, give kickoff times for major regions (UK, US ET/PT, India IST, Australia), and note that broadcast rights and kickoff times can change so confirm with the official broadcaster. Recommend official/legal viewing options only.",
+      "audience": "sports fans worldwide searching when a match is on, what time it starts in their country, and how or where to watch it live - football, cricket, basketball, tennis and motorsport followers",
+      "theme": "ninetymins-pitch",
+      "default_word_count": 1400
     }
   ]
 }

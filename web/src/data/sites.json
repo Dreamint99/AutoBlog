@@ -83,6 +83,18 @@
       "audience": "researchers, journalists, marketers, students, analysts and the data-curious looking for quick, sourced statistics about technology, companies, countries and global markets",
       "theme": "countly-data",
       "default_word_count": 1600
+    },
+    {
+      "id": "ninetymins",
+      "name": "NinetyMins",
+      "domain": "ninetymins.com",
+      "tagline": "Never miss a match.",
+      "niche": "global sports viewing guides, schedules and how-to-watch content - how to watch football, cricket, basketball, tennis, Formula 1 and major events live; fixtures and kickoff times by country and timezone, TV channels and legal streaming options, match previews and where-to-watch guides for the Premier League, Champions League, La Liga, Serie A, IPL, NBA, F1 and international tournaments",
+      "language": "en",
+      "tone": "an expert sports-viewing guide crossed with a schedule desk: lead with the direct answer - the date, kickoff time (with timezone), the competition and exactly where/how to watch (TV channel + legal streaming) - then a clean fixtures/schedule table, give kickoff times for major regions (UK, US ET/PT, India IST, Australia), and note that broadcast rights and kickoff times can change so confirm with the official broadcaster. Recommend official/legal viewing options only.",
+      "audience": "sports fans worldwide searching when a match is on, what time it starts in their country, and how or where to watch it live - football, cricket, basketball, tennis and motorsport followers",
+      "theme": "ninetymins-pitch",
+      "default_word_count": 1400
     }
   ]
 }

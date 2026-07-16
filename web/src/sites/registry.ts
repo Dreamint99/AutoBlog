@@ -15,6 +15,8 @@ import CountlyHome from "./countly/Home";
 import CountlyArticle from "./countly/Article";
 import WalviHome from "./walvi/Home";
 import WalviArticle from "./walvi/Article";
+import NinetyminsHome from "./ninetymins/Home";
+import NinetyminsArticle from "./ninetymins/Article";
 
 export interface SiteComponents {
   Home: ComponentType<SiteHomeProps>;
@@ -29,4 +31,5 @@ export const SITE_COMPONENTS: Record<string, SiteComponents> = {
   infkey: { Home: InfKeyHome, Article: InfKeyArticle },
   countly: { Home: CountlyHome, Article: CountlyArticle },
   walvi: { Home: WalviHome, Article: WalviArticle },
+  ninetymins: { Home: NinetyminsHome, Article: NinetyminsArticle },
 };
