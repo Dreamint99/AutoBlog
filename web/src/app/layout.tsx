@@ -73,6 +73,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en">
       <body>
         {children}
+        {/* Hide any image that fails to load (e.g. a dead legacy Supabase-Storage
+            feature image) so the card shows its clean background instead of a
+            broken-image icon + alt text. Capture-phase catches <img> load errors. */}
+        <Script id="img-fallback" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html:
+          `document.addEventListener('error',function(e){var t=e.target;if(t&&t.tagName==='IMG'){t.style.visibility='hidden';}},true);` }} />
         <Analytics />
         <SpeedInsights />
         {pulseSiteId ? (

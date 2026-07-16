@@ -58,12 +58,110 @@ def _supabase_headers() -> dict:
     }
 
 
+_D1_COLS = ["id", "site_id", "title", "slug", "meta_title", "meta_description", "excerpt",
+            "body_html", "tags", "faq", "keyword", "secondary_keywords", "image_url",
+            "schema", "word_count", "reading_time", "status", "is_mock", "created_at"]
+_D1_JSON = {"tags", "faq", "secondary_keywords", "schema"}
+_D1_INT = {"word_count", "reading_time"}
+
+
+def _d1_sql_val(col, v):
+    if v is None:
+        return "NULL"
+    if col == "is_mock":
+        return "1" if v else "0"
+    if col in _D1_INT:
+        try:
+            return str(int(v))
+        except Exception:
+            return "0"
+    if col in _D1_JSON:
+        v = json.dumps(v, ensure_ascii=False)
+    else:
+        v = str(v)
+    return "'" + v.replace("'", "''") + "'"
+
+
+def _d1_insert(article: dict) -> dict:
+    """Write one article to Cloudflare D1 (autoblog-content) via wrangler.
+    Supabase is paused; the sites read D1, so this is the live publish path."""
+    import subprocess
+    import tempfile
+    import uuid
+    from datetime import datetime, timezone
+
+    a = dict(article)
+    a.setdefault("id", uuid.uuid4().hex)
+    a.setdefault("status", "published")
+    a.setdefault("is_mock", False)
+    a.setdefault("created_at", datetime.now(timezone.utc).isoformat())
+    wc = int(a.get("word_count") or 0) or max(1700, len(a.get("body_html", "")) // 6)
+    a["word_count"] = wc
+    a.setdefault("reading_time", max(4, round(wc / 210)))
+
+    vals = ", ".join(_d1_sql_val(c, a.get(c)) for c in _D1_COLS)
+    sql = f"INSERT OR REPLACE INTO articles ({', '.join(_D1_COLS)}) VALUES ({vals});"
+    web = os.path.join(os.path.dirname(__file__), "..", "..", "web")
+    with tempfile.NamedTemporaryFile("w", suffix=".sql", delete=False, encoding="utf-8") as f:
+        f.write(sql)
+        sqlfile = f.name
+    try:
+        for npx in ("npx.cmd", "npx"):
+            try:
+                r = subprocess.run([npx, "wrangler", "d1", "execute", "autoblog-content",
+                                    "--remote", "--file", sqlfile, "--yes"], cwd=web,
+                                   capture_output=True, text=True, timeout=180,
+                                   encoding="utf-8", errors="replace")
+                break
+            except FileNotFoundError:
+                continue
+        else:
+            raise RuntimeError("wrangler not found")
+        out = (r.stdout or "") + (r.stderr or "")
+        if "Executed" not in out and "queries" not in out:
+            raise RuntimeError(f"D1 insert failed: {out[-300:]}")
+    finally:
+        os.unlink(sqlfile)
+    return a
+
+
+def _d1_list(site_id: str | None = None) -> list:
+    """Read articles from D1 for dedup/listing (metadata only — no body_html)."""
+    import subprocess
+    where = f" WHERE site_id='{site_id}'" if site_id else ""
+    sql = ("SELECT id, site_id, title, slug, keyword, status, created_at "
+           f"FROM articles{where} ORDER BY created_at DESC;")
+    web = os.path.join(os.path.dirname(__file__), "..", "..", "web")
+    for npx in ("npx.cmd", "npx"):
+        try:
+            r = subprocess.run([npx, "wrangler", "d1", "execute", "autoblog-content",
+                                "--remote", "--command", sql, "--json"], cwd=web,
+                               capture_output=True, text=True, timeout=120,
+                               encoding="utf-8", errors="replace")
+            break
+        except FileNotFoundError:
+            continue
+    else:
+        return []
+    try:
+        data = json.loads(r.stdout)
+        # wrangler --json returns [{results:[...], success:true, ...}]
+        if isinstance(data, list) and data and isinstance(data[0], dict):
+            return data[0].get("results", [])
+        return []
+    except Exception:
+        return []
+
+
 def add_article(article: dict) -> dict:
     site = get_site(article.get("site_id", ""))
     if site and site.get("publish_target") == "wordpress":
         from modules import wordpress
         wordpress.publish(site, article)
         return article
+
+    if STORAGE_BACKEND == "d1":
+        return _d1_insert(article)
 
     if STORAGE_BACKEND == "supabase":
         r = requests.post(
@@ -88,6 +186,9 @@ def list_articles(site_id: str | None = None) -> list:
         if site and site.get("publish_target") == "wordpress":
             from modules import wordpress
             return wordpress.list_articles(site)
+
+    if STORAGE_BACKEND == "d1":
+        return _d1_list(site_id)
 
     if STORAGE_BACKEND == "supabase":
         q = f"{SUPABASE_URL}/rest/v1/articles?select=*&order=created_at.desc"
