@@ -1,6 +1,7 @@
 import "server-only";
 import fs from "node:fs";
 import path from "node:path";
+import { getCloudflareContext } from "@opennextjs/cloudflare";
 import type { Site, Article } from "./types";
 import sitesData from "@/data/sites.json";
 
@@ -11,6 +12,62 @@ const useSupabase = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
 
 function abs(p: string) {
   return path.isAbsolute(p) ? p : path.join(process.cwd(), p);
+}
+
+// ── Cloudflare D1 (primary content store since Supabase billing paused) ──
+// Articles live in the free, Worker-native D1 database `autoblog-content`.
+// Access the binding via the OpenNext Cloudflare context; falls back to
+// Supabase/local when there's no binding (e.g. local dev).
+// Minimal D1 typings (avoids a @cloudflare/workers-types dependency).
+interface D1PreparedStatement {
+  bind(...values: unknown[]): D1PreparedStatement;
+  all<T = Record<string, unknown>>(): Promise<{ results: T[] }>;
+}
+interface D1Database {
+  prepare(query: string): D1PreparedStatement;
+}
+
+function d1(): D1Database | null {
+  try {
+    return (getCloudflareContext().env as unknown as { DB?: D1Database }).DB ?? null;
+  } catch {
+    return null;
+  }
+}
+
+function jsonCol<T>(v: unknown, fallback: T): T {
+  if (v == null) return fallback;
+  if (typeof v !== "string") return v as T;
+  try {
+    return JSON.parse(v) as T;
+  } catch {
+    return fallback;
+  }
+}
+
+function parseArticleRow(r: Record<string, unknown>): Article {
+  return {
+    ...r,
+    tags: jsonCol(r.tags, [] as string[]),
+    faq: jsonCol(r.faq, [] as unknown[]),
+    secondary_keywords: jsonCol(r.secondary_keywords, [] as string[]),
+    schema: jsonCol(r.schema, [] as unknown[]),
+    is_mock: !!r.is_mock,
+  } as unknown as Article;
+}
+
+async function readD1Articles(siteId?: string): Promise<Article[]> {
+  const db = d1();
+  if (!db) return [];
+  let q = "SELECT * FROM articles WHERE status = 'published'";
+  const binds: string[] = [];
+  if (siteId) {
+    q += " AND site_id = ?";
+    binds.push(siteId);
+  }
+  q += " ORDER BY created_at DESC";
+  const { results } = await db.prepare(q).bind(...binds).all<Record<string, unknown>>();
+  return (results ?? []).map(parseArticleRow);
 }
 
 // ── Sites (bundled with the app so it works on Vercel where there is no generator dir) ──
@@ -44,6 +101,7 @@ async function readSupabaseArticles(siteId?: string): Promise<Article[]> {
 }
 
 export async function getArticles(siteId?: string): Promise<Article[]> {
+  if (d1()) return readD1Articles(siteId);
   if (useSupabase) return readSupabaseArticles(siteId);
   let items = readLocalArticles().filter((a) => a.status === "published");
   if (siteId) items = items.filter((a) => a.site_id === siteId);
