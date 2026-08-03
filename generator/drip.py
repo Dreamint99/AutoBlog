@@ -27,6 +27,9 @@ from modules.pipeline import generate_article, suggest_titles
 SITE = sys.argv[1] if len(sys.argv) > 1 else "qatarexperts"
 PER_RUN = int(sys.argv[2]) if len(sys.argv) > 2 else 3
 TARGET = int(sys.argv[3]) if len(sys.argv) > 3 else 50
+# Optional 4th arg: a seed/theme so this run's titles stay in one category
+# (e.g. "richest billionaires net worth" for Countly's daily wealth article).
+SEED = sys.argv[4] if len(sys.argv) > 4 else ""
 _LOG = os.path.join(os.path.dirname(os.path.abspath(__file__)), "output", "drip.log")
 
 
@@ -48,8 +51,8 @@ def drip_site(site: dict):
         return 0
     n = min(PER_RUN, TARGET - have)
     avoid = [a.get("title", "") for a in existing] + [a.get("keyword", "") for a in existing]
-    titles = suggest_titles(site, count=n, seed="", avoid=avoid)
-    log(f"[{site['id']}] planning {len(titles)} new ({have}/{TARGET})")
+    titles = suggest_titles(site, count=n, seed=SEED, avoid=avoid)
+    log(f"[{site['id']}] planning {len(titles)} new ({have}/{TARGET})" + (f" [seed: {SEED}]" if SEED else ""))
     done = 0
     for t in titles:
         try:

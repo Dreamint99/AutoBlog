@@ -123,7 +123,7 @@
       "audience": "researchers, journalists, marketers, students, analysts and the data-curious looking for quick, sourced statistics about technology, AI, social media, companies, countries and global markets",
       "theme": "countly-data",
       "default_word_count": 1600,
-      "drip_enabled": true
+      "drip_enabled": false
     },
     {
       "id": "ninetymins",
