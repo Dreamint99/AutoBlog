@@ -14,6 +14,21 @@ SEO_TARGET = 95   # quality-loop pushes each article's on-page score to this or 
 MIN_PUBLISH_WORDS = 900  # never publish a thin/truncated article below this
 
 
+def _related_sibling(text: str, cands: list) -> dict | None:
+    """Pick the sibling article sharing the most meaningful words with `text` — used
+    to guarantee at least one genuinely-related internal link so no post is orphaned."""
+    stop = {"the", "a", "an", "of", "in", "on", "for", "and", "or", "to", "by", "with",
+            "2026", "2025", "best", "top", "guide", "how", "what", "your"}
+    words = {w for w in re.findall(r"[a-z0-9]+", (text or "").lower()) if len(w) > 3 and w not in stop}
+    best, best_score = None, 0
+    for c in cands:
+        cw = set(re.findall(r"[a-z0-9]+", f"{c.get('keyword','')} {c.get('title','')}".lower()))
+        score = len(words & cw)
+        if score > best_score:
+            best, best_score = c, score
+    return best if best_score >= 1 else None
+
+
 def _seo_nudge(body_html: str, keyword: str) -> str:
     """Cheap, safe deterministic SEO wins: make sure at least one inline image's
     alt text mentions the focus keyword (helps the kw-in-alt check) without an LLM."""
@@ -126,6 +141,13 @@ def generate_article(site: dict, title: str, log=lambda m: None) -> dict:
     cands = [{"slug": a["slug"], "title": a["title"], "keyword": a.get("keyword", "")}
              for a in siblings]
     body = apply_internal_links(body, cands)
+    # Guarantee at least one internal link (avoids an orphan page + satisfies the
+    # internal-link SEO check) when keyword auto-linking found no match in the body.
+    if not re.search(r'<a[^>]+href="/', body):
+        rel = _related_sibling(f"{data['keyword']} {final_title}", cands)
+        if rel:
+            body += (f'<p class="related-read"><strong>Related:</strong> '
+                     f'<a href="/{rel["slug"]}">{rel["title"]}</a></p>')
 
     # ── Agent 4 — quality / SEO-score loop (push on-page score to 95+) ──
     slug = _unique_slug(site["id"], seo.make_slug(final_title, article_id))

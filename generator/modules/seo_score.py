@@ -64,6 +64,12 @@ def evaluate(article: dict) -> dict:
     kw_hits = _count(kw, body_text)
     density = (kw_hits / words * 100) if words else 0
     slug_kw = re.sub(r"[^a-z0-9]+", "-", kw)
+    # A long exact-match phrase (e.g. "coffee consumption by country") naturally
+    # repeats far less than a 1-2 word keyword, so scale the density floor by phrase
+    # length; also accept a healthy raw count as a pass for long-tail keywords.
+    kw_words = len(kw.split()) if kw else 1
+    density_floor = 0.4 if kw_words <= 2 else 0.12
+    density_ok = (density_floor <= density <= 3.5) or (kw_hits >= max(3, words // 400))
 
     results = {
         "kw_in_title":       bool(kw) and _count(kw, title) > 0,
@@ -74,7 +80,7 @@ def evaluate(article: dict) -> dict:
         "kw_in_heading":     bool(kw) and any(_count(kw, h) > 0 for h in headings),
         "kw_in_slug":        bool(kw) and (slug_kw in slug or kw.replace(" ", "-") in slug),
         "kw_in_image_alt":   bool(kw) and _count(kw, alts) > 0,
-        "kw_density_ok":     0.4 <= density <= 3.0,
+        "kw_density_ok":     density_ok,
         "word_count_ok":     words >= 1500,
         "has_outbound_link": bool(re.search(r'<a[^>]+href="https?://(?!(?:[^"]*\b)?(?:localhost|countly\.net|walvi\.io|infkey\.com|ninetymins\.com))', body, re.I)),
         "has_internal_link": bool(re.search(r'<a[^>]+href="(/|https?://[^"]*/s/)', body, re.I)),
