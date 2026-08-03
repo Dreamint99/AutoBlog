@@ -125,7 +125,7 @@ def write_draft(site: dict, topic: str, strategy: dict, research: str = "") -> d
         '"faq": [{"q":"...","a":"..."}], '
         '"key_takeaways": ["3-5 bullets"]}'
     )
-    return _json_call(system, user, temperature=0.7, max_tokens=8000)
+    return _json_call(system, user, temperature=0.7, max_tokens=8000, model="deepseek-v4-pro")
 
 
 # ── Agent 3: SEO Optimizer / Editor ──────────────────────
@@ -198,4 +198,4 @@ def boost(site: dict, article: dict, failed: list, target: int = 95) -> dict:
         '"faq": [{"q":"...","a":"..."}], '
         '"key_takeaways": ["3-5 bullets"]}'
     )
-    return _json_call(system, user, temperature=0.4, max_tokens=9000)
+    return _json_call(system, user, temperature=0.4, max_tokens=9000, model="deepseek-v4-pro")

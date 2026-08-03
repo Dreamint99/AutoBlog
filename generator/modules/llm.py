@@ -32,10 +32,13 @@ def _client(key, base):
 
 
 def chat(system: str, user: str, temperature: float = 0.7,
-         max_tokens: int = 4000, json_mode: bool = False) -> str:
-    key, base, model = _provider()
+         max_tokens: int = 4000, json_mode: bool = False, model: str = "") -> str:
+    key, base, default_model = _provider()
+    # Per-call model override (e.g. use the stronger v4-pro for long article bodies),
+    # only honoured for the DeepSeek provider so OpenRouter routing is unaffected.
+    use_model = model if (model and LLM_PROVIDER == "deepseek") else default_model
     kwargs = {
-        "model": model,
+        "model": use_model,
         "messages": [{"role": "system", "content": system},
                      {"role": "user", "content": user}],
         "temperature": temperature,

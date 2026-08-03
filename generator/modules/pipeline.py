@@ -10,7 +10,8 @@ import re
 import uuid
 from datetime import datetime, timezone
 
-SEO_TARGET = 95  # quality-loop pushes each article's on-page score to this or higher
+SEO_TARGET = 95   # quality-loop pushes each article's on-page score to this or higher
+MIN_PUBLISH_WORDS = 900  # never publish a thin/truncated article below this
 
 
 def _seo_nudge(body_html: str, keyword: str) -> str:
@@ -162,6 +163,12 @@ def generate_article(site: dict, title: str, log=lambda m: None) -> dict:
             data["key_takeaways"] = b.get("key_takeaways") or data["key_takeaways"]
             data["tags"] = b.get("tags") or data["tags"]
         log(f"   → {res['score']}/100")
+
+    log(f"📊 Final SEO score {res['score']}/100 ({res['words']}w)")
+    # Hard quality floor: never publish a thin/truncated draft (v4 can occasionally
+    # return a stub). Raising here makes the drip skip + log it instead of shipping junk.
+    if res["words"] < MIN_PUBLISH_WORDS:
+        raise ValueError(f"article too thin ({res['words']}w < {MIN_PUBLISH_WORDS}) — skipping")
 
     final_title = wa["title"]
     keyword = wa["keyword"]
