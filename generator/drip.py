@@ -63,7 +63,13 @@ def drip_site(site: dict):
 
 
 def main():
-    sites = store.load_sites() if SITE == "all" else [s for s in store.load_sites() if s["id"] == SITE]
+    if SITE == "all":
+        # `all` only touches sites with drip_enabled != false. Sites turned off here
+        # (or covered by their own dedicated task, e.g. probashiinfo) are skipped.
+        sites = [s for s in store.load_sites() if s.get("drip_enabled", True)]
+    else:
+        # Explicit site arg always runs, even if drip_enabled is false (dedicated tasks).
+        sites = [s for s in store.load_sites() if s["id"] == SITE]
     if not sites:
         log(f"unknown site '{SITE}'")
         return

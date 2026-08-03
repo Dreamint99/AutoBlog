@@ -21,6 +21,26 @@ _lock = threading.Lock()
 _ARTICLES_PATH = os.path.join(DB_DIR, "articles.json")
 
 
+def _wrangler_env() -> dict:
+    """Env for wrangler subprocesses.
+
+    KEY: wrangler REFUSES to use the interactive OAuth login in a non-interactive
+    process (Task Scheduler) — it demands CLOUDFLARE_API_TOKEN. That's why every
+    scheduled D1 write silently failed while interactive/manual runs worked. So we
+    forward CLOUDFLARE_API_TOKEN + CLOUDFLARE_ACCOUNT_ID (put them in generator/.env)
+    so the daily drip authenticates headlessly. XDG_CONFIG_HOME is still set as a
+    fallback for interactive-style sessions."""
+    env = dict(os.environ)
+    if not env.get("XDG_CONFIG_HOME"):
+        env["XDG_CONFIG_HOME"] = os.getenv(
+            "WRANGLER_CONFIG_HOME",
+            os.path.join(os.environ.get("APPDATA", ""), "xdg.config"),
+        )
+    # .env is already loaded into os.environ by config.settings (python-dotenv),
+    # so CLOUDFLARE_API_TOKEN/ACCOUNT_ID set there flow through automatically.
+    return env
+
+
 # ── Sites ──────────────────────────────────────────────
 def load_sites() -> list:
     with open(SITES_CONFIG, encoding="utf-8") as f:
@@ -111,15 +131,18 @@ def _d1_insert(article: dict) -> dict:
                 r = subprocess.run([npx, "wrangler", "d1", "execute", "autoblog-content",
                                     "--remote", "--file", sqlfile, "--yes"], cwd=web,
                                    capture_output=True, text=True, timeout=180,
-                                   encoding="utf-8", errors="replace")
+                                   encoding="utf-8", errors="replace", env=_wrangler_env())
                 break
             except FileNotFoundError:
                 continue
         else:
             raise RuntimeError("wrangler not found")
         out = (r.stdout or "") + (r.stderr or "")
-        if "Executed" not in out and "queries" not in out:
-            raise RuntimeError(f"D1 insert failed: {out[-300:]}")
+        # Strict: only a clean exit that actually executed the write counts. The old
+        # loose `"queries" in out` check passed on wrangler's not-logged-in help text,
+        # so auth failures looked like successes and no article ever reached D1.
+        if r.returncode != 0 or "Executed" not in out:
+            raise RuntimeError(f"D1 insert failed (rc={r.returncode}): {out[-300:]}")
     finally:
         os.unlink(sqlfile)
     return a
@@ -137,7 +160,7 @@ def _d1_list(site_id: str | None = None) -> list:
             r = subprocess.run([npx, "wrangler", "d1", "execute", "autoblog-content",
                                 "--remote", "--command", sql, "--json"], cwd=web,
                                capture_output=True, text=True, timeout=120,
-                               encoding="utf-8", errors="replace")
+                               encoding="utf-8", errors="replace", env=_wrangler_env())
             break
         except FileNotFoundError:
             continue

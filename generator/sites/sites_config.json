@@ -10,7 +10,8 @@
       "tone": "authoritative, accurate, reassuring; step-by-step guides for real visa applicants. Mention that rules change and to verify with official sources.",
       "audience": "people applying for visas, international students, migrant workers, families relocating",
       "theme": "trust-blue",
-      "default_word_count": 1600
+      "default_word_count": 1600,
+      "drip_enabled": false
     },
     {
       "id": "ainews",
@@ -22,7 +23,8 @@
       "tone": "sharp, current, confident; news + explainer voice for an AI-savvy reader. Concrete, no hype.",
       "audience": "developers, founders, tech enthusiasts, AI practitioners",
       "theme": "tech-dark",
-      "default_word_count": 1200
+      "default_word_count": 1200,
+      "drip_enabled": false
     },
     {
       "id": "bangladeshexpert",
@@ -34,7 +36,8 @@
       "tone": "warm, practical local expert; honest first-hand guides about Bangladesh for visitors and locals.",
       "audience": "tourists, expats, the Bangladeshi diaspora, curious locals",
       "theme": "bd-green",
-      "default_word_count": 1500
+      "default_word_count": 1500,
+      "drip_enabled": false
     },
     {
       "id": "qatarexperts",
@@ -46,7 +49,8 @@
       "tone": "warm insider expat/local voice; practical, vivid first-hand guides to living and thriving in Qatar. Confident and specific.",
       "audience": "expats in Qatar, newcomers and professionals moving to Doha, tourists, the Qatar curious",
       "theme": "qatar-maroon",
-      "default_word_count": 1500
+      "default_word_count": 1500,
+      "drip_enabled": false
     },
     {
       "id": "infkey",
@@ -58,7 +62,8 @@
       "tone": "data-driven cost analyst voice; lead with the direct answer in the first 50 words and a verified-pricing table, show the math behind every cost, cite official provider pricing pages, give a clear 'cheapest / best quality / best for high volume' verdict instead of one winner, state the date pricing was checked, and always warn that AI prices change fast and must be re-verified.",
       "audience": "AI product builders, founders, developers, indie hackers and businesses estimating and optimizing AI/LLM API spend",
       "theme": "infkey-noir",
-      "default_word_count": 1500
+      "default_word_count": 1500,
+      "drip_enabled": true
     },
     {
       "id": "probashiinfo",
@@ -79,7 +84,8 @@
       "tone": "বিশ্বস্ত, সহানুভূতিশীল ও বাস্তবমুখী পরামর্শকের কণ্ঠ; সাধারণ বাংলাভাষী প্রবাসী ও বিদেশগামী কর্মীদের জন্য ধাপে ধাপে সহজ গাইড। মনে করিয়ে দিন যে নিয়ম ও খরচ বদলায় এবং সরকারি/দূতাবাসের অফিসিয়াল সূত্রে যাচাই করতে বলুন। প্রতারণা থেকে সাবধান করুন।",
       "audience": "বিদেশে চাকরিপ্রত্যাশী ও কর্মরত বাংলাদেশি প্রবাসী, তাদের পরিবার, বিদেশগামী নতুন কর্মী",
       "theme": "wordpress",
-      "default_word_count": 1400
+      "default_word_count": 1400,
+      "drip_enabled": false
     },
     {
       "id": "walvi",
@@ -103,7 +109,8 @@
       "tone": "first-hand Europe-recruitment insider crossed with a data analyst; lead with the direct answer and an indicative salary/cost table (monthly gross, net after tax, living cost and realistic savings), always state which figures are official vs estimated, link an official government or EU source, add a 'last verified' date, and warn that wages, living costs and visa rules change and must be confirmed with the official source or embassy. Warn clearly about recruitment scams and fake job offers, and add your own real-world experience and downloadable checklists.",
       "audience": "skilled and semi-skilled workers (electricians, welders, drivers, cooks, construction and factory workers) from Bangladesh, South Asia and beyond looking for jobs in Europe, plus recruiters, agencies and families researching salary, cost of living, savings and work-permit options by country and occupation",
       "theme": "walvi-atlas",
-      "default_word_count": 1600
+      "default_word_count": 1600,
+      "drip_enabled": true
     },
     {
       "id": "countly",
@@ -115,7 +122,8 @@
       "tone": "data-journalist voice. Open with a direct numeric answer ('As of 2026, approximately X ...'). ALWAYS include a data table (year-by-year and/or by-country) and a short historical-growth note. CRITICAL HONESTY RULE: distinguish official/reported figures from estimates — label estimates clearly, give ranges not false precision, and NEVER invent exact numbers you cannot source. Add a short Methodology note (what is official vs estimated and how it was compiled) and cite source TYPES (company filings, government databases, industry reports such as DataReportal). State 'Last updated: <month year>' and warn that statistics change and should be verified before citing.",
       "audience": "researchers, journalists, marketers, students, analysts and the data-curious looking for quick, sourced statistics about technology, AI, social media, companies, countries and global markets",
       "theme": "countly-data",
-      "default_word_count": 1600
+      "default_word_count": 1600,
+      "drip_enabled": true
     },
     {
       "id": "ninetymins",
@@ -143,7 +151,8 @@
       "tone": "an expert sports-viewing guide crossed with a schedule desk: lead with the direct answer - the date, kickoff time (with timezone), the competition and exactly where/how to watch (TV channel + legal streaming) - then a clean fixtures/schedule table, give kickoff times for major regions (UK, US ET/PT, India IST, Australia), and note that broadcast rights and kickoff times can change so confirm with the official broadcaster. Recommend official/legal viewing options only.",
       "audience": "sports fans worldwide searching when a match is on, what time it starts in their country, and how or where to watch it live - football, cricket, basketball, tennis and motorsport followers",
       "theme": "ninetymins-pitch",
-      "default_word_count": 1400
+      "default_word_count": 1400,
+      "drip_enabled": true
     }
   ]
 }

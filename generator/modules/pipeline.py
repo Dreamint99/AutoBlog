@@ -6,11 +6,31 @@
 Falls back to a single mock draft if no DeepSeek key is configured.
 `log` is an optional callback(str) for streaming progress to the admin.
 """
+import re
 import uuid
 from datetime import datetime, timezone
 
-from modules import store, seo, indexnow
-from modules.agents import strategize, write_draft, optimize, time_context
+SEO_TARGET = 95  # quality-loop pushes each article's on-page score to this or higher
+
+
+def _seo_nudge(body_html: str, keyword: str) -> str:
+    """Cheap, safe deterministic SEO wins: make sure at least one inline image's
+    alt text mentions the focus keyword (helps the kw-in-alt check) without an LLM."""
+    if not keyword or "<img" not in body_html.lower():
+        return body_html
+    if re.search(r'alt="[^"]*' + re.escape(keyword) + r'[^"]*"', body_html, re.I):
+        return body_html
+
+    def _fix(m):
+        tag = m.group(0)
+        if re.search(r'\balt="', tag, re.I):
+            return re.sub(r'alt="([^"]*)"', lambda a: f'alt="{a.group(1)} — {keyword}"'.replace(' — "', '"'), tag, count=1, flags=re.I)
+        return tag[:-1] + f' alt="{keyword}">' if tag.endswith(">") else tag
+    return re.sub(r"<img[^>]*>", _fix, body_html, count=1, flags=re.I)
+
+from modules import store, seo, indexnow, seo_score
+from modules.agents import strategize, write_draft, optimize, boost, time_context
+from modules.research import research_topic
 from modules.image import feature_image, embed_inline_images
 from modules.internal_links import apply_internal_links
 from modules.writer import write_article as _mock_write
@@ -35,12 +55,14 @@ def _unique_slug(site_id: str, base_slug: str) -> str:
 
 
 def _three_agent(site, title, log):
-    log("🧠 Agent 1/3 — SEO strategist (keywords + outline)…")
-    strat = strategize(site, title)
+    brief = research_topic(site, title, log)
+
+    log("🧠 Agent 1 — SEO strategist (keywords + outline)…")
+    strat = strategize(site, title, research=brief)
     log(f"   🎯 {strat.get('primary_keyword')} · {len(strat.get('outline', []))} sections · {strat.get('search_intent')}")
 
-    log("✍️  Agent 2/3 — expert writer (draft + tables + image slots)…")
-    draft = write_draft(site, title, strat)
+    log("✍️  Agent 2 — expert writer (draft + tables + image slots)…")
+    draft = write_draft(site, title, strat, research=brief)
 
     log("🔧 Agent 3/3 — SEO optimizer (helpful-content + AI-Overview polish)…")
     try:
@@ -95,7 +117,7 @@ def generate_article(site: dict, title: str, log=lambda m: None) -> dict:
     final_title = data["title"]
     body = data["body_html"]
 
-    log("🖼️  Embedding inline images (Pixabay)…")
+    log("🖼️  Embedding inline images…")
     body = embed_inline_images(body)
 
     log("🔗 Adding internal links…")
@@ -104,22 +126,63 @@ def generate_article(site: dict, title: str, log=lambda m: None) -> dict:
              for a in siblings]
     body = apply_internal_links(body, cands)
 
+    # ── Agent 4 — quality / SEO-score loop (push on-page score to 95+) ──
+    slug = _unique_slug(site["id"], seo.make_slug(final_title, article_id))
+    keyword = data["keyword"]
+    meta_title = data["meta_title"] or seo.meta_title(final_title, site["name"])
+    meta_description = data["meta_description"] or seo.meta_description(data["excerpt"], body)
+    body = _seo_nudge(body, keyword)
+
+    wa = {"title": final_title, "keyword": keyword, "body_html": body, "slug": slug,
+          "meta_title": meta_title, "meta_description": meta_description,
+          "excerpt": data["excerpt"], "faq": data["faq"]}
+    res = seo_score.evaluate(wa)
+    log(f"📊 SEO score {res['score']}/100 ({res['words']}w · kw {res['density']}%)")
+    tries = 0
+    while res["score"] < SEO_TARGET and tries < 2 and have_llm():
+        tries += 1
+        miss = ", ".join(cid for cid, _ in res["failed"][:6])
+        log(f"🚀 Agent 4 — boosting to {SEO_TARGET}+ (try {tries}) — fixing: {miss}")
+        try:
+            b = boost(site, wa, res["failed"], SEO_TARGET)
+        except Exception as e:
+            log(f"   boost skipped ({e})")
+            break
+        nb = _seo_nudge(b.get("body_html") or wa["body_html"], keyword)
+        cand = {"title": (b.get("title") or wa["title"])[:70], "keyword": keyword,
+                "body_html": nb, "slug": slug,
+                "meta_title": b.get("meta_title") or wa["meta_title"],
+                "meta_description": b.get("meta_description") or wa["meta_description"],
+                "excerpt": b.get("excerpt") or wa["excerpt"],
+                "faq": b.get("faq") or wa["faq"]}
+        cres = seo_score.evaluate(cand)
+        if cres["score"] >= res["score"] and cres["words"] >= 800:
+            wa, res = cand, cres
+            data["faq"] = cand["faq"]
+            data["key_takeaways"] = b.get("key_takeaways") or data["key_takeaways"]
+            data["tags"] = b.get("tags") or data["tags"]
+        log(f"   → {res['score']}/100")
+
+    final_title = wa["title"]
+    keyword = wa["keyword"]
+    meta_title, meta_description = wa["meta_title"], wa["meta_description"]
+    data["excerpt"] = wa["excerpt"]
+
     body = seo.assemble_body({
-        "body_html": body,
+        "body_html": wa["body_html"],
         "key_takeaways": data["key_takeaways"],
         "faq": data["faq"],
     })
 
-    slug = _unique_slug(site["id"], seo.make_slug(final_title, article_id))
-    image_url = feature_image(final_title, site, data.get("feature_image_q") or data["keyword"])
+    image_url = feature_image(final_title, site, data.get("feature_image_q") or keyword)
 
     article = {
         "id": article_id,
         "site_id": site["id"],
         "title": final_title,
         "slug": slug,
-        "meta_title": data["meta_title"] or seo.meta_title(final_title, site["name"]),
-        "meta_description": data["meta_description"] or seo.meta_description(data["excerpt"], body),
+        "meta_title": meta_title,
+        "meta_description": meta_description,
         "excerpt": data["excerpt"],
         "body_html": body,
         "tags": data["tags"],
@@ -164,12 +227,13 @@ def suggest_titles(site: dict, count: int = 10, seed: str = "", avoid: list | No
         hot = []
     titles: list[str] = []
     tries = 0
-    while len(titles) < count and tries < (count // 10 + 4):
+    empty_streak = 0
+    while len(titles) < count and tries < (count // 5 + 6):
         tries += 1
         need = min(12, count - len(titles))
         system = (time_context() + "\n\n"
                   "You are an SEO editor planning a content calendar around keywords people actually "
-                  "search on Google.\n\n" + SEO_PLAYBOOK + "\n\nReturn ONLY a JSON array of strings.")
+                  "search on Google.\n\n" + SEO_PLAYBOOK + '\n\nReturn ONLY a JSON object: {"titles": ["..."]}.')
         recent = "; ".join(list(avoid_set)[-40:])
         user = (f'Niche: {site["niche"]}\nAudience: {site["audience"]}\n'
                 + f'Language: {site["language"]} — write EVERY title in this language, not the audience\'s native tongue.\n'
@@ -182,15 +246,25 @@ def suggest_titles(site: dict, count: int = 10, seed: str = "", avoid: list | No
                 + (f'Do NOT repeat or rephrase any of these: {recent}\n' if recent else '')
                 + 'JSON array of strings only.')
         try:
-            data = parse_llm_json(chat(system, user, temperature=1.0, max_tokens=1500))
+            data = parse_llm_json(chat(system, user, temperature=1.0, max_tokens=1500, json_mode=True))
             if isinstance(data, dict):
-                data = data.get("titles") or list(data.values())
+                data = data.get("titles") or next((v for v in data.values() if isinstance(v, list)), [])
+            added = 0
             for t in data:
                 t = str(t).strip()
                 k = t.lower()
                 if t and k not in avoid_set:
                     avoid_set.add(k)
                     titles.append(t)
-        except Exception:
-            break
+                    added += 1
+            empty_streak = empty_streak + 1 if added == 0 else 0
+            if empty_streak >= 3:  # model stuck returning dupes/empties — stop wasting calls
+                break
+        except Exception as e:
+            # Retry within the tries budget instead of aborting the whole run — v4-flash
+            # is occasionally flaky (empty / non-JSON). Only give up after the budget.
+            print(f"WARN suggest_titles retry ({e})", flush=True)
+            empty_streak += 1
+            if empty_streak >= 4:
+                break
     return titles[:count]

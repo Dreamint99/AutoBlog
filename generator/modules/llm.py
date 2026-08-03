@@ -43,5 +43,17 @@ def chat(system: str, user: str, temperature: float = 0.7,
     }
     if json_mode:
         kwargs["response_format"] = {"type": "json_object"}
-    resp = _client(key, base).chat.completions.create(**kwargs)
-    return resp.choices[0].message.content
+    client = _client(key, base)
+    # deepseek-v4 intermittently returns empty content (reasoning quirk / transient),
+    # which used to abort a whole drip run (0 titles → 0 articles). Retry on empty.
+    last = ""
+    for attempt in range(3):
+        resp = client.chat.completions.create(**kwargs)
+        msg = resp.choices[0].message
+        content = (msg.content or "").strip()
+        if not content:  # some reasoning models stash the answer here
+            content = (getattr(msg, "reasoning_content", "") or "").strip()
+        if content:
+            return content
+        last = f"finish_reason={resp.choices[0].finish_reason}"
+    raise RuntimeError(f"LLM returned empty content after 3 tries ({last})")

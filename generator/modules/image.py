@@ -66,8 +66,16 @@ def _pixabay(query: str, horizontal: bool) -> str | None:
     return None
 
 
-def _pollinations(prompt: str, w: int, h: int) -> str:
-    return f"https://image.pollinations.ai/prompt/{quote(prompt)}?width={w}&height={h}&nologo=true"
+def _pollinations(subject: str, w: int, h: int) -> str:
+    """Tuned free AI image (Pollinations / FLUX). Builds an editorial, photorealistic
+    prompt and a stable seed (same subject → same image, so it never re-rolls) and
+    asks for the flux model with prompt enhancement. Returns a permanent URL."""
+    subject = (subject or "").strip().strip(",")
+    prompt = (f"professional editorial photograph, {subject}, photorealistic, natural lighting, "
+              "high detail, sharp focus, magazine quality, 35mm, no text, no watermark, no logo")
+    seed = abs(hash(subject)) % 1_000_000
+    q = (f"width={w}&height={h}&model=flux&enhance=true&nologo=true&private=true&seed={seed}")
+    return f"https://image.pollinations.ai/prompt/{quote(prompt)}?{q}"
 
 
 _WIKI_UA = "AutoBlog/1.0 (https://countly.net; contact admin)"
@@ -162,7 +170,7 @@ def feature_image(title: str, site: dict, query: str | None = None) -> str:
         if w:
             return w
     q = candidates[0] if candidates else primary
-    return _pollinations(f"editorial photo, {q}, no text", 1200, 630)
+    return _pollinations(q, 1200, 630)
 
 
 def inline_image(keyword: str) -> str:
@@ -172,7 +180,7 @@ def inline_image(keyword: str) -> str:
     wiki = _wikimedia(keyword)
     if wiki:
         return wiki
-    return _pollinations(f"editorial photo, {keyword}, no text", 1000, 560)
+    return _pollinations(keyword, 1000, 560)
 
 
 def embed_inline_images(body_html: str, max_images: int = 4) -> str:
