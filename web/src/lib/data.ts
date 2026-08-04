@@ -141,7 +141,30 @@ export interface AiTool {
   updated_at: string;
 }
 
+function parseToolRow(r: Record<string, unknown>): AiTool {
+  return {
+    ...r,
+    tags: jsonCol(r.tags, [] as string[]),
+    stars: Number(r.stars ?? 0),
+    stars_prev: Number(r.stars_prev ?? 0),
+    growth_pct: Number(r.growth_pct ?? 0),
+    forks: Number(r.forks ?? 0),
+    score: Number(r.score ?? 0),
+    rank: Number(r.rank ?? 0),
+    cat_order: Number(r.cat_order ?? 0),
+    url_ok: !!r.url_ok,
+    featured: !!r.featured,
+  } as unknown as AiTool;
+}
+
 export async function getAiTools(): Promise<AiTool[]> {
+  const db = d1();
+  if (db) {
+    const { results } = await db
+      .prepare("SELECT * FROM ai_tools ORDER BY cat_order ASC, rank ASC")
+      .all<Record<string, unknown>>();
+    return (results ?? []).map(parseToolRow);
+  }
   if (!useSupabase) return [];
   const url = `${SUPABASE_URL}/rest/v1/ai_tools?select=*&order=cat_order.asc,rank.asc`;
   const r = await fetch(url, {
@@ -169,6 +192,19 @@ export interface AiRising {
 }
 
 export async function getAiRising(): Promise<AiRising[]> {
+  const db = d1();
+  if (db) {
+    const { results } = await db
+      .prepare("SELECT * FROM ai_rising WHERE visible = 1 ORDER BY pos ASC")
+      .all<Record<string, unknown>>();
+    return (results ?? []).map((r) => ({
+      ...r,
+      stars: Number(r.stars ?? 0),
+      forks: Number(r.forks ?? 0),
+      topics: jsonCol(r.topics, [] as string[]),
+      visible: !!r.visible,
+    })) as unknown as AiRising[];
+  }
   if (!useSupabase) return [];
   const url = `${SUPABASE_URL}/rest/v1/ai_rising?select=*&visible=eq.true&order=pos.asc`;
   const r = await fetch(url, {

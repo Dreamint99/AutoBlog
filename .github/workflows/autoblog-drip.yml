@@ -56,3 +56,5 @@ jobs:
           # Countly: 3 general (existing topics) + 1 in the "richest" wealth category.
           python drip.py countly 3 500
           python drip.py countly 1 500 "richest billionaires net worth wealth ranking"
+          # Best AI Tools directory — refresh live GitHub stars + trending repos.
+          python gen_ai_tools_d1.py --all || true
