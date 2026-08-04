@@ -1,0 +1,47 @@
+name: AI Morning — daily news
+
+# Collects the last 24h of AI news, summarises + translates to Bengali with
+# DeepSeek, and writes today's Top 10 to D1 (table aim_news). Runs at 00:00 UTC
+# so the briefing is ready before users wake up. PC-independent.
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+    inputs:
+      top_n:
+        description: "How many stories"
+        default: "12"
+
+concurrency:
+  group: aim-news
+  cancel-in-progress: false
+
+jobs:
+  news:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: generator
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+          cache-dependency-path: generator/requirements.txt
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: pip install -r requirements.txt
+      - run: npm install -g wrangler@4
+      - name: Collect + translate + save
+        env:
+          STORAGE_BACKEND: d1
+          LLM_PROVIDER: deepseek
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          DEEPSEEK_MODEL: ${{ secrets.DEEPSEEK_MODEL }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          PYTHONUTF8: "1"
+        run: python gen_aim_news.py ${{ github.event.inputs.top_n || '12' }}
