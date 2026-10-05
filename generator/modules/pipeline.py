@@ -60,16 +60,29 @@ def _now() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
-_BENGALI = re.compile(r"[ঀ-৿]")
+# Arabic + every Indic script (Devanagari … Sinhala, incl. Bengali and Tamil).
+_NON_LATIN = re.compile(r"[؀-ۿऀ-෿]")
+_MONTHS = ("january february march april may june july august september october "
+           "november december").split()
 
 
 def _wrong_script(site: dict, *texts: str) -> bool:
-    """True when an English site's text contains Bengali script — smaller fallback
-    models sometimes drift into the audience's language (e.g. Countly/NinetyMins)."""
+    """True when an English site's text contains Bengali/Tamil/Hindi/Arabic script —
+    smaller fallback models sometimes drift into the audience's language."""
     lang = (site.get("language") or "").lower()
     if not (lang.startswith("en") or lang.startswith("english")):
         return False
-    return any(_BENGALI.search(t or "") for t in texts)
+    return any(_NON_LATIN.search(t or "") for t in texts)
+
+
+def _stale_today(title: str) -> bool:
+    """'Matches today July 12' published in October — a dated 'today' title whose month
+    isn't the current one is stale on arrival (and misleads readers)."""
+    t = (title or "").lower()
+    if "today" not in t and "tonight" not in t:
+        return False
+    now = _MONTHS[datetime.now(timezone.utc).month - 1]
+    return any(m in t for m in _MONTHS if m != now)
 
 
 def _cap_first(s: str) -> str:
@@ -210,7 +223,9 @@ def generate_article(site: dict, title: str, log=lambda m: None) -> dict:
     if res["words"] < MIN_PUBLISH_WORDS:
         raise ValueError(f"article too thin ({res['words']}w < {MIN_PUBLISH_WORDS}) — skipping")
     if _wrong_script(site, wa["title"], wa["meta_title"], wa["body_html"]):
-        raise ValueError("article contains Bengali text on an English site — skipping")
+        raise ValueError("article contains non-English script on an English site — skipping")
+    if _stale_today(wa["title"]):
+        raise ValueError(f"stale dated 'today' title ({wa['title']}) — skipping")
 
     wa["title"] = _cap_first(wa["title"])
     wa["meta_title"] = _cap_first(wa["meta_title"])

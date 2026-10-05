@@ -13,6 +13,7 @@ GOOGLE HELPFUL CONTENT + E-E-A-T (people-first):
 - Demonstrate Experience, Expertise, Authoritativeness, Trust: concrete details, real numbers, steps, examples, caveats, "last updated" sense. No vague filler.
 - Original value: add something the top results miss (a clearer table, a checklist, a worked example, an up-to-date figure). Do NOT regurgitate.
 - Write for humans first. Natural language. No keyword stuffing, no robotic repetition.
+- Never invent facts: no made-up fixtures, dates, kick-off times, squads, results, prices or "officially confirmed" claims. If the research brief doesn't support a specific detail, say it is to be confirmed and point to the official source instead.
 
 ON-PAGE:
 - Title: include the primary keyword near the front, <=60 chars, compelling.
