@@ -45,13 +45,28 @@ function jsonCol<T>(v: unknown, fallback: T): T {
   }
 }
 
+// Some rows hold double-encoded JSON or a plain "a, b" string instead of an array;
+// one bad row used to 500 every page that lists articles (`tags.join is not a function`).
+function strList(v: unknown): string[] {
+  let x = jsonCol<unknown>(v, []);
+  if (typeof x === "string") x = jsonCol<unknown>(x, x);
+  if (typeof x === "string") return x.split(",").map((s) => s.trim()).filter(Boolean);
+  return Array.isArray(x) ? x.map((s) => String(s)) : [];
+}
+
+function list(v: unknown): unknown[] {
+  let x = jsonCol<unknown>(v, []);
+  if (typeof x === "string") x = jsonCol<unknown>(x, []);
+  return Array.isArray(x) ? x : x && typeof x === "object" ? [x] : [];
+}
+
 function parseArticleRow(r: Record<string, unknown>): Article {
   return {
     ...r,
-    tags: jsonCol(r.tags, [] as string[]),
-    faq: jsonCol(r.faq, [] as unknown[]),
-    secondary_keywords: jsonCol(r.secondary_keywords, [] as string[]),
-    schema: jsonCol(r.schema, [] as unknown[]),
+    tags: strList(r.tags),
+    faq: list(r.faq),
+    secondary_keywords: strList(r.secondary_keywords),
+    schema: list(r.schema),
     is_mock: !!r.is_mock,
   } as unknown as Article;
 }
