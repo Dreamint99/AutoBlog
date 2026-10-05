@@ -55,12 +55,16 @@ def drip_site(site: dict):
     log(f"[{site['id']}] planning {len(titles)} new ({have}/{TARGET})" + (f" [seed: {SEED}]" if SEED else ""))
     done = 0
     for t in titles:
-        try:
-            art = generate_article(site, t)
-            done += 1
-            log(f"[{site['id']}] ✅ {art['title']} ({art['word_count']}w)")
-        except Exception as e:
-            log(f"[{site['id']}] ❌ {t} — {e}")
+        # One retry: a rejected draft (thin, wrong language, all providers briefly
+        # rate-limited) usually succeeds on a second pass.
+        for attempt in (1, 2):
+            try:
+                art = generate_article(site, t)
+                done += 1
+                log(f"[{site['id']}] ✅ {art['title']} ({art['word_count']}w)")
+                break
+            except Exception as e:
+                log(f"[{site['id']}] ❌ {t} — {e}" + (" — retrying" if attempt == 1 else ""))
     log(f"[{site['id']}] drip done +{done} → {have + done}/{TARGET}")
     if done == 0:
         _FAILED.append(site["id"])

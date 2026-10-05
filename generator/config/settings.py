@@ -36,15 +36,30 @@ PROVIDERS = {
     "deepseek": {"key": DEEPSEEK_API_KEY, "model": DEEPSEEK_MODEL, "base": DEEPSEEK_BASE_URL},
 }
 
+# Cloudflare Workers AI (free plan: 10k neurons/day). Reuses the D1 token unless a
+# dedicated CF_AI_API_TOKEN is set — the token needs the "Workers AI" permission.
+CF_ACCOUNT_ID = os.getenv("CF_AI_ACCOUNT_ID") or os.getenv("CLOUDFLARE_ACCOUNT_ID", "")
+CF_AI_API_TOKEN = os.getenv("CF_AI_API_TOKEN") or os.getenv("CLOUDFLARE_API_TOKEN", "")
+PROVIDERS["workersai"] = {
+    "key": CF_AI_API_TOKEN if CF_ACCOUNT_ID else "",
+    "model": os.getenv("CF_AI_MODEL", "@cf/openai/gpt-oss-120b"),
+    "base": f"https://api.cloudflare.com/client/v4/accounts/{CF_ACCOUNT_ID}/ai/v1",
+}
+
 # chain = try LLM_CHAIN in order, falling through on quota/overload; or pin one provider name.
 LLM_PROVIDER = os.getenv("LLM_PROVIDER", "chain")
 # "provider" or "provider:model". Providers without a key are skipped automatically.
+# Best quality first; each later entry is a separate free quota to fall back on.
 LLM_CHAIN = os.getenv("LLM_CHAIN", ",".join([
     "gemini:gemini-flash-latest",
     "gemini:gemini-flash-lite-latest",
-    "mistral:mistral-medium-latest",
-    "groq:openai/gpt-oss-120b",
     "cerebras:gpt-oss-120b",
+    "groq:openai/gpt-oss-120b",
+    "mistral:mistral-medium-latest",
+    "workersai:@cf/openai/gpt-oss-120b",
+    "cerebras:qwen-3.8-27b",
+    "groq:qwen/qwen3.8-27b",
+    "workersai:@cf/meta/llama-3.3-70b-instruct-fp8-fast",
     "openrouter:qwen/qwen3.8-27b:free",
     "deepseek",
 ]))

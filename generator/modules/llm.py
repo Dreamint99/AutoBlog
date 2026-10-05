@@ -3,7 +3,7 @@
 Every provider here speaks the OpenAI chat API, so one client type covers all of them.
 LLM_PROVIDER=chain (default) walks LLM_CHAIN in order: when a provider is out of quota,
 overloaded or errors, the call moves on to the next one. LLM_PROVIDER=deepseek|openrouter|
-gemini|groq|mistral|cerebras pins a single provider (the old behaviour).
+gemini|groq|mistral|cerebras|workersai pins a single provider (the old behaviour).
 """
 import sys
 import time
@@ -16,6 +16,9 @@ _clients = {}
 # Providers that hit a hard stop this process (no balance / daily quota / bad key) —
 # skipped for the rest of the run so we don't burn retries on them every call.
 _dead: set[str] = set()
+# "name:model" -> time.time() when a per-minute rate limit should have cleared.
+_cool: dict[str, float] = {}
+COOLDOWN_S = 65
 _last_used = ""
 
 
@@ -60,9 +63,14 @@ def _classify(e: Exception) -> str:
     msg = str(e).lower()
     if status in (401, 402, 403) or "insufficient balance" in msg or "credit" in msg:
         return "account"
-    if status == 429 and any(w in msg for w in ("per day", "daily", "quota", "resource_exhausted",
-                                                 "tokens per day", "free-models-per-day")):
-        return "model"
+    if status == 429:
+        # Per-minute limits (Cerebras/Groq say "quota" for these too) clear in ~60s.
+        if "per minute" in msg or "per_minute" in msg or "rpm" in msg or "tpm" in msg:
+            return "cool"
+        if any(w in msg for w in ("per day", "daily", "quota", "resource_exhausted",
+                                  "free-models-per-day", "neurons")):
+            return "model"
+        return "cool"
     return "next"
 
 
@@ -76,11 +84,21 @@ def _call(name, model, system, user, temperature, max_tokens, json_mode):
     }
     if json_mode:
         kwargs["response_format"] = {"type": "json_object"}
-    if name == "gemini":
-        # Thinking tokens count against max_tokens on Gemini; keep them small so long
-        # article bodies aren't cut off (or returned empty).
+    if name == "gemini" or (name in ("groq", "cerebras") and "gpt-oss" in model):
+        # Thinking tokens count against max_tokens; keep them small so long article
+        # bodies aren't cut off (or returned empty).
         kwargs["reasoning_effort"] = "low"
-    resp = _client(name).chat.completions.create(**kwargs)
+    try:
+        resp = _client(name).chat.completions.create(**kwargs)
+    except Exception as e:
+        # Some model/provider combos reject json_object mode — callers parse tolerantly
+        # (parse_llm_json), so retry once as plain text before giving up on this entry.
+        if json_mode and getattr(e, "status_code", None) == 400 and any(
+                w in str(e).lower() for w in ("response_format", "json")):
+            kwargs.pop("response_format", None)
+            resp = _client(name).chat.completions.create(**kwargs)
+        else:
+            raise
     msg = resp.choices[0].message
     content = (msg.content or "").strip()
     if not content:  # some reasoning models stash the answer here
@@ -97,15 +115,23 @@ def chat(system: str, user: str, temperature: float = 0.7,
     if not chain:
         raise RuntimeError("no LLM provider configured (set GEMINI_API_KEY / GROQ_API_KEY / ...)")
     errors = []
-    # Two passes: the second gives overloaded (503/429-per-minute) providers a moment
-    # to recover before we give up on the call entirely.
+    # Up to three passes over the chain: later passes wait out per-minute limits and
+    # transient overloads before we give up on the call entirely.
     alive = lambda n, m: n not in _dead and f"{n}:{m}" not in _dead
-    for rnd in range(2):
+    ready = lambda n, m: alive(n, m) and _cool.get(f"{n}:{m}", 0) <= time.time()
+    for rnd in range(3):
+        if rnd:
+            # Everything left is cooling down from a per-minute limit (or was transiently
+            # overloaded) — wait for the soonest one instead of failing the call.
+            waits = [_cool.get(f"{n}:{m}", 0) - time.time() for n, m in chain if alive(n, m)]
+            if not waits:
+                break
+            time.sleep(min(max(min(waits), 5), COOLDOWN_S))
         for name, default_model in chain:
             # Per-call model override (e.g. deepseek-v4-pro for long bodies) only makes
             # sense for DeepSeek; every other provider uses its chain model.
             use_model = model if (model and name == "deepseek") else default_model
-            if not alive(name, use_model):
+            if not ready(name, use_model):
                 continue
             for attempt in range(2):  # one quick retry on empty/garbled output
                 try:
@@ -122,9 +148,12 @@ def chat(system: str, user: str, temperature: float = 0.7,
                         print(f"LLM: {name}:{use_model} disabled for this run ({str(e)[:120]})",
                               file=sys.stderr, flush=True)
                         break
+                    if kind == "cool":
+                        _cool[f"{name}:{use_model}"] = time.time() + COOLDOWN_S
+                        break
                     if "empty content" in str(e) and attempt == 0:
                         continue
+                    # transient (503 overload, timeout, 5xx) — short pause before retrying it
+                    _cool[f"{name}:{use_model}"] = time.time() + 20
                     break
-        if rnd == 0 and any(alive(n, m) for n, m in chain):
-            time.sleep(20)
     raise RuntimeError("all LLM providers failed: " + " | ".join(errors[-6:]))

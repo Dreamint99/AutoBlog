@@ -60,6 +60,22 @@ def _now() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
+_BENGALI = re.compile(r"[ঀ-৿]")
+
+
+def _wrong_script(site: dict, *texts: str) -> bool:
+    """True when an English site's text contains Bengali script — smaller fallback
+    models sometimes drift into the audience's language (e.g. Countly/NinetyMins)."""
+    lang = (site.get("language") or "").lower()
+    if not (lang.startswith("en") or lang.startswith("english")):
+        return False
+    return any(_BENGALI.search(t or "") for t in texts)
+
+
+def _cap_first(s: str) -> str:
+    return s[:1].upper() + s[1:] if s else s
+
+
 def _unique_slug(site_id: str, base_slug: str) -> str:
     existing = {a.get("slug") for a in store.list_articles(site_id)}
     if base_slug not in existing:
@@ -179,7 +195,9 @@ def generate_article(site: dict, title: str, log=lambda m: None) -> dict:
                 "excerpt": b.get("excerpt") or wa["excerpt"],
                 "faq": b.get("faq") or wa["faq"]}
         cres = seo_score.evaluate(cand)
-        if cres["score"] >= res["score"] and cres["words"] >= 800:
+        if _wrong_script(site, cand["title"], cand["meta_title"], cand["body_html"]):
+            log("   boost drifted out of the site language — keeping previous version")
+        elif cres["score"] >= res["score"] and cres["words"] >= 800:
             wa, res = cand, cres
             data["faq"] = cand["faq"]
             data["key_takeaways"] = b.get("key_takeaways") or data["key_takeaways"]
@@ -191,7 +209,11 @@ def generate_article(site: dict, title: str, log=lambda m: None) -> dict:
     # return a stub). Raising here makes the drip skip + log it instead of shipping junk.
     if res["words"] < MIN_PUBLISH_WORDS:
         raise ValueError(f"article too thin ({res['words']}w < {MIN_PUBLISH_WORDS}) — skipping")
+    if _wrong_script(site, wa["title"], wa["meta_title"], wa["body_html"]):
+        raise ValueError("article contains Bengali text on an English site — skipping")
 
+    wa["title"] = _cap_first(wa["title"])
+    wa["meta_title"] = _cap_first(wa["meta_title"])
     final_title = wa["title"]
     keyword = wa["keyword"]
     meta_title, meta_description = wa["meta_title"], wa["meta_description"]
@@ -254,6 +276,9 @@ def suggest_titles(site: dict, count: int = 10, seed: str = "", avoid: list | No
         hot = hot_keywords(site) if not seed else []
     except Exception:
         hot = []
+    # Trends are pulled with hl=bn-BD; Bengali terms pull English sites' titles (and then
+    # the whole article) into Bengali, so only keep terms in the site's own script.
+    hot = [h for h in hot if not _wrong_script(site, h)]
     titles: list[str] = []
     tries = 0
     empty_streak = 0
