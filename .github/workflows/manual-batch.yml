@@ -1,0 +1,67 @@
+name: Manual batch (one site, topic + category)
+
+# Run by hand from the Actions tab: N articles for one site, optionally locked to a
+# topic (seed), a category tag (first tag = category label on the site) and a style.
+on:
+  workflow_dispatch:
+    inputs:
+      site:
+        description: "Site id (infkey, countly, ninetymins, ...)"
+        required: true
+        default: "ninetymins"
+      count:
+        description: "How many articles"
+        default: "3"
+      seed:
+        description: "Topic / seed keyword (keeps every title in this topic)"
+        default: ""
+      tag:
+        description: "Category tag forced as the FIRST tag (e.g. SAFF Championship)"
+        default: ""
+      style:
+        description: "Extra writing-style guidance for this batch"
+        default: ""
+
+concurrency:
+  group: manual-batch
+  cancel-in-progress: false
+
+jobs:
+  batch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    defaults:
+      run:
+        working-directory: generator
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+          cache-dependency-path: generator/requirements.txt
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: pip install -r requirements.txt
+      - run: npm install -g wrangler@4
+      - name: Research + write + publish to D1
+        env:
+          STORAGE_BACKEND: d1
+          LLM_PROVIDER: chain
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          DEEPSEEK_MODEL: ${{ secrets.DEEPSEEK_MODEL }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          IMAGE_PROVIDER: pixabay
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+          PYTHONUTF8: "1"
+          DRIP_TAG: ${{ github.event.inputs.tag }}
+          DRIP_STYLE: ${{ github.event.inputs.style }}
+          SEED: ${{ github.event.inputs.seed }}
+        run: python drip.py "${{ github.event.inputs.site }}" "${{ github.event.inputs.count }}" 99999 "$SEED"

@@ -30,7 +30,22 @@ TARGET = int(sys.argv[3]) if len(sys.argv) > 3 else 50
 # Optional 4th arg: a seed/theme so this run's titles stay in one category
 # (e.g. "richest billionaires net worth" for Countly's daily wealth article).
 SEED = sys.argv[4] if len(sys.argv) > 4 else ""
+# Optional batch knobs (used by the manual-batch workflow):
+#   DRIP_TAG   — forced FIRST tag, which sites render as the article's category label
+#   DRIP_STYLE — extra writing-style guidance appended to the site's tone
+TAG = os.getenv("DRIP_TAG", "").strip()
+STYLE = os.getenv("DRIP_STYLE", "").strip()
 _LOG = os.path.join(os.path.dirname(os.path.abspath(__file__)), "output", "drip.log")
+
+if TAG:
+    _add_article = store.add_article
+
+    def _add_tagged(article: dict) -> dict:
+        rest = [t for t in article.get("tags") or [] if t.strip().lower() != TAG.lower()]
+        article["tags"] = [TAG] + rest
+        return _add_article(article)
+
+    store.add_article = _add_tagged
 
 
 def log(msg: str):
@@ -44,6 +59,8 @@ def log(msg: str):
 
 
 def drip_site(site: dict):
+    if STYLE:
+        site = dict(site, tone=f"{site['tone']} STYLE FOR THIS BATCH: {STYLE}")
     existing = store.list_articles(site["id"])
     have = len(existing)
     if have >= TARGET:
