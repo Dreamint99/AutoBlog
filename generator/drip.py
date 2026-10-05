@@ -62,7 +62,14 @@ def drip_site(site: dict):
         except Exception as e:
             log(f"[{site['id']}] ❌ {t} — {e}")
     log(f"[{site['id']}] drip done +{done} → {have + done}/{TARGET}")
+    if done == 0:
+        _FAILED.append(site["id"])
     return done
+
+
+# Sites that were below target but published nothing — makes the run exit non-zero so
+# a dead LLM key shows up as a red CI run instead of weeks of silent "success".
+_FAILED: list[str] = []
 
 
 def main():
@@ -78,6 +85,9 @@ def main():
         return
     total = sum(drip_site(s) for s in sites)
     log(f"=== run complete: +{total} article(s) ===")
+    if _FAILED:
+        log(f"FAILED: no article published for {', '.join(_FAILED)}")
+        sys.exit(1)
 
 
 if __name__ == "__main__":

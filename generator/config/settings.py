@@ -13,15 +13,45 @@ DEEPSEEK_MODEL = os.getenv("DEEPSEEK_MODEL", "deepseek-chat")
 DEEPSEEK_BASE_URL = os.getenv("DEEPSEEK_BASE_URL", "https://api.deepseek.com")
 
 # === OpenRouter (alternative LLM provider — access to many latest models) ===
-LLM_PROVIDER = os.getenv("LLM_PROVIDER", "deepseek")  # deepseek | openrouter
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
 OPENROUTER_BASE_URL = os.getenv("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1")
-OPENROUTER_MODEL = os.getenv("OPENROUTER_MODEL", "deepseek/deepseek-chat")
+OPENROUTER_MODEL = os.getenv("OPENROUTER_MODEL", "qwen/qwen3.8-27b:free")
+
+# === Free-tier providers (all OpenAI-compatible) ===
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")  # also used for gemini images
+GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
+MISTRAL_API_KEY = os.getenv("MISTRAL_API_KEY", "")
+CEREBRAS_API_KEY = os.getenv("CEREBRAS_API_KEY", "")
+
+PROVIDERS = {
+    "gemini": {"key": GEMINI_API_KEY, "model": os.getenv("GEMINI_MODEL", "gemini-flash-latest"),
+               "base": "https://generativelanguage.googleapis.com/v1beta/openai/"},
+    "mistral": {"key": MISTRAL_API_KEY, "model": os.getenv("MISTRAL_MODEL", "mistral-medium-latest"),
+                "base": "https://api.mistral.ai/v1"},
+    "groq": {"key": GROQ_API_KEY, "model": os.getenv("GROQ_MODEL", "openai/gpt-oss-120b"),
+             "base": "https://api.groq.com/openai/v1"},
+    "cerebras": {"key": CEREBRAS_API_KEY, "model": os.getenv("CEREBRAS_MODEL", "gpt-oss-120b"),
+                 "base": "https://api.cerebras.ai/v1"},
+    "openrouter": {"key": OPENROUTER_API_KEY, "model": OPENROUTER_MODEL, "base": OPENROUTER_BASE_URL},
+    "deepseek": {"key": DEEPSEEK_API_KEY, "model": DEEPSEEK_MODEL, "base": DEEPSEEK_BASE_URL},
+}
+
+# chain = try LLM_CHAIN in order, falling through on quota/overload; or pin one provider name.
+LLM_PROVIDER = os.getenv("LLM_PROVIDER", "chain")
+# "provider" or "provider:model". Providers without a key are skipped automatically.
+LLM_CHAIN = os.getenv("LLM_CHAIN", ",".join([
+    "gemini:gemini-flash-latest",
+    "gemini:gemini-flash-lite-latest",
+    "mistral:mistral-medium-latest",
+    "groq:openai/gpt-oss-120b",
+    "cerebras:gpt-oss-120b",
+    "openrouter:qwen/qwen3.8-27b:free",
+    "deepseek",
+]))
 
 # === Feature + inline images ===
 IMAGE_PROVIDER = os.getenv("IMAGE_PROVIDER", "pollinations")  # pixabay | pollinations | openai | gemini | placeholder
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 PIXABAY_API_KEY = os.getenv("PIXABAY_API_KEY", "")
 
 # === SEO data (optional) ===

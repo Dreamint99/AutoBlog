@@ -11,7 +11,7 @@ on:
     inputs:
       per_site:
         description: "Articles per site this run"
-        default: "2"
+        default: "1"
 
 concurrency:
   group: autoblog-drip
@@ -41,7 +41,14 @@ jobs:
       - name: Research + write + publish to D1
         env:
           STORAGE_BACKEND: d1
-          LLM_PROVIDER: deepseek
+          # Free-tier fallback chain (see generator/config/settings.py LLM_CHAIN):
+          # Gemini → Mistral → Groq → Cerebras → OpenRouter free → DeepSeek.
+          LLM_PROVIDER: chain
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           DEEPSEEK_MODEL: ${{ secrets.DEEPSEEK_MODEL }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -50,11 +57,18 @@ jobs:
           PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
           PYTHONUTF8: "1"
         run: |
-          N="${{ github.event.inputs.per_site || '2' }}"
-          # Other enabled sites (walvi, infkey, ninetymins) — N general each.
-          python drip.py all "$N" 500
-          # Countly: 3 general (existing topics) + 1 in the "richest" wealth category.
-          python drip.py countly 3 500
-          python drip.py countly 1 500 "richest billionaires net worth wealth ranking"
+          # 2 runs/day × N=1 → 2 new articles per site per day.
+          N="${{ github.event.inputs.per_site || '1' }}"
+          FAIL=0
+          # drip_enabled sites (infkey, ninetymins) — N general each.
+          python drip.py all "$N" 500 || FAIL=1
+          # Countly: the 20:00 run takes the "richest" wealth category, the 15:00 run a general topic.
+          if [ "${{ github.event.schedule }}" = "0 20 * * *" ]; then
+            python drip.py countly "$N" 500 "richest billionaires net worth wealth ranking" || FAIL=1
+          else
+            python drip.py countly "$N" 500 || FAIL=1
+          fi
           # Best AI Tools directory — refresh live GitHub stars + trending repos.
           python gen_ai_tools_d1.py --all || true
+          # Red run (and a GitHub email) when an enabled site published nothing.
+          exit $FAIL
