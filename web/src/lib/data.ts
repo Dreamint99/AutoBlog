@@ -85,7 +85,9 @@ function parseArticleRow(r: Record<string, unknown>): Article {
 const LIST_COLS =
   "id, site_id, title, slug, meta_title, meta_description, excerpt, tags, keyword, " +
   "image_url, word_count, reading_time, status, is_mock, created_at";
-const FRESH_S = 300;
+// 15 min: each colo with traffic re-reads a site's list ≤96×/day. Content drips
+// twice a day, and the HTML edge cache in front already adds up to 30 min.
+const FRESH_S = 900;
 const STALE_S = 7 * 24 * 3600;
 const CACHE_NS = "https://d1-cache.autoblog.internal/v1";
 
