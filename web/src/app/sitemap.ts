@@ -4,6 +4,7 @@ import { getModels } from "@/lib/models";
 import { COUNTRIES, JOBS, DATA_VERIFIED } from "@/lib/walvi";
 import { CN_CATEGORIES } from "@/sites/countly/categories";
 import { NM_COMPS } from "@/sites/ninetymins/comps";
+import { getScores, matchPath } from "@/sites/ninetymins/live";
 import { activeSite } from "@/lib/site-context";
 import { siteBaseUrl } from "@/lib/sites.config";
 
@@ -59,6 +60,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // NinetyMins: competition hubs + the legal/info pages.
   if (site.id === "ninetymins") {
+    entries.push({ url: `${base}/scores`, changeFrequency: "hourly", priority: 0.9 });
+    // Current fixtures' match centres (ESPN's live window) — fresh, rich pages.
+    const evs = (await Promise.all(["eng.1", "uefa.champions", "esp.1", "ita.1", "ger.1", "ind.1", "fifa.worldq.afc"].map((l) => getScores(l)))).flat();
+    for (const e of evs) {
+      if (e.home && e.away) {
+        entries.push({ url: `${base}${matchPath(e.league, e.id, e.home.name, e.away.name)}`, changeFrequency: "hourly", priority: 0.6 });
+      }
+    }
     for (const c of NM_COMPS) {
       entries.push({ url: `${base}/topic/${c.slug}`, changeFrequency: "daily", priority: 0.8 });
     }

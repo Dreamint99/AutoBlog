@@ -74,14 +74,17 @@ export function Header({ site }: { site: Site }) {
             </span>
           </Link>
           <span className="nm-tag">{site.tagline}</span>
-          <span className="nm-live" aria-hidden="true">
-            <i /> Live guides
-          </span>
+          <Link href={`${s}/scores`} className="nm-live">
+            <i /> Live scores
+          </Link>
         </div>
         <nav className="nm-rail" aria-label="Sports">
           <div className="nm-wrap nm-rail-in">
             <Link href={s} className="nm-rail-home">
               Home
+            </Link>
+            <Link href={`${s}/scores`} className="nm-rail-live">
+              <i className="nm-dot" /> Live Scores
             </Link>
             {NAV_SLUGS.map((slug) => {
               const c = NM_COMPS.find((x) => x.slug === slug)!;
@@ -143,6 +146,7 @@ export function Footer({ site }: { site: Site }) {
           <div>
             <h4>NinetyMins</h4>
             <ul>
+              <li><Link href={`${s}/scores`}>Live scores</Link></li>
               <li><Link href={`${s}/about`}>About</Link></li>
               <li><Link href={`${s}/contact`}>Contact</Link></li>
               <li><Link href={`${s}/privacy`}>Privacy Policy</Link></li>

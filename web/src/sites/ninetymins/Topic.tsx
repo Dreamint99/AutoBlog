@@ -7,8 +7,8 @@ import { LeagueFixtures, LeagueTable } from "./LiveScores";
 const HUB_FEED: Record<string, { fx?: string; table?: string; tableTitle?: string }> = {
   "champions-league": { fx: "uefa.champions" },
   "premier-league": { fx: "eng.1", table: "eng.1", tableTitle: "Premier League table" },
-  football: { fx: "eng.1,esp.1,ita.1,ger.1", table: "esp.1", tableTitle: "LaLiga table" },
-  "world-cup": { fx: "eng.1,uefa.champions" },
+  football: { fx: "eng.1,esp.1,ita.1,ger.1,ind.1", table: "esp.1", tableTitle: "LaLiga table" },
+  "world-cup": { fx: "fifa.worldq.afc,fifa.friendly" },
   basketball: { fx: "nba" },
   "formula-1": { fx: "f1" },
   tennis: { fx: "atp" },

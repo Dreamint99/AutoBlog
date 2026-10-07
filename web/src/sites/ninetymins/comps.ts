@@ -101,3 +101,9 @@ export function ago(iso: string): string {
   if (d < 7) return `${d}d ago`;
   return fmtDate(iso);
 }
+
+/** Leagues on the /scores board, in display order (keys of live.ts NM_LEAGUES). */
+export const BOARD_LEAGUES = [
+  "eng.1", "uefa.champions", "uefa.europa", "esp.1", "ita.1", "ger.1", "fra.1",
+  "ind.1", "fifa.worldq.afc", "afc.asian.cupq", "fifa.friendly", "usa.1", "nba",
+];
