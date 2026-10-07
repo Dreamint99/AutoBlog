@@ -34,8 +34,13 @@ jobs:
         if: always()
         run: |
           npx -y wrangler@4 d1 execute autoblog-content --remote --json \
-            --command "SELECT name FROM sqlite_master WHERE type='index' AND tbl_name='articles'" > idx.json || true
-          jq -r 'if type=="array" then .[0].results[].name else . end' idx.json || cat idx.json
+            --command "SELECT name, sql FROM sqlite_master WHERE type='index' AND tbl_name='articles'" > idx.json || true
+          jq -r 'if type=="array" then .[0].results[] | "\(.name)  \(.sql)" else . end' idx.json || cat idx.json
+          # Can the articles table itself be read right now? (fails when the daily read quota is spent)
+          npx -y wrangler@4 d1 execute autoblog-content --remote --json \
+            --command "SELECT id FROM articles LIMIT 1" > probe.json 2>&1 || true
+          jq -c 'if type=="array" then {ok: true, meta: .[0].meta} else . end' probe.json || cat probe.json
+          npx -y wrangler@4 d1 info autoblog-content || true
 
       - name: D1 rows read per day (last 7 days)
         if: always()
@@ -47,6 +52,7 @@ jobs:
           curl -s -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H 'content-type: application/json' \
             https://api.cloudflare.com/client/v4/graphql -d "$q" > d1.json
           jq -r '.errors // empty' d1.json
+          jq -e '.data.viewer.accounts[0].d1AnalyticsAdaptiveGroups' d1.json >/dev/null || { echo "token lacks Account Analytics:Read"; exit 0; }
           jq -r '.data.viewer.accounts[0].d1AnalyticsAdaptiveGroups[] | "\(.dimensions.date)  rowsRead=\(.sum.rowsRead)  queries=\(.sum.readQueries)  rowsWritten=\(.sum.rowsWritten)"' d1.json
 
       - name: Result
