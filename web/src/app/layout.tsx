@@ -2,8 +2,6 @@ import "./globals.css";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Script from "next/script";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 
 // Ahrefs Web Analytics — key is per-property, so only load it on the site it
 // belongs to (countly) to avoid mixing data across the network.
@@ -49,7 +47,7 @@ const ADSTERRA: Record<string, AdsterraUnits> = {
 };
 const ads = ADSTERRA[process.env.SITE_ID || ""] || {};
 
-// Search-engine site verification, per-deployment via env (set on Vercel).
+// Search-engine site verification, per-deployment via env (build-time).
 //   GOOGLE_SITE_VERIFICATION  → <meta name="google-site-verification">
 //   YANDEX_VERIFICATION       → <meta name="yandex-verification">
 //   BING_SITE_VERIFICATION    → <meta name="msvalidate.01">  (Bing)
@@ -78,8 +76,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             broken-image icon + alt text. Capture-phase catches <img> load errors. */}
         <Script id="img-fallback" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html:
           `document.addEventListener('error',function(e){var t=e.target;if(t&&t.tagName==='IMG'){t.style.visibility='hidden';}},true);` }} />
-        <Analytics />
-        <SpeedInsights />
         {pulseSiteId ? (
           <Script
             id="pulse-beacon"
