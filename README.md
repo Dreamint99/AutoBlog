@@ -1,42 +1,48 @@
 # AutoBlog — automated multi-site SEO blog network
 
-AutoBlog runs **several independent blog websites from one place**. A local Python admin
-generates SEO articles with a 3-agent AI pipeline and publishes them to a shared database;
-each website is a separate Next.js app on Vercel that reads that database and renders with its
-own unique design.
+AutoBlog runs **several independent blog websites from one codebase**. A Python pipeline
+(`generator/`) writes SEO articles with a 3-agent LLM pipeline on a **free LLM fallback chain**
+and stores them in **Cloudflare D1**; each website is the same Next.js app deployed as its own
+**Cloudflare Worker** (via OpenNext) that reads D1 and renders with its own design.
 
 ```
-   ┌─────────────────────────────┐
-   │  LOCAL: Python admin (Flask) │   generator/   http://127.0.0.1:5050
-   │  3-agent SEO pipeline        │   pick a site → generate → publish
-   └──────────────┬──────────────┘
-                  │ writes (REST)
-          ┌───────▼────────┐
-          │  Supabase DB   │   one `articles` table, shared by every site
-          │  (Postgres)    │   project "AutoBlog" · id yfzxnxexhssbthfyiznj · ap-south-1
-          └───────┬────────┘
-                  │ reads (no-store → instant)
-   ┌──────────────┼───────────────┬───────────────┐
-   ▼              ▼               ▼               ▼
- VisaExpert     AINews     BangladeshExpert   QatarExperts     ← web/ (one Next.js codebase,
- (own design)  (own design)  (own design)    (own design)        deployed once PER SITE)
+   ┌──────────────────────────────────────┐
+   │ GitHub Actions (cron, PC can be off)  │  autoblog-drip.yml  15:00 + 20:00 UTC
+   │  generator/ 3-agent pipeline          │  1 article / site / run = 2 per day per site
+   │  LLM: Gemini → Cerebras → Groq → …    │  (local Flask admin on :5050 still works too)
+   └──────────────────┬───────────────────┘
+                      │ wrangler d1 execute (writes)
+              ┌───────▼─────────┐
+              │ Cloudflare D1   │  database `autoblog-content`
+              │ (SQLite)        │  id 58dacf96-c574-4f0b-88e6-3005d895eb90
+              └───────┬─────────┘
+                      │ binding DB (reads, cached — see §11)
+       ┌──────────────┼───────────────┐
+       ▼              ▼               ▼
+  autoblog-countly  autoblog-ninetymins  autoblog-infkey   ← Workers built from web/
+  countly.net       ninetymins.com       infkey.com          (one codebase, SITE_ID per Worker)
 ```
 
-Publish from the local admin → it lands in Supabase → the live Vercel site shows it within seconds.
+The 5th site, **probashiinfo.com**, is WordPress (Bengali) — see `CLAUDE.md`.
+
+> History: the sites used to run on Vercel + Supabase. Supabase billing was paused and everything
+> moved to Cloudflare. Old Vercel/Supabase code paths still exist as fallbacks (`web/src/lib/data.ts`,
+> `generator/modules/store.py`) but are not used in production.
 
 ---
 
 ## 1. Live sites
 
-| id | niche | theme | live URL |
-|----|-------|-------|----------|
-| `visaexpert` | visas / immigration | trust-blue | https://autoblog-visaexpert.vercel.app |
-| `ainews` | AI news & tools | tech-dark (dark) | https://autoblog-ainews.vercel.app |
-| `bangladeshexpert` | Bangladesh travel/culture | bd-green | https://autoblog-bangladeshexpert.vercel.app |
-| `qatarexperts` | Qatar lifestyle | qatar-maroon | https://autoblog-qatarexperts.vercel.app |
+| id | niche | Worker | domain | drip |
+|----|-------|--------|--------|------|
+| `countly` | money / wealth / data (Forbes-style design) | `autoblog-countly` | https://countly.net | yes (own step in the drip workflow; wealth seed at 20:00) |
+| `ninetymins` | sports desk (ESPN-style, live scores) | `autoblog-ninetymins` | https://ninetymins.com | yes |
+| `infkey` | tech / AI | `autoblog-infkey` | https://infkey.com | yes |
+| `walvi` | — | paused (walvi.io expired, `drip_enabled: false`) | — | no |
+| `probashiinfo` | Bengali expat news | WordPress, not a Worker | https://probashiinfo.com | own workflow |
 
-Custom domains aren't connected yet (these are `*.vercel.app`). `*.vercel.app` is weak for SEO —
-connect real domains in Vercel + `DOMAIN_TO_SITE` (see §8) for actual ranking.
+Older demo sites (`visaexpert`, `ainews`, `bangladeshexpert`, `qatarexperts`) are still in the
+configs but not deployed.
 
 ---
 
@@ -44,47 +50,43 @@ connect real domains in Vercel + `DOMAIN_TO_SITE` (see §8) for actual ranking.
 
 ```
 AutoBlog/
-├─ generator/                  ← LOCAL Python brain (admin + pipeline). NOT deployed.
-│  ├─ admin/
-│  │  ├─ app.py                ← Flask admin server (port 5050): pages + JSON API + jobs
-│  │  ├─ templates/            ← dashboard, generate, manage, edit, preview, settings
-│  │  └─ static/               ← css/js for the admin UI
+├─ generator/                  ← Python pipeline (runs in GitHub Actions; local admin optional)
+│  ├─ admin/                   ← Flask admin (port 5050): dashboard, generate, manage, settings
 │  ├─ modules/
 │  │  ├─ agents.py             ← the 3 agents: strategize → write_draft → optimize
-│  │  ├─ seo_playbook.py       ← SEO "training" injected into every agent (edit to update rules)
-│  │  ├─ pipeline.py           ← orchestrator: 3 agents → images → internal links → publish
-│  │  ├─ image.py              ← feature + inline images (Pixabay → Pollinations AI fallback)
-│  │  ├─ internal_links.py     ← links new posts to existing ones (safe internal "backlinks")
-│  │  ├─ seo.py                ← slug, meta, JSON-LD schema, reading time, body assembly
-│  │  ├─ store.py              ← data layer: Supabase (REST) or local JSON. add/list/get/update/delete
-│  │  ├─ llm.py                ← LLM wrapper (DeepSeek direct OR OpenRouter), provider switch
-│  │  ├─ keyword.py, competitor.py, writer.py   ← used by the mock/no-key fallback path
-│  │  └─ json_utils.py         ← tolerant JSON parsing of LLM output
-│  ├─ sites/sites_config.json  ← SOURCE OF TRUTH for site list (generator side)
-│  ├─ config/settings.py       ← reads .env (by absolute path), all config constants
-│  ├─ drip.py                  ← scheduled "drip" generator (N new articles/run until target)
-│  ├─ drip_qatar.bat           ← wrapper the Windows Task Scheduler runs
-│  ├─ .env                     ← secrets (gitignored). See §6.
-│  ├─ requirements.txt
-│  └─ output/db/articles.json  ← local store (only used when STORAGE_BACKEND=local)
+│  │  ├─ seo_playbook.py       ← SEO rules injected into every agent (edit here)
+│  │  ├─ pipeline.py           ← orchestrator + quality guards
+│  │  ├─ llm.py                ← free LLM fallback chain (see §6)
+│  │  ├─ research.py, trends.py← topic research
+│  │  ├─ image.py, photos.py   ← images (Pixabay → Openverse CC0 / Pollinations)
+│  │  ├─ internal_links.py     ← links new posts to existing ones on the same site
+│  │  ├─ seo.py                ← slug, meta, JSON-LD, body assembly
+│  │  ├─ store.py              ← data layer: d1 (production) | supabase | local
+│  │  ├─ wordpress.py          ← WP REST publisher (probashiinfo)
+│  │  └─ indexnow.py           ← pings IndexNow after publishing
+│  ├─ sites/sites_config.json  ← SOURCE OF TRUTH for sites (generator side)
+│  ├─ config/settings.py       ← env → config constants (LLM_CHAIN etc.)
+│  └─ drip.py                  ← drip generator used by the workflows
 │
-├─ web/                        ← the websites (ONE Next.js 15 app, deployed once per site)
-│  ├─ src/
-│  │  ├─ app/                  ← routes: /, /s/[site], /s/[site]/[slug], sitemap.ts, robots.ts
-│  │  ├─ middleware.ts         ← SITE_ID → serve one site at domain root with clean URLs
-│  │  ├─ data/sites.json       ← SOURCE OF TRUTH for site list (web side — keep in sync!)
-│  │  ├─ lib/                  ← data.ts (Supabase/local read), types.ts, article.ts, sites.config.ts
-│  │  └─ sites/                ← PER-SITE DESIGNS
-│  │     ├─ registry.ts        ← maps site id → its Home/Article components
-│  │     ├─ visaexpert/        ← Home.tsx · Article.tsx · theme.css
-│  │     ├─ ainews/            ← Home.tsx · Article.tsx · theme.css
-│  │     ├─ bangladeshexpert/  ← Home.tsx · Article.tsx · theme.css
-│  │     └─ qatarexperts/      ← Home.tsx · Article.tsx · theme.css
-│  ├─ package.json             ← Next 15.5.19 (do NOT downgrade; older = Vercel CVE block)
-│  └─ .env.local               ← local-dev Supabase creds (gitignored) so `npm run dev` shows real data
+├─ web/                        ← the websites (ONE Next.js 15 app → one Worker per site)
+│  ├─ src/app/                 ← routes: /s/[site], /s/[site]/[slug], topic, api/scores, sitemap…
+│  ├─ src/middleware.ts        ← SITE_ID → serves one site at the domain root with clean URLs
+│  ├─ src/data/sites.json      ← SOURCE OF TRUTH for sites (web side — keep in sync!)
+│  ├─ src/lib/data.ts          ← D1 reads (slim columns, Cache API, stale-on-error)
+│  ├─ src/sites/<id>/          ← per-site designs (Home, Article, theme.css, …) + registry.ts
+│  ├─ cache-worker.js          ← Worker entry: 30-min edge cache for HTML around OpenNext
+│  ├─ open-next.config.ts      ← OpenNext Cloudflare adapter config
+│  └─ deploy-site.ps1          ← build + deploy one site from Windows (writes wrangler.jsonc)
 │
-├─ supabase/schema.sql         ← the `articles` table + RLS policies
-└─ README.md                   ← this file
+├─ .github/workflows/
+│  ├─ autoblog-drip.yml        ← daily articles → D1 (also ensures D1 indexes)
+│  ├─ manual-batch.yml         ← N articles for one site, by hand
+│  ├─ aim-news.yml             ← daily AI news → D1 table aim_news
+│  ├─ deploy-site.yml          ← manual build + deploy of one Worker (site input)
+│  ├─ verify-sites.yml         ← read-only health check: HTTP 200s, D1 indexes, D1 rows read/day
+│  └─ probashi-*.yml           ← WordPress site automation
+├─ pulse/, pulse-android/      ← realtime visitor dashboard (pulse.countly.net) + Android app
+└─ supabase/schema.sql         ← legacy schema (the D1 `articles` table mirrors it)
 ```
 
 ---
@@ -102,125 +104,109 @@ AutoBlog/
 4. **Inline images**: `[[IMG: …]]` markers → real Pixabay photos (capped 4).
 5. **Internal links**: keyword phrases linked to existing posts on the same site.
 6. **SEO assembly**: slug, meta, JSON-LD (Article + FAQ), key-takeaways box + FAQ appended.
-7. **Publish**: written to Supabase via `store.add_article`.
+7. **Quality guards** (`pipeline.py`): reject non-Latin script on English sites, stale "today"
+   titles, and finished events written as upcoming.
+8. **Publish**: written to Cloudflare D1 via `store.add_article` (`STORAGE_BACKEND=d1`, uses
+   `wrangler d1 execute`), or to WordPress for `publish_target: wordpress` sites.
 
 All 3 agents are "trained" by `modules/seo_playbook.py` (Google Helpful Content + E-E-A-T + GEO/AEO
 for AI Overviews + human-voice anti-AI-tell rules). **Update SEO strategy in that one file.**
 
-Without an LLM key it falls back to a single mock draft (so the flow still runs).
+Without any working LLM it falls back to a single mock draft (`is_mock = 1`) so the flow still runs —
+these are low quality; watch for them.
 
 ---
 
 ## 4. Tech stack
 
-- **Generator**: Python 3, Flask, `openai` SDK (used for both DeepSeek and OpenRouter — both
-  OpenAI-compatible), `requests`, `json-repair`, `python-slugify`. venv at `generator/.venv`.
-- **Sites**: Next.js 15 (App Router, TypeScript, React 19), plain CSS per theme (no Tailwind).
-- **DB**: Supabase (Postgres + PostgREST + RLS).
-- **Hosting**: Vercel (one project per site). **LLM**: DeepSeek (direct). **Images**: Pixabay + Pollinations.
+- **Generator**: Python 3.12, `openai` SDK (all chain providers are OpenAI-compatible), `requests`,
+  `json-repair`, `python-slugify`; `wrangler` (Node) for D1 writes.
+- **Sites**: Next.js 15.5.19 (App Router, React 19, TypeScript), plain CSS per theme,
+  built for Workers with `@opennextjs/cloudflare`.
+- **DB**: Cloudflare D1 `autoblog-content` (free tier: 5M rows read/day, 100k writes/day).
+- **Hosting**: Cloudflare Workers (free plan, ~10 ms CPU/request → hence the edge cache).
+- **LLM**: free fallback chain (§6). **Images**: Pixabay, Openverse CC0, Pollinations.
+- **Analytics**: GA4, Ahrefs (countly), own Pulse beacon. (Vercel Analytics removed.)
 
 ---
 
 ## 5. Run it
 
-**Generator admin (local):**
+**Automatic (normal):** nothing to do — `autoblog-drip.yml` runs twice a day in GitHub Actions.
+Manual extra articles: Actions → *Manual batch* → site + count.
+
+**Local admin (optional, Windows):**
 ```powershell
-cd "D:\My app\AutoBlog\generator"
-.\.venv\Scripts\Activate.ps1          # venv already created
+cd M:\Code\AutoBlog\generator
+.\.venv\Scripts\Activate.ps1
 python admin\app.py                   # → http://127.0.0.1:5050
 ```
-Pages: **Dashboard** · **Generate** (bulk + manual) · **Manage** (edit/delete) · **Settings**.
+Restart it by killing the **port-5050 owner** (a `pythonw` child lingers otherwise):
+`$o=(Get-NetTCPConnection -LocalPort 5050 -State Listen -EA SilentlyContinue).OwningProcess; if($o){Stop-Process -Id $o -Force}`
 
-**Web app (local preview, optional):**
-```powershell
-cd "D:\My app\AutoBlog\web"
-npm run dev                           # → http://127.0.0.1:3000  (hub: links to each /s/<site>)
-```
-`web/.env.local` points local dev at Supabase so you see real content.
+**Web app locally:** `cd web && npm run dev` (no D1 binding locally → falls back to Supabase/local
+JSON if configured; mostly used for design work).
 
-> Windows gotcha: the admin is launched detached and `pythonw.exe`/venv children can linger. To
-> restart cleanly, **kill by the process that OWNS port 5050**, not by image name:
-> ```powershell
-> $o=(Get-NetTCPConnection -LocalPort 5050 -State Listen -EA SilentlyContinue).OwningProcess
-> if($o){ Stop-Process -Id $o -Force }
-> ```
+**Deploy a site** (deploys are manual):
+- From GitHub: Actions → **Deploy site (Cloudflare Worker)** → pick the site (optional dry run).
+  It builds with `npx opennextjs-cloudflare build`, deploys with `npx wrangler deploy`, then
+  smoke-tests the domain.
+- From the PC: `powershell -ExecutionPolicy Bypass -File web/deploy-site.ps1 <site> [-DryRun]`.
+
+Both write the same gitignored `web/wrangler.jsonc`: Worker `autoblog-<id>`, `main: cache-worker.js`,
+assets binding `ASSETS`, D1 binding `DB` → `autoblog-content`, var `SITE_ID`, custom domains
+`<domain>` + `www.<domain>`.
+
+**Verify:** Actions → **Verify sites (read-only)**. HTML is edge-cached 30 min per colo, so append
+`?v=<random>` when checking by hand.
 
 ---
 
-## 6. Configuration — `generator/.env`
+## 6. Configuration & secrets
 
-```ini
-STORAGE_BACKEND=supabase
-SUPABASE_URL=https://yfzxnxexhssbthfyiznj.supabase.co
-SUPABASE_SERVICE_KEY=<anon key today; replace with service_role for prod security>
+**GitHub Actions secrets** (production): `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`,
+`GEMINI_API_KEY`, `CEREBRAS_API_KEY`, `GROQ_API_KEY`, `OPENROUTER_API_KEY`, `DEEPSEEK_API_KEY`
+(+ optional `MISTRAL_API_KEY`, `DEEPSEEK_MODEL`), `PIXABAY_API_KEY`, `PROBASHIINFO_WP_*`.
+The Cloudflare token needs D1 Edit (writes), Workers Scripts Edit + Workers Routes/Custom Domains
+(deploys) and Account Analytics Read (verify workflow).
 
-LLM_PROVIDER=deepseek                 # deepseek | openrouter
-DEEPSEEK_API_KEY=<key>
-OPENROUTER_API_KEY=<key>              # wired but unused; its deepseek routes tested thin/slow
-OPENROUTER_MODEL=deepseek/deepseek-chat   # for top quality try anthropic/claude-3.5-sonnet
+**LLM chain** — `LLM_PROVIDER=chain` (default) tries `LLM_CHAIN` in `generator/config/settings.py`
+in order, falling through on quota/overload errors and skipping providers without a key:
+Gemini flash → Gemini flash-lite → Cerebras → Groq → Mistral → Workers AI → OpenRouter free →
+DeepSeek (paid, last resort). Set `LLM_PROVIDER=<name>` to pin one provider.
 
-IMAGE_PROVIDER=pixabay               # pixabay | pollinations(AI) | placeholder
-PIXABAY_API_KEY=<key>
-```
-`config/settings.py` loads this `.env` by **absolute path**, so it works no matter the working
-directory (admin, drip, or a scheduled task). Keys live only here; `.env` is gitignored.
-
-**Security note:** the admin currently writes with the Supabase **anon** key, enabled by open RLS
-`insert/update/delete` policies. For production, put the **service_role** key in
-`SUPABASE_SERVICE_KEY` and drop the open anon write policies.
+**Local `generator/.env`** (gitignored) holds the same keys for running on the PC, plus
+`STORAGE_BACKEND=d1`.
 
 ---
 
 ## 7. Daily use
 
-- **Bulk** (`/generate` → ⚡ Bulk): tick websites + a count → AI plans unique keyword topics per site,
-  writes full articles, publishes live. Parallel (4 at a time).
-- **Manual** (`/generate` → ✍️ Manual): one site + your own titles.
-- **Manage** (`/manage`): edit / delete any post (live in seconds). Edit → status `draft` hides it.
-- **Drip** (the Google-safe way to scale): `drip.py` publishes a few NEW unique articles per run
-  until a site hits a target. Windows Task **"AutoBlog-Qatar-Drip"** runs `drip_qatar.bat` daily 10:00
-  → 3/day until QatarExperts has 50.
-  ```powershell
-  python drip.py qatarexperts 3 50     # site, per-run, target
-  python drip.py all 1 50              # 1/day for every site
-  ```
+- **Drip** — `autoblog-drip.yml` at 15:00 + 20:00 UTC: 1 article per drip-enabled site per run.
+  `drip.py all` covers sites with `drip_enabled` (infkey, ninetymins); countly has its own step
+  (`drip_enabled: false` so it isn't doubled) with a daily-rotating wealth seed on the 20:00 run.
+- **Manual batch** — `manual-batch.yml`: site, count, optional topic seed / category / style.
+- **Edit / unpublish** — set `status` (`draft` / `archived`) on the D1 row (local admin or
+  `wrangler d1 execute autoblog-content --remote`). Archive instead of deleting.
+- GitHub disables scheduled workflows after ~60 days without repo activity — re-enable them in
+  the Actions tab if posting stops.
 
 ---
 
-## 8. ➕ Add a NEW website (do this for the next site)
+## 8. ➕ Add a NEW website
 
-1. **Generator site config** — add an object to `generator/sites/sites_config.json`:
-   ```json
-   { "id":"mysite", "name":"MySite", "domain":"mysite.com",
-     "tagline":"…", "niche":"…comma,separated,keywords…", "language":"en",
-     "tone":"…how it should write…", "audience":"…who it's for…",
-     "theme":"mysite-theme", "default_word_count":1500 }
-   ```
-2. **Web site config** — add the SAME object to `web/src/data/sites.json` (keep both files in sync).
-3. **Domain map** (for later real domains) — add to `web/src/lib/sites.config.ts` `DOMAIN_TO_SITE`:
-   `"mysite.com":"mysite", "www.mysite.com":"mysite"`.
-4. **Design** — create three files: `web/src/sites/mysite/Home.tsx`, `Article.tsx`, `theme.css`.
-   Easiest: copy an existing site's folder and restyle, OR hand a design agent the **contract** in
-   §9. Each theme.css must scope every selector under `.site-mysite`.
-5. **Register** — add to `web/src/sites/registry.ts`:
-   ```ts
-   import MyHome from "./mysite/Home";  import MyArticle from "./mysite/Article";
-   // …
-   mysite: { Home: MyHome, Article: MyArticle },
-   ```
-6. **Typecheck**: `cd web && npx tsc --noEmit`.
-7. **Deploy** (one Vercel project for the site):
-   ```powershell
-   cd "D:\My app\AutoBlog\web"
-   $team="team_aTdfAHvhg921PdFGtFnp0qgj"
-   $SUPA="https://yfzxnxexhssbthfyiznj.supabase.co"
-   $ANON="<supabase anon key>"
-   vercel link --yes --project autoblog-mysite --scope $team
-   vercel deploy --prod --yes --scope $team -e SITE_ID=mysite -e SUPABASE_URL=$SUPA -e SUPABASE_ANON_KEY=$ANON
-   ```
-   → live at `https://autoblog-mysite.vercel.app`.
-8. **Content**: restart the admin (so it loads the new site), then Bulk-generate a small foundation
-   and/or add a drip task. Done.
+1. **Generator config** — add the site object to `generator/sites/sites_config.json`
+   (`id`, `name`, `domain`, `tagline`, `niche`, `language`, `tone`, `audience`, `theme`,
+   `default_word_count`, `drip_enabled`).
+2. **Web config** — add the SAME object to `web/src/data/sites.json` (keep both in sync).
+3. **Domain map** — `web/src/lib/sites.config.ts` `DOMAIN_TO_SITE`: `"mysite.com"` + `"www.mysite.com"`.
+4. **Design** — `web/src/sites/mysite/` with `Home.tsx`, `Article.tsx`, `theme.css` (contract §9),
+   then register it in `web/src/sites/registry.ts`.
+5. **Typecheck/build** — `cd web && npx tsc --noEmit && SITE_ID=mysite npx next build`.
+6. **Deploy** — add the domain to the `case` in `.github/workflows/deploy-site.yml` (and the choice
+   list) and to `$domains` in `web/deploy-site.ps1`; the domain's zone must be on the same Cloudflare
+   account. Then run the deploy workflow — wrangler creates the Worker and the custom domains.
+7. **Content** — enable `drip_enabled` or run *Manual batch* for a small foundation. Drip, don't dump.
 
 ---
 
@@ -248,35 +234,43 @@ SiteArticleProps { site: Site; article: Article; related: Article[]; bodyHtml: s
 
 ## 10. Infrastructure (accounts & IDs)
 
-- **Supabase** project `AutoBlog` — id `yfzxnxexhssbthfyiznj`, region `ap-south-1`. Table `articles`
-  (schema in `supabase/schema.sql`). RLS: public reads `status='published'`; anon insert/update/delete
-  (open — see §6 security note). $10/month.
-- **Vercel** team `team_aTdfAHvhg921PdFGtFnp0qgj`. One project per site: `autoblog-<id>`. Each has env
-  `SITE_ID`, `SUPABASE_URL`, `SUPABASE_ANON_KEY` (passed via `-e` on deploy). Hobby tier = free.
-- **Windows Task Scheduler** task `AutoBlog-Qatar-Drip` (daily 10:00).
+- **Cloudflare** account (`CLOUDFLARE_ACCOUNT_ID` secret): Workers `autoblog-countly`,
+  `autoblog-ninetymins`, `autoblog-infkey`; D1 `autoblog-content`
+  (`58dacf96-c574-4f0b-88e6-3005d895eb90`), tables `articles`, `aim_news`; Pulse worker
+  (`pulse.countly.net`). Free plan.
+- **D1 indexes** (created by the workflows' "Ensure D1 indexes" step):
+  `idx_articles_site_status_created (site_id, status, created_at)` and
+  `idx_articles_site_slug (site_id, slug)`.
+- **GitHub Actions** — all scheduled work (no PC needed).
+- Legacy, unused: Supabase project `yfzxnxexhssbthfyiznj`, Vercel team `team_aTdfAHvhg921PdFGtFnp0qgj`.
 
 ---
 
 ## 11. Key decisions & gotchas (read before changing things)
 
-- **One Next.js codebase, deployed N times.** `SITE_ID` env pins a deployment to one site;
-  `middleware.ts` rewrites `/` → `/s/<SITE_ID>` and 308-redirects `/s/<id>/..` links to clean `/slug`.
-  Locally (no SITE_ID) the root is a hub and sites live at `/s/<id>`.
-- **Two site-config files** (`generator/sites/sites_config.json` and `web/src/data/sites.json`) must
-  stay in sync. (Web can't read the generator folder on Vercel, so the list is bundled.)
-- **`cache: "no-store"`** in `web/src/lib/data.ts` makes new posts appear instantly. For high traffic,
-  switch to ISR (`revalidate`) + on-demand revalidation.
-- **Next 15.5.19 pinned** — Vercel blocks the older 15.1.x (CVE-2025-66478). Don't downgrade.
-- **Restart admin by killing the port-5050 owner** (see §5) — image-name kills miss `pythonw`/children.
-- Internal `/s/..` links 308-redirect to clean URLs on a live single-site deployment; canonical +
-  sitemap already use clean `/slug`.
+- **One Next.js codebase, one Worker per site.** `SITE_ID` pins a Worker to one site;
+  `middleware.ts` rewrites `/` → `/s/<SITE_ID>` and 308-redirects `/s/<id>/..` to clean URLs.
+- **Two site-config files** must stay in sync (`generator/sites/sites_config.json`,
+  `web/src/data/sites.json`).
+- **D1 read budget (5M rows/day free).** `web/src/lib/data.ts` reads slim list columns, a single
+  row per article, uses the Cache API (listings fresh 15 min) with stale-on-error, React `cache()`
+  and SQL search. Before this, the sites read ~5–6M rows/day and 500'd every evening. Check usage
+  with the verify workflow.
+- **Edge cache** — `web/cache-worker.js` caches HTML/XML 30 min per colo (Workers free plan has a
+  ~10 ms CPU limit; SSR would trip error 1102). `/api/*` and RSC requests (`RSC: 1`,
+  `Next-Router-*`, `_rsc`) are never cached — caching RSC under the page URL once served raw flight
+  data as the homepage.
+- **Next 15.5.19 pinned** — older 15.x has CVE-2025-66478. Don't downgrade.
+- **Hero pitfall** — never mix `aspect-ratio` + `height:100%` on a grid image (§9).
+- **ninetymins live scores** use ESPN's undocumented keyless API (`site.api.espn.com`) through
+  `/api/scores`; football, NBA, F1, ATP work, cricket/SAFF don't. The UI hides itself if the feed fails.
 
 ---
 
 ## 12. Honest caveats (don't over-promise)
 
 - **No tool guarantees first-page Google ranking.** Ranking needs domain authority, real backlinks,
-  competition, and time. `*.vercel.app` subdomains rank poorly — use real domains.
+  competition, and time. Real domains (now connected) matter far more than any on-page trick.
 - **Mass-publishing AI articles risks Google "scaled content abuse."** Prefer quality + a gradual
   drip over dumping dozens at once on a fresh site. Keep a human-review step.
 - **No method makes AI text reliably "undetectable."** The human-voice rules help, but Google ranks
@@ -290,9 +284,4 @@ SiteArticleProps { site: Site; article: Article; related: Article[]; bodyHtml: s
 
 ## 13. Roadmap / TODO
 
-- Connect real custom domains (biggest lever for actual SEO).
-- Real keyword volume + SERP data (Semrush / Google APIs) instead of LLM-only keyword ideas.
-- `service_role` key for production-secure writes; drop open anon write policies.
-- Optional: stronger OpenRouter model (Claude/GPT) for top-tier writing; queue/worker for true
-  100/day scale; drip tasks for all sites.
-```
+See `HANDOFF.md` for the current, ordered TODO list.
