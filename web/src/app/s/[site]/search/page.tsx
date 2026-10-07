@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { getSite, getArticles } from "@/lib/data";
+import { getSite, searchArticles } from "@/lib/data";
+import type { Article } from "@/lib/types";
 import CountlySearch from "@/sites/countly/Search";
 
 export const dynamic = "force-dynamic";
@@ -23,18 +24,20 @@ export default async function SearchPage({
   const sp = await searchParams;
   const q = (Array.isArray(sp.q) ? sp.q[0] : sp.q || "").trim();
 
-  let results = [] as Awaited<ReturnType<typeof getArticles>>;
+  let results = [] as Article[];
   if (q) {
-    const tokens = q.toLowerCase().split(/\s+/).filter((t) => t.length >= 2);
-    const all = await getArticles(site.id);
-    results = all
-      .map((a) => {
-        const hay = `${a.title} ${a.excerpt} ${a.keyword} ${(a.tags || []).join(" ")} ${a.body_html || ""}`.toLowerCase();
-        const score = tokens.reduce((s, t) => s + (hay.includes(t) ? 1 : 0), 0);
-        return { a, score };
-      })
-      .filter((x) => x.score > 0)
-      .sort((x, y) => y.score - x.score)
+    // Each token is matched in D1 (bodies included) and cached; rank by how many hit.
+    const tokens = [...new Set(q.toLowerCase().split(/\s+/).filter((t) => t.length >= 2))].slice(0, 6);
+    const hits = new Map<string, { a: Article; score: number }>();
+    for (const t of tokens) {
+      for (const a of await searchArticles(site.id, t)) {
+        const h = hits.get(a.id) ?? { a, score: 0 };
+        h.score += 1;
+        hits.set(a.id, h);
+      }
+    }
+    results = [...hits.values()]
+      .sort((x, y) => y.score - x.score || (x.a.created_at < y.a.created_at ? 1 : -1))
       .slice(0, 60)
       .map((x) => x.a);
   }

@@ -35,6 +35,16 @@ jobs:
           node-version: "20"
       - run: pip install -r requirements.txt
       - run: npm install -g wrangler@4
+      # Runs right after the 00:00 UTC D1 quota reset, so the indexes exist before
+      # the day's traffic (no-op once they're there).
+      - name: Ensure D1 indexes
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: >
+          wrangler d1 execute autoblog-content --remote --command
+          "CREATE INDEX IF NOT EXISTS idx_articles_site_status_created ON articles(site_id, status, created_at);
+          CREATE INDEX IF NOT EXISTS idx_articles_site_slug ON articles(site_id, slug);" || true
       - name: Collect + translate + save
         env:
           STORAGE_BACKEND: d1

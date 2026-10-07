@@ -38,6 +38,14 @@ jobs:
         run: pip install -r requirements.txt
       - name: Install wrangler (for D1 writes)
         run: npm install -g wrangler@4
+      - name: Ensure D1 indexes (keeps page reads inside the free 5M rows/day)
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: >
+          wrangler d1 execute autoblog-content --remote --command
+          "CREATE INDEX IF NOT EXISTS idx_articles_site_status_created ON articles(site_id, status, created_at);
+          CREATE INDEX IF NOT EXISTS idx_articles_site_slug ON articles(site_id, slug);" || true
       - name: Research + write + publish to D1
         env:
           STORAGE_BACKEND: d1
