@@ -82,6 +82,7 @@ export function Masthead({ site }: { site: Site }) {
               {label}
             </Link>
           ))}
+          <Link href={`${b}/travel-map`}>Travel map</Link>
           <Link href={`${b}#scams`}>Scam alerts</Link>
         </div>
       </nav>
@@ -108,6 +109,7 @@ export function Footer({ site }: { site: Site }) {
             <Link href={`${b}/passport-index`}>Passport Index</Link>
             <Link href={`${b}/visa-check`}>Visa status check</Link>
             <Link href={`${b}/visa-checker`}>Visa requirements</Link>
+            <Link href={`${b}/travel-map`}>My travel map</Link>
             <Link href={`${b}/countries`}>Country register</Link>
             <Link href={`${b}/jobs`}>Jobs &amp; salaries</Link>
             <Link href={`${b}/guides`}>Work-permit guides</Link>

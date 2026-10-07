@@ -85,6 +85,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       { url: `${base}/passport-index`, changeFrequency: "weekly", priority: 1 },
       { url: `${base}/visa-checker`, changeFrequency: "weekly", priority: 0.9 },
       { url: `${base}/visa-check`, changeFrequency: "weekly", priority: 1 },
+      { url: `${base}/travel-map`, changeFrequency: "monthly", priority: 0.9 },
     );
     for (const e of VC) entries.push({ url: `${base}/visa-check/${e.slug}`, changeFrequency: "weekly", priority: 0.9 });
     for (const p of await getPassports()) {
