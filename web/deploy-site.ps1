@@ -25,6 +25,7 @@ $d = $domains[$Site]
     { "binding": "DB", "database_name": "autoblog-content", "database_id": "58dacf96-c574-4f0b-88e6-3005d895eb90" }
   ],
   "vars": { "SITE_ID": "$Site" },
+  "version_metadata": { "binding": "CF_VERSION_METADATA" },
   "routes": [
     { "pattern": "$d", "custom_domain": true },
     { "pattern": "www.$d", "custom_domain": true }

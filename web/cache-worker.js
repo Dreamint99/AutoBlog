@@ -23,6 +23,9 @@ const TTL = 1800;
 // RSC (text/x-component) is NOT cached: it's keyed on request headers (RSC,
 // Next-Router-State-Tree, prefetch), not the URL, so caching it under the page URL
 // served raw "0:{...}" flight data to normal visitors as the homepage.
+// Browsers must revalidate pages: a 4-hour browser copy outlives a deploy and then
+// pairs old HTML with the new server.
+const CLIENT_CC = "public, max-age=0, must-revalidate";
 const CACHEABLE_CT = /text\/html|application\/(xml|rss)|text\/xml/;
 
 function isRscRequest(request, url) {
@@ -38,7 +41,12 @@ export default {
     if (url.pathname.startsWith("/api/")) return worker.fetch(request, env, ctx);
     if (isRscRequest(request, url)) return worker.fetch(request, env, ctx);
 
-    const cacheKey = new Request(url.toString());
+    // Key on the deployed version so a deploy never serves HTML from the previous
+    // build (old chunk hashes / build id -> "server-side exception" on the client).
+    const keyUrl = new URL(url.toString());
+    const ver = env.CF_VERSION_METADATA && env.CF_VERSION_METADATA.id;
+    if (ver) keyUrl.searchParams.set("__v", ver);
+    const cacheKey = new Request(keyUrl.toString());
     const cache = caches.default;
     try {
       const hit = await cache.match(cacheKey);
@@ -46,6 +54,7 @@ export default {
       if (hit && !(hit.headers.get("content-type") || "").includes("x-component")) {
         const h = new Headers(hit.headers);
         h.set("x-edge-cache", "HIT");
+        h.set("cache-control", CLIENT_CC);
         return new Response(hit.body, { status: hit.status, headers: h });
       }
     } catch {}
@@ -55,12 +64,15 @@ export default {
     if (res.status === 200 && CACHEABLE_CT.test(ct)) {
       try {
         const buf = await res.arrayBuffer();
+        // A streamed SSR error still returns 200 — never store it.
+        const bad = ct.includes("text/html") && new TextDecoder().decode(buf).includes("data-dgst=");
         const storeHeaders = new Headers(res.headers);
         storeHeaders.set("cache-control", `public, s-maxage=${TTL}`);
         storeHeaders.delete("set-cookie");
-        ctx.waitUntil(cache.put(cacheKey, new Response(buf, { status: 200, headers: storeHeaders })));
+        if (!bad) ctx.waitUntil(cache.put(cacheKey, new Response(buf, { status: 200, headers: storeHeaders })));
         const h = new Headers(res.headers);
-        h.set("x-edge-cache", "MISS");
+        h.set("x-edge-cache", bad ? "BYPASS" : "MISS");
+        h.set("cache-control", CLIENT_CC);
         return new Response(buf, { status: 200, headers: h });
       } catch {
         return res;
