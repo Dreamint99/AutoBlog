@@ -17,7 +17,7 @@ jobs:
       - name: HTTP checks (cache-busted)
         run: |
           fail=0
-          check() { code=$(curl -s -o /dev/null -w '%{http_code}' "$1"); echo "$code  $1"; [ "$code" = 200 ] || fail=1; }
+          check() { code=$(curl -s -m 20 -o /dev/null -w '%{http_code}' "$1"); echo "$code  $1"; [ "$code" = 200 ] || fail=1; }
           for d in countly.net ninetymins.com infkey.com; do
             check "https://$d/?v=$RANDOM$RANDOM"
             # First article URL from the sitemap (skips the homepage and static pages).
@@ -31,12 +31,14 @@ jobs:
           echo "FAIL=$fail" >> "$GITHUB_ENV"
 
       - name: D1 indexes (SELECT only)
+        if: always()
         run: |
           npx -y wrangler@4 d1 execute autoblog-content --remote --json \
-            --command "SELECT name FROM sqlite_master WHERE type='index' AND tbl_name='articles'" \
-            | jq -r '.[0].results[].name'
+            --command "SELECT name FROM sqlite_master WHERE type='index' AND tbl_name='articles'" > idx.json || true
+          jq -r 'if type=="array" then .[0].results[].name else . end' idx.json || cat idx.json
 
       - name: D1 rows read per day (last 7 days)
+        if: always()
         run: |
           since=$(date -u -d '7 days ago' +%F); until=$(date -u +%F)
           q=$(jq -n --arg a "$CLOUDFLARE_ACCOUNT_ID" --arg s "$since" --arg u "$until" '{query:
@@ -48,4 +50,5 @@ jobs:
           jq -r '.data.viewer.accounts[0].d1AnalyticsAdaptiveGroups[] | "\(.dimensions.date)  rowsRead=\(.sum.rowsRead)  queries=\(.sum.readQueries)  rowsWritten=\(.sum.rowsWritten)"' d1.json
 
       - name: Result
+        if: always()
         run: exit $FAIL
