@@ -14,8 +14,8 @@ import { BY_ISO, CONT, CONT_ORDER, F, LIST, TOTAL, compact, computeInsights, fmt
 const ATLAS = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json";
 const STORE = "vp-travel-map-v1";
 
-type Theme = "neon" | "paper" | "sunset";
-interface Palette {
+export type Theme = "neon" | "paper" | "sunset";
+export interface Palette {
   bg: [string, string];
   ocean: string;
   land: string;
@@ -28,12 +28,12 @@ interface Palette {
   grat: string;
   glow: boolean;
 }
-const THEMES: Record<Theme, Palette> = {
+export const THEMES: Record<Theme, Palette> = {
   neon: { bg: ["#05071a", "#1c0b44"], ocean: "rgba(40,60,160,0.16)", land: "#1e2656", visited: "#22d3ee", home: "#f472b6", arc: "#fde047", text: "#ffffff", sub: "rgba(255,255,255,0.72)", line: "rgba(255,255,255,0.10)", grat: "rgba(140,160,255,0.13)", glow: true },
   paper: { bg: ["#f4ead3", "#e6d8b8"], ocean: "rgba(255,255,255,0.35)", land: "#d8c9a3", visited: "#1f3a5f", home: "#c2410c", arc: "#c2410c", text: "#1b1a17", sub: "#5b5346", line: "rgba(27,26,23,0.28)", grat: "rgba(27,26,23,0.12)", glow: false },
   sunset: { bg: ["#ff7a3d", "#6d28d9"], ocean: "rgba(255,255,255,0.07)", land: "rgba(255,255,255,0.24)", visited: "#fff1a8", home: "#22103d", arc: "#ffffff", text: "#ffffff", sub: "rgba(255,255,255,0.86)", line: "rgba(255,255,255,0.22)", grat: "rgba(255,255,255,0.12)", glow: true },
 };
-const THEME_LABEL: Record<Theme, string> = { neon: "Neon", paper: "Paper", sunset: "Sunset" };
+export const THEME_LABEL: Record<Theme, string> = { neon: "Neon", paper: "Paper", sunset: "Sunset" };
 
 type Atlas = FeatureCollection<Geometry, { name: string }>;
 let atlasP: Promise<Atlas> | null = null;
@@ -55,7 +55,7 @@ const visaOf = (code?: string): Visa | null => {
   return c === "F" ? "free" : c === "A" ? "arrival" : c === "E" || c === "T" ? "evisa" : c === "V" || c === "X" ? "required" : null;
 };
 
-function loadImg(src: string): Promise<HTMLImageElement | null> {
+export function loadImg(src: string): Promise<HTMLImageElement | null> {
   return new Promise((res) => {
     const i = new Image();
     i.crossOrigin = "anonymous";

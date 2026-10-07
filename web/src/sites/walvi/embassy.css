@@ -807,3 +807,40 @@
   .site-walvi .vp-trust b { font-size: 13.5px; }
 }
 @media (prefers-reduced-motion: reduce) { .site-walvi .vp-hero-bg { animation: none; } }
+
+
+/* ── Bangladesh district map ─────────────────────────────── */
+.site-walvi .bd-hero { background: linear-gradient(120deg, #00563f, #006a4e 45%, #0d2b4e); }
+.site-walvi .bd-h1-bn { display: block; margin-top: 8px; font: 700 0.62em/1.25 "Nirmala UI", "Noto Sans Bengali", var(--vp-sans); color: #ffd7d2; }
+.site-walvi .bd .tm-grid { grid-template-columns: minmax(0, 1fr) 340px; }
+.site-walvi .bd .tm-map svg { max-height: 82vh; margin: 0 auto; }
+.site-walvi .bd-label { font-size: 8.5px; font-weight: 600; opacity: 0.55; stroke-width: 2.2px; }
+.site-walvi .bd-label.on { font-weight: 800; opacity: 1; font-size: 9.5px; }
+.site-walvi .bd-lang { display: flex; width: max-content; margin: 0 0 4px auto; background: rgba(0, 0, 0, 0.28); border-radius: 999px; padding: 3px; }
+.site-walvi .bd-lang button { border: 0; background: none; color: inherit; font: 700 12.5px/1 var(--tmf); padding: 7px 12px; border-radius: 999px; cursor: pointer; opacity: 0.75; }
+.site-walvi .bd-lang button.on { background: #fff; color: #0d2b4e; opacity: 1; }
+.site-walvi .bd-bn { font-family: "Nirmala UI", "Noto Sans Bengali", var(--vp-sans); font-weight: 600; opacity: 0.75; }
+.site-walvi .tm-browse li button small.bd-bn { font-size: 12.5px; margin-left: 4px; }
+.site-walvi .bd-ext { grid-template-columns: 1fr !important; }
+.site-walvi .tm-conts { display: grid; gap: 9px; }
+.site-walvi .tm-conts div { display: grid; grid-template-columns: 170px 1fr 52px; gap: 10px; align-items: center; font: 700 14px/1 var(--tmf); color: var(--vp-text); }
+.site-walvi .tm-conts small { font: 600 12.5px/1 "Nirmala UI", "Noto Sans Bengali", var(--vp-sans); color: var(--vp-muted); margin-left: 4px; }
+.site-walvi .tm-conts div > i { display: block; height: 10px; background: var(--vp-grey); border-radius: 5px; overflow: hidden; }
+.site-walvi .tm-conts div > i > i { display: block; height: 100%; background: linear-gradient(90deg, #006a4e, #22c55e); border-radius: 5px; transition: width 0.5s ease; }
+.site-walvi .tm-conts b { text-align: right; font-variant-numeric: tabular-nums; }
+.site-walvi .bd-badges { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; }
+.site-walvi .bd-badge { padding: 14px; border-radius: 14px; border: 2px dashed var(--vp-line); text-align: center; display: grid; gap: 4px; filter: grayscale(1); opacity: 0.6; transition: all 0.3s; }
+.site-walvi .bd-badge span { font-size: 34px; line-height: 1; }
+.site-walvi .bd-badge b { font: 800 15px/1.2 var(--tmf); color: var(--vp-ink); }
+.site-walvi .bd-badge small { font: 500 12px/1.35 var(--vp-sans); color: var(--vp-muted); }
+.site-walvi .bd-badge.on { filter: none; opacity: 1; border: 2px solid #d4ae4a; background: linear-gradient(160deg, #fff8e6, #fff); box-shadow: 0 10px 24px -14px rgba(181, 137, 42, 0.8); animation: vp-rise 0.4s ease both; }
+.site-walvi .bd-badge.on small { color: #0f7a4a; font-weight: 700; }
+.site-walvi .bd-fam { margin: 0; padding: 12px 16px 0; font: 600 15px/1.45 var(--vp-sans); color: var(--vp-ink); }
+.site-walvi .bd .tm-card h3 .bd-bn { font-size: 16px; color: #ffd7d2; opacity: 1; margin-left: 4px; }
+@media (max-width: 960px) { .site-walvi .bd .tm-grid { grid-template-columns: 1fr; } }
+@media (max-width: 700px) {
+
+  .site-walvi .bd-label { font-size: 10px; }
+  .site-walvi .bd-label.on { font-size: 11px; }
+  .site-walvi .tm-conts div { grid-template-columns: 120px 1fr 44px; }
+}

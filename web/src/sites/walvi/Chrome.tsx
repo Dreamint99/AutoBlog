@@ -37,6 +37,7 @@ export function menuFor(site: Site): NavGroup[] {
       items: [
         { label: "Salary & savings calculator", href: `${b}/tools`, desc: "What you would really save each month" },
         { label: "My travel map", href: `${b}/travel-map`, desc: "Map every country you have visited" },
+        { label: "Bangladesh district map", href: `${b}/bangladesh-map`, desc: "Which of the 64 zila have you seen?" },
         { label: "Scam checklist", href: `${b}#scams`, desc: "Spot a fake job offer before you pay" },
       ],
     },
@@ -140,6 +141,7 @@ export function Masthead({ site }: { site: Site }) {
           ))}
           <Link href={`${b}/visa-check`}>Visa check</Link>
           <Link href={`${b}/travel-map`}>Travel map</Link>
+          <Link href={`${b}/bangladesh-map`}>Bangladesh map</Link>
           <Link href={`${b}/guides`}>Guides</Link>
         </div>
         <details className="vp-mnav">
