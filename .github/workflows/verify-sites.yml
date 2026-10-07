@@ -42,6 +42,21 @@ jobs:
           jq -c 'if type=="array" then {ok: true, meta: .[0].meta} else . end' probe.json || cat probe.json
           npx -y wrangler@4 d1 info autoblog-content || true
 
+      - name: Newest article per site is on its homepage (SELECT only)
+        if: always()
+        run: |
+          for pair in countly:countly.net ninetymins:ninetymins.com infkey:infkey.com; do
+            id=${pair%%:*}; d=${pair#*:}
+            npx -y wrangler@4 d1 execute autoblog-content --remote --json --command \
+              "SELECT slug, title, created_at, is_mock FROM articles WHERE site_id='$id' AND status='published' ORDER BY created_at DESC LIMIT 3" > n.json 2>/dev/null || true
+            html=$(curl -s -m 20 "https://$d/?v=$RANDOM$RANDOM")
+            echo "== $d"
+            jq -r '.[0].results[] | "\(.created_at)\t\(.is_mock)\t\(.slug)"' n.json 2>/dev/null | while IFS=$'\t' read -r at mock slug; do
+              if grep -q "/$slug\"" <<<"$html"; then on=YES; else on=NO; fi
+              echo "  $at  mock=$mock  on-homepage=$on  $slug"
+            done
+          done
+
       - name: D1 rows read per day (last 7 days)
         if: always()
         run: |
