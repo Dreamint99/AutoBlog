@@ -7,13 +7,14 @@ import { JsonLd, breadcrumbSchema } from "@/lib/seo";
 import { Masthead, Footer } from "@/sites/walvi/Chrome";
 import { fontVars } from "@/sites/walvi/fonts";
 import TravelMap from "@/sites/walvi/travel/TravelMap";
+import { travelFont } from "@/sites/walvi/travel/fonts";
 
 export const dynamic = "force-dynamic";
 
 const FAQ = [
   {
     q: "How do I make a map of the countries I have visited?",
-    a: "Tap each country you have been to on the map (or search for it), add your name and photo if you like, then download the image as an Instagram post or story. It is free and needs no sign-up.",
+    a: "Tap each country you have been to on the map, pick it from the list of all countries, or search for it, add your name and photo if you like, then download the image as an Instagram post or story. It is free and needs no sign-up.",
   },
   {
     q: "Is my photo uploaded anywhere?",
@@ -53,7 +54,7 @@ export default async function Page({ params }: { params: Promise<{ site: string 
   const b = `/s/${site.id}`;
   const base = siteBaseUrl(site);
   return (
-    <div className={fontVars}>
+    <div className={`${fontVars} ${travelFont.variable}`}>
       <JsonLd
         data={[
           breadcrumbSchema([
@@ -108,7 +109,7 @@ export default async function Page({ params }: { params: Promise<{ site: string 
                   <span className="vp-step-n">1</span>
                   <div>
                     <b>Pick your countries</b>
-                    <p>Tap them on the map or search by name. Set your home country.</p>
+                    <p>Tap them on the map, choose from the full A–Z list of every country, or search by name.</p>
                   </div>
                 </li>
                 <li>
@@ -122,7 +123,7 @@ export default async function Page({ params }: { params: Promise<{ site: string 
                   <span className="vp-step-n">3</span>
                   <div>
                     <b>Download &amp; share</b>
-                    <p>Square post or full-screen story, in night or day style.</p>
+                    <p>Square post or full-screen story, in Neon, Paper or Sunset style.</p>
                   </div>
                 </li>
               </ol>
@@ -140,6 +141,11 @@ export default async function Page({ params }: { params: Promise<{ site: string 
               <p className="vp-sub" style={{ marginTop: 18 }}>
                 Planning the next one? <Link href={`${b}/visa-checker`}>Check if you need a visa</Link> or see{" "}
                 <Link href={`${b}/passport-index`}>how strong your passport is</Link>.
+              </p>
+              <p className="tm-credit">
+                Country facts: <a href="https://github.com/mledoze/countries" rel="nofollow noopener">mledoze/countries</a> (ODbL), population:{" "}
+                <a href="https://data.worldbank.org/" rel="nofollow noopener">World Bank</a> (CC BY 4.0), map: Natural Earth via world-atlas. Distances are
+                straight-line between country centres.
               </p>
             </div>
           </div>

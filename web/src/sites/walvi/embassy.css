@@ -492,51 +492,132 @@
 @media (max-width: 600px) { .site-walvi .vc-grid, .site-walvi .vc-steps { grid-template-columns: 1fr; } }
 
 /* ── Travel map tool ─────────────────────────────────────── */
+.site-walvi .tm { --tmf: var(--tm-font, var(--vp-sans)); }
 .site-walvi .tm-hero { padding-bottom: 30px; }
+.site-walvi .tm-hero h1 { font-family: var(--tm-font, var(--vp-serif)); font-weight: 800; letter-spacing: -0.02em; }
 .site-walvi .tm-sec { padding-top: 28px; }
 .site-walvi .tm-grid { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 22px; align-items: start; }
-.site-walvi .tm-map { position: relative; border-radius: 10px; padding: 18px; overflow: hidden; }
-.site-walvi .tm-night { background: linear-gradient(135deg, #0b2440, #0f6e6a); color: #fff; }
-.site-walvi .tm-day { background: linear-gradient(135deg, #f6f1e7, #e3efec); color: var(--vp-ink); border: 1px solid var(--vp-line); }
+.site-walvi .tm-map { position: relative; border-radius: 16px; padding: 18px; overflow: hidden; box-shadow: 0 24px 60px -30px rgba(10, 20, 60, 0.6); }
+.site-walvi .tm-neon { background: radial-gradient(1200px 500px at 90% -10%, rgba(34, 211, 238, 0.18), transparent 60%), radial-gradient(900px 500px at 0% 110%, rgba(244, 114, 182, 0.16), transparent 60%), linear-gradient(135deg, #05071a, #1c0b44); color: #fff; }
+.site-walvi .tm-paper { background: linear-gradient(135deg, #f4ead3, #e6d8b8); color: #1b1a17; border: 1px solid #d3c39d; }
+.site-walvi .tm-sunset { background: linear-gradient(135deg, #ff7a3d, #c2348a 55%, #6d28d9); color: #fff; }
 .site-walvi .tm-map svg { width: 100%; height: auto; display: block; }
-.site-walvi .tm-c { cursor: pointer; transition: fill 0.25s ease, filter 0.15s; }
-.site-walvi .tm-c:hover { filter: brightness(1.15); }
-.site-walvi .tm-map-head { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
-.site-walvi .tm-map-head div { flex: 1 1 120px; padding: 10px 14px; border-radius: 8px; background: rgba(255, 255, 255, 0.1); }
-.site-walvi .tm-day .tm-map-head div { background: rgba(255, 255, 255, 0.7); }
-.site-walvi .tm-map-head b { display: block; font: 700 34px/1 var(--vp-serif); font-variant-numeric: tabular-nums; }
-.site-walvi .tm-map-head span { font: 600 13px/1.3 var(--vp-sans); opacity: 0.8; }
-.site-walvi .tm-loading { position: absolute; inset: 0; display: grid; place-items: center; font: 600 15px/1 var(--vp-sans); }
-.site-walvi .tm-tip { position: absolute; pointer-events: none; background: #13202e; color: #fff; font: 600 13px/1.3 var(--vp-sans); padding: 6px 10px; border-radius: 4px; white-space: nowrap; z-index: 3; }
-.site-walvi .tm-hint { margin: 8px 0 0; font: 500 13px/1.4 var(--vp-sans); opacity: 0.8; }
-.site-walvi .tm-panel { background: #fff; border: 1px solid var(--vp-line); border-top: 5px solid var(--vp-gold); border-radius: 8px; padding: 18px; display: flex; flex-direction: column; gap: 12px; position: sticky; top: 14px; }
+.site-walvi .tm-c { cursor: pointer; transition: fill 0.25s ease; }
+.site-walvi .tm-c:hover { fill-opacity: 0.75; }
+.site-walvi .tm-arc { stroke-dasharray: 5 4; stroke-linecap: round; animation: tm-dash 1.6s linear infinite; pointer-events: none; opacity: 0.9; }
+@keyframes tm-dash { to { stroke-dashoffset: -18; } }
+.site-walvi .tm-label { font: 800 9px/1 var(--tmf); paint-order: stroke; stroke-width: 2.6px; stroke-opacity: 0.85; text-anchor: middle; pointer-events: none; letter-spacing: 0.02em; }
+.site-walvi .tm-home-pin { pointer-events: none; }
+.site-walvi .tm-pulse { transform-box: fill-box; transform-origin: center; animation: tm-pulse 1.8s ease-out infinite; }
+@keyframes tm-pulse { from { transform: scale(0.6); opacity: 1; } to { transform: scale(2.4); opacity: 0; } }
+.site-walvi .tm-map-head { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 10px; }
+.site-walvi .tm-map-head div { padding: 12px 14px; border-radius: 12px; background: rgba(255, 255, 255, 0.09); min-width: 0; }
+.site-walvi .tm-paper .tm-map-head div { background: rgba(255, 255, 255, 0.55); }
+.site-walvi .tm-map-head b { display: block; font: 800 36px/1 var(--tmf); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.site-walvi .tm-map-head .tm-level b { font-size: 22px; line-height: 1.6; }
+.site-walvi .tm-map-head span { font: 600 12px/1.3 var(--tmf); opacity: 0.8; text-transform: uppercase; letter-spacing: 0.06em; }
+.site-walvi .tm-loading { position: absolute; inset: 0; display: grid; place-items: center; font: 600 15px/1 var(--tmf); }
+.site-walvi .tm-tip { position: absolute; pointer-events: none; background: rgba(10, 12, 30, 0.94); color: #fff; font: 500 12.5px/1.4 var(--tmf); padding: 8px 11px; border-radius: 8px; z-index: 3; display: grid; gap: 2px; max-width: 260px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); }
+.site-walvi .tm-tip b { font-weight: 800; font-size: 14px; }
+.site-walvi .tm-hint { margin: 8px 0 0; font: 500 13px/1.4 var(--tmf); opacity: 0.8; }
+.site-walvi .tm-panel { background: #fff; border: 1px solid var(--vp-line); border-top: 5px solid var(--vp-gold); border-radius: 12px; padding: 18px; display: flex; flex-direction: column; gap: 12px; position: sticky; top: 14px; }
 .site-walvi .tm-field span { display: block; font: 700 12.5px/1 var(--vp-sans); letter-spacing: 0.05em; text-transform: uppercase; color: var(--vp-muted); margin-bottom: 6px; }
-.site-walvi .tm-field input, .site-walvi .tm-field select { width: 100%; padding: 11px 12px; border: 1px solid var(--vp-line); border-radius: 6px; font: 500 15px/1.2 var(--vp-sans); background: #fff; }
+.site-walvi .tm-field input, .site-walvi .tm-field select { width: 100%; padding: 11px 12px; border: 1px solid var(--vp-line); border-radius: 8px; font: 500 15px/1.2 var(--vp-sans); background: #fff; }
 .site-walvi .tm-field input:focus, .site-walvi .tm-field select:focus { outline: 2px solid var(--vp-teal); border-color: var(--vp-teal); }
 .site-walvi .tm-photo { display: flex; align-items: center; gap: 12px; }
 .site-walvi .tm-photo img, .site-walvi .tm-photo > span { width: 54px; height: 54px; border-radius: 50%; object-fit: cover; background: var(--vp-grey); display: grid; place-items: center; font-size: 22px; flex: none; border: 3px solid var(--vp-gold); }
 .site-walvi .tm-photo .vp-btn { padding: 9px 12px; font-size: 14px; cursor: pointer; }
 .site-walvi .tm-privacy { margin: -4px 0 0; font: 400 12.5px/1.4 var(--vp-sans); color: var(--vp-muted); }
 .site-walvi .tm-link { background: none; border: 0; padding: 0; color: var(--vp-navy-2); font: 600 13.5px/1 var(--vp-sans); text-decoration: underline; cursor: pointer; }
-.site-walvi .tm-found { list-style: none; margin: -6px 0 0; padding: 4px; border: 1px solid var(--vp-line); border-radius: 6px; max-height: 220px; overflow: auto; }
+.site-walvi .tm-found { list-style: none; margin: -6px 0 0; padding: 4px; border: 1px solid var(--vp-line); border-radius: 8px; max-height: 220px; overflow: auto; }
 .site-walvi .tm-found button { width: 100%; display: flex; align-items: center; gap: 8px; padding: 8px; border: 0; background: none; font: 600 14.5px/1.2 var(--vp-sans); cursor: pointer; text-align: left; border-radius: 4px; }
 .site-walvi .tm-found button:hover { background: var(--vp-grey); }
 .site-walvi .tm-found em { margin-left: auto; font-style: normal; font-size: 12px; color: var(--vp-teal); }
-.site-walvi .tm-conts { display: grid; gap: 7px; }
-.site-walvi .tm-conts div { display: grid; grid-template-columns: 112px 1fr 48px; gap: 8px; align-items: center; font: 600 13px/1 var(--vp-sans); color: var(--vp-text); }
-.site-walvi .tm-conts div > i { display: block; height: 8px; background: var(--vp-grey); border-radius: 4px; overflow: hidden; }
-.site-walvi .tm-conts div > i > i { display: block; height: 100%; background: var(--vp-teal); border-radius: 4px; transition: width 0.4s ease; }
-.site-walvi .tm-conts b { text-align: right; font-variant-numeric: tabular-nums; }
-.site-walvi .tm-theme { display: flex; gap: 6px; }
-.site-walvi .tm-theme button { flex: 1; padding: 9px; border: 1px solid var(--vp-line); background: #fff; border-radius: 6px; font: 700 14px/1 var(--vp-sans); cursor: pointer; }
-.site-walvi .tm-theme button.on { background: var(--vp-navy); color: #fff; border-color: var(--vp-navy); }
+.site-walvi .tm-browse-btn { width: 100%; cursor: pointer; }
+.site-walvi .tm-theme { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.site-walvi .tm-theme button { padding: 11px 6px; border: 2px solid transparent; border-radius: 10px; font: 800 14px/1 var(--tmf); cursor: pointer; color: #fff; }
+.site-walvi .tm-sw-neon { background: linear-gradient(135deg, #05071a, #3b1a8a); }
+.site-walvi .tm-theme .tm-sw-paper { background: linear-gradient(135deg, #f4ead3, #d8c9a3); color: #1b1a17; }
+.site-walvi .tm-sw-sunset { background: linear-gradient(135deg, #ff7a3d, #6d28d9); }
+.site-walvi .tm-theme button.on { border-color: var(--vp-gold); box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.3); }
 .site-walvi .tm-actions { display: grid; gap: 8px; }
 .site-walvi .tm-actions .vp-btn { width: 100%; cursor: pointer; }
 .site-walvi .tm-actions .vp-btn:disabled { opacity: 0.6; cursor: wait; }
 .site-walvi .tm-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; align-items: center; }
 .site-walvi .tm-chips > button:not(.tm-link) { display: inline-flex; align-items: center; gap: 6px; padding: 7px 10px; border: 1px solid var(--vp-line); border-radius: 999px; background: #fff; font: 600 13.5px/1 var(--vp-sans); cursor: pointer; animation: vp-rise 0.3s ease both; }
 .site-walvi .tm-chips > button:not(.tm-link):hover { border-color: #c85a54; color: #a8322b; }
+.site-walvi .tm-browse { margin-top: 18px; background: #fff; border: 1px solid var(--vp-line); border-radius: 12px; padding: 16px; }
+.site-walvi .tm-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.site-walvi .tm-tabs button { padding: 8px 12px; border: 1px solid var(--vp-line); border-radius: 999px; background: #fff; font: 700 13.5px/1 var(--tmf); cursor: pointer; display: inline-flex; gap: 6px; align-items: center; }
+.site-walvi .tm-tabs button small { font-weight: 600; opacity: 0.6; }
+.site-walvi .tm-tabs button.on { background: var(--vp-navy); color: #fff; border-color: var(--vp-navy); }
+.site-walvi .tm-browse ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 6px; max-height: 420px; overflow: auto; }
+.site-walvi .tm-browse li button { width: 100%; display: flex; align-items: center; gap: 8px; padding: 8px 10px; border: 1px solid var(--vp-line); border-radius: 8px; background: #fff; font: 600 13.5px/1.2 var(--vp-sans); cursor: pointer; text-align: left; }
+.site-walvi .tm-browse li button span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.site-walvi .tm-browse li button i { font-style: normal; font-weight: 800; color: var(--vp-muted); }
+.site-walvi .tm-browse li button:hover { border-color: var(--vp-teal); }
+.site-walvi .tm-browse li button.on { background: #e8f5f3; border-color: var(--vp-teal); }
+.site-walvi .tm-browse li button.on i { color: var(--vp-teal); }
+.site-walvi .tm-sec2 { margin-top: 34px; }
+.site-walvi .tm-h2 { font: 800 clamp(26px, 3.4vw, 38px)/1.1 var(--tmf); letter-spacing: -0.02em; margin: 0 0 16px; color: var(--vp-ink); }
+.site-walvi .tm-empty { padding: 26px; border: 2px dashed var(--vp-line); border-radius: 14px; text-align: center; }
+.site-walvi .tm-empty p { max-width: 640px; margin: 0 auto; color: var(--vp-muted); }
+.site-walvi .tm-facts { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 12px; }
+.site-walvi .tm-fact { padding: 16px 18px; border-radius: 14px; background: linear-gradient(160deg, #0b1d3a, #12305a); color: #fff; display: grid; gap: 4px; animation: vp-rise 0.4s ease both; }
+.site-walvi .tm-fact:nth-child(3n + 2) { background: linear-gradient(160deg, #0f6e6a, #0b4f63); }
+.site-walvi .tm-fact:nth-child(3n) { background: linear-gradient(160deg, #3b1a8a, #6d28d9); }
+.site-walvi .tm-fact span { font: 700 11.5px/1 var(--tmf); text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.75; }
+.site-walvi .tm-fact b { font: 800 30px/1.05 var(--tmf); letter-spacing: -0.02em; overflow-wrap: anywhere; }
+.site-walvi .tm-fact small { font: 500 13px/1.35 var(--vp-sans); opacity: 0.85; }
+.site-walvi .tm-ext { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 12px; }
+.site-walvi .tm-ext div { display: grid; grid-template-columns: 24px 1fr; column-gap: 8px; align-items: center; padding: 12px 14px; border: 1px solid var(--vp-line); border-radius: 12px; background: #fff; }
+.site-walvi .tm-ext img { grid-row: span 2; border-radius: 3px; }
+.site-walvi .tm-ext span { font: 700 11px/1.2 var(--tmf); text-transform: uppercase; letter-spacing: 0.07em; color: var(--vp-muted); }
+.site-walvi .tm-ext b { font: 800 16px/1.2 var(--tmf); }
+.site-walvi .tm-visa-box { margin-top: 18px; padding: 18px; border: 1px solid var(--vp-line); border-radius: 14px; background: #fff; }
+.site-walvi .tm-visa-box h3 { margin: 0 0 12px; font: 800 20px/1.2 var(--tmf); }
+.site-walvi .tm-stamps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.site-walvi .tm-stamp { padding: 14px; border: 3px dashed currentColor; border-radius: 12px; text-align: center; transform: rotate(-2deg); }
+.site-walvi .tm-stamp:nth-child(even) { transform: rotate(1.5deg); }
+.site-walvi .tm-stamp b { display: block; font: 800 34px/1 var(--tmf); }
+.site-walvi .tm-stamp span { font: 800 12px/1.2 var(--tmf); text-transform: uppercase; letter-spacing: 0.08em; }
+.site-walvi .tm-visa-free { color: #0f7a4a; }
+.site-walvi .tm-visa-arrival { color: #1e6fb8; }
+.site-walvi .tm-visa-evisa { color: #b7791f; }
+.site-walvi .tm-visa-required { color: #b4342d; }
+.site-walvi .tm-tip .tm-visa-free { color: #6ee7b7; }
+.site-walvi .tm-tip .tm-visa-arrival { color: #93c5fd; }
+.site-walvi .tm-tip .tm-visa-evisa { color: #fcd34d; }
+.site-walvi .tm-tip .tm-visa-required { color: #fca5a5; }
+.site-walvi .tm-sub { margin: 14px 0 10px; color: var(--vp-text); }
+.site-walvi .tm-next { display: flex; flex-wrap: wrap; gap: 8px; }
+.site-walvi .tm-next button { display: inline-flex; align-items: center; gap: 7px; padding: 8px 12px; border: 1px solid var(--vp-line); border-radius: 999px; background: #f7f8fa; font: 700 13.5px/1 var(--tmf); cursor: pointer; }
+.site-walvi .tm-next button:hover { border-color: var(--vp-teal); background: #e8f5f3; }
+.site-walvi .tm-next em { font-style: normal; font-weight: 600; font-size: 12px; color: var(--vp-teal); }
+.site-walvi .tm-note { margin: 12px 0 0; font-size: 13px; color: var(--vp-muted); }
+.site-walvi .tm-progress-note { margin: 18px 0 0; font: 600 16px/1.5 var(--tmf); }
+.site-walvi .tm-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+.site-walvi .tm-card { border: 1px solid var(--vp-line); border-radius: 14px; background: #fff; overflow: hidden; animation: vp-rise 0.35s ease both; }
+.site-walvi .tm-card header { display: flex; gap: 12px; align-items: center; padding: 14px 16px; background: linear-gradient(135deg, #0b1d3a, #12305a); color: #fff; }
+.site-walvi .tm-card header img { border-radius: 4px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); object-fit: cover; }
+.site-walvi .tm-card header div { flex: 1; min-width: 0; }
+.site-walvi .tm-card h3 { margin: 0; font: 800 20px/1.15 var(--tmf); color: #fff; }
+.site-walvi .tm-card header span { font: 600 12px/1 var(--tmf); opacity: 0.7; text-transform: uppercase; letter-spacing: 0.07em; }
+.site-walvi .tm-x { background: rgba(255, 255, 255, 0.12); border: 0; color: #fff; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; font-size: 18px; line-height: 1; }
+.site-walvi .tm-card dl { margin: 0; padding: 12px 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; }
+.site-walvi .tm-card dt { font: 700 11px/1 var(--tmf); text-transform: uppercase; letter-spacing: 0.07em; color: var(--vp-muted); margin-bottom: 3px; }
+.site-walvi .tm-card dd { margin: 0; font: 700 14.5px/1.3 var(--vp-sans); color: var(--vp-ink); overflow-wrap: anywhere; }
+.site-walvi .tm-visa { margin: 0; padding: 9px 16px; border-top: 1px solid var(--vp-line); font: 800 12.5px/1.3 var(--tmf); text-transform: uppercase; letter-spacing: 0.05em; }
+.site-walvi .tm-credit { margin-top: 14px; font-size: 12.5px; color: var(--vp-muted); }
 @media (max-width: 960px) { .site-walvi .tm-grid { grid-template-columns: 1fr; } .site-walvi .tm-panel { position: static; } }
+@media (max-width: 700px) {
+  .site-walvi .tm-map { padding: 12px; border-radius: 12px; }
+  .site-walvi .tm-map-head { grid-template-columns: repeat(2, 1fr); }
+  .site-walvi .tm-map-head b { font-size: 28px; }
+  .site-walvi .tm-ext, .site-walvi .tm-stamps { grid-template-columns: repeat(2, 1fr); }
+  .site-walvi .tm-label { font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) { .site-walvi .tm-arc, .site-walvi .tm-pulse { animation: none; } }
 
 @media (prefers-reduced-motion: reduce) {
   .site-walvi .vp-map-c, .site-walvi .vp-pt-row, .site-walvi .vp-pt-bar i, .site-walvi .vp-pp-stack i, .site-walvi .vp-podium a { animation: none; opacity: 1; }
@@ -587,3 +668,142 @@
   .site-walvi .vp-banner b { font-size: 24px; }
   .site-walvi .vp-root .article-content { font-size: 17px; }
 }
+
+
+/* ── Premium chrome v2: seal logo, mega-menu, rich footer, hero ─────────── */
+.site-walvi .vp-header { background: #fff; box-shadow: 0 1px 0 var(--vp-line-2); position: relative; z-index: 20; }
+.site-walvi .vp-service { background: #081a30; }
+.site-walvi .vp-service-r a { text-decoration: none; opacity: 0.9; }
+.site-walvi .vp-service-r a:hover { opacity: 1; text-decoration: underline; }
+.site-walvi .vp-brandrow { padding-top: 20px; padding-bottom: 20px; }
+.site-walvi .vp-logo { gap: 14px; }
+.site-walvi .vp-logo-mark svg { width: 62px; height: 62px; filter: drop-shadow(0 4px 10px rgba(13, 43, 78, 0.25)); transition: transform 0.4s ease; }
+.site-walvi .vp-logo:hover .vp-logo-mark svg { transform: rotate(-8deg); }
+.site-walvi .vp-logo-word b { font: 700 36px/0.95 var(--vp-serif); letter-spacing: -0.015em; color: var(--vp-navy); }
+.site-walvi .vp-logo-word b span { color: var(--vp-teal); }
+.site-walvi .vp-logo-word small { margin-top: 8px; padding-top: 6px; border-top: 2px solid var(--vp-gold); font: 700 11px/1 var(--vp-sans); letter-spacing: 0.16em; color: var(--vp-muted); display: inline-block; }
+.site-walvi .vp-logo.light .vp-logo-word b { color: #fff; }
+.site-walvi .vp-logo.light .vp-logo-word b span { color: #7fd4cc; }
+.site-walvi .vp-hsearch { flex: 1; max-width: 420px; display: flex; border: 2px solid var(--vp-line); border-radius: 999px; overflow: hidden; background: var(--vp-grey); transition: border-color 0.15s; }
+.site-walvi .vp-hsearch:focus-within { border-color: var(--vp-teal); background: #fff; }
+.site-walvi .vp-hsearch input { flex: 1; min-width: 0; border: 0; background: transparent; padding: 11px 18px; font: 500 15px/1.2 var(--vp-sans); outline: none; }
+.site-walvi .vp-hsearch button { border: 0; background: var(--vp-navy); color: #fff; width: 48px; display: grid; place-items: center; cursor: pointer; }
+.site-walvi .vp-hsearch svg { width: 18px; height: 18px; }
+.site-walvi .vp-brand-actions { gap: 10px; }
+.site-walvi .vp-btn { border-radius: 6px; }
+.site-walvi .vp-btn-gold { background: linear-gradient(180deg, #d4ae4a, #b5892a); color: #1a1405; border-color: #a77d22; box-shadow: 0 6px 16px -6px rgba(181, 137, 42, 0.7); }
+.site-walvi .vp-btn-gold:hover { background: linear-gradient(180deg, #e0bb55, #c0952f); color: #1a1405; }
+.site-walvi .vp-btn-lg { padding: 16px 24px; font-size: 16.5px; }
+.site-walvi .vp-nav { background: linear-gradient(90deg, #0b2442, #0d2b4e 50%, #0b2442); border-bottom: 3px solid var(--vp-gold); position: relative; }
+.site-walvi .vp-nav-in { overflow: visible; align-items: stretch; }
+.site-walvi .vp-nav a, .site-walvi .vp-dd-btn { font: 600 15px/1 var(--vp-sans); letter-spacing: 0.01em; }
+.site-walvi .vp-nav-in > a.vp-nav-home { background: rgba(255, 255, 255, 0.06); }
+.site-walvi .vp-dd { position: relative; flex: none; }
+.site-walvi .vp-dd-btn { height: 100%; padding: 15px 16px; color: #fff; background: none; border: 0; cursor: pointer; display: inline-flex; gap: 6px; align-items: center; }
+.site-walvi .vp-dd-btn i { font-style: normal; font-size: 11px; opacity: 0.7; transition: transform 0.2s; }
+.site-walvi .vp-dd:hover .vp-dd-btn, .site-walvi .vp-dd:focus-within .vp-dd-btn { background: var(--vp-navy-2); }
+.site-walvi .vp-dd:hover .vp-dd-btn i, .site-walvi .vp-dd:focus-within .vp-dd-btn i { transform: rotate(180deg); }
+.site-walvi .vp-dd-menu { position: absolute; left: 0; top: 100%; min-width: 320px; background: #fff; border-radius: 0 0 12px 12px; border-top: 3px solid var(--vp-gold); box-shadow: 0 22px 50px -12px rgba(8, 26, 48, 0.4); padding: 8px; opacity: 0; visibility: hidden; transform: translateY(6px); transition: opacity 0.18s, transform 0.18s, visibility 0.18s; z-index: 30; }
+.site-walvi .vp-dd:hover .vp-dd-menu, .site-walvi .vp-dd:focus-within .vp-dd-menu { opacity: 1; visibility: visible; transform: none; }
+.site-walvi .vp-nav .vp-dd-menu a { display: block; padding: 11px 12px; border-radius: 8px; color: var(--vp-ink); border: 0; margin: 0; }
+.site-walvi .vp-nav .vp-dd-menu a:hover { background: var(--vp-teal-soft); }
+.site-walvi .vp-dd-menu b { display: block; font: 700 15px/1.2 var(--vp-sans); color: var(--vp-navy); }
+.site-walvi .vp-dd-menu span { display: block; margin-top: 3px; font: 400 13px/1.35 var(--vp-sans); color: var(--vp-muted); }
+.site-walvi .vp-mnav { display: none; }
+
+/* footer */
+.site-walvi .vp-footer { background: radial-gradient(900px 400px at 100% 0%, rgba(15, 110, 106, 0.22), transparent 60%), #081a30; padding: 0 0 22px; border-top: 0; }
+.site-walvi .vp-foot-cta { background: linear-gradient(100deg, #0f6e6a, #0d2b4e); border-bottom: 3px solid var(--vp-gold); margin-bottom: 44px; }
+.site-walvi .vp-foot-cta-in { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding-top: 30px; padding-bottom: 30px; flex-wrap: wrap; }
+.site-walvi .vp-foot-cta b { display: block; font: 700 clamp(22px, 2.4vw, 30px)/1.15 var(--vp-serif); color: #fff; }
+.site-walvi .vp-foot-cta span { color: #cfe3f0; font: 400 16px/1.5 var(--vp-sans); }
+.site-walvi .vp-foot-cta-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.site-walvi .vp-foot-grid { grid-template-columns: 1.6fr repeat(4, 1fr); gap: 28px; }
+.site-walvi .vp-foot-brand .vp-logo-mark svg { width: 54px; height: 54px; }
+.site-walvi .vp-foot-brand .vp-logo-word b { font-size: 30px; }
+.site-walvi .vp-footer h4 { font: 700 12.5px/1.2 var(--vp-sans); letter-spacing: 0.14em; text-transform: uppercase; color: #d4ae4a; margin: 6px 0 14px; }
+.site-walvi .vp-foot-grid > div:not(:first-child) a { text-decoration: none; color: #d7e1ec; }
+.site-walvi .vp-foot-grid > div:not(:first-child) a:hover { color: #fff; text-decoration: underline; }
+.site-walvi .vp-foot-pop { margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+.site-walvi .vp-foot-pop > div { display: flex; flex-wrap: wrap; gap: 8px; }
+.site-walvi .vp-foot-pop a { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 999px; color: #e3eaf2; font: 600 13.5px/1 var(--vp-sans); text-decoration: none; }
+.site-walvi .vp-foot-pop a:hover { border-color: #d4ae4a; color: #fff; }
+.site-walvi .vp-foot-pop img { border-radius: 2px; }
+.site-walvi .vp-foot-base-r { display: inline-flex; gap: 16px; flex-wrap: wrap; }
+.site-walvi .vp-foot-base a { color: #a9b7c7; text-decoration: none; }
+.site-walvi .vp-foot-base a:hover { color: #fff; }
+
+/* hero v2 */
+.site-walvi .vp-hero-x { position: relative; overflow: hidden; padding: 64px 0 0; background: radial-gradient(800px 500px at 85% 20%, rgba(15, 110, 106, 0.55), transparent 65%), radial-gradient(700px 400px at 0% 100%, rgba(181, 137, 42, 0.18), transparent 60%), linear-gradient(160deg, #081a30, #0d2b4e 60%, #0b3550); }
+.site-walvi .vp-hero-bg { position: absolute; right: -140px; top: -60px; width: 720px; height: 720px; pointer-events: none; animation: vp-spin 120s linear infinite; }
+.site-walvi .vp-hero-bg svg { width: 100%; height: 100%; }
+@keyframes vp-spin { to { transform: rotate(360deg); } }
+.site-walvi .vp-hero-x .vp-hero-grid { position: relative; padding-bottom: 54px; }
+.site-walvi .vp-hero-x h1 { font-size: clamp(36px, 5vw, 62px); line-height: 1.04; letter-spacing: -0.02em; }
+.site-walvi .vp-hero-x h1 em { font-style: italic; color: #e3c46a; }
+.site-walvi .vp-hero-x .vp-eyebrow { color: #e3c46a; border-left-color: #e3c46a; }
+.site-walvi .vp-hero-x .vp-facts b { font-size: 34px; color: #fff; }
+.site-walvi .vp-hero-x .vp-hero-panel { border-radius: 14px; overflow: hidden; box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.55); }
+.site-walvi .vp-trust { position: relative; background: rgba(255, 255, 255, 0.05); border-top: 1px solid rgba(255, 255, 255, 0.1); }
+.site-walvi .vp-trust-in { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 28px; padding-top: 16px; padding-bottom: 16px; }
+.site-walvi .vp-trust span { font: 700 11.5px/1 var(--vp-sans); letter-spacing: 0.14em; text-transform: uppercase; color: #8fb0c9; }
+.site-walvi .vp-trust b { font: 700 15px/1 var(--vp-serif); color: rgba(255, 255, 255, 0.82); }
+
+/* tools grid */
+.site-walvi .vp-tools { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.site-walvi .vp-tool { position: relative; display: flex; flex-direction: column; gap: 8px; padding: 24px; border-radius: 16px; background: #fff; border: 1px solid var(--vp-line); text-decoration: none; color: var(--vp-text); transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; overflow: hidden; }
+.site-walvi .vp-tool::after { content: ""; position: absolute; inset: auto -40px -40px auto; width: 140px; height: 140px; border-radius: 50%; background: var(--tone); opacity: 0.08; transition: transform 0.3s; }
+.site-walvi .vp-tool:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -18px rgba(13, 43, 78, 0.35); border-color: var(--tone); }
+.site-walvi .vp-tool:hover::after { transform: scale(1.5); }
+.site-walvi .vp-tool-ic { width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center; background: var(--tone); color: #fff; font: 800 22px/1 var(--vp-sans); box-shadow: 0 8px 18px -8px var(--tone); }
+.site-walvi .vp-tool b { font: 700 21px/1.2 var(--vp-serif); color: var(--vp-ink); margin-top: 6px; }
+.site-walvi .vp-tool > span:not(.vp-tool-ic) { font: 400 15px/1.5 var(--vp-sans); color: var(--vp-muted); }
+.site-walvi .vp-tool i { margin-top: auto; padding-top: 8px; font: 700 14px/1 var(--vp-sans); font-style: normal; color: var(--tone); }
+.site-walvi .vp-tool-teal { --tone: #0f6e6a; }
+.site-walvi .vp-tool-navy { --tone: #143a66; }
+.site-walvi .vp-tool-gold { --tone: #b5892a; }
+.site-walvi .vp-tool-green { --tone: #1f8a4c; }
+.site-walvi .vp-tool-violet { --tone: #6d28d9; }
+.site-walvi .vp-tool-red { --tone: #b42318; }
+
+/* popular visa checks */
+.site-walvi .vp-vcgrid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.site-walvi .vp-vcgrid li { min-width: 0; }
+.site-walvi .vp-vcgrid a { display: flex; align-items: center; gap: 12px; padding: 14px; border-radius: 12px; background: #fff; border: 1px solid var(--vp-line); text-decoration: none; transition: border-color 0.15s, box-shadow 0.15s; }
+.site-walvi .vp-vcgrid a:hover { border-color: var(--vp-teal); box-shadow: 0 10px 24px -14px rgba(13, 43, 78, 0.4); }
+.site-walvi .vp-vcgrid img { border-radius: 4px; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2); flex: none; object-fit: cover; }
+.site-walvi .vp-vcgrid span { min-width: 0; }
+.site-walvi .vp-vcgrid b { display: block; font: 700 16px/1.2 var(--vp-serif); color: var(--vp-ink); }
+.site-walvi .vp-vcgrid small { display: block; font: 500 12.5px/1.3 var(--vp-sans); color: var(--vp-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+@media (max-width: 1100px) {
+  .site-walvi .vp-hsearch { display: none; }
+  .site-walvi .vp-foot-grid { grid-template-columns: repeat(3, 1fr); }
+  .site-walvi .vp-foot-brand { grid-column: 1 / -1; }
+  .site-walvi .vp-vcgrid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 860px) {
+  .site-walvi .vp-nav-in { display: none; }
+  .site-walvi .vp-mnav { display: block; }
+  .site-walvi .vp-mnav summary { list-style: none; cursor: pointer; padding: 14px 16px; color: #fff; font: 700 15px/1 var(--vp-sans); }
+  .site-walvi .vp-mnav summary::-webkit-details-marker { display: none; }
+  .site-walvi .vp-mnav-in { background: #fff; padding: 8px 16px 18px; display: grid; gap: 2px; box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.4); }
+  .site-walvi .vp-mnav-in a { display: block; padding: 10px 0; color: var(--vp-ink); font: 600 15.5px/1.2 var(--vp-sans); text-decoration: none; border-bottom: 1px solid var(--vp-line-2); }
+  .site-walvi .vp-mnav-in h4 { margin: 14px 0 2px; font: 700 11.5px/1 var(--vp-sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--vp-gold); }
+  .site-walvi .vp-tools { grid-template-columns: repeat(2, 1fr); }
+  .site-walvi .vp-hero-bg { width: 480px; height: 480px; right: -200px; }
+}
+@media (max-width: 600px) {
+  .site-walvi .vp-logo-mark svg { width: 46px; height: 46px; }
+  .site-walvi .vp-logo-word b { font-size: 27px; }
+  .site-walvi .vp-logo-word small { font-size: 9.5px; letter-spacing: 0.12em; }
+  .site-walvi .vp-brand-actions .vp-btn-gold { display: inline-flex; padding: 10px 12px; font-size: 13.5px; }
+  .site-walvi .vp-brand-actions .vp-btn-outline { display: none; }
+  .site-walvi .vp-service-r { display: none; }
+  .site-walvi .vp-hero-x { padding-top: 40px; }
+  .site-walvi .vp-tools, .site-walvi .vp-vcgrid { grid-template-columns: minmax(0, 1fr); }
+  .site-walvi .vp-foot-grid { grid-template-columns: 1fr 1fr; }
+  .site-walvi .vp-foot-cta-in { flex-direction: column; align-items: flex-start; }
+  .site-walvi .vp-trust b { font-size: 13.5px; }
+}
+@media (prefers-reduced-motion: reduce) { .site-walvi .vp-hero-bg { animation: none; } }

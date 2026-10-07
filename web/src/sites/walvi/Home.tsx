@@ -9,6 +9,16 @@ import { countryOf, topicOf, fmtDate } from "./guide-meta";
 import Flag from "./Flag";
 import { getPassports } from "@/lib/passports";
 import { CountUp } from "./Animated";
+import { VC, flagFor } from "./visacheck/data";
+
+const TOOLS = [
+  { h: "Visa status check", p: "Step-by-step: check a Qatar, Saudi, UAE, Schengen or UK visa on the official portal.", href: "/visa-check", ic: "✓", tone: "teal" },
+  { h: "Do I need a visa?", p: "Pick your passport and destination — visa-free, on arrival, e-visa or embassy visa.", href: "/visa-checker", ic: "?", tone: "navy" },
+  { h: "Passport Index", p: "199 passports ranked by how many countries they open without a visa.", href: "/passport-index", ic: "★", tone: "gold" },
+  { h: "Salary & savings", p: "Net pay after tax, rent and food — what you would really send home.", href: "/tools", ic: "€", tone: "green" },
+  { h: "My travel map", p: "Colour every country you've visited and share a stunning map.", href: "/travel-map", ic: "✈", tone: "violet" },
+  { h: "Scam checklist", p: "The warning signs of fake job offers and agents — before you pay.", href: "#scams", ic: "!", tone: "red" },
+] as const;
 
 const TASKS = [
   { h: "Check a work-permit route", p: "Permit type, processing time and the official portal for each country.", href: "/countries" },
@@ -82,36 +92,60 @@ export default async function Home({ site, articles }: SiteHomeProps) {
       <Masthead site={site} />
 
       {/* ── HERO ── */}
-      <section className="vp-hero">
+      <section className="vp-hero vp-hero-x">
+        <div className="vp-hero-bg" aria-hidden="true">
+          <svg viewBox="0 0 600 600">
+            <g fill="none" stroke="rgba(201,162,58,0.22)" strokeWidth="1">
+              <circle cx="300" cy="300" r="290" />
+              <ellipse cx="300" cy="300" rx="120" ry="290" />
+              <ellipse cx="300" cy="300" rx="220" ry="290" />
+              <path d="M10 300h580M40 160h520M40 440h520M300 10v580" />
+            </g>
+          </svg>
+        </div>
         <div className="vp-wrap vp-hero-grid">
           <div>
-            <span className="vp-eyebrow">Working abroad, explained</span>
-            <h1>Work permits, visas and real salaries in Europe — checked and in plain language.</h1>
+            <span className="vp-eyebrow">Visas · Work permits · Salaries abroad</span>
+            <h1>
+              Your trusted guide to <em>visas</em> and <em>working abroad</em>.
+            </h1>
             <p className="vp-lede">
-              Step-by-step routes, document checklists and what you would actually save each month in{" "}
-              {COUNTRIES.length} countries. For workers from Bangladesh, South Asia, Africa and the Gulf — with the
-              official government source linked on every country.
+              Check a visa in seconds, see how strong your passport is, and follow the official work-permit route for{" "}
+              {COUNTRIES.length} countries — with real salaries and what you would actually save. Free, independent and linked to
+              official government sources.
             </p>
             <div className="vp-hero-actions">
-              <Link href={`${b}/countries`} className="vp-btn vp-btn-primary">
-                Choose a country
+              <Link href={`${b}/visa-check`} className="vp-btn vp-btn-gold vp-btn-lg">
+                Check my visa status
               </Link>
-              <a href="#estimator" className="vp-btn vp-btn-ghost">
-                Estimate my savings
-              </a>
+              <Link href={`${b}/visa-checker`} className="vp-btn vp-btn-ghost vp-btn-lg">
+                Do I need a visa?
+              </Link>
             </div>
             <ul className="vp-facts">
               <li>
-                <b>{COUNTRIES.length}</b> countries
+                <b>
+                  <CountUp to={passports.length || 199} />
+                </b>{" "}
+                passports ranked
               </li>
               <li>
-                <b>{inEU}</b> in the EU
+                <b>
+                  <CountUp to={VC.length} />
+                </b>{" "}
+                visa-check guides
               </li>
               <li>
-                <b>{JOBS.length}</b> trades covered
+                <b>
+                  <CountUp to={COUNTRIES.length} />
+                </b>{" "}
+                work-permit routes
               </li>
               <li>
-                <b>{articles.length}</b> guides
+                <b>
+                  <CountUp to={articles.length} />
+                </b>{" "}
+                guides
               </li>
             </ul>
           </div>
@@ -123,9 +157,65 @@ export default async function Home({ site, articles }: SiteHomeProps) {
             />
           </div>
         </div>
+        <div className="vp-trust">
+          <div className="vp-wrap vp-trust-in">
+            <span>Built on open, verifiable data</span>
+            <b>Official immigration portals</b>
+            <b>Passport Index dataset</b>
+            <b>World Bank</b>
+            <b>Eurostat</b>
+            <b>Embassy &amp; VFS guidance</b>
+          </div>
+        </div>
       </section>
 
       <main id="vp-main">
+        {/* ── FREE TOOLS ── */}
+        <section className="vp-sec vp-tools-sec">
+          <div className="vp-wrap">
+            <div className="vp-sechead">
+              <h2 className="vp-h2">Free tools travellers and workers use every day</h2>
+            </div>
+            <div className="vp-tools">
+              {TOOLS.map((t) => (
+                <Link key={t.h} href={`${b}${t.href}`} className={`vp-tool vp-tool-${t.tone}`}>
+                  <span className="vp-tool-ic" aria-hidden="true">
+                    {t.ic}
+                  </span>
+                  <b>{t.h}</b>
+                  <span>{t.p}</span>
+                  <i aria-hidden="true">Open →</i>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── POPULAR VISA CHECKS ── */}
+        <section className="vp-sec vp-sec-alt">
+          <div className="vp-wrap">
+            <div className="vp-sechead">
+              <h2 className="vp-h2">Check your visa status online</h2>
+              <Link href={`${b}/visa-check`} className="vp-more">
+                All {VC.length} countries →
+              </Link>
+            </div>
+            <ul className="vp-vcgrid">
+              {VC.slice(0, 12).map((e) => (
+                <li key={e.slug}>
+                  <Link href={`${b}/visa-check/${e.slug}`}>
+                    <img src={flagFor(e, 80)} alt="" width={44} height={30} loading="lazy" />
+                    <span>
+                      <b>{e.country}</b>
+                      <small>{e.portal}</small>
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
         {/* ── PASSPORT INDEX TEASER ── */}
         {topPassports.length ? (
           <section className="vp-sec vp-pi-teaser">
