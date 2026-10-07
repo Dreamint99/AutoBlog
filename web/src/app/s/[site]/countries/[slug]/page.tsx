@@ -18,12 +18,12 @@ export async function generateMetadata({
   const country = getCountry(slug);
   if (!site || site.id !== "walvi" || !country) return {};
   return {
-    title: `Working in ${country.name} — salary, cost of living, savings & work permit | Walvi`,
+    title: `Working in ${country.name} — salary, cost of living, savings & work permit | VisaPoint`,
     description: `Indicative monthly salary and net pay by occupation in ${country.name}, plus living cost, realistic savings and the work-permit route — with an official source.`,
     metadataBase: new URL(siteBaseUrl(site)),
     alternates: { canonical: `/countries/${country.slug}` },
     openGraph: {
-      title: `Working in ${country.name} | Walvi`,
+      title: `Working in ${country.name} | VisaPoint`,
       description: `Salary, cost of living, savings and work-permit route for ${country.name}.`,
       type: "article",
       url: `/countries/${country.slug}`,
@@ -50,7 +50,7 @@ export default async function CountryPage({
       <JsonLd
         data={[
           datasetSchema({
-            name: `Walvi — ${country.name} salary, cost of living & work permit`,
+            name: `VisaPoint — ${country.name} salary, cost of living & work permit`,
             url: `${base}/countries/${country.slug}`,
             description: `Indicative monthly salary by occupation, living cost, savings and work-permit route for foreign workers in ${country.name}.`,
             creator: site.name,

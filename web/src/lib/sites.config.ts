@@ -14,6 +14,8 @@ export const DOMAIN_TO_SITE: Record<string, string> = {
   "www.infkey.com": "infkey",
   "countly.net": "countly",
   "www.countly.net": "countly",
+  "visapoint.net": "walvi",
+  "www.visapoint.net": "walvi",
   "walvi.io": "walvi",
   "www.walvi.io": "walvi",
 };

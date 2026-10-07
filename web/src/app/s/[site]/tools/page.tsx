@@ -26,13 +26,13 @@ export async function generateMetadata({
   const site = getSite(id);
   if (!site || site.id !== "walvi") return {};
   return {
-    title: "Europe salary, savings & country-comparison calculators | Walvi",
+    title: "Europe salary, savings & country-comparison calculators | VisaPoint",
     description:
       "Free tools: calculate net pay and monthly savings on a European salary, and compare two countries for the same job. The math is shown.",
     metadataBase: new URL(siteBaseUrl(site)),
     alternates: { canonical: "/tools" },
     openGraph: {
-      title: "Europe salary & savings calculators | Walvi",
+      title: "Europe salary & savings calculators | VisaPoint",
       description: "Calculate net pay, monthly savings and compare countries for the same job.",
       type: "website",
       url: "/tools",
@@ -56,7 +56,7 @@ export default async function ToolsPage({
       <JsonLd
         data={[
           webAppSchema({
-            name: "Walvi Europe Salary & Savings Calculator",
+            name: "VisaPoint Europe Salary & Savings Calculator",
             url: `${base}/tools`,
             description:
               "Interactive calculators for European net pay, monthly savings and country-vs-country comparison for the same job.",

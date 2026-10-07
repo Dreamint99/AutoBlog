@@ -89,10 +89,10 @@
     },
     {
       "id": "walvi",
-      "name": "Walvi",
-      "domain": "walvi.io",
-      "tagline": "Know before you move.",
-      "niche": "Europe work and skilled-trade jobs, salaries by country and occupation, cost of living and realistic monthly savings, work permits and work visas, recruitment and relocation for foreign workers; electrician, welder, tiles/ceramic, plumber, carpenter, truck driver, cook/chef, HVAC, construction and machine-operator jobs across Poland, Croatia, Romania, Lithuania, Slovakia, Bulgaria, Hungary, Portugal, Italy and North Macedonia",
+      "name": "VisaPoint",
+      "domain": "visapoint.net",
+      "tagline": "Visas, jobs & salaries abroad — know before you move.",
+      "niche": "Europe work and skilled-trade jobs, salaries by country and occupation, cost of living and realistic monthly savings, work permits and work visas, recruitment and relocation for foreign workers; electrician, welder, tiles/ceramic, plumber, carpenter, truck driver, cook/chef, HVAC, construction and machine-operator jobs across Poland, Croatia, Romania, Lithuania, Slovakia, Bulgaria, Hungary, Portugal, Italy and North Macedonia; visa guides for Bangladeshi, Indian, Pakistani, Nepali and Sri Lankan passport holders — work visas, Schengen and tourist visas, student visas, e-visas, visa fees, processing times, document checklists, embassy appointments and visa-free destinations",
       "trend_seeds": [
         "jobs in Europe",
         "Europe work permit",
@@ -103,14 +103,19 @@
         "welder jobs Europe",
         "truck driver Europe",
         "Romania work visa",
-        "Europe jobs without degree"
+        "Europe jobs without degree",
+        "Schengen visa from Bangladesh",
+        "work visa requirements",
+        "visa processing time",
+        "e-visa countries",
+        "student visa Europe"
       ],
       "language": "English. Write the ENTIRE article in English only — title, headings, body, tables, FAQ and key takeaways. Do NOT write in Bengali/Bangla or any other language even though the audience includes Bangladeshi and South-Asian workers.",
       "tone": "first-hand Europe-recruitment insider crossed with a data analyst; lead with the direct answer and an indicative salary/cost table (monthly gross, net after tax, living cost and realistic savings), always state which figures are official vs estimated, link an official government or EU source, add a 'last verified' date, and warn that wages, living costs and visa rules change and must be confirmed with the official source or embassy. Warn clearly about recruitment scams and fake job offers, and add your own real-world experience and downloadable checklists.",
-      "audience": "skilled and semi-skilled workers (electricians, welders, drivers, cooks, construction and factory workers) from Bangladesh, South Asia and beyond looking for jobs in Europe, plus recruiters, agencies and families researching salary, cost of living, savings and work-permit options by country and occupation",
+      "audience": "skilled and semi-skilled workers (electricians, welders, drivers, cooks, construction and factory workers) from Bangladesh, South Asia and beyond looking for jobs and visas abroad (especially Europe), plus recruiters, agencies and families researching salary, cost of living, savings and work-permit options by country and occupation",
       "theme": "walvi-atlas",
       "default_word_count": 1600,
-      "drip_enabled": false
+      "drip_enabled": true
     },
     {
       "id": "countly",

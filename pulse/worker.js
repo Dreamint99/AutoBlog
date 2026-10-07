@@ -163,7 +163,7 @@ async function probe(domain, path) {
 }
 
 async function handleHealth(env) {
-  const domains = ["countly.net", "walvi.io", "infkey.com", "ninetymins.com"];
+  const domains = ["countly.net", "visapoint.net", "infkey.com", "ninetymins.com"];
   const out = await Promise.all(domains.map(async (d) => {
     const [home, sm, rb] = await Promise.all([probe(d, "/"), probe(d, "/sitemap.xml"), probe(d, "/robots.txt")]);
     return { domain: d, live: home === 200, status: home, sitemap: sm === 200, robots: rb === 200 };

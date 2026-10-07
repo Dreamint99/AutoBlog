@@ -82,7 +82,7 @@ def evaluate(article: dict) -> dict:
         "kw_in_image_alt":   bool(kw) and _count(kw, alts) > 0,
         "kw_density_ok":     density_ok,
         "word_count_ok":     words >= 1500,
-        "has_outbound_link": bool(re.search(r'<a[^>]+href="https?://(?!(?:[^"]*\b)?(?:localhost|countly\.net|walvi\.io|infkey\.com|ninetymins\.com))', body, re.I)),
+        "has_outbound_link": bool(re.search(r'<a[^>]+href="https?://(?!(?:[^"]*\b)?(?:localhost|countly\.net|walvi\.io|visapoint\.net|infkey\.com|ninetymins\.com))', body, re.I)),
         "has_internal_link": bool(re.search(r'<a[^>]+href="(/|https?://[^"]*/s/)', body, re.I)),
         "has_table":         "<table" in body.lower(),
         "has_faq":           len(article.get("faq") or []) > 0,

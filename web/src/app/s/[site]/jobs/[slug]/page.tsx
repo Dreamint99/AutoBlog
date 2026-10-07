@@ -18,12 +18,12 @@ export async function generateMetadata({
   const job = getJob(slug);
   if (!site || site.id !== "walvi" || !job) return {};
   return {
-    title: `${job.name} jobs in Europe — salary by country & savings | Walvi`,
+    title: `${job.name} jobs in Europe — salary by country & savings | VisaPoint`,
     description: `Indicative monthly salary and realistic savings for ${job.name.toLowerCase()} jobs across European countries, plus certificates and demand.`,
     metadataBase: new URL(siteBaseUrl(site)),
     alternates: { canonical: `/jobs/${job.slug}` },
     openGraph: {
-      title: `${job.name} jobs in Europe | Walvi`,
+      title: `${job.name} jobs in Europe | VisaPoint`,
       description: `Salary by country and savings for ${job.name.toLowerCase()} jobs in Europe.`,
       type: "article",
       url: `/jobs/${job.slug}`,
@@ -51,7 +51,7 @@ export default async function JobPage({
       <JsonLd
         data={[
           datasetSchema({
-            name: `Walvi — ${job.name} salary by European country`,
+            name: `VisaPoint — ${job.name} salary by European country`,
             url: `${base}/jobs/${job.slug}`,
             description: `Indicative monthly salary and savings for ${job.name} jobs across European countries.`,
             creator: site.name,

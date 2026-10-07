@@ -9,7 +9,7 @@ on:
         description: "Site to deploy"
         required: true
         type: choice
-        options: [ninetymins, countly, infkey]
+        options: [ninetymins, countly, infkey, walvi]
       dry_run:
         description: "Build + wrangler deploy --dry-run only (no upload)"
         type: boolean
@@ -53,6 +53,7 @@ jobs:
             countly)    D=countly.net ;;
             ninetymins) D=ninetymins.com ;;
             infkey)     D=infkey.com ;;
+            walvi)      D=visapoint.net ;;  # VisaPoint (site id stays walvi)
             *) echo "unknown site $SITE_ID"; exit 1 ;;
           esac
           echo "DOMAIN=$D" >> "$GITHUB_ENV"

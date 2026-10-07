@@ -2,6 +2,7 @@ import "./theme.css";
 import Link from "next/link";
 import type { SiteArticleProps, Site, Article, TocItem } from "@/lib/types";
 import { Masthead, Footer } from "./Chrome";
+import { fontVars } from "./fonts";
 
 function formatDate(iso: string): string {
   const d = new Date(iso);
@@ -57,7 +58,7 @@ export default function Article({ site, article, related, bodyHtml, toc }: SiteA
   const date = formatDate(article.created_at);
 
   return (
-    <>
+    <div className={fontVars}>
       <a href="#article-body" className="skip-link">
         Skip to article
       </a>
@@ -160,6 +161,6 @@ export default function Article({ site, article, related, bodyHtml, toc }: SiteA
       </main>
 
       <Footer site={site} />
-    </>
+    </div>
   );
 }

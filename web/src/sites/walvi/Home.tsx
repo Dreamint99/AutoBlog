@@ -12,7 +12,9 @@ import {
   eur,
 } from "@/lib/walvi";
 import SalaryCalculator from "./SalaryCalculator";
-import { Masthead, Footer, StarRing } from "./Chrome";
+import { Masthead, Footer } from "./Chrome";
+import QuickFinder from "./QuickFinder";
+import { fontVars } from "./fonts";
 import { CountryCard, JobCard } from "./data-ui";
 
 const COVERAGE = [
@@ -48,16 +50,15 @@ function Hero({ site }: { site: Site }) {
         <div className="hero-grid">
           <div className="hero-copy">
             <span className="hero-flag">
-              <StarRing />
-              European Work, Salary &amp; Visa Intelligence
+              <i className="vp-live" aria-hidden="true" /> Visas · Work permits · Salaries abroad
             </span>
             <h1>
-              Know the <span className="grad">real money</span> before you move.
+              Your visa &amp; job abroad — <span className="grad">the honest numbers</span>.
             </h1>
             <p className="hero-sub">
-              Compare skilled-trade jobs, salaries and living costs across Europe, estimate what you
-              would actually save each month, and check work-permit routes — with sourced data and
-              honest estimates, not recruiter hype.
+              Work-permit routes, visa checklists, real salaries and what you would actually save each
+              month in {COUNTRIES.length} countries — sourced data and plain-language guides for workers
+              from Bangladesh, South Asia and beyond. No recruiter hype.
             </p>
             <div className="hero-actions">
               <Link href={`/s/${site.id}/countries`} className="btn btn-primary">
@@ -82,14 +83,11 @@ function Hero({ site }: { site: Site }) {
               </div>
             </div>
           </div>
-          <div className="hero-emblem" aria-hidden="true">
-            <div className="ring">
-              <StarRing stroke />
-              <span className="em-core">
-                Wal<b>vi</b>
-              </span>
-            </div>
-          </div>
+          <QuickFinder
+            siteId={site.id}
+            countries={COUNTRIES.map((c) => ({ slug: c.slug, name: c.name, flag: c.flag }))}
+            jobs={JOBS.map((j) => ({ slug: j.slug, name: j.name }))}
+          />
         </div>
       </div>
     </section>
@@ -116,7 +114,7 @@ function Coverage({ site }: { site: Site }) {
   return (
     <section id="coverage">
       <div className="section-head">
-        <h2>What Walvi covers</h2>
+        <h2>What VisaPoint covers</h2>
         <span className="rule" />
         <span className="count">4 services</span>
       </div>
@@ -303,7 +301,7 @@ function Method() {
       <div className="method">
         <h3>Sourced where we can, honest where we can&apos;t.</h3>
         <p>
-          Walvi is a data resource, not a recruiter. Where a number is official, we link the source.
+          VisaPoint is a data resource, not a recruiter. Where a number is official, we link the source.
           Where it is modelled, we say so. And we always show savings after real living costs — because
           that is the figure that decides whether a move abroad is worth it.
         </p>
@@ -323,7 +321,7 @@ function Method() {
 
 export default function Home({ site, articles }: SiteHomeProps) {
   return (
-    <>
+    <div className={fontVars}>
       <a href="#countries" className="skip-link">
         Skip to country register
       </a>
@@ -332,16 +330,16 @@ export default function Home({ site, articles }: SiteHomeProps) {
       <main>
         <div className="shell">
           <Notice />
+          <Guides site={site} articles={articles} />
           <Coverage site={site} />
           <Countries site={site} />
           <Jobs site={site} />
           <Estimator />
           <Savings />
-          <Guides site={site} articles={articles} />
           <Method />
         </div>
       </main>
       <Footer site={site} />
-    </>
+    </div>
   );
 }

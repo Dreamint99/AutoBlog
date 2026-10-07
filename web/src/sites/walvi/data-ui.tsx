@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Site } from "@/lib/types";
 import { type Country, type Job, type SalaryEstimate, eur } from "@/lib/walvi";
 
-/* Shared presentational pieces for Walvi data-product pages (server components). */
+/* Shared presentational pieces for VisaPoint data-product pages (server components). */
 
 export function fmtDate(iso: string): string {
   const d = new Date(iso);

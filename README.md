@@ -18,9 +18,9 @@ and stores them in **Cloudflare D1**; each website is the same Next.js app deplo
               └───────┬─────────┘
                       │ binding DB (reads, cached — see §11)
        ┌──────────────┼───────────────┐
-       ▼              ▼               ▼
-  autoblog-countly  autoblog-ninetymins  autoblog-infkey   ← Workers built from web/
-  countly.net       ninetymins.com       infkey.com          (one codebase, SITE_ID per Worker)
+       ▼              ▼               ▼                 ▼
+  autoblog-countly  autoblog-ninetymins  autoblog-infkey  autoblog-walvi   ← Workers built from web/
+  countly.net       ninetymins.com       infkey.com       visapoint.net      (one codebase, SITE_ID per Worker)
 ```
 
 The 5th site, **probashiinfo.com**, is WordPress (Bengali) — see `CLAUDE.md`.
@@ -38,7 +38,7 @@ The 5th site, **probashiinfo.com**, is WordPress (Bengali) — see `CLAUDE.md`.
 | `countly` | money / wealth / data (Forbes-style design) | `autoblog-countly` | https://countly.net | yes (own step in the drip workflow; wealth seed at 20:00) |
 | `ninetymins` | sports desk (ESPN-style, live scores) | `autoblog-ninetymins` | https://ninetymins.com | yes |
 | `infkey` | tech / AI | `autoblog-infkey` | https://infkey.com | yes |
-| `walvi` | — | paused (walvi.io expired, `drip_enabled: false`) | — | no |
+| `walvi` | **VisaPoint** — visas, Europe jobs & salaries (navy/teal) | `autoblog-walvi` | https://visapoint.net | yes |
 | `probashiinfo` | Bengali expat news | WordPress, not a Worker | https://probashiinfo.com | own workflow |
 
 Older demo sites (`visaexpert`, `ainews`, `bangladeshexpert`, `qatarexperts`) are still in the
@@ -247,6 +247,10 @@ SiteArticleProps { site: Site; article: Article; related: Article[]; bodyHtml: s
 ---
 
 ## 11. Key decisions & gotchas (read before changing things)
+
+- **VisaPoint = site id `walvi`.** walvi.io expired; the brand moved to visapoint.net. The id stays
+  `walvi` (D1 rows, routes, theme files) — only the name/domain/branding changed. Don't rename the id
+  without migrating `site_id` in D1.
 
 - **One Next.js codebase, one Worker per site.** `SITE_ID` pins a Worker to one site;
   `middleware.ts` rewrites `/` → `/s/<SITE_ID>` and 308-redirects `/s/<id>/..` to clean URLs.

@@ -18,7 +18,7 @@ jobs:
         run: |
           fail=0
           check() { code=$(curl -s -m 20 -o /dev/null -w '%{http_code}' "$1"); echo "$code  $1"; [ "$code" = 200 ] || fail=1; }
-          for d in countly.net ninetymins.com infkey.com; do
+          for d in countly.net ninetymins.com infkey.com visapoint.net; do
             check "https://$d/?v=$RANDOM$RANDOM"
             # First article URL from the sitemap (skips the homepage and static pages).
             art=$(curl -s "https://$d/sitemap.xml?v=$RANDOM" | grep -o '<loc>[^<]*</loc>' | sed 's/<\/\?loc>//g' \

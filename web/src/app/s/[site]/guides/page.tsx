@@ -31,13 +31,13 @@ export async function generateMetadata({
   const site = getSite(id);
   if (!site || site.id !== "walvi") return {};
   return {
-    title: "Europe work permit & visa guides | Walvi",
+    title: "Europe work permit & visa guides | VisaPoint",
     description:
       "Step-by-step work-permit and visa guides for moving to Europe from Asia and the Gulf — documents, cost, processing time and scam warnings, with official sources.",
     metadataBase: new URL(siteBaseUrl(site)),
     alternates: { canonical: "/guides" },
     openGraph: {
-      title: "Europe work permit & visa guides | Walvi",
+      title: "Europe work permit & visa guides | VisaPoint",
       description: "Work-permit and visa guides for moving to Europe — documents, cost, timeline.",
       type: "website",
       url: "/guides",

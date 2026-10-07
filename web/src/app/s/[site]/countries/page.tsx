@@ -17,13 +17,13 @@ export async function generateMetadata({
   const site = getSite(id);
   if (!site || site.id !== "walvi") return {};
   return {
-    title: "Work in Europe by country — salary, cost of living & permits | Walvi",
+    title: "Work in Europe by country — salary, cost of living & permits | VisaPoint",
     description:
       "Compare European countries for foreign workers: indicative monthly salary, net pay, living cost, realistic savings and work-permit routes — with official sources.",
     metadataBase: new URL(siteBaseUrl(site)),
     alternates: { canonical: "/countries" },
     openGraph: {
-      title: "Work in Europe by country | Walvi",
+      title: "Work in Europe by country | VisaPoint",
       description: "Salary, cost of living, savings and work-permit routes by European country.",
       type: "website",
       url: "/countries",
@@ -46,7 +46,7 @@ export default async function CountriesPage({
       <JsonLd
         data={[
           datasetSchema({
-            name: "Walvi — Europe work, salary & cost-of-living by country",
+            name: "VisaPoint — Europe work, salary & cost-of-living by country",
             url: `${base}/countries`,
             description:
               "Indicative monthly salary, net pay, living cost, savings and work-permit routes for foreign workers across European countries.",

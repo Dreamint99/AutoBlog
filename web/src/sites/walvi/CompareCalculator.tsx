@@ -1,7 +1,7 @@
 "use client";
 
 /* ────────────────────────────────────────────────────────────────────
-   Walvi — Country Comparison Calculator
+   VisaPoint — Country Comparison Calculator
 
    Pick an occupation and two countries → side-by-side gross, net, living
    cost and realistic (employer-housed) savings, with a clear "saves more"

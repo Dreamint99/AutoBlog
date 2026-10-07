@@ -1,10 +1,11 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import type { Site } from "@/lib/types";
+import { fontVars } from "./fonts";
 
-/* Shared Walvi chrome — official European-institution styling.
+/* Shared VisaPoint chrome — official European-institution styling.
    12-gold-star emblem (European motif), gov-style top bar, EU-blue masthead.
-   NOTE: aesthetic only — Walvi is an INDEPENDENT resource and says so in the
+   NOTE: aesthetic only — VisaPoint is an INDEPENDENT resource and says so in the
    top bar and footer; it does not claim to be a government or EU body. */
 
 export function navFor(site: Site): ReadonlyArray<readonly [string, string]> {
@@ -33,15 +34,32 @@ export function StarRing({ stroke = false }: { stroke?: boolean }) {
   );
 }
 
+/** VisaPoint mark: a map pin whose head is a passport-stamp ring. */
+export function PinMark() {
+  return (
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <defs>
+        <linearGradient id="vp-g" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#2dd4bf" />
+          <stop offset="1" stopColor="#0ea5a4" />
+        </linearGradient>
+      </defs>
+      <path d="M16 2.5c-6.1 0-11 4.8-11 10.8 0 7.6 9.1 15.2 10.2 16.1.5.4 1.1.4 1.6 0C17.9 28.5 27 20.9 27 13.3 27 7.3 22.1 2.5 16 2.5z" fill="url(#vp-g)" />
+      <circle cx="16" cy="13.2" r="6.2" fill="none" stroke="#0b1f3a" strokeWidth="1.6" strokeDasharray="2.2 1.6" />
+      <path d="M13.2 13.4l1.9 1.9 3.8-4" fill="none" stroke="#0b1f3a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 export function Logo({ site }: { site: Site }) {
   return (
     <Link href={`/s/${site.id}`} className="logo" aria-label={`${site.name} home`}>
-      <span className="logomark">
-        <StarRing stroke />
+      <span className="logomark vp-mark">
+        <PinMark />
       </span>
       <span className="wordmark">
-        Wal<b>vi</b>
-        <span className="tld">Europe Work &amp; Salary Intelligence</span>
+        Visa<b>Point</b>
+        <span className="tld">Visas · Jobs · Salaries abroad</span>
       </span>
     </Link>
   );
@@ -54,11 +72,11 @@ export function Masthead({ site }: { site: Site }) {
       <div className="govbar">
         <div className="govbar-inner">
           <span className="gb-emblem">
-            <StarRing />
-            Walvi — independent European work &amp; salary data
+            <i className="vp-live" aria-hidden="true" />
+            Updated daily · independent visa, work &amp; salary guides
           </span>
           <span className="gb-note">
-            Not affiliated with the EU or any government · always verify with official sources
+            Not a government site or recruiter · always verify with the official embassy
           </span>
         </div>
       </div>
@@ -123,7 +141,7 @@ export function Footer({ site }: { site: Site }) {
           </div>
         </div>
         <p className="footer-disclaimer">
-          <b>Walvi is an independent resource and is not affiliated with the European Union, the
+          <b>VisaPoint is an independent resource and is not affiliated with the European Union, the
           European Commission, or any national government.</b> Salary, cost-of-living and savings
           figures are indicative estimates, modelled from each occupation&apos;s rough EU average and a
           per-country wage index — not official quotes for any specific job offer. Visa and work-permit
@@ -156,12 +174,12 @@ export function Footer({ site }: { site: Site }) {
 /** Standard page wrapper: masthead + shell main + footer. */
 export function WalviShell({ site, children }: { site: Site; children: ReactNode }) {
   return (
-    <>
+    <div className={fontVars}>
       <Masthead site={site} />
       <main>
         <div className="shell">{children}</div>
       </main>
       <Footer site={site} />
-    </>
+    </div>
   );
 }

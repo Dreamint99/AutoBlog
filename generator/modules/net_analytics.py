@@ -23,7 +23,7 @@ API = "https://api.cloudflare.com/client/v4"
 
 SITES = [
     {"id": "countly",    "domain": "countly.net"},
-    {"id": "walvi",      "domain": "walvi.io"},
+    {"id": "walvi",      "domain": "visapoint.net"},
     {"id": "infkey",     "domain": "infkey.com"},
     {"id": "ninetymins", "domain": "ninetymins.com"},
 ]

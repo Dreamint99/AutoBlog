@@ -10,7 +10,7 @@ param(
 $ErrorActionPreference = "Stop"
 Set-Location $PSScriptRoot
 
-$domains = @{ countly = "countly.net"; ninetymins = "ninetymins.com"; infkey = "infkey.com" }
+$domains = @{ countly = "countly.net"; ninetymins = "ninetymins.com"; infkey = "infkey.com"; walvi = "visapoint.net" }
 if (-not $domains.ContainsKey($Site)) { throw "unknown site '$Site' (known: $($domains.Keys -join ', '))" }
 $d = $domains[$Site]
 

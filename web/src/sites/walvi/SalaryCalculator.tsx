@@ -1,7 +1,7 @@
 "use client";
 
 /* ────────────────────────────────────────────────────────────────────
-   Walvi — Europe Salary & Savings Calculator (flagship interactive widget)
+   VisaPoint — Europe Salary & Savings Calculator (flagship interactive widget)
 
    The headline tool: a real gross wage + a country (for living-cost and
    tax defaults) → net pay, realistic monthly savings, yearly savings and an

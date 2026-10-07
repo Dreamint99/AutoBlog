@@ -23,7 +23,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from modules import store, indexnow
 
-LIVE = {"infkey": "infkey.com", "countly": "countly.net", "walvi": "walvi.io"}
+LIVE = {"infkey": "infkey.com", "countly": "countly.net", "walvi": "visapoint.net"}
 MIN_OVERLAP = int(sys.argv[1]) if len(sys.argv) > 1 else 2
 
 _STOP = set((

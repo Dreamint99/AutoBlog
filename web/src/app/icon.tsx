@@ -17,7 +17,7 @@ const COLORS: Record<string, { bg: string; fg: string }> = {
   "bd-green": { bg: "#047857", fg: "#ffffff" }, // BangladeshExpert
   "qatar-maroon": { bg: "#7a1e3a", fg: "#ffffff" }, // QatarExperts
   "infkey-noir": { bg: "#7c3aed", fg: "#ffffff" }, // InfKey
-  "walvi-atlas": { bg: "#0d9488", fg: "#ffffff" }, // Walvi
+  "walvi-atlas": { bg: "#0b1f3a", fg: "#2dd4bf" }, // VisaPoint
   "countly-data": { bg: "#4f46e5", fg: "#ffffff" }, // Countly
 };
 

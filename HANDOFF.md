@@ -42,6 +42,9 @@ Read `CLAUDE.md` and `README.md` first. NOTE: README still says Vercel — the s
 - ninetymins: match centre, /scores, cricket (needs Worker secret CRICAPI_KEY), FIFA-style SAFF hub,
   Wikipedia + OpenLigaDB widgets. NinetyMins now gets a 3rd daily article (09:30 UTC drip run).
 
+- walvi → **VisaPoint (visapoint.net)**: rebranded (logo, navy/teal theme, quick finder), drip
+  re-enabled. Needs: visapoint.net zone added to the Cloudflare account, then `deploy-site.ps1 walvi`.
+
 ## TODO (in priority order)
 1. **Deploy ninetymins** (`powershell -ExecutionPolicy Bypass -File web/deploy-site.ps1 ninetymins`).
    A cloud session has no Cloudflare credentials; options: (a) the owner runs the command on their PC

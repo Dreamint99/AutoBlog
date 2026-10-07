@@ -17,13 +17,13 @@ export async function generateMetadata({
   const site = getSite(id);
   if (!site || site.id !== "walvi") return {};
   return {
-    title: "In-demand jobs in Europe — salary by occupation | Walvi",
+    title: "In-demand jobs in Europe — salary by occupation | VisaPoint",
     description:
       "Electrician, welder, truck driver, cook and more: indicative salary, demand and realistic savings for skilled-trade jobs across Europe.",
     metadataBase: new URL(siteBaseUrl(site)),
     alternates: { canonical: "/jobs" },
     openGraph: {
-      title: "In-demand jobs in Europe | Walvi",
+      title: "In-demand jobs in Europe | VisaPoint",
       description: "Salary and savings by occupation across Europe.",
       type: "website",
       url: "/jobs",
@@ -46,7 +46,7 @@ export default async function JobsPage({
       <JsonLd
         data={[
           datasetSchema({
-            name: "Walvi — in-demand European jobs & salary by occupation",
+            name: "VisaPoint — in-demand European jobs & salary by occupation",
             url: `${base}/jobs`,
             description:
               "Indicative salary, demand level and realistic savings for skilled-trade occupations across European countries.",
