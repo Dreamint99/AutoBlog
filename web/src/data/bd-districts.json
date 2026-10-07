@@ -1,66 +1,455 @@
 {
-  "Bagerhat": { "bn": "বাগেরহাট", "div": "Khulna", "fam": "Sixty Dome Mosque (UNESCO) and the Sundarbans", "t": ["mangrove", "heritage", "sea"] },
-  "Bandarban": { "bn": "বান্দরবান", "div": "Chattogram", "fam": "Nilgiri, Keokradong and Nafakhum falls", "t": ["hill"] },
-  "Barguna": { "bn": "বরগুনা", "div": "Barishal", "fam": "Tengragiri forest and Shubhasandhya beach", "t": ["sea"] },
-  "Barisal": { "bn": "বরিশাল", "div": "Barishal", "fam": "'Venice of Bengal' — Guthia Mosque and Durga Sagar", "t": ["river"] },
-  "Bhola": { "bn": "ভোলা", "div": "Barishal", "fam": "Bangladesh's largest island, Char Kukri-Mukri", "t": ["sea", "river"] },
-  "Bogra": { "bn": "বগুড়া", "div": "Rajshahi", "fam": "Mahasthangarh — the oldest city site — and famous doi", "t": ["heritage"] },
-  "Brahamanbaria": { "bn": "ব্রাহ্মণবাড়িয়া", "div": "Chattogram", "fam": "Titas river and chhanamukhi sweets", "t": ["river"] },
-  "Chandpur": { "bn": "চাঁদপুর", "div": "Chattogram", "fam": "The hilsa capital where Padma meets Meghna", "t": ["river"] },
-  "Chittagong": { "bn": "চট্টগ্রাম", "div": "Chattogram", "fam": "Patenga beach, Foy's Lake and the port city", "t": ["sea", "hill"] },
-  "Chuadanga": { "bn": "চুয়াডাঙ্গা", "div": "Khulna", "fam": "Darshana's Carew & Co. — the oldest sugar mill", "t": [] },
-  "Comilla": { "bn": "কুমিল্লা", "div": "Chattogram", "fam": "Mainamati ruins and the original rasmalai", "t": ["heritage"] },
-  "Cox's Bazar": { "bn": "কক্সবাজার", "div": "Chattogram", "fam": "The world's longest natural sea beach and Saint Martin's", "t": ["sea", "hill"] },
-  "Dhaka": { "bn": "ঢাকা", "div": "Dhaka", "fam": "Lalbagh Fort, Ahsan Manzil and Old Dhaka biryani", "t": ["heritage", "river"] },
-  "Dinajpur": { "bn": "দিনাজপুর", "div": "Rangpur", "fam": "Kantajew Temple and the sweetest litchis", "t": ["heritage"] },
-  "Faridpur": { "bn": "ফরিদপুর", "div": "Dhaka", "fam": "Padma river and poet Jasimuddin's home", "t": ["river"] },
-  "Feni": { "bn": "ফেনী", "div": "Chattogram", "fam": "Muhuri project and Bijoy Singh dighi", "t": [] },
-  "Gaibandha": { "bn": "গাইবান্ধা", "div": "Rangpur", "fam": "Brahmaputra and Teesta river chars", "t": ["river"] },
-  "Gazipur": { "bn": "গাজীপুর", "div": "Dhaka", "fam": "Bhawal National Park and the safari park", "t": [] },
-  "Gopalganj": { "bn": "গোপালগঞ্জ", "div": "Dhaka", "fam": "Tungipara and the Madhumati river", "t": ["river"] },
-  "Habiganj": { "bn": "হবিগঞ্জ", "div": "Sylhet", "fam": "Satchari forest and rolling tea estates", "t": ["tea"] },
-  "Jamalpur": { "bn": "জামালপুর", "div": "Mymensingh", "fam": "Nakshi kantha and Lauchapra hills", "t": [] },
-  "Jessore": { "bn": "যশোর", "div": "Khulna", "fam": "Date-palm gur and Michael Madhusudan's Sagardari", "t": ["heritage"] },
-  "Jhalokati": { "bn": "ঝালকাঠি", "div": "Barishal", "fam": "Bhimruli floating guava market", "t": ["river"] },
-  "Jhenaidah": { "bn": "ঝিনাইদহ", "div": "Khulna", "fam": "Galakata mosque and the giant Mollikpur banyan", "t": ["heritage"] },
-  "Joypurhat": { "bn": "জয়পুরহাট", "div": "Rajshahi", "fam": "Lakma Rajbari and Bhimer Panti", "t": ["heritage"] },
-  "Khagrachhari": { "bn": "খাগড়াছড়ি", "div": "Chattogram", "fam": "Alutila cave and Richhang waterfall", "t": ["hill"] },
-  "Khulna": { "bn": "খুলনা", "div": "Khulna", "fam": "Gateway to the Sundarbans and the Royal Bengal tiger", "t": ["mangrove", "river"] },
-  "Kishoreganj": { "bn": "কিশোরগঞ্জ", "div": "Dhaka", "fam": "Nikli haor and Sholakia, the largest Eid ground", "t": ["haor"] },
-  "Kurigram": { "bn": "কুড়িগ্রাম", "div": "Rangpur", "fam": "Brahmaputra chars and the Dharla river", "t": ["river"] },
-  "Kushtia": { "bn": "কুষ্টিয়া", "div": "Khulna", "fam": "Lalon's shrine and Tagore's Shilaidaha Kuthibari", "t": ["heritage"] },
-  "Lakshmipur": { "bn": "লক্ষ্মীপুর", "div": "Chattogram", "fam": "Meghna estuary and soybean fields", "t": ["river", "sea"] },
-  "Lalmonirhat": { "bn": "লালমনিরহাট", "div": "Rangpur", "fam": "Teesta barrage and the Tin Bigha corridor", "t": ["river"] },
-  "Madaripur": { "bn": "মাদারীপুর", "div": "Dhaka", "fam": "Shakuni Lake and the Arial Khan river", "t": ["river"] },
-  "Magura": { "bn": "মাগুরা", "div": "Khulna", "fam": "Hometown of Shakib Al Hasan, on the Madhumati", "t": [] },
-  "Manikganj": { "bn": "মানিকগঞ্জ", "div": "Dhaka", "fam": "Baliati Zamindar Palace", "t": ["heritage"] },
-  "Maulvibazar": { "bn": "মৌলভীবাজার", "div": "Sylhet", "fam": "Sreemangal tea capital and Lawachara rainforest", "t": ["tea", "hill"] },
-  "Meherpur": { "bn": "মেহেরপুর", "div": "Khulna", "fam": "Mujibnagar — where the 1971 government took oath", "t": ["heritage"] },
-  "Munshiganj": { "bn": "মুন্সীগঞ্জ", "div": "Dhaka", "fam": "Idrakpur Fort and Atish Dipankar's birthplace", "t": ["heritage", "river"] },
-  "Mymensingh": { "bn": "ময়মনসিংহ", "div": "Mymensingh", "fam": "Old Brahmaputra, Shashi Lodge and Zainul Abedin museum", "t": ["river"] },
-  "Naogaon": { "bn": "নওগাঁ", "div": "Rajshahi", "fam": "Paharpur Buddhist Vihara (UNESCO)", "t": ["heritage"] },
-  "Narail": { "bn": "নড়াইল", "div": "Khulna", "fam": "Painter S. M. Sultan's home on the Chitra", "t": ["river"] },
-  "Narayanganj": { "bn": "নারায়ণগঞ্জ", "div": "Dhaka", "fam": "Sonargaon and the Panam City ruins", "t": ["heritage", "river"] },
-  "Narsingdi": { "bn": "নরসিংদী", "div": "Dhaka", "fam": "Wari-Bateshwar, a 2,500-year-old fort city", "t": ["heritage"] },
-  "Natore": { "bn": "নাটোর", "div": "Rajshahi", "fam": "Rani Bhabani's palace, Chalan Beel and kancha golla", "t": ["heritage", "haor"] },
-  "Nawabganj": { "bn": "চাঁপাইনবাবগঞ্জ", "div": "Rajshahi", "fam": "The mango capital and Choto Sona Mosque", "t": ["heritage"] },
-  "Netrakona": { "bn": "নেত্রকোনা", "div": "Mymensingh", "fam": "Birisiri's blue china-clay lakes", "t": ["haor", "hill"] },
-  "Nilphamari": { "bn": "নীলফামারী", "div": "Rangpur", "fam": "Nilsagar dighi and Saidpur railway town", "t": [] },
-  "Noakhali": { "bn": "নোয়াখালী", "div": "Chattogram", "fam": "Nijhum Dwip and its spotted deer", "t": ["sea"] },
-  "Pabna": { "bn": "পাবনা", "div": "Rajshahi", "fam": "Hardinge Bridge over the Padma", "t": ["river"] },
-  "Panchagarh": { "bn": "পঞ্চগড়", "div": "Rangpur", "fam": "Kanchenjunga views from Tetulia and flat tea gardens", "t": ["tea"] },
-  "Patuakhali": { "bn": "পটুয়াখালী", "div": "Barishal", "fam": "Kuakata — sunrise and sunset from one beach", "t": ["sea"] },
-  "Pirojpur": { "bn": "পিরোজপুর", "div": "Barishal", "fam": "Swarupkathi floating markets and backwaters", "t": ["river"] },
-  "Rajbari": { "bn": "রাজবাড়ী", "div": "Dhaka", "fam": "Goalanda ghat on the Padma", "t": ["river"] },
-  "Rajshahi": { "bn": "রাজশাহী", "div": "Rajshahi", "fam": "Silk, mangoes and the Varendra Research Museum", "t": ["heritage", "river"] },
-  "Rangamati": { "bn": "রাঙ্গামাটি", "div": "Chattogram", "fam": "Kaptai Lake, the hanging bridge and Sajek Valley", "t": ["hill"] },
-  "Rangpur": { "bn": "রংপুর", "div": "Rangpur", "fam": "Tajhat Palace and Begum Rokeya's birthplace", "t": ["heritage"] },
-  "Satkhira": { "bn": "সাতক্ষীরা", "div": "Khulna", "fam": "The western Sundarbans and Mandarbaria beach", "t": ["mangrove", "sea"] },
-  "Shariatpur": { "bn": "শরীয়তপুর", "div": "Dhaka", "fam": "Padma chars and the Kirtinasha river", "t": ["river"] },
-  "Sherpur": { "bn": "শেরপুর", "div": "Mymensingh", "fam": "Gazni hills on the Garo foothills", "t": ["hill"] },
-  "Sirajganj": { "bn": "সিরাজগঞ্জ", "div": "Rajshahi", "fam": "Jamuna Bridge and Tagore's Shahzadpur Kachharibari", "t": ["river", "heritage"] },
-  "Sunamganj": { "bn": "সুনামগঞ্জ", "div": "Sylhet", "fam": "Tanguar Haor and Niladri Lake", "t": ["haor", "hill"] },
-  "Sylhet": { "bn": "সিলেট", "div": "Sylhet", "fam": "Jaflong, Ratargul swamp forest and Bisnakandi", "t": ["tea", "hill", "haor"] },
-  "Tangail": { "bn": "টাঙ্গাইল", "div": "Dhaka", "fam": "Tangail saree, Atia Mosque and chomchom", "t": ["heritage"] },
-  "Thakurgaon": { "bn": "ঠাকুরগাঁও", "div": "Rangpur", "fam": "Baliadangi's 200-year-old giant mango tree", "t": [] }
+ "Bagerhat": {
+  "div": "Khulna",
+  "fam": "Sixty Dome Mosque (UNESCO) and the Sundarbans",
+  "t": [
+   "mangrove",
+   "heritage",
+   "sea"
+  ]
+ },
+ "Bandarban": {
+  "div": "Chattogram",
+  "fam": "Nilgiri, Keokradong and Nafakhum falls",
+  "t": [
+   "hill"
+  ]
+ },
+ "Barguna": {
+  "div": "Barishal",
+  "fam": "Tengragiri forest and Shubhasandhya beach",
+  "t": [
+   "sea"
+  ]
+ },
+ "Barisal": {
+  "div": "Barishal",
+  "fam": "'Venice of Bengal' — Guthia Mosque and Durga Sagar",
+  "t": [
+   "river"
+  ]
+ },
+ "Bhola": {
+  "div": "Barishal",
+  "fam": "Bangladesh's largest island, Char Kukri-Mukri",
+  "t": [
+   "sea",
+   "river"
+  ]
+ },
+ "Bogra": {
+  "div": "Rajshahi",
+  "fam": "Mahasthangarh — the oldest city site — and famous doi",
+  "t": [
+   "heritage"
+  ]
+ },
+ "Brahamanbaria": {
+  "div": "Chattogram",
+  "fam": "Titas river and chhanamukhi sweets",
+  "t": [
+   "river"
+  ]
+ },
+ "Chandpur": {
+  "div": "Chattogram",
+  "fam": "The hilsa capital where Padma meets Meghna",
+  "t": [
+   "river"
+  ]
+ },
+ "Chittagong": {
+  "div": "Chattogram",
+  "fam": "Patenga beach, Foy's Lake and the port city",
+  "t": [
+   "sea",
+   "hill"
+  ]
+ },
+ "Chuadanga": {
+  "div": "Khulna",
+  "fam": "Darshana's Carew & Co. — the oldest sugar mill",
+  "t": []
+ },
+ "Comilla": {
+  "div": "Chattogram",
+  "fam": "Mainamati ruins and the original rasmalai",
+  "t": [
+   "heritage"
+  ]
+ },
+ "Cox's Bazar": {
+  "div": "Chattogram",
+  "fam": "The world's longest natural sea beach and Saint Martin's",
+  "t": [
+   "sea",
+   "hill"
+  ]
+ },
+ "Dhaka": {
+  "div": "Dhaka",
+  "fam": "Lalbagh Fort, Ahsan Manzil and Old Dhaka biryani",
+  "t": [
+   "heritage",
+   "river"
+  ]
+ },
+ "Dinajpur": {
+  "div": "Rangpur",
+  "fam": "Kantajew Temple and the sweetest litchis",
+  "t": [
+   "heritage"
+  ]
+ },
+ "Faridpur": {
+  "div": "Dhaka",
+  "fam": "Padma river and poet Jasimuddin's home",
+  "t": [
+   "river"
+  ]
+ },
+ "Feni": {
+  "div": "Chattogram",
+  "fam": "Muhuri project and Bijoy Singh dighi",
+  "t": []
+ },
+ "Gaibandha": {
+  "div": "Rangpur",
+  "fam": "Brahmaputra and Teesta river chars",
+  "t": [
+   "river"
+  ]
+ },
+ "Gazipur": {
+  "div": "Dhaka",
+  "fam": "Bhawal National Park and the safari park",
+  "t": []
+ },
+ "Gopalganj": {
+  "div": "Dhaka",
+  "fam": "Tungipara and the Madhumati river",
+  "t": [
+   "river"
+  ]
+ },
+ "Habiganj": {
+  "div": "Sylhet",
+  "fam": "Satchari forest and rolling tea estates",
+  "t": [
+   "tea"
+  ]
+ },
+ "Jamalpur": {
+  "div": "Mymensingh",
+  "fam": "Nakshi kantha and Lauchapra hills",
+  "t": []
+ },
+ "Jessore": {
+  "div": "Khulna",
+  "fam": "Date-palm gur and Michael Madhusudan's Sagardari",
+  "t": [
+   "heritage"
+  ]
+ },
+ "Jhalokati": {
+  "div": "Barishal",
+  "fam": "Bhimruli floating guava market",
+  "t": [
+   "river"
+  ]
+ },
+ "Jhenaidah": {
+  "div": "Khulna",
+  "fam": "Galakata mosque and the giant Mollikpur banyan",
+  "t": [
+   "heritage"
+  ]
+ },
+ "Joypurhat": {
+  "div": "Rajshahi",
+  "fam": "Lakma Rajbari and Bhimer Panti",
+  "t": [
+   "heritage"
+  ]
+ },
+ "Khagrachhari": {
+  "div": "Chattogram",
+  "fam": "Alutila cave and Richhang waterfall",
+  "t": [
+   "hill"
+  ]
+ },
+ "Khulna": {
+  "div": "Khulna",
+  "fam": "Gateway to the Sundarbans and the Royal Bengal tiger",
+  "t": [
+   "mangrove",
+   "river"
+  ]
+ },
+ "Kishoreganj": {
+  "div": "Dhaka",
+  "fam": "Nikli haor and Sholakia, the largest Eid ground",
+  "t": [
+   "haor"
+  ]
+ },
+ "Kurigram": {
+  "div": "Rangpur",
+  "fam": "Brahmaputra chars and the Dharla river",
+  "t": [
+   "river"
+  ]
+ },
+ "Kushtia": {
+  "div": "Khulna",
+  "fam": "Lalon's shrine and Tagore's Shilaidaha Kuthibari",
+  "t": [
+   "heritage"
+  ]
+ },
+ "Lakshmipur": {
+  "div": "Chattogram",
+  "fam": "Meghna estuary and soybean fields",
+  "t": [
+   "river",
+   "sea"
+  ]
+ },
+ "Lalmonirhat": {
+  "div": "Rangpur",
+  "fam": "Teesta barrage and the Tin Bigha corridor",
+  "t": [
+   "river"
+  ]
+ },
+ "Madaripur": {
+  "div": "Dhaka",
+  "fam": "Shakuni Lake and the Arial Khan river",
+  "t": [
+   "river"
+  ]
+ },
+ "Magura": {
+  "div": "Khulna",
+  "fam": "Hometown of Shakib Al Hasan, on the Madhumati",
+  "t": []
+ },
+ "Manikganj": {
+  "div": "Dhaka",
+  "fam": "Baliati Zamindar Palace",
+  "t": [
+   "heritage"
+  ]
+ },
+ "Maulvibazar": {
+  "div": "Sylhet",
+  "fam": "Sreemangal tea capital and Lawachara rainforest",
+  "t": [
+   "tea",
+   "hill"
+  ]
+ },
+ "Meherpur": {
+  "div": "Khulna",
+  "fam": "Mujibnagar — where the 1971 government took oath",
+  "t": [
+   "heritage"
+  ]
+ },
+ "Munshiganj": {
+  "div": "Dhaka",
+  "fam": "Idrakpur Fort and Atish Dipankar's birthplace",
+  "t": [
+   "heritage",
+   "river"
+  ]
+ },
+ "Mymensingh": {
+  "div": "Mymensingh",
+  "fam": "Old Brahmaputra, Shashi Lodge and Zainul Abedin museum",
+  "t": [
+   "river"
+  ]
+ },
+ "Naogaon": {
+  "div": "Rajshahi",
+  "fam": "Paharpur Buddhist Vihara (UNESCO)",
+  "t": [
+   "heritage"
+  ]
+ },
+ "Narail": {
+  "div": "Khulna",
+  "fam": "Painter S. M. Sultan's home on the Chitra",
+  "t": [
+   "river"
+  ]
+ },
+ "Narayanganj": {
+  "div": "Dhaka",
+  "fam": "Sonargaon and the Panam City ruins",
+  "t": [
+   "heritage",
+   "river"
+  ]
+ },
+ "Narsingdi": {
+  "div": "Dhaka",
+  "fam": "Wari-Bateshwar, a 2,500-year-old fort city",
+  "t": [
+   "heritage"
+  ]
+ },
+ "Natore": {
+  "div": "Rajshahi",
+  "fam": "Rani Bhabani's palace, Chalan Beel and kancha golla",
+  "t": [
+   "heritage",
+   "haor"
+  ]
+ },
+ "Nawabganj": {
+  "div": "Rajshahi",
+  "fam": "The mango capital and Choto Sona Mosque",
+  "t": [
+   "heritage"
+  ]
+ },
+ "Netrakona": {
+  "div": "Mymensingh",
+  "fam": "Birisiri's blue china-clay lakes",
+  "t": [
+   "haor",
+   "hill"
+  ]
+ },
+ "Nilphamari": {
+  "div": "Rangpur",
+  "fam": "Nilsagar dighi and Saidpur railway town",
+  "t": []
+ },
+ "Noakhali": {
+  "div": "Chattogram",
+  "fam": "Nijhum Dwip and its spotted deer",
+  "t": [
+   "sea"
+  ]
+ },
+ "Pabna": {
+  "div": "Rajshahi",
+  "fam": "Hardinge Bridge over the Padma",
+  "t": [
+   "river"
+  ]
+ },
+ "Panchagarh": {
+  "div": "Rangpur",
+  "fam": "Kanchenjunga views from Tetulia and flat tea gardens",
+  "t": [
+   "tea"
+  ]
+ },
+ "Patuakhali": {
+  "div": "Barishal",
+  "fam": "Kuakata — sunrise and sunset from one beach",
+  "t": [
+   "sea"
+  ]
+ },
+ "Pirojpur": {
+  "div": "Barishal",
+  "fam": "Swarupkathi floating markets and backwaters",
+  "t": [
+   "river"
+  ]
+ },
+ "Rajbari": {
+  "div": "Dhaka",
+  "fam": "Goalanda ghat on the Padma",
+  "t": [
+   "river"
+  ]
+ },
+ "Rajshahi": {
+  "div": "Rajshahi",
+  "fam": "Silk, mangoes and the Varendra Research Museum",
+  "t": [
+   "heritage",
+   "river"
+  ]
+ },
+ "Rangamati": {
+  "div": "Chattogram",
+  "fam": "Kaptai Lake, the hanging bridge and Sajek Valley",
+  "t": [
+   "hill"
+  ]
+ },
+ "Rangpur": {
+  "div": "Rangpur",
+  "fam": "Tajhat Palace and Begum Rokeya's birthplace",
+  "t": [
+   "heritage"
+  ]
+ },
+ "Satkhira": {
+  "div": "Khulna",
+  "fam": "The western Sundarbans and Mandarbaria beach",
+  "t": [
+   "mangrove",
+   "sea"
+  ]
+ },
+ "Shariatpur": {
+  "div": "Dhaka",
+  "fam": "Padma chars and the Kirtinasha river",
+  "t": [
+   "river"
+  ]
+ },
+ "Sherpur": {
+  "div": "Mymensingh",
+  "fam": "Gazni hills on the Garo foothills",
+  "t": [
+   "hill"
+  ]
+ },
+ "Sirajganj": {
+  "div": "Rajshahi",
+  "fam": "Jamuna Bridge and Tagore's Shahzadpur Kachharibari",
+  "t": [
+   "river",
+   "heritage"
+  ]
+ },
+ "Sunamganj": {
+  "div": "Sylhet",
+  "fam": "Tanguar Haor and Niladri Lake",
+  "t": [
+   "haor",
+   "hill"
+  ]
+ },
+ "Sylhet": {
+  "div": "Sylhet",
+  "fam": "Jaflong, Ratargul swamp forest and Bisnakandi",
+  "t": [
+   "tea",
+   "hill",
+   "haor"
+  ]
+ },
+ "Tangail": {
+  "div": "Dhaka",
+  "fam": "Tangail saree, Atia Mosque and chomchom",
+  "t": [
+   "heritage"
+  ]
+ },
+ "Thakurgaon": {
+  "div": "Rangpur",
+  "fam": "Baliadangi's 200-year-old giant mango tree",
+  "t": []
+ }
 }

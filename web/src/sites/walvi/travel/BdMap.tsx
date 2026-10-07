@@ -7,16 +7,15 @@ import type { Feature, Geometry } from "geojson";
 import RAW from "@/data/bd-districts.json";
 import { THEMES, THEME_LABEL, loadImg, type Theme } from "./TravelMap";
 
-/* "Districts of Bangladesh I've visited" map maker — 64 zila, 8 divisions.
+/* "Districts of Bangladesh I've visited" map maker — 64 districts, 8 divisions.
    Boundaries: geoBoundaries BGD ADM2 (CC BY 4.0), simplified to /geo/bd-districts.json.
    Like the world map, everything stays in the browser (photo is never uploaded). */
 
-type D = { bn: string; div: string; fam: string; t: string[] };
+type D = { div: string; fam: string; t: string[] };
 const DATA = RAW as Record<string, D>;
 const NAMES = Object.keys(DATA).sort((a, b) => a.localeCompare(b));
 const TOTAL = NAMES.length; // 64
 const DIVS = ["Dhaka", "Chattogram", "Rajshahi", "Khulna", "Barishal", "Sylhet", "Rangpur", "Mymensingh"];
-const DIV_BN: Record<string, string> = { Dhaka: "ঢাকা", Chattogram: "চট্টগ্রাম", Rajshahi: "রাজশাহী", Khulna: "খুলনা", Barishal: "বরিশাল", Sylhet: "সিলেট", Rangpur: "রংপুর", Mymensingh: "ময়মনসিংহ" };
 const DIV_TOTAL = Object.fromEntries(DIVS.map((d) => [d, NAMES.filter((n) => DATA[n].div === d).length]));
 // display spellings for the boundary file's names
 const EN: Record<string, string> = { Barisal: "Barishal", Bogra: "Bogura", Brahamanbaria: "Brahmanbaria", Chittagong: "Chattogram", Comilla: "Cumilla", Jessore: "Jashore", Maulvibazar: "Moulvibazar", Nawabganj: "Chapai Nawabganj" };
@@ -40,16 +39,16 @@ const BADGES: Badge[] = [
   { id: "north", e: "🏔️", name: "Kanchenjunga View", hint: "Panchagarh, the northern tip", test: (v) => v.has("Panchagarh") },
   { id: "half", e: "🧭", name: "Half Way", hint: "32 districts", test: (v) => v.size >= 32 },
   { id: "divs", e: "🗺️", name: "All 8 Divisions", hint: "At least one district in every division", test: (_, d) => d >= 8 },
-  { id: "all", e: "🏆", name: "Shonar Bangla", hint: "All 64 districts", test: (v) => v.size >= TOTAL },
+  { id: "all", e: "🏆", name: "All 64 Districts", hint: "Every district in Bangladesh", test: (v) => v.size >= TOTAL },
 ];
 const LEVELS = [
-  { min: 0, name: "Ghor-kuno", e: "🏡" },
+  { min: 0, name: "Homebody", e: "🏡" },
   { min: 3, name: "Weekend Tripper", e: "🎒" },
-  { min: 10, name: "Bhromon Pagol", e: "🚌" },
-  { min: 20, name: "Desh Explorer", e: "🧭" },
-  { min: 35, name: "Zila Hunter", e: "🗺️" },
-  { min: 50, name: "Bangla Nomad", e: "🛶" },
-  { min: 64, name: "Shonar Bangla Legend", e: "🏆" },
+  { min: 10, name: "Road Tripper", e: "🚌" },
+  { min: 20, name: "Explorer", e: "🧭" },
+  { min: 35, name: "District Hunter", e: "🗺️" },
+  { min: 50, name: "Nomad", e: "🛶" },
+  { min: 64, name: "Bangladesh Legend", e: "🏆" },
 ];
 const levelOf = (n: number) => {
   const i = LEVELS.reduce((a, l, k) => (n >= l.min ? k : a), 0);
@@ -85,7 +84,6 @@ export default function BdMap() {
   const [name, setName] = useState("");
   const [photo, setPhoto] = useState("");
   const [theme, setTheme] = useState<Theme>("neon");
-  const [lang, setLang] = useState<"en" | "bn">("bn");
   const [geo, setGeo] = useState<Geo | null>(null);
   const [tip, setTip] = useState<{ x: number; y: number; n: string } | null>(null);
   const [div, setDiv] = useState("ALL");
@@ -110,7 +108,6 @@ export default function BdMap() {
         if (DATA[s.h]) setHome(s.h);
         if (typeof s.n === "string") setName(s.n);
         if (s.t in THEMES) setTheme(s.t);
-        if (s.l === "en" || s.l === "bn") setLang(s.l);
       } catch {}
     }
     ready.current = true;
@@ -118,12 +115,12 @@ export default function BdMap() {
   useEffect(() => {
     if (!ready.current) return;
     try {
-      localStorage.setItem(STORE, JSON.stringify({ v: visited, h: home, n: name, t: theme, l: lang }));
+      localStorage.setItem(STORE, JSON.stringify({ v: visited, h: home, n: name, t: theme }));
     } catch {}
-  }, [visited, home, name, theme, lang]);
+  }, [visited, home, name, theme]);
 
   const all = useMemo(() => new Set([home, ...visited]), [visited, home]);
-  const label = (n: string) => (lang === "bn" ? DATA[n]?.bn || n : en(n));
+  const label = en;
   const toggle = (n: string) => {
     if (n === home || !DATA[n]) return;
     setVisited((v) => (v.includes(n) ? v.filter((x) => x !== n) : [...v, n]));
@@ -197,7 +194,7 @@ export default function BdMap() {
     try {
       await Promise.all([document.fonts.load(`800 100px ${fam}`), document.fonts.load(`600 30px ${fam}`)]);
     } catch {}
-    const font = (w: number, s: number) => `${w} ${s}px ${fam}, 'Nirmala UI', 'Noto Sans Bengali', sans-serif`;
+    const font = (w: number, s: number) => `${w} ${s}px ${fam}`;
     const pad = 64;
     const bg = ctx.createLinearGradient(0, 0, CW, CH);
     bg.addColorStop(0, T.bg[0]);
@@ -278,9 +275,6 @@ export default function BdMap() {
     ctx.fillText(`${ins.count}/64`, pad, y + (story ? 118 : 128));
     ctx.font = font(800, story ? 46 : 40);
     ctx.fillText("districts of Bangladesh", pad, y + (story ? 175 : 180));
-    ctx.fillStyle = T.visited;
-    ctx.font = font(800, story ? 40 : 34);
-    ctx.fillText("আমার বাংলাদেশ", pad, y + (story ? 232 : 232));
 
     const stats: [string, string][] = [
       [`${ins.areaPct}%`, "of the land"],
@@ -328,7 +322,7 @@ export default function BdMap() {
 
     ctx.fillStyle = T.sub;
     ctx.font = font(600, 24);
-    ctx.fillText("MAKE YOUR OWN ZILA MAP", pad, CH - 50);
+    ctx.fillText("MAKE YOUR OWN DISTRICT MAP", pad, CH - 50);
     ctx.fillStyle = T.text;
     ctx.font = font(800, 32);
     const brand = "visapoint.net/bangladesh-map";
@@ -396,13 +390,6 @@ export default function BdMap() {
               </b>
               <span>{ins.level.next ? `${ins.level.next.min - ins.count} more to ${ins.level.next.name}` : "Top level!"}</span>
             </div>
-          </div>
-          <div className="bd-lang" role="radiogroup" aria-label="Label language">
-            {(["bn", "en"] as const).map((l) => (
-              <button key={l} type="button" role="radio" aria-checked={lang === l} className={lang === l ? "on" : ""} onClick={() => setLang(l)}>
-                {l === "bn" ? "বাংলা" : "English"}
-              </button>
-            ))}
           </div>
           <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label="Map of the 64 districts of Bangladesh — tap the ones you have visited">
             <defs>
@@ -472,7 +459,7 @@ export default function BdMap() {
           {tip && DATA[tip.n] ? (
             <div className="tm-tip" style={{ left: tip.x + 14, top: tip.y + 14 }}>
               <b>
-                {en(tip.n)} · {DATA[tip.n].bn}
+                {en(tip.n)}
                 {tip.n === home ? " · home" : all.has(tip.n) ? " ✓" : ""}
               </b>
               <span>{DATA[tip.n].div} division</span>
@@ -512,11 +499,11 @@ export default function BdMap() {
           </div>
           <p className="tm-privacy">Your photo stays on your device — it is never uploaded.</p>
           <label className="tm-field">
-            <span>Home district (নিজ জেলা)</span>
+            <span>Home district</span>
             <select value={home} onChange={(e) => setHome(e.target.value)}>
               {NAMES.map((n) => (
                 <option key={n} value={n}>
-                  {en(n)} — {DATA[n].bn}
+                  {en(n)}
                 </option>
               ))}
             </select>
@@ -532,11 +519,11 @@ export default function BdMap() {
             >
               <option value="">Select a district…</option>
               {DIVS.map((d) => (
-                <optgroup key={d} label={`${d} division · ${DIV_BN[d]}`}>
+                <optgroup key={d} label={`${d} division`}>
                   {NAMES.filter((n) => DATA[n].div === d && n !== home).map((n) => (
                     <option key={n} value={n}>
                       {all.has(n) ? "✓ " : ""}
-                      {en(n)} — {DATA[n].bn}
+                      {en(n)}
                     </option>
                   ))}
                 </optgroup>
@@ -585,7 +572,7 @@ export default function BdMap() {
               <li key={n}>
                 <button type="button" className={on ? "on" : ""} disabled={n === home} onClick={() => toggle(n)} aria-pressed={on}>
                   <span>
-                    {en(n)} <small className="bd-bn">{DATA[n].bn}</small>
+                    {en(n)}
                   </span>
                   <i aria-hidden="true">{n === home ? "home" : on ? "✓" : "+"}</i>
                 </button>
@@ -633,7 +620,7 @@ export default function BdMap() {
             <div key={k} className="bd-ext">
               <span>{k}</span>
               <b>
-                {en(n)} · {DATA[n]?.bn}
+                {en(n)}
               </b>
             </div>
           ))}
@@ -645,7 +632,7 @@ export default function BdMap() {
             {ins.perDiv.map((p) => (
               <div key={p.d}>
                 <span>
-                  {p.d} <small>{DIV_BN[p.d]}</small>
+                  {p.d}
                 </span>
                 <i>
                   <i style={{ width: `${(p.n / p.total) * 100}%` }} />
@@ -682,7 +669,7 @@ export default function BdMap() {
             <div className="tm-next">
               {ins.next.map((n) => (
                 <button key={n} type="button" onClick={() => toggle(n)}>
-                  {en(n)} <span className="bd-bn">{DATA[n].bn}</span>
+                  {en(n)}
                   <em>+ add</em>
                 </button>
               ))}
@@ -703,7 +690,7 @@ export default function BdMap() {
                   <header>
                     <div>
                       <h3>
-                        {en(n)} <span className="bd-bn">{DATA[n].bn}</span>
+                        {en(n)}
                       </h3>
                       <span>{DATA[n].div} division</span>
                     </div>

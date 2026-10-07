@@ -37,7 +37,7 @@ export function menuFor(site: Site): NavGroup[] {
       items: [
         { label: "Salary & savings calculator", href: `${b}/tools`, desc: "What you would really save each month" },
         { label: "My travel map", href: `${b}/travel-map`, desc: "Map every country you have visited" },
-        { label: "Bangladesh district map", href: `${b}/bangladesh-map`, desc: "Which of the 64 zila have you seen?" },
+        { label: "Bangladesh district map", href: `${b}/bangladesh-map`, desc: "Which of the 64 districts have you seen?" },
         { label: "Scam checklist", href: `${b}#scams`, desc: "Spot a fake job offer before you pay" },
       ],
     },

@@ -14,23 +14,19 @@ export const dynamic = "force-dynamic";
 const FAQ = [
   {
     q: "How do I make a map of the districts of Bangladesh I have visited?",
-    a: "Tap each district (zila) you have been to on the map, or pick it from the list of all 64 districts. Set your home district, add your name and photo if you like, then download the image as a Facebook or Instagram post or story. Free, no sign-up.",
+    a: "Tap each district you have been to on the map, or pick it from the list of all 64 districts. Set your home district, add your name and photo if you like, then download the image as a Facebook or Instagram post or story. Free, no sign-up.",
   },
   {
     q: "How many districts are there in Bangladesh?",
-    a: "Bangladesh has 64 districts (zila) in 8 divisions: Dhaka, Chattogram, Rajshahi, Khulna, Barishal, Sylhet, Rangpur and Mymensingh.",
+    a: "Bangladesh has 64 districts in 8 divisions: Dhaka, Chattogram, Rajshahi, Khulna, Barishal, Sylhet, Rangpur and Mymensingh.",
   },
   {
     q: "What are the badges?",
-    a: "Badges unlock as you travel — Sea Lover for three coastal districts, Hill Tracker for all three hill districts, Tea Trail for Sylhet, Moulvibazar and Habiganj, Tiger Country for a Sundarbans district, All 8 Divisions, and Shonar Bangla for all 64.",
+    a: "Badges unlock as you travel — Sea Lover for three coastal districts, Hill Tracker for all three hill districts, Tea Trail for Sylhet, Moulvibazar and Habiganj, Tiger Country for a Sundarbans district, All 8 Divisions, and All 64 Districts for the full set.",
   },
   {
     q: "Is my photo uploaded?",
     a: "No. The photo is read only inside your browser to draw the image and is never uploaded.",
-  },
-  {
-    q: "Can I see the map in Bangla?",
-    a: "Yes — switch the district names on the map between বাংলা and English.",
   },
 ];
 
@@ -38,13 +34,13 @@ export async function generateMetadata({ params }: { params: Promise<{ site: str
   const { site: id } = await params;
   const site = getSite(id);
   if (!site || site.id !== "walvi") return {};
-  const title = "Bangladesh District Map Maker — Which of the 64 Zila Have You Visited?";
+  const title = "Bangladesh District Map Maker — Which of the 64 Districts Have You Visited?";
   const description =
-    "Colour in every district of Bangladesh you've visited, unlock travel badges, see your % of the country and all 8 divisions, and download a beautiful map for Facebook or Instagram. Free, Bangla & English.";
+    "Colour in every district of Bangladesh you've visited, unlock travel badges, see your % of the country and all 8 divisions, and download a beautiful map for Facebook or Instagram. Free, no sign-up.";
   return {
     title,
     description,
-    keywords: ["bangladesh district map", "64 districts of bangladesh map", "zila map visited", "bangladesh travel map", "বাংলাদেশের ৬৪ জেলা ম্যাপ", "আমি কয়টি জেলা ঘুরেছি"],
+    keywords: ["bangladesh district map", "64 districts of bangladesh map", "bangladesh map visited", "bangladesh travel map", "districts of bangladesh i have visited"],
     metadataBase: new URL(siteBaseUrl(site)),
     alternates: { canonical: "/bangladesh-map" },
     openGraph: { title, description, type: "website", url: "/bangladesh-map", siteName: "VisaPoint" },
@@ -72,7 +68,7 @@ export default async function Page({ params }: { params: Promise<{ site: string 
             description: "Free map maker for the 64 districts of Bangladesh you have visited, with badges and a downloadable image.",
             applicationCategory: "TravelApplication",
             operatingSystem: "Any",
-            inLanguage: ["en", "bn"],
+            inLanguage: "en",
             offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
             url: `${base}/bangladesh-map`,
           },
@@ -94,13 +90,12 @@ export default async function Page({ params }: { params: Promise<{ site: string 
               <span aria-hidden="true">›</span>
               <span>Bangladesh</span>
             </nav>
-            <span className="vp-eyebrow light">Free tool · বাংলা &amp; English</span>
+            <span className="vp-eyebrow light">Free tool · no sign-up</span>
             <h1>
               How many of Bangladesh&apos;s 64 districts have you seen?
-              <span className="bd-h1-bn">আপনি কয়টি জেলা ঘুরেছেন?</span>
             </h1>
             <p className="vp-lede light">
-              Tap every zila you&apos;ve visited, unlock badges from Sea Lover to Shonar Bangla, and download a stunning map for
+              Tap every district you&apos;ve visited, unlock badges from Sea Lover to All 64 Districts, and download a stunning map for
               Facebook, Instagram or WhatsApp.
             </p>
           </div>
