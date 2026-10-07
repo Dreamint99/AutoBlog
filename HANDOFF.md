@@ -27,6 +27,18 @@ Read `CLAUDE.md` and `README.md` first. NOTE: README still says Vercel — the s
   Live data = ESPN's undocumented keyless API (site.api.espn.com) — football leagues, NBA, F1, ATP
   work; cricket and SAFF are not available there. UI hides itself if the feed fails.
 
+## Status 2026-10-07 (cloud session)
+- Added `.github/workflows/deploy-site.yml` (manual) and `verify-sites.yml` (read-only). Deploy of
+  ninetymins FAILED at upload: `CLOUDFLARE_API_TOKEN` can list Workers but has no Workers Scripts:Edit
+  ("No access to the specified service"). Build itself is fine. Re-run after the token is fixed.
+- Verify at 19:17 UTC: ninetymins + infkey homepages 500, countly article 500. Cause: D1 code 7500
+  "exceeded D1's free tier daily row read limit" — the read-budget fix is still not enough.
+- `idx_articles_site_status_created` does NOT exist (only `idx_articles_site_status (site_id, status)`
+  and `idx_articles_site_slug`), so listing queries ordered by `created_at` scan every row of the site.
+  Creating it is a D1 write → waiting for the owner's OK; must run after 00:00 UTC (quota reset).
+- Token also lacks Account Analytics:Read, so D1 rows read/day can't be reported yet.
+- Done: Vercel analytics removed from `layout.tsx`; README rewritten for Cloudflare + D1 + LLM chain.
+
 ## TODO (in priority order)
 1. **Deploy ninetymins** (`powershell -ExecutionPolicy Bypass -File web/deploy-site.ps1 ninetymins`).
    A cloud session has no Cloudflare credentials; options: (a) the owner runs the command on their PC
