@@ -1,271 +1,171 @@
-import "./theme.css";
 import Link from "next/link";
-import type { SiteHomeProps, Site, Article } from "@/lib/types";
+import type { SiteHomeProps, Article } from "@/lib/types";
+import { Shell, Card, Badge, Kicker, Thumb } from "./Chrome";
+import { NM_COMPS, compOf, ago } from "./comps";
+import { LeagueTable, LeagueFixtures } from "./LiveScores";
 
-/* ── small pure helpers (no hooks / no state) ── */
-
-const NAV: ReadonlyArray<readonly [string, string]> = [
-  ["Latest", "#latest"],
-  ["How to Watch", "#guides"],
-  ["Fixtures", "#latest"],
-  ["Leagues", "#models"],
-  ["Guides", "#guides"],
-];
-
-const TICKER_FALLBACK = [
-  "Premier League",
-  "Champions League",
-  "La Liga",
-  "Serie A",
-  "Cricket",
-  "IPL",
-  "NBA",
-  "Formula 1",
-];
-
-function formatDate(iso: string): string {
-  const d = new Date(iso);
-  if (Number.isNaN(d.getTime())) return "";
-  return d.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
-}
-
-function categoryOf(article: Article): string {
-  const tag = article.tags.find((t) => t.trim().length > 0);
-  return (tag ?? article.keyword ?? "Sports").toUpperCase();
-}
-
-/* collect distinct tags across articles for the ticker strip */
-function tickerTags(articles: Article[]): string[] {
-  const seen = new Set<string>();
-  const out: string[] = [];
-  for (const a of articles) {
-    for (const t of a.tags) {
-      const key = t.trim();
-      if (key && !seen.has(key.toLowerCase())) {
-        seen.add(key.toLowerCase());
-        out.push(key);
-      }
-      if (out.length >= 10) return out;
+/** Hands out articles once per page; real reports before mock ones. */
+function picker(all: Article[]) {
+  const used = new Set<string>();
+  const pool = [...all.filter((a) => !a.is_mock), ...all.filter((a) => a.is_mock)];
+  return (from: Article[] | null, n: number): Article[] => {
+    const out: Article[] = [];
+    for (const a of from ?? pool) {
+      if (out.length >= n) break;
+      if (used.has(a.id) || (from && a.is_mock)) continue;
+      used.add(a.id);
+      out.push(a);
     }
-  }
-  return out.length ? out : TICKER_FALLBACK;
+    return out;
+  };
 }
 
-/* ── shared chrome ── */
-
-function Ticker({ tags }: { tags: string[] }) {
-  return (
-    <div className="ticker" aria-label="Trending topics">
-      <div className="ticker-inner">
-        <span className="ticker-label">Trending</span>
-        <span className="ticker-chips">
-          {tags.map((t) => (
-            <span className="ticker-chip" key={t}>
-              {t}
-            </span>
-          ))}
-        </span>
-      </div>
-    </div>
-  );
-}
-
-function Masthead({ site }: { site: Site }) {
-  return (
-    <header className="masthead">
-      <div className="shell masthead-row">
-        {/* CSS-only mobile menu toggle */}
-        <input type="checkbox" id="ai-nav" className="nav-toggle" aria-hidden="true" />
-        <Link href={`/s/${site.id}`} className="logo" aria-label={`${site.name} home`}>
-          <span className="logomark" aria-hidden="true">
-            90<span className="dot" />
-          </span>
-          <span className="wordmark">
-            Ninety<b>Mins</b>
-            <span className="tld">.com</span>
-          </span>
-        </Link>
-
-        <nav className="nav" aria-label="Primary">
-          {NAV.map(([label, href]) => (
-            <a href={href} key={label}>
-              {label}
-            </a>
-          ))}
-          <span className="live-pill" aria-hidden="true">
-            Live
-          </span>
-        </nav>
-
-        <label className="nav-burger" htmlFor="ai-nav" aria-label="Toggle navigation menu">
-          <span />
-        </label>
-      </div>
-    </header>
-  );
-}
-
-function Footer({ site }: { site: Site }) {
-  const year = new Date().getFullYear();
-  return (
-    <footer className="footer">
-      <div className="shell">
-        <div className="footer-row">
-          <Link href={`/s/${site.id}`} className="logo" aria-label={`${site.name} home`}>
-            <span className="logomark" aria-hidden="true">
-              90<span className="dot" />
-            </span>
-            <span className="wordmark">
-              Ninety<b>Mins</b>
-            </span>
-          </Link>
-          <p className="footer-tag">{site.tagline}</p>
-          <nav className="footer-nav" aria-label="Footer">
-            {NAV.map(([label, href]) => (
-              <a href={href} key={label}>
-                {label}
-              </a>
-            ))}
-          </nav>
-        </div>
-        <div className="footer-base">
-          <span>
-            © {year} <span className="accent">{site.name}</span>
-          </span>
-          <span>·</span>
-          <span>{site.tagline}</span>
-          <span>·</span>
-          <span>Never miss a match.</span>
-        </div>
-      </div>
-    </footer>
-  );
-}
-
-/* ── cards ── */
-
-function Lead({ site, article }: { site: Site; article: Article }) {
-  const href = `/s/${site.id}/${article.slug}`;
-  return (
-    <article className="lead">
-      <Link href={href} className="lead-media" aria-label={article.title} tabIndex={-1}>
-        <span className="lead-badge">Featured</span>
-        {article.image_url ? (
-          <img src={article.image_url} alt={article.title} loading="lazy" />
-        ) : null}
-      </Link>
-      <div className="lead-body">
-        <div className="lead-meta">
-          <span className="cat">{categoryOf(article)}</span>
-          <span className="sep">/</span>
-          <span>{formatDate(article.created_at)}</span>
-          <span className="sep">·</span>
-          <span>{article.reading_time} min read</span>
-        </div>
-        <h3 className="lead-title">
-          <Link href={href}>{article.title}</Link>
-        </h3>
-        {article.excerpt ? <p className="lead-excerpt">{article.excerpt}</p> : null}
-        {article.tags.length > 0 ? (
-          <div className="lead-tags">
-            {article.tags.slice(0, 4).map((t) => (
-              <span className="chip" key={t}>
-                {t}
-              </span>
-            ))}
-          </div>
-        ) : null}
-      </div>
-    </article>
-  );
-}
-
-function Card({ site, article }: { site: Site; article: Article }) {
-  const href = `/s/${site.id}/${article.slug}`;
-  return (
-    <article className="card">
-      <Link href={href} className="card-media" aria-label={article.title} tabIndex={-1}>
-        <span className="card-cat">{categoryOf(article)}</span>
-        {article.image_url ? (
-          <img src={article.image_url} alt={article.title} loading="lazy" />
-        ) : null}
-      </Link>
-      <div className="card-body">
-        <h3 className="card-title">
-          <Link href={href}>{article.title}</Link>
-        </h3>
-        {article.excerpt ? <p className="card-excerpt">{article.excerpt}</p> : null}
-        <div className="card-foot">
-          <span className="read">{article.reading_time} min</span>
-          <span className="sep">·</span>
-          <span>{formatDate(article.created_at)}</span>
-        </div>
-      </div>
-    </article>
-  );
-}
-
-function EmptyState() {
-  return (
-    <div className="empty" id="latest">
-      <div className="empty-mark" aria-hidden="true">
-        {"</>"}
-      </div>
-      <h2>
-        No fixtures yet<span className="blink" aria-hidden="true" />
-      </h2>
-      <p>Fresh match guides, fixtures and how-to-watch articles land here soon.</p>
-    </div>
-  );
-}
-
-/* ── page ── */
+// Front-page order: the competitions readers come for first.
+const ROWS = ["saff-championship", "champions-league", "premier-league", "world-cup", "cricket", "basketball", "formula-1", "tennis", "football"];
 
 export default function Home({ site, articles }: SiteHomeProps) {
-  const [featured, ...rest] = articles;
-  const tags = tickerTags(articles);
+  const s = `/s/${site.id}`;
+  const href = (a: Article) => `${s}/${a.slug}`;
+  const take = picker(articles);
 
-  return (
-    <>
-      <a href="#latest" className="skip-link">
-        Skip to stories
-      </a>
-      <Ticker tags={tags} />
-      <Masthead site={site} />
+  const [hero] = take(null, 1);
+  const seconds = take(null, 3);
+  const headlines = take(null, 8);
+  const rows = ROWS.map((slug) => ({
+    comp: NM_COMPS.find((c) => c.slug === slug)!,
+    items: take(articles.filter((a) => compOf(a).slug === slug), 4),
+  })).filter((r) => r.items.length >= 2);
+  const latest = take(null, 12);
 
-      <main>
-        <div className="shell">
-          {articles.length === 0 ? (
-            <EmptyState />
-          ) : (
-            <>
-              {featured ? <Lead site={site} article={featured} /> : null}
-
-              <section id="latest" aria-labelledby="latest-h">
-                <div className="section-head">
-                  <h2 id="latest-h">Latest</h2>
-                  <span className="rule" />
-                  <span className="count">{String(rest.length).padStart(2, "0")} stories</span>
-                </div>
-
-                {rest.length > 0 ? (
-                  <div className="grid">
-                    {rest.map((a) => (
-                      <Card site={site} article={a} key={a.id} />
-                    ))}
-                  </div>
-                ) : (
-                  <p className="footer-tag" style={{ paddingBottom: "24px" }}>
-                    That is the latest drop — more incoming.
-                  </p>
-                )}
-              </section>
-            </>
-          )}
+  if (!hero) {
+    return (
+      <Shell site={site}>
+        <div className="nm-wrap nm-empty">
+          <h1>Match guides are on the way</h1>
+          <p>Fixtures, kick-off times and where to watch — landing here soon.</p>
         </div>
-      </main>
+      </Shell>
+    );
+  }
 
-      <Footer site={site} />
-    </>
+  const hc = compOf(hero);
+  return (
+    <Shell site={site} strip={articles.slice(0, 10)}>
+      {/* ── TOP: headlines | hero | table ── */}
+      <div className="nm-wrap nm-top">
+        <aside className="nm-headlines" aria-label="Top headlines">
+          <h2 className="nm-box-h">Top Headlines</h2>
+          <ol>
+            {headlines.map((a) => (
+              <li key={a.id}>
+                <Badge comp={compOf(a)} />
+                <Link href={href(a)}>{a.title}</Link>
+              </li>
+            ))}
+          </ol>
+        </aside>
+
+        <div className="nm-heroCol">
+          <article className="nm-hero">
+            <Link href={href(hero)} className="nm-thumb nm-hero-link">
+              {hero.image_url ? <img src={hero.image_url} alt="" /> : <span className="nm-thumb-ph" />}
+              <span className="nm-hero-shade" />
+              <div className="nm-hero-copy">
+                <span className="nm-hero-kicker" style={{ background: hc.color }}>
+                  {hc.label}
+                </span>
+                <h1 className="nm-hero-h">{hero.title}</h1>
+                {hero.excerpt ? <p>{hero.excerpt}</p> : null}
+                <span className="nm-time light">{ago(hero.created_at)} · {hero.reading_time} min read</span>
+              </div>
+            </Link>
+          </article>
+          <div className="nm-seconds">
+            {seconds.map((a) => (
+              <article className="nm-mini" key={a.id}>
+                <Thumb href={href(a)} article={a} ratio="16 / 10" />
+                <Kicker comp={compOf(a)} siteId={site.id} />
+                <h3 className="nm-h sm">
+                  <Link href={href(a)}>{a.title}</Link>
+                </h3>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <aside className="nm-rightCol">
+          <LeagueTable league="eng.1" title="Premier League table" rows={10} />
+        </aside>
+      </div>
+
+      {/* ── COMPETITION ROWS ── */}
+      {rows.map(({ comp, items }) => (
+        <section className="nm-wrap nm-row" key={comp.slug} aria-label={comp.label}>
+          <div className="nm-rowhead" style={{ borderColor: comp.color }}>
+            <h2>
+              <span className="nm-rowchip" style={{ background: comp.color }}>
+                {comp.short}
+              </span>
+              {comp.label}
+            </h2>
+            <Link href={`${s}/topic/${comp.slug}`} className="nm-more">
+              See all <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+          <div className="nm-grid4">
+            {items.map((a) => (
+              <Card site={site} article={a} key={a.id} />
+            ))}
+          </div>
+        </section>
+      ))}
+
+      {/* ── LATEST + RAIL ── */}
+      {latest.length ? (
+        <section className="nm-wrap nm-river" aria-label="Latest">
+          <div>
+            <div className="nm-rowhead">
+              <h2>Latest</h2>
+            </div>
+            <div className="nm-list">
+              {latest.map((a) => (
+                <article className="nm-listrow" key={a.id}>
+                  <div>
+                    <Kicker comp={compOf(a)} siteId={site.id} />
+                    <h3 className="nm-h">
+                      <Link href={href(a)}>{a.title}</Link>
+                    </h3>
+                    {a.excerpt ? <p className="nm-dek">{a.excerpt}</p> : null}
+                    <span className="nm-time">{ago(a.created_at)} · {a.reading_time} min read</span>
+                  </div>
+                  <Thumb href={href(a)} article={a} ratio="4 / 3" />
+                </article>
+              ))}
+            </div>
+          </div>
+          <aside className="nm-rail2">
+            <LeagueFixtures league="uefa.champions" title="Champions League fixtures" />
+            <section className="nm-box nm-promise">
+              <h3 className="nm-box-h">How we cover a match</h3>
+              <ul>
+                <li><b>Kick-off in your timezone</b> UK, US ET/PT, India IST and Australia.</li>
+                <li><b>Legal ways to watch</b> Official broadcasters and streaming services only.</li>
+                <li><b>Checked against rights holders</b> Rights and times change — confirm before kick-off.</li>
+              </ul>
+            </section>
+            <section className="nm-box">
+              <h3 className="nm-box-h">Competitions</h3>
+              <div className="nm-comps">
+                {NM_COMPS.map((c) => (
+                  <Link href={`${s}/topic/${c.slug}`} key={c.slug}>
+                    <Badge comp={c} /> {c.label}
+                  </Link>
+                ))}
+              </div>
+            </section>
+          </aside>
+        </section>
+      ) : null}
+    </Shell>
   );
 }

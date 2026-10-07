@@ -10,6 +10,7 @@ import type { Site } from "@/lib/types";
 import CountlyInfoPage from "@/sites/countly/InfoPage";
 import { WalviShell } from "@/sites/walvi/Chrome";
 import { InfShell } from "@/sites/infkey/Chrome";
+import { Shell as NmShell } from "@/sites/ninetymins/Chrome";
 
 export function LegalLayout({
   site,
@@ -27,6 +28,18 @@ export function LegalLayout({
       <CountlyInfoPage site={site} kicker={kicker} title={title}>
         {children}
       </CountlyInfoPage>
+    );
+  }
+
+  if (site.id === "ninetymins") {
+    return (
+      <NmShell site={site}>
+        <div className="nm-wrap nm-legal">
+          <span className="nm-art-kicker">{kicker}</span>
+          <h1 className="nm-art-h">{title}</h1>
+          <div className="article-content">{children}</div>
+        </div>
+      </NmShell>
     );
   }
 

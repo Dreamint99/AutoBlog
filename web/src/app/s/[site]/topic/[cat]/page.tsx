@@ -5,11 +5,22 @@ import { siteBaseUrl } from "@/lib/sites.config";
 import { JsonLd, organizationSchema } from "@/lib/seo";
 import CountlyCategory from "@/sites/countly/Category";
 import { getCategory, articlesInCategory } from "@/sites/countly/categories";
+import NinetyminsTopic from "@/sites/ninetymins/Topic";
+import { getComp, articlesInComp } from "@/sites/ninetymins/comps";
 
 export const dynamic = "force-dynamic";
 
-// Topic / category landing pages currently exist for the Countly site only.
-const SUPPORTED = new Set(["countly"]);
+// Topic landing pages: Countly data categories and NinetyMins competition hubs.
+const SUPPORTED = new Set(["countly", "ninetymins"]);
+
+function resolve(siteId: string, slug: string) {
+  if (siteId === "ninetymins") {
+    const c = getComp(slug);
+    return c && { label: c.label, blurb: c.blurb, title: `${c.label}: fixtures, kick-off times & how to watch` };
+  }
+  const c = getCategory(slug);
+  return c && { label: c.label, blurb: c.blurb, title: `${c.label} statistics & rankings` };
+}
 
 export async function generateMetadata({
   params,
@@ -18,15 +29,16 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { site: id, cat: slug } = await params;
   const site = getSite(id);
-  const category = getCategory(slug);
-  if (!site || !category || !SUPPORTED.has(site.id)) return {};
-  const title = `${category.label} statistics & rankings — ${site.name}`;
+  if (!site || !SUPPORTED.has(site.id)) return {};
+  const t = resolve(site.id, slug);
+  if (!t) return {};
+  const title = `${t.title} — ${site.name}`;
   return {
     title,
-    description: `${category.label}: ${category.blurb} Sourced, dated data reports from ${site.name}.`,
+    description: `${t.label}: ${t.blurb}`,
     metadataBase: new URL(siteBaseUrl(site)),
-    alternates: { canonical: `/topic/${category.slug}` },
-    openGraph: { title, description: category.blurb, type: "website", url: `/topic/${category.slug}` },
+    alternates: { canonical: `/topic/${slug}` },
+    openGraph: { title, description: t.blurb, type: "website", url: `/topic/${slug}` },
   };
 }
 
@@ -38,17 +50,26 @@ export default async function TopicPage({
   const { site: id, cat: slug } = await params;
   const site = getSite(id);
   if (!site || !SUPPORTED.has(site.id)) notFound();
+  const base = siteBaseUrl(site);
+  const all = await getArticles(site.id);
+
+  if (site.id === "ninetymins") {
+    const comp = getComp(slug);
+    if (!comp) notFound();
+    return (
+      <>
+        <JsonLd data={[organizationSchema(site.name, base, site.tagline)]} />
+        <NinetyminsTopic site={site} comp={comp} articles={articlesInComp(all, slug)} />
+      </>
+    );
+  }
+
   const category = getCategory(slug);
   if (!category) notFound();
-
-  const all = await getArticles(site.id);
-  const articles = articlesInCategory(all, slug);
-  const base = siteBaseUrl(site);
-
   return (
     <>
       <JsonLd data={[organizationSchema(site.name, base, site.tagline)]} />
-      <CountlyCategory site={site} category={category} articles={articles} />
+      <CountlyCategory site={site} category={category} articles={articlesInCategory(all, slug)} />
     </>
   );
 }

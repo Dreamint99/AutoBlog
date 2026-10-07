@@ -1,242 +1,152 @@
-import "./theme.css";
 import Link from "next/link";
-import type { SiteArticleProps, Site, Article, TocItem } from "@/lib/types";
+import type { SiteArticleProps, Article as A, TocItem } from "@/lib/types";
+import { Shell, Card, Badge } from "./Chrome";
+import { compOf, fmtDate, ago } from "./comps";
+import { LeagueFixtures } from "./LiveScores";
 
-/* ── pure helpers (no hooks / no state) ── */
-
-const NAV: ReadonlyArray<readonly [string, string]> = [
-  ["Latest", "/s/ninetymins"],
-  ["How to Watch", "/s/ninetymins"],
-  ["Fixtures", "/s/ninetymins"],
-  ["Guides", "/s/ninetymins"],
-];
-
-function formatDate(iso: string): string {
-  const d = new Date(iso);
-  if (Number.isNaN(d.getTime())) return "";
-  return d.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
-}
-
-function categoryOf(article: Article): string {
-  const tag = article.tags.find((t) => t.trim().length > 0);
-  return (tag ?? article.keyword ?? "Sports").toUpperCase();
-}
-
-/* ── shared chrome (mirrors Home, links resolved for article context) ── */
-
-function Masthead({ site }: { site: Site }) {
-  return (
-    <header className="masthead">
-      <div className="shell masthead-row">
-        <input type="checkbox" id="ai-nav" className="nav-toggle" aria-hidden="true" />
-        <Link href={`/s/${site.id}`} className="logo" aria-label={`${site.name} home`}>
-          <span className="logomark" aria-hidden="true">
-            90<span className="dot" />
-          </span>
-          <span className="wordmark">
-            Ninety<b>Mins</b>
-            <span className="tld">.com</span>
-          </span>
-        </Link>
-
-        <nav className="nav" aria-label="Primary">
-          {NAV.map(([label, href]) => (
-            <Link href={href} key={label}>
-              {label}
-            </Link>
-          ))}
-          <span className="live-pill" aria-hidden="true">
-            Live
-          </span>
-        </nav>
-
-        <label className="nav-burger" htmlFor="ai-nav" aria-label="Toggle navigation menu">
-          <span />
-        </label>
-      </div>
-    </header>
-  );
-}
-
-function Footer({ site }: { site: Site }) {
-  const year = new Date().getFullYear();
-  return (
-    <footer className="footer">
-      <div className="shell">
-        <div className="footer-row">
-          <Link href={`/s/${site.id}`} className="logo" aria-label={`${site.name} home`}>
-            <span className="logomark" aria-hidden="true">
-              90<span className="dot" />
-            </span>
-            <span className="wordmark">
-              Ninety<b>Mins</b>
-            </span>
-          </Link>
-          <p className="footer-tag">{site.tagline}</p>
-          <nav className="footer-nav" aria-label="Footer">
-            {NAV.map(([label, href]) => (
-              <Link href={href} key={label}>
-                {label}
-              </Link>
-            ))}
-          </nav>
-        </div>
-        <div className="footer-base">
-          <span>
-            © {year} <span className="accent">{site.name}</span>
-          </span>
-          <span>·</span>
-          <span>{site.tagline}</span>
-          <span>·</span>
-          <span>Never miss a match.</span>
-        </div>
-      </div>
-    </footer>
-  );
-}
+/* Competition → ESPN feed shown in the article rail. */
+const FEED: Record<string, [string, string]> = {
+  "champions-league": ["uefa.champions", "Champions League fixtures"],
+  "premier-league": ["eng.1", "Premier League fixtures"],
+  basketball: ["nba", "NBA games"],
+  "formula-1": ["f1", "Formula 1"],
+  tennis: ["atp", "ATP tennis"],
+  football: ["eng.1,esp.1,ita.1", "Top-league fixtures"],
+  "world-cup": ["eng.1,uefa.champions", "Top fixtures"],
+};
 
 function Toc({ items, variant }: { items: TocItem[]; variant: "inline" | "rail" }) {
-  if (items.length === 0) return null;
+  if (!items.length) return null;
   return (
-    <details className={`toc toc-${variant}`} open>
+    <details className={`nm-toc nm-toc-${variant}`} open={variant === "rail"}>
       <summary>On this page</summary>
-      <ul className="toc-list">
-        {items.map((item) => (
-          <li className={item.level >= 3 ? "lvl-3" : "lvl-2"} key={item.id}>
-            <a href={`#${item.id}`}>{item.text}</a>
+      <ol>
+        {items.map((it) => (
+          <li className={it.level >= 3 ? "l3" : "l2"} key={it.id}>
+            <a href={`#${it.id}`}>{it.text}</a>
           </li>
         ))}
-      </ul>
+      </ol>
     </details>
   );
 }
 
-function RelatedCard({ site, article }: { site: Site; article: Article }) {
-  const href = `/s/${site.id}/${article.slug}`;
+function Share({ url, title }: { url: string; title: string }) {
+  const u = encodeURIComponent(url);
+  const t = encodeURIComponent(title);
   return (
-    <article className="card">
-      <Link href={href} className="card-media" aria-label={article.title} tabIndex={-1}>
-        <span className="card-cat">{categoryOf(article)}</span>
-        {article.image_url ? (
-          <img src={article.image_url} alt={article.title} loading="lazy" />
-        ) : null}
-      </Link>
-      <div className="card-body">
-        <h3 className="card-title">
-          <Link href={href}>{article.title}</Link>
-        </h3>
-        {article.excerpt ? <p className="card-excerpt">{article.excerpt}</p> : null}
-        <div className="card-foot">
-          <span className="read">{article.reading_time} min</span>
-          <span className="sep">·</span>
-          <span>{formatDate(article.created_at)}</span>
-        </div>
-      </div>
-    </article>
+    <div className="nm-share" aria-label="Share">
+      <a href={`https://twitter.com/intent/tweet?url=${u}&text=${t}`} target="_blank" rel="noopener noreferrer">X</a>
+      <a href={`https://www.facebook.com/sharer/sharer.php?u=${u}`} target="_blank" rel="noopener noreferrer">Facebook</a>
+      <a href={`https://wa.me/?text=${t}%20${u}`} target="_blank" rel="noopener noreferrer">WhatsApp</a>
+    </div>
   );
 }
 
-/* ── page ── */
-
-export default function Article({ site, article, related, bodyHtml, toc }: SiteArticleProps) {
-  const date = formatDate(article.created_at);
+export default function Article({ site, article, related, bodyHtml, toc, popular = [] }: SiteArticleProps) {
+  const s = `/s/${site.id}`;
+  const c = compOf(article);
+  const feed = FEED[c.slug];
+  const url = `https://${site.domain}/${article.slug}`;
+  const sameComp = [...related, ...popular].filter((a, i, arr) => compOf(a).slug === c.slug && arr.findIndex((x) => x.id === a.id) === i).slice(0, 5);
+  const more: A[] = related.filter((a) => !sameComp.some((x) => x.id === a.id)).slice(0, 5);
 
   return (
-    <>
-      <a href="#article-body" className="skip-link">
-        Skip to article
-      </a>
-      <Masthead site={site} />
-
-      <main>
-        <article className="article-wrap">
-          <nav className="breadcrumb" aria-label="Breadcrumb">
-            <Link href={`/s/${site.id}`}>{site.name}</Link>
-            <span className="sep" aria-hidden="true">
-              /
-            </span>
-            <Link href={`/s/${site.id}`}>Latest</Link>
-            <span className="sep" aria-hidden="true">
-              /
-            </span>
-            <span className="here">{article.title}</span>
+    <Shell site={site}>
+      <article className="nm-article">
+        <header className="nm-wrap nm-art-head">
+          <nav className="nm-crumbs" aria-label="Breadcrumb">
+            <Link href={s}>Home</Link>
+            <span aria-hidden="true">›</span>
+            <Link href={`${s}/topic/${c.slug}`}>{c.label}</Link>
           </nav>
+          <span className="nm-art-kicker" style={{ background: c.color }}>
+            {c.label}
+          </span>
+          <h1 className="nm-art-h">{article.title}</h1>
+          {article.excerpt ? <p className="nm-art-dek">{article.excerpt}</p> : null}
+          <div className="nm-art-meta">
+            <span className="nm-byline">
+              <span className="nm-avatar" aria-hidden="true">90</span>
+              <span>
+                <b>NinetyMins Desk</b>
+                <small>
+                  Updated {fmtDate(article.created_at)} · {article.reading_time} min read
+                </small>
+              </span>
+            </span>
+            <Share url={url} title={article.title} />
+          </div>
+        </header>
 
-          <header className="article-head">
-            <div className="article-cat">{categoryOf(article)}</div>
-            <h1 className="article-title">{article.title}</h1>
-            {article.excerpt ? <p className="article-dek">{article.excerpt}</p> : null}
+        {article.image_url ? (
+          <figure className="nm-wrap nm-art-hero">
+            <img src={article.image_url} alt={article.title} />
+          </figure>
+        ) : null}
 
-            <div className="article-meta">
-              {date ? <span>{date}</span> : null}
-              {date ? (
-                <span className="sep" aria-hidden="true">
-                  ·
-                </span>
-              ) : null}
-              <span>{article.reading_time} min read</span>
-              {article.keyword ? (
-                <>
-                  <span className="sep" aria-hidden="true">
-                    ·
-                  </span>
-                  <span className="kw">
-                    <span aria-hidden="true">🎯</span>
-                    {article.keyword}
-                  </span>
-                </>
-              ) : null}
-            </div>
-
-            {article.tags.length > 0 ? (
-              <div className="article-tags">
-                {article.tags.map((t) => (
-                  <span className="chip" key={t}>
-                    {t}
-                  </span>
+        <div className="nm-wrap nm-art-grid">
+          <div className="nm-art-main">
+            <Toc items={toc} variant="inline" />
+            <div id="article-body" className="article-content" dangerouslySetInnerHTML={{ __html: bodyHtml }} />
+            <aside className="nm-art-note">
+              <b>Before kick-off:</b> broadcast rights and kick-off times can change. Confirm with the official
+              broadcaster or competition organiser — NinetyMins lists legal viewing options only.
+            </aside>
+            {article.tags.length ? (
+              <div className="nm-art-tags">
+                {article.tags.slice(0, 8).map((t) => (
+                  <span key={t}>{t}</span>
                 ))}
               </div>
             ) : null}
-          </header>
-
-          {article.image_url ? (
-            <figure className="hero-figure">
-              <div className="frame">
-                <img src={article.image_url} alt={article.title} loading="lazy" />
-              </div>
-            </figure>
-          ) : null}
-
-          <div className="article-grid">
-            <div className="article-main">
-              <Toc items={toc} variant="inline" />
-              <div
-                id="article-body"
-                className="article-content"
-                dangerouslySetInnerHTML={{ __html: bodyHtml }}
-              />
-            </div>
-            <Toc items={toc} variant="rail" />
           </div>
 
-          {related.length > 0 ? (
-            <section className="related" aria-labelledby="related-h">
-              <div className="section-head">
-                <h2 id="related-h">Related</h2>
-                <span className="rule" />
-                <span className="count">{String(related.length).padStart(2, "0")} reads</span>
-              </div>
-              <div className="grid">
-                {related.map((a) => (
-                  <RelatedCard site={site} article={a} key={a.id} />
-                ))}
-              </div>
-            </section>
-          ) : null}
-        </article>
-      </main>
+          <aside className="nm-art-rail">
+            <Toc items={toc} variant="rail" />
+            {feed ? <LeagueFixtures league={feed[0]} title={feed[1]} /> : null}
+            {sameComp.length ? (
+              <section className="nm-box">
+                <h3 className="nm-box-h">More {c.label}</h3>
+                <ul className="nm-railist">
+                  {sameComp.map((a) => (
+                    <li key={a.id}>
+                      <Link href={`${s}/${a.slug}`}>{a.title}</Link>
+                      <small>{ago(a.created_at)}</small>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ) : null}
+            {more.length ? (
+              <section className="nm-box">
+                <h3 className="nm-box-h">Latest</h3>
+                <ul className="nm-railist">
+                  {more.map((a) => (
+                    <li key={a.id}>
+                      <Badge comp={compOf(a)} />
+                      <Link href={`${s}/${a.slug}`}>{a.title}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ) : null}
+          </aside>
+        </div>
 
-      <Footer site={site} />
-    </>
+        {related.length ? (
+          <section className="nm-wrap nm-row" aria-label="Related">
+            <div className="nm-rowhead">
+              <h2>Read next</h2>
+            </div>
+            <div className="nm-grid4">
+              {related.slice(0, 4).map((a) => (
+                <Card site={site} article={a} key={a.id} />
+              ))}
+            </div>
+          </section>
+        ) : null}
+      </article>
+    </Shell>
   );
 }

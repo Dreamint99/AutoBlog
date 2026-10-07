@@ -3,6 +3,7 @@ import { getArticles } from "@/lib/data";
 import { getModels } from "@/lib/models";
 import { COUNTRIES, JOBS, DATA_VERIFIED } from "@/lib/walvi";
 import { CN_CATEGORIES } from "@/sites/countly/categories";
+import { NM_COMPS } from "@/sites/ninetymins/comps";
 import { activeSite } from "@/lib/site-context";
 import { siteBaseUrl } from "@/lib/sites.config";
 
@@ -53,6 +54,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     entries.push({ url: `${base}/terms`, changeFrequency: "yearly", priority: 0.2 });
     for (const c of CN_CATEGORIES) {
       entries.push({ url: `${base}/topic/${c.slug}`, changeFrequency: "weekly", priority: 0.8 });
+    }
+  }
+
+  // NinetyMins: competition hubs + the legal/info pages.
+  if (site.id === "ninetymins") {
+    for (const c of NM_COMPS) {
+      entries.push({ url: `${base}/topic/${c.slug}`, changeFrequency: "daily", priority: 0.8 });
+    }
+    for (const p of ["about", "contact", "privacy", "terms", "disclaimer"]) {
+      entries.push({ url: `${base}/${p}`, changeFrequency: "yearly", priority: 0.2 });
     }
   }
 

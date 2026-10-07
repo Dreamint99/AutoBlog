@@ -6,7 +6,7 @@ import { LegalLayout } from "@/sites/LegalLayout";
 import { aboutContent } from "@/lib/legalPages";
 
 export const dynamic = "force-dynamic";
-const SUPPORTED = new Set(["countly", "walvi", "infkey"]);
+const SUPPORTED = new Set(["countly", "walvi", "infkey", "ninetymins"]);
 
 export async function generateMetadata({ params }: { params: Promise<{ site: string }> }): Promise<Metadata> {
   const { site: id } = await params;
