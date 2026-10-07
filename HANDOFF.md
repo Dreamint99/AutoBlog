@@ -45,6 +45,16 @@ Read `CLAUDE.md` and `README.md` first. NOTE: README still says Vercel — the s
 - walvi → **VisaPoint (visapoint.net)**: rebranded (logo, navy/teal theme, quick finder), drip
   re-enabled. Needs: visapoint.net zone added to the Cloudflare account, then `deploy-site.ps1 walvi`.
 
+## Status 2026-10-07 ~21:30 UTC (local session) — supersedes the notes above
+- Owner upgraded to **Cloudflare Workers Paid** → the D1 5M rows/day cap and 10 ms CPU limit no
+  longer apply. D1 reads work again; `idx_articles_site_status_created` and `idx_articles_site_slug` exist.
+- All four sites **deployed from master (06a1dd2)** with `web/deploy-site.ps1`: ninetymins, walvi
+  (now on **visapoint.net + www.visapoint.net** custom domains), countly, infkey. Verified 200 on
+  homepages, articles, hubs, /scores, /api/scores (incl. cricket), sitemaps; RSC no longer poisons HTML.
+- walvi.io custom domains are still attached to `autoblog-walvi` (domain expired) — harmless; can be
+  removed in the dashboard.
+- D1 rows read/hour dropped from ~250k (before the read-budget fix) to ~40–120k after it.
+
 ## TODO (in priority order)
 1. **Deploy ninetymins** (`powershell -ExecutionPolicy Bypass -File web/deploy-site.ps1 ninetymins`).
    A cloud session has no Cloudflare credentials; options: (a) the owner runs the command on their PC
