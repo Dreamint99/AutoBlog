@@ -51,6 +51,8 @@ export const NM_LEAGUES: Record<string, { label: string; path: string; table?: b
   nba: { label: "NBA", path: "basketball/nba" },
   f1: { label: "Formula 1", path: "racing/f1" },
   atp: { label: "ATP Tennis", path: "tennis/atp" },
+  // Not ESPN: served by cricket.ts (CricketData.org), see getScores.
+  cricket: { label: "Cricket", path: "cricket/cricapi" },
 };
 
 const API = "https://site.api.espn.com/apis";
@@ -126,6 +128,12 @@ export function slugToLeague(s: string): string | null {
 export async function getScores(league: string, date = ""): Promise<NmEvent[]> {
   const L = NM_LEAGUES[league];
   if (!L) return [];
+  if (league === "cricket") {
+    // CricketData has no per-day board on the free plan — today's list only.
+    if (date) return [];
+    const { getCricket, cricketToEvents } = await import("./cricket");
+    return cricketToEvents(await getCricket());
+  }
   if (date && !/^\d{8}$/.test(date)) date = "";
   try {
     return await cached(`scores/${league}/${date || "now"}`, date ? 300 : FRESH_S, async () => {
@@ -155,7 +163,7 @@ export async function getScores(league: string, date = ""): Promise<NmEvent[]> {
 
 export async function getStandings(league: string): Promise<NmStanding[]> {
   const L = NM_LEAGUES[league];
-  if (!L?.table) return [];
+  if (!L?.table || league === "cricket") return [];
   try {
     return await cached(`table/${league}`, 1800, async () => {
       const j = await getJson(`${API}/v2/sports/${L.path}/standings`);
@@ -274,7 +282,7 @@ function player(p: Any): NmPlayer {
 
 export async function getMatch(league: string, id: string): Promise<NmMatch | null> {
   const L = NM_LEAGUES[league];
-  if (!L || !/^\d{1,12}$/.test(id)) return null;
+  if (!L || league === "cricket" || !/^\d{1,12}$/.test(id)) return null;
   try {
     return await cached(`match/${league}/${id}`, 30, async () => {
       const j = await getJson(`${API}/site/v2/sports/${L.path}/summary?event=${id}`);

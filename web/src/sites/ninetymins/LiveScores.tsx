@@ -23,7 +23,8 @@ type Ev = {
 type Row = { rank: number; team: string; abbr: string; logo: string; played: number; points: number; gd: number };
 
 const TABS: Array<[string, string]> = [
-  ["eng.1,uefa.champions,esp.1,ita.1,ger.1,nba", "All"],
+  ["eng.1,uefa.champions,esp.1,ita.1,ger.1,cricket,nba", "All"],
+  ["cricket", "Cricket"],
   ["eng.1", "Premier League"],
   ["uefa.champions", "Champions League"],
   ["esp.1", "LaLiga"],
@@ -76,8 +77,12 @@ function order(evs: Ev[]): Ev[] {
 
 /** Match-centre link (clean path; mirrors live.ts matchPath, which is server-only). */
 export function matchHref(e: Ev): string | null {
-  if (!e.home || !e.away || !/^\d+$/.test(e.id)) return null;
+  if (!e.home || !e.away) return null;
   const s = (x: string) => x.toLowerCase().normalize("NFKD").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  if (e.league === "cricket") {
+    return /^[0-9a-f-]{36}$/i.test(e.id) ? `/cricket/${e.id}-${`${s(e.home.name)}-vs-${s(e.away.name)}`.slice(0, 80)}` : null;
+  }
+  if (!/^\d+$/.test(e.id)) return null;
   return `/match/${e.league.replace(/\./g, "-")}/${e.id}-${`${s(e.home.name)}-vs-${s(e.away.name)}`.slice(0, 80)}`;
 }
 

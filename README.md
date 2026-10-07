@@ -262,8 +262,16 @@ SiteArticleProps { site: Site; article: Article; related: Article[]; bodyHtml: s
   data as the homepage.
 - **Next 15.5.19 pinned** — older 15.x has CVE-2025-66478. Don't downgrade.
 - **Hero pitfall** — never mix `aspect-ratio` + `height:100%` on a grid image (§9).
-- **ninetymins live scores** use ESPN's undocumented keyless API (`site.api.espn.com`) through
-  `/api/scores`; football, NBA, F1, ATP work, cricket/SAFF don't. The UI hides itself if the feed fails.
+- **ninetymins live data (all free):**
+  - ESPN's undocumented keyless API (`site.api.espn.com`) → `/api/scores`, `/scores` board and the
+    `/match/<league>/<id>-<a>-vs-<b>` match centre (timeline, stats, line-ups, commentary).
+  - CricketData.org (`api.cricapi.com`, free plan ≈100 calls/day) → cricket in the strip/board and
+    `/cricket/<uuid>-<a>-vs-<b>`. One `currentMatches` call cached 30 min per colo. The key is the
+    Worker secret **`CRICAPI_KEY`** (never in git): `cd web; npx wrangler secret put CRICAPI_KEY --name autoblog-ninetymins`.
+  - Wikipedia REST summaries ("About the teams" on match pages, CC BY-SA with source link) and
+    OpenLigaDB (Bundesliga top scorers on `/topic/football`). flagcdn.com for flags.
+  - `/topic/saff-championship` is a hand-built hub (`web/src/sites/ninetymins/saff.ts` holds the finals list).
+  - Every feed fails soft: cached copy, else the widget hides. SAFF has no live feed anywhere free.
 
 ---
 

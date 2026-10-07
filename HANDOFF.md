@@ -39,6 +39,9 @@ Read `CLAUDE.md` and `README.md` first. NOTE: README still says Vercel — the s
 - Token also lacks Account Analytics:Read, so D1 rows read/day can't be reported yet.
 - Done: Vercel analytics removed from `layout.tsx`; README rewritten for Cloudflare + D1 + LLM chain.
 
+- ninetymins: match centre, /scores, cricket (needs Worker secret CRICAPI_KEY), FIFA-style SAFF hub,
+  Wikipedia + OpenLigaDB widgets. NinetyMins now gets a 3rd daily article (09:30 UTC drip run).
+
 ## TODO (in priority order)
 1. **Deploy ninetymins** (`powershell -ExecutionPolicy Bypass -File web/deploy-site.ps1 ninetymins`).
    A cloud session has no Cloudflare credentials; options: (a) the owner runs the command on their PC

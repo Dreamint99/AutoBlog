@@ -7,6 +7,8 @@ on:
   schedule:
     - cron: "0 15 * * *"
     - cron: "0 20 * * *"
+    # NinetyMins-only 3rd daily article (09:30 UTC = 15:30 BST).
+    - cron: "30 9 * * *"
   workflow_dispatch:
     inputs:
       per_site:
@@ -65,9 +67,22 @@ jobs:
           PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
           PYTHONUTF8: "1"
         run: |
-          # 2 runs/day × N=1 → 2 new articles per site per day.
+          # 2 runs/day × N=1 → 2 new articles per site per day (+1 NinetyMins at 09:30).
           N="${{ github.event.inputs.per_site || '1' }}"
           FAIL=0
+          if [ "${{ github.event.schedule }}" = "30 9 * * *" ]; then
+            # NinetyMins 3rd article: a South Asia / cricket angle, rotating daily.
+            NM=(
+              "SAFF Championship and South Asian national football teams (Bangladesh, India, Nepal, Maldives) — fixtures, results, history"
+              "cricket match today — fixtures, start times by timezone and where to watch legally"
+              "Bangladesh national football team — upcoming matches, squad news and how to watch"
+              "Bangladesh cricket team — upcoming series, schedule and where to watch"
+              "Indian Super League and AFC competitions — fixtures and how to watch"
+            )
+            SEED="${NM[$(( $(date +%j | sed 's/^0*//') % ${#NM[@]} ))]}"
+            python drip.py ninetymins 1 500 "$SEED" || exit 1
+            exit 0
+          fi
           # drip_enabled sites (infkey, ninetymins) — N general each.
           python drip.py all "$N" 500 || FAIL=1
           # Countly: the 20:00 run takes the wealth category, the 15:00 run a general topic.

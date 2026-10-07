@@ -14,6 +14,11 @@ export async function GET(req: Request, { params }: { params: Promise<{ site: st
   const url = new URL(req.url);
   const headers = { "cache-control": "public, max-age=30" };
 
+  if (url.searchParams.get("cricket")) {
+    const { getCricket } = await import("@/sites/ninetymins/cricket");
+    return NextResponse.json({ matches: await getCricket() }, { headers: { "cache-control": "public, max-age=60" } });
+  }
+
   const match = url.searchParams.get("match");
   if (match) {
     const [league, id] = match.split(":");
@@ -27,7 +32,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ site: st
   const leagues = (url.searchParams.get("l") || "eng.1,uefa.champions,nba")
     .split(",")
     .filter((l) => l in NM_LEAGUES)
-    .slice(0, 10);
+    .slice(0, 16);
   const lists = await Promise.all(leagues.map((l) => getScores(l, date)));
   return NextResponse.json({ events: lists.flat() }, { headers });
 }

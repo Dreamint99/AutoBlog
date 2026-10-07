@@ -6,6 +6,12 @@ import { JsonLd, breadcrumbSchema } from "@/lib/seo";
 import { Shell } from "@/sites/ninetymins/Chrome";
 import MatchCenter from "@/sites/ninetymins/MatchCenter";
 import { getMatch, slugToLeague, matchPath, type NmMatch } from "@/sites/ninetymins/live";
+import { wikiSummary } from "@/sites/ninetymins/free";
+
+function wikiHints(name: string, sport: string): string[] {
+  if (sport === "basketball") return [name];
+  return [`${name} national football team`, `${name} F.C.`, `${name} FC`, name];
+}
 
 export const dynamic = "force-dynamic";
 
@@ -59,6 +65,9 @@ export default async function MatchPage(p: P) {
   // Old/short links (no team slug) → the canonical readable URL.
   if (!raw.includes("-")) permanentRedirect(`/s/${site.id}${path}`);
   const base = siteBaseUrl(site);
+  const about = (await Promise.all([m.home, m.away].map((t) => wikiSummary(t.full, wikiHints(t.full, m.sport))))).filter(
+    (w): w is NonNullable<typeof w> => !!w,
+  );
 
   const event: Record<string, unknown> = {
     "@context": "https://schema.org",
@@ -102,6 +111,22 @@ export default async function MatchPage(p: P) {
       </nav>
       <h1 className="nm-sr">{titleOf(m)}</h1>
       <MatchCenter initial={m} />
+      {about.length ? (
+        <section className="nm-wrap nm-mc-body nm-about" aria-label="About the teams">
+          <h2 className="nm-saff-h">About the teams</h2>
+          <div className="nm-about-grid">
+            {about.map((w) => (
+              <article className="nm-box" key={w.url}>
+                <h3 className="nm-box-h">{w.title}</h3>
+                <p>{w.extract}</p>
+                <a href={w.url} rel="nofollow noopener" target="_blank" className="nm-box-note">
+                  Source: Wikipedia (CC BY-SA)
+                </a>
+              </article>
+            ))}
+          </div>
+        </section>
+      ) : null}
     </Shell>
   );
 }
