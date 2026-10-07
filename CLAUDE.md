@@ -25,3 +25,16 @@ one codebase deployed once per site on Vercel) read Supabase and render with the
 No tool guarantees first-page ranking; `*.vercel.app` ranks poorly (need real domains); mass AI
 publishing risks Google "scaled content abuse" (drip, don't dump); AI text isn't reliably
 "undetectable" — Google ranks on helpfulness.
+
+## probashiinfo.com (WordPress, Bengali) — the 5th site
+- Not a Vercel site: `publish_target: wordpress` → `generator/modules/wordpress.py` posts via the WP REST API
+  (creds only in GitHub secrets `PROBASHIINFO_WP_*`; there is no local `.env`).
+- Auto-post: `.github/workflows/probashi-drip.yml`, 2 Bengali posts/day (09:30 + 19:30 BST) on the free LLM
+  chain (Gemini first). A run that publishes nothing now fails red. GitHub disables scheduled workflows after
+  ~60 days without repo activity — re-enable with `gh workflow enable probashi-drip.yml`.
+- Images: real photos only (`generator/modules/photos.py`: Pixabay → Openverse CC0, tag-matched, re-hosted in WP
+  media, never reused). One-off repair of old posts: `probashi-fix-images.yml` (dry-run / run / all).
+- No English "Key takeaways" box on WordPress posts (pipeline skips it; a WP snippet hides it on old posts).
+- Front-end changes on the live site are Code Snippets (WP admin → Snippets), source kept in the
+  `Dreamint99/probashi-bondhu-web` repo under `promo/`: Probashi Bondhu promo (#6), Dream International ad (#7),
+  newspaper redesign (#8, `PN_PUBLIC` false = admin-only preview), Key takeaways hider (#9).
