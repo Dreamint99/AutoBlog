@@ -43,7 +43,7 @@ BN_EN = [("সৌদি", "saudi arabia riyadh"), ("কাতার", "doha qata
 
 def english_query(title: str, alts: list[str]) -> list[str]:
     qs = [a for a in alts if re.search(r"[A-Za-z]{3}", a)][:1]
-    if os.getenv("DEEPSEEK_API_KEY") or os.getenv("OPENROUTER_API_KEY"):
+    if any(os.getenv(k) for k in ("GEMINI_API_KEY", "GROQ_API_KEY", "CEREBRAS_API_KEY", "OPENROUTER_API_KEY", "DEEPSEEK_API_KEY")):
         try:
             from modules.llm import chat
             q = chat("You turn Bengali article titles into ONE short English stock-photo search query "

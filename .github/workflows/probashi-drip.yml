@@ -1,20 +1,12 @@
 name: Probashi daily auto-post
 
 # Runs in GitHub's cloud — posts even when your PC is OFF.
-# 7 runs/day at different times (cron is UTC; Bangladesh = UTC+6).
-#   00:30 UTC = 06:30 BST   |   03:30 UTC = 09:30 BST
-#   06:30 UTC = 12:30 BST   |   09:30 UTC = 15:30 BST
-#   12:30 UTC = 18:30 BST   |   15:00 UTC = 21:00 BST
-#   17:00 UTC = 23:00 BST
+# 2 Bengali posts/day (cron is UTC; Bangladesh = UTC+6):
+#   03:30 UTC = 09:30 BST   |   13:30 UTC = 19:30 BST
 on:
   schedule:
-    - cron: "30 0 * * *"
     - cron: "30 3 * * *"
-    - cron: "30 6 * * *"
-    - cron: "30 9 * * *"
-    - cron: "30 12 * * *"
-    - cron: "0 15 * * *"
-    - cron: "0 17 * * *"
+    - cron: "30 13 * * *"
   workflow_dispatch: {}   # lets you trigger a run manually from the Actions tab
 
 concurrency:
@@ -41,7 +33,14 @@ jobs:
           STORAGE_BACKEND: supabase
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
-          LLM_PROVIDER: deepseek
+          # Free-tier chain: Gemini → Mistral → Groq → Cerebras → OpenRouter → DeepSeek;
+          # a provider that is out of quota/balance is skipped automatically.
+          LLM_PROVIDER: chain
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           IMAGE_PROVIDER: pixabay
           PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
@@ -50,4 +49,7 @@ jobs:
           PROBASHIINFO_WP_APP_PASSWORD: ${{ secrets.PROBASHIINFO_WP_APP_PASSWORD }}
           PROBASHIINFO_WP_RANKMATH: "1"
           PYTHONUTF8: "1"
-        run: python drip.py probashiinfo 1 999999
+        # Fail loudly when nothing was published (e.g. every LLM out of quota), instead of a green run.
+        run: |
+          python drip.py probashiinfo 1 999999 2>&1 | tee drip.log
+          grep -q "+0 article(s)" drip.log && { echo "::error::No article published"; exit 1; } || true
