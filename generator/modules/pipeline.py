@@ -236,7 +236,8 @@ def generate_article(site: dict, title: str, log=lambda m: None) -> dict:
 
     body = seo.assemble_body({
         "body_html": wa["body_html"],
-        "key_takeaways": data["key_takeaways"],
+        # WordPress sites (Bengali probashiinfo) don't want the English "Key takeaways" box.
+        "key_takeaways": [] if site.get("publish_target") == "wordpress" else data["key_takeaways"],
         "faq": data["faq"],
     })
 
