@@ -165,25 +165,29 @@ def feature_image(title: str, site: dict, query: str | None = None) -> str:
     if sq:
         candidates.append(sq)
     candidates.append(primary)
-    for c in candidates:
-        w = _wikimedia(c)
-        if w:
-            return w
+    # Sites can opt out of Wikipedia matching (`"wiki_images": false` in sites_config):
+    # it is great for named entities but picks wrong photos for generic topics
+    # (VisaPoint got club crests and a 1941 flag as visa-guide heroes).
+    if site.get("wiki_images", True):
+        for c in candidates:
+            w = _wikimedia(c)
+            if w:
+                return w
     q = candidates[0] if candidates else primary
     return _pollinations(q, 1200, 630)
 
 
-def inline_image(keyword: str) -> str:
+def inline_image(keyword: str, use_wiki: bool = True) -> str:
     """PERMANENT, on-topic in-article image. Wikipedia's real image first (great for
     named entities), Pollinations AI as a permanent fallback. No Pixabay — its
     hotlink URLs expire and start returning 400."""
-    wiki = _wikimedia(keyword)
+    wiki = _wikimedia(keyword) if use_wiki else None
     if wiki:
         return wiki
     return _pollinations(keyword, 1000, 560)
 
 
-def embed_inline_images(body_html: str, max_images: int = 4) -> str:
+def embed_inline_images(body_html: str, max_images: int = 4, use_wiki: bool = True) -> str:
     """Replace `[[IMG: keyword]]` markers from the writer with real <figure> images
     (capped at max_images; extra markers are removed)."""
     import html as _html
@@ -195,7 +199,7 @@ def embed_inline_images(body_html: str, max_images: int = 4) -> str:
             return ""
         count["n"] += 1
         kw = m.group(1).strip()
-        url = inline_image(kw)
+        url = inline_image(kw, use_wiki)
         cap = _html.escape(kw[:90])
         return (f'<figure class="post-image"><img src="{url}" alt="{cap}" loading="lazy">'
                 f'<figcaption>{cap}</figcaption></figure>')

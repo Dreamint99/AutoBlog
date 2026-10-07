@@ -1,0 +1,349 @@
+/* ============================================================
+   VisaPoint — consular-service design layer
+   Calm, document-like public-service styling: service bar, white masthead,
+   navy section rail, page-header bands, task tiles, numbered steps, key-facts
+   panels and warning callouts. Own palette (navy / teal / muted gold) — no
+   government or EU insignia or official colours.
+   Tokens sit on .site-walvi .vp-root (higher specificity than theme.css), so
+   every VisaPoint page — register, jobs, tools, legal — picks them up.
+   ============================================================ */
+
+.site-walvi .vp-root {
+  --vp-navy: #0d2b4e;
+  --vp-navy-2: #143a66;
+  --vp-ink: #13202e;
+  --vp-text: #26313f;
+  --vp-muted: #556170;
+  --vp-line: #d6dce4;
+  --vp-line-2: #e8ecf1;
+  --vp-grey: #f3f5f8;
+  --vp-teal: #0f6e6a;
+  --vp-teal-2: #0b5551;
+  --vp-teal-soft: #e5f2f1;
+  --vp-gold: #b5892a;
+  --vp-warn-bg: #fff5e6;
+  --vp-warn-line: #e9a23b;
+  --vp-danger: #b42318;
+  --vp-serif: var(--vp-display), Georgia, "Times New Roman", serif;
+  --vp-sans: var(--vp-body), "Segoe UI", system-ui, Arial, sans-serif;
+
+  /* re-skin the existing theme.css tokens (register / jobs / tools pages) */
+  --eu-blue: #143a66;
+  --eu-blue-d: #0d2b4e;
+  --eu-blue-2: #1d4f86;
+  --eu-ink: #13202e;
+  --gold: #c9a227;
+  --gold-d: #a8841a;
+  --gold-soft: #fbf3dc;
+  --serif: var(--vp-serif);
+  --sans: var(--vp-sans);
+  --accent: #143a66;
+  --accent-soft: #eaf0f7;
+  --accent-line: #c9d6e6;
+  --table-head: #0d2b4e;
+  --table-border: #d6dce4;
+  --table-zebra: #f5f7fa;
+  --table-hover: #eaf0f7;
+
+  font-family: var(--vp-sans);
+  color: var(--vp-text);
+  background: #fff;
+}
+
+.site-walvi .vp-wrap { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+.site-walvi .vp-root a { text-underline-offset: 3px; }
+
+/* ── buttons & small type ────────────────────────────────── */
+.site-walvi .vp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 4px;
+  font: 700 15px/1.1 var(--vp-sans);
+  text-decoration: none;
+  border: 2px solid transparent;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.site-walvi .vp-btn-primary { background: var(--vp-teal); color: #fff; }
+.site-walvi .vp-btn-primary:hover { background: var(--vp-teal-2); color: #fff; }
+.site-walvi .vp-btn-ghost { border-color: #fff; color: #fff; background: transparent; }
+.site-walvi .vp-btn-ghost:hover { background: #fff; color: var(--vp-navy); }
+.site-walvi .vp-btn-block { width: 100%; margin-top: 14px; }
+.site-walvi .vp-eyebrow {
+  display: inline-block;
+  font: 700 12.5px/1 var(--vp-sans);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--vp-teal);
+  padding-left: 10px;
+  border-left: 4px solid var(--vp-gold);
+}
+.site-walvi .vp-eyebrow.light { color: #cfe3f5; }
+.site-walvi .vp-kicker { font: 700 12px/1.2 var(--vp-sans); letter-spacing: 0.06em; text-transform: uppercase; color: var(--vp-teal); }
+.site-walvi .vp-date { font: 500 13px/1.3 var(--vp-sans); color: var(--vp-muted); }
+.site-walvi .vp-more { font: 700 14.5px/1.2 var(--vp-sans); color: var(--vp-navy-2); text-decoration: underline; text-decoration-thickness: 1px; }
+.site-walvi .vp-more:hover { color: var(--vp-teal); }
+.site-walvi .vp-h2 { font: 700 clamp(24px, 2.6vw, 32px)/1.15 var(--vp-serif); color: var(--vp-ink); margin: 0 0 18px; }
+.site-walvi .vp-sub { font: 400 17px/1.55 var(--vp-sans); color: var(--vp-muted); margin: -8px 0 22px; max-width: 72ch; }
+.site-walvi .vp-lede { font: 400 19px/1.55 var(--vp-sans); color: var(--vp-text); max-width: 62ch; margin: 0 0 24px; }
+.site-walvi .vp-lede.light { color: #dbe7f3; }
+
+/* ── header ──────────────────────────────────────────────── */
+.site-walvi .vp-service { background: var(--vp-ink); color: #c9d4e1; font: 500 13px/1.4 var(--vp-sans); }
+.site-walvi .vp-service-in { display: flex; justify-content: space-between; gap: 16px; padding-top: 8px; padding-bottom: 8px; }
+.site-walvi .vp-service b { color: #fff; }
+.site-walvi .vp-service-r { display: flex; gap: 18px; flex: none; }
+.site-walvi .vp-service a { color: #fff; text-decoration: underline; }
+.site-walvi .vp-brandrow { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding-top: 18px; padding-bottom: 18px; }
+.site-walvi .vp-logo { display: inline-flex; align-items: center; gap: 12px; color: var(--vp-ink); text-decoration: none; }
+.site-walvi .vp-logo-mark svg { width: 42px; height: 42px; display: block; }
+.site-walvi .vp-logo-word b { display: block; font: 700 28px/1 var(--vp-serif); letter-spacing: -0.01em; }
+.site-walvi .vp-logo-word small { display: block; margin-top: 5px; font: 600 12px/1 var(--vp-sans); letter-spacing: 0.06em; text-transform: uppercase; color: var(--vp-muted); }
+.site-walvi .vp-logo.light { color: #fff; }
+.site-walvi .vp-logo.light small { color: #a9bbd0; }
+.site-walvi .vp-brand-actions { display: flex; align-items: center; gap: 18px; }
+.site-walvi .vp-updated { display: inline-flex; align-items: center; gap: 8px; font: 600 13px/1 var(--vp-sans); color: var(--vp-muted); }
+.site-walvi .vp-updated i { width: 9px; height: 9px; border-radius: 50%; background: #1f9d55; box-shadow: 0 0 0 3px rgba(31, 157, 85, 0.18); }
+.site-walvi .vp-nav { background: var(--vp-navy); border-bottom: 4px solid var(--vp-gold); }
+.site-walvi .vp-nav-in { display: flex; overflow-x: auto; scrollbar-width: none; }
+.site-walvi .vp-nav-in::-webkit-scrollbar { display: none; }
+.site-walvi .vp-nav a {
+  flex: none;
+  padding: 15px 16px;
+  color: #fff;
+  font: 600 15px/1 var(--vp-sans);
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -4px;
+}
+.site-walvi .vp-nav a:hover { background: var(--vp-navy-2); border-bottom-color: #fff; }
+
+/* ── hero ────────────────────────────────────────────────── */
+.site-walvi .vp-hero {
+  background:
+    linear-gradient(115deg, rgba(13, 43, 78, 0.97) 0%, rgba(20, 58, 102, 0.94) 55%, rgba(15, 110, 106, 0.9) 100%),
+    var(--vp-navy);
+  color: #fff;
+  padding: 48px 0 52px;
+}
+.site-walvi .vp-hero-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.85fr); gap: 44px; align-items: center; }
+.site-walvi .vp-hero .vp-eyebrow { color: #bfe3df; }
+.site-walvi .vp-hero h1 { font: 700 clamp(32px, 4.2vw, 50px)/1.08 var(--vp-serif); margin: 16px 0 16px; letter-spacing: -0.01em; color: #fff; }
+.site-walvi .vp-hero .vp-lede { color: #dbe7f3; }
+.site-walvi .vp-hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.site-walvi .vp-facts { list-style: none; display: flex; flex-wrap: wrap; gap: 0; margin: 28px 0 0; padding: 0; border-top: 1px solid rgba(255, 255, 255, 0.2); }
+.site-walvi .vp-facts li { padding: 14px 22px 0 0; margin-right: 22px; font: 500 14px/1.3 var(--vp-sans); color: #c9d8e8; }
+.site-walvi .vp-facts b { display: block; font: 700 28px/1 var(--vp-serif); color: #fff; margin-bottom: 4px; }
+.site-walvi .vp-hero-panel { background: #fff; color: var(--vp-ink); border-radius: 6px; box-shadow: 0 18px 50px rgba(5, 18, 36, 0.35); border-top: 5px solid var(--vp-gold); }
+
+/* ── sections ────────────────────────────────────────────── */
+.site-walvi .vp-sec { padding: 52px 0; }
+.site-walvi .vp-sec-alt { background: var(--vp-grey); border-top: 1px solid var(--vp-line-2); border-bottom: 1px solid var(--vp-line-2); }
+.site-walvi .vp-sechead { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+
+/* task tiles */
+.site-walvi .vp-tasks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.site-walvi .vp-task {
+  position: relative;
+  display: block;
+  padding: 20px 46px 20px 20px;
+  background: #fff;
+  border: 1px solid var(--vp-line);
+  border-left: 5px solid var(--vp-teal);
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--vp-text);
+  transition: box-shadow 0.15s, border-color 0.15s;
+}
+.site-walvi .vp-task b { display: block; font: 700 19px/1.25 var(--vp-serif); color: var(--vp-navy-2); margin-bottom: 6px; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.site-walvi .vp-task span { font: 400 15px/1.5 var(--vp-sans); color: var(--vp-muted); }
+.site-walvi .vp-task i { position: absolute; right: 18px; top: 50%; transform: translateY(-50%); font-style: normal; font-size: 22px; color: var(--vp-teal); }
+.site-walvi .vp-task:hover { box-shadow: 0 6px 18px rgba(13, 43, 78, 0.12); border-left-color: var(--vp-gold); }
+.site-walvi .vp-task:hover b { color: var(--vp-teal); }
+
+/* destinations directory */
+.site-walvi .vp-dest { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.site-walvi .vp-dest a {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 10px;
+  align-items: center;
+  padding: 12px 14px;
+  background: #fff;
+  border: 1px solid var(--vp-line);
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--vp-ink);
+}
+.site-walvi .vp-dest a:hover { border-color: var(--vp-teal); box-shadow: 0 4px 12px rgba(13, 43, 78, 0.08); }
+.site-walvi .vp-dest-flag { grid-row: span 2; font-size: 26px; line-height: 1; }
+.site-walvi .vp-dest-name { font: 700 16px/1.2 var(--vp-sans); }
+.site-walvi .vp-dest-meta { font: 500 12.5px/1.3 var(--vp-sans); color: var(--vp-muted); }
+
+/* numbered steps */
+.site-walvi .vp-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; counter-reset: s; border-top: 3px solid var(--vp-navy); }
+.site-walvi .vp-steps li { display: flex; flex-direction: column; gap: 12px; padding: 20px 18px 0 0; }
+.site-walvi .vp-steps b { display: block; font: 700 17px/1.3 var(--vp-serif); color: var(--vp-ink); margin-bottom: 6px; }
+.site-walvi .vp-steps p { margin: 0; font: 400 14.5px/1.5 var(--vp-sans); color: var(--vp-muted); }
+.site-walvi .vp-step-n {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--vp-navy);
+  color: #fff;
+  font: 700 16px/1 var(--vp-sans);
+  flex: none;
+}
+
+/* guides list */
+.site-walvi .vp-split { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(300px, 1fr); gap: 36px; align-items: start; }
+.site-walvi .vp-guides { list-style: none; margin: 0; padding: 0; background: #fff; border: 1px solid var(--vp-line); border-radius: 4px; }
+.site-walvi .vp-guide { display: grid; grid-template-columns: 46px 1fr; gap: 14px; padding: 18px 20px; border-bottom: 1px solid var(--vp-line-2); }
+.site-walvi .vp-guide:last-child { border-bottom: 0; }
+.site-walvi .vp-guide-flag { font-size: 30px; line-height: 1; padding-top: 2px; }
+.site-walvi .vp-guide h3 { font: 700 19px/1.3 var(--vp-serif); margin: 4px 0 6px; }
+.site-walvi .vp-guide h3 a { color: var(--vp-navy-2); text-decoration: underline; text-decoration-thickness: 1px; }
+.site-walvi .vp-guide h3 a:hover { color: var(--vp-teal); text-decoration-thickness: 2px; }
+.site-walvi .vp-guide p { margin: 0 0 6px; font: 400 15px/1.5 var(--vp-sans); color: var(--vp-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* panels & tables */
+.site-walvi .vp-panel { background: #fff; border: 1px solid var(--vp-line); border-top: 4px solid var(--vp-navy); border-radius: 4px; padding: 18px 20px; }
+.site-walvi .vp-panel + .vp-panel, .site-walvi .vp-panel + .vp-alert { margin-top: 18px; }
+.site-walvi .vp-panel-h { font: 700 19px/1.25 var(--vp-serif); color: var(--vp-ink); margin: 0 0 6px; }
+.site-walvi .vp-panel-sub { font: 400 14px/1.4 var(--vp-sans); color: var(--vp-muted); margin: 0 0 12px; }
+.site-walvi .vp-table { width: 100%; border-collapse: collapse; margin-bottom: 14px; font: 400 14.5px/1.35 var(--vp-sans); font-variant-numeric: tabular-nums; }
+.site-walvi .vp-table th { text-align: left; font: 700 12px/1.2 var(--vp-sans); text-transform: uppercase; letter-spacing: 0.05em; color: var(--vp-muted); padding: 8px 6px; border-bottom: 2px solid var(--vp-ink); }
+.site-walvi .vp-table td { padding: 9px 6px; border-bottom: 1px solid var(--vp-line-2); }
+.site-walvi .vp-table td:last-child, .site-walvi .vp-table th:last-child { text-align: right; white-space: nowrap; }
+.site-walvi .vp-table b { color: var(--vp-teal); }
+.site-walvi .vp-links { list-style: none; margin: 0; padding: 0; }
+.site-walvi .vp-links li { padding: 8px 0; border-bottom: 1px solid var(--vp-line-2); }
+.site-walvi .vp-links li:last-child { border-bottom: 0; }
+.site-walvi .vp-links a { color: var(--vp-navy-2); font: 600 15px/1.3 var(--vp-sans); }
+
+/* warning callout */
+.site-walvi .vp-alert { background: var(--vp-warn-bg); border: 1px solid var(--vp-warn-line); border-left: 6px solid var(--vp-warn-line); border-radius: 4px; padding: 22px 24px; }
+.site-walvi .vp-alert-head { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.site-walvi .vp-alert-head span { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--vp-danger); color: #fff; font: 800 18px/1 var(--vp-sans); flex: none; }
+.site-walvi .vp-alert h2 { font: 700 22px/1.2 var(--vp-serif); margin: 0; color: var(--vp-ink); }
+.site-walvi .vp-alert ul { margin: 0 0 12px; padding-left: 22px; font: 400 16px/1.6 var(--vp-sans); }
+.site-walvi .vp-alert p { margin: 0; font: 400 15.5px/1.55 var(--vp-sans); }
+.site-walvi .vp-alert.small { padding: 16px 18px; }
+.site-walvi .vp-alert.small h2 { font-size: 18px; }
+.site-walvi .vp-alert.small p { font-size: 14.5px; margin-bottom: 8px; }
+.site-walvi .vp-alert a { color: var(--vp-navy-2); font-weight: 700; }
+
+/* method */
+.site-walvi .vp-method { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+.site-walvi .vp-method div { background: #fff; border: 1px solid var(--vp-line); border-radius: 4px; padding: 18px; }
+.site-walvi .vp-method b { display: block; margin: 12px 0 6px; font: 700 17px/1.3 var(--vp-serif); color: var(--vp-ink); }
+.site-walvi .vp-method p { margin: 0; font: 400 14.5px/1.5 var(--vp-sans); color: var(--vp-muted); }
+
+/* ── article ─────────────────────────────────────────────── */
+.site-walvi .vp-pagehead { background: var(--vp-navy); color: #fff; padding: 22px 0 30px; border-bottom: 4px solid var(--vp-gold); }
+.site-walvi .vp-crumbs { display: flex; flex-wrap: wrap; gap: 8px; font: 500 14px/1.3 var(--vp-sans); color: #a9bbd0; margin-bottom: 18px; }
+.site-walvi .vp-crumbs a { color: #fff; text-decoration: underline; }
+.site-walvi .vp-pagehead h1 { font: 700 clamp(30px, 4vw, 46px)/1.1 var(--vp-serif); margin: 12px 0 12px; max-width: 26ch; color: #fff; }
+.site-walvi .vp-pagehead .vp-lede { margin-bottom: 18px; }
+.site-walvi .vp-pagehead-meta { display: flex; flex-wrap: wrap; gap: 8px 24px; font: 400 14px/1.4 var(--vp-sans); color: #c9d8e8; padding-top: 14px; border-top: 1px solid rgba(255, 255, 255, 0.18); }
+.site-walvi .vp-pagehead-meta b { color: #fff; }
+.site-walvi .vp-art-grid { display: grid; grid-template-columns: 230px minmax(0, 1fr) 300px; gap: 36px; padding-top: 32px; padding-bottom: 20px; align-items: start; }
+.site-walvi .vp-art-left, .site-walvi .vp-art-right { position: sticky; top: 16px; }
+.site-walvi .vp-art-main { min-width: 0; max-width: 740px; }
+.site-walvi .vp-toc { border-top: 4px solid var(--vp-navy); background: var(--vp-grey); padding: 0 0 6px; }
+.site-walvi .vp-toc summary { cursor: pointer; font: 700 15px/1 var(--vp-sans); padding: 14px 16px; color: var(--vp-ink); }
+.site-walvi .vp-toc ol { margin: 0; padding: 0 16px 12px 34px; display: grid; gap: 8px; font: 400 14px/1.4 var(--vp-sans); }
+.site-walvi .vp-toc a { color: var(--vp-navy-2); }
+.site-walvi .vp-toc li.l3 { margin-left: 10px; font-size: 13.5px; }
+.site-walvi .vp-toc-inline { display: none; margin-bottom: 18px; }
+.site-walvi .vp-toc-rail ol { max-height: 70vh; overflow: auto; }
+.site-walvi .vp-art-img { margin: 0 0 22px; }
+.site-walvi .vp-art-img img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 4px; }
+.site-walvi .vp-banner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 24px;
+  margin-bottom: 22px;
+  border-radius: 4px;
+  background: linear-gradient(115deg, var(--vp-grey), #fff);
+  border: 1px solid var(--vp-line);
+  border-left: 6px solid var(--vp-teal);
+}
+.site-walvi .vp-banner-flag { font-size: 54px; line-height: 1; }
+.site-walvi .vp-banner span { display: block; font: 700 12px/1 var(--vp-sans); letter-spacing: 0.1em; text-transform: uppercase; color: var(--vp-muted); }
+.site-walvi .vp-banner b { display: block; font: 700 30px/1.1 var(--vp-serif); color: var(--vp-ink); margin: 6px 0 4px; }
+.site-walvi .vp-banner small { font: 500 14.5px/1.4 var(--vp-sans); color: var(--vp-text); }
+.site-walvi .vp-callout { background: var(--vp-teal-soft); border-left: 5px solid var(--vp-teal); padding: 14px 18px; margin-bottom: 24px; font: 400 15.5px/1.55 var(--vp-sans); color: var(--vp-ink); border-radius: 0 4px 4px 0; }
+.site-walvi .vp-art-foot { margin-top: 30px; padding-top: 14px; border-top: 1px solid var(--vp-line); font: 400 14px/1.5 var(--vp-sans); color: var(--vp-muted); }
+.site-walvi .vp-art-foot a { color: var(--vp-navy-2); font-weight: 700; }
+.site-walvi .vp-keyfacts dl { display: grid; grid-template-columns: 1fr; margin: 12px 0 0; }
+.site-walvi .vp-keyfacts dt { font: 700 12px/1.2 var(--vp-sans); letter-spacing: 0.05em; text-transform: uppercase; color: var(--vp-muted); padding-top: 10px; border-top: 1px solid var(--vp-line-2); }
+.site-walvi .vp-keyfacts dt:first-child { border-top: 0; padding-top: 0; }
+.site-walvi .vp-keyfacts dd { margin: 4px 0 10px; font: 600 14.5px/1.4 var(--vp-sans); color: var(--vp-ink); }
+.site-walvi .vp-keyfacts .vp-more { display: inline-block; margin-top: 12px; font-size: 14px; }
+.site-walvi .vp-related { padding: 36px 0 48px; }
+
+/* long-form body: public-service reading register */
+.site-walvi .vp-root .article-content { font: 400 18px/1.7 var(--vp-sans); color: var(--vp-text); }
+.site-walvi .vp-root .article-content h2 { font: 700 28px/1.2 var(--vp-serif); color: var(--vp-ink); margin: 1.8em 0 0.6em; padding-top: 0.6em; border-top: 1px solid var(--vp-line); scroll-margin-top: 20px; }
+.site-walvi .vp-root .article-content h3 { font: 700 21px/1.3 var(--vp-serif); color: var(--vp-ink); margin: 1.4em 0 0.4em; scroll-margin-top: 20px; }
+.site-walvi .vp-root .article-content a { color: var(--vp-navy-2); text-decoration: underline; }
+.site-walvi .vp-root .article-content a:hover { color: var(--vp-teal); text-decoration-thickness: 2px; }
+.site-walvi .vp-root .article-content .key-takeaways { background: var(--vp-grey); border: 1px solid var(--vp-line); border-left: 6px solid var(--vp-navy); border-radius: 0 4px 4px 0; padding: 18px 22px; }
+.site-walvi .vp-root .article-content .key-takeaways h2 { border-top: 0; padding-top: 0; margin-top: 0; font-size: 22px; }
+
+/* ── footer ──────────────────────────────────────────────── */
+.site-walvi .vp-footer { background: var(--vp-ink); color: #c4d0de; padding: 46px 0 22px; border-top: 6px solid var(--vp-gold); }
+.site-walvi .vp-foot-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 32px; }
+.site-walvi .vp-foot-grid p { font: 400 14.5px/1.6 var(--vp-sans); margin: 16px 0 0; max-width: 40ch; }
+.site-walvi .vp-footer h4 { font: 700 15px/1.2 var(--vp-sans); color: #fff; margin: 4px 0 12px; }
+.site-walvi .vp-foot-grid > div:not(:first-child) a { display: block; padding: 4px 0; color: #e3eaf2; font: 400 14.5px/1.4 var(--vp-sans); text-decoration: underline; text-decoration-color: rgba(255, 255, 255, 0.3); }
+.site-walvi .vp-foot-grid > div:not(:first-child) a:hover { color: #fff; text-decoration-color: #fff; }
+.site-walvi .vp-foot-legal { margin: 32px 0 0; padding: 18px 0 0; border-top: 1px solid rgba(255, 255, 255, 0.14); font: 400 13.5px/1.6 var(--vp-sans); color: #a9b7c7; }
+.site-walvi .vp-foot-legal b { color: #e3eaf2; }
+.site-walvi .vp-foot-base { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 18px; font: 500 13px/1.4 var(--vp-sans); color: #8ea0b5; }
+
+/* flags (flagcdn images) */
+.site-walvi .vp-flag { display: inline-block; vertical-align: middle; object-fit: cover; border-radius: 2px; box-shadow: 0 0 0 1px rgba(19, 32, 46, 0.14); }
+.site-walvi .vp-banner .vp-flag { border-radius: 4px; }
+.site-walvi .vp-table .vp-flag { margin-right: 6px; }
+.site-walvi .vp-keyfacts .vp-panel-h .vp-flag { margin-right: 6px; position: relative; top: -2px; }
+
+/* ── responsive ──────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .site-walvi .vp-art-grid { grid-template-columns: minmax(0, 1fr) 280px; }
+  .site-walvi .vp-art-left { display: none; }
+  .site-walvi .vp-toc-inline { display: block; }
+  .site-walvi .vp-steps { grid-template-columns: repeat(3, 1fr); row-gap: 8px; }
+  .site-walvi .vp-dest { grid-template-columns: repeat(3, 1fr); }
+  .site-walvi .vp-method { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 860px) {
+  .site-walvi .vp-hero-grid, .site-walvi .vp-split, .site-walvi .vp-art-grid { grid-template-columns: 1fr; }
+  .site-walvi .vp-art-right { position: static; }
+  .site-walvi .vp-tasks { grid-template-columns: 1fr 1fr; }
+  .site-walvi .vp-dest { grid-template-columns: repeat(2, 1fr); }
+  .site-walvi .vp-updated { display: none; }
+  .site-walvi .vp-foot-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .site-walvi .vp-wrap { padding: 0 16px; }
+  .site-walvi .vp-service-in { flex-direction: column; gap: 4px; }
+  .site-walvi .vp-brand-actions .vp-btn { display: none; }
+  .site-walvi .vp-logo-word b { font-size: 24px; }
+  .site-walvi .vp-hero { padding: 32px 0 36px; }
+  .site-walvi .vp-tasks, .site-walvi .vp-steps, .site-walvi .vp-method, .site-walvi .vp-foot-grid { grid-template-columns: 1fr; }
+  .site-walvi .vp-dest { grid-template-columns: 1fr; }
+  .site-walvi .vp-sec { padding: 38px 0; }
+  .site-walvi .vp-guide { grid-template-columns: 34px 1fr; padding: 16px; }
+  .site-walvi .vp-guide-flag { font-size: 24px; }
+  .site-walvi .vp-banner-flag { font-size: 40px; }
+  .site-walvi .vp-banner b { font-size: 24px; }
+  .site-walvi .vp-root .article-content { font-size: 17px; }
+}

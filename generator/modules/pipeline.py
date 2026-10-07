@@ -188,7 +188,7 @@ def generate_article(site: dict, title: str, log=lambda m: None) -> dict:
     body = data["body_html"]
 
     log("🖼️  Embedding inline images…")
-    body = embed_inline_images(body)
+    body = embed_inline_images(body, use_wiki=site.get("wiki_images", True))
 
     log("🔗 Adding internal links…")
     siblings = store.list_articles(site["id"])

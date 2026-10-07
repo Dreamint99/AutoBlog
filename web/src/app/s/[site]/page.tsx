@@ -22,6 +22,16 @@ export async function generateMetadata({
     alternates: { canonical: "/" },
     openGraph: { title: site.name, description: site.tagline, type: "website", url: "/" },
   };
+  // VisaPoint: the tagline alone (52 chars) was the whole meta description.
+  if (site.id === "walvi") {
+    const title = "VisaPoint — Europe Work Permits, Visas & Salaries for Foreign Workers";
+    const description =
+      "Plain-language work-permit routes, visa checklists, real salaries and monthly savings for 40 European countries — with the official government source for each.";
+    meta.title = title;
+    meta.description = description;
+    meta.openGraph = { title, description, type: "website", url: "/", siteName: "VisaPoint" };
+    meta.twitter = { card: "summary", title, description };
+  }
   // Search-engine ownership verification (home-page meta tags).
   if (site.id === "infkey") {
     meta.verification = {

@@ -1,61 +1,69 @@
-import "./theme.css";
 import Link from "next/link";
-import type { SiteArticleProps, Site, Article, TocItem } from "@/lib/types";
+import type { SiteArticleProps, Site, Article as A, TocItem } from "@/lib/types";
 import { Masthead, Footer } from "./Chrome";
 import { fontVars } from "./fonts";
-
-function formatDate(iso: string): string {
-  const d = new Date(iso);
-  if (Number.isNaN(d.getTime())) return "";
-  return d.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
-}
-
-function categoryOf(article: Article): string {
-  const tag = article.tags.find((t) => t.trim().length > 0);
-  return (tag ?? article.keyword ?? "Guide").toUpperCase();
-}
+import { countryOf, topicOf, trustedImage, fmtDate } from "./guide-meta";
+import Flag from "./Flag";
 
 function Toc({ items, variant }: { items: TocItem[]; variant: "inline" | "rail" }) {
-  if (items.length === 0) return null;
+  if (!items.length) return null;
   return (
-    <details className={`toc toc-${variant}`} open>
+    <details className={`vp-toc vp-toc-${variant}`} open={variant === "rail"}>
       <summary>On this page</summary>
-      <ul className="toc-list">
-        {items.map((item) => (
-          <li className={item.level >= 3 ? "lvl-3" : "lvl-2"} key={item.id}>
-            <a href={`#${item.id}`}>{item.text}</a>
+      <ol>
+        {items.map((it) => (
+          <li className={it.level >= 3 ? "l3" : "l2"} key={it.id}>
+            <a href={`#${it.id}`}>{it.text}</a>
           </li>
         ))}
-      </ul>
+      </ol>
     </details>
   );
 }
 
-function RelatedCard({ site, article }: { site: Site; article: Article }) {
-  const href = `/s/${site.id}/${article.slug}`;
+function Related({ site, items }: { site: Site; items: A[] }) {
+  if (!items.length) return null;
   return (
-    <article className="card">
-      <Link href={href} className="card-media" aria-label={article.title} tabIndex={-1}>
-        <span className="card-cat">{categoryOf(article)}</span>
-        {article.image_url ? <img src={article.image_url} alt={article.title} loading="lazy" /> : null}
-      </Link>
-      <div className="card-body">
-        <h3 className="card-title">
-          <Link href={href}>{article.title}</Link>
-        </h3>
-        {article.excerpt ? <p className="card-excerpt">{article.excerpt}</p> : null}
-        <div className="card-foot">
-          <span className="read">{article.reading_time} min</span>
-          <span className="sep">·</span>
-          <span>{formatDate(article.created_at)}</span>
-        </div>
-      </div>
-    </article>
+    <section className="vp-related" aria-labelledby="vp-related-h">
+      <h2 id="vp-related-h" className="vp-h2">
+        Related guidance
+      </h2>
+      <ul className="vp-guides">
+        {items.slice(0, 6).map((a) => {
+          const c = countryOf(a);
+          return (
+            <li className="vp-guide" key={a.id}>
+              <span className="vp-guide-flag">
+                <Flag emoji={c?.flag} size={36} />
+              </span>
+              <div>
+                <span className="vp-kicker">
+                  {topicOf(a)}
+                  {c ? ` · ${c.name}` : ""}
+                </span>
+                <h3>
+                  <Link href={`/s/${site.id}/${a.slug}`}>{a.title}</Link>
+                </h3>
+                <span className="vp-date">Updated {fmtDate(a.created_at)}</span>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
   );
 }
 
 export default function Article({ site, article, related, bodyHtml, toc }: SiteArticleProps) {
-  const date = formatDate(article.created_at);
+  const b = `/s/${site.id}`;
+  const c = countryOf(article);
+  const img = trustedImage(article);
+  const updated = fmtDate(article.created_at);
+  // Inline photos picked from Wikipedia are matched by keyword and often wrong (a
+  // nuclear plant captioned "construction workers") — drop them from the body.
+  const body = bodyHtml
+    .replace(/<figure\b[^>]*>(?:(?!<\/figure>)[\s\S])*?wiki(?:media|pedia)\.org(?:(?!<\/figure>)[\s\S])*?<\/figure>/gi, "")
+    .replace(/<img\b[^>]*wiki(?:media|pedia)\.org[^>]*>/gi, "");
 
   return (
     <div className={fontVars}>
@@ -65,98 +73,141 @@ export default function Article({ site, article, related, bodyHtml, toc }: SiteA
       <Masthead site={site} />
 
       <main>
-        <article className="article-wrap">
-          <nav className="breadcrumb" aria-label="Breadcrumb">
-            <Link href={`/s/${site.id}`}>{site.name}</Link>
-            <span className="sep" aria-hidden="true">
-              /
-            </span>
-            <Link href={`/s/${site.id}#guides`}>Guides</Link>
-            <span className="sep" aria-hidden="true">
-              /
-            </span>
-            <span className="here">{article.title}</span>
-          </nav>
-
-          <header className="article-head">
-            <div className="article-cat">{categoryOf(article)}</div>
-            <h1 className="article-title">{article.title}</h1>
-            {article.excerpt ? <p className="article-dek">{article.excerpt}</p> : null}
-
-            <div className="data-band">
-              <span className="vb-tag">Guidance only</span>
-              {date ? <span className="vb-date">{date}</span> : null}
-              <span className="vb-note">
-                Salaries &amp; visa rules are indicative — confirm with the official source or embassy.
+        <article>
+          <header className="vp-pagehead">
+            <div className="vp-wrap">
+              <nav className="vp-crumbs" aria-label="Breadcrumb">
+                <Link href={b}>Home</Link>
+                <span aria-hidden="true">›</span>
+                <Link href={`${b}/guides`}>Work-permit guides</Link>
+                {c ? (
+                  <>
+                    <span aria-hidden="true">›</span>
+                    <Link href={`${b}/countries/${c.slug}`}>{c.name}</Link>
+                  </>
+                ) : null}
+              </nav>
+              <span className="vp-eyebrow light">
+                {topicOf(article)}
+                {c ? ` · ${c.name}` : ""}
               </span>
-            </div>
-
-            <div className="article-meta">
-              {date ? <span>{date}</span> : null}
-              {date ? (
-                <span className="sep" aria-hidden="true">
-                  ·
+              <h1>{article.title}</h1>
+              {article.excerpt ? <p className="vp-lede light">{article.excerpt}</p> : null}
+              <div className="vp-pagehead-meta">
+                <span>
+                  <b>Last reviewed:</b> {updated}
                 </span>
-              ) : null}
-              <span>{article.reading_time} min read</span>
-              {article.keyword ? (
-                <>
-                  <span className="sep" aria-hidden="true">
-                    ·
-                  </span>
-                  <span className="kw">
-                    <span aria-hidden="true">🎯</span>
-                    {article.keyword}
-                  </span>
-                </>
-              ) : null}
-            </div>
-
-            {article.tags.length > 0 ? (
-              <div className="article-tags">
-                {article.tags.map((t) => (
-                  <span className="chip" key={t}>
-                    {t}
-                  </span>
-                ))}
+                <span>
+                  <b>Reading time:</b> {article.reading_time} min
+                </span>
+                <span>
+                  <b>Status:</b> Independent guidance — confirm with the official source
+                </span>
               </div>
-            ) : null}
+            </div>
           </header>
 
-          {article.image_url ? (
-            <figure className="hero-figure">
-              <div className="frame">
-                <img src={article.image_url} alt={article.title} loading="lazy" />
-              </div>
-            </figure>
-          ) : null}
+          <div className="vp-wrap vp-art-grid">
+            <aside className="vp-art-left">
+              <Toc items={toc} variant="rail" />
+            </aside>
 
-          <div className="article-grid">
-            <div className="article-main">
+            <div className="vp-art-main">
+              {img ? (
+                <figure className="vp-art-img">
+                  <img src={img} alt={article.title} />
+                </figure>
+              ) : c ? (
+                <div className="vp-banner" role="img" aria-label={`${c.name} — ${c.permitType}`}>
+                  <span className="vp-banner-flag">
+                    <Flag emoji={c.flag} size={84} />
+                  </span>
+                  <div>
+                    <span>Destination</span>
+                    <b>{c.name}</b>
+                    <small>{c.permitType}</small>
+                  </div>
+                </div>
+              ) : null}
+
               <Toc items={toc} variant="inline" />
-              <div
-                id="article-body"
-                className="article-content"
-                dangerouslySetInnerHTML={{ __html: bodyHtml }}
-              />
+
+              <div className="vp-callout">
+                <b>Before you apply:</b> rules, fees and processing times change. Confirm every requirement with the
+                official government portal{c ? ` for ${c.name}` : ""} or the embassy, and never pay an agent for a job
+                offer you cannot verify.
+              </div>
+
+              <div id="article-body" className="article-content" dangerouslySetInnerHTML={{ __html: body }} />
+
+              <div className="vp-art-foot">
+                <span>
+                  Page last reviewed {updated}. Spotted something out of date?{" "}
+                  <Link href={`${b}/contact`}>Tell us</Link>.
+                </span>
+              </div>
             </div>
-            <Toc items={toc} variant="rail" />
+
+            <aside className="vp-art-right">
+              {c ? (
+                <section className="vp-panel vp-keyfacts">
+                  <h2 className="vp-panel-h">
+                    <Flag emoji={c.flag} size={26} /> {c.name}: key facts
+                  </h2>
+                  <dl>
+                    <dt>Permit</dt>
+                    <dd>{c.permitType}</dd>
+                    <dt>Typical processing</dt>
+                    <dd>
+                      {c.visaWeeks[0]}–{c.visaWeeks[1]} weeks
+                    </dd>
+                    <dt>EU / Schengen</dt>
+                    <dd>
+                      {c.inEU ? "EU member" : "Not in the EU"} · {c.schengen ? "Schengen area" : "outside Schengen"}
+                    </dd>
+                    <dt>IELTS needed</dt>
+                    <dd>{c.ieltsRequired ? "Usually yes" : "Usually not for skilled trades"}</dd>
+                    <dt>Language</dt>
+                    <dd>{c.language}</dd>
+                    <dt>Currency</dt>
+                    <dd>{c.currency}</dd>
+                  </dl>
+                  <a className="vp-btn vp-btn-primary vp-btn-block" href={c.officialSource} target="_blank" rel="noopener noreferrer">
+                    Official government source ↗
+                  </a>
+                  <Link className="vp-more" href={`${b}/countries/${c.slug}`}>
+                    Salaries &amp; cost of living in {c.name} →
+                  </Link>
+                </section>
+              ) : null}
+              <section className="vp-panel">
+                <h2 className="vp-panel-h">Tools</h2>
+                <ul className="vp-links">
+                  <li>
+                    <Link href={`${b}/tools`}>Salary &amp; savings calculator</Link>
+                  </li>
+                  <li>
+                    <Link href={`${b}/tools`}>Compare two countries</Link>
+                  </li>
+                  <li>
+                    <Link href={`${b}/jobs`}>Salary by job</Link>
+                  </li>
+                </ul>
+              </section>
+              <section className="vp-alert small">
+                <div className="vp-alert-head">
+                  <span aria-hidden="true">!</span>
+                  <h2>Scam check</h2>
+                </div>
+                <p>Real employers do not charge for jobs or visas. Walk away from anyone asking for a “guarantee” fee.</p>
+                <Link href={`${b}#scams`}>See the warning signs →</Link>
+              </section>
+            </aside>
           </div>
 
-          {related.length > 0 ? (
-            <section className="related" aria-labelledby="related-h">
-              <div className="section-head">
-                <h2 id="related-h">Related guides</h2>
-                <span className="rule" />
-                <span className="count">{String(related.length).padStart(2, "0")} reads</span>
-              </div>
-              <div className="grid">
-                {related.map((a) => (
-                  <RelatedCard site={site} article={a} key={a.id} />
-                ))}
-              </div>
-            </section>
-          ) : null}
+          <div className="vp-wrap">
+            <Related site={site} items={related} />
+          </div>
         </article>
       </main>
 

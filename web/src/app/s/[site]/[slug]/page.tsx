@@ -31,6 +31,10 @@ export async function generateMetadata({
   if (!site || !article) return {};
   const title = clamp(article.meta_title || article.title, 60);
   const description = clamp(article.meta_description || article.excerpt || "", 158);
+  // VisaPoint feature images picked from Wikipedia are often wrong (club crests, a
+  // 1941 flag) — never put them in share previews.
+  const shareImg =
+    site.id === "walvi" && /wikimedia\.org|wikipedia\.org/i.test(article.image_url || "") ? "" : article.image_url;
   return {
     title,
     description,
@@ -43,13 +47,13 @@ export async function generateMetadata({
       type: "article",
       siteName: site.name,
       url: `/${slug}`,
-      images: article.image_url ? [article.image_url] : [],
+      images: shareImg ? [shareImg] : [],
     },
     twitter: {
       card: "summary_large_image",
       title: clamp(article.title, 60),
       description,
-      images: article.image_url ? [article.image_url] : [],
+      images: shareImg ? [shareImg] : [],
     },
   };
 }
@@ -113,7 +117,12 @@ export default async function ArticlePage({
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(article.schema ?? {}) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(article.schema ?? {}, (k, v) =>
+            // same rule as the share image: no Wikipedia-picked images in VisaPoint structured data
+            site.id === "walvi" && k === "image" && /wikimedia\.org|wikipedia\.org/i.test(JSON.stringify(v)) ? undefined : v,
+          ),
+        }}
       />
       <JsonLd
         data={breadcrumbSchema([

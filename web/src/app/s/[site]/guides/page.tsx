@@ -8,6 +8,8 @@ import { siteBaseUrl } from "@/lib/sites.config";
 import { WalviShell } from "@/sites/walvi/Chrome";
 import { PageBanner, Crumbs } from "@/sites/walvi/data-ui";
 import { JsonLd, breadcrumbSchema, websiteSchema } from "@/lib/seo";
+import { countryOf, topicOf } from "@/sites/walvi/guide-meta";
+import Flag from "@/sites/walvi/Flag";
 
 export const dynamic = "force-dynamic";
 
@@ -15,11 +17,6 @@ function formatDate(iso: string): string {
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return "";
   return d.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
-}
-
-function categoryOf(a: Article): string {
-  const tag = a.tags.find((t) => t.trim().length > 0);
-  return (tag ?? a.keyword ?? "Guide").toUpperCase();
 }
 
 export async function generateMetadata({
@@ -45,26 +42,29 @@ export async function generateMetadata({
   };
 }
 
-function Card({ siteId, article }: { siteId: string; article: Article }) {
-  const href = `/s/${siteId}/${article.slug}`;
+/* Text list (flag + topic + title) — no feature photos: the Wikipedia-matched ones
+   were often wrong, and 250 images made this page ~640 KB. */
+function GuideRow({ siteId, article }: { siteId: string; article: Article }) {
+  const c = countryOf(article);
   return (
-    <article className="card">
-      <Link href={href} className="card-media" aria-label={article.title} tabIndex={-1}>
-        <span className="card-cat">{categoryOf(article)}</span>
-        {article.image_url ? <img src={article.image_url} alt={article.title} loading="lazy" /> : null}
-      </Link>
-      <div className="card-body">
-        <h3 className="card-title">
-          <Link href={href}>{article.title}</Link>
+    <li className="vp-guide">
+      <span className="vp-guide-flag">
+        <Flag emoji={c?.flag} size={36} />
+      </span>
+      <div>
+        <span className="vp-kicker">
+          {topicOf(article)}
+          {c ? ` · ${c.name}` : ""}
+        </span>
+        <h3>
+          <Link href={`/s/${siteId}/${article.slug}`}>{article.title}</Link>
         </h3>
-        {article.excerpt ? <p className="card-excerpt">{article.excerpt}</p> : null}
-        <div className="card-foot">
-          <span className="read">{article.reading_time} min</span>
-          <span className="sep">·</span>
-          <span>{formatDate(article.created_at)}</span>
-        </div>
+        {article.excerpt ? <p>{article.excerpt}</p> : null}
+        <span className="vp-date">
+          Updated {formatDate(article.created_at)} · {article.reading_time} min read
+        </span>
       </div>
-    </article>
+    </li>
   );
 }
 
@@ -110,11 +110,11 @@ export default async function GuidesPage({
             <p>Work-permit walkthroughs, salary breakdowns and scam warnings are publishing now. Check back shortly.</p>
           </div>
         ) : (
-          <div className="grid" style={{ marginTop: "8px" }}>
+          <ul className="vp-guides" style={{ marginTop: "8px", marginBottom: "40px" }}>
             {articles.map((a) => (
-              <Card siteId={site.id} article={a} key={a.id} />
+              <GuideRow siteId={site.id} article={a} key={a.id} />
             ))}
-          </div>
+          </ul>
         )}
       </WalviShell>
     </>
