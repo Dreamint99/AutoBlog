@@ -263,6 +263,9 @@ def generate_article(site: dict, title: str, log=lambda m: None) -> dict:
         "created_at": _now(),
     }
     article["schema"] = seo.json_ld(article, site)
+    if site.get("publish_target") == "wordpress":
+        # WordPress re-sources real photos at publish time (modules/photos.py); give it the English query.
+        article["image_query"] = data.get("feature_image_q") or ""
 
     store.add_article(article)
     log(f"✅ Published: {final_title} ({article['word_count']} words)")

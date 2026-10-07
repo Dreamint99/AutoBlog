@@ -134,6 +134,24 @@ def _rank_math_meta(article: dict) -> dict:
     }
 
 
+def used_photo_ids(base: str, headers: dict) -> set:
+    """Source ids (pixabay:123 / openverse:abc) already on the site, stored in each
+    media item's description, so a photo is never reused across posts."""
+    used = set()
+    try:
+        for page in range(1, 6):
+            r = requests.get(f"{base}/wp-json/wp/v2/media", headers=headers, timeout=_TIMEOUT,
+                             params={"per_page": 100, "page": page, "search": "photo-source:",
+                                     "_fields": "description"})
+            if r.status_code >= 400 or not r.json():
+                break
+            for m in r.json():
+                used.update(re.findall(r"photo-source:(\S+?)(?:<|\s|$)", (m.get("description") or {}).get("rendered", "")))
+    except Exception:
+        pass
+    return used
+
+
 def publish(site: dict, article: dict, log=lambda m: None) -> dict:
     """POST the finished article into WordPress as a published post."""
     base, user, pw = _creds(site)
@@ -166,10 +184,23 @@ def publish(site: dict, article: dict, log=lambda m: None) -> dict:
     if _rankmath_enabled(site):
         payload["meta"] = _rank_math_meta(article)
 
-    media_id = _upload_feature_image(base, headers, article.get("image_url", ""),
-                                     article["title"], alt=article.get("keyword", ""))
-    if media_id:
-        payload["featured_media"] = media_id
+    # Real photos only (no AI images): a stock photo for the hero, and every inline
+    # image swapped for a real photo matching its alt text, all re-hosted in WP media.
+    from modules import photos
+    used = used_photo_ids(base, headers)
+    name = re.sub(r"\s+", "-", article.get("keyword", "")) or "feature"
+    inline_alts = re.findall(r'<img\b[^>]*alt="([^"]*)"', article["body_html"])
+    hit = photos.find_photo([article.get("image_query", ""), *inline_alts[:1]], used)
+    media = photos.wp_upload(base, headers, hit[0], "feature", alt=article.get("keyword", ""), source_id=hit[1]) if hit else None
+    if media:
+        payload["featured_media"] = media[0]
+    else:
+        media_id = _upload_feature_image(base, headers, article.get("image_url", ""),
+                                         article["title"], alt=article.get("keyword", ""))
+        if media_id:
+            payload["featured_media"] = media_id
+    payload["content"], _ = photos.rehost_inline(base, headers, article["body_html"], used,
+                                                 article.get("image_query", ""), name)
 
     r = requests.post(
         f"{base}/wp-json/wp/v2/posts",

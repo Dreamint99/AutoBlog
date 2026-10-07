@@ -1,0 +1,50 @@
+name: Probashi replace AI images
+
+# Manual, one-off: swaps AI / mismatched images on probashiinfo.com for real photos
+# (Pixabay → Openverse CC0), re-hosted in the WordPress media library.
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "dry-run = only list · run = AutoBlog images · all = every featured image too"
+        default: dry-run
+        type: choice
+        options: [dry-run, run, all]
+      limit:
+        description: "max posts to touch (blank = all)"
+        default: ""
+
+concurrency:
+  group: probashi-drip   # never overlap with the daily auto-post
+  cancel-in-progress: false
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    defaults:
+      run:
+        working-directory: generator
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+          cache-dependency-path: generator/requirements.txt
+      - run: pip install -r requirements.txt
+      - name: Replace images
+        env:
+          LLM_PROVIDER: deepseek
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+          PROBASHIINFO_WP_URL: ${{ secrets.PROBASHIINFO_WP_URL }}
+          PROBASHIINFO_WP_USER: ${{ secrets.PROBASHIINFO_WP_USER }}
+          PROBASHIINFO_WP_APP_PASSWORD: ${{ secrets.PROBASHIINFO_WP_APP_PASSWORD }}
+          PYTHONUTF8: "1"
+        run: |
+          ARGS=""
+          [ "${{ inputs.mode }}" = "dry-run" ] && ARGS="--dry-run"
+          [ "${{ inputs.mode }}" = "all" ] && ARGS="--all"
+          [ -n "${{ inputs.limit }}" ] && ARGS="$ARGS --limit ${{ inputs.limit }}"
+          python fix_probashi_images.py $ARGS
