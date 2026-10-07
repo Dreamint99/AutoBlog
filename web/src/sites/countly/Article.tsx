@@ -4,6 +4,7 @@ import { fontVars } from "./fonts";
 import ShareButtons from "./ShareButtons";
 import ReadingProgress from "./ReadingProgress";
 import HouseAd from "./HouseAd";
+import { CnHeader } from "./Home";
 import type { SiteArticleProps, Article, TocItem } from "@/lib/types";
 
 /* ────────────────────────────────────────────────────────────
@@ -167,40 +168,7 @@ export default function Article({ site, article, related, bodyHtml, toc, popular
   return (
     <div className={`cn-root ${fontVars}`}>
       <ReadingProgress />
-      {/* ── HEADER ── */}
-      <header className="cn-header">
-        <div className="cn-topnote">
-          <div className="cn-wrap">
-            <IconChart />
-            <span>
-              Independent data &amp; statistics — figures are best-available estimates compiled from public sources; verify before citing.
-            </span>
-          </div>
-        </div>
-        <div className="cn-wrap">
-          <div className="cn-bar">
-            <Link href={`/s/${site.id}`} className="cn-brand" aria-label={`${site.name} home`}>
-              <span className="cn-logo">
-                <IconChart />
-              </span>
-              <span className="cn-wordmark">
-                <b>
-                  Count<span>ly</span>
-                </b>
-                <small>The World in Numbers</small>
-              </span>
-            </Link>
-            <nav className="cn-nav" aria-label="Primary">
-              <Link href={`/s/${site.id}`}>Statistics</Link>
-              <Link href={`/s/${site.id}`}>Companies</Link>
-              <Link href={`/s/${site.id}`}>Rankings</Link>
-              <Link href={`/s/${site.id}`} className="cn-nav-cta">
-                Browse data
-              </Link>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <CnHeader site={site} />
 
       <article className="cn-article">
         {/* ── ARTICLE HEAD ── */}

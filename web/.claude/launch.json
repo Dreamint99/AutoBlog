@@ -6,6 +6,12 @@
       "runtimeExecutable": "npx",
       "runtimeArgs": ["next", "dev", "-p", "3021"],
       "port": 3021
+    },
+    {
+      "name": "countly-worker",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["wrangler", "dev", "-c", "wrangler.dev.jsonc", "--port", "8799", "--local-protocol", "http"],
+      "port": 8799
     }
   ]
 }
