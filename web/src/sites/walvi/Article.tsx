@@ -4,6 +4,7 @@ import { Masthead, Footer } from "./Chrome";
 import { fontVars } from "./fonts";
 import { countryOf, topicOf, trustedImage, fmtDate } from "./guide-meta";
 import Flag from "./Flag";
+import { vcFor, isVcArticle, flagFor } from "./visacheck/data";
 
 function Toc({ items, variant }: { items: TocItem[]; variant: "inline" | "rail" }) {
   if (!items.length) return null;
@@ -58,6 +59,7 @@ export default function Article({ site, article, related, bodyHtml, toc }: SiteA
   const b = `/s/${site.id}`;
   const c = countryOf(article);
   const img = trustedImage(article);
+  const vc = isVcArticle(article) ? vcFor(article) : undefined;
   const updated = fmtDate(article.created_at);
   // Inline photos picked from Wikipedia are matched by keyword and often wrong (a
   // nuclear plant captioned "construction workers") — drop them from the body.
@@ -130,6 +132,27 @@ export default function Article({ site, article, related, bodyHtml, toc }: SiteA
                 </div>
               ) : null}
 
+              {vc ? (
+                <section className="vc-now" aria-label={`Check your ${vc.country} visa`}>
+                  <div className="vc-now-head">
+                    <img className="vp-flag" src={flagFor(vc)} alt="" width={44} height={30} />
+                    <div>
+                      <span>Official {vc.country} visa check</span>
+                      <b>{vc.portal}</b>
+                    </div>
+                  </div>
+                  <ol className="vc-now-steps">
+                    <li>Open the official portal below (type the address yourself).</li>
+                    <li>Enter: {vc.need.join(", ")}.</li>
+                    <li>Check that your name, passport number, visa type and validity match exactly.</li>
+                  </ol>
+                  <a className="vp-btn vp-btn-primary" href={vc.url} target="_blank" rel="noopener noreferrer nofollow">
+                    Check on {vc.url.replace(/^https?:\/\//, "").replace(/\/.*$/, "")} ↗
+                  </a>
+                  {vc.app ? <p className="vc-app">Also: {vc.app}</p> : null}
+                  <p className="vc-tip">{vc.tip}</p>
+                </section>
+              ) : null}
               <Toc items={toc} variant="inline" />
 
               <div className="vp-callout">

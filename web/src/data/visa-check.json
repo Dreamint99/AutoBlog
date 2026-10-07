@@ -1,0 +1,145 @@
+{
+  "verified": "2026-10-08",
+  "countries": [
+    {
+      "slug": "qatar", "country": "Qatar", "iso2": "qa", "region": "Gulf",
+      "portal": "Ministry of Interior — Visa Services (Visa Inquiry & Printing)", "url": "https://portal.moi.gov.qa",
+      "app": "Metrash (Ministry of Interior app)",
+      "need": ["Visa number or passport number", "Nationality"],
+      "tip": "Work visas issued by an employer can be checked and printed on the MOI portal before travel."
+    },
+    {
+      "slug": "saudi-arabia", "country": "Saudi Arabia", "iso2": "sa", "region": "Gulf",
+      "portal": "Ministry of Foreign Affairs — Unified Visa Platform", "url": "https://visa.mofa.gov.sa",
+      "app": "",
+      "need": ["Application or visa number", "Passport number", "Nationality"],
+      "tip": "Use the official MOFA visa platform to check visa issuance and print the visa."
+    },
+    {
+      "slug": "uae", "country": "United Arab Emirates", "iso2": "ae", "region": "Gulf",
+      "portal": "ICP Smart Services (Federal Authority for Identity, Citizenship, Customs & Port Security)", "url": "https://smartservices.icp.gov.ae",
+      "app": "UAEICP app; Dubai visas: GDRFA Dubai (gdrfad.gov.ae)",
+      "need": ["Passport number", "Nationality", "Visa/file number (if you have it)"],
+      "tip": "Dubai-issued visas can also be checked on the GDRFA Dubai website."
+    },
+    {
+      "slug": "kuwait", "country": "Kuwait", "iso2": "kw", "region": "Gulf",
+      "portal": "Ministry of Interior — e-Services", "url": "https://www.moi.gov.kw",
+      "app": "",
+      "need": ["Visa number", "Passport number"],
+      "tip": "Ask your sponsor for the visa number — Kuwait work visas are issued to the employer."
+    },
+    {
+      "slug": "oman", "country": "Oman", "iso2": "om", "region": "Gulf",
+      "portal": "Royal Oman Police — eVisa", "url": "https://evisa.rop.gov.om",
+      "app": "",
+      "need": ["Application/visa number", "Passport number"],
+      "tip": "Employer-sponsored and e-visas are tracked on the Royal Oman Police eVisa portal."
+    },
+    {
+      "slug": "bahrain", "country": "Bahrain", "iso2": "bh", "region": "Gulf",
+      "portal": "Kingdom of Bahrain eVisa", "url": "https://www.evisa.gov.bh",
+      "app": "",
+      "need": ["Application reference number", "Passport number"],
+      "tip": "Use the eVisa portal's status check with the reference number you received."
+    },
+    {
+      "slug": "malaysia", "country": "Malaysia", "iso2": "my", "region": "Asia",
+      "portal": "Immigration Department of Malaysia", "url": "https://www.imi.gov.my",
+      "app": "eVisa: malaysiavisa.imi.gov.my",
+      "need": ["Passport number", "Nationality", "Application number (eVisa)"],
+      "tip": "Foreign-worker permits are applied for by the employer — confirm the status with the employer and the Immigration Department."
+    },
+    {
+      "slug": "singapore", "country": "Singapore", "iso2": "sg", "region": "Asia",
+      "portal": "Ministry of Manpower — check work pass status", "url": "https://www.mom.gov.sg",
+      "app": "Visit visas: ICA (ica.gov.sg)",
+      "need": ["Passport number", "Date of birth", "Application or FIN number"],
+      "tip": "Work Permit and S Pass applications are tracked on MOM; visit visas on ICA."
+    },
+    {
+      "slug": "south-korea", "country": "South Korea", "iso2": "kr", "region": "Asia",
+      "portal": "Korea Visa Portal", "url": "https://www.visa.go.kr",
+      "app": "",
+      "need": ["Passport number", "English name", "Date of birth"],
+      "tip": "Use 'Check application status' on the Korea Visa Portal."
+    },
+    {
+      "slug": "japan", "country": "Japan", "iso2": "jp", "region": "Asia",
+      "portal": "Japan eVISA (Ministry of Foreign Affairs)", "url": "https://www.evisa.mofa.go.jp",
+      "app": "",
+      "need": ["Application number", "Passport number"],
+      "tip": "eVISA applications show their status in your online account."
+    },
+    {
+      "slug": "turkey", "country": "Turkey", "iso2": "tr", "region": "Europe",
+      "portal": "Republic of Türkiye e-Visa", "url": "https://www.evisa.gov.tr",
+      "app": "",
+      "need": ["Reference number", "Passport number"],
+      "tip": "Only use evisa.gov.tr — many look-alike sites charge extra fees."
+    },
+    {
+      "slug": "romania", "country": "Romania", "iso2": "ro", "region": "Europe",
+      "portal": "Romanian eVisa portal (Ministry of Foreign Affairs)", "url": "https://evisa.mae.ro",
+      "app": "Work permits: General Inspectorate for Immigration (igi.mai.gov.ro)",
+      "need": ["Application number", "Passport number"],
+      "tip": "The employer gets the work permit (aviz de muncă) from IGI first; the long-stay visa is then tracked on the eVisa portal."
+    },
+    {
+      "slug": "serbia", "country": "Serbia", "iso2": "rs", "region": "Europe",
+      "portal": "Welcome to Serbia — Government portal for the single work & residence permit", "url": "https://welcometoserbia.gov.rs",
+      "app": "Type D visa: Ministry of Foreign Affairs (mfa.gov.rs); e-Government: euprava.gov.rs",
+      "need": ["Application number", "Passport number", "Employer's name"],
+      "tip": "Since 2024 the employer files a single work-and-residence permit online; its status is visible on the official portal."
+    },
+    {
+      "slug": "moldova", "country": "Moldova", "iso2": "md", "region": "Europe",
+      "portal": "Republic of Moldova e-Visa (Ministry of Foreign Affairs)", "url": "https://www.evisa.gov.md",
+      "app": "Work & residence permits: General Inspectorate for Migration (igm.gov.md)",
+      "need": ["e-Visa application number", "Passport number"],
+      "tip": "Work permits are approved by the General Inspectorate for Migration; the visa itself is tracked on the e-Visa portal."
+    },
+    {
+      "slug": "north-macedonia", "country": "North Macedonia", "iso2": "mk", "region": "Europe",
+      "portal": "Ministry of Foreign Affairs and Foreign Trade", "url": "https://mfa.gov.mk",
+      "app": "Work permits: Employment Service Agency (av.gov.mk); residence: Ministry of Interior (mvr.gov.mk)",
+      "need": ["Receipt/application number from the embassy", "Passport number"],
+      "tip": "There is no public online visa tracker: ask the embassy or consulate where you applied, quoting your receipt number. Work permits are issued to the employer by the Employment Service Agency."
+    },
+    {
+      "slug": "schengen-vfs", "country": "Schengen countries (via VFS Global)", "iso2": "eu", "region": "Europe",
+      "portal": "VFS Global — Track your application", "url": "https://www.vfsglobal.com",
+      "app": "Some countries use TLScontact or BLS instead",
+      "need": ["Reference number from the receipt", "Last name or date of birth"],
+      "tip": "Tracking shows where your passport is; the visa decision is made by the embassy."
+    },
+    {
+      "slug": "uk", "country": "United Kingdom", "iso2": "gb", "region": "UK & Americas",
+      "portal": "GOV.UK — UK Visas and Immigration", "url": "https://www.gov.uk/visas-immigration",
+      "app": "UK Immigration: ID Check app / UKVI account",
+      "need": ["GWF or application reference", "Email used to apply"],
+      "tip": "Your eVisa and status are shown in your UKVI account."
+    },
+    {
+      "slug": "usa", "country": "United States", "iso2": "us", "region": "UK & Americas",
+      "portal": "CEAC — Visa Status Check (U.S. Department of State)", "url": "https://ceac.state.gov",
+      "app": "",
+      "need": ["Application ID or case number", "Embassy/consulate location"],
+      "tip": "Statuses: Issued, Refused (221g), Administrative Processing."
+    },
+    {
+      "slug": "canada", "country": "Canada", "iso2": "ca", "region": "UK & Americas",
+      "portal": "IRCC — Check your application status", "url": "https://www.canada.ca/en/immigration-refugees-citizenship.html",
+      "app": "",
+      "need": ["IRCC secure account login", "Application number"],
+      "tip": "Use the IRCC application status tracker inside your secure account."
+    },
+    {
+      "slug": "australia", "country": "Australia", "iso2": "au", "region": "UK & Americas",
+      "portal": "ImmiAccount / VEVO (Department of Home Affairs)", "url": "https://immi.homeaffairs.gov.au",
+      "app": "",
+      "need": ["Transaction reference number (TRN)", "Passport number"],
+      "tip": "VEVO shows the conditions of a granted visa."
+    }
+  ]
+}

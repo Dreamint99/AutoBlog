@@ -6,6 +6,7 @@ import { CN_CATEGORIES } from "@/sites/countly/categories";
 import { NM_COMPS } from "@/sites/ninetymins/comps";
 import { getScores, matchPath } from "@/sites/ninetymins/live";
 import { activeSite } from "@/lib/site-context";
+import { getPassports } from "@/lib/passports";
 import { siteBaseUrl } from "@/lib/sites.config";
 
 export const dynamic = "force-dynamic";
@@ -73,6 +74,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
     for (const p of ["about", "contact", "privacy", "terms", "disclaimer"]) {
       entries.push({ url: `${base}/${p}`, changeFrequency: "yearly", priority: 0.2 });
+    }
+  }
+
+  // VisaPoint Passport Index: index, checker and one page per passport.
+  if (site.id === "walvi") {
+    entries.push(
+      { url: `${base}/passport-index`, changeFrequency: "weekly", priority: 1 },
+      { url: `${base}/visa-checker`, changeFrequency: "weekly", priority: 0.9 },
+      { url: `${base}/visa-check`, changeFrequency: "weekly", priority: 1 },
+    );
+    for (const p of await getPassports()) {
+      entries.push({ url: `${base}/passport/${p.slug}`, changeFrequency: "weekly", priority: 0.7 });
     }
   }
 

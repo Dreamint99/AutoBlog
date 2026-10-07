@@ -7,6 +7,8 @@ import QuickFinder from "./QuickFinder";
 import { fontVars } from "./fonts";
 import { countryOf, topicOf, fmtDate } from "./guide-meta";
 import Flag from "./Flag";
+import { getPassports } from "@/lib/passports";
+import { CountUp } from "./Animated";
 
 const TASKS = [
   { h: "Check a work-permit route", p: "Permit type, processing time and the official portal for each country.", href: "/countries" },
@@ -62,12 +64,15 @@ function GuideRow({ site, a }: { site: Site; a: Article }) {
   );
 }
 
-export default function Home({ site, articles }: SiteHomeProps) {
+export default async function Home({ site, articles }: SiteHomeProps) {
   const b = `/s/${site.id}`;
   const latest = articles.filter((a) => !a.is_mock).slice(0, 8);
   const savings = topSavings(8);
   const sorted = [...COUNTRIES].sort((x, y) => x.name.localeCompare(y.name));
   const inEU = COUNTRIES.filter((c) => c.inEU).length;
+  const passports = await getPassports();
+  const topPassports = passports.slice(0, 5);
+  const saPassports = ["BD", "IN", "PK", "NP", "LK"].map((i) => passports.find((p) => p.iso2 === i)).filter((p): p is NonNullable<typeof p> => !!p);
 
   return (
     <div className={fontVars}>
@@ -121,6 +126,53 @@ export default function Home({ site, articles }: SiteHomeProps) {
       </section>
 
       <main id="vp-main">
+        {/* ── PASSPORT INDEX TEASER ── */}
+        {topPassports.length ? (
+          <section className="vp-sec vp-pi-teaser">
+            <div className="vp-wrap vp-split">
+              <div>
+                <span className="vp-eyebrow">VisaPoint Passport Index</span>
+                <h2 className="vp-h2" style={{ marginTop: 12 }}>
+                  How powerful is your passport?
+                </h2>
+                <ol className="vp-pi-top">
+                  {topPassports.map((p) => (
+                    <li key={p.iso2}>
+                      <Link href={`${b}/passport/${p.slug}`}>
+                        <span className="vp-pi-top-rank">#{p.rank}</span>
+                        <img className="vp-flag" src={`https://flagcdn.com/w80/${p.iso2.toLowerCase()}.png`} alt="" width={30} height={20} />
+                        <b>{p.name}</b>
+                        <span className="vp-pi-top-score">
+                          <CountUp to={p.score} />
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ol>
+                <div className="vp-hero-actions" style={{ marginTop: 18 }}>
+                  <Link href={`${b}/passport-index`} className="vp-btn vp-btn-primary">
+                    Full ranking of {passports.length} passports
+                  </Link>
+                  <Link href={`${b}/visa-checker`} className="vp-btn vp-btn-outline">
+                    Do I need a visa?
+                  </Link>
+                </div>
+              </div>
+              <aside className="vp-panel">
+                <h3 className="vp-panel-h">South Asian passports</h3>
+                <ul className="vp-links">
+                  {saPassports.map((p) => (
+                    <li key={p.iso2}>
+                      <Link href={`${b}/passport/${p.slug}`}>
+                        <img className="vp-flag" src={`https://flagcdn.com/w40/${p.iso2.toLowerCase()}.png`} alt="" width={22} height={15} /> #{p.rank} {p.name} — {p.score} destinations
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </aside>
+            </div>
+          </section>
+        ) : null}
         {/* ── TASKS ── */}
         <section className="vp-sec">
           <div className="vp-wrap">

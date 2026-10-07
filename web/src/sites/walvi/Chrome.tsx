@@ -13,6 +13,9 @@ import { fontVars } from "./fonts";
 export function navFor(site: Site): ReadonlyArray<readonly [string, string]> {
   const b = `/s/${site.id}`;
   return [
+    ["Visa check", `${b}/visa-check`],
+    ["Passport Index", `${b}/passport-index`],
+    ["Visa requirements", `${b}/visa-checker`],
     ["Countries", `${b}/countries`],
     ["Jobs & salaries", `${b}/jobs`],
     ["Work-permit guides", `${b}/guides`],
@@ -80,7 +83,6 @@ export function Masthead({ site }: { site: Site }) {
             </Link>
           ))}
           <Link href={`${b}#scams`}>Scam alerts</Link>
-          <Link href={`${b}/about`}>About</Link>
         </div>
       </nav>
     </header>
@@ -103,6 +105,9 @@ export function Footer({ site }: { site: Site }) {
           </div>
           <div>
             <h4>Plan your move</h4>
+            <Link href={`${b}/passport-index`}>Passport Index</Link>
+            <Link href={`${b}/visa-check`}>Visa status check</Link>
+            <Link href={`${b}/visa-checker`}>Visa requirements</Link>
             <Link href={`${b}/countries`}>Country register</Link>
             <Link href={`${b}/jobs`}>Jobs &amp; salaries</Link>
             <Link href={`${b}/guides`}>Work-permit guides</Link>

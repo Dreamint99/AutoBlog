@@ -28,7 +28,7 @@ interface D1Database {
   prepare(query: string): D1PreparedStatement;
 }
 
-function d1(): D1Database | null {
+export function d1(): D1Database | null {
   try {
     return (getCloudflareContext().env as unknown as { DB?: D1Database }).DB ?? null;
   } catch {
@@ -101,7 +101,7 @@ function edgeCache(): Cache | null {
   }
 }
 
-async function cachedRead<T>(key: string, fresh: number, read: () => Promise<T>): Promise<T> {
+export async function cachedRead<T>(key: string, fresh: number, read: () => Promise<T>): Promise<T> {
   const cache = edgeCache();
   const req = new Request(`${CACHE_NS}/${key}`);
   let stale: Cached<T> | null = null;
