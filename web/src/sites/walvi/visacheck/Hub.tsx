@@ -52,12 +52,14 @@ function Icon({ i }: { i: number }) {
   );
 }
 
-function Card({ e, guide, siteId }: { e: VcEntry; guide?: Article; siteId: string }) {
+function Card({ e, siteId }: { e: VcEntry; siteId: string }) {
   return (
     <article className="vc-card" id={e.slug}>
       <header>
         <img className="vp-flag" src={flagFor(e)} alt="" width={40} height={27} loading="lazy" />
-        <h3>{e.country}</h3>
+        <h3>
+          <Link href={`/s/${siteId}/visa-check/${e.slug}`}>How to check {e.country.replace(/ \(.*\)$/, "")} visa</Link>
+        </h3>
       </header>
       <p className="vc-portal">{e.portal}</p>
       <ul>
@@ -70,11 +72,9 @@ function Card({ e, guide, siteId }: { e: VcEntry; guide?: Article; siteId: strin
         <a className="vp-btn vp-btn-primary" href={e.url} target="_blank" rel="noopener noreferrer nofollow">
           Check on official site ↗
         </a>
-        {guide ? (
-          <Link className="vp-btn vp-btn-outline" href={`/s/${siteId}/${guide.slug}`}>
-            Step-by-step guide
-          </Link>
-        ) : null}
+        <Link className="vp-btn vp-btn-outline" href={`/s/${siteId}/visa-check/${e.slug}`}>
+          Step-by-step guide
+        </Link>
       </div>
       <p className="vc-url">{e.url.replace(/^https?:\/\//, "")}</p>
     </article>
@@ -83,7 +83,6 @@ function Card({ e, guide, siteId }: { e: VcEntry; guide?: Article; siteId: strin
 
 export default function VisaCheckHub({ site, guides }: { site: Site; guides: Article[] }) {
   const b = `/s/${site.id}`;
-  const guideFor = (e: VcEntry) => guides.find((g) => vcFor(g)?.slug === e.slug);
   return (
     <div className={fontVars}>
       <Masthead site={site} />
@@ -103,7 +102,7 @@ export default function VisaCheckHub({ site, guides }: { site: Site; guides: Art
             </p>
             <nav className="vc-jump" aria-label="Jump to country">
               {VC.map((e) => (
-                <a key={e.slug} href={`#${e.slug}`}>
+                <a key={e.slug} href={`${b}/visa-check/${e.slug}`}>
                   <img className="vp-flag" src={flagFor(e, 40)} alt="" width={20} height={14} />
                   {e.country.replace(/ \(.*\)$/, "")}
                 </a>
@@ -139,7 +138,7 @@ export default function VisaCheckHub({ site, guides }: { site: Site; guides: Art
                 <h2 className="vp-h2">{r === "Gulf" ? "Gulf countries" : r}</h2>
                 <div className="vc-grid">
                   {list.map((e) => (
-                    <Card key={e.slug} e={e} guide={guideFor(e)} siteId={site.id} />
+                    <Card key={e.slug} e={e} siteId={site.id} />
                   ))}
                 </div>
               </div>

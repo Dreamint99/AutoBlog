@@ -1,4 +1,5 @@
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
+import { isVcArticle, vcFor } from "@/sites/walvi/visacheck/data";
 import type { Metadata } from "next";
 import { getSite, getArticle, getArticles } from "@/lib/data";
 import { processBody } from "@/lib/article";
@@ -68,6 +69,12 @@ export default async function ArticlePage({
   if (!site) notFound();
   const article = await getArticle(id, slug);
   if (!article) notFound();
+  // VisaPoint "Visa Check" guides live on their country page (/visa-check/<country>)
+  // so each country has ONE ranking URL — the old article URL redirects there.
+  if (site.id === "walvi" && isVcArticle(article)) {
+    const vc = vcFor(article);
+    if (vc) permanentRedirect(`/s/${site.id}/visa-check/${vc.slug}`);
+  }
   const components = SITE_COMPONENTS[site.id];
   if (!components) notFound();
 

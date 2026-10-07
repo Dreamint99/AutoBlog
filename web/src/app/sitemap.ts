@@ -7,6 +7,7 @@ import { NM_COMPS } from "@/sites/ninetymins/comps";
 import { getScores, matchPath } from "@/sites/ninetymins/live";
 import { activeSite } from "@/lib/site-context";
 import { getPassports } from "@/lib/passports";
+import { VC, isVcArticle, vcFor } from "@/sites/walvi/visacheck/data";
 import { siteBaseUrl } from "@/lib/sites.config";
 
 export const dynamic = "force-dynamic";
@@ -14,7 +15,8 @@ export const dynamic = "force-dynamic";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const site = activeSite();
   const base = siteBaseUrl(site);
-  const articles = await getArticles(site.id);
+  // VisaPoint Visa Check guides redirect to /visa-check/<country> — list that URL instead.
+  const articles = (await getArticles(site.id)).filter((a) => !(site.id === "walvi" && isVcArticle(a) && vcFor(a)));
 
   const entries: MetadataRoute.Sitemap = [
     { url: `${base}/`, changeFrequency: "daily", priority: 1 },
@@ -84,6 +86,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       { url: `${base}/visa-checker`, changeFrequency: "weekly", priority: 0.9 },
       { url: `${base}/visa-check`, changeFrequency: "weekly", priority: 1 },
     );
+    for (const e of VC) entries.push({ url: `${base}/visa-check/${e.slug}`, changeFrequency: "weekly", priority: 0.9 });
     for (const p of await getPassports()) {
       entries.push({ url: `${base}/passport/${p.slug}`, changeFrequency: "weekly", priority: 0.7 });
     }
