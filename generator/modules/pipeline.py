@@ -85,6 +85,31 @@ def _stale_today(title: str) -> bool:
     return any(m in t for m in _MONTHS if m != now)
 
 
+_EVENTISH = re.compile(r"\b(watch|live|stream|final|fixtures?|schedule|kick-?off|vs|match(es)?|"
+                       r"tournament|cup|championship|grand prix|season|draw|qualifiers?)\b", re.I)
+
+
+def _past_event(title: str, excerpt: str) -> str:
+    """One cheap LLM check: is this an already-finished event written as upcoming?
+    ('2026 World Cup Final: how to watch live', published in October). Returns the
+    reason when stale, '' otherwise. Never blocks publishing on a checker error."""
+    if not _EVENTISH.search(title or ""):
+        return ""
+    try:
+        system = (time_context() + "\n\nYou are a fact-checking sports/news editor. "
+                  'Return ONLY JSON: {"stale": true|false, "reason": "..."}')
+        user = (f"Title: {title}\nSummary: {excerpt[:600]}\n\n"
+                "Is the MAIN event of this article already over as of today while the article "
+                "presents it as upcoming, live or 'how to watch'? Recurring/ongoing things (a league "
+                "season in progress, 'matches today', a future edition) are NOT stale.")
+        d = parse_llm_json(chat(system, user, temperature=0.0, max_tokens=300, json_mode=True))
+        if isinstance(d, dict) and d.get("stale") is True:
+            return str(d.get("reason") or "event already finished")
+    except Exception:
+        pass
+    return ""
+
+
 def _cap_first(s: str) -> str:
     return s[:1].upper() + s[1:] if s else s
 
@@ -226,6 +251,9 @@ def generate_article(site: dict, title: str, log=lambda m: None) -> dict:
         raise ValueError("article contains non-English script on an English site — skipping")
     if _stale_today(wa["title"]):
         raise ValueError(f"stale dated 'today' title ({wa['title']}) — skipping")
+    stale = _past_event(wa["title"], wa.get("excerpt") or "")
+    if stale:
+        raise ValueError(f"past event written as upcoming ({stale}) — skipping")
 
     wa["title"] = _cap_first(wa["title"])
     wa["meta_title"] = _cap_first(wa["meta_title"])

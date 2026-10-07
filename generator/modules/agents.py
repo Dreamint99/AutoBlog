@@ -39,11 +39,14 @@ def time_context() -> str:
     CURRENT year + latest framing, instead of the model defaulting to an old year."""
     now = datetime.now(timezone.utc)
     today = now.strftime("%B %Y")          # e.g. "June 2026"
+    full = now.strftime("%d %B %Y").lstrip("0")
     year = now.year
     return (
-        f"CURRENT DATE: today is {today}. Write for the CURRENT year ({year}). "
+        f"CURRENT DATE: today is {full} ({today}). Write for the CURRENT year ({year}). "
         f"Use {year} (NOT an older year like 2025) in titles, headings and content wherever a year "
         f"is relevant, and present information as the latest available, stated 'as of {today}'. "
+        f"Events that finished before {full} (e.g. a final or tournament already played) must NEVER be "
+        "written as upcoming or 'how to watch live' — cover them as results/recaps, or pick an upcoming event. "
         "Keep following the honesty rules: estimate when unsure, cite official sources, and note that "
         "figures/rules change over time."
     )
