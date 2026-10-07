@@ -8,8 +8,19 @@ import type { NmEvent } from "./live";
    out. Match pages reuse that same list — they never spend extra calls.
    The key lives in the Worker secret CRICAPI_KEY (never in the repo). */
 
-const FRESH_S = 1800;
+const FRESH_S = 1800; // direct-API fallback window
+const FEED_FRESH_S = 120; // re-read the D1 feed at most every 2 min per colo
 const STALE_S = 86400;
+
+async function store(cache: Cache | null, req: Request, v: CrMatch[]): Promise<void> {
+  if (!cache) return;
+  const put = cache.put(req, new Response(JSON.stringify({ t: Date.now(), v }), { headers: { "cache-control": `public, s-maxage=${STALE_S}` } }));
+  try {
+    getCloudflareContext().ctx.waitUntil(put);
+  } catch {
+    await put.catch(() => {});
+  }
+}
 const NS = "https://nm-live.autoblog.internal/v1/cricket";
 
 type Any = Record<string, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
@@ -86,7 +97,37 @@ function normalise(m: Any): CrMatch {
   };
 }
 
-/** All current/recent/upcoming matches from one API call (cached). */
+const ORDER = { in: 0, pre: 1, post: 2 } as const;
+
+function toMatches(data: Any[]): CrMatch[] {
+  return data
+    .map(normalise)
+    .filter((m) => m.id && m.teams.length === 2)
+    .sort((a, b) => ORDER[a.state] - ORDER[b.state] || a.date.localeCompare(b.date));
+}
+
+/** The list stored by generator/cricket_feed.py (GitHub Actions, every 20 min) —
+ *  the normal path: the site itself spends no CricAPI calls. */
+async function fromFeed(): Promise<{ v: CrMatch[]; age: number } | null> {
+  try {
+    const db = (getCloudflareContext().env as unknown as { DB?: D1Like }).DB;
+    if (!db) return null;
+    const { results } = await db
+      .prepare("SELECT json, updated_at FROM nm_feed WHERE key = 'cricapi_current' LIMIT 1")
+      .all<{ json: string; updated_at: string }>();
+    const row = results?.[0];
+    if (!row) return null;
+    return { v: toMatches(JSON.parse(row.json) as Any[]), age: Date.now() - new Date(row.updated_at).getTime() };
+  } catch {
+    return null; // table missing until the first feed run
+  }
+}
+
+interface D1Like {
+  prepare(q: string): { all<T>(): Promise<{ results: T[] }> };
+}
+
+/** All current/recent/upcoming matches (feed in D1, cached per colo). */
 export async function getCricket(): Promise<CrMatch[]> {
   const key = apiKey();
   const cache = edgeCache();
@@ -97,23 +138,27 @@ export async function getCricket(): Promise<CrMatch[]> {
       const hit = await cache.match(req);
       if (hit) {
         stale = await hit.json();
-        if (stale && Date.now() - stale.t < FRESH_S * 1000) return stale.v;
+        if (stale && Date.now() - stale.t < FEED_FRESH_S * 1000) return stale.v;
       }
     } catch {
       stale = null;
     }
   }
-  if (!key) return stale?.v ?? [];
+  const feed = await fromFeed();
+  // Direct API only when the feed is missing or > 3 h old (e.g. the workflow is off).
+  if (feed && (feed.age < 3 * 3600 * 1000 || !key)) {
+    await store(cache, req, feed.v);
+    return feed.v;
+  }
+  if (!key) return feed?.v ?? stale?.v ?? [];
+  if (stale && Date.now() - stale.t < FRESH_S * 1000) return stale.v;
   try {
     const r = await fetch(`https://api.cricapi.com/v1/currentMatches?apikey=${encodeURIComponent(key)}&offset=0`, {
       signal: AbortSignal.timeout(6000),
     });
     const j = (await r.json()) as Any;
     if (j.status !== "success" || !Array.isArray(j.data)) throw new Error(String(j.reason || j.status || "cricapi error"));
-    const v = (j.data as Any[])
-      .map(normalise)
-      .filter((m) => m.id && m.teams.length === 2)
-      .sort((a, b) => ({ in: 0, pre: 1, post: 2 })[a.state] - ({ in: 0, pre: 1, post: 2 })[b.state] || a.date.localeCompare(b.date));
+    const v = toMatches(j.data as Any[]);
     if (cache) {
       const put = cache.put(req, new Response(JSON.stringify({ t: Date.now(), v }), { headers: { "cache-control": `public, s-maxage=${STALE_S}` } }));
       try {
@@ -124,7 +169,7 @@ export async function getCricket(): Promise<CrMatch[]> {
     }
     return v;
   } catch {
-    return stale?.v ?? []; // quota spent / API down → last good list
+    return feed?.v ?? stale?.v ?? []; // quota spent / API down → last good list
   }
 }
 

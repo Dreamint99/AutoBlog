@@ -1,0 +1,30 @@
+name: Cricket feed (CricAPI -> D1)
+
+# One CricAPI call per run, stored in D1 for the NinetyMins Worker to read.
+# Every 20 min = 72 calls/day, inside the free plan's ~100/day.
+on:
+  schedule:
+    - cron: "*/20 * * * *"
+  workflow_dispatch: {}
+
+concurrency:
+  group: cricket-feed
+  cancel-in-progress: true
+
+jobs:
+  feed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - run: npm install -g wrangler@4
+      - name: Fetch currentMatches and store in D1
+        env:
+          CRICAPI_KEY: ${{ secrets.CRICAPI_KEY }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: python generator/cricket_feed.py
