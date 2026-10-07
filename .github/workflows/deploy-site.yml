@@ -1,0 +1,107 @@
+name: Deploy site (Cloudflare Worker)
+
+# Manual build + deploy of ONE site to its Worker (autoblog-<site>).
+# Same steps as web/deploy-site.ps1, for when the owner's PC isn't available.
+on:
+  workflow_dispatch:
+    inputs:
+      site:
+        description: "Site to deploy"
+        required: true
+        type: choice
+        options: [ninetymins, countly, infkey]
+      dry_run:
+        description: "Build + wrangler deploy --dry-run only (no upload)"
+        type: boolean
+        default: false
+
+concurrency:
+  group: deploy-${{ inputs.site }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: web
+    env:
+      SITE_ID: ${{ inputs.site }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+          cache-dependency-path: web/package-lock.json
+
+      - name: Check API token
+        run: |
+          curl -fsS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            https://api.cloudflare.com/client/v4/user/tokens/verify | jq '.result | {status, expires_on}'
+          # Workers Scripts:Edit is needed to upload; listing scripts needs at least Read.
+          code=$(curl -s -o /dev/null -w '%{http_code}' -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/scripts")
+          echo "workers/scripts list -> HTTP $code"
+
+      - name: Write wrangler.jsonc (same as deploy-site.ps1)
+        run: |
+          case "$SITE_ID" in
+            countly)    D=countly.net ;;
+            ninetymins) D=ninetymins.com ;;
+            infkey)     D=infkey.com ;;
+            *) echo "unknown site $SITE_ID"; exit 1 ;;
+          esac
+          echo "DOMAIN=$D" >> "$GITHUB_ENV"
+          cat > wrangler.jsonc <<JSON
+          {
+            "name": "autoblog-$SITE_ID",
+            "main": "cache-worker.js",
+            "compatibility_date": "2026-06-01",
+            "compatibility_flags": ["nodejs_compat"],
+            "assets": { "directory": ".open-next/assets", "binding": "ASSETS" },
+            "d1_databases": [
+              { "binding": "DB", "database_name": "autoblog-content", "database_id": "58dacf96-c574-4f0b-88e6-3005d895eb90" }
+            ],
+            "vars": { "SITE_ID": "$SITE_ID" },
+            "routes": [
+              { "pattern": "$D", "custom_domain": true },
+              { "pattern": "www.$D", "custom_domain": true }
+            ]
+          }
+          JSON
+          cat wrangler.jsonc
+
+      - name: Install
+        run: npm ci
+
+      - name: Build (OpenNext)
+        run: npx opennextjs-cloudflare build
+
+      - name: Deploy
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            npx wrangler deploy --dry-run
+          else
+            npx wrangler deploy
+          fi
+
+      - name: Smoke test
+        if: ${{ !inputs.dry_run }}
+        run: |
+          sleep 15
+          fail=0
+          for p in "/" "/sitemap.xml"; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' "https://$DOMAIN$p?v=$RANDOM$RANDOM")
+            echo "$DOMAIN$p -> $code"; [ "$code" = 200 ] || fail=1
+          done
+          if [ "$SITE_ID" = ninetymins ]; then
+            code=$(curl -s -o /dev/null -w '%{http_code}' "https://$DOMAIN/api/scores?v=$RANDOM")
+            echo "$DOMAIN/api/scores -> $code"; [ "$code" = 200 ] || fail=1
+            curl -s "https://$DOMAIN/?v=$RANDOM$RANDOM" | grep -q 'nm-header' \
+              && echo "new markup (nm-header) present" || { echo "nm-header NOT found"; fail=1; }
+          fi
+          exit $fail
