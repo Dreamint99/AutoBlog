@@ -25,8 +25,8 @@ from modules import photos
 from modules.wordpress import _creds, _headers, used_photo_ids
 
 SITE = {"id": "probashiinfo", "domain": "probashiinfo.com"}
-AI_INLINE = re.compile(r"pollinations\.ai|wikimedia\.org", re.I)  # AutoBlog hotlinked these; hand-written posts upload to WP
-AUTOBLOG_FEATURE = re.compile(r"/feature(-\d+)?\.(jpe?g|png|webp)$", re.I)
+AI_INLINE = re.compile(r"pollinations\.ai|wikimedia\.org|/uploads/2026/10/photo-\d+(-\d+)?\.", re.I)  # AutoBlog hotlinked these; hand-written posts upload to WP
+AUTOBLOG_FEATURE = re.compile(r"/feature(-photo)?(-\d+)?\.(jpe?g|png|webp)$", re.I)
 
 # Common words in the site's Bengali titles → English stock-photo terms (used when a
 # post has no English alt text and no LLM is configured).

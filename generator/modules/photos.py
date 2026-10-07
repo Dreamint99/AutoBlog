@@ -46,10 +46,20 @@ def _pixabay(q: str, used: set) -> tuple[str, str] | None:
             "key": PIXABAY_API_KEY, "q": q[:100], "image_type": "photo", "orientation": "horizontal",
             "safesearch": "true", "per_page": 30, "order": "popular", "min_width": 1200,
         }, timeout=20)
+        # Popular ≠ relevant (a "money transfer" search can rank a frog first), so pick the
+        # unused hit whose own tags share the most words with the query; need at least half.
+        words = {w for w in re.findall(r"[a-z]{3,}", q.lower())}
+        best, best_score = None, 0
         for h in r.json().get("hits", []):
             sid = f"pixabay:{h['id']}"
-            if sid not in used:
-                return h.get("largeImageURL") or h.get("webformatURL"), sid
+            if sid in used:
+                continue
+            tags = set(re.findall(r"[a-z]{3,}", h.get("tags", "").lower()))
+            score = sum(1 for w in words if any(t.startswith(w[:5]) for t in tags))
+            if score > best_score:
+                best, best_score = (h.get("largeImageURL") or h.get("webformatURL"), sid), score
+        if best and best_score >= max(1, (len(words) + 1) // 2):
+            return best
     except Exception:
         pass
     return None
@@ -61,9 +71,12 @@ def _openverse(q: str, used: set) -> tuple[str, str] | None:
             "q": q[:100], "license": "cc0,pdm", "category": "photograph",
             "aspect_ratio": "wide", "size": "large", "page_size": 20, "mature": "false",
         }, headers=_UA, timeout=20)
+        words = {w for w in re.findall(r"[a-z]{3,}", q.lower())}
         for h in r.json().get("results", []):
             sid = f"openverse:{h['id']}"
-            if sid not in used and h.get("url"):
+            text = (h.get("title", "") + " " + " ".join(t.get("name", "") for t in h.get("tags") or [])).lower()
+            score = sum(1 for w in words if w[:5] in text)
+            if sid not in used and h.get("url") and score >= max(1, (len(words) + 1) // 2):
                 return h["url"], sid
     except Exception:
         pass
