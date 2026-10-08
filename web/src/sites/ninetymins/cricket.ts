@@ -47,6 +47,9 @@ export interface CrMatch {
   date: string;
   state: "pre" | "in" | "post";
   teams: CrTeam[];
+  /** both sides are national teams (shown first) */
+  intl?: boolean;
+  series?: string;
 }
 
 function apiKey(): string {
@@ -127,8 +130,87 @@ interface D1Like {
   prepare(q: string): { all<T>(): Promise<{ results: T[] }> };
 }
 
-/** All current/recent/upcoming matches (feed in D1, cached per colo). */
+/* ESPN's keyless scoreboard header (same source as the football strip): every
+   live / recent / next cricket match across leagues, no quota. Cached per colo. */
+const ESPN_FRESH_S = 60;
+const ESPN = "https://site.web.api.espn.com/apis/v2/scoreboard/header?sport=cricket&region=in&lang=en";
+
+function fromEspnEvent(e: Any, league: Any): CrMatch | null {
+  const cs: Any[] = e.competitors || [];
+  if (cs.length !== 2) return null;
+  const st = String(e.status || e.fullStatus?.type?.state || "pre");
+  const teams = [...cs]
+    .sort((a, b) => Number(a.order || 0) - Number(b.order || 0))
+    .map((c): CrTeam => ({
+      name: String(c.displayName || c.name || ""),
+      short: String(c.abbreviation || c.name || "").slice(0, 5),
+      img: String(c.logo || ""),
+      innings: [],
+      score: String(c.score || ""),
+    }));
+  const summary = String(e.fullStatus?.longSummary || e.fullStatus?.summary || e.summary || "");
+  return {
+    id: `espn-${e.id}`,
+    name: String(e.name || teams.map((t) => t.name).join(" v ")),
+    type: String(e.eventType || league.shortName || "").toUpperCase().slice(0, 12),
+    status: summary || (st === "pre" ? "Match not started" : ""),
+    venue: String(e.location || ""),
+    date: String(e.date || ""),
+    state: st === "in" || st === "post" ? st : "pre",
+    teams,
+    intl: cs.every((c) => c.isNational),
+    series: String(league.name || ""),
+  };
+}
+
+async function fromEspn(cache: Cache | null): Promise<CrMatch[]> {
+  const req = new Request(`${NS}/espn`);
+  let stale: { t: number; v: CrMatch[] } | null = null;
+  if (cache) {
+    try {
+      const hit = await cache.match(req);
+      if (hit) {
+        stale = await hit.json();
+        if (stale && Date.now() - stale.t < ESPN_FRESH_S * 1000) return stale.v;
+      }
+    } catch {
+      stale = null;
+    }
+  }
+  try {
+    const r = await fetch(ESPN, { signal: AbortSignal.timeout(6000) });
+    const j = (await r.json()) as Any;
+    const out: CrMatch[] = [];
+    for (const sp of j.sports || []) for (const lg of sp.leagues || []) for (const e of lg.events || []) {
+      const m = fromEspnEvent(e, lg);
+      if (m) out.push(m);
+    }
+    await store(cache, req, out);
+    return out;
+  } catch {
+    return stale?.v ?? [];
+  }
+}
+
+const key2 = (m: CrMatch) =>
+  m.teams
+    .map((t) => t.name.toLowerCase().replace(/[^a-z]/g, ""))
+    .sort()
+    .join("|");
+
+/** All current/recent/upcoming matches: CricAPI feed + ESPN (no quota), de-duplicated. */
 export async function getCricket(): Promise<CrMatch[]> {
+  const cache = edgeCache();
+  const [a, b] = await Promise.all([getCricApi().catch(() => []), fromEspn(cache)]);
+  const seen = new Set(a.map(key2));
+  const merged = [...a, ...b.filter((m) => !seen.has(key2(m)))];
+  return merged.sort(
+    (x, y) => ORDER[x.state] - ORDER[y.state] || Number(!!y.intl) - Number(!!x.intl) || (x.state === "post" ? y.date.localeCompare(x.date) : x.date.localeCompare(y.date)),
+  );
+}
+
+/** CricAPI list (feed in D1 from generator/cricket_feed.py, cached per colo). */
+async function getCricApi(): Promise<CrMatch[]> {
   const key = apiKey();
   const cache = edgeCache();
   const req = new Request(`${NS}/current`);
@@ -185,7 +267,7 @@ export function cricketToEvents(ms: CrMatch[]): NmEvent[] {
     return {
       id: m.id,
       league: "cricket",
-      leagueLabel: `Cricket${m.type ? ` · ${m.type}` : ""}`,
+      leagueLabel: m.series && m.intl ? m.series : `Cricket${m.type ? ` · ${m.type}` : ""}`,
       state: m.state,
       detail: m.status,
       date: m.date,
