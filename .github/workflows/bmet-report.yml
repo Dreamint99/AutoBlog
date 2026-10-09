@@ -5,10 +5,14 @@ name: BMET daily report (probashiinfo)
 # dashboard and publish that day's dated article. Saturday 00:20 also the weekly report (Sat–Fri),
 # the 1st of each month the monthly one. 03:15 UTC = 09:15 BST re-runs the same steps so late
 # OEP entries correct the dashboard and the same articles (updated in place by slug).
+# 01:10 and 02:40 BST are backups for a skipped midnight run; posts update in place and the
+# push notification is sent once per report (WordPress remembers the last one sent).
 # Today's running count is live on the dashboard itself (snippet #15 polls /wp-json/pa/v1/bmet-live).
 on:
   schedule:
     - cron: "20 18 * * *"
+    - cron: "10 19 * * *"   # backups: GitHub sometimes skips or delays a scheduled run
+    - cron: "40 20 * * *"
     - cron: "15 3 * * *"
   workflow_dispatch:
     inputs:

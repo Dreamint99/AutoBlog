@@ -370,6 +370,9 @@ def notify(kind: str = "daily"):
                "url": f"{base}/bmet-report/?utm_source=push-test", "tag": "bmet-test"}
     else:
         a = build(kind)
+        if adm.get("sent", {}).get(kind) == a["slug"]:
+            print("push: already sent for", a["slug"])
+            return
         ex = requests.get(f"{base}/wp-json/wp/v2/posts", headers=h, params={"slug": a["slug"], "_fields": "link"}, timeout=60).json()
         c = a["card"]
         top = ", ".join(f"{r[0]} {bn(r[1])}" for r in c["rows"][:3])
@@ -391,8 +394,10 @@ def notify(kind: str = "daily"):
                 dead.append(key)  # unsubscribed / expired (a test never deletes, so it can be retried)
         except Exception as e:
             print("push error", str(e)[:120])
-    if dead:
-        requests.post(f"{base}/wp-json/pa/v1/push-admin", headers=h, json={"remove": dead}, timeout=60)
+    upd = {"remove": dead}
+    if kind != "test" and sent:
+        upd["sent"] = {kind: a["slug"]}  # one notification per report, even if the job runs again
+    requests.post(f"{base}/wp-json/pa/v1/push-admin", headers=h, json=upd, timeout=60)
     print(f"push: sent {sent}, removed {len(dead)} expired, total {len(subs)}")
 
 

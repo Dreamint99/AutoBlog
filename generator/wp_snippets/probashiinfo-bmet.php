@@ -160,10 +160,11 @@ add_action( 'rest_api_init', function () {
 				$j = $r->get_json_params();
 				foreach ( (array) ( $j['remove'] ?? array() ) as $h ) unset( $subs[ $h ] );
 				update_option( 'pa_push_subs', $subs, false );
+				if ( ! empty( $j['sent'] ) && is_array( $j['sent'] ) ) update_option( 'pa_push_sent', array_merge( (array) get_option( 'pa_push_sent', array() ), array_map( 'sanitize_text_field', $j['sent'] ) ), false );
 				return array( 'ok' => true, 'n' => count( $subs ) );
 			}
 			$k = pa_push_keys();
-			return array( 'pem' => $k ? $k['pem'] : '', 'pub' => $k ? $k['pub'] : '', 'subs' => $subs );
+			return array( 'pem' => $k ? $k['pem'] : '', 'pub' => $k ? $k['pub'] : '', 'subs' => $subs, 'sent' => (array) get_option( 'pa_push_sent', array() ) );
 		},
 	) );
 } );
