@@ -430,6 +430,7 @@ em.up,em.dn{font-style:normal;font-weight:700;font-size:13px;padding:1px 8px;bor
 .bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px}
 .bar button,.bar select,.bar input,.gb button,.gb input{border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 12px;font:600 14.5px var(--tf);cursor:pointer;color:var(--ink);max-width:100%}
 .bar button.on{background:var(--nv2);border-color:var(--nv2);color:#fff}.gb button.on{background:var(--nv);border-color:var(--nv);color:#fff}
+.gsz{align-items:center;margin-top:-4px}.gsz span{font-size:14px;color:var(--mut);font-weight:600}.gsz button.on{background:var(--g)!important;border-color:var(--g)!important}
 .kp{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:0 0 14px}
 .kp div{background:var(--soft);border-radius:14px;padding:12px}.kp span{display:block;font-size:13px;color:var(--mut)}.kp b{font:800 24px/1.2 var(--hf)}
 .two{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:18px}
@@ -586,6 +587,7 @@ html body.bm-app h1,html body.bm-app h2,html body.bm-app h3,html body.bm-app h4,
 		<p class="lead">দৈনিক, সাপ্তাহিক, মাসিক বা যেকোনো তারিখের কার্ড বানিয়ে JPEG ডাউনলোড করুন — ফেসবুক, হোয়াটসঅ্যাপ, ইনস্টাগ্রামে সরাসরি পোস্ট করুন।</p>
 		<div class="card">
 			<div class="gb" role="group" aria-label="কার্ডের ধরন"><button type="button" data-k="live"<?php echo $live['t'] ? '' : ' hidden'; ?>>🔴 আজ (<?php echo esc_html( $sd( $today ) ); ?> · লাইভ)</button><button type="button" data-k="day" class="on"><?php echo esc_html( $lastlbl ); ?></button><button type="button" data-k="week">সাপ্তাহিক (শেষ ৭ দিন)</button><button type="button" data-k="month">মাসিক (<?php echo esc_html( $m0 ? pb_bmonth( $m0 ) : '' ); ?>)</button><button type="button" data-k="cur">ওপরের ফিল্টার</button><input type="date" id="bm-cdate" aria-label="যেকোনো তারিখের কার্ড"></div>
+			<div class="gb gsz" role="group" aria-label="কার্ডের আকার"><span>আকার:</span><button type="button" data-sz="full" class="on">📄 পূর্ণ (সব দেশ)</button><button type="button" data-sz="sq">◻️ বর্গ ১০৮০×১০৮০ (ফেসবুক/ইনস্টাগ্রাম)</button></div>
 			<div class="gw"><canvas id="bm-cv" width="1080" height="1350" aria-label="বিএমইটি রিপোর্ট কার্ড"></canvas>
 			<div class="ga"><button type="button" class="bdl" id="bm-dl">⬇ JPEG ডাউনলোড করুন</button><button type="button" class="bsh" id="bm-sh">📤 ফেসবুক / হোয়াটসঅ্যাপে শেয়ার</button>
 				<div class="cap"><div class="cap-h"><b>📝 পোস্টের ক্যাপশন</b><button type="button" id="bm-copy">📋 ক্যাপশন কপি করুন</button></div><textarea id="bm-cap" rows="9" readonly aria-label="রিপোর্টের ক্যাপশন"></textarea></div>
@@ -627,10 +629,9 @@ html body.bm-app h1,html body.bm-app h2,html body.bm-app h3,html body.bm-app h4,
 <script id="bm-data" type="application/json"><?php echo wp_json_encode( array( 'days' => array_intersect_key( $days, array_flip( $keys ) ), 'live' => $live, 'cmap' => pb_cmap() ), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ); ?></script>
 <script>
 /*@CARD*/
-/* Portrait card height grows with the number of countries: top 7 get bars, the rest a 3-column list. */
-function bmCardH(o) { var rest = Math.max(0, (o.rows || []).length - 7); return Math.max(1350, 1129 + (rest ? 24 + 70 + Math.ceil(rest / 3) * 46 + 14 : 0) + 210); }
+/* Height of the "full" card (1080 wide): tall enough that every country is listed at full size. */
+function bmCardH(o) { var rest = Math.max(0, (o.rows || []).length - 7); return Math.max(1350, 878 + (rest ? 44 + Math.ceil(rest / 3) * 46 + 10 + 14 : 0) + 140); }
 function bmCard(cv, o) {
-	if (cv.width < cv.height || cv.width === 1080) { var nh = bmCardH(o); if (cv.height !== nh) cv.height = nh; }
 	var W = cv.width, H = cv.height, x = cv.getContext('2d'), wide = W > H;
 	var bn = function (s) { return String(s).replace(/\d/g, function (d) { return '০১২৩৪৫৬৭৮৯'[d]; }); };
 	var num = function (n) { return bn(Math.round(n).toLocaleString('en-IN')); };
@@ -638,6 +639,24 @@ function bmCard(cv, o) {
 	function rr(X, Y, w, h, r) { x.beginPath(); x.moveTo(X + r, Y); x.arcTo(X + w, Y, X + w, Y + h, r); x.arcTo(X + w, Y + h, X, Y + h, r); x.arcTo(X, Y + h, X, Y, r); x.arcTo(X, Y, X + w, Y, r); x.closePath(); }
 	function txt(s, X, Y, font, col, al) { x.font = font; x.fillStyle = col; x.textAlign = al || 'left'; x.fillText(s, X, Y); }
 	function fit(s, font, max) { x.font = font; while (s.length > 3 && x.measureText(s).width > max) s = s.slice(0, -2) + '…'; return s; }
+	function chipCol(c) { var up = c.indexOf('▲') >= 0, dn = c.indexOf('▼') >= 0; return up ? ['#dcfce7', '#166534'] : dn ? ['#fee2e2', '#991b1b'] : ['#eef4ff', '#0b3f97']; }
+	function bars(rows, RX, RY, RW, rh, head, fs, nameW, numW, title) {
+		var RH = head + rows.length * rh + 12, mx = Math.max.apply(null, rows.map(function (r) { return r[1]; }).concat([1]));
+		rr(RX, RY, RW, RH, 24); x.fillStyle = 'rgba(255,255,255,.1)'; x.fill(); x.strokeStyle = 'rgba(255,255,255,.18)'; x.lineWidth = 1.5; x.stroke();
+		txt(title, RX + 22, RY + head * .68, '700 ' + Math.round(fs * 1.1) + 'px ' + HF, '#fff');
+		var cr = Math.round(fs * .62), barX = RX + 22 + cr * 2 + 12 + nameW, barW = RW - (barX - RX) - numW - 22;
+		rows.forEach(function (r, k) {
+			var cy = RY + head + k * rh + rh / 2, ff = '600 ' + fs + 'px ' + TF;
+			x.fillStyle = k === 0 ? '#22c55e' : 'rgba(255,255,255,.18)'; x.beginPath(); x.arc(RX + 22 + cr, cy, cr, 0, Math.PI * 2); x.fill();
+			txt(bn(k + 1), RX + 22 + cr, cy + fs * .28, '700 ' + Math.round(fs * .72) + 'px ' + HF, '#fff', 'center');
+			txt(fit(r[0], ff, nameW - 8), RX + 22 + cr * 2 + 12, cy + fs * .33, ff, '#fff');
+			var bh2 = Math.round(fs * .62); rr(barX, cy - bh2 / 2, barW, bh2, bh2 / 2); x.fillStyle = 'rgba(255,255,255,.12)'; x.fill();
+			var bg = x.createLinearGradient(barX, 0, barX + barW, 0); bg.addColorStop(0, '#60a5fa'); bg.addColorStop(1, '#22c55e');
+			rr(barX, cy - bh2 / 2, Math.max(bh2, barW * r[1] / mx), bh2, bh2 / 2); x.fillStyle = bg; x.fill();
+			txt(num(r[1]), RX + RW - 22, cy + fs * .33, '700 ' + Math.round(fs * 1.04) + 'px ' + HF, '#fff', 'right');
+		});
+		return RH;
+	}
 	// background
 	var g = x.createLinearGradient(0, 0, W, H); g.addColorStop(0, '#061f4d'); g.addColorStop(.55, '#0a3f97'); g.addColorStop(1, '#0b56c4');
 	x.fillStyle = g; x.fillRect(0, 0, W, H);
@@ -645,78 +664,89 @@ function bmCard(cv, o) {
 	x.fillStyle = rg; x.fillRect(0, 0, W, H);
 	x.strokeStyle = 'rgba(255,255,255,.05)'; x.lineWidth = 2;
 	for (var i = 0; i < 9; i++) { x.beginPath(); x.arc(W * .95, H * .05, 90 + i * 70, 0, Math.PI * 2); x.stroke(); }
-	x.fillStyle = '#22c55e'; x.fillRect(0, 0, W, wide ? 10 : 14);
-	var P = wide ? 48 : 64, s = wide ? 1 : 1.3;
+	x.fillStyle = '#22c55e'; x.fillRect(0, 0, W, wide ? 10 : 12);
+	var P = wide ? 48 : 56, rows = o.rows || [], pill = 'তথ্যসূত্র: OEP · BMET';
 	// brand row
-	x.fillStyle = '#22c55e'; x.beginPath(); x.arc(P + 14 * s, (wide ? 52 : 84), 14 * s, 0, Math.PI * 2); x.fill();
-	txt('প্রবাসী ইনফো', P + 38 * s, (wide ? 62 : 97), '700 ' + Math.round(30 * s) + 'px ' + HF, '#fff');
-	var pill = 'তথ্যসূত্র: OEP · BMET'; x.font = '600 ' + Math.round(19 * s) + 'px ' + TF; var pw = x.measureText(pill).width + 34 * s;
-	rr(W - P - pw, (wide ? 34 : 60), pw, 38 * s, 19 * s); x.fillStyle = 'rgba(255,255,255,.13)'; x.fill(); x.strokeStyle = 'rgba(255,255,255,.3)'; x.lineWidth = 1.5; x.stroke();
-	txt(pill, W - P - pw / 2, (wide ? 34 : 60) + 26 * s, '600 ' + Math.round(19 * s) + 'px ' + TF, '#e6f0ff', 'center');
-	var L = wide ? W * .5 : W - 2 * P, y = wide ? 128 : 205;
-	// headline
-	var hs = wide ? 40 : 66; x.font = '800 ' + hs + 'px ' + HF; while (hs > 22 && x.measureText(o.kind).width > (wide ? L : W - 2 * P)) { hs -= 2; x.font = '800 ' + hs + 'px ' + HF; }
-	txt(o.kind, P, y, '800 ' + hs + 'px ' + HF, '#fff'); y += wide ? 40 : 66;
-	txt(o.period, P, y, '600 ' + Math.round(wide ? 24 : 38) + 'px ' + TF, '#bcd3fb'); y += wide ? 26 : 44;
-	// big number panel
-	var bh = wide ? 210 : 300; rr(P, y, L, bh, 26 * s); x.fillStyle = '#fff'; x.fill();
-	txt('মোট বহির্গমন ছাড়পত্র (স্মার্ট কার্ড)', P + 28 * s, y + (wide ? 42 : 62), '600 ' + Math.round(wide ? 21 : 30) + 'px ' + TF, '#4a5d7d');
-	x.font = '800 ' + (wide ? 92 : 150) + 'px ' + HF; var bt = num(o.t), bw2 = x.measureText(bt).width;
-	txt(bt, P + 26 * s, y + (wide ? 132 : 190), '800 ' + (wide ? 92 : 150) + 'px ' + HF, '#0b3f97');
-	txt('জন', P + 40 * s + bw2, y + (wide ? 132 : 190), '700 ' + (wide ? 34 : 54) + 'px ' + HF, '#16a34a');
+	var by = wide ? 52 : 66, bs = wide ? 1 : 1.12;
+	x.fillStyle = '#22c55e'; x.beginPath(); x.arc(P + 14 * bs, by, 14 * bs, 0, Math.PI * 2); x.fill();
+	txt('প্রবাসী ইনফো', P + 38 * bs, by + 10 * bs, '700 ' + Math.round(30 * bs) + 'px ' + HF, '#fff');
+	x.font = '600 ' + Math.round(19 * bs) + 'px ' + TF; var pw = x.measureText(pill).width + 34 * bs;
+	rr(W - P - pw, by - 19 * bs, pw, 38 * bs, 19 * bs); x.fillStyle = 'rgba(255,255,255,.13)'; x.fill(); x.strokeStyle = 'rgba(255,255,255,.3)'; x.lineWidth = 1.5; x.stroke();
+	txt(pill, W - P - pw / 2, by + 7 * bs, '600 ' + Math.round(19 * bs) + 'px ' + TF, '#e6f0ff', 'center');
 	var chips = [bn(o.nc) + 'টি দেশ', 'নারী ' + num(o.f) + ' জন']; if (o.avg) chips.push('দৈনিক গড় ' + num(o.avg)); if (o.cmp) chips.push(o.cmp);
-	var cx = P + 26 * s, cy = y + bh - (wide ? 50 : 74), cf = '600 ' + Math.round(wide ? 17 : 26) + 'px ' + TF;
-	chips.forEach(function (c, k) { x.font = cf; var w = x.measureText(c).width + 26 * s; if (cx + w > P + L - 16) return; rr(cx, cy, w, (wide ? 34 : 50), (wide ? 17 : 25)); var up = c.indexOf('▲') >= 0, dn = c.indexOf('▼') >= 0; x.fillStyle = up ? '#dcfce7' : dn ? '#fee2e2' : '#eef4ff'; x.fill(); txt(c, cx + w / 2, cy + (wide ? 23 : 34), cf, up ? '#166534' : dn ? '#991b1b' : '#0b3f97', 'center'); cx += w + 10 * s; });
-	y += bh + (wide ? 0 : 34);
-	// rows panel
-	var RX = wide ? W * .5 + P * .9 : P, RY = wide ? 112 : y, RW = wide ? W - RX - P : L, n = wide ? 6 : 7, rh = wide ? 54 : 56;
-	var RH = (wide ? 52 : 74) + n * rh + 14;
-	rr(RX, RY, RW, RH, 26 * s); x.fillStyle = 'rgba(255,255,255,.1)'; x.fill(); x.strokeStyle = 'rgba(255,255,255,.18)'; x.stroke();
-	txt(o.rowsTitle || 'শীর্ষ গন্তব্য দেশ', RX + 24 * s, RY + (wide ? 36 : 52), '700 ' + Math.round(wide ? 22 : 34) + 'px ' + HF, '#fff');
-	var rows = (o.rows || []).slice(0, n), mx = Math.max.apply(null, rows.map(function (r) { return r[1]; }).concat([1]));
-	var nameW = wide ? 128 : 230, numW = wide ? 72 : 120, barX = RX + 24 * s + (wide ? 34 : 54) + nameW, barW = RW - (barX - RX) - numW - 20 * s;
-	rows.forEach(function (r, k) {
-		var yy = RY + (wide ? 58 : 84) + k * rh, ff = '600 ' + Math.round(wide ? 19 : 29) + 'px ' + TF;
-		x.fillStyle = k === 0 ? '#22c55e' : 'rgba(255,255,255,.18)'; x.beginPath(); x.arc(RX + 24 * s + (wide ? 13 : 20), yy + rh / 2 - 4, wide ? 13 : 20, 0, Math.PI * 2); x.fill();
-		txt(bn(k + 1), RX + 24 * s + (wide ? 13 : 20), yy + rh / 2 + (wide ? 2 : 5), '700 ' + Math.round(wide ? 15 : 22) + 'px ' + HF, '#fff', 'center');
-		txt(fit(r[0], ff, nameW - 8), RX + 24 * s + (wide ? 34 : 54), yy + rh / 2 + (wide ? 2 : 5), ff, '#fff');
-		rr(barX, yy + rh / 2 - (wide ? 10 : 13), barW, wide ? 14 : 20, wide ? 7 : 10); x.fillStyle = 'rgba(255,255,255,.12)'; x.fill();
-		var bg = x.createLinearGradient(barX, 0, barX + barW, 0); bg.addColorStop(0, '#60a5fa'); bg.addColorStop(1, '#22c55e');
-		rr(barX, yy + rh / 2 - (wide ? 10 : 13), Math.max(wide ? 14 : 20, barW * r[1] / mx), wide ? 14 : 20, wide ? 7 : 10); x.fillStyle = bg; x.fill();
-		txt(num(r[1]), RX + RW - 22 * s, yy + rh / 2 + (wide ? 2 : 5), '700 ' + Math.round(wide ? 20 : 30) + 'px ' + HF, '#fff', 'right');
-	});
-	var rest = (o.rows || []).slice(n);
-	if (rest.length && wide) {
-		txt('+ আরও ' + bn(rest.length) + 'টি দেশ — পূর্ণ তালিকা ওয়েবসাইটে', RX + RW / 2, RY + RH + 26, '600 17px ' + TF, '#d6e4fb', 'center');
-	} else if (rest.length) {
-		var GY = RY + RH + 24, rows3 = Math.ceil(rest.length / 3), GH = 70 + rows3 * 46 + 14, cw = (RW - 48) / 3;
-		rr(RX, GY, RW, GH, 26 * s); x.fillStyle = 'rgba(255,255,255,.08)'; x.fill(); x.strokeStyle = 'rgba(255,255,255,.16)'; x.stroke();
-		txt('অন্যান্য দেশ (' + bn(rest.length) + 'টি)', RX + 24 * s, GY + 46, '700 30px ' + HF, '#fff');
-		rest.forEach(function (r, k) {
-			var col = k % 3, row = Math.floor(k / 3), cx2 = RX + 24 + col * cw, yy2 = GY + 70 + row * 46 + 30, ff3 = '500 22px ' + TF;
-			if (col) { x.fillStyle = 'rgba(255,255,255,.12)'; x.fillRect(cx2 - 8, yy2 - 26, 1.5, 34); }
-			txt(bn(n + k + 1) + '. ' + fit(r[0], ff3, cw - 92), cx2 + 4, yy2, ff3, '#e6f0ff');
-			txt(num(r[1]), cx2 + cw - 18, yy2, '700 23px ' + HF, '#86efac', 'right');
-		});
+
+	if (wide) {
+		var L = W * .5, y = 128;
+		var hs = 40; x.font = '800 ' + hs + 'px ' + HF; while (hs > 22 && x.measureText(o.kind).width > L) { hs -= 2; x.font = '800 ' + hs + 'px ' + HF; }
+		txt(o.kind, P, y, '800 ' + hs + 'px ' + HF, '#fff'); y += 40;
+		txt(o.period, P, y, '600 24px ' + TF, '#bcd3fb'); y += 26;
+		rr(P, y, L, 210, 26); x.fillStyle = '#fff'; x.fill();
+		txt('মোট বহির্গমন ছাড়পত্র (স্মার্ট কার্ড)', P + 28, y + 42, '600 21px ' + TF, '#4a5d7d');
+		x.font = '800 92px ' + HF; var bt = num(o.t), bw2 = x.measureText(bt).width;
+		txt(bt, P + 26, y + 132, '800 92px ' + HF, '#0b3f97'); txt('জন', P + 40 + bw2, y + 132, '700 34px ' + HF, '#16a34a');
+		var cx = P + 26, cy = y + 160, cf = '600 17px ' + TF;
+		chips.forEach(function (c) { x.font = cf; var w = x.measureText(c).width + 26; if (cx + w > P + L - 16) return; var cc = chipCol(c); rr(cx, cy, w, 34, 17); x.fillStyle = cc[0]; x.fill(); txt(c, cx + w / 2, cy + 23, cf, cc[1], 'center'); cx += w + 10; });
+		var RX = W * .5 + P * .9, RW = W - RX - P, top = rows.slice(0, 6);
+		var RH = bars(top, RX, 112, RW, 54, 58, 19, 128, 72, o.rowsTitle || 'শীর্ষ গন্তব্য দেশ');
+		if (rows.length > 6) txt('+ আরও ' + bn(rows.length - 6) + 'টি দেশ — পূর্ণ তালিকা ওয়েবসাইটে', RX + RW / 2, 112 + RH + 26, '600 17px ' + TF, '#d6e4fb', 'center');
+	} else {
+		var L2 = W - 2 * P, y2 = 150, big = H >= 1300;
+		var hs2 = big ? 58 : 52; x.font = '800 ' + hs2 + 'px ' + HF; while (hs2 > 26 && x.measureText(o.kind).width > L2) { hs2 -= 2; x.font = '800 ' + hs2 + 'px ' + HF; }
+		txt(o.kind, P, y2, '800 ' + hs2 + 'px ' + HF, '#fff'); y2 += big ? 50 : 44;
+		txt(fit(o.period, '600 27px ' + TF, L2), P, y2, '600 ' + (big ? 30 : 27) + 'px ' + TF, '#bcd3fb'); y2 += big ? 30 : 22;
+		// number panel: big number on the left, chips stacked on the right
+		var ph = big ? 200 : 170; rr(P, y2, L2, ph, 26); x.fillStyle = '#fff'; x.fill();
+		txt('মোট বহির্গমন ছাড়পত্র (স্মার্ট কার্ড)', P + 26, y2 + 40, '600 ' + (big ? 25 : 23) + 'px ' + TF, '#4a5d7d');
+		var nf = big ? 118 : 100; x.font = '800 ' + nf + 'px ' + HF; var bt2 = num(o.t), bw3 = x.measureText(bt2).width;
+		txt(bt2, P + 24, y2 + ph - (big ? 34 : 30), '800 ' + nf + 'px ' + HF, '#0b3f97');
+		txt('জন', P + 38 + bw3, y2 + ph - (big ? 34 : 30), '700 ' + Math.round(nf * .4) + 'px ' + HF, '#16a34a');
+		var cf2 = '600 ' + (big ? 22 : 20) + 'px ' + TF, chh = big ? 40 : 36, cyy = y2 + (ph - chips.length * (chh + 8) + 8) / 2;
+		chips.forEach(function (c) { x.font = cf2; var w = x.measureText(c).width + 28, cc = chipCol(c); rr(P + L2 - 24 - w, cyy, w, chh, chh / 2); x.fillStyle = cc[0]; x.fill(); txt(c, P + L2 - 24 - w / 2, cyy + chh * .67, cf2, cc[1], 'center'); cyy += chh + 8; });
+		y2 += ph + 16;
+		// top countries as bars
+		var nb = Math.min(rows.length, big ? 7 : 5), rh2 = big ? 50 : 42, LY = H - 140;
+		var RH2 = bars(rows.slice(0, nb), P, y2, L2, rh2, big ? 56 : 50, big ? 26 : 23, big ? 240 : 210, big ? 110 : 96, o.rowsTitle || 'শীর্ষ গন্তব্য দেশ');
+		y2 += RH2 + 14;
+		// every other country in a dense grid
+		var rest = rows.slice(nb);
+		if (rest.length) {
+			var cols = H > 1100 ? 3 : 4, avail = LY - 14 - y2, head = 44, need = Math.ceil(rest.length / cols);
+			var maxRows = Math.max(0, Math.floor((avail - head - 10) / 26)), use = Math.min(need, maxRows);
+			if (use > 0) {
+				var rowH = Math.min(46, (avail - head - 10) / use), cap = use * cols, items = rest.length > cap ? rest.slice(0, cap - 1) : rest;
+				var GH = head + use * rowH + 10, cw = (L2 - 40) / cols, nfs = Math.round(Math.min(22, rowH * .58)), more = rest.length - items.length;
+				rr(P, y2, L2, GH, 22); x.fillStyle = 'rgba(255,255,255,.08)'; x.fill(); x.strokeStyle = 'rgba(255,255,255,.16)'; x.lineWidth = 1.5; x.stroke();
+				txt('অন্যান্য দেশ (' + bn(rest.length) + 'টি)', P + 22, y2 + 31, '700 24px ' + HF, '#fff');
+				items.forEach(function (r, k) {
+					var col = k % cols, row = Math.floor(k / cols), cx2 = P + 20 + col * cw, yy2 = y2 + head + row * rowH + rowH * .62, ff3 = '500 ' + nfs + 'px ' + TF;
+					if (col) { x.fillStyle = 'rgba(255,255,255,.12)'; x.fillRect(cx2 - 6, yy2 - nfs, 1.5, nfs * 1.3); }
+					txt(bn(nb + k + 1) + '. ' + fit(r[0], ff3, cw - nfs * 3.4), cx2 + 4, yy2, ff3, '#e6f0ff');
+					txt(num(r[1]), cx2 + cw - 14, yy2, '700 ' + (nfs + 1) + 'px ' + HF, '#86efac', 'right');
+				});
+				if (more > 0) { var k2 = items.length, cx3 = P + 20 + (k2 % cols) * cw, yy3 = y2 + head + Math.floor(k2 / cols) * rowH + rowH * .62; txt('+ আরও ' + bn(more) + 'টি দেশ', cx3 + 4, yy3, '700 ' + nfs + 'px ' + TF, '#fde68a'); }
+			}
+		}
 	}
-	// footer: source, website, generated time
+	// footer: source, generated time, website
 	var now = new Date(), tz = { timeZone: 'Asia/Dhaka' };
 	var hh = +now.toLocaleString('en-GB', Object.assign({ hour: 'numeric', hour12: false }, tz)), mm = now.toLocaleString('en-GB', Object.assign({ minute: '2-digit' }, tz));
 	var BM = ['জানুয়ারি', 'ফেব্রুয়ারি', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগস্ট', 'সেপ্টেম্বর', 'অক্টোবর', 'নভেম্বর', 'ডিসেম্বর'];
 	var dd = now.toLocaleString('en-GB', Object.assign({ day: 'numeric' }, tz)), mo = +now.toLocaleString('en-GB', Object.assign({ month: 'numeric' }, tz)), yr = now.toLocaleString('en-GB', Object.assign({ year: 'numeric' }, tz));
 	var part = hh < 5 ? 'রাত' : hh < 12 ? 'সকাল' : hh < 15 ? 'দুপুর' : hh < 18 ? 'বিকাল' : hh < 20 ? 'সন্ধ্যা' : 'রাত';
 	var stamp = 'তৈরি: ' + bn(dd) + ' ' + BM[mo - 1] + ' ' + bn(yr) + ', ' + part + ' ' + bn(((hh + 11) % 12) + 1) + ':' + bn(('0' + mm).slice(-2));
-	var fy = H - (wide ? 62 : 150), ff2 = '500 ' + Math.round(wide ? 16 : 25) + 'px ' + TF;
-	x.fillStyle = 'rgba(255,255,255,.18)'; x.fillRect(P, fy - (wide ? 24 : 40), W - 2 * P, 1.5);
 	if (wide) {
+		var fy = H - 62, ff2 = '500 16px ' + TF;
+		x.fillStyle = 'rgba(255,255,255,.18)'; x.fillRect(P, fy - 24, W - 2 * P, 1.5);
 		txt('তথ্যসূত্র: oep.gov.bd/reports/country-clearance · যাচাই করে নিন', P, fy, ff2, '#bcd3fb');
 		txt(stamp + ' · স্বাধীন তথ্যসেবা, সরকারি প্রকাশনা নয়', P, fy + 28, ff2, '#bcd3fb');
 		txt('probashiinfo.com/bmet-report', W - P, fy + 14, '700 22px ' + HF, '#fff', 'right');
 	} else {
-		txt('তথ্যসূত্র: oep.gov.bd/reports/country-clearance · যাচাই করে নিন', P, fy, ff2, '#bcd3fb');
-		txt(stamp + ' · রিপোর্ট তৈরি: প্রবাসী ইনফো (স্বাধীন তথ্যসেবা)', P, fy + 38, ff2, '#bcd3fb');
-		rr(P, fy + 62, W - 2 * P, 58, 29); x.fillStyle = '#22c55e'; x.fill();
-		txt('🌐 লাইভ রিপোর্ট: probashiinfo.com/bmet-report', W / 2, fy + 101, '700 29px ' + HF, '#053b1d', 'center');
+		var LY2 = H - 140, ff4 = '500 21px ' + TF;
+		x.fillStyle = 'rgba(255,255,255,.18)'; x.fillRect(P, LY2, W - 2 * P, 1.5);
+		txt('তথ্যসূত্র: oep.gov.bd/reports/country-clearance · যাচাই করে নিন', P, LY2 + 30, ff4, '#bcd3fb');
+		txt(stamp + ' · রিপোর্ট তৈরি: প্রবাসী ইনফো (স্বাধীন তথ্যসেবা)', P, LY2 + 58, ff4, '#bcd3fb');
+		rr(P, LY2 + 72, W - 2 * P, 50, 25); x.fillStyle = '#22c55e'; x.fill();
+		txt('🌐 লাইভ রিপোর্ট: probashiinfo.com/bmet-report', W / 2, LY2 + 106, '700 25px ' + HF, '#053b1d', 'center');
 	}
 }
 /*@CARD-END*/
@@ -809,16 +839,19 @@ function bmCard(cv, o) {
 		L.push('','📌 তথ্যসূত্র: বাংলাদেশ সরকারের ওভারসিজ এমপ্লয়মেন্ট প্ল্যাটফর্ম (OEP) — https://www.oep.gov.bd/reports/country-clearance','(সরকারি তথ্য হুবহু দেখানো হয়েছে; সিদ্ধান্তের আগে মূল সূত্রে যাচাই করে নিন)','','🤝 রিপোর্ট তৈরিতে সহযোগিতায়: প্রবাসী ইনফো — https://probashiinfo.com/bmet-report/','লাইভ আপডেট ও যেকোনো তারিখের রিপোর্ট দেখুন 👆','','#BMET #বিএমইটি_রিপোর্ট #প্রবাসী #ProbashiInfo');
 		return L.join('\n');
 	}
-	function drawCard(){ fontsReady.then(function(){ var o=cardOpts(); bmCard($('bm-cv'),o); $('bm-cap').value=caption(o); }); }
+	var csize='full';
+	function paint(o){ var cv=$('bm-cv'), h=csize==='sq'?1080:bmCardH(o); if(cv.height!==h) cv.height=h; bmCard(cv,o); $('bm-cap').value=caption(o); }
+	function drawCard(){ fontsReady.then(function(){ paint(cardOpts()); }); }
+	document.querySelectorAll('.gsz [data-sz]').forEach(function(b){ b.onclick=function(){ document.querySelectorAll('.gsz [data-sz]').forEach(function(x){x.classList.toggle('on',x===b)}); csize=b.dataset.sz; drawCard(); }; });
 	$('bm-copy').onclick=function(){ var t=$('bm-cap').value, b=this, done=function(){ b.textContent='✅ কপি হয়েছে'; b.classList.add('ok'); setTimeout(function(){ b.textContent='📋 ক্যাপশন কপি করুন'; b.classList.remove('ok'); },2200); };
 		if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done,function(){ $('bm-cap').select(); document.execCommand('copy'); done(); }); else { $('bm-cap').select(); document.execCommand('copy'); done(); } };
-	function blob(cb){ var o=cardOpts(); bmCard($('bm-cv'),o); $('bm-cap').value=caption(o); $('bm-cv').toBlob(cb,'image/jpeg',.93); }
+	function blob(cb){ paint(cardOpts()); $('bm-cv').toBlob(cb,'image/jpeg',.93); }
 	setInterval(function(){ if(!document.hidden) drawCard(); },60000);
 	function pick(k){ document.querySelectorAll('.gb [data-k]').forEach(function(x){x.classList.toggle('on',x.dataset.k===k)}); kind=k; drawCard(); }
 	document.querySelectorAll('.gb [data-k]').forEach(function(b){ b.onclick=function(){ if(b.dataset.k==='day'){cday='';$('bm-cdate').value='';} pick(b.dataset.k); }; });
 	$('bm-cdate').min=keys[0]; $('bm-cdate').max=keys[keys.length-1];
 	$('bm-cdate').onchange=function(){ if(!D[this.value]){ alert('এই তারিখের তথ্য নেই — '+bdate(keys[0])+' থেকে '+bdate(keys[keys.length-1])+' এর মধ্যে বাছুন।'); return; } cday=this.value; pick('day'); };
-	$('bm-dl').onclick=function(){ var o=cardOpts(); blob(function(bl){ var a=document.createElement('a'); a.href=URL.createObjectURL(bl); a.download='bmet-report-'+o.file+'.jpg'; document.body.appendChild(a); a.click(); setTimeout(function(){URL.revokeObjectURL(a.href); a.remove();},1500); }); };
+	$('bm-dl').onclick=function(){ var o=cardOpts(); blob(function(bl){ var a=document.createElement('a'); a.href=URL.createObjectURL(bl); a.download='bmet-report-'+o.file+(csize==='sq'?'-square':'')+'.jpg'; document.body.appendChild(a); a.click(); setTimeout(function(){URL.revokeObjectURL(a.href); a.remove();},1500); }); };
 	$('bm-sh').onclick=function(){ var o=cardOpts(), txt=caption(o);
 		blob(function(bl){ var f=new File([bl],'bmet-report-'+o.file+'.jpg',{type:'image/jpeg'});
 			if(navigator.canShare&&navigator.canShare({files:[f]})) navigator.share({files:[f],title:o.kind,text:txt}).catch(function(){});
