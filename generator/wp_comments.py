@@ -73,6 +73,12 @@ def verdict(c, seen: collections.Counter) -> str:
         return "spam"
     if "_" in name or re.search(r"[a-z]{4,}[A-Z]|\d", name):
         return "spam"  # bot-style names: plinko_fret, monopoly_znkn, user123
+    if re.search(r"well explained|easy to follow|stumbled upon|your explanation|keep up the good work|informative articles|"
+                 r"beautiful admin|expand on the|good job explaining|big thanks|tricky topic|great post|nice post|thank(s| you) for (this|sharing)|"
+                 r"marijuana|edibles|vapes?|taruhan|bocoran|winning|increase sales|hosting|nedir|lucky jet|reflections", t, re.I):
+        return "spam"  # bot praise / foreign promo
+    if re.search(r"[a-z]{18,}", t.lower()) and not BN.search(t):
+        return "spam"  # gibberish strings
     half = len(t) // 2
     if len(t) > 16 and re.sub(r"\W", "", t[:half]).lower() == re.sub(r"\W", "", t[half:]).lower():
         return "spam"  # "phrase  phrase" keyword stuffing
