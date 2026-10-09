@@ -19,9 +19,26 @@ API = f"{BASE}/wp-json/code-snippets/v1/snippets"
 
 
 def snippets() -> list:
-    r = requests.get(API, headers=H, timeout=60)
-    r.raise_for_status()
-    return r.json()
+    """All snippets (the endpoint paginates; ask for big pages and follow them)."""
+    out, page = [], 1
+    while True:
+        r = requests.get(API, headers=H, timeout=60, params={"per_page": 100, "page": page})
+        if r.status_code == 400 and page > 1:
+            break
+        r.raise_for_status()
+        rows = r.json()
+        out += rows
+        if len(rows) < 100 or page >= 10:
+            break
+        page += 1
+    seen = {x.get("id") for x in out}
+    for i in range(1, 40):  # some versions ignore per_page: probe ids not listed
+        if i in seen:
+            continue
+        g = requests.get(f"{API}/{i}", headers=H, timeout=30)
+        if g.ok and isinstance(g.json(), dict) and g.json().get("id") == i:
+            out.append(g.json())
+    return sorted(out, key=lambda x: x.get("id") or 0)
 
 
 def main():
