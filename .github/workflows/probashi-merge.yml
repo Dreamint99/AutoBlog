@@ -1,0 +1,31 @@
+name: probashiinfo merge duplicate posts
+
+# Keeps the longest post of each duplicate group (generator/wp_merge.py GROUPS),
+# 301s the others to it via a Code Snippet, then sets them to draft. Dry run unless "apply".
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: "Apply (otherwise dry run)"
+        type: boolean
+        default: false
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: generator
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - env:
+          PROBASHIINFO_WP_URL: ${{ secrets.PROBASHIINFO_WP_URL }}
+          PROBASHIINFO_WP_USER: ${{ secrets.PROBASHIINFO_WP_USER }}
+          PROBASHIINFO_WP_APP_PASSWORD: ${{ secrets.PROBASHIINFO_WP_APP_PASSWORD }}
+          APPLY: ${{ github.event.inputs.apply }}
+        run: |
+          if [ "$APPLY" = "true" ]; then python wp_merge.py --apply; else python wp_merge.py; fi
