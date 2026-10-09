@@ -783,7 +783,7 @@ function bmCard(cv, o) {
 	function pctTxt(a,b,w){ if(!b||a===b) return ''; var p=Math.round((a-b)*100/b); return p?w+' চেয়ে '+(p>0?'▲':'▼')+' '+bn(Math.abs(p))+'%':''; }
 	function cardOpts(){
 		var last=keys[keys.length-1];
-		if(kind==='live'&&LIVE){ return {kind:bdate(LIVE.date)+' এর বিএমইটি রিপোর্ট',period:'লাইভ · এখন পর্যন্ত (দিন শেষে আরও বাড়বে)',t:LIVE.t,f:LIVE.f,nc:Object.keys(LIVE.c).length,rows:topRows(LIVE.c),file:'live-'+LIVE.date}; }
+		if(kind==='live'&&LIVE){ return {kind:bdate(LIVE.date)+' এর বিএমইটি রিপোর্ট',period:'লাইভ · '+hm(LIVE.at)+' পর্যন্ত (দিন শেষে আরও বাড়বে)',t:LIVE.t,f:LIVE.f,nc:Object.keys(LIVE.c).length,rows:topRows(LIVE.c),file:'live-'+LIVE.date}; }
 		if(kind==='week'){ var w=keys.slice(-7), pw=keys.slice(-14,-7), a=aggr(w), b=aggr(pw); return {kind:'সাপ্তাহিক বিএমইটি রিপোর্ট',period:bdate(w[0])+' – '+bdate(last),t:a.t,f:a.f,nc:Object.keys(a.cs).length,avg:a.t/Math.max(1,a.n),cmp:pctTxt(a.t,b.t,'আগের সপ্তাহের'),rows:topRows(a.cs),file:'weekly-'+last}; }
 		if(kind==='month'){ var m=last.slice(0,7), ks=keys.filter(function(k){return k.indexOf(m)===0}), a2=aggr(ks); return {kind:mlabel(m)+' মাসের বিএমইটি রিপোর্ট',period:bdate(ks[0])+' – '+bdate(last),t:a2.t,f:a2.f,nc:Object.keys(a2.cs).length,avg:a2.t/Math.max(1,a2.n),rows:topRows(a2.cs),file:'monthly-'+m}; }
 		if(kind==='cur'&&OEP&&!country){ var po=OEP.from===OEP.to?bdate(OEP.from):bdate(OEP.from)+' – '+bdate(OEP.to); return {kind:'বিএমইটি রিপোর্ট',period:po,t:OEP.t,f:OEP.f||0,nc:Object.keys(OEP.c).length,rows:topRows(OEP.c),file:'report-'+OEP.from+'_'+OEP.to}; }
@@ -805,7 +805,8 @@ function bmCard(cv, o) {
 	function drawCard(){ fontsReady.then(function(){ var o=cardOpts(); bmCard($('bm-cv'),o); $('bm-cap').value=caption(o); }); }
 	$('bm-copy').onclick=function(){ var t=$('bm-cap').value, b=this, done=function(){ b.textContent='✅ কপি হয়েছে'; b.classList.add('ok'); setTimeout(function(){ b.textContent='📋 ক্যাপশন কপি করুন'; b.classList.remove('ok'); },2200); };
 		if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done,function(){ $('bm-cap').select(); document.execCommand('copy'); done(); }); else { $('bm-cap').select(); document.execCommand('copy'); done(); } };
-	function blob(cb){ $('bm-cv').toBlob(cb,'image/jpeg',.93); }
+	function blob(cb){ var o=cardOpts(); bmCard($('bm-cv'),o); $('bm-cap').value=caption(o); $('bm-cv').toBlob(cb,'image/jpeg',.93); }
+	setInterval(function(){ if(!document.hidden) drawCard(); },60000);
 	function pick(k){ document.querySelectorAll('.gb [data-k]').forEach(function(x){x.classList.toggle('on',x.dataset.k===k)}); kind=k; drawCard(); }
 	document.querySelectorAll('.gb [data-k]').forEach(function(b){ b.onclick=function(){ if(b.dataset.k==='day'){cday='';$('bm-cdate').value='';} pick(b.dataset.k); }; });
 	$('bm-cdate').min=keys[0]; $('bm-cdate').max=keys[keys.length-1];
