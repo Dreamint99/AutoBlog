@@ -50,7 +50,7 @@ function pa_ft_get( $path, $ttl ) {
 }
 
 add_action( 'rest_api_init', function () {
-	$nocache = function ( $data ) { do_action( 'litespeed_control_set_nocache', 'flight live' ); $res = new WP_REST_Response( $data ); $res->header( 'Cache-Control', 'no-store' ); return $res; };
+	$nocache = function ( $data ) { ini_set( 'serialize_precision', '-1' ); do_action( 'litespeed_control_set_nocache', 'flight live' ); $res = new WP_REST_Response( $data ); $res->header( 'Cache-Control', 'no-store' ); return $res; };
 	register_rest_route( 'pa/v1', '/ft-live', array( 'methods' => 'GET', 'permission_callback' => '__return_true',
 		'callback' => function ( WP_REST_Request $r ) use ( $nocache ) {
 			$out = array();
