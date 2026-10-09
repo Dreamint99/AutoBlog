@@ -1,14 +1,34 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { getSite, searchArticles } from "@/lib/data";
+import { getSite, searchArticles, getArticles } from "@/lib/data";
 import type { Article } from "@/lib/types";
 import CountlySearch from "@/sites/countly/Search";
+import InfkeySearch from "@/sites/infkey/Search";
+import WalviSearch from "@/sites/walvi/Search";
 
 export const dynamic = "force-dynamic";
 // Search results shouldn't be indexed.
 export const metadata: Metadata = { robots: { index: false, follow: true } };
 
-const SUPPORTED = new Set(["countly"]);
+const SUPPORTED = new Set(["countly", "infkey", "walvi"]);
+const STOP = new Set("a an the of for to in on and or how is are what best with by my your free 2025 2026".split(" "));
+
+/** Cheap ranking over the cached article list (no body scan): title words count double. */
+function rankList(list: Article[], q: string): Article[] {
+  const toks = [...new Set(q.toLowerCase().split(/[^a-z0-9]+/).filter((t) => t.length >= 2 && !STOP.has(t)))].slice(0, 8);
+  if (!toks.length) return [];
+  return list
+    .map((a) => {
+      const title = a.title.toLowerCase();
+      const rest = `${a.keyword || ""} ${a.excerpt || ""} ${(a.tags || []).join(" ")}`.toLowerCase();
+      const score = toks.reduce((s, t) => s + (title.includes(t) ? 2 : rest.includes(t) ? 1 : 0), 0);
+      return { a, score };
+    })
+    .filter((x) => x.score >= Math.max(2, Math.ceil(toks.length * 0.8)))
+    .sort((x, y) => y.score - x.score || (x.a.created_at < y.a.created_at ? 1 : -1))
+    .slice(0, 30)
+    .map((x) => x.a);
+}
 
 export default async function SearchPage({
   params,
@@ -23,6 +43,12 @@ export default async function SearchPage({
 
   const sp = await searchParams;
   const q = (Array.isArray(sp.q) ? sp.q[0] : sp.q || "").trim();
+
+  if (site.id !== "countly") {
+    const results = q ? rankList(await getArticles(site.id), q) : [];
+    const View = site.id === "infkey" ? InfkeySearch : WalviSearch;
+    return <View site={site} q={q} results={results} />;
+  }
 
   let results = [] as Article[];
   if (q) {

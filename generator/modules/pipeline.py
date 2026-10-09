@@ -196,8 +196,10 @@ def _mock_path(site, title, log):
     }
 
 
-def generate_article(site: dict, title: str, log=lambda m: None) -> dict:
-    article_id = uuid.uuid4().hex[:12]
+def generate_article(site: dict, title: str, log=lambda m: None, replace: dict | None = None) -> dict:
+    """`replace` = an existing {id, slug}: rewrite that article in place (same URL),
+    used by content_update.py to refresh stale posts."""
+    article_id = (replace or {}).get("id") or uuid.uuid4().hex[:12]
 
     if have_llm():
         try:
@@ -228,7 +230,7 @@ def generate_article(site: dict, title: str, log=lambda m: None) -> dict:
                      f'<a href="/{rel["slug"]}">{rel["title"]}</a></p>')
 
     # ── Agent 4 — quality / SEO-score loop (push on-page score to 95+) ──
-    slug = _unique_slug(site["id"], seo.make_slug(final_title, article_id))
+    slug = (replace or {}).get("slug") or _unique_slug(site["id"], seo.make_slug(final_title, article_id))
     keyword = data["keyword"]
     meta_title = data["meta_title"] or seo.meta_title(final_title, site["name"])
     meta_description = data["meta_description"] or seo.meta_description(data["excerpt"], body)
@@ -287,7 +289,7 @@ def generate_article(site: dict, title: str, log=lambda m: None) -> dict:
     data["excerpt"] = wa["excerpt"]
     # Cannibalisation guard: the optimiser tends to converge on the same SEO title
     # template (34 copies of one infkey title). Never publish a near-duplicate.
-    clash = too_similar(final_title, [a.get("title", "") for a in siblings])
+    clash = too_similar(final_title, [a.get("title", "") for a in siblings if a.get("id") != article_id])
     if clash:
         raise ValueError(f"near-duplicate of existing article '{clash}' — skipping")
 
