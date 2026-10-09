@@ -639,6 +639,23 @@ function bmCard(cv, o) {
 	function rr(X, Y, w, h, r) { x.beginPath(); x.moveTo(X + r, Y); x.arcTo(X + w, Y, X + w, Y + h, r); x.arcTo(X + w, Y + h, X, Y + h, r); x.arcTo(X, Y + h, X, Y, r); x.arcTo(X, Y, X + w, Y, r); x.closePath(); }
 	function txt(s, X, Y, font, col, al) { x.font = font; x.fillStyle = col; x.textAlign = al || 'left'; x.fillText(s, X, Y); }
 	function fit(s, font, max) { x.font = font; while (s.length > 3 && x.measureText(s).width > max) s = s.slice(0, -2) + '…'; return s; }
+	/* QR code for https://probashiinfo.com/bmet-report/ (29×29, level M), pre-computed: hex of row-major bits */
+	var QRN = 29, QRH = 'feb47bfc14a1106e8788bb75d385dba4792ec1355907faaaafe017ee00b7364258cfc7bc46faa86da88e5c132505067a6aeb1edd2b4ef69ca762ca28add3c9aa4ba684618873d1e24568cefe0067547ffa91eb5059351bba5bcfa5d43fe66eb48e4b040f5dafec11d50';
+	function qr(X, Y, S) {
+		rr(X, Y, S, S, S * .1); x.fillStyle = '#fff'; x.fill();
+		var m = S / (QRN + 6), pad = m * 3; x.fillStyle = '#061f4d';
+		for (var i = 0; i < QRN * QRN; i++) { if ((parseInt(QRH[i >> 2], 16) >> (3 - (i & 3))) & 1) x.fillRect(X + pad + (i % QRN) * m, Y + pad + Math.floor(i / QRN) * m, m + .6, m + .6); }
+	}
+	function brand(X, cy, hgt) { // logo on a white pill; falls back to text while the image is not ready
+		var im = o.logo;
+		if (im && im.complete && im.naturalWidth) {
+			var lh = hgt - 14, lw = im.naturalWidth * lh / im.naturalHeight;
+			rr(X, cy - hgt / 2, lw + 28, hgt, hgt / 2); x.fillStyle = '#fff'; x.fill();
+			x.drawImage(im, X + 14, cy - lh / 2, lw, lh); return;
+		}
+		x.fillStyle = '#22c55e'; x.beginPath(); x.arc(X + hgt * .3, cy, hgt * .3, 0, Math.PI * 2); x.fill();
+		txt('প্রবাসী ইনফো', X + hgt * .75, cy + hgt * .22, '700 ' + Math.round(hgt * .62) + 'px ' + HF, '#fff');
+	}
 	function chipCol(c) { var up = c.indexOf('▲') >= 0, dn = c.indexOf('▼') >= 0; return up ? ['#dcfce7', '#166534'] : dn ? ['#fee2e2', '#991b1b'] : ['#eef4ff', '#0b3f97']; }
 	function bars(rows, RX, RY, RW, rh, head, fs, nameW, numW, title) {
 		var RH = head + rows.length * rh + 12, mx = Math.max.apply(null, rows.map(function (r) { return r[1]; }).concat([1]));
@@ -668,8 +685,7 @@ function bmCard(cv, o) {
 	var P = wide ? 48 : 56, rows = o.rows || [], pill = 'তথ্যসূত্র: OEP · BMET';
 	// brand row
 	var by = wide ? 52 : 66, bs = wide ? 1 : 1.12;
-	x.fillStyle = '#22c55e'; x.beginPath(); x.arc(P + 14 * bs, by, 14 * bs, 0, Math.PI * 2); x.fill();
-	txt('প্রবাসী ইনফো', P + 38 * bs, by + 10 * bs, '700 ' + Math.round(30 * bs) + 'px ' + HF, '#fff');
+	brand(P, by, wide ? 50 : 58);
 	x.font = '600 ' + Math.round(19 * bs) + 'px ' + TF; var pw = x.measureText(pill).width + 34 * bs;
 	rr(W - P - pw, by - 19 * bs, pw, 38 * bs, 19 * bs); x.fillStyle = 'rgba(255,255,255,.13)'; x.fill(); x.strokeStyle = 'rgba(255,255,255,.3)'; x.lineWidth = 1.5; x.stroke();
 	txt(pill, W - P - pw / 2, by + 7 * bs, '600 ' + Math.round(19 * bs) + 'px ' + TF, '#e6f0ff', 'center');
@@ -728,25 +744,30 @@ function bmCard(cv, o) {
 		}
 	}
 	// footer: source, generated time, website
-	var now = new Date(), tz = { timeZone: 'Asia/Dhaka' };
-	var hh = +now.toLocaleString('en-GB', Object.assign({ hour: 'numeric', hour12: false }, tz)), mm = now.toLocaleString('en-GB', Object.assign({ minute: '2-digit' }, tz));
+	var pt = {}; try { new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Dhaka', year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: '2-digit', hourCycle: 'h23' }).formatToParts(new Date()).forEach(function (q) { pt[q.type] = q.value; }); } catch (e) {}
+	if (!pt.hour) { var d0 = new Date(Date.now() + 6 * 36e5); pt = { year: d0.getUTCFullYear(), month: d0.getUTCMonth() + 1, day: d0.getUTCDate(), hour: d0.getUTCHours(), minute: ('0' + d0.getUTCMinutes()).slice(-2) }; } // Asia/Dhaka = UTC+6
+	var hh = (+pt.hour) % 24, mm = ('0' + (+pt.minute)).slice(-2);
 	var BM = ['জানুয়ারি', 'ফেব্রুয়ারি', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগস্ট', 'সেপ্টেম্বর', 'অক্টোবর', 'নভেম্বর', 'ডিসেম্বর'];
-	var dd = now.toLocaleString('en-GB', Object.assign({ day: 'numeric' }, tz)), mo = +now.toLocaleString('en-GB', Object.assign({ month: 'numeric' }, tz)), yr = now.toLocaleString('en-GB', Object.assign({ year: 'numeric' }, tz));
 	var part = hh < 5 ? 'রাত' : hh < 12 ? 'সকাল' : hh < 15 ? 'দুপুর' : hh < 18 ? 'বিকাল' : hh < 20 ? 'সন্ধ্যা' : 'রাত';
-	var stamp = 'তৈরি: ' + bn(dd) + ' ' + BM[mo - 1] + ' ' + bn(yr) + ', ' + part + ' ' + bn(((hh + 11) % 12) + 1) + ':' + bn(('0' + mm).slice(-2));
+	var stamp = 'তৈরি: ' + bn(+pt.day) + ' ' + BM[(+pt.month) - 1] + ' ' + bn(pt.year) + ', ' + part + ' ' + bn(((hh + 11) % 12) + 1) + ':' + bn(mm);
+	function line(t, X, Y, size, maxW, col, w8) { var f = size; x.font = (w8 || '500') + ' ' + f + 'px ' + TF; while (f > 12 && x.measureText(t).width > maxW) { f -= 1; x.font = (w8 || '500') + ' ' + f + 'px ' + TF; } txt(t, X, Y, (w8 || '500') + ' ' + f + 'px ' + TF, col); }
 	if (wide) {
-		var fy = H - 62, ff2 = '500 16px ' + TF;
+		var fy = H - 62, qs = 92, tw = W - 2 * P - qs - 300;
 		x.fillStyle = 'rgba(255,255,255,.18)'; x.fillRect(P, fy - 24, W - 2 * P, 1.5);
-		txt('তথ্যসূত্র: oep.gov.bd/reports/country-clearance · যাচাই করে নিন', P, fy, ff2, '#bcd3fb');
-		txt(stamp + ' · স্বাধীন তথ্যসেবা, সরকারি প্রকাশনা নয়', P, fy + 28, ff2, '#bcd3fb');
-		txt('probashiinfo.com/bmet-report', W - P, fy + 14, '700 22px ' + HF, '#fff', 'right');
+		line('তথ্যসূত্র: oep.gov.bd/reports/country-clearance · যাচাই করে নিন', P, fy, 16, tw, '#bcd3fb');
+		line(stamp + ' · স্বাধীন তথ্যসেবা, সরকারি প্রকাশনা নয়', P, fy + 28, 16, tw, '#bcd3fb');
+		txt('probashiinfo.com/bmet-report', W - P - qs - 14, fy + 8, '700 21px ' + HF, '#fff', 'right');
+		txt('স্ক্যান করে লাইভ রিপোর্ট দেখুন →', W - P - qs - 14, fy + 32, '500 14px ' + TF, '#bcd3fb', 'right');
+		qr(W - P - qs, H - qs - 10, qs);
 	} else {
-		var LY2 = H - 140, ff4 = '500 21px ' + TF;
+		var LY2 = H - 140, qs2 = 124, tw2 = W - 2 * P - qs2 - 20;
 		x.fillStyle = 'rgba(255,255,255,.18)'; x.fillRect(P, LY2, W - 2 * P, 1.5);
-		txt('তথ্যসূত্র: oep.gov.bd/reports/country-clearance · যাচাই করে নিন', P, LY2 + 30, ff4, '#bcd3fb');
-		txt(stamp + ' · রিপোর্ট তৈরি: প্রবাসী ইনফো (স্বাধীন তথ্যসেবা)', P, LY2 + 58, ff4, '#bcd3fb');
-		rr(P, LY2 + 72, W - 2 * P, 50, 25); x.fillStyle = '#22c55e'; x.fill();
-		txt('🌐 লাইভ রিপোর্ট: probashiinfo.com/bmet-report', W / 2, LY2 + 106, '700 25px ' + HF, '#053b1d', 'center');
+		line('তথ্যসূত্র: oep.gov.bd/reports/country-clearance · যাচাই করে নিন', P, LY2 + 30, 21, tw2, '#bcd3fb');
+		line(stamp + ' · রিপোর্ট তৈরি: প্রবাসী ইনফো (স্বাধীন তথ্যসেবা)', P, LY2 + 58, 21, tw2, '#bcd3fb');
+		rr(P, LY2 + 72, tw2, 50, 25); x.fillStyle = '#22c55e'; x.fill();
+		var pf = 25; x.font = '700 ' + pf + 'px ' + HF; while (pf > 14 && x.measureText('🌐 লাইভ রিপোর্ট: probashiinfo.com/bmet-report').width > tw2 - 30) { pf--; x.font = '700 ' + pf + 'px ' + HF; }
+		txt('🌐 লাইভ রিপোর্ট: probashiinfo.com/bmet-report', P + tw2 / 2, LY2 + 97 + pf * .35, '700 ' + pf + 'px ' + HF, '#053b1d', 'center');
+		qr(W - P - qs2, LY2 + 8, qs2);
 	}
 }
 /*@CARD-END*/
@@ -831,7 +852,8 @@ function bmCard(cv, o) {
 		var d=(cday&&D[cday])?cday:last, i=keys.indexOf(d), a4=aggr([d]), b4=aggr(i>0?[keys[i-1]]:[]);
 		return {kind:bdate(d)+' এর বিএমইটি রিপোর্ট',period:'দৈনিক বহির্গমন ছাড়পত্রের হিসাব',t:a4.t,f:a4.f,nc:Object.keys(a4.cs).length,cmp:pctTxt(a4.t,b4.t,'আগের দিনের'),rows:topRows(a4.cs),file:d};
 	}
-	var fontsReady=(document.fonts&&document.fonts.load)?Promise.all(['800 40px "Anek Bangla"','700 40px "Anek Bangla"','600 20px "Hind Siliguri"','500 20px "Hind Siliguri"'].map(function(f){return document.fonts.load(f,'বাংলা')})).catch(function(){}):Promise.resolve();
+	var LOGO=new Image(), logoP=new Promise(function(r){ LOGO.onload=LOGO.onerror=function(){r()}; LOGO.src=<?php echo wp_json_encode( $logo ); ?>; setTimeout(r,4000); });
+	var fontsReady=Promise.all([logoP,(document.fonts&&document.fonts.load)?Promise.all(['800 40px "Anek Bangla"','700 40px "Anek Bangla"','600 20px "Hind Siliguri"','500 20px "Hind Siliguri"'].map(function(f){return document.fonts.load(f,'বাংলা')})).catch(function(){}):null]);
 	function caption(o){
 		var L=['📊 '+o.kind,'📅 '+o.period,'','✅ মোট বহির্গমন ছাড়পত্র (স্মার্ট কার্ড): '+num(o.t)+' জন'];
 		if(o.nc>1) L.push('🌍 গন্তব্য দেশ: '+bn(o.nc)+'টি'); if(o.f) L.push('👩 নারী কর্মী: '+num(o.f)+' জন'); if(o.avg) L.push('📈 দৈনিক গড়: '+num(o.avg)+' জন'); if(o.cmp) L.push('↕️ '+o.cmp);
@@ -840,7 +862,7 @@ function bmCard(cv, o) {
 		return L.join('\n');
 	}
 	var csize='full';
-	function paint(o){ var cv=$('bm-cv'), h=csize==='sq'?1080:bmCardH(o); if(cv.height!==h) cv.height=h; bmCard(cv,o); $('bm-cap').value=caption(o); }
+	function paint(o){ o.logo=LOGO; var cv=$('bm-cv'), h=csize==='sq'?1080:bmCardH(o); if(cv.height!==h) cv.height=h; bmCard(cv,o); $('bm-cap').value=caption(o); }
 	function drawCard(){ fontsReady.then(function(){ paint(cardOpts()); }); }
 	document.querySelectorAll('.gsz [data-sz]').forEach(function(b){ b.onclick=function(){ document.querySelectorAll('.gsz [data-sz]').forEach(function(x){x.classList.toggle('on',x===b)}); csize=b.dataset.sz; drawCard(); }; });
 	$('bm-copy').onclick=function(){ var t=$('bm-cap').value, b=this, done=function(){ b.textContent='✅ কপি হয়েছে'; b.classList.add('ok'); setTimeout(function(){ b.textContent='📋 ক্যাপশন কপি করুন'; b.classList.remove('ok'); },2200); };

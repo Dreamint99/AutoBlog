@@ -197,7 +197,8 @@ def card_png(o: dict, path: str, W: int = 1200, H: int = 630) -> str:
             "&family=Hind+Siliguri:wght@500;600;700&display=block'><style>html,body{margin:0;overflow:hidden;background:#061f4d}</style>"
             f"<canvas id=c width={W} height={H}></canvas><script>{js}\nvar O={json.dumps(o, ensure_ascii=False)};"
             "Promise.all(['800 40px \"Anek Bangla\"','700 40px \"Anek Bangla\"','600 20px \"Hind Siliguri\"','500 20px \"Hind Siliguri\"']"
-            ".map(function(f){return document.fonts.load(f,'বাংলা')})).then(function(){bmCard(document.getElementById('c'),O)});</script>")
+            ".map(function(f){return document.fonts.load(f,'বাংলা')}).concat([new Promise(function(r){var i=new Image();i.onload=function(){O.logo=i;r()};i.onerror=r;i.src=O.logoUrl||''})]))"
+            ".then(function(){bmCard(document.getElementById('c'),O)});</script>")
     tmp = tempfile.mkdtemp()
     hp = os.path.join(tmp, "card.html")
     open(hp, "w", encoding="utf-8").write(html)
@@ -321,7 +322,8 @@ def build(kind: str):
     card = {"kind": {"daily": f"{label} এর বিএমইটি রিপোর্ট", "weekly": "সাপ্তাহিক বিএমইটি রিপোর্ট", "monthly": f"{label} মাসের বিএমইটি রিপোর্ট"}[kind],
             "period": {"daily": "দৈনিক বহির্গমন ছাড়পত্রের হিসাব", "weekly": label, "monthly": "মাসিক বহির্গমন ছাড়পত্রের হিসাব"}[kind], "t": cur["t"], "f": cur["f"], "nc": len(rows), "avg": round(cur["t"] / cur["n"]) if kind != "daily" and cur["n"] else 0,
             "cmp": (f"{cmp_word} চেয়ে {'▲' if diff > 0 else '▼'} {bn(abs(pct))}%" if prev["t"] and pct and kind != "monthly" else ""),
-            "rows": [[cname(c).replace("সংযুক্ত আরব আমিরাত", "আমিরাত"), n] for c, n in rows], "rowsTitle": "শীর্ষ গন্তব্য দেশ"}
+            "rows": [[cname(c).replace("সংযুক্ত আরব আমিরাত", "আমিরাত"), n] for c, n in rows], "rowsTitle": "শীর্ষ গন্তব্য দেশ",
+            "logoUrl": "https://probashiinfo.com/wp-content/uploads/2026/10/probashiinfo-wordmark.webp"}
     return {"title": title, "slug": slug, "content": body, "excerpt": excerpt, "card": card,
             "chart": ("BMET overseas employment", sub, cur["t"], top)}
 
