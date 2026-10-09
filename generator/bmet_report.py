@@ -101,6 +101,12 @@ def collect(backfill: int = 3):
         if day in d["days"] and k > 3:
             continue
         rec = fetch_day(day)
+        old = d["days"].get(day)
+        if old and old["t"] and not rec["t"]:
+            print(day, "OEP returned 0 but we had", old["t"], "- keeping ours (likely an OEP outage)")
+            continue
+        if sum(rec["c"].values()) != rec["t"]:
+            print(day, "warning: country sum", sum(rec["c"].values()), "!= OEP total", rec["t"], "(OEP total is shown)")
         d["days"][day] = rec
         print(day, rec["t"], "female", rec["f"], "countries", len(rec["c"]))
         time.sleep(1.5)
@@ -272,7 +278,7 @@ def build(kind: str):
         pl = mstart - timedelta(days=1)
         prev = agg(d, [(pl.replace(day=1) + timedelta(days=i)).isoformat() for i in range(pl.day)])
         label, ttl_date = f"{BN_MONTHS[last.month - 1]} {bn(str(last.year))}", last
-        title = f"মাসিক বিএমইটি রিপোর্ট {BN_MONTHS[last.month - 1]} {bn(str(last.year))}: {bn(cur['t'])} জনের বিদেশে কর্মসংস্থান"
+        title = f"মাসিক বিএমইটি রিপোর্ট {BN_MONTHS[last.month - 1]} {bn(str(last.year))}: {bn(cur['t'])} জনের বহির্গমন ছাড়পত্র"
         slug = f"bmet-monthly-report-{last.strftime('%Y-%m')}"
         cmp_word = "আগের মাসের"
     if not cur["t"]:
@@ -299,7 +305,8 @@ def build(kind: str):
             "যেকোনো তারিখের <a href=\"/bmet-report/#card\">রিপোর্ট কার্ড (JPEG) ডাউনলোড করে</a> ফেসবুক বা হোয়াটসঅ্যাপে শেয়ার করতে পারবেন।</p>"
             f"<blockquote><p>তথ্যসূত্র: বাংলাদেশ সরকারের ওভারসিজ এমপ্লয়মেন্ট প্ল্যাটফর্ম (OEP) — "
             f"<a href=\"{SRC}\" target=\"_blank\" rel=\"noopener nofollow\">oep.gov.bd কান্ট্রি ক্লিয়ারেন্স রিপোর্ট</a>। "
-            "সংখ্যাগুলো প্রকাশের সময়ের; পরে সরকারি তথ্যে সামান্য পরিবর্তন হতে পারে।</p></blockquote>")
+            "সংখ্যাগুলো সরকারি পোর্টাল থেকে হুবহু নেওয়া, কোনো অনুমান বা পরিবর্তন করা হয়নি; প্রকাশের পর সরকারি তথ্যে দেরিতে যুক্ত এন্ট্রির কারণে সামান্য পরিবর্তন হতে পারে, তখন এই লেখাও হালনাগাদ হয়। "
+            "প্রবাসী ইনফো একটি স্বাধীন তথ্যসেবা — বিএমইটি বা কোনো সরকারি প্রতিষ্ঠানের অংশ নয়; চূড়ান্ত তথ্যের জন্য মূল সূত্র দেখুন।</p></blockquote>")
     excerpt = f"{label}: {bn(cur['t'])} জন কর্মী {bn(len(rows))}টি দেশে যাওয়ার বিএমইটি ছাড়পত্র পেয়েছেন। শীর্ষে {cname(top[0][0])}।"
     sub = {"daily": ttl_date.strftime("%d %B %Y"), "weekly": f"7 days to {ttl_date.strftime('%d %b %Y')}", "monthly": ttl_date.strftime("%B %Y")}[kind]
     pct = round(diff * 100 / prev["t"]) if prev["t"] else 0

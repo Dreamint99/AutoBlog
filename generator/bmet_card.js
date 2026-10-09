@@ -23,7 +23,7 @@ function bmCard(cv, o) {
 	// brand row
 	x.fillStyle = '#22c55e'; x.beginPath(); x.arc(P + 14 * s, (wide ? 52 : 84), 14 * s, 0, Math.PI * 2); x.fill();
 	txt('প্রবাসী ইনফো', P + 38 * s, (wide ? 62 : 97), '700 ' + Math.round(30 * s) + 'px ' + HF, '#fff');
-	var pill = 'সরকারি তথ্য: OEP · BMET'; x.font = '600 ' + Math.round(19 * s) + 'px ' + TF; var pw = x.measureText(pill).width + 34 * s;
+	var pill = 'তথ্যসূত্র: OEP · BMET'; x.font = '600 ' + Math.round(19 * s) + 'px ' + TF; var pw = x.measureText(pill).width + 34 * s;
 	rr(W - P - pw, (wide ? 34 : 60), pw, 38 * s, 19 * s); x.fillStyle = 'rgba(255,255,255,.13)'; x.fill(); x.strokeStyle = 'rgba(255,255,255,.3)'; x.lineWidth = 1.5; x.stroke();
 	txt(pill, W - P - pw / 2, (wide ? 34 : 60) + 26 * s, '600 ' + Math.round(19 * s) + 'px ' + TF, '#e6f0ff', 'center');
 	var L = wide ? W * .5 : W - 2 * P, y = wide ? 128 : 205;
@@ -69,11 +69,11 @@ function bmCard(cv, o) {
 	x.fillStyle = 'rgba(255,255,255,.18)'; x.fillRect(P, fy - (wide ? 24 : 40), W - 2 * P, 1.5);
 	if (wide) {
 		txt('তথ্যসূত্র: বিএমইটি / ওভারসিজ এমপ্লয়মেন্ট প্ল্যাটফর্ম (oep.gov.bd)', P, fy, ff2, '#bcd3fb');
-		txt(stamp, P, fy + 28, ff2, '#bcd3fb');
+		txt(stamp + ' · স্বাধীন তথ্যসেবা, সরকারি প্রকাশনা নয়', P, fy + 28, ff2, '#bcd3fb');
 		txt('probashiinfo.com/bmet-report', W - P, fy + 14, '700 22px ' + HF, '#fff', 'right');
 	} else {
 		txt('তথ্যসূত্র: বিএমইটি / ওভারসিজ এমপ্লয়মেন্ট প্ল্যাটফর্ম (oep.gov.bd)', P, fy, ff2, '#bcd3fb');
-		txt(stamp + ' · রিপোর্ট তৈরি করেছে প্রবাসী ইনফো', P, fy + 38, ff2, '#bcd3fb');
+		txt(stamp + ' · রিপোর্ট তৈরি: প্রবাসী ইনফো (স্বাধীন তথ্যসেবা)', P, fy + 38, ff2, '#bcd3fb');
 		rr(P, fy + 62, W - 2 * P, 58, 29); x.fillStyle = '#22c55e'; x.fill();
 		txt('🌐 লাইভ রিপোর্ট: probashiinfo.com/bmet-report', W / 2, fy + 101, '700 29px ' + HF, '#053b1d', 'center');
 	}
