@@ -532,7 +532,7 @@ html body.bm-app h1,html body.bm-app h2,html body.bm-app h3,html body.bm-app h4,
 		<p class="lead">দিন, সপ্তাহ, মাস, নির্দিষ্ট তারিখ বা দেশ বাছুন — চার্ট ও তালিকা সঙ্গে সঙ্গে বদলে যাবে।</p>
 		<div class="card">
 			<div class="bar" role="group" aria-label="সময়">
-				<button type="button" data-r="1">সর্বশেষ দিন</button><button type="button" data-r="7">৭ দিন</button><button type="button" data-r="30" class="on">৩০ দিন</button><button type="button" data-r="m0">এই মাস</button><button type="button" data-r="m1">গত মাস</button><button type="button" data-r="all">সব</button>
+				<?php $yday = wp_date( 'Y-m-d', time() - DAY_IN_SECONDS, new DateTimeZone( 'Asia/Dhaka' ) ); $sd = function ( $k ) { $p = explode( '-', $k ); return pb_bn( (int) $p[2] ) . ' ' . pb_months()[ (int) $p[1] - 1 ]; }; ?><button type="button" data-r="today" id="bm-today">🔴 আজ (<?php echo esc_html( $sd( $today ) ); ?> · এখন পর্যন্ত <span id="bm-tnow"><?php echo esc_html( pb_bn( wp_date( 'H:i', $live['at'], new DateTimeZone( 'Asia/Dhaka' ) ) ) ); ?></span>)</button><button type="button" data-r="1"><?php echo esc_html( ( $last === $yday ? 'গতকাল' : 'সর্বশেষ দিন' ) . ' (' . ( $last ? $sd( $last ) : '' ) . ')' ); ?></button><button type="button" data-r="7">৭ দিন</button><button type="button" data-r="30" class="on">৩০ দিন</button><button type="button" data-r="m0">এই মাস</button><button type="button" data-r="m1">গত মাস</button><button type="button" data-r="all">সব</button>
 				<select id="bm-month" aria-label="মাস"></select>
 				<input type="date" id="bm-day" aria-label="নির্দিষ্ট তারিখ">
 				<span class="rg"><label>থেকে <input type="date" id="bm-from"></label><label>পর্যন্ত <input type="date" id="bm-to"></label><button type="button" id="bm-go">🔎 দেখুন</button></span>
@@ -723,7 +723,7 @@ function bmCard(cv, o) {
 	function val(k){ var r=D[k]; return country ? (r.c[country]||0) : r.t; }
 	var rng=null;
 	function render(){
-		if(!sel.length&&rng){ $('bm-trend').innerHTML='<p class="empty">এই সময়ের সংরক্ষিত দৈনিক চার্ট নেই — মোট হিসাব সরকারি সার্ভার থেকে আসছে।</p>'; $('bm-top').innerHTML=''; ['k-t','k-f','k-c','k-a'].forEach(function(i){$(i).textContent='…'}); $('bm-tip').textContent=bdate(rng[0])+' – '+bdate(rng[1]); verify(); return; }
+		if(!sel.length&&rng){ $('bm-trend').innerHTML='<p class="empty">'+(rng[0]===J.live.date?'আজকের দিন এখনো চলছে — সংখ্যা সরাসরি সরকারি সার্ভার থেকে আসছে, দিন শেষে আরও বাড়বে। দৈনিক চার্টে আজকের দিন যুক্ত হবে রাত ১২টার পর।':'এই সময়ের সংরক্ষিত দৈনিক চার্ট নেই — মোট হিসাব সরকারি সার্ভার থেকে আসছে।')+'</p>'; $('bm-top').innerHTML=''; ['k-t','k-f','k-c','k-a'].forEach(function(i){$(i).textContent='…'}); $('bm-tip').textContent=bdate(rng[0])+' – '+bdate(rng[1]); verify(); return; }
 		var t=0,f=0,cs={}; sel.forEach(function(k){ var r=D[k]; t+=val(k); if(!country) f+=r.f; for(var c in r.c) cs[c]=(cs[c]||0)+r.c[c]; });
 		$('k-t').textContent=num(t); $('k-f').textContent=country?'—':num(f); $('k-cl').textContent=country?'দেশ':'গন্তব্য দেশ'; $('k-c').textContent=country?cn(country):bn(Object.keys(cs).length); $('k-a').textContent=num(t/Math.max(1,sel.length));
 		var mx=Math.max.apply(null,sel.map(val).concat([1]));
@@ -739,6 +739,7 @@ function bmCard(cv, o) {
 	$('bm-trend').addEventListener('click',function(e){ var k=e.target.dataset&&e.target.dataset.k; if(!k) return; document.querySelectorAll('#bm-trend .on').forEach(function(x){x.classList.remove('on')}); e.target.classList.add('on'); $('bm-tip').textContent=bdate(k)+': '+num(val(k))+' জন'+(country?' ('+cn(country)+')':' · নারী '+num(D[k].f)); });
 	function clr(){ document.querySelectorAll('.bar [data-r]').forEach(function(x){x.classList.remove('on')}); }
 	document.querySelectorAll('.bar [data-r]').forEach(function(b){ b.onclick=function(){ clr(); b.classList.add('on'); $('bm-month').value=''; $('bm-day').value=''; rng=null; var r=b.dataset.r;
+		if(r==='today'){ var td=(LIVE&&LIVE.date)||J.live.date; sel=[]; rng=[td,td]; render(); return; }
 		if(r==='m0'||r==='m1'){ var m=months[months.length-(r==='m0'?1:2)]; sel=keys.filter(function(k){return k.indexOf(m)===0}); } else if(r==='all') sel=keys.slice(); else sel=keys.slice(-(+r)); render(); }; });
 	$('bm-month').onchange=function(){ if(!this.value) return; clr(); $('bm-day').value=''; var m=this.value; rng=null; sel=keys.filter(function(k){return k.indexOf(m)===0}); render(); };
 	$('bm-day').onchange=function(){ if(!this.value) return; clr(); $('bm-month').value=''; sel=keys.filter(function(k){return k===$('bm-day').value}); rng=[this.value,this.value]; render(); };
@@ -812,7 +813,7 @@ function bmCard(cv, o) {
 		if(LIVE&&LIVE.date!==L.date){ location.reload(); return; }
 		if(!L.t) return;
 		var add=[]; if(LIVE){ for(var c in L.c){ var dl=L.c[c]-(LIVE.c[c]||0); if(dl>0){ add.push([c,dl]); NEWC[c]=1; } } }
-		LIVE=L; document.querySelector('.gb [data-k=live]').hidden=false; paintLive(L,add.sort(function(a,b){return b[1]-a[1]}));
+		LIVE=L; if($('bm-tnow')) $('bm-tnow').textContent=hm(L.at); document.querySelector('.gb [data-k=live]').hidden=false; paintLive(L,add.sort(function(a,b){return b[1]-a[1]}));
 		if(kind==='live') drawCard(); }).catch(function(){}); }
 	setTimeout(live,3000); setInterval(function(){ if(!document.hidden) live(); },120000);
 	document.addEventListener('visibilitychange',function(){ if(!document.hidden) live(); });
