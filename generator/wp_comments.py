@@ -108,11 +108,31 @@ QREPLY = [
 ]
 
 
+INTENT = re.compile(r"want|chai|jabo|jete|যেতে|যাবো|যাব|চাই|visa|ভিসা|permit|পারমিট|job|kaj|কাজ|চাকরি|work|driver|ড্রাইভ", re.I)
+EUROPE = re.compile(r"europe|ইউরোপ|romania|রোমানিয়া|serbia|সার্বিয়া|croatia|ক্রোয়েশিয়া|poland|পোল্যান্ড|portugal|পর্তুগাল|greece|greek|গ্রিস|"
+                    r"cyprus|সাইপ্রাস|saipras|italy|ইতালি|france|ফ্রান্স|bosnia|বসনিয়া|moldova|bulgaria|বুলগেরিয়া|belarus", re.I)
+IREPLY = "ধন্যবাদ {n}! কোন দেশে, কোন কাজের জন্য যেতে চান তা ঠিক করে আমাদের দেশভিত্তিক গাইডগুলো পড়ুন — খরচ, কাগজপত্র আর ধাপ সব দেওয়া আছে। কোনো এজেন্সিকে টাকা দেওয়ার আগে বিএমইটি অনুমোদন ও লিখিত চুক্তি যাচাই করবেন 🙏"
+EREPLY = ("ধন্যবাদ {n}! ইউরোপের ওয়ার্ক পারমিট নিয়ে আমাদের গাইডগুলো দেখুন। ব্যক্তিগত পরামর্শ চাইলে ড্রিম ইন্টারন্যাশনালের "
+          "WhatsApp (+974 7138 2220) এ যোগাযোগ করতে পারেন। যেকোনো এজেন্সিকে টাকা দেওয়ার আগে লিখিত চুক্তি ও বৈধতা যাচাই করবেন 🙏")
+
+
+def first_name(c) -> str:
+    raw = re.sub(r"(md|mohammad|mohammed|muhammad|mohamad|mst|mr|mrs)\.?\s*", "", (c.get("author_name") or ""), flags=re.I)
+    raw = re.sub(r"^(মোঃ|মো\.|মোহাম্মদ)\s*", "", raw.strip())
+    n = raw.strip().split(" ")[0][:18]
+    return n or "ভাই/বোন"
+
+
 def reply_text(c) -> str:
-    n = (c.get("author_name") or "ভাই/বোন").strip().split(" ")[0][:20] or "ভাই/বোন"
+    n = first_name(c)
     t = text_of(c)
-    pool = QREPLY if QUESTION.search(t) else THANKS
-    return pool[c["id"] % len(pool)].format(n=n)
+    if EUROPE.search(t):
+        return EREPLY.format(n=n)
+    if QUESTION.search(t):
+        return QREPLY[c["id"] % len(QREPLY)].format(n=n)
+    if INTENT.search(t):
+        return IREPLY.format(n=n)
+    return THANKS[c["id"] % len(THANKS)].format(n=n)
 
 
 def main():
@@ -129,7 +149,7 @@ def main():
         v = verdict(c, seen)
         res[v] += 1
         t = text_of(c)[:90].replace("\n", " ")
-        print(f"{v:4} #{c['id']} post {c['post']} {c.get('author_name','')[:18]!r}: {t}")
+        print(f"{v:4} #{c['id']} post {c['post']} {c.get('author_name','')[:18]!r}: {t}" + (f"  →  {reply_text(c)[:70]}" if v == "ok" else ""))
         if not APPLY:
             continue
         if v == "spam":
