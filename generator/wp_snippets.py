@@ -35,8 +35,7 @@ def main():
         # upsert "<name>" <file>  — create or replace a snippet's code from a file (opening <?php stripped)
         name, path = sys.argv[2], sys.argv[3]
         code = open(path, encoding="utf-8").read()
-        code = code[5:].lstrip("
-") if code.startswith("<?php") else code
+        code = code[5:].lstrip() if code.startswith("<?php") else code
         ex = next((x for x in items if x.get("name") == name), None)
         body = {"name": name, "code": code, "scope": "front-end", "active": True}
         r = requests.post(f"{API}/{ex['id']}" if ex else API, headers=H, json=body, timeout=90)
