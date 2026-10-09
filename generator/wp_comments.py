@@ -117,7 +117,7 @@ EREPLY = ("ধন্যবাদ {n}! ইউরোপের ওয়ার্�
 
 
 def first_name(c) -> str:
-    raw = re.sub(r"(md|mohammad|mohammed|muhammad|mohamad|mst|mr|mrs)\.?\s*", "", (c.get("author_name") or ""), flags=re.I)
+    raw = re.sub(r"^((md|mohammad|mohammed|muhammad|mohamad|mst|mr|mrs)\b\.?\s*)+", "", (c.get("author_name") or "").strip(), flags=re.I)
     raw = re.sub(r"^(মোঃ|মো\.|মোহাম্মদ)\s*", "", raw.strip())
     n = raw.strip().split(" ")[0][:18]
     return n or "ভাই/বোন"
