@@ -22,7 +22,7 @@ import requests
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(ROOT, "data", "bmet.json")
 SRC = "https://www.oep.gov.bd/reports/country-clearance"
-UA = {"User-Agent": "Mozilla/5.0 (compatible; ProbashiInfoBot/1.0; +https://probashiinfo.com)",
+UA = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
       "X-Requested-With": "XMLHttpRequest", "Accept": "application/json"}
 BD = timezone(timedelta(hours=6))
 

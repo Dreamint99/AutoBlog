@@ -38,7 +38,7 @@ add_action( 'rest_api_init', function () {
 function pa_bmet_oep( $day, $gender = '' ) {
 	$u = add_query_arg( array( 'draw' => 1, 'start' => 0, 'length' => 400, 'approval_date_from' => $day, 'approval_date_to' => $day ), 'https://www.oep.gov.bd/reports/country-clearance' );
 	if ( $gender ) $u = add_query_arg( 'gender_id', $gender, $u );
-	$r = wp_remote_get( $u, array( 'timeout' => 20, 'headers' => array( 'X-Requested-With' => 'XMLHttpRequest', 'Accept' => 'application/json', 'User-Agent' => 'Mozilla/5.0 (probashiinfo.com BMET report)' ) ) );
+	$r = wp_remote_get( $u, array( 'timeout' => 20, 'headers' => array( 'X-Requested-With' => 'XMLHttpRequest', 'Accept' => 'application/json', 'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36' ) ) );
 	if ( is_wp_error( $r ) || 200 !== wp_remote_retrieve_response_code( $r ) ) return null;
 	$j = json_decode( wp_remote_retrieve_body( $r ), true );
 	return ( ! empty( $j['success'] ) && isset( $j['payload'] ) ) ? $j['payload'] : null;
