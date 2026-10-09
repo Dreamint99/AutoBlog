@@ -55,9 +55,9 @@ def text_of(c) -> str:
     return re.sub(r"<[^>]+>", " ", raw).strip()
 
 
-PROMO = re.compile(r"(app|apps|games?|gaming|platform|payouts?|cash ?out|deposits?|withdraw\w*|register\w*|sign ?up|login|download\w*|"
+PROMO = re.compile(r"\b(app|apps|games?|gaming|platform|payouts?|cash ?out|deposits?|withdraw\w*|register\w*|sign ?up|login|download\w*|"
                    r"bonus|promo|players?|spins?|odds|wager|profit|earn|income|investment|trading|website|site|portal|"
-                   r"service|offer|deal|price|order|shop|store|product|brand|agency|marketing)", re.I)
+                   r"service|offer|deal|price|order|shop|store|product|brand|agency|marketing)\b", re.I)
 BAD_NAME = re.compile(r"\d{2,}|app|login|casino|bet|win|slot|club|vip|game|apk|official|shop|store|seo|loan|cash", re.I)
 OTHER_SCRIPT = re.compile(r"[Ѐ-ӿ一-鿿฀-๿぀-ヿ]")  # Cyrillic, CJK, Thai, Japanese
 
@@ -69,7 +69,7 @@ def verdict(c, seen: collections.Counter) -> str:
     seen[key] += 1
     if re.search(r"https?://|www\.", t) or SPAM_WORDS.search(t) or SPAM_WORDS.search(name) or OTHER_SCRIPT.search(t):
         return "spam"
-    if re.search(r"\[url=|\[link|\.(icu|shop|online|site|store|click|live|xyz|top|info|biz)|for sale|link ?building|backlinks?", t, re.I):
+    if re.search(r"\[url=|\[link|\.(icu|shop|online|site|store|click|live|xyz|top|info|biz)\b|for sale|link ?building|backlinks?", t, re.I):
         return "spam"
     if "_" in name or re.search(r"[a-z]{4,}[A-Z]|\d", name):
         return "spam"  # bot-style names: plinko_fret, monopoly_znkn, user123
@@ -91,7 +91,7 @@ def verdict(c, seen: collections.Counter) -> str:
         return "spam"
     if len(words) <= 12 and not PROMO.search(t):
         return "ok"  # short genuine English/Banglish ("Hi", "Work visa", "I want that for work")
-    if re.search(r"(visa|bangladesh|probashi|dubai|saudi|qatar|malaysia|europe|job|work|passport|kaj|vai|bhai)", t, re.I) and not PROMO.search(t):
+    if re.search(r"\b(visa|bangladesh|probashi|dubai|saudi|qatar|malaysia|europe|job|work|passport|kaj|vai|bhai)\b", t, re.I) and not PROMO.search(t):
         return "ok"
     return "spam"  # long English/Spanish marketing text
 
