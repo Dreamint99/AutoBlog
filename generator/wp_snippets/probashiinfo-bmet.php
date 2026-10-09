@@ -348,6 +348,7 @@ function pb_render() {
 		array( 'এই সংখ্যা কি সেদিন বিদেশে চলে যাওয়া কর্মীর সংখ্যা?', 'না। এটি সেদিন বহির্গমন ছাড়পত্র পাওয়া কর্মীর সংখ্যা। ছাড়পত্র পাওয়ার পর কর্মী সাধারণত পরের কোনো দিন ফ্লাইটে যান, তাই এটিকে সেদিনের ফ্লাইটের যাত্রীসংখ্যা ভাববেন না।' ),
 		array( 'তথ্য কখন হালনাগাদ হয়?', 'আজকের সংখ্যা দিনের মধ্যে প্রতি ৫ মিনিটে হালনাগাদ হয় এবং দিনের শেষ পর্যন্ত বাড়তে থাকে। রাত ১২টার পর আগের দিনের পূর্ণ হিসাব যুক্ত হয়, আর সকালে আবার মিলিয়ে দেখা হয় — দেরিতে আসা সরকারি এন্ট্রি থাকলে সংখ্যা সামান্য বদলাতে পারে।' ),
 		array( 'নিজের স্মার্ট কার্ড বা ছাড়পত্র কীভাবে যাচাই করব?', 'ব্যক্তিগত ছাড়পত্র যাচাই করতে হয় সরকারি OEP/বিএমইটি পোর্টাল বা বিএমইটি অফিসে। প্রবাসী ইনফো কারও ব্যক্তিগত তথ্য দেখায় না বা সংগ্রহ করে না; এখানে শুধু দেশভিত্তিক মোট সংখ্যা দেখানো হয়।' ),
+		array( 'সার্বিয়া, মলদোভা ও উত্তর মেসিডোনিয়ায় কতজন যাচ্ছেন দেখব কীভাবে?', 'এই পাতার "নজরে" অংশে তিন দেশের আজকের লাইভ সংখ্যা, গতকাল, শেষ ৭ ও ৩০ দিন আর চলতি মাসের হিসাব দেখানো হয়। দেশের নামে চাপলে দিনভিত্তিক চার্ট খুলবে, আর সংখ্যা সরকারি OEP সার্ভারের সাথে মিলিয়ে দেখানো হয়।' ),
 		array( 'অ্যাপ হিসেবে ইনস্টল করে নোটিফিকেশন পাওয়া যাবে?', 'হ্যাঁ। "অ্যাপ ইনস্টল করুন" চাপলে ফোনের হোম স্ক্রিনে "বিএমইটি লাইভ" অ্যাপ যুক্ত হবে, আর "নোটিফিকেশন চালু করুন" চাপলে প্রতিদিন রাতে রিপোর্ট প্রকাশ হলেই নোটিফিকেশন পাবেন। আইফোনে আগে শেয়ার → Add to Home Screen করে অ্যাপটি খুলতে হয়।' ),
 		array( 'রিপোর্ট কার্ড ডাউনলোড করে শেয়ার করা যাবে?', 'হ্যাঁ। "রিপোর্ট কার্ড" অংশ থেকে দৈনিক, সাপ্তাহিক, মাসিক বা যেকোনো তারিখের কার্ড JPEG হিসেবে নামিয়ে ফেসবুক, হোয়াটসঅ্যাপ বা ইনস্টাগ্রামে দিতে পারবেন। কার্ডে তারিখ, তৈরির সময় ও তথ্যসূত্র লেখা থাকে।' ),
 	);
@@ -487,6 +488,15 @@ em.up,em.dn{font-style:normal;font-weight:700;font-size:13px;padding:1px 8px;bor
 .tabs a.hot{color:var(--red)!important}
 @media(max-width:900px){.hero .w{grid-template-columns:minmax(0,1fr)}.ks{grid-template-columns:repeat(2,minmax(0,1fr))}.two,.gw,.rp,.af .g{grid-template-columns:minmax(0,1fr)}.kp{grid-template-columns:repeat(2,minmax(0,1fr))}.gw canvas{max-width:420px}}
 @media(max-width:700px){body.bm-app{padding-bottom:70px}.ah .home,.ah nav{display:none}.ah .w{justify-content:space-between}.tabs{display:grid}.hb2 .r{grid-template-columns:22px minmax(0,100px) 1fr 54px;font-size:14px}.mo .r{grid-template-columns:96px 1fr 72px}.lrow{grid-template-columns:22px minmax(0,1fr) 60px 46px}.ybox a{margin-left:0}.tbl{font-size:14px}.tbl th,.tbl td{padding:8px 6px}}
+.wl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.wc{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:var(--sh);border-top:4px solid var(--b)}
+.wc header{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.wc header .fl{width:30px;height:21px}.wc h3{font-size:18px;flex:1;min-width:0}
+.wt{font-size:13px;font-weight:700;border-radius:999px;padding:3px 10px;background:var(--soft);color:var(--mut)}.wt.on{background:#dcfce7;color:#166534}
+.wg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0}.wg div{background:var(--soft);border-radius:12px;padding:8px 10px}.wg span{display:block;font-size:12.5px;color:var(--mut)}.wg b{font:800 22px/1.2 var(--hf)}
+.sp{display:flex;align-items:flex-end;gap:2px;height:46px;border-bottom:1px solid var(--line)}.sp i{flex:1;background:linear-gradient(180deg,var(--g2),var(--b));border-radius:2px 2px 0 0}.sp i.z{background:var(--line)}
+.wl-l{font-size:13.5px;color:var(--ink2);margin:8px 0}.wb{border:0;background:var(--nv2);color:#fff;border-radius:10px;padding:9px 12px;font:700 14px var(--tf);cursor:pointer;width:100%}
+.wq{display:inline-flex;gap:6px;align-items:center;flex-wrap:wrap}.wq b{color:#f59e0b}.wq button.on{background:#f59e0b!important;border-color:#f59e0b!important;color:#fff!important}
+@media(max-width:900px){.wl{grid-template-columns:minmax(0,1fr)}}
 .rg{display:inline-flex;flex-wrap:wrap;gap:6px;align-items:center;background:var(--soft);border-radius:12px;padding:4px 6px}.rg label{font-size:13.5px;color:var(--ink2);display:inline-flex;gap:4px;align-items:center}
 .rg button{background:var(--g)!important;border-color:var(--g)!important;color:#fff!important}
 .vfo{margin:-6px 0 12px;font-size:13px;color:var(--mut)}
@@ -525,7 +535,7 @@ html body.bm-app h1,html body.bm-app h2,html body.bm-app h3,html body.bm-app h4,
 <?php wp_body_open(); ?>
 <header class="ah"><div class="w">
 	<a class="lg" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="প্রবাসী ইনফো — হোম"><?php if ( $logo ) echo '<img src="' . esc_url( $logo ) . '" alt="প্রবাসী ইনফো" width="120" height="34">'; ?><b>বিএমইটি <i>লাইভ</i></b></a>
-	<nav aria-label="বিএমইটি রিপোর্ট"><a href="#live">আজ</a><a href="#explore">হিসাব ও চার্ট</a><a href="#countries">দেশভিত্তিক</a><a href="#months">মাসিক</a><a href="#card">রিপোর্ট কার্ড</a><a href="#reports">দৈনিক রিপোর্ট</a><a href="#faq">প্রশ্নোত্তর</a></nav>
+	<nav aria-label="বিএমইটি রিপোর্ট"><a href="#live">আজ</a><a href="#watch">⭐ সার্বিয়া·মলদোভা·মেসিডোনিয়া</a><a href="#explore">হিসাব ও চার্ট</a><a href="#countries">দেশভিত্তিক</a><a href="#months">মাসিক</a><a href="#card">রিপোর্ট কার্ড</a><a href="#reports">দৈনিক রিপোর্ট</a><a href="#faq">প্রশ্নোত্তর</a></nav>
 	<a class="lv" href="#live"><span class="dot"></span>লাইভ</a>
 	<a class="home" href="<?php echo esc_url( home_url( '/' ) ); ?>">← প্রবাসী ইনফো</a>
 </div></header>
@@ -566,6 +576,39 @@ html body.bm-app h1,html body.bm-app h2,html body.bm-app h3,html body.bm-app h4,
 </div></div>
 
 <main class="w" id="main">
+	<?php
+	/* Europe watch-list: Serbia, Moldova, North Macedonia — per-country running numbers. */
+	$watch = array( 'Serbia', 'Moldova', 'North Macedonia' );
+	$wsum = function ( $c, $ks ) use ( $days ) { $n = 0; foreach ( $ks as $k ) { if ( empty( $days[ $k ] ) ) continue; foreach ( $days[ $k ]['c'] as $cc => $v ) if ( pb_clean( $cc ) === $c ) $n += (int) $v; } return $n; };
+	$k30 = array_slice( $keys, -30 ); $k7 = array_slice( $keys, -7 );
+	?>
+	<section class="sec" id="watch">
+		<h2>⭐ নজরে: সার্বিয়া, মলদোভা ও উত্তর মেসিডোনিয়া</h2>
+		<p class="lead">ইউরোপের এই তিন দেশে প্রতিদিন কতজন বাংলাদেশি কর্মী বিএমইটি ছাড়পত্র পাচ্ছেন — আজ লাইভ, গতকাল, ৭ দিন, ৩০ দিন ও এই মাসের হিসাব। কোনো দিনে ছাড়পত্র না হলে সেটাও এখানে দেখা যাবে।</p>
+		<div class="wl">
+		<?php foreach ( $watch as $wc ) {
+			$today_n = 0; foreach ( $live['c'] as $cc => $v ) if ( pb_clean( $cc ) === $wc ) $today_n += (int) $v;
+			$yn = $last ? $wsum( $wc, array( $last ) ) : 0;
+			$series = array(); foreach ( $k30 as $k ) $series[ $k ] = $wsum( $wc, array( $k ) );
+			$lastd = ''; $lastn = 0; for ( $i = count( $keys ) - 1; $i >= 0; $i-- ) { $v = $wsum( $wc, array( $keys[ $i ] ) ); if ( $v ) { $lastd = $keys[ $i ]; $lastn = $v; break; } }
+			$all = $wsum( $wc, $keys ); $smx = max( 1, max( $series ?: array( 0 ) ) );
+			$raw = ''; foreach ( $days as $dk ) foreach ( $dk['c'] as $cc => $v ) if ( pb_clean( $cc ) === $wc ) { $raw = $cc; break 2; }
+			?>
+			<article class="wc">
+				<header><?php echo pb_flag( $wc ); ?><h3><?php echo esc_html( pb_cn( $wc ) ); ?> বিএমইটি রিপোর্ট</h3><span class="wt <?php echo $today_n ? 'on' : ''; ?>"><?php echo $today_n ? '🟢 আজ ' . pb_num( $today_n ) . ' জন' : 'আজ এখনো নেই'; ?></span></header>
+				<div class="wg">
+					<div><span><?php echo esc_html( $lastlbl ); ?></span><b><?php echo pb_num( $yn ); ?></b></div>
+					<div><span>শেষ ৭ দিন</span><b><?php echo pb_num( $wsum( $wc, $k7 ) ); ?></b></div>
+					<div><span>শেষ ৩০ দিন</span><b><?php echo pb_num( $wsum( $wc, $k30 ) ); ?></b></div>
+					<div><span><?php echo esc_html( $m0 ? pb_bmonth( $m0 ) : 'এই মাস' ); ?></span><b><?php echo pb_num( $wsum( $wc, $mk ) ); ?></b></div>
+				</div>
+				<div class="sp" aria-label="শেষ ৩০ দিনের দৈনিক হিসাব"><?php foreach ( $series as $k => $v ) echo '<i style="height:' . ( $v ? max( 8, round( $v * 100 / $smx ) ) : 3 ) . '%"' . ( $v ? '' : ' class="z"' ) . ' title="' . esc_attr( pb_bdate( $k ) . ': ' . pb_num( $v ) . ' জন' ) . '"></i>'; ?></div>
+				<p class="wl-l"><?php echo $lastd ? 'সর্বশেষ ছাড়পত্র: <b>' . esc_html( pb_bdate( $lastd ) ) . '</b> — ' . pb_num( $lastn ) . ' জন' : 'সংরক্ষিত সময়ে কোনো ছাড়পত্র হয়নি'; ?> · মোট <?php echo pb_num( $all ); ?> জন (<?php echo $keys ? esc_html( pb_bdate( $keys[0] ) ) : ''; ?> থেকে)</p>
+				<?php if ( $raw ) : ?><button type="button" class="wb" data-c="<?php echo esc_attr( $raw ); ?>">📊 দিনভিত্তিক চার্ট ও যাচাই →</button><?php endif; ?>
+			</article>
+		<?php } ?>
+		</div>
+	</section>
 	<section class="sec" id="explore">
 		<h2>সময় ও দেশ বেছে নিয়ে হিসাব দেখুন</h2>
 		<p class="lead">দিন, সপ্তাহ, মাস, নির্দিষ্ট তারিখ বা দেশ বাছুন — চার্ট ও তালিকা সঙ্গে সঙ্গে বদলে যাবে।</p>
@@ -576,6 +619,7 @@ html body.bm-app h1,html body.bm-app h2,html body.bm-app h3,html body.bm-app h4,
 				<input type="date" id="bm-day" aria-label="নির্দিষ্ট তারিখ">
 				<span class="rg"><label>থেকে <input type="date" id="bm-from"></label><label>পর্যন্ত <input type="date" id="bm-to"></label><button type="button" id="bm-go">🔎 দেখুন</button></span>
 				<select id="bm-country" aria-label="দেশ"><option value="">সব দেশ</option></select>
+				<span class="wq" role="group" aria-label="নজরের দেশ"><b>⭐</b><button type="button" data-wc="Serbia">সার্বিয়া</button><button type="button" data-wc="Moldova">মলদোভা</button><button type="button" data-wc="North Macedonia">উত্তর মেসিডোনিয়া</button></span>
 			</div>
 			<div class="vf" id="bm-vf" aria-live="polite">সরকারি সার্ভারে যাচাই হচ্ছে…</div>
 			<p class="vfo">নিজে মিলিয়ে দেখতে চাইলে: <a href="https://www.oep.gov.bd/reports/country-clearance" target="_blank" rel="noopener nofollow">OEP কান্ট্রি ক্লিয়ারেন্স রিপোর্ট খুলুন ↗</a> — একই তারিখ দিয়ে filter করলে একই সংখ্যা পাবেন।</p>
@@ -667,15 +711,14 @@ function bmCard(cv, o) {
 		var m = S / (QRN + 6), pad = m * 3; x.fillStyle = '#061f4d';
 		for (var i = 0; i < QRN * QRN; i++) { if ((parseInt(QRH[i >> 2], 16) >> (3 - (i & 3))) & 1) x.fillRect(X + pad + (i % QRN) * m, Y + pad + Math.floor(i / QRN) * m, m + .6, m + .6); }
 	}
-	function brand(X, cy, hgt) { // logo on a white pill; falls back to text while the image is not ready
-		var im = o.logo;
-		if (im && im.complete && im.naturalWidth) {
-			var lh = hgt - 14, lw = im.naturalWidth * lh / im.naturalHeight;
-			rr(X, cy - hgt / 2, lw + 28, hgt, hgt / 2); x.fillStyle = '#fff'; x.fill();
-			x.drawImage(im, X + 14, cy - lh / 2, lw, lh); return;
-		}
-		x.fillStyle = '#22c55e'; x.beginPath(); x.arc(X + hgt * .3, cy, hgt * .3, 0, Math.PI * 2); x.fill();
-		txt('প্রবাসী ইনফো', X + hgt * .75, cy + hgt * .22, '700 ' + Math.round(hgt * .62) + 'px ' + HF, '#fff');
+	function brand(X, cy, hgt) { // text wordmark on a white pill: globe dot + "প্রবাসী" (blue) "ইনফো" (green)
+		var fs = Math.round(hgt * .5), f1 = '800 ' + fs + 'px ' + HF; x.font = f1;
+		var w1 = x.measureText('প্রবাসী ').width, w2 = x.measureText('ইনফো').width, d = hgt * .42, w = d + 12 + w1 + w2 + 34;
+		rr(X, cy - hgt / 2, w, hgt, hgt / 2); x.fillStyle = '#fff'; x.fill();
+		var gx = X + 16 + d / 2, gr = x.createLinearGradient(gx - d / 2, cy - d / 2, gx + d / 2, cy + d / 2); gr.addColorStop(0, '#0b56c4'); gr.addColorStop(1, '#22c55e');
+		x.fillStyle = gr; x.beginPath(); x.arc(gx, cy, d / 2, 0, Math.PI * 2); x.fill();
+		x.strokeStyle = 'rgba(255,255,255,.85)'; x.lineWidth = 1.6; x.beginPath(); x.ellipse(gx, cy, d * .2, d / 2 - 1, 0, 0, Math.PI * 2); x.moveTo(gx - d / 2 + 1, cy); x.lineTo(gx + d / 2 - 1, cy); x.stroke();
+		txt('প্রবাসী ', X + 16 + d + 10, cy + fs * .36, f1, '#0b3f97'); txt('ইনফো', X + 16 + d + 10 + w1, cy + fs * .36, f1, '#16a34a');
 	}
 	function chipCol(c) { var up = c.indexOf('▲') >= 0, dn = c.indexOf('▼') >= 0; return up ? ['#dcfce7', '#166534'] : dn ? ['#fee2e2', '#991b1b'] : ['#eef4ff', '#0b3f97']; }
 	function bars(rows, RX, RY, RW, rh, head, fs, nameW, numW, title) {
@@ -771,12 +814,12 @@ function bmCard(cv, o) {
 	var BM = ['জানুয়ারি', 'ফেব্রুয়ারি', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগস্ট', 'সেপ্টেম্বর', 'অক্টোবর', 'নভেম্বর', 'ডিসেম্বর'];
 	var part = hh < 5 ? 'রাত' : hh < 12 ? 'সকাল' : hh < 15 ? 'দুপুর' : hh < 18 ? 'বিকাল' : hh < 20 ? 'সন্ধ্যা' : 'রাত';
 	var stamp = 'তৈরি: ' + bn(+pt.day) + ' ' + BM[(+pt.month) - 1] + ' ' + bn(pt.year) + ', ' + part + ' ' + bn(((hh + 11) % 12) + 1) + ':' + bn(mm);
-	function line(t, X, Y, size, maxW, col, w8) { var f = size; x.font = (w8 || '500') + ' ' + f + 'px ' + TF; while (f > 12 && x.measureText(t).width > maxW) { f -= 1; x.font = (w8 || '500') + ' ' + f + 'px ' + TF; } txt(t, X, Y, (w8 || '500') + ' ' + f + 'px ' + TF, col); }
+	function line(t, X, Y, size, maxW, col, w8, fam) { var F = fam || TF, f = size; x.font = (w8 || '500') + ' ' + f + 'px ' + F; while (f > 12 && x.measureText(t).width > maxW) { f -= 1; x.font = (w8 || '500') + ' ' + f + 'px ' + F; } txt(t, X, Y, (w8 || '500') + ' ' + f + 'px ' + F, col); }
 	if (wide) {
 		var fy = H - 62, qs = 92, tw = W - 2 * P - qs - 300;
 		x.fillStyle = 'rgba(255,255,255,.18)'; x.fillRect(P, fy - 24, W - 2 * P, 1.5);
 		line('তথ্যসূত্র: oep.gov.bd/reports/country-clearance · যাচাই করে নিন', P, fy, 16, tw, '#bcd3fb');
-		line(stamp + ' · স্বাধীন তথ্যসেবা, সরকারি প্রকাশনা নয়', P, fy + 28, 16, tw, '#bcd3fb');
+		line(stamp + ' · স্বাধীন তথ্যসেবা, সরকারি প্রকাশনা নয়', P, fy + 28, 17, tw, '#e6f0ff', '600', HF);
 		txt('probashiinfo.com/bmet-report', W - P - qs - 14, fy + 8, '700 21px ' + HF, '#fff', 'right');
 		txt('স্ক্যান করে লাইভ রিপোর্ট দেখুন →', W - P - qs - 14, fy + 32, '500 14px ' + TF, '#bcd3fb', 'right');
 		qr(W - P - qs, H - qs - 10, qs);
@@ -784,7 +827,7 @@ function bmCard(cv, o) {
 		var LY2 = H - 140, qs2 = 124, tw2 = W - 2 * P - qs2 - 20;
 		x.fillStyle = 'rgba(255,255,255,.18)'; x.fillRect(P, LY2, W - 2 * P, 1.5);
 		line('তথ্যসূত্র: oep.gov.bd/reports/country-clearance · যাচাই করে নিন', P, LY2 + 30, 21, tw2, '#bcd3fb');
-		line(stamp + ' · রিপোর্ট তৈরি: প্রবাসী ইনফো (স্বাধীন তথ্যসেবা)', P, LY2 + 58, 21, tw2, '#bcd3fb');
+		line(stamp + ' · রিপোর্ট তৈরি: প্রবাসী ইনফো (স্বাধীন তথ্যসেবা)', P, LY2 + 60, 22, tw2, '#e6f0ff', '600', HF);
 		rr(P, LY2 + 72, tw2, 50, 25); x.fillStyle = '#22c55e'; x.fill();
 		var pf = 25; x.font = '700 ' + pf + 'px ' + HF; while (pf > 14 && x.measureText('🌐 লাইভ রিপোর্ট: probashiinfo.com/bmet-report').width > tw2 - 30) { pf--; x.font = '700 ' + pf + 'px ' + HF; }
 		txt('🌐 লাইভ রিপোর্ট: probashiinfo.com/bmet-report', P + tw2 / 2, LY2 + 97 + pf * .35, '700 ' + pf + 'px ' + HF, '#053b1d', 'center');
@@ -835,7 +878,10 @@ function bmCard(cv, o) {
 	$('bm-day').onchange=function(){ if(!this.value) return; clr(); $('bm-month').value=''; sel=keys.filter(function(k){return k===$('bm-day').value}); rng=[this.value,this.value]; render(); };
 	$('bm-from').max=$('bm-to').max=keys[keys.length-1]; $('bm-from').min=$('bm-to').min='2018-01-01';
 	$('bm-go').onclick=function(){ var a=$('bm-from').value, b=$('bm-to').value||a; if(!a){ $('bm-from').focus(); return; } if(a>b){ var x=a; a=b; b=x; } clr(); $('bm-month').value=''; $('bm-day').value=''; sel=keys.filter(function(k){return k>=a&&k<=b}); rng=[a,b]; render(); };
-	$('bm-country').onchange=function(){ country=this.value; render(); };
+	$('bm-country').onchange=function(){ country=this.value; document.querySelectorAll('[data-wc]').forEach(function(x){ x.classList.toggle('on',!!country&&clean(country)===x.dataset.wc); }); render(); };
+	function pickCountry(name){ var o=[].slice.call($('bm-country').options).filter(function(op){ return op.value&&clean(op.value)===name; })[0]; if(!o) return; $('bm-country').value=o.value; $('bm-country').onchange(); }
+	document.querySelectorAll('[data-wc]').forEach(function(b){ b.onclick=function(){ if(b.classList.contains('on')){ $('bm-country').value=''; $('bm-country').onchange(); } else pickCountry(b.dataset.wc); }; });
+	document.querySelectorAll('.wb[data-c]').forEach(function(b){ b.onclick=function(){ pickCountry(clean(b.dataset.c)); clr(); document.querySelector('.bar [data-r="30"]').classList.add('on'); rng=null; sel=keys.slice(-30); render(); document.getElementById('explore').scrollIntoView({behavior:'smooth'}); }; });
 	/* every filter is re-checked against the government's own server (OEP) */
 	var OEP=null, vtimer=0;
 	var vtry=0;

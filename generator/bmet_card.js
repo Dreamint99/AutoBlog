@@ -23,15 +23,14 @@ function bmCard(cv, o) {
 		var m = S / (QRN + 6), pad = m * 3; x.fillStyle = '#061f4d';
 		for (var i = 0; i < QRN * QRN; i++) { if ((parseInt(QRH[i >> 2], 16) >> (3 - (i & 3))) & 1) x.fillRect(X + pad + (i % QRN) * m, Y + pad + Math.floor(i / QRN) * m, m + .6, m + .6); }
 	}
-	function brand(X, cy, hgt) { // logo on a white pill; falls back to text while the image is not ready
-		var im = o.logo;
-		if (im && im.complete && im.naturalWidth) {
-			var lh = hgt - 14, lw = im.naturalWidth * lh / im.naturalHeight;
-			rr(X, cy - hgt / 2, lw + 28, hgt, hgt / 2); x.fillStyle = '#fff'; x.fill();
-			x.drawImage(im, X + 14, cy - lh / 2, lw, lh); return;
-		}
-		x.fillStyle = '#22c55e'; x.beginPath(); x.arc(X + hgt * .3, cy, hgt * .3, 0, Math.PI * 2); x.fill();
-		txt('প্রবাসী ইনফো', X + hgt * .75, cy + hgt * .22, '700 ' + Math.round(hgt * .62) + 'px ' + HF, '#fff');
+	function brand(X, cy, hgt) { // text wordmark on a white pill: globe dot + "প্রবাসী" (blue) "ইনফো" (green)
+		var fs = Math.round(hgt * .5), f1 = '800 ' + fs + 'px ' + HF; x.font = f1;
+		var w1 = x.measureText('প্রবাসী ').width, w2 = x.measureText('ইনফো').width, d = hgt * .42, w = d + 12 + w1 + w2 + 34;
+		rr(X, cy - hgt / 2, w, hgt, hgt / 2); x.fillStyle = '#fff'; x.fill();
+		var gx = X + 16 + d / 2, gr = x.createLinearGradient(gx - d / 2, cy - d / 2, gx + d / 2, cy + d / 2); gr.addColorStop(0, '#0b56c4'); gr.addColorStop(1, '#22c55e');
+		x.fillStyle = gr; x.beginPath(); x.arc(gx, cy, d / 2, 0, Math.PI * 2); x.fill();
+		x.strokeStyle = 'rgba(255,255,255,.85)'; x.lineWidth = 1.6; x.beginPath(); x.ellipse(gx, cy, d * .2, d / 2 - 1, 0, 0, Math.PI * 2); x.moveTo(gx - d / 2 + 1, cy); x.lineTo(gx + d / 2 - 1, cy); x.stroke();
+		txt('প্রবাসী ', X + 16 + d + 10, cy + fs * .36, f1, '#0b3f97'); txt('ইনফো', X + 16 + d + 10 + w1, cy + fs * .36, f1, '#16a34a');
 	}
 	function chipCol(c) { var up = c.indexOf('▲') >= 0, dn = c.indexOf('▼') >= 0; return up ? ['#dcfce7', '#166534'] : dn ? ['#fee2e2', '#991b1b'] : ['#eef4ff', '#0b3f97']; }
 	function bars(rows, RX, RY, RW, rh, head, fs, nameW, numW, title) {
@@ -127,12 +126,12 @@ function bmCard(cv, o) {
 	var BM = ['জানুয়ারি', 'ফেব্রুয়ারি', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগস্ট', 'সেপ্টেম্বর', 'অক্টোবর', 'নভেম্বর', 'ডিসেম্বর'];
 	var part = hh < 5 ? 'রাত' : hh < 12 ? 'সকাল' : hh < 15 ? 'দুপুর' : hh < 18 ? 'বিকাল' : hh < 20 ? 'সন্ধ্যা' : 'রাত';
 	var stamp = 'তৈরি: ' + bn(+pt.day) + ' ' + BM[(+pt.month) - 1] + ' ' + bn(pt.year) + ', ' + part + ' ' + bn(((hh + 11) % 12) + 1) + ':' + bn(mm);
-	function line(t, X, Y, size, maxW, col, w8) { var f = size; x.font = (w8 || '500') + ' ' + f + 'px ' + TF; while (f > 12 && x.measureText(t).width > maxW) { f -= 1; x.font = (w8 || '500') + ' ' + f + 'px ' + TF; } txt(t, X, Y, (w8 || '500') + ' ' + f + 'px ' + TF, col); }
+	function line(t, X, Y, size, maxW, col, w8, fam) { var F = fam || TF, f = size; x.font = (w8 || '500') + ' ' + f + 'px ' + F; while (f > 12 && x.measureText(t).width > maxW) { f -= 1; x.font = (w8 || '500') + ' ' + f + 'px ' + F; } txt(t, X, Y, (w8 || '500') + ' ' + f + 'px ' + F, col); }
 	if (wide) {
 		var fy = H - 62, qs = 92, tw = W - 2 * P - qs - 300;
 		x.fillStyle = 'rgba(255,255,255,.18)'; x.fillRect(P, fy - 24, W - 2 * P, 1.5);
 		line('তথ্যসূত্র: oep.gov.bd/reports/country-clearance · যাচাই করে নিন', P, fy, 16, tw, '#bcd3fb');
-		line(stamp + ' · স্বাধীন তথ্যসেবা, সরকারি প্রকাশনা নয়', P, fy + 28, 16, tw, '#bcd3fb');
+		line(stamp + ' · স্বাধীন তথ্যসেবা, সরকারি প্রকাশনা নয়', P, fy + 28, 17, tw, '#e6f0ff', '600', HF);
 		txt('probashiinfo.com/bmet-report', W - P - qs - 14, fy + 8, '700 21px ' + HF, '#fff', 'right');
 		txt('স্ক্যান করে লাইভ রিপোর্ট দেখুন →', W - P - qs - 14, fy + 32, '500 14px ' + TF, '#bcd3fb', 'right');
 		qr(W - P - qs, H - qs - 10, qs);
@@ -140,7 +139,7 @@ function bmCard(cv, o) {
 		var LY2 = H - 140, qs2 = 124, tw2 = W - 2 * P - qs2 - 20;
 		x.fillStyle = 'rgba(255,255,255,.18)'; x.fillRect(P, LY2, W - 2 * P, 1.5);
 		line('তথ্যসূত্র: oep.gov.bd/reports/country-clearance · যাচাই করে নিন', P, LY2 + 30, 21, tw2, '#bcd3fb');
-		line(stamp + ' · রিপোর্ট তৈরি: প্রবাসী ইনফো (স্বাধীন তথ্যসেবা)', P, LY2 + 58, 21, tw2, '#bcd3fb');
+		line(stamp + ' · রিপোর্ট তৈরি: প্রবাসী ইনফো (স্বাধীন তথ্যসেবা)', P, LY2 + 60, 22, tw2, '#e6f0ff', '600', HF);
 		rr(P, LY2 + 72, tw2, 50, 25); x.fillStyle = '#22c55e'; x.fill();
 		var pf = 25; x.font = '700 ' + pf + 'px ' + HF; while (pf > 14 && x.measureText('🌐 লাইভ রিপোর্ট: probashiinfo.com/bmet-report').width > tw2 - 30) { pf--; x.font = '700 ' + pf + 'px ' + HF; }
 		txt('🌐 লাইভ রিপোর্ট: probashiinfo.com/bmet-report', P + tw2 / 2, LY2 + 97 + pf * .35, '700 ' + pf + 'px ' + HF, '#053b1d', 'center');
