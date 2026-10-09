@@ -447,6 +447,8 @@ em.up,em.dn{font-style:normal;font-weight:700;font-size:13px;padding:1px 8px;bor
 .gw{display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);gap:22px;align-items:start}
 .gw canvas{width:100%;height:auto;border-radius:16px;box-shadow:0 20px 40px -20px rgba(8,42,99,.55);display:block}
 .ga{display:grid;gap:10px}.ga button{border:0;border-radius:12px;padding:13px 14px;font:700 16px var(--tf);cursor:pointer}
+.cap{background:var(--soft);border-radius:14px;padding:10px}.cap-h{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px}.cap-h button{border:0;background:var(--nv2);color:#fff;border-radius:10px;padding:8px 12px;font:700 14px var(--tf);cursor:pointer}.cap-h button.ok{background:var(--g)}
+.cap textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px;font:400 14px/1.6 var(--tf);color:var(--ink);background:#fff;resize:vertical}
 .bdl{background:var(--g);color:#fff}.bsh{background:var(--b);color:#fff}.ga ul{margin:4px 0 0;padding-left:18px;color:var(--ink2);font-size:14.5px}
 .rp{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 .rp a{display:flex;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px;text-decoration:none;color:var(--ink);box-shadow:var(--sh)}
@@ -579,6 +581,7 @@ html body.bm-app h1,html body.bm-app h2,html body.bm-app h3,html body.bm-app h4,
 			<div class="gb" role="group" aria-label="কার্ডের ধরন"><button type="button" data-k="live"<?php echo $live['t'] ? '' : ' hidden'; ?>>🔴 আজ (<?php echo esc_html( $sd( $today ) ); ?> · লাইভ)</button><button type="button" data-k="day" class="on"><?php echo esc_html( $lastlbl ); ?></button><button type="button" data-k="week">সাপ্তাহিক (শেষ ৭ দিন)</button><button type="button" data-k="month">মাসিক (<?php echo esc_html( $m0 ? pb_bmonth( $m0 ) : '' ); ?>)</button><button type="button" data-k="cur">ওপরের ফিল্টার</button><input type="date" id="bm-cdate" aria-label="যেকোনো তারিখের কার্ড"></div>
 			<div class="gw"><canvas id="bm-cv" width="1080" height="1350" aria-label="বিএমইটি রিপোর্ট কার্ড"></canvas>
 			<div class="ga"><button type="button" class="bdl" id="bm-dl">⬇ JPEG ডাউনলোড করুন</button><button type="button" class="bsh" id="bm-sh">📤 ফেসবুক / হোয়াটসঅ্যাপে শেয়ার</button>
+				<div class="cap"><div class="cap-h"><b>📝 পোস্টের ক্যাপশন</b><button type="button" id="bm-copy">📋 ক্যাপশন কপি করুন</button></div><textarea id="bm-cap" rows="9" readonly aria-label="রিপোর্টের ক্যাপশন"></textarea></div>
 				<ul><li>কার্ডে রিপোর্টের তারিখ ও তৈরির সময় থাকে</li><li>তথ্যসূত্র: বিএমইটি / OEP (oep.gov.bd) লেখা থাকে</li><li>নিচে আমাদের লাইভ রিপোর্টের লিংক থাকে</li><li>ক্যালেন্ডার থেকে যেকোনো তারিখ বাছলে সেই দিনের কার্ড হবে</li></ul></div></div>
 		</div>
 	</section>
@@ -792,14 +795,23 @@ function bmCard(cv, o) {
 		return {kind:bdate(d)+' এর বিএমইটি রিপোর্ট',period:'দৈনিক বহির্গমন ছাড়পত্রের হিসাব',t:a4.t,f:a4.f,nc:Object.keys(a4.cs).length,cmp:pctTxt(a4.t,b4.t,'আগের দিনের'),rows:topRows(a4.cs),file:d};
 	}
 	var fontsReady=(document.fonts&&document.fonts.load)?Promise.all(['800 40px "Anek Bangla"','700 40px "Anek Bangla"','600 20px "Hind Siliguri"','500 20px "Hind Siliguri"'].map(function(f){return document.fonts.load(f,'বাংলা')})).catch(function(){}):Promise.resolve();
-	function drawCard(){ fontsReady.then(function(){ bmCard($('bm-cv'),cardOpts()); }); }
+	function caption(o){
+		var L=['📊 '+o.kind,'📅 '+o.period,'','✅ মোট বহির্গমন ছাড়পত্র (স্মার্ট কার্ড): '+num(o.t)+' জন'];
+		if(o.nc>1) L.push('🌍 গন্তব্য দেশ: '+bn(o.nc)+'টি'); if(o.f) L.push('👩 নারী কর্মী: '+num(o.f)+' জন'); if(o.avg) L.push('📈 দৈনিক গড়: '+num(o.avg)+' জন'); if(o.cmp) L.push('↕️ '+o.cmp);
+		if(o.rows&&o.rows.length){ L.push('',(o.rowsTitle||'দেশভিত্তিক হিসাব')+':'); o.rows.forEach(function(r,i){ L.push(bn(i+1)+'. '+r[0]+' — '+num(r[1])+' জন'); }); }
+		L.push('','📌 তথ্যসূত্র: বাংলাদেশ সরকারের ওভারসিজ এমপ্লয়মেন্ট প্ল্যাটফর্ম (OEP) — https://www.oep.gov.bd/reports/country-clearance','(সরকারি তথ্য হুবহু দেখানো হয়েছে; সিদ্ধান্তের আগে মূল সূত্রে যাচাই করে নিন)','','🤝 রিপোর্ট তৈরিতে সহযোগিতায়: প্রবাসী ইনফো — https://probashiinfo.com/bmet-report/','লাইভ আপডেট ও যেকোনো তারিখের রিপোর্ট দেখুন 👆','','#BMET #বিএমইটি_রিপোর্ট #প্রবাসী #ProbashiInfo');
+		return L.join('\n');
+	}
+	function drawCard(){ fontsReady.then(function(){ var o=cardOpts(); bmCard($('bm-cv'),o); $('bm-cap').value=caption(o); }); }
+	$('bm-copy').onclick=function(){ var t=$('bm-cap').value, b=this, done=function(){ b.textContent='✅ কপি হয়েছে'; b.classList.add('ok'); setTimeout(function(){ b.textContent='📋 ক্যাপশন কপি করুন'; b.classList.remove('ok'); },2200); };
+		if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done,function(){ $('bm-cap').select(); document.execCommand('copy'); done(); }); else { $('bm-cap').select(); document.execCommand('copy'); done(); } };
 	function blob(cb){ $('bm-cv').toBlob(cb,'image/jpeg',.93); }
 	function pick(k){ document.querySelectorAll('.gb [data-k]').forEach(function(x){x.classList.toggle('on',x.dataset.k===k)}); kind=k; drawCard(); }
 	document.querySelectorAll('.gb [data-k]').forEach(function(b){ b.onclick=function(){ if(b.dataset.k==='day'){cday='';$('bm-cdate').value='';} pick(b.dataset.k); }; });
 	$('bm-cdate').min=keys[0]; $('bm-cdate').max=keys[keys.length-1];
 	$('bm-cdate').onchange=function(){ if(!D[this.value]){ alert('এই তারিখের তথ্য নেই — '+bdate(keys[0])+' থেকে '+bdate(keys[keys.length-1])+' এর মধ্যে বাছুন।'); return; } cday=this.value; pick('day'); };
 	$('bm-dl').onclick=function(){ var o=cardOpts(); blob(function(bl){ var a=document.createElement('a'); a.href=URL.createObjectURL(bl); a.download='bmet-report-'+o.file+'.jpg'; document.body.appendChild(a); a.click(); setTimeout(function(){URL.revokeObjectURL(a.href); a.remove();},1500); }); };
-	$('bm-sh').onclick=function(){ var o=cardOpts(), txt=o.kind+': মোট '+num(o.t)+' জন। লাইভ রিপোর্ট: https://probashiinfo.com/bmet-report/';
+	$('bm-sh').onclick=function(){ var o=cardOpts(), txt=caption(o);
 		blob(function(bl){ var f=new File([bl],'bmet-report-'+o.file+'.jpg',{type:'image/jpeg'});
 			if(navigator.canShare&&navigator.canShare({files:[f]})) navigator.share({files:[f],title:o.kind,text:txt}).catch(function(){});
 			else { $('bm-dl').click(); window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent('https://probashiinfo.com/bmet-report/'),'_blank'); } }); };
