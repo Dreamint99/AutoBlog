@@ -362,6 +362,8 @@ def notify(kind: str = "daily"):
     base, h = wp()
     adm = requests.get(f"{base}/wp-json/pa/v1/push-admin", headers=h, timeout=60).json()
     subs = adm.get("subs") or {}
+    if isinstance(subs, list):
+        subs = {}
     if not adm.get("pem") or not subs:
         print("push: nothing to send", len(subs))
         return
@@ -370,7 +372,7 @@ def notify(kind: str = "daily"):
                "url": f"{base}/bmet-report/?utm_source=push-test", "tag": "bmet-test"}
     else:
         a = build(kind)
-        if adm.get("sent", {}).get(kind) == a["slug"]:
+        if (adm.get("sent") or {}) and isinstance(adm["sent"], dict) and adm["sent"].get(kind) == a["slug"]:
             print("push: already sent for", a["slug"])
             return
         ex = requests.get(f"{base}/wp-json/wp/v2/posts", headers=h, params={"slug": a["slug"], "_fields": "link"}, timeout=60).json()
