@@ -55,8 +55,7 @@ function pi_service_url( $words ) {
 	return home_url( '/?s=' . rawurlencode( $words[0] ) );
 }
 function pi_logo_svg() {
-	return '<svg class="pi-mark" viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="pig" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00875a"/><stop offset="1" stop-color="#005c45"/></linearGradient></defs>'
-		. '<circle cx="24" cy="24" r="23" fill="url(#pig)"/><circle cx="24" cy="24" r="19.5" fill="none" stroke="#f4c430" stroke-width="1.4" stroke-dasharray="2.2 1.8"/>'
+	return '<svg class="pi-mark" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="23" fill="#006a4e"/><circle cx="24" cy="24" r="19.5" fill="none" stroke="#f4c430" stroke-width="1.4" stroke-dasharray="2.2 1.8"/>'
 		. '<circle cx="24" cy="24" r="12" fill="none" stroke="#fff" stroke-width="1.8"/><ellipse cx="24" cy="24" rx="5" ry="12" fill="none" stroke="#fff" stroke-width="1.4"/><path d="M12 24h24M14 18h20M14 30h20" stroke="#fff" stroke-width="1.2" fill="none"/>'
 		. '<circle cx="35" cy="13" r="5.4" fill="#e63946"/><path d="M32.6 13.2l1.7 1.7 3.2-3.3" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 }
@@ -129,6 +128,7 @@ body.pi .cs-header__inner-desktop .cs-col-right *{color:var(--pi-ink)!important}
 .pi-svc b{display:block;font:700 16.5px/1.3 var(--pi-head);color:var(--pi-ink)}
 .pi-svc small{display:block;font-size:13px;color:var(--pi-mut);line-height:1.4;margin-top:2px}
 @media(max-width:960px){.pi-services{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.pi-svc{grid-template-columns:1fr;gap:8px;padding:14px}.pi-svc i{width:42px;height:42px;font-size:21px}.pi-svc b{font-size:15.5px}}
 /* dashboard */
 .pi-dash{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:14px}
 @media(max-width:900px){.pi-dash{grid-template-columns:minmax(0,1fr)}}
