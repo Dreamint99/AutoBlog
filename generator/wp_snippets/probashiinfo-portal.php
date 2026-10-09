@@ -19,6 +19,7 @@ add_action( 'init', function () {
 function pi_on() {
 	static $on = null;
 	if ( $on !== null ) return $on;
+	if ( function_exists( 'pa_app' ) && pa_app() ) return $on = false;
 	if ( is_admin() || wp_doing_ajax() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) return $on = false;
 	if ( isset( $_GET['v2'] ) ) {
 		$want = $_GET['v2'] === '1';
