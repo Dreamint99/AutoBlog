@@ -81,6 +81,7 @@ function pa_bmet_range( $from, $to ) {
 	if ( $n >= 40 ) return new WP_Error( 'busy', 'অনেকে একসাথে দেখছেন — একটু পরে আবার চেষ্টা করুন', array( 'status' => 429 ) );
 	set_transient( 'pa_bmet_q_rate', $n + 1, 600 );
 	$all = pa_bmet_oep_range( $from, $to );
+	if ( ! $all ) { usleep( 800000 ); $all = pa_bmet_oep_range( $from, $to ); }
 	if ( ! $all ) return new WP_Error( 'oep', 'সরকারি সার্ভারে এখন সংযোগ পাওয়া যাচ্ছে না', array( 'status' => 502 ) );
 	$fem = pa_bmet_oep_range( $from, $to, 2 );
 	$cs = array();
@@ -489,7 +490,7 @@ html body.bm-app h1,html body.bm-app h2,html body.bm-app h3,html body.bm-app h4,
 <body <?php body_class( 'bm-app' ); ?>>
 <?php wp_body_open(); ?>
 <header class="ah"><div class="w">
-	<a class="lg" href="<?php echo esc_url( $url ); ?>" aria-label="বিএমইটি লাইভ রিপোর্ট"><?php if ( $logo ) echo '<img src="' . esc_url( $logo ) . '" alt="প্রবাসী ইনফো" width="120" height="34">'; ?><b>বিএমইটি <i>লাইভ</i></b></a>
+	<a class="lg" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="প্রবাসী ইনফো — হোম"><?php if ( $logo ) echo '<img src="' . esc_url( $logo ) . '" alt="প্রবাসী ইনফো" width="120" height="34">'; ?><b>বিএমইটি <i>লাইভ</i></b></a>
 	<nav aria-label="বিএমইটি রিপোর্ট"><a href="#live">আজ</a><a href="#explore">হিসাব ও চার্ট</a><a href="#countries">দেশভিত্তিক</a><a href="#months">মাসিক</a><a href="#card">রিপোর্ট কার্ড</a><a href="#reports">দৈনিক রিপোর্ট</a><a href="#faq">প্রশ্নোত্তর</a></nav>
 	<a class="lv" href="#live"><span class="dot"></span>লাইভ</a>
 	<a class="home" href="<?php echo esc_url( home_url( '/' ) ); ?>">← প্রবাসী ইনফো</a>
@@ -727,7 +728,7 @@ function bmCard(cv, o) {
 	function val(k){ var r=D[k]; return country ? (r.c[country]||0) : r.t; }
 	var rng=null;
 	function render(){
-		if(!sel.length&&rng){ $('bm-trend').innerHTML='<p class="empty">'+(rng[0]===J.live.date?'আজকের দিন এখনো চলছে — সংখ্যা সরাসরি সরকারি সার্ভার থেকে আসছে, দিন শেষে আরও বাড়বে। দৈনিক চার্টে আজকের দিন যুক্ত হবে রাত ১২টার পর।':'এই সময়ের সংরক্ষিত দৈনিক চার্ট নেই — মোট হিসাব সরকারি সার্ভার থেকে আসছে।')+'</p>'; $('bm-top').innerHTML=''; ['k-t','k-f','k-c','k-a'].forEach(function(i){$(i).textContent='…'}); $('bm-tip').textContent=bdate(rng[0])+' – '+bdate(rng[1]); verify(); return; }
+		if(!sel.length&&rng){ $('bm-trend').innerHTML='<p class="empty">'+(rng[0]===J.live.date?'আজকের দিন এখনো চলছে — সংখ্যা সরাসরি সরকারি সার্ভার থেকে আসছে, দিন শেষে আরও বাড়বে। দৈনিক চার্টে আজকের দিন যুক্ত হবে রাত ১২টার পর।':'এই সময়ের সংরক্ষিত দৈনিক চার্ট নেই — মোট হিসাব সরকারি সার্ভার থেকে আসছে।')+'</p>'; $('bm-top').innerHTML=''; ['k-t','k-f','k-c','k-a'].forEach(function(i){$(i).textContent='…'}); if(LIVE&&rng[0]===LIVE.date&&rng[1]===LIVE.date){ var lt=country?(LIVE.c[country]||0):LIVE.t; $('k-t').textContent=num(lt); $('k-a').textContent=num(lt); if(!country){ $('k-f').textContent=num(LIVE.f); $('k-c').textContent=bn(Object.keys(LIVE.c).length); var tp=Object.keys(LIVE.c).sort(function(p,q){return LIVE.c[q]-LIVE.c[p]}).slice(0,10), tq=LIVE.c[tp[0]]||1; $('bm-top').innerHTML=tp.map(function(c){ return '<div class="r">'+flag(c)+'<span>'+cn(c)+'</span><span class="t"><i style="width:'+(LIVE.c[c]*100/tq)+'%"></i></span><b>'+num(LIVE.c[c])+'</b></div>'; }).join(''); } } $('bm-tip').textContent=bdate(rng[0])+' – '+bdate(rng[1]); verify(); return; }
 		var t=0,f=0,cs={}; sel.forEach(function(k){ var r=D[k]; t+=val(k); if(!country) f+=r.f; for(var c in r.c) cs[c]=(cs[c]||0)+r.c[c]; });
 		$('k-t').textContent=num(t); $('k-f').textContent=country?'—':num(f); $('k-cl').textContent=country?'দেশ':'গন্তব্য দেশ'; $('k-c').textContent=country?cn(country):bn(Object.keys(cs).length); $('k-a').textContent=num(t/Math.max(1,sel.length));
 		var mx=Math.max.apply(null,sel.map(val).concat([1]));
@@ -752,11 +753,12 @@ function bmCard(cv, o) {
 	$('bm-country').onchange=function(){ country=this.value; render(); };
 	/* every filter is re-checked against the government's own server (OEP) */
 	var OEP=null, vtimer=0;
-	function verify(){ clearTimeout(vtimer); var a=rng?rng[0]:sel[0], b=rng?rng[1]:sel[sel.length-1]; if(!a) return; var my=a+b; OEP=null;
+	var vtry=0;
+	function verify(again){ clearTimeout(vtimer); if(!again) vtry=0; var a=rng?rng[0]:sel[0], b=rng?rng[1]:sel[sel.length-1]; if(!a) return; var my=a+b; OEP=null;
 		$('bm-vf').className='vf'; $('bm-vf').textContent='⏳ সরকারি OEP সার্ভার থেকে '+(a===b?bdate(a):bdate(a)+' – '+bdate(b))+' এর হিসাব যাচাই হচ্ছে…';
 		vtimer=setTimeout(function(){ fetch('/wp-json/pa/v1/bmet-query?from='+a+'&to='+b).then(function(r){return r.json().then(function(j){return [r.ok,j]})}).then(function(x){
 			if(my!==(rng?rng[0]+rng[1]:sel[0]+sel[sel.length-1])) return;
-			var ok=x[0], R=x[1]; if(!ok){ $('bm-vf').className='vf err'; $('bm-vf').textContent='⚠️ '+(R&&R.message?R.message:'সরকারি সার্ভারে যাচাই করা যায়নি')+' — নিচের হিসাব আমাদের সংরক্ষিত সরকারি তথ্য থেকে।'; return; }
+			var ok=x[0], R=x[1]; if(!ok&&vtry<1&&(!R||R.code!=='bad')){ vtry++; $('bm-vf').textContent='⏳ সরকারি সার্ভার ধীরে সাড়া দিচ্ছে — আবার চেষ্টা করা হচ্ছে…'; setTimeout(function(){verify(true)},2500); return; } if(!ok){ $('bm-vf').className='vf err'; $('bm-vf').textContent='⚠️ '+(R&&R.message?R.message:'সরকারি সার্ভারে যাচাই করা যায়নি')+' — নিচের হিসাব আমাদের সংরক্ষিত সরকারি তথ্য থেকে।'; return; }
 			OEP=R; var t=country?(R.c[country]||0):R.t, mine=0; sel.forEach(function(k){mine+=val(k)});
 			$('k-t').textContent=num(t); if(!country&&R.f!==null) $('k-f').textContent=num(R.f); if(!country) $('k-c').textContent=bn(Object.keys(R.c).length);
 			var nd=Math.round((Date.parse(b)-Date.parse(a))/864e5)+1; $('k-a').textContent=num(t/nd);
