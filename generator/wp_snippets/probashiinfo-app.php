@@ -7,7 +7,7 @@
    Snippets #6, #7, #8 and #11 (v2) step aside when pa_app() is on;
    their ads are redrawn here in the same design language. Writer names are not shown. */
 if ( ! defined( 'PA_APP_PUBLIC' ) ) define( 'PA_APP_PUBLIC', true );
-if ( ! defined( 'PA_APP_VERSION' ) ) define( 'PA_APP_VERSION', '3.4.0' );
+if ( ! defined( 'PA_APP_VERSION' ) ) define( 'PA_APP_VERSION', '3.5.0' );
 define( 'PA_LOGO', 'https://probashiinfo.com/wp-content/uploads/2026/10/probashiinfo-wordmark.webp' );
 define( 'PA_ICON', 'https://probashiinfo.com/wp-content/uploads/2026/10/probashiinfo-icon.png' );
 define( 'PA_PB', 'https://www.probashibondu.online' );
@@ -362,6 +362,32 @@ body.pi-app{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 va
 }
 @media(prefers-reduced-motion:reduce){.datebar .tick div{animation:none}}
 
+
+/* ---------- home hero v2 ---------- */
+.hero2{position:relative;overflow:hidden;color:#fff;background:radial-gradient(900px 420px at 92% -10%,rgba(34,197,94,.30),transparent 60%),radial-gradient(700px 400px at -10% 110%,rgba(56,189,248,.25),transparent 60%),linear-gradient(135deg,var(--nv),var(--b2) 60%,var(--b))}
+.hero2 .w{position:relative;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:28px;padding-top:34px;padding-bottom:40px;align-items:center}
+.h2k{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:5px 12px;font-size:13.5px;font-weight:600}
+.hero2 h1{color:#fff;font-size:clamp(30px,4.6vw,50px);font-weight:800;margin:12px 0 8px;line-height:1.15}
+.hero2 p{margin:0 0 18px;color:#d6e4fb;font-size:17px;max-width:58ch}
+.h2t{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.ht{display:flex;flex-direction:column;gap:6px;position:relative;padding:14px;border-radius:18px;text-decoration:none;color:#fff!important;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);transition:transform .15s,background .15s}
+.ht:hover{transform:translateY(-2px);background:rgba(255,255,255,.16)}
+.ht-r{background:linear-gradient(140deg,rgba(225,29,72,.95),rgba(190,18,60,.95));border-color:transparent}
+.ht-i{font-size:26px;line-height:1}.ht-b{display:flex;flex-direction:column}.ht-b small{font-size:12.5px;opacity:.85;display:flex;align-items:center;gap:6px}
+.ht-b b{font:800 21px/1.2 var(--head);margin:2px 0}.ht-b em{font-style:normal;font-size:13px;opacity:.85}
+.ht-go{position:absolute;right:12px;top:12px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.18);display:grid;place-items:center;font-weight:800}
+.h2p{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px}.h2p span{font-size:13.5px;color:#bcd3fb}
+.h2p a{padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#fff!important;font-size:14px;text-decoration:none}.h2p a:hover{background:rgba(255,255,255,.18)}
+.h2r{background:#fff;color:var(--ink);border-radius:22px;padding:16px;box-shadow:0 30px 60px -30px rgba(0,0,0,.55)}
+.gl-h{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:6px}.gl-h b{font:800 18px var(--head);width:100%}.gl-h span{font-size:13px;color:var(--mut)}
+.gl-r a{display:grid;grid-template-columns:24px 1fr auto;gap:10px;align-items:center;padding:8px 4px;border-bottom:1px dashed var(--line);color:var(--ink)!important;text-decoration:none;font-size:15px}
+.gl-r a:hover{background:var(--bg)}.gl-r img{width:24px;height:17px;border-radius:3px;object-fit:cover;box-shadow:0 0 0 1px rgba(0,0,0,.08)}.gl-r b{font:800 17px var(--head);color:var(--b2)}
+.gl-b{display:grid;grid-template-columns:1fr auto;gap:2px 10px;margin-top:10px;padding:10px 12px;border-radius:14px;background:#fff1f2;border:1px solid #fecdd3;color:var(--ink)!important;text-decoration:none}
+.gl-b span{font-size:13px;color:#9f1239;font-weight:700}.gl-b b{grid-row:1/3;grid-column:2;align-self:center;font:800 22px var(--head);color:#be123c}.gl-b small{font-size:12.5px;color:var(--mut)}
+.gl-all{display:block;text-align:center;margin-top:10px;font-weight:700;font-size:14px}
+.srch2 button{white-space:nowrap;flex:none}
+@media(max-width:1020px){.hero2 .w{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:640px){.h2t{grid-template-columns:minmax(0,1fr)}.ht{flex-direction:row;align-items:center;gap:12px;padding:12px 44px 12px 12px}.ht-go{top:50%;transform:translateY(-50%)}.hero2 .w{padding-top:22px}}
 /* ---------- header v2: logo + search + tools, category bar, mobile drawer ---------- */
 .hdr2{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.97);backdrop-filter:saturate(1.6) blur(14px);-webkit-backdrop-filter:saturate(1.6) blur(14px);box-shadow:0 1px 0 var(--line),0 8px 24px -20px rgba(10,40,90,.35)}
 .hdr2 .top{display:flex;align-items:center;gap:18px;height:84px;transition:height .25s}
@@ -416,7 +442,7 @@ function pa_head() {
 </head>
 <body <?php body_class( 'pi-app' ); ?>>
 <?php wp_body_open(); ?>
-<div class="util"><div class="w"><span><span class="dot"></span><b>স্বাধীন তথ্যসেবা</b><span class="hide"> — এটি সরকারি ওয়েবসাইট নয়</span></span><span class="r"><a class="hide" href="<?php echo esc_url( PA_PB . '/?utm_source=probashiinfo&utm_medium=util' ); ?>" target="_blank" rel="noopener">প্রবাসী বন্ধু</a><a class="hot hot-live" href="<?php echo esc_url( home_url( '/bmet-report/' ) ); ?>"><span class="ldot"></span> আজকের বিএমইটি</a><a class="hot" href="<?php echo esc_url( home_url( '/taka-rate/' ) ); ?>">💱 আজকের রেট</a></span></div></div>
+<div class="util"><div class="w"><span><span class="dot"></span><b>স্বাধীন তথ্যসেবা</b><span class="hide"> — এটি সরকারি ওয়েবসাইট নয়</span></span><span class="r"><a class="hide" href="<?php echo esc_url( PA_PB . '/?utm_source=probashiinfo&utm_medium=util' ); ?>" target="_blank" rel="noopener">🌍 প্রবাসী বন্ধু</a><a class="hide" href="https://dreamintcs.com/?utm_source=probashiinfo&amp;utm_medium=util" target="_blank" rel="noopener sponsored">✈️ ড্রিম ইন্টারন্যাশনাল</a></span></div></div>
 <?php $cats = pa_top_cats( 14 ); $cur = is_category() ? get_queried_object_id() : 0; $mainc = array_slice( $cats, 0, 6 ); $morec = array_slice( $cats, 6 );
 $tools = array( array( '/bmet-report/', '🔴', 'বিএমইটি', 'লাইভ রিপোর্ট', 'live' ), array( '/flight-tracker/', '✈️', 'ফ্লাইট', 'ট্র্যাকার লাইভ', '' ), array( '/taka-rate/', '💱', 'টাকার রেট', 'আজকের রেট', '' ) ); ?>
 <header class="hdr2" id="hdr2">
@@ -439,9 +465,6 @@ $tools = array( array( '/bmet-report/', '🔴', 'বিএমইটি', 'লা
 	<nav class="drw-c"><a href="<?php echo esc_url( home_url( '/' ) ); ?>">🏠 হোম</a><?php foreach ( $cats as $c ) echo '<a href="' . esc_url( get_category_link( $c ) ) . '"' . ( $cur === $c->term_id ? ' class="on"' : '' ) . '>' . esc_html( pa_cat_name( $c ) ) . '<span>' . pa_bn( (int) $c->count ) . '</span></a>'; ?></nav>
 	<div class="drw-p"><a href="<?php echo esc_url( PA_PB . '/?utm_source=probashiinfo&utm_medium=menu' ); ?>" target="_blank" rel="noopener">🌍 প্রবাসী বন্ধু</a><a href="https://dreamintcs.com/?utm_source=probashiinfo&amp;utm_medium=menu" target="_blank" rel="noopener sponsored">✈️ ড্রিম ইন্টারন্যাশনাল</a></div>
 </aside></div>
-<div class="datebar"><div class="w"><span><?php echo esc_html( pa_weekday( $now ) . ', ' . pa_date( $now ) ); ?></span><span id="hijri">হিজরি</span>
-<?php $latest = get_posts( array( 'numberposts' => 8 ) ); if ( $latest ) { $it = ''; foreach ( $latest as $p ) $it .= '<a href="' . esc_url( get_permalink( $p ) ) . '">' . esc_html( get_the_title( $p ) ) . '</a>'; echo '<div class="tick"><div>' . $it . $it . '</div></div>'; } ?>
-</div></div>
 <main id="main">
 <?php }
 
@@ -513,14 +536,35 @@ function pa_view_home() {
 	);
 	$latest = get_posts( array( 'numberposts' => 13 ) );
 	?>
-<section class="hero"><div class="w">
-	<h1>প্রবাসীদের সব তথ্য, এক জায়গায়</h1>
-	<p>ভিসা চেক, ওয়ার্ক পারমিট, বিএমইটি, আজকের রেমিট্যান্স রেট, নামাজের সময় আর জরুরি হটলাইন — সহজ বাংলায়, প্রতিদিন হালনাগাদ।</p>
-	<form class="hs" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search"><input name="s" type="search" placeholder="খুঁজুন: সৌদি ভিসা চেক, রোমানিয়া ওয়ার্ক পারমিট…" aria-label="খুঁজুন"><button type="submit">খুঁজুন</button></form>
-	<div class="chips"><a class="chip-live" href="<?php echo esc_url( home_url( '/bmet-report/' ) ); ?>"><span class="ldot"></span> আজকের বিএমইটি রিপোর্ট (লাইভ)</a><a class="chip-fl" href="<?php echo esc_url( home_url( '/flight-tracker/' ) ); ?>">✈️ ফ্লাইট ট্র্যাকার লাইভ</a><a href="<?php echo esc_url( pa_search_url( 'ভিসা চেক' ) ); ?>">ভিসা চেক</a><a href="<?php echo esc_url( pa_search_url( 'ওয়ার্ক পারমিট' ) ); ?>">ওয়ার্ক পারমিট</a><a href="#dash">আজকের রেট</a><a href="#countries">দেশ গাইড</a><a href="<?php echo esc_url( PA_PB . '/?utm_source=probashiinfo&utm_medium=hero' ); ?>" target="_blank" rel="noopener">প্রবাস কার্ড বানান</a></div>
-	<div class="hstats"><div><b><?php echo pa_bn( (int) wp_count_posts()->publish ); ?>+</b><span>তথ্যভিত্তিক লেখা</span></div><div><b><?php echo pa_bn( count( get_categories( array( 'hide_empty' => true ) ) ) ); ?></b><span>বিষয়</span></div><div><b>৯</b><span>মুদ্রার লাইভ রেট</span></div><div><b>প্রতিদিন</b><span>নতুন তথ্য</span></div></div>
+<?php
+	$now = current_time( 'timestamp', true );
+	$live = function_exists( 'pa_bmet_live' ) ? pa_bmet_live() : null;
+	$fx = function_exists( 'pa_fx_data' ) ? pa_fx_data() : null; $fr = $fx && ! empty( $fx['latest'] ) ? ( $fx['h'][ $fx['latest'] ] ?? array() ) : array();
+	$bm = get_option( 'pa_bmet' ); $bd = ( ! empty( $bm['days'] ) && is_array( $bm['days'] ) ) ? $bm['days'] : array(); ksort( $bd );
+	$tdy = wp_date( 'Y-m-d', null, new DateTimeZone( 'Asia/Dhaka' ) ); $bk = array_values( array_filter( array_keys( $bd ), function ( $k ) use ( $tdy ) { return $k < $tdy; } ) ); $yk = $bk ? end( $bk ) : '';
+	$r2 = function ( $c ) use ( $fr ) { return isset( $fr[ $c ] ) ? pa_bn( number_format( $fr[ $c ], 2 ) ) : '—'; };
+?>
+<section class="hero2"><div class="w">
+	<div class="h2l">
+		<span class="h2k"><span class="ldot"></span> প্রবাসীদের নির্ভরযোগ্য তথ্যসেবা</span>
+		<h1>প্রবাসীদের সব তথ্য, এক জায়গায়</h1>
+		<p>ভিসা, ওয়ার্ক পারমিট, বিএমইটি, টাকার রেট আর ফ্লাইটের খবর — সহজ বাংলায়, প্রতিদিন হালনাগাদ।</p>
+		<div class="h2t">
+			<a class="ht ht-r" href="<?php echo esc_url( home_url( '/bmet-report/' ) ); ?>"><span class="ht-i">📊</span><span class="ht-b"><small><span class="ldot"></span> লাইভ · আজ</small><b><?php echo $live && $live['t'] ? pa_bn( number_format( (int) $live['t'] ) ) . ' জন' : 'বিএমইটি রিপোর্ট'; ?></b><em>আজকের বিএমইটি রিপোর্ট</em></span><span class="ht-go">→</span></a>
+			<a class="ht ht-f" href="<?php echo esc_url( home_url( '/flight-tracker/' ) ); ?>"><span class="ht-i">✈️</span><span class="ht-b"><small>লাইভ ম্যাপ</small><b>ফ্লাইট ট্র্যাকার</b><em>বিমান এখন কোথায়, কখন নামবে</em></span><span class="ht-go">→</span></a>
+			<a class="ht ht-m" href="<?php echo esc_url( home_url( '/taka-rate/' ) ); ?>"><span class="ht-i">💱</span><span class="ht-b"><small>আজকের রেট</small><b>১ রিয়াল = <?php echo $r2( 'sar' ); ?> ৳</b><em>সব মুদ্রা, চার্ট ও ক্যালকুলেটর</em></span><span class="ht-go">→</span></a>
+		</div>
+		<div class="h2p"><span>জনপ্রিয়:</span><a href="<?php echo esc_url( pa_search_url( 'ভিসা চেক' ) ); ?>">ভিসা চেক</a><a href="<?php echo esc_url( pa_search_url( 'ওয়ার্ক পারমিট' ) ); ?>">ওয়ার্ক পারমিট</a><a href="#countries">দেশ গাইড</a><a href="<?php echo esc_url( PA_PB . '/?utm_source=probashiinfo&utm_medium=hero' ); ?>" target="_blank" rel="noopener">প্রবাস কার্ড</a></div>
+	</div>
+	<aside class="h2r" aria-label="আজ এক নজরে">
+		<div class="gl-h"><b>আজ এক নজরে</b><span><?php echo esc_html( pa_weekday( $now ) . ', ' . pa_date( $now ) ); ?></span><span id="hijri">হিজরি</span></div>
+		<div class="gl-r">
+			<?php foreach ( array( array( 'sar', 'sa', 'সৌদি রিয়াল' ), array( 'aed', 'ae', 'আমিরাত দিরহাম' ), array( 'qar', 'qa', 'কাতারি রিয়াল' ), array( 'kwd', 'kw', 'কুয়েতি দিনার' ), array( 'myr', 'my', 'মালয়েশিয়ান রিংগিত' ) ) as $c ) echo '<a href="' . esc_url( home_url( '/taka-rate/' ) ) . '"><img src="https://flagcdn.com/w40/' . $c[1] . '.png" alt="" width="24" height="17" loading="lazy"><span>' . $c[2] . '</span><b>' . $r2( $c[0] ) . ' ৳</b></a>'; ?>
+		</div>
+		<?php if ( $yk ) echo '<a class="gl-b" href="' . esc_url( home_url( '/bmet-report/' ) ) . '"><span>বিএমইটি · গতকাল</span><b>' . pa_bn( number_format( (int) $bd[ $yk ]['t'] ) ) . ' জন</b><small>' . pa_bn( count( $bd[ $yk ]['c'] ) ) . 'টি দেশে বহির্গমন ছাড়পত্র</small></a>'; ?>
+		<a class="gl-all" href="<?php echo esc_url( home_url( '/taka-rate/' ) ); ?>">সব রেট দেখুন →</a>
+	</aside>
 </div></section>
-<?php pa_bmet_banner(); ?>
 <div class="w">
 	<section class="sec"><div class="sh"><h2>সেবা বাতায়ন</h2></div><div class="svcs">
 	<?php foreach ( $svc as $s ) echo '<a class="svc" href="' . esc_url( pa_service_url( $s[3] ) ) . '"><i>' . $s[0] . '</i><span><b>' . esc_html( $s[1] ) . '</b><small>' . esc_html( $s[2] ) . '</small></span></a>'; ?>
