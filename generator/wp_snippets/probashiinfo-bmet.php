@@ -410,7 +410,7 @@ body.bm-app{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 va
 .dis-ic{position:fixed;right:14px;bottom:14px;z-index:66;width:40px;height:40px;border-radius:50%;border:0;background:#fbbf24;font-size:19px;cursor:pointer;box-shadow:0 10px 30px -6px rgba(0,0,0,.45);animation:disp 2.4s infinite}
 @keyframes disp{0%{box-shadow:0 0 0 0 rgba(251,191,36,.6)}70%{box-shadow:0 0 0 12px rgba(251,191,36,0)}100%{box-shadow:0 0 0 0 rgba(251,191,36,0)}}
 .dis[hidden],.dis-ic[hidden]{display:none!important}
-@media(max-width:700px){.dis,.dis-ic{right:10px;bottom:calc(76px + env(safe-area-inset-bottom))}.dis{width:min(260px,calc(100vw - 20px))}}
+@media(max-width:700px){.dis,.dis-ic{right:10px;bottom:calc(76px + env(safe-area-inset-bottom))}.dis{width:min(240px,calc(100vw - 20px))}}
 .dis b{color:#fde68a;font-size:13px}.dis p{margin:3px 0 0;font-size:12px;line-height:1.5}.dis a{color:#fde68a!important;word-break:break-all}.dis strong{color:#fff}
 .lp{background:#fff;color:var(--ink);border-radius:22px;padding:18px;box-shadow:0 30px 60px -30px rgba(0,0,0,.5)}
 .lp h2{font-size:19px;display:flex;align-items:center;gap:10px;margin-bottom:8px}
@@ -849,7 +849,7 @@ function bmCard(cv, o) {
 	(function(){ var d=$('bm-dis'), ic=$('bm-disic'), K='pa_dis_hide', get=function(){try{return localStorage.getItem(K)}catch(e){return null}}, set=function(v){try{v?localStorage.setItem(K,'1'):localStorage.removeItem(K)}catch(e){}};
 		function show(o){ d.hidden=!o; ic.hidden=o; set(!o); }
 		$('bm-disx').onclick=function(){ show(false); }; ic.onclick=function(){ show(true); };
-		if(get()) { d.hidden=true; ic.hidden=false; } })();
+		if(get()) { d.hidden=true; ic.hidden=false; } else setTimeout(function(){ if(!d.hidden&&!d.matches(':hover')){ d.hidden=true; ic.hidden=false; } },8000); })();
 	render(); drawCard();
 	var links=[].slice.call(document.querySelectorAll('.ah nav a')), secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))});
 	if('IntersectionObserver' in window){ var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ var i=secs.indexOf(e.target); links.forEach(function(a,j){a.classList.toggle('on',j===i)}); } }); },{rootMargin:'-40% 0px -55% 0px'}); secs.forEach(function(s){ if(s) io.observe(s); }); }
