@@ -7,7 +7,7 @@
    Snippets #6, #7, #8 and #11 (v2) step aside when pa_app() is on;
    their ads are redrawn here in the same design language. Writer names are not shown. */
 if ( ! defined( 'PA_APP_PUBLIC' ) ) define( 'PA_APP_PUBLIC', true );
-if ( ! defined( 'PA_APP_VERSION' ) ) define( 'PA_APP_VERSION', '3.0.0' );
+if ( ! defined( 'PA_APP_VERSION' ) ) define( 'PA_APP_VERSION', '3.1.0' );
 define( 'PA_LOGO', 'https://probashiinfo.com/wp-content/uploads/2026/10/probashiinfo-wordmark.webp' );
 define( 'PA_ICON', 'https://probashiinfo.com/wp-content/uploads/2026/10/probashiinfo-icon.png' );
 define( 'PA_PB', 'https://www.probashibondu.online' );
@@ -136,7 +136,7 @@ body.pi-app{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 va
 .util .w{display:flex;align-items:center;gap:14px;min-height:34px}
 .util b{color:#fff;font-weight:600}.util .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--g2);margin-right:6px}
 .util .r{margin-left:auto;display:flex;gap:12px;align-items:center}
-.util .hot{background:var(--red);color:#fff;padding:3px 10px;border-radius:999px;font-weight:700}
+.util .hot{background:var(--g);color:#fff;padding:3px 10px;border-radius:999px;font-weight:700}
 .hdr{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:saturate(1.6) blur(14px);border-bottom:1px solid var(--line)}
 .hdr .w{display:flex;align-items:center;gap:18px;height:70px}
 .logo img{height:48px;width:auto;display:block}
@@ -170,6 +170,22 @@ body.pi-app{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 va
 .hero{position:relative;overflow:hidden;background:radial-gradient(800px 360px at 90% -10%,rgba(34,197,94,.35),transparent 60%),linear-gradient(120deg,var(--nv),var(--b2) 55%,var(--b));color:#fff;padding:38px 0 34px}
 .hero:after{content:"";position:absolute;right:-90px;bottom:-140px;width:460px;height:460px;border-radius:50%;border:70px solid rgba(255,255,255,.05)}
 .hero .w{position:relative;z-index:1}
+.hero:before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.12) 1.2px,transparent 1.3px);background-size:22px 22px;-webkit-mask-image:radial-gradient(ellipse at 75% 40%,#000 25%,transparent 70%);mask-image:radial-gradient(ellipse at 75% 40%,#000 25%,transparent 70%)}
+.hstats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:22px;max-width:760px}
+.hstats div{padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(6px)}
+.hstats b{display:block;font:800 22px/1.15 var(--head);color:#fff}.hstats span{font-size:13px;color:#cfe0fb}
+.ctry{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:10px}
+.ct-tile{display:grid;justify-items:center;gap:8px;padding:14px 8px;border-radius:var(--r);background:var(--card);border:1px solid var(--line);box-shadow:var(--sh);text-align:center;transition:transform .2s,border-color .2s}
+.ct-tile:hover{transform:translateY(-3px);border-color:var(--g)}
+.ct-tile img{border-radius:5px;box-shadow:0 3px 8px rgba(10,40,90,.2);object-fit:cover}
+.ct-tile b{font:700 14.5px/1.3 var(--head)}
+.faq{display:grid;gap:10px}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--sh);padding:0 18px}
+.faq summary{cursor:pointer;list-style:none;padding:15px 0;font:700 16.5px/1.4 var(--head);display:flex;gap:10px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:before{content:"+";flex:none;width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:var(--bs);color:var(--b);font-weight:800}
+.faq details[open] summary:before{content:"−";background:var(--g);color:#fff}
+.faq p{margin:0 0 15px 38px;color:var(--ink2)}
 .hero h1{color:#fff;font-size:clamp(28px,4.4vw,48px);font-weight:800}
 .hero p{margin:8px 0 18px;color:#d6e4fb;font-size:17px;max-width:62ch}
 .hs{display:flex;max-width:660px;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 18px 40px -18px rgba(0,0,0,.45)}
@@ -314,16 +330,17 @@ body.pi-app{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 va
 /* mobile tabs */
 .tabs{display:none}
 @media(max-width:1020px){.nav{display:none}.hsrch{margin-left:auto}.art{grid-template-columns:minmax(0,1fr)}.side{position:static}.grid4{grid-template-columns:repeat(2,minmax(0,1fr))}.svcs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:1020px){.ctry{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(max-width:860px){.dash,.two,.lead{grid-template-columns:minmax(0,1fr)}.grid3{grid-template-columns:repeat(2,minmax(0,1fr))}.ft-g{grid-template-columns:1fr 1fr}.ad-dream-in{grid-template-columns:1fr}.ad-dream-cta{grid-auto-flow:column}}
 @media(max-width:640px){
  .w{padding:0 14px}.hdr .w{height:60px;gap:10px}.logo img{height:38px}.hsrch{width:auto;flex:1;max-width:190px}
  .util .hide{display:none}.grid3,.grid4{grid-template-columns:minmax(0,1fr)}.rates{grid-template-columns:repeat(2,minmax(0,1fr))}.clocks{grid-template-columns:repeat(2,minmax(0,1fr))}.pray{grid-template-columns:repeat(3,minmax(0,1fr))}
- .svc{grid-template-columns:1fr;gap:8px}.svc i{width:44px;height:44px}.ft-g{grid-template-columns:1fr}
+ .svc{grid-template-columns:1fr;gap:8px}.hstats{grid-template-columns:repeat(2,minmax(0,1fr))}.ctry{grid-template-columns:repeat(3,minmax(0,1fr))}.svc i{width:44px;height:44px}.ft-g{grid-template-columns:1fr}
  .art-main{padding:18px 16px;border-radius:0;margin:0 -14px;border-left:0;border-right:0}.art-img{border-radius:0;margin:0 -14px}
  .ad-pb{flex-wrap:wrap}.ad-pb em{margin-left:0;width:100%;text-align:center}
  .tabs{display:grid;grid-template-columns:repeat(4,1fr);position:fixed;left:8px;right:8px;bottom:8px;z-index:60;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 14px 34px rgba(10,40,90,.25);padding:5px}
  .tabs a,.tabs button{display:grid;justify-items:center;gap:2px;padding:7px 0;border:0;background:none;border-radius:12px;color:var(--mut);font:700 11.5px var(--body);cursor:pointer}
- .tabs i{font-style:normal;font-size:20px;line-height:1}.tabs .hot{background:var(--red);color:#fff}
+ .tabs i{font-style:normal;font-size:20px;line-height:1}.tabs .hot{background:var(--b);color:#fff}
  body.pi-app{padding-bottom:78px}
 }
 @media(prefers-reduced-motion:reduce){.datebar .tick div{animation:none}}
@@ -342,7 +359,7 @@ function pa_head() {
 </head>
 <body <?php body_class( 'pi-app' ); ?>>
 <?php wp_body_open(); ?>
-<div class="util"><div class="w"><span><span class="dot"></span><b>স্বাধীন তথ্যসেবা</b><span class="hide"> — এটি সরকারি ওয়েবসাইট নয়</span></span><span class="r"><a class="hide" href="<?php echo esc_url( PA_PB . '/?utm_source=probashiinfo&utm_medium=util' ); ?>" target="_blank" rel="noopener">প্রবাসী বন্ধু</a><a class="hot" href="tel:16135">☎ ১৬১৩৫</a></span></div></div>
+<div class="util"><div class="w"><span><span class="dot"></span><b>স্বাধীন তথ্যসেবা</b><span class="hide"> — এটি সরকারি ওয়েবসাইট নয়</span></span><span class="r"><a class="hide" href="<?php echo esc_url( PA_PB . '/?utm_source=probashiinfo&utm_medium=util' ); ?>" target="_blank" rel="noopener">প্রবাসী বন্ধু</a><a class="hot" href="<?php echo esc_url( home_url( '/#dash' ) ); ?>">💱 আজকের রেট</a></span></div></div>
 <header class="hdr"><div class="w">
 	<a class="logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="প্রবাসী ইনফো — হোম"><img src="<?php echo esc_url( PA_LOGO ); ?>" alt="প্রবাসী ইনফো" width="160" height="44"></a>
 	<nav class="nav" aria-label="বিষয়"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"<?php echo is_front_page() ? ' class="on"' : ''; ?>>হোম</a>
@@ -369,13 +386,12 @@ function pa_foot() {
 			<li><a href="<?php echo esc_url( PA_PB . '/?utm_source=probashiinfo&utm_medium=footer' ); ?>" target="_blank" rel="noopener">প্রবাসী বন্ধু: প্রবাস কার্ড</a></li>
 			<li><a href="<?php echo esc_url( PA_PB . '/guide?utm_source=probashiinfo&utm_medium=footer' ); ?>" target="_blank" rel="noopener">প্রবাসে যাবেন? দেশ গাইড</a></li>
 			<li><a href="https://dreamintcs.com/?utm_source=probashiinfo&utm_medium=footer" target="_blank" rel="noopener sponsored">ড্রিম ইন্টারন্যাশনাল: ওয়ার্ক পারমিট</a></li>
-			<li><a href="tel:16135">প্রবাসী কল্যাণ কল সেন্টার ১৬১৩৫</a></li>
 		</ul></div>
 	</div>
 	<p class="ft-disc">প্রবাসী ইনফো একটি স্বাধীন তথ্যভিত্তিক ওয়েবসাইট; এটি কোনো সরকারি প্রতিষ্ঠান, দূতাবাস বা রিক্রুটিং এজেন্সির ওয়েবসাইট নয়। ভিসা, ফি ও নিয়ম প্রায়ই বদলায় — আবেদন বা টাকা দেওয়ার আগে অফিসিয়াল সূত্রে যাচাই করুন।</p>
 	<div class="ft-base"><span><?php if ( $priv ) echo '<a href="' . esc_url( $priv ) . '">প্রাইভেসি পলিসি</a>'; ?><a href="<?php echo esc_url( home_url( '/sitemap_index.xml' ) ); ?>">সাইটম্যাপ</a></span><span>© <?php echo pa_bn( wp_date( 'Y' ) ); ?> প্রবাসী ইনফো · সার্বিক সহযোগিতায় ড্রিম ইন্টারন্যাশনাল</span></div>
 </div></footer>
-<nav class="tabs" aria-label="দ্রুত মেনু"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><i>🏠</i>হোম</a><a href="<?php echo esc_url( home_url( '/#dash' ) ); ?>"><i>💱</i>রেট</a><a class="hot" href="tel:16135"><i>☎</i>হটলাইন</a><button type="button" class="share-now"><i>📤</i>শেয়ার</button></nav>
+<nav class="tabs" aria-label="দ্রুত মেনু"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><i>🏠</i>হোম</a><a href="<?php echo esc_url( home_url( '/#dash' ) ); ?>"><i>💱</i>রেট</a><button type="button" class="hot find-now"><i>🔍</i>খুঁজুন</button><button type="button" class="share-now"><i>📤</i>শেয়ার</button></nav>
 <div class="progress" id="progress" hidden></div>
 <?php pa_js(); wp_footer(); ?>
 </body>
@@ -400,7 +416,8 @@ function pa_view_home() {
 	<h1>প্রবাসীদের সব তথ্য, এক জায়গায়</h1>
 	<p>ভিসা চেক, ওয়ার্ক পারমিট, বিএমইটি, আজকের রেমিট্যান্স রেট, নামাজের সময় আর জরুরি হটলাইন — সহজ বাংলায়, প্রতিদিন হালনাগাদ।</p>
 	<form class="hs" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search"><input name="s" type="search" placeholder="খুঁজুন: সৌদি ভিসা চেক, রোমানিয়া ওয়ার্ক পারমিট…" aria-label="খুঁজুন"><button type="submit">খুঁজুন</button></form>
-	<div class="chips"><a href="<?php echo esc_url( pa_search_url( 'ভিসা চেক' ) ); ?>">ভিসা চেক</a><a href="<?php echo esc_url( pa_search_url( 'ওয়ার্ক পারমিট' ) ); ?>">ওয়ার্ক পারমিট</a><a href="#dash">আজকের রেট</a><a href="#hotline">হটলাইন</a><a href="<?php echo esc_url( PA_PB . '/?utm_source=probashiinfo&utm_medium=hero' ); ?>" target="_blank" rel="noopener">প্রবাস কার্ড বানান</a></div>
+	<div class="chips"><a href="<?php echo esc_url( pa_search_url( 'ভিসা চেক' ) ); ?>">ভিসা চেক</a><a href="<?php echo esc_url( pa_search_url( 'ওয়ার্ক পারমিট' ) ); ?>">ওয়ার্ক পারমিট</a><a href="#dash">আজকের রেট</a><a href="#countries">দেশ গাইড</a><a href="<?php echo esc_url( PA_PB . '/?utm_source=probashiinfo&utm_medium=hero' ); ?>" target="_blank" rel="noopener">প্রবাস কার্ড বানান</a></div>
+	<div class="hstats"><div><b><?php echo pa_bn( (int) wp_count_posts()->publish ); ?>+</b><span>তথ্যভিত্তিক লেখা</span></div><div><b><?php echo pa_bn( count( get_categories( array( 'hide_empty' => true ) ) ) ); ?></b><span>বিষয়</span></div><div><b>৯</b><span>মুদ্রার লাইভ রেট</span></div><div><b>প্রতিদিন</b><span>নতুন তথ্য</span></div></div>
 </div></section>
 <div class="w">
 	<section class="sec"><div class="sh"><h2>সেবা বাতায়ন</h2></div><div class="svcs">
@@ -431,20 +448,30 @@ function pa_view_home() {
 		if ( $n === 2 ) echo pa_dream( 'home', 'ইউরোপে ওয়ার্ক পারমিট — বাংলাদেশ ও কাতার থেকে' );
 	}
 	?>
-	<section class="sec" id="hotline"><div class="two">
-		<div class="box"><div class="bh">☎ জরুরি হটলাইন ও অফিসিয়াল লিংক</div><ul class="hl">
-			<li><a href="tel:16135"><i>📞</i><span><b>প্রবাসী কল্যাণ কল সেন্টার</b><small>প্রবাসী কল্যাণ ও বৈদেশিক কর্মসংস্থান মন্ত্রণালয়</small></span><em>১৬১৩৫</em></a></li>
-			<li><a href="tel:999"><i>🚨</i><span><b>জাতীয় জরুরি সেবা (বাংলাদেশ)</b><small>পুলিশ, ফায়ার, অ্যাম্বুলেন্স</small></span><em>৯৯৯</em></a></li>
-			<li><a href="https://www.bmet.gov.bd" target="_blank" rel="noopener nofollow"><i>🏛️</i><span><b>বিএমইটি</b><small>bmet.gov.bd — রেজিস্ট্রেশন, ক্লিয়ারেন্স</small></span><em>↗</em></a></li>
-			<li><a href="https://www.wewb.gov.bd" target="_blank" rel="noopener nofollow"><i>🤝</i><span><b>ওয়েজ আর্নার্স কল্যাণ বোর্ড</b><small>wewb.gov.bd — কল্যাণ ও সহায়তা</small></span><em>↗</em></a></li>
-			<li><a href="https://www.epassport.gov.bd" target="_blank" rel="noopener nofollow"><i>📘</i><span><b>ই-পাসপোর্ট</b><small>epassport.gov.bd — আবেদন ও স্ট্যাটাস</small></span><em>↗</em></a></li>
-		</ul><p class="note">নম্বর ও লিংক অফিসিয়াল উৎস থেকে; পরিবর্তন হলে অফিসিয়াল সাইটে যাচাই করুন।</p></div>
+	<section class="sec" id="countries"><div class="sh"><h2>দেশভিত্তিক গাইড</h2></div><div class="ctry">
+	<?php $cs = array( array( 'sa', 'সৌদি আরব', array( 'সৌদি', 'saudi' ) ), array( 'ae', 'দুবাই / আমিরাত', array( 'দুবাই', 'আমিরাত', 'dubai', 'uae' ) ), array( 'qa', 'কাতার', array( 'কাতার', 'qatar' ) ), array( 'kw', 'কুয়েত', array( 'কুয়েত', 'kuwait' ) ), array( 'om', 'ওমান', array( 'ওমান', 'oman' ) ), array( 'bh', 'বাহরাইন', array( 'বাহরাইন', 'bahrain' ) ), array( 'my', 'মালয়েশিয়া', array( 'মালয়েশিয়া', 'malaysia' ) ), array( 'sg', 'সিঙ্গাপুর', array( 'সিঙ্গাপুর', 'singapore' ) ), array( 'it', 'ইতালি', array( 'ইতালি', 'italy' ) ), array( 'ro', 'রোমানিয়া', array( 'রোমানিয়া', 'romania' ) ), array( 'hr', 'ক্রোয়েশিয়া', array( 'ক্রোয়েশিয়া', 'croatia' ) ), array( 'pt', 'পর্তুগাল', array( 'পর্তুগাল', 'portugal' ) ), array( 'pl', 'পোল্যান্ড', array( 'পোল্যান্ড', 'poland' ) ), array( 'rs', 'সার্বিয়া', array( 'সার্বিয়া', 'serbia' ) ), array( 'gb', 'যুক্তরাজ্য', array( 'যুক্তরাজ্য', 'লন্ডন', 'uk' ) ), array( 'jp', 'জাপান', array( 'জাপান', 'japan' ) ) );
+	foreach ( $cs as $c ) echo '<a class="ct-tile" href="' . esc_url( pa_service_url( $c[2] ) ) . '"><img src="https://flagcdn.com/w80/' . $c[0] . '.png" alt="" width="44" height="30" loading="lazy"><b>' . esc_html( $c[1] ) . '</b></a>'; ?>
+	</div></section>
+	<section class="sec"><div class="two">
+		<div class="box"><div class="bh">🔥 সবচেয়ে বেশি পড়া</div><ol class="mini">
+		<?php $i = 0; foreach ( get_posts( array( 'numberposts' => 6, 'orderby' => 'comment_count', 'order' => 'DESC' ) ) as $p ) { $i++; echo '<li><a href="' . esc_url( get_permalink( $p ) ) . '"><span class="n">' . pa_bn( $i ) . '</span><span>' . esc_html( get_the_title( $p ) ) . '</span></a></li>'; } ?>
+		</ol></div>
 		<div class="box"><div class="bh">📌 নোটিশ বোর্ড — সর্বশেষ তথ্য</div><ul class="ntc">
 		<?php $m = array( 'জানু', 'ফেব্রু', 'মার্চ', 'এপ্রি', 'মে', 'জুন', 'জুলা', 'আগ', 'সেপ্টে', 'অক্টো', 'নভে', 'ডিসে' );
 		foreach ( get_posts( array( 'numberposts' => 7 ) ) as $p ) { $t = get_post_time( 'U', true, $p );
 			echo '<li><span class="d"><b>' . esc_html( pa_bn( wp_date( 'j', $t ) ) ) . '</b>' . esc_html( $m[ (int) wp_date( 'n', $t ) - 1 ] ) . '</span><a href="' . esc_url( get_permalink( $p ) ) . '">' . esc_html( get_the_title( $p ) ) . ( time() - $t < 3 * DAY_IN_SECONDS ? '<span class="new">নতুন</span>' : '' ) . '</a></li>'; } ?>
 		</ul></div>
 	</div></section>
+	<section class="sec"><div class="sh"><h2>প্রবাসীদের সাধারণ প্রশ্ন</h2></div><div class="faq">
+	<?php $faq = array(
+		array( 'বিদেশে যাওয়ার আগে কোন কাগজগুলো লাগে?', 'সাধারণত বৈধ পাসপোর্ট, ভিসা বা ওয়ার্ক পারমিট, নিয়োগপত্র, মেডিকেল রিপোর্ট আর বিএমইটি ক্লিয়ারেন্স (স্মার্ট কার্ড) লাগে। দেশ ও কাজের ধরন অনুযায়ী তালিকা আলাদা হয়, তাই সংশ্লিষ্ট দেশের গাইড দেখুন।' ),
+		array( 'ভিসা আসল কিনা কীভাবে বুঝব?', 'যে দেশের ভিসা, সেই দেশের সরকারি ওয়েবসাইট বা অ্যাপে পাসপোর্ট নম্বর দিয়ে যাচাই করুন। এজেন্টের দেওয়া স্ক্রিনশট বা লিংকে ভরসা না করে নিজে অফিসিয়াল পোর্টালে চেক করুন।' ),
+		array( 'দেশে টাকা পাঠানোর নিরাপদ উপায় কী?', 'ব্যাংক, অনুমোদিত এক্সচেঞ্জ হাউস বা স্বীকৃত মোবাইল ফিনান্সিয়াল সেবার মাধ্যমে পাঠান। বৈধ পথে পাঠালে সরকারি প্রণোদনা পাওয়া যায়; হুন্ডি অবৈধ এবং টাকা হারানোর ঝুঁকি থাকে।' ),
+		array( 'দালাল বা ভুয়া এজেন্সি চিনব কীভাবে?', 'বিএমইটি অনুমোদিত রিক্রুটিং এজেন্সি কিনা যাচাই করুন, লিখিত চুক্তি ছাড়া টাকা দেবেন না, আর অস্বাভাবিক কম খরচ বা "নিশ্চিত ভিসা" প্রতিশ্রুতি দেখলে সতর্ক হোন।' ),
+		array( 'বিদেশে থেকে পাসপোর্ট নবায়ন করা যায়?', 'হ্যাঁ, সাধারণত সংশ্লিষ্ট দেশের বাংলাদেশ দূতাবাস বা কনস্যুলেটের মাধ্যমে ই-পাসপোর্টের আবেদন করা যায়। ফি ও প্রক্রিয়া দূতাবাসের ওয়েবসাইটে দেখে নিন।' ),
+	);
+	foreach ( $faq as $f ) echo '<details><summary>' . esc_html( $f[0] ) . '</summary><p>' . esc_html( $f[1] ) . '</p></details>'; ?>
+	</div><p class="note">সাধারণ তথ্য; নিয়ম পরিবর্তন হতে পারে — আবেদন বা টাকা দেওয়ার আগে অফিসিয়াল সূত্রে যাচাই করুন।</p></section>
 </div>
 <?php }
 
@@ -477,7 +504,6 @@ function pa_view_single() {
 			<a class="btn btn-wa" href="<?php echo esc_url( 'https://wa.me/?text=' . rawurlencode( $title . "\n" . $url ) ); ?>" target="_blank" rel="noopener">WhatsApp</a>
 			<a class="btn fb" href="<?php echo esc_url( 'https://www.facebook.com/sharer/sharer.php?u=' . rawurlencode( $url ) ); ?>" target="_blank" rel="noopener">Facebook</a>
 			<button type="button" class="btn cp copy">লিংক কপি</button></div>
-		<div class="help"><i>🆘</i><span><b>বিদেশে বিপদে পড়েছেন?</b><small>প্রবাসী কল্যাণ কল সেন্টারে ফোন করুন, অথবা আপনার দেশের বাংলাদেশ দূতাবাসে যোগাযোগ করুন।</small></span><a href="tel:16135">☎ ১৬১৩৫</a></div>
 		<?php echo pa_dream( 'post-bottom', 'ইউরোপে ওয়ার্ক পারমিট — বাংলাদেশ ও কাতার থেকে' ); ?>
 	</article>
 	<aside class="side">
@@ -556,6 +582,7 @@ function pa_js() { ?>
 	var setFs=function(v){ fs=Math.max(15,Math.min(26,v)); document.documentElement.style.setProperty('--fs',fs+'px'); try{localStorage.setItem('pi_fs',fs)}catch(e){} };
 	setFs(fs); document.querySelectorAll('.fsz button').forEach(function(b){ b.onclick=function(){ setFs(fs+parseFloat(b.dataset.fs)*1.5); }; });
 	document.querySelectorAll('.share-now').forEach(function(b){ b.onclick=function(){ var d={title:document.title,url:location.href.split('#')[0]}; if(navigator.share){ navigator.share(d).catch(function(){}); } else { location.href='https://wa.me/?text='+encodeURIComponent(d.title+'\n'+d.url); } }; });
+	document.querySelectorAll('.find-now').forEach(function(b){ b.onclick=function(){ var i=document.querySelector('.hsrch input'); if(i){ scrollTo({top:0,behavior:'smooth'}); setTimeout(function(){ i.focus(); },300); } }; });
 	document.querySelectorAll('.copy').forEach(function(b){ b.onclick=function(){ try{ navigator.clipboard.writeText(location.href.split('#')[0]); b.textContent='কপি হয়েছে ✓'; }catch(e){} }; });
 	var bar=$('#progress'), body=$('#ct'); if(bar&&body){ bar.hidden=false; addEventListener('scroll',function(){ var r=body.getBoundingClientRect(), p=Math.min(1,Math.max(0,(innerHeight-r.top)/r.height)); bar.style.width=(p*100)+'%'; },{passive:true}); }
 	var C=[['SAR','সৌদি রিয়াল','Asia/Riyadh','রিয়াদ',24.71,46.68],['AED','আমিরাত দিরহাম','Asia/Dubai','দুবাই',25.2,55.27],['QAR','কাতার রিয়াল','Asia/Qatar','দোহা',25.29,51.53],['KWD','কুয়েতি দিনার','Asia/Kuwait','কুয়েত',29.38,47.98],['OMR','ওমানি রিয়াল','Asia/Muscat','মাস্কাট',23.59,58.38],['MYR','মালয়েশিয়ান রিংগিত','Asia/Kuala_Lumpur','কুয়ালালামপুর',3.14,101.69],['SGD','সিঙ্গাপুর ডলার','Asia/Singapore','সিঙ্গাপুর',1.35,103.82],['EUR','ইউরো','Europe/Rome','রোম',41.9,12.5],['GBP','ব্রিটিশ পাউন্ড','Europe/London','লন্ডন',51.51,-0.13]];

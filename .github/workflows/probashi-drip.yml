@@ -1,11 +1,13 @@
 name: Probashi daily auto-post
 
 # Runs in GitHub's cloud — posts even when your PC is OFF.
-# 2 Bengali posts/day (cron is UTC; Bangladesh = UTC+6):
-#   03:30 UTC = 09:30 BST   |   13:30 UTC = 19:30 BST
+# 3 Bengali posts/day (cron is UTC; Bangladesh = UTC+6):
+#   03:30 UTC = 09:30 BST (general)  |  09:30 UTC = 15:30 BST (today's trending keyword)
+#   13:30 UTC = 19:30 BST (general)
 on:
   schedule:
     - cron: "30 3 * * *"
+    - cron: "30 9 * * *"
     - cron: "30 13 * * *"
   workflow_dispatch: {}   # lets you trigger a run manually from the Actions tab
 
@@ -51,5 +53,11 @@ jobs:
           PYTHONUTF8: "1"
         # Fail loudly when nothing was published (e.g. every LLM out of quota), instead of a green run.
         run: |
+          if [ "${{ github.event.schedule }}" = "30 9 * * *" ]; then
+            # trending-keyword post; fall back to a normal post if no trend fits today
+            python hot_drip.py probashiinfo 2>&1 | tee drip.log || python drip.py probashiinfo 1 999999 2>&1 | tee drip.log
+            grep -q "✅" drip.log || { echo "::error::No article published"; exit 1; }
+            exit 0
+          fi
           python drip.py probashiinfo 1 999999 2>&1 | tee drip.log
           grep -q "+0 article(s)" drip.log && { echo "::error::No article published"; exit 1; } || true

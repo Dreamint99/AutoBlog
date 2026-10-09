@@ -10,7 +10,7 @@ on:
     inputs:
       sites:
         description: "Sites (space separated)"
-        default: "infkey countly walvi ninetymins probashiinfo gccguide"
+        default: "infkey countly walvi ninetymins gccguide"
       dry_run:
         description: "Only print the trending picks"
         type: boolean
@@ -68,7 +68,7 @@ jobs:
           PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
           PYTHONUTF8: "1"
         run: |
-          SITES="${{ github.event.inputs.sites || 'infkey countly walvi ninetymins probashiinfo gccguide' }}"
+          SITES="${{ github.event.inputs.sites || 'infkey countly walvi ninetymins gccguide' }}"
           if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
             python hot_drip.py $SITES --dry-run
           else
