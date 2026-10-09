@@ -1,0 +1,41 @@
+name: probashiinfo comments (moderate + reply)
+
+# Pending comments: clear spam → spam folder (reversible), genuine → approved, optional
+# friendly Bengali reply from the site account. Dry run unless "apply".
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "stats or process"
+        default: "stats"
+      apply:
+        type: boolean
+        default: false
+      reply:
+        description: "Reply to approved comments"
+        type: boolean
+        default: false
+      limit:
+        default: "300"
+
+jobs:
+  comments:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: generator
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - env:
+          PROBASHIINFO_WP_URL: ${{ secrets.PROBASHIINFO_WP_URL }}
+          PROBASHIINFO_WP_USER: ${{ secrets.PROBASHIINFO_WP_USER }}
+          PROBASHIINFO_WP_APP_PASSWORD: ${{ secrets.PROBASHIINFO_WP_APP_PASSWORD }}
+        run: |
+          ARGS="${{ github.event.inputs.mode }} --limit ${{ github.event.inputs.limit }}"
+          [ "${{ github.event.inputs.apply }}" = "true" ] && ARGS="$ARGS --apply"
+          [ "${{ github.event.inputs.reply }}" = "true" ] && ARGS="$ARGS --reply"
+          python wp_comments.py $ARGS
