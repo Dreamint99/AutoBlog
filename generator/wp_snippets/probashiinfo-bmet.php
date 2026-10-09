@@ -5,7 +5,7 @@
    - History: daily country-clearance totals from the Government's Overseas Employment Platform (OEP,
      oep.gov.bd), collected by AutoBlog generator/bmet_report.py (00:20 and 09:15 BST) and POSTed to
      /wp-json/pa/v1/bmet (admins only), stored in the option pa_bmet.
-   - Live: today's running count, fetched from OEP by /wp-json/pa/v1/bmet-live at most once per 10 minutes.
+   - Live: today's running count, fetched from OEP by /wp-json/pa/v1/bmet-live at most once per 5 minutes.
    Numbers are shown exactly as OEP returns them; nothing is estimated.
    The card renderer between the @CARD markers is copied from AutoBlog generator/bmet_card.js
    (python generator/sync_bmet_card.py). */
@@ -44,7 +44,7 @@ function pa_bmet_oep( $day, $gender = '' ) {
 	return ( ! empty( $j['success'] ) && isset( $j['payload'] ) ) ? $j['payload'] : null;
 }
 
-/* Today's running count (Asia/Dhaka), cached 10 minutes; on an OEP error the last good value is kept. */
+/* Today's running count (Asia/Dhaka), cached 5 minutes; on an OEP error the last good value is kept. */
 function pa_bmet_live() {
 	$day = wp_date( 'Y-m-d', null, new DateTimeZone( 'Asia/Dhaka' ) );
 	$key = 'pa_bmet_live_' . $day;
@@ -62,12 +62,12 @@ function pa_bmet_live() {
 		$old = get_option( 'pa_bmet_live_last' );
 		$c   = ( is_array( $old ) && $old['date'] === $day ) ? array_merge( $old, array( 'ok' => false ) ) : array( 'date' => $day, 't' => 0, 'f' => 0, 'c' => array(), 'at' => time(), 'ok' => false );
 	}
-	set_transient( $key, $c, $all ? 600 : 120 ); // OEP is asked at most once per 10 minutes
+	set_transient( $key, $c, $all ? 300 : 120 ); // OEP is asked at most once per 5 minutes
 	return $c;
 }
 
 /* Any date range, straight from OEP (what a visitor would get by filtering on oep.gov.bd).
-   Past ranges are cached a day, ranges that include today 10 minutes; at most 40 fresh OEP
+   Past ranges are cached a day, ranges that include today 5 minutes; at most 40 fresh OEP
    lookups per 10 minutes site-wide. */
 function pa_bmet_range( $from, $to ) {
 	$tz = new DateTimeZone( 'Asia/Dhaka' );
@@ -87,7 +87,7 @@ function pa_bmet_range( $from, $to ) {
 	foreach ( (array) $all['data'] as $row ) if ( (int) $row['total_employee'] > 0 ) $cs[ $row['country_name'] ] = (int) $row['total_employee'];
 	arsort( $cs );
 	$c = array( 'from' => $from, 'to' => $to, 't' => (int) $all['totalEmployee'], 'f' => $fem ? (int) $fem['totalEmployee'] : null, 'c' => $cs, 'at' => time() );
-	set_transient( $key, $c, $to >= $today ? 600 : DAY_IN_SECONDS );
+	set_transient( $key, $c, $to >= $today ? 300 : DAY_IN_SECONDS );
 	return $c;
 }
 function pa_bmet_oep_range( $from, $to, $gender = '' ) {
@@ -328,10 +328,10 @@ function pb_render() {
 	$reports = $cat ? get_posts( array( 'category' => $cat->term_id, 'numberposts' => 9 ) ) : array();
 	$lc = $live['c']; arsort( $lc );
 	$faq = array(
-		array( 'আজকের বিএমইটি রিপোর্ট কোথায় দেখব?', 'এই পাতার ওপরে আজকের সংখ্যা লাইভ দেখানো হয় — সরকারি ওভারসিজ এমপ্লয়মেন্ট প্ল্যাটফর্ম (OEP) থেকে প্রতি ১০ মিনিটে নিজে থেকে হালনাগাদ হয়। দিনের শেষে, রাত ১২টার পর, পূর্ণ দিনের রিপোর্ট আলাদা লেখা হিসেবেও প্রকাশ হয়।' ),
+		array( 'আজকের বিএমইটি রিপোর্ট কোথায় দেখব?', 'এই পাতার ওপরে আজকের সংখ্যা লাইভ দেখানো হয় — সরকারি ওভারসিজ এমপ্লয়মেন্ট প্ল্যাটফর্ম (OEP) থেকে প্রতি ৫ মিনিটে নিজে থেকে হালনাগাদ হয়। দিনের শেষে, রাত ১২টার পর, পূর্ণ দিনের রিপোর্ট আলাদা লেখা হিসেবেও প্রকাশ হয়।' ),
 		array( 'বিএমইটি বহির্গমন ছাড়পত্র বা স্মার্ট কার্ড কী?', 'কাজের জন্য বিদেশে যাওয়ার আগে জনশক্তি, কর্মসংস্থান ও প্রশিক্ষণ ব্যুরো (বিএমইটি) থেকে যে বহির্গমন ছাড়পত্র নিতে হয়, সেটিই স্মার্ট কার্ড আকারে দেওয়া হয়। এই রিপোর্টের সংখ্যা হলো নির্দিষ্ট দিনে কতজন কর্মী এই ছাড়পত্র পেয়েছেন।' ),
 		array( 'এই সংখ্যা কি সেদিন বিদেশে চলে যাওয়া কর্মীর সংখ্যা?', 'না। এটি সেদিন বহির্গমন ছাড়পত্র পাওয়া কর্মীর সংখ্যা। ছাড়পত্র পাওয়ার পর কর্মী সাধারণত পরের কোনো দিন ফ্লাইটে যান, তাই এটিকে সেদিনের ফ্লাইটের যাত্রীসংখ্যা ভাববেন না।' ),
-		array( 'তথ্য কখন হালনাগাদ হয়?', 'আজকের সংখ্যা দিনের মধ্যে প্রতি ১০ মিনিটে হালনাগাদ হয় এবং দিনের শেষ পর্যন্ত বাড়তে থাকে। রাত ১২টার পর আগের দিনের পূর্ণ হিসাব যুক্ত হয়, আর সকালে আবার মিলিয়ে দেখা হয় — দেরিতে আসা সরকারি এন্ট্রি থাকলে সংখ্যা সামান্য বদলাতে পারে।' ),
+		array( 'তথ্য কখন হালনাগাদ হয়?', 'আজকের সংখ্যা দিনের মধ্যে প্রতি ৫ মিনিটে হালনাগাদ হয় এবং দিনের শেষ পর্যন্ত বাড়তে থাকে। রাত ১২টার পর আগের দিনের পূর্ণ হিসাব যুক্ত হয়, আর সকালে আবার মিলিয়ে দেখা হয় — দেরিতে আসা সরকারি এন্ট্রি থাকলে সংখ্যা সামান্য বদলাতে পারে।' ),
 		array( 'নিজের স্মার্ট কার্ড বা ছাড়পত্র কীভাবে যাচাই করব?', 'ব্যক্তিগত ছাড়পত্র যাচাই করতে হয় সরকারি OEP/বিএমইটি পোর্টাল বা বিএমইটি অফিসে। প্রবাসী ইনফো কারও ব্যক্তিগত তথ্য দেখায় না বা সংগ্রহ করে না; এখানে শুধু দেশভিত্তিক মোট সংখ্যা দেখানো হয়।' ),
 		array( 'অ্যাপ হিসেবে ইনস্টল করে নোটিফিকেশন পাওয়া যাবে?', 'হ্যাঁ। "অ্যাপ ইনস্টল করুন" চাপলে ফোনের হোম স্ক্রিনে "বিএমইটি লাইভ" অ্যাপ যুক্ত হবে, আর "নোটিফিকেশন চালু করুন" চাপলে প্রতিদিন রাতে রিপোর্ট প্রকাশ হলেই নোটিফিকেশন পাবেন। আইফোনে আগে শেয়ার → Add to Home Screen করে অ্যাপটি খুলতে হয়।' ),
 		array( 'রিপোর্ট কার্ড ডাউনলোড করে শেয়ার করা যাবে?', 'হ্যাঁ। "রিপোর্ট কার্ড" অংশ থেকে দৈনিক, সাপ্তাহিক, মাসিক বা যেকোনো তারিখের কার্ড JPEG হিসেবে নামিয়ে ফেসবুক, হোয়াটসঅ্যাপ বা ইনস্টাগ্রামে দিতে পারবেন। কার্ডে তারিখ, তৈরির সময় ও তথ্যসূত্র লেখা থাকে।' ),
@@ -502,7 +502,7 @@ html body.bm-app h1,html body.bm-app h2,html body.bm-app h3,html body.bm-app h4,
 			<span class="lbl">আজ এখন পর্যন্ত বহির্গমন ছাড়পত্র (স্মার্ট কার্ড)</span>
 			<div class="big"><span id="lv-t" data-v="<?php echo (int) $live['t']; ?>"><?php echo pb_num( $live['t'] ); ?></span><small>জন</small></div>
 			<div class="sub"><b id="lv-c"><?php echo pb_bn( count( $live['c'] ) ); ?></b>টি দেশ · নারী <b id="lv-f"><?php echo pb_num( $live['f'] ); ?></b> জন</div>
-			<span class="at" id="lv-at">সর্বশেষ চেক: <?php echo esc_html( pb_bn( wp_date( 'H:i', $live['at'], new DateTimeZone( 'Asia/Dhaka' ) ) ) ); ?> · প্রতি ১০ মিনিটে নিজে হালনাগাদ হয় · দিনের শেষ পর্যন্ত সংখ্যা বাড়তে থাকে</span>
+			<span class="at" id="lv-at">সর্বশেষ চেক: <?php echo esc_html( pb_bn( wp_date( 'H:i', $live['at'], new DateTimeZone( 'Asia/Dhaka' ) ) ) ); ?> · প্রতি ৫ মিনিটে নিজে হালনাগাদ হয় · দিনের শেষ পর্যন্ত সংখ্যা বাড়তে থাকে</span>
 		</div>
 		<?php if ( $last ) : ?>
 		<div class="ybox"><span><?php echo esc_html( pb_bdate( $last ) ); ?> (পূর্ণ দিন)</span><b><?php echo pb_num( $L['t'] ); ?> জন</b><span><?php echo pb_bn( count( $L['c'] ) ); ?>টি দেশ · নারী <?php echo pb_num( $L['f'] ); ?></span><?php echo $prevk ? pb_pct( (int) $L['t'], (int) $days[ $prevk ]['t'] ) : ''; ?><?php if ( $last_url ) echo '<a href="' . esc_url( $last_url ) . '">পুরো রিপোর্ট →</a>'; ?></div>
@@ -803,7 +803,7 @@ function bmCard(cv, o) {
 		countTo($('lv-t'),L.t); $('lv-f').textContent=num(L.f); $('lv-c').textContent=bn(Object.keys(L.c).length);
 		var ks=Object.keys(L.c).sort(function(a,b){return L.c[b]-L.c[a]}).slice(0,8), mx=L.c[ks[0]]||1;
 		if(ks.length) $('lv-list').innerHTML=ks.map(function(c){return '<div class="lrow'+(NEWC[c]?' new':'')+'">'+flag(c)+'<span>'+cn(c)+'</span><span class="t"><i style="width:'+(L.c[c]*100/mx)+'%"></i></span><b>'+num(L.c[c])+'</b></div>'}).join('');
-		$('lv-at').textContent='সর্বশেষ চেক: '+hm(L.at)+' · প্রতি ১০ মিনিটে নিজে হালনাগাদ হয় · দিনের শেষ পর্যন্ত সংখ্যা বাড়তে থাকে';
+		$('lv-at').textContent='সর্বশেষ চেক: '+hm(L.at)+' · প্রতি ৫ মিনিটে নিজে হালনাগাদ হয় · দিনের শেষ পর্যন্ত সংখ্যা বাড়তে থাকে';
 		if(add.length){ if($('lv-feed0')) $('lv-feed0').remove();
 			$('lv-feed').querySelector('h3').insertAdjacentHTML('afterend',add.map(function(a){return '<p>'+hm(L.at)+' — '+cn(a[0])+' <b>+'+num(a[1])+' জন</b></p>'}).join('')); }
 	}
