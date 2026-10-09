@@ -7,7 +7,7 @@
    Snippets #6, #7, #8 and #11 (v2) step aside when pa_app() is on;
    their ads are redrawn here in the same design language. Writer names are not shown. */
 if ( ! defined( 'PA_APP_PUBLIC' ) ) define( 'PA_APP_PUBLIC', true );
-if ( ! defined( 'PA_APP_VERSION' ) ) define( 'PA_APP_VERSION', '3.5.1' );
+if ( ! defined( 'PA_APP_VERSION' ) ) define( 'PA_APP_VERSION', '3.6.0' );
 define( 'PA_LOGO', 'https://probashiinfo.com/wp-content/uploads/2026/10/probashiinfo-wordmark.webp' );
 define( 'PA_ICON', 'https://probashiinfo.com/wp-content/uploads/2026/10/probashiinfo-icon.png' );
 define( 'PA_PB', 'https://www.probashibondu.online' );
@@ -363,6 +363,33 @@ body.pi-app{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 va
 @media(prefers-reduced-motion:reduce){.datebar .tick div{animation:none}}
 
 
+
+/* ---------- home hero v3: animated route map from Dhaka ---------- */
+.hero3{position:relative;overflow:hidden;color:#fff;background:linear-gradient(135deg,#061a3d 0%,#082a63 45%,#0a3f96 100%)}
+.hero3:after{content:"";position:absolute;left:0;right:0;bottom:0;height:60px;background:linear-gradient(180deg,transparent,rgba(6,26,61,.35))}
+.hero3 .w{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.25fr);gap:10px;align-items:center;min-height:440px;padding-top:18px;padding-bottom:18px}
+.h3k{display:inline-flex;align-items:center;gap:8px;background:rgba(34,197,94,.14);border:1px solid rgba(34,197,94,.4);color:#bbf7d0;border-radius:999px;padding:5px 12px;font-size:13px;font-weight:700}
+.hero3 h1{color:#fff;font-size:clamp(36px,5.2vw,62px);font-weight:800;line-height:1.08;margin:14px 0 10px;letter-spacing:-.5px}
+.hero3 h1 span{background:linear-gradient(90deg,#4ade80,#38bdf8);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero3 p{margin:0 0 22px;color:#bcd3fb;font-size:17px;letter-spacing:.3px}
+.h3b{display:flex;flex-wrap:wrap;gap:10px}
+.hb{display:flex;align-items:center;gap:10px;padding:10px 16px 10px 12px;border-radius:16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#fff!important;text-decoration:none;backdrop-filter:blur(6px);transition:transform .15s,background .15s}
+.hb:hover{transform:translateY(-2px);background:rgba(255,255,255,.15)}.hb i{font-style:normal;font-size:22px}.hb span{display:flex;flex-direction:column;line-height:1.15}
+.hb b{font:800 19px var(--head)}.hb small{font-size:12px;color:#bcd3fb}
+.hb-r{background:linear-gradient(135deg,#e11d48,#be123c);border-color:transparent}.hb-r small{color:#ffe4e6}
+.h3m{position:relative;width:100%;aspect-ratio:800/460}
+.h3m svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.h3arc{animation:h3dash 1.6s linear infinite}@keyframes h3dash{to{stroke-dashoffset:-20}}
+.h3ring{transform-box:fill-box;transform-origin:center;animation:h3ring 2.4s ease-out infinite;stroke-width:1.5}.h3ring.big{stroke-width:2}
+@keyframes h3ring{0%{transform:scale(1);opacity:.9}100%{transform:scale(3.4);opacity:0}}
+.h3t{fill:#dbe7ff;font:600 13px var(--head);paint-order:stroke;stroke:#061a3d;stroke-width:3px}.h3t.dh{fill:#fff;font-size:17px;font-weight:800}
+.h3pl path{filter:drop-shadow(0 0 3px rgba(56,189,248,.9))}
+.h3c{position:absolute;transform:translate(-50%,-150%);display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.95);color:var(--nv)!important;border-radius:999px;padding:3px 9px 3px 5px;font:800 13px var(--head);text-decoration:none;box-shadow:0 8px 20px -8px rgba(0,0,0,.6);animation:h3fl 4s ease-in-out infinite}
+.h3c img{width:18px;height:13px;border-radius:2px;object-fit:cover}
+.h3c:nth-of-type(2n){animation-delay:-2s}@keyframes h3fl{50%{transform:translate(-50%,-175%)}}
+@media(max-width:1020px){.hero3 .w{grid-template-columns:minmax(0,1fr);min-height:0}.h3m{margin:0 -8px;width:calc(100% + 16px)}}
+@media(max-width:640px){.hero3 .w{padding-top:22px}.hero3 h1{font-size:38px}.h3t{font-size:11px}.h3c{font-size:11.5px;padding:2px 7px 2px 4px}.hb{flex:1 1 calc(50% - 10px);padding:9px 10px}.hb-r{flex-basis:100%}}
+@media(prefers-reduced-motion:reduce){.h3arc,.h3ring,.h3c{animation:none}.h3pl{display:none}}
 /* ---------- home hero v2 ---------- */
 .hero2{position:relative;overflow:hidden;color:#fff;background:radial-gradient(900px 420px at 92% -10%,rgba(34,197,94,.30),transparent 60%),radial-gradient(700px 400px at -10% 110%,rgba(56,189,248,.25),transparent 60%),linear-gradient(135deg,var(--nv),var(--b2) 60%,var(--b))}
 .hero2 .w{position:relative;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:28px;padding-top:34px;padding-bottom:40px;align-items:center}
@@ -544,26 +571,48 @@ function pa_view_home() {
 	$tdy = wp_date( 'Y-m-d', null, new DateTimeZone( 'Asia/Dhaka' ) ); $bk = array_values( array_filter( array_keys( $bd ), function ( $k ) use ( $tdy ) { return $k < $tdy; } ) ); $yk = $bk ? end( $bk ) : '';
 	$r2 = function ( $c ) use ( $fr ) { return isset( $fr[ $c ] ) ? pa_bn( number_format( $fr[ $c ], 2 ) ) : '—'; };
 ?>
-<section class="hero2"><div class="w">
-	<div class="h2l">
-		<span class="h2k"><span class="ldot"></span> প্রবাসীদের নির্ভরযোগ্য তথ্যসেবা</span>
-		<h1>প্রবাসীদের সব তথ্য, এক জায়গায়</h1>
-		<p>ভিসা, ওয়ার্ক পারমিট, বিএমইটি, টাকার রেট আর ফ্লাইটের খবর — সহজ বাংলায়, প্রতিদিন হালনাগাদ।</p>
-		<div class="h2t">
-			<a class="ht ht-r" href="<?php echo esc_url( home_url( '/bmet-report/' ) ); ?>"><span class="ht-i">📊</span><span class="ht-b"><small><span class="ldot"></span> লাইভ · আজ</small><b><?php echo $live && $live['t'] ? pa_bn( number_format( (int) $live['t'] ) ) . ' জন' : 'বিএমইটি রিপোর্ট'; ?></b><em>আজকের বিএমইটি রিপোর্ট</em></span><span class="ht-go">→</span></a>
-			<a class="ht ht-f" href="<?php echo esc_url( home_url( '/flight-tracker/' ) ); ?>"><span class="ht-i">✈️</span><span class="ht-b"><small>লাইভ ম্যাপ</small><b>ফ্লাইট ট্র্যাকার</b><em>বিমান এখন কোথায়, কখন নামবে</em></span><span class="ht-go">→</span></a>
-			<a class="ht ht-m" href="<?php echo esc_url( home_url( '/taka-rate/' ) ); ?>"><span class="ht-i">💱</span><span class="ht-b"><small>আজকের রেট</small><b>১ রিয়াল = <?php echo $r2( 'sar' ); ?> ৳</b><em>সব মুদ্রা, চার্ট ও ক্যালকুলেটর</em></span><span class="ht-go">→</span></a>
+<?php
+	$cities = array( // name, x, y (viewBox 800x460), rate code, flag
+		array( 'দুবাই', 418, 238, 'aed', 'ae' ), array( 'রিয়াদ', 330, 250, 'sar', 'sa' ), array( 'দোহা', 382, 232, 'qar', 'qa' ), array( 'কুয়েত', 346, 196, 'kwd', 'kw' ),
+		array( 'মাস্কাট', 452, 268, 'omr', 'om' ), array( 'কুয়ালালামপুর', 664, 360, 'myr', 'my' ), array( 'সিঙ্গাপুর', 690, 392, 'sgd', 'sg' ), array( 'রোম', 276, 118, 'eur', 'it' ), array( 'লন্ডন', 226, 70, 'gbp', 'gb' ),
+	);
+	$dx = 592; $dy = 214; // Dhaka
+	$chips = array( 'sar' => 1, 'aed' => 1, 'myr' => 1, 'kwd' => 1, 'eur' => 1 );
+?>
+<section class="hero3"><div class="w">
+	<div class="h3l">
+		<span class="h3k"><span class="ldot"></span> লাইভ · প্রতিদিন হালনাগাদ</span>
+		<h1>প্রবাসের পথে,<br><span>পাশে আছি।</span></h1>
+		<p>ভিসা · বিএমইটি · টাকার রেট · ফ্লাইট</p>
+		<div class="h3b">
+			<a class="hb hb-r" href="<?php echo esc_url( home_url( '/bmet-report/' ) ); ?>"><i>📊</i><span><b><?php echo $live && $live['t'] ? pa_bn( number_format( (int) $live['t'] ) ) . ' জন' : ( $yk ? pa_bn( number_format( (int) $bd[ $yk ]['t'] ) ) . ' জন' : 'বিএমইটি' ); ?></b><small><?php echo $live && $live['t'] ? 'আজ বিএমইটি' : 'গতকাল বিএমইটি'; ?></small></span></a>
+			<a class="hb" href="<?php echo esc_url( home_url( '/taka-rate/' ) ); ?>"><i>💱</i><span><b>৳<?php echo $r2( 'sar' ); ?></b><small>১ সৌদি রিয়াল</small></span></a>
+			<a class="hb" href="<?php echo esc_url( home_url( '/flight-tracker/' ) ); ?>"><i>✈️</i><span><b>ফ্লাইট</b><small>লাইভ ট্র্যাকার</small></span></a>
 		</div>
-		<div class="h2p"><span>জনপ্রিয়:</span><a href="<?php echo esc_url( pa_search_url( 'ভিসা চেক' ) ); ?>">ভিসা চেক</a><a href="<?php echo esc_url( pa_search_url( 'ওয়ার্ক পারমিট' ) ); ?>">ওয়ার্ক পারমিট</a><a href="#countries">দেশ গাইড</a><a href="<?php echo esc_url( PA_PB . '/?utm_source=probashiinfo&utm_medium=hero' ); ?>" target="_blank" rel="noopener">প্রবাস কার্ড</a></div>
 	</div>
-	<aside class="h2r" aria-label="আজ এক নজরে">
-		<div class="gl-h"><b>আজ এক নজরে</b><span id="bddate"><?php $dz = new DateTimeZone( 'Asia/Dhaka' ); echo esc_html( pa_weekday( $now, $dz ) . ', ' . pa_date( $now, $dz ) ); ?></span><span id="hijri">হিজরি</span></div>
-		<div class="gl-r">
-			<?php foreach ( array( array( 'sar', 'sa', 'সৌদি রিয়াল' ), array( 'aed', 'ae', 'আমিরাত দিরহাম' ), array( 'qar', 'qa', 'কাতারি রিয়াল' ), array( 'kwd', 'kw', 'কুয়েতি দিনার' ), array( 'myr', 'my', 'মালয়েশিয়ান রিংগিত' ) ) as $c ) echo '<a href="' . esc_url( home_url( '/taka-rate/' ) ) . '"><img src="https://flagcdn.com/w40/' . $c[1] . '.png" alt="" width="24" height="17" loading="lazy"><span>' . $c[2] . '</span><b>' . $r2( $c[0] ) . ' ৳</b></a>'; ?>
-		</div>
-		<?php if ( $yk ) echo '<a class="gl-b" href="' . esc_url( home_url( '/bmet-report/' ) ) . '"><span>বিএমইটি · গতকাল</span><b>' . pa_bn( number_format( (int) $bd[ $yk ]['t'] ) ) . ' জন</b><small>' . pa_bn( count( $bd[ $yk ]['c'] ) ) . 'টি দেশে বহির্গমন ছাড়পত্র</small></a>'; ?>
-		<a class="gl-all" href="<?php echo esc_url( home_url( '/taka-rate/' ) ); ?>">সব রেট দেখুন →</a>
-	</aside>
+	<div class="h3m" aria-hidden="true">
+		<svg viewBox="0 0 800 460" preserveAspectRatio="xMidYMid meet">
+			<defs>
+				<radialGradient id="h3g" cx="74%" cy="46%" r="60%"><stop offset="0" stop-color="#38bdf8" stop-opacity=".22"/><stop offset="1" stop-color="#38bdf8" stop-opacity="0"/></radialGradient>
+				<linearGradient id="h3a" x1="1" x2="0"><stop offset="0" stop-color="#22c55e"/><stop offset="1" stop-color="#38bdf8"/></linearGradient>
+				<pattern id="h3d" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="rgba(255,255,255,.16)"/></pattern>
+			</defs>
+			<rect width="800" height="460" fill="url(#h3d)"/><rect width="800" height="460" fill="url(#h3g)"/>
+			<?php foreach ( $cities as $i => $c ) {
+				$mx = ( $dx + $c[1] ) / 2; $my = min( $dy, $c[2] ) - 70 - abs( $dx - $c[1] ) * .12;
+				$d = "M$dx,$dy Q$mx,$my {$c[1]},{$c[2]}";
+				$dur = 5 + ( $i % 4 ) * 1.3; $beg = ( $i * 0.7 ) . 's';
+				echo '<path id="h3p' . $i . '" d="' . $d . '" fill="none" stroke="url(#h3a)" stroke-width="1.6" stroke-opacity=".75" stroke-dasharray="4 6" class="h3arc"/>';
+				echo '<g class="h3pl"><path d="M0,-5 L2,-1 L7,1 L7,2 L2,1.4 L1,5 L2.5,6.2 L2.5,7 L0,6.2 L-2.5,7 L-2.5,6.2 L-1,5 L-2,1.4 L-7,2 L-7,1 L-2,-1 Z" fill="#fff" transform="rotate(90)"/>'
+					. '<animateMotion dur="' . $dur . 's" begin="' . $beg . '" repeatCount="indefinite" rotate="auto" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#h3p' . $i . '"/></animateMotion></g>';
+				echo '<circle cx="' . $c[1] . '" cy="' . $c[2] . '" r="4" fill="#fff"/><circle cx="' . $c[1] . '" cy="' . $c[2] . '" r="4" fill="none" stroke="#fff" class="h3ring" style="animation-delay:' . ( $i * .4 ) . 's"/>';
+				echo '<text x="' . ( $c[1] + 8 ) . '" y="' . ( $c[2] + 4 ) . '" class="h3t">' . $c[0] . '</text>';
+			} ?>
+			<circle cx="<?php echo $dx; ?>" cy="<?php echo $dy; ?>" r="9" fill="#22c55e"/><circle cx="<?php echo $dx; ?>" cy="<?php echo $dy; ?>" r="9" fill="none" stroke="#22c55e" class="h3ring big"/>
+			<text x="<?php echo $dx + 14; ?>" y="<?php echo $dy + 5; ?>" class="h3t dh">ঢাকা</text>
+		</svg>
+		<?php foreach ( $cities as $c ) { if ( empty( $chips[ $c[3] ] ) || ! isset( $fr[ $c[3] ] ) ) continue; echo '<a class="h3c" href="' . esc_url( home_url( '/taka-rate/' ) ) . '" style="left:' . round( $c[1] / 8, 2 ) . '%;top:' . round( $c[2] / 4.6, 2 ) . '%" tabindex="-1"><img src="https://flagcdn.com/w40/' . $c[4] . '.png" alt="" width="18" height="13" loading="lazy">৳' . $r2( $c[3] ) . '</a>'; } ?>
+	</div>
 </div></section>
 <div class="w">
 	<section class="sec"><div class="sh"><h2>সেবা বাতায়ন</h2></div><div class="svcs">
