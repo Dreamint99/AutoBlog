@@ -59,7 +59,8 @@ def main():
         if len(posts) < 2:
             print(f"skip {g}: found {len(posts)}")
             continue
-        posts.sort(key=lambda p: (p["status"] != "publish", -words(p)))
+        # Keep the original URL (no "-2" suffix): it is the older one most likely to rank.
+        posts.sort(key=lambda p: (p["status"] != "publish", bool(re.search(r"-\d+$", p["slug"])), -words(p)))
         keep = posts[0]
         print(f"KEEP  {keep['slug']} ({words(keep)} words)")
         for p in posts[1:]:
