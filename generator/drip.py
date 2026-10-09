@@ -13,6 +13,7 @@ Examples:
 import sys
 import json
 import os
+import time
 from datetime import datetime
 
 for _s in (sys.stdout, sys.stderr):
@@ -101,7 +102,14 @@ def drip_site(site: dict):
         for _ in range(n):
             seed = coverage_seed(cov, seen + titles)
             log(f"[{site['id']}] coverage seed: {seed[:110]}")
-            titles += suggest_titles(site, count=1, seed=seed, avoid=avoid + titles)
+            got = []
+            for wait in (0, 20, 45):  # free LLM chain sometimes returns nothing when rate-limited
+                if wait:
+                    time.sleep(wait)
+                got = suggest_titles(site, count=1, seed=seed, avoid=avoid + titles)
+                if got:
+                    break
+            titles += got
     else:
         titles = suggest_titles(site, count=n, seed=SEED, avoid=avoid)
     log(f"[{site['id']}] planning {len(titles)} new ({have}/{TARGET})" + (f" [seed: {SEED}]" if SEED else ""))
