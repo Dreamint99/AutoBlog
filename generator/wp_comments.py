@@ -75,7 +75,7 @@ def verdict(c, seen: collections.Counter) -> str:
         return "spam"  # bot-style names: plinko_fret, monopoly_znkn, user123
     if re.search(r"well explained|easy to follow|stumbled upon|your explanation|keep up the good work|informative articles|"
                  r"beautiful admin|expand on the|good job explaining|big thanks|tricky topic|great post|nice post|thank(s| you) for (this|sharing)|"
-                 r"marijuana|edibles|vapes?|taruhan|bocoran|winning|increase sales|hosting|nedir|lucky jet|reflections", t, re.I):
+                 r"marijuana|edibles|vapes?|taruhan|bocoran|winning|increase sales|hosting|nedir|lucky jet|reflections|blonde|skin|makeup|hair color", t, re.I):
         return "spam"  # bot praise / foreign promo
     if re.search(r"[a-z]{18,}", t.lower()) and not BN.search(t):
         return "spam"  # gibberish strings
