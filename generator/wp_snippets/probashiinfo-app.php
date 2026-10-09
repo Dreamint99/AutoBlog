@@ -611,7 +611,7 @@ function pa_view_home() {
 			<circle cx="<?php echo $dx; ?>" cy="<?php echo $dy; ?>" r="9" fill="#22c55e"/><circle cx="<?php echo $dx; ?>" cy="<?php echo $dy; ?>" r="9" fill="none" stroke="#22c55e" class="h3ring big"/>
 			<text x="<?php echo $dx + 14; ?>" y="<?php echo $dy + 5; ?>" class="h3t dh">ঢাকা</text>
 		</svg>
-		<?php foreach ( $cities as $c ) { if ( empty( $chips[ $c[3] ] ) || ! isset( $fr[ $c[3] ] ) ) continue; echo '<a class="h3c" href="' . esc_url( home_url( '/taka-rate/' ) ) . '" style="left:' . round( ( $c[1] - 190 ) / 5.4, 2 ) . '%;top:' . round( ( $c[2] - 40 ) / 3.8, 2 ) . '%" tabindex="-1"><img src="https://flagcdn.com/w40/' . $c[4] . '.png" alt="" width="18" height="13" loading="lazy">৳' . $r2( $c[3] ) . '</a>'; } ?>
+		<?php foreach ( $cities as $c ) { if ( empty( $chips[ $c[3] ] ) || ! isset( $fr[ $c[3] ] ) ) continue; echo '<a class="h3c" href="' . esc_url( home_url( '/taka-rate/' ) ) . '" style="left:' . min( 86, round( ( $c[1] - 190 ) / 5.4, 2 ) ) . '%;top:' . round( ( $c[2] - 40 ) / 3.8, 2 ) . '%" tabindex="-1"><img src="https://flagcdn.com/w40/' . $c[4] . '.png" alt="" width="18" height="13" loading="lazy">৳' . $r2( $c[3] ) . '</a>'; } ?>
 	</div>
 </div></section>
 <div class="w">
