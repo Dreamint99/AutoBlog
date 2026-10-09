@@ -312,6 +312,9 @@ em.up,em.dn{font-style:normal;font-weight:700;font-size:13px;padding:1px 8px;bor
 .tabs a.hot{color:var(--red)!important}
 @media(max-width:900px){.hero .w{grid-template-columns:minmax(0,1fr)}.ks{grid-template-columns:repeat(2,minmax(0,1fr))}.two,.gw,.rp,.af .g{grid-template-columns:minmax(0,1fr)}.kp{grid-template-columns:repeat(2,minmax(0,1fr))}.gw canvas{max-width:420px}}
 @media(max-width:700px){body.bm-app{padding-bottom:70px}.ah .home,.ah nav{display:none}.ah .w{justify-content:space-between}.tabs{display:grid}.hb2 .r{grid-template-columns:22px minmax(0,100px) 1fr 54px;font-size:14px}.mo .r{grid-template-columns:96px 1fr 72px}.lrow{grid-template-columns:22px minmax(0,1fr) 60px 46px}.ybox a{margin-left:0}.tbl{font-size:14px}.tbl th,.tbl td{padding:8px 6px}}
+/* the bangla-web-fonts plugin forces SolaimanLipi with !important; win it back on this page */
+html body.bm-app,html body.bm-app *{font-family:var(--tf)!important}
+html body.bm-app h1,html body.bm-app h2,html body.bm-app h3,html body.bm-app h4,html body.bm-app .big,html body.bm-app .big *,html body.bm-app b,html body.bm-app summary,html body.bm-app td.n,html body.bm-app .lg b *{font-family:var(--hf)!important}
 @media(prefers-reduced-motion:reduce){.dot,.lrow.new{animation:none}html{scroll-behavior:auto}}
 </style>
 </head>
