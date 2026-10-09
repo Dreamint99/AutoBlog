@@ -7,7 +7,7 @@
    Snippets #6, #7, #8 and #11 (v2) step aside when pa_app() is on;
    their ads are redrawn here in the same design language. Writer names are not shown. */
 if ( ! defined( 'PA_APP_PUBLIC' ) ) define( 'PA_APP_PUBLIC', true );
-if ( ! defined( 'PA_APP_VERSION' ) ) define( 'PA_APP_VERSION', '3.5.0' );
+if ( ! defined( 'PA_APP_VERSION' ) ) define( 'PA_APP_VERSION', '3.5.1' );
 define( 'PA_LOGO', 'https://probashiinfo.com/wp-content/uploads/2026/10/probashiinfo-wordmark.webp' );
 define( 'PA_ICON', 'https://probashiinfo.com/wp-content/uploads/2026/10/probashiinfo-icon.png' );
 define( 'PA_PB', 'https://www.probashibondu.online' );
@@ -34,13 +34,13 @@ add_action( 'init', function () {
 
 /* ---------- helpers ---------- */
 function pa_bn( $s ) { return strtr( (string) $s, array( '0' => '০', '1' => '১', '2' => '২', '3' => '৩', '4' => '৪', '5' => '৫', '6' => '৬', '7' => '৭', '8' => '৮', '9' => '৯' ) ); }
-function pa_date( $ts ) {
+function pa_date( $ts, $tz = null ) {
 	$m = array( 'জানুয়ারি', 'ফেব্রুয়ারি', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগস্ট', 'সেপ্টেম্বর', 'অক্টোবর', 'নভেম্বর', 'ডিসেম্বর' );
-	return pa_bn( wp_date( 'j', $ts ) ) . ' ' . $m[ (int) wp_date( 'n', $ts ) - 1 ] . ' ' . pa_bn( wp_date( 'Y', $ts ) );
+	return pa_bn( wp_date( 'j', $ts, $tz ) ) . ' ' . $m[ (int) wp_date( 'n', $ts, $tz ) - 1 ] . ' ' . pa_bn( wp_date( 'Y', $ts, $tz ) );
 }
-function pa_weekday( $ts ) {
+function pa_weekday( $ts, $tz = null ) {
 	$d = array( 'রবিবার', 'সোমবার', 'মঙ্গলবার', 'বুধবার', 'বৃহস্পতিবার', 'শুক্রবার', 'শনিবার' );
-	return $d[ (int) wp_date( 'w', $ts ) ];
+	return $d[ (int) wp_date( 'w', $ts, $tz ) ];
 }
 function pa_cat_name( $c ) { return trim( preg_replace( '/^[^\p{Bengali}\p{L}]+/u', '', $c->name ) ); }
 function pa_top_cats( $n = 7 ) {
@@ -385,7 +385,7 @@ body.pi-app{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 va
 .gl-b{display:grid;grid-template-columns:1fr auto;gap:2px 10px;margin-top:10px;padding:10px 12px;border-radius:14px;background:#fff1f2;border:1px solid #fecdd3;color:var(--ink)!important;text-decoration:none}
 .gl-b span{font-size:13px;color:#9f1239;font-weight:700}.gl-b b{grid-row:1/3;grid-column:2;align-self:center;font:800 22px var(--head);color:#be123c}.gl-b small{font-size:12.5px;color:var(--mut)}
 .gl-all{display:block;text-align:center;margin-top:10px;font-weight:700;font-size:14px}
-.srch2 button{white-space:nowrap;flex:none}
+.srch2 button{white-space:nowrap;flex:none;width:auto!important;height:auto!important;color:#fff!important}
 @media(max-width:1020px){.hero2 .w{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:640px){.h2t{grid-template-columns:minmax(0,1fr)}.ht{flex-direction:row;align-items:center;gap:12px;padding:12px 44px 12px 12px}.ht-go{top:50%;transform:translateY(-50%)}.hero2 .w{padding-top:22px}}
 /* ---------- header v2: logo + search + tools, category bar, mobile drawer ---------- */
@@ -557,7 +557,7 @@ function pa_view_home() {
 		<div class="h2p"><span>জনপ্রিয়:</span><a href="<?php echo esc_url( pa_search_url( 'ভিসা চেক' ) ); ?>">ভিসা চেক</a><a href="<?php echo esc_url( pa_search_url( 'ওয়ার্ক পারমিট' ) ); ?>">ওয়ার্ক পারমিট</a><a href="#countries">দেশ গাইড</a><a href="<?php echo esc_url( PA_PB . '/?utm_source=probashiinfo&utm_medium=hero' ); ?>" target="_blank" rel="noopener">প্রবাস কার্ড</a></div>
 	</div>
 	<aside class="h2r" aria-label="আজ এক নজরে">
-		<div class="gl-h"><b>আজ এক নজরে</b><span><?php echo esc_html( pa_weekday( $now ) . ', ' . pa_date( $now ) ); ?></span><span id="hijri">হিজরি</span></div>
+		<div class="gl-h"><b>আজ এক নজরে</b><span id="bddate"><?php $dz = new DateTimeZone( 'Asia/Dhaka' ); echo esc_html( pa_weekday( $now, $dz ) . ', ' . pa_date( $now, $dz ) ); ?></span><span id="hijri">হিজরি</span></div>
 		<div class="gl-r">
 			<?php foreach ( array( array( 'sar', 'sa', 'সৌদি রিয়াল' ), array( 'aed', 'ae', 'আমিরাত দিরহাম' ), array( 'qar', 'qa', 'কাতারি রিয়াল' ), array( 'kwd', 'kw', 'কুয়েতি দিনার' ), array( 'myr', 'my', 'মালয়েশিয়ান রিংগিত' ) ) as $c ) echo '<a href="' . esc_url( home_url( '/taka-rate/' ) ) . '"><img src="https://flagcdn.com/w40/' . $c[1] . '.png" alt="" width="24" height="17" loading="lazy"><span>' . $c[2] . '</span><b>' . $r2( $c[0] ) . ' ৳</b></a>'; ?>
 		</div>
@@ -707,6 +707,7 @@ add_action( 'template_redirect', function () {
 		do_action( 'litespeed_control_set_nocache', 'probashiinfo app preview' );
 		if ( ! headers_sent() ) header( 'Cache-Control: no-store, private' );
 	}
+	if ( is_front_page() ) do_action( 'litespeed_control_set_ttl', 1800 );
 	pa_head();
 	if ( is_front_page() && ! is_paged() ) pa_view_home();
 	elseif ( is_singular( 'post' ) ) pa_view_single();
@@ -722,6 +723,7 @@ function pa_js() { ?>
 <script>
 (function(){
 	var $=function(s){return document.querySelector(s)}, bn=function(s){return String(s).replace(/\d/g,function(d){return '০১২৩৪৫৬৭৮৯'[d]})};
+	try{ var bdd=$('#bddate'); if(bdd) bdd.textContent=new Intl.DateTimeFormat('bn-BD',{timeZone:'Asia/Dhaka',weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(new Date()).replace(/,(?=[^,]*$)/,''); }catch(e){}
 	try{ var h=$('#hijri'); if(h) h.textContent=new Intl.DateTimeFormat('bn-BD-u-ca-islamic-umalqura',{day:'numeric',month:'long',year:'numeric'}).formatToParts(new Date()).filter(function(p){return p.type!=='era'}).map(function(p){return p.value}).join('').replace(/[,\s]+$/,'')+' হিজরি'; }catch(e){}
 	var toc=$('.toc'); if(toc){ var hs=document.querySelectorAll('#ct h2'), ol=toc.querySelector('ol'); hs.forEach(function(x,i){ if(!x.id) x.id='s'+(i+1); var li=document.createElement('li'), a=document.createElement('a'); a.href='#'+x.id; a.textContent=x.textContent; li.appendChild(a); ol.appendChild(li); }); if(hs.length>=3) toc.hidden=false; }
 	var fs=18.5; try{ fs=parseFloat(localStorage.getItem('pi_fs'))||18.5; }catch(e){}
