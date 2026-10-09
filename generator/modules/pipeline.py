@@ -230,7 +230,7 @@ def generate_article(site: dict, title: str, log=lambda m: None, replace: dict |
     body = data["body_html"]
 
     log("🖼️  Embedding inline images…")
-    body = embed_inline_images(body, use_wiki=site.get("wiki_images", True))
+    body = embed_inline_images(body, use_wiki=site.get("wiki_images", True), site_id=site.get("id", ""), context=final_title)
 
     log("🔗 Adding internal links…")
     siblings = store.list_articles(site["id"])

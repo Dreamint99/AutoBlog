@@ -85,6 +85,9 @@ jobs:
           fi
           # drip_enabled sites (infkey, ninetymins) — N general each.
           python drip.py all "$N" 500 || FAIL=1
+          # GCCGuide: one extra article per run, picked from the country x topic coverage matrix
+          # (generator/data/coverage_gccguide.json) so all six Gulf countries fill up evenly.
+          python drip.py gccguide 1 500 || FAIL=1
           # Countly: the 20:00 run takes the wealth category, the 15:00 run a general topic.
           # The wealth angle rotates daily — one fixed seed produced near-duplicate titles
           # ("Richest billionaires net worth: Top 10 …") that cannibalise each other.

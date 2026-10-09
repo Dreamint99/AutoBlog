@@ -95,6 +95,11 @@ def drip_site(site: dict):
         return 0
     n = min(PER_RUN, TARGET - have)
     avoid = [a.get("title", "") for a in existing] + [a.get("keyword", "") for a in existing]
+    try:  # never reuse a hero photo another article already has
+        from modules import image as _img
+        _img._USED.update(a.get("image_url") for a in existing if a.get("image_url"))
+    except Exception:
+        pass
     cov = None if SEED else _coverage(site["id"])
     if cov:
         seen = [a.get("title", "") for a in existing]

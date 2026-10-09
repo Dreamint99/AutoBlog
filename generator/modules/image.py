@@ -192,6 +192,35 @@ def _first_hit(candidates: list[str], horizontal: bool = True) -> str | None:
     return None
 
 
+_POOLS: dict = {}
+
+
+def pool_image(site_id: str, text: str) -> str:
+    """Pick an unused photo from a committed per-site pool (data/image_pool_<site>.json), matched
+    to the country named in `text` (country regexes from data/coverage_<site>.json). Used where the
+    live image APIs are unreachable from CI (Openverse rate-limits GitHub runners)."""
+    import json as _json
+    import os as _os
+    base = _os.path.join(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))), "data")
+    if site_id not in _POOLS:
+        try:
+            pool = _json.load(open(_os.path.join(base, f"image_pool_{site_id}.json"), encoding="utf-8"))
+            cov = _json.load(open(_os.path.join(base, f"coverage_{site_id}.json"), encoding="utf-8"))
+            _POOLS[site_id] = (pool, {c: re.compile(v[0], re.I) for c, v in cov.get("countries", {}).items()})
+        except Exception:
+            _POOLS[site_id] = None
+    if not _POOLS[site_id]:
+        return ""
+    pool, rx = _POOLS[site_id]
+    order = [c for c, r in rx.items() if r.search(text or "")] + ["GCC"]
+    for c in order:
+        for it in pool.get(c, []):
+            if it["url"] not in _USED:
+                _USED.add(it["url"])
+                return it["url"]
+    return ""
+
+
 def feature_image(title: str, site: dict, query: str | None = None) -> str:
     """PERMANENT, on-topic hero image. Pixabay hotlink URLs EXPIRE (start 400-ing),
     so we use Wikipedia's permanent image (upload.wikimedia.org) first — matched to
@@ -219,7 +248,7 @@ def feature_image(title: str, site: dict, query: str | None = None) -> str:
         o = _openverse(c, 1200)
         if o:
             return o
-    return ""
+    return pool_image(site.get("id", ""), title)
 
 
 def inline_image(keyword: str, use_wiki: bool = True) -> str:
@@ -232,7 +261,7 @@ def inline_image(keyword: str, use_wiki: bool = True) -> str:
     return _openverse(keyword, 1000) or ""
 
 
-def embed_inline_images(body_html: str, max_images: int = 4, use_wiki: bool = True) -> str:
+def embed_inline_images(body_html: str, max_images: int = 4, use_wiki: bool = True, site_id: str = "", context: str = "") -> str:
     """Replace `[[IMG: keyword]]` markers from the writer with real <figure> images
     (capped at max_images; extra markers are removed)."""
     import html as _html
@@ -244,7 +273,7 @@ def embed_inline_images(body_html: str, max_images: int = 4, use_wiki: bool = Tr
             return ""
         count["n"] += 1
         kw = m.group(1).strip()
-        url = inline_image(kw, use_wiki)
+        url = inline_image(kw, use_wiki) or (pool_image(site_id, kw + " " + context) if site_id else "")
         if not url:  # no free photo found: drop the marker rather than a broken image
             count["n"] -= 1
             return ""
