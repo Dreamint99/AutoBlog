@@ -6,7 +6,7 @@
    Rollout: PA_APP_PUBLIC false = preview with ?app=1 (cookie; ?app=0 clears) or for admins.
    Snippets #6, #7, #8 and #11 (v2) step aside when pa_app() is on;
    their ads are redrawn here in the same design language. Writer names are not shown. */
-if ( ! defined( 'PA_APP_PUBLIC' ) ) define( 'PA_APP_PUBLIC', false );
+if ( ! defined( 'PA_APP_PUBLIC' ) ) define( 'PA_APP_PUBLIC', true );
 if ( ! defined( 'PA_APP_VERSION' ) ) define( 'PA_APP_VERSION', '3.0.0' );
 define( 'PA_LOGO', 'https://probashiinfo.com/wp-content/uploads/2026/10/probashiinfo-wordmark.webp' );
 define( 'PA_ICON', 'https://probashiinfo.com/wp-content/uploads/2026/10/probashiinfo-icon.png' );
@@ -267,7 +267,7 @@ body.pi-app{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 va
 .art-main{min-width:0;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px 28px;box-shadow:var(--sh)}
 .toc{border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:14px 18px;margin:0 0 1.4em}
 .toc b{display:block;font:800 16.5px var(--head);margin-bottom:6px;color:var(--b)}
-.toc ol{margin:0;padding-left:1.2em}.toc li{margin:4px 0}.toc a{color:var(--ink2)}.toc a:hover{color:var(--b)}
+.toc ol{margin:0;padding:0;list-style:none;display:grid;gap:4px}.toc li{margin:0;padding-left:16px;position:relative}.toc li:before{content:"";position:absolute;left:0;top:.75em;width:7px;height:7px;border-radius:50%;background:var(--g)}.toc a{color:var(--ink2)}.toc a:hover{color:var(--b)}
 .ct{font-size:var(--fs);line-height:1.9;color:var(--ink);overflow-wrap:anywhere}
 .ct p{margin:0 0 1.05em}
 .ct h2{font-size:26px;font-weight:800;margin:1.6em 0 .6em;padding:10px 14px;border-radius:12px;background:var(--bs);border-left:5px solid var(--b);line-height:1.4}
