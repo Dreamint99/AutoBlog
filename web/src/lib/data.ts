@@ -167,6 +167,26 @@ async function readD1Article(siteId: string, slug: string): Promise<Article | un
   return row ? parseArticleRow(row) : undefined;
 }
 
+/** Merged duplicates keep their row with status 'redirect:<target-slug>' so the
+ *  old URL 301s to the article that now owns the keyword. Only read on a miss. */
+export const getRedirect = cache(async (siteId: string, slug: string): Promise<string | null> => {
+  const db = d1();
+  if (!db) return null;
+  try {
+    const row = await cachedRead(`redirect/${siteId}/${encodeURIComponent(slug)}`, 3600, async () => {
+      const { results } = await db
+        .prepare("SELECT status FROM articles WHERE site_id = ? AND slug = ? AND status LIKE 'redirect:%' LIMIT 1")
+        .bind(siteId, slug)
+        .all<{ status: string }>();
+      return results?.[0] ?? null;
+    });
+    const to = row?.status.slice("redirect:".length) || "";
+    return to && to !== slug ? to : null;
+  } catch {
+    return null;
+  }
+});
+
 /** Full-text search over title/excerpt/keyword/tags/body, done in SQL so the
  *  bodies never leave D1. Cached per query. */
 async function searchD1(siteId: string, q: string): Promise<Article[]> {

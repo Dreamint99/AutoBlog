@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import type { Site } from "@/lib/types";
+import "./ai.css";
+import { aiFont } from "./fonts";
 
 /* Shared InfKey chrome — masthead, footer, logo, page shell.
    Used by Home, Article and every data-product route so nav stays consistent. */
@@ -8,10 +10,13 @@ import type { Site } from "@/lib/types";
 export function navFor(site: Site): ReadonlyArray<readonly [string, string]> {
   const b = `/s/${site.id}`;
   return [
-    ["Calculators", `${b}/calculators`],
+    ["Prompts", `${b}#prompt-library`],
+    ["Best AI for…", `${b}#best-ai-for`],
+    ["Use AI free", `${b}#use-free`],
+    ["AI vs AI", `${b}#compare`],
+    ["Plans & deals", `${b}#deals`],
+    ["API cost", `${b}/calculators`],
     ["Models", `${b}/models`],
-    ["Compare", `${b}/compare`],
-    ["Guides", `${b}#guides`],
   ];
 }
 
@@ -42,7 +47,7 @@ export function Logo({ site }: { site: Site }) {
 export function Masthead({ site }: { site: Site }) {
   const nav = navFor(site);
   return (
-    <header className="masthead">
+    <header className={`masthead ai-masthead ${aiFont.variable}`}>
       <div className="shell masthead-row">
         <input type="checkbox" id="ik-nav" className="nav-toggle" aria-hidden="true" />
         <Logo site={site} />
@@ -52,8 +57,8 @@ export function Masthead({ site }: { site: Site }) {
               {label}
             </Link>
           ))}
-          <Link href={`/s/${site.id}/calculators`} className="cta">
-            Calculate cost
+          <Link href={`/s/${site.id}/search`} className="cta">
+            ✦ Ask InfKey
           </Link>
         </nav>
         <label className="nav-burger" htmlFor="ik-nav" aria-label="Toggle navigation menu">
@@ -79,7 +84,15 @@ export function Footer({ site }: { site: Site }) {
           </div>
           <div className="footer-cols">
             <div className="footer-col">
-              <h5>Tools</h5>
+              <h5>AI tools</h5>
+              <Link href={`${b}#prompt-library`}>Viral prompt library</Link>
+              <Link href={`${b}#best-ai-for`}>Best AI for your job</Link>
+              <Link href={`${b}#use-free`}>Use AI free</Link>
+              <Link href={`${b}#compare`}>ChatGPT vs Claude vs Gemini</Link>
+              <Link href={`${b}#deals`}>Plans, prices &amp; deals</Link>
+            </div>
+            <div className="footer-col">
+              <h5>Builders</h5>
               <Link href={`${b}/calculators`}>Cost calculators</Link>
               <Link href={`${b}/compare`}>Comparisons</Link>
               <Link href={`${b}/models`}>Model database</Link>
@@ -94,9 +107,9 @@ export function Footer({ site }: { site: Site }) {
           </div>
         </div>
         <p className="footer-disclaimer">
-          Pricing on InfKey is collected from public provider pages and shown for estimation only. It
-          excludes taxes, prompt-caching discounts and failed-generation retries, and can change at
-          any time — always confirm against the provider&apos;s official pricing before you commit spend.
+          InfKey is independent and not affiliated with OpenAI, Anthropic, Google, Microsoft or any AI provider; product
+          names are trademarks of their owners. Prices, plans and free limits are collected from public pages for guidance
+          only and change often — always confirm on the provider&apos;s official site before you pay.
         </p>
         <div
           className="footer-legal"
@@ -113,7 +126,7 @@ export function Footer({ site }: { site: Site }) {
             © {year} <span className="accent">{site.name}</span>
           </span>
           <span>·</span>
-          <span>Know the real cost before you build.</span>
+          <span>AI tools, explained.</span>
         </div>
       </div>
     </footer>
@@ -123,12 +136,12 @@ export function Footer({ site }: { site: Site }) {
 /** Standard page wrapper: masthead + shell main + footer. */
 export function InfShell({ site, children }: { site: Site; children: ReactNode }) {
   return (
-    <>
+    <div className={`ai-root ${aiFont.variable}`}>
       <Masthead site={site} />
       <main>
         <div className="shell">{children}</div>
       </main>
       <Footer site={site} />
-    </>
+    </div>
   );
 }

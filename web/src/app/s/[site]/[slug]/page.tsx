@@ -1,7 +1,7 @@
 import { notFound, permanentRedirect } from "next/navigation";
 import { isVcArticle, vcFor } from "@/sites/walvi/visacheck/data";
 import type { Metadata } from "next";
-import { getSite, getArticle, getArticles } from "@/lib/data";
+import { getSite, getArticle, getArticles, getRedirect } from "@/lib/data";
 import { processBody } from "@/lib/article";
 import { SITE_COMPONENTS } from "@/sites/registry";
 import { siteBaseUrl } from "@/lib/sites.config";
@@ -34,8 +34,10 @@ export async function generateMetadata({
   const description = clamp(article.meta_description || article.excerpt || "", 158);
   // VisaPoint feature images picked from Wikipedia are often wrong (club crests, a
   // 1941 flag) — never put them in share previews.
+  // Fallback: the site's branded 1200×630 card, so every share has a preview image.
   const shareImg =
-    site.id === "walvi" && /wikimedia\.org|wikipedia\.org/i.test(article.image_url || "") ? "" : article.image_url;
+    (site.id === "walvi" && /wikimedia\.org|wikipedia\.org/i.test(article.image_url || "") ? "" : article.image_url) ||
+    `/og/${site.id}.png`;
   return {
     title,
     description,
@@ -48,7 +50,7 @@ export async function generateMetadata({
       type: "article",
       siteName: site.name,
       url: `/${slug}`,
-      images: shareImg ? [shareImg] : [],
+      images: [shareImg],
     },
     twitter: {
       card: "summary_large_image",
@@ -68,7 +70,11 @@ export default async function ArticlePage({
   const site = getSite(id);
   if (!site) notFound();
   const article = await getArticle(id, slug);
-  if (!article) notFound();
+  if (!article) {
+    const to = await getRedirect(id, slug);
+    if (to) permanentRedirect(`/s/${site.id}/${to}`);
+    notFound();
+  }
   // VisaPoint "Visa Check" guides live on their country page (/visa-check/<country>)
   // so each country has ONE ranking URL — the old article URL redirects there.
   if (site.id === "walvi" && isVcArticle(article)) {

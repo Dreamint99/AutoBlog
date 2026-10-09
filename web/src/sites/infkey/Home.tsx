@@ -1,159 +1,91 @@
 import "./theme.css";
+import "./ai.css";
 import Link from "next/link";
 import type { SiteHomeProps, Site, Article } from "@/lib/types";
 import CostCalculator from "./CostCalculator";
 import { Masthead, Footer } from "./Chrome";
+import { aiFont } from "./fonts";
+import { TOPICS, PROFESSIONS, TOOLS, PROMPT_PACKS, topicOf, bestMatch } from "./topics";
 
-/* Cost snapshot — editable seed figures. Keep honest: a snapshot, not live data.
-   Update alongside the infkey_models table / calculator price list. */
-const SNAPSHOT: ReadonlyArray<{ k: string; v: string; unit: string; d: string; dir: "down" | "up" | "" }> = [
-  { k: "Cheapest LLM", v: "$0.08", unit: "/1M in", d: "Gemini 1.5 Flash", dir: "down" },
-  { k: "Cheapest reasoning", v: "$0.27", unit: "/1M in", d: "DeepSeek-V3", dir: "down" },
-  { k: "Frontier tier", v: "$3.00", unit: "/1M in", d: "Claude 3.5 Sonnet", dir: "" },
-  { k: "Models tracked", v: "8", unit: "+", d: "and growing", dir: "" },
-];
+/* InfKey home — "AI tools, explained". Prompt-style search hero, Best-AI-for
+   profession grid, free-use tool cards, trending guides and topic rails, with
+   the original API cost calculator kept as its own section. */
 
-const COVERAGE: ReadonlyArray<{ ico: string; h: string; p: string; href: string; tags: string[] }> = [
-  {
-    ico: "∑",
-    h: "Cost calculators",
-    p: "Real-workload calculators for LLM, video, chatbot, RAG and embedding spend.",
-    href: "/calculators",
-    tags: ["LLM", "Veo", "Chatbot", "RAG"],
-  },
-  {
-    ico: "⇄",
-    h: "Model comparisons",
-    p: "Head-to-head on price, quality, context and capabilities — not a single fake winner.",
-    href: "/compare",
-    tags: ["OpenAI", "Claude", "Gemini"],
-  },
-  {
-    ico: "▦",
-    h: "Model database",
-    p: "Every model's verified price, context window and capabilities, with official sources.",
-    href: "/models",
-    tags: ["Pricing", "Context", "Sources"],
-  },
-  {
-    ico: "◎",
-    h: "Use-case guides",
-    p: "Best model for support, extraction, coding, Bangla, agents and long context.",
-    href: "#guides",
-    tags: ["Support", "OCR", "Agents"],
-  },
-];
-
-const METHOD: ReadonlyArray<{ n: string; h: string; p: string }> = [
-  { n: "01", h: "Official sources", p: "Every price links to each provider's own pricing page, dated on the post." },
-  { n: "02", h: "We show the math", p: "No black-box numbers — the formula and assumptions are printed next to the result." },
-  { n: "03", h: "First-hand testing", p: "Benchmarks run the same prompts across models for cost, speed and quality." },
-  { n: "04", h: "Re-verified, dated", p: "Prices change fast; rows carry a 'verified on' date, not a fake refresh." },
-];
+const ROTATE = ["students", "doctors", "teachers", "lawyers", "developers", "marketers", "writers", "small business"];
+const CHIPS = ["viral ai photo prompt", "gemini photo editing prompt", "best ai for students", "how to use claude free", "chatgpt plus worth it", "gemini vs chatgpt"];
 
 function formatDate(iso: string): string {
   const d = new Date(iso);
-  if (Number.isNaN(d.getTime())) return "";
-  return d.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
+  return Number.isNaN(d.getTime()) ? "" : d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
 }
 
-function categoryOf(article: Article): string {
-  const tag = article.tags.find((t) => t.trim().length > 0);
-  return (tag ?? article.keyword ?? "Cost").toUpperCase();
-}
-
-function StatusBar() {
+function Hero({ site, count }: { site: Site; count: number }) {
+  const b = `/s/${site.id}`;
   return (
-    <div className="statusbar" aria-label="Status">
-      <div className="statusbar-inner">
-        <span className="status-live">Pricing live</span>
-        <span className="status-sep">·</span>
-        <span className="verified">Verified June 20, 2026</span>
-        <span className="status-sep">·</span>
-        <span className="ghost">USD · taxes &amp; retries excluded</span>
-        <span className="status-sep">·</span>
-        <span className="ghost">Next review June 27</span>
+    <section className="ai-hero">
+      <div className="ai-aurora" aria-hidden="true">
+        <i />
+        <i />
+        <i />
       </div>
-    </div>
-  );
-}
-
-function Hero() {
-  return (
-    <section className="hero">
-      <div className="hero-copy">
-        <span className="eyebrow">AI Cost &amp; Automation Intelligence</span>
+      <div className="ai-hero-in">
+        <span className="ai-pill">
+          <span className="ai-dot" /> {count} AI guides · updated daily
+        </span>
         <h1>
-          Know the <span className="grad">real cost</span> before you build.
+          The best AI for
+          <span className="ai-rotate" aria-hidden="true">
+            <span>
+              {[...ROTATE, ROTATE[0]].map((w, i) => (
+                <b key={i}>{w}</b>
+              ))}
+            </span>
+          </span>
+          <span className="ai-sr">students, doctors, teachers, lawyers and everyone</span>
         </h1>
-        <p className="hero-sub">
-          Compare AI models, calculate verified API costs and pick the right automation stack — with
-          original calculators, dated pricing and first-hand benchmarks, not recycled marketing copy.
+        <p className="ai-sub">
+          What to use, how to use it free, and what it really costs — tested AI tool guides for real people, plus verified API pricing for builders.
         </p>
-        <div className="hero-actions">
-          <a href="#calculator" className="btn btn-primary">
-            ▸ Run the calculator
-          </a>
-          <a href="#guides" className="btn btn-ghost">
-            Browse cost guides
-          </a>
+        <form className="ai-prompt" action={`${b}/search`} role="search">
+          <span className="ai-spark" aria-hidden="true">
+            ✦
+          </span>
+          <input name="q" type="search" placeholder="Ask anything… e.g. best AI for doctors" aria-label="Search AI guides" />
+          <button type="submit">Search</button>
+        </form>
+        <div className="ai-chips">
+          {CHIPS.map((c) => (
+            <Link key={c} href={`${b}/search?q=${encodeURIComponent(c)}`}>
+              {c}
+            </Link>
+          ))}
         </div>
-        <div className="hero-trust">
-          <span>Verified provider pricing</span>
-          <span>Math shown, not hidden</span>
-          <span>Updated, dated, sourced</span>
-        </div>
-      </div>
-
-      <div className="hero-calc">
-        <CostCalculator />
       </div>
     </section>
   );
 }
 
-function StatStrip() {
-  return (
-    <div className="statgrid" aria-label="Cost snapshot">
-      {SNAPSHOT.map((s) => (
-        <div className="stat" key={s.k}>
-          <div className="k">{s.k}</div>
-          <div className="v">
-            {s.v} <small>{s.unit}</small>
-          </div>
-          <div className={`d ${s.dir}`}>{s.d}</div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function Coverage({ site }: { site: Site }) {
+function Professions({ site, articles }: { site: Site; articles: Article[] }) {
   const b = `/s/${site.id}`;
   return (
-    <section id="coverage">
-      <div className="section-head">
-        <h2>What InfKey covers</h2>
-        <span className="rule" />
-        <span className="count">4 pillars</span>
+    <section className="ai-sec" id="best-ai-for">
+      <div className="ai-head">
+        <h2>
+          Best AI for <span className="ai-grad">your job</span>
+        </h2>
+        <p>Pick your role — we test the tools and tell you which one actually helps.</p>
       </div>
-      <div className="coverage">
-        {COVERAGE.map((c) => {
-          const href = c.href.startsWith("#") ? c.href : `${b}${c.href}`;
+      <div className="ai-prof">
+        {PROFESSIONS.map((p) => {
+          const a = bestMatch(articles, ["best", "ai", p.k.toLowerCase().replace(/s$/, "")]);
+          const href = a ? `${b}/${a.slug}` : `${b}/search?q=${encodeURIComponent(`best ai for ${p.k.toLowerCase()}`)}`;
           return (
-            <Link className="cov" href={href} key={c.h}>
-              <div className="ico" aria-hidden="true">
-                {c.ico}
-              </div>
-              <h3>{c.h}</h3>
-              <p>{c.p}</p>
-              <div className="tags">
-                {c.tags.map((t) => (
-                  <span className="chip" key={t}>
-                    {t}
-                  </span>
-                ))}
-              </div>
+            <Link key={p.k} href={href} className="ai-glass ai-prof-card">
+              <span className="ai-emoji" aria-hidden="true">
+                {p.e}
+              </span>
+              <b>{p.k}</b>
+              <small>{a ? "Read the guide →" : "Explore →"}</small>
             </Link>
           );
         })}
@@ -162,104 +94,182 @@ function Coverage({ site }: { site: Site }) {
   );
 }
 
-function Card({ site, article }: { site: Site; article: Article }) {
-  const href = `/s/${site.id}/${article.slug}`;
+function Prompts({ site, articles }: { site: Site; articles: Article[] }) {
+  const b = `/s/${site.id}`;
   return (
-    <article className="card">
-      <Link href={href} className="card-media" aria-label={article.title} tabIndex={-1}>
-        <span className="card-cat">{categoryOf(article)}</span>
-        {article.image_url ? <img src={article.image_url} alt={article.title} loading="lazy" /> : null}
+    <section className="ai-sec" id="prompt-library">
+      <div className="ai-head">
+        <h2>
+          Viral <span className="ai-grad">prompt library</span>
+        </h2>
+        <p>Copy-paste prompts for the AI photo trends, editing, study and work — tested on ChatGPT, Gemini and more.</p>
+      </div>
+      <div className="ai-prompts">
+        {PROMPT_PACKS.map((p) => {
+          const a = bestMatch(articles, p.q.split(" ").filter((w) => w.length > 3));
+          const href = a ? `${b}/${a.slug}` : `${b}/search?q=${encodeURIComponent(p.q)}`;
+          return (
+            <Link key={p.k} href={href} className="ai-glass ai-prompt-card">
+              <span className="ai-emoji" aria-hidden="true">
+                {p.e}
+              </span>
+              <b>{p.k}</b>
+              <code>&gt; {p.q}</code>
+            </Link>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+function Tools({ site, articles }: { site: Site; articles: Article[] }) {
+  const b = `/s/${site.id}`;
+  return (
+    <section className="ai-sec" id="use-free">
+      <div className="ai-head">
+        <h2>
+          Use the top AIs <span className="ai-grad">free</span>
+        </h2>
+        <p>Free plans, limits, tips and the cheapest way to upgrade — for every major assistant.</p>
+      </div>
+      <div className="ai-tools">
+        {TOOLS.map((t) => {
+          const a = bestMatch(articles, [t.q, "free"]) || bestMatch(articles, ["how", t.q]) || bestMatch(articles, [t.q]);
+          const href = a ? `${b}/${a.slug}` : `${b}/search?q=${encodeURIComponent(`how to use ${t.q} free`)}`;
+          return (
+            <Link key={t.name} href={href} className="ai-glass ai-tool" style={{ ["--tc" as string]: t.color }}>
+              <span className="ai-tool-mark" aria-hidden="true">
+                {t.name[0]}
+              </span>
+              <span>
+                <b>{t.name}</b>
+                <small>by {t.by}</small>
+              </span>
+              <i aria-hidden="true">→</i>
+            </Link>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+function Card({ site, a, big = false }: { site: Site; a: Article; big?: boolean }) {
+  const href = `/s/${site.id}/${a.slug}`;
+  return (
+    <article className={`ai-card${big ? " big" : ""}`}>
+      <Link href={href} className="ai-card-media" tabIndex={-1} aria-label={a.title}>
+        {a.image_url ? <img src={a.image_url} alt="" loading="lazy" /> : <span className="ai-card-ph" aria-hidden="true">✦</span>}
+        <span className="ai-tag">{topicOf(a).label}</span>
       </Link>
-      <div className="card-body">
-        <h3 className="card-title">
-          <Link href={href}>{article.title}</Link>
+      <div className="ai-card-body">
+        <h3>
+          <Link href={href}>{a.title}</Link>
         </h3>
-        {article.excerpt ? <p className="card-excerpt">{article.excerpt}</p> : null}
-        <div className="card-foot">
-          <span className="read">{article.reading_time} min</span>
-          <span className="sep">·</span>
-          <span>{formatDate(article.created_at)}</span>
-        </div>
+        {big && a.excerpt ? <p>{a.excerpt}</p> : null}
+        <span className="ai-meta">
+          {formatDate(a.created_at)} · {a.reading_time} min read
+        </span>
       </div>
     </article>
   );
 }
 
-function Guides({ site, articles }: { site: Site; articles: Article[] }) {
+function Trending({ site, articles }: { site: Site; articles: Article[] }) {
+  if (!articles.length) return null;
+  const [lead, ...rest] = articles;
   return (
-    <section id="guides">
-      <div className="section-head">
-        <h2>Latest cost guides</h2>
-        <span className="rule" />
-        <span className="count">{String(articles.length).padStart(2, "0")} guides</span>
+    <section className="ai-sec" id="guides">
+      <div className="ai-head">
+        <h2>
+          <span className="ai-live" /> Trending now
+        </h2>
+        <p>The AI questions people are searching this week.</p>
       </div>
-      {articles.length === 0 ? (
-        <div className="empty">
-          <div className="empty-mark" aria-hidden="true">
-            $
-          </div>
-          <h2>Calculators warming up</h2>
-          <p>Verified cost guides and model comparisons land here soon. Try the calculator above.</p>
-        </div>
-      ) : (
-        <div className="grid">
-          {articles.map((a) => (
-            <Card site={site} article={a} key={a.id} />
+      <div className="ai-trend">
+        <Card site={site} a={lead} big />
+        <div className="ai-trend-list">
+          {rest.slice(0, 4).map((a) => (
+            <Card site={site} a={a} key={a.id} />
           ))}
         </div>
-      )}
+      </div>
     </section>
   );
 }
 
-function Method() {
+function Rails({ site, articles, skip }: { site: Site; articles: Article[]; skip: Set<string> }) {
   return (
-    <section id="method">
-      <div className="section-head">
-        <h2>How we verify pricing</h2>
-        <span className="rule" />
-        <span className="count">methodology</span>
-      </div>
-      <div className="method">
-        <h3>Verified data, or it doesn&apos;t ship.</h3>
-        <p>
-          InfKey is a data product, not a content farm. Numbers come from official sources, the math
-          is shown, and every price carries the date it was last checked.
-        </p>
-        <div className="method-grid">
-          {METHOD.map((m) => (
-            <div className="method-item" key={m.n}>
-              <div className="n">{m.n}</div>
-              <h4>{m.h}</h4>
-              <p>{m.p}</p>
+    <>
+      {TOPICS.map((t) => {
+        const list = articles.filter((a) => !skip.has(a.id) && topicOf(a).key === t.key).slice(0, 6);
+        if (!list.length) return null;
+        return (
+          <section className="ai-sec" key={t.key} id={t.key}>
+            <div className="ai-head row">
+              <div>
+                <h2>{t.label}</h2>
+                <p>{t.blurb}</p>
+              </div>
             </div>
-          ))}
+            <div className="ai-grid">
+              {list.map((a) => (
+                <Card site={site} a={a} key={a.id} />
+              ))}
+            </div>
+          </section>
+        );
+      })}
+    </>
+  );
+}
+
+function Builders({ site }: { site: Site }) {
+  const b = `/s/${site.id}`;
+  return (
+    <section className="ai-sec ai-builders" id="calculator">
+      <div className="ai-builders-copy">
+        <span className="ai-pill">For builders</span>
+        <h2>
+          Know the <span className="ai-grad">real API cost</span> before you build
+        </h2>
+        <p>Verified per-token pricing, the math shown, and the cheapest model for your workload.</p>
+        <div className="ai-builders-links">
+          <Link href={`${b}/calculators`}>Cost calculators →</Link>
+          <Link href={`${b}/models`}>Model database →</Link>
+          <Link href={`${b}/compare`}>Compare models →</Link>
         </div>
+      </div>
+      <div className="ai-builders-calc">
+        <CostCalculator />
       </div>
     </section>
   );
 }
 
 export default function Home({ site, articles }: SiteHomeProps) {
+  const real = articles.filter((a) => !a.is_mock);
+  const trending = real.slice(0, 5);
+  const skip = new Set(trending.map((a) => a.id));
   return (
-    <>
+    <div className={`ai-root ${aiFont.variable}`}>
       <a href="#guides" className="skip-link">
         Skip to guides
       </a>
-      <StatusBar />
       <Masthead site={site} />
-
       <main>
+        <Hero site={site} count={real.length} />
         <div className="shell">
-          <Hero />
-          <StatStrip />
-          <Coverage site={site} />
-          <Guides site={site} articles={articles} />
-          <Method />
+          <Trending site={site} articles={trending} />
+          <Prompts site={site} articles={real} />
+          <Professions site={site} articles={real} />
+          <Tools site={site} articles={real} />
+          <Rails site={site} articles={real} skip={skip} />
+          <Builders site={site} />
         </div>
       </main>
-
       <Footer site={site} />
-    </>
+    </div>
   );
 }

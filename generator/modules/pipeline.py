@@ -14,6 +14,30 @@ SEO_TARGET = 95   # quality-loop pushes each article's on-page score to this or 
 MIN_PUBLISH_WORDS = 900  # never publish a thin/truncated article below this
 
 
+_SIM_STOP = {"the", "a", "an", "of", "in", "on", "for", "and", "or", "to", "by", "with", "vs", "is", "are",
+             "how", "what", "best", "top", "guide", "your", "complete", "full", "2025", "2026", "2027", "cost", "api"}
+
+
+def _tokens(t: str) -> set:
+    return {w for w in re.findall(r"[a-z0-9]+", (t or "").lower()) if w not in _SIM_STOP and len(w) > 1}
+
+
+def too_similar(text: str, others: list, thresh: float = 0.75) -> str | None:
+    """Return the existing title/keyword that `text` would cannibalise, if any.
+    Exact match, or ≥75% word overlap (Jaccard) on the meaningful words."""
+    a = _tokens(text)
+    low = (text or "").strip().lower()
+    for o in others:
+        if not o:
+            continue
+        if o.strip().lower() == low:
+            return o
+        b = _tokens(o)
+        if a and b and len(a & b) / len(a | b) >= thresh:
+            return o
+    return None
+
+
 def _related_sibling(text: str, cands: list) -> dict | None:
     """Pick the sibling article sharing the most meaningful words with `text` — used
     to guarantee at least one genuinely-related internal link so no post is orphaned."""
@@ -261,6 +285,11 @@ def generate_article(site: dict, title: str, log=lambda m: None) -> dict:
     keyword = wa["keyword"]
     meta_title, meta_description = wa["meta_title"], wa["meta_description"]
     data["excerpt"] = wa["excerpt"]
+    # Cannibalisation guard: the optimiser tends to converge on the same SEO title
+    # template (34 copies of one infkey title). Never publish a near-duplicate.
+    clash = too_similar(final_title, [a.get("title", "") for a in siblings])
+    if clash:
+        raise ValueError(f"near-duplicate of existing article '{clash}' — skipping")
 
     body = seo.assemble_body({
         "body_html": wa["body_html"],
@@ -358,7 +387,7 @@ def suggest_titles(site: dict, count: int = 10, seed: str = "", avoid: list | No
             for t in data:
                 t = str(t).strip()
                 k = t.lower()
-                if t and k not in avoid_set:
+                if t and k not in avoid_set and not too_similar(t, list(avoid_set)):
                     avoid_set.add(k)
                     titles.append(t)
                     added += 1

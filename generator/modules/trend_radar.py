@@ -24,10 +24,10 @@ HT = "{https://trends.google.com/trending/rss}"
 
 # Which countries' Google Trends matter for each site (its readers).
 DEFAULT_GEOS = {
-    "infkey": ["US", "GB", "IN"],
-    "countly": ["US", "GB", "IN", "BD"],
-    "ninetymins": ["US", "GB", "IN", "BD", "AU"],
-    "walvi": ["BD", "IN", "PK", "NP", "US"],
+    "infkey": ["US", "GB", "IN", "CA", "AU", "DE", "SG"],
+    "countly": ["US", "GB", "IN", "CA", "AU", "PH", "NG"],
+    "ninetymins": ["US", "GB", "IN", "AU", "CA", "NG", "ZA", "PK"],
+    "walvi": ["US", "GB", "IN", "PH", "NG", "PK", "AE", "CA"],
 }
 TECH_SITES = {"infkey", "countly"}
 
@@ -105,7 +105,7 @@ def seed_demand(site: dict, max_seeds: int = 8) -> list[dict]:
                     continue
                 seen.add(k)
                 # Higher-ranked suggestions are more-searched; this is a relative signal only.
-                out.append({"term": sug, "traffic": 400 - i * 50, "source": "autocomplete", "news": []})
+                out.append({"term": sug, "traffic": 200 - i * 25, "source": "autocomplete", "news": []})
     return out
 
 
@@ -213,7 +213,10 @@ def hot_topics(site: dict, max_out: int = 8, avoid: list[str] | None = None, log
             continue
         sugg = autocomplete(kw)
         validated = any(kw.lower() in s.lower() or s.lower().startswith(kw.lower()[: max(6, len(kw) // 2)]) for s in sugg)
-        score = rel * math.log10(c["traffic"] + 10) * (1.25 if validated else 1.0)
+        # Fresh, measured trends beat evergreen autocomplete ideas (news spikes go viral).
+        src = c["source"].split(",")[0]
+        fresh = 1.6 if src.startswith("google-trends") else 1.3 if src == "hackernews" else 1.2 if src == "wikipedia" else 1.0
+        score = rel * math.log10(c["traffic"] + 10) * fresh * (1.15 if validated else 1.0)
         out.append({
             "keyword": kw,
             "angle": str(p.get("angle") or "").strip(),

@@ -20,17 +20,41 @@ export async function generateMetadata({
     description: site.tagline,
     metadataBase: new URL(siteBaseUrl(site)),
     alternates: { canonical: "/" },
-    openGraph: { title: site.name, description: site.tagline, type: "website", url: "/" },
+    openGraph: { title: site.name, description: site.tagline, type: "website", url: "/", images: [{ url: `/og/${site.id}.png`, width: 1200, height: 630 }] },
+    twitter: { card: "summary_large_image", images: [`/og/${site.id}.png`] },
   };
+  const HOME: Record<string, { title: string; description: string }> = {
+    infkey: {
+      title: "InfKey — Best AI Tools, Viral Prompts & How to Use AI Free",
+      description:
+        "Find the best AI for your job, copy viral photo and video prompts, learn to use ChatGPT, Claude and Gemini free, and compare real AI prices — tested, updated daily.",
+    },
+    ninetymins: {
+      title: "NinetyMins — Live Scores, Fixtures & How to Watch Today",
+      description:
+        "Live football and cricket scores, today's fixtures and kick-off times in your timezone, plus where to watch the Premier League, Champions League, IPL, NBA and F1 legally.",
+    },
+    countly: {
+      title: "Countly — World Statistics, Rankings & Data, by the Numbers",
+      description:
+        "Up-to-date statistics and rankings: social media users by country, richest people, AI usage, the biggest companies and more — sourced, dated and easy to compare.",
+    },
+  };
+  if (HOME[site.id]) {
+    const h = HOME[site.id];
+    meta.title = h.title;
+    meta.description = h.description;
+    meta.openGraph = { ...meta.openGraph, title: h.title, description: h.description, siteName: site.name };
+  }
   // VisaPoint: the tagline alone (52 chars) was the whole meta description.
   if (site.id === "walvi") {
-    const title = "VisaPoint — Europe Work Permits, Visas & Salaries for Foreign Workers";
+    const title = "VisaPoint — Visa Check, Passport Index & Work Permits Worldwide";
     const description =
-      "Plain-language work-permit routes, visa checklists, real salaries and monthly savings for 40 European countries — with the official government source for each.";
+      "Check if you need a visa, check your visa status online, see how strong your passport is, and follow official work-permit routes with real salaries — free and independent.";
     meta.title = title;
     meta.description = description;
-    meta.openGraph = { title, description, type: "website", url: "/", siteName: "VisaPoint" };
-    meta.twitter = { card: "summary", title, description };
+    meta.openGraph = { title, description, type: "website", url: "/", siteName: "VisaPoint", images: [{ url: "/og/walvi.png", width: 1200, height: 630 }] };
+    meta.twitter = { card: "summary_large_image", title, description, images: ["/og/walvi.png"] };
   }
   // Search-engine ownership verification (home-page meta tags).
   if (site.id === "infkey") {

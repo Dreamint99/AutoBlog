@@ -2,6 +2,8 @@ import "./theme.css";
 import Link from "next/link";
 import type { SiteArticleProps, Site, Article, TocItem } from "@/lib/types";
 import { Masthead, Footer } from "./Chrome";
+import { aiFont } from "./fonts";
+import { topicOf } from "./topics";
 
 function formatDate(iso: string): string {
   const d = new Date(iso);
@@ -10,8 +12,7 @@ function formatDate(iso: string): string {
 }
 
 function categoryOf(article: Article): string {
-  const tag = article.tags.find((t) => t.trim().length > 0);
-  return (tag ?? article.keyword ?? "Cost").toUpperCase();
+  return topicOf(article).label.toUpperCase();
 }
 
 function Toc({ items, variant }: { items: TocItem[]; variant: "inline" | "rail" }) {
@@ -57,7 +58,7 @@ export default function Article({ site, article, related, bodyHtml, toc }: SiteA
   const date = formatDate(article.created_at);
 
   return (
-    <>
+    <div className={`ai-root ${aiFont.variable}`}>
       <a href="#article-body" className="skip-link">
         Skip to article
       </a>
@@ -161,6 +162,6 @@ export default function Article({ site, article, related, bodyHtml, toc }: SiteA
       </main>
 
       <Footer site={site} />
-    </>
+    </div>
   );
 }
