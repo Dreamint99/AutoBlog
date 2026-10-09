@@ -33,11 +33,13 @@ jobs:
           PROBASHIINFO_WP_URL: ${{ secrets.PROBASHIINFO_WP_URL }}
           PROBASHIINFO_WP_USER: ${{ secrets.PROBASHIINFO_WP_USER }}
           PROBASHIINFO_WP_APP_PASSWORD: ${{ secrets.PROBASHIINFO_WP_APP_PASSWORD }}
+          FIND: ${{ github.event.inputs.find }}
+          REPL: ${{ github.event.inputs.replace }}
         run: |
           python wp_snippets.py list
-          python wp_snippets.py show "${{ github.event.inputs.find }}" | head -20
+          python wp_snippets.py show "$FIND" | head -20
           if [ "${{ github.event.inputs.apply }}" = "true" ]; then
-            python wp_snippets.py replace "${{ github.event.inputs.find }}" "${{ github.event.inputs.replace }}" --apply
+            python wp_snippets.py replace "$FIND" "$REPL" --apply
           else
-            python wp_snippets.py replace "${{ github.event.inputs.find }}" "${{ github.event.inputs.replace }}"
+            python wp_snippets.py replace "$FIND" "$REPL"
           fi
