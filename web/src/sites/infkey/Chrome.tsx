@@ -32,14 +32,9 @@ export function KeyMark() {
 
 export function Logo({ site }: { site: Site }) {
   return (
-    <Link href={`/s/${site.id}`} className="logo" aria-label={`${site.name} home`}>
-      <span className="logomark">
-        <KeyMark />
-      </span>
-      <span className="wordmark">
-        Inf<b>Key</b>
-        <span className="tld">.com</span>
-      </span>
+    <Link href={`/s/${site.id}`} className="logo ik-logo-img" aria-label={`${site.name} home`}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="/brand/infkey-logo-ondark.webp" alt="InfKey.com" width={168} height={48} />
     </Link>
   );
 }

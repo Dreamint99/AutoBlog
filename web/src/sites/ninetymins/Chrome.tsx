@@ -66,12 +66,8 @@ export function Header({ site }: { site: Site }) {
       <header className="nm-header">
         <div className="nm-wrap nm-header-row">
           <Link href={s} className="nm-logo" aria-label={`${site.name} home`}>
-            <span className="nm-logo-mark" aria-hidden="true">
-              90<sup>&prime;</sup>
-            </span>
-            <span className="nm-logo-word">
-              Ninety<b>Mins</b>
-            </span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="nm-logo-img" src="/brand/ninetymins-logo-ondark.webp" alt="NinetyMins.com" width={230} height={36} />
           </Link>
           <span className="nm-tag">{site.tagline}</span>
           <Link href={`${s}/scores`} className="nm-live">
@@ -111,12 +107,8 @@ export function Footer({ site }: { site: Site }) {
         <div className="nm-foot-grid">
           <div>
             <Link href={s} className="nm-logo" aria-label={`${site.name} home`}>
-              <span className="nm-logo-mark" aria-hidden="true">
-                90<sup>&prime;</sup>
-              </span>
-              <span className="nm-logo-word">
-                Ninety<b>Mins</b>
-              </span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img className="nm-logo-img" src="/brand/ninetymins-logo-ondark.webp" alt="NinetyMins.com" width={230} height={36} loading="lazy" />
             </Link>
             <p>
               Independent viewing guides: dates, kick-off times by timezone and legal ways to watch. We are not

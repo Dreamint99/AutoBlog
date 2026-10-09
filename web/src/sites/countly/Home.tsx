@@ -144,10 +144,9 @@ export function CnHeader({ site }: { site: { id: string; name: string } }) {
         </div>
       </div>
       <div className="cx-brandrow">
-        <Link href={s} className="cx-logo" aria-label={`${site.name} home`}>
-          <b>
-            Count<span>ly</span>
-          </b>
+        <Link href={s} className="cx-logo cx-logo-img" aria-label={`${site.name} home`}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/brand/countly-logo-dark.webp" alt="Countly" width={92} height={86} />
           <small>The World in Numbers</small>
         </Link>
       </div>
@@ -561,8 +560,9 @@ export function SiteFooter({ siteName, siteId, domain }: { siteName: string; sit
         <div className="cn-foot-top">
           <div>
             <Link href={`/s/${siteId}`} className="cn-brand" aria-label={`${siteName} home`}>
-              <span className="cn-logo">
-                <IconChart />
+              <span className="cn-logo cn-logo-img">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/brand/countly-mark.webp" alt="" width={34} height={21} />
               </span>
               <span className="cn-wordmark">
                 <b>

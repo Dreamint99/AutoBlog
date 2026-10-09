@@ -364,8 +364,9 @@ function SiteFooter({ siteName, siteId, domain }: { siteName: string; siteId: st
         <div className="cn-foot-top">
           <div>
             <Link href={`/s/${siteId}`} className="cn-brand" aria-label={`${siteName} home`}>
-              <span className="cn-logo">
-                <IconChart />
+              <span className="cn-logo cn-logo-img">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/brand/countly-mark.webp" alt="" width={34} height={21} />
               </span>
               <span className="cn-wordmark">
                 <b>

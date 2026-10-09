@@ -1,5 +1,14 @@
 import { ImageResponse } from "next/og";
 import { activeSite } from "../lib/site-context";
+import { siteBaseUrl } from "../lib/sites.config";
+
+// Sites with a real logo mark in /public/brand use it as the favicon.
+const MARKS: Record<string, string> = {
+  infkey: "/brand/infkey-mark-sq.png",
+  ninetymins: "/brand/ninetymins-mark.png",
+  countly: "/brand/countly-mark-sq.png",
+  gccguide: "/brand/gccguide-mark.png",
+};
 
 // Per-site favicon, generated at build/runtime from the deployment's SITE_ID.
 // One file → every site in the network gets its own branded icon (theme colour
@@ -25,6 +34,18 @@ export default function Icon() {
   const site = activeSite();
   const c = COLORS[site.theme] ?? { bg: "#111827", fg: "#ffffff" };
   const letter = (site.name || "A").trim().charAt(0).toUpperCase();
+  const mark = MARKS[site.id];
+  if (mark) {
+    return new ImageResponse(
+      (
+        <div style={{ width: "100%", height: "100%", display: "flex" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={`${siteBaseUrl(site)}${mark}`} width={64} height={64} alt="" />
+        </div>
+      ),
+      { ...size }
+    );
+  }
 
   return new ImageResponse(
     (

@@ -27,10 +27,8 @@ export function Mark() {
 export function Logo({ site }: { site: Site }) {
   return (
     <Link href={`/s/${site.id}`} className="gc-logo" aria-label={`${site.name} home`}>
-      <Mark />
-      <span>
-        GCC<b>Guide</b>
-      </span>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="/brand/gccguide-logo.webp" alt="GCCGuide.com" width={140} height={40} />
     </Link>
   );
 }

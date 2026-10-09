@@ -15,7 +15,7 @@
   --cx-paper-2: #f6f5f1;
   --cx-rule: #e3e1db;
   --cx-rule-strong: #0b0b0f;
-  --cx-kicker: #2f3fd8;
+  --cx-kicker: #0f9d58;
   --cx-gold: #b5852b;
   --cx-gold-soft: #f4ead5;
   --cx-night: #0c0e16;
@@ -503,3 +503,9 @@
   .site-countly .cx-wealth-list .cx-thumb { width: 60px; }
   .site-countly .cx-num b { font-size: 28px; }
 }
+
+/* real logo */
+.site-countly .cx-logo-img img { height: 86px; width: auto; display: block; }
+@media (max-width: 600px) { .site-countly .cx-logo-img img { height: 62px; } }
+.site-countly .cn-logo-img { background: none !important; box-shadow: none !important; width: auto !important; }
+.site-countly .cn-logo-img img { height: 30px; width: auto; display: block; }
