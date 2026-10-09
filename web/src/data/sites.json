@@ -95,6 +95,18 @@
       "audience": "sports fans worldwide searching when a match is on, what time it starts in their country, and how or where to watch it live - football, cricket, basketball, tennis and motorsport followers",
       "theme": "ninetymins-pitch",
       "default_word_count": 1400
+    },
+    {
+      "id": "gccguide",
+      "name": "GCCGuide",
+      "domain": "gccguide.com",
+      "tagline": "Everything GCC, in one place.",
+      "niche": "the complete guide to the six GCC countries — Qatar, UAE (Dubai, Abu Dhabi), Saudi Arabia, Kuwait, Oman and Bahrain: visas and residency (visit, work, family visas, iqama, Emirates ID, QID, civil ID, visa status checks), jobs and salaries, labour law and gratuity, driving licence conversion and tests, traffic fines, rules and laws for expats, Ramadan and public holidays, cost of living, rent, banking and remittance, schools, travel, things to do and GCC news",
+      "language": "en",
+      "tone": "clear, friendly expert who has lived in the Gulf; lead with the direct answer, then step-by-step instructions, required documents, fees and processing times in a table, the official portal or app to use, common mistakes and FAQs. State the country in every answer, never invent fees or rules — if unsure say so and point to the official portal; note that rules change.",
+      "audience": "expats, workers and families living in or moving to the Gulf (South Asia, Africa, the Philippines, the Arab world, Europe), plus tourists and business travellers",
+      "theme": "gcc-night",
+      "default_word_count": 1500
     }
   ]
 }

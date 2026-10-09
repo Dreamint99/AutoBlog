@@ -5,12 +5,14 @@
 # from the live worker settings (assets + D1 + SITE_ID + custom domains).
 param(
     [Parameter(Mandatory = $true)][string]$Site,
-    [switch]$DryRun
+    [switch]$DryRun,
+    # Deploy to <worker>.workers.dev only (domain not on Cloudflare yet).
+    [switch]$NoRoutes
 )
 $ErrorActionPreference = "Stop"
 Set-Location $PSScriptRoot
 
-$domains = @{ countly = "countly.net"; ninetymins = "ninetymins.com"; infkey = "infkey.com"; walvi = "visapoint.net" }
+$domains = @{ countly = "countly.net"; ninetymins = "ninetymins.com"; infkey = "infkey.com"; walvi = "visapoint.net"; gccguide = "gccguide.com" }
 if (-not $domains.ContainsKey($Site)) { throw "unknown site '$Site' (known: $($domains.Keys -join ', '))" }
 $d = $domains[$Site]
 
@@ -32,6 +34,13 @@ $d = $domains[$Site]
   ]
 }
 "@ | Out-File -Encoding utf8 wrangler.jsonc
+if ($NoRoutes) {
+    # strip the custom-domain routes and serve on workers.dev
+    $j = Get-Content wrangler.jsonc -Raw | ConvertFrom-Json
+    $j.PSObject.Properties.Remove("routes")
+    $j | Add-Member -NotePropertyName workers_dev -NotePropertyValue $true
+    $j | ConvertTo-Json -Depth 8 | Out-File -Encoding utf8 wrangler.jsonc
+}
 
 $env:SITE_ID = $Site
 npx opennextjs-cloudflare build

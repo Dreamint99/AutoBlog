@@ -76,5 +76,5 @@ jobs:
             exit 0
           fi
           python content_update.py fill infkey 2 || true
-          for s in countly walvi ninetymins; do python content_update.py fill $s 1 || true; done
+          for s in countly walvi ninetymins gccguide; do python content_update.py fill $s 1 || true; done
           python content_update.py refresh all 1 --days 60 || true

@@ -248,6 +248,50 @@
       "theme": "ninetymins-pitch",
       "default_word_count": 1400,
       "drip_enabled": true
+    },
+    {
+      "id": "gccguide",
+      "name": "GCCGuide",
+      "domain": "gccguide.com",
+      "tagline": "Everything GCC, in one place.",
+      "niche": "the complete guide to the six GCC countries — Qatar, UAE (Dubai, Abu Dhabi), Saudi Arabia, Kuwait, Oman and Bahrain: visas and residency (visit, work, family visas, iqama, Emirates ID, QID, civil ID, visa status checks), jobs and salaries, labour law and gratuity, driving licence conversion and tests, traffic fines, rules and laws for expats, Ramadan and public holidays, cost of living, rent, banking and remittance, schools, travel, things to do and GCC news",
+      "language": "en",
+      "tone": "clear, friendly expert who has lived in the Gulf; lead with the direct answer, then step-by-step instructions, required documents, fees and processing times in a table, the official portal or app to use, common mistakes and FAQs. State the country in every answer, never invent fees or rules — if unsure say so and point to the official portal; note that rules change.",
+      "audience": "expats, workers and families living in or moving to the Gulf (South Asia, Africa, the Philippines, the Arab world, Europe), plus tourists and business travellers",
+      "theme": "gcc-night",
+      "default_word_count": 1500,
+      "drip_enabled": true,
+      "trend_geos": [
+        "QA",
+        "AE",
+        "SA",
+        "KW",
+        "OM",
+        "BH",
+        "IN",
+        "PH",
+        "PK"
+      ],
+      "trend_seeds": [
+        "qatar visa status",
+        "uae visa status",
+        "saudi iqama",
+        "kuwait visa",
+        "oman visa",
+        "bahrain visa",
+        "dubai driving license",
+        "qatar driving license",
+        "saudi driving license",
+        "uae labour law",
+        "gratuity calculator",
+        "gcc news",
+        "ramadan timings",
+        "public holidays",
+        "cost of living dubai",
+        "jobs in dubai",
+        "jobs in qatar",
+        "saudi exit re-entry"
+      ]
     }
   ]
 }

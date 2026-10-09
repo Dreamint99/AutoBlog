@@ -34,6 +34,11 @@ export async function generateMetadata({
       description:
         "Live football and cricket scores, today's fixtures and kick-off times in your timezone, plus where to watch the Premier League, Champions League, IPL, NBA and F1 legally.",
     },
+    gccguide: {
+      title: "GCCGuide — Qatar, UAE, Saudi, Kuwait, Oman & Bahrain Guide: Visas, Jobs, Driving",
+      description:
+        "The all-in-one GCC guide: visa and residency status checks, jobs and salaries, driving licences, laws for expats, cost of living, prayer times and live tools for all six Gulf countries.",
+    },
     countly: {
       title: "Countly — World Statistics, Rankings & Data, by the Numbers",
       description:

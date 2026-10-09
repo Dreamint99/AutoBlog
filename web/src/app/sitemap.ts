@@ -9,6 +9,7 @@ import { activeSite } from "@/lib/site-context";
 import { getPassports } from "@/lib/passports";
 import { VC, isVcArticle, vcFor } from "@/sites/walvi/visacheck/data";
 import { siteBaseUrl } from "@/lib/sites.config";
+import { COUNTRIES as GCC } from "@/sites/gccguide/data";
 
 export const dynamic = "force-dynamic";
 
@@ -77,6 +78,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     for (const p of ["about", "contact", "privacy", "terms", "disclaimer"]) {
       entries.push({ url: `${base}/${p}`, changeFrequency: "yearly", priority: 0.2 });
     }
+  }
+
+  if (site.id === "gccguide") {
+    for (const c of GCC) entries.push({ url: `${base}/country/${c.slug}`, changeFrequency: "weekly", priority: 0.9 });
   }
 
   // VisaPoint Passport Index: index, checker and one page per passport.

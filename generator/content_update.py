@@ -31,7 +31,7 @@ JOB = ARGS[0] if ARGS else "fill"
 SITE = ARGS[1] if len(ARGS) > 1 else "all"
 N = int(ARGS[2]) if len(ARGS) > 2 else 1
 DAYS = int(sys.argv[sys.argv.index("--days") + 1]) if "--days" in sys.argv else 60
-ACTIVE = ["infkey", "countly", "walvi", "ninetymins"]
+ACTIVE = ["infkey", "countly", "walvi", "ninetymins", "gccguide"]
 YEAR = datetime.now(timezone.utc).year
 
 

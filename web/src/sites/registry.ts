@@ -17,6 +17,8 @@ import WalviHome from "./walvi/Home";
 import WalviArticle from "./walvi/Article";
 import NinetyminsHome from "./ninetymins/Home";
 import NinetyminsArticle from "./ninetymins/Article";
+import GccHome from "./gccguide/Home";
+import GccArticle from "./gccguide/Article";
 
 export interface SiteComponents {
   Home: ComponentType<SiteHomeProps>;
@@ -32,4 +34,5 @@ export const SITE_COMPONENTS: Record<string, SiteComponents> = {
   countly: { Home: CountlyHome, Article: CountlyArticle },
   walvi: { Home: WalviHome, Article: WalviArticle },
   ninetymins: { Home: NinetyminsHome, Article: NinetyminsArticle },
+  gccguide: { Home: GccHome, Article: GccArticle },
 };

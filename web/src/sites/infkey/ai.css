@@ -7,8 +7,9 @@
   --ai-cyan: #22d3ee;
   --ai-pink: #f472b6;
   --ai-grad: linear-gradient(100deg, #a78bfa 0%, #22d3ee 50%, #f472b6 100%);
-  --display: var(--ik-display), "Inter", system-ui, sans-serif;
 }
+/* --display must live where --ik-display (next/font class) is set */
+.site-infkey .ai-root, .site-infkey .ai-masthead { --display: var(--ik-display), "Inter", system-ui, sans-serif; }
 .site-infkey .ai-root h1,
 .site-infkey .ai-root h2,
 .site-infkey .ai-root h3,
