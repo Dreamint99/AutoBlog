@@ -31,6 +31,21 @@ def main():
         for s in items:
             print(s.get("id"), "active" if s.get("active") else "off", "|", s.get("name"), "|", len(s.get("code") or ""), "chars")
         return
+    if cmd == "upsert":
+        # upsert "<name>" <file>  — create or replace a snippet's code from a file (opening <?php stripped)
+        name, path = sys.argv[2], sys.argv[3]
+        code = open(path, encoding="utf-8").read()
+        code = code[5:].lstrip("
+") if code.startswith("<?php") else code
+        ex = next((x for x in items if x.get("name") == name), None)
+        body = {"name": name, "code": code, "scope": "front-end", "active": True}
+        r = requests.post(f"{API}/{ex['id']}" if ex else API, headers=H, json=body, timeout=90)
+        print("upsert", name, r.status_code, (r.json().get("id"), r.json().get("active")) if r.ok else r.text[:400])
+        if r.ok and not r.json().get("active"):
+            a = requests.post(f"{API}/{r.json()['id']}/activate", headers=H, timeout=60)
+            print("activate", a.status_code, a.text[:200])
+        r.raise_for_status()
+        return
     if cmd == "show":
         for s in items:
             for i, line in enumerate((s.get("code") or "").splitlines(), 1):
