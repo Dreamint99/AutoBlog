@@ -328,6 +328,9 @@ function pb_render() {
 	$cat = get_category_by_slug( 'bmet-report-news' );
 	$reports = $cat ? get_posts( array( 'category' => $cat->term_id, 'numberposts' => 9 ) ) : array();
 	$lc = $live['c']; arsort( $lc );
+	$yday = wp_date( 'Y-m-d', time() - DAY_IN_SECONDS, new DateTimeZone( 'Asia/Dhaka' ) );
+	$sd = function ( $k ) { $p = explode( '-', $k ); return count( $p ) === 3 ? pb_bn( (int) $p[2] ) . ' ' . pb_months()[ (int) $p[1] - 1 ] : ''; };
+	$lastlbl = ( $last === $yday ? 'গতকাল' : 'সর্বশেষ দিন' ) . ' (' . $sd( $last ) . ')';
 	$faq = array(
 		array( 'আজকের বিএমইটি রিপোর্ট কোথায় দেখব?', 'এই পাতার ওপরে আজকের সংখ্যা লাইভ দেখানো হয় — সরকারি ওভারসিজ এমপ্লয়মেন্ট প্ল্যাটফর্ম (OEP) থেকে প্রতি ৫ মিনিটে নিজে থেকে হালনাগাদ হয়। দিনের শেষে, রাত ১২টার পর, পূর্ণ দিনের রিপোর্ট আলাদা লেখা হিসেবেও প্রকাশ হয়।' ),
 		array( 'বিএমইটি বহির্গমন ছাড়পত্র বা স্মার্ট কার্ড কী?', 'কাজের জন্য বিদেশে যাওয়ার আগে জনশক্তি, কর্মসংস্থান ও প্রশিক্ষণ ব্যুরো (বিএমইটি) থেকে যে বহির্গমন ছাড়পত্র নিতে হয়, সেটিই স্মার্ট কার্ড আকারে দেওয়া হয়। এই রিপোর্টের সংখ্যা হলো নির্দিষ্ট দিনে কতজন কর্মী এই ছাড়পত্র পেয়েছেন।' ),
@@ -509,7 +512,7 @@ html body.bm-app h1,html body.bm-app h2,html body.bm-app h3,html body.bm-app h4,
 			<span class="at" id="lv-at">সর্বশেষ চেক: <?php echo esc_html( pb_bn( wp_date( 'H:i', $live['at'], new DateTimeZone( 'Asia/Dhaka' ) ) ) ); ?> · প্রতি ৫ মিনিটে নিজে হালনাগাদ হয় · দিনের শেষ পর্যন্ত সংখ্যা বাড়তে থাকে</span>
 		</div>
 		<?php if ( $last ) : ?>
-		<div class="ybox"><span><?php echo esc_html( pb_bdate( $last ) ); ?> (পূর্ণ দিন)</span><b><?php echo pb_num( $L['t'] ); ?> জন</b><span><?php echo pb_bn( count( $L['c'] ) ); ?>টি দেশ · নারী <?php echo pb_num( $L['f'] ); ?></span><?php echo $prevk ? pb_pct( (int) $L['t'], (int) $days[ $prevk ]['t'] ) : ''; ?><?php if ( $last_url ) echo '<a href="' . esc_url( $last_url ) . '">পুরো রিপোর্ট →</a>'; ?></div>
+		<div class="ybox"><span><?php echo esc_html( ( $last === $yday ? 'গতকাল, ' : '' ) . pb_bdate( $last ) ); ?> (পূর্ণ দিন)</span><b><?php echo pb_num( $L['t'] ); ?> জন</b><span><?php echo pb_bn( count( $L['c'] ) ); ?>টি দেশ · নারী <?php echo pb_num( $L['f'] ); ?></span><?php echo $prevk ? pb_pct( (int) $L['t'], (int) $days[ $prevk ]['t'] ) : ''; ?><?php if ( $last_url ) echo '<a href="' . esc_url( $last_url ) . '">পুরো রিপোর্ট →</a>'; ?></div>
 		<?php endif; ?>
 		<div class="hb"><a class="btn btn-g" href="#card">📸 রিপোর্ট কার্ড ডাউনলোড</a><button type="button" class="btn btn-w" id="bm-share">📤 শেয়ার করুন</button><button type="button" class="btn btn-w" id="pw-notify" hidden>🔔 রিপোর্ট নোটিফিকেশন চালু করুন</button><button type="button" class="btn btn-w" id="pw-install" hidden>📲 অ্যাপ ইনস্টল করুন</button></div>
 	</div>
@@ -525,7 +528,7 @@ html body.bm-app h1,html body.bm-app h2,html body.bm-app h3,html body.bm-app h4,
 </div></section>
 
 <div class="w"><div class="ks">
-	<div class="k"><span><?php echo $last ? esc_html( pb_bdate( $last ) ) : 'সর্বশেষ দিন'; ?></span><b><?php echo pb_num( $L['t'] ); ?></b><small>পূর্ণ দিনের হিসাব</small></div>
+	<div class="k"><span><?php echo esc_html( $lastlbl ); ?></span><b><?php echo pb_num( $L['t'] ); ?></b><small>পূর্ণ দিনের হিসাব</small></div>
 	<div class="k"><span>শেষ ৭ দিনে</span><b><?php echo pb_num( $w['t'] ); ?></b><small>আগের ৭ দিনের চেয়ে <?php echo pb_pct( $w['t'], $pw['t'] ) ?: '—'; ?></small></div>
 	<div class="k"><span><?php echo $m0 ? esc_html( pb_bmonth( $m0 ) ) : 'এই মাস'; ?> (এখন পর্যন্ত)</span><b><?php echo pb_num( $mt['t'] ); ?></b><small><?php echo pb_bn( count( $mk ) ); ?> দিনের হিসাব</small></div>
 	<div class="k"><span><?php echo $m1 ? esc_html( pb_bmonth( $m1 ) ) : 'গত মাস'; ?></span><b><?php echo $m1 ? pb_num( $months[ $m1 ] ) : '—'; ?></b><small>পূর্ণ মাস</small></div>
@@ -537,7 +540,7 @@ html body.bm-app h1,html body.bm-app h2,html body.bm-app h3,html body.bm-app h4,
 		<p class="lead">দিন, সপ্তাহ, মাস, নির্দিষ্ট তারিখ বা দেশ বাছুন — চার্ট ও তালিকা সঙ্গে সঙ্গে বদলে যাবে।</p>
 		<div class="card">
 			<div class="bar" role="group" aria-label="সময়">
-				<?php $yday = wp_date( 'Y-m-d', time() - DAY_IN_SECONDS, new DateTimeZone( 'Asia/Dhaka' ) ); $sd = function ( $k ) { $p = explode( '-', $k ); return pb_bn( (int) $p[2] ) . ' ' . pb_months()[ (int) $p[1] - 1 ]; }; ?><button type="button" data-r="today" id="bm-today">🔴 আজ (<?php echo esc_html( $sd( $today ) ); ?> · এখন পর্যন্ত <span id="bm-tnow"><?php echo esc_html( pb_bn( wp_date( 'H:i', $live['at'], new DateTimeZone( 'Asia/Dhaka' ) ) ) ); ?></span>)</button><button type="button" data-r="1"><?php echo esc_html( ( $last === $yday ? 'গতকাল' : 'সর্বশেষ দিন' ) . ' (' . ( $last ? $sd( $last ) : '' ) . ')' ); ?></button><button type="button" data-r="7">৭ দিন</button><button type="button" data-r="30" class="on">৩০ দিন</button><button type="button" data-r="m0">এই মাস</button><button type="button" data-r="m1">গত মাস</button><button type="button" data-r="all">সব</button>
+				<button type="button" data-r="today" id="bm-today">🔴 আজ (<?php echo esc_html( $sd( $today ) ); ?> · এখন পর্যন্ত <span id="bm-tnow"><?php echo esc_html( pb_bn( wp_date( 'H:i', $live['at'], new DateTimeZone( 'Asia/Dhaka' ) ) ) ); ?></span>)</button><button type="button" data-r="1"><?php echo esc_html( $lastlbl ); ?></button><button type="button" data-r="7">৭ দিন</button><button type="button" data-r="30" class="on">৩০ দিন</button><button type="button" data-r="m0">এই মাস</button><button type="button" data-r="m1">গত মাস</button><button type="button" data-r="all">সব</button>
 				<select id="bm-month" aria-label="মাস"></select>
 				<input type="date" id="bm-day" aria-label="নির্দিষ্ট তারিখ">
 				<span class="rg"><label>থেকে <input type="date" id="bm-from"></label><label>পর্যন্ত <input type="date" id="bm-to"></label><button type="button" id="bm-go">🔎 দেখুন</button></span>
@@ -573,7 +576,7 @@ html body.bm-app h1,html body.bm-app h2,html body.bm-app h3,html body.bm-app h4,
 		<h2>📸 রিপোর্ট কার্ড তৈরি করুন</h2>
 		<p class="lead">দৈনিক, সাপ্তাহিক, মাসিক বা যেকোনো তারিখের কার্ড বানিয়ে JPEG ডাউনলোড করুন — ফেসবুক, হোয়াটসঅ্যাপ, ইনস্টাগ্রামে সরাসরি পোস্ট করুন।</p>
 		<div class="card">
-			<div class="gb" role="group" aria-label="কার্ডের ধরন"><button type="button" data-k="live"<?php echo $live['t'] ? '' : ' hidden'; ?>>🔴 আজ লাইভ</button><button type="button" data-k="day" class="on">দৈনিক</button><button type="button" data-k="week">সাপ্তাহিক</button><button type="button" data-k="month">মাসিক</button><button type="button" data-k="cur">ওপরের ফিল্টার</button><input type="date" id="bm-cdate" aria-label="যেকোনো তারিখের কার্ড"></div>
+			<div class="gb" role="group" aria-label="কার্ডের ধরন"><button type="button" data-k="live"<?php echo $live['t'] ? '' : ' hidden'; ?>>🔴 আজ (<?php echo esc_html( $sd( $today ) ); ?> · লাইভ)</button><button type="button" data-k="day" class="on"><?php echo esc_html( $lastlbl ); ?></button><button type="button" data-k="week">সাপ্তাহিক (শেষ ৭ দিন)</button><button type="button" data-k="month">মাসিক (<?php echo esc_html( $m0 ? pb_bmonth( $m0 ) : '' ); ?>)</button><button type="button" data-k="cur">ওপরের ফিল্টার</button><input type="date" id="bm-cdate" aria-label="যেকোনো তারিখের কার্ড"></div>
 			<div class="gw"><canvas id="bm-cv" width="1080" height="1350" aria-label="বিএমইটি রিপোর্ট কার্ড"></canvas>
 			<div class="ga"><button type="button" class="bdl" id="bm-dl">⬇ JPEG ডাউনলোড করুন</button><button type="button" class="bsh" id="bm-sh">📤 ফেসবুক / হোয়াটসঅ্যাপে শেয়ার</button>
 				<ul><li>কার্ডে রিপোর্টের তারিখ ও তৈরির সময় থাকে</li><li>তথ্যসূত্র: বিএমইটি / OEP (oep.gov.bd) লেখা থাকে</li><li>নিচে আমাদের লাইভ রিপোর্টের লিংক থাকে</li><li>ক্যালেন্ডার থেকে যেকোনো তারিখ বাছলে সেই দিনের কার্ড হবে</li></ul></div></div>
