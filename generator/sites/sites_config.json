@@ -106,7 +106,8 @@
         "PH",
         "NG",
         "DE"
-      ]
+      ],
+      "image_fallback_q": "computer technology"
     },
     {
       "id": "probashiinfo",
@@ -193,7 +194,8 @@
         "PK",
         "AE",
         "CA"
-      ]
+      ],
+      "image_fallback_q": "airport travel passport"
     },
     {
       "id": "countly",
@@ -218,7 +220,8 @@
         "most followed instagram accounts",
         "youtube statistics",
         "ecommerce statistics"
-      ]
+      ],
+      "image_fallback_q": "city business"
     },
     {
       "id": "ninetymins",
@@ -247,7 +250,8 @@
       "audience": "sports fans worldwide searching when a match is on, what time it starts in their country, and how or where to watch it live - football, cricket, basketball, tennis and motorsport followers",
       "theme": "ninetymins-pitch",
       "default_word_count": 1400,
-      "drip_enabled": true
+      "drip_enabled": true,
+      "image_fallback_q": "football stadium"
     },
     {
       "id": "gccguide",
@@ -291,7 +295,9 @@
         "jobs in dubai",
         "jobs in qatar",
         "saudi exit re-entry"
-      ]
+      ],
+      "wiki_images": false,
+      "image_fallback_q": "Dubai skyline"
     }
   ]
 }

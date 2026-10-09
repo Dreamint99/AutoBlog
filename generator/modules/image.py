@@ -78,6 +78,47 @@ def _pollinations(subject: str, w: int, h: int) -> str:
     return f"https://image.pollinations.ai/prompt/{quote(prompt)}?{q}"
 
 
+_USED: set = set()  # images already handed out in this run (no duplicate heroes)
+
+
+def _commons_thumb(url: str, w: int) -> str:
+    """upload.wikimedia.org original → a sized thumbnail (originals can be 20 MB)."""
+    m = re.match(r"https://upload\.wikimedia\.org/wikipedia/commons/(\w)/(\w\w)/([^/?#]+)$", url)
+    if not m or url.lower().endswith(".svg"):
+        return url
+    # Wikimedia only serves its standard thumbnail steps (others → HTTP 400)
+    step = next((x for x in (500, 960, 1280, 1920) if x >= w), 1920)
+    return f"https://upload.wikimedia.org/wikipedia/commons/thumb/{m[1]}/{m[2]}/{m[3]}/{step}px-{m[3]}"
+
+
+def _openverse(query: str, w: int = 1200) -> str | None:
+    """Free, keyless CC0 / public-domain photos (Openverse: Flickr, Wikimedia, Rawpixel…).
+    Permanent source URLs; no attribution needed for CC0/PDM. Prefers tag/title matches."""
+    q = (query or "").strip()
+    if not q:
+        return None
+    try:
+        r = requests.get("https://api.openverse.org/v1/images/", params={
+            "q": q[:100], "license": "cc0,pdm", "category": "photograph", "aspect_ratio": "wide",
+            "page_size": 20, "mature": "false"}, headers={"User-Agent": _WIKI_UA}, timeout=20)
+        words = {x for x in re.findall(r"[a-z]{3,}", q.lower()) if x not in _STOP}
+        best, best_score = None, -1
+        for h in r.json().get("results", []):
+            url = h.get("url") or ""
+            if not url or url in _USED or (h.get("width") or 0) < 900:
+                continue
+            text = (h.get("title", "") + " " + " ".join(t.get("name", "") for t in h.get("tags") or [])).lower()
+            score = sum(1 for x in words if x[:5] in text)
+            if score > best_score:
+                best, best_score = url, score
+        if best and best_score >= max(1, (len(words) + 1) // 2):
+            _USED.add(best)
+            return _commons_thumb(best, w)
+    except Exception:
+        pass
+    return None
+
+
 _WIKI_UA = "AutoBlog/1.0 (https://countly.net; contact admin)"
 # Drop these words before a Wikipedia lookup — they hurt the entity match.
 _WIKI_DROP = re.compile(r"\b(logo|building|exterior|interior|office|headquarters|hq|campus|"
@@ -173,8 +214,12 @@ def feature_image(title: str, site: dict, query: str | None = None) -> str:
             w = _wikimedia(c)
             if w:
                 return w
-    q = candidates[0] if candidates else primary
-    return _pollinations(q, 1200, 630)
+    # Pollinations now needs a paid key (HTTP 402) — use free CC0 photos instead.
+    for c in candidates + [site.get("image_fallback_q") or ""]:
+        o = _openverse(c, 1200)
+        if o:
+            return o
+    return ""
 
 
 def inline_image(keyword: str, use_wiki: bool = True) -> str:
@@ -184,7 +229,7 @@ def inline_image(keyword: str, use_wiki: bool = True) -> str:
     wiki = _wikimedia(keyword) if use_wiki else None
     if wiki:
         return wiki
-    return _pollinations(keyword, 1000, 560)
+    return _openverse(keyword, 1000) or ""
 
 
 def embed_inline_images(body_html: str, max_images: int = 4, use_wiki: bool = True) -> str:
@@ -200,6 +245,9 @@ def embed_inline_images(body_html: str, max_images: int = 4, use_wiki: bool = Tr
         count["n"] += 1
         kw = m.group(1).strip()
         url = inline_image(kw, use_wiki)
+        if not url:  # no free photo found: drop the marker rather than a broken image
+            count["n"] -= 1
+            return ""
         cap = _html.escape(kw[:90])
         return (f'<figure class="post-image"><img src="{url}" alt="{cap}" loading="lazy">'
                 f'<figcaption>{cap}</figcaption></figure>')
