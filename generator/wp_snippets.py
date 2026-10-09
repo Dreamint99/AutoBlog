@@ -31,6 +31,12 @@ def main():
         for s in items:
             print(s.get("id"), "active" if s.get("active") else "off", "|", s.get("name"), "|", len(s.get("code") or ""), "chars")
         return
+    if cmd == "show":
+        for s in items:
+            for i, line in enumerate((s.get("code") or "").splitlines(), 1):
+                if sys.argv[2] in line:
+                    print(f"#{s['id']} L{i}: {line.strip()[:220]}")
+        return
     old, new = sys.argv[2], sys.argv[3]
     apply = "--apply" in sys.argv
     for s in items:

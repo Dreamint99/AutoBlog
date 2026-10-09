@@ -35,6 +35,7 @@ jobs:
           PROBASHIINFO_WP_APP_PASSWORD: ${{ secrets.PROBASHIINFO_WP_APP_PASSWORD }}
         run: |
           python wp_snippets.py list
+          python wp_snippets.py show "${{ github.event.inputs.find }}" | head -20
           if [ "${{ github.event.inputs.apply }}" = "true" ]; then
             python wp_snippets.py replace "${{ github.event.inputs.find }}" "${{ github.event.inputs.replace }}" --apply
           else
