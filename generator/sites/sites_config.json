@@ -63,7 +63,21 @@
       "audience": "AI product builders, founders, developers, indie hackers and businesses estimating and optimizing AI/LLM API spend",
       "theme": "infkey-noir",
       "default_word_count": 1500,
-      "drip_enabled": true
+      "drip_enabled": true,
+      "trend_seeds": [
+        "openai api pricing",
+        "claude api pricing",
+        "gemini api pricing",
+        "llm api cost",
+        "cheapest llm api",
+        "ai api cost calculator",
+        "gpt vs claude",
+        "deepseek api pricing",
+        "ai video generation api price",
+        "text to speech api pricing",
+        "embedding api cost",
+        "ai agent cost"
+      ]
     },
     {
       "id": "probashiinfo",
@@ -129,7 +143,19 @@
       "audience": "researchers, journalists, marketers, students, analysts and the data-curious looking for quick, sourced statistics about technology, AI, social media, companies, countries and global markets",
       "theme": "countly-data",
       "default_word_count": 1600,
-      "drip_enabled": false
+      "drip_enabled": false,
+      "trend_seeds": [
+        "most used ai tools",
+        "chatgpt users",
+        "social media users by country",
+        "internet users by country",
+        "richest people in the world",
+        "largest companies by revenue",
+        "most populated countries",
+        "most followed instagram accounts",
+        "youtube statistics",
+        "ecommerce statistics"
+      ]
     },
     {
       "id": "ninetymins",

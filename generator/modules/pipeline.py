@@ -317,14 +317,17 @@ def suggest_titles(site: dict, count: int = 10, seed: str = "", avoid: list | No
         return [f"{base}: complete guide ({i + 1})" for i in range(count)]
 
     from modules.seo_playbook import SEO_PLAYBOOK
-    # Best-effort: real trending Bangladesh search terms to bias topic selection.
-    try:
-        from modules.trends import hot_keywords
-        hot = hot_keywords(site) if not seed else []
-    except Exception:
-        hot = []
-    # Trends are pulled with hl=bn-BD; Bengali terms pull English sites' titles (and then
-    # the whole article) into Bengali, so only keep terms in the site's own script.
+    # Live trending keywords that fit this niche (Google Trends RSS, Wikipedia, HN,
+    # Autocomplete → LLM relevance filter). Seeded runs keep their own focus.
+    hot: list[str] = []
+    if not seed:
+        try:
+            from modules.trend_radar import hot_topics
+            for h in hot_topics(site, max_out=8, avoid=list(avoid_set)):
+                hint = f'"{h['keyword']}" (~{h['traffic']} searches now' + (f"; idea: {h['angle']}" if h.get("angle") else "") + ")"
+                hot.append(hint)
+        except Exception as e:
+            print(f"WARN trend_radar ({e})", flush=True)
     hot = [h for h in hot if not _wrong_script(site, h)]
     titles: list[str] = []
     tries = 0
@@ -339,8 +342,9 @@ def suggest_titles(site: dict, count: int = 10, seed: str = "", avoid: list | No
         user = (f'Niche: {site["niche"]}\nAudience: {site["audience"]}\n'
                 + f'Language: {site["language"]} — write EVERY title in this language, not the audience\'s native tongue.\n'
                 + (f'Focus area / seed keyword: {seed}\n' if seed else "")
-                + (f'HIGH-PRIORITY trending Bangladesh search terms (Google Trends) — prefer topics around '
-                   f'these where they fit the niche: {", ".join(hot)}\n' if hot else "")
+                + (f'TRENDING RIGHT NOW (live search data, already filtered to this niche or a related one). '
+                   f'At least half of the titles MUST target one of these keywords, using the keyword phrase '
+                   f'itself in the title: {"; ".join(hot)}\n' if hot else "")
                 + f'Give {need} NEW, unique, specific, search-driven blog titles targeting real Google '
                   'keywords with first-page potential. Make them clickable and shareable (viral-leaning) '
                   'but accurate — no clickbait that misleads. Cover DIFFERENT subtopics/keywords each.\n'
