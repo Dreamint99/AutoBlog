@@ -36,7 +36,10 @@ def main():
         name, path = sys.argv[2], sys.argv[3]
         code = open(path, encoding="utf-8").read()
         code = code[5:].lstrip() if code.startswith("<?php") else code
-        ex = next((x for x in items if x.get("name") == name), None)
+        # name may be "#<id>" to target a snippet by id
+        ex = next((x for x in items if (name.startswith("#") and str(x.get("id")) == name[1:]) or x.get("name") == name), None)
+        if ex:
+            name = ex.get("name") or name
         body = {"name": name, "code": code, "scope": "front-end", "active": True}
         r = requests.post(f"{API}/{ex['id']}" if ex else API, headers=H, json=body, timeout=90)
         print("upsert", name, r.status_code, (r.json().get("id"), r.json().get("active")) if r.ok else r.text[:400])
