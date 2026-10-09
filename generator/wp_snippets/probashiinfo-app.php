@@ -7,7 +7,7 @@
    Snippets #6, #7, #8 and #11 (v2) step aside when pa_app() is on;
    their ads are redrawn here in the same design language. Writer names are not shown. */
 if ( ! defined( 'PA_APP_PUBLIC' ) ) define( 'PA_APP_PUBLIC', true );
-if ( ! defined( 'PA_APP_VERSION' ) ) define( 'PA_APP_VERSION', '3.1.1' );
+if ( ! defined( 'PA_APP_VERSION' ) ) define( 'PA_APP_VERSION', '3.2.0' );
 define( 'PA_LOGO', 'https://probashiinfo.com/wp-content/uploads/2026/10/probashiinfo-wordmark.webp' );
 define( 'PA_ICON', 'https://probashiinfo.com/wp-content/uploads/2026/10/probashiinfo-icon.png' );
 define( 'PA_PB', 'https://www.probashibondu.online' );
@@ -190,6 +190,23 @@ body.pi-app{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 va
 .hs{display:flex;max-width:660px;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 18px 40px -18px rgba(0,0,0,.45)}
 .hs input{flex:1;min-width:0;border:0;outline:0;padding:15px 16px;font:500 16.5px var(--body);color:var(--ink)}
 .hs button{border:0;background:var(--g);color:#fff;font:700 16px var(--head);padding:0 22px;cursor:pointer}
+.ldot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#fff;vertical-align:middle;animation:ldp 1.6s infinite}
+@keyframes ldp{0%{box-shadow:0 0 0 0 rgba(255,255,255,.7)}70%{box-shadow:0 0 0 8px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
+.nav a.nav-live{background:var(--red);color:#fff;display:inline-flex;align-items:center;gap:6px}.nav a.nav-live:hover{background:#be123c;color:#fff}
+.util .hot-live{background:var(--red)!important;margin-right:6px}
+.chips a.chip-live{background:var(--red);border-color:var(--red);font-weight:700}
+.tabs a.tab-live{color:var(--red)}
+.bml{margin:-18px 0 0;position:relative;z-index:2}
+.bml-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:18px;align-items:center;background:linear-gradient(120deg,#061f4d,#0a3f97);color:#fff;border-radius:20px;padding:18px 22px;box-shadow:0 20px 40px -24px rgba(8,42,99,.7);border:1px solid rgba(255,255,255,.12);text-decoration:none}
+.bml-in:hover{transform:translateY(-1px)}
+.bml-tag{display:inline-flex;align-items:center;gap:7px;background:var(--red);border-radius:999px;padding:3px 11px;font:700 13px var(--body)}
+.bml h2{color:#fff;font-size:22px;margin:8px 0 0}.bml p{margin:2px 0;color:#bcd3fb;font-size:14.5px}
+.bml-n{font:800 44px/1.1 var(--head)}.bml-n small{font-size:15px;color:#bcd3fb;font-weight:600;margin-left:6px}
+.bml-top{display:flex;flex-wrap:wrap;gap:8px}.bml-top span{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:5px 11px;font-size:14px}
+.bml-top img{width:20px;height:14px;border-radius:2px;object-fit:cover}.bml-top b{color:#86efac}
+.bml-y{margin:10px 0 4px!important}.bml-y b{color:#fff}
+.bml-cta{display:inline-block;margin-top:6px;background:var(--g2);color:#053b1d;font-weight:700;border-radius:10px;padding:8px 12px;font-size:14.5px}
+@media(max-width:760px){.bml-in{grid-template-columns:minmax(0,1fr)}.bml-n{font-size:38px}}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
 .chips a{padding:7px 13px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.24);color:#fff;font-size:14px}
 .chips a:hover{background:rgba(255,255,255,.22)}
@@ -358,10 +375,10 @@ function pa_head() {
 </head>
 <body <?php body_class( 'pi-app' ); ?>>
 <?php wp_body_open(); ?>
-<div class="util"><div class="w"><span><span class="dot"></span><b>স্বাধীন তথ্যসেবা</b><span class="hide"> — এটি সরকারি ওয়েবসাইট নয়</span></span><span class="r"><a class="hide" href="<?php echo esc_url( PA_PB . '/?utm_source=probashiinfo&utm_medium=util' ); ?>" target="_blank" rel="noopener">প্রবাসী বন্ধু</a><a class="hot" href="<?php echo esc_url( home_url( '/#dash' ) ); ?>">💱 আজকের রেট</a></span></div></div>
+<div class="util"><div class="w"><span><span class="dot"></span><b>স্বাধীন তথ্যসেবা</b><span class="hide"> — এটি সরকারি ওয়েবসাইট নয়</span></span><span class="r"><a class="hide" href="<?php echo esc_url( PA_PB . '/?utm_source=probashiinfo&utm_medium=util' ); ?>" target="_blank" rel="noopener">প্রবাসী বন্ধু</a><a class="hot hot-live" href="<?php echo esc_url( home_url( '/bmet-report/' ) ); ?>"><span class="ldot"></span> আজকের বিএমইটি</a><a class="hot" href="<?php echo esc_url( home_url( '/#dash' ) ); ?>">💱 আজকের রেট</a></span></div></div>
 <header class="hdr"><div class="w">
 	<a class="logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="প্রবাসী ইনফো — হোম"><img src="<?php echo esc_url( PA_LOGO ); ?>" alt="প্রবাসী ইনফো" width="160" height="44"></a>
-	<nav class="nav" aria-label="বিষয়"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"<?php echo is_front_page() ? ' class="on"' : ''; ?>>হোম</a>
+	<nav class="nav" aria-label="বিষয়"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"<?php echo is_front_page() ? ' class="on"' : ''; ?>>হোম</a><a class="nav-live" href="<?php echo esc_url( home_url( '/bmet-report/' ) ); ?>"><span class="ldot"></span>বিএমইটি লাইভ</a>
 	<?php $cur = is_category() ? get_queried_object_id() : 0; foreach ( pa_top_cats( 7 ) as $c ) echo '<a href="' . esc_url( get_category_link( $c ) ) . '"' . ( $cur === $c->term_id ? ' class="on"' : '' ) . '>' . esc_html( pa_cat_name( $c ) ) . '</a>'; ?></nav>
 	<form class="hsrch" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search"><input name="s" type="search" placeholder="খুঁজুন…" aria-label="খুঁজুন" value="<?php echo esc_attr( get_search_query() ); ?>"><button type="submit" aria-label="খুঁজুন">⌕</button></form>
 </div></header>
@@ -390,7 +407,7 @@ function pa_foot() {
 	<p class="ft-disc">প্রবাসী ইনফো একটি স্বাধীন তথ্যভিত্তিক ওয়েবসাইট; এটি কোনো সরকারি প্রতিষ্ঠান, দূতাবাস বা রিক্রুটিং এজেন্সির ওয়েবসাইট নয়। ভিসা, ফি ও নিয়ম প্রায়ই বদলায় — আবেদন বা টাকা দেওয়ার আগে অফিসিয়াল সূত্রে যাচাই করুন।</p>
 	<div class="ft-base"><span><?php if ( $priv ) echo '<a href="' . esc_url( $priv ) . '">প্রাইভেসি পলিসি</a>'; ?><a href="<?php echo esc_url( home_url( '/sitemap_index.xml' ) ); ?>">সাইটম্যাপ</a></span><span>© <?php echo pa_bn( wp_date( 'Y' ) ); ?> প্রবাসী ইনফো · সার্বিক সহযোগিতায় ড্রিম ইন্টারন্যাশনাল</span></div>
 </div></footer>
-<nav class="tabs" aria-label="দ্রুত মেনু"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><i>🏠</i>হোম</a><a href="<?php echo esc_url( home_url( '/#dash' ) ); ?>"><i>💱</i>রেট</a><button type="button" class="hot find-now"><i>🔍</i>খুঁজুন</button><button type="button" class="share-now"><i>📤</i>শেয়ার</button></nav>
+<nav class="tabs" aria-label="দ্রুত মেনু"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><i>🏠</i>হোম</a><a class="tab-live" href="<?php echo esc_url( home_url( '/bmet-report/' ) ); ?>"><i>🔴</i>বিএমইটি লাইভ</a><button type="button" class="hot find-now"><i>🔍</i>খুঁজুন</button><button type="button" class="share-now"><i>📤</i>শেয়ার</button></nav>
 <div class="progress" id="progress" hidden></div>
 <?php pa_js(); wp_footer(); ?>
 </body>
@@ -398,6 +415,34 @@ function pa_foot() {
 <?php }
 
 /* ---------- views ---------- */
+/* BMET live highlight on the home page (data + live endpoint come from snippet #15). */
+function pa_bmet_banner() {
+	if ( ! function_exists( 'pa_bmet_live' ) ) return;
+	$u = home_url( '/bmet-report/' );
+	$live = pa_bmet_live();
+	$d = get_option( 'pa_bmet' );
+	$days = ( ! empty( $d['days'] ) && is_array( $d['days'] ) ) ? $d['days'] : array();
+	ksort( $days );
+	$today = wp_date( 'Y-m-d', null, new DateTimeZone( 'Asia/Dhaka' ) );
+	$keys = array_values( array_filter( array_keys( $days ), function ( $k ) use ( $today ) { return $k < $today; } ) );
+	$last = $keys ? end( $keys ) : '';
+	$L = $last ? $days[ $last ] : null;
+	$lc = $live['c']; arsort( $lc );
+	$top = '';
+	foreach ( array_slice( $lc, 0, 4, true ) as $c => $n ) $top .= '<span>' . pb_flag( $c ) . esc_html( pb_cn( $c ) ) . ' <b>' . pb_num( $n ) . '</b></span>';
+	?>
+<section class="bml"><div class="w"><a class="bml-in" href="<?php echo esc_url( $u ); ?>">
+	<div class="bml-a"><span class="bml-tag"><span class="ldot"></span>লাইভ · আজ <?php echo esc_html( pb_bdate( $today ) ); ?></span>
+		<h2>আজকের বিএমইটি রিপোর্ট</h2>
+		<p>আজ এখন পর্যন্ত বহির্গমন ছাড়পত্র</p>
+		<div class="bml-n"><b id="bml-t"><?php echo pb_num( $live['t'] ); ?></b> জন <small><span id="bml-c"><?php echo pb_bn( count( $live['c'] ) ); ?></span>টি দেশ</small></div></div>
+	<div class="bml-b"><div class="bml-top" id="bml-top"><?php echo $top ?: '<span>আজকের এন্ট্রি এলেই এখানে দেখা যাবে</span>'; ?></div>
+		<?php if ( $L ) echo '<p class="bml-y">' . esc_html( pb_bdate( $last ) ) . ' পূর্ণ দিন: <b>' . pb_num( $L['t'] ) . ' জন</b> · ' . pb_bn( count( $L['c'] ) ) . 'টি দেশ</p>'; ?>
+		<span class="bml-cta">লাইভ ড্যাশবোর্ড, দেশভিত্তিক হিসাব ও রিপোর্ট কার্ড →</span></div>
+</a></div></section>
+<script>(function(){var bn=function(s){return String(s).replace(/\d/g,function(d){return '০১২৩৪৫৬৭৮৯'[d]})};fetch('/wp-json/pa/v1/bmet-live?_='+Date.now(),{cache:'no-store'}).then(function(r){return r.json()}).then(function(L){if(!L||!L.t)return;document.getElementById('bml-t').textContent=bn(L.t.toLocaleString('en-US'));document.getElementById('bml-c').textContent=bn(Object.keys(L.c).length);}).catch(function(){});})();</script>
+<?php }
+
 function pa_view_home() {
 	$svc = array(
 		array( '🛂', 'ভিসা চেক', 'সৌদি, দুবাই, কাতার, মালয়েশিয়া', array( 'ভিসা চেক', 'visa check', 'ভিসা' ) ),
@@ -415,9 +460,10 @@ function pa_view_home() {
 	<h1>প্রবাসীদের সব তথ্য, এক জায়গায়</h1>
 	<p>ভিসা চেক, ওয়ার্ক পারমিট, বিএমইটি, আজকের রেমিট্যান্স রেট, নামাজের সময় আর জরুরি হটলাইন — সহজ বাংলায়, প্রতিদিন হালনাগাদ।</p>
 	<form class="hs" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search"><input name="s" type="search" placeholder="খুঁজুন: সৌদি ভিসা চেক, রোমানিয়া ওয়ার্ক পারমিট…" aria-label="খুঁজুন"><button type="submit">খুঁজুন</button></form>
-	<div class="chips"><a href="<?php echo esc_url( pa_search_url( 'ভিসা চেক' ) ); ?>">ভিসা চেক</a><a href="<?php echo esc_url( pa_search_url( 'ওয়ার্ক পারমিট' ) ); ?>">ওয়ার্ক পারমিট</a><a href="#dash">আজকের রেট</a><a href="#countries">দেশ গাইড</a><a href="<?php echo esc_url( PA_PB . '/?utm_source=probashiinfo&utm_medium=hero' ); ?>" target="_blank" rel="noopener">প্রবাস কার্ড বানান</a></div>
+	<div class="chips"><a class="chip-live" href="<?php echo esc_url( home_url( '/bmet-report/' ) ); ?>"><span class="ldot"></span> আজকের বিএমইটি রিপোর্ট (লাইভ)</a><a href="<?php echo esc_url( pa_search_url( 'ভিসা চেক' ) ); ?>">ভিসা চেক</a><a href="<?php echo esc_url( pa_search_url( 'ওয়ার্ক পারমিট' ) ); ?>">ওয়ার্ক পারমিট</a><a href="#dash">আজকের রেট</a><a href="#countries">দেশ গাইড</a><a href="<?php echo esc_url( PA_PB . '/?utm_source=probashiinfo&utm_medium=hero' ); ?>" target="_blank" rel="noopener">প্রবাস কার্ড বানান</a></div>
 	<div class="hstats"><div><b><?php echo pa_bn( (int) wp_count_posts()->publish ); ?>+</b><span>তথ্যভিত্তিক লেখা</span></div><div><b><?php echo pa_bn( count( get_categories( array( 'hide_empty' => true ) ) ) ); ?></b><span>বিষয়</span></div><div><b>৯</b><span>মুদ্রার লাইভ রেট</span></div><div><b>প্রতিদিন</b><span>নতুন তথ্য</span></div></div>
 </div></section>
+<?php pa_bmet_banner(); ?>
 <div class="w">
 	<section class="sec"><div class="sh"><h2>সেবা বাতায়ন</h2></div><div class="svcs">
 	<?php foreach ( $svc as $s ) echo '<a class="svc" href="' . esc_url( pa_service_url( $s[3] ) ) . '"><i>' . $s[0] . '</i><span><b>' . esc_html( $s[1] ) . '</b><small>' . esc_html( $s[2] ) . '</small></span></a>'; ?>
