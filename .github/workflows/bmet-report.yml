@@ -18,6 +18,9 @@ on:
       post:
         description: "daily, weekly, monthly or none"
         default: "daily"
+      notify:
+        description: "push: auto (midnight run only), test, daily or none"
+        default: "auto"
 
 permissions:
   contents: write
@@ -58,9 +61,17 @@ jobs:
           P="${{ github.event.inputs.post || 'daily' }}"
           [ "$P" = "none" ] && exit 0
           python bmet_report.py post $P
-          # midnight run (18:xx UTC): tell subscribers the new report is out
-          if [ "${{ github.event_name }}" = "schedule" ] && [ "$(date -u +%H)" -ge 18 ]; then python bmet_report.py notify daily || true; fi
           if [ "${{ github.event_name }}" = "schedule" ]; then
             [ "$(TZ=Asia/Dhaka date +%u)" = "6" ] && python bmet_report.py post weekly || true
             [ "$(TZ=Asia/Dhaka date +%d)" = "01" ] && python bmet_report.py post monthly || true
+          fi
+      - name: Push notification
+        if: always()
+        run: |
+          N="${{ github.event.inputs.notify || 'auto' }}"
+          if [ "$N" = "auto" ]; then
+            # midnight run (18:xx UTC): tell subscribers the new report is out
+            if [ "${{ github.event_name }}" = "schedule" ] && [ "$(date -u +%H)" -ge 18 ]; then python bmet_report.py notify daily; fi
+          elif [ "$N" != "none" ]; then
+            python bmet_report.py notify "$N"
           fi

@@ -289,6 +289,16 @@ add_filter( 'rank_math/frontend/title', function ( $t ) {
 	$S = pb_state();
 	return 'আজকের বিএমইটি রিপোর্ট ' . pb_bdate( $S['today'] ) . ' (লাইভ) — দেশভিত্তিক বহির্গমন ছাড়পত্রের হিসাব | প্রবাসী ইনফো';
 } );
+/* Link previews (Facebook / WhatsApp) show the latest report card. */
+function pb_og_image() {
+	static $u = null;
+	if ( $u !== null ) return $u;
+	$cat = get_category_by_slug( 'bmet-report-news' );
+	$p = $cat ? get_posts( array( 'category' => $cat->term_id, 'numberposts' => 1 ) ) : array();
+	return $u = ( $p && has_post_thumbnail( $p[0] ) ) ? (string) get_the_post_thumbnail_url( $p[0], 'full' ) : '';
+}
+add_filter( 'rank_math/opengraph/facebook/image', function ( $i ) { return ( is_page( 'bmet-report' ) && pb_og_image() ) ? pb_og_image() : $i; } );
+add_filter( 'rank_math/opengraph/twitter/image', function ( $i ) { return ( is_page( 'bmet-report' ) && pb_og_image() ) ? pb_og_image() : $i; } );
 add_filter( 'rank_math/frontend/description', function ( $t ) {
 	if ( ! is_page( 'bmet-report' ) ) return $t;
 	$S = pb_state();
@@ -496,6 +506,9 @@ em.up,em.dn{font-style:normal;font-weight:700;font-size:13px;padding:1px 8px;bor
 .pws ol{text-align:left;margin:6px 0 12px;padding-left:22px;font-size:14.5px;color:var(--ink2)}
 .pws-y,.pws-c,.pws-n{display:block;width:100%;border:0;border-radius:12px;padding:12px;font:700 16px var(--tf);cursor:pointer;margin-top:8px;text-decoration:none}
 .pws-y{background:var(--g);color:#fff!important}.pws-c{background:var(--nv2);color:#fff}.pws-n{background:var(--soft);color:var(--ink2);font-weight:600;font-size:14.5px}
+.shs{text-align:left}.shs .pws-t{text-align:center}.shs-p{white-space:pre-wrap;font:400 13.5px/1.55 var(--tf);background:var(--soft);border-radius:12px;padding:10px 12px;margin:8px 0 12px;max-height:190px;overflow:auto;color:var(--ink)}
+.shs-g{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.shs-g button{border:1px solid var(--line);background:#fff;border-radius:12px;padding:11px 8px;font:700 14.5px var(--tf);cursor:pointer;color:var(--ink)}
+.shs-g [data-a=img]{background:var(--g);border-color:var(--g);color:#fff}.shs-g [data-a=wa]{background:#25d366;border-color:#25d366;color:#053b1d}.shs-g [data-a=fb]{background:#1877f2;border-color:#1877f2;color:#fff}
 .pwb{position:fixed;left:12px;right:12px;bottom:calc(80px + env(safe-area-inset-bottom));z-index:70;max-width:460px;margin:0 auto;background:#fff;color:var(--ink);border-radius:18px;padding:14px 16px;box-shadow:0 20px 50px -10px rgba(8,42,99,.45);border:1px solid var(--line);display:flex;gap:12px;align-items:center}
 @media(min-width:701px){.pwb{right:auto;left:16px;bottom:16px;margin:0}}
 .pwb b{display:block;font:800 16px var(--hf)}.pwb span{font-size:13.5px;color:var(--ink2)}.pwb button{border:0;border-radius:10px;padding:9px 12px;font:700 14px var(--tf);cursor:pointer}
@@ -886,8 +899,38 @@ function bmCard(cv, o) {
 		blob(function(bl){ var f=new File([bl],'bmet-report-'+o.file+'.jpg',{type:'image/jpeg'});
 			if(navigator.canShare&&navigator.canShare({files:[f]})) navigator.share({files:[f],title:o.kind,text:txt}).catch(function(){});
 			else { $('bm-dl').click(); window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent('https://probashiinfo.com/bmet-report/'),'_blank'); } }); };
-	$('bm-share').onclick=function(){ var t='আজকের বিএমইটি রিপোর্ট (লাইভ)'+(LIVE?': '+bdate(LIVE.date)+' এখন পর্যন্ত '+num(LIVE.t)+' জন':'')+'\nhttps://probashiinfo.com/bmet-report/';
-		if(navigator.share) navigator.share({title:'আজকের বিএমইটি রিপোর্ট',text:t,url:'https://probashiinfo.com/bmet-report/'}).catch(function(){}); else window.open('https://wa.me/?text='+encodeURIComponent(t),'_blank'); };
+	/* hero share: one sheet — with image, Facebook, WhatsApp, copy text, copy link (the link appears once) */
+	var PAGE='https://probashiinfo.com/bmet-report/';
+	function shareText(){
+		var last=keys[keys.length-1], Y=D[last], top=Object.keys(Y.c).sort(function(a,b){return Y.c[b]-Y.c[a]}).slice(0,3).map(function(c){return cn(c)+' '+num(Y.c[c])}).join(', ');
+		var L=['📊 আজকের বিএমইটি রিপোর্ট (লাইভ)'];
+		if(LIVE&&LIVE.t) L.push('🔴 আজ '+bdate(LIVE.date)+' — '+hm(LIVE.at)+' পর্যন্ত '+num(LIVE.t)+' জন ('+bn(Object.keys(LIVE.c).length)+'টি দেশ)');
+		L.push('✅ '+(last===J.live.date?'':'গতকাল ')+bdate(last)+': '+num(Y.t)+' জন · '+bn(Object.keys(Y.c).length)+'টি দেশ · নারী '+num(Y.f)+' জন','🔝 শীর্ষে: '+top,'','📌 তথ্যসূত্র: OEP (oep.gov.bd) — সরকারি তথ্য, যাচাই করে নিন','👉 লাইভ রিপোর্ট, দেশভিত্তিক হিসাব ও কার্ড:');
+		return L.join('\n');
+	}
+	function optsFor(k){ var k0=kind; kind=k; var o=cardOpts(); kind=k0; o.logo=LOGO; return o; }
+	function heroImage(cb){ fontsReady.then(function(){ var c=document.createElement('canvas'); c.width=1080; c.height=1080; bmCard(c,optsFor(LIVE&&LIVE.t?'live':'day')); c.toBlob(cb,'image/jpeg',.92); }); }
+	function copyTxt(t,btn,ok){ var done=function(){ var o=btn.textContent; btn.textContent=ok; setTimeout(function(){btn.textContent=o},2000); };
+		(navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(t):Promise.reject()).then(done,function(){ var a=document.createElement('textarea'); a.value=t; document.body.appendChild(a); a.select(); document.execCommand('copy'); a.remove(); done(); }); }
+	$('bm-share').onclick=function(){
+		var t=shareText(), full=t+'\n'+PAGE;
+		var d=document.createElement('div'); d.className='pws'; d.setAttribute('role','dialog');
+		d.innerHTML='<div class="pws-in shs"><b class="pws-t">📤 রিপোর্ট শেয়ার করুন</b><pre class="shs-p"></pre>'
+			+'<div class="shs-g"><button type="button" data-a="img">🖼️ ছবিসহ শেয়ার</button><button type="button" data-a="wa">💬 WhatsApp</button><button type="button" data-a="fb">📘 Facebook</button><button type="button" data-a="txt">📋 লেখা কপি</button><button type="button" data-a="lnk">🔗 লিংক কপি</button><button type="button" data-a="dl">⬇ ছবি ডাউনলোড</button></div>'
+			+'<button type="button" class="pws-n">বন্ধ করুন</button></div>';
+		d.querySelector('.shs-p').textContent=full; document.body.appendChild(d);
+		d.onclick=function(e){ if(e.target===d) d.remove(); };
+		d.querySelector('.pws-n').onclick=function(){ d.remove(); };
+		d.querySelectorAll('[data-a]').forEach(function(b){ b.onclick=function(){ var a=b.dataset.a;
+			if(a==='wa') window.open('https://wa.me/?text='+encodeURIComponent(full),'_blank');
+			else if(a==='fb') { copyTxt(full,b,'✅ লেখা কপি হয়েছে — পোস্টে পেস্ট করুন'); window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(PAGE),'_blank'); }
+			else if(a==='txt') copyTxt(full,b,'✅ কপি হয়েছে');
+			else if(a==='lnk') copyTxt(PAGE,b,'✅ লিংক কপি হয়েছে');
+			else heroImage(function(bl){ var f=new File([bl],'bmet-report-'+(LIVE&&LIVE.t?'live-'+LIVE.date:keys[keys.length-1])+'.jpg',{type:'image/jpeg'});
+				if(a==='img'&&navigator.canShare&&navigator.canShare({files:[f]})) navigator.share({files:[f],text:full}).catch(function(){});
+				else { var u=URL.createObjectURL(bl), l=document.createElement('a'); l.href=u; l.download=f.name; document.body.appendChild(l); l.click(); setTimeout(function(){URL.revokeObjectURL(u); l.remove();},1500); if(a==='img') copyTxt(full,b,'✅ ছবি নেমেছে, লেখা কপি হয়েছে'); } });
+		}; });
+	};
 
 	/* live */
 	function countTo(el,to){ var from=+el.dataset.v||0; el.dataset.v=to; if(from===to){ el.textContent=num(to); return; } var t0=performance.now(); (function step(t){ var p=Math.min(1,(t-t0)/900); el.textContent=num(from+(to-from)*p); if(p<1) requestAnimationFrame(step); })(t0); }
@@ -974,10 +1017,10 @@ function bmCard(cv, o) {
 	function ask(){ Notification.requestPermission().then(function(p){ if(p==='granted') subscribe().then(function(){ setBtn(); toast('✅ ঠিক আছে! প্রতিদিন রাতে রিপোর্ট প্রকাশ হলেই নোটিফিকেশন পাবেন।'); }).catch(function(){ toast('নোটিফিকেশন চালু করা যায়নি — পরে আবার চেষ্টা করুন।'); }); setBtn(); }); }
 	var nshown=false;
 	function notifySheet(){
-		if(!canPush||nshown||Notification.permission!=='default'||LS.get('pa_np')||document.querySelector('.pws')) return; nshown=true;
+		if(!canPush||nshown||Notification.permission!=='default'||Date.now()-(+LS.get('pa_np')||0)<864e5||document.querySelector('.pws')) return; nshown=true; // once a day until allowed
 		var d=document.createElement('div'); d.className='pwb'; d.setAttribute('role','dialog');
 		d.innerHTML='<div style="font-size:28px">🔔</div><div style="flex:1"><b>প্রতিদিনের বিএমইটি রিপোর্ট নোটিফিকেশনে পাবেন?</b><span>প্রতিদিন রাত ১২টার পর রিপোর্ট প্রকাশ হলেই জানিয়ে দেব।</span></div><button class="y">চালু করুন</button><button class="n">পরে</button>';
-		document.body.appendChild(d); d.querySelector('.y').onclick=function(){ LS.set('pa_np','1'); d.remove(); ask(); }; d.querySelector('.n').onclick=function(){ LS.set('pa_np','1'); d.remove(); };
+		document.body.appendChild(d); d.querySelector('.y').onclick=function(){ LS.set('pa_np',String(Date.now())); d.remove(); ask(); }; d.querySelector('.n').onclick=function(){ LS.set('pa_np',String(Date.now())); d.remove(); };
 	}
 	if(canPush&&!(ios&&!standalone)){
 		setBtn(); $('pw-notify').onclick=ask;

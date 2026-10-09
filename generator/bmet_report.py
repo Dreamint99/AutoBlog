@@ -365,12 +365,16 @@ def notify(kind: str = "daily"):
     if not adm.get("pem") or not subs:
         print("push: nothing to send", len(subs))
         return
-    a = build(kind)
-    ex = requests.get(f"{base}/wp-json/wp/v2/posts", headers=h, params={"slug": a["slug"], "_fields": "link"}, timeout=60).json()
-    c = a["card"]
-    top = "، ".join(f"{r[0]} {bn(r[1])}" for r in c["rows"][:3]).replace("،", ",")
-    msg = {"title": f"📊 {c['kind']}", "body": f"মোট {bn(c['t'])} জন · {bn(c['nc'])}টি দেশ · শীর্ষে {top}",
-           "url": (ex[0]["link"] if ex else f"{base}/bmet-report/") + "?utm_source=push", "tag": f"bmet-{kind}"}
+    if kind == "test":
+        msg = {"title": "🔔 টেস্ট নোটিফিকেশন — বিএমইটি লাইভ", "body": "নোটিফিকেশন ঠিকমতো কাজ করছে ✅ প্রতিদিন রাতে রিপোর্ট প্রকাশ হলেই এভাবে জানানো হবে।",
+               "url": f"{base}/bmet-report/?utm_source=push-test", "tag": "bmet-test"}
+    else:
+        a = build(kind)
+        ex = requests.get(f"{base}/wp-json/wp/v2/posts", headers=h, params={"slug": a["slug"], "_fields": "link"}, timeout=60).json()
+        c = a["card"]
+        top = ", ".join(f"{r[0]} {bn(r[1])}" for r in c["rows"][:3])
+        msg = {"title": f"📊 {c['kind']}", "body": f"মোট {bn(c['t'])} জন · {bn(c['nc'])}টি দেশ · শীর্ষে {top}",
+               "url": (ex[0]["link"] if ex else f"{base}/bmet-report/") + "?utm_source=push", "tag": f"bmet-{kind}"}
     v = Vapid.from_pem(adm["pem"].encode())
     dead, sent = [], 0
     for key, sub in subs.items():
