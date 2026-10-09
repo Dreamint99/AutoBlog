@@ -14,6 +14,9 @@ on:
       upsert_file:
         description: "Instead: create/replace a snippet from generator/wp_snippets/<file> (name = upsert_name)"
         default: ""
+      media:
+        description: "Space-separated files under generator/wp_snippets/assets to upload to the media library"
+        default: ""
       cleanup:
         description: "Space-separated ids of INACTIVE duplicate snippets to delete"
         default: ""
@@ -47,6 +50,10 @@ jobs:
           UFILE: ${{ github.event.inputs.upsert_file }}
           UNAME: ${{ github.event.inputs.upsert_name }}
         run: |
+          if [ -n "${{ github.event.inputs.media }}" ]; then
+            for f in ${{ github.event.inputs.media }}; do python wp_media.py "wp_snippets/assets/$f"; done
+            exit 0
+          fi
           if [ -n "${{ github.event.inputs.cleanup }}" ]; then
             for i in ${{ github.event.inputs.cleanup }}; do python wp_snippets.py delete-inactive-copy $i; done
           fi
