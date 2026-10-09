@@ -19,8 +19,15 @@ function pi_on() {
 	}
 	return $on = ( PI_PUBLIC || ! empty( $_COOKIE['pi_v2'] ) || current_user_can( 'manage_options' ) );
 }
-/* decide early (before any output) so the preview cookie can be set */
-add_action( 'template_redirect', 'pi_on', 0 );
+/* decide early (before any output) so the preview cookie can be set; preview pages must never
+   enter the page cache (LiteSpeed caches for 7 days and does not vary on our cookie). */
+add_action( 'template_redirect', function () {
+	if ( pi_on() && ! PI_PUBLIC ) {
+		if ( ! defined( 'DONOTCACHEPAGE' ) ) define( 'DONOTCACHEPAGE', true );
+		do_action( 'litespeed_control_set_nocache', 'probashiinfo v2 preview' );
+		if ( ! headers_sent() ) header( 'Cache-Control: no-store, private' );
+	}
+}, 0 );
 function pi_bn( $s ) { return strtr( (string) $s, array( '0' => '০', '1' => '১', '2' => '২', '3' => '৩', '4' => '৪', '5' => '৫', '6' => '৬', '7' => '৭', '8' => '৮', '9' => '৯' ) ); }
 function pi_date( $ts ) {
 	$m = array( 'জানুয়ারি', 'ফেব্রুয়ারি', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগস্ট', 'সেপ্টেম্বর', 'অক্টোবর', 'নভেম্বর', 'ডিসেম্বর' );
