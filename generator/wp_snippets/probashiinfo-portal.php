@@ -6,7 +6,15 @@
    When v2 is on for a request, v1 (#8) steps aside via pn_on() → pi_on().
    Live data (all free, keyless, fetched in the browser): open.er-api.com (exchange rates),
    api.aladhan.com (prayer times), Intl (Hijri date, world clocks). */
-if ( ! defined( 'PI_PUBLIC' ) ) define( 'PI_PUBLIC', false );
+if ( ! defined( 'PI_PUBLIC' ) ) define( 'PI_PUBLIC', true );
+/* bump when the design changes: the page cache is purged once so visitors get it straight away */
+if ( ! defined( 'PI_VERSION' ) ) define( 'PI_VERSION', '2.0.0' );
+add_action( 'init', function () {
+	if ( PI_PUBLIC && get_option( 'pi_purged' ) !== PI_VERSION ) {
+		update_option( 'pi_purged', PI_VERSION, false );
+		do_action( 'litespeed_purge_all' );
+	}
+} );
 
 function pi_on() {
 	static $on = null;
