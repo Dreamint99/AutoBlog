@@ -85,11 +85,11 @@ function bmCard(cv, o) {
 	var fy = H - (wide ? 62 : 150), ff2 = '500 ' + Math.round(wide ? 16 : 25) + 'px ' + TF;
 	x.fillStyle = 'rgba(255,255,255,.18)'; x.fillRect(P, fy - (wide ? 24 : 40), W - 2 * P, 1.5);
 	if (wide) {
-		txt('তথ্যসূত্র: বিএমইটি / ওভারসিজ এমপ্লয়মেন্ট প্ল্যাটফর্ম (oep.gov.bd)', P, fy, ff2, '#bcd3fb');
+		txt('তথ্যসূত্র: oep.gov.bd/reports/country-clearance · যাচাই করে নিন', P, fy, ff2, '#bcd3fb');
 		txt(stamp + ' · স্বাধীন তথ্যসেবা, সরকারি প্রকাশনা নয়', P, fy + 28, ff2, '#bcd3fb');
 		txt('probashiinfo.com/bmet-report', W - P, fy + 14, '700 22px ' + HF, '#fff', 'right');
 	} else {
-		txt('তথ্যসূত্র: বিএমইটি / ওভারসিজ এমপ্লয়মেন্ট প্ল্যাটফর্ম (oep.gov.bd)', P, fy, ff2, '#bcd3fb');
+		txt('তথ্যসূত্র: oep.gov.bd/reports/country-clearance · যাচাই করে নিন', P, fy, ff2, '#bcd3fb');
 		txt(stamp + ' · রিপোর্ট তৈরি: প্রবাসী ইনফো (স্বাধীন তথ্যসেবা)', P, fy + 38, ff2, '#bcd3fb');
 		rr(P, fy + 62, W - 2 * P, 58, 29); x.fillStyle = '#22c55e'; x.fill();
 		txt('🌐 লাইভ রিপোর্ট: probashiinfo.com/bmet-report', W / 2, fy + 101, '700 29px ' + HF, '#053b1d', 'center');

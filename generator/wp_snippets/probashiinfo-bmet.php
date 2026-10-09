@@ -399,7 +399,10 @@ body.bm-app{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 va
 .hb{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
 .btn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:12px;padding:11px 16px;font:700 15px var(--tf);cursor:pointer;text-decoration:none}
 .btn-g{background:var(--g2);color:#053b1d!important}.btn-w{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.25)}
-.lp{background:#fff;color:var(--ink);border-radius:22px;padding:18px;box-shadow:0 30px 60px -30px rgba(0,0,0,.5);align-self:start}
+.rc{display:grid;gap:14px;align-self:start}
+.dis{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);border-left:5px solid #fbbf24;border-radius:16px;padding:12px 16px;color:#e6f0ff}
+.dis b{color:#fde68a;font-size:15px}.dis p{margin:4px 0 0;font-size:14px;line-height:1.6}.dis a{color:#fde68a!important;word-break:break-all}.dis strong{color:#fff}
+.lp{background:#fff;color:var(--ink);border-radius:22px;padding:18px;box-shadow:0 30px 60px -30px rgba(0,0,0,.5)}
 .lp h2{font-size:19px;display:flex;align-items:center;gap:10px;margin-bottom:8px}
 .lrow{display:grid;grid-template-columns:24px minmax(0,1fr) 92px 52px;gap:10px;align-items:center;padding:7px 4px;border-bottom:1px dashed var(--line);font-size:15px;border-radius:8px}
 .lrow:last-child{border-bottom:0}.lrow .t{height:9px;background:var(--soft);border-radius:5px;overflow:hidden}.lrow .t i{display:block;height:100%;background:linear-gradient(90deg,#60a5fa,var(--g2));border-radius:5px;transition:width .6s}
@@ -509,7 +512,7 @@ html body.bm-app h1,html body.bm-app h2,html body.bm-app h3,html body.bm-app h4,
 		<?php endif; ?>
 		<div class="hb"><a class="btn btn-g" href="#card">📸 রিপোর্ট কার্ড ডাউনলোড</a><button type="button" class="btn btn-w" id="bm-share">📤 শেয়ার করুন</button><button type="button" class="btn btn-w" id="pw-notify" hidden>🔔 রিপোর্ট নোটিফিকেশন চালু করুন</button><button type="button" class="btn btn-w" id="pw-install" hidden>📲 অ্যাপ ইনস্টল করুন</button></div>
 	</div>
-	<aside class="lp" aria-labelledby="lp-h">
+	<div class="rc"><aside class="lp" aria-labelledby="lp-h">
 		<h2 id="lp-h"><span class="dot r"></span>আজ কোন দেশে কতজন</h2>
 		<div id="lv-list"><?php
 		if ( $lc ) { $mx = max( $lc ); foreach ( array_slice( $lc, 0, 8, true ) as $c => $n ) echo '<div class="lrow">' . pb_flag( $c ) . '<span>' . esc_html( pb_cn( $c ) ) . '</span><span class="t"><i style="width:' . round( $n * 100 / $mx ) . '%"></i></span><b>' . pb_num( $n ) . '</b></div>'; }
@@ -517,6 +520,7 @@ html body.bm-app h1,html body.bm-app h2,html body.bm-app h3,html body.bm-app h4,
 		?></div>
 		<div class="feed" id="lv-feed"><h3>🆕 নতুন যুক্ত হচ্ছে</h3><p id="lv-feed0">পাতাটি খোলা থাকলে নতুন এন্ট্রি এলেই এখানে দেখাবে — কোন দেশে কতজন।</p></div>
 	</aside>
+		<div class="dis" role="note"><b>⚠️ দায়মুক্তি</b><p>এই পাতার সব সংখ্যা সরকারি ওভারসিজ এমপ্লয়মেন্ট প্ল্যাটফর্ম (OEP) — <a href="https://www.oep.gov.bd/reports/country-clearance" target="_blank" rel="noopener nofollow">oep.gov.bd/reports/country-clearance</a> — থেকে হুবহু দেখানো হচ্ছে। <strong>আমরা নিজেরা কোনো তথ্য প্রদান করি না।</strong> যেকোনো সিদ্ধান্তের আগে মূল সরকারি সূত্রে ডাবল চেক করে যাচাই করার অনুরোধ রইল।</p></div></div>
 </div></section>
 
 <div class="w"><div class="ks">
@@ -588,7 +592,7 @@ html body.bm-app h1,html body.bm-app h2,html body.bm-app h3,html body.bm-app h4,
 		<?php foreach ( $faq as $k => $q ) echo '<details' . ( $k === 0 ? ' open' : '' ) . '><summary>' . esc_html( $q[0] ) . '</summary><p>' . esc_html( $q[1] ) . '</p></details>'; ?>
 	</section>
 
-	<div class="src"><span style="font-size:26px" aria-hidden="true">🏛️</span><p><b>তথ্যসূত্র:</b> বাংলাদেশ সরকারের ওভারসিজ এমপ্লয়মেন্ট প্ল্যাটফর্ম (OEP) — <a href="<?php echo esc_url( $src ); ?>" target="_blank" rel="noopener nofollow">oep.gov.bd কান্ট্রি ক্লিয়ারেন্স রিপোর্ট</a>। সংখ্যাগুলো সরকারি পোর্টাল থেকে হুবহু নেওয়া — কোনো অনুমান বা পরিবর্তন নয়। আজকের লাইভ সংখ্যা দিনের মধ্যে বাড়তে থাকে; রাত ১২টার পর আগের দিনের পূর্ণ হিসাব যুক্ত হয় এবং দেরিতে আসা সরকারি এন্ট্রি অনুযায়ী পরে সামান্য সংশোধন হতে পারে। প্রবাসী ইনফো একটি স্বাধীন তথ্যসেবা; বিএমইটি বা কোনো সরকারি প্রতিষ্ঠানের অংশ নয়।</p></div>
+	<div class="src"><span style="font-size:26px" aria-hidden="true">🏛️</span><p><b>তথ্যসূত্র ও দায়মুক্তি:</b> আমরা নিজেরা কোনো তথ্য প্রদান করি না — সব তথ্য বাংলাদেশ সরকারের ওভারসিজ এমপ্লয়মেন্ট প্ল্যাটফর্ম (OEP) — <a href="<?php echo esc_url( $src ); ?>" target="_blank" rel="noopener nofollow">oep.gov.bd কান্ট্রি ক্লিয়ারেন্স রিপোর্ট</a>। সংখ্যাগুলো সরকারি পোর্টাল থেকে হুবহু নেওয়া — কোনো অনুমান বা পরিবর্তন নয়। আজকের লাইভ সংখ্যা দিনের মধ্যে বাড়তে থাকে; রাত ১২টার পর আগের দিনের পূর্ণ হিসাব যুক্ত হয় এবং দেরিতে আসা সরকারি এন্ট্রি অনুযায়ী পরে সামান্য সংশোধন হতে পারে। প্রবাসী ইনফো একটি স্বাধীন তথ্যসেবা; বিএমইটি বা কোনো সরকারি প্রতিষ্ঠানের অংশ নয়।</p></div>
 </main>
 
 <section class="w ptn" aria-label="সহযোগী">
@@ -691,11 +695,11 @@ function bmCard(cv, o) {
 	var fy = H - (wide ? 62 : 150), ff2 = '500 ' + Math.round(wide ? 16 : 25) + 'px ' + TF;
 	x.fillStyle = 'rgba(255,255,255,.18)'; x.fillRect(P, fy - (wide ? 24 : 40), W - 2 * P, 1.5);
 	if (wide) {
-		txt('তথ্যসূত্র: বিএমইটি / ওভারসিজ এমপ্লয়মেন্ট প্ল্যাটফর্ম (oep.gov.bd)', P, fy, ff2, '#bcd3fb');
+		txt('তথ্যসূত্র: oep.gov.bd/reports/country-clearance · যাচাই করে নিন', P, fy, ff2, '#bcd3fb');
 		txt(stamp + ' · স্বাধীন তথ্যসেবা, সরকারি প্রকাশনা নয়', P, fy + 28, ff2, '#bcd3fb');
 		txt('probashiinfo.com/bmet-report', W - P, fy + 14, '700 22px ' + HF, '#fff', 'right');
 	} else {
-		txt('তথ্যসূত্র: বিএমইটি / ওভারসিজ এমপ্লয়মেন্ট প্ল্যাটফর্ম (oep.gov.bd)', P, fy, ff2, '#bcd3fb');
+		txt('তথ্যসূত্র: oep.gov.bd/reports/country-clearance · যাচাই করে নিন', P, fy, ff2, '#bcd3fb');
 		txt(stamp + ' · রিপোর্ট তৈরি: প্রবাসী ইনফো (স্বাধীন তথ্যসেবা)', P, fy + 38, ff2, '#bcd3fb');
 		rr(P, fy + 62, W - 2 * P, 58, 29); x.fillStyle = '#22c55e'; x.fill();
 		txt('🌐 লাইভ রিপোর্ট: probashiinfo.com/bmet-report', W / 2, fy + 101, '700 29px ' + HF, '#053b1d', 'center');
