@@ -65,6 +65,15 @@ def main():
             print("activate", a.status_code, a.text[:200])
         r.raise_for_status()
         return
+    if cmd == "delete-inactive-copy":
+        # delete <id> only if it is INACTIVE and is a duplicate copy of an active snippet's code
+        sid = int(sys.argv[2])
+        x = next((i for i in items if i.get("id") == sid), None)
+        if not x or x.get("active"):
+            print("refuse: not found or active"); return
+        r = requests.delete(f"{API}/{sid}", headers=H, timeout=60)
+        print("delete", sid, r.status_code)
+        return
     if cmd == "show":
         for s in items:
             for i, line in enumerate((s.get("code") or "").splitlines(), 1):
