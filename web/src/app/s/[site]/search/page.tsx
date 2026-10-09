@@ -21,10 +21,12 @@ function rankList(list: Article[], q: string): Article[] {
     .map((a) => {
       const title = a.title.toLowerCase();
       const rest = `${a.keyword || ""} ${a.excerpt || ""} ${(a.tags || []).join(" ")}`.toLowerCase();
+      const hit = toks.filter((t) => title.includes(t) || rest.includes(t)).length;
       const score = toks.reduce((s, t) => s + (title.includes(t) ? 2 : rest.includes(t) ? 1 : 0), 0);
-      return { a, score };
+      return { a, score, hit };
     })
-    .filter((x) => x.score >= Math.max(2, Math.ceil(toks.length * 0.8)))
+    // most of the query's words must appear, not just the common ones
+    .filter((x) => x.hit >= Math.max(1, Math.ceil(toks.length * 0.75)))
     .sort((x, y) => y.score - x.score || (x.a.created_at < y.a.created_at ? 1 : -1))
     .slice(0, 30)
     .map((x) => x.a);
