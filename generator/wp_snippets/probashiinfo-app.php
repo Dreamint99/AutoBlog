@@ -395,12 +395,12 @@ body.pi-app{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 va
 .drw-t{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.drw-t a{display:flex;flex-direction:column;align-items:center;gap:2px;padding:12px 6px;border-radius:14px;background:var(--bg);color:var(--ink)!important;text-decoration:none;text-align:center}
 .drw-t a.live{background:linear-gradient(135deg,#e11d48,#be123c);color:#fff!important}.drw-t i{font-style:normal;font-size:24px}.drw-t b{font:700 14px var(--head)}.drw-t small{font-size:11px;opacity:.8}
 .drw-in h4{margin:18px 0 6px;font:700 13px var(--body);color:var(--mut);letter-spacing:.3px}
-.drw-c{display:grid;gap:2px}.drw-c a{display:flex;justify-content:space-between;align-items:center;padding:11px 12px;border-radius:12px;color:var(--ink)!important;font:600 15.5px var(--head);text-decoration:none}.drw-c a:hover,.drw-c a.on{background:var(--bs);color:var(--b)!important}
-.drw-c span{font-size:12px;color:var(--mut);background:var(--bg);border-radius:999px;padding:1px 8px}
+.drw-c{display:grid;gap:2px}.drw-c a{display:flex;gap:8px;align-items:center;padding:11px 12px;border-radius:12px;color:var(--ink)!important;font:600 15.5px var(--head);text-decoration:none}.drw-c a:hover,.drw-c a.on{background:var(--bs);color:var(--b)!important}
+.drw-c span{margin-left:auto;font-size:12px;color:var(--mut);background:var(--bg);border-radius:999px;padding:1px 8px}
 .drw-p{display:grid;gap:8px;margin-top:16px}.drw-p a{display:block;padding:11px 12px;border-radius:12px;background:var(--gs);color:var(--g)!important;font-weight:700;text-decoration:none}.drw-p a+a{background:#fff7ed;color:#c2410c!important}
 @media(max-width:1180px){.tl small{display:none}.tl{padding:8px 11px}}
 @media(max-width:1020px){.tools2,.cat2{display:none}.burger{display:flex}.srch2{max-width:none}}
-@media(max-width:640px){.hdr2 .top{height:64px;gap:10px}.logo2 img{height:40px}.hdr2.sm .logo2 img{height:36px}.srch2{padding:3px 3px 3px 10px}.srch2 button{padding:8px 12px;font-size:0}.srch2 button:after{content:"🔍";font-size:15px}.srch2 span{display:none}.srch2 input{font-size:14px}}
+@media(max-width:640px){.util{display:none}.hdr2 .top{height:64px;gap:10px}.logo2 img{height:40px}.hdr2.sm .logo2 img{height:36px}.srch2{padding:3px 3px 3px 10px}.srch2 button{padding:8px 12px;font-size:0}.srch2 button:after{content:"🔍";font-size:15px}.srch2 span{display:none}.srch2 input{font-size:14px}}
 </style>
 <?php }
 
