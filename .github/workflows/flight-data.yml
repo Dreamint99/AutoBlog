@@ -1,0 +1,39 @@
+name: Flight tracker data (probashiinfo)
+
+# Weekly: rebuild the Bangladesh route / airline / airport index for probashiinfo.com/flight-tracker/
+# from VRS standing-data (CC0) and POST it to the WordPress snippet (option pa_ft_data).
+on:
+  schedule:
+    - cron: "30 2 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  data:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: generator
+    env:
+      PROBASHIINFO_WP_URL: ${{ secrets.PROBASHIINFO_WP_URL }}
+      PROBASHIINFO_WP_USER: ${{ secrets.PROBASHIINFO_WP_USER }}
+      PROBASHIINFO_WP_APP_PASSWORD: ${{ secrets.PROBASHIINFO_WP_APP_PASSWORD }}
+      PYTHONUTF8: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - name: Build index
+        run: python flight_data.py build
+      - name: Save
+        run: |
+          git config user.name "autoblog-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/flight_index.json
+          git diff --cached --quiet || { git commit -m "Flight index $(date -u +%F)"; git pull --rebase -q; git push -q; }
+      - name: Push to WordPress
+        run: python flight_data.py push
