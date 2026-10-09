@@ -7,7 +7,7 @@
    Snippets #6, #7, #8 and #11 (v2) step aside when pa_app() is on;
    their ads are redrawn here in the same design language. Writer names are not shown. */
 if ( ! defined( 'PA_APP_PUBLIC' ) ) define( 'PA_APP_PUBLIC', true );
-if ( ! defined( 'PA_APP_VERSION' ) ) define( 'PA_APP_VERSION', '3.2.0' );
+if ( ! defined( 'PA_APP_VERSION' ) ) define( 'PA_APP_VERSION', '3.2.1' );
 define( 'PA_LOGO', 'https://probashiinfo.com/wp-content/uploads/2026/10/probashiinfo-wordmark.webp' );
 define( 'PA_ICON', 'https://probashiinfo.com/wp-content/uploads/2026/10/probashiinfo-icon.png' );
 define( 'PA_PB', 'https://www.probashibondu.online' );
@@ -201,7 +201,7 @@ body.pi-app{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 va
 .bml-in:hover{transform:translateY(-1px)}
 .bml-tag{display:inline-flex;align-items:center;gap:7px;background:var(--red);border-radius:999px;padding:3px 11px;font:700 13px var(--body)}
 .bml h2{color:#fff;font-size:22px;margin:8px 0 0}.bml p{margin:2px 0;color:#bcd3fb;font-size:14.5px}
-.bml-n{font:800 44px/1.1 var(--head)}.bml-n small{font-size:15px;color:#bcd3fb;font-weight:600;margin-left:6px}
+.bml-n,.bml-n b{font:800 44px/1.1 var(--head);color:#fff!important}.bml-n small{font-size:15px;color:#bcd3fb;font-weight:600;margin-left:6px}
 .bml-top{display:flex;flex-wrap:wrap;gap:8px}.bml-top span{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:5px 11px;font-size:14px}
 .bml-top img{width:20px;height:14px;border-radius:2px;object-fit:cover}.bml-top b{color:#86efac}
 .bml-y{margin:10px 0 4px!important}.bml-y b{color:#fff}
