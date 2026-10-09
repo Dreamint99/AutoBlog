@@ -162,6 +162,40 @@ def chart_png(title: str, sub: str, big: int, rows: list[tuple[str, int]], path:
     return path
 
 
+def chrome_bin() -> str:
+    import shutil
+    for c in (os.environ.get("CHROME_BIN", ""), "google-chrome", "google-chrome-stable", "chromium", "chromium-browser",
+              r"C:\Program Files\Google\Chrome\Application\chrome.exe", r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"):
+        if c and (shutil.which(c) or os.path.exists(c)):
+            return shutil.which(c) or c
+    return ""
+
+
+def card_png(o: dict, path: str, W: int = 1200, H: int = 630) -> str:
+    """Bengali report card drawn by the same canvas code as the dashboard (bmet_card.js), screenshotted
+    in headless Chrome so Bengali shaping is correct. Falls back to the English PIL chart."""
+    import json, subprocess, tempfile
+    exe = chrome_bin()
+    if not exe:
+        raise RuntimeError("no chrome")
+    js = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "bmet_card.js"), encoding="utf-8").read()
+    html = ("<!doctype html><meta charset=utf-8><link rel=stylesheet href='https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@500;600;700;800"
+            "&family=Hind+Siliguri:wght@500;600;700&display=block'><style>html,body{margin:0;overflow:hidden;background:#061f4d}</style>"
+            f"<canvas id=c width={W} height={H}></canvas><script>{js}\nvar O={json.dumps(o, ensure_ascii=False)};"
+            "Promise.all(['800 40px \"Anek Bangla\"','700 40px \"Anek Bangla\"','600 20px \"Hind Siliguri\"','500 20px \"Hind Siliguri\"']"
+            ".map(function(f){return document.fonts.load(f,'বাংলা')})).then(function(){bmCard(document.getElementById('c'),O)});</script>")
+    tmp = tempfile.mkdtemp()
+    hp = os.path.join(tmp, "card.html")
+    open(hp, "w", encoding="utf-8").write(html)
+    out = os.path.abspath(path)
+    subprocess.run([exe, "--headless=new", "--disable-gpu", "--no-sandbox", "--hide-scrollbars", f"--window-size={W},{H}",
+                    "--virtual-time-budget=15000", f"--screenshot={out}", "file:///" + hp.replace("\\", "/")],
+                   check=True, timeout=90, capture_output=True)
+    if not os.path.exists(out) or os.path.getsize(out) < 20000:
+        raise RuntimeError("blank screenshot")
+    return out
+
+
 # ---------- WordPress ----------
 def wp():
     base = os.environ["PROBASHIINFO_WP_URL"].rstrip("/")
@@ -261,13 +295,20 @@ def build(kind: str):
             f"<li>পুরুষ ও অন্যান্য: {bn(cur['t'] - cur['f'])} জন</li><li>গন্তব্য দেশ: {bn(len(rows))}টি</li><li>{cmp_word} মোট: {bn(prev['t'])} জন</li></ul>"
             + (f"<h2>সব দেশের পূর্ণ তালিকা</h2>" + table(rows, cur["t"]) if len(rows) > len(top) else "")
             + "<h2>লাইভ ড্যাশবোর্ডে আরও দেখুন</h2><p>দিন, সপ্তাহ, মাস ও দেশ বেছে নিয়ে চার্টসহ পুরো হিসাব দেখুন আমাদের "
-            "<a href=\"/bmet-report/\">বিএমইটি রিপোর্ট ড্যাশবোর্ডে</a>। প্রতিদিন সকালে আগের দিনের তথ্য হালনাগাদ হয়।</p>"
+            "<a href=\"/bmet-report/\">বিএমইটি রিপোর্ট ড্যাশবোর্ডে</a>। সেখানে আজকের সংখ্যা লাইভ দেখা যায় (প্রতি ৩ মিনিটে হালনাগাদ), আর প্রতিদিন রাত ১২টার পর আগের দিনের পূর্ণ রিপোর্ট প্রকাশ হয়। "
+            "যেকোনো তারিখের <a href=\"/bmet-report/#card\">রিপোর্ট কার্ড (JPEG) ডাউনলোড করে</a> ফেসবুক বা হোয়াটসঅ্যাপে শেয়ার করতে পারবেন।</p>"
             f"<blockquote><p>তথ্যসূত্র: বাংলাদেশ সরকারের ওভারসিজ এমপ্লয়মেন্ট প্ল্যাটফর্ম (OEP) — "
             f"<a href=\"{SRC}\" target=\"_blank\" rel=\"noopener nofollow\">oep.gov.bd কান্ট্রি ক্লিয়ারেন্স রিপোর্ট</a>। "
             "সংখ্যাগুলো প্রকাশের সময়ের; পরে সরকারি তথ্যে সামান্য পরিবর্তন হতে পারে।</p></blockquote>")
     excerpt = f"{label}: {bn(cur['t'])} জন কর্মী {bn(len(rows))}টি দেশে যাওয়ার বিএমইটি ছাড়পত্র পেয়েছেন। শীর্ষে {cname(top[0][0])}।"
     sub = {"daily": ttl_date.strftime("%d %B %Y"), "weekly": f"7 days to {ttl_date.strftime('%d %b %Y')}", "monthly": ttl_date.strftime("%B %Y")}[kind]
-    return {"title": title, "slug": slug, "content": body, "excerpt": excerpt, "chart": ("BMET overseas employment", sub, cur["t"], top)}
+    pct = round(diff * 100 / prev["t"]) if prev["t"] else 0
+    card = {"kind": {"daily": f"{label} এর বিএমইটি রিপোর্ট", "weekly": "সাপ্তাহিক বিএমইটি রিপোর্ট", "monthly": f"{label} মাসের বিএমইটি রিপোর্ট"}[kind],
+            "period": {"daily": "দৈনিক বহির্গমন ছাড়পত্রের হিসাব", "weekly": label, "monthly": "মাসিক বহির্গমন ছাড়পত্রের হিসাব"}[kind], "t": cur["t"], "f": cur["f"], "nc": len(rows), "avg": round(cur["t"] / cur["n"]) if kind != "daily" and cur["n"] else 0,
+            "cmp": (f"{cmp_word} চেয়ে {'▲' if diff > 0 else '▼'} {bn(abs(pct))}%" if prev["t"] and pct and kind != "monthly" else ""),
+            "rows": [[cname(c).replace("সংযুক্ত আরব আমিরাত", "আমিরাত"), n] for c, n in top], "rowsTitle": "শীর্ষ গন্তব্য দেশ"}
+    return {"title": title, "slug": slug, "content": body, "excerpt": excerpt, "card": card,
+            "chart": ("BMET overseas employment", sub, cur["t"], top)}
 
 
 def post(kind: str, dry: bool):
@@ -279,7 +320,12 @@ def post(kind: str, dry: bool):
     ex = requests.get(f"{base}/wp-json/wp/v2/posts", headers=h, params={"slug": a["slug"], "status": "publish,draft"}, timeout=60).json()
     png = os.path.join(ROOT, "output", f"{a['slug']}.png")
     os.makedirs(os.path.dirname(png), exist_ok=True)
-    chart_png(*a["chart"], path=png)
+    try:
+        card_png(a["card"], png)
+        print("card: bengali")
+    except Exception as e:
+        print("card fallback:", e)
+        chart_png(*a["chart"], path=png)
     mid = upload(base, h, png, os.path.basename(png))
     body = {"title": a["title"], "slug": a["slug"], "content": a["content"], "excerpt": a["excerpt"], "status": "publish",
             "categories": [category_id(base, h)], "featured_media": mid,
@@ -303,4 +349,4 @@ if __name__ == "__main__":
         post(sys.argv[2], "--dry-run" in sys.argv)
     elif cmd == "chart":
         a = build("daily")
-        print(chart_png(*a["chart"], path=os.path.join(ROOT, "output", "bmet-test.png")))
+        print(card_png(a["card"], os.path.join(ROOT, "output", "bmet-test.png")))
