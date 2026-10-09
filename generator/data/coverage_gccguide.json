@@ -1,0 +1,27 @@
+{
+  "_note": "drip.py: before each article pick the least-covered country, then its least-covered topic, then the next idea. Country/topic regexes mirror web/src/sites/gccguide/data.ts (COUNTRIES, TOPICS) so the article lands on the right country page.",
+  "countries": {
+    "Qatar": ["\\bqatar|doha|lusail|al wakrah|qid\\b|metrash", "Qatar (Doha)"],
+    "UAE": ["\\buae\\b|emirates|dubai|abu dhabi|sharjah|ajman|ras al khaimah|fujairah|emirates id", "the UAE (Dubai / Abu Dhabi)"],
+    "Saudi Arabia": ["\\bsaudi|ksa\\b|riyadh|jeddah|dammam|makkah|mecca|madinah|medina|iqama|absher|umrah", "Saudi Arabia (Riyadh / Jeddah)"],
+    "Kuwait": ["\\bkuwait|salmiya|hawally|farwaniya|civil id", "Kuwait"],
+    "Oman": ["\\boman|muscat|salalah|sohar|nizwa|\\brop\\b", "Oman (Muscat)"],
+    "Bahrain": ["\\bbahrain|manama|muharraq|juffair|\\bcpr\\b|npra", "Bahrain (Manama)"]
+  },
+  "topics": [
+    {"key": "visa", "re": "\\bvisa|iqama|residen|permit|sponsor|kafala|emirates id|civil id|\\bqid\\b|\\bcpr\\b|status check",
+     "ideas": ["how to check visa status online (official portal, step by step)", "work visa and work permit process for foreign workers", "family residence visa: sponsoring wife and children, salary requirement", "visit / tourist visa rules, fees and how to apply", "residence ID card application, renewal and replacement", "exit, re-entry and travel ban check for residents", "visa cancellation and transfer to a new employer"]},
+    {"key": "jobs", "re": "\\bjobs?\\b|salary|salaries|hiring|career|gratuity|labou?r|end of service|wps\\b|work hours",
+     "ideas": ["average salaries by job for expats in 2026", "labour law essentials: working hours, leave, overtime", "end of service gratuity: how it is calculated with examples", "best job portals and how to find a job", "minimum wage and wage protection system for workers", "filing a labour complaint against an employer"]},
+    {"key": "driving", "re": "driving|licen[cs]e|traffic|fines?\\b|salik|car\\b|cars\\b|road|parking",
+     "ideas": ["driving licence for expats: conversion or test, cost and steps", "how to check and pay traffic fines online", "buying a used car as an expat: registration and insurance", "taxi, metro and bus options with prices", "road rules and common traffic violations"]},
+    {"key": "laws", "re": "\\blaws?\\b|rules?\\b|regulation|legal|banned|illegal|ramadan|etiquette|dress code|penalt",
+     "ideas": ["laws every expat must know before moving", "Ramadan rules for non-Muslims and working hours", "things that are illegal for expats (fines and penalties)", "dress code and public etiquette", "rights of domestic workers"]},
+    {"key": "money", "re": "cost of living|rent|bills?\\b|school|bank|remit|exchange|price|budget|apartment|housing|save",
+     "ideas": ["cost of living for a single expat and a family in 2026", "average rent by area: apartments and shared rooms", "sending money home: cheapest remittance options", "opening a bank account as an expat", "school fees and choosing a school", "health insurance and healthcare for expats"]},
+    {"key": "travel", "re": "things to do|travel|weekend|brunch|beach|desert|trip|restaurant|events?\\b|hidden gems|shopping|tour",
+     "ideas": ["free and cheap things to do on weekends", "best day trips and beaches", "shopping: malls, souqs and budget markets"]},
+    {"key": "news", "re": "\\bnews|new rule|announc|update|holiday|eid|national day|2026 change",
+     "ideas": ["public holidays 2026 with dates", "new rules and changes for expats in 2026", "Eid and national day guide for residents"]}
+  ]
+}

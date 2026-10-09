@@ -11,6 +11,7 @@ Examples:
     python drip.py all 1 50               # 1 new/day for EVERY site until each has 50
 """
 import sys
+import json
 import os
 from datetime import datetime
 
@@ -58,6 +59,31 @@ def log(msg: str):
         pass
 
 
+def _coverage(site_id: str):
+    p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", f"coverage_{site_id}.json")
+    try:
+        return json.load(open(p, encoding="utf-8"))
+    except Exception:
+        return None
+
+
+def coverage_seed(cov: dict, titles: list[str]) -> str:
+    """Least-covered country first, then its least-covered topic, then the next idea for that cell —
+    so a site like GCCGuide fills every country x topic instead of writing about one country."""
+    import re as _re
+    cs = {c: _re.compile(v[0], _re.I) for c, v in cov["countries"].items()}
+    ts = [(t, _re.compile(t["re"], _re.I)) for t in cov["topics"]]
+    cnt = {c: sum(1 for x in titles if r.search(x)) for c, r in cs.items()}
+    country = min(cnt, key=lambda c: (cnt[c], list(cs).index(c)))
+    mine = [x for x in titles if cs[country].search(x)]
+    tc = [(sum(1 for x in mine if r.search(x)), i, t) for i, (t, r) in enumerate(ts)]
+    have, _, topic = min(tc, key=lambda z: (z[0], z[1]))
+    idea = topic["ideas"][have % len(topic["ideas"])]
+    label = cov["countries"][country][1]
+    return (f"{label}: {idea}. The title MUST name {country} explicitly and be about {country} only "
+            f"(not Qatar or another GCC country unless it is {country}).")
+
+
 def drip_site(site: dict):
     if STYLE:
         site = dict(site, tone=f"{site['tone']} STYLE FOR THIS BATCH: {STYLE}")
@@ -68,7 +94,16 @@ def drip_site(site: dict):
         return 0
     n = min(PER_RUN, TARGET - have)
     avoid = [a.get("title", "") for a in existing] + [a.get("keyword", "") for a in existing]
-    titles = suggest_titles(site, count=n, seed=SEED, avoid=avoid)
+    cov = None if SEED else _coverage(site["id"])
+    if cov:
+        seen = [a.get("title", "") for a in existing]
+        titles = []
+        for _ in range(n):
+            seed = coverage_seed(cov, seen + titles)
+            log(f"[{site['id']}] coverage seed: {seed[:110]}")
+            titles += suggest_titles(site, count=1, seed=seed, avoid=avoid + titles)
+    else:
+        titles = suggest_titles(site, count=n, seed=SEED, avoid=avoid)
     log(f"[{site['id']}] planning {len(titles)} new ({have}/{TARGET})" + (f" [seed: {SEED}]" if SEED else ""))
     done = 0
     for t in titles:
