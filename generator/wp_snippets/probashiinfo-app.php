@@ -7,7 +7,7 @@
    Snippets #6, #7, #8 and #11 (v2) step aside when pa_app() is on;
    their ads are redrawn here in the same design language. Writer names are not shown. */
 if ( ! defined( 'PA_APP_PUBLIC' ) ) define( 'PA_APP_PUBLIC', true );
-if ( ! defined( 'PA_APP_VERSION' ) ) define( 'PA_APP_VERSION', '3.3.1' );
+if ( ! defined( 'PA_APP_VERSION' ) ) define( 'PA_APP_VERSION', '3.4.0' );
 define( 'PA_LOGO', 'https://probashiinfo.com/wp-content/uploads/2026/10/probashiinfo-wordmark.webp' );
 define( 'PA_ICON', 'https://probashiinfo.com/wp-content/uploads/2026/10/probashiinfo-icon.png' );
 define( 'PA_PB', 'https://www.probashibondu.online' );
@@ -361,6 +361,46 @@ body.pi-app{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 va
  body.pi-app{padding-bottom:78px}
 }
 @media(prefers-reduced-motion:reduce){.datebar .tick div{animation:none}}
+
+/* ---------- header v2: logo + search + tools, category bar, mobile drawer ---------- */
+.hdr2{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.97);backdrop-filter:saturate(1.6) blur(14px);-webkit-backdrop-filter:saturate(1.6) blur(14px);box-shadow:0 1px 0 var(--line),0 8px 24px -20px rgba(10,40,90,.35)}
+.hdr2 .top{display:flex;align-items:center;gap:18px;height:84px;transition:height .25s}
+.hdr2.sm .top{height:64px}
+.logo2{flex:none;display:block}.logo2 img{height:60px;width:auto;display:block;transition:height .25s}.hdr2.sm .logo2 img{height:44px}
+.srch2{flex:1;max-width:540px;display:flex;align-items:center;gap:6px;background:var(--bg);border:2px solid var(--line);border-radius:999px;padding:4px 4px 4px 14px;transition:border-color .2s,box-shadow .2s}
+.srch2:focus-within{border-color:var(--b);box-shadow:0 0 0 4px rgba(11,86,196,.12);background:#fff}
+.srch2 span{font-size:16px;opacity:.6}.srch2 input{flex:1;min-width:0;border:0;outline:0;background:transparent;padding:9px 4px;font:500 15px var(--body);color:var(--ink)}
+.srch2 button{border:0;background:linear-gradient(135deg,var(--b),var(--b2));color:#fff;border-radius:999px;padding:9px 18px;font:700 14.5px var(--body);cursor:pointer}
+.tools2{display:flex;gap:8px;margin-left:auto;flex:none}
+.tl{display:grid;grid-template-columns:auto auto;grid-template-rows:auto auto;column-gap:8px;align-items:center;padding:7px 13px;border-radius:14px;border:1px solid var(--line);background:#fff;color:var(--ink)!important;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.tl:hover{transform:translateY(-1px);box-shadow:0 8px 20px -12px rgba(10,40,90,.5)}
+.tl i,.tl .ldot{grid-row:1/3;font-style:normal;font-size:21px;line-height:1}.tl .ldot{width:10px;height:10px;margin:0 4px}
+.tl b{font:700 14.5px/1.15 var(--head)}.tl small{font-size:11.5px;color:var(--mut);line-height:1.2}
+.tl.live{background:linear-gradient(135deg,#e11d48,#be123c);color:#fff!important;border-color:transparent}.tl.live small{color:#ffe4e6}
+.cat2{background:linear-gradient(90deg,var(--nv),var(--b2) 70%,var(--b))}
+.cat2 .w{display:flex;align-items:stretch;gap:2px;height:46px}
+.cat2 a{color:#dbe7ff!important;padding:0 14px;display:flex;align-items:center;font:600 15px var(--head);border-bottom:3px solid transparent;white-space:nowrap;text-decoration:none}
+.cat2 a:hover,.cat2 a.on{color:#fff!important;border-bottom-color:var(--g2);background:rgba(255,255,255,.07)}
+.more{position:relative;margin-left:auto;display:flex}.more>button{border:0;background:transparent;color:#dbe7ff;font:600 15px var(--head);padding:0 14px;cursor:pointer}
+.more:hover>button,.more.open>button{color:#fff;background:rgba(255,255,255,.07)}
+.more .dd{position:absolute;right:0;top:100%;z-index:70;background:#fff;border-radius:0 0 16px 16px;box-shadow:0 20px 40px -14px rgba(10,40,90,.45);padding:8px;min-width:240px;display:none;grid-template-columns:1fr 1fr;gap:2px}
+.more:hover .dd,.more.open .dd{display:grid}.more .dd a{color:var(--ink)!important;border:0;padding:9px 12px;border-radius:10px;font-size:14.5px}.more .dd a:hover{background:var(--bs);color:var(--b)!important}
+.burger{display:none;flex:none;width:44px;height:44px;border:1px solid var(--line);border-radius:12px;background:#fff;cursor:pointer;padding:12px 11px;flex-direction:column;justify-content:space-between}
+.burger span{display:block;height:2.5px;border-radius:2px;background:var(--nv)}
+.drw[hidden]{display:none}.drw{position:fixed;inset:0;z-index:2000}.drw-bg{position:absolute;inset:0;background:rgba(7,26,58,.55);backdrop-filter:blur(3px)}
+.drw-in{position:absolute;top:0;right:0;bottom:0;width:min(360px,88vw);background:#fff;overflow:auto;padding:16px;animation:drwin .25s ease-out;box-shadow:-20px 0 40px -20px rgba(0,0,0,.4)}
+@keyframes drwin{from{transform:translateX(100%)}}
+.drw-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}.drw-h img{height:44px;width:auto}
+.drw-x{border:0;background:var(--bg);width:40px;height:40px;border-radius:50%;font-size:16px;cursor:pointer}
+.drw-t{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.drw-t a{display:flex;flex-direction:column;align-items:center;gap:2px;padding:12px 6px;border-radius:14px;background:var(--bg);color:var(--ink)!important;text-decoration:none;text-align:center}
+.drw-t a.live{background:linear-gradient(135deg,#e11d48,#be123c);color:#fff!important}.drw-t i{font-style:normal;font-size:24px}.drw-t b{font:700 14px var(--head)}.drw-t small{font-size:11px;opacity:.8}
+.drw-in h4{margin:18px 0 6px;font:700 13px var(--body);color:var(--mut);letter-spacing:.3px}
+.drw-c{display:grid;gap:2px}.drw-c a{display:flex;justify-content:space-between;align-items:center;padding:11px 12px;border-radius:12px;color:var(--ink)!important;font:600 15.5px var(--head);text-decoration:none}.drw-c a:hover,.drw-c a.on{background:var(--bs);color:var(--b)!important}
+.drw-c span{font-size:12px;color:var(--mut);background:var(--bg);border-radius:999px;padding:1px 8px}
+.drw-p{display:grid;gap:8px;margin-top:16px}.drw-p a{display:block;padding:11px 12px;border-radius:12px;background:var(--gs);color:var(--g)!important;font-weight:700;text-decoration:none}.drw-p a+a{background:#fff7ed;color:#c2410c!important}
+@media(max-width:1180px){.tl small{display:none}.tl{padding:8px 11px}}
+@media(max-width:1020px){.tools2,.cat2{display:none}.burger{display:flex}.srch2{max-width:none}}
+@media(max-width:640px){.hdr2 .top{height:64px;gap:10px}.logo2 img{height:40px}.hdr2.sm .logo2 img{height:36px}.srch2{padding:3px 3px 3px 10px}.srch2 button{padding:8px 12px;font-size:0}.srch2 button:after{content:"🔍";font-size:15px}.srch2 span{display:none}.srch2 input{font-size:14px}}
 </style>
 <?php }
 
@@ -377,12 +417,28 @@ function pa_head() {
 <body <?php body_class( 'pi-app' ); ?>>
 <?php wp_body_open(); ?>
 <div class="util"><div class="w"><span><span class="dot"></span><b>স্বাধীন তথ্যসেবা</b><span class="hide"> — এটি সরকারি ওয়েবসাইট নয়</span></span><span class="r"><a class="hide" href="<?php echo esc_url( PA_PB . '/?utm_source=probashiinfo&utm_medium=util' ); ?>" target="_blank" rel="noopener">প্রবাসী বন্ধু</a><a class="hot hot-live" href="<?php echo esc_url( home_url( '/bmet-report/' ) ); ?>"><span class="ldot"></span> আজকের বিএমইটি</a><a class="hot" href="<?php echo esc_url( home_url( '/taka-rate/' ) ); ?>">💱 আজকের রেট</a></span></div></div>
-<header class="hdr"><div class="w">
-	<a class="logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="প্রবাসী ইনফো — হোম"><img src="<?php echo esc_url( PA_LOGO ); ?>" alt="প্রবাসী ইনফো" width="160" height="44"></a>
-	<nav class="nav" aria-label="বিষয়"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"<?php echo is_front_page() ? ' class="on"' : ''; ?>>হোম</a><a class="nav-live" href="<?php echo esc_url( home_url( '/bmet-report/' ) ); ?>"><span class="ldot"></span>বিএমইটি লাইভ</a><a class="nav-fl" href="<?php echo esc_url( home_url( '/flight-tracker/' ) ); ?>">✈️ ফ্লাইট ট্র্যাকার</a><a class="nav-fl" href="<?php echo esc_url( home_url( '/taka-rate/' ) ); ?>">💱 টাকার রেট</a>
-	<?php $cur = is_category() ? get_queried_object_id() : 0; foreach ( pa_top_cats( 7 ) as $c ) echo '<a href="' . esc_url( get_category_link( $c ) ) . '"' . ( $cur === $c->term_id ? ' class="on"' : '' ) . '>' . esc_html( pa_cat_name( $c ) ) . '</a>'; ?></nav>
-	<form class="hsrch" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search"><input name="s" type="search" placeholder="খুঁজুন…" aria-label="খুঁজুন" value="<?php echo esc_attr( get_search_query() ); ?>"><button type="submit" aria-label="খুঁজুন">⌕</button></form>
-</div></header>
+<?php $cats = pa_top_cats( 14 ); $cur = is_category() ? get_queried_object_id() : 0; $mainc = array_slice( $cats, 0, 6 ); $morec = array_slice( $cats, 6 );
+$tools = array( array( '/bmet-report/', '🔴', 'বিএমইটি', 'লাইভ রিপোর্ট', 'live' ), array( '/flight-tracker/', '✈️', 'ফ্লাইট', 'ট্র্যাকার লাইভ', '' ), array( '/taka-rate/', '💱', 'টাকার রেট', 'আজকের রেট', '' ) ); ?>
+<header class="hdr2" id="hdr2">
+	<div class="w top">
+		<a class="logo2" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="প্রবাসী ইনফো — হোম"><img src="<?php echo esc_url( PA_LOGO ); ?>" alt="প্রবাসী ইনফো" width="220" height="60"></a>
+		<form class="srch2 hsrch" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search"><span aria-hidden="true">🔍</span><input name="s" type="search" placeholder="ভিসা, বিএমইটি, রেট, দেশ — কী খুঁজছেন?" aria-label="খুঁজুন" value="<?php echo esc_attr( get_search_query() ); ?>"><button type="submit">খুঁজুন</button></form>
+		<div class="tools2"><?php foreach ( $tools as $t ) echo '<a class="tl ' . $t[4] . '" href="' . esc_url( home_url( $t[0] ) ) . '">' . ( 'live' === $t[4] ? '<span class="ldot"></span>' : '<i>' . $t[1] . '</i>' ) . '<b>' . esc_html( $t[2] ) . '</b><small>' . esc_html( $t[3] ) . '</small></a>'; ?></div>
+		<button type="button" class="burger" id="burger" aria-label="মেনু খুলুন" aria-expanded="false"><span></span><span></span><span></span></button>
+	</div>
+	<nav class="cat2" aria-label="বিষয়"><div class="w">
+		<a href="<?php echo esc_url( home_url( '/' ) ); ?>"<?php echo is_front_page() ? ' class="on"' : ''; ?>>🏠 হোম</a>
+		<?php foreach ( $mainc as $c ) echo '<a href="' . esc_url( get_category_link( $c ) ) . '"' . ( $cur === $c->term_id ? ' class="on"' : '' ) . '>' . esc_html( pa_cat_name( $c ) ) . '</a>'; ?>
+		<?php if ( $morec ) { ?><div class="more" id="more"><button type="button" aria-haspopup="true" aria-expanded="false">আরও বিষয় ▾</button><div class="dd"><?php foreach ( $morec as $c ) echo '<a href="' . esc_url( get_category_link( $c ) ) . '">' . esc_html( pa_cat_name( $c ) ) . '</a>'; ?></div></div><?php } ?>
+	</div></nav>
+</header>
+<div class="drw" id="drw" hidden><div class="drw-bg" data-close></div><aside class="drw-in" role="dialog" aria-label="মেনু">
+	<div class="drw-h"><img src="<?php echo esc_url( PA_LOGO ); ?>" alt="প্রবাসী ইনফো" width="160" height="44"><button type="button" class="drw-x" data-close aria-label="বন্ধ করুন">✕</button></div>
+	<div class="drw-t"><?php foreach ( $tools as $t ) echo '<a class="' . $t[4] . '" href="' . esc_url( home_url( $t[0] ) ) . '"><i>' . $t[1] . '</i><b>' . esc_html( $t[2] ) . '</b><small>' . esc_html( $t[3] ) . '</small></a>'; ?></div>
+	<h4>বিষয়</h4>
+	<nav class="drw-c"><a href="<?php echo esc_url( home_url( '/' ) ); ?>">🏠 হোম</a><?php foreach ( $cats as $c ) echo '<a href="' . esc_url( get_category_link( $c ) ) . '"' . ( $cur === $c->term_id ? ' class="on"' : '' ) . '>' . esc_html( pa_cat_name( $c ) ) . '<span>' . pa_bn( (int) $c->count ) . '</span></a>'; ?></nav>
+	<div class="drw-p"><a href="<?php echo esc_url( PA_PB . '/?utm_source=probashiinfo&utm_medium=menu' ); ?>" target="_blank" rel="noopener">🌍 প্রবাসী বন্ধু</a><a href="https://dreamintcs.com/?utm_source=probashiinfo&amp;utm_medium=menu" target="_blank" rel="noopener sponsored">✈️ ড্রিম ইন্টারন্যাশনাল</a></div>
+</aside></div>
 <div class="datebar"><div class="w"><span><?php echo esc_html( pa_weekday( $now ) . ', ' . pa_date( $now ) ); ?></span><span id="hijri">হিজরি</span>
 <?php $latest = get_posts( array( 'numberposts' => 8 ) ); if ( $latest ) { $it = ''; foreach ( $latest as $p ) $it .= '<a href="' . esc_url( get_permalink( $p ) ) . '">' . esc_html( get_the_title( $p ) ) . '</a>'; echo '<div class="tick"><div>' . $it . $it . '</div></div>'; } ?>
 </div></div>
@@ -628,7 +684,17 @@ function pa_js() { ?>
 	var setFs=function(v){ fs=Math.max(15,Math.min(26,v)); document.documentElement.style.setProperty('--fs',fs+'px'); try{localStorage.setItem('pi_fs',fs)}catch(e){} };
 	setFs(fs); document.querySelectorAll('.fsz button').forEach(function(b){ b.onclick=function(){ setFs(fs+parseFloat(b.dataset.fs)*1.5); }; });
 	document.querySelectorAll('.share-now').forEach(function(b){ b.onclick=function(){ var d={title:document.title,url:location.href.split('#')[0]}; if(navigator.share){ navigator.share(d).catch(function(){}); } else { location.href='https://wa.me/?text='+encodeURIComponent(d.title+'\n'+d.url); } }; });
-	document.querySelectorAll('.find-now').forEach(function(b){ b.onclick=function(){ var i=document.querySelector('.hsrch input'); if(i){ scrollTo({top:0,behavior:'smooth'}); setTimeout(function(){ i.focus(); },300); } }; });
+
+	/* header v2: shrink on scroll, mobile drawer, "more" dropdown on touch */
+	(function(){ var h=document.getElementById('hdr2'), d=document.getElementById('drw'), b=document.getElementById('burger'), m=document.getElementById('more');
+		if(h){ var t=0; addEventListener('scroll',function(){ if(t) return; t=requestAnimationFrame(function(){ h.classList.toggle('sm',scrollY>80); t=0; }); },{passive:true}); }
+		function open(o){ if(!d) return; d.hidden=!o; document.documentElement.style.overflow=o?'hidden':''; if(b) b.setAttribute('aria-expanded',o?'true':'false'); }
+		if(b) b.onclick=function(){ open(true); };
+		if(d) d.querySelectorAll('[data-close]').forEach(function(x){ x.onclick=function(){ open(false); }; });
+		addEventListener('keydown',function(e){ if(e.key==='Escape') open(false); });
+		if(m){ var mb=m.querySelector('button'); mb.onclick=function(e){ e.stopPropagation(); var o=!m.classList.contains('open'); m.classList.toggle('open',o); mb.setAttribute('aria-expanded',o?'true':'false'); }; document.addEventListener('click',function(){ m.classList.remove('open'); }); }
+	})();
+	document.querySelectorAll('.find-now').forEach(function(b){ b.onclick=function(){ var i=document.querySelector('.srch2 input')||document.querySelector('.hsrch input'); if(i){ scrollTo({top:0,behavior:'smooth'}); setTimeout(function(){ i.focus(); },300); } }; });
 	document.querySelectorAll('.copy').forEach(function(b){ b.onclick=function(){ try{ navigator.clipboard.writeText(location.href.split('#')[0]); b.textContent='কপি হয়েছে ✓'; }catch(e){} }; });
 	var bar=$('#progress'), body=$('#ct'); if(bar&&body){ bar.hidden=false; addEventListener('scroll',function(){ var r=body.getBoundingClientRect(), p=Math.min(1,Math.max(0,(innerHeight-r.top)/r.height)); bar.style.width=(p*100)+'%'; },{passive:true}); }
 	var C=[['SAR','সৌদি রিয়াল','Asia/Riyadh','রিয়াদ',24.71,46.68],['AED','আমিরাত দিরহাম','Asia/Dubai','দুবাই',25.2,55.27],['QAR','কাতার রিয়াল','Asia/Qatar','দোহা',25.29,51.53],['KWD','কুয়েতি দিনার','Asia/Kuwait','কুয়েত',29.38,47.98],['OMR','ওমানি রিয়াল','Asia/Muscat','মাস্কাট',23.59,58.38],['MYR','মালয়েশিয়ান রিংগিত','Asia/Kuala_Lumpur','কুয়ালালামপুর',3.14,101.69],['SGD','সিঙ্গাপুর ডলার','Asia/Singapore','সিঙ্গাপুর',1.35,103.82],['EUR','ইউরো','Europe/Rome','রোম',41.9,12.5],['GBP','ব্রিটিশ পাউন্ড','Europe/London','লন্ডন',51.51,-0.13]];
