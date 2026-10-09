@@ -165,6 +165,11 @@ add_filter( 'the_content', function ( $content ) {
 	<table><thead><tr><th>ক্রম</th><th>দেশ</th><th>কর্মী</th></tr></thead><tbody><?php echo $rows; ?></tbody></table>
 	<p class="bm-src">তথ্যসূত্র: বাংলাদেশ সরকারের ওভারসিজ এমপ্লয়মেন্ট প্ল্যাটফর্ম (OEP) — <a href="<?php echo esc_url( $src ); ?>" target="_blank" rel="noopener nofollow">oep.gov.bd কান্ট্রি ক্লিয়ারেন্স রিপোর্ট</a>। প্রতিদিন সকালে আগের দিনের তথ্য যুক্ত হয়; সরকারি তথ্যে পরে সামান্য সংশোধন হতে পারে। প্রবাসী ইনফো স্বাধীন তথ্যসেবা।</p>
 </div>
+<?php
+	$html = ob_get_clean();
+	/* Data + scripts go to the footer: ad scripts (Ezoic) inject placeholders inside post content,
+	   which broke the inline JSON. */
+	ob_start(); ?>
 <script id="bm-data" type="application/json"><?php echo $json; ?></script>
 <script>
 (function(){
@@ -322,5 +327,9 @@ function bmCard(cv, o) {
 /*@CARD-END*/
 </script>
 <?php
-	return ob_get_clean();
+	$GLOBALS['pa_bm_foot'] = ob_get_clean();
+	return $html;
 }, 999 );
+add_action( 'wp_footer', function () {
+	if ( ! empty( $GLOBALS['pa_bm_foot'] ) ) echo $GLOBALS['pa_bm_foot'];
+}, 5 );
