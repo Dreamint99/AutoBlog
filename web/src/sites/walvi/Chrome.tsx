@@ -68,16 +68,9 @@ export function PinMark() {
 
 export function Logo({ site, light = false }: { site: Site; light?: boolean }) {
   return (
-    <Link href={`/s/${site.id}`} className={`vp-logo${light ? " light" : ""}`} aria-label={`${site.name} home`}>
-      <span className="vp-logo-mark">
-        <PinMark />
-      </span>
-      <span className="vp-logo-word">
-        <b>
-          Visa<span>Point</span>
-        </b>
-        <small>Global visa &amp; work-permit guide</small>
-      </span>
+    <Link href={`/s/${site.id}`} className={`vp-logo vp-logo-img${light ? " light" : ""}`} aria-label={`${site.name} home`}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={light ? "/brand/visapoint-logo-ondark.webp" : "/brand/visapoint-logo.webp"} alt="VisaPoint.net" width={176} height={60} />
     </Link>
   );
 }

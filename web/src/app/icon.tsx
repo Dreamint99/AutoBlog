@@ -8,6 +8,7 @@ const MARKS: Record<string, string> = {
   ninetymins: "/brand/ninetymins-mark.png",
   countly: "/brand/countly-mark-sq.png",
   gccguide: "/brand/gccguide-mark.png",
+  walvi: "/brand/visapoint-mark.png",
 };
 
 // Per-site favicon, generated at build/runtime from the deployment's SITE_ID.

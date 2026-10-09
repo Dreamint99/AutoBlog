@@ -7,7 +7,7 @@
    Snippets #6, #7, #8 and #11 (v2) step aside when pa_app() is on;
    their ads are redrawn here in the same design language. Writer names are not shown. */
 if ( ! defined( 'PA_APP_PUBLIC' ) ) define( 'PA_APP_PUBLIC', true );
-if ( ! defined( 'PA_APP_VERSION' ) ) define( 'PA_APP_VERSION', '3.1.0' );
+if ( ! defined( 'PA_APP_VERSION' ) ) define( 'PA_APP_VERSION', '3.1.1' );
 define( 'PA_LOGO', 'https://probashiinfo.com/wp-content/uploads/2026/10/probashiinfo-wordmark.webp' );
 define( 'PA_ICON', 'https://probashiinfo.com/wp-content/uploads/2026/10/probashiinfo-icon.png' );
 define( 'PA_PB', 'https://www.probashibondu.online' );
@@ -118,7 +118,6 @@ add_action( 'wp_enqueue_scripts', function () {
 function pa_css() { ?>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap">
-<link rel="icon" href="<?php echo esc_url( PA_ICON ); ?>"><link rel="apple-touch-icon" href="<?php echo esc_url( PA_ICON ); ?>">
 <meta name="theme-color" content="#0b56c4">
 <style id="pi-app-css">
 :root{--b:#0b56c4;--b2:#0a3f96;--nv:#082a63;--g:#16a34a;--g2:#22c55e;--gs:#e8f7ee;--bs:#e9f1fd;--red:#e11d48;--gold:#f5b301;--ink:#0f1f38;--ink2:#34465f;--mut:#6a7a93;--line:#e2e8f1;--bg:#f3f6fb;--card:#fff;--head:"Anek Bangla","Hind Siliguri",system-ui,sans-serif;--body:"Hind Siliguri",system-ui,sans-serif;--fs:18.5px;--r:16px;--sh:0 1px 2px rgba(10,40,90,.06),0 8px 24px -16px rgba(10,40,90,.25)}

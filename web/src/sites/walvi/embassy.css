@@ -9,18 +9,18 @@
    ============================================================ */
 
 .site-walvi .vp-root {
-  --vp-navy: #0d2b4e;
-  --vp-navy-2: #143a66;
+  --vp-navy: #0b2a5c;
+  --vp-navy-2: #12408a;
   --vp-ink: #13202e;
   --vp-text: #26313f;
   --vp-muted: #556170;
   --vp-line: #d6dce4;
   --vp-line-2: #e8ecf1;
   --vp-grey: #f3f5f8;
-  --vp-teal: #0f6e6a;
-  --vp-teal-2: #0b5551;
-  --vp-teal-soft: #e5f2f1;
-  --vp-gold: #b5892a;
+  --vp-teal: #1565d8;
+  --vp-teal-2: #0f4fb0;
+  --vp-teal-soft: #e7effd;
+  --vp-gold: #f26b1d;
   --vp-warn-bg: #fff5e6;
   --vp-warn-line: #e9a23b;
   --vp-danger: #b42318;
@@ -28,8 +28,8 @@
   --vp-sans: var(--vp-body), "Segoe UI", system-ui, Arial, sans-serif;
 
   /* re-skin the existing theme.css tokens (register / jobs / tools pages) */
-  --eu-blue: #143a66;
-  --eu-blue-d: #0d2b4e;
+  --eu-blue: #12408a;
+  --eu-blue-d: #0b2a5c;
   --eu-blue-2: #1d4f86;
   --eu-ink: #13202e;
   --gold: #c9a227;
@@ -37,10 +37,10 @@
   --gold-soft: #fbf3dc;
   --serif: var(--vp-serif);
   --sans: var(--vp-sans);
-  --accent: #143a66;
+  --accent: #12408a;
   --accent-soft: #eaf0f7;
   --accent-line: #c9d6e6;
-  --table-head: #0d2b4e;
+  --table-head: #0b2a5c;
   --table-border: #d6dce4;
   --table-zebra: #f5f7fa;
   --table-hover: #eaf0f7;
@@ -123,7 +123,7 @@
 /* ── hero ────────────────────────────────────────────────── */
 .site-walvi .vp-hero {
   background:
-    linear-gradient(115deg, rgba(13, 43, 78, 0.97) 0%, rgba(20, 58, 102, 0.94) 55%, rgba(15, 110, 106, 0.9) 100%),
+    linear-gradient(115deg, rgba(13, 43, 78, 0.97) 0%, rgba(20, 58, 102, 0.94) 55%, rgba(21, 101, 216, 0.9) 100%),
     var(--vp-navy);
   color: #fff;
   padding: 48px 0 52px;
@@ -320,8 +320,8 @@
 .site-walvi .vp-btn-outline { border-color: var(--vp-navy-2); color: var(--vp-navy-2); background: #fff; }
 .site-walvi .vp-btn-outline:hover { background: var(--vp-navy-2); color: #fff; }
 .site-walvi .vp-pi-hero {
-  background: radial-gradient(1100px 420px at 85% -20%, rgba(15, 110, 106, 0.55), transparent 60%),
-    linear-gradient(120deg, #0b2440 0%, #0d2b4e 60%, #12375f 100%);
+  background: radial-gradient(1100px 420px at 85% -20%, rgba(21, 101, 216, 0.55), transparent 60%),
+    linear-gradient(120deg, #0b2440 0%, #0b2a5c 60%, #12375f 100%);
   color: #fff;
   padding: 26px 0 40px;
   border-bottom: 4px solid var(--vp-gold);
@@ -564,7 +564,7 @@
 .site-walvi .tm-empty p { max-width: 640px; margin: 0 auto; color: var(--vp-muted); }
 .site-walvi .tm-facts { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 12px; }
 .site-walvi .tm-fact { padding: 16px 18px; border-radius: 14px; background: linear-gradient(160deg, #0b1d3a, #12305a); color: #fff; display: grid; gap: 4px; animation: vp-rise 0.4s ease both; }
-.site-walvi .tm-fact:nth-child(3n + 2) { background: linear-gradient(160deg, #0f6e6a, #0b4f63); }
+.site-walvi .tm-fact:nth-child(3n + 2) { background: linear-gradient(160deg, #1565d8, #0b4f63); }
 .site-walvi .tm-fact:nth-child(3n) { background: linear-gradient(160deg, #3b1a8a, #6d28d9); }
 .site-walvi .tm-fact span { font: 700 11.5px/1 var(--tmf); text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.75; }
 .site-walvi .tm-fact b { font: 800 30px/1.05 var(--tmf); letter-spacing: -0.02em; overflow-wrap: anywhere; }
@@ -691,10 +691,10 @@
 .site-walvi .vp-hsearch svg { width: 18px; height: 18px; }
 .site-walvi .vp-brand-actions { gap: 10px; }
 .site-walvi .vp-btn { border-radius: 6px; }
-.site-walvi .vp-btn-gold { background: linear-gradient(180deg, #d4ae4a, #b5892a); color: #1a1405; border-color: #a77d22; box-shadow: 0 6px 16px -6px rgba(181, 137, 42, 0.7); }
-.site-walvi .vp-btn-gold:hover { background: linear-gradient(180deg, #e0bb55, #c0952f); color: #1a1405; }
+.site-walvi .vp-btn-gold { background: linear-gradient(180deg, #ff8a3d, #f26b1d); color: #1a1405; border-color: #d9560f; box-shadow: 0 6px 16px -6px rgba(242, 107, 29, 0.7); }
+.site-walvi .vp-btn-gold:hover { background: linear-gradient(180deg, #ff9a55, #e85f12); color: #1a1405; }
 .site-walvi .vp-btn-lg { padding: 16px 24px; font-size: 16.5px; }
-.site-walvi .vp-nav { background: linear-gradient(90deg, #0b2442, #0d2b4e 50%, #0b2442); border-bottom: 3px solid var(--vp-gold); position: relative; }
+.site-walvi .vp-nav { background: linear-gradient(90deg, #0b2442, #0b2a5c 50%, #0b2442); border-bottom: 3px solid var(--vp-gold); position: relative; }
 .site-walvi .vp-nav-in { overflow: visible; align-items: stretch; }
 .site-walvi .vp-nav a, .site-walvi .vp-dd-btn { font: 600 15px/1 var(--vp-sans); letter-spacing: 0.01em; }
 .site-walvi .vp-nav-in > a.vp-nav-home { background: rgba(255, 255, 255, 0.06); }
@@ -712,8 +712,8 @@
 .site-walvi .vp-mnav { display: none; }
 
 /* footer */
-.site-walvi .vp-footer { background: radial-gradient(900px 400px at 100% 0%, rgba(15, 110, 106, 0.22), transparent 60%), #081a30; padding: 0 0 22px; border-top: 0; }
-.site-walvi .vp-foot-cta { background: linear-gradient(100deg, #0f6e6a, #0d2b4e); border-bottom: 3px solid var(--vp-gold); margin-bottom: 44px; }
+.site-walvi .vp-footer { background: radial-gradient(900px 400px at 100% 0%, rgba(21, 101, 216, 0.22), transparent 60%), #081a30; padding: 0 0 22px; border-top: 0; }
+.site-walvi .vp-foot-cta { background: linear-gradient(100deg, #1565d8, #0b2a5c); border-bottom: 3px solid var(--vp-gold); margin-bottom: 44px; }
 .site-walvi .vp-foot-cta-in { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding-top: 30px; padding-bottom: 30px; flex-wrap: wrap; }
 .site-walvi .vp-foot-cta b { display: block; font: 700 clamp(22px, 2.4vw, 30px)/1.15 var(--vp-serif); color: #fff; }
 .site-walvi .vp-foot-cta span { color: #cfe3f0; font: 400 16px/1.5 var(--vp-sans); }
@@ -721,27 +721,27 @@
 .site-walvi .vp-foot-grid { grid-template-columns: 1.6fr repeat(4, 1fr); gap: 28px; }
 .site-walvi .vp-foot-brand .vp-logo-mark svg { width: 54px; height: 54px; }
 .site-walvi .vp-foot-brand .vp-logo-word b { font-size: 30px; }
-.site-walvi .vp-footer h4 { font: 700 12.5px/1.2 var(--vp-sans); letter-spacing: 0.14em; text-transform: uppercase; color: #d4ae4a; margin: 6px 0 14px; }
+.site-walvi .vp-footer h4 { font: 700 12.5px/1.2 var(--vp-sans); letter-spacing: 0.14em; text-transform: uppercase; color: #ff8a3d; margin: 6px 0 14px; }
 .site-walvi .vp-foot-grid > div:not(:first-child) a { text-decoration: none; color: #d7e1ec; }
 .site-walvi .vp-foot-grid > div:not(:first-child) a:hover { color: #fff; text-decoration: underline; }
 .site-walvi .vp-foot-pop { margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
 .site-walvi .vp-foot-pop > div { display: flex; flex-wrap: wrap; gap: 8px; }
 .site-walvi .vp-foot-pop a { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 999px; color: #e3eaf2; font: 600 13.5px/1 var(--vp-sans); text-decoration: none; }
-.site-walvi .vp-foot-pop a:hover { border-color: #d4ae4a; color: #fff; }
+.site-walvi .vp-foot-pop a:hover { border-color: #ff8a3d; color: #fff; }
 .site-walvi .vp-foot-pop img { border-radius: 2px; }
 .site-walvi .vp-foot-base-r { display: inline-flex; gap: 16px; flex-wrap: wrap; }
 .site-walvi .vp-foot-base a { color: #a9b7c7; text-decoration: none; }
 .site-walvi .vp-foot-base a:hover { color: #fff; }
 
 /* hero v2 */
-.site-walvi .vp-hero-x { position: relative; overflow: hidden; padding: 64px 0 0; background: radial-gradient(800px 500px at 85% 20%, rgba(15, 110, 106, 0.55), transparent 65%), radial-gradient(700px 400px at 0% 100%, rgba(181, 137, 42, 0.18), transparent 60%), linear-gradient(160deg, #081a30, #0d2b4e 60%, #0b3550); }
+.site-walvi .vp-hero-x { position: relative; overflow: hidden; padding: 64px 0 0; background: radial-gradient(800px 500px at 85% 20%, rgba(21, 101, 216, 0.55), transparent 65%), radial-gradient(700px 400px at 0% 100%, rgba(242, 107, 29, 0.18), transparent 60%), linear-gradient(160deg, #081a30, #0b2a5c 60%, #0b3550); }
 .site-walvi .vp-hero-bg { position: absolute; right: -140px; top: -60px; width: 720px; height: 720px; pointer-events: none; animation: vp-spin 120s linear infinite; }
 .site-walvi .vp-hero-bg svg { width: 100%; height: 100%; }
 @keyframes vp-spin { to { transform: rotate(360deg); } }
 .site-walvi .vp-hero-x .vp-hero-grid { position: relative; padding-bottom: 54px; }
 .site-walvi .vp-hero-x h1 { font-size: clamp(36px, 5vw, 62px); line-height: 1.04; letter-spacing: -0.02em; }
-.site-walvi .vp-hero-x h1 em { font-style: italic; color: #e3c46a; }
-.site-walvi .vp-hero-x .vp-eyebrow { color: #e3c46a; border-left-color: #e3c46a; }
+.site-walvi .vp-hero-x h1 em { font-style: italic; color: #ffa463; }
+.site-walvi .vp-hero-x .vp-eyebrow { color: #ffa463; border-left-color: #ffa463; }
 .site-walvi .vp-hero-x .vp-facts b { font-size: 34px; color: #fff; }
 .site-walvi .vp-hero-x .vp-hero-panel { border-radius: 14px; overflow: hidden; box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.55); }
 .site-walvi .vp-trust { position: relative; background: rgba(255, 255, 255, 0.05); border-top: 1px solid rgba(255, 255, 255, 0.1); }
@@ -759,9 +759,9 @@
 .site-walvi .vp-tool b { font: 700 21px/1.2 var(--vp-serif); color: var(--vp-ink); margin-top: 6px; }
 .site-walvi .vp-tool > span:not(.vp-tool-ic) { font: 400 15px/1.5 var(--vp-sans); color: var(--vp-muted); }
 .site-walvi .vp-tool i { margin-top: auto; padding-top: 8px; font: 700 14px/1 var(--vp-sans); font-style: normal; color: var(--tone); }
-.site-walvi .vp-tool-teal { --tone: #0f6e6a; }
-.site-walvi .vp-tool-navy { --tone: #143a66; }
-.site-walvi .vp-tool-gold { --tone: #b5892a; }
+.site-walvi .vp-tool-teal { --tone: #1565d8; }
+.site-walvi .vp-tool-navy { --tone: #12408a; }
+.site-walvi .vp-tool-gold { --tone: #f26b1d; }
 .site-walvi .vp-tool-green { --tone: #1f8a4c; }
 .site-walvi .vp-tool-violet { --tone: #6d28d9; }
 .site-walvi .vp-tool-red { --tone: #b42318; }
@@ -810,7 +810,7 @@
 
 
 /* ── Bangladesh district map ─────────────────────────────── */
-.site-walvi .bd-hero { background: linear-gradient(120deg, #00563f, #006a4e 45%, #0d2b4e); }
+.site-walvi .bd-hero { background: linear-gradient(120deg, #00563f, #006a4e 45%, #0b2a5c); }
 .site-walvi .bd-h1-bn { display: block; margin-top: 8px; font: 700 0.62em/1.25 "Nirmala UI", "Noto Sans Bengali", var(--vp-sans); color: #ffd7d2; }
 .site-walvi .bd .tm-grid { grid-template-columns: minmax(0, 1fr) 340px; }
 .site-walvi .bd .tm-map svg { max-height: 82vh; margin: 0 auto; }
@@ -818,7 +818,7 @@
 .site-walvi .bd-label.on { font-weight: 800; opacity: 1; font-size: 9.5px; }
 .site-walvi .bd-lang { display: flex; width: max-content; margin: 0 0 4px auto; background: rgba(0, 0, 0, 0.28); border-radius: 999px; padding: 3px; }
 .site-walvi .bd-lang button { border: 0; background: none; color: inherit; font: 700 12.5px/1 var(--tmf); padding: 7px 12px; border-radius: 999px; cursor: pointer; opacity: 0.75; }
-.site-walvi .bd-lang button.on { background: #fff; color: #0d2b4e; opacity: 1; }
+.site-walvi .bd-lang button.on { background: #fff; color: #0b2a5c; opacity: 1; }
 .site-walvi .bd-bn { font-family: "Nirmala UI", "Noto Sans Bengali", var(--vp-sans); font-weight: 600; opacity: 0.75; }
 .site-walvi .tm-browse li button small.bd-bn { font-size: 12.5px; margin-left: 4px; }
 .site-walvi .bd-ext { grid-template-columns: 1fr !important; }
@@ -833,7 +833,7 @@
 .site-walvi .bd-badge span { font-size: 34px; line-height: 1; }
 .site-walvi .bd-badge b { font: 800 15px/1.2 var(--tmf); color: var(--vp-ink); }
 .site-walvi .bd-badge small { font: 500 12px/1.35 var(--vp-sans); color: var(--vp-muted); }
-.site-walvi .bd-badge.on { filter: none; opacity: 1; border: 2px solid #d4ae4a; background: linear-gradient(160deg, #fff8e6, #fff); box-shadow: 0 10px 24px -14px rgba(181, 137, 42, 0.8); animation: vp-rise 0.4s ease both; }
+.site-walvi .bd-badge.on { filter: none; opacity: 1; border: 2px solid #ff8a3d; background: linear-gradient(160deg, #fff8e6, #fff); box-shadow: 0 10px 24px -14px rgba(242, 107, 29, 0.8); animation: vp-rise 0.4s ease both; }
 .site-walvi .bd-badge.on small { color: #0f7a4a; font-weight: 700; }
 .site-walvi .bd-fam { margin: 0; padding: 12px 16px 0; font: 600 15px/1.45 var(--vp-sans); color: var(--vp-ink); }
 .site-walvi .bd .tm-card h3 .bd-bn { font-size: 16px; color: #ffd7d2; opacity: 1; margin-left: 4px; }
@@ -844,3 +844,8 @@
   .site-walvi .bd-label.on { font-size: 11px; }
   .site-walvi .tm-conts div { grid-template-columns: 120px 1fr 44px; }
 }
+
+/* real logo (navy + blue + orange pin) */
+.site-walvi .vp-logo-img img { height: 58px; width: auto; display: block; }
+.site-walvi .vp-foot-brand .vp-logo-img img { height: 54px; }
+@media (max-width: 600px) { .site-walvi .vp-logo-img img { height: 44px; } }
