@@ -1,0 +1,60 @@
+name: BMET daily report (probashiinfo)
+
+# 03:15 UTC = 09:15 BST: fetch yesterday's OEP country-clearance totals (and refresh the last
+# 3 days for late entries), commit the history, update the /bmet-report/ dashboard and publish
+# the daily article. Saturdays also publish the weekly report; the 1st of each month the monthly one.
+on:
+  schedule:
+    - cron: "15 3 * * *"
+  workflow_dispatch:
+    inputs:
+      backfill:
+        description: "Days to (re)fetch"
+        default: "3"
+      post:
+        description: "daily, weekly, monthly or none"
+        default: "daily"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bmet-report
+  cancel-in-progress: false
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: generator
+    env:
+      PROBASHIINFO_WP_URL: ${{ secrets.PROBASHIINFO_WP_URL }}
+      PROBASHIINFO_WP_USER: ${{ secrets.PROBASHIINFO_WP_USER }}
+      PROBASHIINFO_WP_APP_PASSWORD: ${{ secrets.PROBASHIINFO_WP_APP_PASSWORD }}
+      PYTHONUTF8: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests pillow
+      - name: Collect
+        run: python bmet_report.py collect --backfill "${{ github.event.inputs.backfill || '3' }}"
+      - name: Save history
+        run: |
+          git config user.name "autoblog-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/bmet.json
+          git diff --cached --quiet || { git commit -m "BMET data $(date -u +%F)"; git pull --rebase -q; git push -q; }
+      - name: Update dashboard
+        run: python bmet_report.py push
+      - name: Publish articles
+        run: |
+          P="${{ github.event.inputs.post || 'daily' }}"
+          [ "$P" = "none" ] && exit 0
+          python bmet_report.py post $P
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            [ "$(date -u +%u)" = "6" ] && python bmet_report.py post weekly || true
+            [ "$(date -u +%d)" = "01" ] && python bmet_report.py post monthly || true
+          fi
