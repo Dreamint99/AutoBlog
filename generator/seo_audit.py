@@ -26,8 +26,16 @@ DOMAINS = ["infkey.com", "countly.net", "visapoint.net", "ninetymins.com"]
 
 
 def sitemap_urls(domain: str) -> list[str]:
-    r = requests.get(f"https://{domain}/sitemap.xml", headers=UA, timeout=60)
-    return re.findall(r"<loc>\s*([^<\s]+)\s*</loc>", r.text)
+    """sitemap.xml, following a sitemap index (WordPress / Rank Math) one level down."""
+    r = requests.get(f"https://{domain}/sitemap.xml", headers=UA, timeout=60, allow_redirects=True)
+    locs = re.findall(r"<loc>\s*([^<\s]+)\s*</loc>", r.text)
+    if "<sitemapindex" in r.text:
+        out = []
+        for sm in locs:
+            if re.search(r"(post|page)-sitemap", sm):
+                out += re.findall(r"<loc>\s*([^<\s]+)\s*</loc>", requests.get(sm, headers=UA, timeout=60).text)
+        return [u for u in out if not u.endswith((".jpg", ".png", ".webp"))]
+    return locs
 
 
 def audit(url: str, domain: str) -> dict:

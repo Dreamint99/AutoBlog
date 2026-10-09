@@ -196,6 +196,22 @@ def _mock_path(site, title, log):
     }
 
 
+def _english_slug(site: dict, title: str, data: dict) -> str:
+    """Non-English sites: a short English keyword slug (romania-work-visa-2026) instead of a
+    transliterated Bengali one — it's what readers type and it reads well in shares."""
+    lang = (site.get("language") or "").lower()
+    if lang.startswith("en") or not have_llm():
+        return ""
+    try:
+        raw = chat("Return only a URL slug: 3-7 lowercase English words joined by hyphens, the search keyword "
+                   "people type for this article (keep a year if the title has one). No other text.",
+                   title, temperature=0.2, max_tokens=40)
+        slug = re.sub(r"[^a-z0-9-]+", "", re.sub(r"\s+", "-", raw.strip().lower()))[:70].strip("-")
+        return slug if re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+){2,8}", slug) else ""
+    except Exception:
+        return ""
+
+
 def generate_article(site: dict, title: str, log=lambda m: None, replace: dict | None = None) -> dict:
     """`replace` = an existing {id, slug}: rewrite that article in place (same URL),
     used by content_update.py to refresh stale posts."""
@@ -230,7 +246,7 @@ def generate_article(site: dict, title: str, log=lambda m: None, replace: dict |
                      f'<a href="/{rel["slug"]}">{rel["title"]}</a></p>')
 
     # ── Agent 4 — quality / SEO-score loop (push on-page score to 95+) ──
-    slug = (replace or {}).get("slug") or _unique_slug(site["id"], seo.make_slug(final_title, article_id))
+    slug = (replace or {}).get("slug") or _unique_slug(site["id"], _english_slug(site, final_title, data) or seo.make_slug(final_title, article_id))
     keyword = data["keyword"]
     meta_title = data["meta_title"] or seo.meta_title(final_title, site["name"])
     meta_description = data["meta_description"] or seo.meta_description(data["excerpt"], body)

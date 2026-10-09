@@ -121,14 +121,35 @@
         "প্রবাসী",
         "বিদেশে চাকরি",
         "ওয়ার্ক পারমিট",
-        "রেমিট্যান্স"
+        "রেমিট্যান্স",
+        "saudi visa check",
+        "dubai visa check",
+        "malaysia visa check",
+        "qatar visa check",
+        "europe work permit",
+        "romania work visa",
+        "croatia work permit",
+        "bmet registration",
+        "probashi kallyan card",
+        "umrah visa"
       ],
       "language": "Bengali (Bangla). Write the ENTIRE article in Bengali script (বাংলা) — title, headings, body, tables, FAQ, key takeaways, everything. Use natural, everyday Bangla, not stiff translation.",
       "tone": "বিশ্বস্ত, সহানুভূতিশীল ও বাস্তবমুখী পরামর্শকের কণ্ঠ; সাধারণ বাংলাভাষী প্রবাসী ও বিদেশগামী কর্মীদের জন্য ধাপে ধাপে সহজ গাইড। মনে করিয়ে দিন যে নিয়ম ও খরচ বদলায় এবং সরকারি/দূতাবাসের অফিসিয়াল সূত্রে যাচাই করতে বলুন। প্রতারণা থেকে সাবধান করুন।",
       "audience": "বিদেশে চাকরিপ্রত্যাশী ও কর্মরত বাংলাদেশি প্রবাসী, তাদের পরিবার, বিদেশগামী নতুন কর্মী",
       "theme": "wordpress",
       "default_word_count": 1400,
-      "drip_enabled": false
+      "drip_enabled": false,
+      "trend_geos": [
+        "BD",
+        "SA",
+        "AE",
+        "QA",
+        "MY",
+        "KW",
+        "OM",
+        "IT",
+        "GB"
+      ]
     },
     {
       "id": "walvi",
