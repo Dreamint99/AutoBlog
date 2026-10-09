@@ -186,6 +186,7 @@ add_action( 'init', function () {
 			'description' => 'আজকের বিএমইটি রিপোর্ট লাইভ — দেশভিত্তিক বহির্গমন ছাড়পত্রের হিসাব, দৈনিক রিপোর্ট ও নোটিফিকেশন।',
 			'id' => '/bmet-report/', 'start_url' => '/bmet-report/?src=pwa', 'scope' => '/', 'display' => 'standalone',
 			'background_color' => '#061f4d', 'theme_color' => '#061f4d', 'icons' => $icons,
+			'related_applications' => array( array( 'platform' => 'webapp', 'url' => home_url( '/?pa_pwa=manifest' ) ) ),
 			'shortcuts' => array( array( 'name' => 'আজকের লাইভ', 'url' => '/bmet-report/#live' ), array( 'name' => 'রিপোর্ট কার্ড', 'url' => '/bmet-report/#card' ) ),
 		), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES );
 		exit;
@@ -488,6 +489,13 @@ em.up,em.dn{font-style:normal;font-weight:700;font-size:13px;padding:1px 8px;bor
 .pt-go{margin-left:auto;flex:none;background:#fff;color:var(--ink);border-radius:10px;padding:8px 12px;font-weight:700;font-size:14px}
 .pt-d .pt-go{color:#9a3412}.pt-p .pt-go{color:#065f46}
 .af a.dl{display:inline;color:#fbbf24!important;font-weight:700}
+.pws{position:fixed;inset:auto 0 0 0;z-index:80;display:flex;justify-content:center;padding:12px;padding-bottom:calc(12px + env(safe-area-inset-bottom));background:linear-gradient(transparent,rgba(6,31,77,.35))}
+.pws.pws-block{inset:0;align-items:center;background:rgba(6,31,77,.82);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.pws-in{width:min(440px,100%);background:#fff;color:var(--ink);border-radius:22px;padding:20px;box-shadow:0 30px 60px -20px rgba(0,0,0,.5);text-align:center;animation:disin .3s ease-out}
+.pws-ic{font-size:40px;line-height:1}.pws-t{display:block;font:800 21px var(--hf);margin:6px 0}.pws p{margin:0 0 10px;font-size:14.5px;color:var(--ink2)}
+.pws ol{text-align:left;margin:6px 0 12px;padding-left:22px;font-size:14.5px;color:var(--ink2)}
+.pws-y,.pws-c,.pws-n{display:block;width:100%;border:0;border-radius:12px;padding:12px;font:700 16px var(--tf);cursor:pointer;margin-top:8px;text-decoration:none}
+.pws-y{background:var(--g);color:#fff!important}.pws-c{background:var(--nv2);color:#fff}.pws-n{background:var(--soft);color:var(--ink2);font-weight:600;font-size:14.5px}
 .pwb{position:fixed;left:12px;right:12px;bottom:calc(80px + env(safe-area-inset-bottom));z-index:70;max-width:460px;margin:0 auto;background:#fff;color:var(--ink);border-radius:18px;padding:14px 16px;box-shadow:0 20px 50px -10px rgba(8,42,99,.45);border:1px solid var(--line);display:flex;gap:12px;align-items:center}
 @media(min-width:701px){.pwb{right:auto;left:16px;bottom:16px;margin:0}}
 .pwb b{display:block;font:800 16px var(--hf)}.pwb span{font-size:13.5px;color:var(--ink2)}.pwb button{border:0;border-radius:10px;padding:9px 12px;font:700 14px var(--tf);cursor:pointer}
@@ -913,31 +921,68 @@ function bmCard(cv, o) {
 <script>
 (function(){
 	var PUB=<?php $pk = pa_push_keys(); echo wp_json_encode( $pk ? $pk['pub'] : '' ); ?>, $=function(i){return document.getElementById(i)}, LS={get:function(k){try{return localStorage.getItem(k)}catch(e){return null}},set:function(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+	var ua=navigator.userAgent||'', ios=/iphone|ipad|ipod/i.test(ua)||(/Macintosh/.test(ua)&&navigator.maxTouchPoints>1), android=/android/i.test(ua);
+	var standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
+	var app=/FBAN|FBAV|FB_IAB|FBIOS|Instagram|Messenger|Line\/|musical_ly|BytedanceWebview|TikTok|Snapchat|Twitter|WhatsApp/i.exec(ua);
+	var url=location.href.split('#')[0];
+	function sheet(html,cls){ var d=document.createElement('div'); d.className='pws '+(cls||''); d.setAttribute('role','dialog'); d.innerHTML='<div class="pws-in">'+html+'</div>'; document.body.appendChild(d); return d; }
+
+	/* 1. Opened inside Facebook / Instagram / Messenger etc.: send people to Chrome (Android) or Safari (iPhone).
+	   In-app browsers cannot install apps or get notifications, and they break downloads. */
+	if(app&&!standalone){
+		var name=/Instagram/i.test(app[0])?'Instagram':/Messenger/i.test(app[0])?'Messenger':/FB/i.test(app[0])?'Facebook':/WhatsApp/i.test(app[0])?'WhatsApp':/musical_ly|Bytedance|TikTok/i.test(app[0])?'TikTok':app[0];
+		var brw=android?'Chrome':ios?'Safari':'আপনার ব্রাউজার';
+		var intent='intent://'+location.host+location.pathname+location.search+'#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url='+encodeURIComponent(url)+';end';
+		var steps=ios?'<ol><li>ওপরে/নিচে <b>•••</b> বা <b>⋯</b> বাটনে চাপুন</li><li><b>"Open in Safari"</b> / <b>"Open in browser"</b> বাছুন</li></ol>':'<ol><li>ওপরে ডানে <b>⋮</b> বাটনে চাপুন</li><li><b>"Open in Chrome"</b> / <b>"Open in browser"</b> বাছুন</li></ol>';
+		var d=sheet('<div class="pws-ic">🌐</div><b class="pws-t">'+brw+'-এ খুলুন</b><p>আপনি পেজটি <b>'+name+'</b>-এর ভেতরের ব্রাউজারে খুলেছেন। এখানে রিপোর্ট কার্ড ডাউনলোড, অ্যাপ ইনস্টল আর নোটিফিকেশন ঠিকমতো কাজ করে না। সঠিকভাবে দেখতে <b>'+brw+'</b> দিয়ে খুলুন।</p>'
+			+(android?'<a class="pws-y" href="'+intent+'">Chrome-এ খুলুন →</a>':'')+steps
+			+'<button type="button" class="pws-c">🔗 লিংক কপি করুন</button><button type="button" class="pws-n">এখানেই দেখব</button>','pws-block');
+		d.querySelector('.pws-c').onclick=function(){ var b=this; (navigator.clipboard?navigator.clipboard.writeText(url):Promise.reject()).catch(function(){ var t=document.createElement('textarea'); t.value=url; document.body.appendChild(t); t.select(); document.execCommand('copy'); t.remove(); }).then(function(){ b.textContent='✅ কপি হয়েছে — '+brw+'-এ পেস্ট করুন'; }); };
+		d.querySelector('.pws-n').onclick=function(){ d.remove(); };
+		if(android&&!sessionStorage.getItem('pa_iab')){ try{ sessionStorage.setItem('pa_iab','1'); }catch(e){} setTimeout(function(){ location.href=intent; },1200); }
+		return; // no install / push prompts inside in-app browsers
+	}
+
 	if(!('serviceWorker' in navigator)) return;
 	var regP=navigator.serviceWorker.register('/?pa_pwa=sw',{scope:'/'}).catch(function(){return null});
-	/* install */
-	var deferred=null, standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone;
-	addEventListener('beforeinstallprompt',function(e){ e.preventDefault(); deferred=e; if(!standalone) $('pw-install').hidden=false; });
-	var ios=/iphone|ipad|ipod/i.test(navigator.userAgent);
-	if(ios&&!standalone) $('pw-install').hidden=false;
-	$('pw-install').onclick=function(){ if(deferred){ deferred.prompt(); deferred.userChoice.then(function(){ deferred=null; $('pw-install').hidden=true; }); } else if(ios) alert('আইফোনে: নিচের শেয়ার বাটন (⬆️) চাপুন → "Add to Home Screen" বাছুন। তাহলে "বিএমইটি লাইভ" অ্যাপের মতো খুলবে আর নোটিফিকেশন পাবেন।'); };
-	addEventListener('appinstalled',function(){ $('pw-install').hidden=true; });
-	/* notifications */
+	function toast(t){ var d=document.createElement('div'); d.className='pwb'; d.innerHTML='<span>'+t+'</span>'; document.body.appendChild(d); setTimeout(function(){d.remove()},4500); }
+
+	/* 2. Install the app — only for people who do not have it yet */
+	var deferred=null, installed=standalone||LS.get('pa_installed')==='1';
+	var later=+LS.get('pa_inst_later')||0, snooze=Date.now()-later<3*864e5, shown=false;
+	function installSheet(){
+		if(installed||snooze||shown) return; shown=true;
+		var d=sheet('<div class="pws-ic">📲</div><b class="pws-t">"বিএমইটি লাইভ" অ্যাপ ডাউনলোড করুন</b><p>ফোনের হোম স্ক্রিন থেকে এক চাপে আজকের বিএমইটি রিপোর্ট দেখুন, আর প্রতিদিন রাতে রিপোর্ট প্রকাশ হলেই নোটিফিকেশন পান। একদম ফ্রি, প্লে স্টোর লাগবে না।</p>'
+			+(ios?'<ol><li>নিচের <b>শেয়ার</b> বাটন (⬆️) চাপুন</li><li><b>"Add to Home Screen"</b> বাছুন → <b>Add</b></li></ol><button type="button" class="pws-n">ঠিক আছে</button>':'<button type="button" class="pws-y">⬇ এখনই ইনস্টল করুন</button><button type="button" class="pws-n">পরে</button>'));
+		var y=d.querySelector('.pws-y'); if(y) y.onclick=function(){ d.remove(); if(deferred){ deferred.prompt(); deferred.userChoice.then(function(c){ if(c&&c.outcome==='accepted'){ LS.set('pa_installed','1'); installed=true; } deferred=null; $('pw-install').hidden=true; setTimeout(notifySheet,1500); }); } };
+		d.querySelector('.pws-n').onclick=function(){ LS.set('pa_inst_later',String(Date.now())); d.remove(); setTimeout(notifySheet,1500); };
+	}
+	/* Chrome only fires this when the app is NOT installed yet — the reliable "not installed" signal */
+	addEventListener('beforeinstallprompt',function(e){ e.preventDefault(); deferred=e; installed=false; $('pw-install').hidden=false; setTimeout(installSheet,4000); });
+	addEventListener('appinstalled',function(){ LS.set('pa_installed','1'); installed=true; $('pw-install').hidden=true; document.querySelectorAll('.pws').forEach(function(x){x.remove()}); });
+	if(navigator.getInstalledRelatedApps) navigator.getInstalledRelatedApps().then(function(a){ if(a&&a.length){ installed=true; LS.set('pa_installed','1'); $('pw-install').hidden=true; } }).catch(function(){});
+	if(ios&&!standalone){ $('pw-install').hidden=false; if(/Safari/.test(ua)&&!/CriOS|FxiOS|EdgiOS/.test(ua)) setTimeout(installSheet,4000); }
+	if(standalone){ LS.set('pa_installed','1'); $('pw-install').hidden=true; }
+	$('pw-install').onclick=function(){ shown=false; snooze=false; if(deferred){ deferred.prompt(); deferred.userChoice.then(function(c){ if(c&&c.outcome==='accepted') LS.set('pa_installed','1'); deferred=null; $('pw-install').hidden=true; }); } else installSheet(); };
+
+	/* 3. Notifications */
 	var canPush=PUB&&('PushManager' in window)&&('Notification' in window);
 	function b64(s){ s=s.replace(/-/g,'+').replace(/_/g,'/'); while(s.length%4) s+='='; var r=atob(s), a=new Uint8Array(r.length); for(var i=0;i<r.length;i++) a[i]=r.charCodeAt(i); return a; }
 	function save(sub){ return fetch('/wp-json/pa/v1/push-sub',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(sub)}); }
 	function subscribe(){ return regP.then(function(reg){ if(!reg) throw 0; return navigator.serviceWorker.ready; }).then(function(reg){ return reg.pushManager.getSubscription().then(function(s){ return s||reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:b64(PUB)}); }); }).then(function(s){ return save(s.toJSON()); }); }
 	function setBtn(){ var p=Notification.permission; if(p==='granted'){ $('pw-notify').hidden=false; $('pw-notify').textContent='🔔 নোটিফিকেশন চালু আছে'; $('pw-notify').disabled=true; } else if(p==='denied'){ $('pw-notify').hidden=true; } else $('pw-notify').hidden=false; }
 	function ask(){ Notification.requestPermission().then(function(p){ if(p==='granted') subscribe().then(function(){ setBtn(); toast('✅ ঠিক আছে! প্রতিদিন রাতে রিপোর্ট প্রকাশ হলেই নোটিফিকেশন পাবেন।'); }).catch(function(){ toast('নোটিফিকেশন চালু করা যায়নি — পরে আবার চেষ্টা করুন।'); }); setBtn(); }); }
-	function toast(t){ var d=document.createElement('div'); d.className='pwb'; d.innerHTML='<span>'+t+'</span>'; document.body.appendChild(d); setTimeout(function(){d.remove()},4500); }
+	var nshown=false;
+	function notifySheet(){
+		if(!canPush||nshown||Notification.permission!=='default'||LS.get('pa_np')||document.querySelector('.pws')) return; nshown=true;
+		var d=document.createElement('div'); d.className='pwb'; d.setAttribute('role','dialog');
+		d.innerHTML='<div style="font-size:28px">🔔</div><div style="flex:1"><b>প্রতিদিনের বিএমইটি রিপোর্ট নোটিফিকেশনে পাবেন?</b><span>প্রতিদিন রাত ১২টার পর রিপোর্ট প্রকাশ হলেই জানিয়ে দেব।</span></div><button class="y">চালু করুন</button><button class="n">পরে</button>';
+		document.body.appendChild(d); d.querySelector('.y').onclick=function(){ LS.set('pa_np','1'); d.remove(); ask(); }; d.querySelector('.n').onclick=function(){ LS.set('pa_np','1'); d.remove(); };
+	}
 	if(canPush&&!(ios&&!standalone)){
 		setBtn(); $('pw-notify').onclick=ask;
 		if(Notification.permission==='granted') subscribe().catch(function(){});
-		else if(Notification.permission==='default'&&!LS.get('pa_np')) setTimeout(function(){
-			var d=document.createElement('div'); d.className='pwb'; d.setAttribute('role','dialog');
-			d.innerHTML='<div style="font-size:28px">🔔</div><div style="flex:1"><b>প্রতিদিনের বিএমইটি রিপোর্ট নোটিফিকেশনে পাবেন?</b><span>প্রতিদিন রাত ১২টার পর রিপোর্ট প্রকাশ হলেই জানিয়ে দেব।</span></div><button class="y">চালু করুন</button><button class="n">পরে</button>';
-			document.body.appendChild(d); d.querySelector('.y').onclick=function(){ LS.set('pa_np','1'); d.remove(); ask(); }; d.querySelector('.n').onclick=function(){ LS.set('pa_np','1'); d.remove(); };
-		},9000);
+		else setTimeout(notifySheet,12000); // waits if the install sheet is open
 	}
 })();
 </script>
