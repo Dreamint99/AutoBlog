@@ -113,7 +113,7 @@ function pa_fx_render() {
 	$R = $h[ $latest ] ?? array();
 	$dates = array_keys( $h );
 	$prev = $dates[1] ?? '';
-	$m1 = ''; foreach ( $dates as $k ) if ( $latest && strtotime( $k ) <= strtotime( $latest ) - 29 * DAY_IN_SECONDS ) { $m1 = $k; break; }
+	$m1 = ''; foreach ( $dates as $k ) if ( $latest && strtotime( $k ) >= strtotime( $latest ) - 30 * DAY_IN_SECONDS ) $m1 = $k; // oldest day inside the same 30-day window the chart uses
 	$codes = array_filter( pa_fx_codes() );
 	$url = home_url( '/taka-rate/' );
 	$logo = defined( 'PA_LOGO' ) ? PA_LOGO : '';
@@ -274,7 +274,8 @@ em.up,em.dn,em.z{font-style:normal;font-weight:700;font-size:13px;padding:2px 8p
 	var H, dates, L, sel=(function(){try{return localStorage.getItem('fx_cur')}catch(e){return null}})()||'sar', rev=false, amtB=1, days=30;
 	function load(j){ H=j.h; dates=Object.keys(H).sort(); L=H[j.latest]||H[dates[dates.length-1]]; }
 	load(J);
-	function ser(c,n){ var ks=dates.slice(-n); return ks.map(function(k){return [k,H[k][c]]}).filter(function(x){return x[1]}); }
+	/* last n calendar days ending on the latest date (same window everywhere on the page) */
+	function ser(c,n){ var end=Date.parse(dates[dates.length-1]), from=end-n*864e5; return dates.filter(function(k){ return Date.parse(k)>=from; }).map(function(k){return [k,H[k][c]]}).filter(function(x){return x[1]}); }
 	function trendOf(c){ var s=ser(c,30).map(function(x){return x[1]}); if(s.length<8) return {k:'s',t:'স্থির',d:0};
 		var n=Math.min(14,s.length), y=s.slice(-n), mx=(n-1)/2, my=y.reduce(function(a,b){return a+b},0)/n, num=0, den=0; y.forEach(function(v,i){ num+=(i-mx)*(v-my); den+=(i-mx)*(i-mx); });
 		var slope=num/den/my*100; /* % per day */ var ma7=s.slice(-7).reduce(function(a,b){return a+b},0)/7, ma30=s.reduce(function(a,b){return a+b},0)/s.length, gap=(ma7-ma30)/ma30*100;
@@ -312,7 +313,7 @@ em.up,em.dn,em.z{font-style:normal;font-weight:700;font-size:13px;padding:2px 8p
 		svg.onmouseleave=function(){ $('tip').hidden=true; };
 		var first=vs[0], last=vs[vs.length-1], ch=(last-first)/first*100;
 		$('st3').innerHTML='<div><span>সর্বোচ্চ</span><b class="num">'+f(mx)+' ৳</b></div><div><span>সর্বনিম্ন</span><b class="num">'+f(mn)+' ৳</b></div><div><span>'+bn(days)+' দিনে পরিবর্তন</span><b class="num" style="color:'+(ch>=0?'#166534':'#991b1b')+'">'+(ch>=0?'▲ ':'▼ ')+f(Math.abs(ch),2)+'%</b></div>';
-		var t=trendOf(c), m=ser(c,31), m0=m.length?m[0][1]:last, diffM=last-m0, tb=$('trend'); tb.className='trend '+t.k;
+		var t=trendOf(c), m=ser(c,30), m0=m.length?m[0][1]:last, diffM=last-m0, tb=$('trend'); tb.className='trend '+t.k;
 		tb.innerHTML='<b>'+(t.k==='u'?'↗️ ':t.k==='d'?'↘️ ':'➡️ ')+C[c][0]+' — '+t.t+'</b><p>গত মাসে ১ '+C[c][0]+' ছিল '+f(m0)+' টাকা, এখন '+f(last)+' টাকা — '+(Math.abs(diffM)<0.0005?'প্রায় একই আছে।':(diffM>0?'বেড়েছে '+f(diffM)+' টাকা':'কমেছে '+f(-diffM)+' টাকা')+' ('+f(Math.abs(diffM/m0*100),2)+'%)।')+' '
 			+(t.k==='u'?'গত দুই সপ্তাহে দাম ধীরে ধীরে বাড়ছে; এই ধারা চললে সামনে আরও কিছুটা বাড়ার সম্ভাবনা আছে, তবে হঠাৎ উল্টেও যেতে পারে।':t.k==='d'?'গত দুই সপ্তাহে দাম কিছুটা কমছে; ধারা চললে আরও কমতে পারে, তবে নিশ্চিত নয়।':'গত দুই সপ্তাহে বড় কোনো ওঠানামা নেই — দাম মোটামুটি স্থির।')+'</p><small>⚠️ এটি শুধু অতীতের প্রবণতা, ভবিষ্যদ্বাণী বা আর্থিক পরামর্শ নয়।</small>';
 		var v=L[c]; $('calT').textContent='🧮 '+C[c][0]+' পাঠানোর হিসাব';

@@ -7,7 +7,7 @@
    Snippets #6, #7, #8 and #11 (v2) step aside when pa_app() is on;
    their ads are redrawn here in the same design language. Writer names are not shown. */
 if ( ! defined( 'PA_APP_PUBLIC' ) ) define( 'PA_APP_PUBLIC', true );
-if ( ! defined( 'PA_APP_VERSION' ) ) define( 'PA_APP_VERSION', '3.3.0' );
+if ( ! defined( 'PA_APP_VERSION' ) ) define( 'PA_APP_VERSION', '3.3.1' );
 define( 'PA_LOGO', 'https://probashiinfo.com/wp-content/uploads/2026/10/probashiinfo-wordmark.webp' );
 define( 'PA_ICON', 'https://probashiinfo.com/wp-content/uploads/2026/10/probashiinfo-icon.png' );
 define( 'PA_PB', 'https://www.probashibondu.online' );
@@ -376,10 +376,10 @@ function pa_head() {
 </head>
 <body <?php body_class( 'pi-app' ); ?>>
 <?php wp_body_open(); ?>
-<div class="util"><div class="w"><span><span class="dot"></span><b>স্বাধীন তথ্যসেবা</b><span class="hide"> — এটি সরকারি ওয়েবসাইট নয়</span></span><span class="r"><a class="hide" href="<?php echo esc_url( PA_PB . '/?utm_source=probashiinfo&utm_medium=util' ); ?>" target="_blank" rel="noopener">প্রবাসী বন্ধু</a><a class="hot hot-live" href="<?php echo esc_url( home_url( '/bmet-report/' ) ); ?>"><span class="ldot"></span> আজকের বিএমইটি</a><a class="hot" href="<?php echo esc_url( home_url( '/#dash' ) ); ?>">💱 আজকের রেট</a></span></div></div>
+<div class="util"><div class="w"><span><span class="dot"></span><b>স্বাধীন তথ্যসেবা</b><span class="hide"> — এটি সরকারি ওয়েবসাইট নয়</span></span><span class="r"><a class="hide" href="<?php echo esc_url( PA_PB . '/?utm_source=probashiinfo&utm_medium=util' ); ?>" target="_blank" rel="noopener">প্রবাসী বন্ধু</a><a class="hot hot-live" href="<?php echo esc_url( home_url( '/bmet-report/' ) ); ?>"><span class="ldot"></span> আজকের বিএমইটি</a><a class="hot" href="<?php echo esc_url( home_url( '/taka-rate/' ) ); ?>">💱 আজকের রেট</a></span></div></div>
 <header class="hdr"><div class="w">
 	<a class="logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="প্রবাসী ইনফো — হোম"><img src="<?php echo esc_url( PA_LOGO ); ?>" alt="প্রবাসী ইনফো" width="160" height="44"></a>
-	<nav class="nav" aria-label="বিষয়"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"<?php echo is_front_page() ? ' class="on"' : ''; ?>>হোম</a><a class="nav-live" href="<?php echo esc_url( home_url( '/bmet-report/' ) ); ?>"><span class="ldot"></span>বিএমইটি লাইভ</a><a class="nav-fl" href="<?php echo esc_url( home_url( '/flight-tracker/' ) ); ?>">✈️ ফ্লাইট ট্র্যাকার</a>
+	<nav class="nav" aria-label="বিষয়"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"<?php echo is_front_page() ? ' class="on"' : ''; ?>>হোম</a><a class="nav-live" href="<?php echo esc_url( home_url( '/bmet-report/' ) ); ?>"><span class="ldot"></span>বিএমইটি লাইভ</a><a class="nav-fl" href="<?php echo esc_url( home_url( '/flight-tracker/' ) ); ?>">✈️ ফ্লাইট ট্র্যাকার</a><a class="nav-fl" href="<?php echo esc_url( home_url( '/taka-rate/' ) ); ?>">💱 টাকার রেট</a>
 	<?php $cur = is_category() ? get_queried_object_id() : 0; foreach ( pa_top_cats( 7 ) as $c ) echo '<a href="' . esc_url( get_category_link( $c ) ) . '"' . ( $cur === $c->term_id ? ' class="on"' : '' ) . '>' . esc_html( pa_cat_name( $c ) ) . '</a>'; ?></nav>
 	<form class="hsrch" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search"><input name="s" type="search" placeholder="খুঁজুন…" aria-label="খুঁজুন" value="<?php echo esc_attr( get_search_query() ); ?>"><button type="submit" aria-label="খুঁজুন">⌕</button></form>
 </div></header>
@@ -474,7 +474,7 @@ function pa_view_home() {
 	<div class="grid4" style="margin-top:14px"><?php foreach ( array_slice( $latest, 4, 8 ) as $p ) echo pa_card( $p ); ?></div></section>
 	<?php } ?>
 	<section class="sec" id="dash"><div class="sh"><h2>প্রবাসী ড্যাশবোর্ড</h2></div><div class="dash">
-		<div class="box"><div class="bh">💱 আজকের রেমিট্যান্স রেট (টাকায়)<span class="live">লাইভ</span></div><div class="rates" id="rates"></div>
+		<div class="box"><div class="bh">💱 আজকের রেমিট্যান্স রেট (টাকায়)<span class="live">লাইভ</span><a href="<?php echo esc_url( home_url( '/taka-rate/' ) ); ?>" style="margin-left:auto;font-size:13px;font-weight:700">সব রেট ও চার্ট →</a></div><div class="rates" id="rates"></div>
 			<div class="calc"><input id="amt" inputmode="decimal" value="1000" aria-label="পরিমাণ"><div class="out" id="out">…<small>বাজার রেটে আনুমানিক</small></div><button type="button" class="btn btn-wa" id="wa">WhatsApp এ শেয়ার</button></div>
 			<p class="note">বাজার রেট (open.er-api.com, দিনে একবার হালনাগাদ)। ব্যাংক/এক্সচেঞ্জ হাউসের রেট কিছুটা ভিন্ন হয়। বৈধ পথে পাঠালে সরকারি প্রণোদনা পাওয়া যায় (হার পরিবর্তন হতে পারে); হুন্ডি অবৈধ ও ঝুঁকিপূর্ণ।</p></div>
 		<div class="box"><div class="bh">🕐 প্রবাসের ঘড়ি ও নামাজের সময়<select id="city" aria-label="শহর"></select></div><div class="clocks" id="clocks"></div><div class="pray" id="pray"></div>
