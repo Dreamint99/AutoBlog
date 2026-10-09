@@ -50,7 +50,7 @@ def bn(n) -> str:
 
 
 def bn_date(d: date) -> str:
-    return f"{bn(d.day)} {BN_MONTHS[d.month - 1]} {bn(d.year)}"
+    return f"{bn(str(d.day))} {BN_MONTHS[d.month - 1]} {bn(str(d.year))}"
 
 
 def cname(c: str) -> str:
@@ -144,7 +144,7 @@ def chart_png(title: str, sub: str, big: int, rows: list[tuple[str, int]], path:
                 continue
         return ImageFont.load_default()
     d.rectangle([0, 0, W, 10], fill=(34, 197, 94))
-    d.text((56, 44), title, font=font(40), fill=(255, 255, 255))
+    d.text((56, 44), title, font=font(34), fill=(255, 255, 255))
     d.text((56, 98), sub, font=font(24, False), fill=(207, 224, 251))
     d.text((56, 150), f"{big:,}", font=font(96), fill=(255, 255, 255))
     d.text((60, 262), "workers cleared to work abroad", font=font(24, False), fill=(207, 224, 251))
@@ -152,7 +152,8 @@ def chart_png(title: str, sub: str, big: int, rows: list[tuple[str, int]], path:
     x0, y0, bw = 620, 60, 520
     for i, (c, n) in enumerate(rows[:9]):
         y = y0 + i * 56
-        d.text((x0, y), c[:24], font=font(20, False), fill=(230, 238, 252))
+        short = {"United Arab Emirates (UAE)": "UAE", "Russian Federation": "Russia", "Korea, Republic of": "South Korea", "Brunei Darussalam": "Brunei"}.get(c, c)
+        d.text((x0, y), short[:26], font=font(20, False), fill=(230, 238, 252))
         w = max(6, int(bw * n / mx))
         d.rounded_rectangle([x0, y + 26, x0 + w, y + 46], radius=8, fill=(34, 197, 94) if i == 0 else (96, 165, 250))
         d.text((x0 + w + 8, y + 22), f"{n:,}", font=font(20), fill=(255, 255, 255))
@@ -236,8 +237,8 @@ def build(kind: str):
         cur = agg(d, days)
         pl = mstart - timedelta(days=1)
         prev = agg(d, [(pl.replace(day=1) + timedelta(days=i)).isoformat() for i in range(pl.day)])
-        label, ttl_date = f"{BN_MONTHS[last.month - 1]} {bn(last.year)}", last
-        title = f"মাসিক বিএমইটি রিপোর্ট {BN_MONTHS[last.month - 1]} {bn(last.year)}: {bn(cur['t'])} জনের বিদেশে কর্মসংস্থান"
+        label, ttl_date = f"{BN_MONTHS[last.month - 1]} {bn(str(last.year))}", last
+        title = f"মাসিক বিএমইটি রিপোর্ট {BN_MONTHS[last.month - 1]} {bn(str(last.year))}: {bn(cur['t'])} জনের বিদেশে কর্মসংস্থান"
         slug = f"bmet-monthly-report-{last.strftime('%Y-%m')}"
         cmp_word = "আগের মাসের"
     if not cur["t"]:
