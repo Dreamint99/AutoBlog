@@ -384,10 +384,11 @@ def notify(kind: str = "daily"):
             sent += 1
         except WebPushException as e:
             code = getattr(e.response, "status_code", 0)
-            if code in (404, 410):
-                dead.append(key)
-            else:
-                print("push error", code, str(e)[:120])
+            body = (getattr(e.response, "text", "") or "")[:200]
+            host = sub["endpoint"].split("/")[2]
+            print("push error", code, host, body.replace("\n", " "))
+            if code == 410 or (code == 404 and kind != "test"):
+                dead.append(key)  # unsubscribed / expired (a test never deletes, so it can be retried)
         except Exception as e:
             print("push error", str(e)[:120])
     if dead:
