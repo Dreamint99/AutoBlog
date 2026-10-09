@@ -367,7 +367,7 @@ body.pi-app{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 va
 /* ---------- home hero v3: animated route map from Dhaka ---------- */
 .hero3{position:relative;overflow:hidden;color:#fff;background:linear-gradient(135deg,#061a3d 0%,#082a63 45%,#0a3f96 100%)}
 .hero3:after{content:"";position:absolute;left:0;right:0;bottom:0;height:60px;background:linear-gradient(180deg,transparent,rgba(6,26,61,.35))}
-.hero3 .w{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.25fr);gap:10px;align-items:center;min-height:440px;padding-top:18px;padding-bottom:18px}
+.hero3 .w{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:10px;align-items:center;min-height:430px;padding-top:18px;padding-bottom:18px}
 .h3k{display:inline-flex;align-items:center;gap:8px;background:rgba(34,197,94,.14);border:1px solid rgba(34,197,94,.4);color:#bbf7d0;border-radius:999px;padding:5px 12px;font-size:13px;font-weight:700}
 .hero3 h1{color:#fff;font-size:clamp(36px,5.2vw,62px);font-weight:800;line-height:1.08;margin:14px 0 10px;letter-spacing:-.5px}
 .hero3 h1 span{background:linear-gradient(90deg,#4ade80,#38bdf8);-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -377,12 +377,12 @@ body.pi-app{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 va
 .hb:hover{transform:translateY(-2px);background:rgba(255,255,255,.15)}.hb i{font-style:normal;font-size:22px}.hb span{display:flex;flex-direction:column;line-height:1.15}
 .hb b{font:800 19px var(--head)}.hb small{font-size:12px;color:#bcd3fb}
 .hb-r{background:linear-gradient(135deg,#e11d48,#be123c);border-color:transparent}.hb-r small{color:#ffe4e6}
-.h3m{position:relative;width:100%;aspect-ratio:800/460}
+.h3m{position:relative;width:100%;aspect-ratio:540/380}
 .h3m svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .h3arc{animation:h3dash 1.6s linear infinite}@keyframes h3dash{to{stroke-dashoffset:-20}}
 .h3ring{transform-box:fill-box;transform-origin:center;animation:h3ring 2.4s ease-out infinite;stroke-width:1.5}.h3ring.big{stroke-width:2}
 @keyframes h3ring{0%{transform:scale(1);opacity:.9}100%{transform:scale(3.4);opacity:0}}
-.h3t{fill:#dbe7ff;font:600 13px var(--head);paint-order:stroke;stroke:#061a3d;stroke-width:3px}.h3t.dh{fill:#fff;font-size:17px;font-weight:800}
+.h3t{fill:#dbe7ff;font:600 11px var(--head);paint-order:stroke;stroke:#061a3d;stroke-width:3px}.h3t.dh{fill:#fff;font-size:15px;font-weight:800}
 .h3pl path{filter:drop-shadow(0 0 3px rgba(56,189,248,.9))}
 .h3c{position:absolute;transform:translate(-50%,-150%);display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.95);color:var(--nv)!important;border-radius:999px;padding:3px 9px 3px 5px;font:800 13px var(--head);text-decoration:none;box-shadow:0 8px 20px -8px rgba(0,0,0,.6);animation:h3fl 4s ease-in-out infinite}
 .h3c img{width:18px;height:13px;border-radius:2px;object-fit:cover}
@@ -591,13 +591,13 @@ function pa_view_home() {
 		</div>
 	</div>
 	<div class="h3m" aria-hidden="true">
-		<svg viewBox="0 0 800 460" preserveAspectRatio="xMidYMid meet">
+		<svg viewBox="190 40 540 380" preserveAspectRatio="xMidYMid meet">
 			<defs>
 				<radialGradient id="h3g" cx="74%" cy="46%" r="60%"><stop offset="0" stop-color="#38bdf8" stop-opacity=".22"/><stop offset="1" stop-color="#38bdf8" stop-opacity="0"/></radialGradient>
 				<linearGradient id="h3a" x1="1" x2="0"><stop offset="0" stop-color="#22c55e"/><stop offset="1" stop-color="#38bdf8"/></linearGradient>
 				<pattern id="h3d" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="rgba(255,255,255,.16)"/></pattern>
 			</defs>
-			<rect width="800" height="460" fill="url(#h3d)"/><rect width="800" height="460" fill="url(#h3g)"/>
+			<rect x="190" y="40" width="540" height="380" fill="url(#h3d)"/><rect x="190" y="40" width="540" height="380" fill="url(#h3g)"/>
 			<?php foreach ( $cities as $i => $c ) {
 				$mx = ( $dx + $c[1] ) / 2; $my = min( $dy, $c[2] ) - 70 - abs( $dx - $c[1] ) * .12;
 				$d = "M$dx,$dy Q$mx,$my {$c[1]},{$c[2]}";
@@ -611,7 +611,7 @@ function pa_view_home() {
 			<circle cx="<?php echo $dx; ?>" cy="<?php echo $dy; ?>" r="9" fill="#22c55e"/><circle cx="<?php echo $dx; ?>" cy="<?php echo $dy; ?>" r="9" fill="none" stroke="#22c55e" class="h3ring big"/>
 			<text x="<?php echo $dx + 14; ?>" y="<?php echo $dy + 5; ?>" class="h3t dh">ঢাকা</text>
 		</svg>
-		<?php foreach ( $cities as $c ) { if ( empty( $chips[ $c[3] ] ) || ! isset( $fr[ $c[3] ] ) ) continue; echo '<a class="h3c" href="' . esc_url( home_url( '/taka-rate/' ) ) . '" style="left:' . round( $c[1] / 8, 2 ) . '%;top:' . round( $c[2] / 4.6, 2 ) . '%" tabindex="-1"><img src="https://flagcdn.com/w40/' . $c[4] . '.png" alt="" width="18" height="13" loading="lazy">৳' . $r2( $c[3] ) . '</a>'; } ?>
+		<?php foreach ( $cities as $c ) { if ( empty( $chips[ $c[3] ] ) || ! isset( $fr[ $c[3] ] ) ) continue; echo '<a class="h3c" href="' . esc_url( home_url( '/taka-rate/' ) ) . '" style="left:' . round( ( $c[1] - 190 ) / 5.4, 2 ) . '%;top:' . round( ( $c[2] - 40 ) / 3.8, 2 ) . '%" tabindex="-1"><img src="https://flagcdn.com/w40/' . $c[4] . '.png" alt="" width="18" height="13" loading="lazy">৳' . $r2( $c[3] ) . '</a>'; } ?>
 	</div>
 </div></section>
 <div class="w">
