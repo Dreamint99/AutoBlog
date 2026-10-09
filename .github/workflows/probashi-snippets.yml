@@ -1,0 +1,42 @@
+name: probashiinfo snippets (find & replace)
+
+# Edits probashiinfo.com Code Snippets in place through the plugin REST API,
+# e.g. move promo links to a new domain. Dry run unless "apply" is ticked.
+on:
+  workflow_dispatch:
+    inputs:
+      find:
+        description: "Text to find"
+        default: "https://probashi-bondhu.vercel.app"
+      replace:
+        description: "Replace with"
+        default: "https://www.probashibondu.online"
+      apply:
+        description: "Apply the change (otherwise dry run)"
+        type: boolean
+        default: false
+
+jobs:
+  snippets:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: generator
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - name: List + replace
+        env:
+          PROBASHIINFO_WP_URL: ${{ secrets.PROBASHIINFO_WP_URL }}
+          PROBASHIINFO_WP_USER: ${{ secrets.PROBASHIINFO_WP_USER }}
+          PROBASHIINFO_WP_APP_PASSWORD: ${{ secrets.PROBASHIINFO_WP_APP_PASSWORD }}
+        run: |
+          python wp_snippets.py list
+          if [ "${{ github.event.inputs.apply }}" = "true" ]; then
+            python wp_snippets.py replace "${{ github.event.inputs.find }}" "${{ github.event.inputs.replace }}" --apply
+          else
+            python wp_snippets.py replace "${{ github.event.inputs.find }}" "${{ github.event.inputs.replace }}"
+          fi
