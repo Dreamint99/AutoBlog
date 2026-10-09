@@ -69,6 +69,13 @@ def verdict(c, seen: collections.Counter) -> str:
     seen[key] += 1
     if re.search(r"https?://|www\.", t) or SPAM_WORDS.search(t) or SPAM_WORDS.search(name) or OTHER_SCRIPT.search(t):
         return "spam"
+    if re.search(r"\[url=|\[link|\.(icu|shop|online|site|store|click|live|xyz|top|info|biz)|for sale|link ?building|backlinks?", t, re.I):
+        return "spam"
+    if "_" in name or re.search(r"[a-z]{4,}[A-Z]|\d", name):
+        return "spam"  # bot-style names: plinko_fret, monopoly_znkn, user123
+    half = len(t) // 2
+    if len(t) > 16 and re.sub(r"\W", "", t[:half]).lower() == re.sub(r"\W", "", t[half:]).lower():
+        return "spam"  # "phrase  phrase" keyword stuffing
     if seen[key] > 2 and len(t) > 12:  # the same long text pasted many times
         return "spam"
     if BN.search(t):
