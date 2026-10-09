@@ -42,7 +42,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install requests pillow
+      - run: pip install requests pillow pywebpush
       - name: Collect
         run: python bmet_report.py collect --backfill "${{ github.event.inputs.backfill || '3' }}"
       - name: Save history
@@ -58,6 +58,8 @@ jobs:
           P="${{ github.event.inputs.post || 'daily' }}"
           [ "$P" = "none" ] && exit 0
           python bmet_report.py post $P
+          # midnight run (18:xx UTC): tell subscribers the new report is out
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "$(date -u +%H)" -ge 18 ]; then python bmet_report.py notify daily || true; fi
           if [ "${{ github.event_name }}" = "schedule" ]; then
             [ "$(TZ=Asia/Dhaka date +%u)" = "6" ] && python bmet_report.py post weekly || true
             [ "$(TZ=Asia/Dhaka date +%d)" = "01" ] && python bmet_report.py post monthly || true

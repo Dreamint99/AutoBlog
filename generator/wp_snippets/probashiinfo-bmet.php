@@ -5,7 +5,7 @@
    - History: daily country-clearance totals from the Government's Overseas Employment Platform (OEP,
      oep.gov.bd), collected by AutoBlog generator/bmet_report.py (00:20 and 09:15 BST) and POSTed to
      /wp-json/pa/v1/bmet (admins only), stored in the option pa_bmet.
-   - Live: today's running count, fetched from OEP by /wp-json/pa/v1/bmet-live at most once per 3 minutes.
+   - Live: today's running count, fetched from OEP by /wp-json/pa/v1/bmet-live at most once per 10 minutes.
    Numbers are shown exactly as OEP returns them; nothing is estimated.
    The card renderer between the @CARD markers is copied from AutoBlog generator/bmet_card.js
    (python generator/sync_bmet_card.py). */
@@ -44,7 +44,7 @@ function pa_bmet_oep( $day, $gender = '' ) {
 	return ( ! empty( $j['success'] ) && isset( $j['payload'] ) ) ? $j['payload'] : null;
 }
 
-/* Today's running count (Asia/Dhaka), cached 3 minutes; on an OEP error the last good value is kept. */
+/* Today's running count (Asia/Dhaka), cached 10 minutes; on an OEP error the last good value is kept. */
 function pa_bmet_live() {
 	$day = wp_date( 'Y-m-d', null, new DateTimeZone( 'Asia/Dhaka' ) );
 	$key = 'pa_bmet_live_' . $day;
@@ -62,9 +62,153 @@ function pa_bmet_live() {
 		$old = get_option( 'pa_bmet_live_last' );
 		$c   = ( is_array( $old ) && $old['date'] === $day ) ? array_merge( $old, array( 'ok' => false ) ) : array( 'date' => $day, 't' => 0, 'f' => 0, 'c' => array(), 'at' => time(), 'ok' => false );
 	}
-	set_transient( $key, $c, $all ? 180 : 60 );
+	set_transient( $key, $c, $all ? 600 : 120 ); // OEP is asked at most once per 10 minutes
 	return $c;
 }
+
+/* Any date range, straight from OEP (what a visitor would get by filtering on oep.gov.bd).
+   Past ranges are cached a day, ranges that include today 10 minutes; at most 40 fresh OEP
+   lookups per 10 minutes site-wide. */
+function pa_bmet_range( $from, $to ) {
+	$tz = new DateTimeZone( 'Asia/Dhaka' );
+	$today = wp_date( 'Y-m-d', null, $tz );
+	if ( ! preg_match( '/^\d{4}-\d{2}-\d{2}$/', $from ) || ! preg_match( '/^\d{4}-\d{2}-\d{2}$/', $to ) || $from > $to || $to > $today || $from < '2018-01-01' ) return new WP_Error( 'bad', 'তারিখ ঠিক নেই', array( 'status' => 400 ) );
+	if ( ( strtotime( $to ) - strtotime( $from ) ) / DAY_IN_SECONDS > 400 ) return new WP_Error( 'bad', 'সর্বোচ্চ ৪০০ দিনের হিসাব একবারে দেখা যায়', array( 'status' => 400 ) );
+	$key = 'pa_bmet_q_' . md5( $from . $to );
+	$c = get_transient( $key );
+	if ( false !== $c ) return $c;
+	$n = (int) get_transient( 'pa_bmet_q_rate' );
+	if ( $n >= 40 ) return new WP_Error( 'busy', 'অনেকে একসাথে দেখছেন — একটু পরে আবার চেষ্টা করুন', array( 'status' => 429 ) );
+	set_transient( 'pa_bmet_q_rate', $n + 1, 600 );
+	$all = pa_bmet_oep_range( $from, $to );
+	if ( ! $all ) return new WP_Error( 'oep', 'সরকারি সার্ভারে এখন সংযোগ পাওয়া যাচ্ছে না', array( 'status' => 502 ) );
+	$fem = pa_bmet_oep_range( $from, $to, 2 );
+	$cs = array();
+	foreach ( (array) $all['data'] as $row ) if ( (int) $row['total_employee'] > 0 ) $cs[ $row['country_name'] ] = (int) $row['total_employee'];
+	arsort( $cs );
+	$c = array( 'from' => $from, 'to' => $to, 't' => (int) $all['totalEmployee'], 'f' => $fem ? (int) $fem['totalEmployee'] : null, 'c' => $cs, 'at' => time() );
+	set_transient( $key, $c, $to >= $today ? 600 : DAY_IN_SECONDS );
+	return $c;
+}
+function pa_bmet_oep_range( $from, $to, $gender = '' ) {
+	$u = add_query_arg( array( 'draw' => 1, 'start' => 0, 'length' => 400, 'approval_date_from' => $from, 'approval_date_to' => $to ), 'https://www.oep.gov.bd/reports/country-clearance' );
+	if ( $gender ) $u = add_query_arg( 'gender_id', $gender, $u );
+	$r = wp_remote_get( $u, array( 'timeout' => 25, 'headers' => array( 'X-Requested-With' => 'XMLHttpRequest', 'Accept' => 'application/json', 'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36' ) ) );
+	if ( is_wp_error( $r ) || 200 !== wp_remote_retrieve_response_code( $r ) ) return null;
+	$j = json_decode( wp_remote_retrieve_body( $r ), true );
+	return ( ! empty( $j['success'] ) && isset( $j['payload'] ) ) ? $j['payload'] : null;
+}
+
+/* ---------- Web Push (VAPID keys live only in this site's database) ---------- */
+function pa_push_keys() {
+	$k = get_option( 'pa_push_vapid' );
+	if ( ! empty( $k['pem'] ) && ! empty( $k['pub'] ) ) return $k;
+	if ( ! function_exists( 'openssl_pkey_new' ) ) return null;
+	$res = openssl_pkey_new( array( 'curve_name' => 'prime256v1', 'private_key_type' => OPENSSL_KEYTYPE_EC ) );
+	if ( ! $res ) return null;
+	openssl_pkey_export( $res, $pem );
+	$d = openssl_pkey_get_details( $res );
+	$raw = "\x04" . str_pad( $d['ec']['x'], 32, "\0", STR_PAD_LEFT ) . str_pad( $d['ec']['y'], 32, "\0", STR_PAD_LEFT );
+	$k = array( 'pem' => $pem, 'pub' => rtrim( strtr( base64_encode( $raw ), '+/', '-_' ), '=' ) );
+	update_option( 'pa_push_vapid', $k, false );
+	return $k;
+}
+function pa_push_ok_endpoint( $e ) {
+	$h = wp_parse_url( $e, PHP_URL_HOST );
+	return is_string( $e ) && strlen( $e ) < 1000 && 0 === strpos( $e, 'https://' ) && $h && preg_match( '/(^|\.)(fcm\.googleapis\.com|push\.services\.mozilla\.com|notify\.windows\.com|push\.apple\.com|googleapis\.com)$/', $h );
+}
+add_action( 'rest_api_init', function () {
+	register_rest_route( 'pa/v1', '/bmet-query', array(
+		'methods'             => 'GET',
+		'permission_callback' => '__return_true',
+		'callback'            => function ( WP_REST_Request $r ) {
+			do_action( 'litespeed_control_set_nocache', 'bmet query' );
+			$c = pa_bmet_range( (string) $r->get_param( 'from' ), (string) $r->get_param( 'to' ) );
+			if ( is_wp_error( $c ) ) return $c;
+			$res = new WP_REST_Response( $c );
+			$res->header( 'Cache-Control', 'no-store' );
+			return $res;
+		},
+	) );
+	register_rest_route( 'pa/v1', '/push-sub', array(
+		'methods'             => 'POST',
+		'permission_callback' => '__return_true',
+		'callback'            => function ( WP_REST_Request $r ) {
+			$j = $r->get_json_params();
+			$e = isset( $j['endpoint'] ) ? (string) $j['endpoint'] : '';
+			if ( ! pa_push_ok_endpoint( $e ) ) return new WP_Error( 'bad', 'bad endpoint', array( 'status' => 400 ) );
+			$subs = get_option( 'pa_push_subs', array() );
+			$h = md5( $e );
+			if ( ! empty( $j['remove'] ) ) { unset( $subs[ $h ] ); update_option( 'pa_push_subs', $subs, false ); return array( 'ok' => true ); }
+			$p = isset( $j['keys']['p256dh'] ) ? preg_replace( '/[^A-Za-z0-9_\-=]/', '', $j['keys']['p256dh'] ) : '';
+			$a = isset( $j['keys']['auth'] ) ? preg_replace( '/[^A-Za-z0-9_\-=]/', '', $j['keys']['auth'] ) : '';
+			if ( strlen( $p ) < 40 || strlen( $p ) > 120 || strlen( $a ) < 10 || strlen( $a ) > 40 ) return new WP_Error( 'bad', 'bad keys', array( 'status' => 400 ) );
+			if ( count( $subs ) >= 50000 && ! isset( $subs[ $h ] ) ) return new WP_Error( 'full', 'full', array( 'status' => 503 ) );
+			$subs[ $h ] = array( 'endpoint' => $e, 'keys' => array( 'p256dh' => $p, 'auth' => $a ), 't' => time() );
+			update_option( 'pa_push_subs', $subs, false );
+			return array( 'ok' => true, 'n' => count( $subs ) );
+		},
+	) );
+	/* For the AutoBlog job that sends the nightly notification (WordPress admin login required). */
+	register_rest_route( 'pa/v1', '/push-admin', array(
+		'methods'             => array( 'GET', 'POST' ),
+		'permission_callback' => function () { return current_user_can( 'manage_options' ); },
+		'callback'            => function ( WP_REST_Request $r ) {
+			$subs = get_option( 'pa_push_subs', array() );
+			if ( 'POST' === $r->get_method() ) {
+				$j = $r->get_json_params();
+				foreach ( (array) ( $j['remove'] ?? array() ) as $h ) unset( $subs[ $h ] );
+				update_option( 'pa_push_subs', $subs, false );
+				return array( 'ok' => true, 'n' => count( $subs ) );
+			}
+			$k = pa_push_keys();
+			return array( 'pem' => $k ? $k['pem'] : '', 'pub' => $k ? $k['pub'] : '', 'subs' => $subs );
+		},
+	) );
+} );
+
+/* ---------- PWA: manifest + service worker served from the site root ---------- */
+add_action( 'init', function () {
+	if ( empty( $_GET['pa_pwa'] ) ) return;
+	$w = $_GET['pa_pwa'];
+	if ( ! defined( 'DONOTCACHEPAGE' ) ) define( 'DONOTCACHEPAGE', true );
+	do_action( 'litespeed_control_set_nocache', 'pwa' );
+	if ( 'manifest' === $w ) {
+		$i192 = get_site_icon_url( 192 ); $i512 = get_site_icon_url( 512 );
+		$icons = array();
+		if ( $i192 ) $icons[] = array( 'src' => $i192, 'sizes' => '192x192', 'type' => 'image/png', 'purpose' => 'any' );
+		if ( $i512 ) { $icons[] = array( 'src' => $i512, 'sizes' => '512x512', 'type' => 'image/png', 'purpose' => 'any' ); $icons[] = array( 'src' => $i512, 'sizes' => '512x512', 'type' => 'image/png', 'purpose' => 'maskable' ); }
+		header( 'Content-Type: application/manifest+json; charset=utf-8' );
+		header( 'Cache-Control: public, max-age=3600' );
+		echo wp_json_encode( array(
+			'name' => 'বিএমইটি লাইভ — প্রবাসী ইনফো', 'short_name' => 'বিএমইটি লাইভ', 'lang' => 'bn', 'dir' => 'ltr',
+			'description' => 'আজকের বিএমইটি রিপোর্ট লাইভ — দেশভিত্তিক বহির্গমন ছাড়পত্রের হিসাব, দৈনিক রিপোর্ট ও নোটিফিকেশন।',
+			'id' => '/bmet-report/', 'start_url' => '/bmet-report/?src=pwa', 'scope' => '/', 'display' => 'standalone',
+			'background_color' => '#061f4d', 'theme_color' => '#061f4d', 'icons' => $icons,
+			'shortcuts' => array( array( 'name' => 'আজকের লাইভ', 'url' => '/bmet-report/#live' ), array( 'name' => 'রিপোর্ট কার্ড', 'url' => '/bmet-report/#card' ) ),
+		), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES );
+		exit;
+	}
+	if ( 'sw' === $w ) {
+		header( 'Content-Type: application/javascript; charset=utf-8' );
+		header( 'Cache-Control: no-cache' );
+		header( 'Service-Worker-Allowed: /' );
+		$icon = get_site_icon_url( 192 ); ?>
+/* প্রবাসী ইনফো — বিএমইটি লাইভ service worker: push notifications + offline copy of the BMET page only. */
+var C='pa-bmet-v1', ICON=<?php echo wp_json_encode( $icon ?: '' ); ?>;
+self.addEventListener('install',function(e){self.skipWaiting();});
+self.addEventListener('activate',function(e){e.waitUntil(caches.keys().then(function(ks){return Promise.all(ks.filter(function(k){return k!==C&&k.indexOf('pa-bmet')===0}).map(function(k){return caches.delete(k)}))}).then(function(){return self.clients.claim()}));});
+self.addEventListener('fetch',function(e){var r=e.request,u=new URL(r.url);
+	if(r.method!=='GET'||u.origin!==location.origin||u.pathname.indexOf('/bmet-report')!==0||r.mode!=='navigate') return;
+	e.respondWith(fetch(r).then(function(res){var cp=res.clone();caches.open(C).then(function(c){c.put('/bmet-report/',cp)});return res;}).catch(function(){return caches.match('/bmet-report/')}));});
+self.addEventListener('push',function(e){var d={};try{d=e.data?e.data.json():{}}catch(x){d={body:e.data?e.data.text():''}}
+	e.waitUntil(self.registration.showNotification(d.title||'আজকের বিএমইটি রিপোর্ট',{body:d.body||'',icon:d.icon||ICON,badge:ICON,image:d.image||undefined,tag:d.tag||'bmet-daily',renotify:true,lang:'bn',data:{url:d.url||'/bmet-report/'}}));});
+self.addEventListener('notificationclick',function(e){e.notification.close();var u=(e.notification.data&&e.notification.data.url)||'/bmet-report/';
+	e.waitUntil(clients.matchAll({type:'window',includeUncontrolled:true}).then(function(cs){for(var i=0;i<cs.length;i++){if(cs[i].url.indexOf(u)>=0&&'focus' in cs[i]) return cs[i].focus();} return clients.openWindow(u);}));});
+<?php
+		exit;
+	}
+}, 1 );
 
 /* ---------- helpers ---------- */
 function pb_bn( $s ) { return strtr( (string) $s, array( '0' => '০', '1' => '১', '2' => '২', '3' => '৩', '4' => '৪', '5' => '৫', '6' => '৬', '7' => '৭', '8' => '৮', '9' => '৯' ) ); }
@@ -184,11 +328,12 @@ function pb_render() {
 	$reports = $cat ? get_posts( array( 'category' => $cat->term_id, 'numberposts' => 9 ) ) : array();
 	$lc = $live['c']; arsort( $lc );
 	$faq = array(
-		array( 'আজকের বিএমইটি রিপোর্ট কোথায় দেখব?', 'এই পাতার ওপরে আজকের সংখ্যা লাইভ দেখানো হয় — সরকারি ওভারসিজ এমপ্লয়মেন্ট প্ল্যাটফর্ম (OEP) থেকে প্রতি ৩ মিনিটে নিজে থেকে হালনাগাদ হয়। দিনের শেষে, রাত ১২টার পর, পূর্ণ দিনের রিপোর্ট আলাদা লেখা হিসেবেও প্রকাশ হয়।' ),
+		array( 'আজকের বিএমইটি রিপোর্ট কোথায় দেখব?', 'এই পাতার ওপরে আজকের সংখ্যা লাইভ দেখানো হয় — সরকারি ওভারসিজ এমপ্লয়মেন্ট প্ল্যাটফর্ম (OEP) থেকে প্রতি ১০ মিনিটে নিজে থেকে হালনাগাদ হয়। দিনের শেষে, রাত ১২টার পর, পূর্ণ দিনের রিপোর্ট আলাদা লেখা হিসেবেও প্রকাশ হয়।' ),
 		array( 'বিএমইটি বহির্গমন ছাড়পত্র বা স্মার্ট কার্ড কী?', 'কাজের জন্য বিদেশে যাওয়ার আগে জনশক্তি, কর্মসংস্থান ও প্রশিক্ষণ ব্যুরো (বিএমইটি) থেকে যে বহির্গমন ছাড়পত্র নিতে হয়, সেটিই স্মার্ট কার্ড আকারে দেওয়া হয়। এই রিপোর্টের সংখ্যা হলো নির্দিষ্ট দিনে কতজন কর্মী এই ছাড়পত্র পেয়েছেন।' ),
 		array( 'এই সংখ্যা কি সেদিন বিদেশে চলে যাওয়া কর্মীর সংখ্যা?', 'না। এটি সেদিন বহির্গমন ছাড়পত্র পাওয়া কর্মীর সংখ্যা। ছাড়পত্র পাওয়ার পর কর্মী সাধারণত পরের কোনো দিন ফ্লাইটে যান, তাই এটিকে সেদিনের ফ্লাইটের যাত্রীসংখ্যা ভাববেন না।' ),
-		array( 'তথ্য কখন হালনাগাদ হয়?', 'আজকের সংখ্যা দিনের মধ্যে প্রতি ৩ মিনিটে হালনাগাদ হয় এবং দিনের শেষ পর্যন্ত বাড়তে থাকে। রাত ১২টার পর আগের দিনের পূর্ণ হিসাব যুক্ত হয়, আর সকালে আবার মিলিয়ে দেখা হয় — দেরিতে আসা সরকারি এন্ট্রি থাকলে সংখ্যা সামান্য বদলাতে পারে।' ),
+		array( 'তথ্য কখন হালনাগাদ হয়?', 'আজকের সংখ্যা দিনের মধ্যে প্রতি ১০ মিনিটে হালনাগাদ হয় এবং দিনের শেষ পর্যন্ত বাড়তে থাকে। রাত ১২টার পর আগের দিনের পূর্ণ হিসাব যুক্ত হয়, আর সকালে আবার মিলিয়ে দেখা হয় — দেরিতে আসা সরকারি এন্ট্রি থাকলে সংখ্যা সামান্য বদলাতে পারে।' ),
 		array( 'নিজের স্মার্ট কার্ড বা ছাড়পত্র কীভাবে যাচাই করব?', 'ব্যক্তিগত ছাড়পত্র যাচাই করতে হয় সরকারি OEP/বিএমইটি পোর্টাল বা বিএমইটি অফিসে। প্রবাসী ইনফো কারও ব্যক্তিগত তথ্য দেখায় না বা সংগ্রহ করে না; এখানে শুধু দেশভিত্তিক মোট সংখ্যা দেখানো হয়।' ),
+		array( 'অ্যাপ হিসেবে ইনস্টল করে নোটিফিকেশন পাওয়া যাবে?', 'হ্যাঁ। "অ্যাপ ইনস্টল করুন" চাপলে ফোনের হোম স্ক্রিনে "বিএমইটি লাইভ" অ্যাপ যুক্ত হবে, আর "নোটিফিকেশন চালু করুন" চাপলে প্রতিদিন রাতে রিপোর্ট প্রকাশ হলেই নোটিফিকেশন পাবেন। আইফোনে আগে শেয়ার → Add to Home Screen করে অ্যাপটি খুলতে হয়।' ),
 		array( 'রিপোর্ট কার্ড ডাউনলোড করে শেয়ার করা যাবে?', 'হ্যাঁ। "রিপোর্ট কার্ড" অংশ থেকে দৈনিক, সাপ্তাহিক, মাসিক বা যেকোনো তারিখের কার্ড JPEG হিসেবে নামিয়ে ফেসবুক, হোয়াটসঅ্যাপ বা ইনস্টাগ্রামে দিতে পারবেন। কার্ডে তারিখ, তৈরির সময় ও তথ্যসূত্র লেখা থাকে।' ),
 	);
 	$ld = array(
@@ -210,6 +355,9 @@ function pb_render() {
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#061f4d">
+<link rel="manifest" href="<?php echo esc_url( home_url( '/?pa_pwa=manifest' ) ); ?>">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="বিএমইটি লাইভ"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<?php $ico = get_site_icon_url( 180 ); if ( $ico ) echo '<link rel="apple-touch-icon" href="' . esc_url( $ico ) . '">'; ?>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap">
 <?php wp_head(); ?>
@@ -303,7 +451,7 @@ em.up,em.dn{font-style:normal;font-weight:700;font-size:13px;padding:1px 8px;bor
 .src{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-left:5px solid var(--g);border-radius:16px;padding:16px;margin:34px 0 0}
 .src p{margin:0;font-size:14.5px;color:var(--ink2)}
 .af{background:var(--nv);color:#bcd3fb;margin-top:44px;padding:30px 0 18px;font-size:14.5px}
-.af .g{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:22px}.af h4{color:#fff;font:700 16px var(--hf);margin:0 0 8px}
+.af .g{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:22px}.af h4{color:#fff;font:700 16px var(--hf);margin:0 0 8px}
 .af a{color:#d6e4fb!important;text-decoration:none;display:block;margin:4px 0}.af a:hover{color:#fff!important}
 .af .base{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;border-top:1px solid rgba(255,255,255,.1);margin-top:20px;padding-top:14px;font-size:13px}
 .af img{height:38px;width:auto;background:#fff;border-radius:8px;padding:4px 8px}
@@ -312,6 +460,23 @@ em.up,em.dn{font-style:normal;font-weight:700;font-size:13px;padding:1px 8px;bor
 .tabs a.hot{color:var(--red)!important}
 @media(max-width:900px){.hero .w{grid-template-columns:minmax(0,1fr)}.ks{grid-template-columns:repeat(2,minmax(0,1fr))}.two,.gw,.rp,.af .g{grid-template-columns:minmax(0,1fr)}.kp{grid-template-columns:repeat(2,minmax(0,1fr))}.gw canvas{max-width:420px}}
 @media(max-width:700px){body.bm-app{padding-bottom:70px}.ah .home,.ah nav{display:none}.ah .w{justify-content:space-between}.tabs{display:grid}.hb2 .r{grid-template-columns:22px minmax(0,100px) 1fr 54px;font-size:14px}.mo .r{grid-template-columns:96px 1fr 72px}.lrow{grid-template-columns:22px minmax(0,1fr) 60px 46px}.ybox a{margin-left:0}.tbl{font-size:14px}.tbl th,.tbl td{padding:8px 6px}}
+.rg{display:inline-flex;flex-wrap:wrap;gap:6px;align-items:center;background:var(--soft);border-radius:12px;padding:4px 6px}.rg label{font-size:13.5px;color:var(--ink2);display:inline-flex;gap:4px;align-items:center}
+.rg button{background:var(--g)!important;border-color:var(--g)!important;color:#fff!important}
+.vfo{margin:-6px 0 12px;font-size:13px;color:var(--mut)}
+.vf{font-size:14px;border-radius:12px;padding:8px 12px;margin:0 0 12px;background:var(--soft);color:var(--ink2)}.vf.ok{background:#dcfce7;color:#166534}.vf.warn{background:#fef9c3;color:#854d0e}.vf.err{background:#fee2e2;color:#991b1b}
+.ptn{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:40px}
+.pt{display:flex;gap:14px;align-items:center;border-radius:20px;padding:18px;text-decoration:none;color:#fff!important;box-shadow:0 20px 40px -24px rgba(8,42,99,.6);transition:transform .2s}
+.pt:hover{transform:translateY(-2px)}.pt-d{background:linear-gradient(120deg,#7c2d12,#ea580c 55%,#f59e0b)}.pt-p{background:linear-gradient(120deg,#064e3b,#0b5d45 55%,#16a34a)}
+.pt-i{font-size:34px;flex:none;width:58px;height:58px;display:grid;place-items:center;background:rgba(255,255,255,.16);border-radius:16px}
+.pt small{display:block;font-size:12.5px;opacity:.85}.pt b{display:block;font:800 22px var(--hf)}.pt em{display:block;font-style:normal;font-size:14px;opacity:.92}
+.pt-go{margin-left:auto;flex:none;background:#fff;color:var(--ink);border-radius:10px;padding:8px 12px;font-weight:700;font-size:14px}
+.pt-d .pt-go{color:#9a3412}.pt-p .pt-go{color:#065f46}
+.af a.dl{display:inline;color:#fbbf24!important;font-weight:700}
+.pwb{position:fixed;left:12px;right:12px;bottom:calc(80px + env(safe-area-inset-bottom));z-index:70;max-width:460px;margin:0 auto;background:#fff;color:var(--ink);border-radius:18px;padding:14px 16px;box-shadow:0 20px 50px -10px rgba(8,42,99,.45);border:1px solid var(--line);display:flex;gap:12px;align-items:center}
+.pwb b{display:block;font:800 16px var(--hf)}.pwb span{font-size:13.5px;color:var(--ink2)}.pwb button{border:0;border-radius:10px;padding:9px 12px;font:700 14px var(--tf);cursor:pointer}
+.pwb .y{background:var(--g);color:#fff}.pwb .n{background:var(--soft);color:var(--ink2)}
+@media(max-width:900px){.ptn{grid-template-columns:minmax(0,1fr)}.af .g{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:560px){.pt{flex-wrap:wrap}.pt-go{margin-left:72px}}
 /* the bangla-web-fonts plugin forces SolaimanLipi with !important; win it back on this page */
 html body.bm-app,html body.bm-app *{font-family:var(--tf)!important}
 html body.bm-app h1,html body.bm-app h2,html body.bm-app h3,html body.bm-app h4,html body.bm-app .big,html body.bm-app .big *,html body.bm-app b,html body.bm-app summary,html body.bm-app td.n,html body.bm-app .lg b *{font-family:var(--hf)!important}
@@ -337,12 +502,12 @@ html body.bm-app h1,html body.bm-app h2,html body.bm-app h3,html body.bm-app h4,
 			<span class="lbl">আজ এখন পর্যন্ত বহির্গমন ছাড়পত্র (স্মার্ট কার্ড)</span>
 			<div class="big"><span id="lv-t" data-v="<?php echo (int) $live['t']; ?>"><?php echo pb_num( $live['t'] ); ?></span><small>জন</small></div>
 			<div class="sub"><b id="lv-c"><?php echo pb_bn( count( $live['c'] ) ); ?></b>টি দেশ · নারী <b id="lv-f"><?php echo pb_num( $live['f'] ); ?></b> জন</div>
-			<span class="at" id="lv-at">সর্বশেষ চেক: <?php echo esc_html( pb_bn( wp_date( 'H:i', $live['at'], new DateTimeZone( 'Asia/Dhaka' ) ) ) ); ?> · প্রতি ৩ মিনিটে নিজে হালনাগাদ হয় · দিনের শেষ পর্যন্ত সংখ্যা বাড়তে থাকে</span>
+			<span class="at" id="lv-at">সর্বশেষ চেক: <?php echo esc_html( pb_bn( wp_date( 'H:i', $live['at'], new DateTimeZone( 'Asia/Dhaka' ) ) ) ); ?> · প্রতি ১০ মিনিটে নিজে হালনাগাদ হয় · দিনের শেষ পর্যন্ত সংখ্যা বাড়তে থাকে</span>
 		</div>
 		<?php if ( $last ) : ?>
 		<div class="ybox"><span><?php echo esc_html( pb_bdate( $last ) ); ?> (পূর্ণ দিন)</span><b><?php echo pb_num( $L['t'] ); ?> জন</b><span><?php echo pb_bn( count( $L['c'] ) ); ?>টি দেশ · নারী <?php echo pb_num( $L['f'] ); ?></span><?php echo $prevk ? pb_pct( (int) $L['t'], (int) $days[ $prevk ]['t'] ) : ''; ?><?php if ( $last_url ) echo '<a href="' . esc_url( $last_url ) . '">পুরো রিপোর্ট →</a>'; ?></div>
 		<?php endif; ?>
-		<div class="hb"><a class="btn btn-g" href="#card">📸 রিপোর্ট কার্ড ডাউনলোড</a><button type="button" class="btn btn-w" id="bm-share">📤 শেয়ার করুন</button></div>
+		<div class="hb"><a class="btn btn-g" href="#card">📸 রিপোর্ট কার্ড ডাউনলোড</a><button type="button" class="btn btn-w" id="bm-share">📤 শেয়ার করুন</button><button type="button" class="btn btn-w" id="pw-notify" hidden>🔔 রিপোর্ট নোটিফিকেশন চালু করুন</button><button type="button" class="btn btn-w" id="pw-install" hidden>📲 অ্যাপ ইনস্টল করুন</button></div>
 	</div>
 	<aside class="lp" aria-labelledby="lp-h">
 		<h2 id="lp-h"><span class="dot r"></span>আজ কোন দেশে কতজন</h2>
@@ -370,8 +535,11 @@ html body.bm-app h1,html body.bm-app h2,html body.bm-app h3,html body.bm-app h4,
 				<button type="button" data-r="1">সর্বশেষ দিন</button><button type="button" data-r="7">৭ দিন</button><button type="button" data-r="30" class="on">৩০ দিন</button><button type="button" data-r="m0">এই মাস</button><button type="button" data-r="m1">গত মাস</button><button type="button" data-r="all">সব</button>
 				<select id="bm-month" aria-label="মাস"></select>
 				<input type="date" id="bm-day" aria-label="নির্দিষ্ট তারিখ">
+				<span class="rg"><label>থেকে <input type="date" id="bm-from"></label><label>পর্যন্ত <input type="date" id="bm-to"></label><button type="button" id="bm-go">🔎 দেখুন</button></span>
 				<select id="bm-country" aria-label="দেশ"><option value="">সব দেশ</option></select>
 			</div>
+			<div class="vf" id="bm-vf" aria-live="polite">সরকারি সার্ভারে যাচাই হচ্ছে…</div>
+			<p class="vfo">নিজে মিলিয়ে দেখতে চাইলে: <a href="https://www.oep.gov.bd/reports/country-clearance" target="_blank" rel="noopener nofollow">OEP কান্ট্রি ক্লিয়ারেন্স রিপোর্ট খুলুন ↗</a> — একই তারিখ দিয়ে filter করলে একই সংখ্যা পাবেন।</p>
 			<div class="kp"><div><span>মোট ছাড়পত্র</span><b id="k-t">—</b></div><div><span>নারী কর্মী</span><b id="k-f">—</b></div><div><span id="k-cl">গন্তব্য দেশ</span><b id="k-c">—</b></div><div><span>দৈনিক গড়</span><b id="k-a">—</b></div></div>
 			<div class="two">
 				<div><h3 id="bm-ttitle">দৈনিক প্রবণতা</h3><div class="tr" id="bm-trend" aria-label="দৈনিক চার্ট"></div><div class="tip" id="bm-tip"></div></div>
@@ -423,20 +591,28 @@ html body.bm-app h1,html body.bm-app h2,html body.bm-app h3,html body.bm-app h4,
 	<div class="src"><span style="font-size:26px" aria-hidden="true">🏛️</span><p><b>তথ্যসূত্র:</b> বাংলাদেশ সরকারের ওভারসিজ এমপ্লয়মেন্ট প্ল্যাটফর্ম (OEP) — <a href="<?php echo esc_url( $src ); ?>" target="_blank" rel="noopener nofollow">oep.gov.bd কান্ট্রি ক্লিয়ারেন্স রিপোর্ট</a>। সংখ্যাগুলো সরকারি পোর্টাল থেকে হুবহু নেওয়া — কোনো অনুমান বা পরিবর্তন নয়। আজকের লাইভ সংখ্যা দিনের মধ্যে বাড়তে থাকে; রাত ১২টার পর আগের দিনের পূর্ণ হিসাব যুক্ত হয় এবং দেরিতে আসা সরকারি এন্ট্রি অনুযায়ী পরে সামান্য সংশোধন হতে পারে। প্রবাসী ইনফো একটি স্বাধীন তথ্যসেবা; বিএমইটি বা কোনো সরকারি প্রতিষ্ঠানের অংশ নয়।</p></div>
 </main>
 
+<section class="w ptn" aria-label="সহযোগী">
+	<a class="pt pt-d" href="https://dreamintcs.com/?utm_source=probashiinfo&amp;utm_medium=bmet" target="_blank" rel="noopener sponsored"><span class="pt-i">✈️</span><span><small>সার্বিক সহযোগিতায়</small><b>ড্রিম ইন্টারন্যাশনাল</b><em>ইউরোপ ও গালফে বৈধ পথে কাজের ভিসা — প্রসেস, কাগজপত্র ও পরামর্শ</em></span><span class="pt-go">dreamintcs.com →</span></a>
+	<a class="pt pt-p" href="https://www.probashibondu.online/?utm_source=probashiinfo&amp;utm_medium=bmet" target="_blank" rel="noopener"><span class="pt-i">🌍</span><span><small>প্রবাসীদের নিজের অ্যাপ</small><b>প্রবাসী বন্ধু</b><em>প্রবাস দিনের কার্ড, দেশ গাইড ও প্রবাসী গল্প — একদম ফ্রি</em></span><span class="pt-go">probashibondu.online →</span></a>
+</section>
 <footer class="af"><div class="w">
 	<div class="g">
 		<div><?php if ( $logo ) echo '<img src="' . esc_url( $logo ) . '" alt="প্রবাসী ইনফো" width="140" height="38" loading="lazy">'; ?><p>বিএমইটি লাইভ রিপোর্ট — বাংলাদেশ থেকে প্রতিদিন কতজন কর্মী কোন দেশে যাওয়ার ছাড়পত্র পাচ্ছেন, সরকারি তথ্য থেকে সহজ বাংলায়।</p></div>
 		<div><h4>এই রিপোর্টে</h4><a href="#live">আজকের লাইভ সংখ্যা</a><a href="#explore">দৈনিক ও সাপ্তাহিক হিসাব</a><a href="#countries">দেশভিত্তিক তালিকা</a><a href="#months">মাসিক রিপোর্ট</a><a href="#card">রিপোর্ট কার্ড ডাউনলোড</a></div>
+		<div><h4>সহযোগী</h4><a href="https://dreamintcs.com/?utm_source=probashiinfo&amp;utm_medium=bmet-footer" target="_blank" rel="noopener sponsored">✈️ ড্রিম ইন্টারন্যাশনাল</a><a href="https://www.probashibondu.online/?utm_source=probashiinfo&amp;utm_medium=bmet-footer" target="_blank" rel="noopener">🌍 প্রবাসী বন্ধু</a><a href="https://www.probashibondu.online/guide?utm_source=probashiinfo&amp;utm_medium=bmet-footer" target="_blank" rel="noopener">দেশ গাইড</a></div>
 		<div><h4>প্রবাসী ইনফো</h4><a href="<?php echo esc_url( home_url( '/' ) ); ?>">হোম</a><?php if ( $cat ) echo '<a href="' . esc_url( get_category_link( $cat ) ) . '">সব বিএমইটি রিপোর্ট</a>'; ?><a href="<?php echo esc_url( home_url( '/#dash' ) ); ?>">আজকের রেট</a><a href="https://www.probashibondu.online/?utm_source=probashiinfo&utm_medium=bmet" target="_blank" rel="noopener">প্রবাসী বন্ধু</a></div>
 	</div>
-	<div class="base"><span>© <?php echo pb_bn( wp_date( 'Y' ) ); ?> প্রবাসী ইনফো · স্বাধীন তথ্যসেবা, সরকারি ওয়েবসাইট নয়</span><span>সার্বিক সহযোগিতায় ড্রিম ইন্টারন্যাশনাল</span></div>
+	<div class="base"><span>© <?php echo pb_bn( wp_date( 'Y' ) ); ?> প্রবাসী ইনফো · স্বাধীন তথ্যসেবা, সরকারি ওয়েবসাইট নয়</span><span>সার্বিক সহযোগিতায় <a class="dl" href="https://dreamintcs.com/?utm_source=probashiinfo&amp;utm_medium=bmet-footer" target="_blank" rel="noopener sponsored">ড্রিম ইন্টারন্যাশনাল</a> · <a class="dl" href="https://www.probashibondu.online/?utm_source=probashiinfo&amp;utm_medium=bmet-footer" target="_blank" rel="noopener">প্রবাসী বন্ধু</a></span></div>
 </div></footer>
 <nav class="tabs" aria-label="দ্রুত মেনু"><a href="#live" class="hot"><i>🔴</i>লাইভ</a><a href="#explore"><i>📊</i>হিসাব</a><a href="#card"><i>📸</i>কার্ড</a><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><i>🏠</i>হোম</a></nav>
 
 <script id="bm-data" type="application/json"><?php echo wp_json_encode( array( 'days' => array_intersect_key( $days, array_flip( $keys ) ), 'live' => $live, 'cmap' => pb_cmap() ), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ); ?></script>
 <script>
 /*@CARD*/
+/* Portrait card height grows with the number of countries: top 7 get bars, the rest a 3-column list. */
+function bmCardH(o) { var rest = Math.max(0, (o.rows || []).length - 7); return Math.max(1350, 1129 + (rest ? 24 + 70 + Math.ceil(rest / 3) * 46 + 14 : 0) + 210); }
 function bmCard(cv, o) {
+	if (cv.width < cv.height || cv.width === 1080) { var nh = bmCardH(o); if (cv.height !== nh) cv.height = nh; }
 	var W = cv.width, H = cv.height, x = cv.getContext('2d'), wide = W > H;
 	var bn = function (s) { return String(s).replace(/\d/g, function (d) { return '০১২৩৪৫৬৭৮৯'[d]; }); };
 	var num = function (n) { return bn(Math.round(n).toLocaleString('en-IN')); };
@@ -491,6 +667,20 @@ function bmCard(cv, o) {
 		rr(barX, yy + rh / 2 - (wide ? 10 : 13), Math.max(wide ? 14 : 20, barW * r[1] / mx), wide ? 14 : 20, wide ? 7 : 10); x.fillStyle = bg; x.fill();
 		txt(num(r[1]), RX + RW - 22 * s, yy + rh / 2 + (wide ? 2 : 5), '700 ' + Math.round(wide ? 20 : 30) + 'px ' + HF, '#fff', 'right');
 	});
+	var rest = (o.rows || []).slice(n);
+	if (rest.length && wide) {
+		txt('+ আরও ' + bn(rest.length) + 'টি দেশ — পূর্ণ তালিকা ওয়েবসাইটে', RX + RW / 2, RY + RH + 26, '600 17px ' + TF, '#d6e4fb', 'center');
+	} else if (rest.length) {
+		var GY = RY + RH + 24, rows3 = Math.ceil(rest.length / 3), GH = 70 + rows3 * 46 + 14, cw = (RW - 48) / 3;
+		rr(RX, GY, RW, GH, 26 * s); x.fillStyle = 'rgba(255,255,255,.08)'; x.fill(); x.strokeStyle = 'rgba(255,255,255,.16)'; x.stroke();
+		txt('অন্যান্য দেশ (' + bn(rest.length) + 'টি)', RX + 24 * s, GY + 46, '700 30px ' + HF, '#fff');
+		rest.forEach(function (r, k) {
+			var col = k % 3, row = Math.floor(k / 3), cx2 = RX + 24 + col * cw, yy2 = GY + 70 + row * 46 + 30, ff3 = '500 22px ' + TF;
+			if (col) { x.fillStyle = 'rgba(255,255,255,.12)'; x.fillRect(cx2 - 8, yy2 - 26, 1.5, 34); }
+			txt(bn(n + k + 1) + '. ' + fit(r[0], ff3, cw - 92), cx2 + 4, yy2, ff3, '#e6f0ff');
+			txt(num(r[1]), cx2 + cw - 18, yy2, '700 23px ' + HF, '#86efac', 'right');
+		});
+	}
 	// footer: source, website, generated time
 	var now = new Date(), tz = { timeZone: 'Asia/Dhaka' };
 	var hh = +now.toLocaleString('en-GB', Object.assign({ hour: 'numeric', hour12: false }, tz)), mm = now.toLocaleString('en-GB', Object.assign({ minute: '2-digit' }, tz));
@@ -523,6 +713,7 @@ function bmCard(cv, o) {
 	var clean=function(c){return c.replace(/ /g,' ').replace(/\s*\(formerly[^)]*\)/i,'').trim()};
 	var cm=function(c){return CM[c]||CM[clean(c)]||null}, cn=function(c){var m=cm(c);return m?m[0]:clean(c)}, CS=cn;
 	var flag=function(c){var m=cm(c);return m?'<img class="fl" src="https://flagcdn.com/w40/'+m[1]+'.png" alt="" width="22" height="16" loading="lazy">':'<span class="fl fl0"></span>'};
+	function hm(ts){ return bn(new Date(ts*1000).toLocaleTimeString('en-GB',{timeZone:'Asia/Dhaka',hour:'2-digit',minute:'2-digit'})); }
 	var months=[];keys.forEach(function(k){var m=k.slice(0,7); if(months.indexOf(m)<0) months.push(m);});
 	var all={};keys.forEach(function(k){for(var c in D[k].c) all[c]=(all[c]||0)+D[k].c[c];});
 	$('bm-country').innerHTML+=Object.keys(all).sort(function(a,b){return all[b]-all[a]}).map(function(c){return '<option value="'+c.replace(/"/g,'&quot;')+'">'+cn(c)+'</option>'}).join('');
@@ -530,7 +721,9 @@ function bmCard(cv, o) {
 	$('bm-day').min=keys[0]; $('bm-day').max=keys[keys.length-1];
 	var sel=keys.slice(-30), country='', LIVE=J.live&&J.live.t?J.live:null, kind='day', cday='';
 	function val(k){ var r=D[k]; return country ? (r.c[country]||0) : r.t; }
+	var rng=null;
 	function render(){
+		if(!sel.length&&rng){ $('bm-trend').innerHTML='<p class="empty">এই সময়ের সংরক্ষিত দৈনিক চার্ট নেই — মোট হিসাব সরকারি সার্ভার থেকে আসছে।</p>'; $('bm-top').innerHTML=''; ['k-t','k-f','k-c','k-a'].forEach(function(i){$(i).textContent='…'}); $('bm-tip').textContent=bdate(rng[0])+' – '+bdate(rng[1]); verify(); return; }
 		var t=0,f=0,cs={}; sel.forEach(function(k){ var r=D[k]; t+=val(k); if(!country) f+=r.f; for(var c in r.c) cs[c]=(cs[c]||0)+r.c[c]; });
 		$('k-t').textContent=num(t); $('k-f').textContent=country?'—':num(f); $('k-cl').textContent=country?'দেশ':'গন্তব্য দেশ'; $('k-c').textContent=country?cn(country):bn(Object.keys(cs).length); $('k-a').textContent=num(t/Math.max(1,sel.length));
 		var mx=Math.max.apply(null,sel.map(val).concat([1]));
@@ -541,14 +734,35 @@ function bmCard(cv, o) {
 		var top=Object.keys(cs).sort(function(a,b){return cs[b]-cs[a]}).slice(0,10), tm=cs[top[0]]||1;
 		$('bm-top').innerHTML=top.map(function(c){ return '<div class="r">'+flag(c)+'<span>'+cn(c)+'</span><span class="t"><i style="width:'+(cs[c]*100/tm)+'%"></i></span><b>'+num(cs[c])+'</b></div>'; }).join('');
 		if(kind==='cur') drawCard();
+		verify();
 	}
 	$('bm-trend').addEventListener('click',function(e){ var k=e.target.dataset&&e.target.dataset.k; if(!k) return; document.querySelectorAll('#bm-trend .on').forEach(function(x){x.classList.remove('on')}); e.target.classList.add('on'); $('bm-tip').textContent=bdate(k)+': '+num(val(k))+' জন'+(country?' ('+cn(country)+')':' · নারী '+num(D[k].f)); });
 	function clr(){ document.querySelectorAll('.bar [data-r]').forEach(function(x){x.classList.remove('on')}); }
-	document.querySelectorAll('.bar [data-r]').forEach(function(b){ b.onclick=function(){ clr(); b.classList.add('on'); $('bm-month').value=''; $('bm-day').value=''; var r=b.dataset.r;
+	document.querySelectorAll('.bar [data-r]').forEach(function(b){ b.onclick=function(){ clr(); b.classList.add('on'); $('bm-month').value=''; $('bm-day').value=''; rng=null; var r=b.dataset.r;
 		if(r==='m0'||r==='m1'){ var m=months[months.length-(r==='m0'?1:2)]; sel=keys.filter(function(k){return k.indexOf(m)===0}); } else if(r==='all') sel=keys.slice(); else sel=keys.slice(-(+r)); render(); }; });
-	$('bm-month').onchange=function(){ if(!this.value) return; clr(); $('bm-day').value=''; var m=this.value; sel=keys.filter(function(k){return k.indexOf(m)===0}); render(); };
-	$('bm-day').onchange=function(){ if(!D[this.value]) return; clr(); $('bm-month').value=''; sel=[this.value]; render(); };
+	$('bm-month').onchange=function(){ if(!this.value) return; clr(); $('bm-day').value=''; var m=this.value; rng=null; sel=keys.filter(function(k){return k.indexOf(m)===0}); render(); };
+	$('bm-day').onchange=function(){ if(!this.value) return; clr(); $('bm-month').value=''; sel=keys.filter(function(k){return k===$('bm-day').value}); rng=[this.value,this.value]; render(); };
+	$('bm-from').max=$('bm-to').max=keys[keys.length-1]; $('bm-from').min=$('bm-to').min='2018-01-01';
+	$('bm-go').onclick=function(){ var a=$('bm-from').value, b=$('bm-to').value||a; if(!a){ $('bm-from').focus(); return; } if(a>b){ var x=a; a=b; b=x; } clr(); $('bm-month').value=''; $('bm-day').value=''; sel=keys.filter(function(k){return k>=a&&k<=b}); rng=[a,b]; render(); };
 	$('bm-country').onchange=function(){ country=this.value; render(); };
+	/* every filter is re-checked against the government's own server (OEP) */
+	var OEP=null, vtimer=0;
+	function verify(){ clearTimeout(vtimer); var a=rng?rng[0]:sel[0], b=rng?rng[1]:sel[sel.length-1]; if(!a) return; var my=a+b; OEP=null;
+		$('bm-vf').className='vf'; $('bm-vf').textContent='⏳ সরকারি OEP সার্ভার থেকে '+(a===b?bdate(a):bdate(a)+' – '+bdate(b))+' এর হিসাব যাচাই হচ্ছে…';
+		vtimer=setTimeout(function(){ fetch('/wp-json/pa/v1/bmet-query?from='+a+'&to='+b).then(function(r){return r.json().then(function(j){return [r.ok,j]})}).then(function(x){
+			if(my!==(rng?rng[0]+rng[1]:sel[0]+sel[sel.length-1])) return;
+			var ok=x[0], R=x[1]; if(!ok){ $('bm-vf').className='vf err'; $('bm-vf').textContent='⚠️ '+(R&&R.message?R.message:'সরকারি সার্ভারে যাচাই করা যায়নি')+' — নিচের হিসাব আমাদের সংরক্ষিত সরকারি তথ্য থেকে।'; return; }
+			OEP=R; var t=country?(R.c[country]||0):R.t, mine=0; sel.forEach(function(k){mine+=val(k)});
+			$('k-t').textContent=num(t); if(!country&&R.f!==null) $('k-f').textContent=num(R.f); if(!country) $('k-c').textContent=bn(Object.keys(R.c).length);
+			var nd=Math.round((Date.parse(b)-Date.parse(a))/864e5)+1; $('k-a').textContent=num(t/nd);
+			if(!country){ var top=Object.keys(R.c).sort(function(p,q){return R.c[q]-R.c[p]}).slice(0,10), tm=R.c[top[0]]||1;
+				$('bm-top').innerHTML=top.map(function(c){ return '<div class="r">'+flag(c)+'<span>'+cn(c)+'</span><span class="t"><i style="width:'+(R.c[c]*100/tm)+'%"></i></span><b>'+num(R.c[c])+'</b></div>'; }).join(''); }
+			var full=sel.length===nd, diff=t-mine;
+			if(!full){ $('bm-vf').className='vf ok'; $('bm-vf').textContent='✅ সরাসরি সরকারি OEP সার্ভার থেকে আনা হিসাব: '+num(t)+' জন'+(country?' ('+cn(country)+')':'')+' · '+hm(R.at); }
+			else if(!diff){ $('bm-vf').className='vf ok'; $('bm-vf').textContent='✅ সরকারি OEP সার্ভারের সাথে মিলিয়ে দেখা হয়েছে — হুবহু মিলেছে ('+num(t)+' জন) · '+hm(R.at); }
+			else { $('bm-vf').className='vf warn'; $('bm-vf').textContent='🔄 সরকারি সার্ভারে এখন '+num(t)+' জন — দেরিতে আসা এন্ট্রির কারণে আমাদের সংরক্ষিত হিসাবের চেয়ে '+(diff>0?'+':'')+num(diff)+'। ওপরের সংখ্যা সরকারি সার্ভারের সর্বশেষটা। · '+hm(R.at); }
+			if(kind==='cur') drawCard();
+		}).catch(function(){ $('bm-vf').className='vf err'; $('bm-vf').textContent='⚠️ সংযোগ সমস্যা — নিচের হিসাব আমাদের সংরক্ষিত সরকারি তথ্য থেকে।'; }); },500); }
 
 	/* report card */
 	function aggr(ks){ var t=0,f=0,cs={}; ks.forEach(function(k){ var r=D[k]; if(!r) return; t+=r.t; f+=r.f; for(var c in r.c) cs[c]=(cs[c]||0)+r.c[c]; }); return {t:t,f:f,cs:cs,n:ks.filter(function(k){return D[k]}).length}; }
@@ -559,6 +773,8 @@ function bmCard(cv, o) {
 		if(kind==='live'&&LIVE){ return {kind:bdate(LIVE.date)+' এর বিএমইটি রিপোর্ট',period:'লাইভ · এখন পর্যন্ত (দিন শেষে আরও বাড়বে)',t:LIVE.t,f:LIVE.f,nc:Object.keys(LIVE.c).length,rows:topRows(LIVE.c),file:'live-'+LIVE.date}; }
 		if(kind==='week'){ var w=keys.slice(-7), pw=keys.slice(-14,-7), a=aggr(w), b=aggr(pw); return {kind:'সাপ্তাহিক বিএমইটি রিপোর্ট',period:bdate(w[0])+' – '+bdate(last),t:a.t,f:a.f,nc:Object.keys(a.cs).length,avg:a.t/Math.max(1,a.n),cmp:pctTxt(a.t,b.t,'আগের সপ্তাহের'),rows:topRows(a.cs),file:'weekly-'+last}; }
 		if(kind==='month'){ var m=last.slice(0,7), ks=keys.filter(function(k){return k.indexOf(m)===0}), a2=aggr(ks); return {kind:mlabel(m)+' মাসের বিএমইটি রিপোর্ট',period:bdate(ks[0])+' – '+bdate(last),t:a2.t,f:a2.f,nc:Object.keys(a2.cs).length,avg:a2.t/Math.max(1,a2.n),rows:topRows(a2.cs),file:'monthly-'+m}; }
+		if(kind==='cur'&&OEP&&!country){ var po=OEP.from===OEP.to?bdate(OEP.from):bdate(OEP.from)+' – '+bdate(OEP.to); return {kind:'বিএমইটি রিপোর্ট',period:po,t:OEP.t,f:OEP.f||0,nc:Object.keys(OEP.c).length,rows:topRows(OEP.c),file:'report-'+OEP.from+'_'+OEP.to}; }
+		if(kind==='cur'&&!sel.length) return {kind:'বিএমইটি রিপোর্ট',period:'…',t:0,f:0,nc:0,rows:[],file:'report'};
 		if(kind==='cur'){ var a3=aggr(sel), per=sel.length>1?bdate(sel[0])+' – '+bdate(sel[sel.length-1]):bdate(sel[0]);
 			if(country){ var t=0; sel.forEach(function(k){t+=D[k].c[country]||0}); return {kind:CS(country)+' — বিএমইটি রিপোর্ট',period:per,t:t,f:0,nc:1,avg:sel.length>1?t/sel.length:0,rows:sel.slice(-7).reverse().map(function(k){return [bdate(k),D[k].c[country]||0]}),rowsTitle:'দিনভিত্তিক হিসাব',file:'country-'+sel[sel.length-1]}; }
 			return {kind:'বিএমইটি রিপোর্ট',period:per,t:a3.t,f:a3.f,nc:Object.keys(a3.cs).length,avg:sel.length>1?a3.t/a3.n:0,rows:topRows(a3.cs),file:'report-'+sel[sel.length-1]}; }
@@ -583,12 +799,11 @@ function bmCard(cv, o) {
 	/* live */
 	function countTo(el,to){ var from=+el.dataset.v||0; el.dataset.v=to; if(from===to){ el.textContent=num(to); return; } var t0=performance.now(); (function step(t){ var p=Math.min(1,(t-t0)/900); el.textContent=num(from+(to-from)*p); if(p<1) requestAnimationFrame(step); })(t0); }
 	var NEWC={};
-	function hm(ts){ return bn(new Date(ts*1000).toLocaleTimeString('en-GB',{timeZone:'Asia/Dhaka',hour:'2-digit',minute:'2-digit'})); }
 	function paintLive(L,add){
 		countTo($('lv-t'),L.t); $('lv-f').textContent=num(L.f); $('lv-c').textContent=bn(Object.keys(L.c).length);
 		var ks=Object.keys(L.c).sort(function(a,b){return L.c[b]-L.c[a]}).slice(0,8), mx=L.c[ks[0]]||1;
 		if(ks.length) $('lv-list').innerHTML=ks.map(function(c){return '<div class="lrow'+(NEWC[c]?' new':'')+'">'+flag(c)+'<span>'+cn(c)+'</span><span class="t"><i style="width:'+(L.c[c]*100/mx)+'%"></i></span><b>'+num(L.c[c])+'</b></div>'}).join('');
-		$('lv-at').textContent='সর্বশেষ চেক: '+hm(L.at)+' · প্রতি ৩ মিনিটে নিজে হালনাগাদ হয় · দিনের শেষ পর্যন্ত সংখ্যা বাড়তে থাকে';
+		$('lv-at').textContent='সর্বশেষ চেক: '+hm(L.at)+' · প্রতি ১০ মিনিটে নিজে হালনাগাদ হয় · দিনের শেষ পর্যন্ত সংখ্যা বাড়তে থাকে';
 		if(add.length){ if($('lv-feed0')) $('lv-feed0').remove();
 			$('lv-feed').querySelector('h3').insertAdjacentHTML('afterend',add.map(function(a){return '<p>'+hm(L.at)+' — '+cn(a[0])+' <b>+'+num(a[1])+' জন</b></p>'}).join('')); }
 	}
@@ -599,11 +814,42 @@ function bmCard(cv, o) {
 		var add=[]; if(LIVE){ for(var c in L.c){ var dl=L.c[c]-(LIVE.c[c]||0); if(dl>0){ add.push([c,dl]); NEWC[c]=1; } } }
 		LIVE=L; document.querySelector('.gb [data-k=live]').hidden=false; paintLive(L,add.sort(function(a,b){return b[1]-a[1]}));
 		if(kind==='live') drawCard(); }).catch(function(){}); }
-	setTimeout(live,3000); setInterval(function(){ if(!document.hidden) live(); },180000);
+	setTimeout(live,3000); setInterval(function(){ if(!document.hidden) live(); },120000);
 	document.addEventListener('visibilitychange',function(){ if(!document.hidden) live(); });
 	render(); drawCard();
 	var links=[].slice.call(document.querySelectorAll('.ah nav a')), secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))});
 	if('IntersectionObserver' in window){ var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ var i=secs.indexOf(e.target); links.forEach(function(a,j){a.classList.toggle('on',j===i)}); } }); },{rootMargin:'-40% 0px -55% 0px'}); secs.forEach(function(s){ if(s) io.observe(s); }); }
+})();
+</script>
+<script>
+(function(){
+	var PUB=<?php $pk = pa_push_keys(); echo wp_json_encode( $pk ? $pk['pub'] : '' ); ?>, $=function(i){return document.getElementById(i)}, LS={get:function(k){try{return localStorage.getItem(k)}catch(e){return null}},set:function(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+	if(!('serviceWorker' in navigator)) return;
+	var regP=navigator.serviceWorker.register('/?pa_pwa=sw',{scope:'/'}).catch(function(){return null});
+	/* install */
+	var deferred=null, standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone;
+	addEventListener('beforeinstallprompt',function(e){ e.preventDefault(); deferred=e; if(!standalone) $('pw-install').hidden=false; });
+	var ios=/iphone|ipad|ipod/i.test(navigator.userAgent);
+	if(ios&&!standalone) $('pw-install').hidden=false;
+	$('pw-install').onclick=function(){ if(deferred){ deferred.prompt(); deferred.userChoice.then(function(){ deferred=null; $('pw-install').hidden=true; }); } else if(ios) alert('আইফোনে: নিচের শেয়ার বাটন (⬆️) চাপুন → "Add to Home Screen" বাছুন। তাহলে "বিএমইটি লাইভ" অ্যাপের মতো খুলবে আর নোটিফিকেশন পাবেন।'); };
+	addEventListener('appinstalled',function(){ $('pw-install').hidden=true; });
+	/* notifications */
+	var canPush=PUB&&('PushManager' in window)&&('Notification' in window);
+	function b64(s){ s=s.replace(/-/g,'+').replace(/_/g,'/'); while(s.length%4) s+='='; var r=atob(s), a=new Uint8Array(r.length); for(var i=0;i<r.length;i++) a[i]=r.charCodeAt(i); return a; }
+	function save(sub){ return fetch('/wp-json/pa/v1/push-sub',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(sub)}); }
+	function subscribe(){ return regP.then(function(reg){ if(!reg) throw 0; return navigator.serviceWorker.ready; }).then(function(reg){ return reg.pushManager.getSubscription().then(function(s){ return s||reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:b64(PUB)}); }); }).then(function(s){ return save(s.toJSON()); }); }
+	function setBtn(){ var p=Notification.permission; if(p==='granted'){ $('pw-notify').hidden=false; $('pw-notify').textContent='🔔 নোটিফিকেশন চালু আছে'; $('pw-notify').disabled=true; } else if(p==='denied'){ $('pw-notify').hidden=true; } else $('pw-notify').hidden=false; }
+	function ask(){ Notification.requestPermission().then(function(p){ if(p==='granted') subscribe().then(function(){ setBtn(); toast('✅ ঠিক আছে! প্রতিদিন রাতে রিপোর্ট প্রকাশ হলেই নোটিফিকেশন পাবেন।'); }).catch(function(){ toast('নোটিফিকেশন চালু করা যায়নি — পরে আবার চেষ্টা করুন।'); }); setBtn(); }); }
+	function toast(t){ var d=document.createElement('div'); d.className='pwb'; d.innerHTML='<span>'+t+'</span>'; document.body.appendChild(d); setTimeout(function(){d.remove()},4500); }
+	if(canPush&&!(ios&&!standalone)){
+		setBtn(); $('pw-notify').onclick=ask;
+		if(Notification.permission==='granted') subscribe().catch(function(){});
+		else if(Notification.permission==='default'&&!LS.get('pa_np')) setTimeout(function(){
+			var d=document.createElement('div'); d.className='pwb'; d.setAttribute('role','dialog');
+			d.innerHTML='<div style="font-size:28px">🔔</div><div style="flex:1"><b>প্রতিদিনের বিএমইটি রিপোর্ট নোটিফিকেশনে পাবেন?</b><span>প্রতিদিন রাত ১২টার পর রিপোর্ট প্রকাশ হলেই জানিয়ে দেব।</span></div><button class="y">চালু করুন</button><button class="n">পরে</button>';
+			document.body.appendChild(d); d.querySelector('.y').onclick=function(){ LS.set('pa_np','1'); d.remove(); ask(); }; d.querySelector('.n').onclick=function(){ LS.set('pa_np','1'); d.remove(); };
+		},9000);
+	}
 })();
 </script>
 <?php wp_footer(); ?>

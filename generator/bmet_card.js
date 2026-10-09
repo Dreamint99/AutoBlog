@@ -3,7 +3,10 @@
    (bmet_report.py renders it in headless Chrome). Keep both copies identical.
    o = {kind:'আজকের বিএমইটি রিপোর্ট', period:'৮ অক্টোবর ২০২৬', t, f, nc, avg?, cmp?, rows:[[name,n]], rowsTitle} */
 /*@CARD*/
+/* Portrait card height grows with the number of countries: top 7 get bars, the rest a 3-column list. */
+function bmCardH(o) { var rest = Math.max(0, (o.rows || []).length - 7); return Math.max(1350, 1129 + (rest ? 24 + 70 + Math.ceil(rest / 3) * 46 + 14 : 0) + 210); }
 function bmCard(cv, o) {
+	if (cv.width < cv.height || cv.width === 1080) { var nh = bmCardH(o); if (cv.height !== nh) cv.height = nh; }
 	var W = cv.width, H = cv.height, x = cv.getContext('2d'), wide = W > H;
 	var bn = function (s) { return String(s).replace(/\d/g, function (d) { return '০১২৩৪৫৬৭৮৯'[d]; }); };
 	var num = function (n) { return bn(Math.round(n).toLocaleString('en-IN')); };
@@ -58,6 +61,20 @@ function bmCard(cv, o) {
 		rr(barX, yy + rh / 2 - (wide ? 10 : 13), Math.max(wide ? 14 : 20, barW * r[1] / mx), wide ? 14 : 20, wide ? 7 : 10); x.fillStyle = bg; x.fill();
 		txt(num(r[1]), RX + RW - 22 * s, yy + rh / 2 + (wide ? 2 : 5), '700 ' + Math.round(wide ? 20 : 30) + 'px ' + HF, '#fff', 'right');
 	});
+	var rest = (o.rows || []).slice(n);
+	if (rest.length && wide) {
+		txt('+ আরও ' + bn(rest.length) + 'টি দেশ — পূর্ণ তালিকা ওয়েবসাইটে', RX + RW / 2, RY + RH + 26, '600 17px ' + TF, '#d6e4fb', 'center');
+	} else if (rest.length) {
+		var GY = RY + RH + 24, rows3 = Math.ceil(rest.length / 3), GH = 70 + rows3 * 46 + 14, cw = (RW - 48) / 3;
+		rr(RX, GY, RW, GH, 26 * s); x.fillStyle = 'rgba(255,255,255,.08)'; x.fill(); x.strokeStyle = 'rgba(255,255,255,.16)'; x.stroke();
+		txt('অন্যান্য দেশ (' + bn(rest.length) + 'টি)', RX + 24 * s, GY + 46, '700 30px ' + HF, '#fff');
+		rest.forEach(function (r, k) {
+			var col = k % 3, row = Math.floor(k / 3), cx2 = RX + 24 + col * cw, yy2 = GY + 70 + row * 46 + 30, ff3 = '500 22px ' + TF;
+			if (col) { x.fillStyle = 'rgba(255,255,255,.12)'; x.fillRect(cx2 - 8, yy2 - 26, 1.5, 34); }
+			txt(bn(n + k + 1) + '. ' + fit(r[0], ff3, cw - 92), cx2 + 4, yy2, ff3, '#e6f0ff');
+			txt(num(r[1]), cx2 + cw - 18, yy2, '700 23px ' + HF, '#86efac', 'right');
+		});
+	}
 	// footer: source, website, generated time
 	var now = new Date(), tz = { timeZone: 'Asia/Dhaka' };
 	var hh = +now.toLocaleString('en-GB', Object.assign({ hour: 'numeric', hour12: false }, tz)), mm = now.toLocaleString('en-GB', Object.assign({ minute: '2-digit' }, tz));

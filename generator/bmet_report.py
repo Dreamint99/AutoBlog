@@ -13,6 +13,7 @@ Data file: generator/data/bmet.json = {"days": {"YYYY-MM-DD": {"t": total, "f": 
 import base64
 import json
 import os
+import re
 import sys
 import time
 from datetime import date, datetime, timedelta, timezone
@@ -53,8 +54,15 @@ def bn_date(d: date) -> str:
     return f"{bn(str(d.day))} {BN_MONTHS[d.month - 1]} {bn(str(d.year))}"
 
 
+try:  # full map shared with the WordPress snippet (pb_cmap): {"OEP name": ["বাংলা", "iso"]}
+    _CMAP = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "bmet_countries.json"), encoding="utf-8"))
+except Exception:
+    _CMAP = {}
+
+
 def cname(c: str) -> str:
-    return BN_COUNTRY.get(c, c)
+    k = re.sub(r"\s*\(formerly[^)]*\)", "", c.replace("\xa0", " ")).strip()
+    return BN_COUNTRY.get(c) or (_CMAP.get(c) or _CMAP.get(k) or [None])[0] or k
 
 
 def load() -> dict:
@@ -313,7 +321,7 @@ def build(kind: str):
     card = {"kind": {"daily": f"{label} এর বিএমইটি রিপোর্ট", "weekly": "সাপ্তাহিক বিএমইটি রিপোর্ট", "monthly": f"{label} মাসের বিএমইটি রিপোর্ট"}[kind],
             "period": {"daily": "দৈনিক বহির্গমন ছাড়পত্রের হিসাব", "weekly": label, "monthly": "মাসিক বহির্গমন ছাড়পত্রের হিসাব"}[kind], "t": cur["t"], "f": cur["f"], "nc": len(rows), "avg": round(cur["t"] / cur["n"]) if kind != "daily" and cur["n"] else 0,
             "cmp": (f"{cmp_word} চেয়ে {'▲' if diff > 0 else '▼'} {bn(abs(pct))}%" if prev["t"] and pct and kind != "monthly" else ""),
-            "rows": [[cname(c).replace("সংযুক্ত আরব আমিরাত", "আমিরাত"), n] for c, n in top], "rowsTitle": "শীর্ষ গন্তব্য দেশ"}
+            "rows": [[cname(c).replace("সংযুক্ত আরব আমিরাত", "আমিরাত"), n] for c, n in rows], "rowsTitle": "শীর্ষ গন্তব্য দেশ"}
     return {"title": title, "slug": slug, "content": body, "excerpt": excerpt, "card": card,
             "chart": ("BMET overseas employment", sub, cur["t"], top)}
 
@@ -344,6 +352,43 @@ def post(kind: str, dry: bool):
     r.raise_for_status()
 
 
+def notify(kind: str = "daily"):
+    """Web-push the just-published report to everyone who allowed notifications on /bmet-report/.
+    VAPID keys and subscriptions live in WordPress (snippet #15); dead subscriptions are removed."""
+    from py_vapid import Vapid
+    from pywebpush import WebPushException, webpush
+    base, h = wp()
+    adm = requests.get(f"{base}/wp-json/pa/v1/push-admin", headers=h, timeout=60).json()
+    subs = adm.get("subs") or {}
+    if not adm.get("pem") or not subs:
+        print("push: nothing to send", len(subs))
+        return
+    a = build(kind)
+    ex = requests.get(f"{base}/wp-json/wp/v2/posts", headers=h, params={"slug": a["slug"], "_fields": "link"}, timeout=60).json()
+    c = a["card"]
+    top = "، ".join(f"{r[0]} {bn(r[1])}" for r in c["rows"][:3]).replace("،", ",")
+    msg = {"title": f"📊 {c['kind']}", "body": f"মোট {bn(c['t'])} জন · {bn(c['nc'])}টি দেশ · শীর্ষে {top}",
+           "url": (ex[0]["link"] if ex else f"{base}/bmet-report/") + "?utm_source=push", "tag": f"bmet-{kind}"}
+    v = Vapid.from_pem(adm["pem"].encode())
+    dead, sent = [], 0
+    for key, sub in subs.items():
+        try:
+            webpush({"endpoint": sub["endpoint"], "keys": sub["keys"]}, data=json.dumps(msg, ensure_ascii=False),
+                    vapid_private_key=v, vapid_claims={"sub": "mailto:noreply@probashiinfo.com"}, ttl=12 * 3600)
+            sent += 1
+        except WebPushException as e:
+            code = getattr(e.response, "status_code", 0)
+            if code in (404, 410):
+                dead.append(key)
+            else:
+                print("push error", code, str(e)[:120])
+        except Exception as e:
+            print("push error", str(e)[:120])
+    if dead:
+        requests.post(f"{base}/wp-json/pa/v1/push-admin", headers=h, json={"remove": dead}, timeout=60)
+    print(f"push: sent {sent}, removed {len(dead)} expired, total {len(subs)}")
+
+
 if __name__ == "__main__":
     for _s in (sys.stdout,):
         _s.reconfigure(encoding="utf-8", errors="replace")
@@ -354,6 +399,8 @@ if __name__ == "__main__":
         push()
     elif cmd == "post":
         post(sys.argv[2], "--dry-run" in sys.argv)
+    elif cmd == "notify":
+        notify(sys.argv[2] if len(sys.argv) > 2 else "daily")
     elif cmd == "chart":
         a = build("daily")
         print(card_png(a["card"], os.path.join(ROOT, "output", "bmet-test.png")))
