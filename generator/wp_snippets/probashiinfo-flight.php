@@ -135,6 +135,7 @@ function pa_ft_render() {
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.css">
 <?php wp_head(); ?>
 <script type="application/ld+json"><?php echo wp_json_encode( $ld, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ); ?></script>
 <style id="ft-css">
@@ -164,7 +165,7 @@ html body.ft-app h1,html body.ft-app h2,html body.ft-app h3,html body.ft-app b,h
 .sc{background:#fff;color:var(--ink);border-radius:22px;padding:16px;box-shadow:0 30px 60px -30px rgba(0,0,0,.55);max-width:880px}
 .tabs{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}.tabs button{border:0;background:var(--soft);color:var(--ink2);border-radius:12px;padding:9px 14px;font-weight:700;font-size:15px;cursor:pointer}
 .tabs button.on{background:var(--nv2);color:#fff}
-.row{display:flex;gap:8px;flex-wrap:wrap}.row input,.row select{flex:1;min-width:150px;border:2px solid var(--line);border-radius:14px;padding:13px 14px;font-size:17px;font-weight:600;color:var(--ink);background:#fff;outline:none}
+.row{display:flex;gap:8px;flex-wrap:wrap}.row[hidden]{display:none!important}.row input,.row select{flex:1;min-width:150px;border:2px solid var(--line);border-radius:14px;padding:13px 14px;font-size:17px;font-weight:600;color:var(--ink);background:#fff;outline:none}
 .row input:focus,.row select:focus{border-color:var(--b)}
 .row button.go{border:0;background:linear-gradient(135deg,var(--b),#0a3f97);color:#fff;border-radius:14px;padding:0 22px;font-weight:800;font-size:17px;cursor:pointer;min-height:52px}
 .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}.chips button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:13.5px;cursor:pointer;color:var(--ink2)}.chips button:hover{border-color:var(--b);color:var(--b)}
@@ -257,7 +258,7 @@ html body.ft-app h1,html body.ft-app h2,html body.ft-app h3,html body.ft-app b,h
 	<section class="sec faq" id="faq"><h2>প্রশ্নোত্তর</h2>
 		<?php foreach ( $faq as $k => $q ) echo '<details' . ( $k === 0 ? ' open' : '' ) . '><summary>' . esc_html( $q[0] ) . '</summary><p>' . esc_html( $q[1] ) . '</p></details>'; ?>
 	</section>
-	<div class="src">⚠️ <b>দায়মুক্তি:</b> বিমানের লাইভ অবস্থান <a href="https://adsb.lol" target="_blank" rel="noopener nofollow">adsb.lol</a> (ODbL) এবং রুটের তথ্য <a href="https://github.com/vradarserver/standing-data" target="_blank" rel="noopener nofollow">VRS standing data</a> (CC0) থেকে নেওয়া উন্মুক্ত ডাটা; অবতরণের সময় দূরত্ব ও গতি থেকে হিসাব করা আনুমানিক সময়। প্রবাসী ইনফো কোনো এয়ারলাইন বা এয়ারপোর্টের অফিসিয়াল সেবা নয় — চূড়ান্ত সময়ের জন্য এয়ারলাইন বা এয়ারপোর্টের অফিসিয়াল তথ্য দেখুন। ম্যাপ © OpenStreetMap contributors, © CARTO।</div>
+	<div class="src">⚠️ <b>দায়মুক্তি:</b> বিমানের লাইভ অবস্থান <a href="https://adsb.lol" target="_blank" rel="noopener nofollow">adsb.lol</a> (ODbL) এবং রুটের তথ্য <a href="https://github.com/vradarserver/standing-data" target="_blank" rel="noopener nofollow">VRS standing data</a> (CC0) থেকে নেওয়া উন্মুক্ত ডাটা; অবতরণের সময় দূরত্ব ও গতি থেকে হিসাব করা আনুমানিক সময়। প্রবাসী ইনফো কোনো এয়ারলাইন বা এয়ারপোর্টের অফিসিয়াল সেবা নয় — চূড়ান্ত সময়ের জন্য এয়ারলাইন বা এয়ারপোর্টের অফিসিয়াল তথ্য দেখুন। ম্যাপ © OpenFreeMap, © OpenStreetMap contributors।</div>
 </main>
 
 <footer class="af"><div class="w">
@@ -271,6 +272,8 @@ html body.ft-app h1,html body.ft-app h2,html body.ft-app h3,html body.ft-app b,h
 
 <script id="ft-data" type="application/json"><?php echo wp_json_encode( array( 'ap' => $d['ap'], 'al' => $d['al'], 'iata' => $d['iata'] ?? array(), 'rt' => $d['rt'] ), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ); ?></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.js"></script>
+<script src="https://unpkg.com/@maplibre/maplibre-gl-leaflet@0.0.22/leaflet-maplibre-gl.js"></script>
 <script>
 (function(){
 	var J=JSON.parse(document.getElementById('ft-data').textContent), AP=J.ap||{}, AL=J.al||{}, IATA=J.iata||{}, RT={}, $=function(i){return document.getElementById(i)};
@@ -313,7 +316,10 @@ html body.ft-app h1,html body.ft-app h2,html body.ft-app h3,html body.ft-app b,h
 	function near(ll,r){ return fetch('/wp-json/pa/v1/ft-near?lat='+ll[0]+'&lon='+ll[1]+'&r='+(r||150)+'&_='+Date.now(),{cache:'no-store'}).then(function(x){return x.ok?x.json():{ac:[]}}).then(function(j){return j.ac||[]}); }
 	/* ---------- map ---------- */
 	var map=L.map('map',{zoomControl:true,worldCopyJump:true,attributionControl:true}).setView([23.84,90.4],6);
-	L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxZoom:12,attribution:'© OpenStreetMap contributors © CARTO · লাইভ: adsb.lol'}).addTo(map);
+	/* base map: OpenFreeMap vector tiles (free, no key) via MapLibre; plain OSM tiles if WebGL is missing */
+	var attr='© <a href="https://openfreemap.org" target="_blank" rel="noopener">OpenFreeMap</a> © OpenStreetMap contributors · লাইভ: adsb.lol';
+	try{ if(L.maplibreGL&&window.maplibregl&&maplibregl.supported&&maplibregl.supported()) L.maplibreGL({style:'https://tiles.openfreemap.org/styles/liberty',attribution:attr}).addTo(map); else throw 0; }
+	catch(e){ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:12,attribution:'© OpenStreetMap contributors · লাইভ: adsb.lol'}).addTo(map); }
 	var lay=L.layerGroup().addTo(map), sel=L.layerGroup().addTo(map);
 	function planeIcon(trk,col,big){ var s=big?40:26; return L.divIcon({className:'',iconSize:[s,s],iconAnchor:[s/2,s/2],html:'<svg class="plane-ic" width="'+s+'" height="'+s+'" viewBox="0 0 24 24" style="transform:rotate('+((trk||0))+'deg)"><path fill="'+col+'" stroke="#fff" stroke-width=".8" d="M12 2c.7 0 1.2.6 1.2 1.4v6.1l7.6 4.4v2l-7.6-2.3v4.7l2.2 1.7V22L12 21l-3.4 1v-2l2.2-1.7v-4.7l-7.6 2.3v-2l7.6-4.4V3.4C10.8 2.6 11.3 2 12 2z"/></svg>'}); }
 	function apMarker(a,g){ L.circleMarker(a.ll,{radius:6,color:'#fff',weight:2,fillColor:'#0b56c4',fillOpacity:1}).addTo(g).bindTooltip(a.bn+' ('+a.ia+')',{permanent:true,direction:'top',className:'ap-lbl',offset:[0,-6]}); }
