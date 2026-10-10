@@ -1,0 +1,27 @@
+name: Daily Taka rate article (probashiinfo)
+
+# 15:00 UTC = 21:00 BST: publish "আজকের টাকার রেট <date>" with every country's rate (currency-api, CC0),
+# yesterday / 7-day / 30-day comparison and a Bengali featured card. Re-runs update the same post.
+on:
+  schedule:
+    - cron: "0 15 * * *"
+  workflow_dispatch:
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: generator
+    env:
+      PROBASHIINFO_WP_URL: ${{ secrets.PROBASHIINFO_WP_URL }}
+      PROBASHIINFO_WP_USER: ${{ secrets.PROBASHIINFO_WP_USER }}
+      PROBASHIINFO_WP_APP_PASSWORD: ${{ secrets.PROBASHIINFO_WP_APP_PASSWORD }}
+      PYTHONUTF8: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests pillow
+      - run: python fx_report.py post
