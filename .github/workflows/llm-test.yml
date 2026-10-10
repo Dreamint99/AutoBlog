@@ -1,0 +1,29 @@
+name: LLM chain test
+
+on:
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "provider filter (e.g. openrouter) or empty for all"
+        default: ""
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: generator
+    env:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      PYTHONUTF8: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python llm_test.py "${{ github.event.inputs.only }}"
