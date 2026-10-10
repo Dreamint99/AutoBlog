@@ -945,7 +945,7 @@ function bmCard(cv, o) {
 	}
 	var csize='full';
 	/* Safari can report a web font as loaded a frame before canvas can use it: wait for fonts.ready + two frames */
-	var fontsReady=fontsReady0.then(function(){ return document.fonts&&document.fonts.ready; }).then(function(){ return new Promise(function(r){ requestAnimationFrame(function(){ requestAnimationFrame(function(){ r(); }); }); }); }).catch(function(){});
+	var fontsReady=fontsReady0.then(function(){ return document.fonts&&document.fonts.ready; }).then(function(){ return new Promise(function(r){ setTimeout(r,300); requestAnimationFrame(function(){ requestAnimationFrame(function(){ r(); }); }); }); }).catch(function(){});
 	function paint(o){ o.logo=LOGO; var cv=$('bm-cv'), h=csize==='sq'?1080:bmCardH(o); if(cv.height!==h) cv.height=h; bmCard(cv,o); $('bm-cap').value=caption(o); }
 	function drawCard(){ fontsReady.then(function(){ paint(cardOpts()); setTimeout(function(){ paint(cardOpts()); },450); }); }
 	document.querySelectorAll('.gsz [data-sz]').forEach(function(b){ b.onclick=function(){ document.querySelectorAll('.gsz [data-sz]').forEach(function(x){x.classList.toggle('on',x===b)}); csize=b.dataset.sz; drawCard(); }; });
