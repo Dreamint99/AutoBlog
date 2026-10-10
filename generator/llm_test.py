@@ -26,7 +26,7 @@ for entry in [e.strip() for e in LLM_CHAIN.split(",") if e.strip()]:
     t = time.time()
     try:
         c = OpenAI(api_key=p["key"], base_url=p["base"], timeout=90)
-        r = c.chat.completions.create(model=model or p["model"], max_tokens=300, temperature=0.7, messages=[
+        r = c.chat.completions.create(model=model or p["model"], max_tokens=2500, temperature=0.7, messages=[
             {"role": "user", "content": "প্রবাসী শ্রমিকদের জন্য বৈধ পথে দেশে টাকা পাঠানোর সুবিধা নিয়ে বাংলায় তিন বাক্য লিখুন।"}])
         txt = (r.choices[0].message.content or "").strip().replace("\n", " ")
         u = getattr(r, "usage", None)
