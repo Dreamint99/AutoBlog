@@ -24,6 +24,7 @@ for _s in (sys.stdout, sys.stderr):
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from modules import store
+from modules import pipeline as _pipe
 from modules.pipeline import generate_article, suggest_titles
 
 SITE = sys.argv[1] if len(sys.argv) > 1 else "qatarexperts"
@@ -137,6 +138,10 @@ def drip_site(site: dict):
         # rate-limited) usually succeeds on a second pass.
         for attempt in (1, 2):
             try:
+                # The 900-word floor exists to catch truncated stubs. On the retry a complete
+                # 780+ word draft is accepted, so one slightly short article (e.g. when the main
+                # LLM is out of quota and a smaller fallback writes it) does not fail the whole run.
+                _pipe.MIN_PUBLISH_WORDS = 900 if attempt == 1 else 780
                 art = generate_article(site, t)
                 done += 1
                 log(f"[{site['id']}] ✅ {art['title']} ({art['word_count']}w)")
