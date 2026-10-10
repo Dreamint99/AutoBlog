@@ -381,7 +381,8 @@ function pb_render() {
 <script type="application/ld+json"><?php echo wp_json_encode( $ld, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ); ?></script>
 <style id="bm-css">
 :root{--nv:#061f4d;--nv2:#0a3f97;--b:#0b56c4;--g:#16a34a;--g2:#22c55e;--red:#e11d48;--ink:#0f1f38;--ink2:#34465f;--mut:#6a7a93;--line:#e2e8f1;--bg:#f2f5fb;--soft:#eef3fb;--hf:"Anek Bangla","Hind Siliguri",system-ui,sans-serif;--tf:"Hind Siliguri",system-ui,sans-serif;--sh:0 1px 2px rgba(10,40,90,.06),0 10px 30px -18px rgba(10,40,90,.35)}
-*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:76px}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
 body.bm-app{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 var(--tf);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 .bm-app a{color:var(--b)}.w{max-width:1180px;margin:0 auto;padding:0 16px}
 .bm-app h1,.bm-app h2,.bm-app h3{font-family:var(--hf);line-height:1.25;margin:0}
@@ -530,6 +531,12 @@ em.up,em.dn{font-style:normal;font-weight:700;font-size:13px;padding:1px 8px;bor
 html body.bm-app,html body.bm-app *{font-family:var(--tf)!important}
 html body.bm-app h1,html body.bm-app h2,html body.bm-app h3,html body.bm-app h4,html body.bm-app .big,html body.bm-app .big *,html body.bm-app b,html body.bm-app summary,html body.bm-app td.n,html body.bm-app .lg b *{font-family:var(--hf)!important}
 @media(prefers-reduced-motion:reduce){.dot,.lrow.new{animation:none}html{scroll-behavior:auto}}
+/* iPhone / Safari: no automatic text inflation, long text wraps inside its box */
+.lbox,.ybox,.lp,.k,.card,.wc,.dis,.kp div,.wg div,.m div,.src p,.sec>.lead,.ga ul{min-width:0;overflow-wrap:anywhere;word-break:normal}
+.lrow>span,.hb2 .r>span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bar input[type=date],.gb input[type=date],.rg input[type=date]{-webkit-appearance:none;appearance:none;min-width:0;max-width:100%;min-height:40px;background:#fff}
+.big{flex-wrap:wrap}.ybox>*{min-width:0}
+@media(max-width:420px){.big{font-size:52px}.k b{font-size:21px}.kp b{font-size:20px}.wg b{font-size:19px}.lrow{grid-template-columns:22px minmax(0,1fr) 50px 42px;font-size:14px}.rg{width:100%}.rg label{flex:1 1 45%}.rg input{width:100%}.bar select,.bar button{font-size:14px;padding:8px 10px}}
 </style>
 </head>
 <body <?php body_class( 'bm-app' ); ?>>

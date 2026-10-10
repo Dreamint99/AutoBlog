@@ -140,7 +140,8 @@ function pa_ft_render() {
 <script type="application/ld+json"><?php echo wp_json_encode( $ld, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ); ?></script>
 <style id="ft-css">
 :root{--nv:#071a3a;--nv2:#0b2f6b;--b:#0b56c4;--sky:#38bdf8;--g:#16a34a;--g2:#22c55e;--am:#f59e0b;--red:#e11d48;--ink:#0f1f38;--ink2:#34465f;--mut:#6a7a93;--line:#e2e8f1;--bg:#eef3fa;--soft:#eef3fb;--hf:"Anek Bangla","Hind Siliguri",system-ui,sans-serif;--tf:"Hind Siliguri",system-ui,sans-serif;--sh:0 1px 2px rgba(10,40,90,.06),0 12px 30px -18px rgba(10,40,90,.4)}
-*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:70px}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
 body.ft-app{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 var(--tf);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 html body.ft-app,html body.ft-app *{font-family:var(--tf)!important}
 html body.ft-app h1,html body.ft-app h2,html body.ft-app h3,html body.ft-app b,html body.ft-app .num,html body.ft-app summary,html body.ft-app .hf{font-family:var(--hf)!important}
@@ -212,6 +213,9 @@ html body.ft-app h1,html body.ft-app h2,html body.ft-app h3,html body.ft-app b,h
 @media(max-width:960px){.grid{grid-template-columns:minmax(0,1fr)}#map{height:420px}.how{grid-template-columns:minmax(0,1fr)}.af .g{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:700px){.ah nav,.ah .home{display:none}.ah .w{justify-content:space-between}#map{height:360px}.route .ap b{font-size:21px}.fh .fn{font-size:24px}.row button.go{width:100%}}
 @media(prefers-reduced-motion:reduce){.dot{animation:none}}
+/* iPhone / Safari: no automatic text inflation, long text wraps inside its box */
+.sc,.panel,.how div,.say,.kv div,.eta,.it>span{min-width:0;overflow-wrap:anywhere}
+.row input,.row select{-webkit-appearance:none;appearance:none}
 </style>
 </head>
 <body <?php body_class( 'ft-app' ); ?>>

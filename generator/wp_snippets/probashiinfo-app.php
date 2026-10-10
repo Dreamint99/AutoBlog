@@ -121,7 +121,8 @@ function pa_css() { ?>
 <meta name="theme-color" content="#0b56c4">
 <style id="pi-app-css">
 :root{--b:#0b56c4;--b2:#0a3f96;--nv:#082a63;--g:#16a34a;--g2:#22c55e;--gs:#e8f7ee;--bs:#e9f1fd;--red:#e11d48;--gold:#f5b301;--ink:#0f1f38;--ink2:#34465f;--mut:#6a7a93;--line:#e2e8f1;--bg:#f3f6fb;--card:#fff;--head:"Anek Bangla","Hind Siliguri",system-ui,sans-serif;--body:"Hind Siliguri",system-ui,sans-serif;--fs:18.5px;--r:16px;--sh:0 1px 2px rgba(10,40,90,.06),0 8px 24px -16px rgba(10,40,90,.25)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+html{scroll-behavior:smooth}
 body.pi-app{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 var(--body);-webkit-font-smoothing:antialiased}
 .pi-app a{color:inherit;text-decoration:none}.pi-app img{max-width:100%;height:auto}
 .pi-app h1,.pi-app h2,.pi-app h3,.pi-app h4{font-family:var(--head);color:var(--ink);margin:0;line-height:1.3}
@@ -454,6 +455,8 @@ body.pi-app{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 va
 @media(max-width:1180px){.tl small{display:none}.tl{padding:8px 11px}}
 @media(max-width:1020px){.tools2,.cat2{display:none}.burger{display:flex}.srch2{max-width:none}}
 @media(max-width:640px){.util{display:none}.hdr2 .top{height:64px;gap:10px}.logo2 img{height:40px}.hdr2.sm .logo2 img{height:36px}.srch2{padding:3px 3px 3px 10px}.srch2 button{padding:8px 12px;font-size:0}.srch2 button:after{content:"🔍";font-size:15px}.srch2 span{display:none}.srch2 input{font-size:14px}}
+/* iPhone / Safari: no automatic text inflation, long text wraps inside its box */
+.ht,.hb,.h2r,.gl-r a,.card,.svc,.box{min-width:0;overflow-wrap:anywhere}
 </style>
 <?php }
 

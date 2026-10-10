@@ -145,7 +145,8 @@ function pa_fx_render() {
 <script type="application/ld+json"><?php echo wp_json_encode( $ld, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ); ?></script>
 <style id="fx-css">
 :root{--nv:#052e2b;--nv2:#065f46;--g:#16a34a;--g2:#22c55e;--b:#0b56c4;--am:#f59e0b;--red:#dc2626;--ink:#0f1f38;--ink2:#34465f;--mut:#6a7a93;--line:#e2e8f1;--bg:#f1f7f4;--soft:#eef6f2;--hf:"Anek Bangla","Hind Siliguri",system-ui,sans-serif;--tf:"Hind Siliguri",system-ui,sans-serif;--sh:0 1px 2px rgba(6,60,40,.06),0 12px 30px -18px rgba(6,60,40,.4)}
-*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:70px}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
 body.fx-app{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 var(--tf);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 html body.fx-app,html body.fx-app *{font-family:var(--tf)!important}
 html body.fx-app h1,html body.fx-app h2,html body.fx-app h3,html body.fx-app b,html body.fx-app .num,html body.fx-app summary,html body.fx-app td.n{font-family:var(--hf)!important}
@@ -196,6 +197,10 @@ em.up,em.dn,em.z{font-style:normal;font-weight:700;font-size:13px;padding:2px 8p
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--nv);color:#fff;border-radius:12px;padding:10px 16px;z-index:2000;font-weight:600}
 @media(max-width:960px){.hero .w,.two{grid-template-columns:minmax(0,1fr)}.af .g{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:700px){.ah nav,.ah .home{display:none}.ah .w{justify-content:space-between}.cvr{grid-template-columns:minmax(0,1fr)}.st3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* iPhone / Safari: no automatic text inflation, long text wraps inside its box */
+.cv,.card,.out,.inc,.trend,.st3 div{min-width:0;overflow-wrap:anywhere}
+.cvr input,.cvr select{-webkit-appearance:none;appearance:none;min-width:0}
+@media(max-width:420px){.out .big{font-size:26px}}
 </style>
 </head>
 <body <?php body_class( 'fx-app' ); ?>>
