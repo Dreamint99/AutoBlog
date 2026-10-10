@@ -7,7 +7,7 @@
    Snippets #6, #7, #8 and #11 (v2) step aside when pa_app() is on;
    their ads are redrawn here in the same design language. Writer names are not shown. */
 if ( ! defined( 'PA_APP_PUBLIC' ) ) define( 'PA_APP_PUBLIC', true );
-if ( ! defined( 'PA_APP_VERSION' ) ) define( 'PA_APP_VERSION', '3.6.0' );
+if ( ! defined( 'PA_APP_VERSION' ) ) define( 'PA_APP_VERSION', '3.6.1' );
 define( 'PA_LOGO', 'https://probashiinfo.com/wp-content/uploads/2026/10/probashiinfo-wordmark.webp' );
 define( 'PA_ICON', 'https://probashiinfo.com/wp-content/uploads/2026/10/probashiinfo-icon.png' );
 define( 'PA_PB', 'https://www.probashibondu.online' );
@@ -365,6 +365,26 @@ body.pi-app{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 va
 
 
 
+
+/* ---------- comments ---------- */
+.cms{margin-top:26px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px}
+.cms h2{font-size:21px;margin:0 0 12px}.cm-list,.cm-kids{list-style:none;margin:0;padding:0}.cm-kids{margin:10px 0 0 22px;border-left:2px solid var(--line);padding-left:12px}
+.cm{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}.cm-kids .cm{border-bottom:0;padding-bottom:4px}
+.cm-a{width:38px;height:38px;border-radius:50%;flex:none;display:grid;place-items:center;background:var(--bs);color:var(--b);font:800 17px var(--head)}
+.cm.staff>.cm-a{background:var(--g);color:#fff}.cm-b{flex:1;min-width:0}
+.cm-h{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}.cm-h b{font:700 15.5px var(--head)}.cm-h time{font-size:12.5px;color:var(--mut)}
+.cm-badge{background:var(--gs);color:var(--g);border-radius:999px;padding:1px 8px;font-size:11.5px;font-weight:700}
+.cm-t{font-size:15.5px;line-height:1.7;overflow-wrap:anywhere}.cm-t p{margin:4px 0}
+.cm-r{border:0;background:transparent;color:var(--b);font:600 13px var(--body);cursor:pointer;padding:2px 0}
+.cm-none,.cm-note{color:var(--mut);font-size:14px}.cm-ok{background:var(--gs);color:var(--g);border-radius:12px;padding:10px 12px;font-weight:600}
+.cms .comment-respond{margin-top:16px;background:var(--bg);border-radius:14px;padding:14px}.cms .comment-reply-title{font:700 17px var(--head);margin:0 0 6px}
+.cms .comment-reply-title small{margin-left:8px;font-size:13px}
+.cms label{display:block;font-size:13.5px;font-weight:600;color:var(--ink2);margin-bottom:4px}
+.cms textarea,.cms input[type=text],.cms input[type=email]{width:100%;border:1px solid var(--line);border-radius:12px;padding:10px 12px;font:500 15px var(--body);background:#fff;color:var(--ink)}
+.cms .comment-form-author,.cms .comment-form-email{display:inline-block;width:calc(50% - 6px);vertical-align:top}.cms .comment-form-author{margin-right:8px}
+.cms .comment-form-cookies-consent{font-size:13px;color:var(--mut);display:flex;gap:6px;align-items:flex-start}.cms .comment-form-cookies-consent label{display:inline;font-weight:400}
+.cm-send{border:0;cursor:pointer;margin-top:6px}
+@media(max-width:640px){.cms .comment-form-author,.cms .comment-form-email{display:block;width:100%;margin-right:0}.cm-kids{margin-left:10px}}
 /* ---------- home hero v3: animated route map from Dhaka ---------- */
 .hero3{position:relative;overflow:hidden;color:#fff;background:linear-gradient(135deg,#061a3d 0%,#082a63 45%,#0a3f96 100%)}
 .hero3:after{content:"";position:absolute;left:0;right:0;bottom:0;height:60px;background:linear-gradient(180deg,transparent,rgba(6,26,61,.35))}
@@ -673,6 +693,56 @@ function pa_view_home() {
 </div>
 <?php }
 
+/* Comments for v3 article pages: approved comments (threaded), admin replies badged, and the form. */
+function pa_comments( $id ) {
+	if ( ! comments_open( $id ) && ! get_comments_number( $id ) ) return;
+	$all = get_comments( array( 'post_id' => $id, 'status' => 'approve', 'order' => 'ASC' ) );
+	$kids = array(); foreach ( $all as $c ) $kids[ (int) $c->comment_parent ][] = $c;
+	$admins = array_map( 'intval', get_users( array( 'role' => 'administrator', 'fields' => 'ID' ) ) );
+	$open = comments_open( $id );
+	$one = function ( $c, $depth ) use ( &$one, $kids, $admins, $open ) {
+		$name = $c->comment_author ? $c->comment_author : 'প্রবাসী';
+		$staff = in_array( (int) $c->user_id, $admins, true );
+		$shown = $staff ? 'প্রবাসী ইনফো' : $name;
+		$ini = function_exists( 'mb_substr' ) ? mb_substr( trim( $shown ), 0, 1 ) : substr( $shown, 0, 1 );
+		$ago = pa_bn( human_time_diff( strtotime( $c->comment_date_gmt . ' UTC' ), time() ) ) . ' আগে';
+		$h = '<li class="cm' . ( $staff ? ' staff' : '' ) . '" id="comment-' . (int) $c->comment_ID . '"><div class="cm-a">' . esc_html( $ini ) . '</div><div class="cm-b">';
+		$h .= '<div class="cm-h"><b>' . esc_html( $shown ) . '</b>' . ( $staff ? '<span class="cm-badge">টিম</span>' : '' ) . '<time>' . esc_html( $ago ) . '</time></div>';
+		$h .= '<div class="cm-t">' . wpautop( esc_html( $c->comment_content ) ) . '</div>';
+		if ( $open && $depth < 3 ) $h .= '<button type="button" class="cm-r" data-id="' . (int) $c->comment_ID . '" data-n="' . esc_attr( $shown ) . '">↩ উত্তর দিন</button>';
+		$h .= '</div>';
+		if ( ! empty( $kids[ (int) $c->comment_ID ] ) ) {
+			$h .= '<ol class="cm-kids">';
+			foreach ( $kids[ (int) $c->comment_ID ] as $k ) $h .= $one( $k, $depth + 1 );
+			$h .= '</ol>';
+		}
+		return $h . '</li>';
+	};
+	$n = count( $all );
+	echo '<section class="cms" id="comments"><h2>💬 মন্তব্য' . ( $n ? ' (' . pa_bn( $n ) . ')' : '' ) . '</h2>';
+	if ( isset( $_GET['unapproved'] ) ) echo '<p class="cm-ok">✅ ধন্যবাদ! আপনার মন্তব্য পাওয়া গেছে — যাচাইয়ের পর প্রকাশিত হবে।</p>';
+	if ( $n ) {
+		echo '<ol class="cm-list">';
+		foreach ( isset( $kids[0] ) ? $kids[0] : array() as $c ) echo $one( $c, 1 );
+		echo '</ol>';
+	} elseif ( $open ) {
+		echo '<p class="cm-none">এখনো কোনো মন্তব্য নেই — প্রশ্ন বা অভিজ্ঞতা লিখে প্রথম মন্তব্যটি করুন।</p>';
+	}
+	if ( $open ) {
+		comment_form( array(
+			'title_reply' => 'আপনার মন্তব্য বা প্রশ্ন লিখুন', 'title_reply_to' => '%s-কে উত্তর দিন', 'cancel_reply_link' => 'বাতিল', 'label_submit' => 'মন্তব্য পাঠান',
+			'comment_notes_before' => '<p class="cm-note">আপনার ইমেইল প্রকাশ করা হবে না। মন্তব্য যাচাইয়ের পর প্রকাশিত হয়।</p>', 'comment_notes_after' => '',
+			'comment_field' => '<p class="comment-form-comment"><label for="comment">মন্তব্য</label><textarea id="comment" name="comment" rows="4" required placeholder="এখানে লিখুন…"></textarea></p>',
+			'fields' => array(
+				'author' => '<p class="comment-form-author"><label for="author">নাম</label><input id="author" name="author" type="text" required autocomplete="name"></p>',
+				'email' => '<p class="comment-form-email"><label for="email">ইমেইল</label><input id="email" name="email" type="email" required autocomplete="email"></p>',
+			),
+			'class_submit' => 'btn btn-b cm-send',
+		), $id );
+	}
+	echo '</section>';
+}
+
 function pa_view_single() {
 	while ( have_posts() ) {
 		the_post();
@@ -703,6 +773,7 @@ function pa_view_single() {
 			<a class="btn fb" href="<?php echo esc_url( 'https://www.facebook.com/sharer/sharer.php?u=' . rawurlencode( $url ) ); ?>" target="_blank" rel="noopener">Facebook</a>
 			<button type="button" class="btn cp copy">লিংক কপি</button></div>
 		<?php echo pa_dream( 'post-bottom', 'ইউরোপে ওয়ার্ক পারমিট — বাংলাদেশ ও কাতার থেকে' ); ?>
+		<?php pa_comments( $id ); ?>
 	</article>
 	<aside class="side">
 		<div class="box"><div class="bh">💱 আজকের রেট<span class="live">লাইভ</span></div><div class="mrates" id="mrates"><div><span>লোড হচ্ছে…</span></div></div><a class="btn btn-b" style="width:100%;margin-top:10px" href="<?php echo esc_url( home_url( '/#dash' ) ); ?>">ক্যালকুলেটর →</a></div>
@@ -783,6 +854,9 @@ function pa_js() { ?>
 	setFs(fs); document.querySelectorAll('.fsz button').forEach(function(b){ b.onclick=function(){ setFs(fs+parseFloat(b.dataset.fs)*1.5); }; });
 	document.querySelectorAll('.share-now').forEach(function(b){ b.onclick=function(){ var d={title:document.title,url:location.href.split('#')[0]}; if(navigator.share){ navigator.share(d).catch(function(){}); } else { location.href='https://wa.me/?text='+encodeURIComponent(d.title+'\n'+d.url); } }; });
 
+
+	/* comment reply: move the form under the comment and set its parent */
+	document.querySelectorAll('.cm-r').forEach(function(b){ b.onclick=function(){ var f=document.getElementById('respond'), p=document.getElementById('comment_parent'); if(!f||!p) return; p.value=b.dataset.id; b.closest('.cm-b').appendChild(f); var t=f.querySelector('.comment-reply-title'); if(t&&t.firstChild) t.firstChild.nodeValue=b.dataset.n+'-কে উত্তর দিন '; var c=document.getElementById('comment'); if(c) c.focus(); }; });
 	/* header v2: shrink on scroll, mobile drawer, "more" dropdown on touch */
 	(function(){ var h=document.getElementById('hdr2'), d=document.getElementById('drw'), b=document.getElementById('burger'), m=document.getElementById('more');
 		if(h){ var t=0; addEventListener('scroll',function(){ if(t) return; t=requestAnimationFrame(function(){ h.classList.toggle('sm',scrollY>80); t=0; }); },{passive:true}); }
