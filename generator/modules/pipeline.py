@@ -284,6 +284,26 @@ def generate_article(site: dict, title: str, log=lambda m: None, replace: dict |
             data["tags"] = b.get("tags") or data["tags"]
         log(f"   → {res['score']}/100")
 
+    # A complete but short draft (often from a fallback model) is expanded once instead of being thrown away.
+    if MIN_PUBLISH_WORDS > res["words"] >= 450 and have_llm():
+        log(f"📏 {res['words']}w < {MIN_PUBLISH_WORDS} — expanding the thinnest sections")
+        try:
+            more = chat(
+                "You expand an existing HTML article. Return ONLY the full improved HTML body (no markdown fences). "
+                "Keep every existing heading, link, table and the same language and tone. Add genuinely useful detail: "
+                "practical steps, examples, common mistakes, tips and context under the shortest sections, and one new "
+                "relevant H2 section if helpful. Never invent specific fees, dates, laws or statistics that are not already "
+                "in the text — when a figure matters, tell the reader to confirm it on the official source.",
+                f"Title: {wa['title']}\nTarget: at least {MIN_PUBLISH_WORDS + 250} words.\n\nHTML:\n{wa['body_html']}",
+                temperature=0.6, max_tokens=8000)
+            more = re.sub(r"^```(?:html)?|```$", "", (more or "").strip()).strip()
+            cand = dict(wa, body_html=_seo_nudge(more, keyword))
+            cres = seo_score.evaluate(cand)
+            if cres["words"] > res["words"] and not _wrong_script(site, cand["title"], cand["body_html"]):
+                wa, res = cand, cres
+                log(f"   → {res['words']}w")
+        except Exception as e:
+            log(f"   expand skipped ({e})")
     log(f"📊 Final SEO score {res['score']}/100 ({res['words']}w)")
     # Hard quality floor: never publish a thin/truncated draft (v4 can occasionally
     # return a stub). Raising here makes the drip skip + log it instead of shipping junk.

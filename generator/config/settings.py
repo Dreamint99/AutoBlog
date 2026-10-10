@@ -52,10 +52,11 @@ LLM_PROVIDER = os.getenv("LLM_PROVIDER", "chain")
 # Best quality first; each later entry is a separate free quota to fall back on.
 LLM_CHAIN = os.getenv("LLM_CHAIN", ",".join([
     "gemini:gemini-flash-latest",
-    "gemini:gemini-flash-lite-latest",
+    # strong, large-quota models next; Flash-Lite writes noticeably shorter articles, so it is a late fallback
     "cerebras:gpt-oss-120b",
     "groq:openai/gpt-oss-120b",
     "mistral:mistral-medium-latest",
+    "gemini:gemini-flash-lite-latest",
     "workersai:@cf/openai/gpt-oss-120b",
     "cerebras:qwen-3.8-27b",
     "groq:qwen/qwen3.8-27b",
