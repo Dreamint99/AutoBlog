@@ -705,7 +705,7 @@ function pa_comments( $id ) {
 		$staff = in_array( (int) $c->user_id, $admins, true );
 		$shown = $staff ? 'প্রবাসী ইনফো' : $name;
 		$ini = function_exists( 'mb_substr' ) ? mb_substr( trim( $shown ), 0, 1 ) : substr( $shown, 0, 1 );
-		$ago = pa_bn( human_time_diff( strtotime( $c->comment_date_gmt . ' UTC' ), time() ) ) . ' আগে';
+		$ago = pa_bn( str_replace( array( 'years', 'year', 'months', 'month', 'weeks', 'week', 'days', 'day', 'hours', 'hour', 'mins', 'min', 'seconds', 'second', 'secs' ), array( 'বছর', 'বছর', 'মাস', 'মাস', 'সপ্তাহ', 'সপ্তাহ', 'দিন', 'দিন', 'ঘণ্টা', 'ঘণ্টা', 'মিনিট', 'মিনিট', 'সেকেন্ড', 'সেকেন্ড', 'সেকেন্ড' ), human_time_diff( strtotime( $c->comment_date_gmt . ' UTC' ), time() ) ) ) . ' আগে';
 		$h = '<li class="cm' . ( $staff ? ' staff' : '' ) . '" id="comment-' . (int) $c->comment_ID . '"><div class="cm-a">' . esc_html( $ini ) . '</div><div class="cm-b">';
 		$h .= '<div class="cm-h"><b>' . esc_html( $shown ) . '</b>' . ( $staff ? '<span class="cm-badge">টিম</span>' : '' ) . '<time>' . esc_html( $ago ) . '</time></div>';
 		$h .= '<div class="cm-t">' . wpautop( esc_html( $c->comment_content ) ) . '</div>';
