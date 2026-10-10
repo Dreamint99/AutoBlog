@@ -57,8 +57,9 @@ LLM_CHAIN = os.getenv("LLM_CHAIN", ",".join([
     "groq:openai/gpt-oss-120b",
     "mistral:mistral-medium-latest",
     # OpenRouter free models (daily request cap on the account)
-    "openrouter:google/gemma-4-31b-it:free",
     "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
+    "openrouter:apodex/apodex-1.1-mini:free",
+    "openrouter:google/gemma-4-31b-it:free",  # often rate-limited upstream, so after the others
     "gemini:gemini-flash-lite-latest",
     "workersai:@cf/openai/gpt-oss-120b",
     "cerebras:qwen-3.8-27b",
