@@ -5,6 +5,7 @@ name: Daily Taka rate article (probashiinfo)
 on:
   schedule:
     - cron: "0 15 * * *"
+    - cron: "30 16 * * *"   # backup if GitHub skips the first run; it updates the same post
   workflow_dispatch:
 
 jobs:
