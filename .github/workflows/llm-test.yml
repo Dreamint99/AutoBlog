@@ -6,6 +6,9 @@ on:
       only:
         description: "provider filter (e.g. openrouter) or empty for all"
         default: ""
+      chain:
+        description: "optional LLM_CHAIN override, e.g. openrouter:apodex/apodex-1.1-mini:free"
+        default: ""
 
 jobs:
   test:
@@ -20,10 +23,13 @@ jobs:
       CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
       PYTHONUTF8: "1"
+      LLM_CHAIN_OVERRIDE: ${{ github.event.inputs.chain }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - run: pip install -r requirements.txt
-      - run: python llm_test.py "${{ github.event.inputs.only }}"
+      - run: |
+          if [ -n "$LLM_CHAIN_OVERRIDE" ]; then export LLM_CHAIN="$LLM_CHAIN_OVERRIDE"; fi
+          python llm_test.py "${{ github.event.inputs.only }}"
