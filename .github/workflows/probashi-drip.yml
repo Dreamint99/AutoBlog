@@ -59,5 +59,7 @@ jobs:
             grep -q "✅" drip.log || { echo "::error::No article published"; exit 1; }
             exit 0
           fi
-          python drip.py probashiinfo 1 999999 2>&1 | tee drip.log
+          # 03:30 and 13:30: a step-by-step work-visa guide for the next BMET destination country that has none yet
+          # (generator/data/coverage_probashiinfo_visa.json, ordered by BMET volume); a normal topic once all are covered.
+          DRIP_COVERAGE=probashiinfo_visa python drip.py probashiinfo 1 999999 2>&1 | tee drip.log
           grep -q "+0 article(s)" drip.log && { echo "::error::No article published"; exit 1; } || true

@@ -61,7 +61,8 @@ def log(msg: str):
 
 
 def _coverage(site_id: str):
-    p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", f"coverage_{site_id}.json")
+    # DRIP_COVERAGE=<name> picks data/coverage_<name>.json (e.g. probashiinfo_visa); default: coverage_<site>.json
+    p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", f"coverage_{os.getenv('DRIP_COVERAGE') or site_id}.json")
     try:
         return json.load(open(p, encoding="utf-8"))
     except Exception:
@@ -74,6 +75,14 @@ def coverage_seed(cov: dict, titles: list[str]) -> str:
     import re as _re
     cs = {c: _re.compile(v[0], _re.I) for c, v in cov["countries"].items()}
     ts = [(t, _re.compile(t["re"], _re.I)) for t in cov["topics"]]
+    if cov.get("once"):  # one guide per country, in list order; "" when every country is covered
+        tr = _re.compile(cov["topics"][0]["re"], _re.I)
+        todo = [c for c, r in cs.items() if not any(r.search(x) and tr.search(x) for x in titles)]
+        if not todo:
+            return ""
+        c = todo[0]
+        return (f"{cov['countries'][c][1]} — {cov['topics'][0]['ideas'][0]}. The title MUST name {c} explicitly and the whole article "
+                f"must be about working in {c} only.")
     cnt = {c: sum(1 for x in titles if r.search(x)) for c, r in cs.items()}
     country = min(cnt, key=lambda c: (cnt[c], list(cs).index(c)))
     mine = [x for x in titles if cs[country].search(x)]
@@ -106,6 +115,10 @@ def drip_site(site: dict):
         titles = []
         for _ in range(n):
             seed = coverage_seed(cov, seen + titles)
+            if not seed:
+                log(f"[{site['id']}] coverage complete — normal topic")
+                titles += suggest_titles(site, count=1, seed=SEED, avoid=avoid + titles)
+                continue
             log(f"[{site['id']}] coverage seed: {seed[:110]}")
             got = []
             for wait in (0, 20, 45):  # free LLM chain sometimes returns nothing when rate-limited
