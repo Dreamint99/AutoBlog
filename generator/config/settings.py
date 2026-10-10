@@ -52,16 +52,21 @@ LLM_PROVIDER = os.getenv("LLM_PROVIDER", "chain")
 # Best quality first; each later entry is a separate free quota to fall back on.
 LLM_CHAIN = os.getenv("LLM_CHAIN", ",".join([
     "gemini:gemini-flash-latest",
-    # strong, large-quota models next; Flash-Lite writes noticeably shorter articles, so it is a late fallback
+    # strong, large-quota free models next; Flash-Lite writes noticeably shorter articles, so it comes later
     "cerebras:gpt-oss-120b",
     "groq:openai/gpt-oss-120b",
     "mistral:mistral-medium-latest",
+    # OpenRouter free models (daily request cap on the account)
+    "openrouter:google/gemma-4-31b-it:free",
+    "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
     "gemini:gemini-flash-lite-latest",
     "workersai:@cf/openai/gpt-oss-120b",
     "cerebras:qwen-3.8-27b",
     "groq:qwen/qwen3.8-27b",
     "workersai:@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-    "openrouter:qwen/qwen3.8-27b:free",
+    # last resort, PAID from the OpenRouter balance (~$0.004 per article): only reached when every free quota is spent
+    "openrouter:openai/gpt-oss-120b",
+    "openrouter:qwen/qwen3.7-flash",
     # "deepseek" (paid) is left out while the account has no balance; add it back here when topped up.
 ]))
 
