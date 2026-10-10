@@ -62,7 +62,7 @@ LLM_CHAIN = os.getenv("LLM_CHAIN", ",".join([
     "groq:qwen/qwen3.8-27b",
     "workersai:@cf/meta/llama-3.3-70b-instruct-fp8-fast",
     "openrouter:qwen/qwen3.8-27b:free",
-    "deepseek",
+    # "deepseek" (paid) is left out while the account has no balance; add it back here when topped up.
 ]))
 
 # === Feature + inline images ===
