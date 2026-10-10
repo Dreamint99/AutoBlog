@@ -36,7 +36,7 @@ function bmCard(cv, o) {
 	function bars(rows, RX, RY, RW, rh, head, fs, nameW, numW, title) {
 		var RH = head + rows.length * rh + 12, mx = Math.max.apply(null, rows.map(function (r) { return r[1]; }).concat([1]));
 		rr(RX, RY, RW, RH, 24); x.fillStyle = 'rgba(255,255,255,.1)'; x.fill(); x.strokeStyle = 'rgba(255,255,255,.18)'; x.lineWidth = 1.5; x.stroke();
-		txt(title, RX + 22, RY + head * .68, '700 ' + Math.round(fs * 1.1) + 'px ' + HF, '#fff');
+		txt(fit(title, '700 ' + Math.round(fs * 1.1) + 'px ' + HF, RW - 44), RX + 22, RY + head * .68, '700 ' + Math.round(fs * 1.1) + 'px ' + HF, '#fff');
 		var cr = Math.round(fs * .62), barX = RX + 22 + cr * 2 + 12 + nameW, barW = RW - (barX - RX) - numW - 22;
 		rows.forEach(function (r, k) {
 			var cy = RY + head + k * rh + rh / 2, ff = '600 ' + fs + 'px ' + TF;
@@ -71,16 +71,16 @@ function bmCard(cv, o) {
 		var L = W * .5, y = 128;
 		var hs = 40; x.font = '800 ' + hs + 'px ' + HF; while (hs > 22 && x.measureText(o.kind).width > L) { hs -= 2; x.font = '800 ' + hs + 'px ' + HF; }
 		txt(o.kind, P, y, '800 ' + hs + 'px ' + HF, '#fff'); y += 40;
-		txt(o.period, P, y, '600 24px ' + TF, '#bcd3fb'); y += 26;
+		txt(fit(o.period, '600 24px ' + TF, L), P, y, '600 24px ' + TF, '#bcd3fb'); y += 26;
 		rr(P, y, L, 210, 26); x.fillStyle = '#fff'; x.fill();
-		txt('মোট বহির্গমন ছাড়পত্র (স্মার্ট কার্ড)', P + 28, y + 42, '600 21px ' + TF, '#4a5d7d');
-		x.font = '800 92px ' + HF; var bt = num(o.t), bw2 = x.measureText(bt).width;
-		txt(bt, P + 26, y + 132, '800 92px ' + HF, '#0b3f97'); txt('জন', P + 40 + bw2, y + 132, '700 34px ' + HF, '#16a34a');
+		txt(fit('মোট বহির্গমন ছাড়পত্র (স্মার্ট কার্ড)', '600 21px ' + TF, L - 56), P + 28, y + 42, '600 21px ' + TF, '#4a5d7d');
+		var wf = 92, bt = num(o.t), bw2; do { x.font = '800 ' + wf + 'px ' + HF; bw2 = x.measureText(bt).width; if (bw2 + 70 <= L - 50) break; wf -= 4; } while (wf > 40);
+		txt(bt, P + 26, y + 132, '800 ' + wf + 'px ' + HF, '#0b3f97'); txt('জন', P + 40 + bw2, y + 132, '700 34px ' + HF, '#16a34a');
 		var cx = P + 26, cy = y + 160, cf = '600 17px ' + TF;
 		chips.forEach(function (c) { x.font = cf; var w = x.measureText(c).width + 26; if (cx + w > P + L - 16) return; var cc = chipCol(c); rr(cx, cy, w, 34, 17); x.fillStyle = cc[0]; x.fill(); txt(c, cx + w / 2, cy + 23, cf, cc[1], 'center'); cx += w + 10; });
 		var RX = W * .5 + P * .9, RW = W - RX - P, top = rows.slice(0, 6);
 		var RH = bars(top, RX, 112, RW, 54, 58, 19, 128, 72, o.rowsTitle || 'শীর্ষ গন্তব্য দেশ');
-		if (rows.length > 6) txt('+ আরও ' + bn(rows.length - 6) + 'টি দেশ — পূর্ণ তালিকা ওয়েবসাইটে', RX + RW / 2, 112 + RH + 26, '600 17px ' + TF, '#d6e4fb', 'center');
+		if (rows.length > 6) txt(fit('+ আরও ' + bn(rows.length - 6) + 'টি দেশ — পূর্ণ তালিকা ওয়েবসাইটে', '600 16px ' + TF, RW - 120), RX + 4, 112 + RH + 24, '600 16px ' + TF, '#d6e4fb');
 	} else {
 		var L2 = W - 2 * P, y2 = 150, big = H >= 1300;
 		var hs2 = big ? 58 : 52; x.font = '800 ' + hs2 + 'px ' + HF; while (hs2 > 26 && x.measureText(o.kind).width > L2) { hs2 -= 2; x.font = '800 ' + hs2 + 'px ' + HF; }
@@ -88,12 +88,19 @@ function bmCard(cv, o) {
 		txt(fit(o.period, '600 27px ' + TF, L2), P, y2, '600 ' + (big ? 30 : 27) + 'px ' + TF, '#bcd3fb'); y2 += big ? 30 : 22;
 		// number panel: big number on the left, chips stacked on the right
 		var ph = big ? 200 : 170; rr(P, y2, L2, ph, 26); x.fillStyle = '#fff'; x.fill();
-		txt('মোট বহির্গমন ছাড়পত্র (স্মার্ট কার্ড)', P + 26, y2 + 40, '600 ' + (big ? 25 : 23) + 'px ' + TF, '#4a5d7d');
-		var nf = big ? 118 : 100; x.font = '800 ' + nf + 'px ' + HF; var bt2 = num(o.t), bw3 = x.measureText(bt2).width;
+		// every size is measured: a wider fallback font (e.g. iPhone's own Bengali font) shrinks to fit instead of overlapping
+		var cfs = big ? 22 : 20, chh = big ? 40 : 36, cwMax = 0;
+		while (cfs > 13 && chips.length * (chh + 8) - 8 > ph - 20) { cfs -= 1; chh -= 2; }
+		x.font = '600 ' + cfs + 'px ' + TF; chips.forEach(function (c) { cwMax = Math.max(cwMax, x.measureText(c).width + 28); });
+		cwMax = Math.min(cwMax, L2 * .45);
+		var lbl = fit('মোট বহির্গমন ছাড়পত্র (স্মার্ট কার্ড)', '600 ' + (big ? 25 : 23) + 'px ' + TF, L2 - cwMax - 70);
+		txt(lbl, P + 26, y2 + 40, '600 ' + (big ? 25 : 23) + 'px ' + TF, '#4a5d7d');
+		var nf = big ? 118 : 100, bt2 = num(o.t), bw3, jw, room = L2 - cwMax - 24 - 24 - 30;
+		do { x.font = '800 ' + nf + 'px ' + HF; bw3 = x.measureText(bt2).width; x.font = '700 ' + Math.round(nf * .4) + 'px ' + HF; jw = x.measureText('জন').width; if (bw3 + 14 + jw <= room) break; nf -= 4; } while (nf > 40);
 		txt(bt2, P + 24, y2 + ph - (big ? 34 : 30), '800 ' + nf + 'px ' + HF, '#0b3f97');
 		txt('জন', P + 38 + bw3, y2 + ph - (big ? 34 : 30), '700 ' + Math.round(nf * .4) + 'px ' + HF, '#16a34a');
-		var cf2 = '600 ' + (big ? 22 : 20) + 'px ' + TF, chh = big ? 40 : 36, cyy = y2 + (ph - chips.length * (chh + 8) + 8) / 2;
-		chips.forEach(function (c) { x.font = cf2; var w = x.measureText(c).width + 28, cc = chipCol(c); rr(P + L2 - 24 - w, cyy, w, chh, chh / 2); x.fillStyle = cc[0]; x.fill(); txt(c, P + L2 - 24 - w / 2, cyy + chh * .67, cf2, cc[1], 'center'); cyy += chh + 8; });
+		var cf2 = '600 ' + cfs + 'px ' + TF, cyy = y2 + (ph - chips.length * (chh + 8) + 8) / 2;
+		chips.forEach(function (c) { c = fit(c, cf2, cwMax - 28); x.font = cf2; var w = x.measureText(c).width + 28, cc = chipCol(c); rr(P + L2 - 24 - w, cyy, w, chh, chh / 2); x.fillStyle = cc[0]; x.fill(); txt(c, P + L2 - 24 - w / 2, cyy + chh * .67, cf2, cc[1], 'center'); cyy += chh + 8; });
 		y2 += ph + 16;
 		// top countries as bars
 		var nb = Math.min(rows.length, big ? 7 : 5), rh2 = big ? 50 : 42, LY = H - 140;
