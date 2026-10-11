@@ -13,12 +13,24 @@ export const dynamic = "force-dynamic";
 
 const FAQ = [
   {
+    q: "What is Unseen Bangladesh?",
+    a: "Unseen Bangladesh is the idea that most of us have seen only a fraction of our own country. This free Unseen Bangladesh tracker lets you colour in every district you have visited out of all 64 districts and 8 divisions, see how much of Bangladesh is still unseen for you, and download a shareable map for Facebook, Instagram or WhatsApp. No sign-up needed.",
+  },
+  {
+    q: "আনসিন বাংলাদেশ (Unseen Bangladesh) কীভাবে ট্র্যাক করব?",
+    a: "ম্যাপে যে জেলাগুলোতে ঘুরে এসেছেন সেগুলোতে ট্যাপ করুন, অথবা ৬৪ জেলার তালিকা থেকে বেছে নিন। নিজের হোম জেলা সেট করুন, নাম-ছবি যোগ করুন, দেখুন বাংলাদেশের কত শতাংশ আপনি দেখেছেন — আর কতটুকু এখনো অদেখা (unseen)। তারপর ফেসবুক বা ইনস্টাগ্রামে শেয়ার করার মতো সুন্দর একটা ম্যাপ ইমেজ ডাউনলোড করুন। সম্পূর্ণ ফ্রি।",
+  },
+  {
     q: "How do I make a map of the districts of Bangladesh I have visited?",
     a: "Tap each district you have been to on the map, or pick it from the list of all 64 districts. Set your home district, add your name and photo if you like, then download the image as a Facebook or Instagram post or story. Free, no sign-up.",
   },
   {
     q: "How many districts are there in Bangladesh?",
-    a: "Bangladesh has 64 districts in 8 divisions: Dhaka, Chattogram, Rajshahi, Khulna, Barishal, Sylhet, Rangpur and Mymensingh.",
+    a: "Bangladesh has 64 districts in 8 divisions: Dhaka, Chattogram, Rajshahi, Khulna, Barishal, Sylhet, Rangpur and Mymensingh. Use this Unseen Bangladesh map to check which of the 64 districts you still haven't seen.",
+  },
+  {
+    q: "বাংলাদেশের কতটুকু ঘুরে দেখেছেন — হিসাব করব কীভাবে?",
+    a: "এই টুলে ভিজিট করা জেলাগুলো মার্ক করলেই দেখতে পাবেন — কয়টা জেলা, ৮টি বিভাগের কয়টা, দেশের কত শতাংশ জমি, আর মোট কত কিলোমিটার পথ পাড়ি দিয়েছেন। বাকিটাই আপনার আনসিন বাংলাদেশ — অদেখা জেলাগুলোর লিস্টও পাবেন।",
   },
   {
     q: "What are the badges?",
@@ -34,15 +46,27 @@ export async function generateMetadata({ params }: { params: Promise<{ site: str
   const { site: id } = await params;
   const site = getSite(id);
   if (!site || site.id !== "walvi") return {};
-  const title = "Bangladesh District Map Maker — Which of the 64 Districts Have You Visited?";
+  const title = "Unseen Bangladesh — 64 District Map: How Much of Bangladesh Have You Seen?";
   const description =
-    "Colour in every district of Bangladesh you've visited, unlock travel badges, see your % of the country and all 8 divisions, and download a beautiful map for Facebook or Instagram. Free, no sign-up.";
+    "Track your Unseen Bangladesh: colour the 64 districts you've visited, unlock travel badges, see your % of the country and all 8 divisions, and download a beautiful map for Facebook or Instagram. বাংলাদেশের কতটুকু ঘুরে দেখেছেন? Free, no sign-up.";
   return {
     title,
     description,
-    keywords: ["bangladesh district map", "64 districts of bangladesh map", "bangladesh map visited", "bangladesh travel map", "districts of bangladesh i have visited"],
+    keywords: [
+      "unseen bangladesh",
+      "unseen bangladesh map",
+      "আনসিন বাংলাদেশ",
+      "বাংলাদেশের অদেখা জায়গা",
+      "bangladesh district map",
+      "64 districts of bangladesh map",
+      "bangladesh map visited",
+      "bangladesh travel map",
+      "districts of bangladesh i have visited",
+      "বাংলাদেশ জেলা ম্যাপ",
+      "কতটুকু বাংলাদেশ দেখেছেন",
+    ],
     metadataBase: new URL(siteBaseUrl(site)),
-    alternates: { canonical: "/bangladesh-map" },
+    alternates: { canonical: "/bangladesh-map", languages: { "en": "/bangladesh-map", "bn": "/bangladesh-map" } },
     openGraph: { title, description, type: "website", url: "/bangladesh-map", siteName: "VisaPoint" },
   };
 }
@@ -59,16 +83,17 @@ export default async function Page({ params }: { params: Promise<{ site: string 
         data={[
           breadcrumbSchema([
             { name: "VisaPoint", url: base },
-            { name: "Bangladesh district map", url: `${base}/bangladesh-map` },
+            { name: "Unseen Bangladesh — district map", url: `${base}/bangladesh-map` },
           ]),
           {
             "@context": "https://schema.org",
             "@type": "WebApplication",
-            name: "VisaPoint Bangladesh District Map",
-            description: "Free map maker for the 64 districts of Bangladesh you have visited, with badges and a downloadable image.",
+            name: "Unseen Bangladesh — VisaPoint 64 District Map",
+            description:
+              "Free Unseen Bangladesh tracker: map the 64 districts of Bangladesh you have visited, see what's still unseen, unlock badges and download a shareable image. বাংলাদেশের কতটুকু ঘুরে দেখেছেন?",
             applicationCategory: "TravelApplication",
             operatingSystem: "Any",
-            inLanguage: "en",
+            inLanguage: ["en", "bn"],
             offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
             url: `${base}/bangladesh-map`,
           },
@@ -88,15 +113,15 @@ export default async function Page({ params }: { params: Promise<{ site: string 
               <span aria-hidden="true">›</span>
               <Link href={`${b}/travel-map`}>Travel map</Link>
               <span aria-hidden="true">›</span>
-              <span>Bangladesh</span>
+              <span>Unseen Bangladesh</span>
             </nav>
-            <span className="vp-eyebrow light">Free tool · no sign-up</span>
+            <span className="vp-eyebrow light">Unseen Bangladesh · free tool · no sign-up</span>
             <h1>
-              How many of Bangladesh&apos;s 64 districts have you seen?
+              Unseen Bangladesh: how many of the 64 districts have you seen?
             </h1>
             <p className="vp-lede light">
-              Tap every district you&apos;ve visited, unlock badges from Sea Lover to All 64 Districts, and download a stunning map for
-              Facebook, Instagram or WhatsApp.
+              Track every district you&apos;ve visited, unlock badges from Sea Lover to All 64 Districts, and download a stunning map for
+              Facebook, Instagram or WhatsApp. <span lang="bn">বাংলাদেশের কতটুকু ঘুরে দেখেছেন — এক নজরে দেখে নিন।</span>
             </p>
           </div>
         </section>
@@ -106,6 +131,29 @@ export default async function Page({ params }: { params: Promise<{ site: string 
           </div>
         </section>
         <section className="vp-sec vp-sec-alt">
+          <div className="vp-wrap">
+            <h2 className="vp-h2">Unseen Bangladesh — আনসিন বাংলাদেশ: অদেখা জেলাগুলো খুঁজে বের করুন</h2>
+            <p className="vp-sub">
+              Most of us live in Bangladesh our whole lives and still leave most of the map blank. The Unseen Bangladesh tracker turns that
+              blank map into a challenge: colour in each of the 64 districts as you visit, and watch your percentage of the country grow —
+              from the tea gardens of Sylhet and the hills of Bandarban to the Sundarbans, Cox&apos;s Bazar&apos;s coast and the char islands
+              of the north.
+            </p>
+            <p className="vp-sub">
+              <span lang="bn">
+                আনসিন বাংলাদেশ মানে শুধু বিখ্যাত জায়গা না — মানে দেশের প্রতিটা অদেখা জেলা, লুকানো রত্ন, নতুন নদী, নতুন মানুষ। ৮টি
+                বিভাগের ৬৪টি জেলার প্রতিটা রঙ করে করে সাজান আপনার নিজের ভ্রমণের ম্যাপ, আর শেয়ার করুন বন্ধুদের সাথে — কে কতটুকু
+                বাংলাদেশ দেখেছে, দেখে নিন এখনই।
+              </span>
+            </p>
+            <p className="vp-sub">
+              Whether you call it an unseen Bangladesh map, a visited-districts tracker, or a{" "}
+              <span lang="bn">বাংলাদেশ জেলা ম্যাপ</span> — this is the free tool that answers one question:{" "}
+              <em>how much of Bangladesh have you really seen?</em>
+            </p>
+          </div>
+        </section>
+        <section className="vp-sec">
           <div className="vp-wrap vp-split">
             <div>
               <h2 className="vp-h2">Questions</h2>
