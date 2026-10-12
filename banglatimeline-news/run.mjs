@@ -136,12 +136,12 @@ async function llm(messages, { json = true, maxTokens = 2500 } = {}) {
         body: JSON.stringify({ model, temperature: 0.3, max_tokens: maxTokens, ...(json ? { response_format: { type: "json_object" } } : {}), messages }) });
       const j = await r.json();
       const txt = j.choices?.[0]?.message?.content;
-      if (!r.ok || !txt) { lastErr = `${name}: ${JSON.stringify(j).slice(0, 200)}`; continue; }
+      if (!r.ok || !txt) { lastErr = `${name}: ${JSON.stringify(j).slice(0, 200)}`; log("  llm fallback —", lastErr); continue; }
       if (!json) return { out: txt, usage: j.usage, via: name };
       const m = txt.replace(/^[\s\S]*?```(?:json)?/, "").replace(/```[\s\S]*$/, "").trim() || txt;
       const s = m.slice(m.indexOf("{"), m.lastIndexOf("}") + 1);
       return { out: JSON.parse(s), usage: j.usage, via: name };
-    } catch (e) { lastErr = `${name}: ${e.message}`; }
+    } catch (e) { lastErr = `${name}: ${e.message}`; log("  llm fallback —", lastErr); }
   }
   throw new Error("LLM failed: " + lastErr);
 }
