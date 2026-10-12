@@ -124,8 +124,8 @@ const SYSTEM = `তুমি "কালারস অব বাংলাদেশ
 শুধু JSON ফেরত দেবে।`;
 async function llm(messages, { json = true, maxTokens = 2500 } = {}) {
   const providers = [
-    // free models first (comma list, tried in order — they are often rate-limited), then the cheap paid model
-    ...(env.OPENROUTER_API_KEY ? (env.OPENROUTER_FREE_MODEL || "google/gemma-4-31b-it:free,google/gemma-4-26b-a4b-it:free,nvidia/nemotron-3-super-120b-a12b:free").split(",").map((m) => ["free:" + m.trim(), "https://openrouter.ai/api/v1/chat/completions", env.OPENROUTER_API_KEY, m.trim()]) : []),
+    // optional free models (OPENROUTER_FREE_MODEL, comma list) — off by default: their Bangla came out garbled; DeepSeek writes it well
+    ...(env.OPENROUTER_API_KEY ? (env.OPENROUTER_FREE_MODEL ? env.OPENROUTER_FREE_MODEL.split(",") : []).map((m) => ["free:" + m.trim(), "https://openrouter.ai/api/v1/chat/completions", env.OPENROUTER_API_KEY, m.trim()]) : []),
     env.OPENROUTER_API_KEY && ["openrouter", "https://openrouter.ai/api/v1/chat/completions", env.OPENROUTER_API_KEY, env.OPENROUTER_MODEL || "deepseek/deepseek-v4-flash"],
     env.DEEPSEEK_API_KEY && ["deepseek", "https://api.deepseek.com/chat/completions", env.DEEPSEEK_API_KEY, "deepseek-chat"],
   ].filter(Boolean);
