@@ -22,7 +22,7 @@ jobs:
         with: { node-version: 20 }
       - run: npm install --no-audit --no-fund
       - run: sudo apt-get install -y -qq fonts-beng >/dev/null || true
-      - run: node run.mjs --max "${{ github.event.inputs.max || '3' }}" --backfill "${{ github.event.inputs.backfill || '0' }}"
+      - run: node run.mjs --max "${{ github.event.inputs.max || '3' }}" --backfill "${{ github.event.inputs.backfill || '0' }}" ${{ github.event_name == 'workflow_dispatch' && '--force' || '' }}
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           OPENROUTER_FREE_MODEL: google/gemma-4-31b-it:free

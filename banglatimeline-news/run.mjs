@@ -16,7 +16,7 @@ const envFile = path.join(DIR, ".env");
 const env = Object.fromEntries((fs.existsSync(envFile) ? fs.readFileSync(envFile, "utf8") : "").split(/\r?\n/).filter((l) => l.includes("=")).map((l) => [l.slice(0, l.indexOf("=")).trim(), l.slice(l.indexOf("=") + 1).trim()]));
 for (const k of ["INGEST_TOKEN", "SITE", "OPENROUTER_API_KEY", "OPENROUTER_MODEL", "OPENROUTER_FREE_MODEL", "DAILY_LIMIT", "DAILY_MIN", "DEEPSEEK_API_KEY", "PIXABAY_API_KEY", "FB_PAGE_ID", "FB_PAGE_TOKEN", "CHROME"]) if (process.env[k]) env[k] = process.env[k];
 const arg = (k, d) => { const i = process.argv.indexOf(k); return i > 0 ? +process.argv[i + 1] || d : d; };
-const DRY = process.argv.includes("--dry"), NO_FB = process.argv.includes("--no-fb");
+const DRY = process.argv.includes("--dry"), NO_FB = process.argv.includes("--no-fb"), FORCE = process.argv.includes("--force"); // --force: publish --max now, ignoring the day pacing (manual runs)
 const MAX_RUN = arg("--max", 3), BACKFILL = arg("--backfill", 0);
 const LIMIT = +(env.DAILY_LIMIT || 20), MIN = +(env.DAILY_MIN || 15);
 const SITE_PUBLIC = "https://coloursofbangladesh.com";
@@ -279,12 +279,15 @@ async function main() {
   const seen = new Set(state.seen), recentW = state.recent.map((r) => words(r.title));
   const items = await readFeeds();
   const clusters = cluster(items, catToday).filter((c) => !c.key.some((k) => seen.has(k)) && !recentW.some((w) => jacc(w, c.w) >= 0.45));
-  const q = quota(done);
+  const q = FORCE ? { n: MAX_RUN, lagging: true } : quota(done);
   log(`feeds: ${items.length} items → ${clusters.length} new events · today ${done}/${MIN}–${LIMIT} · this run ${q.n}${q.lagging ? " (catching up)" : ""}`);
   const picks = clusters.filter((c) => c.breakingHint).slice(0, 1); // breaking always goes, even past the daily cap
-  for (const c of clusters) {
+  // one story per (guessed) category per run first, so a run never publishes three crime stories in a row
+  for (const pass of [0, 1]) for (const c of clusters) {
     if (picks.filter((x) => !x.breakingHint).length >= q.n) break;
-    if (!picks.includes(c) && c.srcs.size >= (q.lagging || done < 6 ? 1 : 2)) picks.push(c);
+    if (picks.includes(c) || c.srcs.size < (q.lagging || done < 6 ? 1 : 2)) continue;
+    if (pass === 0 && picks.some((x) => x.cat === c.cat)) continue;
+    picks.push(c);
   }
   if (DRY) { for (const c of clusters.slice(0, 20)) console.log(c.score.toFixed(1), c.cat.padEnd(13), [...c.srcs].join("/"), c.breakingHint ? "BREAKING?" : "", "|", c.items[0].title); return; }
   if (!env.OPENROUTER_API_KEY && !env.DEEPSEEK_API_KEY) return log("no LLM key (OPENROUTER_API_KEY / DEEPSEEK_API_KEY)");
