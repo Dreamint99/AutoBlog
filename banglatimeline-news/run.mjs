@@ -224,7 +224,7 @@ async function card(a, photo) {
   const cp = await browser.newPage();
   await cp.setViewport({ width: 1080, height: 1350, deviceScaleFactor: 1 });
   await cp.goto("http://localhost:8792/card", { waitUntil: "networkidle0" });
-  await cp.evaluate((j) => window.fill(j), { title: a.title, summary: a.summary || "", cat: a.category, catBn: CAT_BN[a.category] || "সংবাদ", photo, date: bnDateStr(), breaking: !!a.breaking, credit: photo ? (a._credit || "") : "" });
+  await cp.evaluate((j) => window.fill(j), { title: a.title, kicker: a.subtitle || "", summary: a.summary || "", cat: a.category, catBn: CAT_BN[a.category] || "সংবাদ", photo, date: bnDateStr(), breaking: !!a.breaking, credit: photo ? (a._credit || "") : "" });
   await cp.waitForFunction("window.ready === true", { timeout: 20000 });
   const buf = await cp.screenshot({ type: "jpeg", quality: 90 });
   await cp.close();
