@@ -25,7 +25,7 @@ jobs:
       - run: node run.mjs --max "${{ github.event.inputs.max || '3' }}" --backfill "${{ github.event.inputs.backfill || '0' }}" ${{ github.event_name == 'workflow_dispatch' && '--force' || '' }}
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-          OPENROUTER_FREE_MODEL: google/gemma-4-31b-it:free
+          OPENROUTER_FREE_MODEL: "google/gemma-4-31b-it:free,google/gemma-4-26b-a4b-it:free,nvidia/nemotron-3-super-120b-a12b:free"
           OPENROUTER_MODEL: deepseek/deepseek-v4-flash
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}

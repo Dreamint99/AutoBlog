@@ -124,7 +124,8 @@ const SYSTEM = `তুমি "কালারস অব বাংলাদেশ
 শুধু JSON ফেরত দেবে।`;
 async function llm(messages, { json = true, maxTokens = 2500 } = {}) {
   const providers = [
-    env.OPENROUTER_API_KEY && ["openrouter-free", "https://openrouter.ai/api/v1/chat/completions", env.OPENROUTER_API_KEY, env.OPENROUTER_FREE_MODEL || "google/gemma-4-31b-it:free"],
+    // free models first (comma list, tried in order — they are often rate-limited), then the cheap paid model
+    ...(env.OPENROUTER_API_KEY ? (env.OPENROUTER_FREE_MODEL || "google/gemma-4-31b-it:free,google/gemma-4-26b-a4b-it:free,nvidia/nemotron-3-super-120b-a12b:free").split(",").map((m) => ["free:" + m.trim(), "https://openrouter.ai/api/v1/chat/completions", env.OPENROUTER_API_KEY, m.trim()]) : []),
     env.OPENROUTER_API_KEY && ["openrouter", "https://openrouter.ai/api/v1/chat/completions", env.OPENROUTER_API_KEY, env.OPENROUTER_MODEL || "deepseek/deepseek-v4-flash"],
     env.DEEPSEEK_API_KEY && ["deepseek", "https://api.deepseek.com/chat/completions", env.DEEPSEEK_API_KEY, "deepseek-chat"],
   ].filter(Boolean);
@@ -136,7 +137,7 @@ async function llm(messages, { json = true, maxTokens = 2500 } = {}) {
         body: JSON.stringify({ model, temperature: 0.3, max_tokens: maxTokens, ...(json ? { response_format: { type: "json_object" } } : {}), messages }) });
       const j = await r.json();
       const txt = j.choices?.[0]?.message?.content;
-      if (!r.ok || !txt) { lastErr = `${name}: ${JSON.stringify(j).slice(0, 200)}`; log("  llm fallback —", lastErr); continue; }
+      if (!r.ok || !txt) { lastErr = `${name}: ${(j.error?.message || j.choices?.[0]?.finish_reason || JSON.stringify(j)).toString().slice(0, 160)}`; log("  llm fallback —", lastErr); continue; }
       if (!json) return { out: txt, usage: j.usage, via: name };
       const m = txt.replace(/^[\s\S]*?```(?:json)?/, "").replace(/```[\s\S]*$/, "").trim() || txt;
       const s = m.slice(m.indexOf("{"), m.lastIndexOf("}") + 1);
@@ -260,7 +261,7 @@ async function backfill(n) {
   log(`backfill: ${list.length} stories without a photo`);
   for (const a of list) {
     try {
-      const q = (await llm([{ role: "system", content: "তুমি ছবি সম্পাদক। শুধু JSON দাও।" }, { role: "user", content: `এই খবরের জন্য ছবির খোঁজ শব্দ দাও।\nশিরোনাম: ${a.title}\nসারাংশ: ${a.summary}\nট্যাগ: ${a.tags}\nJSON: {"wikimedia_query":"সুপরিচিত ব্যক্তি/স্থান/প্রতিষ্ঠানের ইংরেজি নাম, নইলে খালি","stock_query":"২–৩ শব্দের ইংরেজি প্রতীকী দৃশ্য; হত্যা/ধর্ষণ/শিশু নির্যাতন/আত্মহত্যার খবরে খালি"}` }], { maxTokens: 200 })).out;
+      const q = (await llm([{ role: "system", content: "তুমি ছবি সম্পাদক। শুধু JSON দাও।" }, { role: "user", content: `এই খবরের জন্য ছবির খোঁজ শব্দ দাও।\nশিরোনাম: ${a.title}\nসারাংশ: ${a.summary}\nট্যাগ: ${a.tags}\nJSON: {"wikimedia_query":"সুপরিচিত ব্যক্তি/স্থান/প্রতিষ্ঠানের ইংরেজি নাম, নইলে খালি","stock_query":"২–৩ শব্দের ইংরেজি প্রতীকী দৃশ্য; হত্যা/ধর্ষণ/শিশু নির্যাতন/আত্মহত্যার খবরে খালি"}` }], { maxTokens: 1200 })).out;
       const found = (await commons(q.wikimedia_query).catch(() => null)) || (await pixabay(q.stock_query));
       if (!found) { log("  no photo:", a.title); continue; }
       const p = await renderer();
