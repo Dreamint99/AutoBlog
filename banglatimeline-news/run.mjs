@@ -233,7 +233,7 @@ async function card(a, photo) {
 async function postFacebook(a, url, buf) {
   if (NO_FB || !env.FB_PAGE_ID || !env.FB_PAGE_TOKEN) return null;
   const tags = (a.hashtags || []).slice(0, 4).map((h) => "#" + String(h).replace(/^#/, "").replace(/\s+/g, "")).join(" ");
-  const msg = `${a.breaking ? "🔴 ব্রেকিং | " : ""}${a.title}\n\n${a.fb_caption || a.summary || ""}\n\n📰 বিস্তারিত পড়ুন: ${url}\n\n${tags} #কালারসঅববাংলাদেশ #ColoursOfBangladesh`;
+  const msg = `${a.breaking ? "🔴 ব্রেকিং | " : ""}${a.title}\n\n${a.fb_caption || a.summary || ""}\n\n${tags} #কালারসঅববাংলাদেশ #ColoursOfBangladesh`;
   const fd = new FormData();
   fd.append("source", new Blob([buf], { type: "image/jpeg" }), "card.jpg");
   fd.append("caption", msg); fd.append("access_token", env.FB_PAGE_TOKEN);
