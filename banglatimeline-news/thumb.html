@@ -1,0 +1,7 @@
+<!doctype html><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@800;900&family=Hind+Siliguri:wght@500;600;700&display=swap" rel="stylesheet"><script src="/js/thumbs.js"></script>
+<script>
+async function b64(blob){return new Promise(r=>{const f=new FileReader();f.onload=()=>r(f.result.split(',')[1]);f.readAsDataURL(blob)})}
+window.make=async(job)=>{await document.fonts.ready;
+  if(job.src){const f=await fetch(job.src).then(r=>r.blob());return b64(await BTL.watermarkFile(new File([f],'x.jpg',{type:f.type}),1600));}
+  return b64(await BTL.textThumb(job.title,job.cat,job.date));};
+</script>

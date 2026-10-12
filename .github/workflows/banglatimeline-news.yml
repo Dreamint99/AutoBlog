@@ -1,0 +1,31 @@
+name: Bangla Timeline auto news
+on:
+  schedule:
+    - cron: "23 * * * *"
+  workflow_dispatch:
+    inputs:
+      max:
+        description: "articles this run"
+        default: "2"
+concurrency: { group: banglatimeline-news, cancel-in-progress: false }
+jobs:
+  news:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults: { run: { working-directory: banglatimeline-news } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: npm install --no-audit --no-fund
+      - run: sudo apt-get install -y -qq fonts-beng >/dev/null || true
+      - run: node run.mjs --max "${{ github.event.inputs.max || '2' }}"
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          OPENROUTER_MODEL: deepseek/deepseek-v4-flash
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+          INGEST_TOKEN: ${{ secrets.BTL_INGEST_TOKEN }}
+          SITE: ${{ secrets.BTL_SITE }}
+          DAILY_LIMIT: "15"
+          CHROME: /usr/bin/google-chrome
