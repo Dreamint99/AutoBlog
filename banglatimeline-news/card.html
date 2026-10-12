@@ -1,0 +1,64 @@
+<!doctype html><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@600;700;800&family=Hind+Siliguri:wght@500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<!-- Facebook photo card, 1080×1350. Filled by run.mjs → window.fill({title, summary, cat, catBn, photo, date, breaking, credit}). -->
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:1080px;height:1350px;overflow:hidden;background:#0d1114}
+  .c{--cc:#c7081e;--cd:#5c0410;position:relative;width:1080px;height:1350px;display:flex;flex-direction:column;background:#0d1114;color:#fff;font-family:"Hind Siliguri",sans-serif}
+  .ph{position:relative;height:770px;overflow:hidden;background:radial-gradient(700px 420px at 75% 30%,var(--cc),transparent 70%),linear-gradient(135deg,var(--cd),#0d1114)}
+  .ph img.photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 22%,rgba(0,0,0,0) 62%,rgba(13,17,20,.92) 100%)}
+  .ph .pat{position:absolute;inset:0;opacity:.09;background:repeating-linear-gradient(45deg,#fff 0 3px,transparent 3px 44px)}
+  .c.has-photo .ph .pat,.c.has-photo .ph .big{display:none}
+  .ph .big{position:absolute;right:-20px;bottom:40px;font:800 230px/1 "Anek Bangla";color:rgba(255,255,255,.08);white-space:nowrap}
+  .top{position:absolute;z-index:2;left:44px;right:44px;top:40px;display:flex;justify-content:space-between;align-items:center}
+  .logo{display:flex;align-items:center;gap:12px;background:rgba(0,0,0,.42);backdrop-filter:blur(6px);padding:12px 20px 12px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.18)}
+  .logo img{height:46px;width:auto;display:block}
+  .date{font:600 26px "Hind Siliguri";background:rgba(0,0,0,.42);padding:10px 20px;border-radius:999px;border:1px solid rgba(255,255,255,.18)}
+  .credit{position:absolute;z-index:2;right:24px;bottom:16px;font:500 17px "Hind Siliguri";color:rgba(255,255,255,.72);max-width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .chip{position:absolute;z-index:3;left:44px;top:740px;display:flex;align-items:center;gap:12px;background:var(--cc);padding:12px 26px;border-radius:14px;font:700 34px "Anek Bangla";box-shadow:0 12px 30px -8px var(--cc)}
+  .brk{display:none;position:absolute;z-index:3;left:0;right:0;top:0;height:74px;background:#e01b22;align-items:center;gap:16px;padding:0 44px;font:800 38px "Anek Bangla";letter-spacing:0}
+  .brk i{width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 0 0 8px rgba(255,255,255,.3)}
+  .c.breaking .brk{display:flex}.c.breaking .top{top:100px}
+  .txt{flex:1;display:flex;flex-direction:column;justify-content:center;padding:56px 56px 26px 56px;position:relative;overflow:hidden}
+  .txt::before{content:"";position:absolute;left:0;top:64px;bottom:34px;width:10px;background:var(--cc);border-radius:0 6px 6px 0}
+  h1{font:800 64px/1.32 "Anek Bangla";color:#fff}
+  .sum{margin-top:18px;font:500 30px/1.5 "Hind Siliguri";color:#c9d1d6;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .foot{height:104px;display:flex;align-items:center;justify-content:space-between;padding:0 56px;background:linear-gradient(90deg,var(--cd),#0d1114 80%);border-top:4px solid var(--cc)}
+  .foot b{font:700 30px "Hind Siliguri"}.foot b span{color:#ffd166}
+  .dots{display:flex;gap:10px}.dots i{width:16px;height:16px;border-radius:50%}
+</style>
+<div class="c" id="c">
+  <div class="ph" id="ph"><div class="pat"></div><div class="big" id="big"></div><div class="brk"><i></i>ব্রেকিং নিউজ</div>
+    <div class="top"><span class="logo"><img src="/img/logo-light.png?v=3" alt=""></span><span class="date" id="date"></span></div>
+    <span class="credit" id="credit"></span>
+  </div>
+  <span class="chip" id="chip"></span>
+  <div class="txt"><h1 id="t"></h1><p class="sum" id="s"></p></div>
+  <div class="foot"><b>বিস্তারিত পড়ুন <span>coloursofbangladesh.com</span></b><span class="dots"><i style="background:#d0102b"></i><i style="background:#f2711c"></i><i style="background:#d99a00"></i><i style="background:#1f9d55"></i><i style="background:#1b6fd8"></i><i style="background:#7b3fe4"></i></span></div>
+</div>
+<script>
+const COL = { national: ["#d0102b", "#5c0410"], politics: ["#7b3fe4", "#2a0f55"], country: ["#1f9d55", "#06371d"], international: ["#1b6fd8", "#0a2552"], economy: ["#0f9a8f", "#043833"],
+  sports: ["#f2711c", "#4d1f02"], entertainment: ["#e6338f", "#4a0c2f"], probash: ["#d99a00", "#3d2a00"], tech: ["#3f51d6", "#111a4a"], health: ["#0f9d76", "#04382b"], tips: ["#f08c00", "#4a2a00"],
+  lifestyle: ["#ef5a3c", "#4a1408"], travel: ["#0aa5c7", "#053845"], culture: ["#b8860b", "#3a2a03"], opinion: ["#4b5b66", "#161c20"] };
+const load = (img) => new Promise((ok) => { if (img.complete) return ok(); img.onload = img.onerror = () => ok(); });
+window.fill = async (j) => {
+  const c = document.getElementById("c"), [a, b] = COL[j.cat] || COL.national;
+  c.style.setProperty("--cc", a); c.style.setProperty("--cd", b);
+  if (j.breaking) c.classList.add("breaking");
+  document.getElementById("chip").textContent = j.catBn;
+  document.getElementById("big").textContent = j.catBn;
+  document.getElementById("date").textContent = j.date;
+  document.getElementById("credit").textContent = j.credit || "";
+  const t = document.getElementById("t"), s = document.getElementById("s");
+  t.textContent = j.title; s.textContent = j.summary;
+  if (j.photo) { c.classList.add("has-photo"); const im = new Image(); im.className = "photo"; im.src = j.photo; document.getElementById("ph").prepend(im); await load(im); }
+  await document.fonts.ready; await Promise.all([...document.images].map(load));
+  // headline: biggest size (≤4 lines) that still fits; the summary only stays if there is room for it
+  const box = document.querySelector(".txt");
+  let size = 72;
+  do { t.style.fontSize = size + "px"; size -= 2; } while ((t.getBoundingClientRect().height / ((size + 2) * 1.32) > 4.2 || box.scrollHeight > box.clientHeight) && size > 40);
+  if (box.scrollHeight > box.clientHeight) s.style.display = "none";
+  window.ready = true;
+};
+</script>

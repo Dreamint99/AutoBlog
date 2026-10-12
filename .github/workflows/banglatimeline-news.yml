@@ -1,17 +1,20 @@
-name: Bangla Timeline auto news
+name: Colours of Bangladesh auto news
 on:
   schedule:
-    - cron: "23 * * * *"
+    - cron: "4,24,44 * * * *"
   workflow_dispatch:
     inputs:
       max:
-        description: "articles this run"
-        default: "2"
+        description: "max stories this run"
+        default: "3"
+      backfill:
+        description: "give N old text-card stories a real photo (0 = normal run)"
+        default: "0"
 concurrency: { group: banglatimeline-news, cancel-in-progress: false }
 jobs:
   news:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     defaults: { run: { working-directory: banglatimeline-news } }
     steps:
       - uses: actions/checkout@v4
@@ -19,13 +22,17 @@ jobs:
         with: { node-version: 20 }
       - run: npm install --no-audit --no-fund
       - run: sudo apt-get install -y -qq fonts-beng >/dev/null || true
-      - run: node run.mjs --max "${{ github.event.inputs.max || '2' }}"
+      - run: node run.mjs --max "${{ github.event.inputs.max || '3' }}" --backfill "${{ github.event.inputs.backfill || '0' }}"
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          OPENROUTER_FREE_MODEL: google/gemma-4-31b-it:free
           OPENROUTER_MODEL: deepseek/deepseek-v4-flash
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
           INGEST_TOKEN: ${{ secrets.BTL_INGEST_TOKEN }}
           SITE: ${{ secrets.BTL_SITE }}
-          DAILY_LIMIT: "15"
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+          DAILY_LIMIT: "20"
+          DAILY_MIN: "15"
           CHROME: /usr/bin/google-chrome
