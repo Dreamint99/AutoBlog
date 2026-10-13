@@ -4,7 +4,8 @@
 
 candidates.json: [{"q": "...", "volume": 9900, "competition": 0.01}, ...] (straight from the
 Ubersuggest MCP keyword_suggestions results). Keeps volume >= 1000 and competition <= 0.1,
-drops anything an existing published article already covers (drip's topic-word check),
+drops anything an existing published article already covers (drip's topic-word check; skipped
+without D1 access, e.g. in a cloud routine — drip.py checks again before writing),
 and puts the rest first in data/demand_<site>.json with src "gold". Needs wrangler login (D1).
 Used by the daily "ubersuggest-gold" scheduled task; Bing's keyword API (bing_keywords.py)
 fills the rest weekly.
@@ -28,7 +29,11 @@ from modules import pipeline as P
 def main():
     sid, path = sys.argv[1], sys.argv[2]
     cands = json.load(open(path, encoding="utf-8"))
-    titles = [r["title"] for r in d1(f"SELECT title FROM articles WHERE site_id='{sid}' AND status='published'")]
+    try:
+        titles = [r["title"] for r in d1(f"SELECT title FROM articles WHERE site_id='{sid}' AND status='published'")]
+    except Exception as e:  # cloud routine has no wrangler login — drip re-checks coverage before writing
+        print(f"(no D1 access: {e.__class__.__name__}; coverage is checked again by drip)")
+        titles = []
     tok = [P._tokens(t) for t in titles]
     dpath = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", f"demand_{sid}.json")
     try:
