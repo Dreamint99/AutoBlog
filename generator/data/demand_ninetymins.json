@@ -1,4 +1,329 @@
 {
  "_note": "Real queries (Search Console 2026-07-13..2026-10-11, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
- "queries": []
+ "queries": [
+  {
+   "q": "us open tennis 2026 schedule",
+   "impr": 2435,
+   "pos": 9.4,
+   "src": "bing"
+  },
+  {
+   "q": "us open tennis 2026",
+   "impr": 2207,
+   "pos": 9.0,
+   "src": "bing"
+  },
+  {
+   "q": "us open 2026 tennis",
+   "impr": 510,
+   "pos": 8.3,
+   "src": "bing"
+  },
+  {
+   "q": "tennis us open 2026",
+   "impr": 504,
+   "pos": 9.0,
+   "src": "bing"
+  },
+  {
+   "q": "fifa world cup standings",
+   "impr": 447,
+   "pos": 9.0,
+   "src": "bing"
+  },
+  {
+   "q": "2026 us open tennis schedule",
+   "impr": 378,
+   "pos": 8.7,
+   "src": "bing"
+  },
+  {
+   "q": "us open tennis 2026 dates",
+   "impr": 357,
+   "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "us open 2026 schedule",
+   "impr": 193,
+   "pos": 9.0,
+   "src": "bing"
+  },
+  {
+   "q": "motogp schedule 2026",
+   "impr": 132,
+   "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "motogp 2026 calendar",
+   "impr": 131,
+   "pos": 8.1,
+   "src": "bing"
+  },
+  {
+   "q": "us open tennis 2026 location",
+   "impr": 124,
+   "pos": 9.0,
+   "src": "bing"
+  },
+  {
+   "q": "world cup fixtures 2026",
+   "impr": 121,
+   "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "fifa world cup 2026 fixtures",
+   "impr": 103,
+   "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "tennis us open 2026 schedule",
+   "impr": 100,
+   "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "world cup 2030",
+   "impr": 81,
+   "pos": 8.2,
+   "src": "bing"
+  },
+  {
+   "q": "us tennis open 2026",
+   "impr": 69,
+   "pos": 9.3,
+   "src": "bing"
+  },
+  {
+   "q": "world cup 2030 host cities",
+   "impr": 65,
+   "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "us open tennis 2026 schedule time",
+   "impr": 64,
+   "pos": 9.0,
+   "src": "bing"
+  },
+  {
+   "q": "norway team world cup",
+   "impr": 43,
+   "pos": 9.0,
+   "src": "bing"
+  },
+  {
+   "q": "2026 us open tennis",
+   "impr": 43,
+   "pos": 9.3,
+   "src": "bing"
+  },
+  {
+   "q": "us open tennis 2026 seeds",
+   "impr": 40,
+   "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "world cup 2026 schedule cricket",
+   "impr": 40,
+   "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "world cup schedule 2026",
+   "impr": 39,
+   "pos": 9.0,
+   "src": "bing"
+  },
+  {
+   "q": "laliga 2026 27 schedule",
+   "impr": 39,
+   "pos": 8.2,
+   "src": "bing"
+  },
+  {
+   "q": "2030 world cup",
+   "impr": 36,
+   "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "what time is england playing today",
+   "impr": 36,
+   "pos": 8.6,
+   "src": "bing"
+  },
+  {
+   "q": "us open schedule 2026",
+   "impr": 36,
+   "pos": 9.4,
+   "src": "bing"
+  },
+  {
+   "q": "cricket world cup 2026",
+   "impr": 35,
+   "pos": 9.3,
+   "src": "bing"
+  },
+  {
+   "q": "world cup 2026 fixtures",
+   "impr": 32,
+   "pos": 9.0,
+   "src": "bing"
+  },
+  {
+   "q": "switzerland world cup",
+   "impr": 28,
+   "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "us open seeds 2026",
+   "impr": 26,
+   "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "world cup group standings",
+   "impr": 22,
+   "pos": 9.0,
+   "src": "bing"
+  },
+  {
+   "q": "centenary match hosts",
+   "impr": 22,
+   "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "us open 2026 seeds",
+   "impr": 21,
+   "pos": 8.4,
+   "src": "bing"
+  },
+  {
+   "q": "world cup 2030 location",
+   "impr": 20,
+   "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "us open 2026 schedule tennis",
+   "impr": 18,
+   "pos": 9.3,
+   "src": "bing"
+  },
+  {
+   "q": "usa open tennis 2026",
+   "impr": 18,
+   "pos": 9.0,
+   "src": "bing"
+  },
+  {
+   "q": "us open 2026 location",
+   "impr": 17,
+   "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "is england playing today",
+   "impr": 16,
+   "pos": 9.8,
+   "src": "bing"
+  },
+  {
+   "q": "us open tennis schedule 2026",
+   "impr": 15,
+   "pos": 9.0,
+   "src": "bing"
+  },
+  {
+   "q": "f1 schedule 2026 tv schedule",
+   "impr": 15,
+   "pos": 8.5,
+   "src": "bing"
+  },
+  {
+   "q": "fifa 2026 group standings",
+   "impr": 14,
+   "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "world cup 2026 group standings",
+   "impr": 14,
+   "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "switzerland world cup squad 2026",
+   "impr": 13,
+   "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "world cup 2026 cricket",
+   "impr": 13,
+   "pos": 10.0,
+   "src": "bing"
+  },
+  {
+   "q": "where is the 2030 world cup",
+   "impr": 12,
+   "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "us open tennis 2026 shedule",
+   "impr": 12,
+   "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "2026 us open championship",
+   "impr": 12,
+   "pos": 10.0,
+   "src": "bing"
+  },
+  {
+   "q": "bosnia and herzegovina world cup 2026",
+   "impr": 11,
+   "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "switzerland world cup squad",
+   "impr": 11,
+   "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "fifa world rankings",
+   "impr": 11,
+   "pos": 9.0,
+   "src": "bing"
+  },
+  {
+   "q": "us open 2026 tennis schedule",
+   "impr": 11,
+   "pos": 9.0,
+   "src": "bing"
+  },
+  {
+   "q": "us open 2026 dates",
+   "impr": 11,
+   "pos": 9.0,
+   "src": "bing"
+  },
+  {
+   "q": "live match today t20 world cup 2026",
+   "impr": 11,
+   "pos": 9.0,
+   "src": "bing"
+  }
+ ]
 }
