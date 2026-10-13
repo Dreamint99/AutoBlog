@@ -54,9 +54,13 @@ def main():
         for i in range(0, len(ids), 40):
             chunk = ",".join(q(x) for x in ids[i:i + 40])
             for a in d1(f"SELECT id, title, slug, image_url, body_html FROM articles WHERE id IN ({chunk})"):
-                img, body, placed = site_images.choose(a["title"], a["slug"], site, a["body_html"] or "", a["image_url"] or "", used)
-                if "--recredit" in sys.argv and "/wikipedia/commons/" in img + body:
-                    body = site_images.rebuild_credit(img, body)
+                try:
+                    img, body, placed = site_images.choose(a["title"], a["slug"], site, a["body_html"] or "", a["image_url"] or "", used)
+                    if "--recredit" in sys.argv and "/wikipedia/commons/" in img + body:
+                        body = site_images.rebuild_credit(img, body)
+                except Exception as e:  # network trouble: skip this article, a rerun picks it up
+                    print(f"   ! {a['slug']}: {str(e)[:120]}")
+                    continue
                 kind = "wiki kept" if img == a["image_url"] else "card" if "/card/" in img else "photo"
                 stats[kind] += 1
                 if body != (a["body_html"] or ""):

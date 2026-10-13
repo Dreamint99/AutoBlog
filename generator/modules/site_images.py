@@ -95,16 +95,17 @@ def choose(title: str, slug: str, site: dict, body_html: str, image_url: str, us
 def rebuild_credit(image_url: str, body_html: str) -> str:
     """Credit line listing every Commons photo the article shows (feature + body), read back
     from Commons — repairs credits lost when an earlier run swapped photos."""
-    import requests
     names = list(dict.fromkeys(_COMMONS_FILE.findall(image_url or "") + _COMMONS_FILE.findall(body_html or "")))
     body = _CREDIT.sub("", body_html or "").rstrip()
     if not names:
         return body
     titles = "|".join("File:" + unquote(n).replace("_", " ") for n in names[:20])
-    r = requests.get("https://commons.wikimedia.org/w/api.php", headers=fi._UA, timeout=30, params={
-        "action": "query", "format": "json", "titles": titles, "prop": "imageinfo", "iiprop": "extmetadata|url"})
+    j = fi.commons_get({"action": "query", "format": "json", "titles": titles, "prop": "imageinfo", "iiprop": "extmetadata|url"})
+    if not j:
+        return body_html  # Commons unreachable: leave the article as it is
     links = []
-    for p in (r.json().get("query", {}).get("pages") or {}).values():
+    order = {("File:" + unquote(n).replace("_", " ")): i for i, n in enumerate(names)}
+    for p in sorted((j.get("query", {}).get("pages") or {}).values(), key=lambda p: order.get(p.get("title", ""), 99)):
         ii = (p.get("imageinfo") or [{}])[0]
         m = ii.get("extmetadata") or {}
         artist = re.sub(r"<[^>]+>", "", fi._html.unescape((m.get("Artist") or {}).get("value", ""))).strip() or "Unknown"

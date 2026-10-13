@@ -151,13 +151,27 @@ def detect_country(*texts: str):
     return c[0], c[1], c[2]
 
 
+def commons_get(params: dict) -> dict:
+    """Commons API call with polite retries (it resets connections when hit too fast)."""
+    import time
+    for i in range(4):
+        try:
+            r = requests.get(_API, headers=_UA, timeout=30, params=params)
+            if r.status_code == 429:
+                raise requests.RequestException("429")
+            return r.json()
+        except (requests.RequestException, ValueError):
+            time.sleep(5 * (i + 1))
+    return {}
+
+
 def _commons(query: str, must: list[str], used: set, limit: int = 40) -> list[dict]:
     try:
-        r = requests.get(_API, headers=_UA, timeout=30, params={
+        r = commons_get({
             "action": "query", "format": "json", "generator": "search", "gsrsearch": f"{query} filetype:bitmap",
             "gsrnamespace": 6, "gsrlimit": limit, "prop": "imageinfo", "iiprop": "url|size|extmetadata|mime",
             "iiurlwidth": 1280})
-        pages = (r.json().get("query") or {}).get("pages") or {}
+        pages = (r.get("query") or {}).get("pages") or {}
     except Exception:
         return []
     out = []
