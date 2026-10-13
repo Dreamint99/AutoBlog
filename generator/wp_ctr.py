@@ -43,7 +43,7 @@ APPLY = "--apply" in sys.argv
 LIMIT = next((int(a) for a in sys.argv[1:] if a.isdigit()), 0)
 YEAR = datetime.now(timezone.utc).year
 # Pages whose article facts need a human check before a number goes into the title.
-SKIP = {"https://probashiinfo.com/list-of-schengen-countries-in-europe-2026/"}  # says 28 countries; Schengen has 29 since 2025
+SKIP = {"https://probashiinfo.com/list-of-schengen-countries-in-europe-2026/"}  # title + facts fixed by hand in the overrides file
 
 BASE = os.environ["PROBASHIINFO_WP_URL"].rstrip("/")
 AUTH = base64.b64encode(f"{os.environ['PROBASHIINFO_WP_USER']}:{os.environ['PROBASHIINFO_WP_APP_PASSWORD']}".encode()).decode()
@@ -157,7 +157,15 @@ def apply_overrides():
             print("  - no published post for", o["url"])
             continue
         meta = {k: v for k, v in (("rank_math_title", o.get("title")), ("rank_math_description", o.get("description"))) if v}
-        r = wp("POST", f"wp/v2/posts/{post['id']}", json={"meta": meta})
+        body = {"meta": meta}
+        if o.get("replace"):  # exact-text corrections in the article itself
+            html = post["content"]["raw"]
+            for old, new in o["replace"]:
+                print(("   ✓ " if old in html else "   ✗ not found: ") + old[:60])
+                html = html.replace(old, new)
+            if html != post["content"]["raw"]:
+                body["content"] = html
+        r = wp("POST", f"wp/v2/posts/{post['id']}", json=body)
         print(f"#{post['id']} {r.status_code} {o.get('title', '')}")
 
 
