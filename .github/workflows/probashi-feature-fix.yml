@@ -16,6 +16,10 @@ on:
         description: "Recheck photos placed earlier against the stricter rules"
         type: boolean
         default: false
+      captions:
+        description: "Remove stale stock captions under replaced photos"
+        type: boolean
+        default: false
 
 concurrency:
   group: probashi-feature-fix
@@ -51,6 +55,7 @@ jobs:
           LIMIT: ${{ github.event.inputs.limit }}
         run: |
           R=""; if [ "${{ github.event.inputs.recheck }}" = "true" ]; then R="--recheck"; fi
+          if [ "${{ github.event.inputs.captions }}" = "true" ]; then R="--captions"; fi
           if [ "$APPLY" = "true" ]; then python wp_feature_fix.py $R --apply "$LIMIT"; else python wp_feature_fix.py $R "$LIMIT"; fi
       - name: Commit progress
         if: always() && github.event.inputs.apply == 'true'

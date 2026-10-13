@@ -97,8 +97,26 @@ def recheck(base, h):
     print(f"{fixed} posts with misfit photos")
 
 
+def captions(base, h):
+    """Drop stale captions under photos this script placed (file names pi-<id>…): they still
+    described the replaced stock photo ("Malaysian flag and Bangladeshi construction workers")."""
+    fixed = 0
+    rx = re.compile(r'(<figure[^>]*>\s*(?:<a[^>]*>\s*)?<img[^>]*src="[^"]*/pi-\d+[^"]*"[^>]*>\s*(?:</a>\s*)?)<figcaption.*?</figcaption>', re.S)
+    for p in posts(base, h):
+        html = p["content"]["raw"]
+        new = rx.sub(r"", html)
+        if new != html:
+            fixed += 1
+            print(f"#{p['id']} {len(rx.findall(html))} caption(s)")
+            if APPLY:
+                requests.post(f"{base}/wp-json/wp/v2/posts/{p['id']}", headers={**h, "Content-Type": "application/json"}, json={"content": new}, timeout=90)
+    print(f"{fixed} posts with stale captions")
+
+
 def main():
     base, user, pw = _creds(SITE)
+    if "--captions" in sys.argv:
+        return captions(base, _headers(user, pw))
     if "--recheck" in sys.argv:
         return recheck(base, _headers(user, pw))
     h = _headers(user, pw)

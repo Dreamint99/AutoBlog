@@ -119,8 +119,8 @@ def fix_inline(base: str, headers: dict, html: str, title: str, slug: str, used:
         if m.group(1) not in target_tags:
             return m.group(0)
         new = swap(m.group(1))
-        if new:
-            return m.group(0).replace(m.group(1), new)
+        if new:  # the old caption described the stock photo, not the new one
+            return re.sub(r"<figcaption.*?</figcaption>", "", m.group(0).replace(m.group(1), new), flags=re.S)
         removed += 1
         return ""
 
