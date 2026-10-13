@@ -76,7 +76,8 @@ def main():
                 if f.get("q") and f.get("a") and len(f["a"]) < 600 and key not in seen:
                     seen.add(key)
                     faq.append(f)
-            if any(re.search(r"[ऀ-ॿ]", f["q"] + f["a"]) for f in faq):  # Hindi script leaking into Bangla
+            # Hindi script leaking into Bangla; the danda "।" (U+0964/0965) is shared, so it is allowed
+            if any(re.search(r"[ऀ-ॣ०-ॿ]", f["q"] + f["a"]) for f in faq):
                 problem = "it contains Hindi/Devanagari characters; write only Bangla script"
                 faq = []
                 continue
