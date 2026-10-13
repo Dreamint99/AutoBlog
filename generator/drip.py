@@ -103,6 +103,9 @@ _GENERIC = set("how many much people person top best popular most largest bigges
     "সালে", "বর্তমানে", "আছে", "চালু", "করতে", "করার"}
 
 
+_BRANDS = ("countly", "visapoint", "infkey", "gccguide", "ninetymins", "probashi", "প্রবাসী ইনফো", "colours of bangladesh")
+
+
 def _topic_words(text: str) -> set:
     return {w for w in _pipe._tokens(text) if w not in _GENERIC}
 
@@ -143,6 +146,9 @@ def drip_site(site: dict):
             if len(demand_titles) >= n:
                 break
             core = _topic_words(q["q"])
+            # a search for our own brand ("countly analytics" = the Countly company) is not a topic to write
+            if any(b in q["q"].lower() for b in _BRANDS):
+                continue
             if not core or any(_covers(h, core) for h in have_tok) or _pipe.too_similar(q["q"], avoid + demand_titles):
                 continue
             seed = (f"Write the article that directly answers this REAL search query: \"{q['q']}\" "
@@ -188,7 +194,8 @@ def drip_site(site: dict):
                 # 780+ word draft is accepted, so one slightly short article (e.g. when the main
                 # LLM is out of quota and a smaller fallback writes it) does not fail the whole run.
                 _pipe.MIN_PUBLISH_WORDS = 900 if attempt == 1 else 780
-                art = generate_article(site, t)
+                art = generate_article(site, t, log=lambda m, sid=site["id"]: log(f"[{sid}] {m.strip()}")
+                                       if any(k in m for k in ("grounding", "humanizer", "brief")) else None)
                 done += 1
                 log(f"[{site['id']}] ✅ {art['title']} ({art['word_count']}w)")
                 break
