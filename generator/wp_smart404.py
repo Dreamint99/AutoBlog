@@ -48,6 +48,16 @@ add_action( 'template_redirect', function () {
 	}
 	if ( $to ) { wp_redirect( $to, 301 ); exit; }
 }, 5 );
+
+/* RSS: featured image on every item (Pinterest auto-publish, Flipboard and feed readers need one). */
+add_action( 'rss2_ns', function () { echo 'xmlns:media="http://search.yahoo.com/mrss/" '; } );
+add_action( 'rss2_item', function () {
+	$id = get_post_thumbnail_id();
+	if ( ! $id ) { return; }
+	$src = wp_get_attachment_image_src( $id, 'full' );
+	if ( $src ) { printf( '<media:content url="%s" medium="image" width="%d" height="%d" />' . "
+", esc_url( $src[0] ), (int) $src[1], (int) $src[2] ); }
+} );
 """
 
 

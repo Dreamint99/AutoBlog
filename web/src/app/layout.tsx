@@ -91,6 +91,7 @@ export const metadata: Metadata = {
   // Pages that set no openGraph of their own (about, contact, match centres…) still share with the site card.
   openGraph: process.env.SITE_ID ? { images: [{ url: `/og/${process.env.SITE_ID}.png`, width: 1200, height: 630 }] } : undefined,
   twitter: { card: "summary_large_image" },
+  alternates: { types: { "application/rss+xml": "/rss.xml" } },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
