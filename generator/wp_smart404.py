@@ -59,7 +59,19 @@ def main():
     auth = base64.b64encode(f"{os.environ['PROBASHIINFO_WP_USER']}:{os.environ['PROBASHIINFO_WP_APP_PASSWORD']}".encode()).decode()
     h = {"Authorization": f"Basic {auth}", "User-Agent": "AutoBlog/1.0"}
     api = f"{base}/wp-json/code-snippets/v1/snippets"
-    existing = next((s for s in requests.get(api, headers=h, timeout=60).json() if s.get("name") == SNIPPET_NAME), None)
+    mine = []
+    for page in range(1, 20):  # the list is paged; a first-page-only lookup created a second copy
+        rows = requests.get(api, headers=h, timeout=60, params={"per_page": 100, "page": page}).json()
+        if not isinstance(rows, list) or not rows:
+            break
+        mine += [s for s in rows if s.get("name") == SNIPPET_NAME]
+        if len(rows) < 100:
+            break
+    mine.sort(key=lambda s: s["id"])
+    for extra in mine[:-1]:  # keep the newest copy only
+        r = requests.post(f"{api}/{extra['id']}/deactivate", headers=h, timeout=60)
+        print("deactivated duplicate", extra["id"], r.status_code)
+    existing = mine[-1] if mine else None
     body = {"name": SNIPPET_NAME, "code": CODE, "scope": "front-end", "active": True}
     r = requests.post(f"{api}/{existing['id']}" if existing else api, headers=h, json=body, timeout=60)
     print("snippet", r.status_code, r.text[:200] if not r.ok else r.json().get("id"))
