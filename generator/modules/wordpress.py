@@ -184,23 +184,26 @@ def publish(site: dict, article: dict, log=lambda m: None) -> dict:
     if _rankmath_enabled(site):
         payload["meta"] = _rank_math_meta(article)
 
-    # Real photos only (no AI images): a stock photo for the hero, and every inline
-    # image swapped for a real photo matching its alt text, all re-hosted in WP media.
-    from modules import photos
-    used = used_photo_ids(base, headers)
-    name = re.sub(r"\s+", "-", article.get("keyword", "")) or "feature"
-    inline_alts = re.findall(r'<img\b[^>]*alt="([^"]*)"', article["body_html"])
-    hit = photos.find_photo([article.get("image_query", ""), *inline_alts[:1]], used)
-    media = photos.wp_upload(base, headers, hit[0], "feature", alt=article.get("keyword", ""), source_id=hit[1]) if hit else None
-    if media:
-        payload["featured_media"] = media[0]
-    else:
-        media_id = _upload_feature_image(base, headers, article.get("image_url", ""),
-                                         article["title"], alt=article.get("keyword", ""))
-        if media_id:
-            payload["featured_media"] = media_id
-    payload["content"], _ = photos.rehost_inline(base, headers, article["body_html"], used,
-                                                 article.get("image_query", ""), name)
+    # On-topic images only (modules/feature_image.py): a free-licence photo of the article's
+    # country, else a rendered title card. Body images become more photos of that country or are
+    # dropped — generic stock photos ("worried woman") matched the prompt, not the article.
+    from modules import wp_images
+    used, _stock = wp_images.stock_library(base, headers)
+    name = re.sub(r"[^a-z0-9]+", "-", (article.get("slug") or "post").lower())[:40] or "post"
+    photos_used = []
+    try:
+        got = wp_images.featured(base, headers, article["title"], article.get("slug", ""), used,
+                                 site.get("name_bn") or site.get("name") or site["id"], name)
+    except Exception as e:  # the post still goes out; wp_feature_fix.py can add the image later
+        log(f"   ! feature image failed: {e}")
+        got = None
+    if got:
+        payload["featured_media"] = got[0]
+        if got[2]:
+            photos_used.append(got[2])
+    body, _rep, _rem, placed = wp_images.fix_inline(base, headers, article["body_html"], article["title"],
+                                                     article.get("slug", ""), used, None, name)
+    payload["content"] = wp_images.with_credit(body, photos_used + placed)
 
     r = requests.post(
         f"{base}/wp-json/wp/v2/posts",
