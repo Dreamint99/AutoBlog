@@ -18,8 +18,20 @@ _SIM_STOP = {"the", "a", "an", "of", "in", "on", "for", "and", "or", "to", "by",
              "how", "what", "best", "top", "guide", "your", "complete", "full", "2025", "2026", "2027", "cost", "api"}
 
 
+# Bangla filler words that say nothing about the topic (probashiinfo titles are Bangla).
+_SIM_STOP |= {"ও", "এবং", "এর", "জন্য", "কত", "কী", "কি", "গাইড", "সম্পূর্ণ", "নতুন", "নিয়ম", "সহজ", "পদ্ধতি",
+              "প্রক্রিয়া", "আপডেট", "হালনাগাদ", "বিস্তারিত", "২০২৪", "২০২৫", "২০২৬", "২০২৭"}
+
+
 def _tokens(t: str) -> set:
-    return {w for w in re.findall(r"[a-z0-9]+", (t or "").lower()) if w not in _SIM_STOP and len(w) > 1}
+    # Latin and Bengali-script words (the old [a-z0-9] pattern saw no words at all in a
+    # Bangla title, so near-duplicate Bangla posts were never caught).
+    return {w for w in re.findall(r"[a-z0-9ঀ-৿]+",(t or "").lower()) if w not in _SIM_STOP and len(w) > 1}
+
+
+def _head(t: str) -> frozenset:
+    """Topic words of the headline before ':' / '?' / dash — "Malaysia work visa 2026: cost…" → {malaysia, work, visa}."""
+    return frozenset(_tokens(re.split(r"\s*[:?।|—–]\s*|\s-\s", t or "", maxsplit=1)[0]))
 
 
 def too_similar(text: str, others: list, thresh: float = 0.75) -> str | None:
@@ -34,6 +46,10 @@ def too_similar(text: str, others: list, thresh: float = 0.75) -> str | None:
             return o
         b = _tokens(o)
         if a and b and len(a & b) / len(a | b) >= thresh:
+            return o
+        # Same topic headline (e.g. two "Malaysia work visa 2026: …" posts) is a duplicate too.
+        h = _head(text)
+        if len(h) >= 2 and h == _head(o):
             return o
     return None
 

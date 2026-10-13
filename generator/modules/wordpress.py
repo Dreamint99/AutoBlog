@@ -219,23 +219,31 @@ def publish(site: dict, article: dict, log=lambda m: None) -> dict:
 
 def list_articles(site: dict) -> list:
     """Existing WP posts as the pipeline's article-shape (slug/title/keyword),
-    used for drip de-dup/counting + internal-link candidates. Fetches up to 100;
-    returns [] on any error so generation never hard-fails on a read."""
+    used for drip de-dup/counting + internal-link candidates. Fetches every page (a
+    100-post cap let older topics be written again); returns what it has on an error
+    so generation never hard-fails on a read."""
     base, user, pw = _creds(site)
     if not (user and pw):
         return []
-    try:
-        r = requests.get(
-            f"{base}/wp-json/wp/v2/posts",
-            headers=_headers(user, pw),
-            params={"per_page": 100, "status": "publish,draft",
-                    "_fields": "id,slug,title,date"},
-            timeout=_TIMEOUT,
-        )
-        r.raise_for_status()
-        rows = r.json()
-    except Exception:
-        return []
+    rows = []
+    for page in range(1, 51):
+        try:
+            r = requests.get(
+                f"{base}/wp-json/wp/v2/posts",
+                headers=_headers(user, pw),
+                params={"per_page": 100, "page": page, "status": "publish,draft",
+                        "_fields": "id,slug,title,date"},
+                timeout=_TIMEOUT,
+            )
+            if r.status_code == 400:  # past the last page
+                break
+            r.raise_for_status()
+        except Exception:
+            break
+        batch = r.json()
+        rows += batch
+        if len(batch) < 100 or page >= int(r.headers.get("X-WP-TotalPages", page)):
+            break
     return [
         {
             "id": str(p.get("id", "")),
