@@ -32,18 +32,39 @@ beat();setInterval(beat,25000);
 document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')beat();});
 }catch(e){}})();`;
 
-// Adsterra ads — per-site ad-unit codes (Native Banner + Social Bar), keyed by
+// Adsterra ads — per-site ad-unit codes (Native Banner + Popunder), keyed by
 // SITE_ID so the shared bundle serves the right units per worker. A site with
 // no entry gets no ad scripts. Native Banner = invoke.js + a container div;
-// Social Bar = a single floating script (no placement needed).
-type AdsterraUnits = { socialBar?: string; nativeInvoke?: string; nativeContainer?: string };
+// Popunder = a single script (at most one per page view).
+// Social Bar was dropped: it showed fake "New message" ads and earned ~$0.37 CPM
+// against ~$20 for the Native Banner.
+type AdsterraUnits = { popunder?: string; nativeInvoke?: string; nativeContainer?: string };
+const AD = "https://pl";
+const native = (pl: string, hash: string): AdsterraUnits => ({
+  nativeInvoke: `${AD}${pl}.profitableratecpmnetwork.com/${hash}/invoke.js`,
+  nativeContainer: `container-${hash}`,
+});
 const ADSTERRA: Record<string, AdsterraUnits> = {
   countly: {
-    socialBar: "https://pl30263461.effectivecpmnetwork.com/a5/a1/01/a5a10138c46d0ce013195ab1c038ee3d.js",
-    nativeInvoke: "https://pl30263460.effectivecpmnetwork.com/07db29087a1a24463680898243b16f48/invoke.js",
-    nativeContainer: "container-07db29087a1a24463680898243b16f48",
+    ...native("30263460", "07db29087a1a24463680898243b16f48"),
+    popunder: `${AD}31806315.profitableratecpmnetwork.com/6c/61/43/6c6143c1e092621e9c70d616eba3065d.js`,
   },
-  // walvi + infkey: pending — add their Native Banner + Social Bar codes here.
+  walvi: {
+    ...native("31806356", "6e566cfcffc2647ea872900f34e52da7"),
+    popunder: `${AD}31806355.profitableratecpmnetwork.com/f5/61/12/f561120d0a4e90d7dcf680bb0a17f5cc.js`,
+  },
+  infkey: {
+    ...native("30263474", "a5e439aeab0d0572eb5b5eaf7647b3d1"),
+    popunder: `${AD}31806329.profitableratecpmnetwork.com/ba/4a/5a/ba4a5a09b231a1c9c8990346cb484483.js`,
+  },
+  gccguide: {
+    ...native("31806367", "763fb95224fd997ab27e65c7c588552b"),
+    popunder: `${AD}31806366.profitableratecpmnetwork.com/a9/46/ce/a946ce3584f2b1fd39e1e27299a7a98d.js`,
+  },
+  ninetymins: {
+    ...native("31806377", "246da2b154d653a03cf4403294c4f9a1"),
+    popunder: `${AD}31806376.profitableratecpmnetwork.com/18/57/f6/1857f6edff93fa184b3f68d819315f3b.js`,
+  },
 };
 const ads = ADSTERRA[process.env.SITE_ID || ""] || {};
 
@@ -114,8 +135,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <Script src={ads.nativeInvoke} strategy="afterInteractive" data-cfasync="false" />
           </>
         ) : null}
-        {ads.socialBar ? (
-          <Script src={ads.socialBar} strategy="afterInteractive" />
+        {ads.popunder ? (
+          <Script src={ads.popunder} strategy="afterInteractive" />
         ) : null}
       </body>
     </html>
