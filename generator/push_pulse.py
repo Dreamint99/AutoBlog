@@ -11,6 +11,13 @@ read it back from its config file.
 import datetime as dt
 import json
 import subprocess
+if hasattr(subprocess, "CREATE_NO_WINDOW"):
+    # Run under pythonw by Task Scheduler: without this every curl/npx child pops a console window.
+    _Popen_init = subprocess.Popen.__init__
+    def _no_window(self, *a, **kw):
+        kw["creationflags"] = kw.get("creationflags", 0) | subprocess.CREATE_NO_WINDOW
+        _Popen_init(self, *a, **kw)
+    subprocess.Popen.__init__ = _no_window
 import sys
 from pathlib import Path
 

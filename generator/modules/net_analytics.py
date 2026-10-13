@@ -146,7 +146,7 @@ def _curl_status(domain: str, path: str, ip: str) -> int:
     if ip:
         cmd[1:1] = ["--resolve", f"{domain}:443:{ip}"]
     try:
-        return int(subprocess.run(cmd, capture_output=True, text=True, timeout=25).stdout.strip() or 0)
+        return int(subprocess.run(cmd, capture_output=True, text=True, timeout=25, creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0)).stdout.strip() or 0)
     except Exception:
         return 0
 
