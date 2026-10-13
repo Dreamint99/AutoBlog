@@ -101,7 +101,7 @@ def captions(base, h):
     """Drop stale captions under photos this script placed (file names pi-<id>…): they still
     described the replaced stock photo ("Malaysian flag and Bangladeshi construction workers")."""
     fixed = 0
-    rx = re.compile(r'(<figure[^>]*>\s*(?:<a[^>]*>\s*)?<img[^>]*src="[^"]*/pi-\d+[^"]*"[^>]*>\s*(?:</a>\s*)?)<figcaption.*?</figcaption>', re.S)
+    rx = re.compile(r'(<figure\b[^>]*>\s*(?:<a\b[^>]*>\s*)?<img\b[^>]*src="[^"]*/pi-\d+[^"]*"[^>]*>\s*(?:</a>\s*)?)<figcaption\b.*?</figcaption>', re.S)
     for p in posts(base, h):
         html = p["content"]["raw"]
         new = rx.sub(r"", html)
