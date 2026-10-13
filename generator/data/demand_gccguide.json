@@ -1,4 +1,89 @@
 {
  "_note": "Real queries (Search Console 2026-07-13..2026-10-11, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
- "queries": []
+ "queries": [
+  {
+   "q": "average dubai salary",
+   "impr": 9900,
+   "pos": null,
+   "src": "gold",
+   "volume": 9900
+  },
+  {
+   "q": "nurse in dubai salary",
+   "impr": 6600,
+   "pos": null,
+   "src": "gold",
+   "volume": 6600
+  },
+  {
+   "q": "dubai salary",
+   "impr": 5400,
+   "pos": null,
+   "src": "gold",
+   "volume": 5400
+  },
+  {
+   "q": "accountants in dubai salary",
+   "impr": 3600,
+   "pos": null,
+   "src": "gold",
+   "volume": 3600
+  },
+  {
+   "q": "teacher in dubai salary",
+   "impr": 3600,
+   "pos": null,
+   "src": "gold",
+   "volume": 3600
+  },
+  {
+   "q": "dubai salary tax",
+   "impr": 3600,
+   "pos": null,
+   "src": "gold",
+   "volume": 3600
+  },
+  {
+   "q": "dubai salary software engineer",
+   "impr": 3600,
+   "pos": null,
+   "src": "gold",
+   "volume": 3600
+  },
+  {
+   "q": "safety officer dubai salary",
+   "impr": 3600,
+   "pos": null,
+   "src": "gold",
+   "volume": 3600
+  },
+  {
+   "q": "doctor in dubai salary",
+   "impr": 2900,
+   "pos": null,
+   "src": "gold",
+   "volume": 2900
+  },
+  {
+   "q": "security guard in dubai salary",
+   "impr": 2900,
+   "pos": null,
+   "src": "gold",
+   "volume": 2900
+  },
+  {
+   "q": "pharmacist in dubai salary",
+   "impr": 2900,
+   "pos": null,
+   "src": "gold",
+   "volume": 2900
+  },
+  {
+   "q": "driver in dubai salary",
+   "impr": 2400,
+   "pos": null,
+   "src": "gold",
+   "volume": 2400
+  }
+ ]
 }
