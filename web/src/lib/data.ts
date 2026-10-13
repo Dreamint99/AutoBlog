@@ -181,11 +181,32 @@ export const getRedirect = cache(async (siteId: string, slug: string): Promise<s
       return results?.[0] ?? null;
     });
     const to = row?.status.slice("redirect:".length) || "";
-    return to && to !== slug ? to : null;
+    if (to && to !== slug) return to;
+    return await nearestSlug(db, siteId, slug);
   } catch {
     return null;
   }
 });
+
+/** Old URLs Google still crawls: deleted duplicates ("…-by-country-899c"), slugs cut off at
+ *  60 chars ("…-global-by-coun") and renamed articles. Strip a 4-hex suffix, then match the
+ *  longest published slug that starts with the same words (at least 4 words / 25 chars). */
+async function nearestSlug(db: D1Database, siteId: string, slug: string): Promise<string | null> {
+  const words = slug.replace(/-[0-9a-f]{4}$/, "").split("-").filter(Boolean);
+  return cachedRead(`nearest/${siteId}/${encodeURIComponent(slug)}`, 86400, async () => {
+    for (let n = words.length; n >= 4; n--) {
+      const prefix = words.slice(0, n).join("-");
+      if (prefix.length < 25) break;
+      const { results } = await db
+        .prepare("SELECT slug FROM articles WHERE site_id = ? AND status = 'published' AND slug LIKE ? ORDER BY length(slug) LIMIT 1")
+        .bind(siteId, `${prefix.replace(/[%_]/g, "")}%`)
+        .all<{ slug: string }>();
+      const hit = results?.[0]?.slug;
+      if (hit && hit !== slug) return hit;
+    }
+    return null;
+  });
+}
 
 /** Full-text search over title/excerpt/keyword/tags/body, done in SQL so the
  *  bodies never leave D1. Cached per query. */
