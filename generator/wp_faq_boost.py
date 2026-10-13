@@ -62,11 +62,28 @@ def main():
             continue
         html = BLOCK.sub("", post["content"]["raw"])
         user = "Search queries:\n" + "\n".join(f"- {q}" for q in qs) + f"\n\nArticle text:\n{plain(html, 6000)}"
-        try:
-            faq = json.loads(llm.chat(SYSTEM, user, temperature=0.3, max_tokens=1400, json_mode=True))["faq"]
-            faq = [f for f in faq if f.get("q") and f.get("a") and len(f["a"]) < 600][:6]
-        except Exception as e:
-            print("  ! LLM failed", e)
+        faq, problem = [], ""
+        for _ in range(3):
+            try:
+                out = json.loads(llm.chat(SYSTEM, user + (f"\n\nPrevious answer rejected: {problem}" if problem else ""),
+                                          temperature=0.3, max_tokens=2200, json_mode=True))["faq"]
+            except Exception as e:
+                problem = f"invalid JSON ({e}); keep answers short"
+                continue
+            seen, faq = set(), []
+            for f in out:
+                key = re.sub(r"\W+", "", f.get("q", ""))
+                if f.get("q") and f.get("a") and len(f["a"]) < 600 and key not in seen:
+                    seen.add(key)
+                    faq.append(f)
+            if any(re.search(r"[ऀ-ॿ]", f["q"] + f["a"]) for f in faq):  # Hindi script leaking into Bangla
+                problem = "it contains Hindi/Devanagari characters; write only Bangla script"
+                faq = []
+                continue
+            break
+        faq = faq[:6]
+        if not faq:
+            print("  ! no usable answers:", problem)
             continue
         if not faq:
             continue
