@@ -17,6 +17,7 @@ import os
 import re
 import subprocess
 import tempfile
+import unicodedata
 
 import requests
 
@@ -25,7 +26,7 @@ _API = "https://commons.wikimedia.org/w/api.php"
 
 # English name, ISO-2, capital / main city, Bangla spellings and transliterated slug forms.
 COUNTRIES = [
-    ("Saudi Arabia", "sa", "Riyadh", ["সৌদি", "se-di", "saudi"]),
+    ("Saudi Arabia", "sa", "Riyadh", ["সৌদি", "se-di", "saudi", "ইকামা", "iqama", "রিয়াদ", "জেদ্দা"]),
     ("United Arab Emirates", "ae", "Dubai", ["দুবাই", "আমিরাত", "ইউএই", "dubaai", "dubai", "uae", "emirates", "আবুধাবি"]),
     ("Qatar", "qa", "Doha", ["কাতার", "kaataar", "qatar"]),
     ("Kuwait", "kw", "Kuwait City", ["কুয়েত", "কুয়েত", "kuyet", "kuwait"]),
@@ -84,7 +85,7 @@ COUNTRIES = [
     ("Finland", "fi", "Helsinki", ["ফিনল্যান্ড", "finland"]),
     ("Iceland", "is", "Reykjavík", ["আইসল্যান্ড", "iceland"]),
     ("Ireland", "ie", "Dublin", ["আয়ারল্যান্ড", "ireland"]),
-    ("United Kingdom", "gb", "London", ["যুক্তরাজ্য", "ইংল্যান্ড", "লন্ডন", "uk-", "united-kingdom", "britain"]),
+    ("United Kingdom", "gb", "London", ["যুক্তরাজ্য", "ইংল্যান্ড", "লন্ডন", "uk", "united kingdom", "united-kingdom", "britain"]),
     ("United States", "us", "New York City", ["আমেরিকা", "যুক্তরাষ্ট্র", "aamerikaa", "usa", "america"]),
     ("Canada", "ca", "Toronto", ["কানাডা", "kaanaaddaa", "canada"]),
     ("Australia", "au", "Sydney", ["অস্ট্রেলিয়া", "australia"]),
@@ -94,9 +95,47 @@ COUNTRIES = [
     ("Egypt", "eg", "Cairo", ["মিশর", "egypt"]),
     ("Iraq", "iq", "Baghdad", ["ইরাক", "iraq"]),
     ("Brazil", "br", "Rio de Janeiro", ["ব্রাজিল", "brazil"]),
+    ("Laos", "la", "Vientiane", ["লাওস", "laos"]),
+    ("Uzbekistan", "uz", "Tashkent", ["উজবেকিস্তান", "uzbekistan"]),
+    ("Kazakhstan", "kz", "Almaty", ["কাজাখস্তান", "kazakhstan"]),
+    ("Kyrgyzstan", "kg", "Bishkek", ["কিরগিজস্তান", "kyrgyzstan"]),
+    ("Azerbaijan", "az", "Baku", ["আজারবাইজান", "azerbaijan"]),
+    ("Moldova", "md", "Chișinău", ["মলদোভা", "moldova"]),
+    ("Montenegro", "me", "Podgorica", ["মন্টিনিগ্রো", "montenegro"]),
+    ("Slovenia", "si", "Ljubljana", ["স্লোভেনিয়া", "slovenia"]),
+    ("Luxembourg", "lu", "Luxembourg City", ["লুক্সেমবার্গ", "luxembourg"]),
+    ("Ukraine", "ua", "Kyiv", ["ইউক্রেন", "ukraine"]),
+    ("Indonesia", "id", "Jakarta", ["ইন্দোনেশিয়া", "indonesia"]),
+    ("Philippines", "ph", "Manila", ["ফিলিপাইন", "philippines"]),
+    ("Sri Lanka", "lk", "Colombo", ["শ্রীলঙ্কা", "sri-lanka"]),
+    ("Pakistan", "pk", "Lahore", ["পাকিস্তান", "pakistan"]),
+    ("Iran", "ir", "Tehran", ["ইরান", "iran"]),
+    ("Taiwan", "tw", "Taipei", ["তাইওয়ান", "taiwan"]),
+    ("Mexico", "mx", "Mexico City", ["মেক্সিকো", "mexico"]),
+    ("Argentina", "ar", "Buenos Aires", ["আর্জেন্টিনা", "argentina"]),
+    ("Seychelles", "sc", "Victoria, Seychelles", ["সেশেলস", "seychelles"]),
+    ("Fiji", "fj", "Suva", ["ফিজি", "fiji"]),
+    ("Morocco", "ma", "Casablanca", ["মরক্কো", "morocco"]),
+    ("Algeria", "dz", "Algiers", ["আলজেরিয়া", "algeria"]),
+    ("Tunisia", "tn", "Tunis", ["তিউনিসিয়া", "tunisia"]),
+    ("Sudan", "sd", "Khartoum", ["সুদান", "sudan"]),
+    ("Kenya", "ke", "Nairobi", ["কেনিয়া", "kenya"]),
+    ("Nigeria", "ng", "Lagos", ["নাইজেরিয়া", "nigeria"]),
+    ("Tanzania", "tz", "Dar es Salaam", ["তানজানিয়া", "tanzania"]),
+    ("Uganda", "ug", "Kampala", ["উগান্ডা", "uganda"]),
+    ("Ghana", "gh", "Accra", ["ঘানা", "ghana"]),
+    ("Zambia", "zm", "Lusaka", ["জাম্বিয়া", "zambia"]),
+    ("Mozambique", "mz", "Maputo", ["মোজাম্বিক", "mozambique"]),
+    ("Afghanistan", "af", "Kabul", ["আফগানিস্তান", "afghanistan"]),
+    ("Israel", "il", "Tel Aviv", ["ইসরায়েল", "israel"]),
+    ("Mongolia", "mn", "Ulaanbaatar", ["মঙ্গোলিয়া", "mongolia"]),
+    # Region, not a country: EU-flag title card only (no single photo stands for "Europe").
+    ("Europe", "eu", "", ["ইউরোপ", "iureaap", "europe", "schengen", "সেনজেন", "শেনজেন"]),
 ]
-# Longest names first so "দক্ষিণ কোরিয়া" wins over "কোরিয়া" and "দুবাই" isn't hidden by a shorter hit.
-_ALIASES = sorted(((a.lower(), c) for c in COUNTRIES for a in c[3] + [c[0]]), key=lambda x: -len(x[0]))
+_nfc = lambda t: unicodedata.normalize("NFC", t or "").lower()  # য় has two Unicode spellings
+# Latin aliases must be whole words ("oman" is inside "woman"); Bangla ones may carry a case ending (ক্রোয়েশিয়ার).
+_ALIASES = [(re.compile(r"(?<![a-z])" + re.escape(_nfc(a)) + r"(?![a-z])" if re.fullmatch(r"[a-z .-]+", _nfc(a)) else re.escape(_nfc(a))), len(a), c)
+            for c in COUNTRIES for a in c[3] + [c[0]]]
 _BAD = re.compile(r"map|flag|logo|coat of arms|emblem|diagram|chart|grave|cemetery|tomb|funeral|sign|plaque|protest|riot|"
                   r"accident|crash|ruin|war|interior|inside|museum exhibit|portrait|stamp|banknote|coin|document|scan", re.I)
 _LICENCE = re.compile(r"^(CC0|Public domain|CC BY(-SA)? [\d.]+)$", re.I)
@@ -104,11 +143,12 @@ _LICENCE = re.compile(r"^(CC0|Public domain|CC BY(-SA)? [\d.]+)$", re.I)
 
 def detect_country(*texts: str):
     """(english, iso2, capital) of the first country named in the texts, else None."""
-    blob = " ".join(t for t in texts if t).lower()
-    for alias, c in _ALIASES:
-        if alias in blob:
-            return c[0], c[1], c[2]
-    return None
+    blob = _nfc(" ".join(t for t in texts if t))
+    hits = [(m.start(), -n, c) for rx, n, c in _ALIASES for m in [rx.search(blob)] if m]
+    if not hits:
+        return None
+    _pos, _len, c = min(hits, key=lambda h: (h[0], h[1]))  # first named in the title; longest alias on a tie
+    return c[0], c[1], c[2]
 
 
 def _commons(query: str, must: list[str], used: set, limit: int = 40) -> list[dict]:
@@ -143,6 +183,8 @@ def _commons(query: str, must: list[str], used: set, limit: int = 40) -> list[di
 def country_photos(country, used: set, n: int = 1) -> list[dict]:
     """Up to n distinct free-licence photos of the country's main city or landscape."""
     name, _iso, city = country
+    if not city:  # a region (Europe): title card only
+        return []
     must = [city, name] + ([city.split()[0]] if city.split()[0] not in ("Port", "New", "Kuwait", "Bandar", "Cape", "Rio", "Phnom", "Hong") else [])
     found: list[dict] = []
     for q in (f"{city} skyline", f"{city} panorama", f"{city} cityscape", f"{name} landscape", f"{name} skyline"):
