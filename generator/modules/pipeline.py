@@ -351,6 +351,15 @@ def generate_article(site: dict, title: str, log=lambda m: None, replace: dict |
         "key_takeaways": [] if site.get("publish_target") == "wordpress" else data["key_takeaways"],
         "faq": data["faq"],
     })
+    # Last-mile cleanup (vendored claude-seo humanizer): AI-typical phrases ("delve into",
+    # "in conclusion,") swapped for plain words, invisible/watermark codepoints stripped.
+    # Bangla ZWJ/ZWNJ are not on its list, so Bengali text is safe.
+    from modules.content_humanize import humanize
+    hz = humanize(body)
+    if hz["change_count"] or hz["invisible_count"]:
+        body = re.sub(r"(<(?:p|li|h[2-4])[^>]*>\s*|[.!?]\s+)([a-z])(?=[a-z])", lambda m: m.group(1) + m.group(2).upper(),
+                      hz["cleaned"])
+        log(f"   humanizer: {hz['change_count']} AI phrases, {hz['invisible_count']} invisible chars removed")
 
     image_url = feature_image(final_title, site, data.get("feature_image_q") or keyword)
     if site.get("publish_target") != "wordpress":  # WordPress picks its images in wordpress.publish

@@ -25,6 +25,14 @@ FRESHNESS (facts change — fees, laws, member counts, rankings):
 - For anything that changes, state the date of the figure ("as of October 2026", "since 1 January 2025") and name the official source.
 - Prefer the most recent figure in the research sources; if sources disagree, say so and give the official one. Never repeat an outdated figure from memory.
 
+GOOGLE'S WHO / HOW / WHY TEST (from Google's helpful-content guide):
+- WHY: the page exists to help a reader do or decide something, not to fill a keyword. Every section must move the reader forward; no padding to reach a word count (word count is not a ranking factor, coverage is).
+- HOW: say where figures come from ("according to the BMET 2026 notice", "Forbes real-time list, October 2026"). Show the working: a cost broken down, a step with what can go wrong.
+- EXPERIENCE: include the details only someone who has done it knows: the queue at the embassy, the document that gets rejected most, the real total after hidden fees.
+- SCALED-CONTENT RISK: Google demotes sites where every page has the same skeleton. Vary the structure to fit the topic (a cost table for cost questions, a timeline for process questions, a ranked list for rankings); don't force the same H2 sequence on every article.
+- Internal links: 3-5 per 1,000 words to genuinely related articles, with descriptive anchor text.
+- No special "AI formatting" is needed: Google's 2026 guidance says AI features use normal ranking, so clear answers + good structure are enough.
+
 ON-PAGE:
 - Title: include the primary keyword near the front, <=60 chars, compelling.
 - One clear search intent per article. Use descriptive H2/H3 that mirror real questions/subtopics (great for featured snippets).
