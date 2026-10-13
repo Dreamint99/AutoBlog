@@ -2,110 +2,8 @@
  "_note": "Real queries (Search Console 2026-07-13..2026-10-11, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
-   "q": "chat gpt",
-   "impr": 50700386,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "ai detector",
-   "impr": 766176,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "bing ai",
-   "impr": 730055,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "gpt chat",
-   "impr": 650593,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "google ai",
-   "impr": 597209,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "gemini ai assistant",
-   "impr": 387643,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "chat gtp",
-   "impr": 357395,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "open ai",
-   "impr": 133424,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "managing power settings for gpu",
-   "impr": 81087,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "checking gpu usage statistics",
-   "impr": 70282,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "resolving app-specific gpu problems",
-   "impr": 66981,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
    "q": "best ai laptop 2026",
    "impr": 57721,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "free ai",
-   "impr": 46730,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "image creator",
-   "impr": 39342,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "open ai chat gpt",
-   "impr": 32555,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "chatgpt open ai",
-   "impr": 28293,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "leonardo ai",
-   "impr": 21375,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "ai generator",
-   "impr": 20998,
    "pos": null,
    "src": "bingkw"
   },
@@ -122,38 +20,8 @@
    "src": "bingkw"
   },
   {
-   "q": "image generator",
-   "impr": 16971,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "graphics card",
-   "impr": 14008,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
    "q": "ai image generator free",
    "impr": 11549,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "ai picture generator",
-   "impr": 8807,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "ai photo generator",
-   "impr": 8279,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "ai free",
-   "impr": 7864,
    "pos": null,
    "src": "bingkw"
   },
@@ -164,104 +32,8 @@
    "src": "bingkw"
   },
   {
-   "q": "what is a gpu",
-   "impr": 7172,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "gpu driver update",
-   "impr": 7053,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "ai image creator",
-   "impr": 6957,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "ai image",
-   "impr": 6743,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "video card",
-   "impr": 5462,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "nvda price",
-   "impr": 5376,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "gpu benchmark",
-   "impr": 5296,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "gpu z",
-   "impr": 4846,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "gpu comparison",
-   "impr": 4754,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "hardware accelerated gpu scheduling",
-   "impr": 4710,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "ai apps",
-   "impr": 4699,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "free image generator",
-   "impr": 4691,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "best ai",
-   "impr": 4662,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "amd gpu drivers",
-   "impr": 4584,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
    "q": "ai generated images",
    "impr": 4433,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "gpu stress test",
-   "impr": 4221,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "nvidia price",
-   "impr": 4187,
    "pos": null,
    "src": "bingkw"
   },
@@ -278,20 +50,8 @@
    "src": "bingkw"
   },
   {
-   "q": "gpu test",
-   "impr": 3881,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
    "q": "image generator ai",
    "impr": 3671,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "ai platforms",
-   "impr": 3421,
    "pos": null,
    "src": "bingkw"
   },
@@ -320,36 +80,6 @@
    "src": "bingkw"
   },
   {
-   "q": "nvidia gpu",
-   "impr": 2881,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "image ai",
-   "impr": 2567,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "ai models",
-   "impr": 2515,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "ai app",
-   "impr": 2477,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "nvidia gpu drivers",
-   "impr": 2418,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
    "q": "gemini ai app",
    "impr": 2371,
    "pos": null,
@@ -374,36 +104,6 @@
    "src": "bingkw"
   },
   {
-   "q": "ai websites",
-   "impr": 2087,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "how to update gpu drivers",
-   "impr": 2063,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "what is gpu",
-   "impr": 1994,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "ai tool",
-   "impr": 1873,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "gpu temp",
-   "impr": 1830,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
    "q": "ai image generator no sign up",
    "impr": 1821,
    "pos": null,
@@ -418,18 +118,6 @@
   {
    "q": "best free ai image generator",
    "impr": 1711,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "update gpu drivers",
-   "impr": 1708,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "ai programs",
-   "impr": 1693,
    "pos": null,
    "src": "bingkw"
   },
@@ -452,32 +140,344 @@
    "src": "bingkw"
   },
   {
-   "q": "ai photo",
-   "impr": 1662,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "openai logo",
-   "impr": 1653,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
    "q": "nsfw ai image generator",
    "impr": 1653,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "ai pictures",
-   "impr": 1646,
+   "q": "ai app builder",
+   "impr": 1495,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "gpu control panel",
-   "impr": 1561,
+   "q": "best ai for coding",
+   "impr": 1477,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ai generator image",
+   "impr": 1451,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "best ai humanizer",
+   "impr": 1419,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "best ai image generator",
+   "impr": 1407,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "google ai image generator",
+   "impr": 1399,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "yolo ai app",
+   "impr": 1331,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "best ai checker",
+   "impr": 1257,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "perchance.org ai image generator",
+   "impr": 1215,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "unrestricted ai image generator",
+   "impr": 1204,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ai tools free",
+   "impr": 1120,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "nifty ai tools",
+   "impr": 1116,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "gemini ai image generator",
+   "impr": 1113,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "download claude ai app",
+   "impr": 1024,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "best ai for image generation",
+   "impr": 988,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "adobe ai image generator",
+   "impr": 919,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "what is the best ai",
+   "impr": 863,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ai tools for students",
+   "impr": 857,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ai image generator free no sign up",
+   "impr": 856,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "educly ai app",
+   "impr": 838,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "grok ai app",
+   "impr": 827,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "best ai stocks",
+   "impr": 818,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "free ai image generator online",
+   "impr": 813,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "bing ai image generator free",
+   "impr": 801,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "best ai apps",
+   "impr": 787,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "free unlimited ai image generator",
+   "impr": 786,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "free ai tool",
+   "impr": 765,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "deep ai image generator",
+   "impr": 748,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ai image generator free online",
+   "impr": 737,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "chat gpt ai image generator",
+   "impr": 696,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "best ai for writing",
+   "impr": 693,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "what is the best ai platform",
+   "impr": 666,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ai image generator free unlimited",
+   "impr": 666,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "canva ai tools",
+   "impr": 657,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "best ai detectors",
+   "impr": 649,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ai image generator bing",
+   "impr": 642,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "perplexity ai app",
+   "impr": 634,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "copilot ai app",
+   "impr": 625,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "best ai detector free",
+   "impr": 623,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "what is the best ai detector",
+   "impr": 594,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ai app maker",
+   "impr": 578,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "uncensored ai image generator model",
+   "impr": 548,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "chatgpt ai image generator",
+   "impr": 528,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ai tools like chat gpt",
+   "impr": 525,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "top ai tools",
+   "impr": 525,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "uncensored ai image generator",
+   "impr": 524,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "what is the best ai tool",
+   "impr": 519,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "free unfiltered ai image generator",
+   "impr": 507,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "best ai website builder",
+   "impr": 500,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "perchance ai image generator professional",
+   "impr": 500,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "microsoft ai image generator",
+   "impr": 500,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "leonardo ai image generator",
+   "impr": 499,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "best free ai tools",
+   "impr": 498,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "unfiltered ai image generator",
+   "impr": 493,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "meta ai image generator",
+   "impr": 484,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ai image generator no filter",
+   "impr": 484,
    "pos": null,
    "src": "bingkw"
   },
