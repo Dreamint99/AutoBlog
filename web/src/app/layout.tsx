@@ -1,3 +1,5 @@
+import { activeSite } from "@/lib/site-context";
+import { siteBaseUrl } from "@/lib/sites.config";
 import "./globals.css";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
@@ -81,10 +83,14 @@ const verification: Metadata["verification"] = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteBaseUrl(activeSite())),
   title: { template: "%s", default: "AutoBlog" },
   description: "AutoBlog network",
-  robots: { index: true, follow: true },
+  robots: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
   verification,
+  // Pages that set no openGraph of their own (about, contact, match centres…) still share with the site card.
+  openGraph: process.env.SITE_ID ? { images: [{ url: `/og/${process.env.SITE_ID}.png`, width: 1200, height: 630 }] } : undefined,
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

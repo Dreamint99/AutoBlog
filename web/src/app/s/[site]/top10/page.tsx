@@ -1,3 +1,4 @@
+import { defaultOgImages } from "@/lib/og";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getSite, getArticles } from "@/lib/data";
@@ -26,7 +27,7 @@ export async function generateMetadata({
     description,
     metadataBase: new URL(siteBaseUrl(site)),
     alternates: { canonical: "/top10" },
-    openGraph: { title, description, type: "website", url: "/top10" },
+    openGraph: { images: defaultOgImages(), title, description, type: "website", url: "/top10" },
   };
 }
 

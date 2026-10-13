@@ -1,3 +1,4 @@
+import { defaultOgImages } from "@/lib/og";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getSite, getArticles } from "@/lib/data";
@@ -26,7 +27,7 @@ export async function generateMetadata({
     description,
     metadataBase: new URL(siteBaseUrl(site)),
     alternates: { canonical: "/visit-bangladesh" },
-    openGraph: { title, description, type: "website", url: "/visit-bangladesh" },
+    openGraph: { images: defaultOgImages(), title, description, type: "website", url: "/visit-bangladesh" },
     twitter: { card: "summary_large_image", title, description },
   };
 }

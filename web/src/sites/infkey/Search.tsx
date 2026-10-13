@@ -36,7 +36,7 @@ export default function Search({ site, q, results }: { site: Site; q: string; re
             {results.map((a) => (
               <article className="ai-card" key={a.id}>
                 <Link href={`${b}/${a.slug}`} className="ai-card-media" tabIndex={-1} aria-label={a.title}>
-                  {a.image_url ? <img src={a.image_url} alt="" loading="lazy" /> : <span className="ai-card-ph">✦</span>}
+                  {a.image_url ? <img src={a.image_url} alt={a.title} loading="lazy" /> : <span className="ai-card-ph">✦</span>}
                   <span className="ai-tag">{topicOf(a).label}</span>
                 </Link>
                 <div className="ai-card-body">

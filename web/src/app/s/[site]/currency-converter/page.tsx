@@ -1,3 +1,4 @@
+import { defaultOgImages } from "@/lib/og";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import "@/sites/countly/theme.css";
@@ -21,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ site: str
     description: "Free live currency converter. Convert USD, BDT, INR, EUR, GBP and more at today's real exchange rates. Updated continuously.",
     metadataBase: new URL(siteBaseUrl(site)),
     alternates: { canonical: "/currency-converter" },
-    openGraph: { title, description: "Convert any currency at live rates.", type: "website", url: "/currency-converter" },
+    openGraph: { images: defaultOgImages(), title, description: "Convert any currency at live rates.", type: "website", url: "/currency-converter" },
   };
 }
 

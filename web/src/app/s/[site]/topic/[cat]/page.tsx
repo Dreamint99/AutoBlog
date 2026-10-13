@@ -1,3 +1,4 @@
+import { defaultOgImages } from "@/lib/og";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getSite, getArticles } from "@/lib/data";
@@ -46,7 +47,7 @@ export async function generateMetadata({
     ...(saff ? { keywords: ["SAFF Championship", "SAFF Championship 2026", "SAFF Cup", "SAFF winners list", "SAFF football", "Bangladesh football", "South Asian football"] } : {}),
     metadataBase: new URL(siteBaseUrl(site)),
     alternates: { canonical: `/topic/${slug}` },
-    openGraph: { title, description: t.blurb, type: "website", url: `/topic/${slug}` },
+    openGraph: { images: defaultOgImages(), title, description: t.blurb, type: "website", url: `/topic/${slug}` },
   };
 }
 

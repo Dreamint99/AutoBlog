@@ -1,3 +1,4 @@
+import { defaultOgImages } from "@/lib/og";
 import "@/sites/walvi/theme.css";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -22,7 +23,7 @@ export async function generateMetadata({
     description: `Indicative monthly salary and realistic savings for ${job.name.toLowerCase()} jobs across European countries, plus certificates and demand.`,
     metadataBase: new URL(siteBaseUrl(site)),
     alternates: { canonical: `/jobs/${job.slug}` },
-    openGraph: {
+    openGraph: { images: defaultOgImages(),
       title: `${job.name} jobs in Europe | VisaPoint`,
       description: `Salary by country and savings for ${job.name.toLowerCase()} jobs in Europe.`,
       type: "article",

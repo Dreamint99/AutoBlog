@@ -171,7 +171,7 @@ export default function SaffHub({ site, comp, articles }: { site: Site; comp: Nm
             {lead ? (
               <>
                 <Link href={`${s}/${lead.slug}`} className="nm-saff-lead">
-                  {lead.image_url ? <img src={lead.image_url} alt="" /> : <span className="nm-thumb-ph" />}
+                  {lead.image_url ? <img src={lead.image_url} alt={lead.title} /> : <span className="nm-thumb-ph" />}
                   <span className="nm-hero-shade" />
                   <span className="nm-saff-lead-copy">
                     <span className="nm-hero-kicker" style={{ background: comp.color }}>SAFF Championship</span>

@@ -1,3 +1,4 @@
+import { defaultOgImages } from "@/lib/og";
 import "@/sites/infkey/theme.css";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -32,7 +33,7 @@ export async function generateMetadata({
       "Free interactive calculators for AI API cost: LLM tokens, video, chatbots, RAG and voice. Verified pricing, the math shown.",
     metadataBase: new URL(siteBaseUrl(site)),
     alternates: { canonical: "/calculators" },
-    openGraph: {
+    openGraph: { images: defaultOgImages(),
       title: "AI API Cost Calculators — InfKey",
       description: "Real-workload calculators for LLM, video, chatbot and RAG API cost.",
       type: "website",

@@ -200,7 +200,7 @@ function Byline({ article }: { article: Article }) {
 function Img({ href, article, className = "", badge }: { href: string; article: Article; className?: string; badge?: string }) {
   return (
     <Link href={href} className={`cx-img ${className}`} aria-label={article.title} tabIndex={-1}>
-      {article.image_url ? <img src={article.image_url} alt="" loading="lazy" /> : null}
+      {article.image_url ? <img src={article.image_url} alt={article.title} loading="lazy" /> : null}
       {badge ? <span className="cx-badge">{badge}</span> : null}
     </Link>
   );
@@ -422,7 +422,7 @@ export default function Home({ site, articles }: SiteHomeProps) {
                       <small>{fmtDate(a.created_at)}</small>
                     </span>
                     <span className="cx-img cx-thumb">
-                      {a.image_url ? <img src={a.image_url} alt="" loading="lazy" /> : null}
+                      {a.image_url ? <img src={a.image_url} alt={a.title} loading="lazy" /> : null}
                     </span>
                   </Link>
                 ))}

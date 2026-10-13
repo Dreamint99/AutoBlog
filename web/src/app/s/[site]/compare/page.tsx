@@ -1,3 +1,4 @@
+import { defaultOgImages } from "@/lib/og";
 import "@/sites/infkey/theme.css";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -34,7 +35,7 @@ export async function generateMetadata({
       "Side-by-side AI model comparisons on price, context window and capabilities. Verified pricing, official sources.",
     metadataBase: new URL(siteBaseUrl(site)),
     alternates: { canonical: "/compare" },
-    openGraph: {
+    openGraph: { images: defaultOgImages(),
       title: "Compare AI Model API Pricing — InfKey",
       description: "Side-by-side AI model comparisons on price, context and capabilities.",
       type: "website",

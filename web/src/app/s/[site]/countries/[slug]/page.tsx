@@ -1,3 +1,4 @@
+import { defaultOgImages } from "@/lib/og";
 import "@/sites/walvi/theme.css";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -22,7 +23,7 @@ export async function generateMetadata({
     description: `Indicative monthly salary and net pay by occupation in ${country.name}, plus living cost, realistic savings and the work-permit route — with an official source.`,
     metadataBase: new URL(siteBaseUrl(site)),
     alternates: { canonical: `/countries/${country.slug}` },
-    openGraph: {
+    openGraph: { images: defaultOgImages(),
       title: `Working in ${country.name} | VisaPoint`,
       description: `Salary, cost of living, savings and work-permit route for ${country.name}.`,
       type: "article",

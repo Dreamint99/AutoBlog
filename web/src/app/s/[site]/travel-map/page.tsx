@@ -1,3 +1,4 @@
+import { defaultOgImages } from "@/lib/og";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -43,7 +44,7 @@ export async function generateMetadata({ params }: { params: Promise<{ site: str
     keywords: ["countries visited map", "travel map maker", "map of countries I have visited", "visited countries map", "travel map instagram"],
     metadataBase: new URL(siteBaseUrl(site)),
     alternates: { canonical: "/travel-map" },
-    openGraph: { title, description, type: "website", url: "/travel-map", siteName: "VisaPoint" },
+    openGraph: { images: defaultOgImages(), title, description, type: "website", url: "/travel-map", siteName: "VisaPoint" },
   };
 }
 

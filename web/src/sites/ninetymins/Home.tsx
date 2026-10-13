@@ -68,7 +68,7 @@ export default function Home({ site, articles }: SiteHomeProps) {
         <div className="nm-heroCol">
           <article className="nm-hero">
             <Link href={href(hero)} className="nm-thumb nm-hero-link">
-              {hero.image_url ? <img src={hero.image_url} alt="" /> : <span className="nm-thumb-ph" />}
+              {hero.image_url ? <img src={hero.image_url} alt={hero.title} /> : <span className="nm-thumb-ph" />}
               <span className="nm-hero-shade" />
               <div className="nm-hero-copy">
                 <span className="nm-hero-kicker" style={{ background: hc.color }}>

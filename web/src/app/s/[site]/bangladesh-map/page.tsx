@@ -1,3 +1,4 @@
+import { defaultOgImages } from "@/lib/og";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -67,7 +68,7 @@ export async function generateMetadata({ params }: { params: Promise<{ site: str
     ],
     metadataBase: new URL(siteBaseUrl(site)),
     alternates: { canonical: "/bangladesh-map", languages: { "en": "/bangladesh-map", "bn": "/bangladesh-map" } },
-    openGraph: { title, description, type: "website", url: "/bangladesh-map", siteName: "VisaPoint" },
+    openGraph: { images: defaultOgImages(), title, description, type: "website", url: "/bangladesh-map", siteName: "VisaPoint" },
   };
 }
 

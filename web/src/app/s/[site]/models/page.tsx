@@ -1,3 +1,4 @@
+import { defaultOgImages } from "@/lib/og";
 import "@/sites/infkey/theme.css";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -24,7 +25,7 @@ export async function generateMetadata({
       "Verified input/output pricing, context windows and capabilities for every major LLM API, with official sources and last-verified dates.",
     metadataBase: new URL(siteBaseUrl(site)),
     alternates: { canonical: "/models" },
-    openGraph: {
+    openGraph: { images: defaultOgImages(),
       title: "AI Model Pricing Database — InfKey",
       description: "Verified API pricing, context windows and capabilities for every major LLM.",
       type: "website",

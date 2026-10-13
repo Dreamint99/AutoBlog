@@ -1,3 +1,4 @@
+import { defaultOgImages } from "@/lib/og";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getSite } from "@/lib/data";
@@ -41,7 +42,7 @@ export async function generateMetadata(p: P): Promise<Metadata> {
     description,
     metadataBase: new URL(siteBaseUrl(site)),
     alternates: { canonical: path },
-    openGraph: { title, description, type: "website", url: path },
+    openGraph: { images: defaultOgImages(), title, description, type: "website", url: path },
   };
 }
 

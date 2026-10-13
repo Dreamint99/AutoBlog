@@ -1,3 +1,4 @@
+import { defaultOgImages } from "@/lib/og";
 import "@/sites/infkey/theme.css";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -27,7 +28,7 @@ export async function generateMetadata({
     )} context, capabilities and official source.`,
     metadataBase: new URL(siteBaseUrl(site)),
     alternates: { canonical: `/models/${model.id}` },
-    openGraph: {
+    openGraph: { images: defaultOgImages(),
       title: `${model.name} API Pricing & Specs — InfKey`,
       description: `${model.name} (${model.provider}) verified API pricing, context window and capabilities.`,
       type: "website",

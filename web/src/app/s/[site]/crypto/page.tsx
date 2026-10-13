@@ -1,3 +1,4 @@
+import { defaultOgImages } from "@/lib/og";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import "@/sites/countly/theme.css";
@@ -21,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ site: str
     description: "Live cryptocurrency prices and market caps for Bitcoin, Ethereum, Solana and the top 50 coins. Real-time, auto-refreshing, free.",
     metadataBase: new URL(siteBaseUrl(site)),
     alternates: { canonical: "/crypto" },
-    openGraph: { title, description: "Live crypto prices, updated every minute.", type: "website", url: "/crypto" },
+    openGraph: { images: defaultOgImages(), title, description: "Live crypto prices, updated every minute.", type: "website", url: "/crypto" },
   };
 }
 

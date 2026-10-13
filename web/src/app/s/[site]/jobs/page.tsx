@@ -1,3 +1,4 @@
+import { defaultOgImages } from "@/lib/og";
 import "@/sites/walvi/theme.css";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -22,7 +23,7 @@ export async function generateMetadata({
       "Electrician, welder, truck driver, cook and more: indicative salary, demand and realistic savings for skilled-trade jobs across Europe.",
     metadataBase: new URL(siteBaseUrl(site)),
     alternates: { canonical: "/jobs" },
-    openGraph: {
+    openGraph: { images: defaultOgImages(),
       title: "In-demand jobs in Europe | VisaPoint",
       description: "Salary and savings by occupation across Europe.",
       type: "website",

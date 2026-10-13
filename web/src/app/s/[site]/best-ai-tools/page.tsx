@@ -1,3 +1,4 @@
+import { defaultOgImages } from "@/lib/og";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getSite, getAiTools, getAiRising } from "@/lib/data";
@@ -38,7 +39,7 @@ export async function generateMetadata({
     ],
     metadataBase: new URL(siteBaseUrl(site)),
     alternates: { canonical: "/best-ai-tools" },
-    openGraph: {
+    openGraph: { images: defaultOgImages(),
       title,
       description,
       type: "website",

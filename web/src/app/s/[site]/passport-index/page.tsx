@@ -1,3 +1,4 @@
+import { defaultOgImages } from "@/lib/og";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getSite } from "@/lib/data";
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ site: str
     description,
     metadataBase: new URL(siteBaseUrl(site)),
     alternates: { canonical: "/passport-index" },
-    openGraph: { title, description, type: "website", url: "/passport-index", siteName: "VisaPoint" },
+    openGraph: { images: defaultOgImages(), title, description, type: "website", url: "/passport-index", siteName: "VisaPoint" },
   };
 }
 

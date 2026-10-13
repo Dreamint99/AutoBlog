@@ -43,7 +43,7 @@ function Card({ site, a, big = false }: { site: Site; a: Article; big?: boolean 
   return (
     <article className={`gc-acard${big ? " big" : ""}`}>
       <Link href={href} className="gc-amedia" tabIndex={-1} aria-label={a.title}>
-        {a.image_url ? <img src={a.image_url} alt="" loading="lazy" /> : <span className="gc-aph">{t.icon}</span>}
+        {a.image_url ? <img src={a.image_url} alt={a.title} loading="lazy" /> : <span className="gc-aph">{t.icon}</span>}
         <span className="gc-badge">
           {c ? <img src={flag(c.iso, 40)} alt="" width={16} height={11} /> : null}
           {t.label}

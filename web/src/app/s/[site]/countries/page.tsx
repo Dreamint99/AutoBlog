@@ -1,3 +1,4 @@
+import { defaultOgImages } from "@/lib/og";
 import "@/sites/walvi/theme.css";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -22,7 +23,7 @@ export async function generateMetadata({
       "Compare European countries for foreign workers: indicative monthly salary, net pay, living cost, realistic savings and work-permit routes — with official sources.",
     metadataBase: new URL(siteBaseUrl(site)),
     alternates: { canonical: "/countries" },
-    openGraph: {
+    openGraph: { images: defaultOgImages(),
       title: "Work in Europe by country | VisaPoint",
       description: "Salary, cost of living, savings and work-permit routes by European country.",
       type: "website",

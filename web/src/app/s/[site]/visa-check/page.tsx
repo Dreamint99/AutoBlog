@@ -1,3 +1,4 @@
+import { defaultOgImages } from "@/lib/og";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getSite, getArticles } from "@/lib/data";
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ site: str
     keywords: ["visa check", "visa status check", "qatar visa check", "saudi visa check", "uae visa check", "kuwait visa check", "malaysia visa check", "check visa online"],
     metadataBase: new URL(siteBaseUrl(site)),
     alternates: { canonical: "/visa-check" },
-    openGraph: { title, description, type: "website", url: "/visa-check", siteName: "VisaPoint" },
+    openGraph: { images: defaultOgImages(), title, description, type: "website", url: "/visa-check", siteName: "VisaPoint" },
   };
 }
 

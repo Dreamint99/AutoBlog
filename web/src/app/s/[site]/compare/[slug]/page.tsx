@@ -1,3 +1,4 @@
+import { defaultOgImages } from "@/lib/og";
 import "@/sites/infkey/theme.css";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -34,7 +35,7 @@ export async function generateMetadata({
     description: `${a.name} vs ${b.name} on input/output price, context window and capabilities. Verified pricing with official sources.`,
     metadataBase: new URL(siteBaseUrl(site)),
     alternates: { canonical: `/compare/${slug}` },
-    openGraph: {
+    openGraph: { images: defaultOgImages(),
       title: `${a.name} vs ${b.name}: API Pricing Compared — InfKey`,
       description: `${a.name} vs ${b.name} on price, context window and capabilities.`,
       type: "website",

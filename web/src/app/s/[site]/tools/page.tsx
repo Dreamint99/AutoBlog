@@ -1,3 +1,4 @@
+import { defaultOgImages } from "@/lib/og";
 import "@/sites/walvi/theme.css";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -31,7 +32,7 @@ export async function generateMetadata({
       "Free tools: calculate net pay and monthly savings on a European salary, and compare two countries for the same job. The math is shown.",
     metadataBase: new URL(siteBaseUrl(site)),
     alternates: { canonical: "/tools" },
-    openGraph: {
+    openGraph: { images: defaultOgImages(),
       title: "Europe salary & savings calculators | VisaPoint",
       description: "Calculate net pay, monthly savings and compare countries for the same job.",
       type: "website",

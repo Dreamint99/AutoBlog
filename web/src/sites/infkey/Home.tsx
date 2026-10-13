@@ -160,7 +160,7 @@ function Card({ site, a, big = false }: { site: Site; a: Article; big?: boolean 
   return (
     <article className={`ai-card${big ? " big" : ""}`}>
       <Link href={href} className="ai-card-media" tabIndex={-1} aria-label={a.title}>
-        {a.image_url ? <img src={a.image_url} alt="" loading="lazy" /> : <span className="ai-card-ph" aria-hidden="true">✦</span>}
+        {a.image_url ? <img src={a.image_url} alt={a.title} loading="lazy" /> : <span className="ai-card-ph" aria-hidden="true">✦</span>}
         <span className="ai-tag">{topicOf(a).label}</span>
       </Link>
       <div className="ai-card-body">
