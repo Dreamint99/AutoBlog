@@ -297,7 +297,8 @@ function quota(done) {
 
 // ---------- backfill: old stories with a stock/unrelated picture get the outlet's photo or the graphic ----------
 async function backfill(n) {
-  const list = await api(`/api/text-thumbs?fix=1&n=${n}`);
+  const one = process.argv[process.argv.indexOf("--slug") + 1];
+  const list = await api(process.argv.includes("--slug") ? `/api/text-thumbs?slug=${encodeURIComponent(one)}` : `/api/text-thumbs?fix=1&n=${n}`);
   log(`backfill: ${list.length} stories to re-picture`);
   const items = list.length ? await readFeeds() : [];
   for (const a of list) {
