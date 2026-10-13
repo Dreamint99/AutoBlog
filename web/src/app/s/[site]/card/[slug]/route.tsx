@@ -3,8 +3,12 @@ import { ogFonts } from "@/lib/ogFonts";
 import { getArticle, getSite } from "@/lib/data";
 
 // 1200×630 title card for an article, used as its feature/share image when there is no
-// on-topic photo (generator/modules/image.py points image_url here). Built on request and
+// on-topic photo (generator/modules/site_images.py points image_url here). Built on request and
 // cached at the edge, so it always matches the current title.
+//
+// Site layouts show it in boxes from 4:3 to 21:9 with object-fit: cover, which crops up to
+// ~180px from each side or ~60px from top/bottom. All text therefore sits in a centred
+// ~800×480 safe zone; the edges only carry decoration.
 export const dynamic = "force-dynamic";
 
 const THEME: Record<string, { a: string; b: string; accent: string }> = {
@@ -22,21 +26,27 @@ export async function GET(_req: Request, { params }: { params: Promise<{ site: s
   const t = THEME[site?.theme ?? ""] ?? { a: "#111827", b: "#1f2937", accent: "#fbbf24" };
   const title = (art?.title || site?.name || "").trim();
   const tag = art?.tags?.[0] || site?.niche?.split(/[,.]/)[0] || "";
-  const fs = title.length <= 40 ? 76 : title.length <= 60 ? 64 : title.length <= 80 ? 56 : 48;
+  const fs = title.length <= 36 ? 64 : title.length <= 56 ? 54 : title.length <= 76 ? 46 : 40;
   if (!art) return new Response("Not found", { status: 404 });
   const fonts = await ogFonts();
   return new ImageResponse(
     (
-      <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", fontFamily: "Inter",
-        padding: "70px 80px", color: "#fff", backgroundImage: `linear-gradient(135deg, ${t.a} 0%, ${t.b} 100%)` }}>
-        <div style={{ display: "flex" }}>
-          {tag ? <div style={{ display: "flex", background: t.accent, color: "#111", fontSize: 28, fontWeight: 800,
-            padding: "8px 22px", borderRadius: 40, textTransform: "capitalize" }}>{tag.slice(0, 40)}</div> : null}
-        </div>
-        <div style={{ display: "flex", fontSize: fs, fontWeight: 800, lineHeight: 1.15, letterSpacing: -1 }}>{title}</div>
-        <div style={{ display: "flex", alignItems: "center", fontSize: 30, fontWeight: 800, opacity: 0.92 }}>
-          <div style={{ width: 16, height: 16, borderRadius: 8, background: t.accent, marginRight: 14 }} />
-          {site?.domain ?? ""}
+      <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "Inter",
+        color: "#fff", backgroundImage: `linear-gradient(135deg, ${t.a} 0%, ${t.b} 100%)`, position: "relative" }}>
+        {/* edge decoration — safe to crop */}
+        <div style={{ display: "flex", position: "absolute", width: 420, height: 420, borderRadius: 210, border: `3px solid ${t.accent}40`, top: -160, left: -120 }} />
+        <div style={{ display: "flex", position: "absolute", width: 360, height: 360, borderRadius: 180, background: `${t.accent}1f`, bottom: -170, right: -90 }} />
+        {/* safe zone */}
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: 800, textAlign: "center" }}>
+          {tag ? (
+            <div style={{ display: "flex", background: t.accent, color: "#111", fontSize: 24, fontWeight: 800, padding: "7px 20px",
+              borderRadius: 40, textTransform: "capitalize", marginBottom: 26 }}>{tag.slice(0, 36)}</div>
+          ) : null}
+          <div style={{ display: "flex", justifyContent: "center", textAlign: "center", fontSize: fs, fontWeight: 800, lineHeight: 1.12, letterSpacing: -1 }}>{title}</div>
+          <div style={{ display: "flex", alignItems: "center", marginTop: 28, fontSize: 24, fontWeight: 800, opacity: 0.9 }}>
+            <div style={{ display: "flex", width: 12, height: 12, borderRadius: 6, background: t.accent, marginRight: 10 }} />
+            {site?.domain ?? ""}
+          </div>
         </div>
       </div>
     ),
