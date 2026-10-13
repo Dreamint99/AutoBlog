@@ -54,8 +54,53 @@ def media_url(base, h, mid):
     return r.json().get("source_url", "") if r.ok else ""
 
 
+def recheck(base, h):
+    """Re-verify Commons photos placed earlier against today's stricter rules (photo_fits);
+    a misfit feature image gets a new one, a misfit body photo is removed."""
+    commons = {}  # media id -> (pageid, source_url)
+    for page in range(1, 40):
+        r = requests.get(f"{base}/wp-json/wp/v2/media", headers=h, timeout=60,
+                         params={"per_page": 100, "page": page, "search": "photo-source:commons", "_fields": "id,description,source_url"})
+        if r.status_code >= 400 or not r.json():
+            break
+        for m in r.json():
+            pid = re.search(r"photo-source:commons:(\d+)", (m.get("description") or {}).get("rendered", ""))
+            if pid:
+                commons[m["id"]] = (pid.group(1), m["source_url"])
+    titles = {}
+    ids = sorted({p for p, _ in commons.values()})
+    for i in range(0, len(ids), 50):
+        j = requests.get("https://commons.wikimedia.org/w/api.php", headers=fi._UA, timeout=30,
+                         params={"action": "query", "format": "json", "pageids": "|".join(ids[i:i + 50])}).json()
+        titles.update({k: v.get("title", "") for k, v in (j.get("query", {}).get("pages") or {}).items()})
+    used, stock = wp_images.stock_library(base, h)
+    fixed = 0
+    for p in posts(base, h):
+        title = re.sub(r"<[^>]+>", "", p["title"]["raw"]).strip()
+        country = fi.detect_country(title, p["slug"])
+        bad = {mid for mid, (pid, _) in commons.items() if not fi.photo_fits(titles.get(pid, ""), country)}
+        html = p["content"]["raw"]
+        bad_stems = {wp_images._stem(commons[m][1]) for m in bad}
+        new_html = wp_images._FIG.sub(lambda m: "" if wp_images._stem((re.search(r'src="([^"]*)"', m.group(1)) or [None, ""])[1]) in bad_stems else m.group(0), html)
+        update = {}
+        if p.get("featured_media") in bad:
+            got = wp_images.featured(base, h, title, p["slug"], used, SITE_NAME, f"pi-{p['id']}-r")
+            if got:
+                update["featured_media"] = got[0]
+        if new_html != html or update:
+            keep = [m for m, (_, u) in commons.items() if m not in bad and (m == update.get("featured_media", p.get("featured_media")) or wp_images._stem(u) in {wp_images._stem(x) for x in re.findall(r'src="([^"]*)"', new_html)})]
+            print(f"#{p['id']} {title[:50]} | feature {'replaced' if update else 'ok'} | body photos removed {len(re.findall('<img', html)) - len(re.findall('<img', new_html))}")
+            if APPLY:
+                update["content"] = new_html  # credit line is kept; it may list a removed photo, which is harmless
+                requests.post(f"{base}/wp-json/wp/v2/posts/{p['id']}", headers={**h, "Content-Type": "application/json"}, json=update, timeout=90)
+            fixed += 1
+    print(f"{fixed} posts with misfit photos")
+
+
 def main():
     base, user, pw = _creds(SITE)
+    if "--recheck" in sys.argv:
+        return recheck(base, _headers(user, pw))
     h = _headers(user, pw)
     used, stock = wp_images.stock_library(base, h)
     print(f"{len(stock)} stock photos in the library, {len(used)} source ids used")

@@ -12,6 +12,10 @@ on:
       limit:
         description: "Max posts (0 = all)"
         default: "0"
+      recheck:
+        description: "Recheck photos placed earlier against the stricter rules"
+        type: boolean
+        default: false
 
 concurrency:
   group: probashi-feature-fix
@@ -46,7 +50,8 @@ jobs:
           APPLY: ${{ github.event.inputs.apply }}
           LIMIT: ${{ github.event.inputs.limit }}
         run: |
-          if [ "$APPLY" = "true" ]; then python wp_feature_fix.py --apply "$LIMIT"; else python wp_feature_fix.py "$LIMIT"; fi
+          R=""; if [ "${{ github.event.inputs.recheck }}" = "true" ]; then R="--recheck"; fi
+          if [ "$APPLY" = "true" ]; then python wp_feature_fix.py $R --apply "$LIMIT"; else python wp_feature_fix.py $R "$LIMIT"; fi
       - name: Commit progress
         if: always() && github.event.inputs.apply == 'true'
         run: |
