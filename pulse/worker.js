@@ -11,7 +11,7 @@
  */
 
 const SESSION_DAYS = 30;
-const SITE_IDS = new Set(["countly", "walvi", "infkey", "ninetymins"]);
+const SITE_IDS = new Set(["countly", "walvi", "infkey", "ninetymins", "gccguide"]);
 const LIVE_WINDOW_MS = 65e3; // visitor counts as "live" for ~1 min after last beat
 
 // ── realtime presence (Durable Object, SQLite class = free plan) ──
@@ -163,7 +163,8 @@ async function probe(domain, path) {
 }
 
 async function handleHealth(env) {
-  const domains = ["countly.net", "visapoint.net", "infkey.com", "ninetymins.com"];
+  const domains = ["countly.net", "visapoint.net", "infkey.com", "ninetymins.com", "gccguide.com",
+    "coloursofbangladesh.com", "probashiinfo.com", "www.probashibondu.online"];
   const out = await Promise.all(domains.map(async (d) => {
     const [home, sm, rb] = await Promise.all([probe(d, "/"), probe(d, "/sitemap.xml"), probe(d, "/robots.txt")]);
     return { domain: d, live: home === 200, status: home, sitemap: sm === 200, robots: rb === 200 };
@@ -499,6 +500,7 @@ const DASH_HTML = `<!doctype html>
     <div class="grid2">
       <div class="panel"><h3>🔥 Top pages <small>last 24 h · sampled</small></h3><div id="paths"></div></div>
       <div>
+        <div class="panel"><h3>💵 Ad earnings <small>Adsterra · all sites</small></h3><div id="ads"></div></div>
         <div class="panel"><h3>🌍 Countries</h3><div id="ctry"></div></div>
         <div class="panel"><h3>💚 Health <small id="hcap">checking live…</small></h3><div id="hlth"></div></div>
         <div class="panel"><h3>🔮 Next 7 days <small>trend guess</small></h3><div id="fc"></div></div>
@@ -509,7 +511,7 @@ const DASH_HTML = `<!doctype html>
 </div>
 <script>
 var RANGE='7d', SITE='all', DATA=null, HEALTH=null, CHART=null;
-var COLORS={countly:'#818cf8',walvi:'#34d399',infkey:'#fbbf24',ninetymins:'#fb7185'};
+var COLORS={countly:'#818cf8',walvi:'#34d399',infkey:'#fbbf24',ninetymins:'#fb7185',gccguide:'#22d3ee',cob:'#f472b6'};
 var ISO={'Bangladesh':'BD','India':'IN','United States':'US','United States of America':'US','United Kingdom':'GB','Germany':'DE','France':'FR','Canada':'CA','Australia':'AU','Pakistan':'PK','Saudi Arabia':'SA','United Arab Emirates':'AE','Qatar':'QA','Kuwait':'KW','Oman':'OM','Bahrain':'BH','Singapore':'SG','Malaysia':'MY','Indonesia':'ID','Netherlands':'NL','Italy':'IT','Spain':'ES','Brazil':'BR','Japan':'JP','China':'CN','South Korea':'KR','Turkey':'TR','Russia':'RU','Russian Federation':'RU','Poland':'PL','Sweden':'SE','Norway':'NO','Finland':'FI','Denmark':'DK','Ireland':'IE','Serbia':'RS','Greece':'GR','South Africa':'ZA','Nigeria':'NG','Egypt':'EG','Vietnam':'VN','Philippines':'PH','Thailand':'TH','Hong Kong':'HK','Taiwan':'TW','Ukraine':'UA','Romania':'RO','Portugal':'PT','Mexico':'MX','Argentina':'AR','Switzerland':'CH','Austria':'AT','Belgium':'BE','Czechia':'CZ','Hungary':'HU','Israel':'IL','Nepal':'NP','Sri Lanka':'LK','Myanmar':'MM','Morocco':'MA','Kenya':'KE','New Zealand':'NZ','Croatia':'HR','Bulgaria':'BG','Slovakia':'SK','Lithuania':'LT'};
 function flag(name){var c=ISO[name];if(!c)return '🌐';
   return String.fromCodePoint(127397+c.charCodeAt(0),127397+c.charCodeAt(1));}
@@ -561,6 +563,12 @@ function render(){
   if(!DATA||DATA.empty){document.getElementById('stats').innerHTML='<div class="empty" style="grid-column:1/-1">No snapshot yet — PC pusher runs every 15 min.</div>';return;}
   var s=sel(), sites=DATA.sites||[];
   var tot=s?{uniques:s.uniques||0,pageviews:s.pageviews||0,requests:s.requests||0}:DATA.total||{};
+  // Adsterra earnings: whole network, or the selected site's domain only.
+  var ads=DATA.ads||null, adRev=0, adImp=0, adRows=[];
+  if(ads){
+    adRows=(ads.domains||[]).filter(function(d){return !s||d.domain===s.domain;});
+    adRows.forEach(function(d){adRev+=d.revenue||0;adImp+=d.impressions||0;});
+  }
   document.getElementById('sync').innerHTML='<b>●</b> synced '+ago(DATA.syncedAt);
 
   // tabs
@@ -578,7 +586,7 @@ function render(){
   document.getElementById('stats').innerHTML=
     '<div class="stat"><small>Visitors</small><b>'+fmt(tot.uniques)+'</b><span class="xs">unique</span></div>'+
     '<div class="stat"><small>Pageviews</small><b>'+fmt(tot.pageviews)+'</b><span class="xs">'+RANGE+'</span></div>'+
-    '<div class="stat"><small>Requests</small><b>'+fmt(tot.requests)+'</b><span class="xs">edge total</span></div>'+
+    '<div class="stat"><small>Ad earnings</small><b>'+(ads?'$'+adRev.toFixed(2):'—')+'</b><span class="xs">'+(ads?fmt(adImp)+' ad views':'Adsterra not synced')+'</span></div>'+
     '<div class="stat"><small>Next 7 days</small><b>'+(fcv!=null?'~'+fmt(fcv):'—')+'</b><span class="xs">'+
       (tp!=null?('<span class="'+(tp>=0?'up':'dn')+'">'+(tp>=0?'▲ ':'▼ ')+Math.abs(tp)+'%</span> trend'):'needs 3+ days data')+'</span></div>';
 
@@ -606,6 +614,14 @@ function render(){
     return '<div class="li"><span class="flag">'+flag(r.label)+'</span><span class="lbl">'+esc(r.label)+'</span>'+
       '<span class="bar"><i style="width:'+r.pct+'%"></i></span><span class="n">'+fmt(r.v)+'</span></div>';
   }).join(''):'<div class="empty">No data</div>';
+
+  // ad earnings per domain (bar = share of the top earner)
+  var adTop=adRows.length?Math.max.apply(null,adRows.map(function(d){return d.revenue||0;}))||1:1;
+  document.getElementById('ads').innerHTML=!ads?'<div class="empty">Adsterra not synced yet</div>':
+    adRows.length?adRows.map(function(d){
+      return '<div class="li"><span class="lbl">'+esc(d.domain)+' <em>'+fmt(d.impressions)+' views</em></span>'+
+        '<span class="bar"><i style="width:'+Math.round(100*(d.revenue||0)/adTop)+'%"></i></span><span class="n">$'+(d.revenue||0).toFixed(2)+'</span></div>';
+    }).join(''):'<div class="empty">No ad views in this range</div>';
 
   renderHealth();
 

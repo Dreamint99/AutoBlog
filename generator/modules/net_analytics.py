@@ -1,4 +1,4 @@
-"""Network analytics for the 4 Cloudflare-hosted sites.
+"""Network analytics for the Cloudflare-hosted sites.
 
 Data sources (all free):
   - Cloudflare GraphQL Analytics API (zone HTTP requests: uniques, pageviews,
@@ -15,9 +15,12 @@ import re
 import threading
 import time
 
+import os
+
 import requests
 
-WRANGLER_CFG = r"C:\Users\kingm\AppData\Roaming\xdg.config\.wrangler\config\default.toml"
+# wrangler keeps its OAuth token under the current Windows user's APPDATA.
+WRANGLER_CFG = os.path.join(os.environ.get("APPDATA", ""), "xdg.config", ".wrangler", "config", "default.toml")
 GQL = "https://api.cloudflare.com/client/v4/graphql"
 API = "https://api.cloudflare.com/client/v4"
 
@@ -26,6 +29,8 @@ SITES = [
     {"id": "walvi",      "domain": "visapoint.net"},
     {"id": "infkey",     "domain": "infkey.com"},
     {"id": "ninetymins", "domain": "ninetymins.com"},
+    {"id": "gccguide",   "domain": "gccguide.com"},
+    {"id": "cob",        "domain": "coloursofbangladesh.com"},
 ]
 
 RANGES = {          # label -> (days back, use hourly groups?)
@@ -49,10 +54,16 @@ def _token() -> str:
 
 
 def _gql(query: str) -> dict:
-    r = requests.post(GQL, headers={"Authorization": f"Bearer {_token()}",
-                                    "Content-Type": "application/json"},
-                      json={"query": query}, timeout=45)
-    d = r.json()
+    # Six zones x five ranges can trip the GraphQL rate limiter; wait it out
+    # (up to three times) instead of failing the whole range.
+    for attempt in range(3):
+        r = requests.post(GQL, headers={"Authorization": f"Bearer {_token()}",
+                                        "Content-Type": "application/json"},
+                          json={"query": query}, timeout=45)
+        d = r.json()
+        if "rate limit" not in str(d.get("errors") or "").lower():
+            break
+        time.sleep(60)
     if d.get("errors"):
         raise RuntimeError(str(d["errors"])[:300])
     return d["data"]

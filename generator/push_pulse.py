@@ -19,6 +19,42 @@ import modules.net_analytics as na
 
 ACCOUNT = "10c278732f6e3c0e221ea04d6782bd8c"
 NS_ID = "3987a5253d994eea89caaef8a80b724b"
+ADSTERRA_API = "https://api3.adsterratools.com/publisher"
+
+
+def _adsterra_key() -> str:
+    """ADSTERRA_API_KEY from generator/.env (gitignored)."""
+    env = Path(__file__).parent / ".env"
+    if env.exists():
+        for line in env.read_text(encoding="utf-8").splitlines():
+            if line.startswith("ADSTERRA_API_KEY="):
+                return line.split("=", 1)[1].strip().strip('"')
+    return ""
+
+
+def adsterra_snapshot(days: int) -> dict | None:
+    """Ad earnings per domain for the last `days` days (Adsterra counts whole days)."""
+    import requests
+    key = _adsterra_key()
+    if not key:
+        return None
+    h = {"X-API-Key": key, "Accept": "application/json"}
+    today = dt.date.today()
+    q = {"start_date": (today - dt.timedelta(days=max(days - 1, 0))).isoformat(),
+         "finish_date": today.isoformat(), "group_by": "domain"}
+    try:
+        names = {d["id"]: d["title"] for d in
+                 requests.get(f"{ADSTERRA_API}/domains.json", headers=h, timeout=30).json()["items"]}
+        rows = requests.get(f"{ADSTERRA_API}/stats.json", headers=h, params=q, timeout=30).json()["items"]
+    except Exception as e:
+        print("  adsterra: FAILED", str(e)[:120])
+        return None
+    doms = sorted(({"domain": names.get(r["domain"], str(r["domain"])),
+                    "revenue": round(r["revenue"], 3), "impressions": r["impression"],
+                    "clicks": r["clicks"], "cpm": r["cpm"]} for r in rows),
+                  key=lambda d: -d["revenue"])
+    total = {k: round(sum(d[k] for d in doms), 3) for k in ("revenue", "impressions", "clicks")}
+    return {"total": total, "domains": doms}
 WEB_DIR = Path(__file__).parent.parent / "web"
 
 
@@ -77,8 +113,12 @@ def main():
             if all(s.get("error") for s in snap["sites"]):
                 print(f"  {rng}: all sites errored — skipping")
                 continue
+            ads = adsterra_snapshot(na.RANGES[rng][0])
+            if ads:
+                snap["ads"] = ads
             ranges[rng] = snap
-            print(f"  {rng}: uniques={snap['total']['uniques']}")
+            print(f"  {rng}: uniques={snap['total']['uniques']}"
+                  + (f" ads=${ads['total']['revenue']}" if ads else ""))
         except Exception as e:
             print(f"  {rng}: FAILED {str(e)[:150]}")
     if not ranges:

@@ -9,6 +9,17 @@ import { JsonLd, breadcrumbSchema } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
+// Sister sites that cover the same subjects (see the network-links note below).
+const NETWORK: Record<string, string[]> = {
+  gccguide: ["walvi"],
+  walvi: ["gccguide"],
+  countly: ["infkey"],
+  infkey: ["countly"],
+};
+
+const esc = (s: string) =>
+  s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c] as string);
+
 // Keep the <title> and meta description within the lengths search engines
 // display (≈60 / ≈158 chars) so Ahrefs/Google don't flag or truncate them.
 // Cuts on a word boundary and trims trailing punctuation.
@@ -137,6 +148,34 @@ export default async function ArticlePage({
     .filter((a): a is typeof article => Boolean(a))
     .slice(0, 5);
 
+  // Network reading links: up to two clearly related articles from a sister site
+  // on the same subject, appended to the article body as editorial "also read"
+  // links. Kept small and topic-gated on purpose — blanket cross-linking between
+  // sites one owns is a Google link-scheme signal; relevant links help readers.
+  const sisters = NETWORK[site.id] || [];
+  const networkLinks: { title: string; url: string; site: string; s: number }[] = [];
+  for (const sid of sisters) {
+    const sister = getSite(sid);
+    if (!sister) continue;
+    for (const a of await getArticles(sid)) {
+      const t = toks(a);
+      let s = 0;
+      t.forEach((w) => {
+        if (cur.has(w)) s += 1;
+      });
+      if (s >= 2) networkLinks.push({ title: a.title, url: `https://${sister.domain}/${a.slug}`, site: sister.name, s });
+    }
+  }
+  networkLinks.sort((x, y) => y.s - x.s);
+  const netHtml = networkLinks.length
+    ? `<aside class="net-read" style="margin:28px 0 8px;padding:14px 16px;border-left:3px solid currentColor;opacity:.95"><strong>Also worth reading</strong><ul style="margin:8px 0 0;padding-left:18px">` +
+      networkLinks
+        .slice(0, 2)
+        .map((l) => `<li><a href="${esc(l.url)}">${esc(l.title)}</a> <small>(${esc(l.site)})</small></li>`)
+        .join("") +
+      `</ul></aside>`
+    : "";
+
   const { Article } = components;
   const base = siteBaseUrl(site);
 
@@ -157,7 +196,7 @@ export default async function ArticlePage({
           { name: article.title, url: `${base}/${slug}` },
         ])}
       />
-      <Article site={site} article={article} related={related} bodyHtml={html} toc={toc} popular={popular} />
+      <Article site={site} article={article} related={related} bodyHtml={html + netHtml} toc={toc} popular={popular} />
     </>
   );
 }
