@@ -3,6 +3,8 @@ name: probashiinfo CTR titles
 # Manual: rewrite Rank Math titles/descriptions of high-impression, low-CTR posts
 # (generator/wp_ctr.py). Dry run unless "apply" is ticked; the change log is committed.
 on:
+  schedule:
+    - cron: "23 3 * * 2"  # weekly, after the Monday Search Console pull
   workflow_dispatch:
     inputs:
       apply:
@@ -50,13 +52,13 @@ jobs:
           CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
-          APPLY: ${{ github.event.inputs.apply }}
-          LIMIT: ${{ github.event.inputs.limit }}
+          APPLY: ${{ github.event_name == 'schedule' || github.event.inputs.apply == 'true' }}
+          LIMIT: ${{ github.event.inputs.limit || '25' }}
         run: |
           if [ "${{ github.event.inputs.overrides }}" = "true" ]; then python wp_ctr.py --overrides; exit 0; fi
           if [ "$APPLY" = "true" ]; then python wp_ctr.py --apply "$LIMIT"; else python wp_ctr.py "$LIMIT"; fi
       - name: Commit change log
-        if: github.event.inputs.apply == 'true'
+        if: github.event_name == 'schedule' || github.event.inputs.apply == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
