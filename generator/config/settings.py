@@ -84,7 +84,7 @@ SEMRUSH_API_KEY = os.getenv("SEMRUSH_API_KEY", "")
 INDEXNOW_KEY = os.getenv("INDEXNOW_KEY", "7cb730425493bd6250188aee25110d83")
 # Only ping hosts whose key file is actually live + domain connected. Comma-separated.
 INDEXNOW_HOSTS = set(
-    h.strip().lower() for h in os.getenv("INDEXNOW_HOSTS", "infkey.com").split(",") if h.strip()
+    h.strip().lower() for h in os.getenv("INDEXNOW_HOSTS", "infkey.com,countly.net,visapoint.net,gccguide.com,ninetymins.com,probashiinfo.com").split(",") if h.strip()
 )
 
 # === Storage ===

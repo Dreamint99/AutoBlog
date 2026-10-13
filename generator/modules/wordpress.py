@@ -214,6 +214,9 @@ def publish(site: dict, article: dict, log=lambda m: None) -> dict:
     if r.status_code >= 400:
         raise RuntimeError(f"WP publish failed {r.status_code}: {r.text[:300]}")
     out = r.json()
+    if out.get("link"):  # tell Bing/Yandex right away, with WordPress's real permalink
+        from modules import indexnow
+        indexnow.submit_urls(site.get("domain", ""), [out["link"]], log)
     sc = payload.get("meta", {}).get("rank_math_seo_score")
     log(f"   → WordPress post #{out.get('id')} live: {out.get('link', '')}"
         + (f" (SEO {sc})" if sc else ""))

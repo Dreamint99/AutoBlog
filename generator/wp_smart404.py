@@ -17,6 +17,10 @@ import requests
 SNIPPET_NAME = "AutoBlog smart 404"
 CODE = r"""/* Old or mistyped URLs → 301 to the clearly matching post (managed by AutoBlog generator/wp_smart404.py). */
 add_action( 'template_redirect', function () {
+	// IndexNow key file (Bing/Yandex instant indexing), same key as the other AutoBlog sites.
+	if ( trim( (string) wp_parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ), '/' ) === '7cb730425493bd6250188aee25110d83.txt' ) {
+		status_header( 200 ); header( 'Content-Type: text/plain; charset=utf-8' ); echo '7cb730425493bd6250188aee25110d83'; exit;
+	}
 	if ( ! is_404() ) { return; }
 	$path = trim( urldecode( (string) wp_parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ) ), '/' );
 	if ( $path === '' || strlen( $path ) > 300 ) { return; }
