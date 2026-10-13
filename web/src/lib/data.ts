@@ -198,8 +198,9 @@ async function nearestSlug(db: D1Database, siteId: string, slug: string): Promis
       const prefix = words.slice(0, n).join("-");
       if (prefix.length < 25) break;
       const { results } = await db
-        .prepare("SELECT slug FROM articles WHERE site_id = ? AND status = 'published' AND slug LIKE ? ORDER BY length(slug) LIMIT 1")
-        .bind(siteId, `${prefix.replace(/[%_]/g, "")}%`)
+        // substr(), not LIKE: D1 rejects long LIKE patterns ("LIKE or GLOB pattern too complex").
+        .prepare("SELECT slug FROM articles WHERE site_id = ? AND status = 'published' AND substr(slug, 1, ?) = ? ORDER BY length(slug) LIMIT 1")
+        .bind(siteId, prefix.length, prefix)
         .all<{ slug: string }>();
       const hit = results?.[0]?.slug;
       if (hit && hit !== slug) return hit;
