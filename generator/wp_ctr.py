@@ -63,7 +63,9 @@ Rules:
 - Bangla, natural, no clickbait or false promises. Use ONLY facts that appear in the article text given (costs, salaries, numbers, steps). Never invent numbers.
 - title: 40-60 characters. Put the main search query words first. Add the year %d when the topic is time-sensitive. Add one concrete hook from the article (a number, a cost, "ধাপে ধাপে", a count of countries). No site name, no pipes, no emoji.
 - description: 120-155 characters, one or two complete sentences ending with "।". Say exactly what the reader gets (cost, salary, documents, process) and why it is current.
-- Different from the current title — the current one gets few clicks.""" % YEAR
+- Correct, fluent Bangla grammar (e.g. "কোন কোন দেশে যাওয়া যায়", not "যায়"). Read it back before answering.
+- Never mention an earlier year than %d.
+- Different from the current title — the current one gets few clicks.""" % (YEAR, YEAR)
 
 
 def wp(method, path, **kw):
@@ -114,6 +116,10 @@ def live_snippet(url):
     return html.unescape(title.group(1)).strip() if title else "", html.unescape(desc.group(1)) if desc else ""
 
 
+def to_bn(n):
+    return str(n).translate(str.maketrans("0123456789", "০১২৩৪৫৬৭৮৯")).zfill(2)
+
+
 def propose(page, post, cur_title, cur_desc):
     queries = ", ".join(f"{q} ({imp})" for q, imp, *_ in page["queries"][:6]) or "(Google hides the queries; infer from the article)"
     user = (f"Search queries people use (impressions): {queries}\n"
@@ -121,11 +127,21 @@ def propose(page, post, cur_title, cur_desc):
             f"Current title: {cur_title}\nCurrent description: {cur_desc}\n\n"
             f"Article title: {plain(post['title']['raw'], 200)}\n"
             f"Article text (start): {plain(post['content']['raw'], 3500)}")
-    out = json.loads(llm.chat(SYSTEM, user, temperature=0.5, max_tokens=600, json_mode=True))
-    t, d = out["title"].strip(), out["description"].strip()
-    if not (25 <= len(t) <= 70 and 90 <= len(d) <= 170):
-        raise ValueError(f"bad lengths {len(t)}/{len(d)}")
-    return t, d
+    stale = re.compile(r"(20|২০)(%s)" % "|".join(f"{y % 100:02d}|{to_bn(y % 100)}" for y in range(YEAR - 6, YEAR)))
+    problem = ""
+    for _ in range(3):
+        out = json.loads(llm.chat(SYSTEM, user + (f"\n\nYour previous answer was rejected: {problem}. Fix it." if problem else ""),
+                                  temperature=0.5, max_tokens=600, json_mode=True))
+        t, d = out["title"].strip(), out["description"].strip()
+        if not 30 <= len(t) <= 62:
+            problem = f"title is {len(t)} characters, must be 40-60"
+        elif not 100 <= len(d) <= 158:
+            problem = f"description is {len(d)} characters, must be 120-155"
+        elif stale.search(t + d):
+            problem = f"it mentions an old year; the current year is {YEAR}"
+        else:
+            return t, d
+    raise ValueError(problem)
 
 
 def main():
