@@ -31,10 +31,13 @@ def d1(sql: str = "", file: str = "") -> list:
     args = [NPX, "wrangler", "d1", "execute", "autoblog-content", "--remote", "--json"]
     args += ["--file", file, "--yes"] if file else ["--command", sql]
     r = subprocess.run(args, cwd=WEB, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=600)
+    out = r.stdout[r.stdout.find("["):] if "[" in r.stdout else r.stdout  # wrangler may print a banner first
     try:
-        return json.loads(r.stdout)[0].get("results", [])
+        return json.loads(out)[0].get("results", [])
     except Exception:
-        raise RuntimeError(f"wrangler failed: {r.stdout[-400:]} {r.stderr[-400:]}")
+        if file and '"success": true' in r.stdout:
+            return []
+        raise RuntimeError(f"wrangler failed ({r.returncode}): {r.stdout[-300:]} {r.stderr[-300:]}")
 
 
 def q(s: str) -> str:
@@ -52,6 +55,8 @@ def main():
             chunk = ",".join(q(x) for x in ids[i:i + 40])
             for a in d1(f"SELECT id, title, slug, image_url, body_html FROM articles WHERE id IN ({chunk})"):
                 img, body, placed = site_images.choose(a["title"], a["slug"], site, a["body_html"] or "", a["image_url"] or "", used)
+                if "--recredit" in sys.argv and "/wikipedia/commons/" in img + body:
+                    body = site_images.rebuild_credit(img, body)
                 kind = "wiki kept" if img == a["image_url"] else "card" if "/card/" in img else "photo"
                 stats[kind] += 1
                 if body != (a["body_html"] or ""):
@@ -64,10 +69,16 @@ def main():
         for s in samples:
             print("   ", s)
         if APPLY and updates:
-            with tempfile.NamedTemporaryFile("w", suffix=".sql", delete=False, encoding="utf-8") as f:
-                f.write("\n".join(updates))
-            d1(file=f.name)
-            os.unlink(f.name)
+            # Small batches: one big file of article bodies made wrangler exit without output.
+            for i in range(0, len(updates), 10):
+                with tempfile.NamedTemporaryFile("w", suffix=".sql", delete=False, encoding="utf-8") as f:
+                    f.write("\n".join(updates[i:i + 10]))
+                try:
+                    d1(file=f.name)
+                except RuntimeError as e:
+                    print(f"   ! batch {i // 10 + 1} failed: {str(e)[:200]}")
+                finally:
+                    os.unlink(f.name)
             print(f"   applied {len(updates)} updates")
 
 

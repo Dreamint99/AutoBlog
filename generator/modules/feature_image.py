@@ -180,15 +180,35 @@ def _commons(query: str, must: list[str], used: set, limit: int = 40) -> list[di
     return out
 
 
+def _names_other(title_lower: str, others: list) -> bool:
+    return any(re.search(r"(?<![a-z])" + re.escape(o.lower()) + r"(?![a-z])", title_lower) for o in others)
+
+
+def photo_fits(file_title: str, country) -> bool:
+    """Would country_photos() pick a Commons file with this name for this country today?"""
+    if not country or not country[2]:
+        return False
+    t, name, city = file_title.lower(), country[0], country[2]
+    if city.lower() in t:
+        return True
+    others = [x for c in COUNTRIES if c[0] != name for x in (c[0], c[2]) if x and len(x) > 3]
+    return name.lower() in t and not _names_other(t, others) and not _BAD.search(file_title)
+
+
 def country_photos(country, used: set, n: int = 1) -> list[dict]:
     """Up to n distinct free-licence photos of the country's main city or landscape."""
     name, _iso, city = country
     if not city:  # a region (Europe): title card only
         return []
-    must = [city, name] + ([city.split()[0]] if city.split()[0] not in ("Port", "New", "Kuwait", "Bandar", "Cape", "Rio", "Phnom", "Hong") else [])
+    # City searches need the city in the file name; country searches need the country and no
+    # other country or city ("Concattedrale di Maria Santissima di Romania" is in Italy).
+    others = [x for c in COUNTRIES if c[0] != name for x in (c[0], c[2]) if x and len(x) > 3]
     found: list[dict] = []
-    for q in (f"{city} skyline", f"{city} panorama", f"{city} cityscape", f"{name} landscape", f"{name} skyline"):
+    for q, must in ((f"{city} skyline", [city]), (f"{city} panorama", [city]), (f"{city} cityscape", [city]),
+                    (f"{name} landscape", [name]), (f"{name} skyline", [name])):
         for hit in _commons(q, must, used | {f["source_id"] for f in found}):
+            if must == [name] and _names_other(hit["title"].lower(), others):
+                continue
             found.append(hit)
             if len(found) >= n:
                 return found
