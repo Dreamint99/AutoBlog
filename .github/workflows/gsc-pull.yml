@@ -1,0 +1,37 @@
+name: Search Console pull
+
+# Weekly: pull 90 days of Search Console data for every network site (generator/gsc_pull.py)
+# and commit data/gsc_*.json + data/demand_*.json for drip, wp_ctr and wp_faq_boost.
+# Auth: GitHub OIDC → Workload Identity → gsc-reader (Restricted user on each property); no key.
+on:
+  schedule:
+    - cron: "17 2 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  pull:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: generator
+    steps:
+      - uses: actions/checkout@v4
+      - uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: projects/964026800128/locations/global/workloadIdentityPools/github/providers/autoblog
+          service_account: gsc-reader@autoblog-seo-10131811.iam.gserviceaccount.com
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install google-auth requests
+      - run: python gsc_pull.py
+      - name: Commit data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/gsc_*.json data/demand_*.json
+          git diff --cached --quiet || (git commit -m "Search Console data $(date -u +%F)" && git pull --rebase && git push)
