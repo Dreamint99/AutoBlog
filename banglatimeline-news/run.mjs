@@ -109,7 +109,10 @@ async function fetchPage(link) { // → { text, image } — the outlet's own lea
     const h = await (await get(link, 12000)).text();
     const ps = [...h.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/g)].map((m) => strip(m[1])).filter((p) => p.length > 60 && /[\u0980-\u09FF]/.test(p));
     const meta = (k) => (h.match(new RegExp(`<meta[^>]+(?:property|name)=["']${k}["'][^>]*content=["']([^"']+)`, "i")) || h.match(new RegExp(`<meta[^>]+content=["']([^"']+)["'][^>]*(?:property|name)=["']${k}["']`, "i")) || [])[1];
-    let image = (meta("og:image") || meta("twitter:image") || "").replace(/&amp;/g, "&").trim();
+    const ld = (h.match(/"image"\s*:\s*(?:\{[^}]*?"url"\s*:\s*)?\[?\s*"(https?:[^"]+?\.(?:jpe?g|png|webp)[^"]*)"/i) || [])[1];
+    const rel = (h.match(/<link[^>]+rel=["']image_src["'][^>]*href=["']([^"']+)/i) || h.match(/itemprop=["']image["'][^>]*(?:content|src)=["']([^"']+)/i) || [])[1];
+    const inArticle = (h.match(/<article[\s\S]*?<img[^>]+(?:data-src|src)=["']([^"']+\.(?:jpe?g|webp)[^"']*)/i) || [])[1];
+    let image = (meta("og:image") || meta("twitter:image") || meta("twitter:image:src") || ld || rel || inArticle || "").replace(/&amp;/g, "&").replace(/\\\//g, "/").trim();
     if (image && image.startsWith("//")) image = "https:" + image;
     if (image && !/^https?:/.test(image)) image = new URL(image, link).href;
     // some outlets serve a social card with their headline burnt in (…/overlay/?image=<original>) — use the original photo
@@ -157,10 +160,10 @@ async function llm(messages, { json = true, maxTokens = 2500 } = {}) {
 async function write(c, topics) {
   const docs = [];
   c.photos = [];
-  for (const it of c.items.slice(0, 3)) {
+  for (const [i, it] of c.items.slice(0, 5).entries()) {
     const pg = await fetchPage(it.link);
     if (pg.image) c.photos.push({ url: pg.image, src: it.src, link: it.link });
-    docs.push(`### সূত্র: ${it.src}\nশিরোনাম: ${it.title}\n${pg.text || it.text}`);
+    if (i < 3) docs.push(`### সূত্র: ${it.src}\nশিরোনাম: ${it.title}\n${pg.text || it.text}`);
   }
   const user = `নিচের সূত্রগুলো একই ঘটনার। একটি মৌলিক, এসইও-বান্ধব সংবাদ প্রতিবেদন লেখো।
 চলমান টপিকের তালিকা (প্রাসঙ্গিক হলে এই slug-ই ব্যবহার করো): ${JSON.stringify(topics.map((t) => ({ slug: t.slug, name: t.name })))}
@@ -182,6 +185,29 @@ ${docs.join("\n\n")}`;
 }
 
 // ---------- images ----------
+const OUTLET = { "prothomalo.com": "প্রথম আলো", "bbc.com": "বিবিসি বাংলা", "banglatribune.com": "বাংলা ট্রিবিউন", "dhakapost.com": "ঢাকা পোস্ট", "ajkerpatrika.com": "আজকের পত্রিকা",
+  "ittefaq.com.bd": "ইত্তেফাক", "dw.com": "ডয়চে ভেলে", "ntvbd.com": "এনটিভি", "thedailystar.net": "ডেইলি স্টার", "jagonews24.com": "জাগো নিউজ", "kalerkantho.com": "কালের কণ্ঠ",
+  "jugantor.com": "যুগান্তর", "samakal.com": "সমকাল", "bdnews24.com": "বিডিনিউজ২৪", "somoynews.tv": "সময় টিভি", "jamuna.tv": "যমুনা টিভি", "channel24bd.tv": "চ্যানেল ২৪",
+  "banglanews24.com": "বাংলানিউজ২৪", "risingbd.com": "রাইজিংবিডি", "dhakatimes24.com": "ঢাকা টাইমস", "bd-pratidin.com": "বাংলাদেশ প্রতিদিন", "dailynayadiganta.com": "নয়া দিগন্ত",
+  "independent24.com": "ইনডিপেনডেন্ট টিভি", "rtvonline.com": "আরটিভি", "ekattor.tv": "একাত্তর", "deshrupantor.com": "দেশ রূপান্তর", "anandabazar.com": "আনন্দবাজার" };
+const outletName = (u) => { try { const h = new URL(u).hostname.replace(/^www\./, ""); const k = Object.keys(OUTLET).find((d) => h === d || h.endsWith("." + d)); return k ? OUTLET[k] : h; } catch { return ""; } };
+async function searchPhotos(title, max = 3, retry = true) {
+  // our headline is reworded, so if the full title finds nothing try its first few key words
+  if (retry) { const r = await searchPhotos(title, max, false); if (r.length) return r; return searchPhotos(title.split(/[,:;।–-]/)[0].split(/\s+/).slice(0, 6).join(" "), max, false); }
+  try {
+    const x = await (await fetch(`https://www.bing.com/news/search?q=${encodeURIComponent(title)}&format=rss&setlang=bn&cc=BD`, { headers: { "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/130 Safari/537.36" }, signal: AbortSignal.timeout(15000) })).text();
+    const want = words(title), out = [];
+    for (const it of x.split("<item>").slice(1, 10)) {
+      if (out.length >= max) break;
+      const t = strip(tag(it, "title")), raw = strip(tag(it, "link"));
+      const link = (() => { try { return new URL(raw.replace(/&amp;/g, "&")).searchParams.get("url") || raw; } catch { return raw; } })();
+      if (!link || jacc(want, words(t)) < (retry ? 0.3 : 0.34) || /youtube|facebook|msn\.com/.test(link)) continue;
+      const pg = await fetchPage(link);
+      if (pg.image) out.push({ url: pg.image, src: outletName(link), link });
+    }
+    return out;
+  } catch { return []; }
+}
 // 1) the lead photo of the outlet we took the story from (credited "ছবি: <outlet>", no logo of ours on top)
 // 2) otherwise — or for sensitive stories — a branded news-card graphic (featured.html)
 async function download(url) {
@@ -280,7 +306,9 @@ async function backfill(n) {
       const near = items.map((it) => ({ it, s: jacc(w, it.w) })).filter((x) => x.s >= 0.4).sort((x, y) => y.s - x.s).slice(0, 3);
       const photos = [];
       for (const { it } of near) { const pg = await fetchPage(it.link); if (pg.image) photos.push({ url: pg.image, src: it.src }); }
+      if (!photos.length) photos.push(...(await searchPhotos(a.title)));
       const sensitive = /(হত্যা|খুন|ধর্ষণ|নিপীড়ন|আত্মহত্যা|লাশ|মরদেহ|শিশু)/.test(a.title);
+      if (!photos.length && /গ্রাফিক/.test(a.image_caption || "")) { log("  still no photo:", a.title); continue; }
       const img = await image({ ...a, subtitle: "", sensitive }, photos);
       await api("/api/article-image", { method: "POST", body: JSON.stringify({ slug: a.slug, image_b64: img.b64, image_caption: img.caption }) });
       log("  set:", a.title, "←", img.caption);
@@ -315,6 +343,7 @@ async function main() {
       if (!CATS.includes(a.category)) a.category = c.cat;
       a.breaking = !!a.breaking && c.srcs.size >= 2;
       const slug = `${(a.slug_en || "news").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60)}-${Date.now().toString(36).slice(-4)}`;
+      if (!a.sensitive && !c.photos.length) c.photos = await searchPhotos(c.items[0].title);
       const img = await image(a, c.photos);
       a._credit = img.caption;
       const topic = a.topic && a.topic.slug && a.topic.name ? { slug: a.topic.slug.toLowerCase().replace(/[^a-z0-9-]+/g, "-").slice(0, 50), name: a.topic.name, summary: a.topic.summary || "", points: Array.isArray(a.topic.points) ? a.topic.points : [] } : null;
