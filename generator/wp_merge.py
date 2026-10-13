@@ -18,6 +18,9 @@ GROUPS = [
     ["serbia-to-italy", "serbia-to-italy-2"],
     ["bangladesh-to-europe-work-visa-easy-countries-2025", "bangladesh-to-europe-work-visa-easy-countries-2025-2"],
 ]
+# Search Console-driven groups: the first slug is the keeper (most clicks).
+_GSC = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "merge_groups_probashiinfo.json")
+GSC_GROUPS = json.load(open(_GSC, encoding="utf-8"))["groups"] if os.path.exists(_GSC) else []
 SNIPPET_NAME = "AutoBlog 301 redirects"
 
 BASE = os.environ["PROBASHIINFO_WP_URL"].rstrip("/")
@@ -54,16 +57,19 @@ def snippet_code(redirects: dict) -> str:
 def main():
     redirects: dict[str, str] = {}
     drafts = []
-    for g in GROUPS:
+    for g in GROUPS + GSC_GROUPS:
         posts = [p for p in (post(s) for s in g) if p]
         if len(posts) < 2:
-            print(f"skip {g}: found {len(posts)}")
+            print(f"skip {g[0]}: found {len(posts)}")
             continue
-        # Keep the original URL (no "-2" suffix): it is the older one most likely to rank.
-        slugs = {p["slug"] for p in posts}
-        copy = lambda p: bool(re.search(r"-\d{1,2}$", p["slug"])) and re.sub(r"-\d{1,2}$", "", p["slug"]) in slugs
-        posts.sort(key=lambda p: (p["status"] != "publish", copy(p), -words(p)))
-        keep = posts[0]
+        if g in GSC_GROUPS and posts[0]["slug"] == g[0] and posts[0]["status"] == "publish":
+            keep = posts[0]  # Search Console's best performer
+        else:
+            # Keep the original URL (no "-2" suffix): it is the older one most likely to rank.
+            slugs = {p["slug"] for p in posts}
+            copy = lambda p: bool(re.search(r"-\d{1,2}$", p["slug"])) and re.sub(r"-\d{1,2}$", "", p["slug"]) in slugs
+            posts.sort(key=lambda p: (p["status"] != "publish", copy(p), -words(p)))
+            keep = posts[0]
         print(f"KEEP  {keep['slug']} ({words(keep)} words)")
         for p in posts[1:]:
             print(f"  301 {p['slug']} ({words(p)} words, {p['status']}) → {keep['slug']}")
