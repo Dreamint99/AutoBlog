@@ -40,6 +40,8 @@ LOG = os.path.join(HERE, "data", "ctr_log_probashiinfo.json")
 APPLY = "--apply" in sys.argv
 LIMIT = next((int(a) for a in sys.argv[1:] if a.isdigit()), 0)
 YEAR = datetime.now(timezone.utc).year
+# Pages whose article facts need a human check before a number goes into the title.
+SKIP = {"https://probashiinfo.com/list-of-schengen-countries-in-europe-2026/"}  # says 28 countries; Schengen has 29 since 2025
 
 BASE = os.environ["PROBASHIINFO_WP_URL"].rstrip("/")
 AUTH = base64.b64encode(f"{os.environ['PROBASHIINFO_WP_USER']}:{os.environ['PROBASHIINFO_WP_APP_PASSWORD']}".encode()).decode()
@@ -149,7 +151,7 @@ def main():
     targets = [p for p in pages if p["impressions"] >= 300 and p["ctr"] < 0.03 and p["position"] <= 15]
     log = json.load(open(LOG, encoding="utf-8")) if os.path.exists(LOG) else []
     done = {e["url"] for e in log}
-    targets = [p for p in targets if p["url"] not in done]
+    targets = [p for p in targets if p["url"] not in done and p["url"] not in SKIP]
     if LIMIT:
         targets = targets[:LIMIT]
     print(f"{len(targets)} pages to rewrite ({'APPLY' if APPLY else 'dry run'})")
