@@ -1,20 +1,4 @@
 {
- "_note": "Real Search Console queries (90 days to 2026-10-13). Visa-check queries are left out: the /visa-check/<country> tool pages already rank for them.",
- "queries": [
-  {
-   "q": "moldova work permit visa for bangladeshi",
-   "impr": 9,
-   "src": "gsc"
-  },
-  {
-   "q": "italy work permit visa from bangladesh 2026",
-   "impr": 8,
-   "src": "gsc"
-  },
-  {
-   "q": "malaysia work permit visa price 2026",
-   "impr": 8,
-   "src": "gsc"
-  }
- ]
+ "_note": "Real queries (Search Console 2026-07-13..2026-10-11, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "queries": []
 }
