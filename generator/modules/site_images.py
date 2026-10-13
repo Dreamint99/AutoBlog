@@ -36,7 +36,7 @@ def _wiki_ok(url: str, title: str) -> bool:
 
 
 def card_url(site: dict, slug: str) -> str:
-    return f"https://{site['domain']}/card/{slug}"
+    return f"https://{site['domain']}/card/{slug}?v=2"  # bump v when the card design changes (edge cache)
 
 
 def choose(title: str, slug: str, site: dict, body_html: str, image_url: str, used: set) -> tuple[str, str, list]:

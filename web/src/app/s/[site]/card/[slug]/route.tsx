@@ -50,6 +50,6 @@ export async function GET(_req: Request, { params }: { params: Promise<{ site: s
         </div>
       </div>
     ),
-    { width: 1200, height: 630, fonts, headers: { "cache-control": "public, max-age=86400, s-maxage=604800", "x-og-fonts": String(fonts.length) } },
+    { width: 1200, height: 630, fonts, headers: { "cache-control": "public, max-age=86400, s-maxage=86400", "x-og-fonts": String(fonts.length) } },
   );
 }
