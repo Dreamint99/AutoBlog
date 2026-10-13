@@ -1,3 +1,4 @@
+import { publicPath } from "@/lib/site-context";
 import { notFound, permanentRedirect } from "next/navigation";
 import { isVcArticle, vcFor } from "@/sites/walvi/visacheck/data";
 import type { Metadata } from "next";
@@ -97,14 +98,14 @@ export default async function ArticlePage({
   const article = await getArticle(id, slug);
   if (!article) {
     const to = await getRedirect(id, slug);
-    if (to) permanentRedirect(`/s/${site.id}/${to}`);
+    if (to) permanentRedirect(publicPath(site.id, `/${to}`));
     notFound();
   }
   // VisaPoint "Visa Check" guides live on their country page (/visa-check/<country>)
   // so each country has ONE ranking URL — the old article URL redirects there.
   if (site.id === "walvi" && isVcArticle(article)) {
     const vc = vcFor(article);
-    if (vc) permanentRedirect(`/s/${site.id}/visa-check/${vc.slug}`);
+    if (vc) permanentRedirect(publicPath(site.id, `/visa-check/${vc.slug}`));
   }
   const components = SITE_COMPONENTS[site.id];
   if (!components) notFound();

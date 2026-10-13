@@ -12,3 +12,8 @@ export function activeSite(): Site {
   const id = activeSiteId();
   return (id ? sites.find((s) => s.id === id) : undefined) ?? sites[0];
 }
+
+/** Public path for a redirect target: clean on a single-site deployment (no /s/<id> hop). */
+export function publicPath(siteId: string, path: string): string {
+  return activeSiteId() ? path : `/s/${siteId}${path}`;
+}

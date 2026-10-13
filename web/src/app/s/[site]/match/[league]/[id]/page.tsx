@@ -1,3 +1,4 @@
+import { publicPath } from "@/lib/site-context";
 import { notFound, permanentRedirect } from "next/navigation";
 import type { Metadata } from "next";
 import { getSite } from "@/lib/data";
@@ -63,7 +64,7 @@ export default async function MatchPage(p: P) {
   if (!r) notFound();
   const { m, site, path } = r;
   // Old/short links (no team slug) → the canonical readable URL.
-  if (!raw.includes("-")) permanentRedirect(`/s/${site.id}${path}`);
+  if (!raw.includes("-")) permanentRedirect(publicPath(site.id, path));
   const base = siteBaseUrl(site);
   const about = (await Promise.all([m.home, m.away].map((t) => wikiSummary(t.full, wikiHints(t.full, m.sport))))).filter(
     (w): w is NonNullable<typeof w> => !!w,
