@@ -1,0 +1,40 @@
+name: Site health (Lighthouse + broken links)
+
+# Weekly, free: Google Lighthouse scores + Core Web Vitals and a Linkinator broken-link crawl
+# for every network site (generator/site_health.py). Results → generator/data/site_health.json;
+# low scores and broken links show as warnings on the run.
+on:
+  schedule:
+    - cron: "41 3 * * 2"
+  workflow_dispatch:
+    inputs:
+      sites:
+        description: "Space-separated site ids (empty = all)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    defaults:
+      run:
+        working-directory: generator
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python site_health.py ${{ github.event.inputs.sites }}
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/site_health.json
+          git diff --cached --quiet || (git commit -m "Site health $(date -u +%F)" && git pull --rebase && git push)
