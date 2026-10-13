@@ -56,7 +56,7 @@ RANK MATH 90+ CHECKLIST (the post is scored by the Rank Math plugin — hit ever
   5. At least one H2 or H3 subheading.
   6. The alt text of at least one image.
   7. Throughout the body at a natural density (~1-1.5%, roughly once per 100 words). Do NOT stuff.
-- TITLE EXTRAS for a high score: include a NUMBER (e.g. a year, a count, an amount) AND a power/emotion word (e.g. সহজ, সম্পূর্ণ, নতুন, গুরুত্বপূর্ণ, সেরা, হালনাগাদ). Keep title <=60 chars.
+- TITLE EXTRAS for a high score: include a specific NUMBER (a cost, a count, a date) and a concrete benefit (e.g. খরচ, ধাপ, কাগজপত্র, বেতন). Never filler words (Complete/Essential/Ultimate, সম্পূর্ণ গাইড, সেরা গাইড). Keep title <=60 chars.
 - LENGTH: 1500+ words of genuinely useful content.
 - LINKS: include at least ONE outbound link to an authoritative EXTERNAL source (prefer official/government/embassy sites, e.g. probashi.gov.bd, BMET, the destination country's official portal) as a normal dofollow <a href="https://...">. Also keep internal links to related articles.
 - Short paragraphs (2-4 sentences), at least one data/comparison <table>, bullet lists, and images.

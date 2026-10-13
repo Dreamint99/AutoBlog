@@ -194,6 +194,10 @@ def drip_site(site: dict):
                 break
             except Exception as e:
                 log(f"[{site['id']}] ❌ {t} — {e}" + (" — retrying" if attempt == 1 else ""))
+                if attempt == 1 and "near-duplicate" in str(e):
+                    # the same title would clash again — ask for a different angle instead
+                    avoid.append(t)
+                    t = (suggest_titles(site, count=1, seed=SEED, avoid=avoid + titles) or [t])[0]
     log(f"[{site['id']}] drip done +{done} → {have + done}/{TARGET}")
     if done == 0:
         _FAILED.append(site["id"])

@@ -97,7 +97,7 @@ def write_draft(site: dict, topic: str, strategy: dict, research: str = "") -> d
         "RANK MATH 90+ (mandatory): use the EXACT focus keyword in (a) the first sentence, (b) at least "
         "one H2/H3 heading, and naturally through the body (~once per 100 words, no stuffing). Include at "
         "least ONE outbound dofollow link to an authoritative external source as <a href=\"https://...\">. "
-        "The title must START with the focus keyword and also contain a number and a power word.\n"
+        "The title must START with the focus keyword and contain a specific number (cost, count, date) — never filler words like Complete/Essential/Ultimate/Crucial/Key Insights.\n"
         "For 2-4 sections add an inline image on its own line as [[IMG: <concrete photo subject IN ENGLISH>]] "
         "— image queries must be English even though the article is not.\n"
         "LENGTH: write a COMPREHENSIVE article of at least 1500 words. Develop every section fully with "
@@ -143,8 +143,8 @@ def optimize(site: dict, topic: str, strategy: dict, draft: dict) -> dict:
         "tables. Ensure a direct quick-answer opener, strong scannable structure, and tighten weak/fluffy "
         "sentences (a key-takeaways box is added later — don't add one).\n"
         "RANK MATH 90+: the focus keyword must appear in the first sentence, in at least one H2/H3, and "
-        "naturally in the body. meta_title MUST start with the focus keyword and include a number + a power "
-        "word (<=60 chars). meta_description MUST contain the focus keyword once (120-150 chars, complete sentences ending in a full stop). "
+        "naturally in the body. meta_title MUST start with the focus keyword and include a specific number "
+        "(cost, count, date), no filler words like Complete/Essential/Ultimate (<=60 chars). meta_description MUST contain the focus keyword once (120-150 chars, complete sentences ending in a full stop). "
         "Return ONLY JSON."
     )
     user = (
@@ -192,7 +192,7 @@ def boost(site: dict, article: dict, failed: list, target: int = 95) -> dict:
         f"CURRENT META DESCRIPTION: {article.get('meta_description','')}\n"
         f"CURRENT BODY HTML:\n{article.get('body_html','')}\n\n"
         "Return JSON:\n"
-        '{"title": "<=65 chars, starts with focus keyword, has a number + power word", '
+        '{"title": "<=65 chars, starts with focus keyword, has a specific number, no filler words", '
         '"meta_title": "<=60 chars, starts with focus keyword", '
         '"meta_description": "120-150 chars, contains focus keyword once, complete sentences ending in a full stop", '
         '"excerpt": "<=155 chars", '

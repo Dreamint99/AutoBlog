@@ -52,12 +52,25 @@ def research_topic(site: dict, title: str, log=lambda m: None) -> str:
     facts = websearch.wiki(title, 2, lang="bn" if bangla else "en") + (websearch.wiki(title, 2) if bangla else [])
     snippets = [f"{h['title']} — {h['snippet']} ({h['url']})" for h in hits if h.get("snippet")]
     snippets += [f"Wikipedia: {f['title']} — {f['snippet']} ({f['url']})" for f in facts]
+    searches = websearch.suggest(title, "bn" if bangla else "en")
     web_ctx = ""
+    if searches:
+        web_ctx += ("REAL GOOGLE SEARCHES on this topic (Google autocomplete — what people actually type). Answer the "
+                    "relevant ones as H2s/FAQ and use their wording:\n" + "\n".join(f"- {s}" for s in searches) + "\n\n")
+    rivals = websearch.competitors(hits, site.get("domain", ""))
+    if rivals:
+        web_ctx += ("COMPETITORS RANKING NOW (their headings + length). Cover every subtopic they cover, then beat them: "
+                    "fresher figures, a clearer table, the questions they skip. Never copy their wording:
+"
+                    + "
+".join(f"- {r['url']} ({r['words']} words): " + " | ".join(r["headings"][:15]) for r in rivals) + "
+
+")
     if snippets:
-        web_ctx = ("REAL WEB SOURCES (current top results + Wikipedia). Use them for facts/figures, rewrite in your own words, "
+        web_ctx += ("REAL WEB SOURCES (current top results + Wikipedia). Use them for facts/figures, rewrite in your own words, "
                    "prefer the most recent figure and say 'as of <month year>' for anything that changes (fees, laws, counts):\n"
                    + "\n".join(f"- {s}" for s in snippets) + "\n\n")
-    log(f"   web grounding: {len(hits)} {websearch.source_name()} results, {len(facts)} Wikipedia pages")
+    log(f"   web grounding: {len(hits)} {websearch.source_name()} results, {len(facts)} Wikipedia pages, {len(searches)} Google searches, {len(rivals)} competitors read")
 
     system = (
         time_context() + "\n\n"
