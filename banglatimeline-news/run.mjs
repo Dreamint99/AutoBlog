@@ -1,7 +1,7 @@
 // কালারস অব বাংলাদেশ auto-newsroom. Runs every 20 min on GitHub Actions (free, works while the PC is off):
 //   1. read RSS of major Bangla outlets  2. cluster the same event across outlets  3. rank (outlets, freshness, urgency,
 //      and categories that are thin today)  4. an LLM writes an original, SEO-shaped Bangla report from the sources
-//      (free model first, paid fallback)  5. featured image: Wikimedia Commons (free licence, credited) → Pixabay → text card
+//      (DeepSeek)  5. featured image: the source outlet's lead photo (credited) → branded news-card graphic
 //   6. POST to /api/ingest  7. a category-styled photo card + caption goes to the Facebook page.
 // Daily pacing: at least DAILY_MIN (15) and at most DAILY_LIMIT (20) auto stories per Bangladesh day, spread over the day;
 // a breaking event always gets through (and opens/updates a live topic page).
@@ -103,12 +103,20 @@ function cluster(items, catToday) {
   }
   return cl.sort((a, b) => b.score - a.score);
 }
-async function fullText(link) {
+const BAD_IMG = /logo|default|placeholder|no-?image|fb-?share|og-?image|social-?share|favicon|sprite|banner-ad/i;
+async function fetchPage(link) { // → { text, image } — the outlet's own lead photo comes from og:image / twitter:image
   try {
     const h = await (await get(link, 12000)).text();
     const ps = [...h.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/g)].map((m) => strip(m[1])).filter((p) => p.length > 60 && /[\u0980-\u09FF]/.test(p));
-    return ps.slice(0, 18).join("\n").slice(0, 5000);
-  } catch { return ""; }
+    const meta = (k) => (h.match(new RegExp(`<meta[^>]+(?:property|name)=["']${k}["'][^>]*content=["']([^"']+)`, "i")) || h.match(new RegExp(`<meta[^>]+content=["']([^"']+)["'][^>]*(?:property|name)=["']${k}["']`, "i")) || [])[1];
+    let image = (meta("og:image") || meta("twitter:image") || "").replace(/&amp;/g, "&").trim();
+    if (image && image.startsWith("//")) image = "https:" + image;
+    if (image && !/^https?:/.test(image)) image = new URL(image, link).href;
+    // some outlets serve a social card with their headline burnt in (…/overlay/?image=<original>) — use the original photo
+    try { const inner = new URL(image).searchParams.get("image"); if (inner && /^https?:/.test(inner)) image = inner; } catch {}
+    if (BAD_IMG.test(image)) image = "";
+    return { text: ps.slice(0, 18).join("\n").slice(0, 5000), image };
+  } catch { return { text: "", image: "" }; }
 }
 
 // ---------- LLM ----------
@@ -148,7 +156,12 @@ async function llm(messages, { json = true, maxTokens = 2500 } = {}) {
 }
 async function write(c, topics) {
   const docs = [];
-  for (const it of c.items.slice(0, 3)) docs.push(`### সূত্র: ${it.src}\nশিরোনাম: ${it.title}\n${(await fullText(it.link)) || it.text}`);
+  c.photos = [];
+  for (const it of c.items.slice(0, 3)) {
+    const pg = await fetchPage(it.link);
+    if (pg.image) c.photos.push({ url: pg.image, src: it.src, link: it.link });
+    docs.push(`### সূত্র: ${it.src}\nশিরোনাম: ${it.title}\n${pg.text || it.text}`);
+  }
   const user = `নিচের সূত্রগুলো একই ঘটনার। একটি মৌলিক, এসইও-বান্ধব সংবাদ প্রতিবেদন লেখো।
 চলমান টপিকের তালিকা (প্রাসঙ্গিক হলে এই slug-ই ব্যবহার করো): ${JSON.stringify(topics.map((t) => ({ slug: t.slug, name: t.name })))}
 JSON ফরম্যাট:
@@ -156,7 +169,8 @@ JSON ফরম্যাট:
 "category":"${CATS.join("|")}","tags":["৪–৬টি বাংলা ট্যাগ: ব্যক্তি, স্থান, প্রতিষ্ঠান, বিষয়"],"slug_en":"short-english-keyword-slug",
 "breaking":false,"topic":{"slug":"বিদ্যমান টপিকের slug অথবা নতুন হলে english-slug; প্রযোজ্য না হলে পুরো topic=null","name":"টপিকের বাংলা নাম","summary":"টপিকের এক লাইনের বর্ণনা","points":["টপিক নিয়ে এখন পর্যন্ত জানা ৩–৫টি মূল তথ্য, সর্বশেষ তথ্যসহ"]},
 "fb_caption":"ফেসবুকের জন্য ২–৩ লাইনের আকর্ষণীয় কিন্তু সত্যনিষ্ঠ ক্যাপশন (ইমোজি ১–২টি, ক্লিকবেইট নয়)","hashtags":["৩–৪টি বাংলা/ইংরেজি হ্যাশট্যাগ, # ছাড়া"],
-"image":{"wikimedia_query":"মূল ব্যক্তি/স্থানের ইংরেজি নাম (শুধু সুপরিচিত জনব্যক্তিত্ব, দল, শহর বা স্থাপনা হলে; নইলে খালি)","type":"person|place|none","stock_query":"প্রতীকী স্টক ছবির জন্য ২–৩ শব্দের ইংরেজি দৃশ্য (যেমন \\"rice sacks warehouse\\", \\"football stadium\\"); হত্যা/ধর্ষণ/শিশু নির্যাতন/আত্মহত্যার খবরে খালি"}}
+"sensitive":false}
+sensitive=true যদি খবরটি হত্যা, ধর্ষণ বা যৌন নিপীড়ন, শিশু নির্যাতন, আত্মহত্যা বা মৃতদেহ নিয়ে হয় (তখন ছবি নয়, গ্রাফিক কার্ড যাবে)।
 category: স্বাস্থ্যবিষয়ক খবর হলে health; ব্যবহারিক পরামর্শ/কৌশল/কীভাবে-করবেন ধরনের লেখা হলে tips; প্রবাসী বাংলাদেশিদের খবর হলে probash।
 breaking=true কেবল বড়, জরুরি, সদ্য-ঘটা ঘটনায় (বড় দুর্ঘটনা/প্রাণহানি, সরকার বা বড় প্রতিষ্ঠানের গুরুত্বপূর্ণ ঘোষণা, দুর্যোগ)।${c.breakingHint ? " (একাধিক সংবাদমাধ্যম এই মাত্র খবরটি দিয়েছে।)" : ""}
 টপিক কেবল বড় চলমান ঘটনায় (যুদ্ধ, নির্বাচন, বড় মামলা, টুর্নামেন্ট, দুর্যোগ, বড় আন্দোলন); ব্রেকিং খবর হলে টপিক অবশ্যই দেবে; সাধারণ খবরে topic=null।
@@ -168,35 +182,21 @@ ${docs.join("\n\n")}`;
 }
 
 // ---------- images ----------
-async function commons(q) {
-  if (!q) return null;
-  const u = new URL("https://commons.wikimedia.org/w/api.php");
-  Object.entries({ action: "query", generator: "search", gsrsearch: `${q} filetype:bitmap`, gsrnamespace: "6", gsrlimit: "15", prop: "imageinfo", iiprop: "url|size|extmetadata", iiurlwidth: "1600", format: "json" }).forEach(([k, v]) => u.searchParams.set(k, v));
-  const j = await (await fetch(u, { headers: { "user-agent": UA } })).json();
-  const key = q.toLowerCase().split(/\s+/).filter((w) => w.length > 2);
-  for (const p of Object.values(j.query?.pages || {}).sort((a, b) => a.index - b.index)) {
-    const ii = p.imageinfo?.[0], m = ii?.extmetadata || {}, lic = m.LicenseShortName?.value || "";
-    if (!ii || ii.width < 900 || !/CC BY|CC0|Public domain|CC-BY/i.test(lic) || /logo|map|flag|signature|coat_of_arms|\.svg/i.test(p.title)) continue;
-    if (!key.some((w) => p.title.toLowerCase().includes(w))) continue;
-    const artist = strip(m.Artist?.value || "").slice(0, 60);
-    return { url: ii.thumburl, credit: `ছবি: ${artist || "Wikimedia Commons"}, ${lic}, Wikimedia Commons` };
-  }
-  return null;
-}
-async function pixabay(q) {
-  if (!q || !env.PIXABAY_API_KEY) return null;
-  try {
-    const u = `https://pixabay.com/api/?key=${env.PIXABAY_API_KEY}&q=${encodeURIComponent(q)}&image_type=photo&orientation=horizontal&safesearch=true&min_width=1200&per_page=5`;
-    const h = (await (await fetch(u)).json()).hits?.[0];
-    return h ? { url: h.largeImageURL, credit: "প্রতীকী ছবি: Pixabay" } : null;
-  } catch { return null; }
+// 1) the lead photo of the outlet we took the story from (credited "ছবি: <outlet>", no logo of ours on top)
+// 2) otherwise — or for sensitive stories — a branded news-card graphic (featured.html)
+async function download(url) {
+  const r = await get(url, 15000);
+  const type = r.headers.get("content-type") || "";
+  if (!r.ok || !/^image\/(jpe?g|png|webp)/.test(type)) return null;
+  const buf = Buffer.from(await r.arrayBuffer());
+  return buf.length > 15000 ? `data:${type.split(";")[0]};base64,${buf.toString("base64")}` : null;
 }
 let browser, pg, srv;
 async function renderer() {
   if (pg) return pg;
   srv = http.createServer((q, r) => {
     const u = decodeURIComponent(q.url.split("?")[0]);
-    const page = { "/": "thumb.html", "/card": "card.html" }[u];
+    const page = { "/": "thumb.html", "/card": "card.html", "/featured": "featured.html" }[u];
     if (page) { r.writeHead(200, { "content-type": "text/html; charset=utf-8" }); return r.end(fs.readFileSync(path.join(DIR, page))); }
     const f = [path.join(ROOT, "public", u), path.join(DIR, "public", u)].find((x) => fs.existsSync(x)) || "";
     if (!f) { r.writeHead(404); return r.end(); }
@@ -208,15 +208,29 @@ async function renderer() {
   return pg;
 }
 const bnDateStr = () => bdNow().toLocaleDateString("bn-BD", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
-// featured image for the site (16:9, watermarked) → { b64, caption, photo }
-async function image(a) {
+// featured image for the site (16:9) → { b64, caption, photo }   (photo = data URL reused by the Facebook card)
+async function graphic(a) {
+  await renderer();
+  const fp = await browser.newPage();
+  await fp.setViewport({ width: 1600, height: 900, deviceScaleFactor: 1 });
+  await fp.goto("http://localhost:8792/featured", { waitUntil: "networkidle0" });
+  await fp.evaluate((j) => window.fill(j), { title: a.title, kicker: a.subtitle || "", cat: a.category, catBn: CAT_BN[a.category] || "সংবাদ", date: bnDateStr() });
+  await fp.waitForFunction("window.ready === true", { timeout: 20000 });
+  const b64 = Buffer.from(await fp.screenshot({ type: "webp", quality: 90 })).toString("base64");
+  await fp.close();
+  return b64;
+}
+async function image(a, photos = []) {
   const p = await renderer();
-  let found = null;
-  if (a.image?.type !== "none" && a.image?.wikimedia_query) found = await commons(a.image.wikimedia_query).catch(() => null);
-  if (!found && a.image?.stock_query) found = await pixabay(a.image.stock_query);
-  const job = found ? { src: found.url } : { title: a.title, cat: CAT_BN[a.category] || "সংবাদ", date: bnDateStr() };
-  const b64 = await p.evaluate((j) => window.make(j), job);
-  return { b64, caption: found?.credit || "", photo: found?.url || "" };
+  if (!a.sensitive) for (const ph of photos) {
+    try {
+      const data = await download(ph.url);
+      if (!data) continue;
+      const b64 = await p.evaluate((d) => window.plain(d), data); // resize only (≥700px wide), keeps the outlet's own branding
+      if (b64) return { b64, caption: `ছবি: ${ph.src}`, photo: data };
+    } catch {}
+  }
+  return { b64: await graphic(a), caption: "গ্রাফিক: কালারস অব বাংলাদেশ", photo: "" };
 }
 // Facebook photo card (1080×1350, category-styled) → PNG buffer
 async function card(a, photo) {
@@ -255,19 +269,21 @@ function quota(done) {
   return { n: Math.min(n, LIMIT - done), lagging: MIN - done > runsLeft * 0.8 };
 }
 
-// ---------- backfill: give old text-card stories a real photo ----------
+// ---------- backfill: old stories with a stock/unrelated picture get the outlet's photo or the graphic ----------
 async function backfill(n) {
-  const list = await api(`/api/text-thumbs?n=${n}`);
-  log(`backfill: ${list.length} stories without a photo`);
+  const list = await api(`/api/text-thumbs?fix=1&n=${n}`);
+  log(`backfill: ${list.length} stories to re-picture`);
+  const items = list.length ? await readFeeds() : [];
   for (const a of list) {
     try {
-      const q = (await llm([{ role: "system", content: "তুমি ছবি সম্পাদক। শুধু JSON দাও।" }, { role: "user", content: `এই খবরের জন্য ছবির খোঁজ শব্দ দাও।\nশিরোনাম: ${a.title}\nসারাংশ: ${a.summary}\nট্যাগ: ${a.tags}\nJSON: {"wikimedia_query":"সুপরিচিত ব্যক্তি/স্থান/প্রতিষ্ঠানের ইংরেজি নাম, নইলে খালি","stock_query":"২–৩ শব্দের ইংরেজি প্রতীকী দৃশ্য; হত্যা/ধর্ষণ/শিশু নির্যাতন/আত্মহত্যার খবরে খালি"}` }], { maxTokens: 1200 })).out;
-      const found = (await commons(q.wikimedia_query).catch(() => null)) || (await pixabay(q.stock_query));
-      if (!found) { log("  no photo:", a.title); continue; }
-      const p = await renderer();
-      const b64 = await p.evaluate((j) => window.make(j), { src: found.url });
-      await api("/api/article-image", { method: "POST", body: JSON.stringify({ slug: a.slug, image_b64: b64, image_caption: found.credit }) });
-      log("  photo set:", a.title, "←", found.credit);
+      const w = words(a.title);
+      const near = items.map((it) => ({ it, s: jacc(w, it.w) })).filter((x) => x.s >= 0.4).sort((x, y) => y.s - x.s).slice(0, 3);
+      const photos = [];
+      for (const { it } of near) { const pg = await fetchPage(it.link); if (pg.image) photos.push({ url: pg.image, src: it.src }); }
+      const sensitive = /(হত্যা|খুন|ধর্ষণ|নিপীড়ন|আত্মহত্যা|লাশ|মরদেহ|শিশু)/.test(a.title);
+      const img = await image({ ...a, subtitle: "", sensitive }, photos);
+      await api("/api/article-image", { method: "POST", body: JSON.stringify({ slug: a.slug, image_b64: img.b64, image_caption: img.caption }) });
+      log("  set:", a.title, "←", img.caption);
     } catch (e) { log("  backfill error:", a.title, e.message); }
   }
 }
@@ -299,13 +315,13 @@ async function main() {
       if (!CATS.includes(a.category)) a.category = c.cat;
       a.breaking = !!a.breaking && c.srcs.size >= 2;
       const slug = `${(a.slug_en || "news").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60)}-${Date.now().toString(36).slice(-4)}`;
-      const img = await image(a);
+      const img = await image(a, c.photos);
       a._credit = img.caption;
       const topic = a.topic && a.topic.slug && a.topic.name ? { slug: a.topic.slug.toLowerCase().replace(/[^a-z0-9-]+/g, "-").slice(0, 50), name: a.topic.name, summary: a.topic.summary || "", points: Array.isArray(a.topic.points) ? a.topic.points : [] } : null;
       const res = await api("/api/ingest", { method: "POST", body: JSON.stringify({
         slug, title: a.title, subtitle: a.subtitle, summary: a.summary, points: a.points || [], body: a.body, category: a.category, tags: a.tags || [],
         breaking: a.breaking, topic, image_b64: img.b64, image_caption: img.caption,
-        source_credit: `তথ্যসূত্র: ${[...c.srcs].join(", ")}`, author: "ডেস্ক রিপোর্ট",
+        source_credit: `তথ্যসূত্র: ${[...c.srcs].join(", ")}`, author: "ডেস্ক রিপোর্ট", source_links: c.items.slice(0, 5).map((i) => i.link),
       }) });
       await api("/api/seen", { method: "POST", body: JSON.stringify({ keys: c.key }) });
       const url = `${SITE_PUBLIC}/news/${slug}`;

@@ -1,4 +1,8 @@
-<!doctype html><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@800;900&family=Hind+Siliguri:wght@500;600;700&display=swap" rel="stylesheet"><script src="/js/thumbs.js"></script>
+<!doctype html><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@800;900&family=Hind+Siliguri:wght@500;600;700&display=swap" rel="stylesheet"><script src="/js/thumbs.js">// outlet photo: resize only (no logo of ours on someone else's picture); too small → null
+window.plain=async(data)=>{const im=await BTL.loadImg(data);if(im.width<700||im.height<380)return null;
+  const W=Math.min(1600,im.width),H=Math.round(im.height*W/im.width),c=Object.assign(document.createElement('canvas'),{width:W,height:H});
+  c.getContext('2d').drawImage(im,0,0,W,H);return b64(await new Promise(ok=>c.toBlob(ok,'image/webp',0.88)));};
+</script>
 <script>
 async function b64(blob){return new Promise(r=>{const f=new FileReader();f.onload=()=>r(f.result.split(',')[1]);f.readAsDataURL(blob)})}
 window.make=async(job)=>{await document.fonts.ready;
