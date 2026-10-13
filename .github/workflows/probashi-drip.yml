@@ -38,6 +38,7 @@ jobs:
           # Free-tier chain: Gemini → Mistral → Groq → Cerebras → OpenRouter → DeepSeek;
           # a provider that is out of quota/balance is skipped automatically.
           LLM_PROVIDER: chain
+          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
