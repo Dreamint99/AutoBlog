@@ -153,6 +153,12 @@ export default async function ArticlePage({
   // links. Kept small and topic-gated on purpose — blanket cross-linking between
   // sites one owns is a Google link-scheme signal; relevant links help readers.
   const sisters = NETWORK[site.id] || [];
+  // Words every visa/data title shares ("complete", "visa", "work"...) say nothing
+  // about the subject; a link needs three real topic words in common.
+  const GENERIC = new Set(
+    "complete essential step steps fast quick tips easy free full check status apply application requirements cost costs fees price prices visa visas work permit how what your know need".split(" ")
+  );
+  const topic = new Set([...cur].filter((w) => !GENERIC.has(w)));
   const networkLinks: { title: string; url: string; site: string; s: number }[] = [];
   for (const sid of sisters) {
     const sister = getSite(sid);
@@ -161,9 +167,9 @@ export default async function ArticlePage({
       const t = toks(a);
       let s = 0;
       t.forEach((w) => {
-        if (cur.has(w)) s += 1;
+        if (topic.has(w)) s += 1;
       });
-      if (s >= 2) networkLinks.push({ title: a.title, url: `https://${sister.domain}/${a.slug}`, site: sister.name, s });
+      if (s >= 3) networkLinks.push({ title: a.title, url: `https://${sister.domain}/${a.slug}`, site: sister.name, s });
     }
   }
   networkLinks.sort((x, y) => y.s - x.s);
