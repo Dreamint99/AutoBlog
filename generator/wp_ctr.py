@@ -37,6 +37,8 @@ from modules import llm  # noqa: E402
 HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(HERE, "data", "gsc_probashiinfo.json")
 LOG = os.path.join(HERE, "data", "ctr_log_probashiinfo.json")
+# Hand-written fixes ({url, title?, description?}), applied with --overrides.
+OVERRIDES = os.path.join(HERE, "data", "ctr_overrides_probashiinfo.json")
 APPLY = "--apply" in sys.argv
 LIMIT = next((int(a) for a in sys.argv[1:] if a.isdigit()), 0)
 YEAR = datetime.now(timezone.utc).year
@@ -146,7 +148,22 @@ def propose(page, post, cur_title, cur_desc):
     raise ValueError(problem)
 
 
+def apply_overrides():
+    rows = json.load(open(OVERRIDES, encoding="utf-8"))
+    ensure_snippet()
+    for o in rows:
+        post = find_post(o["url"])
+        if not post:
+            print("  - no published post for", o["url"])
+            continue
+        meta = {k: v for k, v in (("rank_math_title", o.get("title")), ("rank_math_description", o.get("description"))) if v}
+        r = wp("POST", f"wp/v2/posts/{post['id']}", json={"meta": meta})
+        print(f"#{post['id']} {r.status_code} {o.get('title', '')}")
+
+
 def main():
+    if "--overrides" in sys.argv:
+        return apply_overrides()
     pages = json.load(open(DATA, encoding="utf-8"))["pages"]
     targets = [p for p in pages if p["impressions"] >= 300 and p["ctr"] < 0.03 and p["position"] <= 15]
     log = json.load(open(LOG, encoding="utf-8")) if os.path.exists(LOG) else []

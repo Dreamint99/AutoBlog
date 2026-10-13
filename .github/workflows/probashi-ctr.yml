@@ -12,6 +12,10 @@ on:
       limit:
         description: "Max posts (0 = all targets)"
         default: "0"
+      overrides:
+        description: "Only apply the hand-written fixes in data/ctr_overrides_probashiinfo.json"
+        type: boolean
+        default: false
 
 concurrency:
   group: probashi-ctr
@@ -49,6 +53,7 @@ jobs:
           APPLY: ${{ github.event.inputs.apply }}
           LIMIT: ${{ github.event.inputs.limit }}
         run: |
+          if [ "${{ github.event.inputs.overrides }}" = "true" ]; then python wp_ctr.py --overrides; exit 0; fi
           if [ "$APPLY" = "true" ]; then python wp_ctr.py --apply "$LIMIT"; else python wp_ctr.py "$LIMIT"; fi
       - name: Commit change log
         if: github.event.inputs.apply == 'true'
