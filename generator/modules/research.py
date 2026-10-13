@@ -60,12 +60,8 @@ def research_topic(site: dict, title: str, log=lambda m: None) -> str:
     rivals = websearch.competitors(hits, site.get("domain", ""))
     if rivals:
         web_ctx += ("COMPETITORS RANKING NOW (their headings + length). Cover every subtopic they cover, then beat them: "
-                    "fresher figures, a clearer table, the questions they skip. Never copy their wording:
-"
-                    + "
-".join(f"- {r['url']} ({r['words']} words): " + " | ".join(r["headings"][:15]) for r in rivals) + "
-
-")
+                    "fresher figures, a clearer table, the questions they skip. Never copy their wording:\n"
+                    + "\n".join(f"- {r['url']} ({r['words']} words): " + " | ".join(r["headings"][:15]) for r in rivals) + "\n\n")
     if snippets:
         web_ctx += ("REAL WEB SOURCES (current top results + Wikipedia). Use them for facts/figures, rewrite in your own words, "
                    "prefer the most recent figure and say 'as of <month year>' for anything that changes (fees, laws, counts):\n"
