@@ -21,3 +21,6 @@ web/out/
 .DS_Store
 Thumbs.db
 *.log
+
+# wrangler local cache (account info)
+.wrangler/

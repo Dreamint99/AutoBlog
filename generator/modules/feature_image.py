@@ -180,6 +180,13 @@ def _commons(query: str, must: list[str], used: set, limit: int = 40) -> list[di
     return out
 
 
+def _names_place(title_lower: str, name: str) -> bool:
+    """The country named as the place shown: "Romania landscape", "… in Mauritius", "Oman, Wadi …".
+    Not just anywhere ("Concattedrale di Maria Santissima di Romania" is a church in Italy)."""
+    n = re.escape(name.lower())
+    return bool(re.search(rf"^(file:)?\s*{n}(?![a-z])|(?<![a-z])(in|of|,)\s+{n}(?![a-z])|, {n}(?![a-z])", title_lower))
+
+
 def _names_other(title_lower: str, others: list) -> bool:
     return any(re.search(r"(?<![a-z])" + re.escape(o.lower()) + r"(?![a-z])", title_lower) for o in others)
 
@@ -192,7 +199,7 @@ def photo_fits(file_title: str, country) -> bool:
     if city.lower() in t:
         return True
     others = [x for c in COUNTRIES if c[0] != name for x in (c[0], c[2]) if x and len(x) > 3]
-    return name.lower() in t and not _names_other(t, others) and not _BAD.search(file_title)
+    return _names_place(t, name) and not _names_other(t, others) and not _BAD.search(file_title)
 
 
 def country_photos(country, used: set, n: int = 1) -> list[dict]:
@@ -207,7 +214,7 @@ def country_photos(country, used: set, n: int = 1) -> list[dict]:
     for q, must in ((f"{city} skyline", [city]), (f"{city} panorama", [city]), (f"{city} cityscape", [city]),
                     (f"{name} landscape", [name]), (f"{name} skyline", [name])):
         for hit in _commons(q, must, used | {f["source_id"] for f in found}):
-            if must == [name] and _names_other(hit["title"].lower(), others):
+            if must == [name] and (_names_other(hit["title"].lower(), others) or not _names_place(hit["title"].lower(), name)):
                 continue
             found.append(hit)
             if len(found) >= n:
