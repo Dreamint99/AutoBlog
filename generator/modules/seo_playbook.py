@@ -15,6 +15,16 @@ GOOGLE HELPFUL CONTENT + E-E-A-T (people-first):
 - Write for humans first. Natural language. No keyword stuffing, no robotic repetition.
 - Never invent facts: no made-up fixtures, dates, kick-off times, squads, results, prices or "officially confirmed" claims. If the research brief doesn't support a specific detail, say it is to be confirmed and point to the official source instead.
 
+TITLES THAT GET CLICKED (our network's titles had become one template — 64% "X: Y", 26% "Guide", 12% "Complete"):
+- Mirror how people actually search: if the query is a question ("how many people speak English"), the title answers or asks it.
+- Lead with the specific: a number, a cost, a count, a named thing ("1.58 billion English speakers in 2026", "Malaysia work visa costs ৳1.5–2.5 lakh").
+- NEVER use filler words: Complete, Essential, Ultimate, Definitive, Vital, Proven, Comprehensive, "Everything you need to know", "A Guide". They promise nothing specific.
+- Vary the shape: question, number-led, "X vs Y", "How to …", a plain statement of the finding. Not always "Keyword 2026: …".
+
+FRESHNESS (facts change — fees, laws, member counts, rankings):
+- For anything that changes, state the date of the figure ("as of October 2026", "since 1 January 2025") and name the official source.
+- Prefer the most recent figure in the research sources; if sources disagree, say so and give the official one. Never repeat an outdated figure from memory.
+
 ON-PAGE:
 - Title: include the primary keyword near the front, <=60 chars, compelling.
 - One clear search intent per article. Use descriptive H2/H3 that mirror real questions/subtopics (great for featured snippets).

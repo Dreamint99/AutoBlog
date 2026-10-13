@@ -44,13 +44,20 @@ def _web_snippets(query: str, n: int = 5) -> list[str]:
 def research_topic(site: dict, title: str, log=lambda m: None) -> str:
     """Return a plain-text research brief to inject into the strategist + writer."""
     log("🔎 Agent 0 — research (grounding facts, stats, PAA, sources)…")
-    snippets = _web_snippets(title, 5)
-    if not snippets:  # try a slightly broader query
-        snippets = _web_snippets(f"{title} {site.get('niche','').split(',')[0]}", 5)
+    # DuckDuckGo now answers bots with a captcha, so this used to come back empty and the brief
+    # was written from model memory. modules/websearch tries Google CSE / Brave / DDG + Wikipedia.
+    from modules import websearch
+    hits = websearch.serp(title, 6)
+    bangla = "bengali" in (site.get("language") or "").lower()
+    facts = websearch.wiki(title, 2, lang="bn" if bangla else "en") + (websearch.wiki(title, 2) if bangla else [])
+    snippets = [f"{h['title']} — {h['snippet']} ({h['url']})" for h in hits if h.get("snippet")]
+    snippets += [f"Wikipedia: {f['title']} — {f['snippet']} ({f['url']})" for f in facts]
     web_ctx = ""
     if snippets:
-        web_ctx = "REAL WEB SNIPPETS (use for facts/figures, rewrite in your own words):\n" + \
-                  "\n".join(f"- {s}" for s in snippets) + "\n\n"
+        web_ctx = ("REAL WEB SOURCES (current top results + Wikipedia). Use them for facts/figures, rewrite in your own words, "
+                   "prefer the most recent figure and say 'as of <month year>' for anything that changes (fees, laws, counts):\n"
+                   + "\n".join(f"- {s}" for s in snippets) + "\n\n")
+    log(f"   web grounding: {len(hits)} {websearch.source_name()} results, {len(facts)} Wikipedia pages")
 
     system = (
         time_context() + "\n\n"

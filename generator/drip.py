@@ -95,6 +95,25 @@ def coverage_seed(cov: dict, titles: list[str]) -> str:
             f"(not Qatar or another GCC country unless it is {country}).")
 
 
+# Words that say how people ask, not what about: "how many people speak english" is about {english}.
+_GENERIC = set("how many much people person top best popular most largest biggest world worlds number numbers list use used "
+               "using play playing speak count users user there are is the in of for and to by what which who whats does do "
+               "2024 2025 2026 2027 10 20 50 100 mobile online today now new latest".split()) | {
+    "কত", "টাকা", "লাগে", "লাগবে", "কি", "কী", "কোন", "দেশ", "দেশের", "দেশে", "যেতে", "যাওয়ার", "উপায়", "নিয়ম", "সহজ",
+    "সালে", "বর্তমানে", "আছে", "চালু", "করতে", "করার"}
+
+
+def _topic_words(text: str) -> set:
+    return {w for w in _pipe._tokens(text) if w not in _GENERIC}
+
+
+def _covers(title_tokens: set, core: set) -> bool:
+    """Every topic word of the query appears in the title (prefix match covers speak/speakers, user/users)."""
+    stem = lambda w: (w[:-1] if len(w) > 3 and w.endswith("s") else w)[:5]
+    have = {stem(w) for w in title_tokens}
+    return all(stem(w) in have for w in core)
+
+
 def drip_site(site: dict):
     if STYLE:
         site = dict(site, tone=f"{site['tone']} STYLE FOR THIS BATCH: {STYLE}")
@@ -110,8 +129,34 @@ def drip_site(site: dict):
         _img._USED.update(a.get("image_url") for a in existing if a.get("image_url"))
     except Exception:
         pass
+    # Real demand first: Search Console / Bing AI queries (data/demand_<site>.json) that no
+    # existing article answers yet. Covered = an existing title holds all the query's topic words.
+    demand_titles = []
+    if not SEED:
+        try:
+            dq = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", f"demand_{site['id']}.json"),
+                                encoding="utf-8")).get("queries", [])
+        except Exception:
+            dq = []
+        have_tok = [_pipe._tokens(t) for t in avoid if t]
+        for q in dq:
+            if len(demand_titles) >= n:
+                break
+            core = _topic_words(q["q"])
+            if not core or any(_covers(h, core) for h in have_tok) or _pipe.too_similar(q["q"], avoid + demand_titles):
+                continue
+            seed = (f"Write the article that directly answers this REAL search query: \"{q['q']}\" "
+                    f"({q.get('impr', '?')} searches/AI citations seen). The title must use the query's own words "
+                    f"and promise the specific answer.")
+            log(f"[{site['id']}] demand seed: {q['q']}")
+            got = suggest_titles(site, count=1, seed=seed, avoid=avoid + demand_titles)
+            demand_titles += got
+            have_tok.append(core)  # one article per query even if the title drifts
+        n -= len(demand_titles)
     cov = None if SEED else _coverage(site["id"])
-    if cov:
+    if n <= 0:
+        titles = []
+    elif cov:
         seen = [a.get("title", "") for a in existing]
         titles = []
         for _ in range(n):
@@ -131,6 +176,7 @@ def drip_site(site: dict):
             titles += got
     else:
         titles = suggest_titles(site, count=n, seed=SEED, avoid=avoid)
+    titles = demand_titles + titles
     log(f"[{site['id']}] planning {len(titles)} new ({have}/{TARGET})" + (f" [seed: {SEED}]" if SEED else ""))
     done = 0
     for t in titles:
