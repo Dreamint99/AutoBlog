@@ -353,6 +353,13 @@ def generate_article(site: dict, title: str, log=lambda m: None, replace: dict |
     })
 
     image_url = feature_image(final_title, site, data.get("feature_image_q") or keyword)
+    if site.get("publish_target") != "wordpress":  # WordPress picks its images in wordpress.publish
+        from modules import site_images
+        try:
+            image_url, body, _ = site_images.choose(final_title, slug, site, body, image_url,
+                                                    {a.get("image_url", "") for a in siblings})
+        except Exception as e:  # never lose an article over its picture
+            log(f"   ! site_images failed: {e}")
 
     article = {
         "id": article_id,

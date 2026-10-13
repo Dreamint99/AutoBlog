@@ -95,7 +95,7 @@ def fix_inline(base: str, headers: dict, html: str, title: str, slug: str, used:
     targets = [m for m in _IMG.finditer(html) if stock_stems is None or _stem(src(m.group(0))) in stock_stems]
     if not targets:
         return html, 0, 0, []
-    pool = fi.country_photos(country, used, len(targets)) if country else []
+    pool = fi.country_photos(country, used, min(len(targets), 1)) if country else []  # one photo, not five skylines
     replaced, removed, placed = 0, 0, []
 
     def swap(tag: str) -> str | None:

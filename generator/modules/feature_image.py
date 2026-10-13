@@ -156,7 +156,7 @@ def _commons(query: str, must: list[str], used: set, limit: int = 40) -> list[di
         r = requests.get(_API, headers=_UA, timeout=30, params={
             "action": "query", "format": "json", "generator": "search", "gsrsearch": f"{query} filetype:bitmap",
             "gsrnamespace": 6, "gsrlimit": limit, "prop": "imageinfo", "iiprop": "url|size|extmetadata|mime",
-            "iiurlwidth": 1600})
+            "iiurlwidth": 1280})
         pages = (r.json().get("query") or {}).get("pages") or {}
     except Exception:
         return []
@@ -168,7 +168,7 @@ def _commons(query: str, must: list[str], used: set, limit: int = 40) -> list[di
         lic = (meta.get("LicenseShortName") or {}).get("value", "").strip()
         w, h = ii.get("width", 0), ii.get("height", 0)
         sid = f"commons:{p.get('pageid')}"
-        if sid in used or ii.get("mime") != "image/jpeg" or w < 1400 or not h or not 1.3 <= w / h <= 2.4:
+        if sid in used or (ii.get("thumburl") or ii.get("url")) in used or ii.get("mime") != "image/jpeg" or w < 1400 or not h or not 1.3 <= w / h <= 2.4:
             continue
         if not _LICENCE.match(lic) or _BAD.search(title):
             continue
