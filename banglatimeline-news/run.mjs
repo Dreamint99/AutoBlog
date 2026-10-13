@@ -201,7 +201,7 @@ async function searchPhotos(title, max = 3, retry = true) {
       if (out.length >= max) break;
       const t = strip(tag(it, "title")), raw = strip(tag(it, "link"));
       const link = (() => { try { return new URL(raw.replace(/&amp;/g, "&")).searchParams.get("url") || raw; } catch { return raw; } })();
-      if (!link || jacc(want, words(t)) < (retry ? 0.3 : 0.34) || /youtube|facebook|msn\.com/.test(link)) continue;
+      if (!link || jacc(want, words(t)) < 0.5 || /youtube|facebook|msn\.com/.test(link)) continue;
       const pg = await fetchPage(link);
       if (pg.image) out.push({ url: pg.image, src: outletName(link), link });
     }
@@ -304,13 +304,14 @@ async function backfill(n) {
   for (const a of list) {
     try {
       const w = words(a.title);
-      const near = items.map((it) => ({ it, s: jacc(w, it.w) })).filter((x) => x.s >= 0.4).sort((x, y) => y.s - x.s).slice(0, 3);
+      const near = items.map((it) => ({ it, s: jacc(w, it.w) })).filter((x) => x.s >= 0.6).sort((x, y) => y.s - x.s).slice(0, 3);
       const photos = [];
       for (const { it } of near) { const pg = await fetchPage(it.link); if (pg.image) photos.push({ url: pg.image, src: it.src }); }
-      if (!photos.length) photos.push(...(await searchPhotos(a.title)));
+      const accuse = /(অভিযোগ|জব্দ|গ্রেপ্তার|আটক|মামলা|দুর্নীতি|চুরি|আত্মসাৎ|ঘুষ|প্রতারণা|জালিয়াতি|বরখাস্ত)/.test(a.title);
+      if (!photos.length && !accuse) photos.push(...(await searchPhotos(a.title)));
       const sensitive = /(হত্যা|খুন|ধর্ষণ|নিপীড়ন|আত্মহত্যা|লাশ|মরদেহ|শিশু)/.test(a.title);
       if (!photos.length && /গ্রাফিক/.test(a.image_caption || "")) { log("  still no photo:", a.title); continue; }
-      const img = await image({ ...a, subtitle: "", sensitive }, photos);
+      const img = await image({ ...a, subtitle: "", sensitive: sensitive || process.argv.includes("--graphic") }, photos);
       await api("/api/article-image", { method: "POST", body: JSON.stringify({ slug: a.slug, image_b64: img.b64, image_caption: img.caption }) });
       log("  set:", a.title, "←", img.caption);
     } catch (e) { log("  backfill error:", a.title, e.message); }
@@ -344,7 +345,7 @@ async function main() {
       if (!CATS.includes(a.category)) a.category = c.cat;
       a.breaking = !!a.breaking && c.srcs.size >= 2;
       const slug = `${(a.slug_en || "news").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60)}-${Date.now().toString(36).slice(-4)}`;
-      if (!a.sensitive && !c.photos.length) c.photos = await searchPhotos(c.items[0].title);
+      if (!a.sensitive && !c.photos.length && !/(অভিযোগ|জব্দ|গ্রেপ্তার|আটক|মামলা|দুর্নীতি|চুরি|আত্মসাৎ|ঘুষ|প্রতারণা|জালিয়াতি|বরখাস্ত)/.test(c.items[0].title)) c.photos = await searchPhotos(c.items[0].title);
       const img = await image(a, c.photos);
       a._credit = img.caption;
       const topic = a.topic && a.topic.slug && a.topic.name ? { slug: a.topic.slug.toLowerCase().replace(/[^a-z0-9-]+/g, "-").slice(0, 50), name: a.topic.name, summary: a.topic.summary || "", points: Array.isArray(a.topic.points) ? a.topic.points : [] } : null;
