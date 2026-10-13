@@ -77,9 +77,11 @@ const ads = ADSTERRA[process.env.SITE_ID || ""] || {};
 const verification: Metadata["verification"] = {
   google: process.env.GOOGLE_SITE_VERIFICATION || undefined,
   yandex: process.env.YANDEX_VERIFICATION || undefined,
-  other: process.env.BING_SITE_VERIFICATION
-    ? { "msvalidate.01": process.env.BING_SITE_VERIFICATION }
-    : {},
+  other: {
+    ...(process.env.BING_SITE_VERIFICATION ? { "msvalidate.01": process.env.BING_SITE_VERIFICATION } : {}),
+    // Pinterest website claim (one code for the whole Pinterest business account, all sites)
+    "p:domain_verify": "ad493e4495716e19ddc0fb646a135cde",
+  },
 };
 
 export const metadata: Metadata = {
