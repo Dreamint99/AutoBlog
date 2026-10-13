@@ -13,7 +13,7 @@ export async function GET() {
     `- [${a.title}](${base}/${a.slug})${a.meta_description || a.excerpt ? `: ${(a.meta_description || a.excerpt).replace(/\s+/g, " ").trim()}` : ""}`;
   const body = `# ${site.name}
 
-> ${site.tagline}. ${site.niche}. Audience: ${site.audience}.
+> ${[site.tagline, site.niche, `Audience: ${site.audience}`].map((s) => s.trim().replace(/[.s]+$/, "")).join(". ")}.
 
 ## Articles
 ${articles.map(line).join("\n")}
