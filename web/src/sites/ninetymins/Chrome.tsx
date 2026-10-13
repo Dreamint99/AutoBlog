@@ -5,6 +5,7 @@ import type { Site, Article } from "@/lib/types";
 import { fontVars } from "./fonts";
 import { NM_COMPS, compOf, ago, type NmComp } from "./comps";
 import { ScoreStrip } from "./LiveScores";
+import { thumb } from "@/lib/img";
 
 /* Shared NinetyMins chrome: watch-guide strip (scoreboard style), header with
    the sport rail, footer, and the card primitives every page uses. */
@@ -174,7 +175,7 @@ export function Shell({ site, strip, children }: { site: Site; strip?: Article[]
 export function Thumb({ href, article, ratio = "16 / 9", children }: { href: string; article: Article; ratio?: string; children?: ReactNode }) {
   return (
     <Link href={href} className="nm-thumb" style={{ aspectRatio: ratio }} aria-label={article.title} tabIndex={-1}>
-      {article.image_url ? <img src={article.image_url} alt={article.title} loading="lazy" /> : <span className="nm-thumb-ph" />}
+      {article.image_url ? <img src={thumb(article.image_url)} alt={article.title} loading="lazy" decoding="async" /> : <span className="nm-thumb-ph" />}
       {children}
     </Link>
   );

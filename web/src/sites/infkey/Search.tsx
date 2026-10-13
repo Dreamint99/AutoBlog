@@ -4,6 +4,7 @@ import Link from "next/link";
 import type { Article, Site } from "@/lib/types";
 import { InfShell } from "./Chrome";
 import { topicOf, PROMPT_PACKS } from "./topics";
+import { thumb } from "@/lib/img";
 
 /* InfKey search — AI-style results page. When nothing matches yet, it says so
    honestly and points to the closest pillars instead of a dead end. */
@@ -36,7 +37,7 @@ export default function Search({ site, q, results }: { site: Site; q: string; re
             {results.map((a) => (
               <article className="ai-card" key={a.id}>
                 <Link href={`${b}/${a.slug}`} className="ai-card-media" tabIndex={-1} aria-label={a.title}>
-                  {a.image_url ? <img src={a.image_url} alt={a.title} loading="lazy" /> : <span className="ai-card-ph">✦</span>}
+                  {a.image_url ? <img src={thumb(a.image_url)} alt={a.title} loading="lazy" decoding="async" /> : <span className="ai-card-ph">✦</span>}
                   <span className="ai-tag">{topicOf(a).label}</span>
                 </Link>
                 <div className="ai-card-body">

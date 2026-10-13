@@ -6,6 +6,7 @@ import CostCalculator from "./CostCalculator";
 import { Masthead, Footer } from "./Chrome";
 import { aiFont } from "./fonts";
 import { TOPICS, PROFESSIONS, TOOLS, PROMPT_PACKS, topicOf, bestMatch } from "./topics";
+import { thumb } from "@/lib/img";
 
 /* InfKey home — "AI tools, explained". Prompt-style search hero, Best-AI-for
    profession grid, free-use tool cards, trending guides and topic rails, with
@@ -160,7 +161,9 @@ function Card({ site, a, big = false }: { site: Site; a: Article; big?: boolean 
   return (
     <article className={`ai-card${big ? " big" : ""}`}>
       <Link href={href} className="ai-card-media" tabIndex={-1} aria-label={a.title}>
-        {a.image_url ? <img src={a.image_url} alt={a.title} loading="lazy" /> : <span className="ai-card-ph" aria-hidden="true">✦</span>}
+        {a.image_url ? (big
+          ? <img src={a.image_url} alt={a.title} fetchPriority="high" />
+          : <img src={thumb(a.image_url)} alt={a.title} loading="lazy" decoding="async" />) : <span className="ai-card-ph" aria-hidden="true">✦</span>}
         <span className="ai-tag">{topicOf(a).label}</span>
       </Link>
       <div className="ai-card-body">

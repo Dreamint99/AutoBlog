@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import type { NmMatch, NmKeyEvent, NmLineup } from "./live";
+import { thumb } from "@/lib/img";
 
 /* Match centre body. Server renders the first snapshot (so the page has real
    HTML for search engines); while the game is live the client re-polls
@@ -26,7 +27,7 @@ function kickoff(iso: string): string {
 
 function Crest({ logo, name, color }: { logo: string; name: string; color: string }) {
   return logo ? (
-    <img className="nm-mc-crest" src={logo} alt={`${name} crest`} width={88} height={88} />
+    <img className="nm-mc-crest" src={thumb(logo)} alt={`${name} crest`} width={88} height={88} />
   ) : (
     <span className="nm-mc-crest nm-mc-crest-ph" style={{ background: color || "#1f222b" }}>
       {name.slice(0, 3).toUpperCase()}

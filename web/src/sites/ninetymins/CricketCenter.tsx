@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import type { CrMatch, CrTeam } from "./cricket";
+import { thumb } from "@/lib/img";
 
 /* Cricket match centre. Server sends the first snapshot; while the match is
    on, the client refreshes from the shared (cached) cricket list. */
@@ -16,7 +17,7 @@ function Side({ t }: { t: CrTeam }) {
   return (
     <div className="nm-mc-side">
       {t.img ? (
-        <img className="nm-mc-crest" src={t.img} alt={`${t.name} logo`} width={88} height={88} />
+        <img className="nm-mc-crest" src={thumb(t.img)} alt={`${t.name} logo`} width={88} height={88} />
       ) : (
         <span className="nm-mc-crest nm-mc-crest-ph" style={{ background: "#0b7a8a" }}>{t.short}</span>
       )}

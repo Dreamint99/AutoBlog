@@ -111,22 +111,24 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             dangerouslySetInnerHTML={{ __html: PULSE_BEACON }}
           />
         ) : null}
+        {/* Analytics + ads use lazyOnload (after load, when idle): on mobile they blocked the main thread
+            200-900 ms and pushed LCP back. The popunder still fires on the first click. */}
         {ahrefsKey ? (
           <Script
             src="https://analytics.ahrefs.com/analytics.js"
             data-key={ahrefsKey}
-            strategy="afterInteractive"
+            strategy="lazyOnload"
           />
         ) : null}
         {ga4Id ? (
           <>
             <Script
               src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}
-              strategy="afterInteractive"
+              strategy="lazyOnload"
             />
             <Script
               id="ga4-init"
-              strategy="afterInteractive"
+              strategy="lazyOnload"
               dangerouslySetInnerHTML={{
                 __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${ga4Id}');`,
               }}
@@ -139,11 +141,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               id={ads.nativeContainer}
               style={{ maxWidth: "100%", margin: "28px auto", textAlign: "center" }}
             />
-            <Script src={ads.nativeInvoke} strategy="afterInteractive" data-cfasync="false" />
+            <Script src={ads.nativeInvoke} strategy="lazyOnload" data-cfasync="false" />
           </>
         ) : null}
         {ads.popunder ? (
-          <Script src={ads.popunder} strategy="afterInteractive" />
+          <Script src={ads.popunder} strategy="lazyOnload" />
         ) : null}
       </body>
     </html>

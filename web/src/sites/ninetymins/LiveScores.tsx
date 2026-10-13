@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { BOARD_LEAGUES } from "./comps";
+import { thumb } from "@/lib/img";
 
 /* Client-side live data (the page HTML is edge-cached for 30 min, scores can't
    be). Fetches /api/scores, refreshes every 60s while the tab is visible, and
@@ -89,7 +90,7 @@ export function matchHref(e: Ev): string | null {
 function TeamLine({ t, state }: { t: Team; state: Ev["state"] }) {
   return (
     <span className={`nm-sc-team${state === "post" && t.winner ? " win" : ""}`}>
-      {t.logo ? <img src={t.logo} alt="" width={18} height={18} /> : <i />}
+      {t.logo ? <img src={thumb(t.logo)} alt="" width={18} height={18} /> : <i />}
       <span className="nm-sc-name">{t.abbr || t.name}</span>
       {state !== "pre" ? <b>{t.score}</b> : null}
     </span>
@@ -183,7 +184,7 @@ export function LeagueTable({ league = "eng.1", title = "Premier League table", 
               <tr key={r.abbr || r.team}>
                 <td>{r.rank}</td>
                 <td className="nm-t-team">
-                  {r.logo ? <img src={r.logo} alt="" width={16} height={16} loading="lazy" /> : null}
+                  {r.logo ? <img src={thumb(r.logo)} alt="" width={16} height={16} loading="lazy" /> : null}
                   {r.team}
                 </td>
                 <td>{r.played}</td>
@@ -282,13 +283,13 @@ function BoardCard({ e }: { e: Ev }) {
       {e.home && e.away ? (
         <span className="nm-bd-teams">
           <span className={`t${e.state === "post" && e.home.winner ? " win" : ""}`}>
-            {e.home.logo ? <img src={e.home.logo} alt="" width={22} height={22} loading="lazy" /> : <i />}
+            {e.home.logo ? <img src={thumb(e.home.logo)} alt="" width={22} height={22} loading="lazy" /> : <i />}
             {e.home.name}
           </span>
           <b>{e.state === "pre" ? "–" : `${e.home.score} : ${e.away.score}`}</b>
           <span className={`t r${e.state === "post" && e.away.winner ? " win" : ""}`}>
             {e.away.name}
-            {e.away.logo ? <img src={e.away.logo} alt="" width={22} height={22} loading="lazy" /> : <i />}
+            {e.away.logo ? <img src={thumb(e.away.logo)} alt="" width={22} height={22} loading="lazy" /> : <i />}
           </span>
         </span>
       ) : (
