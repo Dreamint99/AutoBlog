@@ -2,6 +2,480 @@
  "_note": "Real queries (Search Console 2026-07-13..2026-10-11, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
+   "q": "espn fantasy football",
+   "impr": 1576645,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "yahoo fantasy football",
+   "impr": 1022881,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "world cup",
+   "impr": 389812,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "college football scores",
+   "impr": 330814,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ncaa football scores",
+   "impr": 286879,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "world cup games today",
+   "impr": 235484,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "espn college football",
+   "impr": 233528,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "college football rankings",
+   "impr": 231635,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "college football schedule",
+   "impr": 223396,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "football bros",
+   "impr": 222153,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "monday night football",
+   "impr": 221739,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "fifa world cup",
+   "impr": 219041,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "champions league quiz",
+   "impr": 177843,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "college football",
+   "impr": 160665,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "penn state football",
+   "impr": 124844,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "football games today",
+   "impr": 123205,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "michigan football",
+   "impr": 122286,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ohio state football schedule 2026",
+   "impr": 119799,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "fantasy football",
+   "impr": 116071,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "thursday night football",
+   "impr": 115700,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "sleeper fantasy football",
+   "impr": 104155,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "alabama football",
+   "impr": 98988,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "cbs fantasy football",
+   "impr": 93268,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "espn fantasy football login",
+   "impr": 89549,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "notre dame football",
+   "impr": 88383,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "bbc sport",
+   "impr": 82958,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ncaa football rankings",
+   "impr": 78177,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "notre dame football schedule 2026",
+   "impr": 74761,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ncaa football schedule",
+   "impr": 71535,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "who won the world cup 2026",
+   "impr": 67492,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ncaa football",
+   "impr": 63198,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "alabama football schedule for 2026",
+   "impr": 62490,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "clemson football",
+   "impr": 60754,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "lsu football",
+   "impr": 59215,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "oregon ducks football",
+   "impr": 58118,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "wisconsin badgers football",
+   "impr": 55474,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "college football games today",
+   "impr": 55227,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ohio state buckeyes football",
+   "impr": 54940,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "nebraska football",
+   "impr": 53303,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "premier league standings",
+   "impr": 52619,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "lsu football schedule 2026",
+   "impr": 52146,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "maxpreps football",
+   "impr": 49496,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "michigan football schedule 2026",
+   "impr": 49102,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ohio state football",
+   "impr": 47319,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "bbc football",
+   "impr": 47071,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "penn state football schedule 2026",
+   "impr": 44358,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "auburn football",
+   "impr": 42327,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "fifa world cup 2026 schedule",
+   "impr": 41203,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ole miss football",
+   "impr": 41047,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "florida gators football",
+   "impr": 39947,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "world cup schedule",
+   "impr": 39371,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "texas a m football",
+   "impr": 38229,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "nebraska football schedule 2026",
+   "impr": 37119,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "liga mx",
+   "impr": 35043,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "fiba world cup 2026 berlin",
+   "impr": 35038,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "tennessee football",
+   "impr": 34628,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "usc football",
+   "impr": 33448,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "virginia tech football",
+   "impr": 33417,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "sunday night football",
+   "impr": 33254,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "indiana football",
+   "impr": 32788,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "college football today",
+   "impr": 31440,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "premier league schedule",
+   "impr": 31436,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "football games",
+   "impr": 30181,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "texas tech football",
+   "impr": 30172,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "football scores",
+   "impr": 30157,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "college football scores today",
+   "impr": 29556,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "premier league records quiz",
+   "impr": 28250,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "fsu football",
+   "impr": 28229,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "colorado football",
+   "impr": 28068,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "rutgers football",
+   "impr": 28041,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "uefa champions league",
+   "impr": 27697,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "byu football",
+   "impr": 27640,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "wvu football",
+   "impr": 27342,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "texas football",
+   "impr": 26851,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "mizzou football",
+   "impr": 26359,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "iowa football",
+   "impr": 26347,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "georgia bulldogs football",
+   "impr": 25702,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "unc football",
+   "impr": 25663,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "la liga standings",
+   "impr": 25096,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
    "q": "us open tennis 2026 schedule",
    "impr": 2435,
    "pos": 9.4,
@@ -290,13 +764,13 @@
    "src": "bing"
   },
   {
-   "q": "bosnia and herzegovina world cup 2026",
+   "q": "switzerland world cup squad",
    "impr": 11,
    "pos": 8.0,
    "src": "bing"
   },
   {
-   "q": "switzerland world cup squad",
+   "q": "bosnia and herzegovina world cup 2026",
    "impr": 11,
    "pos": 8.0,
    "src": "bing"

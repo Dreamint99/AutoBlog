@@ -2,6 +2,486 @@
  "_note": "Real queries (Search Console 2026-07-13..2026-10-11, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
+   "q": "chat gpt",
+   "impr": 50700386,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ai detector",
+   "impr": 766176,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "bing ai",
+   "impr": 730055,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "gpt chat",
+   "impr": 650593,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "google ai",
+   "impr": 597209,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "gemini ai assistant",
+   "impr": 387643,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "chat gtp",
+   "impr": 357395,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "open ai",
+   "impr": 133424,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "managing power settings for gpu",
+   "impr": 81087,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "checking gpu usage statistics",
+   "impr": 70282,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "resolving app-specific gpu problems",
+   "impr": 66981,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "best ai laptop 2026",
+   "impr": 57721,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "free ai",
+   "impr": 46730,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "image creator",
+   "impr": 39342,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "open ai chat gpt",
+   "impr": 32555,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "chatgpt open ai",
+   "impr": 28293,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "leonardo ai",
+   "impr": 21375,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ai generator",
+   "impr": 20998,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "bing ai image generator",
+   "impr": 20189,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "free ai image generator",
+   "impr": 18736,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "image generator",
+   "impr": 16971,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "graphics card",
+   "impr": 14008,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ai image generator free",
+   "impr": 11549,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ai picture generator",
+   "impr": 8807,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ai photo generator",
+   "impr": 8279,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ai free",
+   "impr": 7864,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "perchance ai image generator",
+   "impr": 7657,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "what is a gpu",
+   "impr": 7172,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "gpu driver update",
+   "impr": 7053,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ai image creator",
+   "impr": 6957,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ai image",
+   "impr": 6743,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "video card",
+   "impr": 5462,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "nvda price",
+   "impr": 5376,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "gpu benchmark",
+   "impr": 5296,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "gpu z",
+   "impr": 4846,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "gpu comparison",
+   "impr": 4754,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "hardware accelerated gpu scheduling",
+   "impr": 4710,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ai apps",
+   "impr": 4699,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "free image generator",
+   "impr": 4691,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "best ai",
+   "impr": 4662,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "amd gpu drivers",
+   "impr": 4584,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ai generated images",
+   "impr": 4433,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "gpu stress test",
+   "impr": 4221,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "nvidia price",
+   "impr": 4187,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "free ai tools",
+   "impr": 4131,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "otter ai app",
+   "impr": 4070,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "gpu test",
+   "impr": 3881,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "image generator ai",
+   "impr": 3671,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ai platforms",
+   "impr": 3421,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "best ai detector",
+   "impr": 3369,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "claude ai app",
+   "impr": 3332,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "canva ai image generator",
+   "impr": 3296,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "free ai image generator no sign up",
+   "impr": 3084,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "nvidia gpu",
+   "impr": 2881,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "image ai",
+   "impr": 2567,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ai models",
+   "impr": 2515,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ai app",
+   "impr": 2477,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "nvidia gpu drivers",
+   "impr": 2418,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "gemini ai app",
+   "impr": 2371,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "best ai porn",
+   "impr": 2193,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ai image generator perchance",
+   "impr": 2174,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "best ai tools",
+   "impr": 2112,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ai websites",
+   "impr": 2087,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "how to update gpu drivers",
+   "impr": 2063,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "what is gpu",
+   "impr": 1994,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ai tool",
+   "impr": 1873,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "gpu temp",
+   "impr": 1830,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ai image generator no sign up",
+   "impr": 1821,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "meta ai app",
+   "impr": 1818,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "best free ai image generator",
+   "impr": 1711,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "update gpu drivers",
+   "impr": 1708,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ai programs",
+   "impr": 1693,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "best ai video generator",
+   "impr": 1677,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "muse ai app",
+   "impr": 1670,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ai image generator no restrictions",
+   "impr": 1665,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ai photo",
+   "impr": 1662,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "openai logo",
+   "impr": 1653,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "nsfw ai image generator",
+   "impr": 1653,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ai pictures",
+   "impr": 1646,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "gpu control panel",
+   "impr": 1561,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
    "q": "rag pipelines subscription cost",
    "impr": 10,
    "pos": 10.0,
