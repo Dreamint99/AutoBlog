@@ -1,3 +1,4 @@
+import CiteBox from "@/lib/CiteBox";
 import Link from "next/link";
 import type { SiteArticleProps } from "@/lib/types";
 import { GcShell } from "./Chrome";
@@ -63,6 +64,7 @@ export default function Article({ site, article, related, bodyHtml, toc }: SiteA
               </details>
             ) : null}
             <div className="article-content gc-content" dangerouslySetInnerHTML={{ __html: bodyHtml }} />
+            <CiteBox url={`https://${site.domain}/${article.slug}`} title={article.title} site={site.name} date={article.created_at} />
             <div className="gc-verify">
               <b>Before you apply or pay:</b> rules and fees in the Gulf change often. Confirm on the official portal
               {c ? (

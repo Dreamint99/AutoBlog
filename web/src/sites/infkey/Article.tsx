@@ -1,3 +1,4 @@
+import CiteBox from "@/lib/CiteBox";
 import "./theme.css";
 import Link from "next/link";
 import type { SiteArticleProps, Site, Article, TocItem } from "@/lib/types";
@@ -140,6 +141,7 @@ export default function Article({ site, article, related, bodyHtml, toc }: SiteA
                 className="article-content"
                 dangerouslySetInnerHTML={{ __html: bodyHtml }}
               />
+              <CiteBox url={`https://${site.domain}/${article.slug}`} title={article.title} site={site.name} date={article.created_at} />
             </div>
             <Toc items={toc} variant="rail" />
           </div>

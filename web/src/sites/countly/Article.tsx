@@ -1,3 +1,4 @@
+import CiteBox from "@/lib/CiteBox";
 import "./theme.css";
 import Link from "next/link";
 import { fontVars } from "./fonts";
@@ -280,6 +281,7 @@ export default function Article({ site, article, related, bodyHtml, toc, popular
               </p>
 
               <div className="article-content" dangerouslySetInnerHTML={{ __html: bodyHtml }} />
+              <CiteBox url={`https://${site.domain}/${article.slug}`} title={article.title} site={site.name} date={article.created_at} />
 
               <div className="cn-share-bottom">
                 <span className="cn-share-bottom-label">Found this useful? Share it:</span>

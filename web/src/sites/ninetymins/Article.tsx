@@ -1,3 +1,4 @@
+import CiteBox from "@/lib/CiteBox";
 import Link from "next/link";
 import type { SiteArticleProps, Article as A, TocItem } from "@/lib/types";
 import { Shell, Card, Badge } from "./Chrome";
@@ -89,6 +90,7 @@ export default function Article({ site, article, related, bodyHtml, toc, popular
           <div className="nm-art-main">
             <Toc items={toc} variant="inline" />
             <div id="article-body" className="article-content" dangerouslySetInnerHTML={{ __html: bodyHtml }} />
+            <CiteBox url={`https://${site.domain}/${article.slug}`} title={article.title} site={site.name} date={article.created_at} />
             <aside className="nm-art-note">
               <b>Before kick-off:</b> broadcast rights and kick-off times can change. Confirm with the official
               broadcaster or competition organiser — NinetyMins lists legal viewing options only.

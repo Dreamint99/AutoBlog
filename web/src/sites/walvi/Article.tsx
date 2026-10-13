@@ -1,3 +1,4 @@
+import CiteBox from "@/lib/CiteBox";
 import Link from "next/link";
 import type { SiteArticleProps, Site, Article as A, TocItem } from "@/lib/types";
 import { Masthead, Footer } from "./Chrome";
@@ -162,6 +163,7 @@ export default function Article({ site, article, related, bodyHtml, toc }: SiteA
               </div>
 
               <div id="article-body" className="article-content" dangerouslySetInnerHTML={{ __html: body }} />
+              <CiteBox url={`https://${site.domain}/${article.slug}`} title={article.title} site={site.name} date={article.created_at} />
 
               <div className="vp-art-foot">
                 <span>
