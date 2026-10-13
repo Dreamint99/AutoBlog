@@ -32,6 +32,9 @@ jobs:
       - run: python bing_pull.py
         env:
           BING_WEBMASTER_API_KEY: ${{ secrets.BING_WEBMASTER_API_KEY }}
+      - run: python bing_keywords.py
+        env:
+          BING_WEBMASTER_API_KEY: ${{ secrets.BING_WEBMASTER_API_KEY }}
       - name: Commit data
         run: |
           git config user.name "github-actions[bot]"
