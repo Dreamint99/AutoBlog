@@ -11,7 +11,15 @@ import os
 import sys
 from datetime import date, timedelta
 
+import re
+
 import requests
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import drip  # noqa: E402  (topic-word helpers)
+from modules import pipeline as P  # noqa: E402
+
+_NAV = re.compile(r"\b(login|log in|sign in|app download|apk|near me|tickets|customer service|phone number|official site|youtube)\b")
 
 for _s in (sys.stdout, sys.stderr):
     try:
@@ -56,10 +64,14 @@ def main():
     for sid, (country, lang, seeds) in SEEDS.items():
         found = {}
         for s in seeds:
+            core = drip._topic_words(s)
             for k in related(key, s, country, lang):
                 q = (k.get("Query") or "").strip().lower()
                 imp = k.get("Impressions") or k.get("BroadImpressions") or 0
-                if q and len(q.split()) >= 2 and imp >= 50:
+                # Bing's "related" list is full of navigational searches (chat gpt, qatar airways,
+                # "when i work login"): keep informational ones that still contain the seed's topic.
+                if (q and len(q.split()) >= 3 and imp >= 50 and not _NAV.search(q)
+                        and drip._covers(P._tokens(q), core)):
                     found[q] = max(found.get(q, 0), imp)
         top = sorted(found.items(), key=lambda x: -x[1])[:80]
         dpath = os.path.join(HERE, "data", f"demand_{sid}.json")

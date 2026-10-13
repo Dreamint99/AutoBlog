@@ -27,7 +27,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install google-auth requests
+      - run: pip install -r requirements.txt google-auth requests
       - run: python gsc_pull.py
       - run: python bing_pull.py
         env:
