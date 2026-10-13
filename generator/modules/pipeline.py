@@ -321,7 +321,7 @@ def generate_article(site: dict, title: str, log=lambda m: None, replace: dict |
     wa["meta_title"] = _cap_first(wa["meta_title"])
     final_title = wa["title"]
     keyword = wa["keyword"]
-    meta_title, meta_description = wa["meta_title"], wa["meta_description"]
+    meta_title, meta_description = wa["meta_title"], seo.finish_description(wa["meta_description"])
     data["excerpt"] = wa["excerpt"]
     # Cannibalisation guard: the optimiser tends to converge on the same SEO title
     # template (34 copies of one infkey title). Never publish a near-duplicate.

@@ -477,7 +477,7 @@ function SiteFooter({ site }: { site: Site }) {
           </div>
         </div>
 
-        <div className="qx-foot-disclaimer">
+        <div className="qx-foot-disclaimer" data-nosnippet>
           <b>A note for readers.</b> {site.name} shares lifestyle guidance and cultural insight for general information
           only. Regulations, prices, opening hours and entry requirements in Qatar change frequently — always confirm
           current details with the relevant official authority or venue before you travel or act.

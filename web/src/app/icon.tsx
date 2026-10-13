@@ -17,7 +17,9 @@ const MARKS: Record<string, string> = {
 // Generate per request so the icon uses the deployment's runtime SITE_ID
 // (these projects pass SITE_ID via `vercel deploy -e`, not stored project env).
 export const dynamic = "force-dynamic";
-export const size = { width: 64, height: 64 };
+// Google Search only shows favicons whose size is a multiple of 48px (48, 96, 192…);
+// 64px was ignored and results showed a generic globe instead of the logo.
+export const size = { width: 192, height: 192 };
 export const contentType = "image/png";
 
 // Brand colour per theme (background / letter).
@@ -41,7 +43,7 @@ export default function Icon() {
       (
         <div style={{ width: "100%", height: "100%", display: "flex" }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={`${siteBaseUrl(site)}${mark}`} width={64} height={64} alt="" />
+          <img src={`${siteBaseUrl(site)}${mark}`} width={192} height={192} alt="" />
         </div>
       ),
       { ...size }
@@ -59,9 +61,9 @@ export default function Icon() {
           justifyContent: "center",
           background: c.bg,
           color: c.fg,
-          fontSize: 44,
+          fontSize: 132,
           fontWeight: 700,
-          borderRadius: 14,
+          borderRadius: 42,
         }}
       >
         {letter}

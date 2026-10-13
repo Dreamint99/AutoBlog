@@ -234,7 +234,7 @@ export function Footer({ site }: { site: Site }) {
             ))}
           </div>
         </div>
-        <p className="vp-foot-legal">
+        <p className="vp-foot-legal" data-nosnippet>
           <b>
             VisaPoint is an independent resource. It is not affiliated with the European Union, any national government, embassy,
             consulate, visa application centre or recruitment agency.

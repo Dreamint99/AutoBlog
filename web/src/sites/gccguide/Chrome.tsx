@@ -92,6 +92,8 @@ export function BottomTabs({ site, active = "home" }: { site: Site; active?: str
   );
 }
 
+// Footer boilerplate carries data-nosnippet: Google was quoting the legal line
+// ("GCCGuide is an independent guide…") as the search snippet for every article.
 export function Footer({ site }: { site: Site }) {
   const b = `/s/${site.id}`;
   return (
@@ -100,7 +102,7 @@ export function Footer({ site }: { site: Site }) {
         <div className="gc-foot-grid">
           <div>
             <Logo site={site} />
-            <p>The all-in-one guide to living, working and travelling in the six Gulf countries — visas, jobs, driving, laws, money and the best things to do.</p>
+            <p data-nosnippet>The all-in-one guide to living, working and travelling in the six Gulf countries — visas, jobs, driving, laws, money and the best things to do.</p>
           </div>
           <div>
             <h4>Countries</h4>
@@ -127,7 +129,7 @@ export function Footer({ site }: { site: Site }) {
             <Link href={`${b}/disclaimer`}>Disclaimer</Link>
           </div>
         </div>
-        <p className="gc-legal">
+        <p className="gc-legal" data-nosnippet>
           GCCGuide is an independent guide and is not affiliated with any Gulf government, ministry or embassy. Rules, fees and
           visa conditions change — always confirm on the official portal linked on each country page before you apply or pay.
         </p>

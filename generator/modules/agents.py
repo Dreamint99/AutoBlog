@@ -144,7 +144,7 @@ def optimize(site: dict, topic: str, strategy: dict, draft: dict) -> dict:
         "sentences (a key-takeaways box is added later — don't add one).\n"
         "RANK MATH 90+: the focus keyword must appear in the first sentence, in at least one H2/H3, and "
         "naturally in the body. meta_title MUST start with the focus keyword and include a number + a power "
-        "word (<=60 chars). meta_description MUST contain the focus keyword once (<=155 chars). "
+        "word (<=60 chars). meta_description MUST contain the focus keyword once (120-150 chars, complete sentences ending in a full stop). "
         "Return ONLY JSON."
     )
     user = (
@@ -155,7 +155,7 @@ def optimize(site: dict, topic: str, strategy: dict, draft: dict) -> dict:
         "Improve it. Return JSON:\n"
         '{"title": "final SEO title <=60 chars", '
         '"meta_title": "<=60 chars", '
-        '"meta_description": "compelling <=155 chars with primary keyword", '
+        '"meta_description": "compelling 120-150 chars with primary keyword, complete sentences ending in a full stop", '
         '"excerpt": "<=155 chars", '
         '"body_html": "the improved article, keeping [[IMG: ...]] markers and tables", '
         '"tags": ["5-8 tags"], '
@@ -194,7 +194,7 @@ def boost(site: dict, article: dict, failed: list, target: int = 95) -> dict:
         "Return JSON:\n"
         '{"title": "<=65 chars, starts with focus keyword, has a number + power word", '
         '"meta_title": "<=60 chars, starts with focus keyword", '
-        '"meta_description": "120-160 chars, contains focus keyword once", '
+        '"meta_description": "120-150 chars, contains focus keyword once, complete sentences ending in a full stop", '
         '"excerpt": "<=155 chars", '
         '"body_html": "the improved full article (keep all <img>, <a>, <table>)", '
         '"tags": ["5-8 tags"], '

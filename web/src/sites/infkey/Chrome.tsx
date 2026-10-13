@@ -101,7 +101,7 @@ export function Footer({ site }: { site: Site }) {
             </div>
           </div>
         </div>
-        <p className="footer-disclaimer">
+        <p className="footer-disclaimer" data-nosnippet>
           InfKey is independent and not affiliated with OpenAI, Anthropic, Google, Microsoft or any AI provider; product
           names are trademarks of their owners. Prices, plans and free limits are collected from public pages for guidance
           only and change often — always confirm on the provider&apos;s official site before you pay.

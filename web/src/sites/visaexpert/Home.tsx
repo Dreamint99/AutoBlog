@@ -438,7 +438,7 @@ function SiteFooter({ siteName, siteId, domain }: { siteName: string; siteId: st
           </div>
         </div>
 
-        <div className="vx-foot-disclaimer">
+        <div className="vx-foot-disclaimer" data-nosnippet>
           <b>Disclaimer.</b> The information on {siteName} is provided for general guidance only and does not constitute
           legal or immigration advice. Visa rules, fees and processing times change frequently and vary by individual
           circumstances. Always confirm current requirements with the relevant official government department, embassy

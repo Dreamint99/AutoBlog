@@ -21,6 +21,20 @@ function clamp(s: string, max: number): string {
   return (sp > max * 0.6 ? cut.slice(0, sp) : cut).replace(/[\s.,;:–—-]+$/, "");
 }
 
+// Descriptions must read as finished sentences. A word-boundary cut left text
+// like "…and FAQs – all", which Google ignores in favour of page text (it was
+// quoting the footer disclaimer instead). Prefer ending on the last full
+// sentence; otherwise cut on a word and mark it with an ellipsis.
+function clampSentence(s: string, max: number): string {
+  if (!s) return s;
+  const t = s.trim().replace(/\s+/g, " ");
+  if (t.length <= max) return t;
+  const cut = t.slice(0, max);
+  const end = Math.max(cut.lastIndexOf(". "), cut.lastIndexOf("! "), cut.lastIndexOf("? "));
+  if (end >= 70) return cut.slice(0, end + 1);
+  return clamp(t, max - 1) + "…";
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -31,7 +45,7 @@ export async function generateMetadata({
   const article = await getArticle(id, slug);
   if (!site || !article) return {};
   const title = clamp(article.meta_title || article.title, 60);
-  const description = clamp(article.meta_description || article.excerpt || "", 158);
+  const description = clampSentence(article.meta_description || article.excerpt || "", 158);
   // VisaPoint feature images picked from Wikipedia are often wrong (club crests, a
   // 1941 flag) — never put them in share previews.
   // Fallback: the site's branded 1200×630 card, so every share has a preview image.

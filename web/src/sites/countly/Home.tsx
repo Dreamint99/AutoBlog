@@ -614,7 +614,7 @@ export function SiteFooter({ siteName, siteId, domain }: { siteName: string; sit
           </div>
         </div>
 
-        <div className="cn-foot-disclaimer">
+        <div className="cn-foot-disclaimer" data-nosnippet>
           <b>About the data.</b> Statistics on {siteName} are best-available figures compiled from public sources and
           include estimates where exact numbers are not published. They are provided for general information only, may
           contain errors, and change over time. Always confirm against the original source before citing or making

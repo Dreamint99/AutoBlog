@@ -28,12 +28,31 @@ def meta_title(title: str, site_name: str) -> str:
     return t[:60]
 
 
+def finish_description(text: str, max_len: int = 155) -> str:
+    """Fit a meta description into max_len as finished sentences.
+
+    LLMs overshoot the length they are asked for, and a blind cut leaves text
+    like "...and FAQs - all" that Google ignores (it then quotes page text such
+    as the footer disclaimer). End on the last full sentence when that keeps
+    enough text, otherwise cut on a word and add an ellipsis.
+    """
+    t = re.sub(r"\s+", " ", (text or "")).strip()
+    if len(t) <= max_len:
+        return t
+    cut = t[:max_len]
+    end = max(cut.rfind(". "), cut.rfind("! "), cut.rfind("? "))
+    if end >= 70:
+        return cut[: end + 1]
+    sp = cut[: max_len - 1].rfind(" ")
+    return cut[: sp if sp > max_len * 0.6 else max_len - 1].rstrip(" .,;:-–—") + "…"
+
+
 def meta_description(excerpt: str, body_html: str) -> str:
     text = (excerpt or "").strip()
     if not text:
         text = re.sub(r"<[^>]+>", " ", body_html)
         text = re.sub(r"\s+", " ", text).strip()
-    return (text[:152] + "…") if len(text) > 155 else text
+    return finish_description(text)
 
 
 def reading_time(body_html: str) -> int:

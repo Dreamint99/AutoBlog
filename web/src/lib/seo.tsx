@@ -25,14 +25,21 @@ export function organizationSchema(name: string, base: string, description: stri
     name,
     url: base,
     description,
+    // The per-site generated icon (192px) — gives Google a logo for the brand.
+    logo: `${new URL(base).origin}/icon`,
   } as Record<string, unknown>;
 }
 
 export function websiteSchema(name: string, base: string) {
+  const u = new URL(base);
+  const isRoot = u.pathname === "/" || u.pathname === "";
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name,
+    // Google's site-name system shows the bare domain until it trusts a name;
+    // naming the domain as an alternate helps it settle on `name`.
+    ...(isRoot ? { alternateName: [u.hostname.replace(/^www\./, "")] } : {}),
     url: base,
   } as Record<string, unknown>;
 }
