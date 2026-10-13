@@ -1,4 +1,4 @@
-name: Search Console pull
+name: Search Console + Bing pull
 
 # Weekly: pull 90 days of Search Console data for every network site (generator/gsc_pull.py)
 # and commit data/gsc_*.json + data/demand_*.json for drip, wp_ctr and wp_faq_boost.
@@ -29,9 +29,12 @@ jobs:
           python-version: "3.12"
       - run: pip install google-auth requests
       - run: python gsc_pull.py
+      - run: python bing_pull.py
+        env:
+          BING_WEBMASTER_API_KEY: ${{ secrets.BING_WEBMASTER_API_KEY }}
       - name: Commit data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/gsc_*.json data/demand_*.json
+          git add data/gsc_*.json data/bing_*.json data/demand_*.json
           git diff --cached --quiet || (git commit -m "Search Console data $(date -u +%F)" && git pull --rebase && git push)
