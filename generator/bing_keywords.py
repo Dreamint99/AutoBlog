@@ -34,7 +34,7 @@ SEEDS = {
     "countly": ("us", "en-US", ["richest people", "population by country", "most spoken languages", "most popular",
                                 "largest countries", "most visited", "world ranking", "net worth"]),
     "infkey": ("us", "en-US", ["ai tools", "chatgpt prompts", "best ai", "ai image generator", "gpu price", "ai app"]),
-    "walvi": ("us", "en-US", ["work visa", "work permit", "visa sponsorship jobs", "schengen visa", "skilled worker visa"]),
+    "walvi": ("us", "en-US", ["work visa", "visa sponsorship", "schengen visa", "skilled worker visa", "visa requirements", "immigration visa"]),
     "gccguide": ("us", "en-US", ["dubai salary", "saudi salary", "qatar jobs", "uae visa", "iqama", "dubai cost of living"]),
     "ninetymins": ("us", "en-US", ["premier league", "champions league", "football transfer", "world cup 2026", "la liga"]),
 }
