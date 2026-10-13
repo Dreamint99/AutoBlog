@@ -21,8 +21,8 @@
     "path": "./android.keystore",
     "alias": "pulse"
   },
-  "appVersionName": "y",
-  "appVersionCode": 2,
+  "appVersionName": "1.2",
+  "appVersionCode": 3,
   "shortcuts": [],
   "generatorApp": "bubblewrap-cli",
   "webManifestUrl": "https://pulse.countly.net/manifest.webmanifest",
@@ -35,11 +35,11 @@
   "isChromeOSOnly": false,
   "isMetaQuest": false,
   "fullScopeUrl": "https://pulse.countly.net/",
-  "minSdkVersion": 23,
+  "minSdkVersion": 24,
   "orientation": "portrait",
   "fingerprints": [],
   "additionalTrustedOrigins": [],
   "retainedBundles": [],
   "displayOverride": [],
-  "appVersion": "y"
+  "appVersion": "1.2"
 }

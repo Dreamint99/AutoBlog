@@ -226,7 +226,7 @@ export default {
       return new Response(JSON.stringify([{
         relation: ["delegate_permission/common.handle_all_urls"],
         target: { namespace: "android_app", package_name: "com.dreamint.pulse",
-                  sha256_cert_fingerprints: [String(env.ASSETLINKS_SHA || "")] },
+                  sha256_cert_fingerprints: String(env.ASSETLINKS_SHA || "").split(",").map((s) => s.trim()).filter(Boolean) },
       }]), { headers: { "content-type": "application/json", "cache-control": "public, max-age=3600" } });
 
     if (p === "/api/login" && request.method === "POST") return handleLogin(request, env);

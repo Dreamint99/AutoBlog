@@ -6,7 +6,7 @@
   "routes": [{ "pattern": "pulse.countly.net", "custom_domain": true }],
   "vars": {
     "ADMIN_EMAIL": "admin@dreamintcs.com",
-    "ASSETLINKS_SHA": "2C:78:8A:CA:ED:7F:18:21:E3:2C:D1:90:A3:45:FE:E5:80:D5:94:68:53:19:C6:90:CB:CD:FC:F7:7D:71:F6:2A"
+    "ASSETLINKS_SHA": "1D:CF:6C:38:31:24:47:E8:C1:C7:8C:58:4F:AA:F7:CC:7F:CF:23:A6:80:EC:D3:BA:AF:39:08:14:47:C0:22:0E,2C:78:8A:CA:ED:7F:18:21:E3:2C:D1:90:A3:45:FE:E5:80:D5:94:68:53:19:C6:90:CB:CD:FC:F7:7D:71:F6:2A"
   },
   "kv_namespaces": [{ "binding": "PULSE", "id": "3987a5253d994eea89caaef8a80b724b" }],
   "durable_objects": { "bindings": [{ "name": "LIVE", "class_name": "LiveRoom" }] },
