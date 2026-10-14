@@ -9,6 +9,13 @@
    "volume": 9900
   },
   {
+   "q": "average kuwait salary",
+   "impr": 8100,
+   "pos": null,
+   "src": "gold",
+   "volume": 8100
+  },
+  {
    "q": "nurse in dubai salary",
    "impr": 6600,
    "pos": null,
@@ -17,6 +24,13 @@
   },
   {
    "q": "dubai salary",
+   "impr": 5400,
+   "pos": null,
+   "src": "gold",
+   "volume": 5400
+  },
+  {
+   "q": "job kuwait salary",
    "impr": 5400,
    "pos": null,
    "src": "gold",
@@ -58,6 +72,13 @@
    "volume": 3600
   },
   {
+   "q": "nurse in kuwait salary",
+   "impr": 3600,
+   "pos": null,
+   "src": "gold",
+   "volume": 3600
+  },
+  {
    "q": "doctor in dubai salary",
    "impr": 2900,
    "pos": null,
@@ -86,10 +107,67 @@
    "volume": 2400
   },
   {
+   "q": "saudi salary",
+   "impr": 2400,
+   "pos": null,
+   "src": "gold",
+   "volume": 2400
+  },
+  {
+   "q": "qatar salary",
+   "impr": 1900,
+   "pos": null,
+   "src": "gold",
+   "volume": 1900
+  },
+  {
+   "q": "work in qatar salary",
+   "impr": 1900,
+   "pos": null,
+   "src": "gold",
+   "volume": 1900
+  },
+  {
+   "q": "nurse qatar salary",
+   "impr": 1900,
+   "pos": null,
+   "src": "gold",
+   "volume": 1900
+  },
+  {
+   "q": "average qatar salary",
+   "impr": 1900,
+   "pos": null,
+   "src": "gold",
+   "volume": 1900
+  },
+  {
+   "q": "doctor in kuwait salary",
+   "impr": 1300,
+   "pos": null,
+   "src": "gold",
+   "volume": 1300
+  },
+  {
+   "q": "aramco saudi salary",
+   "impr": 1300,
+   "pos": null,
+   "src": "gold",
+   "volume": 1300
+  },
+  {
+   "q": "kuwait salary per month",
+   "impr": 1000,
+   "pos": null,
+   "src": "gold",
+   "volume": 1000
+  },
+  {
    "q": "qatar airways jobs",
    "impr": 75,
    "pos": null,
-   "src": "bingkw"
+   "src": "bingkw",
+   "gvol": 210
   }
  ]
 }

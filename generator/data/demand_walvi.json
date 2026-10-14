@@ -2,40 +2,284 @@
  "_note": "Real queries (Search Console 2026-07-13..2026-10-11, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
-   "q": "hot work permit",
-   "impr": 1717,
+   "q": "japan work visa",
+   "impr": 9900,
    "pos": null,
-   "src": "bingkw"
+   "src": "gold",
+   "volume": 9900
+  },
+  {
+   "q": "canada work permit time",
+   "impr": 8100,
+   "pos": null,
+   "src": "gold",
+   "volume": 8100
+  },
+  {
+   "q": "processing time for canada work permit visa",
+   "impr": 6600,
+   "pos": null,
+   "src": "gold",
+   "volume": 6600
+  },
+  {
+   "q": "canada work permit extension",
+   "impr": 3600,
+   "pos": null,
+   "src": "gold",
+   "volume": 3600
+  },
+  {
+   "q": "how to get a work permit",
+   "impr": 221,
+   "pos": null,
+   "src": "bingkw",
+   "gvol": 8100
+  },
+  {
+   "q": "what is a work permit",
+   "impr": 230,
+   "pos": null,
+   "src": "bingkw",
+   "gvol": 4400
+  },
+  {
+   "q": "work visa usa",
+   "impr": 311,
+   "pos": null,
+   "src": "bingkw",
+   "gvol": 3600
   },
   {
    "q": "work permit for minors",
    "impr": 900,
    "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "hot work permit form",
-   "impr": 529,
-   "pos": null,
-   "src": "bingkw"
+   "src": "bingkw",
+   "gvol": 2900
   },
   {
    "q": "schengen visa application",
    "impr": 391,
    "pos": null,
-   "src": "bingkw"
+   "src": "bingkw",
+   "gvol": 2900
   },
   {
-   "q": "nc youth work permit",
-   "impr": 388,
+   "q": "schengen visa application form",
+   "impr": 182,
    "pos": null,
-   "src": "bingkw"
+   "src": "bingkw",
+   "gvol": 2400
+  },
+  {
+   "q": "hot work permit",
+   "impr": 1717,
+   "pos": null,
+   "src": "bingkw",
+   "gvol": 1900
+  },
+  {
+   "q": "work permit application",
+   "impr": 277,
+   "pos": null,
+   "src": "bingkw",
+   "gvol": 1900
+  },
+  {
+   "q": "schengen visa requirements",
+   "impr": 129,
+   "pos": null,
+   "src": "bingkw",
+   "gvol": 1900
+  },
+  {
+   "q": "canada work visa",
+   "impr": 128,
+   "pos": null,
+   "src": "bingkw",
+   "gvol": 1900
+  },
+  {
+   "q": "us work visa",
+   "impr": 93,
+   "pos": null,
+   "src": "bingkw",
+   "gvol": 1900
   },
   {
    "q": "maryland work permit",
    "impr": 381,
    "pos": null,
-   "src": "bingkw"
+   "src": "bingkw",
+   "gvol": 1600
+  },
+  {
+   "q": "minor work permit",
+   "impr": 278,
+   "pos": null,
+   "src": "bingkw",
+   "gvol": 1600
+  },
+  {
+   "q": "nc work permit",
+   "impr": 128,
+   "pos": null,
+   "src": "bingkw",
+   "gvol": 1600
+  },
+  {
+   "q": "skilled worker visa uk",
+   "impr": 84,
+   "pos": null,
+   "src": "bingkw",
+   "gvol": 1600
+  },
+  {
+   "q": "uk skilled worker visa",
+   "impr": 80,
+   "pos": null,
+   "src": "bingkw",
+   "gvol": 1600
+  },
+  {
+   "q": "schengen visa countries",
+   "impr": 212,
+   "pos": null,
+   "src": "bingkw",
+   "gvol": 1300
+  },
+  {
+   "q": "uk work visa",
+   "impr": 71,
+   "pos": null,
+   "src": "bingkw",
+   "gvol": 1300
+  },
+  {
+   "q": "work visa canada",
+   "impr": 59,
+   "pos": null,
+   "src": "bingkw",
+   "gvol": 1000
+  },
+  {
+   "q": "canada work permit",
+   "impr": 129,
+   "pos": null,
+   "src": "bingkw",
+   "gvol": 880
+  },
+  {
+   "q": "schengen visa insurance",
+   "impr": 91,
+   "pos": null,
+   "src": "bingkw",
+   "gvol": 880
+  },
+  {
+   "q": "australia work visa",
+   "impr": 75,
+   "pos": null,
+   "src": "bingkw",
+   "gvol": 880
+  },
+  {
+   "q": "work permit renewal",
+   "impr": 64,
+   "pos": null,
+   "src": "bingkw",
+   "gvol": 880
+  },
+  {
+   "q": "ohio work permit",
+   "impr": 182,
+   "pos": null,
+   "src": "bingkw",
+   "gvol": 720
+  },
+  {
+   "q": "france schengen visa",
+   "impr": 58,
+   "pos": null,
+   "src": "bingkw",
+   "gvol": 590
+  },
+  {
+   "q": "germany schengen visa",
+   "impr": 55,
+   "pos": null,
+   "src": "bingkw",
+   "gvol": 590
+  },
+  {
+   "q": "nc youth work permit",
+   "impr": 388,
+   "pos": null,
+   "src": "bingkw",
+   "gvol": 480
+  },
+  {
+   "q": "work permit form",
+   "impr": 315,
+   "pos": null,
+   "src": "bingkw",
+   "gvol": 480
+  },
+  {
+   "q": "what is a schengen visa",
+   "impr": 127,
+   "pos": null,
+   "src": "bingkw",
+   "gvol": 480
+  },
+  {
+   "q": "uk visa sponsorship jobs",
+   "impr": 92,
+   "pos": null,
+   "src": "bingkw",
+   "gvol": 390
+  },
+  {
+   "q": "spain schengen visa",
+   "impr": 89,
+   "pos": null,
+   "src": "bingkw",
+   "gvol": 390
+  },
+  {
+   "q": "hot work permit form",
+   "impr": 529,
+   "pos": null,
+   "src": "bingkw",
+   "gvol": 320
+  },
+  {
+   "q": "jobs in uk with visa sponsorship",
+   "impr": 60,
+   "pos": null,
+   "src": "bingkw",
+   "gvol": 260
+  },
+  {
+   "q": "permit to work",
+   "impr": 199,
+   "pos": null,
+   "src": "bingkw",
+   "gvol": 210
+  },
+  {
+   "q": "work permit application form",
+   "impr": 90,
+   "pos": null,
+   "src": "bingkw",
+   "gvol": 110
+  },
+  {
+   "q": "michigan work permit 16-17",
+   "impr": 72,
+   "pos": null,
+   "src": "bingkw",
+   "gvol": 30
   },
   {
    "q": "fm global hot work permit",
@@ -44,67 +288,7 @@
    "src": "bingkw"
   },
   {
-   "q": "work permit form",
-   "impr": 315,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "work visa usa",
-   "impr": 311,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "minor work permit",
-   "impr": 278,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "work permit application",
-   "impr": 277,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "what is a work permit",
-   "impr": 230,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "how to get a work permit",
-   "impr": 221,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "schengen visa countries",
-   "impr": 212,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "permit to work",
-   "impr": 199,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
    "q": "safe work permit",
-   "impr": 182,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "ohio work permit",
-   "impr": 182,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "schengen visa application form",
    "impr": 182,
    "pos": null,
    "src": "bingkw"
@@ -122,134 +306,14 @@
    "src": "bingkw"
   },
   {
-   "q": "canada work permit",
-   "impr": 129,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "schengen visa requirements",
-   "impr": 129,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "canada work visa",
-   "impr": 128,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "nc work permit",
-   "impr": 128,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "what is a schengen visa",
-   "impr": 127,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
    "q": "hot work permit requirements",
    "impr": 106,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "us work visa",
-   "impr": 93,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "uk visa sponsorship jobs",
-   "impr": 92,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "schengen visa insurance",
-   "impr": 91,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "work permit application form",
-   "impr": 90,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "spain schengen visa",
-   "impr": 89,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "skilled worker visa uk",
-   "impr": 84,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "uk skilled worker visa",
-   "impr": 80,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "australia work visa",
-   "impr": 75,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "michigan work permit 16-17",
-   "impr": 72,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "uk work visa",
-   "impr": 71,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "work permit renewal",
-   "impr": 64,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "jobs in uk with visa sponsorship",
-   "impr": 60,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "work visa canada",
-   "impr": 59,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "france schengen visa",
-   "impr": 58,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
    "q": "schengen visa application online",
    "impr": 56,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "germany schengen visa",
-   "impr": 55,
    "pos": null,
    "src": "bingkw"
   }

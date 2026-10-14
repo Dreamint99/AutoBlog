@@ -1,18 +1,102 @@
 {
  "_note": "Daily ubersuggest-gold task: takes the next 2 entries (3 seeds each) from 'queue' starting at 'next', then advances 'next'. Edit freely.",
- "next": 0,
+ "next": 3,
  "queue": [
-  {"site": "gccguide", "seeds": ["saudi salary", "qatar salary", "kuwait salary"]},
-  {"site": "countly", "seeds": ["largest countries", "most visited countries", "richest countries"]},
-  {"site": "walvi", "seeds": ["canada work permit", "australia work visa", "japan work visa"]},
-  {"site": "infkey", "seeds": ["best ai tools", "chatgpt prompts", "ai image generator"]},
-  {"site": "ninetymins", "seeds": ["premier league top scorers", "champions league winners", "world cup 2026 schedule"]},
-  {"site": "gccguide", "seeds": ["uae visa", "saudi iqama", "dubai cost of living"]},
-  {"site": "countly", "seeds": ["most popular sports", "highest paid athletes", "largest companies"]},
-  {"site": "walvi", "seeds": ["schengen visa", "uk visa", "germany work visa"]},
-  {"site": "countly", "seeds": ["gdp by country", "most populated cities", "happiest countries"]},
-  {"site": "infkey", "seeds": ["ai video generator", "ai detector", "free ai tools"]},
-  {"site": "gccguide", "seeds": ["oman jobs", "bahrain salary", "qatar visa"]},
-  {"site": "walvi", "seeds": ["europe jobs for foreigners", "visa sponsorship jobs", "work visa cost"]}
+  {
+   "site": "gccguide",
+   "seeds": [
+    "saudi salary",
+    "qatar salary",
+    "kuwait salary"
+   ]
+  },
+  {
+   "site": "countly",
+   "seeds": [
+    "largest countries",
+    "most visited countries",
+    "richest countries"
+   ]
+  },
+  {
+   "site": "walvi",
+   "seeds": [
+    "canada work permit",
+    "australia work visa",
+    "japan work visa"
+   ]
+  },
+  {
+   "site": "infkey",
+   "seeds": [
+    "best ai tools",
+    "chatgpt prompts",
+    "ai image generator"
+   ]
+  },
+  {
+   "site": "ninetymins",
+   "seeds": [
+    "premier league top scorers",
+    "champions league winners",
+    "world cup 2026 schedule"
+   ]
+  },
+  {
+   "site": "gccguide",
+   "seeds": [
+    "uae visa",
+    "saudi iqama",
+    "dubai cost of living"
+   ]
+  },
+  {
+   "site": "countly",
+   "seeds": [
+    "most popular sports",
+    "highest paid athletes",
+    "largest companies"
+   ]
+  },
+  {
+   "site": "walvi",
+   "seeds": [
+    "schengen visa",
+    "uk visa",
+    "germany work visa"
+   ]
+  },
+  {
+   "site": "countly",
+   "seeds": [
+    "gdp by country",
+    "most populated cities",
+    "happiest countries"
+   ]
+  },
+  {
+   "site": "infkey",
+   "seeds": [
+    "ai video generator",
+    "ai detector",
+    "free ai tools"
+   ]
+  },
+  {
+   "site": "gccguide",
+   "seeds": [
+    "oman jobs",
+    "bahrain salary",
+    "qatar visa"
+   ]
+  },
+  {
+   "site": "walvi",
+   "seeds": [
+    "europe jobs for foreigners",
+    "visa sponsorship jobs",
+    "work visa cost"
+   ]
+  }
  ]
 }

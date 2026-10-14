@@ -2,6 +2,48 @@
  "_note": "Real queries (Search Console 2026-07-13..2026-10-11, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
+   "q": "richest countries in world",
+   "impr": 246000,
+   "pos": null,
+   "src": "gold",
+   "volume": 246000
+  },
+  {
+   "q": "richest countries africa",
+   "impr": 60500,
+   "pos": null,
+   "src": "gold",
+   "volume": 60500
+  },
+  {
+   "q": "largest countries in europe",
+   "impr": 33100,
+   "pos": null,
+   "src": "gold",
+   "volume": 33100
+  },
+  {
+   "q": "largest countries area",
+   "impr": 33100,
+   "pos": null,
+   "src": "gold",
+   "volume": 33100
+  },
+  {
+   "q": "largest countries population",
+   "impr": 33100,
+   "pos": null,
+   "src": "gold",
+   "volume": 33100
+  },
+  {
+   "q": "most visited countries in the world",
+   "impr": 18100,
+   "pos": null,
+   "src": "gold",
+   "volume": 18100
+  },
+  {
    "q": "most spoken languages in india",
    "impr": 9900,
    "pos": null,
@@ -63,6 +105,13 @@
    "pos": null,
    "src": "bingkw",
    "gvol": 110000
+  },
+  {
+   "q": "who is the richest person in the world",
+   "impr": 27,
+   "pos": 9.0,
+   "src": "bing",
+   "gvol": 90500
   },
   {
    "q": "travis kelce net worth",
@@ -401,6 +450,13 @@
    "gvol": 12100
   },
   {
+   "q": "most spoken languages in the world",
+   "impr": 24,
+   "pos": 9.0,
+   "src": "bing",
+   "gvol": 12100
+  },
+  {
    "q": "elon musk net worth 2026",
    "impr": 2728,
    "pos": null,
@@ -468,6 +524,13 @@
    "impr": 1738,
    "pos": null,
    "src": "bingkw",
+   "gvol": 6600
+  },
+  {
+   "q": "top 10 richest people in the world",
+   "impr": 18,
+   "pos": 9.0,
+   "src": "bing",
    "gvol": 6600
   },
   {
@@ -583,6 +646,13 @@
    "gvol": 2900
   },
   {
+   "q": "who is the most subscribed youtuber",
+   "impr": 10,
+   "pos": 9.0,
+   "src": "bing",
+   "gvol": 2900
+  },
+  {
    "q": "how many mcdonald's in the world",
    "impr": 1500,
    "share": 25.4,
@@ -646,10 +716,38 @@
    "gvol": 1000
   },
   {
+   "q": "most downloaded apps",
+   "impr": 15,
+   "pos": 9.0,
+   "src": "bing",
+   "gvol": 1000
+  },
+  {
+   "q": "richest person in the world 2026",
+   "impr": 11,
+   "pos": 8.1,
+   "src": "bing",
+   "gvol": 1000
+  },
+  {
+   "q": "who is the world's richest person?",
+   "impr": 10,
+   "pos": 8.0,
+   "src": "bing",
+   "gvol": 1000
+  },
+  {
    "q": "mike ditka net worth",
    "impr": 2021,
    "pos": null,
    "src": "bingkw",
+   "gvol": 880
+  },
+  {
+   "q": "jeff bezos net worth 2026",
+   "impr": 18,
+   "pos": 8.7,
+   "src": "bing",
    "gvol": 880
   },
   {
@@ -658,6 +756,20 @@
    "share": 12.7,
    "src": "bing-ai",
    "gvol": 720
+  },
+  {
+   "q": "who is the richest person in the world 2026",
+   "impr": 21,
+   "pos": 8.6,
+   "src": "bing",
+   "gvol": 590
+  },
+  {
+   "q": "how many starbucks in the world",
+   "impr": 13,
+   "pos": 10.0,
+   "src": "bing",
+   "gvol": 590
   },
   {
    "q": "mark zuckerberg net worth 2026",
@@ -695,11 +807,32 @@
    "gvol": 170
   },
   {
+   "q": "most starred github repo",
+   "impr": 23,
+   "pos": 8.3,
+   "src": "bing",
+   "gvol": 170
+  },
+  {
+   "q": "the most spoken languages",
+   "impr": 10,
+   "pos": 9.0,
+   "src": "bing",
+   "gvol": 170
+  },
+  {
    "q": "crypto market data",
    "impr": 12,
    "pos": 99.1,
    "src": "gsc",
    "gvol": 40
+  },
+  {
+   "q": "german software company",
+   "impr": 12,
+   "pos": 8.0,
+   "src": "bing",
+   "gvol": 30
   },
   {
    "q": "richard warke net worth",
@@ -726,73 +859,29 @@
    "q": "countries with the most roblox players",
    "impr": 33,
    "pos": 8.0,
-   "src": "bing"
-  },
-  {
-   "q": "who is the richest person in the world",
-   "impr": 27,
-   "pos": 9.0,
-   "src": "bing"
-  },
-  {
-   "q": "most spoken languages in the world",
-   "impr": 24,
-   "pos": 9.0,
-   "src": "bing"
+   "src": "bing",
+   "gvol": 20
   },
   {
    "q": "open ai revenue 2026",
    "impr": 24,
    "pos": 8.0,
-   "src": "bing"
-  },
-  {
-   "q": "most starred github repo",
-   "impr": 23,
-   "pos": 8.3,
-   "src": "bing"
-  },
-  {
-   "q": "who is the richest person in the world 2026",
-   "impr": 21,
-   "pos": 8.6,
-   "src": "bing"
-  },
-  {
-   "q": "jeff bezos net worth 2026",
-   "impr": 18,
-   "pos": 8.7,
-   "src": "bing"
-  },
-  {
-   "q": "top 10 richest people in the world",
-   "impr": 18,
-   "pos": 9.0,
-   "src": "bing"
+   "src": "bing",
+   "gvol": 20
   },
   {
    "q": "top 10 airlines in the world 2026",
    "impr": 17,
    "pos": 8.0,
-   "src": "bing"
+   "src": "bing",
+   "gvol": 20
   },
   {
    "q": "what are the 4 most spoken languages in the world",
    "impr": 17,
    "pos": 9.0,
-   "src": "bing"
-  },
-  {
-   "q": "most downloaded apps",
-   "impr": 15,
-   "pos": 9.0,
-   "src": "bing"
-  },
-  {
-   "q": "how many starbucks in the world",
-   "impr": 13,
-   "pos": 10.0,
-   "src": "bing"
+   "src": "bing",
+   "gvol": 20
   },
   {
    "q": "which is the world's largest company based on the number of employees?",
@@ -801,27 +890,9 @@
    "src": "bing"
   },
   {
-   "q": "german software company",
-   "impr": 12,
-   "pos": 8.0,
-   "src": "bing"
-  },
-  {
-   "q": "richest person in the world 2026",
-   "impr": 11,
-   "pos": 8.1,
-   "src": "bing"
-  },
-  {
    "q": "how many individual mcdonald's restaurants are operating worldwide?",
    "impr": 11,
    "pos": 9.0,
-   "src": "bing"
-  },
-  {
-   "q": "who is the world's richest person?",
-   "impr": 10,
-   "pos": 8.0,
    "src": "bing"
   },
   {
@@ -834,18 +905,6 @@
    "q": "\"extensive global linguistic catalogue\" ethnologue linguistic database",
    "impr": 10,
    "pos": 8.0,
-   "src": "bing"
-  },
-  {
-   "q": "who is the most subscribed youtuber",
-   "impr": 10,
-   "pos": 9.0,
-   "src": "bing"
-  },
-  {
-   "q": "the most spoken languages",
-   "impr": 10,
-   "pos": 9.0,
    "src": "bing"
   }
  ]
