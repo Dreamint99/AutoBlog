@@ -66,13 +66,14 @@ export async function generateMetadata({
     meta.verification = {
       google: "-8KJCF5N-VT095e7Di-4oyQhnnMEyUW2E7S7h10imbM",
       yandex: "b55bc7a4b327f2b1",
+      other: { "p:domain_verify": "ad493e4495716e19ddc0fb646a135cde" },
     };
   }
   // Countly: Google verified via DNS (domain property); Bing + Yandex via meta tag.
   if (site.id === "countly") {
     meta.verification = {
       yandex: "d98b701bc2457bd8",
-      other: { "msvalidate.01": "E7D0AADC1BF5C8F0A380539539FD8AB0" },
+      other: { "msvalidate.01": "E7D0AADC1BF5C8F0A380539539FD8AB0", "p:domain_verify": "ad493e4495716e19ddc0fb646a135cde" },
     };
   }
   return meta;
