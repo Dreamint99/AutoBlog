@@ -2757,6 +2757,382 @@
      "broken": []
     }
    }
+  },
+  {
+   "date": "2026-10-14",
+   "sites": {
+    "countly": {
+     "lighthouse": [
+      {
+       "url": "https://countly.net/",
+       "form": "mobile",
+       "performance": 69,
+       "accessibility": 91,
+       "best-practices": 100,
+       "seo": 100,
+       "lcp_s": 3.79,
+       "cls": 0,
+       "tbt_ms": 718,
+       "seo_fails": []
+      },
+      {
+       "url": "https://countly.net/largest-ecommerce-markets-2026-top-countries-by-revenue",
+       "form": "mobile",
+       "performance": 82,
+       "accessibility": 95,
+       "best-practices": 100,
+       "seo": 100,
+       "lcp_s": 4.15,
+       "cls": 0.057,
+       "tbt_ms": 55,
+       "seo_fails": []
+      },
+      {
+       "url": "https://countly.net/",
+       "form": "desktop",
+       "performance": 99,
+       "accessibility": 95,
+       "best-practices": 100,
+       "seo": 100,
+       "lcp_s": 0.76,
+       "cls": 0.005,
+       "tbt_ms": 0,
+       "seo_fails": []
+      },
+      {
+       "url": "https://countly.net/largest-ecommerce-markets-2026-top-countries-by-revenue",
+       "form": "desktop",
+       "performance": 100,
+       "accessibility": 95,
+       "best-practices": 100,
+       "seo": 100,
+       "lcp_s": 0.69,
+       "cls": 0.001,
+       "tbt_ms": 0,
+       "seo_fails": []
+      }
+     ],
+     "broken": []
+    },
+    "walvi": {
+     "lighthouse": [
+      {
+       "url": "https://visapoint.net/",
+       "form": "mobile",
+       "performance": 87,
+       "accessibility": 91,
+       "best-practices": 100,
+       "seo": 100,
+       "lcp_s": 2.38,
+       "cls": 0.209,
+       "tbt_ms": 40,
+       "seo_fails": []
+      },
+      {
+       "url": "https://visapoint.net/digital-nomad-visa-salaries-7-high-pay-trade-jobs-2026",
+       "form": "mobile",
+       "performance": 72,
+       "accessibility": 100,
+       "best-practices": 100,
+       "seo": 100,
+       "lcp_s": 4.52,
+       "cls": 0.199,
+       "tbt_ms": 75,
+       "seo_fails": []
+      },
+      {
+       "url": "https://visapoint.net/",
+       "form": "desktop",
+       "performance": 87,
+       "accessibility": 95,
+       "best-practices": 100,
+       "seo": 100,
+       "lcp_s": 0.91,
+       "cls": 0.239,
+       "tbt_ms": 0,
+       "seo_fails": []
+      },
+      {
+       "url": "https://visapoint.net/digital-nomad-visa-salaries-7-high-pay-trade-jobs-2026",
+       "form": "desktop",
+       "performance": 92,
+       "accessibility": 100,
+       "best-practices": 100,
+       "seo": 100,
+       "lcp_s": 0.81,
+       "cls": 0.168,
+       "tbt_ms": 0,
+       "seo_fails": []
+      }
+     ],
+     "broken": []
+    },
+    "infkey": {
+     "lighthouse": [
+      {
+       "url": "https://infkey.com/",
+       "form": "mobile",
+       "performance": 91,
+       "accessibility": 92,
+       "best-practices": 100,
+       "seo": 100,
+       "lcp_s": 3.28,
+       "cls": 0.001,
+       "tbt_ms": 66,
+       "seo_fails": []
+      },
+      {
+       "url": "https://infkey.com/ai-for-lawyers-5-low-cost-tools-to-cut-research-costs-40",
+       "form": "mobile",
+       "performance": 88,
+       "accessibility": 91,
+       "best-practices": 100,
+       "seo": 100,
+       "lcp_s": 3.6,
+       "cls": 0,
+       "tbt_ms": 76,
+       "seo_fails": []
+      },
+      {
+       "url": "https://infkey.com/",
+       "form": "desktop",
+       "performance": 99,
+       "accessibility": 95,
+       "best-practices": 100,
+       "seo": 100,
+       "lcp_s": 0.8,
+       "cls": 0.001,
+       "tbt_ms": 0,
+       "seo_fails": []
+      },
+      {
+       "url": "https://infkey.com/ai-for-lawyers-5-low-cost-tools-to-cut-research-costs-40",
+       "form": "desktop",
+       "performance": 99,
+       "accessibility": 95,
+       "best-practices": 100,
+       "seo": 100,
+       "lcp_s": 0.74,
+       "cls": 0.021,
+       "tbt_ms": 0,
+       "seo_fails": []
+      }
+     ],
+     "broken": []
+    },
+    "gccguide": {
+     "lighthouse": [
+      {
+       "url": "https://gccguide.com/",
+       "form": "mobile",
+       "performance": 72,
+       "accessibility": 97,
+       "best-practices": 79,
+       "seo": 100,
+       "lcp_s": 5.94,
+       "cls": 0.12,
+       "tbt_ms": 70,
+       "seo_fails": []
+      },
+      {
+       "url": "https://gccguide.com/salam-or-marhaba-how-to-greet-in-qatar-like-a-local",
+       "form": "mobile",
+       "performance": 77,
+       "accessibility": 97,
+       "best-practices": 79,
+       "seo": 100,
+       "lcp_s": 5.59,
+       "cls": 0.017,
+       "tbt_ms": 73,
+       "seo_fails": []
+      },
+      {
+       "url": "https://gccguide.com/",
+       "form": "desktop",
+       "performance": 95,
+       "accessibility": 97,
+       "best-practices": 74,
+       "seo": 100,
+       "lcp_s": 1.19,
+       "cls": 0.073,
+       "tbt_ms": 0,
+       "seo_fails": []
+      },
+      {
+       "url": "https://gccguide.com/salam-or-marhaba-how-to-greet-in-qatar-like-a-local",
+       "form": "desktop",
+       "performance": 98,
+       "accessibility": 97,
+       "best-practices": 78,
+       "seo": 100,
+       "lcp_s": 1.11,
+       "cls": 0.031,
+       "tbt_ms": 0,
+       "seo_fails": []
+      }
+     ],
+     "broken": []
+    },
+    "ninetymins": {
+     "lighthouse": [
+      {
+       "url": "https://ninetymins.com/",
+       "form": "mobile",
+       "performance": 94,
+       "accessibility": 95,
+       "best-practices": 75,
+       "seo": 100,
+       "lcp_s": 2.67,
+       "cls": 0.05,
+       "tbt_ms": 126,
+       "seo_fails": []
+      },
+      {
+       "url": "https://ninetymins.com/champions-league-quiz-10-facts-every-2026-fan-needs",
+       "form": "mobile",
+       "performance": 77,
+       "accessibility": 97,
+       "best-practices": 75,
+       "seo": 100,
+       "lcp_s": 4.25,
+       "cls": 0.083,
+       "tbt_ms": 196,
+       "seo_fails": []
+      },
+      {
+       "url": "https://ninetymins.com/",
+       "form": "desktop",
+       "performance": 99,
+       "accessibility": 95,
+       "best-practices": 74,
+       "seo": 100,
+       "lcp_s": 0.82,
+       "cls": 0.065,
+       "tbt_ms": 0,
+       "seo_fails": []
+      },
+      {
+       "url": "https://ninetymins.com/champions-league-quiz-10-facts-every-2026-fan-needs",
+       "form": "desktop",
+       "performance": 98,
+       "accessibility": 97,
+       "best-practices": 74,
+       "seo": 100,
+       "lcp_s": 0.83,
+       "cls": 0.069,
+       "tbt_ms": 0,
+       "seo_fails": []
+      }
+     ],
+     "broken": []
+    },
+    "probashiinfo": {
+     "lighthouse": [
+      {
+       "url": "https://probashiinfo.com/",
+       "form": "mobile",
+       "performance": 95,
+       "accessibility": 95,
+       "best-practices": 100,
+       "seo": 100,
+       "lcp_s": 2.68,
+       "cls": 0.02,
+       "tbt_ms": 38,
+       "seo_fails": []
+      },
+      {
+       "url": "https://probashiinfo.com/maldives-work-permit-fee-2026/",
+       "form": "mobile",
+       "performance": 70,
+       "accessibility": 93,
+       "best-practices": 100,
+       "seo": 100,
+       "lcp_s": 5.2,
+       "cls": 0.208,
+       "tbt_ms": 0,
+       "seo_fails": []
+      },
+      {
+       "url": "https://probashiinfo.com/",
+       "form": "desktop",
+       "performance": 83,
+       "accessibility": 95,
+       "best-practices": 100,
+       "seo": 100,
+       "lcp_s": 1.69,
+       "cls": 0.108,
+       "tbt_ms": 0,
+       "seo_fails": []
+      },
+      {
+       "url": "https://probashiinfo.com/maldives-work-permit-fee-2026/",
+       "form": "desktop",
+       "performance": 94,
+       "accessibility": 93,
+       "best-practices": 100,
+       "seo": 100,
+       "lcp_s": 1.57,
+       "cls": 0.019,
+       "tbt_ms": 0,
+       "seo_fails": []
+      }
+     ],
+     "broken": []
+    },
+    "cob": {
+     "lighthouse": [
+      {
+       "url": "https://coloursofbangladesh.com/",
+       "form": "mobile",
+       "performance": 64,
+       "accessibility": 86,
+       "best-practices": 96,
+       "seo": 100,
+       "lcp_s": 9.1,
+       "cls": 0.105,
+       "tbt_ms": 26,
+       "seo_fails": []
+      },
+      {
+       "url": "https://coloursofbangladesh.com/news/houthi-documentary-guerrilla-to-red-sea",
+       "form": "mobile",
+       "performance": 81,
+       "accessibility": 84,
+       "best-practices": 93,
+       "seo": 100,
+       "lcp_s": 2.23,
+       "cls": 0.246,
+       "tbt_ms": 35,
+       "seo_fails": []
+      },
+      {
+       "url": "https://coloursofbangladesh.com/",
+       "form": "desktop",
+       "performance": 67,
+       "accessibility": 90,
+       "best-practices": 89,
+       "seo": 100,
+       "lcp_s": 3.32,
+       "cls": 0.136,
+       "tbt_ms": 0,
+       "seo_fails": []
+      },
+      {
+       "url": "https://coloursofbangladesh.com/news/houthi-documentary-guerrilla-to-red-sea",
+       "form": "desktop",
+       "performance": 88,
+       "accessibility": 93,
+       "best-practices": 89,
+       "seo": 100,
+       "lcp_s": 0.62,
+       "cls": 0.175,
+       "tbt_ms": 0,
+       "seo_fails": []
+      }
+     ],
+     "broken": []
+    }
+   }
   }
  ]
 }
