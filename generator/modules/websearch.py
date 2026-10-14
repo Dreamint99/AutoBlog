@@ -101,7 +101,7 @@ def wiki(query: str, n: int = 3, lang: str = "en") -> list[dict]:
 
 
 def source_name() -> str:
-    return "google" if os.getenv("GOOGLE_CSE_KEY") and os.getenv("GOOGLE_CSE_CX") else "brave" if os.getenv("BRAVE_API_KEY") else "duckduckgo"
+    return "google (serper)" if os.getenv("SERPER_API_KEY") else "google" if os.getenv("GOOGLE_CSE_KEY") and os.getenv("GOOGLE_CSE_CX") else "brave" if os.getenv("BRAVE_API_KEY") else "duckduckgo"
 
 
 def suggest(query: str, lang: str = "en", n: int = 15) -> list[str]:
