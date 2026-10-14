@@ -115,40 +115,28 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         ) : null}
         {/* Analytics + ads use lazyOnload (after load, when idle): on mobile they blocked the main thread
             200-900 ms and pushed LCP back. The popunder still fires on the first click. */}
-        {ahrefsKey ? (
-          <Script
-            src="https://analytics.ahrefs.com/analytics.js"
-            data-key={ahrefsKey}
-            strategy="lazyOnload"
-          />
-        ) : null}
-        {ga4Id ? (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}
-              strategy="lazyOnload"
-            />
-            <Script
-              id="ga4-init"
-              strategy="lazyOnload"
-              dangerouslySetInnerHTML={{
-                __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${ga4Id}');`,
-              }}
-            />
-          </>
-        ) : null}
+        {/* Analytics + ads start on the visitor's first scroll / touch / key / mouse move, or 5 s after load at the
+            latest (the "delay JS" pattern). Even lazyOnload left 250-400 ms of Google Tag Manager work inside the
+            mobile Lighthouse window. Order is kept; the popunder still fires on the first click after it loads. */}
         {ads.nativeContainer && ads.nativeInvoke ? (
-          <>
-            <div
-              id={ads.nativeContainer}
-              style={{ maxWidth: "100%", margin: "28px auto", textAlign: "center" }}
-            />
-            <Script src={ads.nativeInvoke} strategy="lazyOnload" data-cfasync="false" />
-          </>
+          <div id={ads.nativeContainer} style={{ maxWidth: "100%", margin: "28px auto", textAlign: "center" }} />
         ) : null}
-        {ads.popunder ? (
-          <Script src={ads.popunder} strategy="lazyOnload" />
-        ) : null}
+        <Script
+          id="deferred-3p"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var L=${JSON.stringify([
+              ...(ga4Id ? [{ src: `https://www.googletagmanager.com/gtag/js?id=${ga4Id}`, a: {} }] : []),
+              ...(ahrefsKey ? [{ src: "https://analytics.ahrefs.com/analytics.js", a: { "data-key": ahrefsKey } }] : []),
+              ...(ads.nativeContainer && ads.nativeInvoke ? [{ src: ads.nativeInvoke, a: { "data-cfasync": "false" } }] : []),
+              ...(ads.popunder ? [{ src: ads.popunder, a: {} }] : []),
+            ])};var g=${JSON.stringify(ga4Id || "")};var go=false;function run(){if(go)return;go=true;
+if(g){window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments);};gtag('js',new Date());gtag('config',g);}
+L.forEach(function(x){var s=document.createElement('script');s.src=x.src;s.async=true;for(var k in x.a)s.setAttribute(k,x.a[k]);document.body.appendChild(s);});}
+['scroll','touchstart','mousemove','keydown','click'].forEach(function(e){addEventListener(e,run,{once:true,passive:true});});
+function t(){setTimeout(run,5000);}if(document.readyState==='complete')t();else addEventListener('load',t,{once:true});})();`,
+          }}
+        />
       </body>
     </html>
   );

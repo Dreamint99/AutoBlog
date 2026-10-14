@@ -1798,3 +1798,11 @@
   .site-walvi .hero-grid { grid-template-columns: minmax(0, 1fr); }
   .site-walvi .vp-finder { margin-top: 8px; }
 }
+
+
+/* Speed: lower homepage sections are laid out and painted only when scrolled near
+   (mobile Lighthouse spent seconds of style/layout/paint on the whole page before LCP). */
+.vp-sec ~ .vp-sec {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}

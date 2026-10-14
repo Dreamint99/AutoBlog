@@ -26,7 +26,8 @@ const TTL = 1800;
 // Browsers must revalidate pages: a 4-hour browser copy outlives a deploy and then
 // pairs old HTML with the new server.
 const CLIENT_CC = "public, max-age=0, must-revalidate";
-const CACHEABLE_CT = /text\/html|application\/(xml|rss)|text\/xml/;
+// image/png: the on-demand /card/ and /pin/ images (Satori renders are the most CPU-heavy requests)
+const CACHEABLE_CT = /text\/html|application\/(xml|rss)|text\/xml|image\/png/;
 
 function isRscRequest(request, url) {
   const h = request.headers;

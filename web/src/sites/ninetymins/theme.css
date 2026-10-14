@@ -668,3 +668,11 @@
 .site-ninetymins .nm-logo-img { height: 38px; width: auto; display: block; }
 .site-ninetymins .nm-footer .nm-logo-img { height: 40px; }
 @media (max-width: 600px) { .site-ninetymins .nm-logo-img { height: 28px; } }
+
+
+/* Speed: lower homepage sections are laid out and painted only when scrolled near
+   (mobile Lighthouse spent seconds of style/layout/paint on the whole page before LCP). */
+.nm-river ~ .nm-box {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}

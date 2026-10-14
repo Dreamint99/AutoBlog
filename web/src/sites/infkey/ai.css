@@ -155,3 +155,11 @@
 .site-infkey .ik-logo-img img { height: 40px; width: auto; display: block; filter: drop-shadow(0 4px 14px rgba(34, 211, 238, 0.25)); }
 .site-infkey .footer .ik-logo-img img { height: 44px; }
 @media (max-width: 600px) { .site-infkey .ik-logo-img img { height: 32px; } }
+
+
+/* Speed: lower homepage sections are laid out and painted only when scrolled near
+   (mobile Lighthouse spent seconds of style/layout/paint on the whole page before LCP). */
+.ai-sec ~ .ai-sec {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}

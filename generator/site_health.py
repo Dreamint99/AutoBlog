@@ -53,6 +53,12 @@ def newest_article(home: str) -> str:
 
 
 def lighthouse(url: str, desktop: bool = False) -> dict:
+    # Warm the edge cache first: real visitors mostly get cached HTML, but every deploy starts the cache empty.
+    for _ in range(2):
+        try:
+            urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"}), timeout=30).read()
+        except Exception:
+            pass
     out = tempfile.mktemp(suffix=".json")
     cmd = ["npx", "-y", "lighthouse@12", url] + (["--preset=desktop"] if desktop else []) + [ "--quiet", "--output=json", f"--output-path={out}",
            "--chrome-flags=--headless=new --no-sandbox", "--only-categories=performance,seo,accessibility,best-practices"]

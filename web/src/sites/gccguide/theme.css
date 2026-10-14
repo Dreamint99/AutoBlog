@@ -294,3 +294,11 @@
 .site-gccguide .gc-badge { box-shadow: 0 2px 8px rgba(16, 53, 107, 0.12); }
 .site-gccguide .gc-hsearch button, .site-gccguide .gc-btn, .site-gccguide .gc-tabs a.on { color: #ffffff; }
 @media (max-width: 600px) { .site-gccguide .gc-logo img { height: 32px; } }
+
+
+/* Speed: lower homepage sections are laid out and painted only when scrolled near
+   (mobile Lighthouse spent seconds of style/layout/paint on the whole page before LCP). */
+.gc-sec ~ .gc-sec {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
