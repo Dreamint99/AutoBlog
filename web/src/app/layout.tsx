@@ -23,6 +23,9 @@ const ga4Id = GA4_IDS[process.env.SITE_ID || ""] || "";
 
 // Pulse realtime presence — anonymous per-tab beat every 25s to our own
 // dashboard worker (no cookies, no PII; id lives in sessionStorage only).
+// Microsoft Clarity (free heatmaps + session recordings), one project per site; loaded with the delayed 3P scripts.
+const CLARITY: Record<string, string> = { countly: "yxk97ddeoq" };
+const clarityId = CLARITY[process.env.SITE_ID || ""] || "";
 const pulseSiteId = process.env.SITE_ID || "";
 const PULSE_BEACON = `(function(){try{
 var s='${pulseSiteId}';var k='_plsid';
@@ -133,7 +136,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               ...(ahrefsKey ? [{ src: "https://analytics.ahrefs.com/analytics.js", a: { "data-key": ahrefsKey } }] : []),
               ...(ads.nativeContainer && ads.nativeInvoke ? [{ src: ads.nativeInvoke, a: { "data-cfasync": "false" } }] : []),
               ...(ads.popunder ? [{ src: ads.popunder, a: {} }] : []),
-            ])};var g=${JSON.stringify(ga4Id || "")};var go=false;function run(){if(go)return;go=true;
+            ])};var g=${JSON.stringify(ga4Id || "")};var cl=${JSON.stringify(clarityId)};var go=false;function run(){if(go)return;go=true;
+if(cl){window.clarity=window.clarity||function(){(window.clarity.q=window.clarity.q||[]).push(arguments);};L.push({src:'https://www.clarity.ms/tag/'+cl+'?ref=bwt',a:{}});}
 if(g){window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments);};gtag('js',new Date());gtag('config',g);}
 L.forEach(function(x){var s=document.createElement('script');s.src=x.src;s.async=true;for(var k in x.a)s.setAttribute(k,x.a[k]);document.body.appendChild(s);});}
 ['scroll','touchstart','mousemove','keydown','click'].forEach(function(e){addEventListener(e,run,{once:true,passive:true});});
