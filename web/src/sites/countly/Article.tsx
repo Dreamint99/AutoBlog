@@ -7,6 +7,7 @@ import ReadingProgress from "./ReadingProgress";
 import HouseAd from "./HouseAd";
 import { CnHeader } from "./Home";
 import type { SiteArticleProps, Article, TocItem } from "@/lib/types";
+import { heroSrc, thumb } from "@/lib/img";
 
 /* ────────────────────────────────────────────────────────────
    Inline icons (no client JS, no extra packages)
@@ -131,7 +132,7 @@ function RelatedCard({ siteId, article }: { siteId: string; article: Article }) 
     <article className="cn-card">
       <Link href={href} className="cn-card-media" aria-label={article.title}>
         {article.image_url ? (
-          <img src={article.image_url} alt={article.title} loading="lazy" />
+          <img src={thumb(article.image_url, article.title)} alt={article.title} loading="lazy" decoding="async" />
         ) : (
           <span aria-hidden="true" />
         )}
@@ -225,7 +226,7 @@ export default function Article({ site, article, related, bodyHtml, toc, popular
 
             {article.image_url ? (
               <div className="cn-hero-img">
-                <img src={article.image_url} alt={article.title} loading="lazy" />
+                <img src={heroSrc(article.image_url, article.title)} alt={article.title} fetchPriority="high" />
               </div>
             ) : null}
           </div>

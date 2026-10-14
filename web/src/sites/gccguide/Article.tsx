@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { SiteArticleProps } from "@/lib/types";
 import { GcShell } from "./Chrome";
 import { countryOf, topicOf, flag } from "./data";
+import { heroSrc, thumb } from "@/lib/img";
 
 function fmt(iso: string) {
   const d = new Date(iso);
@@ -46,7 +47,7 @@ export default function Article({ site, article, related, bodyHtml, toc }: SiteA
           <div className="gc-art-main">
             {article.image_url ? (
               <figure className="gc-art-hero">
-                <img src={article.image_url} alt={article.title} />
+                <img src={heroSrc(article.image_url, article.title)} alt={article.title} fetchPriority="high" />
               </figure>
             ) : null}
             {toc.length > 2 ? (

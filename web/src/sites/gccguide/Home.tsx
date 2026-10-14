@@ -3,7 +3,7 @@ import type { SiteHomeProps, Site, Article } from "@/lib/types";
 import { GcShell } from "./Chrome";
 import { COUNTRIES, TOPICS, countryOf, topicOf, flag } from "./data";
 import { Clocks, Converter, CityPulse } from "./Widgets";
-import { thumb } from "@/lib/img";
+import { heroSrc, thumb } from "@/lib/img";
 
 const QUICK: [string, string][] = [
   ["🛂", "Check visa status"],
@@ -45,8 +45,8 @@ function Card({ site, a, big = false }: { site: Site; a: Article; big?: boolean 
     <article className={`gc-acard${big ? " big" : ""}`}>
       <Link href={href} className="gc-amedia" tabIndex={-1} aria-label={a.title}>
         {a.image_url ? (big
-          ? <img src={a.image_url} alt={a.title} fetchPriority="high" />
-          : <img src={thumb(a.image_url)} alt={a.title} loading="lazy" decoding="async" />) : <span className="gc-aph">{t.icon}</span>}
+          ? <img src={heroSrc(a.image_url, a.title)} alt={a.title} fetchPriority="high" />
+          : <img src={thumb(a.image_url, a.title)} alt={a.title} loading="lazy" decoding="async" />) : <span className="gc-aph">{t.icon}</span>}
         <span className="gc-badge">
           {c ? <img src={flag(c.iso, 40)} alt="" width={16} height={11} /> : null}
           {t.label}

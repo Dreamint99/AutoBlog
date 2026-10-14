@@ -3,6 +3,7 @@ import type { SiteHomeProps, Article } from "@/lib/types";
 import { Shell, Card, Badge, Kicker, Thumb } from "./Chrome";
 import { NM_COMPS, compOf, ago } from "./comps";
 import { LeagueTable, LeagueFixtures } from "./LiveScores";
+import { heroSrc } from "@/lib/img";
 
 /** Hands out articles once per page; real reports before mock ones. */
 function picker(all: Article[]) {
@@ -68,7 +69,7 @@ export default function Home({ site, articles }: SiteHomeProps) {
         <div className="nm-heroCol">
           <article className="nm-hero">
             <Link href={href(hero)} className="nm-thumb nm-hero-link">
-              {hero.image_url ? <img src={hero.image_url} alt={hero.title} fetchPriority="high" /> : <span className="nm-thumb-ph" />}
+              {hero.image_url ? <img src={heroSrc(hero.image_url, hero.title)} alt={hero.title} fetchPriority="high" /> : <span className="nm-thumb-ph" />}
               <span className="nm-hero-shade" />
               <div className="nm-hero-copy">
                 <span className="nm-hero-kicker" style={{ background: hc.color }}>

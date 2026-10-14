@@ -22,7 +22,7 @@ function Top10Card({ siteId, article }: { siteId: string; article: Article }) {
   return (
     <article className="cn-top10-card">
       <Link href={href} className="cn-top10-media" aria-label={article.title}>
-        {article.image_url ? <img src={thumb(article.image_url)} alt={article.title} loading="lazy" decoding="async" /> : <span aria-hidden="true" />}
+        {article.image_url ? <img src={thumb(article.image_url, article.title)} alt={article.title} loading="lazy" decoding="async" /> : <span aria-hidden="true" />}
         <span className="cn-top10-ribbon">
           <Trophy /> Top {n}
         </span>

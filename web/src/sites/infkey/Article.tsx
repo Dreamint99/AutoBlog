@@ -5,6 +5,7 @@ import type { SiteArticleProps, Site, Article, TocItem } from "@/lib/types";
 import { Masthead, Footer } from "./Chrome";
 import { aiFont } from "./fonts";
 import { topicOf } from "./topics";
+import { heroSrc, thumb } from "@/lib/img";
 
 function formatDate(iso: string): string {
   const d = new Date(iso);
@@ -38,7 +39,7 @@ function RelatedCard({ site, article }: { site: Site; article: Article }) {
     <article className="card">
       <Link href={href} className="card-media" aria-label={article.title} tabIndex={-1}>
         <span className="card-cat">{categoryOf(article)}</span>
-        {article.image_url ? <img src={article.image_url} alt={article.title} loading="lazy" /> : null}
+        {article.image_url ? <img src={thumb(article.image_url, article.title)} alt={article.title} loading="lazy" decoding="async" /> : null}
       </Link>
       <div className="card-body">
         <h3 className="card-title">
@@ -128,7 +129,7 @@ export default function Article({ site, article, related, bodyHtml, toc }: SiteA
           {article.image_url ? (
             <figure className="hero-figure">
               <div className="frame">
-                <img src={article.image_url} alt={article.title} loading="lazy" />
+                <img src={heroSrc(article.image_url, article.title)} alt={article.title} fetchPriority="high" />
               </div>
             </figure>
           ) : null}

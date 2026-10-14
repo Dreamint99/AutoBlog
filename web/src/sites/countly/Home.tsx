@@ -7,7 +7,7 @@ import LiveTicker from "./LiveTicker";
 import NewsletterForm from "./NewsletterForm";
 import HouseAd from "./HouseAd";
 import type { SiteHomeProps, Article } from "@/lib/types";
-import { thumb } from "@/lib/img";
+import { heroSrc, thumb } from "@/lib/img";
 
 /* ────────────────────────────────────────────────────────────
    Inline icons (no client JS, no extra packages)
@@ -202,8 +202,8 @@ function Img({ href, article, className = "", badge, priority = false }: { href:
   return (
     <Link href={href} className={`cx-img ${className}`} aria-label={article.title} tabIndex={-1}>
       {article.image_url ? (priority
-        ? <img src={article.image_url} alt={article.title} fetchPriority="high" />
-        : <img src={thumb(article.image_url)} alt={article.title} loading="lazy" decoding="async" />) : null}
+        ? <img src={heroSrc(article.image_url, article.title)} alt={article.title} fetchPriority="high" />
+        : <img src={thumb(article.image_url, article.title)} alt={article.title} loading="lazy" decoding="async" />) : null}
       {badge ? <span className="cx-badge">{badge}</span> : null}
     </Link>
   );
@@ -244,7 +244,7 @@ export function StatCard({ siteId, article, index }: { siteId: string; article: 
   return (
     <article className="cn-card">
       <Link href={href} className="cn-card-media" aria-label={article.title}>
-        {article.image_url ? <img src={thumb(article.image_url)} alt={article.title} loading="lazy" decoding="async" /> : <span aria-hidden="true" />}
+        {article.image_url ? <img src={thumb(article.image_url, article.title)} alt={article.title} loading="lazy" decoding="async" /> : <span aria-hidden="true" />}
         <span className="cn-card-index" aria-hidden="true">
           {String(index).padStart(2, "0")}
         </span>
@@ -425,7 +425,7 @@ export default function Home({ site, articles }: SiteHomeProps) {
                       <small>{fmtDate(a.created_at)}</small>
                     </span>
                     <span className="cx-img cx-thumb">
-                      {a.image_url ? <img src={thumb(a.image_url)} alt={a.title} loading="lazy" decoding="async" /> : null}
+                      {a.image_url ? <img src={thumb(a.image_url, a.title)} alt={a.title} loading="lazy" decoding="async" /> : null}
                     </span>
                   </Link>
                 ))}

@@ -175,7 +175,7 @@ export function Shell({ site, strip, children }: { site: Site; strip?: Article[]
 export function Thumb({ href, article, ratio = "16 / 9", children }: { href: string; article: Article; ratio?: string; children?: ReactNode }) {
   return (
     <Link href={href} className="nm-thumb" style={{ aspectRatio: ratio }} aria-label={article.title} tabIndex={-1}>
-      {article.image_url ? <img src={thumb(article.image_url)} alt={article.title} loading="lazy" decoding="async" /> : <span className="nm-thumb-ph" />}
+      {article.image_url ? <img src={thumb(article.image_url, article.title)} alt={article.title} loading="lazy" decoding="async" /> : <span className="nm-thumb-ph" />}
       {children}
     </Link>
   );

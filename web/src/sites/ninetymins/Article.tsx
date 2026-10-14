@@ -4,6 +4,7 @@ import type { SiteArticleProps, Article as A, TocItem } from "@/lib/types";
 import { Shell, Card, Badge } from "./Chrome";
 import { compOf, fmtDate, ago } from "./comps";
 import { LeagueFixtures } from "./LiveScores";
+import { heroSrc, thumb } from "@/lib/img";
 
 /* Competition → ESPN feed shown in the article rail. */
 const FEED: Record<string, [string, string]> = {
@@ -82,7 +83,7 @@ export default function Article({ site, article, related, bodyHtml, toc, popular
 
         {article.image_url ? (
           <figure className="nm-wrap nm-art-hero">
-            <img src={article.image_url} alt={article.title} />
+            <img src={heroSrc(article.image_url, article.title)} alt={article.title} fetchPriority="high" />
           </figure>
         ) : null}
 
