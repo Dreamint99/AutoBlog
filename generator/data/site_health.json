@@ -1,0 +1,2010 @@
+{
+ "runs": [
+  {
+   "date": "2026-10-13",
+   "sites": {
+    "countly": {
+     "lighthouse": [
+      {
+       "url": "https://countly.net/",
+       "performance": 52,
+       "accessibility": 95,
+       "best-practices": 96,
+       "seo": 100,
+       "lcp_s": 10.98,
+       "cls": 0,
+       "tbt_ms": 754,
+       "seo_fails": []
+      },
+      {
+       "url": "https://countly.net/richard-warke-net-worth-2026-1-2-billion-snapshot",
+       "performance": 84,
+       "accessibility": 95,
+       "best-practices": 96,
+       "seo": 100,
+       "lcp_s": 3.81,
+       "cls": 0.04,
+       "tbt_ms": 44,
+       "seo_fails": []
+      }
+     ],
+     "broken": [
+      {
+       "url": "https://countly.net/s/countly/billionaire-wealth-chart-2026.jpg",
+       "status": 404,
+       "on": "https://countly.net/s/countly/how-many-billionaires-in-2026-complete-global-count"
+      },
+      {
+       "url": "https://countly.net/instagram-brand-strategies-2026",
+       "status": 404,
+       "on": "https://countly.net/s/countly/most-followed-instagram-2026-ultimate-top-20-list"
+      },
+      {
+       "url": "https://countly.net/instagram-growth-trends-2026",
+       "status": 404,
+       "on": "https://countly.net/s/countly/most-followed-instagram-2026-ultimate-top-20-list"
+      },
+      {
+       "url": "https://countly.net/richest-tech-billionaires-2025",
+       "status": 404,
+       "on": "https://countly.net/s/countly/richest-tech-billionaires-2026-10-surprising-shifts"
+      },
+      {
+       "url": "https://countly.net/how-billionaire-net-worth-is-calculated",
+       "status": 404,
+       "on": "https://countly.net/s/countly/richest-tech-billionaires-2026-10-surprising-shifts"
+      },
+      {
+       "url": "https://countly.net/bookstore-employment-guide-2026",
+       "status": 404,
+       "on": "https://countly.net/s/countly/bookstore-chains-2026-complete-ranking-global-market-data"
+      },
+      {
+       "url": "https://countly.net/software-engineer-salary-2026",
+       "status": 404,
+       "on": "https://countly.net/s/countly/ai-engineer-salary-2026-top-10-highest-paying-countries"
+      },
+      {
+       "url": "https://countly.net/images/chatgpt-user-statistics-2026.png",
+       "status": 404,
+       "on": "https://countly.net/s/countly/chatgpt-user-statistics-2026-growth-demographics"
+      },
+      {
+       "url": "https://countly.net/ai-billionaire-wealth",
+       "status": 404,
+       "on": "https://countly.net/s/countly/richest-billionaires-2026-updated-top-20-net-worth-ranking"
+      },
+      {
+       "url": "https://countly.net/statistics/social-media-users-by-country",
+       "status": 404,
+       "on": "https://countly.net/s/countly/internet-users-by-country-2026-global-ranking-key-stats"
+      },
+      {
+       "url": "https://countly.net/statistics/mobile-internet-statistics",
+       "status": 404,
+       "on": "https://countly.net/s/countly/internet-users-by-country-2026-global-ranking-key-stats"
+      },
+      {
+       "url": "https://countly.net/blog/best-long-haul-airlines-2026",
+       "status": 404,
+       "on": "https://countly.net/s/countly/top-10-airlines-2026-the-best-carriers-ranked-new-data"
+      },
+      {
+       "url": "https://countly.net/study-in-australia",
+       "status": 404,
+       "on": "https://countly.net/s/countly/top-universities-in-australia-2026-full-rankings-data"
+      },
+      {
+       "url": "https://countly.net/s/countly/top-ecommerce-websites-usa-infographic-2026.jpg",
+       "status": 404,
+       "on": "https://countly.net/s/countly/top-10-e-commerce-websites-in-the-usa-2026-data"
+      },
+      {
+       "url": "https://countly.net/blog/ev-charging-infrastructure-2026",
+       "status": 404,
+       "on": "https://countly.net/s/countly/electric-vehicle-sales-by-country-2026"
+      },
+      {
+       "url": "https://countly.net/images/ev-sales-by-country-2026.png",
+       "status": 404,
+       "on": "https://countly.net/s/countly/electric-vehicle-sales-by-country-2026"
+      },
+      {
+       "url": "https://countly.net/aldi-vs-lidl-store-growth",
+       "status": 404,
+       "on": "https://countly.net/s/countly/aldi-store-count-2026-13500-global-stores-full-list"
+      },
+      {
+       "url": "https://countly.net/gamestop-annual-revenue",
+       "status": 404,
+       "on": "https://countly.net/s/countly/game-store-industry-2026-definitive-market-size-retailer-stats"
+      },
+      {
+       "url": "https://countly.net/aldi-ireland-store-count",
+       "status": 404,
+       "on": "https://countly.net/s/countly/updated-dunnes-stores-statistics-2026-revenue-share"
+      },
+      {
+       "url": "https://countly.net/irish-grocery-market",
+       "status": 404,
+       "on": "https://countly.net/s/countly/updated-dunnes-stores-statistics-2026-revenue-share"
+      },
+      {
+       "url": "https://countly.net/epic-games-store-growth-statistics",
+       "status": 404,
+       "on": "https://countly.net/s/countly/game-store-industry-2026-definitive-market-size-retailer-stats"
+      },
+      {
+       "url": "https://countly.net/tesco-ireland-market-share",
+       "status": 404,
+       "on": "https://countly.net/s/countly/updated-dunnes-stores-statistics-2026-revenue-share"
+      },
+      {
+       "url": "https://countly.net/social-media-platforms-by-monthly-active-users-2026-chart.jpg",
+       "status": 404,
+       "on": "https://countly.net/social-media-platforms-by-monthly-active-users-top-10-2026"
+      },
+      {
+       "url": "https://countly.net/top-ecommerce-websites-usa-infographic-2026.jpg",
+       "status": 404,
+       "on": "https://countly.net/top-10-e-commerce-websites-in-the-usa-2026-data"
+      },
+      {
+       "url": "https://countly.net/billionaire-wealth-chart-2026.jpg",
+       "status": 404,
+       "on": "https://countly.net/how-many-billionaires-in-2026-complete-global-count"
+      }
+     ]
+    },
+    "walvi": {
+     "lighthouse": [
+      {
+       "url": "https://visapoint.net/",
+       "performance": 67,
+       "accessibility": 91,
+       "best-practices": 96,
+       "seo": 100,
+       "lcp_s": 3.88,
+       "cls": 0.343,
+       "tbt_ms": 40,
+       "seo_fails": []
+      },
+      {
+       "url": "https://visapoint.net/spain-digital-nomad-visa-eur80-fee-eur2849-income-2026",
+       "performance": 78,
+       "accessibility": 97,
+       "best-practices": 96,
+       "seo": 100,
+       "lcp_s": 3.94,
+       "cls": 0.157,
+       "tbt_ms": 38,
+       "seo_fails": []
+      }
+     ],
+     "broken": [
+      {
+       "url": "https://visapoint.net/uk-skilled-worker-visa-overview",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/uk-construction-work-visa-2026-essential-guide"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=il&to=at",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/israel"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=il&to=ki",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/israel"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=il&to=kz",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/israel"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=il&to=pe",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/israel"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=il&to=ps",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/israel"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=il&to=sg",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/israel"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=il&to=ae",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/israel"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=il&to=gh",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/israel"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=il&to=la",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/israel"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=il&to=mv",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/israel"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=il&to=na",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/israel"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=il&to=lb",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/israel"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=il&to=my",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/israel"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=il&to=pk",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/israel"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=il&to=ye",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/israel"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/passport/mexico",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/israel"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ad&to=fr",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/andorra"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ad&to=ie",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/andorra"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ad&to=kz",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/andorra"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ad&to=ma",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/andorra"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ad&to=no",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/andorra"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ad&to=ro",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/andorra"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ad&to=rw",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/andorra"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ad&to=tw",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/andorra"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ad&to=tr",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/andorra"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ad&to=uz",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/andorra"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ad&to=va",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/andorra"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ad&to=bd",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/andorra"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ad&to=lb",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/andorra"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ad&to=la",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/andorra"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ad&to=mg",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/andorra"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ad&to=mh",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/andorra"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ad&to=om",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/andorra"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ad&to=qa",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/andorra"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ad&to=sn",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/andorra"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ad&to=sb",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/andorra"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ad&to=bf",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/andorra"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ad&to=bw",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/andorra"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ad&to=pg",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/andorra"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ad&to=ga",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/andorra"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ad&to=in",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/andorra"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ad&to=ls",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/andorra"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ad&to=tg",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/andorra"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ad&to=dz",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/andorra"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ad&to=vn",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/andorra"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ad&to=ug",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/andorra"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ad&to=td",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/andorra"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ad&to=er",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/andorra"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ad&to=gy",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/andorra"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ad&to=mm",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/andorra"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ad&to=na",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/andorra"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ad&to=nr",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/andorra"
+      },
+      {
+       "url": "https://visapoint.net/eu-blue-card-guide",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/europe-visa-on-arrival-2026-complete-9-country-guide"
+      },
+      {
+       "url": "https://visapoint.net/images/visa-requirements-for-indian-citizens.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/visa-requirements-for-indian-citizens-7-essential-steps"
+      },
+      {
+       "url": "https://visapoint.net/europe-cost-of-living-guide",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/e-visa-europe-india-5-top-options-for-2026"
+      },
+      {
+       "url": "https://visapoint.net/saudi-work-visa-application-guide",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/saudi-visa-status-check-2026-complete-guide"
+      },
+      {
+       "url": "https://visapoint.net/skilled-worker-europe/electrician-salary-guide",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/skilled-worker-europe-complete-2026-salary-savings-guide"
+      },
+      {
+       "url": "https://visapoint.net/croatia-work-permit-2024-qatar-to-croatia-guide-for-skilled-workers",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/croatia-work-permit-from-india-2026-7-essential-steps-salaries"
+      },
+      {
+       "url": "https://visapoint.net/skilled-worker-europe/truck-driver-salary-guide",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/skilled-worker-europe-complete-2026-salary-savings-guide"
+      },
+      {
+       "url": "https://visapoint.net/skilled-worker-europe/welder-salary-guide",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/skilled-worker-europe-complete-2026-salary-savings-guide"
+      },
+      {
+       "url": "https://visapoint.net/electrician-jobs-poland-2026-complete-pay-visa-guide",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/electrician-jobs-poland-2026-complete-pay-visa-guide"
+      },
+      {
+       "url": "https://visapoint.net/qatar-visa-status-check-online-2026-step-by-step",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/saudi-visa-status-2026-official-check-guide"
+      },
+      {
+       "url": "https://visapoint.net/images/truck-driver-salary-romania-net-pay-2026.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/truck-driver-salary-romania-2026-real-net-pay-savings"
+      },
+      {
+       "url": "https://visapoint.net/working-in-croatia-2026",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/cost-of-living-croatia-2026-realistic-savings-guide"
+      },
+      {
+       "url": "https://visapoint.net/blog/bulgaria-work-permit-2026",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/truck-driver-salary-bulgaria-2026-net-pay-savings-guide"
+      },
+      {
+       "url": "https://visapoint.net/blog/ce-licence-conversion-bulgaria",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/truck-driver-salary-bulgaria-2026-net-pay-savings-guide"
+      },
+      {
+       "url": "https://visapoint.net/blog/cost-of-living-bulgaria-2026",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/truck-driver-salary-bulgaria-2026-net-pay-savings-guide"
+      },
+      {
+       "url": "https://visapoint.net/blog/truck-driver-jobs-bulgaria-visa-sponsorship",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/truck-driver-salary-bulgaria-2026-net-pay-savings-guide"
+      },
+      {
+       "url": "https://visapoint.net/poland-work-permit-for-welders",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/welder-salaries-europe-2026-complete-net-pay-permit-guide"
+      },
+      {
+       "url": "https://visapoint.net/europe-work-permit-for-south-asians",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/welder-salaries-europe-2026-complete-net-pay-permit-guide"
+      },
+      {
+       "url": "https://visapoint.net/cost-of-living-portugal-2026",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/plumber-salary-portugal-2026-complete-pay-and-visa-guide"
+      },
+      {
+       "url": "https://visapoint.net/images/italy-work-permit-process.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/italy-work-permit-from-bangladesh-2026-cost-process"
+      },
+      {
+       "url": "https://visapoint.net/portugal-work-visa-guide",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/plumber-salary-portugal-2026-complete-pay-and-visa-guide"
+      },
+      {
+       "url": "https://visapoint.net/images/electrician-salary-romania-gross-net.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/electrician-salary-romania-2026-complete-savings-guide"
+      },
+      {
+       "url": "https://visapoint.net/italy-visa-interview-tips",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/italy-work-permit-from-bangladesh-2026-cost-process"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/welder-croatia-shipyard.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/welder-jobs-in-croatia-2026-pay-permits-savings"
+      },
+      {
+       "url": "https://visapoint.net/welder-certification-guide",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/welder-jobs-in-croatia-2026-pay-permits-savings"
+      },
+      {
+       "url": "https://visapoint.net/croatia-work-permit-guide",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/welder-jobs-in-croatia-2026-pay-permits-savings"
+      },
+      {
+       "url": "https://visapoint.net/plumber-jobs-europe-2026-complete-guide",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/skilled-trade-jobs-in-europe-for-foreigners-2025-guide"
+      },
+      {
+       "url": "https://visapoint.net/cost-of-living-poland",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/welder-salary-poland-2026-complete-net-pay-savings-work-visa"
+      },
+      {
+       "url": "https://visapoint.net/poland-work-permit",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/europe-work-visa-2026-complete-permit-guide-scam-alerts"
+      },
+      {
+       "url": "https://visapoint.net/country-work-permits",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/europe-work-visa-2026-complete-permit-guide-scam-alerts"
+      },
+      {
+       "url": "https://visapoint.net/bmet-smart-card-check/",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/titles"
+      },
+      {
+       "url": "https://visapoint.net/portugal-work-visa",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/europe-work-visa-2026-complete-permit-guide-scam-alerts"
+      },
+      {
+       "url": "https://visapoint.net/overseas-employment-guide-bangladesh/",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/titles"
+      },
+      {
+       "url": "https://visapoint.net/croatia-work-permit",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/europe-work-visa-2026-complete-permit-guide-scam-alerts"
+      },
+      {
+       "url": "https://visapoint.net/romania-work-permit",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/europe-work-visa-2026-complete-permit-guide-scam-alerts"
+      },
+      {
+       "url": "https://visapoint.net/worker-predeparture-checklist",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/europe-work-visa-2026-complete-permit-guide-scam-alerts"
+      },
+      {
+       "url": "https://visapoint.net/scam-check",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/europe-work-visa-2026-complete-permit-guide-scam-alerts"
+      },
+      {
+       "url": "https://visapoint.net/images/romania-work-permit-2026.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/romania-work-permit-2026-welders-construction-guide"
+      },
+      {
+       "url": "https://visapoint.net/blog/hungary-guest-worker-quota-2026",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/chef-salary-hungary-2026-net-pay-real-monthly-savings"
+      },
+      {
+       "url": "https://visapoint.net/blog/hungary-work-permit-for-chefs",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/chef-salary-hungary-2026-net-pay-real-monthly-savings"
+      },
+      {
+       "url": "https://visapoint.net/blog/hungary-minimum-wage-2026",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/chef-salary-hungary-2026-net-pay-real-monthly-savings"
+      },
+      {
+       "url": "https://visapoint.net/blog/cost-of-living-budapest-for-workers",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/chef-salary-hungary-2026-net-pay-real-monthly-savings"
+      },
+      {
+       "url": "https://visapoint.net/romania-work-visa-2026-bangladesh-guide-costs",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/romania-work-visa-saudi-arabia-to-romania-guide-2025"
+      },
+      {
+       "url": "https://visapoint.net/serbia-work-permit-2026-complete-guide-from-qatar",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/serbia-work-permit-from-uae-cost-process-timeline-2025"
+      },
+      {
+       "url": "https://visapoint.net/serbia-work-permit-2026-cost-documents-timeline-for-bangladeshi",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/serbia-work-permit-from-uae-cost-process-timeline-2025"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ps&to=do",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/palestine"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ps&to=es",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/palestine"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=kp&to=gy",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/north-korea"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=kp&to=gm",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/north-korea"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=kp&to=al",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/north-korea"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=kp&to=ls",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/north-korea"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=kp&to=id",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/north-korea"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=kp&to=pg",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/north-korea"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=kp&to=kn",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/north-korea"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=kp&to=ug",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/north-korea"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=kp&to=ae",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/north-korea"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=kp&to=bb",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/north-korea"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=kp&to=cn",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/north-korea"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=kp&to=er",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/north-korea"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=kp&to=ee",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/north-korea"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=kp&to=fr",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/north-korea"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=kp&to=it",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/north-korea"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=kp&to=ki",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/north-korea"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=kp&to=ml",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/north-korea"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=kp&to=tw",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/north-korea"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=sd&to=fm",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/sudan"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=sd&to=dj",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/sudan"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=sd&to=er",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/sudan"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=sd&to=gw",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/sudan"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=sd&to=ir",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/sudan"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=sd&to=mv",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/sudan"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=sd&to=ke",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/sudan"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=sd&to=au",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/sudan"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=sd&to=bh",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/sudan"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=sd&to=bs",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/sudan"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=sd&to=bf",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/sudan"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=sd&to=et",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/sudan"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=sd&to=vn",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/sudan"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=sd&to=bn",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/sudan"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=sd&to=ba",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/sudan"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=sd&to=hr",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/sudan"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=sd&to=gy",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/sudan"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=sd&to=jo",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/sudan"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=sd&to=lr",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/sudan"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=sd&to=li",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/sudan"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=sd&to=lu",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/sudan"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=sd&to=mt",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/sudan"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=sd&to=mu",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/sudan"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=sd&to=mk",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/sudan"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=sd&to=kp",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/sudan"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=sd&to=ro",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/sudan"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=sd&to=sn",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/sudan"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=sd&to=si",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/sudan"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=sd&to=tm",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/sudan"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=sd&to=ua",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/sudan"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=sd&to=gb",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/sudan"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=sd&to=uy",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/sudan"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=sd&to=ve",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/sudan"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=sd&to=ye",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/sudan"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ye&to=dm",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/yemen"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ye&to=my",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/yemen"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ye&to=fm",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/yemen"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ye&to=ht",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/yemen"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ye&to=ir",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/yemen"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ye&to=dj",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/yemen"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ye&to=la",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/yemen"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ye&to=mg",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/yemen"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ye&to=np",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/yemen"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ye&to=rw",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/yemen"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ye&to=lk",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/yemen"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ye&to=tl",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/yemen"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ye&to=tv",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/yemen"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ye&to=om",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/yemen"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ye&to=ss",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/yemen"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ye&to=af",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/yemen"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ye&to=ao",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/yemen"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ye&to=cy",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/yemen"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ye&to=gm",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/yemen"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ye&to=ie",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/yemen"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ye&to=lr",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/yemen"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ye&to=mx",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/yemen"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ye&to=mn",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/yemen"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ye&to=me",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/yemen"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ye&to=ma",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/yemen"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ye&to=mk",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/yemen"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ye&to=py",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/yemen"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ye&to=lc",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/yemen"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ye&to=sr",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/yemen"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ye&to=ch",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/yemen"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=ye&to=tt",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/yemen"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=so&to=bj",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/somalia"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=so&to=ke",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/somalia"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=so&to=rw",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/somalia"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=so&to=dj",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/somalia"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=so&to=ec",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/somalia"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=so&to=dz",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/somalia"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=so&to=by",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/somalia"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=so&to=do",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/somalia"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=so&to=er",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/somalia"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=so&to=ee",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/somalia"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=so&to=gr",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/somalia"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=so&to=gy",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/somalia"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=so&to=in",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/somalia"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=so&to=ie",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/somalia"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=so&to=ne",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/somalia"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=so&to=sk",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/somalia"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/visa-checker?from=so&to=th",
+       "status": 0,
+       "on": "https://visapoint.net/s/walvi/passport/somalia"
+      }
+     ]
+    },
+    "infkey": {
+     "lighthouse": [
+      {
+       "url": "https://infkey.com/",
+       "performance": 69,
+       "accessibility": 92,
+       "best-practices": 96,
+       "seo": 100,
+       "lcp_s": 6.35,
+       "cls": 0.117,
+       "tbt_ms": 75,
+       "seo_fails": []
+      },
+      {
+       "url": "https://infkey.com/best-ai-laptop-2026-lenovo-yoga-slim-7x-at-1149",
+       "performance": 76,
+       "accessibility": 91,
+       "best-practices": 96,
+       "seo": 100,
+       "lcp_s": 5.38,
+       "cls": 0.073,
+       "tbt_ms": 40,
+       "seo_fails": []
+      }
+     ],
+     "broken": [
+      {
+       "url": "https://infkey.com/ai-tools-for-students-2026",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/best-ai-tools-for-teachers-2026-7-essential-cost-saving-picks"
+      },
+      {
+       "url": "https://image\r\r\n<section class='faq'><h2 id=",
+       "status": 0,
+       "on": "https://infkey.com/s/infkey/function-calling-cost-complete-2026-guide-3x-reality"
+      },
+      {
+       "url": "https://infkey.com/tools/llm-api-cost-calculator",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/llm-api-pricing-2026-complete-guide"
+      },
+      {
+       "url": "https://infkey.com/templates/llm-cost-spreadsheet",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/llm-cost-calculator-2026-complete-guide"
+      },
+      {
+       "url": "https://infkey.com/ai-image-marketing",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/ai-side-hustle-7-proven-strategies-for-2026-success"
+      },
+      {
+       "url": "https://infkey.com/guides/edge-ai-with-deno",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/cloudflare-deno-acquisition-2026-complete-edge-ai-guide"
+      },
+      {
+       "url": "https://infkey.com/prompt-compression-tools-2026",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/rag-cost-per-query-2026-real-10k-doc-chatbot-costs"
+      },
+      {
+       "url": "https://infkey.com/ai-saas-pricing",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/ai-side-hustle-7-proven-strategies-for-2026-success"
+      },
+      {
+       "url": "https://infkey.com/blog/openai-api-cost-optimization",
+       "status": 404,
+       "on": "https://infkey.com/post-0cdddd2b8737"
+      },
+      {
+       "url": "https://infkey.com/blog/anthropic-claude-api-best-practices",
+       "status": 404,
+       "on": "https://infkey.com/post-0cdddd2b8737"
+      },
+      {
+       "url": "https://infkey.com/ai-api-cost-calculator",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/llm-api-cost-forecasting-5-steps-to-predict-your-2026-spend"
+      },
+      {
+       "url": "https://image\r\r\n<section class='faq'><h2 id=",
+       "status": 0,
+       "on": "https://infkey.com/function-calling-cost-complete-2026-guide-3x-reality"
+      },
+      {
+       "url": "https://infkey.com/ai-cost-calculator/",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/llm-cost-per-token-2026-complete-14-model-price-table"
+      },
+      {
+       "url": "https://infkey.com/batch-processing-llm-cost-savings",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/context-caching-2026-cut-llm-api-costs-90"
+      },
+      {
+       "url": "https://infkey.com/cost-calculator",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/cheapest-model-for-summarization-at-scale-2025"
+      },
+      {
+       "url": "https://infkey.com/blog/prompt-caching-strategies",
+       "status": 404,
+       "on": "https://infkey.com/rag-cost-breakdown-2026-real-budget-optimizations"
+      },
+      {
+       "url": "https://infkey.com/post-llm-cost-calculator-2026",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/ai-agent-token-burn-5-proven-ways-to-save-1000"
+      },
+      {
+       "url": "https://infkey.com/openai-api-pricing-2026",
+       "status": 404,
+       "on": "https://infkey.com/model-routing-cut-openai-api-costs-60-in-2026"
+      },
+      {
+       "url": "https://infkey.com/blog/embedding-models-compared",
+       "status": 404,
+       "on": "https://infkey.com/rag-cost-breakdown-2026-real-budget-optimizations"
+      },
+      {
+       "url": "https://infkey.com/blog/rag-pipeline-cost-optimization",
+       "status": 404,
+       "on": "https://infkey.com/rag-cost-breakdown-2026-real-budget-optimizations"
+      },
+      {
+       "url": "https://infkey.com/blog/vector-database-pricing",
+       "status": 404,
+       "on": "https://infkey.com/rag-cost-breakdown-2026-real-budget-optimizations"
+      },
+      {
+       "url": "https://infkey.com/llm-cost-calculator",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/ai-api-hidden-fees-11-silent-costs-breaking-your-2026-budget"
+      },
+      {
+       "url": "https://infkey.com/s/infkey/fine-tuning-vs-rag-cost-comparison-chart-2026.png",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/fine-tuning-vs-rag-cost-real-2026-pricing-per-1m-queries"
+      },
+      {
+       "url": "https://infkey.com/fine-tuning-vs-rag-cost-comparison-chart-2026.png",
+       "status": 404,
+       "on": "https://infkey.com/fine-tuning-vs-rag-cost-real-2026-pricing-per-1m-queries"
+      },
+      {
+       "url": "https://infkey.com/llm-api-pricing-tokens-costs-estimation-guide-2026",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/cheapest-llm-api-for-high-volume-apps-2025-pricing"
+      }
+     ]
+    },
+    "gccguide": {
+     "lighthouse": [
+      {
+       "url": "https://gccguide.com/",
+       "performance": 81,
+       "accessibility": 97,
+       "best-practices": 75,
+       "seo": 100,
+       "lcp_s": 3.84,
+       "cls": 0.121,
+       "tbt_ms": 29,
+       "seo_fails": []
+      },
+      {
+       "url": "https://gccguide.com/dubai-teacher-salary-2026-aed-12800-base-benefits",
+       "performance": 81,
+       "accessibility": 97,
+       "best-practices": 75,
+       "seo": 100,
+       "lcp_s": 4.44,
+       "cls": 0.025,
+       "tbt_ms": 20,
+       "seo_fails": []
+      }
+     ],
+     "broken": [
+      {
+       "url": "https://gccguide.com/dubai-rent-2026",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/dubai-salary-2026-aed-180k-average-usd-49k-cost-of-living-guide"
+      },
+      {
+       "url": "https://gccguide.com/dubai-cost-of-living",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/dubai-salary-2026-aed-180k-average-usd-49k-cost-of-living-guide"
+      },
+      {
+       "url": "https://gccguide.com/uae-gratuity-guide",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/dubai-salary-2026-aed-180k-average-usd-49k-cost-of-living-guide"
+      },
+      {
+       "url": "https://www.gccguide.com/saudi-cost-of-living",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/saudi-weekend-activities-12-free-cheap-ideas-2026"
+      },
+      {
+       "url": "https://gccguide.com/expat-life/gcc-salary-benchmarks",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/gcc-2026-guide-complete-cheat-sheet-for-expats"
+      },
+      {
+       "url": "https://www.gccguide.com/templates/bahrain-school-fees.xlsx",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/bahrain-cost-of-living-2026-guide-full-calculator-salary-index"
+      },
+      {
+       "url": "https://www.gccguide.com/templates/bahrain-single-expat.xlsx",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/bahrain-cost-of-living-2026-guide-full-calculator-salary-index"
+      },
+      {
+       "url": "https://www.gccguide.com/templates/bahrain-cost-of-living.xlsx",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/bahrain-cost-of-living-2026-guide-full-calculator-salary-index"
+      },
+      {
+       "url": "https://gccguide.com/uae-residency-visa-guide-2026",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/uae-free-activities-2026-7-must-do-cheap-weekend-fun"
+      },
+      {
+       "url": "https://www.gccguide.com/downloads/oman-cost-of-living-2026.xlsx",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/oman-cost-of-living-2026-guide-for-singles-families"
+      },
+      {
+       "url": "https://gccguide.com/uae-cost-of-living-2026-expat-guide",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/bahrain-cost-of-living-2026-guide-full-calculator-salary-index"
+      },
+      {
+       "url": "https://gccguide.com/dubai-metro-guide-2026",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/uae-free-activities-2026-7-must-do-cheap-weekend-fun"
+      },
+      {
+       "url": "https://gccguide.com/bahrain-cost-of-living-2026",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/bahrain-work-visa-2026-complete-guide-essential"
+      },
+      {
+       "url": "https://gccguide.com/doha-brunch-2026-10-hidden-gem-cafes-locals-love-with-prices",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/doha-brunch-deals-2025-10-all-you-can-eat-brunches-expats-love"
+      },
+      {
+       "url": "https://gccguide.com/kuwait-day-trips-free",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/kuwait-free-things-10-top-cheap-weekend-spots-2026"
+      },
+      {
+       "url": "https://gccguide.com/kuwait-budget-hotels-weekend",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/kuwait-free-things-10-top-cheap-weekend-spots-2026"
+      },
+      {
+       "url": "https://gccguide.com/uae-residency-renewal-guide",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/uae-visa-status-check-2026-5-step-complete-guide"
+      },
+      {
+       "url": "https://gccguide.com/emirates-id-update-process",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/uae-visa-status-check-2026-5-step-complete-guide"
+      }
+     ]
+    },
+    "ninetymins": {
+     "lighthouse": [
+      {
+       "url": "https://ninetymins.com/",
+       "performance": 90,
+       "accessibility": 95,
+       "best-practices": 75,
+       "seo": 100,
+       "lcp_s": 3.19,
+       "cls": 0.046,
+       "tbt_ms": 61,
+       "seo_fails": []
+      },
+      {
+       "url": "https://ninetymins.com/champions-league-quiz-10-facts-every-2026-fan-needs",
+       "performance": 85,
+       "accessibility": 97,
+       "best-practices": 75,
+       "seo": 100,
+       "lcp_s": 3.63,
+       "cls": 0.083,
+       "tbt_ms": 40,
+       "seo_fails": []
+      }
+     ],
+     "broken": [
+      {
+       "url": "https://ninetymins.com/s/ninetymins/football-streaming.jpg",
+       "status": 404,
+       "on": "https://ninetymins.com/s/ninetymins/champions-league-quarterfinal-streaming-2026-complete-guide"
+      },
+      {
+       "url": "https://ninetymins.com/date-guide-2026-how-to-date-successfully",
+       "status": 404,
+       "on": "https://ninetymins.com/s/ninetymins/champions-league-quarterfinal-streaming-2026-complete-guide"
+      },
+      {
+       "url": "https://ninetymins.com/sky-sports-f1-uk",
+       "status": 404,
+       "on": "https://ninetymins.com/s/ninetymins/f1-live-guide-2026-complete-watch-schedule-streaming-start-times"
+      },
+      {
+       "url": "https://ninetymins.com/f1-india-streaming",
+       "status": 404,
+       "on": "https://ninetymins.com/s/ninetymins/f1-live-guide-2026-complete-watch-schedule-streaming-start-times"
+      },
+      {
+       "url": "https://ninetymins.com/f1-us-streaming",
+       "status": 404,
+       "on": "https://ninetymins.com/s/ninetymins/f1-live-guide-2026-complete-watch-schedule-streaming-start-times"
+      },
+      {
+       "url": "https://ninetymins.com/f1-uk-broadcast",
+       "status": 404,
+       "on": "https://ninetymins.com/s/ninetymins/f1-live-guide-2026-complete-watch-schedule-streaming-start-times"
+      },
+      {
+       "url": "https://ninetymins.com/2026-world-cup-final-3-best-ways-to-watch-live",
+       "status": 404,
+       "on": "https://ninetymins.com/s/ninetymins/cricket-live-guide-2026-ultimate-streaming-guide"
+      },
+      {
+       "url": "https://ninetymins.com/saff-history",
+       "status": 404,
+       "on": "https://ninetymins.com/s/ninetymins/saff-championship-schedule-2026-essential-complete-guide"
+      },
+      {
+       "url": "https://ninetymins.com/images/premier-league-live-stream-2026-27.jpg",
+       "status": 404,
+       "on": "https://ninetymins.com/s/ninetymins/premier-league-2026-27-live-stream-complete-tv-guide"
+      },
+      {
+       "url": "https://ninetymins.com/nba-streaming-guide",
+       "status": 404,
+       "on": "https://ninetymins.com/s/ninetymins/nba-finals-2026-free-live-stream-tv-channel-tip-off-time"
+      },
+      {
+       "url": "https://ninetymins.com/cricket-broadcast-rights-2026",
+       "status": 404,
+       "on": "https://ninetymins.com/s/ninetymins/cricket-live-today-2026-essential-guide-streaming-options"
+      },
+      {
+       "url": "https://ninetymins.com/espn-plus-vs-youtube-tv/",
+       "status": 404,
+       "on": "https://ninetymins.com/s/ninetymins/watch-sports-in-us-2026-complete-streaming-guide"
+      },
+      {
+       "url": "https://ninetymins.com/cricket-streaming-device-guide",
+       "status": 404,
+       "on": "https://ninetymins.com/s/ninetymins/cricket-live-today-2026-essential-guide-streaming-options"
+      },
+      {
+       "url": "https://ninetymins.com/premier-league-streaming-guide",
+       "status": 404,
+       "on": "https://ninetymins.com/s/ninetymins/sports-streaming-guide-2026-10-best-ways-to-watch-live"
+      },
+      {
+       "url": "https://ninetymins.com/mls-season-pass/",
+       "status": 404,
+       "on": "https://ninetymins.com/s/ninetymins/watch-sports-in-us-2026-complete-streaming-guide"
+      },
+      {
+       "url": "https://ninetymins.com/premier-league-peacock/",
+       "status": 404,
+       "on": "https://ninetymins.com/s/ninetymins/watch-sports-in-us-2026-complete-streaming-guide"
+      },
+      {
+       "url": "https://ninetymins.com/nfl-sunday-ticket/",
+       "status": 404,
+       "on": "https://ninetymins.com/s/ninetymins/watch-sports-in-us-2026-complete-streaming-guide"
+      },
+      {
+       "url": "https://ninetymins.com/how-to-watch-premier-league-us/",
+       "status": 404,
+       "on": "https://ninetymins.com/s/ninetymins/watch-sports-in-us-2026-complete-streaming-guide"
+      },
+      {
+       "url": "https://ninetymins.com/images/premier-league-live-uk.jpg",
+       "status": 404,
+       "on": "https://ninetymins.com/s/ninetymins/watch-premier-league-live-2026-27-ultimate-guide"
+      },
+      {
+       "url": "https://ninetymins.com/champions-league-streaming",
+       "status": 404,
+       "on": "https://ninetymins.com/s/ninetymins/live-football-today-2026-essential-schedule-guide"
+      },
+      {
+       "url": "https://ninetymins.com/premier-league-guide",
+       "status": 404,
+       "on": "https://ninetymins.com/s/ninetymins/live-football-today-2026-essential-schedule-guide"
+      },
+      {
+       "url": "https://ninetymins.com/rugby-world-cup-2027",
+       "status": 404,
+       "on": "https://ninetymins.com/s/ninetymins/six-nations-2027-complete-fixtures-times-how-to-watch"
+      },
+      {
+       "url": "https://ninetymins.com/how-to-watch-f1/",
+       "status": 404,
+       "on": "https://ninetymins.com/s/ninetymins/sports-streaming-by-country-complete-2026-guide"
+      },
+      {
+       "url": "https://ninetymins.com/how-to-watch-nba/",
+       "status": 404,
+       "on": "https://ninetymins.com/s/ninetymins/sports-streaming-by-country-complete-2026-guide"
+      },
+      {
+       "url": "https://ninetymins.com/how-to-watch-premier-league/",
+       "status": 404,
+       "on": "https://ninetymins.com/s/ninetymins/sports-streaming-by-country-complete-2026-guide"
+      },
+      {
+       "url": "https://ninetymins.com/football-streaming.jpg",
+       "status": 404,
+       "on": "https://ninetymins.com/champions-league-quarterfinal-streaming-2026-complete-guide"
+      },
+      {
+       "url": "https://ninetymins.com/images/ashes-2026-27-schedule.jpg",
+       "status": 404,
+       "on": "https://ninetymins.com/s/ninetymins/ashes-2026-27-full-schedule-start-times-how-to-watch"
+      },
+      {
+       "url": "https://ninetymins.com/s/ninetymins/how-to-watch-champions-league-final.jpg",
+       "status": 404,
+       "on": "https://ninetymins.com/s/ninetymins/2026-champions-league-final-how-to-watch-date-time"
+      },
+      {
+       "url": "https://ninetymins.com/how-to-watch-champions-league-final.jpg",
+       "status": 404,
+       "on": "https://ninetymins.com/2026-champions-league-final-how-to-watch-date-time"
+      },
+      {
+       "url": "https://ninetymins.com/masters-2026-tee-times-schedule.jpg",
+       "status": 404,
+       "on": "https://ninetymins.com/masters-2026-tee-times-tv-schedule-how-to-watch"
+      },
+      {
+       "url": "https://ninetymins.com/cricket-world-cup-2026-live-tv-schedule-in-pnp.jpg",
+       "status": 404,
+       "on": "https://ninetymins.com/cricket-world-cup-2026-live-full-tv-schedule-streaming"
+      },
+      {
+       "url": "https://ninetymins.com/s/ninetymins/masters-2026-tee-times-schedule.jpg",
+       "status": 404,
+       "on": "https://ninetymins.com/s/ninetymins/masters-2026-tee-times-tv-schedule-how-to-watch"
+      }
+     ]
+    },
+    "probashiinfo": {
+     "lighthouse": [
+      {
+       "url": "https://probashiinfo.com/",
+       "performance": 41,
+       "accessibility": 95,
+       "best-practices": 75,
+       "seo": 100,
+       "lcp_s": 10.22,
+       "cls": 0.031,
+       "tbt_ms": 1189,
+       "seo_fails": []
+      },
+      {
+       "url": "https://probashiinfo.com/bmet-report-2026-10-13/",
+       "performance": 59,
+       "accessibility": 97,
+       "best-practices": 75,
+       "seo": 100,
+       "lcp_s": 11.28,
+       "cls": 0.123,
+       "tbt_ms": 262,
+       "seo_fails": []
+      }
+     ],
+     "broken": [
+      {
+       "url": "https://probashiinfo.com/bangladeshi-worker-rights-saudi",
+       "status": 404,
+       "on": "https://probashiinfo.com/saudi-visa-2026-guide/"
+      },
+      {
+       "url": "https://probashiinfo.com/bmet-registration-process/",
+       "status": 404,
+       "on": "https://probashiinfo.com/maldives-work-permit-cost-2026/"
+      },
+      {
+       "url": "https://probashiinfo.com/lebanon-salary-requirements",
+       "status": 404,
+       "on": "https://probashiinfo.com/lebanon-work-permit-2026/"
+      },
+      {
+       "url": "https://probashiinfo.com/lebanon-visa-fees-2026",
+       "status": 404,
+       "on": "https://probashiinfo.com/lebanon-work-permit-2026/"
+      },
+      {
+       "url": "https://commons.wiki<!-- Ezoic - wp_incontent_10 - incontent_10 --><div id=",
+       "status": 0,
+       "on": "https://probashiinfo.com/kuyet-oyaark-bhisaa-2026-betn-khrc-o-aabedner-haalnaagaad-niym/"
+      },
+      {
+       "url": "https://probashiinfo.com/schengen-visa-process/",
+       "status": 404,
+       "on": "https://probashiinfo.com/portugal-work-visa-2026/"
+      },
+      {
+       "url": "https://probashiinfo.com/probashi-health-tips-kuwait",
+       "status": 404,
+       "on": "https://probashiinfo.com/kuyet-bhisaa-cek-2026-paaspeaartt-naambaare-shj-yaacaai-niym/"
+      },
+      {
+       "url": "https://probashiinfo.com/probashi-passport-expiry-checklist",
+       "status": 404,
+       "on": "https://probashiinfo.com/paaspeaartt-nbaayn-2026-shj-anlaain-prkriyaa-o-khrc/"
+      },
+      {
+       "url": "https://probashiinfo.com/bangladesh-passport-renewal-2026",
+       "status": 404,
+       "on": "https://probashiinfo.com/kuyet-bhisaa-cek-2026-paaspeaartt-naambaare-shj-yaacaai-niym/"
+      },
+      {
+       "url": "https://probashiinfo.com/malaysia-work-permit-process/",
+       "status": 404,
+       "on": "https://probashiinfo.com/maalyeshiyaa-bhisaa-cek-2026-paaspeaartt-naambaar-diye-shj-upaay/"
+      },
+      {
+       "url": "https://probashiinfo.com/malaysia-work-permit-fee-2026/",
+       "status": 404,
+       "on": "https://probashiinfo.com/maalyeshiyaa-bhisaa-cek-2026-paaspeaartt-naambaar-diye-shj-upaay/"
+      },
+      {
+       "url": "https://probashiinfo.com/probashi-kallyan-desk",
+       "status": 404,
+       "on": "https://probashiinfo.com/remittyaans-paatthaaneaar-upaay-2026-seraa-5-cyaanel-o-khrc/"
+      },
+      {
+       "url": "https://probashiinfo.com/blog/bkash-remittance-guide",
+       "status": 404,
+       "on": "https://probashiinfo.com/remittyaans-paatthaaneaar-upaay-2026-5-shj-o-sstaa-maadhym/"
+      },
+      {
+       "url": "https://probashiinfo.com/bkash-remittance-guide-2026",
+       "status": 404,
+       "on": "https://probashiinfo.com/remittyaans-paatthaaneaar-seraa-7-upaay-2026-khrc-o-smyer-tulnaa/"
+      },
+      {
+       "url": "https://probashiinfo.com/dubai-visa-requirements",
+       "status": 404,
+       "on": "https://probashiinfo.com/dubaai-bhisaa-cek-2026-paaspeaartt-nmbr-diye-shj-niym/"
+      },
+      {
+       "url": "https://probashiinfo.com/blog/passport-visa-guide",
+       "status": 404,
+       "on": "https://probashiinfo.com/bmet-prshikssnn-2026-phri-keaars-bhaataa-o-skill-pass/"
+      },
+      {
+       "url": "https://probashiinfo.com/%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%AE%E0%A6%87%E0%A6%9F%E0%A6%BF-%E0%A6%85%E0%A6%A8%E0%A7%81%E0%A6%AE%E0%A7%8B%E0%A6%A6%E0%A6%BF%E0%A6%A4-%E0%A6%8F%E0%A6%9C%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%9F-%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A6%BE",
+       "status": 404,
+       "on": "https://probashiinfo.com/maalyeshiyaa-oyaark-bhisaa-2026-khrc-betn-o-aabedn/"
+      },
+      {
+       "url": "https://probashiinfo.com/%E0%A6%AE%E0%A6%BE%E0%A6%B2%E0%A6%AF%E0%A6%BC%E0%A7%87%E0%A6%B6%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE-%E0%A6%AD%E0%A6%BF%E0%A6%B8%E0%A6%BE-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%87%E0%A6%B8%E0%A6%BF%E0%A6%82-%E0%A6%9F%E0%A6%BE%E0%A6%87%E0%A6%AE",
+       "status": 404,
+       "on": "https://probashiinfo.com/maalyeshiyaa-oyaark-bhisaa-2026-khrc-betn-o-aabedn/"
+      },
+      {
+       "url": "https://probashiinfo.com/%E0%A6%AE%E0%A6%BE%E0%A6%B2%E0%A6%AF%E0%A6%BC%E0%A7%87%E0%A6%B6%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE-%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%95-%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%9F-%E0%A6%B0%E0%A6%BF%E0%A6%A8%E0%A6%BF%E0%A6%89",
+       "status": 404,
+       "on": "https://probashiinfo.com/maalyeshiyaa-oyaark-bhisaa-2026-khrc-betn-o-aabedn/"
+      },
+      {
+       "url": "https://probashiinfo.com/remittance-singapore",
+       "status": 404,
+       "on": "https://probashiinfo.com/singgaapure-baanlaadeshi-shrmiker-betn-2026-snycy-hisaab/"
+      },
+      {
+       "url": "https://probashiinfo.com/work-visa-singapore",
+       "status": 404,
+       "on": "https://probashiinfo.com/singgaapure-baanlaadeshi-shrmiker-betn-2026-snycy-hisaab/"
+      },
+      {
+       "url": "https://probashiinfo.com/employment-pass-checklist",
+       "status": 404,
+       "on": "https://probashiinfo.com/singgaapur-oyaark-bhisaa-2026-ntun-niym-betn-o-aabedn/"
+      },
+      {
+       "url": "https://probashiinfo.com/probashi-kallyan-bank-loan",
+       "status": 404,
+       "on": "https://probashiinfo.com/prbaasii-sntaaner-bideshe-pddaasheaanaa-2026-shj-khrc-priklpnaa-o-nira/"
+      },
+      {
+       "url": "https://probashiinfo.com/wage-earners-welfare-board",
+       "status": 404,
+       "on": "https://probashiinfo.com/prbaasii-sntaaner-bideshe-pddaasheaanaa-2026-shj-khrc-priklpnaa-o-nira/"
+      },
+      {
+       "url": "https://probashiinfo.com/%e0%a6%87%e0%a6%89%e0%a6%b0%e0%a7%8b%e0%a6%aa%e0%a7%87%e0%a6%b0-%e0%a6%95%e0%a7%8b%e0%a6%a8-%e0%a6%a6%e0%a7%87%e0%a6%b6%e0%a7%87-%e0%a6%b8%e0%a7%8d%e0%a6%9f%e0%a7%81%e0%a6%a1%e0%a7%87%e0%a6%a8%e0%a7%8d%e0%a6%9f-%e0%a6%ad%e0%a6%bf%e0%a6%b8%e0%a6%be-%e0%a6%aa%e0%a6%be%e0%a6%93%e0%a6%af%e0%a6%bc%e0%a6%be-%e0%a6%b8%e0%a6%b9%e0%a6%9c-%e0%a7%a8%e0%a7%a6%e0%a7%a8%e0%a7%ab/",
+       "status": 404,
+       "on": "https://probashiinfo.com/uk-student-visa-2025-application-cost-work-permit/"
+      },
+      {
+       "url": "https://probashiinfo.com/%E0%A6%95%E0%A7%81%E0%A7%9F%E0%A7%87%E0%A6%A4-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE-%E0%A6%86%E0%A6%87%E0%A6%A8/",
+       "status": 404,
+       "on": "https://probashiinfo.com/kuyete-prbaasii-betn-2026-snycy-o-khrcer-smpuurnn-haalnaagaad-taalikaa/"
+      },
+      {
+       "url": "https://probashiinfo.com/blog/bangladesh-bank-remittance-incentive-2026",
+       "status": 404,
+       "on": "https://probashiinfo.com/prbaase-betn-paatthaaneaar-upaay-2026-seraa-7tti-pddhti/"
+      },
+      {
+       "url": "https://probashiinfo.com/blog/canada-work-visa-guide",
+       "status": 404,
+       "on": "https://probashiinfo.com/jaapaan-oyaark-bhisaa-2026-ntun-niym-betn-o-aabedn-gaaidd/"
+      },
+      {
+       "url": "https://probashiinfo.com/bideshe-caakri-2026-smpuurnn-gaaidd-o-haalnaagaad-tthy/images/saudi-construction-workers-2026.jpg",
+       "status": 404,
+       "on": "https://probashiinfo.com/bideshe-caakri-2026-smpuurnn-gaaidd-o-haalnaagaad-tthy/"
+      },
+      {
+       "url": "https://probashiinfo.com/bideshe-caakri-2026-smpuurnn-gaaidd-o-haalnaagaad-tthy/images/dhaka-airport-departure-2026.jpg",
+       "status": 404,
+       "on": "https://probashiinfo.com/bideshe-caakri-2026-smpuurnn-gaaidd-o-haalnaagaad-tthy/"
+      },
+      {
+       "url": "https://probashiinfo.com/bideshe-caakri-2026-smpuurnn-gaaidd-o-haalnaagaad-tthy/images/malaysia-plantation-worker-2026.jpg",
+       "status": 404,
+       "on": "https://probashiinfo.com/bideshe-caakri-2026-smpuurnn-gaaidd-o-haalnaagaad-tthy/"
+      },
+      {
+       "url": "https://probashiinfo.com/bmet-registration-guide",
+       "status": 404,
+       "on": "https://probashiinfo.com/bideshe-caakri-2026-smpuurnn-gaaidd-o-haalnaagaad-tthy/"
+      },
+      {
+       "url": "https://probashiinfo.com/bideshe-caakri-2026-smpuurnn-gaaidd-o-haalnaagaad-tthy/images/bmet-training-center-2026.jpg",
+       "status": 404,
+       "on": "https://probashiinfo.com/bideshe-caakri-2026-smpuurnn-gaaidd-o-haalnaagaad-tthy/"
+      },
+      {
+       "url": "https://probashiinfo.com/blog/greece-digital-nomad-visa/",
+       "status": 404,
+       "on": "https://probashiinfo.com/gris-oyaark-bhisaa-2026-khrc-betn-o-shj-gaaidd/"
+      },
+      {
+       "url": "https://probashiinfo.com/blog/bmet-approved-recruiting-agency/",
+       "status": 404,
+       "on": "https://probashiinfo.com/gris-oyaark-bhisaa-2026-khrc-betn-o-shj-gaaidd/"
+      },
+      {
+       "url": "https://probashiinfo.com/skill-training-for-oman",
+       "status": 404,
+       "on": "https://probashiinfo.com/omaan-oyaark-bhisaa-2026-niym-betn-o-khrcer-gaaidd/"
+      },
+      {
+       "url": "https://probashiinfo.com/images/bmet-smart-card-2026-front-back.jpg",
+       "status": 404,
+       "on": "https://probashiinfo.com/biemitti-smaartt-kaardd-2026-niym-phi-o-aabedn-pddhti/"
+      },
+      {
+       "url": "https://probashiinfo.com/%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A6%BF-%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%95-%E0%A6%AD%E0%A6%BF%E0%A6%B8%E0%A6%BE/",
+       "status": 404,
+       "on": "https://probashiinfo.com/reaamaaniyaa-oyaark-bhisaa-2026-betn-khrc-o-shj-gaaidd/"
+      },
+      {
+       "url": "https://probashiinfo.com/bmet-smart-card-renewal-guide",
+       "status": 404,
+       "on": "https://probashiinfo.com/aami-prbaasii-ayaap-2026-smaartt-kaardd-prshikssnn-o-sebaar-smpuurnn-g/"
+      },
+      {
+       "url": "https://probashiinfo.com/blog/probashi-income-tax-2026",
+       "status": 404,
+       "on": "https://probashiinfo.com/se-di-theke-ttaakaa-paatthaaneaar-niym-2026-remittyaans-khrc-kmaaneaar/"
+      },
+      {
+       "url": "https://probashiinfo.com/overseas-jobs-bangladesh",
+       "status": 404,
+       "on": "https://probashiinfo.com/biemitti-rejisttreshn-2026-ntun-niym-o-smpuurnn-prkriyaa/"
+      },
+      {
+       "url": "https://probashiinfo.com/%E0%A6%87%E0%A6%89%E0%A6%B0%E0%A7%8B%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A7%87%E0%A6%A8%E0%A6%9C%E0%A7%87%E0%A6%A8-%E0%A6%AD%E0%A7%81%E0%A6%95%E0%A7%8D%E0%A6%A4-%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A6%BE-%E0%A7%A8%E0%A7%A6%E0%A7%A8%E0%A7%AC",
+       "status": 404,
+       "on": "https://probashiinfo.com/bangladesh-to-europe-work-visa-easy-countries-2025/"
+      },
+      {
+       "url": "https://probashiinfo.com/blog/german-language-guide",
+       "status": 404,
+       "on": "https://probashiinfo.com/jaarmaani-oyaark-bhisaa-2026-betn-khrc-o-aabedn-gaaidd/"
+      },
+      {
+       "url": "https://probashiinfo.com/probashi-kalyan-bank-loan",
+       "status": 404,
+       "on": "https://probashiinfo.com/oyaark-bhisaa-2026-saaler-smpuurnn-gaaidd-o-khrc/"
+      },
+      {
+       "url": "https://probashiinfo.com/blog/bmet-clearance",
+       "status": 404,
+       "on": "https://probashiinfo.com/jaarmaani-oyaark-bhisaa-2026-betn-khrc-o-aabedn-gaaidd/"
+      },
+      {
+       "url": "https://probashiinfo.com/blog/canada-work-visa",
+       "status": 404,
+       "on": "https://probashiinfo.com/jaarmaani-oyaark-bhisaa-2026-betn-khrc-o-aabedn-gaaidd/"
+      },
+      {
+       "url": "https://probashiinfo.com/blog/germany-work-visa-documents",
+       "status": 404,
+       "on": "https://probashiinfo.com/jaarmaani-oyaark-bhisaa-2026-betn-khrc-o-aabedn-gaaidd/"
+      },
+      {
+       "url": "https://probashiinfo.com/bangladesh-overseas-jobs-guide",
+       "status": 404,
+       "on": "https://probashiinfo.com/dkssinn-keaariyaa-oyaark-bhisaa-2026-smpuurnn-eps-lttaari-betn-o-aabed/"
+      },
+      {
+       "url": "https://probashiinfo.com/%e0%a6%87%e0%a6%89%e0%a6%b0%e0%a7%8b%e0%a6%aa%e0%a7%87%e0%a6%b0-%e0%a6%95%e0%a7%8b%e0%a6%a8-%e0%a6%a6%e0%a7%87%e0%a6%b6%e0%a7%87-%e0%a6%b8%e0%a7%8d%e0%a6%9f%e0%a7%81%e0%a6%a1%e0%a7%87%e0%a6%a8%e0%a6%a4-%e0%a6%ad%e0%a6%bf%e0%a6%b8%e0%a6%be-%e0%a6%aa%e0%a6%be%e0%a6%93%e0%a7%9f%e0%a6%be-%e0%a6%b8%e0%a6%b9%e0%a6%9c/",
+       "status": 404,
+       "on": "https://probashiinfo.com/europe-student-visa-bank-balance-2025/"
+      }
+     ]
+    },
+    "cob": {
+     "lighthouse": [
+      {
+       "url": "https://coloursofbangladesh.com/",
+       "performance": 62,
+       "accessibility": 86,
+       "best-practices": 93,
+       "seo": 100,
+       "lcp_s": 9.99,
+       "cls": 0.119,
+       "tbt_ms": 0,
+       "seo_fails": []
+      },
+      {
+       "url": "https://coloursofbangladesh.com/news/pirganj-building-collapse-deaths-el9j",
+       "performance": 65,
+       "accessibility": 83,
+       "best-practices": 93,
+       "seo": 100,
+       "lcp_s": 8.79,
+       "cls": 0.151,
+       "tbt_ms": 0,
+       "seo_fails": []
+      }
+     ],
+     "broken": [
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B6%E0%A6%BE%E0%A6%AE%E0%A6%BE%20%E0%A6%93%E0%A6%AC%E0%A6%BE%E0%A6%AF%E0%A6%BC%E0%A7%87%E0%A6%A6%20%E0%A6%87%E0%A6%B8%E0%A6%B2%E0%A6%BE%E0%A6%AE",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B0%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%A6%20%E0%A6%AC%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%B0",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%9C%E0%A6%BE%E0%A6%A4%E0%A7%80%E0%A6%AF%E0%A6%BC%20%E0%A6%A8%E0%A6%BE%E0%A6%97%E0%A6%B0%E0%A6%BF%E0%A6%95%20%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%9F%E0%A6%BF",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/madaripur-cocktail-blast-judge-residence-dh3w"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A7%E0%A6%BE%E0%A6%A8%20%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%9A%E0%A6%A8%20%E0%A6%95%E0%A6%AE%E0%A6%BF%E0%A6%B6%E0%A6%A8%E0%A6%BE%E0%A6%B0",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/cockroach-janta-party-arrested-jantar-mantar-cjtk"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%95%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%AE%E0%A6%B8%20%E0%A6%97%E0%A7%8B%E0%A6%AF%E0%A6%BC%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%BE",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/gold-iphone-seized-dhaka-chittagong-airports-ayhr"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B6%E0%A6%BE%E0%A6%B9%E0%A6%9C%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%B2%20%E0%A6%AC%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%B0",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/gold-iphone-seized-dhaka-chittagong-airports-ayhr"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B6%E0%A6%BE%E0%A6%B9%20%E0%A6%86%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A6%A4%20%E0%A6%AC%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%B0",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/gold-iphone-seized-dhaka-chittagong-airports-ayhr"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B6%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A5%E0%A7%80%20%E0%A6%86%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8B%E0%A6%B2%E0%A6%A8",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/cuet-vc-chest-pain-doctors-differ-9pl4"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%20%E0%A6%89%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%B0%20%E0%A6%B8%E0%A6%BF%E0%A6%9F%E0%A6%BF%20%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AA%E0%A7%8B%E0%A6%B0%E0%A7%87%E0%A6%B6%E0%A6%A8",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/dncc-administrator-family-card-0u08"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B8%E0%A6%BE%E0%A6%A8%E0%A6%9C%E0%A6%BF%E0%A6%A6%E0%A6%BE%20%E0%A6%AE%E0%A6%BE%E0%A6%B9%E0%A6%AE%E0%A7%81%E0%A6%A6%20%E0%A6%A8%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%BF%E0%A6%A4%E0%A6%BE",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/nandita-shuvendu-sydney-concert-o7fq"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%A8%20%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%89%E0%A6%A8%20%E0%A6%A5%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A7%87%E0%A6%9F%E0%A6%BE%E0%A6%B0",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/nandita-shuvendu-sydney-concert-o7fq"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%AF%E0%A6%BC%20%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%9A%E0%A6%A8",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/ncp-to-contest-local-elections-alone"
+      }
+     ]
+    }
+   }
+  }
+ ]
+}
