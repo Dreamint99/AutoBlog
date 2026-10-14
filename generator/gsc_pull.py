@@ -37,11 +37,11 @@ END = date.today() - timedelta(days=2)  # GSC data lags ~2 days
 START = END - timedelta(days=90)
 
 
-def query(sess, prop, dims, limit=25000):
+def query(sess, prop, dims, limit=25000, start_date=None, end_date=None):
     url = f"https://searchconsole.googleapis.com/webmasters/v3/sites/{urllib.parse.quote(prop, safe='')}/searchAnalytics/query"
     rows, start = [], 0
     while True:
-        r = sess.post(url, json={"startDate": START.isoformat(), "endDate": END.isoformat(), "dimensions": dims,
+        r = sess.post(url, json={"startDate": (start_date or START).isoformat(), "endDate": (end_date or END).isoformat(), "dimensions": dims,
                                  "rowLimit": min(limit, 25000), "startRow": start})
         r.raise_for_status()
         batch = r.json().get("rows", [])
@@ -51,10 +51,65 @@ def query(sess, prop, dims, limit=25000):
         start += 25000
 
 
+def seo_summary(sess, prop: str) -> dict:
+    """This week vs last week from Search Console (real data only): totals, daily series, growing pages,
+    top queries with their average position, and rising (trending) queries. Shown on the Pulse dashboard."""
+    cur0, cur1 = END - timedelta(days=6), END
+    pre0, pre1 = END - timedelta(days=13), END - timedelta(days=7)
+    daily = query(sess, prop, ["date"], start_date=END - timedelta(days=27), end_date=END)
+    series = [{"t": r["keys"][0], "clicks": r["clicks"], "impr": r["impressions"], "pos": round(r["position"], 1)} for r in daily]
+
+    def tot(a, b):
+        rs = [x for x in series if a.isoformat() <= x["t"] <= b.isoformat()]
+        imp = sum(x["impr"] for x in rs)
+        return {"clicks": sum(x["clicks"] for x in rs), "impr": imp,
+                "pos": round(sum(x["pos"] * x["impr"] for x in rs) / imp, 1) if imp else None}
+
+    def by(dim, a, b):
+        return {r["keys"][0]: r for r in query(sess, prop, [dim], 5000, a, b)}
+
+    pc, pp = by("page", cur0, cur1), by("page", pre0, pre1)
+    qc, qp = by("query", cur0, cur1), by("query", pre0, pre1)
+
+    def row(k, c, p):
+        return {"key": urllib.parse.unquote(k), "clicks": c.get("clicks", 0), "clicksPrev": p.get("clicks", 0),
+                "impr": c.get("impressions", 0), "imprPrev": p.get("impressions", 0),
+                "pos": round(c["position"], 1) if c.get("position") else None,
+                "posPrev": round(p["position"], 1) if p.get("position") else None}
+
+    pages = [row(k, pc.get(k, {}), pp.get(k, {})) for k in set(pc) | set(pp)]
+    queries = [row(k, qc.get(k, {}), qp.get(k, {})) for k in set(qc) | set(qp)]
+    growing = sorted((x for x in pages if x["impr"] > x["imprPrev"]),
+                     key=lambda x: -((x["clicks"] - x["clicksPrev"]) * 20 + (x["impr"] - x["imprPrev"])))[:10]
+    falling = sorted((x for x in pages if x["impr"] < x["imprPrev"]), key=lambda x: (x["impr"] - x["imprPrev"]))[:5]
+    top_q = sorted((x for x in queries if x["impr"]), key=lambda x: (-x["clicks"], -x["impr"]))[:15]
+    rising = sorted((x for x in queries if x["impr"] >= 5 and x["impr"] > 1.5 * max(x["imprPrev"], 1)),
+                    key=lambda x: -(x["impr"] - x["imprPrev"]))[:10]
+    return {"week": tot(cur0, cur1), "prevWeek": tot(pre0, pre1), "series": series, "range": [cur0.isoformat(), cur1.isoformat()],
+            "growingPages": growing, "fallingPages": falling, "topQueries": top_q, "risingQueries": rising}
+
+
+def push_kv(summary: dict):
+    """Pulse reads pulse:seo from Workers KV (CLOUDFLARE_API_TOKEN / CLOUDFLARE_ACCOUNT_ID in CI)."""
+    tok, acct = os.getenv("CLOUDFLARE_API_TOKEN"), os.getenv("CLOUDFLARE_ACCOUNT_ID")
+    if not (tok and acct):
+        print("no Cloudflare token: pulse:seo not pushed")
+        return
+    import requests
+    r = requests.put(f"https://api.cloudflare.com/client/v4/accounts/{acct}/storage/kv/namespaces/3987a5253d994eea89caaef8a80b724b/values/pulse:seo",
+                     headers={"Authorization": f"Bearer {tok}"}, data=json.dumps(summary).encode(), timeout=60)
+    print("pulse:seo KV put:", r.status_code, r.text[:150])
+
+
 def main():
     creds, _ = google.auth.default(scopes=["https://www.googleapis.com/auth/webmasters.readonly"])
     sess = AuthorizedSession(creds)
+    seo = {"updatedAt": date.today().isoformat(), "dataTo": END.isoformat(), "sites": {}}
     for sid, prop in SITES.items():
+        try:
+            seo["sites"][sid] = seo_summary(sess, prop)
+        except Exception as e:
+            print(f"{sid} seo summary: {e}")
         try:
             pages = query(sess, prop, ["page"])
             pq = query(sess, prop, ["page", "query"])
@@ -104,6 +159,8 @@ def main():
         clicks = sum(p["clicks"] for p in out)
         impr = sum(p["impressions"] for p in out)
         print(f"{sid}: {len(out)} pages, {clicks} clicks, {impr} impressions, {len(demand)} demand queries")
+    json.dump(seo, open(os.path.join(HERE, "data", "seo_summary.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    push_kv(seo)
 
 
 if __name__ == "__main__":
