@@ -150,6 +150,17 @@ def main():
     r = requests.put(url, headers=headers,
                      data=json.dumps(payload).encode(), timeout=60)
     print("KV put:", r.status_code, r.text[:120])
+
+    # Search Console summary (week vs last week, ranks, growing pages, rising queries): written daily by the
+    # gsc-pull workflow into the public repo; the CI token cannot write KV, so this PC relays it as pulse:seo.
+    try:
+        seo = requests.get("https://raw.githubusercontent.com/Dreamint99/AutoBlog/main/generator/data/seo_summary.json",
+                           timeout=30)
+        if seo.ok and seo.json().get("sites"):
+            r2 = requests.put(url.replace("/values/pulse:all", "/values/pulse:seo"), headers=headers, data=seo.content, timeout=60)
+            print("KV seo:", r2.status_code)
+    except Exception as e:
+        print("seo relay skipped:", str(e)[:120])
     if r.status_code != 200:
         sys.exit(1)
 

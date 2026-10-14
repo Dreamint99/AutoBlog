@@ -173,12 +173,20 @@ async function handleData(env, range) {
     const days = { "24h": 1, "7d": 7, "14d": 14, "30d": 30, "1y": 365 }[range] || 7;
     const since = new Date(Date.now() + 6 * 3600e3 - (days - 1) * 864e5).toISOString().slice(0, 10);
     const have = new Set((snap.sites || []).map((x) => x.id));
+    // Real (browser) visitors from the beacon for every site: Cloudflare edge uniques include bots and crawlers.
+    const realOf = (id) => {
+      const ser = (stats[id] || []).filter((p) => p.t >= since);
+      return { uniques: ser.reduce((a, p) => a + p.uniques, 0), pageviews: ser.reduce((a, p) => a + p.pageviews, 0), days: ser.length };
+    };
+    snap.realTotal = { uniques: 0, pageviews: 0 };
+    for (const x of snap.sites || []) { x.real = realOf(x.id); snap.realTotal.uniques += x.real.uniques; snap.realTotal.pageviews += x.real.pageviews; }
     snap.total = snap.total || {};
     for (const [id, domain] of Object.entries(BEACON_SITES)) {
       if (have.has(id)) continue;
       const series = (stats[id] || []).filter((p) => p.t >= since).sort((a, b) => (a.t < b.t ? -1 : 1));
       const u = series.reduce((a, p) => a + p.uniques, 0), pv = series.reduce((a, p) => a + p.pageviews, 0);
-      snap.sites = [...(snap.sites || []), { id, domain, zone: false, source: "beacon", series, uniques: u, pageviews: pv,
+      snap.realTotal.uniques += u; snap.realTotal.pageviews += pv;
+      snap.sites = [...(snap.sites || []), { id, domain, zone: false, source: "beacon", series, uniques: u, pageviews: pv, real: { uniques: u, pageviews: pv, days: series.length },
         requests: pv, countries: [], topPaths: [], referers: [], note: series.length ? "" : "beacon installed, waiting for visits" }];
       snap.total.uniques = (snap.total.uniques || 0) + u;
       snap.total.pageviews = (snap.total.pageviews || 0) + pv;
@@ -295,6 +303,7 @@ export default {
       if (p === "/api/data") return handleData(env, url.searchParams.get("range") || "7d");
       if (p === "/api/health") return handleHealth(env);
       if (p === "/api/live") return handleLive(env);
+      if (p === "/api/seo") return json((await env.PULSE.get("pulse:seo", "json")) || { empty: true });
       return json({ error: "not found" }, 404);
     }
     if (p !== "/") return new Response("not found", { status: 404 });
@@ -454,7 +463,7 @@ const DASH_HTML = `<!doctype html>
 .tab.on{color:var(--txt);background:var(--card2);border-color:rgba(129,140,248,.5)}
 /* stat cards */
 .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:16px}
-@media(min-width:760px){.stats{grid-template-columns:repeat(4,1fr)}}
+@media(min-width:760px){.stats{grid-template-columns:repeat(5,1fr)}}
 .stat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 16px 14px;
   position:relative;overflow:hidden}
 .stat::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(129,140,248,.07),transparent 55%);pointer-events:none}
@@ -467,6 +476,17 @@ const DASH_HTML = `<!doctype html>
 .panel h3{font-size:14.5px;font-weight:700;display:flex;align-items:center;gap:8px;margin-bottom:14px}
 .panel h3 small{font-weight:500;color:var(--mut2);font-size:11px;margin-left:auto}
 .grid2{display:grid;gap:14px}
+.cmp{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media(min-width:760px){.cmp{grid-template-columns:repeat(4,1fr)}}
+.cmp div{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:14px;padding:12px}
+.cmp small{display:block;font-size:10.5px;color:var(--mut);text-transform:uppercase;letter-spacing:.06em}
+.cmp b{font-size:21px;font-weight:800;display:block;margin-top:4px}
+.cmp .xs{font-size:11px;color:var(--mut2)}
+.kv{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid var(--line);font-size:13px}
+.kv:last-child{border-bottom:0}.kv span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.kv b{white-space:nowrap;font-weight:700}.kv em{font-style:normal;color:var(--mut2);font-size:11px}
+.rk{display:inline-block;min-width:34px;text-align:center;border-radius:8px;padding:1px 6px;font-weight:800;font-size:12px;background:rgba(129,140,248,.18)}
+.rk.top{background:rgba(52,211,153,.22)}.rk.mid{background:rgba(251,191,36,.2)}
 @media(min-width:860px){.grid2{grid-template-columns:1.25fr 1fr}}
 /* site cards */
 .sites{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}
@@ -551,6 +571,16 @@ const DASH_HTML = `<!doctype html>
       <div class="live-pages" id="live-pages"></div>
     </div>
     <div class="stats" id="stats"></div>
+    <div class="panel"><h3>⚖️ Compare <small id="cmp-cap">visitors · pageviews</small></h3><div class="cmp" id="cmp"></div></div>
+    <div class="panel"><h3>🔎 Google search <small id="seo-cap">Search Console</small></h3><div class="cmp" id="seo-sum"></div></div>
+    <div class="grid2">
+      <div class="panel"><h3>🚀 Growing pages <small>this week vs last · Google</small></h3><div id="seo-grow"></div></div>
+      <div class="panel"><h3>🏆 Keyword ranks <small>avg position · clicks</small></h3><div id="seo-q"></div></div>
+    </div>
+    <div class="grid2">
+      <div class="panel"><h3>📈 Trending searches <small>rising impressions</small></h3><div id="seo-rise"></div></div>
+      <div class="panel"><h3>📉 Losing pages <small>fewer impressions</small></h3><div id="seo-fall"></div></div>
+    </div>
     <div class="sites" id="sitecards"></div>
     <div class="panel"><h3>📈 Visitors <small id="chart-cap"></small></h3><canvas id="ch" height="150"></canvas></div>
     <div class="grid2">
@@ -566,8 +596,9 @@ const DASH_HTML = `<!doctype html>
   </div>
 </div>
 <script>
-var RANGE='7d', SITE='all', DATA=null, HEALTH=null, CHART=null;
-var COLORS={countly:'#818cf8',walvi:'#34d399',infkey:'#fbbf24',ninetymins:'#fb7185',gccguide:'#22d3ee',cob:'#f472b6'};
+var RANGE='7d', SITE='all', DATA=null, HEALTH=null, CHART=null, D14=null, SEO=null;
+var COLORS={countly:'#818cf8',walvi:'#34d399',infkey:'#fbbf24',ninetymins:'#fb7185',gccguide:'#22d3ee',cob:'#f472b6',
+  dreamithq:'#a3e635',probashiinfo:'#38bdf8',dreamintcs:'#f97316',probashibondu:'#c084fc'};
 var ISO={'Bangladesh':'BD','India':'IN','United States':'US','United States of America':'US','United Kingdom':'GB','Germany':'DE','France':'FR','Canada':'CA','Australia':'AU','Pakistan':'PK','Saudi Arabia':'SA','United Arab Emirates':'AE','Qatar':'QA','Kuwait':'KW','Oman':'OM','Bahrain':'BH','Singapore':'SG','Malaysia':'MY','Indonesia':'ID','Netherlands':'NL','Italy':'IT','Spain':'ES','Brazil':'BR','Japan':'JP','China':'CN','South Korea':'KR','Turkey':'TR','Russia':'RU','Russian Federation':'RU','Poland':'PL','Sweden':'SE','Norway':'NO','Finland':'FI','Denmark':'DK','Ireland':'IE','Serbia':'RS','Greece':'GR','South Africa':'ZA','Nigeria':'NG','Egypt':'EG','Vietnam':'VN','Philippines':'PH','Thailand':'TH','Hong Kong':'HK','Taiwan':'TW','Ukraine':'UA','Romania':'RO','Portugal':'PT','Mexico':'MX','Argentina':'AR','Switzerland':'CH','Austria':'AT','Belgium':'BE','Czechia':'CZ','Hungary':'HU','Israel':'IL','Nepal':'NP','Sri Lanka':'LK','Myanmar':'MM','Morocco':'MA','Kenya':'KE','New Zealand':'NZ','Croatia':'HR','Bulgaria':'BG','Slovakia':'SK','Lithuania':'LT'};
 function flag(name){var c=ISO[name];if(!c)return '🌐';
   return String.fromCodePoint(127397+c.charCodeAt(0),127397+c.charCodeAt(1));}
@@ -612,6 +643,73 @@ function loadLive(){
   }).catch(function(){});
 }
 
+
+// ── compare + Google search panels (real data only: Cloudflare / beacon series and Search Console) ──
+function loadExtra(){
+  fetch('/api/data?range=14d').then(function(r){return r.ok?r.json():null;}).then(function(d){if(d){D14=d;renderCmp();}}).catch(function(){});
+  fetch('/api/seo').then(function(r){return r.ok?r.json():null;}).then(function(d){if(d){SEO=d;renderSeo();}}).catch(function(){});
+}
+function pct(a,b){if(!b)return a?'<span class="up">new</span>':'<span class="xs">—</span>';var p=Math.round((a-b)*100/b);
+  return '<span class="'+(p>=0?'up':'dn')+'">'+(p>=0?'▲ ':'▼ ')+Math.abs(p)+'%</span>';}
+function dayMap(list){var m={};list.forEach(function(x){(x.series||[]).forEach(function(p){var t=String(p.t).slice(0,10);
+  m[t]=m[t]||{u:0,p:0};m[t].u+=p.uniques||0;m[t].p+=p.pageviews||0;});});return m;}
+function renderCmp(){
+  if(!D14||!D14.sites)return;
+  var list=SITE==='all'?D14.sites:D14.sites.filter(function(x){return x.id===SITE;});
+  var m=dayMap(list),days=Object.keys(m).sort(),n=days.length;
+  if(n<2){document.getElementById('cmp').innerHTML='<div class="empty" style="grid-column:1/-1">Needs 2+ days of data</div>';return;}
+  var td=m[days[n-1]],yd=m[days[n-2]],w={u:0,p:0},pw={u:0,p:0};
+  days.slice(-7).forEach(function(d){w.u+=m[d].u;w.p+=m[d].p;});
+  days.slice(-14,-7).forEach(function(d){pw.u+=m[d].u;pw.p+=m[d].p;});
+  document.getElementById('cmp-cap').textContent='today = '+days[n-1]+' (so far) · last 7 days vs the 7 before';
+  document.getElementById('cmp').innerHTML=
+    '<div><small>Today · visitors</small><b>'+fmt(td.u)+'</b><span class="xs">yesterday '+fmt(yd.u)+' · '+pct(td.u,yd.u)+'</span></div>'+
+    '<div><small>Today · pageviews</small><b>'+fmt(td.p)+'</b><span class="xs">yesterday '+fmt(yd.p)+' · '+pct(td.p,yd.p)+'</span></div>'+
+    '<div><small>This week · visitors</small><b>'+fmt(w.u)+'</b><span class="xs">last week '+fmt(pw.u)+' · '+pct(w.u,pw.u)+'</span></div>'+
+    '<div><small>This week · pageviews</small><b>'+fmt(w.p)+'</b><span class="xs">last week '+fmt(pw.p)+' · '+pct(w.p,pw.p)+'</span></div>';
+}
+function seoSites(){if(!SEO||!SEO.sites)return [];var ids=Object.keys(SEO.sites);
+  return SITE==='all'?ids.map(function(k){return [k,SEO.sites[k]];}):(SEO.sites[SITE]?[[SITE,SEO.sites[SITE]]]:[]);}
+function rk(p){if(p==null)return '<span class="rk">—</span>';return '<span class="rk '+(p<=10?'top':p<=20?'mid':'')+'">#'+(Math.round(p*10)/10)+'</span>';}
+function shortUrl(u){return String(u).replace(/^https?:\\/\\/(www\\.)?/,'').replace(/\\/$/,'');}
+function renderSeo(){
+  var ss=seoSites(),el=function(id){return document.getElementById(id);};
+  if(!ss.length){['seo-sum','seo-grow','seo-q','seo-rise','seo-fall'].forEach(function(i){
+    el(i).innerHTML='<div class="empty">'+(SEO&&SEO.sites?'This site is not in Search Console':'Search Console sync pending (daily)')+'</div>';});return;}
+  var w={c:0,i:0,pw:0},pv={c:0,i:0,pw:0},grow=[],q=[],rise=[],fall=[];
+  ss.forEach(function(e){var id=e[0],x=e[1];
+    w.c+=x.week.clicks;w.i+=x.week.impr;if(x.week.pos)w.pw+=x.week.pos*x.week.impr;
+    pv.c+=x.prevWeek.clicks;pv.i+=x.prevWeek.impr;if(x.prevWeek.pos)pv.pw+=x.prevWeek.pos*x.prevWeek.impr;
+    (x.growingPages||[]).forEach(function(r){grow.push([id,r]);});(x.fallingPages||[]).forEach(function(r){fall.push([id,r]);});
+    (x.topQueries||[]).forEach(function(r){q.push([id,r]);});(x.risingQueries||[]).forEach(function(r){rise.push([id,r]);});});
+  var ap=w.i?w.pw/w.i:null,app=pv.i?pv.pw/pv.i:null;
+  el('seo-cap').textContent='Search Console · '+(ss[0][1].range||[]).join(' → ')+' vs the 7 days before';
+  el('seo-sum').innerHTML=
+    '<div><small>Clicks · this week</small><b>'+fmt(w.c)+'</b><span class="xs">last week '+fmt(pv.c)+' · '+pct(w.c,pv.c)+'</span></div>'+
+    '<div><small>Impressions</small><b>'+fmt(w.i)+'</b><span class="xs">last week '+fmt(pv.i)+' · '+pct(w.i,pv.i)+'</span></div>'+
+    '<div><small>Avg position</small><b>'+(ap?ap.toFixed(1):'—')+'</b><span class="xs">last week '+(app?app.toFixed(1):'—')+
+      (ap&&app?' · <span class="'+(ap<=app?'up':'dn')+'">'+(ap<=app?'▲ better':'▼ worse')+'</span>':'')+'</span></div>'+
+    '<div><small>CTR</small><b>'+(w.i?(w.c*100/w.i).toFixed(1)+'%':'—')+'</b><span class="xs">last week '+(pv.i?(pv.c*100/pv.i).toFixed(1)+'%':'—')+'</span></div>';
+  var tag=function(id){return SITE==='all'?' <em>'+esc(id)+'</em>':'';};
+  grow.sort(function(a,b){return (b[1].impr-b[1].imprPrev)-(a[1].impr-a[1].imprPrev);});
+  el('seo-grow').innerHTML=grow.length?grow.slice(0,10).map(function(e){var r=e[1];
+    return '<div class="kv"><span>'+esc(shortUrl(r.key))+tag(e[0])+'</span><b>'+fmt(r.impr)+' impr '+pct(r.impr,r.imprPrev)+' · '+r.clicks+' clicks</b></div>';
+  }).join(''):'<div class="empty">No growth yet this week</div>';
+  q.sort(function(a,b){return b[1].clicks-a[1].clicks||b[1].impr-a[1].impr;});
+  el('seo-q').innerHTML=q.length?q.slice(0,15).map(function(e){var r=e[1];
+    var mv=r.posPrev&&r.pos?(r.pos<r.posPrev?' <span class="up">▲'+(r.posPrev-r.pos).toFixed(1)+'</span>':r.pos>r.posPrev?' <span class="dn">▼'+(r.pos-r.posPrev).toFixed(1)+'</span>':''):'';
+    return '<div class="kv"><span>'+rk(r.pos)+' '+esc(r.key)+tag(e[0])+'</span><b>'+r.clicks+' clicks · '+fmt(r.impr)+mv+'</b></div>';
+  }).join(''):'<div class="empty">No keyword data</div>';
+  rise.sort(function(a,b){return (b[1].impr-b[1].imprPrev)-(a[1].impr-a[1].imprPrev);});
+  el('seo-rise').innerHTML=rise.length?rise.slice(0,10).map(function(e){var r=e[1];
+    return '<div class="kv"><span>🔥 '+esc(r.key)+tag(e[0])+'</span><b>'+fmt(r.imprPrev)+' → '+fmt(r.impr)+' '+rk(r.pos)+'</b></div>';
+  }).join(''):'<div class="empty">Nothing rising this week</div>';
+  fall.sort(function(a,b){return (a[1].impr-a[1].imprPrev)-(b[1].impr-b[1].imprPrev);});
+  el('seo-fall').innerHTML=fall.length?fall.slice(0,6).map(function(e){var r=e[1];
+    return '<div class="kv"><span>'+esc(shortUrl(r.key))+tag(e[0])+'</span><b>'+fmt(r.imprPrev)+' → '+fmt(r.impr)+' '+pct(r.impr,r.imprPrev)+'</b></div>';
+  }).join(''):'<div class="empty">No losing pages</div>';
+}
+
 function sel(){if(SITE==='all')return null;
   for(var i=0;i<(DATA.sites||[]).length;i++)if(DATA.sites[i].id===SITE)return DATA.sites[i];return null;}
 
@@ -619,6 +717,7 @@ function render(){
   if(!DATA||DATA.empty){document.getElementById('stats').innerHTML='<div class="empty" style="grid-column:1/-1">No snapshot yet — PC pusher runs every 15 min.</div>';return;}
   var s=sel(), sites=DATA.sites||[];
   var tot=s?{uniques:s.uniques||0,pageviews:s.pageviews||0,requests:s.requests||0}:DATA.total||{};
+  var real=s?(s.real||{uniques:0,pageviews:0}):(DATA.realTotal||{uniques:0,pageviews:0});
   // Adsterra earnings: whole network, or the selected site's domain only.
   var ads=DATA.ads||null, adRev=0, adImp=0, adRows=[];
   if(ads){
@@ -640,7 +739,8 @@ function render(){
   var fcv=s?((s.forecast||{}).next7d):(fcKnown?fcAll:null);
   var tp=s?(s.forecast||{}).trendPct:null;
   document.getElementById('stats').innerHTML=
-    '<div class="stat"><small>Visitors</small><b>'+fmt(tot.uniques)+'</b><span class="xs">unique</span></div>'+
+    '<div class="stat"><small>Real visitors</small><b>'+fmt(real.uniques)+'</b><span class="xs">browsers · '+fmt(real.pageviews)+' pageviews</span></div>'+
+    '<div class="stat"><small>Edge visitors</small><b>'+fmt(tot.uniques)+'</b><span class="xs">Cloudflare · incl. bots</span></div>'+
     '<div class="stat"><small>Pageviews</small><b>'+fmt(tot.pageviews)+'</b><span class="xs">'+RANGE+'</span></div>'+
     '<div class="stat"><small>Ad earnings</small><b>'+(ads?'$'+adRev.toFixed(2):'—')+'</b><span class="xs">'+(ads?fmt(adImp)+' ad views':'Adsterra not synced')+'</span></div>'+
     '<div class="stat"><small>Next 7 days</small><b>'+(fcv!=null?'~'+fmt(fcv):'—')+'</b><span class="xs">'+
@@ -689,6 +789,7 @@ function render(){
   }).join('');
 
   document.getElementById('notes').innerHTML=(DATA.notes||[]).map(function(n){return 'ⓘ '+esc(n);}).join('<br>');
+  renderCmp();renderSeo();
 }
 
 function merged(list,key,k1,k2,top){
@@ -756,10 +857,10 @@ document.getElementById('ranges').addEventListener('click',function(e){
 document.addEventListener('click',function(e){
   var b=e.target.closest('[data-s]');if(!b)return;SITE=b.dataset.s;render();
 });
-document.getElementById('rf').addEventListener('click',function(){load();loadHealth();loadLive();});
+document.getElementById('rf').addEventListener('click',function(){load();loadHealth();loadLive();loadExtra();});
 document.getElementById('out').addEventListener('click',function(){
   fetch('/api/logout',{method:'POST'}).then(function(){location.reload();});
 });
-load();loadHealth();loadLive();
-setInterval(load,120000);setInterval(loadHealth,180000);setInterval(loadLive,10000);
+load();loadHealth();loadLive();loadExtra();
+setInterval(load,120000);setInterval(loadHealth,180000);setInterval(loadLive,10000);setInterval(loadExtra,300000);
 </script></body></html>`;

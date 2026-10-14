@@ -28,9 +28,12 @@ const PULSE_BEACON = `(function(){try{
 var s='${pulseSiteId}';var k='_plsid';
 var id=sessionStorage.getItem(k);
 if(!id){id=(self.crypto&&crypto.randomUUID)?crypto.randomUUID():Date.now()+'-'+Math.random().toString(36).slice(2);sessionStorage.setItem(k,id);}
-function beat(){if(document.visibilityState==='hidden')return;
-try{navigator.sendBeacon('https://pulse.countly.net/api/beat',JSON.stringify({id:id,site:s,path:location.pathname}));}catch(e){}}
-beat();setInterval(beat,25000);
+var day=new Date(Date.now()+216e5).toISOString().slice(0,10),nv=0;
+try{if(localStorage.getItem('_pld_'+s)!==day){localStorage.setItem('_pld_'+s,day);nv=1;}}catch(e){}
+function beat(f){if(document.visibilityState==='hidden')return;var o={id:id,site:s,path:location.pathname};
+if(f){o.pv=1;o.nv=nv;}
+try{navigator.sendBeacon('https://pulse.countly.net/api/beat',JSON.stringify(o));}catch(e){}}
+beat(1);setInterval(beat,25000);
 document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')beat();});
 }catch(e){}})();`;
 
