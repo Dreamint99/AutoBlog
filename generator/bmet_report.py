@@ -250,8 +250,17 @@ def category_id(base, h, name="বিএমইটি রিপোর্ট", slu
 
 
 def upload(base, h, path, name) -> int:
+    # Featured cards go up as WebP: the PNG (~175 KB) was the mobile LCP image on every report page (Lighthouse 40).
+    ctype = "image/png"
+    try:
+        from PIL import Image
+        webp = os.path.splitext(path)[0] + ".webp"
+        Image.open(path).convert("RGB").save(webp, "WEBP", quality=82, method=6)
+        path, name, ctype = webp, os.path.splitext(name)[0] + ".webp", "image/webp"
+    except Exception as e:
+        print("webp conversion skipped:", e)
     with open(path, "rb") as f:
-        r = requests.post(f"{base}/wp-json/wp/v2/media", headers={**h, "Content-Disposition": f'attachment; filename="{name}"', "Content-Type": "image/png"}, data=f.read(), timeout=120)
+        r = requests.post(f"{base}/wp-json/wp/v2/media", headers={**h, "Content-Disposition": f'attachment; filename="{name}"', "Content-Type": ctype}, data=f.read(), timeout=120)
     r.raise_for_status()
     return r.json()["id"]
 
