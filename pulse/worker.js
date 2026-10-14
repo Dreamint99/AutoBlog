@@ -11,13 +11,17 @@
  */
 
 const SESSION_DAYS = 30;
-const SITE_IDS = new Set(["countly", "walvi", "infkey", "ninetymins", "gccguide"]);
+const SITE_IDS = new Set(["countly", "walvi", "infkey", "ninetymins", "gccguide", "cob",
+  "probashiinfo", "dreamintcs", "probashibondu", "dreamithq"]);
+// Sites that are not Cloudflare zones (no edge analytics): their visitors/pageviews come from the beacon
+// (/b.js), counted per day in the LiveRoom Durable Object and merged into /api/data.
+const BEACON_SITES = { probashiinfo: "probashiinfo.com", dreamintcs: "dreamintcs.com", probashibondu: "probashibondu.online" };
 const LIVE_WINDOW_MS = 65e3; // visitor counts as "live" for ~1 min after last beat
 
 // ── realtime presence (Durable Object, SQLite class = free plan) ──
 // One global room; sites' pages send anonymous beats every ~25s.
 export class LiveRoom {
-  constructor() { this.sessions = new Map(); } // id -> {site, path, c, t}
+  constructor(ctx) { this.ctx = ctx; this.sessions = new Map(); } // id -> {site, path, c, t}
 
   prune(now) {
     for (const [k, v] of this.sessions) if (now - v.t > LIVE_WINDOW_MS) this.sessions.delete(k);
@@ -29,7 +33,25 @@ export class LiveRoom {
       const b = await request.json();
       this.sessions.set(b.id, { site: b.site, path: b.path, c: b.c || "", t: now });
       if (this.sessions.size > 8000) this.prune(now);
+      // daily counters (UTC+6 day): pv = a page load, nv = first visit of the day on that browser
+      if (b.pv || b.nv) {
+        const day = new Date(now + 6 * 3600e3).toISOString().slice(0, 10);
+        const k = "c:" + b.site + ":" + day;
+        const cur = (await this.ctx.storage.get(k)) || { v: 0, p: 0 };
+        if (b.pv) cur.p++;
+        if (b.nv) cur.v++;
+        await this.ctx.storage.put(k, cur);
+      }
       return new Response(null, { status: 204 });
+    }
+    if (new URL(request.url).pathname === "/stats") {
+      const all = await this.ctx.storage.list({ prefix: "c:" });
+      const out = {};
+      for (const [k, v] of all) {
+        const [, site, day] = k.split(":");
+        (out[site] = out[site] || []).push({ t: day, uniques: v.v, pageviews: v.p, requests: v.p });
+      }
+      return new Response(JSON.stringify(out), { headers: { "content-type": "application/json" } });
     }
     this.prune(now);
     const bySite = {}, pages = {}, countries = {};
@@ -144,6 +166,24 @@ async function handleData(env, range) {
   if (!raw) return json({ empty: true });
   const snap = raw.ranges[range] || raw.ranges["7d"] || { sites: [], total: {} };
   snap.syncedAt = raw.updatedAt;
+  // beacon-counted sites (not on Cloudflare): build the same shape as the edge-analytics sites
+  try {
+    const stub = env.LIVE.get(env.LIVE.idFromName("global"));
+    const stats = await (await stub.fetch("https://do/stats")).json();
+    const days = { "24h": 1, "7d": 7, "14d": 14, "30d": 30, "1y": 365 }[range] || 7;
+    const since = new Date(Date.now() + 6 * 3600e3 - (days - 1) * 864e5).toISOString().slice(0, 10);
+    const have = new Set((snap.sites || []).map((x) => x.id));
+    snap.total = snap.total || {};
+    for (const [id, domain] of Object.entries(BEACON_SITES)) {
+      if (have.has(id)) continue;
+      const series = (stats[id] || []).filter((p) => p.t >= since).sort((a, b) => (a.t < b.t ? -1 : 1));
+      const u = series.reduce((a, p) => a + p.uniques, 0), pv = series.reduce((a, p) => a + p.pageviews, 0);
+      snap.sites = [...(snap.sites || []), { id, domain, zone: false, source: "beacon", series, uniques: u, pageviews: pv,
+        requests: pv, countries: [], topPaths: [], referers: [], note: series.length ? "" : "beacon installed, waiting for visits" }];
+      snap.total.uniques = (snap.total.uniques || 0) + u;
+      snap.total.pageviews = (snap.total.pageviews || 0) + pv;
+    }
+  } catch (e) { snap.beaconError = String(e).slice(0, 120); }
   return json(snap);
 }
 
@@ -196,6 +236,19 @@ async function handleLive(env) {
   return new Response(r.body, { headers: { "content-type": "application/json" } });
 }
 
+// Drop-in beacon for sites outside the Next network: <script src="https://pulse.countly.net/b.js" data-site="ID" defer></script>
+const BEACON_JS = `(function(){try{
+var me=document.currentScript||document.querySelector('script[src*="pulse.countly.net/b.js"]');
+var s=me&&me.getAttribute('data-site');if(!s)return;
+var k='_plsid',id=sessionStorage.getItem(k);
+if(!id){id=(self.crypto&&crypto.randomUUID)?crypto.randomUUID():Date.now()+'-'+Math.random().toString(36).slice(2);sessionStorage.setItem(k,id);}
+var day=new Date(Date.now()+216e5).toISOString().slice(0,10),nv=0;
+try{if(localStorage.getItem('_pld_'+s)!==day){localStorage.setItem('_pld_'+s,day);nv=1;}}catch(e){}
+function send(o){try{navigator.sendBeacon('https://pulse.countly.net/api/beat',JSON.stringify(o));}catch(e){}}
+send({id:id,site:s,path:location.pathname,pv:1,nv:nv});
+setInterval(function(){if(document.visibilityState!=='hidden')send({id:id,site:s,path:location.pathname});},25000);
+}catch(e){}})();`;
+
 const MANIFEST = JSON.stringify({
   name: "Pulse", short_name: "Pulse", start_url: "/", display: "standalone",
   background_color: "#070b14", theme_color: "#070b14",
@@ -213,6 +266,9 @@ export default {
       return new Response(null, { status: 204, headers: {
         "access-control-allow-origin": "*", "access-control-allow-methods": "POST",
         "access-control-allow-headers": "content-type" } });
+    if (p === "/b.js")
+      return new Response(BEACON_JS, { headers: { "content-type": "application/javascript; charset=utf-8",
+        "cache-control": "public, max-age=3600", "access-control-allow-origin": "*" } });
     if (p === "/manifest.webmanifest")
       return new Response(MANIFEST, { headers: { "content-type": "application/manifest+json",
         "cache-control": "public, max-age=3600" } });
