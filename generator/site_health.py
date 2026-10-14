@@ -52,9 +52,9 @@ def newest_article(home: str) -> str:
     return ""
 
 
-def lighthouse(url: str) -> dict:
+def lighthouse(url: str, desktop: bool = False) -> dict:
     out = tempfile.mktemp(suffix=".json")
-    cmd = ["npx", "-y", "lighthouse@12", url, "--quiet", "--output=json", f"--output-path={out}",
+    cmd = ["npx", "-y", "lighthouse@12", url] + (["--preset=desktop"] if desktop else []) + [ "--quiet", "--output=json", f"--output-path={out}",
            "--chrome-flags=--headless=new --no-sandbox", "--only-categories=performance,seo,accessibility,best-practices"]
     try:
         subprocess.run(cmd, timeout=240, capture_output=True)
@@ -65,7 +65,7 @@ def lighthouse(url: str) -> dict:
     au = r.get("audits", {})
     failed_seo = [au[a["id"]]["title"] for a in r["categories"].get("seo", {}).get("auditRefs", [])
                   if a.get("weight") and au.get(a["id"], {}).get("score") == 0]
-    return {"url": url, **cat,
+    return {"url": url, "form": "desktop" if desktop else "mobile", **cat,
             "lcp_s": round((au.get("largest-contentful-paint", {}).get("numericValue") or 0) / 1000, 2),
             "cls": round(au.get("cumulative-layout-shift", {}).get("numericValue") or 0, 3),
             "tbt_ms": round(au.get("total-blocking-time", {}).get("numericValue") or 0),
@@ -97,17 +97,17 @@ def main():
     run = {"date": date.today().isoformat(), "sites": {}}
     for sid in only:
         home = SITES[sid]
-        pages = [lighthouse(home)]
         art = newest_article(home)
-        if art:
-            pages.append(lighthouse(art))
-        broken = broken_links(home)
+        urls = [home] + ([art] if art else [])
+        pages = [lighthouse(u) for u in urls] + [lighthouse(u, desktop=True) for u in urls]
+        # HEALTH_LINKS=0 skips the (slow) broken-link crawl for a quick speed check
+        broken = broken_links(home) if os.getenv("HEALTH_LINKS", "1") != "0" else []
         run["sites"][sid] = {"lighthouse": pages, "broken": broken}
         for p in pages:
             if "error" in p:
                 print(f"::warning::{sid} lighthouse failed on {p['url']}: {p['error']}")
                 continue
-            print(f"{sid}: perf {p.get('performance')} seo {p.get('seo')} a11y {p.get('accessibility')} "
+            print(f"{sid} [{p['form']}]: perf {p.get('performance')} seo {p.get('seo')} a11y {p.get('accessibility')} "
                   f"bp {p.get('best-practices')} LCP {p['lcp_s']}s CLS {p['cls']} TBT {p['tbt_ms']}ms  {p['url']}")
             for k, floor in FLOOR.items():
                 if (p.get(k) or 0) < floor:

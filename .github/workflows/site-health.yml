@@ -12,6 +12,10 @@ on:
         description: "Space-separated site ids (empty = all)"
         required: false
         default: ""
+      links:
+        description: "Run the broken-link crawl (1/0)"
+        required: false
+        default: "1"
 
 permissions:
   contents: write
@@ -32,6 +36,8 @@ jobs:
         with:
           python-version: "3.12"
       - run: python site_health.py ${{ github.event.inputs.sites }}
+        env:
+          HEALTH_LINKS: ${{ github.event.inputs.links || '1' }}
       - name: Commit results
         run: |
           git config user.name "github-actions[bot]"
