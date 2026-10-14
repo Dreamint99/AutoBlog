@@ -304,6 +304,7 @@ export default {
       if (p === "/api/health") return handleHealth(env);
       if (p === "/api/live") return handleLive(env);
       if (p === "/api/seo") return json((await env.PULSE.get("pulse:seo", "json")) || { empty: true });
+      if (p === "/api/bing") return json((await env.PULSE.get("pulse:bing", "json")) || { empty: true });
       return json({ error: "not found" }, 404);
     }
     if (p !== "/") return new Response("not found", { status: 404 });
@@ -476,6 +477,11 @@ const DASH_HTML = `<!doctype html>
 .panel h3{font-size:14.5px;font-weight:700;display:flex;align-items:center;gap:8px;margin-bottom:14px}
 .panel h3 small{font-weight:500;color:var(--mut2);font-size:11px;margin-left:auto}
 .grid2{display:grid;gap:14px}
+.grid2>*,.panel,.cmp>div{min-width:0}
+.kv{flex-wrap:wrap}
+.kv span{flex:1 1 220px}
+@media(max-width:640px){.kv b{flex:1 1 100%;text-align:left;color:var(--mut);font-weight:600;font-size:12px}
+  .cmp b{font-size:18px}.panel{padding:14px}}
 .cmp{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
 @media(min-width:760px){.cmp{grid-template-columns:repeat(4,1fr)}}
 .cmp div{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:14px;padding:12px}
@@ -577,8 +583,13 @@ const DASH_HTML = `<!doctype html>
       <div class="panel"><h3>🚀 Growing pages <small>this week vs last · Google</small></h3><div id="seo-grow"></div></div>
       <div class="panel"><h3>🏆 Keyword ranks <small>avg position · clicks</small></h3><div id="seo-q"></div></div>
     </div>
+    <div class="panel"><h3>🅱️ Bing search <small id="bing-cap">Bing Webmaster</small></h3><div class="cmp" id="bing-sum"></div></div>
     <div class="grid2">
-      <div class="panel"><h3>📈 Trending searches <small>rising impressions</small></h3><div id="seo-rise"></div></div>
+      <div class="panel"><h3>🏆 Bing keywords <small>clicks · avg position</small></h3><div id="bing-q"></div></div>
+      <div class="panel"><h3>🔥 Bing trending <small>rising impressions</small></h3><div id="bing-rise"></div></div>
+    </div>
+    <div class="grid2">
+      <div class="panel"><h3>📈 Trending searches <small>Google · rising impressions</small></h3><div id="seo-rise"></div></div>
       <div class="panel"><h3>📉 Losing pages <small>fewer impressions</small></h3><div id="seo-fall"></div></div>
     </div>
     <div class="sites" id="sitecards"></div>
@@ -596,7 +607,7 @@ const DASH_HTML = `<!doctype html>
   </div>
 </div>
 <script>
-var RANGE='7d', SITE='all', DATA=null, HEALTH=null, CHART=null, D14=null, SEO=null;
+var RANGE='7d', SITE='all', DATA=null, HEALTH=null, CHART=null, D14=null, SEO=null, BING=null;
 var COLORS={countly:'#818cf8',walvi:'#34d399',infkey:'#fbbf24',ninetymins:'#fb7185',gccguide:'#22d3ee',cob:'#f472b6',
   dreamithq:'#a3e635',probashiinfo:'#38bdf8',dreamintcs:'#f97316',probashibondu:'#c084fc'};
 var ISO={'Bangladesh':'BD','India':'IN','United States':'US','United States of America':'US','United Kingdom':'GB','Germany':'DE','France':'FR','Canada':'CA','Australia':'AU','Pakistan':'PK','Saudi Arabia':'SA','United Arab Emirates':'AE','Qatar':'QA','Kuwait':'KW','Oman':'OM','Bahrain':'BH','Singapore':'SG','Malaysia':'MY','Indonesia':'ID','Netherlands':'NL','Italy':'IT','Spain':'ES','Brazil':'BR','Japan':'JP','China':'CN','South Korea':'KR','Turkey':'TR','Russia':'RU','Russian Federation':'RU','Poland':'PL','Sweden':'SE','Norway':'NO','Finland':'FI','Denmark':'DK','Ireland':'IE','Serbia':'RS','Greece':'GR','South Africa':'ZA','Nigeria':'NG','Egypt':'EG','Vietnam':'VN','Philippines':'PH','Thailand':'TH','Hong Kong':'HK','Taiwan':'TW','Ukraine':'UA','Romania':'RO','Portugal':'PT','Mexico':'MX','Argentina':'AR','Switzerland':'CH','Austria':'AT','Belgium':'BE','Czechia':'CZ','Hungary':'HU','Israel':'IL','Nepal':'NP','Sri Lanka':'LK','Myanmar':'MM','Morocco':'MA','Kenya':'KE','New Zealand':'NZ','Croatia':'HR','Bulgaria':'BG','Slovakia':'SK','Lithuania':'LT'};
@@ -648,6 +659,7 @@ function loadLive(){
 function loadExtra(){
   fetch('/api/data?range=14d').then(function(r){return r.ok?r.json():null;}).then(function(d){if(d){D14=d;renderCmp();}}).catch(function(){});
   fetch('/api/seo').then(function(r){return r.ok?r.json():null;}).then(function(d){if(d){SEO=d;renderSeo();}}).catch(function(){});
+  fetch('/api/bing').then(function(r){return r.ok?r.json():null;}).then(function(d){if(d){BING=d;renderBing();}}).catch(function(){});
 }
 function pct(a,b){if(!b)return a?'<span class="up">new</span>':'<span class="xs">—</span>';var p=Math.round((a-b)*100/b);
   return '<span class="'+(p>=0?'up':'dn')+'">'+(p>=0?'▲ ':'▼ ')+Math.abs(p)+'%</span>';}
@@ -708,6 +720,37 @@ function renderSeo(){
   el('seo-fall').innerHTML=fall.length?fall.slice(0,6).map(function(e){var r=e[1];
     return '<div class="kv"><span>'+esc(shortUrl(r.key))+tag(e[0])+'</span><b>'+fmt(r.imprPrev)+' → '+fmt(r.impr)+' '+pct(r.impr,r.imprPrev)+'</b></div>';
   }).join(''):'<div class="empty">No losing pages</div>';
+}
+
+
+function renderBing(){
+  var el=function(id){return document.getElementById(id);};
+  if(!BING||!BING.sites){['bing-sum','bing-q','bing-rise'].forEach(function(i){el(i).innerHTML='<div class="empty">Bing sync pending</div>';});return;}
+  var ids=Object.keys(BING.sites).filter(function(k){return (BING.sites[k].weeks||[]).length&&(SITE==='all'||k===SITE);});
+  if(!ids.length){['bing-sum','bing-q','bing-rise'].forEach(function(i){el(i).innerHTML='<div class="empty">No Bing data for this site yet</div>';});return;}
+  var w={c:0,i:0,pw:0},pv={c:0,i:0,pw:0},q=[],rise=[],per=[];
+  ids.forEach(function(id){var x=BING.sites[id];
+    w.c+=x.week.clicks;w.i+=x.week.impr;if(x.week.pos)w.pw+=x.week.pos*x.week.impr;
+    pv.c+=x.prevWeek.clicks;pv.i+=x.prevWeek.impr;if(x.prevWeek.pos)pv.pw+=x.prevWeek.pos*x.prevWeek.impr;
+    per.push([id,x.week.clicks,x.prevWeek.clicks]);
+    (x.topQueries||[]).forEach(function(r){q.push([id,r]);});(x.risingQueries||[]).forEach(function(r){rise.push([id,r]);});});
+  var ap=w.i?w.pw/w.i:null,app=pv.i?pv.pw/pv.i:null,r0=BING.sites[ids[0]].range||[];
+  el('bing-cap').textContent='Bing Webmaster · week of '+r0[0]+' vs '+(r0[1]||'—');
+  per.sort(function(a,b){return b[1]-a[1];});
+  el('bing-sum').innerHTML=
+    '<div><small>Clicks · this week</small><b>'+fmt(w.c)+'</b><span class="xs">last week '+fmt(pv.c)+' · '+pct(w.c,pv.c)+'</span></div>'+
+    '<div><small>Impressions</small><b>'+fmt(w.i)+'</b><span class="xs">last week '+fmt(pv.i)+' · '+pct(w.i,pv.i)+'</span></div>'+
+    '<div><small>Avg position</small><b>'+(ap?ap.toFixed(1):'—')+'</b><span class="xs">last week '+(app?app.toFixed(1):'—')+'</span></div>'+
+    '<div><small>Clicks by site</small><span class="xs">'+per.slice(0,5).map(function(e){return esc(e[0])+' <b style="display:inline;font-size:12px">'+e[1]+'</b> '+pct(e[1],e[2]);}).join('<br>')+'</span></div>';
+  var tag=function(id){return SITE==='all'?' <em>'+esc(id)+'</em>':'';};
+  q.sort(function(a,b){return b[1].clicks-a[1].clicks||b[1].impr-a[1].impr;});
+  el('bing-q').innerHTML=q.slice(0,15).map(function(e){var r=e[1];
+    return '<div class="kv"><span>'+rk(r.pos)+' '+esc(r.key)+tag(e[0])+'</span><b>'+r.clicks+' clicks '+pct(r.clicks,r.clicksPrev)+' · '+fmt(r.impr)+' impr</b></div>';
+  }).join('')||'<div class="empty">No keywords this week</div>';
+  rise.sort(function(a,b){return (b[1].impr-b[1].imprPrev)-(a[1].impr-a[1].imprPrev);});
+  el('bing-rise').innerHTML=rise.slice(0,10).map(function(e){var r=e[1];
+    return '<div class="kv"><span>🔥 '+esc(r.key)+tag(e[0])+'</span><b>'+fmt(r.imprPrev)+' → '+fmt(r.impr)+' '+rk(r.pos)+'</b></div>';
+  }).join('')||'<div class="empty">Nothing rising this week</div>';
 }
 
 function sel(){if(SITE==='all')return null;
@@ -789,7 +832,7 @@ function render(){
   }).join('');
 
   document.getElementById('notes').innerHTML=(DATA.notes||[]).map(function(n){return 'ⓘ '+esc(n);}).join('<br>');
-  renderCmp();renderSeo();
+  renderCmp();renderSeo();renderBing();
 }
 
 function merged(list,key,k1,k2,top){

@@ -159,6 +159,10 @@ def main():
         if seo.ok and seo.json().get("sites"):
             r2 = requests.put(url.replace("/values/pulse:all", "/values/pulse:seo"), headers=headers, data=seo.content, timeout=60)
             print("KV seo:", r2.status_code)
+        bing = requests.get("https://raw.githubusercontent.com/Dreamint99/AutoBlog/main/generator/data/bing_summary.json", timeout=30)
+        if bing.ok and bing.json().get("sites"):
+            r3 = requests.put(url.replace("/values/pulse:all", "/values/pulse:bing"), headers=headers, data=bing.content, timeout=60)
+            print("KV bing:", r3.status_code)
     except Exception as e:
         print("seo relay skipped:", str(e)[:120])
     if r.status_code != 200:
