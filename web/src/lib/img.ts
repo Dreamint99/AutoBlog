@@ -1,4 +1,9 @@
-import { activeSite } from "@/lib/site-context";
+import sitesJson from "@/data/sites.json";
+
+// Client-safe (no server-only data layer): the active site comes from SITE_ID + the static config.
+type SiteLite = { id: string; theme: string; domain: string };
+const SITES: SiteLite[] = (Array.isArray(sitesJson) ? sitesJson : (sitesJson as { sites: SiteLite[] }).sites) as SiteLite[];
+const activeSite = (): SiteLite => SITES.find((s) => s.id === process.env.SITE_ID) ?? SITES[0];
 
 // Faster images for article cards (mobile Lighthouse: the card grid was the LCP element and each
 // /card/ PNG is rendered on demand by the Worker, 200+ KB and ~1 s before it can paint).
@@ -42,7 +47,7 @@ export function cardSvg(title: string): string {
   const y0 = 315 - ((lines.length - 1) * lh) / 2 - 20;
   const tx = lines.map((l, i) => `<text x="600" y="${Math.round(y0 + i * lh)}">${xml(l)}</text>`).join("");
   const svg =
-    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">` +
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="600" height="315">` +
     `<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${t.a}"/><stop offset="1" stop-color="${t.b}"/></linearGradient></defs>` +
     `<rect width="1200" height="630" fill="url(#g)"/>` +
     `<circle cx="90" cy="50" r="210" fill="none" stroke="${t.accent}" stroke-opacity=".25" stroke-width="3"/>` +

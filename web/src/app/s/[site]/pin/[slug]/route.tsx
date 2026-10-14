@@ -83,6 +83,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ site: s
   const facts = listItems(body, "key-takeaways").filter((f) => f.length > 12).map((f) => clip(f, 92));
   const questions = (art.faq || []).map((f) => clip(text(String(f.q || "")), 70)).filter(Boolean);
   const sections = h2s(body).map((h) => clip(h, 58));
+  const subline = clip(text(art.meta_description || art.excerpt || ""), 150);
   const hero = (title.match(/[$€£]?\d[\d.,]*\s?(?:[kmbt]\b|%|bn\b|billion|million|lakh|crore)/i)?.[0] || "").trim();
 
   const h = hash(slug);
@@ -136,12 +137,12 @@ export async function GET(_req: Request, { params }: { params: Promise<{ site: s
           </div>
         </div>
         {rest.map((r, i) => (
-          <div key={i} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 18, padding: "20px 34px",
+          <div key={i} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 20, padding: "26px 36px",
             background: pal.card, borderRadius: 24, color: pal.fg }}>
-            <div style={{ display: "flex", alignItems: "center", fontSize: 36, fontWeight: 500 }}>
-              <div style={{ display: "flex", width: 54, fontWeight: 800, color: pal.accent }}>{`#${i + 2}`}</div>{r.label}
+            <div style={{ display: "flex", alignItems: "center", fontSize: 40, fontWeight: 500 }}>
+              <div style={{ display: "flex", width: 64, fontWeight: 800, color: pal.accent }}>{`#${i + 2}`}</div>{r.label}
             </div>
-            <div style={{ display: "flex", fontSize: 38, fontWeight: 800 }}>{r.shown}</div>
+            <div style={{ display: "flex", fontSize: 42, fontWeight: 800 }}>{r.shown}</div>
           </div>
         ))}
       </div>
@@ -151,13 +152,13 @@ export async function GET(_req: Request, { params }: { params: Promise<{ site: s
     content = (
       <div style={{ display: "flex", flexDirection: "column", marginTop: 44 }}>
         {rows.map((r, i) => (
-          <div key={i} style={{ display: "flex", flexDirection: "column", marginBottom: 26 }}>
-            <div style={{ display: "flex", justifyContent: "space-between", fontSize: 34, marginBottom: 10, color: pal.fg }}>
+          <div key={i} style={{ display: "flex", flexDirection: "column", marginBottom: 34 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", fontSize: 40, marginBottom: 10, color: pal.fg }}>
               <span style={{ display: "flex", fontWeight: 500 }}>{`${i + 1}. ${r.label}`}</span>
               <span style={{ display: "flex", fontWeight: 800, color: pal.accent }}>{r.shown}</span>
             </div>
-            <div style={{ display: "flex", height: 30, borderRadius: 15, background: pal.track }}>
-              <div style={{ display: "flex", width: `${Math.max(7, Math.round((r.v / max) * 100))}%`, height: 30, borderRadius: 15, background: pal.accent }} />
+            <div style={{ display: "flex", height: 40, borderRadius: 20, background: pal.track }}>
+              <div style={{ display: "flex", width: `${Math.max(7, Math.round((r.v / max) * 100))}%`, height: 40, borderRadius: 20, background: pal.accent }} />
             </div>
           </div>
         ))}
@@ -168,10 +169,10 @@ export async function GET(_req: Request, { params }: { params: Promise<{ site: s
     content = (
       <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", marginTop: 44 }}>
         {rows.slice(0, 4).map((r, i) => (
-          <div key={i} style={{ display: "flex", flexDirection: "column", width: 424, height: 270, marginBottom: 24, padding: "30px 32px",
+          <div key={i} style={{ display: "flex", flexDirection: "column", width: 424, height: 330, marginBottom: 24, padding: "30px 32px",
             borderRadius: 30, background: i === 0 ? pal.accent : pal.card, color: i === 0 ? onAccent : pal.fg }}>
             <div style={{ display: "flex", fontSize: 28, fontWeight: 800, opacity: 0.7 }}>{`#${i + 1}`}</div>
-            <div style={{ display: "flex", fontSize: 62, fontWeight: 800, marginTop: "auto", letterSpacing: -1 }}>{r.shown}</div>
+            <div style={{ display: "flex", fontSize: 72, fontWeight: 800, marginTop: "auto", letterSpacing: -1 }}>{r.shown}</div>
             <div style={{ display: "flex", fontSize: 32, fontWeight: 500, marginTop: 6 }}>{r.label}</div>
           </div>
         ))}
@@ -182,7 +183,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ site: s
     content = (
       <div style={{ display: "flex", flexDirection: "column", marginTop: 20 }}>
         {facts.slice(0, 3).map((f, i) => (
-          <div key={i} style={{ display: "flex", alignItems: "flex-start", marginTop: 26, fontSize: 36, lineHeight: 1.3, color: pal.fg }}>
+          <div key={i} style={{ display: "flex", alignItems: "flex-start", marginTop: 30, fontSize: 40, lineHeight: 1.3, color: pal.fg }}>
             <div style={{ display: "flex", width: 46, height: 46, borderRadius: 23, background: pal.accent, color: onAccent,
               alignItems: "center", justifyContent: "center", fontSize: 28, fontWeight: 800, marginRight: 22, flexShrink: 0 }}>✓</div>
             <div style={{ display: "flex", flex: 1 }}>{f}</div>
@@ -191,14 +192,14 @@ export async function GET(_req: Request, { params }: { params: Promise<{ site: s
       </div>
     );
   } else if (layout === "steps") {
-    cta = "Read the step-by-step →";
+    cta = /\?$/.test(sections[0] || "") ? "Get the answers →" : "Read the full guide →";
     content = (
       <div style={{ display: "flex", flexDirection: "column", marginTop: 40 }}>
         {sections.slice(0, 5).map((s, i) => (
-          <div key={i} style={{ display: "flex", alignItems: "center", marginBottom: 20, padding: "22px 30px", borderRadius: 26, background: pal.card, color: pal.fg }}>
+          <div key={i} style={{ display: "flex", alignItems: "center", marginBottom: 22, padding: "26px 32px", borderRadius: 28, background: pal.card, color: pal.fg }}>
             <div style={{ display: "flex", width: 70, height: 70, borderRadius: 35, border: `4px solid ${pal.accent}`, color: pal.accent,
               alignItems: "center", justifyContent: "center", fontSize: 34, fontWeight: 800, marginRight: 26, flexShrink: 0 }}>{i + 1}</div>
-            <div style={{ display: "flex", flex: 1, fontSize: 36, fontWeight: 500, lineHeight: 1.2 }}>{s}</div>
+            <div style={{ display: "flex", flex: 1, fontSize: 40, fontWeight: 500, lineHeight: 1.2 }}>{s}</div>
           </div>
         ))}
       </div>
@@ -213,7 +214,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ site: s
           {facts.length >= 4 ? `${items.length} things to know` : "Questions answered"}
         </div>
         {items.map((f, i) => (
-          <div key={i} style={{ display: "flex", alignItems: "flex-start", marginTop: 18, fontSize: 33, lineHeight: 1.3, color: pal.fg }}>
+          <div key={i} style={{ display: "flex", alignItems: "flex-start", marginTop: 22, fontSize: 38, lineHeight: 1.3, color: pal.fg }}>
             <div style={{ display: "flex", width: 34, height: 34, borderRadius: 8, border: `4px solid ${pal.accent}`, marginRight: 20, marginTop: 4, flexShrink: 0 }} />
             <div style={{ display: "flex", flex: 1 }}>{f}</div>
           </div>
@@ -240,7 +241,10 @@ export async function GET(_req: Request, { params }: { params: Promise<{ site: s
           ) : (
             <Title />
           )}
-          {content}
+          {layout !== "bigstat" && subline ? (
+            <div style={{ display: "flex", fontSize: 34, lineHeight: 1.35, color: pal.sub, marginTop: 22 }}>{subline}</div>
+          ) : null}
+          <div style={{ display: "flex", flexDirection: "column", flex: 1, justifyContent: "center", paddingBottom: 36 }}>{content}</div>
         </div>
         <Footer cta={cta} />
       </div>

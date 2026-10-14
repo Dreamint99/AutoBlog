@@ -509,3 +509,11 @@
 @media (max-width: 600px) { .site-countly .cx-logo-img img { height: 62px; } }
 .site-countly .cn-logo-img { background: none !important; box-shadow: none !important; width: auto !important; }
 .site-countly .cn-logo-img img { height: 30px; width: auto; display: block; }
+
+
+/* Speed: below-the-fold homepage sections are laid out and painted only when scrolled near
+   (mobile Lighthouse spent ~2.4 s on style/layout/paint for the whole page before LCP). */
+.cx-numbers, .cx-wealth, .cx-wealth ~ .cx-sec {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}

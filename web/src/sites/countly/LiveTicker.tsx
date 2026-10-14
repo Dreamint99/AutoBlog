@@ -40,11 +40,23 @@ export default function LiveTicker() {
         if (alive && x?.rates) setFx(x.rates);
       } catch {}
     }
-    load();
-    const id = setInterval(load, 60000);
+    // Start after the page has loaded and settled: three third-party API calls at first paint
+    // cost ~0.8 s of mobile LCP (Lighthouse). The ticker fills in a moment later instead.
+    let id: ReturnType<typeof setInterval> | undefined;
+    let t: ReturnType<typeof setTimeout> | undefined;
+    const start = () => {
+      t = setTimeout(() => {
+        load();
+        id = setInterval(load, 60000);
+      }, 2500);
+    };
+    if (document.readyState === "complete") start();
+    else window.addEventListener("load", start, { once: true });
     return () => {
       alive = false;
-      clearInterval(id);
+      window.removeEventListener("load", start);
+      if (t) clearTimeout(t);
+      if (id) clearInterval(id);
     };
   }, []);
 
