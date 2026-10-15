@@ -2,6 +2,27 @@
  "_note": "Real queries (Search Console 2026-07-14..2026-10-12, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
+   "q": "adobe firefly ai image generator",
+   "impr": 368000,
+   "pos": null,
+   "src": "gold",
+   "volume": 368000
+  },
+  {
+   "q": "midjourney ai image generator",
+   "impr": 201000,
+   "pos": null,
+   "src": "gold",
+   "volume": 201000
+  },
+  {
+   "q": "microsoft designer ai image generator",
+   "impr": 49500,
+   "pos": null,
+   "src": "gold",
+   "volume": 49500
+  },
+  {
    "q": "free ai image generator",
    "impr": 18736,
    "pos": null,
