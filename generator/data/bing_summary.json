@@ -54,21 +54,21 @@
      "posPrev": 2.0
     },
     {
-     "key": "ওমান থেকে পতুগাল যাওয়ার নিয়ম",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 1.0,
-     "posPrev": null
-    },
-    {
      "key": "কুয়েতের ভিসা চেক করার নিয়ম",
      "clicks": 1,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
      "pos": 3.0,
+     "posPrev": null
+    },
+    {
+     "key": "ওমান থেকে পতুগাল যাওয়ার নিয়ম",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 1.0,
      "posPrev": null
     },
     {
@@ -90,21 +90,30 @@
      "posPrev": 2.0
     },
     {
-     "key": "কাজের ভিসায় দুবাই থেকে ইউরোপের কোন দেশে যেতে সবচেয়ে বেশি খরচ হয় কোন দেশে যেতে? এবং কত টাকা",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 8,
-     "imprPrev": 0,
-     "pos": 6.0,
-     "posPrev": null
-    },
-    {
      "key": "বিএমইটি নিবন্ধনের খরচ ও সম্পূর্ণ প্রক্রিয়া কেমন",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 8,
      "imprPrev": 0,
      "pos": 2.0,
+     "posPrev": null
+    },
+    {
+     "key": "কোন কাজ বা স্কিল শিখলে দেশেও কাজ করা যাবে এবং বিদেশে গিয়েও চাকরি পাওয়া যাবে,এই কাজ বা স্কিল গুলো বলে দাও",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 8,
+     "imprPrev": 0,
+     "pos": 2.0,
+     "posPrev": null
+    },
+    {
+     "key": "কাজের ভিসায় দুবাই থেকে ইউরোপের কোন দেশে যেতে সবচেয়ে বেশি খরচ হয় কোন দেশে যেতে? এবং কত টাকা",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 8,
+     "imprPrev": 0,
+     "pos": 6.0,
      "posPrev": null
     },
     {
@@ -123,24 +132,6 @@
      "impr": 8,
      "imprPrev": 0,
      "pos": 2.0,
-     "posPrev": null
-    },
-    {
-     "key": "কোন কাজ বা স্কিল শিখলে দেশেও কাজ করা যাবে এবং বিদেশে গিয়েও চাকরি পাওয়া যাবে,এই কাজ বা স্কিল গুলো বলে দাও",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 8,
-     "imprPrev": 0,
-     "pos": 2.0,
-     "posPrev": null
-    },
-    {
-     "key": "bmet টেনিং করলে কত দিনের মধ্যে বিদেশ যেতে হবে নাকি একবার করলে যেকোনো সময় যাওয়া যাবে",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 6,
-     "imprPrev": 0,
-     "pos": 10.0,
      "posPrev": null
     },
     {
@@ -153,25 +144,25 @@
      "posPrev": 6.0
     },
     {
-     "key": "আমার কিন্তু বৈধ ইউএস ও কানাডা ভ্যালিড ভিজিট ভিসা আছে। আমি গত দুই বছরে দুইবার ইউএসএ এবং একবার ইউকে ভ্রমণ করেছি।",
+     "key": "bmet টেনিং করলে কত দিনের মধ্যে বিদেশ যেতে হবে নাকি একবার করলে যেকোনো সময় যাওয়া যাবে",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 6,
+     "imprPrev": 0,
+     "pos": 10.0,
+     "posPrev": null
+    },
+    {
+     "key": "বাংলাদেশী স্টুডেন্ট সাইপ্রাসে পড়াশোনা করার পর কিভাবে যেতে পারবে স্লোভাকিয়া তে?",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 4,
      "imprPrev": 0,
-     "pos": 3.0,
+     "pos": 4.0,
      "posPrev": null
     }
    ],
    "risingQueries": [
-    {
-     "key": "কাজের ভিসায় দুবাই থেকে ইউরোপের কোন দেশে যেতে সবচেয়ে বেশি খরচ হয় কোন দেশে যেতে? এবং কত টাকা",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 8,
-     "imprPrev": 0,
-     "pos": 6.0,
-     "posPrev": null
-    },
     {
      "key": "বিএমইটি নিবন্ধনের খরচ ও সম্পূর্ণ প্রক্রিয়া কেমন",
      "clicks": 0,
@@ -179,6 +170,24 @@
      "impr": 8,
      "imprPrev": 0,
      "pos": 2.0,
+     "posPrev": null
+    },
+    {
+     "key": "কোন কাজ বা স্কিল শিখলে দেশেও কাজ করা যাবে এবং বিদেশে গিয়েও চাকরি পাওয়া যাবে,এই কাজ বা স্কিল গুলো বলে দাও",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 8,
+     "imprPrev": 0,
+     "pos": 2.0,
+     "posPrev": null
+    },
+    {
+     "key": "কাজের ভিসায় দুবাই থেকে ইউরোপের কোন দেশে যেতে সবচেয়ে বেশি খরচ হয় কোন দেশে যেতে? এবং কত টাকা",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 8,
+     "imprPrev": 0,
+     "pos": 6.0,
      "posPrev": null
     },
     {
@@ -192,15 +201,6 @@
     },
     {
      "key": "ফিনল্যান্ডের স্টুডেন্ট ভিসার জন্য ব্যাংক সলভেন্সিতে কত টাকা দেখাতে হয়",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 8,
-     "imprPrev": 0,
-     "pos": 2.0,
-     "posPrev": null
-    },
-    {
-     "key": "কোন কাজ বা স্কিল শিখলে দেশেও কাজ করা যাবে এবং বিদেশে গিয়েও চাকরি পাওয়া যাবে,এই কাজ বা স্কিল গুলো বলে দাও",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 8,
@@ -318,30 +318,12 @@
      "posPrev": null
     },
     {
-     "key": "welche lander in 2026 sind am handysüchtiegens viele leute sind handy süchtig",
-     "clicks": 2,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 1.0,
-     "posPrev": null
-    },
-    {
      "key": "how many country uses instagram",
      "clicks": 2,
      "clicksPrev": 0,
      "impr": 2,
      "imprPrev": 0,
      "pos": 6.0,
-     "posPrev": null
-    },
-    {
-     "key": "whats the number of sales of bath mats on flipkart amazon and other shopping website",
-     "clicks": 2,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 1.0,
      "posPrev": null
     },
     {
@@ -354,12 +336,39 @@
      "posPrev": 1.0
     },
     {
+     "key": "whats the number of sales of bath mats on flipkart amazon and other shopping website",
+     "clicks": 2,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 1.0,
+     "posPrev": null
+    },
+    {
      "key": "how many users snapchat hvae in 2026 in the uk",
      "clicks": 2,
      "clicksPrev": 0,
      "impr": 2,
      "imprPrev": 0,
      "pos": 1.0,
+     "posPrev": null
+    },
+    {
+     "key": "welche lander in 2026 sind am handysüchtiegens viele leute sind handy süchtig",
+     "clicks": 2,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 1.0,
+     "posPrev": null
+    },
+    {
+     "key": "which new stadium in united state has the largest capacity in india",
+     "clicks": 2,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 2.0,
      "posPrev": null
     },
     {
@@ -373,15 +382,6 @@
     },
     {
      "key": "tea consume country data",
-     "clicks": 2,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 2.0,
-     "posPrev": null
-    },
-    {
-     "key": "which new stadium in united state has the largest capacity in india",
      "clicks": 2,
      "clicksPrev": 0,
      "impr": 1,
@@ -428,21 +428,21 @@
      "posPrev": 9.0
     },
     {
-     "key": "open ai revenue 2026",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 19,
-     "imprPrev": 0,
-     "pos": 8.0,
-     "posPrev": null
-    },
-    {
      "key": "grok rank the most studied l2 languages",
      "clicks": 1,
      "clicksPrev": 0,
      "impr": 19,
      "imprPrev": 0,
      "pos": 4.0,
+     "posPrev": null
+    },
+    {
+     "key": "open ai revenue 2026",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 19,
+     "imprPrev": 0,
+     "pos": 8.0,
      "posPrev": null
     },
     {
@@ -473,7 +473,7 @@
      "posPrev": 8.0
     },
     {
-     "key": "how many mcdonalds stores across the world",
+     "key": "what are the top 5 world languages and how many speakers do they have?",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 11,
@@ -482,7 +482,7 @@
      "posPrev": null
     },
     {
-     "key": "what are the top 5 world languages and how many speakers do they have?",
+     "key": "how many mcdonalds stores across the world",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 11,
@@ -549,15 +549,6 @@
      "posPrev": null
     },
     {
-     "key": "low cost invoice text extraction: comparative evaluation of ai models/ products along with resource efficient ensemble approach",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 9.0,
-     "posPrev": null
-    },
-    {
      "key": "llm pdf extraction structured data cost per document 2026 vs human data entry cost",
      "clicks": 0,
      "clicksPrev": 0,
@@ -576,34 +567,25 @@
      "posPrev": null
     },
     {
-     "key": "text to speech api pricing comparison 2025 2026 cheap",
+     "key": "low cost invoice text extraction: comparative evaluation of ai models/ products along with resource efficient ensemble approach",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 9.0,
+     "posPrev": null
+    },
+    {
+     "key": "cost to transcribe phone call to text retrieval augmented generation langchain",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 6.0,
+     "pos": 5.0,
      "posPrev": null
     },
     {
-     "key": "prompt engineering vs prompt tuning annual cost of owning a dog uk",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 4.0,
-     "posPrev": null
-    },
-    {
-     "key": "commercial pricing and terms comparison of stable diffusion, midjourney, and dall-e 3 api services",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 6.0,
-     "posPrev": null
-    },
-    {
-     "key": "vllm self-hosting llm gpu cost h100 per hour 2026",
+     "key": "openrouter vs api directe coût 2026",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
@@ -612,16 +594,43 @@
      "posPrev": null
     },
     {
-     "key": "rag cost per query python",
+     "key": "video generation image api pricing per second 2026 veo sora cost",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 9.0,
+     "pos": 8.0,
      "posPrev": null
     },
     {
-     "key": "which llm api is cheapeststable diffusion prompts generator",
+     "key": "fal.ai or replicate \"wan 2.2 animate\" pricing per second alternative genjutsu",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 8.0,
+     "posPrev": null
+    },
+    {
+     "key": "rag cost per query lang",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 7.0,
+     "posPrev": null
+    },
+    {
+     "key": "openai routing api pricing model update 2026 decisions api",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 2.0,
+     "posPrev": null
+    },
+    {
+     "key": "prompt design vs prompt engineering tb to gb conversion cost",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
@@ -630,30 +639,21 @@
      "posPrev": null
     },
     {
-     "key": "2026 ai animation production costs: official pricing comparison of sora/gen-3 video generation vs midjourney storyboard api",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 4.0,
-     "posPrev": null
-    },
-    {
-     "key": "whats the average cost in credits of 1 second of ai generated video?",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 4.0,
-     "posPrev": null
-    },
-    {
-     "key": "cheapest text to speech service niairpkiosk irp nia nih",
+     "key": "ai video generation api cost per second runway pika india pricing",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
      "pos": 5.0,
+     "posPrev": null
+    },
+    {
+     "key": "evaluating and selecting llms to for rag - cost vs accuracy tradeoffs",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 1.0,
      "posPrev": null
     }
    ],
@@ -716,7 +716,16 @@
      "posPrev": null
     },
     {
-     "key": "live motogp 2026",
+     "key": "cricket live t20 world cup watch free",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 2.0,
+     "posPrev": null
+    },
+    {
+     "key": "adelaide test 2026 session times",
      "clicks": 1,
      "clicksPrev": 0,
      "impr": 2,
@@ -734,21 +743,12 @@
      "posPrev": 7.0
     },
     {
-     "key": "cricket live t20 world cup watch free",
+     "key": "the ashes test matches 26/27",
      "clicks": 1,
      "clicksPrev": 0,
      "impr": 2,
      "imprPrev": 0,
-     "pos": 2.0,
-     "posPrev": null
-    },
-    {
-     "key": "world cup 2026 cricket live streaming",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 1.0,
+     "pos": 6.0,
      "posPrev": null
     },
     {
@@ -770,7 +770,7 @@
      "posPrev": null
     },
     {
-     "key": "adelaide test 2026 session times",
+     "key": "live motogp 2026",
      "clicks": 1,
      "clicksPrev": 0,
      "impr": 2,
@@ -779,31 +779,31 @@
      "posPrev": null
     },
     {
-     "key": "the ashes test matches 26/27",
+     "key": "world cup 2026 cricket live streaming",
      "clicks": 1,
      "clicksPrev": 0,
      "impr": 2,
      "imprPrev": 0,
-     "pos": 6.0,
+     "pos": 1.0,
      "posPrev": null
     },
     {
-     "key": "what countries allow broadcasting sports rights as usa",
+     "key": "six nations fixtures and times",
      "clicks": 1,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 5.0,
+     "pos": 10.0,
      "posPrev": null
     },
     {
-     "key": "what time is the moto gp on october 11, 2026?",
+     "key": "cricket world cup live",
      "clicks": 1,
      "clicksPrev": 0,
      "impr": 1,
-     "imprPrev": 0,
-     "pos": 5.0,
-     "posPrev": null
+     "imprPrev": 4,
+     "pos": 10.0,
+     "posPrev": 5.0
     },
     {
      "key": "where to watch england match today",
@@ -815,12 +815,12 @@
      "posPrev": null
     },
     {
-     "key": "world cup cricket live",
+     "key": "where to watch england football stream today",
      "clicks": 1,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 4.0,
+     "pos": 1.0,
      "posPrev": null
     }
    ],

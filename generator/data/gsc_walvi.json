@@ -1,46 +1,52 @@
 {
- "source": "Search Console API 2026-07-14..2026-10-12",
+ "source": "Search Console API 2026-07-15..2026-10-13",
  "pages": [
   {
    "url": "https://visapoint.net/visa-check/romania",
-   "impressions": 179,
-   "clicks": 6,
+   "impressions": 246,
+   "clicks": 7,
    "queries": [
     [
+     "romania visa check",
+     27,
+     1,
+     8.9
+    ],
+    [
      "romania visa check online",
-     18,
+     22,
      0,
      8.6
     ],
     [
-     "romania visa check",
-     16,
-     1,
-     9.9
-    ],
-    [
      "romania e visa check",
-     15,
+     19,
      1,
-     7.2
+     7.1
     ],
     [
      "romania work visa check by passport number",
-     14,
+     16,
      1,
      7.6
     ],
     [
-     "how to check romania visa status",
-     5,
+     "romania visa check online by passport number",
+     11,
      0,
      7.8
     ],
     [
-     "romania visa check online by passport number",
-     5,
+     "how to check romania visa status",
+     7,
      0,
-     7.8
+     7.6
+    ],
+    [
+     "romania visa tracking",
+     4,
+     0,
+     9
     ],
     [
      "romania e visa status check",
@@ -71,51 +77,51 @@
      3,
      0,
      7.3
-    ],
-    [
-     "romania visa tracking",
-     3,
-     0,
-     9
     ]
    ],
-   "position": 8.4,
-   "ctr": 0.0335
+   "position": 8.2,
+   "ctr": 0.0285
   },
   {
    "url": "https://visapoint.net/visa-check/serbia",
-   "impressions": 162,
-   "clicks": 5,
+   "impressions": 204,
+   "clicks": 8,
    "queries": [
     [
      "serbia visa check online by passport number",
-     12,
+     20,
      2,
-     9.8
-    ],
-    [
-     "serbia visa check",
-     11,
-     1,
-     7.9
-    ],
-    [
-     "serbia d visa check online",
-     11,
-     0,
-     8.5
+     9.9
     ],
     [
      "serbia work visa check by passport number",
-     9,
+     17,
+     2,
+     7.6
+    ],
+    [
+     "serbia d visa check online",
+     13,
      0,
-     7.7
+     8.2
+    ],
+    [
+     "serbia visa check",
+     12,
+     1,
+     8.4
     ],
     [
      "serbia visa check online",
+     8,
+     0,
+     10.1
+    ],
+    [
+     "serbia online visa check",
      6,
      0,
-     9.8
+     10.3
     ],
     [
      "how to check serbia visa real or fake",
@@ -125,15 +131,15 @@
     ],
     [
      "how to check serbia visa online",
-     3,
-     0,
-     8
+     4,
+     1,
+     9
     ],
     [
-     "serbia online visa check",
+     "সার্বিয়া ভিসা চেক অনলাইন",
      2,
      0,
-     9
+     10.5
     ],
     [
      "serbia visa online check",
@@ -152,16 +158,10 @@
      1,
      0,
      9
-    ],
-    [
-     "serbia application check",
-     1,
-     0,
-     8
     ]
    ],
    "position": 9.2,
-   "ctr": 0.0309
+   "ctr": 0.0392
   },
   {
    "url": "https://visapoint.net/bangladesh-to-italy-work-visa-2026-cost-process-salary",
@@ -246,18 +246,18 @@
   },
   {
    "url": "https://visapoint.net/visa-check/moldova",
-   "impressions": 77,
+   "impressions": 96,
    "clicks": 2,
    "queries": [
     [
      "moldova e visa check",
-     24,
+     34,
      1,
-     9.3
+     9.4
     ],
     [
      "moldova visa check",
-     14,
+     17,
      0,
      9.4
     ],
@@ -275,9 +275,9 @@
     ],
     [
      "moldova e visa check by passport number",
-     3,
+     4,
      0,
-     9
+     8.5
     ],
     [
      "moldova igm check",
@@ -311,30 +311,36 @@
     ]
    ],
    "position": 8.8,
-   "ctr": 0.026
+   "ctr": 0.0208
   },
   {
    "url": "https://visapoint.net/moldova-visa-status-online-2026-step-by-step-guide",
-   "impressions": 75,
+   "impressions": 89,
    "clicks": 3,
    "queries": [
     [
      "moldova visa status check",
-     6,
+     8,
      0,
-     9.5
+     9.6
     ],
     [
      "moldova visa check online by passport number",
-     5,
+     6,
      1,
-     11
+     10
     ],
     [
      "how to check moldova visa online",
      3,
      1,
      11
+    ],
+    [
+     "moldova e visa check online",
+     3,
+     0,
+     9.3
     ],
     [
      "e visa check moldova",
@@ -349,10 +355,10 @@
      9
     ],
     [
-     "moldova e visa check online",
+     "moldova e visa check by passport number",
      1,
      0,
-     10
+     7
     ],
     [
      "moldova visa check",
@@ -368,13 +374,19 @@
     ]
    ],
    "position": 8.3,
-   "ctr": 0.04
+   "ctr": 0.0337
   },
   {
    "url": "https://visapoint.net/passport-index",
-   "impressions": 59,
+   "impressions": 71,
    "clicks": 1,
    "queries": [
+    [
+     "passport index",
+     8,
+     0,
+     34
+    ],
     [
      "visa index",
      8,
@@ -382,10 +394,10 @@
      39.4
     ],
     [
-     "passport index",
-     5,
+     "passport ranking",
+     4,
      0,
-     34.4
+     42.2
     ],
     [
      "index passport",
@@ -394,10 +406,10 @@
      42.7
     ],
     [
-     "passport ranking",
-     3,
+     "global passport index",
+     2,
      0,
-     47
+     37
     ],
     [
      "index of /passport",
@@ -412,10 +424,22 @@
      58
     ],
     [
+     "passport",
+     2,
+     0,
+     10.5
+    ],
+    [
      "passport global ranking",
      2,
      0,
      60.5
+    ],
+    [
+     "passport ranking 2022",
+     2,
+     0,
+     50
     ],
     [
      "passports ranks",
@@ -428,39 +452,54 @@
      1,
      0,
      48
-    ],
-    [
-     "country passport ranking",
-     1,
-     0,
-     56
-    ],
-    [
-     "country passports",
-     1,
-     0,
-     54
-    ],
-    [
-     "global index passport",
-     1,
-     0,
-     46
     ]
    ],
-   "position": 42.5,
-   "ctr": 0.0169
+   "position": 38.5,
+   "ctr": 0.0141
+  },
+  {
+   "url": "https://visapoint.net/welder-salary-europe-2026-5-best-countries-to-earn-big",
+   "impressions": 63,
+   "clicks": 0,
+   "queries": [
+    [
+     "europe welder salary",
+     2,
+     0,
+     7.5
+    ],
+    [
+     "welder salary in europe",
+     2,
+     0,
+     7.5
+    ],
+    [
+     "which country pays welders the most",
+     2,
+     0,
+     10
+    ],
+    [
+     "welder salary in other countries",
+     1,
+     0,
+     8
+    ]
+   ],
+   "position": 8.2,
+   "ctr": 0.0
   },
   {
    "url": "https://visapoint.net/cleaner-salary-in-germany-2026-gross-net-savings-guide",
-   "impressions": 46,
+   "impressions": 57,
    "clicks": 0,
    "queries": [
     [
      "germany cleaner salary",
-     2,
+     3,
      0,
-     8.5
+     8.7
     ],
     [
      "cleaner salary in germany per month",
@@ -475,12 +514,12 @@
      10
     ]
    ],
-   "position": 7.9,
+   "position": 7.8,
    "ctr": 0.0
   },
   {
    "url": "https://visapoint.net/egypt-to-italy-work-permit-2026-step-by-step-guide-salary",
-   "impressions": 43,
+   "impressions": 51,
    "clicks": 1,
    "queries": [
     [
@@ -502,6 +541,12 @@
      14
     ],
     [
+     "تأشيرة عمل",
+     1,
+     0,
+     11
+    ],
+    [
      "تاشيرة العمل",
      1,
      0,
@@ -514,12 +559,78 @@
      3
     ]
    ],
-   "position": 6.1,
-   "ctr": 0.0233
+   "position": 6.4,
+   "ctr": 0.0196
+  },
+  {
+   "url": "https://visapoint.net/serbia-work-visa-2025-saudi-arabia-to-serbia-guide",
+   "impressions": 48,
+   "clicks": 1,
+   "queries": [
+    [
+     "saudi to serbia work permit",
+     4,
+     0,
+     7.5
+    ],
+    [
+     "serbia work visa from saudi arabia",
+     3,
+     0,
+     7
+    ]
+   ],
+   "position": 5.4,
+   "ctr": 0.0208
+  },
+  {
+   "url": "https://visapoint.net/malta-work-visa-processing-time-step-by-step-process-2026",
+   "impressions": 43,
+   "clicks": 0,
+   "queries": [
+    [
+     "malta work visa",
+     4,
+     0,
+     65.8
+    ],
+    [
+     "malta work visa processing time",
+     3,
+     0,
+     7
+    ],
+    [
+     "malta country work permit",
+     1,
+     0,
+     70
+    ],
+    [
+     "malta visa processing time",
+     1,
+     0,
+     56
+    ],
+    [
+     "malta work permit",
+     1,
+     0,
+     83
+    ],
+    [
+     "malta work permit visa processing time",
+     1,
+     0,
+     4
+    ]
+   ],
+   "position": 16.4,
+   "ctr": 0.0
   },
   {
    "url": "https://visapoint.net/visa-check/qatar",
-   "impressions": 36,
+   "impressions": 42,
    "clicks": 0,
    "queries": [
     [
@@ -541,6 +652,12 @@
      62.5
     ],
     [
+     "qatar visa status check by passport number",
+     2,
+     0,
+     68.5
+    ],
+    [
      "check qatar visa",
      1,
      0,
@@ -559,6 +676,18 @@
      79
     ],
     [
+     "how to check company visa status online",
+     1,
+     0,
+     68
+    ],
+    [
+     "how to check qatar visa status using passport number",
+     1,
+     0,
+     66
+    ],
+    [
      "moi visa check",
      1,
      0,
@@ -575,55 +704,22 @@
      1,
      0,
      74
-    ],
-    [
-     "moi visa status qatar",
-     1,
-     0,
-     65
-    ],
-    [
-     "online visa check qatar",
-     1,
-     0,
-     67
-    ],
-    [
-     "qatar visa inquiry",
-     1,
-     0,
-     77
     ]
    ],
-   "position": 48.4,
+   "position": 49.5,
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/serbia-work-visa-2025-saudi-arabia-to-serbia-guide",
-   "impressions": 35,
+   "url": "https://visapoint.net/europe-work-visa-2026-complete-permit-guide-scam-alerts",
+   "impressions": 41,
    "clicks": 1,
    "queries": [
     [
-     "saudi to serbia work permit",
-     4,
-     0,
-     7.5
-    ],
-    [
-     "serbia work visa from saudi arabia",
+     "eta ki sotti",
      1,
      0,
-     7
-    ]
-   ],
-   "position": 5.0,
-   "ctr": 0.0286
-  },
-  {
-   "url": "https://visapoint.net/europe-work-visa-2026-complete-permit-guide-scam-alerts",
-   "impressions": 34,
-   "clicks": 1,
-   "queries": [
+     2
+    ],
     [
      "what does an eu work visa look like",
      1,
@@ -655,78 +751,12 @@
      16
     ]
    ],
-   "position": 13.5,
-   "ctr": 0.0294
-  },
-  {
-   "url": "https://visapoint.net/moldova-work-permit-2025-complete-guide-for-bangladeshi-workers",
-   "impressions": 34,
-   "clicks": 1,
-   "queries": [
-    [
-     "moldova work permit visa for bangladeshi",
-     9,
-     1,
-     7.4
-    ],
-    [
-     "cost",
-     1,
-     0,
-     2
-    ]
-   ],
-   "position": 6.7,
-   "ctr": 0.0294
-  },
-  {
-   "url": "https://visapoint.net/malta-work-visa-processing-time-step-by-step-process-2026",
-   "impressions": 32,
-   "clicks": 0,
-   "queries": [
-    [
-     "malta work visa",
-     3,
-     0,
-     60.3
-    ],
-    [
-     "malta work visa processing time",
-     2,
-     0,
-     7
-    ],
-    [
-     "malta country work permit",
-     1,
-     0,
-     70
-    ],
-    [
-     "malta visa processing time",
-     1,
-     0,
-     56
-    ],
-    [
-     "malta work permit",
-     1,
-     0,
-     83
-    ],
-    [
-     "malta work permit visa processing time",
-     1,
-     0,
-     4
-    ]
-   ],
-   "position": 17.2,
-   "ctr": 0.0
+   "position": 12.8,
+   "ctr": 0.0244
   },
   {
    "url": "https://visapoint.net/italy-work-permit-from-bangladesh-2026-cost-process",
-   "impressions": 31,
+   "impressions": 41,
    "clicks": 1,
    "queries": [
     [
@@ -760,18 +790,93 @@
      10
     ],
     [
+     "total",
+     1,
+     0,
+     2
+    ],
+    [
      "ওয়াক ভিসা",
      1,
      0,
      14
+    ],
+    [
+     "বৈধ পথে ইতালি যেতে কত টাকা লাগে",
+     1,
+     0,
+     1
     ]
    ],
-   "position": 5.8,
-   "ctr": 0.0323
+   "position": 5.2,
+   "ctr": 0.0244
+  },
+  {
+   "url": "https://visapoint.net/serbia-work-permit-2025-cost-documents-timeline-for-bangladeshi",
+   "impressions": 35,
+   "clicks": 0,
+   "queries": [
+    [
+     "serbia work permit cost",
+     6,
+     0,
+     10.5
+    ],
+    [
+     "serbia work permit",
+     1,
+     0,
+     62
+    ]
+   ],
+   "position": 9.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/moldova-work-permit-2025-complete-guide-for-bangladeshi-workers",
+   "impressions": 34,
+   "clicks": 1,
+   "queries": [
+    [
+     "moldova work permit visa for bangladeshi",
+     9,
+     1,
+     7.4
+    ],
+    [
+     "cost",
+     1,
+     0,
+     2
+    ]
+   ],
+   "position": 6.7,
+   "ctr": 0.0294
+  },
+  {
+   "url": "https://visapoint.net/",
+   "impressions": 33,
+   "clicks": 4,
+   "queries": [
+    [
+     "visapoint",
+     10,
+     1,
+     4.5
+    ],
+    [
+     "visa point",
+     2,
+     0,
+     39
+    ]
+   ],
+   "position": 6.3,
+   "ctr": 0.1212
   },
   {
    "url": "https://visapoint.net/slovenia-work-visa-processing-time-step-by-step-process-2026",
-   "impressions": 28,
+   "impressions": 33,
    "clicks": 1,
    "queries": [
     [
@@ -793,39 +898,78 @@
      3
     ],
     [
+     "warehouse worker",
+     1,
+     0,
+     16
+    ],
+    [
      "work visa ke liye",
      1,
      0,
      1
     ]
    ],
-   "position": 4.6,
-   "ctr": 0.0357
+   "position": 5.1,
+   "ctr": 0.0303
   },
   {
-   "url": "https://visapoint.net/",
-   "impressions": 26,
-   "clicks": 4,
+   "url": "https://visapoint.net/electrician-salary-poland-2026-realistic-pay-work-permit-guide",
+   "impressions": 31,
+   "clicks": 0,
    "queries": [
     [
-     "visapoint",
-     8,
-     1,
-     4.2
+     "electrician salary in poland per month",
+     3,
+     0,
+     6.7
     ],
     [
-     "visa point",
-     2,
+     "electrician salary in poland",
+     1,
      0,
-     39
+     11
+    ],
+    [
+     "poland ka batao",
+     1,
+     0,
+     4
+    ],
+    [
+     "а скок зп",
+     1,
+     0,
+     7
     ]
    ],
-   "position": 6.3,
-   "ctr": 0.1538
+   "position": 6.2,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/bangladesh-to-romania-work-visa-2026-cost-process-salary",
+   "impressions": 30,
+   "clicks": 0,
+   "queries": [
+    [
+     "কাজের ভিসা",
+     1,
+     0,
+     4
+    ],
+    [
+     "জানতে চাই",
+     1,
+     0,
+     5
+    ]
+   ],
+   "position": 6.4,
+   "ctr": 0.0
   },
   {
    "url": "https://visapoint.net/europe-work-permit-without-ielts-9-countries-that-dont-requi",
-   "impressions": 26,
+   "impressions": 29,
    "clicks": 0,
    "queries": [
     [
@@ -859,6 +1003,12 @@
      79
     ],
     [
+     "is ielts required for europe work visa",
+     1,
+     0,
+     1
+    ],
+    [
      "which country needs ielts for work",
      1,
      0,
@@ -877,45 +1027,66 @@
      95
     ]
    ],
-   "position": 31.7,
+   "position": 29.0,
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/electrician-salary-poland-2026-realistic-pay-work-permit-guide",
-   "impressions": 25,
+   "url": "https://visapoint.net/qatar-to-italy-work-permit-2026-step-by-step-guide-salary",
+   "impressions": 29,
    "clicks": 0,
    "queries": [
     [
-     "electrician salary in poland per month",
-     3,
-     0,
-     6.7
-    ],
-    [
-     "electrician salary in poland",
+     "for work",
      1,
      0,
-     11
+     14
     ],
     [
-     "poland ka batao",
+     "italy work visa from qatar",
      1,
      0,
-     4
+     49
     ],
     [
-     "а скок зп",
+     "khoroj koto",
      1,
      0,
-     7
+     2
     ]
    ],
-   "position": 6.2,
+   "position": 9.1,
    "ctr": 0.0
   },
   {
+   "url": "https://visapoint.net/sri-lanka-to-romania-work-permit-2026-step-by-step-guide-sal",
+   "impressions": 28,
+   "clicks": 1,
+   "queries": [
+    [
+     "romania work visa price in sri lanka",
+     1,
+     0,
+     10
+    ],
+    [
+     "translate to sinhala language",
+     1,
+     0,
+     3
+    ],
+    [
+     "visa",
+     1,
+     0,
+     14
+    ]
+   ],
+   "position": 6.3,
+   "ctr": 0.0357
+  },
+  {
    "url": "https://visapoint.net/europe-work-permit-without-ielts-7-countries-2026-guide",
-   "impressions": 25,
+   "impressions": 28,
    "clicks": 0,
    "queries": [
     [
@@ -937,6 +1108,12 @@
      28
     ],
     [
+     "ielts not required countries in europe for jobs",
+     1,
+     0,
+     4
+    ],
+    [
      "is ielts required for europe work visa",
      1,
      0,
@@ -955,88 +1132,25 @@
      83
     ]
    ],
-   "position": 16.7,
+   "position": 15.1,
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/bangladesh-to-romania-work-visa-2026-cost-process-salary",
-   "impressions": 24,
+   "url": "https://visapoint.net/europe-work-permit-without-ielts-7-countries-2026-guide-5815",
+   "impressions": 28,
    "clicks": 0,
    "queries": [
     [
-     "কাজের ভিসা",
-     1,
+     "which country needs ielts for work",
+     3,
      0,
-     4
-    ]
-   ],
-   "position": 6.1,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/qatar-to-italy-work-permit-2026-step-by-step-guide-salary",
-   "impressions": 24,
-   "clicks": 0,
-   "queries": [
-    [
-     "for work",
-     1,
-     0,
-     14
+     37.7
     ],
     [
-     "khoroj koto",
+     "can you work without a work permit in europe",
      1,
      0,
-     2
-    ]
-   ],
-   "position": 7.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/serbia-work-permit-2025-cost-documents-timeline-for-bangladeshi",
-   "impressions": 24,
-   "clicks": 0,
-   "queries": [
-    [
-     "serbia work permit cost",
-     2,
-     0,
-     10.5
-    ],
-    [
-     "serbia work permit",
-     1,
-     0,
-     62
-    ]
-   ],
-   "position": 10.3,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/europe-work-permit-without-ielts-7-countries-2026-guide-6320",
-   "impressions": 23,
-   "clicks": 0,
-   "queries": [
-    [
-     "ielts for europe work visa",
-     1,
-     0,
-     28
-    ],
-    [
-     "ielts requirement for europe work visa",
-     1,
-     0,
-     67
-    ],
-    [
-     "which countries need ielts for job in europe",
-     1,
-     0,
-     2
+     81
     ],
     [
      "which country work visa is easy to get from india",
@@ -1048,63 +1162,15 @@
      "work in europe without ielts",
      1,
      0,
-     89
+     82
     ]
    ],
-   "position": 14.7,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/uzbekistan-to-germany-work-permit-2026-step-by-step-guide-sa",
-   "impressions": 23,
-   "clicks": 0,
-   "queries": [
-    [
-     "deadline",
-     1,
-     0,
-     12
-    ]
-   ],
-   "position": 7.8,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/saudi-visa-status-2026-official-check-guide",
-   "impressions": 22,
-   "clicks": 0,
-   "queries": [
-    [
-     "saudi visa check",
-     2,
-     0,
-     59.5
-    ],
-    [
-     "check saudi visa",
-     1,
-     0,
-     50
-    ],
-    [
-     "saudi immigration iqama inquiry section",
-     1,
-     0,
-     77
-    ],
-    [
-     "saudi visa status",
-     1,
-     0,
-     55
-    ]
-   ],
-   "position": 19.2,
+   "position": 16.2,
    "ctr": 0.0
   },
   {
    "url": "https://visapoint.net/visa-checker",
-   "impressions": 22,
+   "impressions": 28,
    "clicks": 0,
    "queries": [
     [
@@ -1124,6 +1190,12 @@
      1,
      0,
      62
+    ],
+    [
+     "visa check",
+     1,
+     0,
+     54
     ],
     [
      "visa check all country",
@@ -1156,95 +1228,27 @@
      51
     ]
    ],
-   "position": 26.6,
+   "position": 23.6,
    "ctr": 0.0
   },
   {
    "url": "https://visapoint.net/slovakia-work-visa-2026-complete-guide-for-bangladeshis",
-   "impressions": 21,
+   "impressions": 27,
    "clicks": 1,
    "queries": [
     [
      "slovakia work permit visa for bangladeshi",
-     1,
-     0,
-     7
-    ]
-   ],
-   "position": 4.7,
-   "ctr": 0.0476
-  },
-  {
-   "url": "https://visapoint.net/sri-lanka-to-romania-work-permit-2026-step-by-step-guide-sal",
-   "impressions": 21,
-   "clicks": 1,
-   "queries": [
-    [
-     "romania work visa price in sri lanka",
-     1,
-     0,
-     10
-    ],
-    [
-     "translate to sinhala language",
-     1,
-     0,
-     3
-    ],
-    [
-     "visa",
-     1,
-     0,
-     14
-    ]
-   ],
-   "position": 6.3,
-   "ctr": 0.0476
-  },
-  {
-   "url": "https://visapoint.net/europe-work-permit-without-ielts-7-countries-2026-guide-5815",
-   "impressions": 21,
-   "clicks": 0,
-   "queries": [
-    [
-     "which country needs ielts for work",
      3,
      0,
-     37.7
-    ],
-    [
-     "can you work without a work permit in europe",
-     1,
-     0,
-     81
-    ],
-    [
-     "which country work visa is easy to get from india",
-     1,
-     0,
-     3
-    ],
-    [
-     "work in europe without ielts",
-     1,
-     0,
-     82
+     5.7
     ]
    ],
-   "position": 19.3,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/saudi-arabia-work-visa-2026-step-by-step-guide",
-   "impressions": 21,
-   "clicks": 0,
-   "queries": [],
-   "position": 7.1,
-   "ctr": 0.0
+   "position": 4.9,
+   "ctr": 0.037
   },
   {
    "url": "https://visapoint.net/europe-work-visa-processing-time-by-country-2026-fastest-guide",
-   "impressions": 20,
+   "impressions": 27,
    "clicks": 0,
    "queries": [
     [
@@ -1254,311 +1258,45 @@
      7
     ]
    ],
-   "position": 6.8,
+   "position": 7.3,
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/welder-salary-europe-2026-5-best-countries-to-earn-big",
-   "impressions": 20,
+   "url": "https://visapoint.net/saudi-arabia-work-visa-2026-step-by-step-guide",
+   "impressions": 27,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.2,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/europe-work-permit-without-ielts-7-countries-2026-guide-6320",
+   "impressions": 26,
    "clicks": 0,
    "queries": [
     [
-     "which country pays welders the most",
-     2,
+     "ielts for europe work visa",
+     1,
+     0,
+     28
+    ],
+    [
+     "ielts requirement for europe work visa",
+     1,
+     0,
+     67
+    ],
+    [
+     "which countries does not require ielts for job",
+     1,
      0,
      10
-    ]
-   ],
-   "position": 7.9,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/carpenter-salary-in-germany-2026-gross-net-savings-guide",
-   "impressions": 19,
-   "clicks": 0,
-   "queries": [
-    [
-     "germany carpenter salary per month",
-     3,
-     0,
-     5.7
     ],
     [
-     "carpenter salary in germany per month",
-     2,
-     0,
-     1
-    ],
-    [
-     "germany carpenter salary",
-     1,
-     0,
-     1
-    ],
-    [
-     "wie viel verdient man als tischler",
+     "which countries need ielts for job in europe",
      1,
      0,
      2
-    ]
-   ],
-   "position": 4.4,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/saudi-arabia-to-slovakia-work-permit-2026-cost-process-salar",
-   "impressions": 18,
-   "clicks": 0,
-   "queries": [
-    [
-     "slovakia work visa from saudi arabia",
-     3,
-     0,
-     10.7
-    ],
-    [
-     "slovakia work permit visa from saudi arabia",
-     1,
-     0,
-     8
-    ]
-   ],
-   "position": 7.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/welder-salary-slovakia-2026-net-pay-costs-savings",
-   "impressions": 17,
-   "clicks": 1,
-   "queries": [
-    [
-     "gaji welder di slovakia",
-     1,
-     0,
-     11
-    ],
-    [
-     "пенсия сварщика",
-     1,
-     0,
-     2
-    ]
-   ],
-   "position": 6.6,
-   "ctr": 0.0588
-  },
-  {
-   "url": "https://visapoint.net/bangladesh-to-serbia-work-permit-2026-cost-process-salary",
-   "impressions": 17,
-   "clicks": 0,
-   "queries": [
-    [
-     "ওয়ার্ক",
-     1,
-     0,
-     5
-    ]
-   ],
-   "position": 4.2,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/slovenia-work-visa-processing-time-step-by-step-process-2026-2ecd",
-   "impressions": 16,
-   "clicks": 1,
-   "queries": [
-    [
-     "slovenia work permit sample",
-     1,
-     0,
-     2
-    ],
-    [
-     "work permit",
-     1,
-     0,
-     26
-    ]
-   ],
-   "position": 6.2,
-   "ctr": 0.0625
-  },
-  {
-   "url": "https://visapoint.net/nepal-to-bulgaria-work-permit-2026-step-by-step-guide-salary",
-   "impressions": 15,
-   "clicks": 2,
-   "queries": [
-    [
-     "i am from nepal",
-     1,
-     0,
-     3
-    ]
-   ],
-   "position": 4.6,
-   "ctr": 0.1333
-  },
-  {
-   "url": "https://visapoint.net/nepal-to-croatia-work-permit-2026-cost-process-salary-guide",
-   "impressions": 15,
-   "clicks": 1,
-   "queries": [
-    [
-     "croatia working visa from nepal",
-     1,
-     1,
-     1
-    ]
-   ],
-   "position": 5.2,
-   "ctr": 0.0667
-  },
-  {
-   "url": "https://visapoint.net/bangladesh-to-bulgaria-work-permit-2026-cost-process-salary",
-   "impressions": 15,
-   "clicks": 0,
-   "queries": [],
-   "position": 4.7,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/malaysia-work-visa-2026-costs-requirements-bmet-guide",
-   "impressions": 15,
-   "clicks": 0,
-   "queries": [
-    [
-     "malaysia work permit visa price 2026",
-     8,
-     0,
-     7.4
-    ],
-    [
-     "malaysia visa work permit fee",
-     1,
-     0,
-     6
-    ],
-    [
-     "malaysia work permit visa fees for pakistani",
-     1,
-     0,
-     65
-    ],
-    [
-     "malaysia work permit visa for bangladeshi 2026",
-     1,
-     0,
-     6
-    ]
-   ],
-   "position": 10.9,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/netherlands-work-visa-processing-time-step-by-step-process-2",
-   "impressions": 15,
-   "clicks": 0,
-   "queries": [
-    [
-     "netherlands work permit visa",
-     3,
-     0,
-     88.7
-    ],
-    [
-     "hoe lang duurt visum aanvraag nederland werknemer",
-     2,
-     0,
-     74
-    ],
-    [
-     "netherlands work visa requirements",
-     1,
-     0,
-     86
-    ]
-   ],
-   "position": 37.6,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/passport/sao-tome-and-principe",
-   "impressions": 15,
-   "clicks": 0,
-   "queries": [
-    [
-     "santomean passport",
-     11,
-     0,
-     4.8
-    ],
-    [
-     "são tomé and príncipe passport",
-     1,
-     0,
-     64
-    ]
-   ],
-   "position": 8.9,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/visa-check/north-macedonia",
-   "impressions": 15,
-   "clicks": 0,
-   "queries": [
-    [
-     "north macedonia visa check online",
-     4,
-     0,
-     8.2
-    ],
-    [
-     "north macedonia visa check online by passport number",
-     2,
-     0,
-     8
-    ],
-    [
-     "north macedonia visa check",
-     1,
-     0,
-     6
-    ]
-   ],
-   "position": 7.7,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/bangladesh-to-poland-work-permit-2026-cost-process",
-   "impressions": 14,
-   "clicks": 1,
-   "queries": [],
-   "position": 5.5,
-   "ctr": 0.0714
-  },
-  {
-   "url": "https://visapoint.net/europe-work-permit-without-ielts-7-countries-2026-guide-8505",
-   "impressions": 14,
-   "clicks": 0,
-   "queries": [
-    [
-     "ielts not required countries in europe for jobs",
-     1,
-     0,
-     6
-    ],
-    [
-     "is ielts required for europe work visa",
-     1,
-     0,
-     1
-    ],
-    [
-     "is ielts required to work in europe",
-     1,
-     0,
-     57
     ],
     [
      "which country work visa is easy to get from india",
@@ -1567,173 +1305,66 @@
      3
     ],
     [
-     "which european countries require ielts for work",
-     1,
-     0,
-     66
-    ],
-    [
      "work in europe without ielts",
      1,
      0,
-     84
+     89
     ]
    ],
-   "position": 19.8,
+   "position": 14.3,
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/qatar-to-europe-work-permit-2026-costs-routes-step-by-step-guide",
-   "impressions": 14,
+   "url": "https://visapoint.net/saudi-visa-status-2026-official-check-guide",
+   "impressions": 25,
    "clicks": 0,
    "queries": [
-    [
-     "europe work visa from qatar",
-     1,
-     0,
-     88
-    ]
-   ],
-   "position": 13.4,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/s/walvi/saudi-arabia-visa-status-2026-official-check-guide",
-   "impressions": 14,
-   "clicks": 0,
-   "queries": [
-    [
-     "how to check mofa number with passport number",
-     1,
-     0,
-     11
-    ],
-    [
-     "saudi arabia visa status",
-     1,
-     0,
-     60
-    ],
     [
      "saudi visa check",
-     1,
+     2,
      0,
-     60
+     59.5
     ],
     [
-     "saudi visa check online",
+     "check saudi visa",
      1,
      0,
-     48
+     50
     ],
     [
-     "visa verification ksa",
+     "saudi immigration iqama inquiry section",
      1,
      0,
-     43
+     77
+    ],
+    [
+     "saudi visa status",
+     1,
+     0,
+     55
     ]
    ],
-   "position": 21.1,
+   "position": 17.7,
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/truck-driver-salary-poland-2026-gross-net-real-savings",
-   "impressions": 14,
+   "url": "https://visapoint.net/uzbekistan-to-germany-work-permit-2026-step-by-step-guide-sa",
+   "impressions": 24,
    "clicks": 0,
    "queries": [
     [
-     "how much they pay",
+     "deadline",
      1,
      0,
-     3
-    ],
-    [
-     "truck driver salary in poland",
-     1,
-     0,
-     9
+     12
     ]
    ],
-   "position": 5.6,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/uzbekistan-to-hungary-work-permit-2026-step-by-step-guide-sa",
-   "impressions": 14,
-   "clicks": 0,
-   "queries": [],
-   "position": 6.9,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/electrician-jobs-in-europe-2026-full-salary-visa-guide",
-   "impressions": 13,
-   "clicks": 0,
-   "queries": [
-    [
-     "electrician salary in europe per month",
-     1,
-     0,
-     11
-    ],
-    [
-     "non eu",
-     1,
-     0,
-     22
-    ],
-    [
-     "سباك وكهربائي",
-     1,
-     0,
-     30
-    ]
-   ],
-   "position": 12.3,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/europe-work-permit-without-ielts-7-countries-that-dont-requi",
-   "impressions": 13,
-   "clicks": 0,
-   "queries": [
-    [
-     "can you work without a work permit in europe",
-     1,
-     0,
-     92
-    ],
-    [
-     "ielts for europe work visa",
-     1,
-     0,
-     73
-    ],
-    [
-     "ielts requirement for europe work visa",
-     1,
-     0,
-     85
-    ],
-    [
-     "which european countries require ielts for work",
-     1,
-     0,
-     94
-    ],
-    [
-     "work in europe without ielts",
-     1,
-     0,
-     83
-    ]
-   ],
-   "position": 38.5,
+   "position": 7.8,
    "ctr": 0.0
   },
   {
    "url": "https://visapoint.net/netherlands-work-visa-eligibility-who-can-apply-requirements",
-   "impressions": 13,
+   "impressions": 23,
    "clicks": 0,
    "queries": [
     [
@@ -1791,54 +1422,84 @@
      100
     ],
     [
-     "work visa in the netherlands",
+     "netherlands work permit",
      1,
      0,
-     79
+     75
     ],
     [
-     "work visa netherlands",
+     "netherlands work permit visa",
      1,
      0,
-     61
+     77
+    ],
+    [
+     "netherlands work visa apply online",
+     1,
+     0,
+     62
     ]
    ],
-   "position": 79.9,
+   "position": 64.3,
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/pakistan-to-portugal-work-permit-2026-step-by-step-guide-sal",
-   "impressions": 13,
+   "url": "https://visapoint.net/carpenter-salary-in-germany-2026-gross-net-savings-guide",
+   "impressions": 22,
    "clicks": 0,
    "queries": [
     [
-     "how to apply for portugal work visa from pakistan",
+     "germany carpenter salary per month",
+     3,
+     0,
+     5.7
+    ],
+    [
+     "carpenter salary in germany per month",
+     2,
+     0,
+     1
+    ],
+    [
+     "germany carpenter salary",
      1,
      0,
-     8
+     1
+    ],
+    [
+     "wie viel verdient man als tischler",
+     1,
+     0,
+     2
     ]
    ],
-   "position": 8.5,
+   "position": 4.4,
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/saudi-arabia-to-romania-work-permit-2026-step-by-step-guide",
-   "impressions": 13,
+   "url": "https://visapoint.net/saudi-arabia-to-slovakia-work-permit-2026-cost-process-salar",
+   "impressions": 22,
    "clicks": 0,
    "queries": [
     [
-     "iqama holder",
-     1,
+     "slovakia work visa from saudi arabia",
+     3,
      0,
-     9
+     10.7
+    ],
+    [
+     "slovakia work permit visa from saudi arabia",
+     2,
+     0,
+     9.5
     ]
    ],
-   "position": 4.9,
+   "position": 7.0,
    "ctr": 0.0
   },
   {
    "url": "https://visapoint.net/serbia-work-permit-2025-complete-guide-from-qatar",
-   "impressions": 13,
+   "impressions": 21,
    "clicks": 0,
    "queries": [
     [
@@ -1848,27 +1509,148 @@
      3
     ]
    ],
-   "position": 4.9,
+   "position": 5.1,
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/vietnam-to-germany-work-permit-2026-step-by-step-guide-salar",
-   "impressions": 13,
+   "url": "https://visapoint.net/europe-work-permit-without-ielts-7-countries-2026-guide-8505",
+   "impressions": 20,
    "clicks": 0,
-   "queries": [],
-   "position": 6.6,
+   "queries": [
+    [
+     "ielts not required countries in europe for jobs",
+     3,
+     0,
+     6.3
+    ],
+    [
+     "is ielts required for europe work visa",
+     1,
+     0,
+     1
+    ],
+    [
+     "is ielts required to work in europe",
+     1,
+     0,
+     57
+    ],
+    [
+     "which country work visa is easy to get from india",
+     1,
+     0,
+     3
+    ],
+    [
+     "which european countries require ielts for work",
+     1,
+     0,
+     66
+    ],
+    [
+     "work in europe without ielts",
+     1,
+     0,
+     84
+    ]
+   ],
+   "position": 16.6,
    "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/nepal-to-bulgaria-work-permit-2026-step-by-step-guide-salary",
+   "impressions": 19,
+   "clicks": 2,
+   "queries": [
+    [
+     "i am from nepal",
+     1,
+     0,
+     3
+    ]
+   ],
+   "position": 5.0,
+   "ctr": 0.1053
+  },
+  {
+   "url": "https://visapoint.net/electrician-jobs-in-europe-2026-full-salary-visa-guide",
+   "impressions": 19,
+   "clicks": 1,
+   "queries": [
+    [
+     "electrician salary in europe per month",
+     1,
+     0,
+     11
+    ],
+    [
+     "non eu",
+     1,
+     0,
+     22
+    ],
+    [
+     "سباك وكهربائي",
+     1,
+     0,
+     30
+    ]
+   ],
+   "position": 9.5,
+   "ctr": 0.0526
+  },
+  {
+   "url": "https://visapoint.net/pakistan-to-portugal-work-permit-2026-step-by-step-guide-sal",
+   "impressions": 19,
+   "clicks": 1,
+   "queries": [
+    [
+     "how to apply for portugal work visa from pakistan",
+     1,
+     0,
+     8
+    ]
+   ],
+   "position": 8.3,
+   "ctr": 0.0526
+  },
+  {
+   "url": "https://visapoint.net/welder-salary-slovakia-2026-net-pay-costs-savings",
+   "impressions": 19,
+   "clicks": 1,
+   "queries": [
+    [
+     "gaji welder di slovakia",
+     1,
+     0,
+     11
+    ],
+    [
+     "slovakia welder salary",
+     1,
+     0,
+     7
+    ],
+    [
+     "пенсия сварщика",
+     1,
+     0,
+     2
+    ]
+   ],
+   "position": 6.6,
+   "ctr": 0.0526
   },
   {
    "url": "https://visapoint.net/about",
-   "impressions": 12,
+   "impressions": 19,
    "clicks": 0,
    "queries": [
     [
      "visapoint",
-     2,
+     7,
      0,
-     7
+     6.3
     ],
     [
      "visa point",
@@ -1877,7 +1659,491 @@
      23
     ]
    ],
-   "position": 7.9,
+   "position": 7.3,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/netherlands-work-visa-processing-time-step-by-step-process-2",
+   "impressions": 19,
+   "clicks": 0,
+   "queries": [
+    [
+     "netherlands work permit visa",
+     4,
+     0,
+     90.5
+    ],
+    [
+     "hoe lang duurt visum aanvraag nederland werknemer",
+     2,
+     0,
+     74
+    ],
+    [
+     "netherlands work visa requirements",
+     1,
+     0,
+     86
+    ]
+   ],
+   "position": 36.4,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/portugal-work-visa-2024-bangladesh-to-portugal-step-by-step-guide",
+   "impressions": 19,
+   "clicks": 0,
+   "queries": [
+    [
+     "portugal d1 visa for bangladeshi",
+     1,
+     0,
+     9
+    ]
+   ],
+   "position": 6.7,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/slovenia-work-visa-processing-time-step-by-step-process-2026-2ecd",
+   "impressions": 18,
+   "clicks": 1,
+   "queries": [
+    [
+     "slovenia work permit sample",
+     1,
+     0,
+     2
+    ],
+    [
+     "work permit",
+     1,
+     0,
+     26
+    ]
+   ],
+   "position": 5.7,
+   "ctr": 0.0556
+  },
+  {
+   "url": "https://visapoint.net/europe-work-permit-without-ielts-7-countries-that-dont-requi",
+   "impressions": 18,
+   "clicks": 0,
+   "queries": [
+    [
+     "work in europe without ielts",
+     2,
+     0,
+     66.5
+    ],
+    [
+     "can you work without a work permit in europe",
+     1,
+     0,
+     92
+    ],
+    [
+     "ielts for europe work visa",
+     1,
+     0,
+     73
+    ],
+    [
+     "ielts requirement for europe work visa",
+     1,
+     0,
+     85
+    ],
+    [
+     "is ielts required to work in europe",
+     1,
+     0,
+     24
+    ],
+    [
+     "which european countries require ielts for work",
+     1,
+     0,
+     94
+    ]
+   ],
+   "position": 32.9,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/saudi-arabia-to-romania-work-permit-2026-step-by-step-guide",
+   "impressions": 18,
+   "clicks": 0,
+   "queries": [
+    [
+     "iqama holder",
+     1,
+     0,
+     9
+    ],
+    [
+     "romania work visa from saudi arabia",
+     1,
+     0,
+     9
+    ]
+   ],
+   "position": 5.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/nepal-to-croatia-work-permit-2026-cost-process-salary-guide",
+   "impressions": 17,
+   "clicks": 1,
+   "queries": [
+    [
+     "croatia working visa from nepal",
+     1,
+     1,
+     1
+    ]
+   ],
+   "position": 5.5,
+   "ctr": 0.0588
+  },
+  {
+   "url": "https://visapoint.net/bangladesh-to-serbia-work-permit-2026-cost-process-salary",
+   "impressions": 17,
+   "clicks": 0,
+   "queries": [
+    [
+     "ওয়ার্ক",
+     1,
+     0,
+     5
+    ]
+   ],
+   "position": 4.2,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/qatar-to-europe-work-permit-2026-costs-routes-step-by-step-guide",
+   "impressions": 17,
+   "clicks": 0,
+   "queries": [
+    [
+     "europe work visa from qatar",
+     1,
+     0,
+     88
+    ]
+   ],
+   "position": 11.9,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/s/walvi/saudi-arabia-visa-status-2026-official-check-guide",
+   "impressions": 17,
+   "clicks": 0,
+   "queries": [
+    [
+     "how to check mofa number with passport number",
+     1,
+     0,
+     11
+    ],
+    [
+     "saudi arabia visa status",
+     1,
+     0,
+     60
+    ],
+    [
+     "saudi visa check",
+     1,
+     0,
+     60
+    ],
+    [
+     "saudi visa check online",
+     1,
+     0,
+     48
+    ],
+    [
+     "visa verification ksa",
+     1,
+     0,
+     43
+    ]
+   ],
+   "position": 18.3,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/visa-check/north-macedonia",
+   "impressions": 17,
+   "clicks": 0,
+   "queries": [
+    [
+     "north macedonia visa check online",
+     4,
+     0,
+     8.2
+    ],
+    [
+     "north macedonia visa check online by passport number",
+     2,
+     0,
+     8
+    ],
+    [
+     "north macedonia visa check",
+     1,
+     0,
+     6
+    ]
+   ],
+   "position": 7.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/bangladesh-to-bulgaria-work-permit-2026-cost-process-salary",
+   "impressions": 16,
+   "clicks": 0,
+   "queries": [],
+   "position": 4.9,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/passport/sao-tome-and-principe",
+   "impressions": 16,
+   "clicks": 0,
+   "queries": [
+    [
+     "santomean passport",
+     11,
+     0,
+     4.8
+    ],
+    [
+     "são tomé and príncipe passport",
+     1,
+     0,
+     64
+    ]
+   ],
+   "position": 8.9,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/vietnam-to-germany-work-permit-2026-step-by-step-guide-salar",
+   "impressions": 16,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/welder-jobs-poland-2026-salary-work-permit-and-savings",
+   "impressions": 16,
+   "clicks": 0,
+   "queries": [
+    [
+     "poland welder salary",
+     2,
+     0,
+     85.5
+    ]
+   ],
+   "position": 13.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/bangladesh-to-poland-work-permit-2026-cost-process",
+   "impressions": 15,
+   "clicks": 1,
+   "queries": [],
+   "position": 5.2,
+   "ctr": 0.0667
+  },
+  {
+   "url": "https://visapoint.net/electrician-salary-romania-2026-complete-savings-guide",
+   "impressions": 15,
+   "clicks": 0,
+   "queries": [
+    [
+     "romania electrician salary per month",
+     1,
+     0,
+     11
+    ]
+   ],
+   "position": 5.1,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/malaysia-work-visa-2026-costs-requirements-bmet-guide",
+   "impressions": 15,
+   "clicks": 0,
+   "queries": [
+    [
+     "malaysia work permit visa price 2026",
+     8,
+     0,
+     7.4
+    ],
+    [
+     "malaysia visa work permit fee",
+     1,
+     0,
+     6
+    ],
+    [
+     "malaysia work permit visa fees for pakistani",
+     1,
+     0,
+     65
+    ],
+    [
+     "malaysia work permit visa for bangladeshi 2026",
+     1,
+     0,
+     6
+    ]
+   ],
+   "position": 10.9,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/romania-vs-bulgaria-2026-the-complete-worker-comparison",
+   "impressions": 15,
+   "clicks": 0,
+   "queries": [
+    [
+     "romania or bulgaria which is better for work",
+     1,
+     0,
+     4
+    ],
+    [
+     "২০২৬",
+     1,
+     0,
+     5
+    ]
+   ],
+   "position": 5.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/truck-driver-salary-poland-2026-gross-net-real-savings",
+   "impressions": 15,
+   "clicks": 0,
+   "queries": [
+    [
+     "how much they pay",
+     1,
+     0,
+     3
+    ],
+    [
+     "truck driver salary in poland",
+     1,
+     0,
+     9
+    ]
+   ],
+   "position": 5.9,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/uzbekistan-to-hungary-work-permit-2026-step-by-step-guide-sa",
+   "impressions": 15,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/farm-worker-salary-in-bulgaria-2026-gross-net-savings-guide",
+   "impressions": 14,
+   "clicks": 0,
+   "queries": [],
+   "position": 8.1,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/cost-of-living-savings-in-poland-2026-how-much-can-a-foreign",
+   "impressions": 13,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/nepal-to-romania-work-permit-2026-step-by-step-guide-salary",
+   "impressions": 13,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/passport/argentina",
+   "impressions": 13,
+   "clicks": 0,
+   "queries": [
+    [
+     "argentina passport",
+     1,
+     0,
+     68
+    ],
+    [
+     "argentina passport visa free",
+     1,
+     0,
+     71
+    ]
+   ],
+   "position": 16.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/serbia-work-permit-vs-residence-permit-how-to-switch-2026",
+   "impressions": 13,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.9,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/bangladesh-map",
+   "impressions": 12,
+   "clicks": 0,
+   "queries": [
+    [
+     "bangladesh 64 district map generator",
+     1,
+     0,
+     10
+    ],
+    [
+     "bangladesh district visited map",
+     1,
+     0,
+     10
+    ],
+    [
+     "bangladesh map 64 districts",
+     1,
+     0,
+     10
+    ],
+    [
+     "district of bangladesh",
+     1,
+     0,
+     60
+    ]
+   ],
+   "position": 11.8,
    "ctr": 0.0
   },
   {
@@ -1902,6 +2168,27 @@
    "ctr": 0.0
   },
   {
+   "url": "https://visapoint.net/chef-salary-in-portugal-2026-gross-net-savings-guide",
+   "impressions": 12,
+   "clicks": 0,
+   "queries": [
+    [
+     "chef salary in portugal",
+     1,
+     0,
+     6
+    ],
+    [
+     "portugal chef salary per month",
+     1,
+     0,
+     5
+    ]
+   ],
+   "position": 5.7,
+   "ctr": 0.0
+  },
+  {
    "url": "https://visapoint.net/croatia-work-permit-2025-complete-guide-for-bangladeshi-workers",
    "impressions": 12,
    "clicks": 0,
@@ -1923,32 +2210,24 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/nepal-to-romania-work-permit-2026-step-by-step-guide-salary",
-   "impressions": 12,
-   "clicks": 0,
-   "queries": [],
-   "position": 7.2,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/passport/argentina",
+   "url": "https://visapoint.net/latvia-work-visa-processing-time-step-by-step-process-2026",
    "impressions": 12,
    "clicks": 0,
    "queries": [
     [
-     "argentina passport",
+     "how to get work permit in latvia",
      1,
      0,
-     68
+     74
     ],
     [
-     "argentina passport visa free",
+     "latvia work visa processing time",
      1,
      0,
-     71
+     8
     ]
    ],
-   "position": 17.8,
+   "position": 10.8,
    "ctr": 0.0
   },
   {
@@ -1973,101 +2252,8 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/portugal-work-visa-2024-bangladesh-to-portugal-step-by-step-guide",
-   "impressions": 12,
-   "clicks": 0,
-   "queries": [
-    [
-     "portugal d1 visa for bangladeshi",
-     1,
-     0,
-     9
-    ]
-   ],
-   "position": 6.9,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/romania-vs-bulgaria-2026-the-complete-worker-comparison",
-   "impressions": 12,
-   "clicks": 0,
-   "queries": [
-    [
-     "romania or bulgaria which is better for work",
-     1,
-     0,
-     4
-    ],
-    [
-     "২০২৬",
-     1,
-     0,
-     5
-    ]
-   ],
-   "position": 5.7,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/welder-jobs-poland-2026-salary-work-permit-and-savings",
-   "impressions": 12,
-   "clicks": 0,
-   "queries": [
-    [
-     "poland welder salary",
-     2,
-     0,
-     85.5
-    ]
-   ],
-   "position": 17.7,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/bangladesh-map",
-   "impressions": 11,
-   "clicks": 0,
-   "queries": [
-    [
-     "bangladesh 64 district map generator",
-     1,
-     0,
-     10
-    ],
-    [
-     "bangladesh district visited map",
-     1,
-     0,
-     10
-    ],
-    [
-     "district of bangladesh",
-     1,
-     0,
-     60
-    ]
-   ],
-   "position": 11.9,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/saudi-arabia-to-europe-work-permit-2026",
-   "impressions": 11,
-   "clicks": 0,
-   "queries": [
-    [
-     "saudi to europe work visa",
-     2,
-     0,
-     9
-    ]
-   ],
-   "position": 6.6,
-   "ctr": 0.0
-  },
-  {
    "url": "https://visapoint.net/visa-check/saudi-arabia",
-   "impressions": 11,
+   "impressions": 12,
    "clicks": 0,
    "queries": [
     [
@@ -2107,8 +2293,141 @@
      46
     ]
    ],
-   "position": 47.5,
+   "position": 44.2,
    "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/cleaner-salary-in-portugal-2026-gross-net-savings-guide",
+   "impressions": 11,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.1,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/romania-work-visa-saudi-arabia-to-romania-guide-2025",
+   "impressions": 11,
+   "clicks": 0,
+   "queries": [
+    [
+     "romania work visa from saudi arabia",
+     2,
+     0,
+     9
+    ],
+    [
+     "romania work visa from saudi arabia iqama holder",
+     1,
+     0,
+     8
+    ]
+   ],
+   "position": 4.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/saudi-arabia-to-europe-work-permit-2026",
+   "impressions": 11,
+   "clicks": 0,
+   "queries": [
+    [
+     "saudi to europe work visa",
+     2,
+     0,
+     9
+    ]
+   ],
+   "position": 6.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/serbia-work-permit-from-uae-cost-process-timeline-2025",
+   "impressions": 11,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/truck-driver-salary-hungary-2026-net-pay-savings-guide",
+   "impressions": 11,
+   "clicks": 0,
+   "queries": [
+    [
+     "hungary truck driver salary per month",
+     1,
+     0,
+     11
+    ],
+    [
+     "truck driver salary in hungary",
+     1,
+     0,
+     9
+    ]
+   ],
+   "position": 6.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/welder-salaries-europe-2026-complete-net-pay-permit-guide",
+   "impressions": 11,
+   "clicks": 0,
+   "queries": [
+    [
+     "portugal e",
+     1,
+     0,
+     3
+    ],
+    [
+     "welder salary in europe per month in peso",
+     1,
+     0,
+     7
+    ]
+   ],
+   "position": 6.3,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/s/walvi/saudi-visa-status-2026-official-check-guide",
+   "impressions": 10,
+   "clicks": 3,
+   "queries": [
+    [
+     "enjaz visa check",
+     1,
+     1,
+     7
+    ],
+    [
+     "enjaz visa checking",
+     1,
+     1,
+     7
+    ],
+    [
+     "visa platform check",
+     1,
+     1,
+     8
+    ],
+    [
+     "e number saudi visa check",
+     1,
+     0,
+     69
+    ],
+    [
+     "www visa mofa gov sa visa checking",
+     1,
+     0,
+     11
+    ]
+   ],
+   "position": 14.6,
+   "ctr": 0.3
   },
   {
    "url": "https://visapoint.net/romania-work-visa-2025-bangladesh-guide-costs",
@@ -2134,11 +2453,26 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/cleaner-salary-in-portugal-2026-gross-net-savings-guide",
+   "url": "https://visapoint.net/cost-of-living-croatia-2026-realistic-savings-guide",
    "impressions": 10,
    "clicks": 0,
    "queries": [],
-   "position": 7.0,
+   "position": 10.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/cost-of-living-savings-in-slovenia-2026-how-much-can-a-forei",
+   "impressions": 10,
+   "clicks": 0,
+   "queries": [
+    [
+     "work permit",
+     1,
+     0,
+     1
+    ]
+   ],
+   "position": 4.5,
    "ctr": 0.0
   },
   {
@@ -2181,22 +2515,7 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/electrician-salary-romania-2026-complete-savings-guide",
-   "impressions": 10,
-   "clicks": 0,
-   "queries": [
-    [
-     "romania electrician salary per month",
-     1,
-     0,
-     11
-    ]
-   ],
-   "position": 5.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/farm-worker-salary-in-bulgaria-2026-gross-net-savings-guide",
+   "url": "https://visapoint.net/croatia-vs-slovakia-for-foreign-workers-salary-cost-work-per",
    "impressions": 10,
    "clicks": 0,
    "queries": [],
@@ -2204,19 +2523,112 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/truck-driver-salary-hungary-2026-net-pay-savings-guide",
+   "url": "https://visapoint.net/hvac-technician-salary-in-portugal-2026-gross-net-savings-gu",
    "impressions": 10,
    "clicks": 0,
    "queries": [
     [
-     "truck driver salary in hungary",
+     "e em portugal",
      1,
      0,
-     9
+     8
     ]
    ],
-   "position": 6.4,
+   "position": 8.2,
    "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/kuwait-to-europe-work-permit-2026",
+   "impressions": 10,
+   "clicks": 0,
+   "queries": [
+    [
+     "how to apply europe work visa from kuwait",
+     1,
+     0,
+     11
+    ],
+    [
+     "kuwait to europe work visa",
+     1,
+     0,
+     2
+    ]
+   ],
+   "position": 5.9,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/morocco-to-germany-work-permit-2026-step-by-step-guide-salar",
+   "impressions": 10,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/passport/romania",
+   "impressions": 10,
+   "clicks": 0,
+   "queries": [
+    [
+     "romania passport",
+     3,
+     0,
+     11
+    ],
+    [
+     "romanian passport",
+     3,
+     0,
+     78.7
+    ],
+    [
+     "romanian passport ranking",
+     1,
+     0,
+     37
+    ],
+    [
+     "roumanie passeport",
+     1,
+     0,
+     82
+    ]
+   ],
+   "position": 40.2,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/tunisia-to-netherlands-work-permit-2026-step-by-step-guide-s",
+   "impressions": 10,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/uae-to-latvia-work-permit-2026-step-by-step-guide-salary",
+   "impressions": 10,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/welder-salary-poland-2026-complete-net-pay-savings-work-visa",
+   "impressions": 9,
+   "clicks": 1,
+   "queries": [
+    [
+     "poland welder salary",
+     2,
+     0,
+     28
+    ]
+   ],
+   "position": 11.9,
+   "ctr": 0.1111
   },
   {
    "url": "https://visapoint.net/bangladesh-to-malta-work-visa-2026-cost-process-salary",
@@ -2227,40 +2639,33 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/croatia-vs-slovakia-for-foreign-workers-salary-cost-work-per",
-   "impressions": 9,
-   "clicks": 0,
-   "queries": [],
-   "position": 7.4,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/latvia-work-visa-processing-time-step-by-step-process-2026",
+   "url": "https://visapoint.net/bangladesh-to-slovakia-work-permit-2026-cost-process",
    "impressions": 9,
    "clicks": 0,
    "queries": [
     [
-     "how to get work permit in latvia",
+     "slovakia work permit visa for bangladeshi",
      1,
      0,
-     74
-    ],
-    [
-     "latvia work visa processing time",
-     1,
-     0,
-     8
+     1
     ]
    ],
-   "position": 11.2,
+   "position": 3.3,
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/morocco-to-germany-work-permit-2026-step-by-step-guide-salar",
+   "url": "https://visapoint.net/passport/syria",
    "impressions": 9,
    "clicks": 0,
-   "queries": [],
-   "position": 5.4,
+   "queries": [
+    [
+     "syrian passport ranking",
+     1,
+     0,
+     46
+    ]
+   ],
+   "position": 9.8,
    "ctr": 0.0
   },
   {
@@ -2287,6 +2692,35 @@
    "ctr": 0.0
   },
   {
+   "url": "https://visapoint.net/south-africa-to-europe-work-permit-2026",
+   "impressions": 9,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.1,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/estonia-work-visa-processing-time-step-by-step-process-2026",
+   "impressions": 8,
+   "clicks": 1,
+   "queries": [
+    [
+     "estonia work permit visa",
+     1,
+     0,
+     76
+    ],
+    [
+     "janau",
+     1,
+     0,
+     22
+    ]
+   ],
+   "position": 19.8,
+   "ctr": 0.125
+  },
+  {
    "url": "https://visapoint.net/oman-to-romania-work-permit-2026-step-by-step-guide-salary",
    "impressions": 8,
    "clicks": 1,
@@ -2303,135 +2737,16 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/cost-of-living-savings-in-slovenia-2026-how-much-can-a-forei",
-   "impressions": 8,
-   "clicks": 0,
-   "queries": [
-    [
-     "work permit",
-     1,
-     0,
-     1
-    ]
-   ],
-   "position": 4.4,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/how-to-spot-fake-european-job-offers-scam-checklist-for-work",
+   "url": "https://visapoint.net/cost-of-living-savings-in-italy-2026-how-much-can-you-save",
    "impressions": 8,
    "clicks": 0,
    "queries": [],
-   "position": 7.1,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/passport/romania",
-   "impressions": 8,
-   "clicks": 0,
-   "queries": [
-    [
-     "romania passport",
-     3,
-     0,
-     11
-    ],
-    [
-     "romanian passport",
-     3,
-     0,
-     78.7
-    ]
-   ],
-   "position": 35.4,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/serbia-work-permit-vs-residence-permit-how-to-switch-2026",
-   "impressions": 8,
-   "clicks": 0,
-   "queries": [],
-   "position": 7.2,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/south-africa-to-europe-work-permit-2026",
-   "impressions": 8,
-   "clicks": 0,
-   "queries": [],
-   "position": 4.9,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/tiles-worker-salary-italy-2026-complete-guide-savings",
-   "impressions": 8,
-   "clicks": 0,
-   "queries": [],
-   "position": 4.2,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/uae-to-latvia-work-permit-2026-step-by-step-guide-salary",
-   "impressions": 8,
-   "clicks": 0,
-   "queries": [],
-   "position": 5.9,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/welder-salaries-europe-2026-complete-net-pay-permit-guide",
-   "impressions": 8,
-   "clicks": 0,
-   "queries": [
-    [
-     "portugal e",
-     1,
-     0,
-     3
-    ],
-    [
-     "welder salary in europe per month in peso",
-     1,
-     0,
-     7
-    ]
-   ],
-   "position": 6.2,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/welder-salary-poland-2026-complete-net-pay-savings-work-visa",
-   "impressions": 7,
-   "clicks": 1,
-   "queries": [
-    [
-     "poland welder salary",
-     1,
-     0,
-     47
-    ]
-   ],
-   "position": 13.0,
-   "ctr": 0.1429
-  },
-  {
-   "url": "https://visapoint.net/bangladesh-to-slovakia-work-permit-2026-cost-process",
-   "impressions": 7,
-   "clicks": 0,
-   "queries": [
-    [
-     "slovakia work permit visa for bangladeshi",
-     1,
-     0,
-     1
-    ]
-   ],
-   "position": 3.6,
+   "position": 2.4,
    "ctr": 0.0
   },
   {
    "url": "https://visapoint.net/czechia-work-visa-work-permit-vs-residence-permit-how-to-swi-300f",
-   "impressions": 7,
+   "impressions": 8,
    "clicks": 0,
    "queries": [
     [
@@ -2453,8 +2768,48 @@
      84
     ]
    ],
-   "position": 32.6,
+   "position": 29.8,
    "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/how-to-spot-fake-european-job-offers-scam-checklist-for-work",
+   "impressions": 8,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.1,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/india-to-bulgaria-work-permit-2026-step-by-step-guide-salary",
+   "impressions": 8,
+   "clicks": 0,
+   "queries": [],
+   "position": 10.4,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/serbia-to-slovenia-work-permit-2026-process-salary-costs",
+   "impressions": 8,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/tiles-worker-salary-italy-2026-complete-guide-savings",
+   "impressions": 8,
+   "clicks": 0,
+   "queries": [],
+   "position": 4.2,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/kenya-to-croatia-work-permit-2026-step-by-step-guide-salary",
+   "impressions": 7,
+   "clicks": 1,
+   "queries": [],
+   "position": 5.6,
+   "ctr": 0.1429
   },
   {
    "url": "https://visapoint.net/guides",
@@ -2465,21 +2820,15 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/kuwait-to-europe-work-permit-2026",
+   "url": "https://visapoint.net/latvia-work-visa-2026-processing-time-step-by-step-process",
    "impressions": 7,
    "clicks": 0,
    "queries": [
     [
-     "how to apply europe work visa from kuwait",
-     1,
+     "latvia work visa processing time",
+     3,
      0,
-     11
-    ],
-    [
-     "kuwait to europe work visa",
-     1,
-     0,
-     2
+     8.7
     ]
    ],
    "position": 5.7,
@@ -2501,18 +2850,26 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/romania-work-visa-saudi-arabia-to-romania-guide-2025",
+   "url": "https://visapoint.net/passport/sudan",
    "impressions": 7,
    "clicks": 0,
    "queries": [
     [
-     "romania work visa from saudi arabia",
-     1,
+     "sudan passport",
+     4,
      0,
-     9
+     9.5
     ]
    ],
-   "position": 3.3,
+   "position": 8.1,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/sri-lanka-to-portugal-work-permit-2026-step-by-step-guide-sa",
+   "impressions": 7,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.3,
    "ctr": 0.0
   },
   {
@@ -2531,32 +2888,34 @@
    "ctr": 0.0
   },
   {
+   "url": "https://visapoint.net/estonia-work-visa-processing-time-step-by-step-process-2026-7b0d",
+   "impressions": 6,
+   "clicks": 1,
+   "queries": [],
+   "position": 5.3,
+   "ctr": 0.1667
+  },
+  {
+   "url": "https://visapoint.net/india-to-portugal-work-permit-2026-step-by-step-guide-salary",
+   "impressions": 6,
+   "clicks": 1,
+   "queries": [
+    [
+     "portugal work permit 2026",
+     1,
+     0,
+     81
+    ]
+   ],
+   "position": 19.2,
+   "ctr": 0.1667
+  },
+  {
    "url": "https://visapoint.net/poland-work-permit-2025-complete-guide-for-bangladeshi-workers",
    "impressions": 6,
    "clicks": 1,
    "queries": [],
    "position": 4.8,
-   "ctr": 0.1667
-  },
-  {
-   "url": "https://visapoint.net/s/walvi/saudi-visa-status-2026-official-check-guide",
-   "impressions": 6,
-   "clicks": 1,
-   "queries": [
-    [
-     "enjaz visa check",
-     1,
-     1,
-     7
-    ],
-    [
-     "e number saudi visa check",
-     1,
-     0,
-     69
-    ]
-   ],
-   "position": 18.5,
    "ctr": 0.1667
   },
   {
@@ -2575,21 +2934,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/chef-salary-in-portugal-2026-gross-net-savings-guide",
-   "impressions": 6,
-   "clicks": 0,
-   "queries": [
-    [
-     "chef salary in portugal",
-     1,
-     0,
-     6
-    ]
-   ],
-   "position": 6.2,
-   "ctr": 0.0
-  },
-  {
    "url": "https://visapoint.net/cleaner-salary-in-czechia-2026-gross-net-savings-guide",
    "impressions": 6,
    "clicks": 0,
@@ -2598,23 +2942,7 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/cost-of-living-croatia-2026-realistic-savings-guide",
-   "impressions": 6,
-   "clicks": 0,
-   "queries": [],
-   "position": 5.8,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/cost-of-living-savings-in-italy-2026-how-much-can-you-save",
-   "impressions": 6,
-   "clicks": 0,
-   "queries": [],
-   "position": 2.7,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/cost-of-living-savings-in-poland-2026-how-much-can-a-foreign",
+   "url": "https://visapoint.net/cost-of-living-savings-in-hungary-2026-how-much-can-a-foreig-5c03",
    "impressions": 6,
    "clicks": 0,
    "queries": [],
@@ -2637,6 +2965,14 @@
    "ctr": 0.0
   },
   {
+   "url": "https://visapoint.net/georgia-to-romania-work-permit-2026-step-by-step-guide-salar",
+   "impressions": 6,
+   "clicks": 0,
+   "queries": [],
+   "position": 10.2,
+   "ctr": 0.0
+  },
+  {
    "url": "https://visapoint.net/germany-vs-poland-for-foreign-workers-2026-salary-cost-work",
    "impressions": 6,
    "clicks": 0,
@@ -2645,33 +2981,44 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/latvia-work-visa-2026-processing-time-step-by-step-process",
+   "url": "https://visapoint.net/painter-salary-in-croatia-2026-gross-net-savings-guide",
    "impressions": 6,
    "clicks": 0,
-   "queries": [
-    [
-     "latvia work visa processing time",
-     2,
-     0,
-     7.5
-    ]
-   ],
-   "position": 4.8,
+   "queries": [],
+   "position": 3.7,
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/passport/sudan",
+   "url": "https://visapoint.net/passport/grenada",
    "impressions": 6,
    "clicks": 0,
    "queries": [
     [
-     "sudan passport",
-     4,
+     "site:instagram.com/reels/ grenada visa free access",
+     2,
      0,
-     9.5
+     6.5
+    ],
+    [
+     "site:x.com/*/status/ -inurl:/photo/ -inurl:/analytics visa free access grenada",
+     2,
+     0,
+     8.5
+    ],
+    [
+     "site:instagram.com/reels/ visa free access grenada",
+     1,
+     0,
+     8
+    ],
+    [
+     "site:twitter.com/*/status/ -inurl:/photo/ -inurl:/analytics grenada visa free access",
+     1,
+     0,
+     5
     ]
    ],
-   "position": 8.8,
+   "position": 7.2,
    "ctr": 0.0
   },
   {
@@ -2714,6 +3061,37 @@
    "ctr": 0.0
   },
   {
+   "url": "https://visapoint.net/s/walvi/passport/sao-tome-and-principe",
+   "impressions": 6,
+   "clicks": 0,
+   "queries": [
+    [
+     "santomean passport",
+     3,
+     0,
+     6.3
+    ]
+   ],
+   "position": 5.2,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/schengen-visa-from-bangladesh-2026-complete-checklist",
+   "impressions": 6,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/serbia-vs-germany-for-foreign-workers-2026-salary-cost-work",
+   "impressions": 6,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.2,
+   "ctr": 0.0
+  },
+  {
    "url": "https://visapoint.net/terms",
    "impressions": 6,
    "clicks": 0,
@@ -2750,6 +3128,21 @@
    "ctr": 0.0
   },
   {
+   "url": "https://visapoint.net/visa-check/japan",
+   "impressions": 6,
+   "clicks": 0,
+   "queries": [
+    [
+     "japan visa check online by passport number",
+     1,
+     0,
+     11
+    ]
+   ],
+   "position": 9.3,
+   "ctr": 0.0
+  },
+  {
    "url": "https://visapoint.net/visa-check/turkey",
    "impressions": 6,
    "clicks": 0,
@@ -2779,6 +3172,27 @@
    "ctr": 0.0
   },
   {
+   "url": "https://visapoint.net/portugal-work-visa-2026-complete-guide-from-saudi-arabia",
+   "impressions": 5,
+   "clicks": 2,
+   "queries": [
+    [
+     "portugal work permit",
+     1,
+     0,
+     66
+    ],
+    [
+     "portugal work visa from saudi arabia",
+     1,
+     0,
+     9
+    ]
+   ],
+   "position": 18.8,
+   "ctr": 0.4
+  },
+  {
    "url": "https://visapoint.net/bangladesh-to-croatia-work-visa-2026-cost-process-salary",
    "impressions": 5,
    "clicks": 1,
@@ -2787,36 +3201,12 @@
    "ctr": 0.2
   },
   {
-   "url": "https://visapoint.net/estonia-work-visa-processing-time-step-by-step-process-2026",
+   "url": "https://visapoint.net/albania-to-malta-work-permit-2026-cost-process-salary-guide",
    "impressions": 5,
-   "clicks": 1,
+   "clicks": 0,
    "queries": [],
-   "position": 9.8,
-   "ctr": 0.2
-  },
-  {
-   "url": "https://visapoint.net/estonia-work-visa-processing-time-step-by-step-process-2026-7b0d",
-   "impressions": 5,
-   "clicks": 1,
-   "queries": [],
-   "position": 4.8,
-   "ctr": 0.2
-  },
-  {
-   "url": "https://visapoint.net/india-to-portugal-work-permit-2026-step-by-step-guide-salary",
-   "impressions": 5,
-   "clicks": 1,
-   "queries": [],
-   "position": 6.8,
-   "ctr": 0.2
-  },
-  {
-   "url": "https://visapoint.net/kenya-to-croatia-work-permit-2026-step-by-step-guide-salary",
-   "impressions": 5,
-   "clicks": 1,
-   "queries": [],
-   "position": 6.0,
-   "ctr": 0.2
+   "position": 6.2,
+   "ctr": 0.0
   },
   {
    "url": "https://visapoint.net/bangladesh-to-slovakia-work-permit-2026-cost-process-salary",
@@ -2831,6 +3221,35 @@
     ]
    ],
    "position": 10.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/carpenter-salary-in-latvia-2026-gross-net-savings-guide",
+   "impressions": 5,
+   "clicks": 0,
+   "queries": [],
+   "position": 4.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/countries/italy",
+   "impressions": 5,
+   "clicks": 0,
+   "queries": [
+    [
+     "רילוקיישן לאיטליה",
+     4,
+     0,
+     97.8
+    ],
+    [
+     "italy work visa price",
+     1,
+     0,
+     66
+    ]
+   ],
+   "position": 91.4,
    "ctr": 0.0
   },
   {
@@ -2869,11 +3288,42 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/india-to-bulgaria-work-permit-2026-step-by-step-guide-salary",
+   "url": "https://visapoint.net/electrician-salary-lithuania-2026-complete-net-savings-guide",
+   "impressions": 5,
+   "clicks": 0,
+   "queries": [
+    [
+     "lithuania electrician salary",
+     1,
+     0,
+     11
+    ]
+   ],
+   "position": 6.2,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/hungary-work-permit-2025-bangladesh-guest-worker-guide",
    "impressions": 5,
    "clicks": 0,
    "queries": [],
-   "position": 13.2,
+   "position": 4.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/kenya-to-netherlands-work-permit-2026-step-by-step-guide-sal",
+   "impressions": 5,
+   "clicks": 0,
+   "queries": [],
+   "position": 8.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/latvia-vs-slovakia-for-foreign-workers-salary-cost-work-perm",
+   "impressions": 5,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.8,
    "ctr": 0.0
   },
   {
@@ -2900,11 +3350,19 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/painter-salary-in-croatia-2026-gross-net-savings-guide",
+   "url": "https://visapoint.net/nigeria-to-malta-work-permit-2026-process-salary-costs",
    "impressions": 5,
    "clicks": 0,
    "queries": [],
-   "position": 3.0,
+   "position": 8.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/oman-to-serbia-work-permit-2026-step-by-step-guide-salary",
+   "impressions": 5,
+   "clicks": 0,
+   "queries": [],
+   "position": 8.0,
    "ctr": 0.0
   },
   {
@@ -2923,6 +3381,27 @@
    "ctr": 0.0
   },
   {
+   "url": "https://visapoint.net/passport/colombia",
+   "impressions": 5,
+   "clicks": 0,
+   "queries": [
+    [
+     "colombian passport cost",
+     2,
+     0,
+     72.5
+    ],
+    [
+     "which countries need visa for colombia",
+     1,
+     0,
+     81
+    ]
+   ],
+   "position": 51.4,
+   "ctr": 0.0
+  },
+  {
    "url": "https://visapoint.net/poland-work-permit-from-bangladesh-2026-guide",
    "impressions": 5,
    "clicks": 0,
@@ -2931,30 +3410,7 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/romania-work-permit-2026-welders-construction-guide",
-   "impressions": 5,
-   "clicks": 0,
-   "queries": [],
-   "position": 6.4,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/s/walvi/passport/sao-tome-and-principe",
-   "impressions": 5,
-   "clicks": 0,
-   "queries": [
-    [
-     "santomean passport",
-     3,
-     0,
-     6.3
-    ]
-   ],
-   "position": 5.8,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/schengen-visa-from-bangladesh-2026-complete-checklist",
+   "url": "https://visapoint.net/portugal-work-permit-vs-residence-permit-how-to-switch-2026",
    "impressions": 5,
    "clicks": 0,
    "queries": [],
@@ -2962,11 +3418,19 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/serbia-to-slovenia-work-permit-2026-process-salary-costs",
+   "url": "https://visapoint.net/qatar-to-france-work-visa-2025-routes-for-skilled-workers",
    "impressions": 5,
    "clicks": 0,
    "queries": [],
-   "position": 4.0,
+   "position": 7.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/romania-work-permit-2026-welders-construction-guide",
+   "impressions": 5,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.4,
    "ctr": 0.0
   },
   {
@@ -2986,20 +3450,27 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/albania-to-malta-work-permit-2026-cost-process-salary-guide",
-   "impressions": 4,
+   "url": "https://visapoint.net/turkey-to-poland-work-permit-2026-step-by-step-guide-salary",
+   "impressions": 5,
    "clicks": 0,
    "queries": [],
-   "position": 5.0,
+   "position": 7.4,
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/carpenter-salary-in-latvia-2026-gross-net-savings-guide",
+   "url": "https://visapoint.net/visa-check/oman",
    "impressions": 4,
-   "clicks": 0,
-   "queries": [],
-   "position": 5.8,
-   "ctr": 0.0
+   "clicks": 1,
+   "queries": [
+    [
+     "oman employment visa check",
+     1,
+     1,
+     134
+    ]
+   ],
+   "position": 39.8,
+   "ctr": 0.25
   },
   {
    "url": "https://visapoint.net/cost-of-living-savings-in-estonia-2026-how-much-can-a-foreig",
@@ -3010,11 +3481,42 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/cost-of-living-savings-in-hungary-2026-how-much-can-a-foreig-5c03",
+   "url": "https://visapoint.net/cost-of-living-savings-in-hungary-2026-how-much-can-a-foreig",
    "impressions": 4,
    "clicks": 0,
    "queries": [],
-   "position": 7.0,
+   "position": 5.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/cost-of-living-savings-in-hungary-2026-how-much-can-a-foreig-928b",
+   "impressions": 4,
+   "clicks": 0,
+   "queries": [
+    [
+     "how much can i save in a month",
+     1,
+     0,
+     1
+    ]
+   ],
+   "position": 6.2,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/cost-of-living-savings-in-hungary-2026-how-much-can-you-save",
+   "impressions": 4,
+   "clicks": 0,
+   "queries": [],
+   "position": 3.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/cost-of-living-savings-in-poland-2026-how-much-can-you-save",
+   "impressions": 4,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.2,
    "ctr": 0.0
   },
   {
@@ -3034,34 +3536,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/countries/italy",
-   "impressions": 4,
-   "clicks": 0,
-   "queries": [
-    [
-     "רילוקיישן לאיטליה",
-     4,
-     0,
-     97.8
-    ]
-   ],
-   "position": 97.8,
-   "ctr": 0.0
-  },
-  {
    "url": "https://visapoint.net/europe-work-permit-without-ielts-10-countries-how-to-apply-2025",
    "impressions": 4,
    "clicks": 0,
    "queries": [],
    "position": 6.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/georgia-to-romania-work-permit-2026-step-by-step-guide-salar",
-   "impressions": 4,
-   "clicks": 0,
-   "queries": [],
-   "position": 10.0,
    "ctr": 0.0
   },
   {
@@ -3073,27 +3552,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/hungary-work-permit-2025-bangladesh-guest-worker-guide",
-   "impressions": 4,
-   "clicks": 0,
-   "queries": [],
-   "position": 4.5,
-   "ctr": 0.0
-  },
-  {
    "url": "https://visapoint.net/jobs/carpenter",
    "impressions": 4,
    "clicks": 0,
    "queries": [],
    "position": 9.8,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/latvia-vs-slovakia-for-foreign-workers-salary-cost-work-perm",
-   "impressions": 4,
-   "clicks": 0,
-   "queries": [],
-   "position": 7.5,
    "ctr": 0.0
   },
   {
@@ -3105,11 +3568,18 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/nigeria-to-malta-work-permit-2026-process-salary-costs",
+   "url": "https://visapoint.net/nigeria-to-czechia-work-permit-2026-step-by-step-guide-salar",
    "impressions": 4,
    "clicks": 0,
-   "queries": [],
-   "position": 8.2,
+   "queries": [
+    [
+     "nigerian",
+     1,
+     0,
+     9
+    ]
+   ],
+   "position": 6.5,
    "ctr": 0.0
   },
   {
@@ -3159,6 +3629,56 @@
    "ctr": 0.0
   },
   {
+   "url": "https://visapoint.net/passport/japan",
+   "impressions": 4,
+   "clicks": 0,
+   "queries": [],
+   "position": 8.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/passport/palestine",
+   "impressions": 4,
+   "clicks": 0,
+   "queries": [
+    [
+     "palestine passport dashboard",
+     1,
+     0,
+     10
+    ],
+    [
+     "palestine passport ranking",
+     1,
+     0,
+     11
+    ]
+   ],
+   "position": 9.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/passport/venezuela",
+   "impressions": 4,
+   "clicks": 0,
+   "queries": [
+    [
+     "venezuela passport",
+     1,
+     0,
+     11
+    ],
+    [
+     "venezuela passport ranking",
+     1,
+     0,
+     11
+    ]
+   ],
+   "position": 8.8,
+   "ctr": 0.0
+  },
+  {
    "url": "https://visapoint.net/poland-skilled-trade-jobs-salaries-savings-visas-2026",
    "impressions": 4,
    "clicks": 0,
@@ -3182,22 +3702,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/serbia-vs-germany-for-foreign-workers-2026-salary-cost-work",
-   "impressions": 4,
-   "clicks": 0,
-   "queries": [],
-   "position": 5.2,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/serbia-work-permit-from-uae-cost-process-timeline-2025",
-   "impressions": 4,
-   "clicks": 0,
-   "queries": [],
-   "position": 7.8,
-   "ctr": 0.0
-  },
-  {
    "url": "https://visapoint.net/skilled-trade-jobs-europe-2026-complete-salary-guide",
    "impressions": 4,
    "clicks": 0,
@@ -3206,19 +3710,27 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/tunisia-to-netherlands-work-permit-2026-step-by-step-guide-s",
+   "url": "https://visapoint.net/skilled-worker-salary-europe-2026-complete-guide",
    "impressions": 4,
    "clicks": 0,
    "queries": [],
-   "position": 9.5,
+   "position": 5.0,
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/turkey-to-poland-work-permit-2026-step-by-step-guide-salary",
+   "url": "https://visapoint.net/truck-driver-salary-romania-2026-real-net-pay-savings",
    "impressions": 4,
    "clicks": 0,
    "queries": [],
-   "position": 8.0,
+   "position": 6.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/turkey-to-czechia-work-permit-2026-cost-process-salary",
+   "impressions": 4,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.5,
    "ctr": 0.0
   },
   {
@@ -3237,14 +3749,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/visa-check/japan",
-   "impressions": 4,
-   "clicks": 0,
-   "queries": [],
-   "position": 8.8,
-   "ctr": 0.0
-  },
-  {
    "url": "https://visapoint.net/welder-salary-in-poland-2026-complete-savings-breakdown",
    "impressions": 4,
    "clicks": 0,
@@ -3257,6 +3761,29 @@
     ]
    ],
    "position": 22.2,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/after-european-work-visa-approval-documents-steps-arrival-gu-7d15",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [
+    [
+     "europe work permit check",
+     1,
+     0,
+     76
+    ]
+   ],
+   "position": 31.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/bangladesh-to-czechia-work-permit-2026-cost-process-c93e",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 8.0,
    "ctr": 0.0
   },
   {
@@ -3314,19 +3841,27 @@
    "ctr": 0.0
   },
   {
+   "url": "https://visapoint.net/bulgaria-vs-portugal-for-foreign-workers-salary-cost-work-pe",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 3.3,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/construction-worker-salary-in-lithuania-2026-gross-net-savin",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.7,
+   "ctr": 0.0
+  },
+  {
    "url": "https://visapoint.net/contact",
    "impressions": 3,
    "clicks": 0,
    "queries": [],
    "position": 7.3,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/cost-of-living-savings-in-hungary-2026-how-much-can-a-foreig-928b",
-   "impressions": 3,
-   "clicks": 0,
-   "queries": [],
-   "position": 8.0,
    "ctr": 0.0
   },
   {
@@ -3338,6 +3873,29 @@
    "ctr": 0.0
   },
   {
+   "url": "https://visapoint.net/countries/france",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [
+    [
+     "france work permit minimum salary",
+     1,
+     0,
+     75
+    ]
+   ],
+   "position": 31.7,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/countries/turkey",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://visapoint.net/disclaimer",
    "impressions": 3,
    "clicks": 0,
@@ -3346,26 +3904,42 @@
    "ctr": 0.0
   },
   {
+   "url": "https://visapoint.net/e-visa-countries-for-indians-2026-5-best-destinations",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [
+    [
+     "e visa countries for indians",
+     1,
+     0,
+     46
+    ]
+   ],
+   "position": 18.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/georgia-to-czechia-work-permit-2026-step-by-step-guide-salar",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 14.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/greece-work-visa-jobs-2026",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 3.3,
+   "ctr": 0.0
+  },
+  {
    "url": "https://visapoint.net/hvac-technician-romania-2026-essential-salary-work-permit",
    "impressions": 3,
    "clicks": 0,
    "queries": [],
    "position": 4.3,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/hvac-technician-salary-in-portugal-2026-gross-net-savings-gu",
-   "impressions": 3,
-   "clicks": 0,
-   "queries": [
-    [
-     "e em portugal",
-     1,
-     0,
-     8
-    ]
-   ],
-   "position": 10.0,
    "ctr": 0.0
   },
   {
@@ -3393,14 +3967,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/oman-to-serbia-work-permit-2026-step-by-step-guide-salary",
-   "impressions": 3,
-   "clicks": 0,
-   "queries": [],
-   "position": 7.3,
-   "ctr": 0.0
-  },
-  {
    "url": "https://visapoint.net/passport/germany",
    "impressions": 3,
    "clicks": 0,
@@ -3413,29 +3979,6 @@
     ]
    ],
    "position": 12.7,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/passport/japan",
-   "impressions": 3,
-   "clicks": 0,
-   "queries": [],
-   "position": 8.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/passport/palestine",
-   "impressions": 3,
-   "clicks": 0,
-   "queries": [
-    [
-     "palestine passport dashboard",
-     1,
-     0,
-     10
-    ]
-   ],
-   "position": 8.3,
    "ctr": 0.0
   },
   {
@@ -3476,27 +4019,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/passport/venezuela",
-   "impressions": 3,
-   "clicks": 0,
-   "queries": [
-    [
-     "venezuela passport",
-     1,
-     0,
-     11
-    ],
-    [
-     "venezuela passport ranking",
-     1,
-     0,
-     11
-    ]
-   ],
-   "position": 10.7,
-   "ctr": 0.0
-  },
-  {
    "url": "https://visapoint.net/plumber-salary-portugal-2026-complete-pay-and-visa-guide",
    "impressions": 3,
    "clicks": 0,
@@ -3520,11 +4042,24 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/skilled-worker-salary-europe-2026-complete-guide",
+   "url": "https://visapoint.net/s/walvi/countries/italy",
    "impressions": 3,
    "clicks": 0,
-   "queries": [],
-   "position": 4.3,
+   "queries": [
+    [
+     "cat e alocatia in italia",
+     1,
+     0,
+     83
+    ],
+    [
+     "italy work visa price",
+     1,
+     0,
+     45
+    ]
+   ],
+   "position": 46.3,
    "ctr": 0.0
   },
   {
@@ -3536,19 +4071,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/truck-driver-salary-romania-2026-real-net-pay-savings",
+   "url": "https://visapoint.net/ukraine-to-slovenia-work-permit-2026-step-by-step-guide-sala",
    "impressions": 3,
    "clicks": 0,
    "queries": [],
-   "position": 7.3,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/turkey-to-czechia-work-permit-2026-cost-process-salary",
-   "impressions": 3,
-   "clicks": 0,
-   "queries": [],
-   "position": 7.3,
+   "position": 8.0,
    "ctr": 0.0
   },
   {
@@ -3573,34 +4100,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/visa-check/oman",
-   "impressions": 2,
-   "clicks": 1,
-   "queries": [
-    [
-     "oman employment visa check",
-     1,
-     1,
-     134
-    ]
-   ],
-   "position": 72.5,
-   "ctr": 0.5
-  },
-  {
-   "url": "https://visapoint.net/after-european-work-visa-approval-documents-steps-arrival-gu-7d15",
+   "url": "https://visapoint.net/bangladesh-to-czechia-work-permit-2026-cost-process",
    "impressions": 2,
    "clicks": 0,
    "queries": [],
-   "position": 8.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/bangladesh-to-czechia-work-permit-2026-cost-process-c93e",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [],
-   "position": 8.0,
+   "position": 5.5,
    "ctr": 0.0
   },
   {
@@ -3612,11 +4116,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/construction-worker-salary-in-lithuania-2026-gross-net-savin",
+   "url": "https://visapoint.net/cheapest-easiest-european-work-visas-from-asia-gulf-africa-2-b240",
    "impressions": 2,
    "clicks": 0,
    "queries": [],
-   "position": 8.0,
+   "position": 9.5,
    "ctr": 0.0
   },
   {
@@ -3628,14 +4132,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/cost-of-living-savings-in-hungary-2026-how-much-can-you-save",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [],
-   "position": 2.0,
-   "ctr": 0.0
-  },
-  {
    "url": "https://visapoint.net/cost-of-living-savings-in-romania-2026-how-much-can-a-foreig",
    "impressions": 2,
    "clicks": 0,
@@ -3644,42 +4140,33 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/countries/france",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [],
-   "position": 10.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/e-visa-countries-for-indians-2026-5-best-destinations",
+   "url": "https://visapoint.net/how-to-check-serbia-visa-online-2026",
    "impressions": 2,
    "clicks": 0,
    "queries": [
     [
-     "e visa countries for indians",
+     "how to check serbia visa online",
      1,
      0,
-     46
+     20
     ]
    ],
-   "position": 24.5,
+   "position": 29.5,
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/electrician-salary-lithuania-2026-complete-net-savings-guide",
+   "url": "https://visapoint.net/india-to-croatia-work-permit-2026-step-by-step-guide-salary",
    "impressions": 2,
    "clicks": 0,
-   "queries": [],
-   "position": 7.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/georgia-to-czechia-work-permit-2026-step-by-step-guide-salar",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [],
-   "position": 19.0,
+   "queries": [
+    [
+     "croatia work permit",
+     1,
+     0,
+     71
+    ]
+   ],
+   "position": 38.5,
    "ctr": 0.0
   },
   {
@@ -3707,41 +4194,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/nigeria-to-czechia-work-permit-2026-step-by-step-guide-salar",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [
-    [
-     "nigerian",
-     1,
-     0,
-     9
-    ]
-   ],
-   "position": 7.5,
-   "ctr": 0.0
-  },
-  {
    "url": "https://visapoint.net/north-macedonia-to-netherlands-work-permit-2026-process-sala",
    "impressions": 2,
    "clicks": 0,
    "queries": [],
    "position": 1.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/passport/colombia",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [
-    [
-     "which countries need visa for colombia",
-     1,
-     0,
-     81
-    ]
-   ],
-   "position": 52.0,
    "ctr": 0.0
   },
   {
@@ -3840,6 +4297,21 @@
    "ctr": 0.0
   },
   {
+   "url": "https://visapoint.net/passport/somalia",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [
+    [
+     "somali passport",
+     1,
+     0,
+     6
+    ]
+   ],
+   "position": 7.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://visapoint.net/passport/spain",
    "impressions": 2,
    "clicks": 0,
@@ -3855,21 +4327,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/passport/syria",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [
-    [
-     "syrian passport ranking",
-     1,
-     0,
-     46
-    ]
-   ],
-   "position": 26.5,
-   "ctr": 0.0
-  },
-  {
    "url": "https://visapoint.net/passport/taiwan",
    "impressions": 2,
    "clicks": 0,
@@ -3878,34 +4335,19 @@
    "ctr": 0.0
   },
   {
+   "url": "https://visapoint.net/passport/ukraine",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://visapoint.net/plumber-salary-in-slovenia-2026-gross-net-savings-guide",
    "impressions": 2,
    "clicks": 0,
    "queries": [],
    "position": 9.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/portugal-work-permit-vs-residence-permit-how-to-switch-2026",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [],
-   "position": 9.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/portugal-work-visa-2026-complete-guide-from-saudi-arabia",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [
-    [
-     "portugal work permit",
-     1,
-     0,
-     66
-    ]
-   ],
-   "position": 36.5,
    "ctr": 0.0
   },
   {
@@ -3962,6 +4404,14 @@
    "ctr": 0.0
   },
   {
+   "url": "https://visapoint.net/schengen-visa-requirements-2026-7-easy-steps-checklist",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [],
+   "position": 4.5,
+   "ctr": 0.0
+  },
+  {
    "url": "https://visapoint.net/skilled-worker-europe-2026-best-trades-salaries-savings",
    "impressions": 2,
    "clicks": 0,
@@ -3986,11 +4436,19 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/ukraine-to-slovenia-work-permit-2026-step-by-step-guide-sala",
+   "url": "https://visapoint.net/truck-driver-salary-italy-2026-realistic-net-pay",
    "impressions": 2,
    "clicks": 0,
    "queries": [],
-   "position": 7.5,
+   "position": 10.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/ukraine-to-slovakia-work-permit-2026-cost-process-salary-gui",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [],
+   "position": 9.5,
    "ctr": 0.0
   },
   {
@@ -3999,6 +4457,14 @@
    "clicks": 0,
    "queries": [],
    "position": 8.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/vietnam-to-czechia-work-permit-2026-cost-process-salary",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [],
+   "position": 2.5,
    "ctr": 0.0
   },
   {
@@ -4015,22 +4481,6 @@
    "clicks": 0,
    "queries": [],
    "position": 1.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/cheapest-easiest-european-work-visas-from-asia-gulf-africa-2-b240",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 9.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/cost-of-living-savings-in-hungary-2026-how-much-can-a-foreig",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 10.0,
    "ctr": 0.0
   },
   {
@@ -4141,11 +4591,26 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/countries/turkey",
+   "url": "https://visapoint.net/countries/slovenia",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
-   "position": 7.0,
+   "position": 2.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/countries/sweden",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [
+    [
+     "minimum salary in sweden",
+     1,
+     0,
+     82
+    ]
+   ],
+   "position": 82.0,
    "ctr": 0.0
   },
   {
@@ -4154,6 +4619,14 @@
    "clicks": 0,
    "queries": [],
    "position": 7.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/europe-work-permit-without-europe-work-permit-without-ielts-7-countries-2026-guide-5815",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 1.0,
    "ctr": 0.0
   },
   {
@@ -4181,19 +4654,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/how-to-check-serbia-visa-online-2026",
+   "url": "https://visapoint.net/jobs",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
-   "position": 39.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/india-to-croatia-work-permit-2026-step-by-step-guide-salary",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 6.0,
+   "position": 9.0,
    "ctr": 0.0
   },
   {
@@ -4202,14 +4667,6 @@
    "clicks": 0,
    "queries": [],
    "position": 9.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/kenya-to-netherlands-work-permit-2026-step-by-step-guide-sal",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 10.0,
    "ctr": 0.0
   },
   {
@@ -4270,6 +4727,14 @@
   },
   {
    "url": "https://visapoint.net/passport/costa-rica",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/passport/cyprus",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
@@ -4339,19 +4804,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/passport/somalia",
+   "url": "https://visapoint.net/passport/togo",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
-   "position": 8.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/passport/ukraine",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 2.0,
+   "position": 4.0,
    "ctr": 0.0
   },
   {
@@ -4378,14 +4835,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/qatar-to-france-work-visa-2025-routes-for-skilled-workers",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 3.0,
-   "ctr": 0.0
-  },
-  {
    "url": "https://visapoint.net/s/walvi/countries/cyprus",
    "impressions": 1,
    "clicks": 0,
@@ -4398,14 +4847,6 @@
     ]
    ],
    "position": 70.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/s/walvi/countries/italy",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 11.0,
    "ctr": 0.0
   },
   {
@@ -4440,6 +4881,21 @@
    "ctr": 0.0
   },
   {
+   "url": "https://visapoint.net/s/walvi/passport/grenada",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:instagram.com/reels/ visa free access grenada",
+     1,
+     0,
+     5
+    ]
+   ],
+   "position": 5.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://visapoint.net/s/walvi/passport/haiti",
    "impressions": 1,
    "clicks": 0,
@@ -4464,6 +4920,21 @@
    "ctr": 0.0
   },
   {
+   "url": "https://visapoint.net/s/walvi/visa-check/bahrain",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [
+    [
+     "bahrain visa check",
+     1,
+     0,
+     54
+    ]
+   ],
+   "position": 54.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://visapoint.net/saudi-arabia-to-slovakia-work-permit-2026",
    "impressions": 1,
    "clicks": 0,
@@ -4479,27 +4950,19 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/schengen-visa-requirements-2026-7-easy-steps-checklist",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 4.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/truck-driver-salary-italy-2026-realistic-net-pay",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 10.0,
-   "ctr": 0.0
-  },
-  {
    "url": "https://visapoint.net/tunisia-to-croatia-work-permit-2026-step-by-step-guide-salar",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
    "position": 9.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/turkey-to-bulgaria-work-permit-2026-process-salary-costs",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 1.0,
    "ctr": 0.0
   },
   {
@@ -4519,7 +4982,7 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/vietnam-to-czechia-work-permit-2026-cost-process-salary",
+   "url": "https://visapoint.net/ukraine-to-malta-work-permit-2026-step-by-step-guide-salary",
    "impressions": 1,
    "clicks": 0,
    "queries": [],

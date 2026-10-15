@@ -1,9 +1,9 @@
 {
- "source": "Search Console API 2026-07-14..2026-10-12",
+ "source": "Search Console API 2026-07-15..2026-10-13",
  "pages": [
   {
    "url": "https://infkey.com/",
-   "impressions": 115,
+   "impressions": 116,
    "clicks": 3,
    "queries": [
     [
@@ -13,22 +13,28 @@
      71.8
     ],
     [
-     "portkey pricing",
+     "cheap inference",
      4,
      0,
-     63
+     96.2
     ],
     [
-     "cheap inference",
+     "portkey pricing",
      3,
      0,
-     96
+     59.7
     ],
     [
      "how much does an api key cost",
      2,
      0,
      87
+    ],
+    [
+     "inference.sh pricing",
+     2,
+     0,
+     87.5
     ],
     [
      "api key price",
@@ -55,12 +61,6 @@
      98
     ],
     [
-     "inference.sh pricing",
-     1,
-     0,
-     81
-    ],
-    [
      "key llm",
      1,
      0,
@@ -79,8 +79,8 @@
      80
     ]
    ],
-   "position": 49.2,
-   "ctr": 0.0261
+   "position": 49.7,
+   "ctr": 0.0259
   },
   {
    "url": "https://infkey.com/s/infkey/models/claude-3-5-haiku",
