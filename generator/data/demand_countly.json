@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-07-15..2026-10-13, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-07-16..2026-10-14, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "richest countries in world",
@@ -623,12 +623,6 @@
    "src": "gsc"
   },
   {
-   "q": "countly analytics",
-   "impr": 12,
-   "pos": 26.8,
-   "src": "gsc"
-  },
-  {
    "q": "crypto market data",
    "impr": 12,
    "pos": 99.1,
@@ -638,6 +632,12 @@
    "q": "crypto price data",
    "impr": 11,
    "pos": 93.2,
+   "src": "gsc"
+  },
+  {
+   "q": "countly analytics",
+   "impr": 10,
+   "pos": 26.4,
    "src": "gsc"
   },
   {
@@ -665,6 +665,12 @@
    "src": "bing"
   },
   {
+   "q": "highest paid athletes 2026",
+   "impr": 37,
+   "pos": 8.1,
+   "src": "bing"
+  },
+  {
    "q": "how many mcdonalds are there in the world",
    "impr": 37,
    "pos": 8.0,
@@ -674,12 +680,6 @@
    "q": "mark zuckerberg net worth 2026",
    "impr": 36,
    "pos": 8.0,
-   "src": "bing"
-  },
-  {
-   "q": "highest paid athletes 2026",
-   "impr": 34,
-   "pos": 8.1,
    "src": "bing"
   },
   {
@@ -707,15 +707,15 @@
    "src": "bing"
   },
   {
-   "q": "most starred github repo",
-   "impr": 23,
-   "pos": 8.3,
-   "src": "bing"
-  },
-  {
    "q": "who is the richest person in the world 2026",
    "impr": 21,
    "pos": 8.6,
+   "src": "bing"
+  },
+  {
+   "q": "most starred github repo",
+   "impr": 18,
+   "pos": 8.4,
    "src": "bing"
   },
   {

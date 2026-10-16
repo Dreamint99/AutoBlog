@@ -1,16 +1,16 @@
 {
- "source": "Search Console API 2026-07-15..2026-10-13",
+ "source": "Search Console API 2026-07-16..2026-10-14",
  "pages": [
   {
    "url": "https://infkey.com/",
-   "impressions": 116,
+   "impressions": 114,
    "clicks": 3,
    "queries": [
     [
      "agentkey pricing",
-     8,
+     7,
      0,
-     71.8
+     70.6
     ],
     [
      "cheap inference",
@@ -79,8 +79,8 @@
      80
     ]
    ],
-   "position": 49.7,
-   "ctr": 0.0259
+   "position": 49.0,
+   "ctr": 0.0263
   },
   {
    "url": "https://infkey.com/s/infkey/models/claude-3-5-haiku",
