@@ -1,0 +1,41 @@
+name: Search Console URL inspection
+
+# Manual: index status of the home page + newest sitemap URLs per site (generator/gsc_inspect.py)
+# and the sitemaps Google knows. Read-only on Search Console; commits data/inspect_*.json.
+on:
+  workflow_dispatch:
+    inputs:
+      sites:
+        description: "Site ids, space separated (empty = all)"
+        default: ""
+      n:
+        description: "Sitemap URLs to inspect per site"
+        default: "40"
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: generator
+    steps:
+      - uses: actions/checkout@v4
+      - uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: projects/964026800128/locations/global/workloadIdentityPools/github/providers/autoblog
+          service_account: gsc-reader@autoblog-seo-10131811.iam.gserviceaccount.com
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install google-auth requests
+      - run: python gsc_inspect.py ${{ inputs.sites }} --n ${{ inputs.n }}
+      - name: Commit data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/inspect_*.json
+          git diff --cached --quiet || (git commit -m "Search Console inspection $(date -u +%F)" && git pull --rebase && git push)
