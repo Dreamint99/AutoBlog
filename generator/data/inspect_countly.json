@@ -1,7 +1,7 @@
 {
  "site": "countly",
  "property": "https://countly.net/",
- "checked": "2026-10-17T09:49:13+00:00",
+ "checked": "2026-10-17T22:03:23+00:00",
  "sitemaps": [
   {
    "path": "https://countly.net/sitemap.xml",
@@ -9,24 +9,24 @@
    "isPending": false,
    "isSitemapsIndex": false,
    "type": "sitemap",
-   "lastDownloaded": "2026-10-13T04:23:01.394Z",
+   "lastDownloaded": "2026-10-17T16:34:48.903Z",
    "warnings": "0",
    "errors": "0",
    "contents": [
     {
      "type": "web",
-     "submitted": "329",
+     "submitted": "317",
      "indexed": "0"
     }
    ]
   }
  ],
- "sitemap_count": 316,
+ "sitemap_count": 317,
  "byState": {
   "Submitted and indexed": 3,
-  "URL is unknown to Google": 15,
+  "Discovered - currently not indexed": 27,
   "Crawled - currently not indexed": 4,
-  "Discovered - currently not indexed": 19
+  "URL is unknown to Google": 7
  },
  "urls": [
   {
@@ -38,7 +38,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://countly.net/",
    "userCanonical": "https://countly.net/",
-   "lastCrawlTime": "2026-10-15T15:25:33Z",
+   "lastCrawlTime": "2026-10-17T14:56:01Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "http://countly.net/",
@@ -47,16 +47,29 @@
    ]
   },
   {
-   "url": "https://countly.net/internet-users-worldwide-6-0-billion-in-2026-continent-breakdown",
+   "url": "https://countly.net/most-used-ai-tools-2026-1-8b-users-adoption-stats",
    "verdict": "NEUTRAL",
-   "coverageState": "URL is unknown to Google",
+   "coverageState": "Discovered - currently not indexed",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://countly.net/internet-users-worldwide-6-0-billion-in-2026-continent-breakdown",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
    "referringUrls": null
   },
   {
@@ -90,27 +103,27 @@
   {
    "url": "https://countly.net/largest-european-countries-6-biggest-by-area-in-2026",
    "verdict": "NEUTRAL",
-   "coverageState": "URL is unknown to Google",
+   "coverageState": "Discovered - currently not indexed",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
    "referringUrls": null
   },
   {
    "url": "https://countly.net/ai-breach-impact-12-incidents-drove-18-chatgpt-surge-2026",
    "verdict": "NEUTRAL",
-   "coverageState": "URL is unknown to Google",
+   "coverageState": "Discovered - currently not indexed",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
    "referringUrls": null
   },
   {
@@ -131,27 +144,27 @@
   {
    "url": "https://countly.net/richest-african-countries-2026-seychelles-leads",
    "verdict": "NEUTRAL",
-   "coverageState": "URL is unknown to Google",
+   "coverageState": "Discovered - currently not indexed",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
    "referringUrls": null
   },
   {
    "url": "https://countly.net/gemini-argon-benchmark-53-score-0-018-cost-2026",
    "verdict": "NEUTRAL",
-   "coverageState": "URL is unknown to Google",
+   "coverageState": "Discovered - currently not indexed",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
    "referringUrls": null
   },
   {
@@ -185,14 +198,14 @@
   {
    "url": "https://countly.net/richest-people-asia-2026-net-worth-rankings-top-10-per-country",
    "verdict": "NEUTRAL",
-   "coverageState": "URL is unknown to Google",
+   "coverageState": "Discovered - currently not indexed",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
    "referringUrls": null
   },
   {
@@ -211,40 +224,40 @@
   {
    "url": "https://countly.net/most-popular-apps-2026-20-top-apps-unveiled",
    "verdict": "NEUTRAL",
-   "coverageState": "URL is unknown to Google",
+   "coverageState": "Discovered - currently not indexed",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
    "referringUrls": null
   },
   {
    "url": "https://countly.net/english-speakers-2026-1-58-billion-top-rankings-growth",
    "verdict": "NEUTRAL",
-   "coverageState": "URL is unknown to Google",
+   "coverageState": "Discovered - currently not indexed",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
    "referringUrls": null
   },
   {
    "url": "https://countly.net/internet-users-2026-5-surprising-growth-stats",
    "verdict": "NEUTRAL",
-   "coverageState": "URL is unknown to Google",
+   "coverageState": "Discovered - currently not indexed",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
    "referringUrls": null
   },
   {
@@ -291,14 +304,14 @@
   {
    "url": "https://countly.net/passkey-adoption-2026-essential-data-risks",
    "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
+   "coverageState": "URL is unknown to Google",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "crawledAs": null,
    "referringUrls": null
   },
   {
@@ -397,14 +410,14 @@
   {
    "url": "https://countly.net/largest-companies-by-revenue-2026-top-global-rankings",
    "verdict": "NEUTRAL",
-   "coverageState": "URL is unknown to Google",
+   "coverageState": "Discovered - currently not indexed",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
    "referringUrls": null
   },
   {
@@ -425,14 +438,14 @@
   {
    "url": "https://countly.net/social-media-users-by-country-2026-top-20-rankings",
    "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
+   "coverageState": "URL is unknown to Google",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "crawledAs": null,
    "referringUrls": null
   },
   {
@@ -554,19 +567,6 @@
   },
   {
    "url": "https://countly.net/global-ecommerce-statistics-2026-market-size-leaders",
-   "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
-   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
-   "indexingState": "INDEXING_STATE_UNSPECIFIED",
-   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
-   "googleCanonical": null,
-   "userCanonical": null,
-   "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": null
-  },
-  {
-   "url": "https://countly.net/best-thrift-stores-near-me-2026-5-vital-tips",
    "verdict": "NEUTRAL",
    "coverageState": "Discovered - currently not indexed",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",

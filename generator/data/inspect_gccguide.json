@@ -1,7 +1,7 @@
 {
  "site": "gccguide",
  "property": "https://gccguide.com/",
- "checked": "2026-10-17T10:02:28+00:00",
+ "checked": "2026-10-17T22:16:54+00:00",
  "sitemaps": [
   {
    "path": "https://gccguide.com/sitemap.xml",
@@ -21,11 +21,11 @@
    ]
   }
  ],
- "sitemap_count": 116,
+ "sitemap_count": 117,
  "byState": {
-  "Submitted and indexed": 14,
+  "Submitted and indexed": 13,
   "URL is unknown to Google": 15,
-  "Discovered - currently not indexed": 12
+  "Discovered - currently not indexed": 13
  },
  "urls": [
   {
@@ -44,6 +44,19 @@
     "https://www.sitelike.org/similar/gccguide.com/",
     "http://gccguide.com/"
    ]
+  },
+  {
+   "url": "https://gccguide.com/kuwait-work-visa-requirements-2026-step-by-step-guide",
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": null,
+   "referringUrls": null
   },
   {
    "url": "https://gccguide.com/oman-visa-for-expats-2026-5-rules-fees-rop-steps",
@@ -230,17 +243,15 @@
   {
    "url": "https://gccguide.com/dubai-driving-licence-2026-aed-1200-fee-48-hr-fast-track",
    "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
+   "coverageState": "URL is unknown to Google",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": [
-    "https://gccguide.com/sitemap.xml"
-   ]
+   "crawledAs": null,
+   "referringUrls": null
   },
   {
    "url": "https://gccguide.com/kuwait-expat-salary-2026-average-kwd-1200-pay-guides",
@@ -286,14 +297,14 @@
   {
    "url": "https://gccguide.com/dubai-driving-licence-renewal-2026-aed-300-fee-guide",
    "verdict": "NEUTRAL",
-   "coverageState": "URL is unknown to Google",
+   "coverageState": "Discovered - currently not indexed",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
    "referringUrls": null
   },
   {
@@ -364,14 +375,14 @@
   {
    "url": "https://gccguide.com/dubai-nurse-salary-2026-aed-9500-month-breakdown-benefits",
    "verdict": "NEUTRAL",
-   "coverageState": "URL is unknown to Google",
+   "coverageState": "Discovered - currently not indexed",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
    "referringUrls": null
   },
   {
@@ -418,19 +429,6 @@
   {
    "url": "https://gccguide.com/dubai-driving-licence-fees-2026-complete-guide-7-money-saving-hacks",
    "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
-   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
-   "indexingState": "INDEXING_STATE_UNSPECIFIED",
-   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
-   "googleCanonical": null,
-   "userCanonical": null,
-   "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": null
-  },
-  {
-   "url": "https://gccguide.com/qatar-dress-code-for-expats-what-to-wear-avoid",
-   "verdict": "NEUTRAL",
    "coverageState": "URL is unknown to Google",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
@@ -439,6 +437,19 @@
    "userCanonical": null,
    "lastCrawlTime": null,
    "crawledAs": null,
+   "referringUrls": null
+  },
+  {
+   "url": "https://gccguide.com/qatar-dress-code-for-expats-what-to-wear-avoid",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
    "referringUrls": null
   },
   {
@@ -570,19 +581,6 @@
     "http://gccguide.com/s/gccguide/kuwait-free-things-10-top-cheap-weekend-spots-2026",
     "http://gccguide.com/kuwait-free-things-10-top-cheap-weekend-spots-2026"
    ]
-  },
-  {
-   "url": "https://gccguide.com/bahrain-weekend-guide-2026-12-free-cheap-things",
-   "verdict": "PASS",
-   "coverageState": "Submitted and indexed",
-   "robotsTxtState": "ALLOWED",
-   "indexingState": "INDEXING_ALLOWED",
-   "pageFetchState": "SUCCESSFUL",
-   "googleCanonical": "https://gccguide.com/bahrain-weekend-guide-2026-12-free-cheap-things",
-   "userCanonical": "https://gccguide.com/bahrain-weekend-guide-2026-12-free-cheap-things",
-   "lastCrawlTime": "2026-10-12T03:49:24Z",
-   "crawledAs": "MOBILE",
-   "referringUrls": null
   }
  ]
 }

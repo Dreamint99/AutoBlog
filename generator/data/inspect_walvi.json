@@ -1,7 +1,7 @@
 {
  "site": "walvi",
  "property": "https://visapoint.net/",
- "checked": "2026-10-17T09:53:37+00:00",
+ "checked": "2026-10-17T22:07:55+00:00",
  "sitemaps": [
   {
    "path": "https://visapoint.net/sitemap.xml",
@@ -21,10 +21,10 @@
    ]
   }
  ],
- "sitemap_count": 527,
+ "sitemap_count": 545,
  "byState": {
-  "Submitted and indexed": 24,
-  "URL is unknown to Google": 4,
+  "Submitted and indexed": 22,
+  "URL is unknown to Google": 6,
   "Discovered - currently not indexed": 13
  },
  "urls": [
@@ -44,6 +44,32 @@
     "http://visapoint.net/",
     "http://www.visapoint.net/"
    ]
+  },
+  {
+   "url": "https://visapoint.net/usa-work-visa-2026-costs-times-requirements",
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": null,
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/us-citizens-europe-visa-2026-etias-eur7-work-visas-savings",
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": null,
+   "referringUrls": null
   },
   {
    "url": "https://visapoint.net/countries-with-visa-on-arrival-38-options-fees-2026",
@@ -167,14 +193,14 @@
   {
    "url": "https://visapoint.net/canada-work-permit-processing-306-365-days-wait-in-2026",
    "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
+   "coverageState": "URL is unknown to Google",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "crawledAs": null,
    "referringUrls": null
   },
   {
@@ -219,14 +245,14 @@
   {
    "url": "https://visapoint.net/digital-nomad-visa-salaries-7-high-pay-trade-jobs-2026",
    "verdict": "NEUTRAL",
-   "coverageState": "URL is unknown to Google",
+   "coverageState": "Discovered - currently not indexed",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
    "referringUrls": null
   },
   {
@@ -577,34 +603,6 @@
    "googleCanonical": "https://visapoint.net/poland-work-permit-2026-costs-salary-visa-guide",
    "userCanonical": "https://visapoint.net/poland-work-permit-2026-costs-salary-visa-guide",
    "lastCrawlTime": "2026-10-08T13:18:07Z",
-   "crawledAs": "MOBILE",
-   "referringUrls": null
-  },
-  {
-   "url": "https://visapoint.net/saudi-visa-status-2026-official-check-guide",
-   "verdict": "PASS",
-   "coverageState": "Submitted and indexed",
-   "robotsTxtState": "ALLOWED",
-   "indexingState": "INDEXING_ALLOWED",
-   "pageFetchState": "SUCCESSFUL",
-   "googleCanonical": "https://visapoint.net/saudi-visa-status-2026-official-check-guide",
-   "userCanonical": "https://visapoint.net/saudi-visa-status-2026-official-check-guide",
-   "lastCrawlTime": "2026-10-13T16:59:53Z",
-   "crawledAs": "MOBILE",
-   "referringUrls": [
-    "https://visapoint.net/s/walvi/saudi-visa-status-2026-official-check-guide"
-   ]
-  },
-  {
-   "url": "https://visapoint.net/schengen-visa-from-bangladesh-2026-complete-checklist",
-   "verdict": "PASS",
-   "coverageState": "Submitted and indexed",
-   "robotsTxtState": "ALLOWED",
-   "indexingState": "INDEXING_ALLOWED",
-   "pageFetchState": "SUCCESSFUL",
-   "googleCanonical": "https://visapoint.net/schengen-visa-from-bangladesh-2026-complete-checklist",
-   "userCanonical": "https://visapoint.net/schengen-visa-from-bangladesh-2026-complete-checklist",
-   "lastCrawlTime": "2026-10-08T12:32:02Z",
    "crawledAs": "MOBILE",
    "referringUrls": null
   }
