@@ -1,0 +1,588 @@
+{
+ "site": "gccguide",
+ "property": "https://gccguide.com/",
+ "checked": "2026-10-17T10:02:28+00:00",
+ "sitemaps": [
+  {
+   "path": "https://gccguide.com/sitemap.xml",
+   "lastSubmitted": "2026-10-13T10:58:15.107Z",
+   "isPending": false,
+   "isSitemapsIndex": false,
+   "type": "sitemap",
+   "lastDownloaded": "2026-10-17T04:19:05.951Z",
+   "warnings": "0",
+   "errors": "0",
+   "contents": [
+    {
+     "type": "web",
+     "submitted": "115",
+     "indexed": "0"
+    }
+   ]
+  }
+ ],
+ "sitemap_count": 116,
+ "byState": {
+  "Submitted and indexed": 14,
+  "URL is unknown to Google": 15,
+  "Discovered - currently not indexed": 12
+ },
+ "urls": [
+  {
+   "url": "https://gccguide.com/",
+   "verdict": "PASS",
+   "coverageState": "Submitted and indexed",
+   "robotsTxtState": "ALLOWED",
+   "indexingState": "INDEXING_ALLOWED",
+   "pageFetchState": "SUCCESSFUL",
+   "googleCanonical": "https://gccguide.com/",
+   "userCanonical": "https://gccguide.com/",
+   "lastCrawlTime": "2026-10-13T10:57:21Z",
+   "crawledAs": "MOBILE",
+   "referringUrls": [
+    "https://dreamithq.com/blog/kashim-uddin-masum",
+    "https://www.sitelike.org/similar/gccguide.com/",
+    "http://gccguide.com/"
+   ]
+  },
+  {
+   "url": "https://gccguide.com/oman-visa-for-expats-2026-5-rules-fees-rop-steps",
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": null,
+   "referringUrls": null
+  },
+  {
+   "url": "https://gccguide.com/dubai-driving-license-renewal-2026-fees-eye-test-steps",
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": null,
+   "referringUrls": null
+  },
+  {
+   "url": "https://gccguide.com/kuwait-visa-status-2026-check-validity-avoid-fines",
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": null,
+   "referringUrls": null
+  },
+  {
+   "url": "https://gccguide.com/saudi-iqama-requirements-2026-fees-types-save-sar",
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": null,
+   "referringUrls": null
+  },
+  {
+   "url": "https://gccguide.com/eid-al-adha-2027-gcc-holiday-calendar-dates-expat-tips",
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": null,
+   "referringUrls": null
+  },
+  {
+   "url": "https://gccguide.com/moving-to-doha-your-first-month-guide-2025",
+   "verdict": "PASS",
+   "coverageState": "Submitted and indexed",
+   "robotsTxtState": "ALLOWED",
+   "indexingState": "INDEXING_ALLOWED",
+   "pageFetchState": "SUCCESSFUL",
+   "googleCanonical": "https://gccguide.com/moving-to-doha-your-first-month-guide-2025",
+   "userCanonical": "https://gccguide.com/moving-to-doha-your-first-month-guide-2025",
+   "lastCrawlTime": "2026-10-11T16:51:56Z",
+   "crawledAs": "MOBILE",
+   "referringUrls": null
+  },
+  {
+   "url": "https://gccguide.com/oman-visa-costs-2026-14-day-gcc-free-entry-fees",
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": null,
+   "referringUrls": null
+  },
+  {
+   "url": "https://gccguide.com/gcc-health-insurance-2026-2100-5800-costs-enrollment-guide",
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": null,
+   "referringUrls": null
+  },
+  {
+   "url": "https://gccguide.com/eid-al-fitr-uae-2027-dates-prayer-times-leave-checklist",
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": null,
+   "referringUrls": null
+  },
+  {
+   "url": "https://gccguide.com/bahrain-golden-visa-fee-aed-1200-annual-cost-2026",
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": null,
+   "referringUrls": null
+  },
+  {
+   "url": "https://gccguide.com/dubai-driving-license-2026-aed-1200-fee-fast-track-guide",
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": null,
+   "referringUrls": null
+  },
+  {
+   "url": "https://gccguide.com/canada-oman-comparison-2026-salary-cost-visa-facts",
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": null,
+   "referringUrls": null
+  },
+  {
+   "url": "https://gccguide.com/crispy-chicken-vs-shawarma-doha-which-wins",
+   "verdict": "PASS",
+   "coverageState": "Submitted and indexed",
+   "robotsTxtState": "ALLOWED",
+   "indexingState": "INDEXING_ALLOWED",
+   "pageFetchState": "SUCCESSFUL",
+   "googleCanonical": "https://gccguide.com/crispy-chicken-vs-shawarma-doha-which-wins",
+   "userCanonical": "https://gccguide.com/crispy-chicken-vs-shawarma-doha-which-wins",
+   "lastCrawlTime": "2026-10-11T16:05:52Z",
+   "crawledAs": "MOBILE",
+   "referringUrls": null
+  },
+  {
+   "url": "https://gccguide.com/oman-visa-2026-5-steps-to-2-year-residency",
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": null,
+   "referringUrls": null
+  },
+  {
+   "url": "https://gccguide.com/dubai-driving-licence-2026-aed-1200-fee-48-hr-fast-track",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": [
+    "https://gccguide.com/sitemap.xml"
+   ]
+  },
+  {
+   "url": "https://gccguide.com/kuwait-expat-salary-2026-average-kwd-1200-pay-guides",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://gccguide.com/oman-visa-us-30-tourist-e-visa-70-multiple-entry-2026",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": [
+    "https://gccguide.com/sitemap.xml"
+   ]
+  },
+  {
+   "url": "https://gccguide.com/oman-air-gcc-schedule-5-routes-tickets-from-omr-30",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://gccguide.com/dubai-driving-licence-renewal-2026-aed-300-fee-guide",
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": null,
+   "referringUrls": null
+  },
+  {
+   "url": "https://gccguide.com/kuwait-salary-2026-avg-kwd-850-950-industry-guide",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://gccguide.com/salam-or-marhaba-how-to-greet-in-qatar-like-a-local",
+   "verdict": "PASS",
+   "coverageState": "Submitted and indexed",
+   "robotsTxtState": "ALLOWED",
+   "indexingState": "INDEXING_ALLOWED",
+   "pageFetchState": "SUCCESSFUL",
+   "googleCanonical": "https://gccguide.com/salam-or-marhaba-how-to-greet-in-qatar-like-a-local",
+   "userCanonical": "https://gccguide.com/salam-or-marhaba-how-to-greet-in-qatar-like-a-local",
+   "lastCrawlTime": "2026-10-11T15:41:05Z",
+   "crawledAs": "MOBILE",
+   "referringUrls": null
+  },
+  {
+   "url": "https://gccguide.com/kuwait-civil-id-check-verify-status-in-2-minutes-2026",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://gccguide.com/dubai-teacher-salary-2026-aed-12800-base-benefits",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://gccguide.com/dubai-accountant-salary-2026-aed-22500-avg-bonus-guide",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://gccguide.com/dubai-nurse-salary-2026-aed-9500-month-breakdown-benefits",
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": null,
+   "referringUrls": null
+  },
+  {
+   "url": "https://gccguide.com/dubai-salary-2026-aed-180k-average-usd-49k-cost-of-living-guide",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": [
+    "https://gccguide.com/sitemap.xml"
+   ]
+  },
+  {
+   "url": "https://gccguide.com/saudi-2026-public-holidays-essential-living-guide",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://gccguide.com/free-things-to-do-muscat-2026-7-top-weekend-picks",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://gccguide.com/dubai-driving-licence-fees-2026-complete-guide-7-money-saving-hacks",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://gccguide.com/qatar-dress-code-for-expats-what-to-wear-avoid",
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": null,
+   "referringUrls": null
+  },
+  {
+   "url": "https://gccguide.com/bahrain-cpr-renewal-2026-5-steps-fee-guide",
+   "verdict": "PASS",
+   "coverageState": "Submitted and indexed",
+   "robotsTxtState": "ALLOWED",
+   "indexingState": "INDEXING_ALLOWED",
+   "pageFetchState": "SUCCESSFUL",
+   "googleCanonical": "https://gccguide.com/bahrain-cpr-renewal-2026-5-steps-fee-guide",
+   "userCanonical": "https://gccguide.com/bahrain-cpr-renewal-2026-5-steps-fee-guide",
+   "lastCrawlTime": "2026-10-13T12:13:08Z",
+   "crawledAs": "MOBILE",
+   "referringUrls": null
+  },
+  {
+   "url": "https://gccguide.com/saudi-weekend-activities-12-free-cheap-ideas-2026",
+   "verdict": "PASS",
+   "coverageState": "Submitted and indexed",
+   "robotsTxtState": "ALLOWED",
+   "indexingState": "INDEXING_ALLOWED",
+   "pageFetchState": "SUCCESSFUL",
+   "googleCanonical": "https://gccguide.com/saudi-weekend-activities-12-free-cheap-ideas-2026",
+   "userCanonical": "https://gccguide.com/saudi-weekend-activities-12-free-cheap-ideas-2026",
+   "lastCrawlTime": "2026-10-13T12:56:06Z",
+   "crawledAs": "MOBILE",
+   "referringUrls": null
+  },
+  {
+   "url": "https://gccguide.com/uae-public-holidays-2026-complete-guide-tips",
+   "verdict": "PASS",
+   "coverageState": "Submitted and indexed",
+   "robotsTxtState": "ALLOWED",
+   "indexingState": "INDEXING_ALLOWED",
+   "pageFetchState": "SUCCESSFUL",
+   "googleCanonical": "https://gccguide.com/uae-public-holidays-2026-complete-guide-tips",
+   "userCanonical": "https://gccguide.com/uae-public-holidays-2026-complete-guide-tips",
+   "lastCrawlTime": "2026-10-13T06:34:08Z",
+   "crawledAs": "MOBILE",
+   "referringUrls": null
+  },
+  {
+   "url": "https://gccguide.com/bahrain-work-visa-2026-complete-guide-essential",
+   "verdict": "PASS",
+   "coverageState": "Submitted and indexed",
+   "robotsTxtState": "ALLOWED",
+   "indexingState": "INDEXING_ALLOWED",
+   "pageFetchState": "SUCCESSFUL",
+   "googleCanonical": "https://gccguide.com/bahrain-work-visa-2026-complete-guide-essential",
+   "userCanonical": "https://gccguide.com/bahrain-work-visa-2026-complete-guide-essential",
+   "lastCrawlTime": "2026-10-13T02:13:06Z",
+   "crawledAs": "MOBILE",
+   "referringUrls": [
+    "https://www.gccguide.com/bahrain-work-visa-2026-complete-guide-essential"
+   ]
+  },
+  {
+   "url": "https://gccguide.com/oman-cost-of-living-2026-guide-for-singles-families",
+   "verdict": "PASS",
+   "coverageState": "Submitted and indexed",
+   "robotsTxtState": "ALLOWED",
+   "indexingState": "INDEXING_ALLOWED",
+   "pageFetchState": "SUCCESSFUL",
+   "googleCanonical": "https://gccguide.com/oman-cost-of-living-2026-guide-for-singles-families",
+   "userCanonical": "https://gccguide.com/oman-cost-of-living-2026-guide-for-singles-families",
+   "lastCrawlTime": "2026-10-13T11:30:12Z",
+   "crawledAs": "MOBILE",
+   "referringUrls": [
+    "https://www.gccguide.com/oman-cost-of-living-2026-guide-for-singles-families"
+   ]
+  },
+  {
+   "url": "https://gccguide.com/gcc-2026-guide-complete-cheat-sheet-for-expats",
+   "verdict": "PASS",
+   "coverageState": "Submitted and indexed",
+   "robotsTxtState": "ALLOWED",
+   "indexingState": "INDEXING_ALLOWED",
+   "pageFetchState": "SUCCESSFUL",
+   "googleCanonical": "https://gccguide.com/gcc-2026-guide-complete-cheat-sheet-for-expats",
+   "userCanonical": "https://gccguide.com/gcc-2026-guide-complete-cheat-sheet-for-expats",
+   "lastCrawlTime": "2026-10-13T00:07:11Z",
+   "crawledAs": "MOBILE",
+   "referringUrls": [
+    "https://www.gccguide.com/gcc-2026-guide-complete-cheat-sheet-for-expats"
+   ]
+  },
+  {
+   "url": "https://gccguide.com/doha-rent-2025-1-bedroom-west-bay-vs-the-pearl-prices",
+   "verdict": "PASS",
+   "coverageState": "Submitted and indexed",
+   "robotsTxtState": "ALLOWED",
+   "indexingState": "INDEXING_ALLOWED",
+   "pageFetchState": "SUCCESSFUL",
+   "googleCanonical": "https://gccguide.com/doha-rent-2025-1-bedroom-west-bay-vs-the-pearl-prices",
+   "userCanonical": "https://gccguide.com/doha-rent-2025-1-bedroom-west-bay-vs-the-pearl-prices",
+   "lastCrawlTime": "2026-10-13T18:55:05Z",
+   "crawledAs": "MOBILE",
+   "referringUrls": [
+    "https://www.gccguide.com/doha-rent-2025-1-bedroom-west-bay-vs-the-pearl-prices"
+   ]
+  },
+  {
+   "url": "https://gccguide.com/kuwait-civil-id-2026-guide-fast-renewal-issue-fixes",
+   "verdict": "PASS",
+   "coverageState": "Submitted and indexed",
+   "robotsTxtState": "ALLOWED",
+   "indexingState": "INDEXING_ALLOWED",
+   "pageFetchState": "SUCCESSFUL",
+   "googleCanonical": "https://gccguide.com/kuwait-civil-id-2026-guide-fast-renewal-issue-fixes",
+   "userCanonical": "https://gccguide.com/kuwait-civil-id-2026-guide-fast-renewal-issue-fixes",
+   "lastCrawlTime": "2026-10-12T16:30:46Z",
+   "crawledAs": "MOBILE",
+   "referringUrls": [
+    "http://gccguide.com/kuwait-civil-id-2026-guide-fast-renewal-issue-fixes"
+   ]
+  },
+  {
+   "url": "https://gccguide.com/kuwait-free-things-10-top-cheap-weekend-spots-2026",
+   "verdict": "PASS",
+   "coverageState": "Submitted and indexed",
+   "robotsTxtState": "ALLOWED",
+   "indexingState": "INDEXING_ALLOWED",
+   "pageFetchState": "SUCCESSFUL",
+   "googleCanonical": "https://gccguide.com/kuwait-free-things-10-top-cheap-weekend-spots-2026",
+   "userCanonical": "https://gccguide.com/kuwait-free-things-10-top-cheap-weekend-spots-2026",
+   "lastCrawlTime": "2026-10-12T04:23:39Z",
+   "crawledAs": "MOBILE",
+   "referringUrls": [
+    "http://gccguide.com/s/gccguide/kuwait-free-things-10-top-cheap-weekend-spots-2026",
+    "http://gccguide.com/kuwait-free-things-10-top-cheap-weekend-spots-2026"
+   ]
+  },
+  {
+   "url": "https://gccguide.com/bahrain-weekend-guide-2026-12-free-cheap-things",
+   "verdict": "PASS",
+   "coverageState": "Submitted and indexed",
+   "robotsTxtState": "ALLOWED",
+   "indexingState": "INDEXING_ALLOWED",
+   "pageFetchState": "SUCCESSFUL",
+   "googleCanonical": "https://gccguide.com/bahrain-weekend-guide-2026-12-free-cheap-things",
+   "userCanonical": "https://gccguide.com/bahrain-weekend-guide-2026-12-free-cheap-things",
+   "lastCrawlTime": "2026-10-12T03:49:24Z",
+   "crawledAs": "MOBILE",
+   "referringUrls": null
+  }
+ ]
+}
