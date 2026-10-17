@@ -1,8 +1,9 @@
 """Content maintenance on the free LLM chain — two jobs:
 
   fill    : write an article for every pillar keyword (pillars.json) that has none
-  refresh : rewrite the stalest articles IN PLACE (same URL) with current facts,
-            prices and year — old dated posts ("… 2025") and posts older than N days
+  refresh : rewrite articles IN PLACE (same URL) with current facts, prices and year — first the
+            ones Google/Bing already show but rarely click, then old dated posts ("… 2025")
+            and posts older than N days
 
     python content_update.py fill infkey 4
     python content_update.py refresh all 1 --days 60
@@ -79,8 +80,42 @@ def fill(site: dict, n: int) -> int:
     return done
 
 
-def stale(arts: list) -> list:
+def _toks(s: str) -> set:
+    return {w for w in re.findall(r"[a-z0-9]+", s.lower()) if len(w) > 2 and not w.isdigit()}
+
+
+def search_demand(site_id: str, arts: list) -> dict:
+    """slug → search impressions it already gets but barely converts: Google page impressions
+    (data/gsc_<site>.json) plus Bing query impressions whose words sit in the title
+    (data/bing_<site>.json). Pages Bing/Google already show are the cheapest wins to refresh."""
+    dem = {}
+    try:
+        g = json.load(open(os.path.join(ROOT, "data", f"gsc_{site_id}.json"), encoding="utf-8"))
+        for p in g.get("pages", []):
+            slug = p["url"].rstrip("/").rsplit("/", 1)[-1]
+            if p.get("clicks", 0) <= p.get("impressions", 0) * 0.02:
+                dem[slug] = dem.get(slug, 0) + p.get("impressions", 0)
+    except Exception:
+        pass
+    try:
+        b = json.load(open(os.path.join(ROOT, "data", f"bing_{site_id}.json"), encoding="utf-8"))
+        titles = [(a["slug"], _toks(a.get("title", "") + " " + a["slug"].replace("-", " "))) for a in arts]
+        for q in b.get("queries", []):
+            qt = _toks(q.get("q", ""))
+            if len(qt) < 2 or q.get("clicks", 0) > q.get("impr", 0) * 0.05:
+                continue
+            best = max(titles, key=lambda t: len(qt & t[1]), default=None)
+            if best and len(qt & best[1]) >= max(2, int(len(qt) * 0.6 + 0.5)):
+                dem[best[0]] = dem.get(best[0], 0) + q.get("impr", 0)
+    except Exception:
+        pass
+    return dem
+
+
+def stale(arts: list, site_id: str = "") -> list:
     cutoff = datetime.now(timezone.utc) - timedelta(days=DAYS)
+    recent = datetime.now(timezone.utc) - timedelta(days=21)
+    dem = search_demand(site_id, arts) if site_id else {}
     out = []
     for a in arts:
         title = a.get("title", "")
@@ -92,14 +127,18 @@ def stale(arts: list) -> list:
             continue
         years = [int(y) for y in re.findall(r"\b(20[2-3]\d)\b", title)]
         old_year = bool(years) and max(years) < YEAR
-        if old_year or created < cutoff:
-            # old-year titles first, then oldest
-            out.append((0 if old_year else 1, created, a))
+        d = dem.get(a.get("slug"), 0)
+        if d >= 100 and created < recent:
+            # already shown by Google/Bing but hardly clicked: refresh these first, biggest first
+            out.append((-1, -d, a))
+        elif old_year or created < cutoff:
+            # then old-year titles, then oldest
+            out.append((0 if old_year else 1, created.timestamp(), a))
     return [a for _, _, a in sorted(out, key=lambda x: (x[0], x[1]))]
 
 
 def refresh(site: dict, n: int) -> int:
-    cands = stale(published(site["id"]))
+    cands = stale(published(site["id"]), site["id"])
     log(f"[{site['id']}] stale candidates: {len(cands)} (older than {DAYS} days or a past year in the title)")
     for a in cands[:5]:
         log(f"   {str(a.get('created_at'))[:10]}  {a.get('title')}")
