@@ -3,6 +3,8 @@ name: Search Console URL inspection
 # Manual: index status of the home page + newest sitemap URLs per site (generator/gsc_inspect.py)
 # and the sitemaps Google knows. Read-only on Search Console; commits data/inspect_*.json.
 on:
+  schedule:
+    - cron: "47 2 * * *"   # daily, AI University only (its admin → SEO page reads data/inspect_aiu.json); manual runs = any sites
   workflow_dispatch:
     inputs:
       sites:
@@ -32,7 +34,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install google-auth requests
-      - run: python gsc_inspect.py ${{ inputs.sites }} --n ${{ inputs.n }}
+      - run: python gsc_inspect.py ${{ github.event_name == 'schedule' && 'aiu' || inputs.sites }} --n ${{ inputs.n || '40' }}
       - name: Commit data
         run: |
           git config user.name "github-actions[bot]"
