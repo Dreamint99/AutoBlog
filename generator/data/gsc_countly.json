@@ -3,7 +3,7 @@
  "pages": [
   {
    "url": "https://countly.net/",
-   "impressions": 794,
+   "impressions": 796,
    "clicks": 3,
    "queries": [
     [
@@ -79,7 +79,7 @@
      86.5
     ]
    ],
-   "position": 34.3,
+   "position": 34.2,
    "ctr": 0.0038
   },
   {
@@ -335,7 +335,7 @@
   },
   {
    "url": "https://countly.net/contact",
-   "impressions": 43,
+   "impressions": 44,
    "clicks": 1,
    "queries": [
     [
@@ -358,7 +358,7 @@
     ]
    ],
    "position": 3.2,
-   "ctr": 0.0233
+   "ctr": 0.0227
   },
   {
    "url": "https://countly.net/top-82-richest-people-in-canada-2026",
@@ -805,35 +805,8 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/top10",
-   "impressions": 26,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     3,
-     0,
-     2
-    ],
-    [
-     "top 10 list",
-     1,
-     0,
-     14
-    ],
-    [
-     "top ten lists",
-     1,
-     0,
-     13
-    ]
-   ],
-   "position": 3.3,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/starbucks-stores-worldwide-2026-count-by-country",
-   "impressions": 25,
+   "impressions": 26,
    "clicks": 0,
    "queries": [
     [
@@ -879,7 +852,34 @@
      25
     ]
    ],
-   "position": 46.2,
+   "position": 44.9,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/top10",
+   "impressions": 26,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     3,
+     0,
+     2
+    ],
+    [
+     "top 10 list",
+     1,
+     0,
+     14
+    ],
+    [
+     "top ten lists",
+     1,
+     0,
+     13
+    ]
+   ],
+   "position": 3.3,
    "ctr": 0.0
   },
   {

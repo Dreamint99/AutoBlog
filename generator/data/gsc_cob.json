@@ -3,8 +3,8 @@
  "pages": [
   {
    "url": "https://coloursofbangladesh.com/",
-   "impressions": 2,
-   "clicks": 0,
+   "impressions": 6,
+   "clicks": 1,
    "queries": [
     [
      "colors bangladesh",
@@ -13,7 +13,182 @@
      4
     ]
    ],
-   "position": 5.5,
+   "position": 4.0,
+   "ctr": 0.1667
+  },
+  {
+   "url": "https://coloursofbangladesh.com/news/probashir-kofin-14-coffins-a-day",
+   "impressions": 2,
+   "clicks": 1,
+   "queries": [
+    [
+     "ব্র্যাকের",
+     1,
+     1,
+     97
+    ]
+   ],
+   "position": 50.5,
+   "ctr": 0.5
+  },
+  {
+   "url": "https://coloursofbangladesh.com/c/health",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 2.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/c/international",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 4.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/c/national",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 3.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 1.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/best/jatiyo-smriti-soudho",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 9.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/district/chandpur",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 10.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/district/dhaka",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 3.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/district/rajbari",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/district/sylhet",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 8.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/division/rajshahi",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/people/jasimuddin",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 4.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/people/mohammad-ashraful",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/places/hakaluki-haor",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/places/inani-beach",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 10.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/places/lalakhal",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/places/lawachara-national-park",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/places/ratargul-swamp-forest",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/upazila/nazirpur",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/news/honey-trap-targeting-probashi-online",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 8.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/video",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 3.0,
    "ctr": 0.0
   }
  ]
