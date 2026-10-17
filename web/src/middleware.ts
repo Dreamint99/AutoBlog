@@ -6,6 +6,12 @@ const FORCED_SITE = process.env.SITE_ID || "";
 
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
+  // One host per site: www.<domain> 301s to the bare domain (canonical) so Google and Bing
+  // stop crawling and indexing the same pages twice.
+  const reqHost = (req.headers.get("host") || "").split(":")[0].toLowerCase();
+  if (reqHost.startsWith("www.") && !pathname.startsWith("/_next")) {
+    return NextResponse.redirect(`https://${reqHost.slice(4)}${pathname}${req.nextUrl.search}`, 301);
+  }
   // Let Next internals, real files (sitemap.xml, robots.txt, favicon…) and the
   // root metadata icon routes through untouched (they live at the domain root,
   // not under /s/<site>, so they must NOT be rewritten).
