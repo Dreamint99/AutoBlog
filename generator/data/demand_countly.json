@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-07-16..2026-10-14, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-07-17..2026-10-15, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "richest countries in world",
@@ -641,9 +641,21 @@
    "src": "gsc"
   },
   {
+   "q": "which language has the most native speakers worldwide?",
+   "impr": 253,
+   "pos": 9.0,
+   "src": "bing"
+  },
+  {
    "q": "who has the most subscribers on youtube",
    "impr": 202,
    "pos": 8.4,
+   "src": "bing"
+  },
+  {
+   "q": "which language has the most native speakers worldwide",
+   "impr": 109,
+   "pos": 8.0,
    "src": "bing"
   },
   {
@@ -659,9 +671,9 @@
    "src": "bing"
   },
   {
-   "q": "how many roblox accounts are there",
-   "impr": 41,
-   "pos": 8.1,
+   "q": "top 10 richest people in the world",
+   "impr": 54,
+   "pos": 9.0,
    "src": "bing"
   },
   {
@@ -707,27 +719,21 @@
    "src": "bing"
   },
   {
+   "q": "most starred github repo",
+   "impr": 23,
+   "pos": 8.3,
+   "src": "bing"
+  },
+  {
    "q": "who is the richest person in the world 2026",
    "impr": 21,
    "pos": 8.6,
    "src": "bing"
   },
   {
-   "q": "most starred github repo",
-   "impr": 18,
-   "pos": 8.4,
-   "src": "bing"
-  },
-  {
    "q": "jeff bezos net worth 2026",
    "impr": 18,
    "pos": 8.7,
-   "src": "bing"
-  },
-  {
-   "q": "top 10 richest people in the world",
-   "impr": 18,
-   "pos": 9.0,
    "src": "bing"
   },
   {
@@ -746,6 +752,12 @@
    "q": "most downloaded apps",
    "impr": 15,
    "pos": 9.0,
+   "src": "bing"
+  },
+  {
+   "q": "github most starred repositories",
+   "impr": 13,
+   "pos": 8.0,
    "src": "bing"
   },
   {

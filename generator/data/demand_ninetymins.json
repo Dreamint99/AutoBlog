@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-07-16..2026-10-14, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-07-17..2026-10-15, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "world cup games today",
@@ -477,7 +477,7 @@
   },
   {
    "q": "us open tennis 2026 schedule",
-   "impr": 2435,
+   "impr": 2438,
    "pos": 9.4,
    "src": "bing"
   },
@@ -495,7 +495,7 @@
   },
   {
    "q": "tennis us open 2026",
-   "impr": 504,
+   "impr": 505,
    "pos": 9.0,
    "src": "bing"
   },
@@ -584,6 +584,12 @@
    "src": "bing"
   },
   {
+   "q": "cricket world cup 2026",
+   "impr": 45,
+   "pos": 9.2,
+   "src": "bing"
+  },
+  {
    "q": "norway team world cup",
    "impr": 43,
    "pos": 9.0,
@@ -638,12 +644,6 @@
    "src": "bing"
   },
   {
-   "q": "cricket world cup 2026",
-   "impr": 35,
-   "pos": 9.3,
-   "src": "bing"
-  },
-  {
    "q": "world cup 2026 fixtures",
    "impr": 32,
    "pos": 9.0,
@@ -651,6 +651,12 @@
   },
   {
    "q": "switzerland world cup",
+   "impr": 28,
+   "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "aek vs sha",
    "impr": 28,
    "pos": 8.0,
    "src": "bing"
@@ -686,6 +692,12 @@
    "src": "bing"
   },
   {
+   "q": "f1 schedule 2026 tv schedule",
+   "impr": 19,
+   "pos": 8.8,
+   "src": "bing"
+  },
+  {
    "q": "us open 2026 schedule tennis",
    "impr": 18,
    "pos": 9.3,
@@ -713,12 +725,6 @@
    "q": "us open tennis schedule 2026",
    "impr": 15,
    "pos": 9.0,
-   "src": "bing"
-  },
-  {
-   "q": "f1 schedule 2026 tv schedule",
-   "impr": 15,
-   "pos": 8.5,
    "src": "bing"
   },
   {
@@ -761,6 +767,12 @@
    "q": "2026 us open championship",
    "impr": 12,
    "pos": 10.0,
+   "src": "bing"
+  },
+  {
+   "q": "f1 calendar 2026 uk times",
+   "impr": 12,
+   "pos": 9.0,
    "src": "bing"
   },
   {

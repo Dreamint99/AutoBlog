@@ -2,33 +2,51 @@
  "sites": {
   "probashiinfo": {
    "weeks": [
-    "2026-07-31",
     "2026-08-07",
     "2026-08-14",
     "2026-08-21",
     "2026-08-28",
     "2026-09-04",
     "2026-09-11",
-    "2026-09-18"
+    "2026-09-18",
+    "2026-10-16"
    ],
    "week": {
+    "clicks": 3,
+    "impr": 97,
+    "pos": 4.7
+   },
+   "prevWeek": {
     "clicks": 7,
     "impr": 199,
     "pos": 4.4
    },
-   "prevWeek": {
-    "clicks": 1,
-    "impr": 113,
-    "pos": 4.5
-   },
    "range": [
-    "2026-09-18",
-    "2026-09-11"
+    "2026-10-16",
+    "2026-09-18"
    ],
    "topQueries": [
     {
-     "key": "কুয়েত ভিসা চেক পাসপোর্ট দিয়ে",
-     "clicks": 2,
+     "key": "ওমান ইমিগ্রেশন ওয়েবসাইট",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 4,
+     "imprPrev": 0,
+     "pos": 5.0,
+     "posPrev": null
+    },
+    {
+     "key": "মালয়েশিয়ার ওয়ার্ক পারমিট এর জন্য বৈধ এম্বাসি",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 4,
+     "imprPrev": 0,
+     "pos": 4.0,
+     "posPrev": null
+    },
+    {
+     "key": "সৈয়দির ভিসা চেক",
+     "clicks": 1,
      "clicksPrev": 0,
      "impr": 2,
      "imprPrev": 0,
@@ -36,70 +54,7 @@
      "posPrev": null
     },
     {
-     "key": "প্রবাসী কল্যাণ ব্যাংক লোন নিয়ম 2026",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 3,
-     "imprPrev": 1,
-     "pos": 5.0,
-     "posPrev": 2.0
-    },
-    {
-     "key": "দক্ষিণ কোরিয়ায় ইপিএস নিয়োগ কখন হয় এবং সামনে কি নিয়োগ আছে",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 3,
-     "imprPrev": 0,
-     "pos": 5.0,
-     "posPrev": null
-    },
-    {
-     "key": "কুয়েতের ভিসা চেক করার নিয়ম",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 3.0,
-     "posPrev": null
-    },
-    {
-     "key": "bmet হতেবাংলাদেশ থেকে জাপান যাওয়ার সুযোগ সরকারি ভাবে",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 5.0,
-     "posPrev": null
-    },
-    {
-     "key": "ওমান থেকে পতুগাল যাওয়ার নিয়ম",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 1.0,
-     "posPrev": null
-    },
-    {
-     "key": "সস্তা ভিসা",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 9,
-     "imprPrev": 4,
-     "pos": 3.0,
-     "posPrev": 2.0
-    },
-    {
-     "key": "ফিনল্যান্ডের স্টুডেন্ট ভিসার জন্য ব্যাংক সলভেন্সিতে কত টাকা দেখাতে হয়",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 8,
-     "imprPrev": 0,
-     "pos": 2.0,
-     "posPrev": null
-    },
-    {
-     "key": "কাজের ভিসায় দুবাই থেকে ইউরোপের কোন দেশে যেতে সবচেয়ে বেশি খরচ হয় কোন দেশে যেতে? এবং কত টাকা",
+     "key": "প্রবাসী কল্যাণ ব্যাংক",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 8,
@@ -108,72 +63,108 @@
      "posPrev": null
     },
     {
-     "key": "পোল্যান্ড ওয়ার্ক পারমিট ভিসার জন্য কি কি কাগজপত্র লাগে",
+     "key": "প্রবাসী কল্যাণ লোন  can cal paper",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 8,
+     "impr": 5,
+     "imprPrev": 0,
+     "pos": 6.0,
+     "posPrev": null
+    },
+    {
+     "key": "কাতার ভিসা চেক",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 3,
+     "imprPrev": 0,
+     "pos": 5.0,
+     "posPrev": null
+    },
+    {
+     "key": "বি এম ই টি রেজিস্টেশন",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 3,
      "imprPrev": 0,
      "pos": 2.0,
      "posPrev": null
     },
     {
-     "key": "বিএমইটি নিবন্ধনের খরচ ও সম্পূর্ণ প্রক্রিয়া কেমন",
+     "key": "কোন কারিবিশস দেশে রেসিডেন্সি পাওয়া গেলে পরে বেলিজে ভিজি নেওয়া যাবে",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 8,
+     "impr": 3,
      "imprPrev": 0,
-     "pos": 2.0,
+     "pos": 1.0,
      "posPrev": null
     },
     {
-     "key": "কোন কাজ বা স্কিল শিখলে দেশেও কাজ করা যাবে এবং বিদেশে গিয়েও চাকরি পাওয়া যাবে,এই কাজ বা স্কিল গুলো বলে দাও",
+     "key": "বিএমইটি রেজিস্ট্রেশন",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 8,
-     "imprPrev": 0,
-     "pos": 2.0,
-     "posPrev": null
-    },
-    {
-     "key": "bmet টেনিং করলে কত দিনের মধ্যে বিদেশ যেতে হবে নাকি একবার করলে যেকোনো সময় যাওয়া যাবে",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 6,
+     "impr": 3,
      "imprPrev": 0,
      "pos": 10.0,
      "posPrev": null
     },
     {
-     "key": "২০২৬ সালে ভিসা কি ভালো",
+     "key": "সৌদি আরব mcc কোম্পানি বেতন কেমন",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 6,
-     "imprPrev": 2,
-     "pos": 8.0,
-     "posPrev": 6.0
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 4.0,
+     "posPrev": null
     },
     {
-     "key": "এই পদের মাসিক বেতন সাধারণত কত টাকা থেকে শুরু হয়",
+     "key": "সৈদি অারবের ভিসা চেক করার সনয়ম",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 4,
+     "impr": 2,
      "imprPrev": 0,
-     "pos": 1.0,
+     "pos": 5.0,
+     "posPrev": null
+    },
+    {
+     "key": "সিসেলেস দেশে চাকরির ভিসা",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 6.0,
+     "posPrev": null
+    },
+    {
+     "key": "মালয়েশিয়া সরকারি বাস সার্ভিসের নাম",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 5.0,
+     "posPrev": null
+    },
+    {
+     "key": "কাতার ২০২৬ ভিসা খবর অক্টোবর",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 4.0,
+     "posPrev": null
+    },
+    {
+     "key": "কুয়েতের ভিসা চেক",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 4.0,
      "posPrev": null
     }
    ],
    "risingQueries": [
     {
-     "key": "ফিনল্যান্ডের স্টুডেন্ট ভিসার জন্য ব্যাংক সলভেন্সিতে কত টাকা দেখাতে হয়",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 8,
-     "imprPrev": 0,
-     "pos": 2.0,
-     "posPrev": null
-    },
-    {
-     "key": "কাজের ভিসায় দুবাই থেকে ইউরোপের কোন দেশে যেতে সবচেয়ে বেশি খরচ হয় কোন দেশে যেতে? এবং কত টাকা",
+     "key": "প্রবাসী কল্যাণ ব্যাংক",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 8,
@@ -182,89 +173,44 @@
      "posPrev": null
     },
     {
-     "key": "পোল্যান্ড ওয়ার্ক পারমিট ভিসার জন্য কি কি কাগজপত্র লাগে",
+     "key": "প্রবাসী কল্যাণ লোন  can cal paper",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 8,
+     "impr": 5,
      "imprPrev": 0,
-     "pos": 2.0,
+     "pos": 6.0,
      "posPrev": null
-    },
-    {
-     "key": "বিএমইটি নিবন্ধনের খরচ ও সম্পূর্ণ প্রক্রিয়া কেমন",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 8,
-     "imprPrev": 0,
-     "pos": 2.0,
-     "posPrev": null
-    },
-    {
-     "key": "কোন কাজ বা স্কিল শিখলে দেশেও কাজ করা যাবে এবং বিদেশে গিয়েও চাকরি পাওয়া যাবে,এই কাজ বা স্কিল গুলো বলে দাও",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 8,
-     "imprPrev": 0,
-     "pos": 2.0,
-     "posPrev": null
-    },
-    {
-     "key": "bmet টেনিং করলে কত দিনের মধ্যে বিদেশ যেতে হবে নাকি একবার করলে যেকোনো সময় যাওয়া যাবে",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 6,
-     "imprPrev": 0,
-     "pos": 10.0,
-     "posPrev": null
-    },
-    {
-     "key": "সস্তা ভিসা",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 9,
-     "imprPrev": 4,
-     "pos": 3.0,
-     "posPrev": 2.0
-    },
-    {
-     "key": "২০২৬ সালে ভিসা কি ভালো",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 6,
-     "imprPrev": 2,
-     "pos": 8.0,
-     "posPrev": 6.0
     }
    ]
   },
   "countly": {
    "weeks": [
-    "2026-08-21",
     "2026-08-28",
     "2026-09-04",
     "2026-09-11",
     "2026-09-18",
     "2026-09-25",
     "2026-10-02",
-    "2026-10-09"
+    "2026-10-09",
+    "2026-10-16"
    ],
    "week": {
+    "clicks": 116,
+    "impr": 789,
+    "pos": 7.4
+   },
+   "prevWeek": {
     "clicks": 101,
     "impr": 538,
     "pos": 5.8
    },
-   "prevWeek": {
-    "clicks": 89,
-    "impr": 551,
-    "pos": 5.6
-   },
    "range": [
-    "2026-10-09",
-    "2026-10-02"
+    "2026-10-16",
+    "2026-10-09"
    ],
    "topQueries": [
     {
-     "key": "‘’wechat is used only in china, a country with about 1.2 billion people",
+     "key": "bangladesh top bank",
      "clicks": 3,
      "clicksPrev": 0,
      "impr": 1,
@@ -273,7 +219,7 @@
      "posPrev": null
     },
     {
-     "key": "top 5 bank in bd 2026",
+     "key": "overall top rating bank in bangladesh",
      "clicks": 3,
      "clicksPrev": 0,
      "impr": 1,
@@ -282,88 +228,88 @@
      "posPrev": null
     },
     {
-     "key": "which countries does tesla sell in",
+     "key": "data pengguna instagram di dunia",
      "clicks": 3,
      "clicksPrev": 0,
      "impr": 1,
+     "imprPrev": 0,
+     "pos": 2.0,
+     "posPrev": null
+    },
+    {
+     "key": "world fastest car 2026",
+     "clicks": 2,
+     "clicksPrev": 0,
+     "impr": 24,
      "imprPrev": 0,
      "pos": 7.0,
      "posPrev": null
     },
     {
-     "key": "tallest building in the world 2026",
-     "clicks": 2,
-     "clicksPrev": 0,
-     "impr": 26,
-     "imprPrev": 36,
-     "pos": 2.0,
-     "posPrev": 2.0
-    },
-    {
-     "key": "openai earnings",
-     "clicks": 2,
-     "clicksPrev": 0,
-     "impr": 18,
-     "imprPrev": 0,
-     "pos": 5.0,
-     "posPrev": null
-    },
-    {
-     "key": "who has the most subscribers on youtube 2026",
+     "key": "internet population ranking by countries",
      "clicks": 2,
      "clicksPrev": 0,
      "impr": 4,
      "imprPrev": 0,
-     "pos": 1.0,
+     "pos": 2.0,
      "posPrev": null
     },
     {
-     "key": "what is the most spoken language in 2026",
-     "clicks": 2,
-     "clicksPrev": 3,
-     "impr": 2,
-     "imprPrev": 3,
-     "pos": 1.0,
-     "posPrev": 1.0
-    },
-    {
-     "key": "whats the number of sales of bath mats on flipkart amazon and other shopping website",
+     "key": "全球手机使用报告各国家版",
      "clicks": 2,
      "clicksPrev": 0,
      "impr": 2,
      "imprPrev": 0,
-     "pos": 1.0,
+     "pos": 3.0,
      "posPrev": null
     },
     {
-     "key": "how many country uses instagram",
+     "key": "top 10 famous git repo in globally 2026",
      "clicks": 2,
      "clicksPrev": 0,
      "impr": 2,
+     "imprPrev": 0,
+     "pos": 2.0,
+     "posPrev": null
+    },
+    {
+     "key": "1000000 languages",
+     "clicks": 2,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 7.0,
+     "posPrev": null
+    },
+    {
+     "key": "top ten mobile internet users 2026",
+     "clicks": 2,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 2.0,
+     "posPrev": null
+    },
+    {
+     "key": "東南アジア linkedin 利用者数推移",
+     "clicks": 2,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 5.0,
+     "posPrev": null
+    },
+    {
+     "key": "most used social media platform october 2026",
+     "clicks": 2,
+     "clicksPrev": 0,
+     "impr": 1,
      "imprPrev": 0,
      "pos": 6.0,
      "posPrev": null
     },
     {
-     "key": "how many users snapchat hvae in 2026 in the uk",
-     "clicks": 2,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 1.0,
-     "posPrev": null
-    },
-    {
-     "key": "welche lander in 2026 sind am handysüchtiegens viele leute sind handy süchtig",
-     "clicks": 2,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 1.0,
-     "posPrev": null
-    },
-    {
-     "key": "tea consume country data",
+     "key": "the number of global broadband users",
      "clicks": 2,
      "clicksPrev": 0,
      "impr": 1,
@@ -372,122 +318,122 @@
      "posPrev": null
     },
     {
-     "key": "out of bsl, spanish, or italian, which is the most common language in world",
+     "key": "how many countries have high digital services?",
      "clicks": 2,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 4.0,
+     "pos": 5.0,
      "posPrev": null
     },
     {
-     "key": "which new stadium in united state has the largest capacity in india",
+     "key": "how many subway restaurant vietnam 2026",
      "clicks": 2,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 2.0,
+     "pos": 1.0,
      "posPrev": null
     },
     {
-     "key": "fastest car in the world 2026",
-     "clicks": 1,
+     "key": "total snapchat users in the uk 2026",
+     "clicks": 2,
      "clicksPrev": 0,
-     "impr": 23,
-     "imprPrev": 70,
-     "pos": 8.0,
-     "posPrev": 6.0
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 3.0,
+     "posPrev": null
     }
    ],
    "risingQueries": [
     {
-     "key": "tallest buildings 2026 list",
+     "key": "which language has the most native speakers worldwide?",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 40,
+     "impr": 253,
      "imprPrev": 0,
-     "pos": 5.0,
+     "pos": 9.0,
      "posPrev": null
     },
     {
-     "key": "best youtube channels 2026",
+     "key": "which language has the most native speakers worldwide",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 31,
-     "imprPrev": 6,
-     "pos": 3.0,
-     "posPrev": 5.0
+     "impr": 109,
+     "imprPrev": 0,
+     "pos": 8.0,
+     "posPrev": null
     },
     {
-     "key": "top websites in the world",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 35,
-     "imprPrev": 11,
-     "pos": 9.0,
-     "posPrev": 9.0
-    },
-    {
-     "key": "grok rank the most studied l2 languages",
+     "key": "which language has the most native speakers worldwide? english spanish hindi mandarin",
      "clicks": 1,
      "clicksPrev": 0,
-     "impr": 19,
+     "impr": 65,
      "imprPrev": 0,
-     "pos": 4.0,
+     "pos": 7.0,
      "posPrev": null
     },
     {
-     "key": "open ai revenue 2026",
+     "key": "world's richest people",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 19,
-     "imprPrev": 0,
-     "pos": 8.0,
-     "posPrev": null
-    },
-    {
-     "key": "openai earnings",
-     "clicks": 2,
-     "clicksPrev": 0,
-     "impr": 18,
-     "imprPrev": 0,
-     "pos": 5.0,
-     "posPrev": null
-    },
-    {
-     "key": "what are the 4 most spoken languages in the world",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 17,
+     "impr": 58,
      "imprPrev": 0,
      "pos": 9.0,
      "posPrev": null
     },
     {
-     "key": "who is the highest paid athlete",
+     "key": "who is the richest man in the world",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 18,
-     "imprPrev": 6,
-     "pos": 8.0,
+     "impr": 42,
+     "imprPrev": 0,
+     "pos": 9.0,
+     "posPrev": null
+    },
+    {
+     "key": "top 10 richest people in the world",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 36,
+     "imprPrev": 0,
+     "pos": 9.0,
+     "posPrev": null
+    },
+    {
+     "key": "fastest car in the world 2026",
+     "clicks": 0,
+     "clicksPrev": 1,
+     "impr": 47,
+     "imprPrev": 23,
+     "pos": 5.0,
      "posPrev": 8.0
     },
     {
-     "key": "how many mcdonalds stores across the world",
-     "clicks": 0,
+     "key": "world fastest car 2026",
+     "clicks": 2,
      "clicksPrev": 0,
-     "impr": 11,
+     "impr": 24,
      "imprPrev": 0,
-     "pos": 6.0,
+     "pos": 7.0,
      "posPrev": null
     },
     {
-     "key": "what are the top 5 world languages and how many speakers do they have?",
-     "clicks": 0,
+     "key": "the fastest car in the world 2026",
+     "clicks": 1,
      "clicksPrev": 0,
-     "impr": 11,
+     "impr": 14,
      "imprPrev": 0,
-     "pos": 6.0,
+     "pos": 5.0,
+     "posPrev": null
+    },
+    {
+     "key": "open ai profit",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 6,
+     "imprPrev": 0,
+     "pos": 7.0,
      "posPrev": null
     }
    ]
@@ -497,113 +443,104 @@
   },
   "infkey": {
    "weeks": [
-    "2026-08-21",
     "2026-08-28",
     "2026-09-04",
     "2026-09-11",
     "2026-09-18",
     "2026-09-25",
     "2026-10-02",
-    "2026-10-09"
+    "2026-10-09",
+    "2026-10-16"
    ],
    "week": {
+    "clicks": 1,
+    "impr": 45,
+    "pos": 5.8
+   },
+   "prevWeek": {
     "clicks": 2,
     "impr": 46,
     "pos": 6.2
    },
-   "prevWeek": {
-    "clicks": 0,
-    "impr": 32,
-    "pos": 4.9
-   },
    "range": [
-    "2026-10-09",
-    "2026-10-02"
+    "2026-10-16",
+    "2026-10-09"
    ],
    "topQueries": [
     {
-     "key": "openai routing api decisions api pricing model update 2026",
+     "key": "ai video generation cost per second decline trend 2026",
      "clicks": 1,
      "clicksPrev": 0,
      "impr": 1,
+     "imprPrev": 0,
+     "pos": 9.0,
+     "posPrev": null
+    },
+    {
+     "key": "infkey",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 3,
+     "imprPrev": 0,
+     "pos": 3.0,
+     "posPrev": null
+    },
+    {
+     "key": "openrouter api key is cheaper?",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 2,
      "imprPrev": 0,
      "pos": 10.0,
      "posPrev": null
     },
     {
-     "key": "llm and rag which one cost friendly",
-     "clicks": 1,
+     "key": "llm gpt mini pdf extraction accuracy",
+     "clicks": 0,
      "clicksPrev": 0,
-     "impr": 1,
+     "impr": 2,
      "imprPrev": 0,
      "pos": 8.0,
      "posPrev": null
     },
     {
-     "key": "anthropic prompt caching pricing 90% cost savings",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 4,
-     "imprPrev": 0,
-     "pos": 9.0,
-     "posPrev": null
-    },
-    {
-     "key": "llm pdf extraction structured data cost per document 2026 vs human data entry cost",
+     "key": "ai llm pricing comparison what is function calling in python function",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 2,
      "imprPrev": 0,
-     "pos": 4.0,
+     "pos": 6.0,
      "posPrev": null
     },
     {
-     "key": "low cost invoice text extraction: comparative evaluation of ai models/ products along with resource efficient ensemble approach",
+     "key": "rag cost",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 2,
      "imprPrev": 0,
-     "pos": 9.0,
+     "pos": 6.0,
      "posPrev": null
     },
     {
-     "key": "what is the pricing for midjourney ai and dalle 3",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 10.0,
-     "posPrev": null
-    },
-    {
-     "key": "rag cost per query lang",
+     "key": "llm token cost monitoring tools 2026 litellm langfuse opentelemetry",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 7.0,
+     "pos": 1.0,
      "posPrev": null
     },
     {
-     "key": "whats the average cost in credits of 1 second of ai generated video?",
+     "key": "openrouter fees compared direct provider api pricing",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 4.0,
+     "pos": 1.0,
      "posPrev": null
     },
     {
-     "key": "openrouter vs api directe coût 2026",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 7.0,
-     "posPrev": null
-    },
-    {
-     "key": "cheapest text to speech service niairpkiosk irp nia nih",
+     "key": "cheapest llm what are the ai image generators to use",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
@@ -612,7 +549,7 @@
      "posPrev": null
     },
     {
-     "key": "qwen-image-layered fal.ai replicate price per run seconds h100",
+     "key": "ai video generator 2026 launch hidden costs and credits",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
@@ -621,39 +558,48 @@
      "posPrev": null
     },
     {
-     "key": "evaluating and selecting llms to for rag - cost vs accuracy tradeoffs",
+     "key": "drama 3 tts model api pricing",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 1.0,
+     "pos": 4.0,
      "posPrev": null
     },
     {
-     "key": "text to speech api pricing comparison 2025 2026 cheap",
+     "key": "vision llm batch extraction scanned pdf structured output cost 2026",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 6.0,
+     "pos": 5.0,
      "posPrev": null
     },
     {
-     "key": "video generation image api pricing per second 2026 veo sora cost",
+     "key": "ai video generation price comparison per second multi-platform",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 8.0,
+     "pos": 5.0,
      "posPrev": null
     },
     {
-     "key": "openai api model routing best practices 2026",
+     "key": "kolik aktualne stojí ai generovani video 1 minut delky. obvykle",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 1.0,
+     "pos": 4.0,
+     "posPrev": null
+    },
+    {
+     "key": "how much does openai api costdify rag fusion",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 4.0,
      "posPrev": null
     }
    ],
@@ -664,59 +610,86 @@
   },
   "ninetymins": {
    "weeks": [
-    "2026-08-21",
     "2026-08-28",
     "2026-09-04",
     "2026-09-11",
     "2026-09-18",
     "2026-09-25",
     "2026-10-02",
-    "2026-10-09"
+    "2026-10-09",
+    "2026-10-16"
    ],
    "week": {
+    "clicks": 26,
+    "impr": 703,
+    "pos": 5.6
+   },
+   "prevWeek": {
     "clicks": 33,
     "impr": 345,
     "pos": 7.1
    },
-   "prevWeek": {
-    "clicks": 22,
-    "impr": 523,
-    "pos": 7.2
-   },
    "range": [
-    "2026-10-09",
-    "2026-10-02"
+    "2026-10-16",
+    "2026-10-09"
    ],
    "topQueries": [
     {
-     "key": "odi world cup 2026 live",
-     "clicks": 3,
+     "key": "ashes 2026 schedule",
+     "clicks": 4,
      "clicksPrev": 0,
-     "impr": 8,
+     "impr": 5,
      "imprPrev": 0,
      "pos": 1.0,
      "posPrev": null
     },
     {
-     "key": "cricket world cup 2026 live streaming free",
-     "clicks": 2,
-     "clicksPrev": 2,
-     "impr": 3,
-     "imprPrev": 9,
-     "pos": 1.0,
-     "posPrev": 1.0
-    },
-    {
-     "key": "what channel is the cricket world cup with sth africa on",
+     "key": "motogp 2026 live streaming",
      "clicks": 2,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
+     "pos": 7.0,
+     "posPrev": null
+    },
+    {
+     "key": "cricket world cup live",
+     "clicks": 1,
+     "clicksPrev": 1,
+     "impr": 3,
+     "imprPrev": 1,
+     "pos": 3.0,
+     "posPrev": 10.0
+    },
+    {
+     "key": "de mayo argentina players 15",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
      "pos": 1.0,
      "posPrev": null
     },
     {
-     "key": "the ashes test matches 26/27",
+     "key": "what time will the ashes test match start at the utilita bowl",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 1.0,
+     "posPrev": null
+    },
+    {
+     "key": "t20 world cup live streaming free",
+     "clicks": 1,
+     "clicksPrev": 1,
+     "impr": 2,
+     "imprPrev": 1,
+     "pos": 3.0,
+     "posPrev": 3.0
+    },
+    {
+     "key": "motogp offical 2026",
      "clicks": 1,
      "clicksPrev": 0,
      "impr": 2,
@@ -725,149 +698,158 @@
      "posPrev": null
     },
     {
-     "key": "southampton ashes test start time",
+     "key": "live  england football tv today match",
      "clicks": 1,
      "clicksPrev": 0,
-     "impr": 2,
+     "impr": 1,
      "imprPrev": 0,
-     "pos": 4.0,
+     "pos": 3.0,
      "posPrev": null
     },
     {
-     "key": "motogp 2026 live stream",
+     "key": "when does the us open tennis start 2026",
      "clicks": 1,
      "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 2,
-     "pos": 9.0,
-     "posPrev": 7.0
-    },
-    {
-     "key": "live motogp 2026",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 2,
+     "impr": 1,
      "imprPrev": 0,
-     "pos": 4.0,
+     "pos": 5.0,
      "posPrev": null
     },
     {
-     "key": "adelaide test 2026 session times",
+     "key": "cricket gold channels mein world cup diktha hai",
      "clicks": 1,
      "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 4.0,
-     "posPrev": null
-    },
-    {
-     "key": "boxing day ashes 2026",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 2,
+     "impr": 1,
      "imprPrev": 0,
      "pos": 1.0,
      "posPrev": null
     },
     {
-     "key": "world cup 2026 cricket live streaming",
+     "key": "winter 2026 sports to watch",
      "clicks": 1,
      "clicksPrev": 0,
-     "impr": 2,
+     "impr": 1,
      "imprPrev": 0,
      "pos": 1.0,
      "posPrev": null
     },
     {
-     "key": "cricket live t20 world cup watch free",
+     "key": "web cricket live streaming world cup",
      "clicks": 1,
      "clicksPrev": 0,
-     "impr": 2,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 8.0,
+     "posPrev": null
+    },
+    {
+     "key": "new live session schedule 26-27",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 1.0,
+     "posPrev": null
+    },
+    {
+     "key": "the tvapp site what is the best country to watch sport on the site",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 1,
      "imprPrev": 0,
      "pos": 2.0,
      "posPrev": null
     },
     {
-     "key": "icc ashes 2026 schedule",
+     "key": "what time does the cricket start each day for the adelaide december 2026 test",
      "clicks": 1,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 1.0,
-     "posPrev": null
-    },
-    {
-     "key": "live motogp 2026 race",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 1.0,
-     "posPrev": null
-    },
-    {
-     "key": "cricket world cup live",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 4,
-     "pos": 10.0,
-     "posPrev": 5.0
-    },
-    {
-     "key": "world cup cricket live",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 4.0,
+     "pos": 2.0,
      "posPrev": null
     }
    ],
    "risingQueries": [
     {
-     "key": "world cup 2026 schedule cricket",
+     "key": "jag vs ara",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 32,
-     "imprPrev": 8,
+     "impr": 326,
+     "imprPrev": 0,
+     "pos": 5.0,
+     "posPrev": null
+    },
+    {
+     "key": "ara vs jag",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 77,
+     "imprPrev": 0,
+     "pos": 4.0,
+     "posPrev": null
+    },
+    {
+     "key": "sha vs aek",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 33,
+     "imprPrev": 0,
+     "pos": 7.0,
+     "posPrev": null
+    },
+    {
+     "key": "aek vs sha",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 28,
+     "imprPrev": 0,
      "pos": 8.0,
-     "posPrev": 8.0
+     "posPrev": null
     },
     {
-     "key": "cricket world cup 2026",
+     "key": "t20 world cup 2026 live",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 22,
-     "imprPrev": 11,
-     "pos": 9.0,
-     "posPrev": 10.0
+     "impr": 20,
+     "imprPrev": 5,
+     "pos": 8.0,
+     "posPrev": 7.0
     },
     {
-     "key": "f1 calendar 2026 uk times",
+     "key": "sky f1 schedule 2026",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 9,
      "imprPrev": 0,
-     "pos": 9.0,
+     "pos": 6.0,
      "posPrev": null
     },
     {
-     "key": "odi world cup 2026 live",
-     "clicks": 3,
-     "clicksPrev": 0,
-     "impr": 8,
-     "imprPrev": 0,
-     "pos": 1.0,
-     "posPrev": null
-    },
-    {
-     "key": "2026 world cup live stream",
+     "key": "f1 schedule 2026",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 7,
      "imprPrev": 0,
-     "pos": 4.0,
+     "pos": 9.0,
+     "posPrev": null
+    },
+    {
+     "key": "vil vs nap",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 6,
+     "imprPrev": 0,
+     "pos": 8.0,
+     "posPrev": null
+    },
+    {
+     "key": "ashes 2026 schedule",
+     "clicks": 4,
+     "clicksPrev": 0,
+     "impr": 5,
+     "imprPrev": 0,
+     "pos": 1.0,
      "posPrev": null
     }
    ]
