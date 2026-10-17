@@ -88,7 +88,7 @@ from modules import store, seo, indexnow, seo_score
 from modules.agents import strategize, write_draft, optimize, boost, time_context
 from modules.research import research_topic
 from modules.image import feature_image, embed_inline_images
-from modules.internal_links import apply_internal_links
+from modules.internal_links import apply_internal_links, drop_dead_internal_links
 from modules.writer import write_article as _mock_write
 from modules.keyword import research_keywords
 from modules.competitor import analyze_competitors
@@ -252,6 +252,8 @@ def generate_article(site: dict, title: str, log=lambda m: None, replace: dict |
     siblings = store.list_articles(site["id"])
     cands = [{"slug": a["slug"], "title": a["title"], "keyword": a.get("keyword", "")}
              for a in siblings]
+    if site.get("publish_target") != "wordpress":
+        body = drop_dead_internal_links(body, [a["slug"] for a in siblings], site.get("domain", ""))
     body = apply_internal_links(body, cands)
     # Guarantee at least one internal link (avoids an orphan page + satisfies the
     # internal-link SEO check) when keyword auto-linking found no match in the body.
