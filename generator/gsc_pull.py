@@ -32,6 +32,7 @@ SITES = {  # drip/site id → Search Console property
     "gccguide": "https://gccguide.com/",
     "ninetymins": "https://ninetymins.com/",
     "cob": "https://coloursofbangladesh.com/",
+    "aiu": "https://aiuniversitybd.com/",
 }
 END = date.today() - timedelta(days=2)  # GSC data lags ~2 days
 START = END - timedelta(days=90)

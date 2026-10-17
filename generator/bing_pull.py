@@ -28,6 +28,7 @@ SITES = {
     "gccguide": "https://gccguide.com/",
     "ninetymins": "https://ninetymins.com/",
     "cob": "https://coloursofbangladesh.com/",
+    "aiu": "https://aiuniversitybd.com/",
 }
 
 

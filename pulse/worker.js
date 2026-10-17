@@ -12,10 +12,10 @@
 
 const SESSION_DAYS = 30;
 const SITE_IDS = new Set(["countly", "walvi", "infkey", "ninetymins", "gccguide", "cob",
-  "probashiinfo", "dreamintcs", "probashibondu", "dreamithq"]);
+  "probashiinfo", "dreamintcs", "probashibondu", "dreamithq", "aiu", "aiublog"]);
 // Sites that are not Cloudflare zones (no edge analytics): their visitors/pageviews come from the beacon
 // (/b.js), counted per day in the LiveRoom Durable Object and merged into /api/data.
-const BEACON_SITES = { probashiinfo: "probashiinfo.com", dreamintcs: "dreamintcs.com", probashibondu: "probashibondu.online" };
+const BEACON_SITES = { probashiinfo: "probashiinfo.com", dreamintcs: "dreamintcs.com", probashibondu: "probashibondu.online", aiublog: "aiuniversitybd.com/blog" }; // aiu (whole site) is a CF zone; aiublog = blog pages only
 const LIVE_WINDOW_MS = 65e3; // visitor counts as "live" for ~1 min after last beat
 
 // ── realtime presence (Durable Object, SQLite class = free plan) ──
@@ -212,7 +212,7 @@ async function probe(domain, path) {
 
 async function handleHealth(env) {
   const domains = ["countly.net", "visapoint.net", "infkey.com", "ninetymins.com", "gccguide.com",
-    "coloursofbangladesh.com", "probashiinfo.com", "www.probashibondu.online"];
+    "coloursofbangladesh.com", "probashiinfo.com", "www.probashibondu.online", "aiuniversitybd.com"];
   const out = await Promise.all(domains.map(async (d) => {
     const [home, sm, rb] = await Promise.all([probe(d, "/"), probe(d, "/sitemap.xml"), probe(d, "/robots.txt")]);
     return { domain: d, live: home === 200, status: home, sitemap: sm === 200, robots: rb === 200 };
@@ -609,7 +609,7 @@ const DASH_HTML = `<!doctype html>
 <script>
 var RANGE='7d', SITE='all', DATA=null, HEALTH=null, CHART=null, D14=null, SEO=null, BING=null;
 var COLORS={countly:'#818cf8',walvi:'#34d399',infkey:'#fbbf24',ninetymins:'#fb7185',gccguide:'#22d3ee',cob:'#f472b6',
-  dreamithq:'#a3e635',probashiinfo:'#38bdf8',dreamintcs:'#f97316',probashibondu:'#c084fc'};
+  dreamithq:'#a3e635',probashiinfo:'#38bdf8',dreamintcs:'#f97316',probashibondu:'#c084fc',aiu:'#3b82f6',aiublog:'#60a5fa'};
 var ISO={'Bangladesh':'BD','India':'IN','United States':'US','United States of America':'US','United Kingdom':'GB','Germany':'DE','France':'FR','Canada':'CA','Australia':'AU','Pakistan':'PK','Saudi Arabia':'SA','United Arab Emirates':'AE','Qatar':'QA','Kuwait':'KW','Oman':'OM','Bahrain':'BH','Singapore':'SG','Malaysia':'MY','Indonesia':'ID','Netherlands':'NL','Italy':'IT','Spain':'ES','Brazil':'BR','Japan':'JP','China':'CN','South Korea':'KR','Turkey':'TR','Russia':'RU','Russian Federation':'RU','Poland':'PL','Sweden':'SE','Norway':'NO','Finland':'FI','Denmark':'DK','Ireland':'IE','Serbia':'RS','Greece':'GR','South Africa':'ZA','Nigeria':'NG','Egypt':'EG','Vietnam':'VN','Philippines':'PH','Thailand':'TH','Hong Kong':'HK','Taiwan':'TW','Ukraine':'UA','Romania':'RO','Portugal':'PT','Mexico':'MX','Argentina':'AR','Switzerland':'CH','Austria':'AT','Belgium':'BE','Czechia':'CZ','Hungary':'HU','Israel':'IL','Nepal':'NP','Sri Lanka':'LK','Myanmar':'MM','Morocco':'MA','Kenya':'KE','New Zealand':'NZ','Croatia':'HR','Bulgaria':'BG','Slovakia':'SK','Lithuania':'LT'};
 function flag(name){var c=ISO[name];if(!c)return '🌐';
   return String.fromCodePoint(127397+c.charCodeAt(0),127397+c.charCodeAt(1));}

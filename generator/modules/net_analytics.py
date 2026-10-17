@@ -32,6 +32,7 @@ SITES = [
     {"id": "gccguide",   "domain": "gccguide.com"},
     {"id": "cob",        "domain": "coloursofbangladesh.com"},
     {"id": "dreamithq",  "domain": "dreamithq.com"},
+    {"id": "aiu",        "domain": "aiuniversitybd.com"},
 ]
 
 RANGES = {          # label -> (days back, use hourly groups?)
