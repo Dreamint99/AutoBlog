@@ -23,4 +23,5 @@ jobs:
       - run: pip install requests
       - run: python cf_waf.py ${{ inputs.dry && '--dry' || '' }}
         env:
+          CF_WAF_TOKEN: ${{ secrets.CF_WAF_TOKEN }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

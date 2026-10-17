@@ -3,7 +3,7 @@ probes (these Next/Worker sites have no PHP or wp-* paths). Verified bots (Googl
 GPTBot, Applebot…) are excluded by `not cf.client.bot`, and the sites' own API sub-requests
 (empty user agent on /v1/*) are not touched. Idempotent: replaces only its own rule.
 
-Usage (CI, needs CLOUDFLARE_API_TOKEN with Zone WAF edit): python cf_waf.py [--dry]
+Usage (CI: secret CF_WAF_TOKEN = token with Zone → WAF Edit on these zones; the deploy token has no zone access): python cf_waf.py [--dry]
 """
 import json
 import os
@@ -27,7 +27,7 @@ API = "https://api.cloudflare.com/client/v4"
 
 def main():
     dry = "--dry" in sys.argv
-    h = {"Authorization": f"Bearer {os.environ['CLOUDFLARE_API_TOKEN']}", "Content-Type": "application/json"}
+    h = {"Authorization": f"Bearer {os.environ.get('CF_WAF_TOKEN') or os.environ['CLOUDFLARE_API_TOKEN']}", "Content-Type": "application/json"}
     rule = {"ref": REF, "description": "AutoBlog: block scanners and PHP/WP probes (verified bots exempt)",
             "expression": EXPR, "action": "block", "enabled": True}
     for name in ZONES:
