@@ -27,21 +27,21 @@
    ],
    "topQueries": [
     {
-     "key": "মালয়েশিয়ার ওয়ার্ক পারমিট এর জন্য বৈধ এম্বাসি",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 4,
-     "imprPrev": 0,
-     "pos": 4.0,
-     "posPrev": null
-    },
-    {
      "key": "ওমান ইমিগ্রেশন ওয়েবসাইট",
      "clicks": 1,
      "clicksPrev": 0,
      "impr": 4,
      "imprPrev": 0,
      "pos": 5.0,
+     "posPrev": null
+    },
+    {
+     "key": "মালয়েশিয়ার ওয়ার্ক পারমিট এর জন্য বৈধ এম্বাসি",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 4,
+     "imprPrev": 0,
+     "pos": 4.0,
      "posPrev": null
     },
     {
@@ -72,15 +72,6 @@
      "posPrev": null
     },
     {
-     "key": "কাতার ভিসা চেক",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 3,
-     "imprPrev": 0,
-     "pos": 5.0,
-     "posPrev": null
-    },
-    {
      "key": "কোন কারিবিশস দেশে রেসিডেন্সি পাওয়া গেলে পরে বেলিজে ভিজি নেওয়া যাবে",
      "clicks": 0,
      "clicksPrev": 0,
@@ -108,16 +99,25 @@
      "posPrev": null
     },
     {
-     "key": "সৈদি অারবের ভিসা চেক করার সনয়ম",
+     "key": "কাতার ভিসা চেক",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 2,
+     "impr": 3,
      "imprPrev": 0,
      "pos": 5.0,
      "posPrev": null
     },
     {
-     "key": "প্রবাসী কল্যাণ ব্যাংক লোন আবেদন",
+     "key": "রোমানিয়ার cnp চেক করার উপায়",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 4.0,
+     "posPrev": null
+    },
+    {
+     "key": "সিসেলেস দেশে চাকরির ভিসা",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 2,
@@ -126,25 +126,16 @@
      "posPrev": null
     },
     {
-     "key": "মালয়েশিয়া সরকারি বাস সার্ভিসের নাম",
+     "key": "মালয়েশিয়ায় কাজের ভিসা পাবেন কীভাবে, সরকারি খরচ কত",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 2,
      "imprPrev": 0,
-     "pos": 5.0,
+     "pos": 6.0,
      "posPrev": null
     },
     {
-     "key": "মালয়েশিয়া ভিসা চেক করার নিয়ম ও ওয়েবসাইট",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 2.0,
-     "posPrev": null
-    },
-    {
-     "key": "কাতার ২০২৬ ভিসা খবর অক্টোবর",
+     "key": "কুয়েদ ভিসা চেক",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 2,
@@ -153,13 +144,22 @@
      "posPrev": null
     },
     {
-     "key": "জার্মানি ভাষা কোর্স ভিসা সার্টিফিকেট ছাড়া আবেদন করা যায় কিনা",
+     "key": "সৌদি আরব mcc কোম্পানি বেতন কেমন",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 2,
      "imprPrev": 0,
      "pos": 4.0,
      "posPrev": null
+    },
+    {
+     "key": "কুয়েত ভিসা চেক",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 1,
+     "pos": 8.0,
+     "posPrev": 9.0
     }
    ],
    "risingQueries": [
@@ -210,6 +210,15 @@
    ],
    "topQueries": [
     {
+     "key": "overall top rating bank in bangladesh",
+     "clicks": 3,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 1.0,
+     "posPrev": null
+    },
+    {
      "key": "data pengguna instagram di dunia",
      "clicks": 3,
      "clicksPrev": 0,
@@ -220,15 +229,6 @@
     },
     {
      "key": "bangladesh top bank",
-     "clicks": 3,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 1.0,
-     "posPrev": null
-    },
-    {
-     "key": "overall top rating bank in bangladesh",
      "clicks": 3,
      "clicksPrev": 0,
      "impr": 1,
@@ -250,6 +250,15 @@
      "clicks": 2,
      "clicksPrev": 0,
      "impr": 4,
+     "imprPrev": 0,
+     "pos": 2.0,
+     "posPrev": null
+    },
+    {
+     "key": "top 10 famous git repo in globally 2026",
+     "clicks": 2,
+     "clicksPrev": 0,
+     "impr": 2,
      "imprPrev": 0,
      "pos": 2.0,
      "posPrev": null
@@ -282,25 +291,7 @@
      "posPrev": null
     },
     {
-     "key": "top 10 famous git repo in globally 2026",
-     "clicks": 2,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 2.0,
-     "posPrev": null
-    },
-    {
-     "key": "the number of global broadband users",
-     "clicks": 2,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 2.0,
-     "posPrev": null
-    },
-    {
-     "key": "total snapchat users in the uk 2026",
+     "key": "top 10 most visited websites in the world by country",
      "clicks": 2,
      "clicksPrev": 0,
      "impr": 1,
@@ -309,12 +300,30 @@
      "posPrev": null
     },
     {
-     "key": "most used social media platform october 2026",
+     "key": "netizens per country",
      "clicks": 2,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 6.0,
+     "pos": 1.0,
+     "posPrev": null
+    },
+    {
+     "key": "the top internet trafic sourcs by nation",
+     "clicks": 2,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 2.0,
+     "posPrev": null
+    },
+    {
+     "key": "how many countries have high digital services?",
+     "clicks": 2,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 5.0,
      "posPrev": null
     },
     {
@@ -327,21 +336,12 @@
      "posPrev": null
     },
     {
-     "key": "how many subway restaurant vietnam 2026",
+     "key": "most used social media platform october 2026",
      "clicks": 2,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 1.0,
-     "posPrev": null
-    },
-    {
-     "key": "top 10 most visited websites in the world by country",
-     "clicks": 2,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 3.0,
+     "pos": 6.0,
      "posPrev": null
     }
    ],
@@ -401,15 +401,6 @@
      "posPrev": null
     },
     {
-     "key": "fastest car in the world 2026",
-     "clicks": 0,
-     "clicksPrev": 1,
-     "impr": 47,
-     "imprPrev": 23,
-     "pos": 5.0,
-     "posPrev": 8.0
-    },
-    {
      "key": "world fastest car 2026",
      "clicks": 2,
      "clicksPrev": 0,
@@ -417,6 +408,15 @@
      "imprPrev": 0,
      "pos": 7.0,
      "posPrev": null
+    },
+    {
+     "key": "fastest car in the world 2026",
+     "clicks": 0,
+     "clicksPrev": 1,
+     "impr": 47,
+     "imprPrev": 23,
+     "pos": 5.0,
+     "posPrev": 8.0
     },
     {
      "key": "the fastest car in the world 2026",
@@ -486,6 +486,24 @@
      "posPrev": null
     },
     {
+     "key": "rag cost",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 6.0,
+     "posPrev": null
+    },
+    {
+     "key": "llm gpt mini pdf extraction accuracy",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 8.0,
+     "posPrev": null
+    },
+    {
      "key": "openrouter api key is cheaper?",
      "clicks": 0,
      "clicksPrev": 0,
@@ -504,43 +522,7 @@
      "posPrev": null
     },
     {
-     "key": "llm gpt mini pdf extraction accuracy",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 8.0,
-     "posPrev": null
-    },
-    {
-     "key": "rag cost",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 6.0,
-     "posPrev": null
-    },
-    {
-     "key": "openai prompt caching pricing batch api cost savings",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 7.0,
-     "posPrev": null
-    },
-    {
-     "key": "ai generated video cost per second production 2026 tier budget professional enterprise",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 4.0,
-     "posPrev": null
-    },
-    {
-     "key": "ai video generation price comparison per second multi-platform",
+     "key": "vision llm batch extraction scanned pdf structured output cost 2026",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
@@ -549,7 +531,16 @@
      "posPrev": null
     },
     {
-     "key": "kolik aktualne stojí ai generovani video 1 minut delky. obvykle",
+     "key": "is ocr cheaper than an llm",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 7.0,
+     "posPrev": null
+    },
+    {
+     "key": "ai video generation inference cost per second gpu cost breakdown 2026",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
@@ -558,7 +549,7 @@
      "posPrev": null
     },
     {
-     "key": "batch api  and normal api cost",
+     "key": "azure openai batch api 50% discount pricing 2026",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
@@ -576,6 +567,24 @@
      "posPrev": null
     },
     {
+     "key": "which model is good for extracting information from gujrati language invoices",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 6.0,
+     "posPrev": null
+    },
+    {
+     "key": "claude api multimodal image audio pricing 2026",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 6.0,
+     "posPrev": null
+    },
+    {
      "key": "agent token cost per month real bill developer experience",
      "clicks": 0,
      "clicksPrev": 0,
@@ -585,21 +594,12 @@
      "posPrev": null
     },
     {
-     "key": "cheapest vision api openai",
+     "key": "ai video generation price comparison per second multi-platform",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 4.0,
-     "posPrev": null
-    },
-    {
-     "key": "openrouter fees compared direct provider api pricing",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 1.0,
+     "pos": 5.0,
      "posPrev": null
     }
    ],
@@ -671,6 +671,15 @@
      "posPrev": null
     },
     {
+     "key": "what time will the ashes test match start at the utilita bowl",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 1.0,
+     "posPrev": null
+    },
+    {
      "key": "t20 world cup live streaming free",
      "clicks": 1,
      "clicksPrev": 1,
@@ -689,30 +698,12 @@
      "posPrev": null
     },
     {
-     "key": "what time will the ashes test match start at the utilita bowl",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 1.0,
-     "posPrev": null
-    },
-    {
-     "key": "premiership league football 2026 printable guide  tv  g",
+     "key": "when does the us open tennis start 2026",
      "clicks": 1,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 2.0,
-     "posPrev": null
-    },
-    {
-     "key": "boxing streaming apps in other countries",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 4.0,
+     "pos": 5.0,
      "posPrev": null
     },
     {
@@ -725,39 +716,12 @@
      "posPrev": null
     },
     {
-     "key": "web cricket live streaming world cup",
+     "key": "cricket world cup 2026 live streaming",
      "clicks": 1,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 8.0,
-     "posPrev": null
-    },
-    {
-     "key": "when does the us open tennis start 2026",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 5.0,
-     "posPrev": null
-    },
-    {
-     "key": "how many countries are using hala live streaming",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 4.0,
-     "posPrev": null
-    },
-    {
-     "key": "will the india australia cricket tests 2026 be free to air",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 4.0,
+     "pos": 1.0,
      "posPrev": null
     },
     {
@@ -767,6 +731,42 @@
      "impr": 1,
      "imprPrev": 0,
      "pos": 1.0,
+     "posPrev": null
+    },
+    {
+     "key": "winter 2026 sports to watch",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 1.0,
+     "posPrev": null
+    },
+    {
+     "key": "the tvapp site what is the best country to watch sport on the site",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 2.0,
+     "posPrev": null
+    },
+    {
+     "key": "cricket gold channels mein world cup diktha hai",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 1.0,
+     "posPrev": null
+    },
+    {
+     "key": "live  england football tv today match",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 3.0,
      "posPrev": null
     }
    ],
