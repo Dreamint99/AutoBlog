@@ -72,6 +72,15 @@
      "posPrev": null
     },
     {
+     "key": "বি এম ই টি রেজিস্টেশন",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 3,
+     "imprPrev": 0,
+     "pos": 2.0,
+     "posPrev": null
+    },
+    {
      "key": "কোন কারিবিশস দেশে রেসিডেন্সি পাওয়া গেলে পরে বেলিজে ভিজি নেওয়া যাবে",
      "clicks": 0,
      "clicksPrev": 0,
@@ -90,15 +99,6 @@
      "posPrev": null
     },
     {
-     "key": "বি এম ই টি রেজিস্টেশন",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 3,
-     "imprPrev": 0,
-     "pos": 2.0,
-     "posPrev": null
-    },
-    {
      "key": "কাতার ভিসা চেক",
      "clicks": 0,
      "clicksPrev": 0,
@@ -108,7 +108,7 @@
      "posPrev": null
     },
     {
-     "key": "রোমানিয়ার cnp চেক করার উপায়",
+     "key": "কুয়েত আর্টিকেল ২০ ভিসা নিয়ম",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 2,
@@ -117,7 +117,7 @@
      "posPrev": null
     },
     {
-     "key": "সিসেলেস দেশে চাকরির ভিসা",
+     "key": "ওমানের ভিসা",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 2,
@@ -126,25 +126,7 @@
      "posPrev": null
     },
     {
-     "key": "মালয়েশিয়ায় কাজের ভিসা পাবেন কীভাবে, সরকারি খরচ কত",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 6.0,
-     "posPrev": null
-    },
-    {
-     "key": "কুয়েদ ভিসা চেক",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 4.0,
-     "posPrev": null
-    },
-    {
-     "key": "সৌদি আরব mcc কোম্পানি বেতন কেমন",
+     "key": "জার্মানি ভাষা কোর্স ভিসা সার্টিফিকেট ছাড়া আবেদন করা যায় কিনা",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 2,
@@ -160,6 +142,24 @@
      "imprPrev": 1,
      "pos": 8.0,
      "posPrev": 9.0
+    },
+    {
+     "key": "সিসেলেস দেশে চাকরির ভিসা",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 6.0,
+     "posPrev": null
+    },
+    {
+     "key": "কুয়েতের ভিসা চেক",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 4.0,
+     "posPrev": null
     }
    ],
    "risingQueries": [
@@ -255,6 +255,15 @@
      "posPrev": null
     },
     {
+     "key": "全球手机使用报告各国家版",
+     "clicks": 2,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 3.0,
+     "posPrev": null
+    },
+    {
      "key": "top 10 famous git repo in globally 2026",
      "clicks": 2,
      "clicksPrev": 0,
@@ -270,15 +279,6 @@
      "impr": 2,
      "imprPrev": 0,
      "pos": 7.0,
-     "posPrev": null
-    },
-    {
-     "key": "全球手机使用报告各国家版",
-     "clicks": 2,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 3.0,
      "posPrev": null
     },
     {
@@ -300,12 +300,12 @@
      "posPrev": null
     },
     {
-     "key": "netizens per country",
+     "key": "how many countries have high digital services?",
      "clicks": 2,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 1.0,
+     "pos": 5.0,
      "posPrev": null
     },
     {
@@ -318,21 +318,12 @@
      "posPrev": null
     },
     {
-     "key": "how many countries have high digital services?",
+     "key": "the number of global broadband users",
      "clicks": 2,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 5.0,
-     "posPrev": null
-    },
-    {
-     "key": "東南アジア linkedin 利用者数推移",
-     "clicks": 2,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 5.0,
+     "pos": 2.0,
      "posPrev": null
     },
     {
@@ -342,6 +333,15 @@
      "impr": 1,
      "imprPrev": 0,
      "pos": 6.0,
+     "posPrev": null
+    },
+    {
+     "key": "東南アジア linkedin 利用者数推移",
+     "clicks": 2,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 5.0,
      "posPrev": null
     }
    ],
@@ -401,15 +401,6 @@
      "posPrev": null
     },
     {
-     "key": "world fastest car 2026",
-     "clicks": 2,
-     "clicksPrev": 0,
-     "impr": 24,
-     "imprPrev": 0,
-     "pos": 7.0,
-     "posPrev": null
-    },
-    {
      "key": "fastest car in the world 2026",
      "clicks": 0,
      "clicksPrev": 1,
@@ -417,6 +408,15 @@
      "imprPrev": 23,
      "pos": 5.0,
      "posPrev": 8.0
+    },
+    {
+     "key": "world fastest car 2026",
+     "clicks": 2,
+     "clicksPrev": 0,
+     "impr": 24,
+     "imprPrev": 0,
+     "pos": 7.0,
+     "posPrev": null
     },
     {
      "key": "the fastest car in the world 2026",
@@ -504,15 +504,6 @@
      "posPrev": null
     },
     {
-     "key": "openrouter api key is cheaper?",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 10.0,
-     "posPrev": null
-    },
-    {
      "key": "ai llm pricing comparison what is function calling in python function",
      "clicks": 0,
      "clicksPrev": 0,
@@ -522,21 +513,21 @@
      "posPrev": null
     },
     {
-     "key": "vision llm batch extraction scanned pdf structured output cost 2026",
+     "key": "openrouter api key is cheaper?",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 1,
+     "impr": 2,
      "imprPrev": 0,
-     "pos": 5.0,
+     "pos": 10.0,
      "posPrev": null
     },
     {
-     "key": "is ocr cheaper than an llm",
+     "key": "cheapest model in foundry that is best for summarization",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 7.0,
+     "pos": 8.0,
      "posPrev": null
     },
     {
@@ -549,21 +540,30 @@
      "posPrev": null
     },
     {
-     "key": "azure openai batch api 50% discount pricing 2026",
+     "key": "how uch is the rate of 20 seconds ai animations?",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 7.0,
+     "pos": 5.0,
      "posPrev": null
     },
     {
-     "key": "token budget in rag??",
+     "key": "openai prompt caching token cost savings api",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 6.0,
+     "pos": 10.0,
+     "posPrev": null
+    },
+    {
+     "key": "kolik aktualne stojí ai generovani video 1 minut delky. obvykle",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 4.0,
      "posPrev": null
     },
     {
@@ -576,30 +576,30 @@
      "posPrev": null
     },
     {
-     "key": "claude api multimodal image audio pricing 2026",
+     "key": "openrouter fees compared direct provider api pricing",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 6.0,
+     "pos": 1.0,
      "posPrev": null
     },
     {
-     "key": "agent token cost per month real bill developer experience",
+     "key": "openrouter vs direct provider pricing comparison 2026",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 10.0,
+     "pos": 2.0,
      "posPrev": null
     },
     {
-     "key": "ai video generation price comparison per second multi-platform",
+     "key": "llm token cost monitoring tools 2026 litellm langfuse opentelemetry",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 5.0,
+     "pos": 1.0,
      "posPrev": null
     }
    ],
@@ -622,7 +622,7 @@
    "week": {
     "clicks": 26,
     "impr": 703,
-    "pos": 5.6
+    "pos": 5.5
    },
    "prevWeek": {
     "clicks": 33,
@@ -662,15 +662,6 @@
      "posPrev": 10.0
     },
     {
-     "key": "de mayo argentina players 15",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 1.0,
-     "posPrev": null
-    },
-    {
      "key": "what time will the ashes test match start at the utilita bowl",
      "clicks": 1,
      "clicksPrev": 0,
@@ -698,12 +689,12 @@
      "posPrev": null
     },
     {
-     "key": "when does the us open tennis start 2026",
+     "key": "de mayo argentina players 15",
      "clicks": 1,
      "clicksPrev": 0,
-     "impr": 1,
+     "impr": 2,
      "imprPrev": 0,
-     "pos": 5.0,
+     "pos": 1.0,
      "posPrev": null
     },
     {
@@ -716,7 +707,34 @@
      "posPrev": null
     },
     {
-     "key": "cricket world cup 2026 live streaming",
+     "key": "live  england football tv today match",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 3.0,
+     "posPrev": null
+    },
+    {
+     "key": "boxing streaming apps in other countries",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 4.0,
+     "posPrev": null
+    },
+    {
+     "key": "when does the us open tennis start 2026",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 5.0,
+     "posPrev": null
+    },
+    {
+     "key": "new live session schedule 26-27",
      "clicks": 1,
      "clicksPrev": 0,
      "impr": 1,
@@ -725,7 +743,7 @@
      "posPrev": null
     },
     {
-     "key": "new live session schedule 26-27",
+     "key": "cricket world cup 2026 live streaming",
      "clicks": 1,
      "clicksPrev": 0,
      "impr": 1,
@@ -749,24 +767,6 @@
      "impr": 1,
      "imprPrev": 0,
      "pos": 2.0,
-     "posPrev": null
-    },
-    {
-     "key": "cricket gold channels mein world cup diktha hai",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 1.0,
-     "posPrev": null
-    },
-    {
-     "key": "live  england football tv today match",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 3.0,
      "posPrev": null
     }
    ],

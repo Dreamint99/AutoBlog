@@ -1,9 +1,30 @@
 {
- "source": "Search Console API 2026-07-18..2026-10-16",
+ "source": "Search Console API 2026-07-19..2026-10-17",
  "pages": [
   {
+   "url": "https://coloursofbangladesh.com/data/district/chandpur",
+   "impressions": 11,
+   "clicks": 0,
+   "queries": [
+    [
+     "চাঁদপুর জেলার জনসংখ্যা কত",
+     1,
+     0,
+     10
+    ],
+    [
+     "চাঁদপুর জেলার জনসংখ্যা কত ২০২৬",
+     1,
+     0,
+     10
+    ]
+   ],
+   "position": 8.9,
+   "ctr": 0.0
+  },
+  {
    "url": "https://coloursofbangladesh.com/",
-   "impressions": 6,
+   "impressions": 9,
    "clicks": 1,
    "queries": [
     [
@@ -13,8 +34,63 @@
      4
     ]
    ],
-   "position": 4.0,
-   "ctr": 0.1667
+   "position": 3.0,
+   "ctr": 0.1111
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/district/sylhet",
+   "impressions": 8,
+   "clicks": 0,
+   "queries": [
+    [
+     "সিলেট জেলার জনসংখ্যা কত ২০২৪",
+     6,
+     0,
+     7.5
+    ]
+   ],
+   "position": 7.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/c/international",
+   "impressions": 4,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/c/national",
+   "impressions": 4,
+   "clicks": 0,
+   "queries": [],
+   "position": 2.2,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/district/rajbari",
+   "impressions": 4,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/places/madhabkunda-waterfall",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 9.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/video",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 4.7,
+   "ctr": 0.0
   },
   {
    "url": "https://coloursofbangladesh.com/news/probashir-kofin-14-coffins-a-day",
@@ -32,6 +108,46 @@
    "ctr": 0.5
   },
   {
+   "url": "https://coloursofbangladesh.com/data",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [],
+   "position": 2.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/people/shakib-khan",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [],
+   "position": 13.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/places",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/upazila/sarail",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [],
+   "position": 4.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/c/economy",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://coloursofbangladesh.com/c/health",
    "impressions": 1,
    "clicks": 0,
@@ -40,15 +156,7 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/c/international",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 4.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/c/national",
+   "url": "https://coloursofbangladesh.com/c/tech",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
@@ -56,11 +164,18 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/data",
+   "url": "https://coloursofbangladesh.com/data/best/international-mother-language-day",
    "impressions": 1,
    "clicks": 0,
-   "queries": [],
-   "position": 1.0,
+   "queries": [
+    [
+     "21 february bangla",
+     1,
+     0,
+     37
+    ]
+   ],
+   "position": 37.0,
    "ctr": 0.0
   },
   {
@@ -72,14 +187,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/data/district/chandpur",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 10.0,
-   "ctr": 0.0
-  },
-  {
    "url": "https://coloursofbangladesh.com/data/district/dhaka",
    "impressions": 1,
    "clicks": 0,
@@ -88,19 +195,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/data/district/rajbari",
+   "url": "https://coloursofbangladesh.com/data/district/gazipur",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
-   "position": 7.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/data/district/sylhet",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 8.0,
+   "position": 11.0,
    "ctr": 0.0
   },
   {
@@ -120,11 +219,35 @@
    "ctr": 0.0
   },
   {
+   "url": "https://coloursofbangladesh.com/data/people/jibanananda-das",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 3.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://coloursofbangladesh.com/data/people/mohammad-ashraful",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
    "position": 6.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/people/mushfiqur-rahim",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 68.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/people/pritilata-waddedar",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 10.0,
    "ctr": 0.0
   },
   {
@@ -152,11 +275,27 @@
    "ctr": 0.0
   },
   {
+   "url": "https://coloursofbangladesh.com/data/places/lalbagh-fort",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 77.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://coloursofbangladesh.com/data/places/lawachara-national-park",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
    "position": 6.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/places/mahasthangarh",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 11.0,
    "ctr": 0.0
   },
   {
@@ -168,11 +307,59 @@
    "ctr": 0.0
   },
   {
+   "url": "https://coloursofbangladesh.com/data/places/star-mosque",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 10.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/upazila/hajiganj",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 8.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://coloursofbangladesh.com/data/upazila/nazirpur",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
    "position": 5.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/epaper?d=2026-10-27",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/epaper?d=2026-10-31",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 8.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/news/dncc-administrator-family-card-0u08",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 8.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/news/gm-kader-house-attack-m8na",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 8.0,
    "ctr": 0.0
   },
   {
@@ -184,11 +371,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/video",
+   "url": "https://coloursofbangladesh.com/topics",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
-   "position": 3.0,
+   "position": 6.0,
    "ctr": 0.0
   }
  ]

@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-07-18..2026-10-16, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-07-19..2026-10-17, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "average dubai salary",
@@ -163,15 +163,45 @@
    "volume": 1000
   },
   {
-   "q": "qatar airways jobs",
-   "impr": 75,
+   "q": "cost of living in dubai",
+   "impr": 80,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "qatar visa check",
-   "impr": 22,
-   "pos": 68.3,
+   "impr": 46,
+   "pos": 70.0,
+   "src": "gsc"
+  },
+  {
+   "q": "qatar id check",
+   "impr": 14,
+   "pos": 68,
+   "src": "gsc"
+  },
+  {
+   "q": "qatar visa status check",
+   "impr": 12,
+   "pos": 75.2,
+   "src": "gsc"
+  },
+  {
+   "q": "school group rates qatar",
+   "impr": 12,
+   "pos": 26.9,
+   "src": "gsc"
+  },
+  {
+   "q": "qatar visa inquiry",
+   "impr": 10,
+   "pos": 72.6,
+   "src": "gsc"
+  },
+  {
+   "q": "visa status check qatar",
+   "impr": 10,
+   "pos": 59.8,
    "src": "gsc"
   }
  ]

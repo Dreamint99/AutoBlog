@@ -1,4 +1,28 @@
 {
- "source": "Search Console API 2026-07-18..2026-10-16",
- "pages": []
+ "source": "Search Console API 2026-07-19..2026-10-17",
+ "pages": [
+  {
+   "url": "https://ninetymins.com/",
+   "impressions": 4,
+   "clicks": 0,
+   "queries": [
+    [
+     "ninetymins.com",
+     1,
+     0,
+     60
+    ]
+   ],
+   "position": 15.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://ninetymins.com/en/product/twist-go-hair-spray-120ml/",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 1.0,
+   "ctr": 0.0
+  }
+ ]
 }
