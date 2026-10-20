@@ -1,16 +1,16 @@
 {
- "source": "Search Console API 2026-07-19..2026-10-17",
+ "source": "Search Console API 2026-07-20..2026-10-18",
  "pages": [
   {
    "url": "https://countly.net/",
-   "impressions": 784,
+   "impressions": 776,
    "clicks": 3,
    "queries": [
     [
      "countly",
-     86,
+     84,
      0,
-     21.7
+     22.1
     ],
     [
      "quintly",
@@ -26,9 +26,9 @@
     ],
     [
      "worldwidely",
-     10,
+     9,
      0,
-     83.4
+     84.1
     ],
     [
      "countly pricing",
@@ -79,8 +79,8 @@
      86.5
     ]
    ],
-   "position": 34.6,
-   "ctr": 0.0038
+   "position": 34.8,
+   "ctr": 0.0039
   },
   {
    "url": "https://countly.net/top-21-richest-people-in-greece-2026",
@@ -228,7 +228,7 @@
   },
   {
    "url": "https://countly.net/how-many-linkedin-users-are-there-in-2026-global-by-country",
-   "impressions": 50,
+   "impressions": 48,
    "clicks": 0,
    "queries": [
     [
@@ -250,7 +250,7 @@
      94
     ]
    ],
-   "position": 76.6,
+   "position": 78.9,
    "ctr": 0.0
   },
   {
@@ -282,7 +282,7 @@
   },
   {
    "url": "https://countly.net/top-100-richest-people-in-united-states-2026",
-   "impressions": 44,
+   "impressions": 43,
    "clicks": 0,
    "queries": [
     [
@@ -358,12 +358,12 @@
      73
     ]
    ],
-   "position": 46.5,
+   "position": 47.4,
    "ctr": 0.0
   },
   {
    "url": "https://countly.net/top-82-richest-people-in-canada-2026",
-   "impressions": 43,
+   "impressions": 42,
    "clicks": 0,
    "queries": [
     [
@@ -385,7 +385,7 @@
      18
     ]
    ],
-   "position": 12.7,
+   "position": 12.6,
    "ctr": 0.0
   },
   {
@@ -920,8 +920,35 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/companies-with-the-most-employees-2026-top-20-global-workforces",
+   "url": "https://countly.net/richest-people-in-finland-2026-billionaires-net-worth",
    "impressions": 23,
+   "clicks": 0,
+   "queries": [
+    [
+     "finland billionaires",
+     1,
+     0,
+     12
+    ],
+    [
+     "finnish billionaire",
+     1,
+     0,
+     14
+    ],
+    [
+     "site:countly.net",
+     1,
+     0,
+     35
+    ]
+   ],
+   "position": 8.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/companies-with-the-most-employees-2026-top-20-global-workforces",
+   "impressions": 22,
    "clicks": 0,
    "queries": [
     [
@@ -949,34 +976,7 @@
      20
     ]
    ],
-   "position": 27.6,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/richest-people-in-finland-2026-billionaires-net-worth",
-   "impressions": 23,
-   "clicks": 0,
-   "queries": [
-    [
-     "finland billionaires",
-     1,
-     0,
-     12
-    ],
-    [
-     "finnish billionaire",
-     1,
-     0,
-     14
-    ],
-    [
-     "site:countly.net",
-     1,
-     0,
-     35
-    ]
-   ],
-   "position": 8.6,
+   "position": 27.9,
    "ctr": 0.0
   },
   {
@@ -1231,39 +1231,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/how-many-facebook-users-are-there-in-2026-global-by-country-d4e4",
-   "impressions": 16,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     2,
-     0,
-     78.5
-    ],
-    [
-     "facebook daily active users 2026",
-     1,
-     0,
-     14
-    ],
-    [
-     "how many users are on facebook",
-     1,
-     0,
-     30
-    ],
-    [
-     "is facebook losing users 2026",
-     1,
-     0,
-     91
-    ]
-   ],
-   "position": 42.7,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/top-42-richest-people-in-switzerland-2026",
    "impressions": 16,
    "clicks": 0,
@@ -1294,7 +1261,7 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/top-10-tech-startups-2026-fastest-growing-companies-to-watch",
+   "url": "https://countly.net/how-many-facebook-users-are-there-in-2026-global-by-country-d4e4",
    "impressions": 15,
    "clicks": 0,
    "queries": [
@@ -1302,16 +1269,28 @@
      "site:countly.net",
      2,
      0,
-     59
+     78.5
     ],
     [
-     "top emerging tech startups 2026",
+     "facebook daily active users 2026",
      1,
      0,
-     16
+     14
+    ],
+    [
+     "how many users are on facebook",
+     1,
+     0,
+     30
+    ],
+    [
+     "is facebook losing users 2026",
+     1,
+     0,
+     91
     ]
    ],
-   "position": 20.8,
+   "position": 44.4,
    "ctr": 0.0
   },
   {
@@ -1348,6 +1327,21 @@
     ]
    ],
    "position": 15.1,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/top-10-tech-startups-2026-fastest-growing-companies-to-watch",
+   "impressions": 14,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     2,
+     0,
+     59
+    ]
+   ],
+   "position": 21.1,
    "ctr": 0.0
   },
   {
@@ -1390,21 +1384,6 @@
     ]
    ],
    "position": 53.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/richest-people-in-vietnam-2026-billionaires-net-worth",
-   "impressions": 13,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     2,
-     0,
-     41
-    ]
-   ],
-   "position": 19.5,
    "ctr": 0.0
   },
   {
@@ -1536,45 +1515,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/how-many-uber-riders-are-there-in-2026-global-by-country",
-   "impressions": 12,
-   "clicks": 0,
-   "queries": [
-    [
-     "how many uber drivers in world",
-     1,
-     0,
-     19
-    ],
-    [
-     "number of uber drivers in the us 2026",
-     1,
-     0,
-     19
-    ],
-    [
-     "site:countly.net",
-     1,
-     0,
-     69
-    ],
-    [
-     "uber monthly active users",
-     1,
-     0,
-     16
-    ],
-    [
-     "نسبة اوبر من الكابتن 2026",
-     1,
-     0,
-     78
-    ]
-   ],
-   "position": 25.8,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/richest-people-in-morocco-2026-billionaires-net-worth",
    "impressions": 12,
    "clicks": 0,
@@ -1593,6 +1533,21 @@
     ]
    ],
    "position": 36.1,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/richest-people-in-vietnam-2026-billionaires-net-worth",
+   "impressions": 12,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     2,
+     0,
+     41
+    ]
+   ],
+   "position": 20.8,
    "ctr": 0.0
   },
   {
@@ -1623,6 +1578,39 @@
     ]
    ],
    "position": 22.1,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/how-many-uber-riders-are-there-in-2026-global-by-country",
+   "impressions": 11,
+   "clicks": 0,
+   "queries": [
+    [
+     "number of uber drivers in the us 2026",
+     1,
+     0,
+     19
+    ],
+    [
+     "site:countly.net",
+     1,
+     0,
+     69
+    ],
+    [
+     "uber monthly active users",
+     1,
+     0,
+     16
+    ],
+    [
+     "نسبة اوبر من الكابتن 2026",
+     1,
+     0,
+     78
+    ]
+   ],
+   "position": 26.5,
    "ctr": 0.0
   },
   {
@@ -1719,21 +1707,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/richest-people-in-hungary-2026-billionaires-net-worth",
-   "impressions": 9,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     2,
-     0,
-     39
-    ]
-   ],
-   "position": 20.6,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/top-30-richest-people-in-indonesia-2026",
    "impressions": 9,
    "clicks": 0,
@@ -1791,6 +1764,21 @@
     ]
    ],
    "position": 48.4,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/richest-people-in-hungary-2026-billionaires-net-worth",
+   "impressions": 8,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     2,
+     0,
+     39
+    ]
+   ],
+   "position": 22.9,
    "ctr": 0.0
   },
   {
