@@ -1,7 +1,7 @@
 {
  "site": "aiu",
  "property": "https://aiuniversitybd.com/",
- "checked": "2026-10-20T07:56:43+00:00",
+ "checked": "2026-10-21T08:01:26+00:00",
  "sitemaps": [
   {
    "path": "https://aiuniversitybd.com/sitemap.xml",
@@ -9,23 +9,23 @@
    "isPending": false,
    "isSitemapsIndex": false,
    "type": "sitemap",
-   "lastDownloaded": "2026-10-19T12:18:17.014Z",
+   "lastDownloaded": "2026-10-21T07:03:33.344Z",
    "warnings": "0",
    "errors": "0",
    "contents": [
     {
      "type": "web",
-     "submitted": "92",
+     "submitted": "101",
      "indexed": "0"
     }
    ]
   }
  ],
- "sitemap_count": 96,
+ "sitemap_count": 102,
  "byState": {
-  "Submitted and indexed": 27,
-  "Discovered - currently not indexed": 7,
-  "URL is unknown to Google": 7
+  "Submitted and indexed": 26,
+  "Discovered - currently not indexed": 11,
+  "URL is unknown to Google": 4
  },
  "urls": [
   {
@@ -140,21 +140,6 @@
   {
    "url": "https://aiuniversitybd.com/delete-account",
    "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
-   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
-   "indexingState": "INDEXING_STATE_UNSPECIFIED",
-   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
-   "googleCanonical": null,
-   "userCanonical": null,
-   "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": [
-    "https://www.aiuniversitybd.com/delete-account"
-   ]
-  },
-  {
-   "url": "https://aiuniversitybd.com/app",
-   "verdict": "NEUTRAL",
    "coverageState": "URL is unknown to Google",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
@@ -164,6 +149,21 @@
    "lastCrawlTime": null,
    "crawledAs": null,
    "referringUrls": null
+  },
+  {
+   "url": "https://aiuniversitybd.com/app",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": [
+    "https://www.aiuniversitybd.com/app"
+   ]
   },
   {
    "url": "https://aiuniversitybd.com/help",
@@ -212,6 +212,22 @@
     "http://www.aiuniversitybd.com/kids?v=me",
     "http://www.aiuniversitybd.com/kids",
     "https://www.aiuniversitybd.com/kids"
+   ]
+  },
+  {
+   "url": "https://aiuniversitybd.com/subscription",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": [
+    "https://www.aiuniversitybd.com/subscription",
+    "https://www.aiuniversitybd.com/subscription?next=%2Fkids"
    ]
   },
   {
@@ -327,15 +343,17 @@
   {
    "url": "https://aiuniversitybd.com/course/ai-video",
    "verdict": "NEUTRAL",
-   "coverageState": "URL is unknown to Google",
+   "coverageState": "Discovered - currently not indexed",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": null,
-   "referringUrls": null
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": [
+    "https://www.aiuniversitybd.com/course/ai-video"
+   ]
   },
   {
    "url": "https://aiuniversitybd.com/course/prompt-engineering",
@@ -372,28 +390,32 @@
   {
    "url": "https://aiuniversitybd.com/course/digital-marketing",
    "verdict": "NEUTRAL",
-   "coverageState": "URL is unknown to Google",
+   "coverageState": "Discovered - currently not indexed",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": null,
-   "referringUrls": null
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": [
+    "https://www.aiuniversitybd.com/course/digital-marketing"
+   ]
   },
   {
    "url": "https://aiuniversitybd.com/course/freelancing",
    "verdict": "NEUTRAL",
-   "coverageState": "URL is unknown to Google",
+   "coverageState": "Discovered - currently not indexed",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": null,
-   "referringUrls": null
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": [
+    "https://www.aiuniversitybd.com/course/freelancing"
+   ]
   },
   {
    "url": "https://aiuniversitybd.com/course/spoken-english",
@@ -505,17 +527,15 @@
   {
    "url": "https://aiuniversitybd.com/course/personal-finance",
    "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
+   "coverageState": "URL is unknown to Google",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": [
-    "https://www.aiuniversitybd.com/course/personal-finance"
-   ]
+   "crawledAs": null,
+   "referringUrls": null
   },
   {
    "url": "https://aiuniversitybd.com/course/snake-rescue",
@@ -597,15 +617,17 @@
   {
    "url": "https://aiuniversitybd.com/course/fish-farming",
    "verdict": "NEUTRAL",
-   "coverageState": "URL is unknown to Google",
+   "coverageState": "Discovered - currently not indexed",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": null,
-   "referringUrls": null
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": [
+    "https://www.aiuniversitybd.com/course/fish-farming"
+   ]
   },
   {
    "url": "https://aiuniversitybd.com/course/solar-install",
@@ -633,22 +655,6 @@
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/course/mobile-repair"
-   ]
-  },
-  {
-   "url": "https://aiuniversitybd.com/course/tour-guide",
-   "verdict": "PASS",
-   "coverageState": "Submitted and indexed",
-   "robotsTxtState": "ALLOWED",
-   "indexingState": "INDEXING_ALLOWED",
-   "pageFetchState": "SUCCESSFUL",
-   "googleCanonical": "https://aiuniversitybd.com/course/tour-guide",
-   "userCanonical": "https://aiuniversitybd.com/course/tour-guide",
-   "lastCrawlTime": "2026-10-19T19:56:03Z",
-   "crawledAs": "MOBILE",
-   "referringUrls": [
-    "https://www.aiuniversitybd.com/course/tour-guide",
-    "https://aiuniversitybd.com/courses"
    ]
   }
  ]
