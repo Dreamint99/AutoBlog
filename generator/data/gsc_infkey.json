@@ -1,16 +1,16 @@
 {
- "source": "Search Console API 2026-07-20..2026-10-18",
+ "source": "Search Console API 2026-07-21..2026-10-19",
  "pages": [
   {
    "url": "https://infkey.com/",
-   "impressions": 124,
+   "impressions": 126,
    "clicks": 3,
    "queries": [
     [
      "agentkey pricing",
-     7,
+     6,
      0,
-     70.6
+     70.5
     ],
     [
      "cheap inference",
@@ -43,6 +43,18 @@
      68
     ],
     [
+     "ai keyer",
+     1,
+     0,
+     76
+    ],
+    [
+     "ai keying software",
+     1,
+     0,
+     73
+    ],
+    [
      "api key price",
      1,
      0,
@@ -65,22 +77,10 @@
      1,
      0,
      22
-    ],
-    [
-     "how much do api keys cost",
-     1,
-     0,
-     97
-    ],
-    [
-     "how much does api key cost",
-     1,
-     0,
-     98
     ]
    ],
-   "position": 47.7,
-   "ctr": 0.0242
+   "position": 48.0,
+   "ctr": 0.0238
   },
   {
    "url": "https://infkey.com/s/infkey/models/claude-3-5-haiku",
@@ -96,21 +96,6 @@
    "clicks": 0,
    "queries": [],
    "position": 3.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://infkey.com/self-hosted-llm-vs-api-cost-which-is-actually-cheaper",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [
-    [
-     "host llm api performance",
-     1,
-     0,
-     36
-    ]
-   ],
-   "position": 39.5,
    "ctr": 0.0
   },
   {

@@ -1,5 +1,5 @@
 {
- "source": "Search Console API 2026-07-20..2026-10-18",
+ "source": "Search Console API 2026-07-21..2026-10-19",
  "pages": [
   {
    "url": "https://visapoint.net/visa-check/romania",
@@ -716,6 +716,39 @@
    "ctr": 0.0
   },
   {
+   "url": "https://visapoint.net/",
+   "impressions": 41,
+   "clicks": 4,
+   "queries": [
+    [
+     "visapoint",
+     11,
+     1,
+     9.7
+    ],
+    [
+     "visa point",
+     3,
+     0,
+     40.3
+    ],
+    [
+     "visa index",
+     1,
+     0,
+     30
+    ],
+    [
+     "visa information for all countries",
+     1,
+     0,
+     28
+    ]
+   ],
+   "position": 9.4,
+   "ctr": 0.0976
+  },
+  {
    "url": "https://visapoint.net/europe-work-visa-2026-complete-permit-guide-scam-alerts",
    "impressions": 41,
    "clicks": 1,
@@ -816,39 +849,6 @@
    ],
    "position": 5.2,
    "ctr": 0.0244
-  },
-  {
-   "url": "https://visapoint.net/",
-   "impressions": 40,
-   "clicks": 4,
-   "queries": [
-    [
-     "visapoint",
-     11,
-     1,
-     9.7
-    ],
-    [
-     "visa point",
-     2,
-     0,
-     39
-    ],
-    [
-     "visa index",
-     1,
-     0,
-     30
-    ],
-    [
-     "visa information for all countries",
-     1,
-     0,
-     28
-    ]
-   ],
-   "position": 8.6,
-   "ctr": 0.1
   },
   {
    "url": "https://visapoint.net/serbia-work-permit-2025-cost-documents-timeline-for-bangladeshi",

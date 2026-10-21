@@ -1,9 +1,9 @@
 {
- "source": "Search Console API 2026-07-20..2026-10-18",
+ "source": "Search Console API 2026-07-21..2026-10-19",
  "pages": [
   {
    "url": "https://coloursofbangladesh.com/data/district/chandpur",
-   "impressions": 11,
+   "impressions": 17,
    "clicks": 0,
    "queries": [
     [
@@ -13,13 +13,34 @@
      10
     ],
     [
+     "চাঁদপুর জেলার জনসংখ্যা কত ২০২৪",
+     1,
+     0,
+     7
+    ],
+    [
      "চাঁদপুর জেলার জনসংখ্যা কত ২০২৬",
      1,
      0,
      10
     ]
    ],
-   "position": 8.9,
+   "position": 21.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/district/sylhet",
+   "impressions": 12,
+   "clicks": 0,
+   "queries": [
+    [
+     "সিলেট জেলার জনসংখ্যা কত ২০২৪",
+     7,
+     0,
+     7.9
+    ]
+   ],
+   "position": 8.8,
    "ctr": 0.0
   },
   {
@@ -38,18 +59,26 @@
    "ctr": 0.1111
   },
   {
-   "url": "https://coloursofbangladesh.com/data/district/sylhet",
+   "url": "https://coloursofbangladesh.com/data/district/rajbari",
    "impressions": 8,
    "clicks": 0,
    "queries": [
     [
-     "সিলেট জেলার জনসংখ্যা কত ২০২৪",
-     6,
+     "রাজবাড়ী জেলার জনসংখ্যা কত ২০২৪",
+     3,
      0,
-     7.5
+     10.3
     ]
    ],
-   "position": 7.5,
+   "position": 8.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/upazila/sarail",
+   "impressions": 6,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.2,
    "ctr": 0.0
   },
   {
@@ -69,11 +98,50 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/data/district/rajbari",
+   "url": "https://coloursofbangladesh.com/data/district/gazipur",
+   "impressions": 4,
+   "clicks": 0,
+   "queries": [
+    [
+     "gazipur",
+     1,
+     0,
+     84
+    ]
+   ],
+   "position": 27.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/upazila/hajiganj",
    "impressions": 4,
    "clicks": 0,
    "queries": [],
-   "position": 7.0,
+   "position": 10.2,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 2.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/people/shakib-khan",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 11.7,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/places",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 4.3,
    "ctr": 0.0
   },
   {
@@ -108,35 +176,41 @@
    "ctr": 0.5
   },
   {
-   "url": "https://coloursofbangladesh.com/data",
+   "url": "https://coloursofbangladesh.com/c/health",
    "impressions": 2,
    "clicks": 0,
    "queries": [],
-   "position": 2.5,
+   "position": 3.0,
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/data/people/shakib-khan",
+   "url": "https://coloursofbangladesh.com/data/division/chattogram",
    "impressions": 2,
    "clicks": 0,
-   "queries": [],
-   "position": 13.0,
+   "queries": [
+    [
+     "চট্টগ্রাম বিভাগের আয়তন কত",
+     1,
+     0,
+     11
+    ]
+   ],
+   "position": 8.5,
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/data/places",
+   "url": "https://coloursofbangladesh.com/data/places/sonargaon",
    "impressions": 2,
    "clicks": 0,
-   "queries": [],
-   "position": 5.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/data/upazila/sarail",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [],
-   "position": 4.0,
+   "queries": [
+    [
+     "sonargaon",
+     1,
+     0,
+     60
+    ]
+   ],
+   "position": 33.0,
    "ctr": 0.0
   },
   {
@@ -145,14 +219,6 @@
    "clicks": 0,
    "queries": [],
    "position": 7.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/c/health",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 2.0,
    "ctr": 0.0
   },
   {
@@ -187,6 +253,14 @@
    "ctr": 0.0
   },
   {
+   "url": "https://coloursofbangladesh.com/data/best/padma-river",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 8.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://coloursofbangladesh.com/data/district/dhaka",
    "impressions": 1,
    "clicks": 0,
@@ -195,11 +269,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/data/district/gazipur",
+   "url": "https://coloursofbangladesh.com/data/district/gopalganj",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
-   "position": 11.0,
+   "position": 10.0,
    "ctr": 0.0
   },
   {
@@ -219,11 +293,27 @@
    "ctr": 0.0
   },
   {
+   "url": "https://coloursofbangladesh.com/data/people/jaya-ahsan",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 11.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://coloursofbangladesh.com/data/people/jibanananda-das",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
    "position": 3.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/people/kazi-nazrul-islam",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.0,
    "ctr": 0.0
   },
   {
@@ -240,6 +330,14 @@
    "clicks": 0,
    "queries": [],
    "position": 68.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/people/nirmalendu-goon",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 10.0,
    "ctr": 0.0
   },
   {
@@ -264,6 +362,14 @@
    "clicks": 0,
    "queries": [],
    "position": 10.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/places/jatiya-sangsad-bhaban",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 4.0,
    "ctr": 0.0
   },
   {
@@ -315,11 +421,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/data/upazila/hajiganj",
+   "url": "https://coloursofbangladesh.com/data/upazila/chandpur-sadar",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
-   "position": 8.0,
+   "position": 11.0,
    "ctr": 0.0
   },
   {
@@ -328,6 +434,14 @@
    "clicks": 0,
    "queries": [],
    "position": 5.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/upazila/savar",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 9.0,
    "ctr": 0.0
   },
   {
@@ -344,6 +458,14 @@
    "clicks": 0,
    "queries": [],
    "position": 8.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/news/bandarban-ncp-leader-arrested-rape-my8z",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.0,
    "ctr": 0.0
   },
   {

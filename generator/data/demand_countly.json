@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-07-20..2026-10-18, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-07-21..2026-10-19, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "richest countries in world",
@@ -671,6 +671,12 @@
    "src": "bing"
   },
   {
+   "q": "highest paid athletes 2026",
+   "impr": 37,
+   "pos": 8.1,
+   "src": "bing"
+  },
+  {
    "q": "how many mcdonalds are there in the world",
    "impr": 37,
    "pos": 8.0,
@@ -680,12 +686,6 @@
    "q": "mark zuckerberg net worth 2026",
    "impr": 36,
    "pos": 8.0,
-   "src": "bing"
-  },
-  {
-   "q": "highest paid athletes 2026",
-   "impr": 34,
-   "pos": 8.1,
    "src": "bing"
   },
   {
@@ -713,15 +713,15 @@
    "src": "bing"
   },
   {
-   "q": "who is the richest person in the world 2026",
-   "impr": 21,
-   "pos": 8.6,
-   "src": "bing"
-  },
-  {
    "q": "most starred github repo",
    "impr": 21,
    "pos": 8.2,
+   "src": "bing"
+  },
+  {
+   "q": "who is the richest person in the world 2026",
+   "impr": 18,
+   "pos": 8.7,
    "src": "bing"
   },
   {
