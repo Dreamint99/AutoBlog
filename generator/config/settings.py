@@ -52,8 +52,8 @@ LLM_PROVIDER = os.getenv("LLM_PROVIDER", "chain")
 # Best quality first; each later entry is a separate free quota to fall back on.
 LLM_CHAIN = os.getenv("LLM_CHAIN", ",".join([
     "gemini:gemini-flash-latest",
+    # Cerebras is left out: its free credit ran out (402) on 2026-10-22.
     # strong, large-quota free models next; Flash-Lite writes noticeably shorter articles, so it comes later
-    "cerebras:gpt-oss-120b",
     "groq:openai/gpt-oss-120b",
     "mistral:mistral-medium-latest",
     # OpenRouter free models (daily request cap on the account)
@@ -62,7 +62,6 @@ LLM_CHAIN = os.getenv("LLM_CHAIN", ",".join([
     "openrouter:google/gemma-4-31b-it:free",  # often rate-limited upstream, so after the others
     "gemini:gemini-flash-lite-latest",
     "workersai:@cf/openai/gpt-oss-120b",
-    "cerebras:qwen-3.8-27b",
     "groq:qwen/qwen3.8-27b",
     "workersai:@cf/meta/llama-3.3-70b-instruct-fp8-fast",
     # last resort, PAID from the OpenRouter balance (~$0.004 per article): only reached when every free quota is spent

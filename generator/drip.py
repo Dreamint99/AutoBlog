@@ -181,7 +181,13 @@ def drip_site(site: dict):
                     break
             titles += got
     else:
-        titles = suggest_titles(site, count=n, seed=SEED, avoid=avoid)
+        titles = []
+        for wait in (0, 20, 45):  # free LLM chain sometimes returns nothing when rate-limited
+            if wait:
+                time.sleep(wait)
+            titles = suggest_titles(site, count=n, seed=SEED, avoid=avoid)
+            if titles:
+                break
     titles = demand_titles + titles
     log(f"[{site['id']}] planning {len(titles)} new ({have}/{TARGET})" + (f" [seed: {SEED}]" if SEED else ""))
     done = 0

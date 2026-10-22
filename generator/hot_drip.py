@@ -7,6 +7,7 @@ Usage:
 """
 import os
 import sys
+import time
 from datetime import datetime
 
 for _s in (sys.stdout, sys.stderr):
@@ -32,6 +33,9 @@ def run(site: dict) -> bool:
     existing = store.list_articles(site["id"])
     avoid = [a.get("title", "") for a in existing] + [a.get("keyword", "") for a in existing]
     picks = hot_topics(site, max_out=5, avoid=avoid, log=log)
+    if not picks:  # trend scoring uses the free LLM chain; a rate-limited moment returns nothing
+        time.sleep(60)
+        picks = hot_topics(site, max_out=5, avoid=avoid, log=log)
     log(f"[{site['id']}] {len(picks)} trending picks")
     for p in picks:
         log(f"   {p['score']:>6}  rel {p['relevance']}  ~{p['traffic']}  {'✓' if p['validated'] else ' '}  {p['keyword']}  — {p['angle']}  [{p['source']}]")
@@ -39,7 +43,13 @@ def run(site: dict) -> bool:
         return bool(picks)
     for p in picks[:3]:  # try the next pick if a draft gets rejected
         seed = f"{p['keyword']} — {p['angle']}" if p.get("angle") else p["keyword"]
-        titles = suggest_titles(site, count=1, seed=f"TRENDING KEYWORD (use it in the title): {seed}", avoid=avoid)
+        titles = []
+        for wait in (0, 30):
+            if wait:
+                time.sleep(wait)
+            titles = suggest_titles(site, count=1, seed=f"TRENDING KEYWORD (use it in the title): {seed}", avoid=avoid)
+            if titles:
+                break
         if not titles:
             continue
         try:
