@@ -15,7 +15,7 @@ DEEPSEEK_BASE_URL = os.getenv("DEEPSEEK_BASE_URL", "https://api.deepseek.com")
 # === OpenRouter (alternative LLM provider — access to many latest models) ===
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
 OPENROUTER_BASE_URL = os.getenv("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1")
-OPENROUTER_MODEL = os.getenv("OPENROUTER_MODEL", "qwen/qwen3.8-27b:free")
+OPENROUTER_MODEL = os.getenv("OPENROUTER_MODEL", "nvidia/nemotron-3-super-120b-a12b:free")
 
 # === Free-tier providers (all OpenAI-compatible) ===
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")  # also used for gemini images
@@ -58,16 +58,19 @@ LLM_CHAIN = os.getenv("LLM_CHAIN", ",".join([
     "mistral:mistral-medium-latest",
     # OpenRouter free models (daily request cap on the account)
     "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
-    "openrouter:apodex/apodex-1.1-mini:free",
+    "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
     "openrouter:google/gemma-4-31b-it:free",  # often rate-limited upstream, so after the others
+    "openrouter:google/gemma-4-26b-a4b-it:free",
     "gemini:gemini-flash-lite-latest",
     "workersai:@cf/openai/gpt-oss-120b",
     "groq:qwen/qwen3.8-27b",
     "workersai:@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-    # last resort, PAID from the OpenRouter balance (~$0.004 per article): only reached when every free quota is spent
-    "openrouter:openai/gpt-oss-120b",
+    # last resort, PAID low-cost models from the OpenRouter balance, cheapest first
+    # (~$0.001-0.006 per article): only reached when every free quota is spent
     "openrouter:qwen/qwen3.7-flash",
-    # "deepseek" (paid) is left out while the account has no balance; add it back here when topped up.
+    "openrouter:deepseek/deepseek-v4-flash",
+    "openrouter:openai/gpt-oss-120b",
+    # "deepseek" (paid, direct) is left out while the account has no balance; add it back here when topped up.
 ]))
 
 # === Feature + inline images ===
