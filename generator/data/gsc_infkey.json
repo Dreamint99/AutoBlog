@@ -1,9 +1,9 @@
 {
- "source": "Search Console API 2026-07-21..2026-10-19",
+ "source": "Search Console API 2026-07-22..2026-10-20",
  "pages": [
   {
    "url": "https://infkey.com/",
-   "impressions": 126,
+   "impressions": 125,
    "clicks": 3,
    "queries": [
     [
@@ -79,27 +79,27 @@
      22
     ]
    ],
-   "position": 48.0,
-   "ctr": 0.0238
+   "position": 48.3,
+   "ctr": 0.024
   },
   {
    "url": "https://infkey.com/s/infkey/models/claude-3-5-haiku",
-   "impressions": 3,
-   "clicks": 0,
-   "queries": [],
-   "position": 3.3,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://infkey.com/models/llama-3-1-70b",
    "impressions": 2,
    "clicks": 0,
    "queries": [],
-   "position": 3.5,
+   "position": 3.0,
    "ctr": 0.0
   },
   {
    "url": "https://infkey.com/cheapest-llm-for-document-qa-2025-api-cost-quality",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 4.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://infkey.com/models/llama-3-1-70b",
    "impressions": 1,
    "clicks": 0,
    "queries": [],

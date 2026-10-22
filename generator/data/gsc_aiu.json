@@ -1,16 +1,28 @@
 {
- "source": "Search Console API 2026-07-21..2026-10-19",
+ "source": "Search Console API 2026-07-22..2026-10-20",
  "pages": [
   {
    "url": "https://aiuniversitybd.com/blog/bishadhor-sap-chenar-upay",
-   "impressions": 19,
-   "clicks": 1,
+   "impressions": 34,
+   "clicks": 2,
    "queries": [
     [
      "গোখরা সাপ চেনার উপায়",
-     5,
+     13,
      0,
-     8.6
+     8.5
+    ],
+    [
+     "বিষাক্ত সাপ চেনার উপায়",
+     2,
+     0,
+     10.5
+    ],
+    [
+     "বিষধর সাপ চেনার উপায়",
+     1,
+     0,
+     10
     ],
     [
      "সাপ চেনার উপায়",
@@ -19,33 +31,39 @@
      11
     ]
    ],
-   "position": 7.4,
-   "ctr": 0.0526
+   "position": 8.0,
+   "ctr": 0.0588
   },
   {
    "url": "https://aiuniversitybd.com/blog/prothomik-chikitsa-kake-bole",
-   "impressions": 11,
+   "impressions": 22,
    "clicks": 1,
    "queries": [
     [
      "প্রাথমিক চিকিৎসা কাকে বলে",
-     2,
+     7,
      0,
-     8
+     7.6
     ],
     [
      "প্রাথমিক চিকিৎসা কি",
+     3,
+     0,
+     9.3
+    ],
+    [
+     "প্রাথমিক চিকিৎসার উদ্দেশ্য কি",
      1,
      0,
-     11
+     8
     ]
    ],
-   "position": 12.8,
-   "ctr": 0.0909
+   "position": 10.3,
+   "ctr": 0.0455
   },
   {
    "url": "https://aiuniversitybd.com/blog/fish-feeding-management-rules",
-   "impressions": 10,
+   "impressions": 22,
    "clicks": 0,
    "queries": [
     [
@@ -61,38 +79,45 @@
      8
     ]
    ],
-   "position": 8.3,
+   "position": 7.8,
    "ctr": 0.0
   },
   {
    "url": "https://aiuniversitybd.com/",
-   "impressions": 9,
+   "impressions": 12,
    "clicks": 2,
-   "queries": [],
-   "position": 5.1,
-   "ctr": 0.2222
+   "queries": [
+    [
+     "ai university",
+     1,
+     0,
+     9
+    ]
+   ],
+   "position": 9.1,
+   "ctr": 0.1667
   },
   {
    "url": "https://aiuniversitybd.com/blog/ielts-kivabe-shuru-korbo",
-   "impressions": 9,
+   "impressions": 12,
    "clicks": 0,
    "queries": [
     [
      "শূন্য থেকে ielts প্রস্তুতি",
-     1,
+     2,
      0,
      8
     ]
    ],
-   "position": 7.3,
+   "position": 7.5,
    "ctr": 0.0
   },
   {
    "url": "https://aiuniversitybd.com/blog/ielts-ki",
-   "impressions": 7,
+   "impressions": 10,
    "clicks": 0,
    "queries": [],
-   "position": 9.4,
+   "position": 8.6,
    "ctr": 0.0
   },
   {
@@ -104,6 +129,21 @@
    "ctr": 0.1667
   },
   {
+   "url": "https://aiuniversitybd.com/about",
+   "impressions": 5,
+   "clicks": 1,
+   "queries": [
+    [
+     "ai58104",
+     2,
+     0,
+     4.5
+    ]
+   ],
+   "position": 10.2,
+   "ctr": 0.2
+  },
+  {
    "url": "https://aiuniversitybd.com/refund",
    "impressions": 5,
    "clicks": 1,
@@ -113,10 +153,31 @@
   },
   {
    "url": "https://aiuniversitybd.com/blog/russell-viper-identification-safety",
-   "impressions": 4,
+   "impressions": 5,
    "clicks": 0,
    "queries": [],
    "position": 10.2,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/privacy",
+   "impressions": 4,
+   "clicks": 0,
+   "queries": [
+    [
+     "ai28558",
+     2,
+     0,
+     4
+    ],
+    [
+     "ai28358",
+     1,
+     0,
+     8
+    ]
+   ],
+   "position": 5.2,
    "ctr": 0.0
   },
   {
@@ -144,6 +205,29 @@
    "ctr": 0.0
   },
   {
+   "url": "https://aiuniversitybd.com/blog/english-speaking-tips-bangla",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/blog/freelancing-how-to-learn",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [
+    [
+     "নতুনদের জন্য ফ্রিল্যান্সিং",
+     1,
+     0,
+     48
+    ]
+   ],
+   "position": 19.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://aiuniversitybd.com/blog/category/graphic-design",
    "impressions": 2,
    "clicks": 0,
@@ -152,27 +236,27 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/blog/english-speaking-tips-bangla",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [],
-   "position": 6.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/blog/freelancing-how-to-learn",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [],
-   "position": 4.5,
-   "ctr": 0.0
-  },
-  {
    "url": "https://aiuniversitybd.com/pocket",
    "impressions": 2,
    "clicks": 0,
    "queries": [],
    "position": 2.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/blog/online-spoken-english-course-selection",
+   "impressions": 1,
+   "clicks": 1,
+   "queries": [],
+   "position": 3.0,
+   "ctr": 1.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/blog/ai-course-learning-guide-bangla",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 11.0,
    "ctr": 0.0
   },
   {
@@ -200,11 +284,27 @@
    "ctr": 0.0
   },
   {
+   "url": "https://aiuniversitybd.com/blog/how-to-choose-good-ielts-course",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://aiuniversitybd.com/blog/jwor-hole-koronio",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
    "position": 15.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/course/family-health",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.0,
    "ctr": 0.0
   },
   {
@@ -216,11 +316,18 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/privacy",
+   "url": "https://aiuniversitybd.com/course/vibe-coding",
    "impressions": 1,
    "clicks": 0,
-   "queries": [],
-   "position": 5.0,
+   "queries": [
+    [
+     "learn vibe coding",
+     1,
+     0,
+     12
+    ]
+   ],
+   "position": 12.0,
    "ctr": 0.0
   }
  ]

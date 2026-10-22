@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-07-21..2026-10-19, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-07-22..2026-10-20, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "average dubai salary",
@@ -170,50 +170,68 @@
   },
   {
    "q": "qatar visa check",
-   "impr": 59,
-   "pos": 72.2,
+   "impr": 70,
+   "pos": 72.5,
    "src": "gsc"
   },
   {
    "q": "qatar id check",
-   "impr": 15,
-   "pos": 69.2,
+   "impr": 21,
+   "pos": 70.1,
    "src": "gsc"
   },
   {
    "q": "school group rates qatar",
-   "impr": 14,
+   "impr": 16,
    "pos": 26.9,
    "src": "gsc"
   },
   {
    "q": "qatar visa status check",
-   "impr": 13,
-   "pos": 74.6,
+   "impr": 15,
+   "pos": 73.8,
    "src": "gsc"
   },
   {
    "q": "qatar visa inquiry",
-   "impr": 12,
-   "pos": 73.2,
+   "impr": 14,
+   "pos": 73.6,
    "src": "gsc"
   },
   {
    "q": "moi qatar visa check by passport number",
-   "impr": 11,
-   "pos": 64.6,
+   "impr": 12,
+   "pos": 65.3,
    "src": "gsc"
   },
   {
    "q": "visa status check qatar",
-   "impr": 11,
-   "pos": 60.5,
+   "impr": 12,
+   "pos": 61.2,
    "src": "gsc"
   },
   {
    "q": "visa status check online",
+   "impr": 11,
+   "pos": 58.5,
+   "src": "gsc"
+  },
+  {
+   "q": "brunch deals doha",
    "impr": 10,
-   "pos": 57.7,
+   "pos": 34.5,
+   "src": "gsc"
+  },
+  {
+   "q": "qatar visa check online",
+   "impr": 10,
+   "pos": 71.7,
+   "src": "gsc"
+  },
+  {
+   "q": "british school fees in qatar",
+   "impr": 10,
+   "pos": 65.9,
    "src": "gsc"
   }
  ]
