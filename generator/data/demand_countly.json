@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-07-22..2026-10-20, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-07-23..2026-10-21, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "richest countries in world",
@@ -360,13 +360,13 @@
    "src": "bingkw"
   },
   {
-   "q": "trump net worth",
+   "q": "beyonce net worth",
    "impr": 1596,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "beyonce net worth",
+   "q": "trump net worth",
    "impr": 1596,
    "pos": null,
    "src": "bingkw"
@@ -629,12 +629,6 @@
    "src": "gsc"
   },
   {
-   "q": "countly analytics",
-   "impr": 10,
-   "pos": 26.4,
-   "src": "gsc"
-  },
-  {
    "q": "which language has the most native speakers worldwide?",
    "impr": 253,
    "pos": 9.0,
@@ -671,12 +665,6 @@
    "src": "bing"
   },
   {
-   "q": "highest paid athletes 2026",
-   "impr": 37,
-   "pos": 8.1,
-   "src": "bing"
-  },
-  {
    "q": "how many mcdonalds are there in the world",
    "impr": 37,
    "pos": 8.0,
@@ -686,6 +674,12 @@
    "q": "mark zuckerberg net worth 2026",
    "impr": 36,
    "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "highest paid athletes 2026",
+   "impr": 34,
+   "pos": 8.1,
    "src": "bing"
   },
   {
@@ -713,15 +707,15 @@
    "src": "bing"
   },
   {
-   "q": "most starred github repo",
-   "impr": 23,
-   "pos": 8.3,
+   "q": "who is the richest person in the world 2026",
+   "impr": 21,
+   "pos": 8.6,
    "src": "bing"
   },
   {
-   "q": "who is the richest person in the world 2026",
-   "impr": 18,
-   "pos": 8.7,
+   "q": "most starred github repo",
+   "impr": 21,
+   "pos": 8.2,
    "src": "bing"
   },
   {
@@ -782,12 +776,6 @@
    "q": "richest perosn in argentina",
    "impr": 10,
    "pos": 8.0,
-   "src": "bing"
-  },
-  {
-   "q": "most subscribed youtube channel",
-   "impr": 10,
-   "pos": 8.4,
    "src": "bing"
   },
   {

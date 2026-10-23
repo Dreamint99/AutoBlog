@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-07-22..2026-10-20, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-07-23..2026-10-21, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "average dubai salary",
@@ -170,68 +170,80 @@
   },
   {
    "q": "qatar visa check",
-   "impr": 70,
-   "pos": 72.5,
+   "impr": 81,
+   "pos": 73.1,
    "src": "gsc"
   },
   {
    "q": "qatar id check",
-   "impr": 21,
-   "pos": 70.1,
+   "impr": 26,
+   "pos": 71.3,
    "src": "gsc"
   },
   {
    "q": "school group rates qatar",
-   "impr": 16,
+   "impr": 18,
    "pos": 26.9,
    "src": "gsc"
   },
   {
-   "q": "qatar visa status check",
-   "impr": 15,
-   "pos": 73.8,
+   "q": "qatar visa inquiry",
+   "impr": 17,
+   "pos": 73.9,
    "src": "gsc"
   },
   {
-   "q": "qatar visa inquiry",
-   "impr": 14,
+   "q": "qatar visa status check",
+   "impr": 16,
    "pos": 73.6,
    "src": "gsc"
   },
   {
    "q": "moi qatar visa check by passport number",
-   "impr": 12,
+   "impr": 14,
    "pos": 65.3,
    "src": "gsc"
   },
   {
    "q": "visa status check qatar",
-   "impr": 12,
-   "pos": 61.2,
-   "src": "gsc"
-  },
-  {
-   "q": "visa status check online",
-   "impr": 11,
-   "pos": 58.5,
-   "src": "gsc"
-  },
-  {
-   "q": "brunch deals doha",
-   "impr": 10,
-   "pos": 34.5,
+   "impr": 13,
+   "pos": 61.8,
    "src": "gsc"
   },
   {
    "q": "qatar visa check online",
-   "impr": 10,
-   "pos": 71.7,
+   "impr": 12,
+   "pos": 72.7,
+   "src": "gsc"
+  },
+  {
+   "q": "visa status check online",
+   "impr": 12,
+   "pos": 59.5,
+   "src": "gsc"
+  },
+  {
+   "q": "brunch deals doha",
+   "impr": 11,
+   "pos": 35.2,
+   "src": "gsc"
+  },
+  {
+   "q": "qatar visa status",
+   "impr": 11,
+   "pos": 68.8,
    "src": "gsc"
   },
   {
    "q": "british school fees in qatar",
-   "impr": 10,
+   "impr": 11,
    "pos": 65.9,
+   "src": "gsc"
+  },
+  {
+   "q": "moi visa checking",
+   "impr": 10,
+   "pos": 67.8,
    "src": "gsc"
   }
  ]
