@@ -1,7 +1,7 @@
 {
  "site": "aiu",
  "property": "https://aiuniversitybd.com/",
- "checked": "2026-10-23T07:57:56+00:00",
+ "checked": "2026-10-24T07:37:25+00:00",
  "sitemaps": [
   {
    "path": "https://aiuniversitybd.com/sitemap.xml",
@@ -21,11 +21,11 @@
    ]
   }
  ],
- "sitemap_count": 115,
+ "sitemap_count": 120,
  "byState": {
   "Submitted and indexed": 25,
-  "Discovered - currently not indexed": 12,
-  "URL is unknown to Google": 4
+  "Discovered - currently not indexed": 13,
+  "URL is unknown to Google": 3
  },
  "urls": [
   {
@@ -37,9 +37,10 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/",
    "userCanonical": "https://aiuniversitybd.com/",
-   "lastCrawlTime": "2026-10-17T14:12:59Z",
+   "lastCrawlTime": "2026-10-24T07:21:04Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
+    "https://www.aiuniversitybd.com/",
     "https://aiuniversitybd.com/blog/english-speaking-tips-bangla",
     "https://uplinke-seo-enhancement.za.com/ruvm/"
    ]
@@ -56,6 +57,8 @@
    "lastCrawlTime": "2026-10-19T17:08:27Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
+    "https://www.aiuniversitybd.com/courses?fac=language",
+    "http://www.aiuniversitybd.com/courses?fac=language",
     "https://www.aiuniversitybd.com/courses",
     "http://www.aiuniversitybd.com/learn?c=vibe-coding&l=web-security",
     "https://aiuniversitybd.com/blog/english-speaking-tips-bangla"
@@ -208,12 +211,12 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/kids",
    "userCanonical": "https://aiuniversitybd.com/kids",
-   "lastCrawlTime": "2026-10-20T03:03:59Z",
+   "lastCrawlTime": "2026-10-24T06:22:15Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
+    "https://www.aiuniversitybd.com/kids",
     "http://www.aiuniversitybd.com/kids?v=me",
-    "http://www.aiuniversitybd.com/kids",
-    "https://www.aiuniversitybd.com/kids"
+    "http://www.aiuniversitybd.com/kids"
    ]
   },
   {
@@ -407,15 +410,17 @@
   {
    "url": "https://aiuniversitybd.com/course/freelancing",
    "verdict": "NEUTRAL",
-   "coverageState": "URL is unknown to Google",
+   "coverageState": "Discovered - currently not indexed",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": null,
-   "referringUrls": null
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": [
+    "https://www.aiuniversitybd.com/course/freelancing"
+   ]
   },
   {
    "url": "https://aiuniversitybd.com/course/spoken-english",
@@ -451,17 +456,15 @@
   {
    "url": "https://aiuniversitybd.com/course/personal-branding",
    "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
+   "coverageState": "URL is unknown to Google",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": [
-    "https://www.aiuniversitybd.com/course/personal-branding"
-   ]
+   "crawledAs": null,
+   "referringUrls": null
   },
   {
    "url": "https://aiuniversitybd.com/course/youtube-creator",
@@ -512,17 +515,15 @@
   {
    "url": "https://aiuniversitybd.com/course/first-aid",
    "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
+   "coverageState": "URL is unknown to Google",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": [
-    "https://www.aiuniversitybd.com/course/first-aid"
-   ]
+   "crawledAs": null,
+   "referringUrls": null
   },
   {
    "url": "https://aiuniversitybd.com/course/personal-finance",
@@ -556,28 +557,33 @@
   {
    "url": "https://aiuniversitybd.com/course/arabic-gulf",
    "verdict": "NEUTRAL",
-   "coverageState": "URL is unknown to Google",
+   "coverageState": "Discovered - currently not indexed",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": null,
-   "referringUrls": null
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": [
+    "https://www.aiuniversitybd.com/course/arabic-gulf",
+    "http://www.aiuniversitybd.com/course/arabic-gulf"
+   ]
   },
   {
    "url": "https://aiuniversitybd.com/course/korean-eps",
    "verdict": "NEUTRAL",
-   "coverageState": "URL is unknown to Google",
+   "coverageState": "Discovered - currently not indexed",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": null,
-   "referringUrls": null
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": [
+    "http://www.aiuniversitybd.com/course/korean-eps"
+   ]
   },
   {
    "url": "https://aiuniversitybd.com/course/japanese-work",
@@ -590,7 +596,10 @@
    "userCanonical": null,
    "lastCrawlTime": null,
    "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": null
+   "referringUrls": [
+    "https://www.aiuniversitybd.com/course/japanese-work",
+    "http://www.aiuniversitybd.com/course/japanese-work"
+   ]
   },
   {
    "url": "https://aiuniversitybd.com/course/biggan-velki",
