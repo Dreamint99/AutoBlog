@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-07-23..2026-10-21, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-07-24..2026-10-22, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "average dubai salary",
@@ -170,80 +170,488 @@
   },
   {
    "q": "qatar visa check",
-   "impr": 81,
-   "pos": 73.1,
-   "src": "gsc"
-  },
-  {
-   "q": "qatar id check",
-   "impr": 26,
-   "pos": 71.3,
-   "src": "gsc"
-  },
-  {
-   "q": "school group rates qatar",
-   "impr": 18,
-   "pos": 26.9,
-   "src": "gsc"
-  },
-  {
-   "q": "qatar visa inquiry",
-   "impr": 17,
+   "impr": 107,
    "pos": 73.9,
    "src": "gsc"
   },
   {
+   "q": "qatar id check",
+   "impr": 29,
+   "pos": 72.9,
+   "src": "gsc"
+  },
+  {
+   "q": "qatar visa inquiry",
+   "impr": 25,
+   "pos": 74.8,
+   "src": "gsc"
+  },
+  {
+   "q": "school group rates qatar",
+   "impr": 21,
+   "pos": 27.1,
+   "src": "gsc"
+  },
+  {
    "q": "qatar visa status check",
-   "impr": 16,
+   "impr": 19,
    "pos": 73.6,
    "src": "gsc"
   },
   {
    "q": "moi qatar visa check by passport number",
-   "impr": 14,
-   "pos": 65.3,
-   "src": "gsc"
-  },
-  {
-   "q": "visa status check qatar",
-   "impr": 13,
-   "pos": 61.8,
+   "impr": 17,
+   "pos": 65.6,
    "src": "gsc"
   },
   {
    "q": "qatar visa check online",
-   "impr": 12,
-   "pos": 72.7,
-   "src": "gsc"
-  },
-  {
-   "q": "visa status check online",
-   "impr": 12,
-   "pos": 59.5,
-   "src": "gsc"
-  },
-  {
-   "q": "brunch deals doha",
-   "impr": 11,
-   "pos": 35.2,
+   "impr": 16,
+   "pos": 74.2,
    "src": "gsc"
   },
   {
    "q": "qatar visa status",
-   "impr": 11,
-   "pos": 68.8,
-   "src": "gsc"
-  },
-  {
-   "q": "british school fees in qatar",
-   "impr": 11,
-   "pos": 65.9,
+   "impr": 16,
+   "pos": 70.6,
    "src": "gsc"
   },
   {
    "q": "moi visa checking",
-   "impr": 10,
+   "impr": 15,
+   "pos": 68.6,
+   "src": "gsc"
+  },
+  {
+   "q": "visa status check qatar",
+   "impr": 15,
+   "pos": 62.9,
+   "src": "gsc"
+  },
+  {
+   "q": "moi qatar visa inquiry",
+   "impr": 14,
+   "pos": 66,
+   "src": "gsc"
+  },
+  {
+   "q": "visa status check online",
+   "impr": 14,
+   "pos": 61.4,
+   "src": "gsc"
+  },
+  {
+   "q": "brunch deals doha",
+   "impr": 13,
+   "pos": 36.2,
+   "src": "gsc"
+  },
+  {
+   "q": "how to check qatar id validity",
+   "impr": 12,
+   "pos": 76.8,
+   "src": "gsc"
+  },
+  {
+   "q": "metrash qatar id check",
+   "impr": 12,
+   "pos": 71,
+   "src": "gsc"
+  },
+  {
+   "q": "qatar id cancellation check",
+   "impr": 12,
+   "pos": 68,
+   "src": "gsc"
+  },
+  {
+   "q": "british school fees in qatar",
+   "impr": 12,
+   "pos": 66,
+   "src": "gsc"
+  },
+  {
+   "q": "freelance visa qatar",
+   "impr": 11,
+   "pos": 67.5,
+   "src": "gsc"
+  },
+  {
+   "q": "check my visa status qatar",
+   "impr": 11,
+   "pos": 64.3,
+   "src": "gsc"
+  },
+  {
+   "q": "check qatar visa",
+   "impr": 11,
+   "pos": 71.8,
+   "src": "gsc"
+  },
+  {
+   "q": "check qatar visa status",
+   "impr": 11,
    "pos": 67.8,
+   "src": "gsc"
+  },
+  {
+   "q": "how to check visa status in moi qatar",
+   "impr": 11,
+   "pos": 71.2,
+   "src": "gsc"
+  },
+  {
+   "q": "qatar id check by passport number",
+   "impr": 11,
+   "pos": 73.6,
+   "src": "gsc"
+  },
+  {
+   "q": "qatar residence permit check",
+   "impr": 11,
+   "pos": 72.5,
+   "src": "gsc"
+  },
+  {
+   "q": "qatar visa check online 2022 by passport number",
+   "impr": 11,
+   "pos": 74.7,
+   "src": "gsc"
+  },
+  {
+   "q": "qid online check",
+   "impr": 11,
+   "pos": 72.7,
+   "src": "gsc"
+  },
+  {
+   "q": "visa validity check qatar",
+   "impr": 11,
+   "pos": 73.7,
+   "src": "gsc"
+  },
+  {
+   "q": "gcc driving license",
+   "impr": 10,
+   "pos": 31.9,
+   "src": "gsc"
+  },
+  {
+   "q": "public holiday",
+   "impr": 10,
+   "pos": 82.1,
+   "src": "gsc"
+  },
+  {
+   "q": "check qatar visa status with passport number",
+   "impr": 10,
+   "pos": 72.8,
+   "src": "gsc"
+  },
+  {
+   "q": "check qid renewal status",
+   "impr": 10,
+   "pos": 69.6,
+   "src": "gsc"
+  },
+  {
+   "q": "check qid status",
+   "impr": 10,
+   "pos": 68.6,
+   "src": "gsc"
+  },
+  {
+   "q": "check visa status with passport number qatar",
+   "impr": 10,
+   "pos": 75,
+   "src": "gsc"
+  },
+  {
+   "q": "check your visa status",
+   "impr": 10,
+   "pos": 73.9,
+   "src": "gsc"
+  },
+  {
+   "q": "how can i check my qatar visa status",
+   "impr": 10,
+   "pos": 67.6,
+   "src": "gsc"
+  },
+  {
+   "q": "how can i check my visa status in qatar",
+   "impr": 10,
+   "pos": 66,
+   "src": "gsc"
+  },
+  {
+   "q": "how to check id status in qatar",
+   "impr": 10,
+   "pos": 76.6,
+   "src": "gsc"
+  },
+  {
+   "q": "how to check if your qid is cancelled",
+   "impr": 10,
+   "pos": 68.2,
+   "src": "gsc"
+  },
+  {
+   "q": "how to check my qid status",
+   "impr": 10,
+   "pos": 71.6,
+   "src": "gsc"
+  },
+  {
+   "q": "how to check qatar id cancellation status",
+   "impr": 10,
+   "pos": 69.3,
+   "src": "gsc"
+  },
+  {
+   "q": "how to check qatar visa status",
+   "impr": 10,
+   "pos": 72.6,
+   "src": "gsc"
+  },
+  {
+   "q": "how to check qatar visa status using passport number",
+   "impr": 10,
+   "pos": 73.1,
+   "src": "gsc"
+  },
+  {
+   "q": "how to check qid renewal status",
+   "impr": 10,
+   "pos": 73.2,
+   "src": "gsc"
+  },
+  {
+   "q": "how to check qid status online",
+   "impr": 10,
+   "pos": 76.2,
+   "src": "gsc"
+  },
+  {
+   "q": "how to check visa cancellation status in qatar",
+   "impr": 10,
+   "pos": 77.4,
+   "src": "gsc"
+  },
+  {
+   "q": "how to check visa status qatar",
+   "impr": 10,
+   "pos": 72.6,
+   "src": "gsc"
+  },
+  {
+   "q": "id check status",
+   "impr": 10,
+   "pos": 72.3,
+   "src": "gsc"
+  },
+  {
+   "q": "id status check qatar",
+   "impr": 10,
+   "pos": 76,
+   "src": "gsc"
+  },
+  {
+   "q": "imo qatar visa",
+   "impr": 10,
+   "pos": 70.5,
+   "src": "gsc"
+  },
+  {
+   "q": "inquiry number qatar id check",
+   "impr": 10,
+   "pos": 70,
+   "src": "gsc"
+  },
+  {
+   "q": "moi application status",
+   "impr": 10,
+   "pos": 69,
+   "src": "gsc"
+  },
+  {
+   "q": "moi qid status",
+   "impr": 10,
+   "pos": 66,
+   "src": "gsc"
+  },
+  {
+   "q": "moi visa check by passport number",
+   "impr": 10,
+   "pos": 72.2,
+   "src": "gsc"
+  },
+  {
+   "q": "qatar id status check",
+   "impr": 10,
+   "pos": 70,
+   "src": "gsc"
+  },
+  {
+   "q": "qatar id status check online",
+   "impr": 10,
+   "pos": 68.7,
+   "src": "gsc"
+  },
+  {
+   "q": "qatar id validity check",
+   "impr": 10,
+   "pos": 74.3,
+   "src": "gsc"
+  },
+  {
+   "q": "qatar online visa check",
+   "impr": 10,
+   "pos": 69.7,
+   "src": "gsc"
+  },
+  {
+   "q": "qatar visa check online by passport number",
+   "impr": 10,
+   "pos": 65.5,
+   "src": "gsc"
+  },
+  {
+   "q": "qatar visa check online by passport number moi",
+   "impr": 10,
+   "pos": 73.5,
+   "src": "gsc"
+  },
+  {
+   "q": "qatar visa check status",
+   "impr": 10,
+   "pos": 69.4,
+   "src": "gsc"
+  },
+  {
+   "q": "qatar visa online check",
+   "impr": 10,
+   "pos": 74.8,
+   "src": "gsc"
+  },
+  {
+   "q": "qatar visa status online",
+   "impr": 10,
+   "pos": 70.5,
+   "src": "gsc"
+  },
+  {
+   "q": "qatar visa tracking",
+   "impr": 10,
+   "pos": 71.6,
+   "src": "gsc"
+  },
+  {
+   "q": "qid cancellation status",
+   "impr": 10,
+   "pos": 68.7,
+   "src": "gsc"
+  },
+  {
+   "q": "qid check status",
+   "impr": 10,
+   "pos": 67.1,
+   "src": "gsc"
+  },
+  {
+   "q": "qid checking",
+   "impr": 10,
+   "pos": 71.4,
+   "src": "gsc"
+  },
+  {
+   "q": "qid renewal status",
+   "impr": 10,
+   "pos": 68.8,
+   "src": "gsc"
+  },
+  {
+   "q": "qid status check",
+   "impr": 10,
+   "pos": 67.7,
+   "src": "gsc"
+  },
+  {
+   "q": "qid validity check",
+   "impr": 10,
+   "pos": 67.3,
+   "src": "gsc"
+  },
+  {
+   "q": "visa check",
+   "impr": 10,
+   "pos": 71.5,
+   "src": "gsc"
+  },
+  {
+   "q": "visa check qatar online",
+   "impr": 10,
+   "pos": 71.5,
+   "src": "gsc"
+  },
+  {
+   "q": "visa checking",
+   "impr": 10,
+   "pos": 83.3,
+   "src": "gsc"
+  },
+  {
+   "q": "visa inquiry",
+   "impr": 10,
+   "pos": 75.4,
+   "src": "gsc"
+  },
+  {
+   "q": "visa inquiry qatar",
+   "impr": 10,
+   "pos": 74.1,
+   "src": "gsc"
+  },
+  {
+   "q": "visa online check qatar",
+   "impr": 10,
+   "pos": 78.3,
+   "src": "gsc"
+  },
+  {
+   "q": "visa status in qatar",
+   "impr": 10,
+   "pos": 70.5,
+   "src": "gsc"
+  },
+  {
+   "q": "visa status qatar",
+   "impr": 10,
+   "pos": 71.7,
+   "src": "gsc"
+  },
+  {
+   "q": "www qatar visa check",
+   "impr": 10,
+   "pos": 73.1,
+   "src": "gsc"
+  },
+  {
+   "q": "कतर आईडी चेक",
+   "impr": 10,
+   "pos": 68.5,
+   "src": "gsc"
+  },
+  {
+   "q": "কাতার আইডি চেক সফটওয়্যার",
+   "impr": 10,
+   "pos": 76.4,
+   "src": "gsc"
+  },
+  {
+   "q": "international school in qatar fees",
+   "impr": 10,
+   "pos": 70.8,
    "src": "gsc"
   }
  ]
