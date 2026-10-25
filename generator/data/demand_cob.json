@@ -1,10 +1,22 @@
 {
- "_note": "Real queries (Search Console 2026-07-24..2026-10-22, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-07-25..2026-10-23, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "সিলেট জেলার জনসংখ্যা কত ২০২৪",
-   "impr": 15,
-   "pos": 9.3,
+   "impr": 16,
+   "pos": 9.1,
+   "src": "gsc"
+  },
+  {
+   "q": "এমিলিয়ানো মার্টিনেজ কোন ক্লাবে খেলে",
+   "impr": 12,
+   "pos": 9.5,
+   "src": "gsc"
+  },
+  {
+   "q": "চট্টগ্রাম বিভাগের আয়তন কত",
+   "impr": 10,
+   "pos": 9.7,
    "src": "gsc"
   }
  ]

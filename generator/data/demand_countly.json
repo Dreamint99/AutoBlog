@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-07-24..2026-10-22, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-07-25..2026-10-23, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "richest countries in world",
@@ -630,20 +630,38 @@
   },
   {
    "q": "which language has the most native speakers worldwide?",
-   "impr": 253,
-   "pos": 9.0,
+   "impr": 298,
+   "pos": 8.7,
    "src": "bing"
   },
   {
    "q": "who has the most subscribers on youtube",
-   "impr": 202,
-   "pos": 8.4,
+   "impr": 210,
+   "pos": 8.5,
+   "src": "bing"
+  },
+  {
+   "q": "top 10 richest people in the world",
+   "impr": 188,
+   "pos": 9.0,
    "src": "bing"
   },
   {
    "q": "which language has the most native speakers worldwide",
    "impr": 109,
    "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "who is the richest person in the world",
+   "impr": 63,
+   "pos": 9.0,
+   "src": "bing"
+  },
+  {
+   "q": "top 10 richest people",
+   "impr": 63,
+   "pos": 9.0,
    "src": "bing"
   },
   {
@@ -656,12 +674,6 @@
    "q": "who is the highest paid athlete",
    "impr": 54,
    "pos": 8.7,
-   "src": "bing"
-  },
-  {
-   "q": "top 10 richest people in the world",
-   "impr": 54,
-   "pos": 9.0,
    "src": "bing"
   },
   {
@@ -686,12 +698,6 @@
    "q": "countries with the most roblox players",
    "impr": 33,
    "pos": 8.0,
-   "src": "bing"
-  },
-  {
-   "q": "who is the richest person in the world",
-   "impr": 27,
-   "pos": 9.0,
    "src": "bing"
   },
   {
@@ -743,9 +749,27 @@
    "src": "bing"
   },
   {
+   "q": "top ten richest people in the world",
+   "impr": 15,
+   "pos": 9.0,
+   "src": "bing"
+  },
+  {
    "q": "how many starbucks in the world",
    "impr": 13,
    "pos": 10.0,
+   "src": "bing"
+  },
+  {
+   "q": "top 10 most visited websites in the world",
+   "impr": 13,
+   "pos": 10.0,
+   "src": "bing"
+  },
+  {
+   "q": "which is the world's largest company based on the number of employees?",
+   "impr": 12,
+   "pos": 8.8,
    "src": "bing"
   },
   {
@@ -800,6 +824,12 @@
    "q": "the most spoken languages",
    "impr": 10,
    "pos": 9.0,
+   "src": "bing"
+  },
+  {
+   "q": "youtube tubes 2026",
+   "impr": 10,
+   "pos": 8.0,
    "src": "bing"
   }
  ]

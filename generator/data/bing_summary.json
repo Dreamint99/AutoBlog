@@ -2,161 +2,161 @@
  "sites": {
   "probashiinfo": {
    "weeks": [
-    "2026-08-07",
     "2026-08-14",
     "2026-08-21",
     "2026-08-28",
     "2026-09-04",
     "2026-09-11",
     "2026-09-18",
-    "2026-10-16"
+    "2026-10-16",
+    "2026-10-23"
    ],
    "week": {
+    "clicks": 10,
+    "impr": 147,
+    "pos": 6.1
+   },
+   "prevWeek": {
     "clicks": 3,
     "impr": 97,
     "pos": 4.7
    },
-   "prevWeek": {
-    "clicks": 7,
-    "impr": 199,
-    "pos": 4.4
-   },
    "range": [
-    "2026-10-16",
-    "2026-09-18"
+    "2026-10-23",
+    "2026-10-16"
    ],
    "topQueries": [
     {
-     "key": "মালয়েশিয়ার ওয়ার্ক পারমিট এর জন্য বৈধ এম্বাসি",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 4,
-     "imprPrev": 0,
-     "pos": 4.0,
-     "posPrev": null
-    },
-    {
-     "key": "ওমান ইমিগ্রেশন ওয়েবসাইট",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 4,
-     "imprPrev": 0,
-     "pos": 5.0,
-     "posPrev": null
-    },
-    {
-     "key": "সৈয়দির ভিসা চেক",
+     "key": "live অনলাইন ফ্লাইট ট্র্যাকিং ওয়েবসাইট",
      "clicks": 1,
      "clicksPrev": 0,
      "impr": 2,
      "imprPrev": 0,
-     "pos": 4.0,
-     "posPrev": null
-    },
-    {
-     "key": "প্রবাসী কল্যাণ ব্যাংক",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 8,
-     "imprPrev": 0,
-     "pos": 6.0,
-     "posPrev": null
-    },
-    {
-     "key": "প্রবাসী কল্যাণ লোন  can cal paper",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 5,
-     "imprPrev": 0,
-     "pos": 6.0,
-     "posPrev": null
-    },
-    {
-     "key": "কোন কারিবিশস দেশে রেসিডেন্সি পাওয়া গেলে পরে বেলিজে ভিজি নেওয়া যাবে",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 3,
-     "imprPrev": 0,
      "pos": 1.0,
+     "posPrev": null
+    },
+    {
+     "key": "south koria  koyta  kaj a work permit visa  chalu ace  and koto taka  bangla khoroj hobe koto dine",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 8.0,
+     "posPrev": null
+    },
+    {
+     "key": "সেনজেন ভোক্ত ইউরোপ এর দেশ কয়টি",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 6.0,
+     "posPrev": null
+    },
+    {
+     "key": "বিএমইটি রেজিস্ট্রেশন করার পরবর্তী করনীয়",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 2.0,
+     "posPrev": null
+    },
+    {
+     "key": "ইতালির ভিসা দেখিয়ে কত টাকা বাংলাদেশ প্রবাসী ব্যাংক থেকে লোন পাওয়া যায়",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 2.0,
+     "posPrev": null
+    },
+    {
+     "key": "আরবি ভাষায় কথা বলার জন্য নিত্য প্রয়োজনীয় শব্দার্থ",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 9.0,
+     "posPrev": null
+    },
+    {
+     "key": "eps কোরিয়ার ভিসা ইস্যু",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 2.0,
+     "posPrev": null
+    },
+    {
+     "key": "কুয়েতের ভিসা চেক",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 2,
+     "pos": 2.0,
+     "posPrev": 4.0
+    },
+    {
+     "key": "প্রবাসি কল্যান ব্যাংক লোন",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 7.0,
+     "posPrev": null
+    },
+    {
+     "key": "গ্রীক সাইপ্রাস ?",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 2.0,
+     "posPrev": null
+    },
+    {
+     "key": "কাতর বিসা চেক",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 13,
+     "imprPrev": 0,
+     "pos": 5.0,
      "posPrev": null
     },
     {
      "key": "বিএমইটি রেজিস্ট্রেশন",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 3,
+     "impr": 5,
+     "imprPrev": 3,
+     "pos": 9.0,
+     "posPrev": 10.0
+    },
+    {
+     "key": "আমি প্রবাসী অ্যাপ",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 4,
      "imprPrev": 0,
-     "pos": 10.0,
+     "pos": 9.0,
      "posPrev": null
     },
     {
-     "key": "বি এম ই টি রেজিস্টেশন",
+     "key": "দক্ষিণ কোরিয়া eps লটারি ২০২7  lottery kobe hobe",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 3,
+     "impr": 4,
      "imprPrev": 0,
-     "pos": 2.0,
+     "pos": 7.0,
      "posPrev": null
     },
     {
-     "key": "কাতার ভিসা চেক",
+     "key": "প্রবাসী কল্যাণ ব্যাংক লোন  na paile  taka kivabe perot paibe",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 3,
-     "imprPrev": 0,
-     "pos": 5.0,
-     "posPrev": null
-    },
-    {
-     "key": "রোমানিয়ার cnp চেক করার উপায়",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 4.0,
-     "posPrev": null
-    },
-    {
-     "key": "ওমানে কম পুজিতে কি কি বিজনেস করা জায়",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 1.0,
-     "posPrev": null
-    },
-    {
-     "key": "কুয়েত আর্টিকেল ২০ ভিসা নিয়ম",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 4.0,
-     "posPrev": null
-    },
-    {
-     "key": "কাতার ২০২৬ ভিসা খবর অক্টোবর",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 4.0,
-     "posPrev": null
-    },
-    {
-     "key": "কুয়েত ভিসা চেক",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 1,
-     "pos": 8.0,
-     "posPrev": 9.0
-    },
-    {
-     "key": "কুয়েতের ভিসা চেক",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 2,
+     "impr": 4,
      "imprPrev": 0,
      "pos": 4.0,
      "posPrev": null
@@ -164,53 +164,80 @@
    ],
    "risingQueries": [
     {
-     "key": "প্রবাসী কল্যাণ ব্যাংক",
+     "key": "কাতর বিসা চেক",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 8,
+     "impr": 13,
      "imprPrev": 0,
-     "pos": 6.0,
+     "pos": 5.0,
      "posPrev": null
     },
     {
-     "key": "প্রবাসী কল্যাণ লোন  can cal paper",
+     "key": "বিএমইটি রেজিস্ট্রেশন",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 5,
-     "imprPrev": 0,
-     "pos": 6.0,
-     "posPrev": null
+     "imprPrev": 3,
+     "pos": 9.0,
+     "posPrev": 10.0
     }
    ]
   },
   "countly": {
    "weeks": [
-    "2026-08-28",
     "2026-09-04",
     "2026-09-11",
     "2026-09-18",
     "2026-09-25",
     "2026-10-02",
     "2026-10-09",
-    "2026-10-16"
+    "2026-10-16",
+    "2026-10-23"
    ],
    "week": {
+    "clicks": 83,
+    "impr": 2059,
+    "pos": 7.5
+   },
+   "prevWeek": {
     "clicks": 116,
     "impr": 789,
     "pos": 7.4
    },
-   "prevWeek": {
-    "clicks": 101,
-    "impr": 538,
-    "pos": 5.8
-   },
    "range": [
-    "2026-10-16",
-    "2026-10-09"
+    "2026-10-23",
+    "2026-10-16"
    ],
    "topQueries": [
     {
-     "key": "bangladesh top bank",
+     "key": "fastest car in the world 2026",
+     "clicks": 3,
+     "clicksPrev": 0,
+     "impr": 127,
+     "imprPrev": 47,
+     "pos": 4.0,
+     "posPrev": 5.0
+    },
+    {
+     "key": "cuantas personas globalmente tienen 2 o mas celulares",
+     "clicks": 3,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 4.0,
+     "posPrev": null
+    },
+    {
+     "key": "net profit ai provider",
+     "clicks": 3,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 4.0,
+     "posPrev": null
+    },
+    {
+     "key": "which countries have the highest and lowest number of smartphone users.",
      "clicks": 3,
      "clicksPrev": 0,
      "impr": 1,
@@ -219,97 +246,43 @@
      "posPrev": null
     },
     {
-     "key": "data pengguna instagram di dunia",
+     "key": "networth of top 10 of rich world in dollars",
      "clicks": 3,
      "clicksPrev": 0,
      "impr": 1,
-     "imprPrev": 0,
-     "pos": 2.0,
-     "posPrev": null
-    },
-    {
-     "key": "overall top rating bank in bangladesh",
-     "clicks": 3,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 1.0,
-     "posPrev": null
-    },
-    {
-     "key": "world fastest car 2026",
-     "clicks": 2,
-     "clicksPrev": 0,
-     "impr": 24,
      "imprPrev": 0,
      "pos": 7.0,
      "posPrev": null
     },
     {
-     "key": "internet population ranking by countries",
-     "clicks": 2,
-     "clicksPrev": 0,
-     "impr": 4,
-     "imprPrev": 0,
-     "pos": 2.0,
-     "posPrev": null
-    },
-    {
-     "key": "top 10 famous git repo in globally 2026",
+     "key": "table of countries by internet entities",
      "clicks": 2,
      "clicksPrev": 0,
      "impr": 2,
      "imprPrev": 0,
-     "pos": 2.0,
+     "pos": 4.0,
      "posPrev": null
     },
     {
-     "key": "top ten mobile internet users 2026",
+     "key": "koja drzava vo svetot coriti najmnogu internet",
      "clicks": 2,
      "clicksPrev": 0,
      "impr": 2,
      "imprPrev": 0,
-     "pos": 2.0,
+     "pos": 4.0,
      "posPrev": null
     },
     {
-     "key": "1000000 languages",
+     "key": "skyscrapers over 600meters",
      "clicks": 2,
      "clicksPrev": 0,
      "impr": 2,
      "imprPrev": 0,
-     "pos": 7.0,
+     "pos": 4.0,
      "posPrev": null
     },
     {
-     "key": "全球手机使用报告各国家版",
-     "clicks": 2,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 3.0,
-     "posPrev": null
-    },
-    {
-     "key": "top 10 most visited websites in the world by country",
-     "clicks": 2,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 3.0,
-     "posPrev": null
-    },
-    {
-     "key": "the top internet trafic sourcs by nation",
-     "clicks": 2,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 2.0,
-     "posPrev": null
-    },
-    {
-     "key": "how many subway restaurant vietnam 2026",
+     "key": "which bank you prefer city bank or pubali bank",
      "clicks": 2,
      "clicksPrev": 0,
      "impr": 1,
@@ -318,66 +291,93 @@
      "posPrev": null
     },
     {
-     "key": "how many countries have high digital services?",
+     "key": "孟加拉排名前十的银行",
      "clicks": 2,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 5.0,
+     "pos": 1.0,
      "posPrev": null
     },
     {
-     "key": "東南アジア linkedin 利用者数推移",
+     "key": "tesla car sales 2026 by country list",
      "clicks": 2,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 5.0,
+     "pos": 3.0,
      "posPrev": null
     },
     {
-     "key": "most used social media platform october 2026",
+     "key": "which country over uses smartphone? does it have too much lonliness for its people too?",
      "clicks": 2,
      "clicksPrev": 0,
      "impr": 1,
+     "imprPrev": 0,
+     "pos": 1.0,
+     "posPrev": null
+    },
+    {
+     "key": "which country has the highest number of internet users?",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 7,
      "imprPrev": 0,
      "pos": 6.0,
      "posPrev": null
+    },
+    {
+     "key": "what is the tallest building in the world in 2026",
+     "clicks": 1,
+     "clicksPrev": 1,
+     "impr": 5,
+     "imprPrev": 1,
+     "pos": 1.0,
+     "posPrev": 1.0
+    },
+    {
+     "key": "the fastest car in the world 2026",
+     "clicks": 1,
+     "clicksPrev": 1,
+     "impr": 5,
+     "imprPrev": 14,
+     "pos": 3.0,
+     "posPrev": 5.0
     }
    ],
    "risingQueries": [
     {
-     "key": "which language has the most native speakers worldwide?",
+     "key": "top websites in the world",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 253,
-     "imprPrev": 0,
-     "pos": 9.0,
-     "posPrev": null
-    },
-    {
-     "key": "which language has the most native speakers worldwide",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 109,
+     "impr": 1153,
      "imprPrev": 0,
      "pos": 8.0,
      "posPrev": null
     },
     {
-     "key": "which language has the most native speakers worldwide? english spanish hindi mandarin",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 65,
-     "imprPrev": 0,
-     "pos": 7.0,
-     "posPrev": null
-    },
-    {
-     "key": "world's richest people",
+     "key": "top 10 richest people in the world",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 58,
+     "impr": 134,
+     "imprPrev": 36,
+     "pos": 9.0,
+     "posPrev": 9.0
+    },
+    {
+     "key": "fastest car in the world 2026",
+     "clicks": 3,
+     "clicksPrev": 0,
+     "impr": 127,
+     "imprPrev": 47,
+     "pos": 4.0,
+     "posPrev": 5.0
+    },
+    {
+     "key": "top 10 richest people",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 60,
      "imprPrev": 0,
      "pos": 9.0,
      "posPrev": null
@@ -386,13 +386,13 @@
      "key": "who is the richest man in the world",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 42,
-     "imprPrev": 0,
+     "impr": 96,
+     "imprPrev": 42,
      "pos": 9.0,
-     "posPrev": null
+     "posPrev": 9.0
     },
     {
-     "key": "top 10 richest people in the world",
+     "key": "who is the richest person in the world",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 36,
@@ -401,37 +401,37 @@
      "posPrev": null
     },
     {
-     "key": "fastest car in the world 2026",
+     "key": "what is the fastest car in the world 2026",
      "clicks": 0,
-     "clicksPrev": 1,
-     "impr": 47,
-     "imprPrev": 23,
-     "pos": 5.0,
-     "posPrev": 8.0
-    },
-    {
-     "key": "world fastest car 2026",
-     "clicks": 2,
      "clicksPrev": 0,
-     "impr": 24,
-     "imprPrev": 0,
-     "pos": 7.0,
-     "posPrev": null
-    },
-    {
-     "key": "the fastest car in the world 2026",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 14,
+     "impr": 34,
      "imprPrev": 0,
      "pos": 5.0,
      "posPrev": null
     },
     {
-     "key": "open ai profit",
-     "clicks": 1,
+     "key": "best tallest buildings ranked",
+     "clicks": 0,
      "clicksPrev": 0,
-     "impr": 6,
+     "impr": 22,
+     "imprPrev": 0,
+     "pos": 6.0,
+     "posPrev": null
+    },
+    {
+     "key": "top 10 richest people in the world 2026",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 21,
+     "imprPrev": 0,
+     "pos": 8.0,
+     "posPrev": null
+    },
+    {
+     "key": "like nastya 2026 132 million subscribers",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 19,
      "imprPrev": 0,
      "pos": 7.0,
      "posPrev": null
@@ -439,45 +439,137 @@
    ]
   },
   "walvi": {
-   "weeks": []
+   "weeks": [
+    "2026-10-23"
+   ],
+   "week": {
+    "clicks": 0,
+    "impr": 7,
+    "pos": 7.7
+   },
+   "prevWeek": {
+    "clicks": 0,
+    "impr": 0,
+    "pos": null
+   },
+   "range": [
+    "2026-10-23",
+    null
+   ],
+   "topQueries": [
+    {
+     "key": "visapoint",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 5,
+     "imprPrev": 0,
+     "pos": 8.0,
+     "posPrev": null
+    },
+    {
+     "key": "visapointtcy.online",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 10.0,
+     "posPrev": null
+    },
+    {
+     "key": "visapoint global",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 4.0,
+     "posPrev": null
+    }
+   ],
+   "risingQueries": [
+    {
+     "key": "visapoint",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 5,
+     "imprPrev": 0,
+     "pos": 8.0,
+     "posPrev": null
+    }
+   ]
   },
   "infkey": {
    "weeks": [
-    "2026-08-28",
     "2026-09-04",
     "2026-09-11",
     "2026-09-18",
     "2026-09-25",
     "2026-10-02",
     "2026-10-09",
-    "2026-10-16"
+    "2026-10-16",
+    "2026-10-23"
    ],
    "week": {
+    "clicks": 4,
+    "impr": 79,
+    "pos": 4.9
+   },
+   "prevWeek": {
     "clicks": 1,
     "impr": 45,
     "pos": 5.8
    },
-   "prevWeek": {
-    "clicks": 2,
-    "impr": 46,
-    "pos": 6.2
-   },
    "range": [
-    "2026-10-16",
-    "2026-10-09"
+    "2026-10-23",
+    "2026-10-16"
    ],
    "topQueries": [
     {
-     "key": "ai video generation cost per second decline trend 2026",
+     "key": "intel d270 price",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 17,
+     "imprPrev": 0,
+     "pos": 5.0,
+     "posPrev": null
+    },
+    {
+     "key": "intel d270 cost",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 3,
+     "imprPrev": 0,
+     "pos": 4.0,
+     "posPrev": null
+    },
+    {
+     "key": "[redicted cost for intel accelerator d270",
      "clicks": 1,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 9.0,
+     "pos": 1.0,
      "posPrev": null
     },
     {
-     "key": "infkey",
+     "key": "d270 intel cost price",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 1.0,
+     "posPrev": null
+    },
+    {
+     "key": "d270 intel cost price for 480 gb variant",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 3,
+     "imprPrev": 0,
+     "pos": 2.0,
+     "posPrev": null
+    },
+    {
+     "key": "intel d270 pricing",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 3,
@@ -486,34 +578,7 @@
      "posPrev": null
     },
     {
-     "key": "ai llm pricing comparison what is function calling in python function",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 6.0,
-     "posPrev": null
-    },
-    {
-     "key": "openrouter api key is cheaper?",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 10.0,
-     "posPrev": null
-    },
-    {
-     "key": "rag cost",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 6.0,
-     "posPrev": null
-    },
-    {
-     "key": "llm gpt mini pdf extraction accuracy",
+     "key": "otter ai minutes will reset?",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 2,
@@ -522,25 +587,34 @@
      "posPrev": null
     },
     {
-     "key": "which model is good for extracting information from gujrati language invoices",
+     "key": "claude hacks nsa",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 1,
+     "impr": 2,
      "imprPrev": 0,
      "pos": 6.0,
      "posPrev": null
     },
     {
-     "key": "prompt caching batch api discount openai anthropic gemini 2026 50% 90% savings",
+     "key": "d270 intel price",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 1,
+     "impr": 2,
      "imprPrev": 0,
-     "pos": 4.0,
+     "pos": 7.0,
      "posPrev": null
     },
     {
-     "key": "cheapest llm what are the ai image generators to use",
+     "key": "best vision llm api for ocr handwriting 2026 per-token pricing benchmark claude gpt gemini qwen-vl",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 10.0,
+     "posPrev": null
+    },
+    {
+     "key": "compute cost experiment benchmark cumulating calls agents",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
@@ -549,43 +623,7 @@
      "posPrev": null
     },
     {
-     "key": "openai prompt caching token cost savings api",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 10.0,
-     "posPrev": null
-    },
-    {
-     "key": "ai video generator 2026 launch hidden costs and credits",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 9.0,
-     "posPrev": null
-    },
-    {
-     "key": "azure openai batch api 50% discount pricing 2026",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 7.0,
-     "posPrev": null
-    },
-    {
-     "key": "cloudflare dino acquisition price",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 10.0,
-     "posPrev": null
-    },
-    {
-     "key": "cheapest model in foundry that is best for summarization",
+     "key": "gemini argon cost raspberry pi",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
@@ -594,262 +632,299 @@
      "posPrev": null
     },
     {
-     "key": "does openrouter save money",
+     "key": "intel d270 benchmark",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 7.0,
+     "pos": 9.0,
+     "posPrev": null
+    },
+    {
+     "key": "ai documentary channel cost per minute",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 4.0,
+     "posPrev": null
+    },
+    {
+     "key": "site.speakai.co pricing voice agents minutes",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 6.0,
      "posPrev": null
     }
    ],
-   "risingQueries": []
+   "risingQueries": [
+    {
+     "key": "intel d270 price",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 17,
+     "imprPrev": 0,
+     "pos": 5.0,
+     "posPrev": null
+    }
+   ]
   },
   "gccguide": {
    "weeks": []
   },
   "ninetymins": {
    "weeks": [
-    "2026-08-28",
     "2026-09-04",
     "2026-09-11",
     "2026-09-18",
     "2026-09-25",
     "2026-10-02",
     "2026-10-09",
-    "2026-10-16"
+    "2026-10-16",
+    "2026-10-23"
    ],
    "week": {
+    "clicks": 31,
+    "impr": 309,
+    "pos": 6.7
+   },
+   "prevWeek": {
     "clicks": 26,
     "impr": 703,
     "pos": 5.6
    },
-   "prevWeek": {
-    "clicks": 33,
-    "impr": 345,
-    "pos": 7.0
-   },
    "range": [
-    "2026-10-16",
-    "2026-10-09"
+    "2026-10-23",
+    "2026-10-16"
    ],
    "topQueries": [
     {
-     "key": "ashes 2026 schedule",
-     "clicks": 4,
+     "key": "how to watch nba in india",
+     "clicks": 2,
      "clicksPrev": 0,
-     "impr": 5,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 3.0,
+     "posPrev": null
+    },
+    {
+     "key": "where to watch england football match?",
+     "clicks": 2,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 2.0,
+     "posPrev": null
+    },
+    {
+     "key": "t 20 world cup 2026 live for free online",
+     "clicks": 2,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 2.0,
+     "posPrev": null
+    },
+    {
+     "key": "when do england next play ashes cricket in australia on tv",
+     "clicks": 2,
+     "clicksPrev": 0,
+     "impr": 1,
      "imprPrev": 0,
      "pos": 1.0,
      "posPrev": null
     },
     {
-     "key": "motogp 2026 live streaming",
-     "clicks": 2,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 7.0,
-     "posPrev": null
-    },
-    {
-     "key": "cricket world cup live",
+     "key": "an a to z list of countries that have broadcasting rights for college football play-offs",
      "clicks": 1,
-     "clicksPrev": 1,
+     "clicksPrev": 0,
      "impr": 3,
-     "imprPrev": 1,
-     "pos": 3.0,
-     "posPrev": 10.0
-    },
-    {
-     "key": "t20 world cup live streaming free",
-     "clicks": 1,
-     "clicksPrev": 1,
-     "impr": 2,
-     "imprPrev": 1,
-     "pos": 3.0,
-     "posPrev": 3.0
-    },
-    {
-     "key": "motogp offical 2026",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 2,
      "imprPrev": 0,
      "pos": 6.0,
      "posPrev": null
     },
     {
-     "key": "de mayo argentina players 15",
+     "key": "premier league 2026 season airing schedule on usa",
      "clicks": 1,
      "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 1.0,
-     "posPrev": null
-    },
-    {
-     "key": "what time will the ashes test match start at the utilita bowl",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 1.0,
-     "posPrev": null
-    },
-    {
-     "key": "live  england football tv today match",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 1,
+     "impr": 3,
      "imprPrev": 0,
      "pos": 3.0,
      "posPrev": null
     },
     {
-     "key": "the tvapp site what is the best country to watch sport on the site",
+     "key": "six nations 2027 tv coverage",
      "clicks": 1,
      "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 2.0,
-     "posPrev": null
-    },
-    {
-     "key": "when does the us open tennis start 2026",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 5.0,
-     "posPrev": null
-    },
-    {
-     "key": "sky sports ashes 2026",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 3.0,
-     "posPrev": null
-    },
-    {
-     "key": "cricket gold channels mein world cup diktha hai",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 1.0,
-     "posPrev": null
-    },
-    {
-     "key": "what time is the england kickoff today",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 7.0,
-     "posPrev": null
-    },
-    {
-     "key": "premiership league football 2026 printable guide  tv  g",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 2.0,
-     "posPrev": null
-    },
-    {
-     "key": "web cricket live streaming world cup",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 8.0,
-     "posPrev": null
-    }
-   ],
-   "risingQueries": [
-    {
-     "key": "jag vs ara",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 326,
-     "imprPrev": 0,
-     "pos": 5.0,
-     "posPrev": null
-    },
-    {
-     "key": "ara vs jag",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 77,
+     "impr": 2,
      "imprPrev": 0,
      "pos": 4.0,
      "posPrev": null
     },
     {
-     "key": "sha vs aek",
-     "clicks": 0,
+     "key": "which uk tv station is presenting the mens 6 nations 2027 rugby matches",
+     "clicks": 1,
      "clicksPrev": 0,
-     "impr": 33,
+     "impr": 2,
      "imprPrev": 0,
-     "pos": 7.0,
+     "pos": 2.0,
      "posPrev": null
     },
     {
-     "key": "aek vs sha",
-     "clicks": 0,
+     "key": "free world cup cricket streaming",
+     "clicks": 1,
      "clicksPrev": 0,
-     "impr": 28,
+     "impr": 2,
      "imprPrev": 0,
-     "pos": 8.0,
+     "pos": 2.0,
      "posPrev": null
     },
     {
-     "key": "t20 world cup 2026 live",
-     "clicks": 0,
+     "key": "saff bangladesh 2026 schedule",
+     "clicks": 1,
      "clicksPrev": 0,
-     "impr": 20,
-     "imprPrev": 5,
-     "pos": 8.0,
-     "posPrev": 7.0
-    },
-    {
-     "key": "sky f1 schedule 2026",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 9,
+     "impr": 2,
      "imprPrev": 0,
      "pos": 6.0,
      "posPrev": null
     },
     {
-     "key": "f1 schedule 2026",
+     "key": "mens saff football championship roll of honour list",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 5.0,
+     "posPrev": null
+    },
+    {
+     "key": "over 40 2026 world cup cricket on dstv live",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 7.0,
+     "posPrev": null
+    },
+    {
+     "key": "who are the goalscorers fro bayern munchen against arsenal today",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 1.0,
+     "posPrev": null
+    },
+    {
+     "key": "what are all the sports on streaming in united states",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 1.0,
+     "posPrev": null
+    },
+    {
+     "key": "what station does the  2nd test start on tv",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 5.0,
+     "posPrev": null
+    }
+   ],
+   "risingQueries": [
+    {
+     "key": "premier league records quiz",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 7,
+     "impr": 24,
      "imprPrev": 0,
      "pos": 9.0,
      "posPrev": null
     },
     {
-     "key": "vil vs nap",
+     "key": "champions league schedule 2026",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 6,
+     "impr": 16,
      "imprPrev": 0,
      "pos": 8.0,
      "posPrev": null
     },
     {
-     "key": "ashes 2026 schedule",
-     "clicks": 4,
+     "key": "streaming platforms for sports events",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 14,
+     "imprPrev": 0,
+     "pos": 5.0,
+     "posPrev": null
+    },
+    {
+     "key": "champions league 2026 schedule",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 10,
+     "imprPrev": 0,
+     "pos": 8.0,
+     "posPrev": null
+    },
+    {
+     "key": "aston villa vs viking fk",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 7,
+     "imprPrev": 0,
+     "pos": 8.0,
+     "posPrev": null
+    },
+    {
+     "key": "sport events near me 2026 world",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 7,
+     "imprPrev": 0,
+     "pos": 8.0,
+     "posPrev": null
+    },
+    {
+     "key": "wimbledon schedule 2026",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 7,
+     "imprPrev": 0,
+     "pos": 8.0,
+     "posPrev": null
+    },
+    {
+     "key": "is the t20 cricket final on free to air tv tonight",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 9,
+     "imprPrev": 4,
+     "pos": 4.0,
+     "posPrev": 3.0
+    },
+    {
+     "key": "icc t20 world cup 2026 live",
+     "clicks": 0,
      "clicksPrev": 0,
      "impr": 5,
      "imprPrev": 0,
-     "pos": 1.0,
+     "pos": 8.0,
+     "posPrev": null
+    },
+    {
+     "key": "viking fk vs aston villa",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 5,
+     "imprPrev": 0,
+     "pos": 7.0,
      "posPrev": null
     }
    ]

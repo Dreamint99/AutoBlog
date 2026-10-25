@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-07-24..2026-10-22, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-07-25..2026-10-23, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "champions league quiz",
@@ -495,7 +495,7 @@
   },
   {
    "q": "tennis us open 2026",
-   "impr": 505,
+   "impr": 508,
    "pos": 9.0,
    "src": "bing"
   },
@@ -524,15 +524,15 @@
    "src": "bing"
   },
   {
-   "q": "motogp schedule 2026",
-   "impr": 132,
-   "pos": 8.0,
+   "q": "motogp 2026 calendar",
+   "impr": 133,
+   "pos": 8.1,
    "src": "bing"
   },
   {
-   "q": "motogp 2026 calendar",
-   "impr": 131,
-   "pos": 8.1,
+   "q": "motogp schedule 2026",
+   "impr": 132,
+   "pos": 8.0,
    "src": "bing"
   },
   {
@@ -585,8 +585,8 @@
   },
   {
    "q": "cricket world cup 2026",
-   "impr": 45,
-   "pos": 9.2,
+   "impr": 50,
+   "pos": 9.5,
    "src": "bing"
   },
   {
@@ -644,6 +644,12 @@
    "src": "bing"
   },
   {
+   "q": "aek vs sha",
+   "impr": 36,
+   "pos": 8.2,
+   "src": "bing"
+  },
+  {
    "q": "world cup 2026 fixtures",
    "impr": 32,
    "pos": 9.0,
@@ -651,12 +657,6 @@
   },
   {
    "q": "switzerland world cup",
-   "impr": 28,
-   "pos": 8.0,
-   "src": "bing"
-  },
-  {
-   "q": "aek vs sha",
    "impr": 28,
    "pos": 8.0,
    "src": "bing"
@@ -680,6 +680,12 @@
    "src": "bing"
   },
   {
+   "q": "f1 schedule 2026 tv schedule",
+   "impr": 22,
+   "pos": 8.7,
+   "src": "bing"
+  },
+  {
    "q": "us open 2026 seeds",
    "impr": 21,
    "pos": 8.4,
@@ -689,12 +695,6 @@
    "q": "world cup 2030 location",
    "impr": 20,
    "pos": 8.0,
-   "src": "bing"
-  },
-  {
-   "q": "f1 schedule 2026 tv schedule",
-   "impr": 19,
-   "pos": 8.8,
    "src": "bing"
   },
   {
@@ -719,6 +719,12 @@
    "q": "is england playing today",
    "impr": 16,
    "pos": 9.8,
+   "src": "bing"
+  },
+  {
+   "q": "champions league schedule 2026",
+   "impr": 16,
+   "pos": 8.0,
    "src": "bing"
   },
   {
@@ -809,6 +815,12 @@
    "q": "live match today t20 world cup 2026",
    "impr": 11,
    "pos": 9.0,
+   "src": "bing"
+  },
+  {
+   "q": "champions league 2026 schedule",
+   "impr": 10,
+   "pos": 8.0,
    "src": "bing"
   }
  ]
