@@ -1,16 +1,16 @@
 {
- "_note": "Real queries (Search Console 2026-07-25..2026-10-23, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-07-26..2026-10-24, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "গোখরা সাপ চেনার উপায়",
-   "impr": 48,
+   "impr": 52,
    "pos": 8.8,
    "src": "gsc"
   },
   {
    "q": "প্রাথমিক চিকিৎসার উদ্দেশ্য কি",
-   "impr": 10,
-   "pos": 9.1,
+   "impr": 11,
+   "pos": 9.3,
    "src": "gsc"
   }
  ]

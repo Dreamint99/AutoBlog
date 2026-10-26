@@ -1,9 +1,9 @@
 {
- "source": "Search Console API 2026-07-25..2026-10-23",
+ "source": "Search Console API 2026-07-26..2026-10-24",
  "pages": [
   {
    "url": "https://infkey.com/",
-   "impressions": 128,
+   "impressions": 130,
    "clicks": 3,
    "queries": [
     [
@@ -61,6 +61,12 @@
      87
     ],
     [
+     "batch 1key",
+     1,
+     0,
+     75
+    ],
+    [
      "cheapest inference",
      1,
      0,
@@ -71,16 +77,10 @@
      1,
      0,
      68
-    ],
-    [
-     "flatkey ai",
-     1,
-     0,
-     22
     ]
    ],
-   "position": 50.0,
-   "ctr": 0.0234
+   "position": 49.5,
+   "ctr": 0.0231
   },
   {
    "url": "https://infkey.com/cheapest-llm-for-document-qa-2025-api-cost-quality",

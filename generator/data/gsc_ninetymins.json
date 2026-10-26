@@ -1,19 +1,19 @@
 {
- "source": "Search Console API 2026-07-25..2026-10-23",
+ "source": "Search Console API 2026-07-26..2026-10-24",
  "pages": [
   {
    "url": "https://ninetymins.com/",
-   "impressions": 6,
+   "impressions": 7,
    "clicks": 0,
    "queries": [
     [
      "ninetymins.com",
-     1,
+     2,
      0,
-     60
+     50.5
     ]
    ],
-   "position": 19.0,
+   "position": 22.1,
    "ctr": 0.0
   },
   {
@@ -22,6 +22,36 @@
    "clicks": 0,
    "queries": [],
    "position": 1.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://ninetymins.com/players/dan-burn",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [
+    [
+     "ninetymins.com",
+     1,
+     0,
+     87
+    ]
+   ],
+   "position": 87.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://ninetymins.com/s/ninetymins/isl-2026-schedule-163-matches-free-youtube-streaming",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [
+    [
+     "ninetymins.com",
+     1,
+     0,
+     37
+    ]
+   ],
+   "position": 37.0,
    "ctr": 0.0
   }
  ]

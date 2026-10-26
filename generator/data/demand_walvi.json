@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-07-25..2026-10-23, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-07-26..2026-10-24, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "japan work visa",
@@ -72,6 +72,18 @@
    "src": "bingkw"
   },
   {
+   "q": "tn visa requirements",
+   "impr": 211,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "what is visa sponsorship",
+   "impr": 205,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
    "q": "schengen visa countries",
    "impr": 201,
    "pos": null,
@@ -120,20 +132,8 @@
    "src": "bingkw"
   },
   {
-   "q": "italy visa requirements",
-   "impr": 109,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
    "q": "uk visa requirements",
    "impr": 95,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "uk visa sponsorship jobs",
-   "impr": 92,
    "pos": null,
    "src": "bingkw"
   },
@@ -145,6 +145,12 @@
   },
   {
    "q": "skilled worker visa uk",
+   "impr": 89,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "t visa requirements",
    "impr": 89,
    "pos": null,
    "src": "bingkw"
@@ -198,8 +204,8 @@
    "src": "bingkw"
   },
   {
-   "q": "spain visa requirements",
-   "impr": 73,
+   "q": "visa sponsorship jobs",
+   "impr": 64,
    "pos": null,
    "src": "bingkw"
   },
@@ -210,14 +216,14 @@
    "src": "bingkw"
   },
   {
-   "q": "south africa visa requirements",
-   "impr": 58,
+   "q": "south korea visa requirements",
+   "impr": 60,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "travel to japan visa requirements",
-   "impr": 57,
+   "q": "south africa visa requirements",
+   "impr": 58,
    "pos": null,
    "src": "bingkw"
   },
@@ -240,12 +246,6 @@
    "src": "bingkw"
   },
   {
-   "q": "tanzania immigration visa",
-   "impr": 54,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
    "q": "new zealand work visa",
    "impr": 53,
    "pos": null,
@@ -254,18 +254,6 @@
   {
    "q": "schengen visa application online",
    "impr": 53,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "what is a visa sponsorship",
-   "impr": 51,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "us visa requirements",
-   "impr": 51,
    "pos": null,
    "src": "bingkw"
   }

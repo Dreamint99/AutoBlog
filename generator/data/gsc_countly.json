@@ -1,9 +1,9 @@
 {
- "source": "Search Console API 2026-07-25..2026-10-23",
+ "source": "Search Console API 2026-07-26..2026-10-24",
  "pages": [
   {
    "url": "https://countly.net/",
-   "impressions": 724,
+   "impressions": 716,
    "clicks": 3,
    "queries": [
     [
@@ -25,16 +25,16 @@
      27.1
     ],
     [
-     "worldwidely",
-     8,
-     0,
-     84.4
-    ],
-    [
      "site:countly.net",
      7,
      0,
      1
+    ],
+    [
+     "worldwidely",
+     7,
+     0,
+     84
     ],
     [
      "countly pricing",
@@ -79,8 +79,8 @@
      1
     ]
    ],
-   "position": 35.6,
-   "ctr": 0.0041
+   "position": 35.5,
+   "ctr": 0.0042
   },
   {
    "url": "https://countly.net/top-21-richest-people-in-greece-2026",
@@ -257,8 +257,23 @@
    "ctr": 0.0208
   },
   {
+   "url": "https://countly.net/best-ai-tools",
+   "impressions": 43,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     7,
+     0,
+     9
+    ]
+   ],
+   "position": 6.3,
+   "ctr": 0.0
+  },
+  {
    "url": "https://countly.net/how-many-linkedin-users-are-there-in-2026-global-by-country",
-   "impressions": 44,
+   "impressions": 43,
    "clicks": 0,
    "queries": [
     [
@@ -280,7 +295,7 @@
      94
     ]
    ],
-   "position": 84.3,
+   "position": 85.8,
    "ctr": 0.0
   },
   {
@@ -407,23 +422,8 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/best-ai-tools",
-   "impressions": 40,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     7,
-     0,
-     9
-    ]
-   ],
-   "position": 6.2,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/currency-converter",
-   "impressions": 40,
+   "impressions": 39,
    "clicks": 0,
    "queries": [
     [
@@ -475,12 +475,33 @@
      88
     ]
    ],
-   "position": 30.1,
+   "position": 30.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/top-100-richest-people-in-russia-2026",
+   "impressions": 39,
+   "clicks": 0,
+   "queries": [
+    [
+     "forbes russia top 100",
+     2,
+     0,
+     50.5
+    ],
+    [
+     "site:countly.net",
+     2,
+     0,
+     18
+    ]
+   ],
+   "position": 13.6,
    "ctr": 0.0
   },
   {
    "url": "https://countly.net/how-many-paypal-users-are-there-in-2026-global-by-country",
-   "impressions": 40,
+   "impressions": 38,
    "clicks": 0,
    "queries": [
     [
@@ -514,28 +535,7 @@
      37
     ]
    ],
-   "position": 60.1,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/top-100-richest-people-in-russia-2026",
-   "impressions": 39,
-   "clicks": 0,
-   "queries": [
-    [
-     "forbes russia top 100",
-     2,
-     0,
-     50.5
-    ],
-    [
-     "site:countly.net",
-     2,
-     0,
-     18
-    ]
-   ],
-   "position": 13.6,
+   "position": 61.5,
    "ctr": 0.0
   },
   {
@@ -578,51 +578,6 @@
     ]
    ],
    "position": 4.7,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/openai-revenue-2026-8-5b-annual-earnings-growth",
-   "impressions": 31,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     2,
-     0,
-     33.5
-    ],
-    [
-     "openai annualized revenue february 2026",
-     1,
-     0,
-     2
-    ],
-    [
-     "openai annualized revenue run rate 2026",
-     1,
-     0,
-     9
-    ],
-    [
-     "openai arr 2026",
-     1,
-     0,
-     19
-    ],
-    [
-     "openai arr revenue 2026 latest",
-     1,
-     0,
-     17
-    ],
-    [
-     "openai financials profitability revenue 2026",
-     1,
-     0,
-     17
-    ]
-   ],
-   "position": 8.9,
    "ctr": 0.0
   },
   {
@@ -731,66 +686,36 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/richest-people-in-the-world-2026-net-worth-rankings-trends",
-   "impressions": 28,
+   "url": "https://countly.net/openai-revenue-2026-8-5b-annual-earnings-growth",
+   "impressions": 29,
    "clicks": 0,
    "queries": [
     [
-     "list of richest people in the world 2026",
-     2,
-     0,
-     16
-    ],
-    [
-     "world's richest people 2026",
-     2,
-     0,
-     14
-    ],
-    [
-     "richest man in the world 2026 net worth",
-     1,
-     0,
-     14
-    ],
-    [
-     "richest people in the world 2026",
-     1,
-     0,
-     15
-    ],
-    [
-     "richest people in the world 2026 net worth",
-     1,
-     0,
-     15
-    ],
-    [
-     "richest person in the world 2026",
-     1,
-     0,
-     15
-    ],
-    [
      "site:countly.net",
-     1,
+     2,
      0,
-     59
+     33.5
     ],
     [
-     "top 10 richest people in the world 2026 net worth",
+     "openai annualized revenue february 2026",
      1,
      0,
-     17
+     2
     ],
     [
-     "world's richest people 2026 ranking net worth",
+     "openai annualized revenue run rate 2026",
      1,
      0,
-     18
+     9
+    ],
+    [
+     "openai arr 2026",
+     1,
+     0,
+     19
     ]
    ],
-   "position": 18.4,
+   "position": 8.3,
    "ctr": 0.0
   },
   {
@@ -842,8 +767,23 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/how-many-twitch-streamers-are-there-in-2026-global-by-countr",
+   "url": "https://countly.net/topic/internet",
    "impressions": 26,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     7,
+     0,
+     7
+    ]
+   ],
+   "position": 9.3,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/how-many-twitch-streamers-are-there-in-2026-global-by-countr",
+   "impressions": 24,
    "clicks": 0,
    "queries": [
     [
@@ -865,22 +805,52 @@
      76
     ]
    ],
-   "position": 33.1,
+   "position": 34.3,
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/topic/internet",
-   "impressions": 26,
+   "url": "https://countly.net/richest-people-in-the-world-2026-net-worth-rankings-trends",
+   "impressions": 24,
    "clicks": 0,
    "queries": [
     [
-     "site:countly.net",
-     7,
+     "world's richest people 2026",
+     2,
      0,
-     7
+     14
+    ],
+    [
+     "richest people in the world 2026",
+     1,
+     0,
+     15
+    ],
+    [
+     "richest people in the world 2026 net worth",
+     1,
+     0,
+     15
+    ],
+    [
+     "richest person in the world 2026",
+     1,
+     0,
+     15
+    ],
+    [
+     "site:countly.net",
+     1,
+     0,
+     59
+    ],
+    [
+     "world's richest people 2026 ranking net worth",
+     1,
+     0,
+     18
     ]
    ],
-   "position": 9.3,
+   "position": 18.8,
    "ctr": 0.0
   },
   {
@@ -1049,29 +1019,6 @@
    "ctr": 0.0556
   },
   {
-   "url": "https://countly.net/companies-with-the-most-employees-2026-top-20-global-workforces",
-   "impressions": 18,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     2,
-     0,
-     57
-    ]
-   ],
-   "position": 30.3,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/how-many-tesla-vehicles-are-on-the-road-in-2026-global-fleet",
-   "impressions": 18,
-   "clicks": 0,
-   "queries": [],
-   "position": 18.1,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/top-68-richest-people-in-taiwan-2026",
    "impressions": 18,
    "clicks": 0,
@@ -1084,6 +1031,29 @@
     ]
    ],
    "position": 8.1,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/companies-with-the-most-employees-2026-top-20-global-workforces",
+   "impressions": 17,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     2,
+     0,
+     57
+    ]
+   ],
+   "position": 31.2,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/how-many-tesla-vehicles-are-on-the-road-in-2026-global-fleet",
+   "impressions": 17,
+   "clicks": 0,
+   "queries": [],
+   "position": 18.2,
    "ctr": 0.0
   },
   {
@@ -1137,27 +1107,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/how-many-internet-users-are-there-in-2026-global-by-country",
-   "impressions": 16,
-   "clicks": 0,
-   "queries": [
-    [
-     "our world in data number of internet users by continent 2021",
-     2,
-     0,
-     12
-    ],
-    [
-     "site:countly.net",
-     2,
-     0,
-     68
-    ]
-   ],
-   "position": 20.0,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/tiktok-users-by-country-2026-top-rankings-growth-trends",
    "impressions": 16,
    "clicks": 0,
@@ -1203,6 +1152,27 @@
    "ctr": 0.0
   },
   {
+   "url": "https://countly.net/how-many-internet-users-are-there-in-2026-global-by-country",
+   "impressions": 15,
+   "clicks": 0,
+   "queries": [
+    [
+     "our world in data number of internet users by continent 2021",
+     2,
+     0,
+     12
+    ],
+    [
+     "site:countly.net",
+     2,
+     0,
+     68
+    ]
+   ],
+   "position": 20.9,
+   "ctr": 0.0
+  },
+  {
    "url": "https://countly.net/richest-people-in-austria-2026-billionaires-net-worth",
    "impressions": 14,
    "clicks": 0,
@@ -1242,39 +1212,6 @@
     ]
    ],
    "position": 26.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/how-many-facebook-users-are-there-in-2026-global-by-country-d4e4",
-   "impressions": 13,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     2,
-     0,
-     78.5
-    ],
-    [
-     "facebook daily active users 2026",
-     1,
-     0,
-     14
-    ],
-    [
-     "how many users are on facebook",
-     1,
-     0,
-     30
-    ],
-    [
-     "is facebook losing users 2026",
-     1,
-     0,
-     91
-    ]
-   ],
-   "position": 49.2,
    "ctr": 0.0
   },
   {
@@ -1346,6 +1283,33 @@
     ]
    ],
    "position": 24.3,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/how-many-facebook-users-are-there-in-2026-global-by-country-d4e4",
+   "impressions": 12,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     2,
+     0,
+     78.5
+    ],
+    [
+     "how many users are on facebook",
+     1,
+     0,
+     30
+    ],
+    [
+     "is facebook losing users 2026",
+     1,
+     0,
+     91
+    ]
+   ],
+   "position": 52.1,
    "ctr": 0.0
   },
   {
@@ -1460,21 +1424,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/how-many-snapchat-users-are-there-in-2026-global-by-country",
-   "impressions": 11,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     2,
-     0,
-     69
-    ]
-   ],
-   "position": 23.9,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/how-many-youtube-users-are-there-in-2026-global-by-country",
    "impressions": 11,
    "clicks": 0,
@@ -1535,7 +1484,7 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/how-many-electric-vehicle-charging-stations-are-there-in-202",
+   "url": "https://countly.net/how-many-snapchat-users-are-there-in-2026-global-by-country",
    "impressions": 10,
    "clicks": 0,
    "queries": [
@@ -1543,43 +1492,10 @@
      "site:countly.net",
      2,
      0,
-     64
-    ]
-   ],
-   "position": 47.6,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/how-many-uber-riders-are-there-in-2026-global-by-country",
-   "impressions": 10,
-   "clicks": 0,
-   "queries": [
-    [
-     "number of uber drivers in the us 2026",
-     1,
-     0,
-     19
-    ],
-    [
-     "site:countly.net",
-     1,
-     0,
      69
-    ],
-    [
-     "uber monthly active users",
-     1,
-     0,
-     16
-    ],
-    [
-     "نسبة اوبر من الكابتن 2026",
-     1,
-     0,
-     78
     ]
    ],
-   "position": 28.4,
+   "position": 24.5,
    "ctr": 0.0
   },
   {
@@ -1625,6 +1541,48 @@
     ]
    ],
    "position": 17.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/how-many-electric-vehicle-charging-stations-are-there-in-202",
+   "impressions": 9,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     2,
+     0,
+     64
+    ]
+   ],
+   "position": 50.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/how-many-uber-riders-are-there-in-2026-global-by-country",
+   "impressions": 9,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     1,
+     0,
+     69
+    ],
+    [
+     "uber monthly active users",
+     1,
+     0,
+     16
+    ],
+    [
+     "نسبة اوبر من الكابتن 2026",
+     1,
+     0,
+     78
+    ]
+   ],
+   "position": 29.4,
    "ctr": 0.0
   },
   {
@@ -2002,6 +1960,14 @@
    "ctr": 0.0
   },
   {
+   "url": "https://countly.net/how-many-x-users-are-there-in-2026-global-by-country-193c",
+   "impressions": 4,
+   "clicks": 0,
+   "queries": [],
+   "position": 10.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://countly.net/largest-ecommerce-markets-2026-top-countries-by-revenue",
    "impressions": 4,
    "clicks": 0,
@@ -2169,14 +2135,6 @@
     ]
    ],
    "position": 60.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/how-many-x-users-are-there-in-2026-global-by-country-193c",
-   "impressions": 3,
-   "clicks": 0,
-   "queries": [],
-   "position": 10.0,
    "ctr": 0.0
   },
   {
@@ -2490,6 +2448,14 @@
    "clicks": 0,
    "queries": [],
    "position": 73.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/internet-users-by-country-2026-global-ranking-key-stats",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.0,
    "ctr": 0.0
   },
   {

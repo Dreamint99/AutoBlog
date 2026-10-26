@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-07-25..2026-10-23, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-07-26..2026-10-24, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "champions league quiz",
@@ -218,18 +218,6 @@
    "src": "bingkw"
   },
   {
-   "q": "world cup results",
-   "impr": 2302,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "world cup game",
-   "impr": 2227,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
    "q": "fifa world cup schedule",
    "impr": 2190,
    "pos": null,
@@ -296,12 +284,6 @@
    "src": "bingkw"
   },
   {
-   "q": "world cup schedule 2026 today",
-   "impr": 1678,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
    "q": "who won fifa world cup 2026",
    "impr": 1582,
    "pos": null,
@@ -316,6 +298,12 @@
   {
    "q": "when is the next world cup",
    "impr": 1443,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "world cup soccer",
+   "impr": 1357,
    "pos": null,
    "src": "bingkw"
   },
@@ -340,6 +328,12 @@
   {
    "q": "shakira world cup 2026",
    "impr": 1209,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "where is the next world cup",
+   "impr": 1182,
    "pos": null,
    "src": "bingkw"
   },
@@ -394,12 +388,6 @@
   {
    "q": "champions league final",
    "impr": 998,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "next world cup",
-   "impr": 994,
    "pos": null,
    "src": "bingkw"
   },
@@ -476,6 +464,18 @@
    "src": "bingkw"
   },
   {
+   "q": "world cup coverage standings",
+   "impr": 807,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "english premier league schedule",
+   "impr": 803,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
    "q": "us open tennis 2026 schedule",
    "impr": 2438,
    "pos": 9.4,
@@ -495,7 +495,7 @@
   },
   {
    "q": "tennis us open 2026",
-   "impr": 508,
+   "impr": 509,
    "pos": 9.0,
    "src": "bing"
   },
@@ -734,13 +734,13 @@
    "src": "bing"
   },
   {
-   "q": "world cup 2026 group standings",
+   "q": "fifa 2026 group standings",
    "impr": 14,
    "pos": 8.0,
    "src": "bing"
   },
   {
-   "q": "fifa 2026 group standings",
+   "q": "world cup 2026 group standings",
    "impr": 14,
    "pos": 8.0,
    "src": "bing"
@@ -782,13 +782,13 @@
    "src": "bing"
   },
   {
-   "q": "switzerland world cup squad",
+   "q": "bosnia and herzegovina world cup 2026",
    "impr": 11,
    "pos": 8.0,
    "src": "bing"
   },
   {
-   "q": "bosnia and herzegovina world cup 2026",
+   "q": "switzerland world cup squad",
    "impr": 11,
    "pos": 8.0,
    "src": "bing"
