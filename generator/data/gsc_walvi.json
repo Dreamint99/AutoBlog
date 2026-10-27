@@ -1,5 +1,5 @@
 {
- "source": "Search Console API 2026-07-26..2026-10-24",
+ "source": "Search Console API 2026-07-27..2026-10-25",
  "pages": [
   {
    "url": "https://visapoint.net/visa-check/romania",
@@ -498,7 +498,7 @@
   },
   {
    "url": "https://visapoint.net/",
-   "impressions": 57,
+   "impressions": 59,
    "clicks": 4,
    "queries": [
     [
@@ -518,6 +518,12 @@
      2,
      0,
      56.5
+    ],
+    [
+     "visa index",
+     2,
+     0,
+     39.5
     ],
     [
      "abroad visa point",
@@ -544,12 +550,6 @@
      51
     ],
     [
-     "visa index",
-     1,
-     0,
-     30
-    ],
-    [
      "visa information for all countries",
      1,
      0,
@@ -562,8 +562,8 @@
      69
     ]
    ],
-   "position": 17.1,
-   "ctr": 0.0702
+   "position": 18.7,
+   "ctr": 0.0678
   },
   {
    "url": "https://visapoint.net/cleaner-salary-in-germany-2026-gross-net-savings-guide",
@@ -3374,6 +3374,21 @@
    "ctr": 0.2
   },
   {
+   "url": "https://visapoint.net/visa-check/oman",
+   "impressions": 5,
+   "clicks": 1,
+   "queries": [
+    [
+     "oman employment visa check",
+     1,
+     1,
+     134
+    ]
+   ],
+   "position": 34.2,
+   "ctr": 0.2
+  },
+  {
    "url": "https://visapoint.net/albania-to-malta-work-permit-2026-cost-process-salary-guide",
    "impressions": 5,
    "clicks": 0,
@@ -3617,21 +3632,6 @@
    "queries": [],
    "position": 7.4,
    "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/visa-check/oman",
-   "impressions": 4,
-   "clicks": 1,
-   "queries": [
-    [
-     "oman employment visa check",
-     1,
-     1,
-     134
-    ]
-   ],
-   "position": 39.8,
-   "ctr": 0.25
   },
   {
    "url": "https://visapoint.net/cost-of-living-savings-in-estonia-2026-how-much-can-a-foreig",
