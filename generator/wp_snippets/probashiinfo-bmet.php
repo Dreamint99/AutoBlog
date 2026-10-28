@@ -602,7 +602,7 @@ html body.bm-app h1,html body.bm-app h2,html body.bm-app h3,html body.bm-app h4,
 			$all = $wsum( $wc, $keys ); $smx = max( 1, max( $series ?: array( 0 ) ) );
 			$raw = ''; foreach ( $days as $dk ) foreach ( $dk['c'] as $cc => $v ) if ( pb_clean( $cc ) === $wc ) { $raw = $cc; break 2; }
 			?>
-			<article class="wc">
+			<article class="wc" data-w="<?php echo esc_attr( $wc ); ?>">
 				<header><?php echo pb_flag( $wc ); ?><h3><?php echo esc_html( pb_cn( $wc ) ); ?> বিএমইটি রিপোর্ট</h3><span class="wt <?php echo $today_n ? 'on' : ''; ?>"><?php echo $today_n ? '🟢 আজ ' . pb_num( $today_n ) . ' জন' : 'আজ এখনো নেই'; ?></span></header>
 				<div class="wg">
 					<div><span><?php echo esc_html( $lastlbl ); ?></span><b><?php echo pb_num( $yn ); ?></b></div>
@@ -1003,6 +1003,10 @@ function bmCard(cv, o) {
 		var ks=Object.keys(L.c).sort(function(a,b){return L.c[b]-L.c[a]}).slice(0,8), mx=L.c[ks[0]]||1;
 		if(ks.length) $('lv-list').innerHTML=ks.map(function(c){return '<div class="lrow'+(NEWC[c]?' new':'')+'">'+flag(c)+'<span>'+cn(c)+'</span><span class="t"><i style="width:'+(L.c[c]*100/mx)+'%"></i></span><b>'+num(L.c[c])+'</b></div>'}).join('');
 		$('lv-at').textContent='সর্বশেষ চেক: '+hm(L.at)+' · প্রতি ৫ মিনিটে নিজে হালনাগাদ হয় · দিনের শেষ পর্যন্ত সংখ্যা বাড়তে থাকে';
+		// "নজরে" cards: today's badge follows the live poll too (same name cleanup as pb_clean)
+		[].forEach.call(document.querySelectorAll('.wc[data-w]'),function(a){ var n=0,s=a.querySelector('.wt');
+			for(var c in L.c) if(c.replace(/ /g,' ').replace(/\s*\(formerly[^)]*\)/i,'').trim()===a.dataset.w) n+=L.c[c];
+			s.className='wt'+(n?' on':''); s.textContent=n?'🟢 আজ '+num(n)+' জন':'আজ এখনো নেই'; });
 		if(add.length){ if($('lv-feed0')) $('lv-feed0').remove();
 			$('lv-feed').querySelector('h3').insertAdjacentHTML('afterend',add.map(function(a){return '<p>'+hm(L.at)+' — '+cn(a[0])+' <b>+'+num(a[1])+' জন</b></p>'}).join('')); }
 	}
