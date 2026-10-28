@@ -7,7 +7,7 @@
    Snippets #6, #7, #8 and #11 (v2) step aside when pa_app() is on;
    their ads are redrawn here in the same design language. Writer names are not shown. */
 if ( ! defined( 'PA_APP_PUBLIC' ) ) define( 'PA_APP_PUBLIC', true );
-if ( ! defined( 'PA_APP_VERSION' ) ) define( 'PA_APP_VERSION', '3.6.1' );
+if ( ! defined( 'PA_APP_VERSION' ) ) define( 'PA_APP_VERSION', '3.6.2' );
 define( 'PA_LOGO', 'https://probashiinfo.com/wp-content/uploads/2026/10/probashiinfo-wordmark.webp' );
 define( 'PA_ICON', 'https://probashiinfo.com/wp-content/uploads/2026/10/probashiinfo-icon.png' );
 define( 'PA_PB', 'https://www.probashibondu.online' );
@@ -92,6 +92,7 @@ function pa_dream( $medium, $title = 'ইউরোপে বৈধভাবে �
 function pa_pb( $medium, $big = false ) {
 	$u = esc_url( PA_PB . '/?utm_source=probashiinfo&utm_medium=' . $medium . '&utm_campaign=probashi-bondhu' );
 	if ( ! $big ) {
+		return ''; // owner removed the "আপনি কত দিন ধরে প্রবাসে?" card (28 Oct 2026); the app download card (#28) replaces it
 		return '<a class="ad-pb" href="' . $u . '" target="_blank" rel="noopener"><span class="ad-pb-ic">📅</span><span><b>আপনি কত দিন ধরে প্রবাসে?</b><small>প্রবাসী বন্ধুতে হিসাব করুন, নিজের ছবিসহ কার্ড বানিয়ে পরিবারকে পাঠান — ফ্রি</small></span><em>কার্ড বানান →</em></a>';
 	}
 	$g = esc_url( PA_PB . '/guide?utm_source=probashiinfo&utm_medium=' . $medium );
