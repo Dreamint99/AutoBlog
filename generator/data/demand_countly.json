@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-07-27..2026-10-25, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-07-28..2026-10-26, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "richest countries in world",
@@ -719,15 +719,15 @@
    "src": "bing"
   },
   {
-   "q": "who is the richest person in the world 2026",
-   "impr": 18,
-   "pos": 8.7,
+   "q": "most starred github repo",
+   "impr": 21,
+   "pos": 8.2,
    "src": "bing"
   },
   {
-   "q": "most starred github repo",
+   "q": "who is the richest person in the world 2026",
    "impr": 18,
-   "pos": 8.4,
+   "pos": 8.7,
    "src": "bing"
   },
   {
@@ -773,6 +773,12 @@
    "src": "bing"
   },
   {
+   "q": "which is the world's largest company based on the number of employees?",
+   "impr": 12,
+   "pos": 8.8,
+   "src": "bing"
+  },
+  {
    "q": "german software company",
    "impr": 12,
    "pos": 8.0,
@@ -800,6 +806,12 @@
    "q": "richest perosn in argentina",
    "impr": 10,
    "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "most subscribed youtube channel",
+   "impr": 10,
+   "pos": 8.4,
    "src": "bing"
   },
   {

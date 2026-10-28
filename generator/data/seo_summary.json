@@ -1,25 +1,19 @@
 {
- "updatedAt": "2026-10-27",
- "dataTo": "2026-10-25",
+ "updatedAt": "2026-10-28",
+ "dataTo": "2026-10-26",
  "sites": {
   "probashiinfo": {
    "week": {
-    "clicks": 478,
-    "impr": 21792,
+    "clicks": 389,
+    "impr": 18281,
     "pos": 6.0
    },
    "prevWeek": {
-    "clicks": 661,
-    "impr": 32202,
+    "clicks": 653,
+    "impr": 31205,
     "pos": 5.7
    },
    "series": [
-    {
-     "t": "2026-09-28",
-     "clicks": 76,
-     "impr": 4547,
-     "pos": 5.7
-    },
     {
      "t": "2026-09-29",
      "clicks": 92,
@@ -184,19 +178,10 @@
     }
    ],
    "range": [
-    "2026-10-19",
-    "2026-10-25"
+    "2026-10-20",
+    "2026-10-26"
    ],
    "growingPages": [
-    {
-     "key": "https://probashiinfo.com/",
-     "clicks": 32,
-     "clicksPrev": 3,
-     "impr": 73,
-     "imprPrev": 30,
-     "pos": 15.2,
-     "posPrev": 13.4
-    },
     {
      "key": "https://probashiinfo.com/maldives-work-visa-cost-2026/",
      "clicks": 5,
@@ -205,6 +190,15 @@
      "imprPrev": 0,
      "pos": 4.8,
      "posPrev": null
+    },
+    {
+     "key": "https://probashiinfo.com/",
+     "clicks": 24,
+     "clicksPrev": 11,
+     "impr": 56,
+     "imprPrev": 41,
+     "pos": 13.6,
+     "posPrev": 15.7
     },
     {
      "key": "https://probashiinfo.com/malaysia-basic-salary-2026/",
@@ -216,213 +210,195 @@
      "posPrev": null
     },
     {
-     "key": "https://probashiinfo.com/kuwait-to-europe/",
-     "clicks": 12,
-     "clicksPrev": 4,
-     "impr": 191,
-     "imprPrev": 157,
-     "pos": 4.5,
-     "posPrev": 5.8
-    },
-    {
      "key": "https://probashiinfo.com/bmet-report-2026-10-17/",
      "clicks": 9,
      "clicksPrev": 0,
-     "impr": 14,
-     "imprPrev": 2,
-     "pos": 2.6,
-     "posPrev": 1.5
+     "impr": 13,
+     "imprPrev": 3,
+     "pos": 2.5,
+     "posPrev": 2.3
+    },
+    {
+     "key": "https://probashiinfo.com/canada-work-permit-visa-2026-cost-lmia/",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 113,
+     "imprPrev": 0,
+     "pos": 6.8,
+     "posPrev": null
     },
     {
      "key": "https://probashiinfo.com/saarbiyaa-ki-iureaap-kaanttri-2026-saaler-stthik-tthy-o-betn/",
      "clicks": 1,
      "clicksPrev": 0,
-     "impr": 153,
-     "imprPrev": 8,
+     "impr": 128,
+     "imprPrev": 33,
      "pos": 7.2,
-     "posPrev": 7.4
+     "posPrev": 7.3
     },
     {
-     "key": "https://probashiinfo.com/bahrain-to-europe/",
-     "clicks": 6,
+     "key": "https://probashiinfo.com/বুলগেরিয়া-কাজের-সুযোগ-ব/",
+     "clicks": 0,
      "clicksPrev": 0,
-     "impr": 51,
-     "imprPrev": 14,
-     "pos": 5.2,
-     "posPrev": 4.5
+     "impr": 125,
+     "imprPrev": 21,
+     "pos": 8.0,
+     "posPrev": 7.5
+    },
+    {
+     "key": "https://probashiinfo.com/romania-work-permit-2026/",
+     "clicks": 2,
+     "clicksPrev": 0,
+     "impr": 59,
+     "imprPrev": 0,
+     "pos": 4.3,
+     "posPrev": null
     },
     {
      "key": "https://probashiinfo.com/singgaapur-oyaark-bhisaa-2026-ntun-niym-betn-o-aabedn/#s2",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 214,
-     "imprPrev": 74,
-     "pos": 6.7,
-     "posPrev": 4.5
-    },
-    {
-     "key": "https://probashiinfo.com/singgaapur-oyaark-bhisaa-2026-ntun-niym-betn-o-aabedn/#s3",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 214,
-     "imprPrev": 74,
-     "pos": 6.7,
-     "posPrev": 4.5
+     "impr": 193,
+     "imprPrev": 95,
+     "pos": 6.8,
+     "posPrev": 4.9
     },
     {
      "key": "https://probashiinfo.com/singgaapur-oyaark-bhisaa-2026-ntun-niym-betn-o-aabedn/#s5",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 214,
-     "imprPrev": 74,
-     "pos": 6.7,
-     "posPrev": 4.5
+     "impr": 193,
+     "imprPrev": 95,
+     "pos": 6.8,
+     "posPrev": 4.9
     }
    ],
    "fallingPages": [
     {
      "key": "https://probashiinfo.com/maalyeshiyaa-oyaark-bhisaa-2026-khrc-betn-o-aabedn/",
-     "clicks": 10,
-     "clicksPrev": 26,
-     "impr": 969,
-     "imprPrev": 1732,
+     "clicks": 7,
+     "clicksPrev": 28,
+     "impr": 759,
+     "imprPrev": 1843,
      "pos": 5.9,
-     "posPrev": 4.9
-    },
-    {
-     "key": "https://probashiinfo.com/reaamaaniyaa-oyaark-bhisaa-2026-betn-khrc-o-shj-gaaidd/",
-     "clicks": 8,
-     "clicksPrev": 15,
-     "impr": 418,
-     "imprPrev": 974,
-     "pos": 5.9,
-     "posPrev": 5.2
-    },
-    {
-     "key": "https://probashiinfo.com/gris-oyaark-bhisaa-2026-khrc-betn-o-shj-gaaidd/",
-     "clicks": 14,
-     "clicksPrev": 20,
-     "impr": 470,
-     "imprPrev": 1001,
-     "pos": 4.8,
      "posPrev": 5.0
     },
     {
-     "key": "https://probashiinfo.com/list-of-schengen-countries-in-europe-2026/",
-     "clicks": 9,
-     "clicksPrev": 5,
-     "impr": 599,
-     "imprPrev": 1093,
-     "pos": 7.3,
-     "posPrev": 7.0
+     "key": "https://probashiinfo.com/kuyet-oyaark-bhisaa-2026-betn-khrc-o-aabedn-prkriyaa-smpuurnn-gaaidd/",
+     "clicks": 3,
+     "clicksPrev": 15,
+     "impr": 364,
+     "imprPrev": 950,
+     "pos": 6.7,
+     "posPrev": 6.6
     },
     {
-     "key": "https://probashiinfo.com/kuyet-oyaark-bhisaa-2026-betn-khrc-o-aabedn-prkriyaa-smpuurnn-gaaidd/",
-     "clicks": 4,
-     "clicksPrev": 17,
-     "impr": 448,
-     "imprPrev": 932,
-     "pos": 6.6,
-     "posPrev": 6.6
+     "key": "https://probashiinfo.com/list-of-schengen-countries-in-europe-2026/",
+     "clicks": 8,
+     "clicksPrev": 5,
+     "impr": 505,
+     "imprPrev": 1072,
+     "pos": 7.4,
+     "posPrev": 7.1
+    },
+    {
+     "key": "https://probashiinfo.com/reaamaaniyaa-oyaark-bhisaa-2026-betn-khrc-o-shj-gaaidd/",
+     "clicks": 6,
+     "clicksPrev": 13,
+     "impr": 338,
+     "imprPrev": 871,
+     "pos": 5.9,
+     "posPrev": 5.4
+    },
+    {
+     "key": "https://probashiinfo.com/gris-oyaark-bhisaa-2026-khrc-betn-o-shj-gaaidd/",
+     "clicks": 11,
+     "clicksPrev": 21,
+     "impr": 383,
+     "imprPrev": 875,
+     "pos": 4.8,
+     "posPrev": 5.0
     }
    ],
    "topQueries": [
     {
      "key": "কুয়েত যেতে কত টাকা লাগে 2026",
-     "clicks": 18,
-     "clicksPrev": 16,
-     "impr": 168,
-     "imprPrev": 226,
+     "clicks": 16,
+     "clicksPrev": 17,
+     "impr": 147,
+     "imprPrev": 214,
      "pos": 1.8,
      "posPrev": 2.1
     },
     {
      "key": "সার্বিয়া কি সেনজেন ভুক্ত দেশ",
      "clicks": 14,
-     "clicksPrev": 10,
-     "impr": 233,
-     "imprPrev": 216,
-     "pos": 3.3,
-     "posPrev": 3.0
+     "clicksPrev": 8,
+     "impr": 199,
+     "imprPrev": 213,
+     "pos": 3.2,
+     "posPrev": 3.2
     },
     {
      "key": "সার্বিয়া কি সেনজেন হবে",
      "clicks": 7,
      "clicksPrev": 4,
-     "impr": 69,
-     "imprPrev": 81,
+     "impr": 59,
+     "imprPrev": 83,
      "pos": 2.5,
-     "posPrev": 3.7
+     "posPrev": 3.8
     },
     {
      "key": "ইউরোপ ওয়ার্ক পারমিট ভিসা 2026",
-     "clicks": 6,
+     "clicks": 5,
      "clicksPrev": 9,
-     "impr": 63,
-     "imprPrev": 51,
+     "impr": 58,
+     "imprPrev": 46,
      "pos": 2.8,
-     "posPrev": 2
+     "posPrev": 1.9
     },
     {
      "key": "সার্বিয়া থেকে কোন কোন দেশে যাওয়া যায়",
      "clicks": 4,
-     "clicksPrev": 2,
-     "impr": 111,
-     "imprPrev": 133,
-     "pos": 3.2,
+     "clicksPrev": 1,
+     "impr": 89,
+     "imprPrev": 142,
+     "pos": 3.4,
      "posPrev": 2.5
-    },
-    {
-     "key": "পোল্যান্ড ওয়ার্ক পারমিট ভিসা 2026",
-     "clicks": 3,
-     "clicksPrev": 2,
-     "impr": 26,
-     "imprPrev": 25,
-     "pos": 2.7,
-     "posPrev": 1.9
-    },
-    {
-     "key": "বাংলাদেশ থেকে কুয়েত যেতে কত টাকা লাগে ২০২৬",
-     "clicks": 3,
-     "clicksPrev": 2,
-     "impr": 25,
-     "imprPrev": 26,
-     "pos": 1.7,
-     "posPrev": 1.4
     },
     {
      "key": "কুয়েত ভিসা চেক ২০২৬",
      "clicks": 3,
      "clicksPrev": 1,
-     "impr": 17,
-     "imprPrev": 11,
-     "pos": 3.8,
+     "impr": 15,
+     "imprPrev": 12,
+     "pos": 3.9,
      "posPrev": 2.5
     },
     {
      "key": "ইউরোপের সেনজেন ভুক্ত দেশের তালিকা 2026",
      "clicks": 2,
      "clicksPrev": 0,
-     "impr": 137,
-     "imprPrev": 174,
+     "impr": 114,
+     "imprPrev": 179,
      "pos": 7.9,
-     "posPrev": 5.7
+     "posPrev": 6.1
     },
     {
      "key": "সার্বিয়া থেকে ইতালি কত কিলোমিটার",
      "clicks": 2,
      "clicksPrev": 0,
-     "impr": 114,
-     "imprPrev": 103,
+     "impr": 95,
+     "imprPrev": 107,
      "pos": 5.2,
-     "posPrev": 3.8
+     "posPrev": 4.1
     },
     {
      "key": "মরিশাস ওয়ার্ক পারমিট ভিসা বেতন কত",
      "clicks": 2,
      "clicksPrev": 3,
-     "impr": 69,
-     "imprPrev": 64,
+     "impr": 54,
+     "imprPrev": 79,
      "pos": 4.3,
      "posPrev": 4.4
     },
@@ -430,37 +406,55 @@
      "key": "সার্বিয়া কি সেনজেন",
      "clicks": 2,
      "clicksPrev": 1,
-     "impr": 51,
-     "imprPrev": 39,
-     "pos": 4.7,
-     "posPrev": 4.0
-    },
-    {
-     "key": "কাতার কোম্পানি ভিসা বেতন কত",
-     "clicks": 2,
-     "clicksPrev": 0,
-     "impr": 39,
-     "imprPrev": 21,
-     "pos": 6.7,
+     "impr": 46,
+     "imprPrev": 41,
+     "pos": 4.8,
      "posPrev": 4.1
     },
     {
-     "key": "কুয়েত ওয়ার্ক পারমিট ভিসা ২০২৬",
+     "key": "পোল্যান্ড ওয়ার্ক পারমিট ভিসা 2026",
      "clicks": 2,
-     "clicksPrev": 1,
-     "impr": 18,
-     "imprPrev": 30,
-     "pos": 3.7,
-     "posPrev": 2.8
+     "clicksPrev": 3,
+     "impr": 22,
+     "imprPrev": 28,
+     "pos": 2.8,
+     "posPrev": 2
     },
     {
-     "key": "দুবাই যেতে কত টাকা লাগে কাজের ভিসা",
+     "key": "বাংলাদেশ থেকে কুয়েত যেতে কত টাকা লাগে ২০২৬",
+     "clicks": 2,
+     "clicksPrev": 3,
+     "impr": 20,
+     "imprPrev": 26,
+     "pos": 1.6,
+     "posPrev": 1.4
+    },
+    {
+     "key": "সাবিয়া কি সেনজেন",
      "clicks": 2,
      "clicksPrev": 0,
-     "impr": 17,
-     "imprPrev": 5,
-     "pos": 8.4,
-     "posPrev": 3.8
+     "impr": 7,
+     "imprPrev": 12,
+     "pos": 1,
+     "posPrev": 3.3
+    },
+    {
+     "key": "সার্বিয়া কি ইউরোপের সেনজেন ভুক্ত দেশ",
+     "clicks": 2,
+     "clicksPrev": 2,
+     "impr": 5,
+     "imprPrev": 11,
+     "pos": 2.4,
+     "posPrev": 4.1
+    },
+    {
+     "key": "মালয়েশিয়া যেতে কত টাকা লাগে 2026",
+     "clicks": 1,
+     "clicksPrev": 3,
+     "impr": 82,
+     "imprPrev": 206,
+     "pos": 5.3,
+     "posPrev": 5.8
     }
    ],
    "risingQueries": [
@@ -468,28 +462,10 @@
      "key": "সার্বিয়া বেতন কত 2026",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 64,
-     "imprPrev": 3,
+     "impr": 60,
+     "imprPrev": 7,
      "pos": 8.0,
-     "posPrev": 9
-    },
-    {
-     "key": "সার্বিয়া কি ইউরোপ কান্ট্রি",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 74,
-     "imprPrev": 25,
-     "pos": 8.1,
-     "posPrev": 7.1
-    },
-    {
-     "key": "বাংলাদেশের প্রবাসী সংখ্যা কত 2026",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 74,
-     "imprPrev": 32,
-     "pos": 8.9,
-     "posPrev": 9.9
+     "posPrev": 8.4
     },
     {
      "key": "বুলগেরিয়া বেতন কত",
@@ -510,70 +486,82 @@
      "posPrev": null
     },
     {
-     "key": "সার্বিয়া",
-     "clicks": 1,
-     "clicksPrev": 1,
-     "impr": 63,
-     "imprPrev": 32,
-     "pos": 11.4,
-     "posPrev": 8.6
-    },
-    {
      "key": "সিঙ্গাপুর যেতে কত টাকা লাগে 2026",
      "clicks": 1,
      "clicksPrev": 2,
-     "impr": 66,
-     "imprPrev": 38,
+     "impr": 64,
+     "imprPrev": 36,
      "pos": 6.2,
-     "posPrev": 3.3
-    },
-    {
-     "key": "বুলগেরিয়া দেশ কেমন",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 61,
-     "imprPrev": 35,
-     "pos": 8.8,
-     "posPrev": 6.2
+     "posPrev": 3.5
     },
     {
      "key": "জাপান ওয়ার্ক পারমিট ভিসা কত টাকা লাগে",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 41,
-     "imprPrev": 18,
-     "pos": 7.6,
+     "impr": 36,
+     "imprPrev": 20,
+     "pos": 8.1,
      "posPrev": 4.5
+    },
+    {
+     "key": "সাবিয়া কি ইউরোপ",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 27,
+     "imprPrev": 12,
+     "pos": 8.7,
+     "posPrev": 5.7
+    },
+    {
+     "key": "ইতালি ওয়ার্ক পারমিট ভিসা কত টাকা লাগে",
+     "clicks": 0,
+     "clicksPrev": 1,
+     "impr": 25,
+     "imprPrev": 11,
+     "pos": 8.9,
+     "posPrev": 11
+    },
+    {
+     "key": "কুয়েতের ভিসা চেক",
+     "clicks": 1,
+     "clicksPrev": 1,
+     "impr": 25,
+     "imprPrev": 12,
+     "pos": 10.0,
+     "posPrev": 6.9
+    },
+    {
+     "key": "পর্তুগাল যেতে কত টাকা লাগে ২০২৬",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 12,
+     "imprPrev": 0,
+     "pos": 8.1,
+     "posPrev": null
     },
     {
      "key": "কানাডা ওয়ার্ক পারমিট ভিসার খরচ কত",
      "clicks": 0,
      "clicksPrev": 1,
-     "impr": 35,
-     "imprPrev": 13,
-     "pos": 8.1,
-     "posPrev": 7.7
+     "impr": 28,
+     "imprPrev": 17,
+     "pos": 8.3,
+     "posPrev": 7.6
     }
    ]
   },
   "countly": {
    "week": {
     "clicks": 0,
-    "impr": 86,
-    "pos": 13.2
+    "impr": 69,
+    "pos": 12.6
    },
    "prevWeek": {
     "clicks": 0,
-    "impr": 43,
-    "pos": 12.8
+    "impr": 56,
+    "pos": 14.2
    },
    "series": [
-    {
-     "t": "2026-09-28",
-     "clicks": 1,
-     "impr": 31,
-     "pos": 9.0
-    },
     {
      "t": "2026-09-29",
      "clicks": 0,
@@ -738,27 +726,27 @@
     }
    ],
    "range": [
-    "2026-10-19",
-    "2026-10-25"
+    "2026-10-20",
+    "2026-10-26"
    ],
    "growingPages": [
     {
      "key": "https://countly.net/how-many-pinterest-users-are-there-in-2026-global-by-country-7a5b",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 43,
-     "imprPrev": 15,
+     "impr": 33,
+     "imprPrev": 25,
      "pos": 3.9,
-     "posPrev": 9.3
+     "posPrev": 7.1
     },
     {
      "key": "https://countly.net/how-many-x-users-are-there-in-2026-global-by-country-193c",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 4,
-     "imprPrev": 0,
+     "impr": 3,
+     "imprPrev": 1,
      "pos": 10,
-     "posPrev": null
+     "posPrev": 10
     },
     {
      "key": "https://countly.net/how-many-twitch-streamers-are-there-in-2026-global-by-countr-da49",
@@ -770,33 +758,6 @@
      "posPrev": 83
     },
     {
-     "key": "https://countly.net/richest-billionaires-2026-updated-top-20-net-worth-ranking",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 9,
-     "posPrev": null
-    },
-    {
-     "key": "https://countly.net/how-many-roblox-users-are-there-in-2026-global-by-country",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 1,
-     "pos": 2.5,
-     "posPrev": 77
-    },
-    {
-     "key": "https://countly.net/best-ai-tools",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 6,
-     "imprPrev": 5,
-     "pos": 8.2,
-     "posPrev": 6.4
-    },
-    {
      "key": "https://countly.net/how-many-weibo-users-are-there-in-2026-global-by-country",
      "clicks": 0,
      "clicksPrev": 0,
@@ -806,13 +767,13 @@
      "posPrev": null
     },
     {
-     "key": "https://countly.net/how-many-people-use-instagram-in-2026-global-users-trends",
+     "key": "https://countly.net/richest-billionaires-2026-updated-top-20-net-worth-ranking",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 1,
-     "pos": 10,
-     "posPrev": 66
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 9,
+     "posPrev": null
     },
     {
      "key": "https://countly.net/how-many-uber-riders-are-there-in-2026-global-by-country-24aa",
@@ -831,100 +792,100 @@
      "imprPrev": 0,
      "pos": 6,
      "posPrev": null
+    },
+    {
+     "key": "https://countly.net/how-many-roblox-users-are-there-in-2026-global-by-country",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 1,
+     "pos": 2.5,
+     "posPrev": 77
+    },
+    {
+     "key": "https://countly.net/how-many-people-use-instagram-in-2026-global-users-trends",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 1,
+     "pos": 10,
+     "posPrev": 66
     }
    ],
    "fallingPages": [
     {
+     "key": "https://countly.net/crypto",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 3,
+     "imprPrev": 9,
+     "pos": 58,
+     "posPrev": 39.8
+    },
+    {
      "key": "https://countly.net/contact",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 2,
+     "impr": 1,
      "imprPrev": 6,
      "pos": 4,
      "posPrev": 4
     },
     {
-     "key": "https://countly.net/how-many-etsy-sellers-are-there-in-2026-global-statistics-tr",
+     "key": "https://countly.net/",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 0,
-     "imprPrev": 3,
-     "pos": null,
-     "posPrev": 29.3
+     "impr": 6,
+     "imprPrev": 11,
+     "pos": 43.7,
+     "posPrev": 8.1
     },
     {
-     "key": "https://countly.net/how-many-youtube-music-subscribers-are-there-in-2026-global",
+     "key": "https://countly.net/topic/countries",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 0,
-     "imprPrev": 3,
-     "pos": null,
-     "posPrev": 25.7
+     "impr": 1,
+     "imprPrev": 5,
+     "pos": 6,
+     "posPrev": 5.4
     },
     {
      "key": "https://countly.net/topic/internet",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 4,
+     "impr": 1,
+     "imprPrev": 5,
      "pos": 7,
      "posPrev": 7
-    },
-    {
-     "key": "https://countly.net/top-10-universities-in-uk-2026-rankings-for-international-students",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 0,
-     "imprPrev": 2,
-     "pos": null,
-     "posPrev": 32
     }
    ],
    "topQueries": [
     {
-     "key": "countly",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 1,
-     "pos": 65.5,
-     "posPrev": 41
-    },
-    {
-     "key": "crypto market live",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 86.5,
-     "posPrev": null
-    },
-    {
      "key": "site:countly.net",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 4,
+     "impr": 1,
+     "imprPrev": 5,
      "pos": 1,
-     "posPrev": 8.5
+     "posPrev": 7
     },
     {
-     "key": "weibo maus 578 million august 2026 q2 2026 weibo mau 578",
+     "key": "top 10 university in bangladesh world ranking 2026",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 8,
+     "pos": 49,
      "posPrev": null
     },
     {
-     "key": "cryptocurrency live chart",
+     "key": "countly",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
-     "imprPrev": 0,
-     "pos": 89,
-     "posPrev": null
+     "imprPrev": 2,
+     "pos": 96,
+     "posPrev": 38
     },
     {
      "key": "live crypto market",
@@ -936,13 +897,22 @@
      "posPrev": 88
     },
     {
-     "key": "top 10 university in bangladesh world ranking 2026",
+     "key": "weibo maus 578 million august 2026 q2 2026 weibo mau 578",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 49,
+     "pos": 8,
      "posPrev": null
+    },
+    {
+     "key": "crypto market live",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 1,
+     "pos": 87,
+     "posPrev": 86
     }
    ],
    "risingQueries": []
@@ -950,13 +920,13 @@
   "walvi": {
    "week": {
     "clicks": 0,
-    "impr": 44,
-    "pos": 28.5
+    "impr": 43,
+    "pos": 29.0
    },
    "prevWeek": {
-    "clicks": 10,
-    "impr": 698,
-    "pos": 10.0
+    "clicks": 0,
+    "impr": 41,
+    "pos": 9.1
    },
    "series": [
     {
@@ -1081,8 +1051,8 @@
     }
    ],
    "range": [
-    "2026-10-19",
-    "2026-10-25"
+    "2026-10-20",
+    "2026-10-26"
    ],
    "growingPages": [
     {
@@ -1090,17 +1060,17 @@
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 18,
-     "imprPrev": 15,
+     "imprPrev": 8,
      "pos": 39.9,
-     "posPrev": 14.8
+     "posPrev": 22
     },
     {
-     "key": "https://visapoint.net/privacy",
+     "key": "https://visapoint.net/passport-index",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 3,
+     "impr": 5,
      "imprPrev": 0,
-     "pos": 6,
+     "pos": 17.4,
      "posPrev": null
     },
     {
@@ -1113,6 +1083,51 @@
      "posPrev": null
     },
     {
+     "key": "https://visapoint.net/privacy",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 3,
+     "imprPrev": 0,
+     "pos": 6,
+     "posPrev": null
+    },
+    {
+     "key": "https://visapoint.net/about",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 3,
+     "imprPrev": 0,
+     "pos": 8,
+     "posPrev": null
+    },
+    {
+     "key": "https://visapoint.net/visa-check/serbia",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 3,
+     "imprPrev": 0,
+     "pos": 4,
+     "posPrev": null
+    },
+    {
+     "key": "https://visapoint.net/visa-check/moldova",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 3,
+     "imprPrev": 1,
+     "pos": 3,
+     "posPrev": 10
+    },
+    {
+     "key": "https://visapoint.net/visa-check/romania",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 3,
+     "imprPrev": 1,
+     "pos": 5,
+     "posPrev": 7
+    },
+    {
      "key": "https://visapoint.net/jobs/carpenter",
      "clicks": 0,
      "clicksPrev": 0,
@@ -1122,105 +1137,60 @@
      "posPrev": null
     },
     {
-     "key": "https://visapoint.net/terms",
+     "key": "https://visapoint.net/saudi-visa-status-2026-official-check-guide",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 3,
-     "imprPrev": 2,
-     "pos": 10,
-     "posPrev": 6.5
-    },
-    {
-     "key": "https://visapoint.net/countries/switzerland",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 1,
+     "impr": 2,
      "imprPrev": 0,
-     "pos": 97,
-     "posPrev": null
-    },
-    {
-     "key": "https://visapoint.net/poland-work-permit-vs-residence-permit-how-to-switch-2026",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 6,
-     "posPrev": null
-    },
-    {
-     "key": "https://visapoint.net/poland-skilled-trade-jobs-salaries-savings-visas-2026",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 9,
-     "posPrev": null
-    },
-    {
-     "key": "https://visapoint.net/passport/saudi-arabia",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 7,
-     "posPrev": null
-    },
-    {
-     "key": "https://visapoint.net/north-macedonia-visa-check-2026",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 9,
+     "pos": 5.5,
      "posPrev": null
     }
    ],
    "fallingPages": [
     {
-     "key": "https://visapoint.net/visa-check/romania",
-     "clicks": 0,
-     "clicksPrev": 1,
-     "impr": 3,
-     "imprPrev": 68,
-     "pos": 5,
-     "posPrev": 7.5
-    },
-    {
      "key": "https://visapoint.net/welder-salary-europe-2026-5-best-countries-to-earn-big",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 2,
-     "imprPrev": 58,
+     "imprPrev": 15,
      "pos": 5.5,
-     "posPrev": 7.1
+     "posPrev": 3.5
     },
     {
-     "key": "https://visapoint.net/visa-check/serbia",
-     "clicks": 0,
-     "clicksPrev": 3,
-     "impr": 3,
-     "imprPrev": 42,
-     "pos": 4,
-     "posPrev": 9.2
-    },
-    {
-     "key": "https://visapoint.net/visa-check/moldova",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 3,
-     "imprPrev": 20,
-     "pos": 3,
-     "posPrev": 8.7
-    },
-    {
-     "key": "https://visapoint.net/moldova-visa-status-online-2026-step-by-step-guide",
+     "key": "https://visapoint.net/europe-work-permit-without-ielts-7-countries-2026-guide-6320",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 0,
-     "imprPrev": 14,
+     "imprPrev": 2,
      "pos": null,
-     "posPrev": 8.3
+     "posPrev": 3
+    },
+    {
+     "key": "https://visapoint.net/visa-checker",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 0,
+     "imprPrev": 2,
+     "pos": null,
+     "posPrev": 3
+    },
+    {
+     "key": "https://visapoint.net/pakistan-to-lithuania-work-permit-2026-cost-process-salary-g",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 0,
+     "imprPrev": 2,
+     "pos": null,
+     "posPrev": 2.5
+    },
+    {
+     "key": "https://visapoint.net/germany-vs-lithuania-for-foreign-workers-2026-salary-cost-wo",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 0,
+     "imprPrev": 1,
+     "pos": null,
+     "posPrev": 10
     }
    ],
    "topQueries": [
@@ -1234,13 +1204,40 @@
      "posPrev": null
     },
     {
-     "key": "check visa requirements for countries",
+     "key": "visa map world",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 64,
+     "pos": 69,
      "posPrev": null
+    },
+    {
+     "key": "switzerland work visa price in india",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 97,
+     "posPrev": null
+    },
+    {
+     "key": "expat work permit verification",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 51,
+     "posPrev": null
+    },
+    {
+     "key": "visapoint",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 1,
+     "pos": 9,
+     "posPrev": 62
     },
     {
      "key": "check passport visa",
@@ -1261,12 +1258,21 @@
      "posPrev": 30
     },
     {
-     "key": "visa map world",
+     "key": "abroad visa point",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 69,
+     "pos": 55,
+     "posPrev": null
+    },
+    {
+     "key": "check visa requirements for countries",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 64,
      "posPrev": null
     },
     {
@@ -1277,42 +1283,6 @@
      "imprPrev": 0,
      "pos": 74,
      "posPrev": null
-    },
-    {
-     "key": "expat work permit verification",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 51,
-     "posPrev": null
-    },
-    {
-     "key": "switzerland work visa price in india",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 97,
-     "posPrev": null
-    },
-    {
-     "key": "abroad visa point",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 55,
-     "posPrev": null
-    },
-    {
-     "key": "visapoint",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 6,
-     "pos": 9,
-     "posPrev": 14.5
     }
    ],
    "risingQueries": []
@@ -1320,21 +1290,15 @@
   "infkey": {
    "week": {
     "clicks": 0,
-    "impr": 10,
-    "pos": 50.8
+    "impr": 9,
+    "pos": 56.2
    },
    "prevWeek": {
     "clicks": 0,
-    "impr": 16,
-    "pos": 45.0
+    "impr": 14,
+    "pos": 37.9
    },
    "series": [
-    {
-     "t": "2026-09-28",
-     "clicks": 0,
-     "impr": 1,
-     "pos": 1
-    },
     {
      "t": "2026-09-29",
      "clicks": 0,
@@ -1499,8 +1463,8 @@
     }
    ],
    "range": [
-    "2026-10-19",
-    "2026-10-25"
+    "2026-10-20",
+    "2026-10-26"
    ],
    "growingPages": [],
    "fallingPages": [
@@ -1508,10 +1472,10 @@
      "key": "https://infkey.com/",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 10,
-     "imprPrev": 16,
-     "pos": 50.8,
-     "posPrev": 45
+     "impr": 9,
+     "imprPrev": 14,
+     "pos": 56.2,
+     "posPrev": 37.9
     }
    ],
    "topQueries": [
@@ -1538,14 +1502,14 @@
   },
   "gccguide": {
    "week": {
-    "clicks": 7,
-    "impr": 3317,
-    "pos": 60.0
+    "clicks": 6,
+    "impr": 2774,
+    "pos": 62.0
    },
    "prevWeek": {
-    "clicks": 11,
-    "impr": 2591,
-    "pos": 48.8
+    "clicks": 12,
+    "impr": 3016,
+    "pos": 50.5
    },
    "series": [
     {
@@ -1658,19 +1622,10 @@
     }
    ],
    "range": [
-    "2026-10-19",
-    "2026-10-25"
+    "2026-10-20",
+    "2026-10-26"
    ],
    "growingPages": [
-    {
-     "key": "https://gccguide.com/qatar-visa-status-check-2026-7-simple-steps-to-verify-online",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 1976,
-     "imprPrev": 1538,
-     "pos": 72.7,
-     "posPrev": 69.2
-    },
     {
      "key": "https://gccguide.com/qatar-visa-inquiry-2026-check-status-fees-moi-guide",
      "clicks": 0,
@@ -1702,19 +1657,10 @@
      "key": "https://gccguide.com/dubai-driving-license-renewal-2026-fees-eye-test-steps",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 50,
-     "imprPrev": 0,
-     "pos": 68.1,
-     "posPrev": null
-    },
-    {
-     "key": "https://gccguide.com/oman-cost-of-living-2026-guide-for-singles-families",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 52,
-     "imprPrev": 8,
-     "pos": 3.2,
-     "posPrev": 2.2
+     "impr": 48,
+     "imprPrev": 2,
+     "pos": 68.3,
+     "posPrev": 62
     },
     {
      "key": "https://gccguide.com/s/gccguide/kuwait-work-visa-requirements-2026-step-by-step-guide",
@@ -1744,60 +1690,78 @@
      "posPrev": null
     },
     {
+     "key": "https://gccguide.com/dubai-driving-licence-fees-2026-complete-guide-7-money-saving-hacks",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 19,
+     "imprPrev": 0,
+     "pos": 79.9,
+     "posPrev": null
+    },
+    {
+     "key": "https://gccguide.com/dubai-driving-licence-renewal-2026-aed-300-fee-guide",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 17,
+     "imprPrev": 0,
+     "pos": 70,
+     "posPrev": null
+    },
+    {
      "key": "https://gccguide.com/qatar-dress-code-for-expats-what-to-wear-avoid",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 22,
-     "imprPrev": 0,
-     "pos": 6.5,
-     "posPrev": null
+     "impr": 18,
+     "imprPrev": 4,
+     "pos": 6.7,
+     "posPrev": 6
     }
    ],
    "fallingPages": [
     {
-     "key": "https://gccguide.com/doha-parking-2025-free-spots-where-you-ll-pay-a-fortune",
+     "key": "https://gccguide.com/qatar-visa-status-check-2026-7-simple-steps-to-verify-online",
      "clicks": 0,
-     "clicksPrev": 1,
-     "impr": 19,
-     "imprPrev": 51,
-     "pos": 6,
+     "clicksPrev": 0,
+     "impr": 1656,
+     "imprPrev": 1856,
+     "pos": 72.8,
+     "posPrev": 69.8
+    },
+    {
+     "key": "https://gccguide.com/oman-average-salaries-2026-10-top-expat-jobs-pay",
+     "clicks": 0,
+     "clicksPrev": 2,
+     "impr": 13,
+     "imprPrev": 56,
+     "pos": 12,
      "posPrev": 8.2
     },
     {
-     "key": "https://gccguide.com/bahrain-cost-of-living-2026-guide-full-calculator-salary-index",
+     "key": "https://gccguide.com/doha-parking-2025-free-spots-where-you-ll-pay-a-fortune",
      "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 13,
-     "imprPrev": 38,
-     "pos": 25.8,
-     "posPrev": 7.0
-    },
-    {
-     "key": "https://gccguide.com/qatar-e-gate-for-expats-2025-who-can-use-how-to-register",
-     "clicks": 1,
      "clicksPrev": 1,
-     "impr": 19,
-     "imprPrev": 43,
-     "pos": 12.4,
-     "posPrev": 9.3
+     "impr": 13,
+     "imprPrev": 53,
+     "pos": 5,
+     "posPrev": 7.1
     },
     {
      "key": "https://gccguide.com/qatar-weekend-brunch-guide-2025-10-best-friday-brunches-in-doha",
      "clicks": 0,
      "clicksPrev": 1,
-     "impr": 15,
-     "imprPrev": 37,
-     "pos": 43.7,
-     "posPrev": 25.5
+     "impr": 8,
+     "imprPrev": 41,
+     "pos": 47.8,
+     "posPrev": 27.0
     },
     {
      "key": "https://gccguide.com/oman-driving-licence-2026-cost-test-conversion",
      "clicks": 0,
      "clicksPrev": 1,
-     "impr": 43,
+     "impr": 33,
      "imprPrev": 65,
-     "pos": 13.6,
-     "posPrev": 12.6
+     "pos": 14.5,
+     "posPrev": 13.3
     }
    ],
    "topQueries": [
@@ -1805,28 +1769,28 @@
      "key": "qatar visa check",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 77,
-     "imprPrev": 59,
-     "pos": 75.9,
-     "posPrev": 72.2
+     "impr": 66,
+     "imprPrev": 70,
+     "pos": 76.1,
+     "posPrev": 72.5
     },
     {
      "key": "qatar id check",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 31,
-     "imprPrev": 15,
-     "pos": 75.7,
-     "posPrev": 69.2
+     "impr": 25,
+     "imprPrev": 21,
+     "pos": 76.4,
+     "posPrev": 70.1
     },
     {
      "key": "qatar visa inquiry",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 18,
-     "imprPrev": 12,
-     "pos": 75.9,
-     "posPrev": 73.2
+     "impr": 16,
+     "imprPrev": 14,
+     "pos": 76,
+     "posPrev": 73.6
     },
     {
      "key": "site:instagram.com \"cost\" \"of\" \"living\" \"oman\" after:2026-10-06",
@@ -1841,28 +1805,19 @@
      "key": "qatar visa status",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 14,
-     "imprPrev": 8,
-     "pos": 75.1,
-     "posPrev": 68.1
+     "impr": 13,
+     "imprPrev": 9,
+     "pos": 75.5,
+     "posPrev": 68.3
     },
     {
      "key": "qatar visa check online",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 12,
-     "imprPrev": 9,
-     "pos": 75.8,
-     "posPrev": 71
-    },
-    {
-     "key": "school group rates qatar",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 12,
-     "imprPrev": 14,
-     "pos": 23.2,
-     "posPrev": 26.9
+     "impr": 11,
+     "imprPrev": 10,
+     "pos": 75.5,
+     "posPrev": 71.7
     },
     {
      "key": "rta medical test price",
@@ -1874,79 +1829,79 @@
      "posPrev": null
     },
     {
+     "key": "school group rates qatar",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 10,
+     "imprPrev": 14,
+     "pos": 22.5,
+     "posPrev": 27.1
+    },
+    {
      "key": "check visa status qatar",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 11,
-     "imprPrev": 4,
-     "pos": 73,
-     "posPrev": 66
+     "impr": 10,
+     "imprPrev": 5,
+     "pos": 73.2,
+     "posPrev": 67
     },
     {
-     "key": "qatar visa status check",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 11,
-     "imprPrev": 13,
-     "pos": 70.5,
-     "posPrev": 74.6
-    },
-    {
-     "key": "qatar visa check online by passport number moi",
+     "key": "site:instagram.com \"cost\" \"of\" \"living\" \"saudi\" \"arabia\" after:2026-10-06",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 10,
-     "imprPrev": 6,
-     "pos": 73.7,
-     "posPrev": 73.2
-    },
-    {
-     "key": "moi visa checking",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 10,
-     "imprPrev": 8,
-     "pos": 70.8,
-     "posPrev": 66.8
+     "imprPrev": 0,
+     "pos": 3,
+     "posPrev": null
     },
     {
      "key": "moi qatar visa inquiry",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 10,
-     "imprPrev": 7,
-     "pos": 67.6,
-     "posPrev": 63.3
+     "impr": 9,
+     "imprPrev": 8,
+     "pos": 67,
+     "posPrev": 64.5
+    },
+    {
+     "key": "moi visa checking",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 9,
+     "imprPrev": 9,
+     "pos": 70.7,
+     "posPrev": 67.3
+    },
+    {
+     "key": "kuwait work visas washington dc",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 9,
+     "imprPrev": 0,
+     "pos": 66,
+     "posPrev": null
     },
     {
      "key": "qatar id check by passport number",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 10,
-     "imprPrev": 6,
-     "pos": 73.5,
-     "posPrev": 73.3
+     "impr": 9,
+     "imprPrev": 7,
+     "pos": 73.8,
+     "posPrev": 73
     },
     {
-     "key": "moi qatar visa",
+     "key": "qatar visa status check",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 10,
-     "imprPrev": 1,
-     "pos": 71.7,
-     "posPrev": 57
+     "impr": 9,
+     "imprPrev": 15,
+     "pos": 71,
+     "posPrev": 73.8
     }
    ],
    "risingQueries": [
-    {
-     "key": "qatar id check",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 31,
-     "imprPrev": 15,
-     "pos": 75.7,
-     "posPrev": 69.2
-    },
     {
      "key": "site:instagram.com \"cost\" \"of\" \"living\" \"oman\" after:2026-10-06",
      "clicks": 0,
@@ -1984,24 +1939,6 @@
      "posPrev": null
     },
     {
-     "key": "moi qatar visa",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 10,
-     "imprPrev": 1,
-     "pos": 71.7,
-     "posPrev": 57
-    },
-    {
-     "key": "online id check qatar",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 8,
-     "imprPrev": 0,
-     "pos": 73.6,
-     "posPrev": null
-    },
-    {
      "key": "qatar visa",
      "clicks": 0,
      "clicksPrev": 0,
@@ -2011,21 +1948,48 @@
      "posPrev": null
     },
     {
-     "key": "check visa status qatar",
+     "key": "moi qatar visa",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 11,
-     "imprPrev": 4,
-     "pos": 73,
-     "posPrev": 66
+     "impr": 8,
+     "imprPrev": 2,
+     "pos": 72.1,
+     "posPrev": 70
     },
     {
-     "key": "www.moi.gov.qa visa inquiry and printing",
+     "key": "online id check qatar",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 7,
+     "imprPrev": 1,
+     "pos": 74.1,
+     "posPrev": 70
+    },
+    {
+     "key": "qatar visa online",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 6,
      "imprPrev": 0,
-     "pos": 73.3,
+     "pos": 83.2,
+     "posPrev": null
+    },
+    {
+     "key": "check visa status qatar",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 10,
+     "imprPrev": 5,
+     "pos": 73.2,
+     "posPrev": 67
+    },
+    {
+     "key": "id check qatar",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 5,
+     "imprPrev": 0,
+     "pos": 77.6,
      "posPrev": null
     }
    ]
@@ -2128,8 +2092,8 @@
     }
    ],
    "range": [
-    "2026-10-19",
-    "2026-10-25"
+    "2026-10-20",
+    "2026-10-26"
    ],
    "growingPages": [
     {
@@ -2153,15 +2117,6 @@
    ],
    "fallingPages": [
     {
-     "key": "https://ninetymins.com/en/product/twist-go-hair-spray-120ml/",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 0,
-     "imprPrev": 1,
-     "pos": null,
-     "posPrev": 1
-    },
-    {
      "key": "https://ninetymins.com/",
      "clicks": 0,
      "clicksPrev": 0,
@@ -2169,6 +2124,15 @@
      "imprPrev": 4,
      "pos": 30.7,
      "posPrev": 15.8
+    },
+    {
+     "key": "https://ninetymins.com/en/product/twist-go-hair-spray-120ml/",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 0,
+     "imprPrev": 1,
+     "pos": null,
+     "posPrev": 1
     }
    ],
    "topQueries": [
@@ -2186,14 +2150,14 @@
   },
   "cob": {
    "week": {
-    "clicks": 4,
-    "impr": 686,
-    "pos": 12.1
+    "clicks": 2,
+    "impr": 653,
+    "pos": 12.0
    },
    "prevWeek": {
-    "clicks": 2,
-    "impr": 79,
-    "pos": 15.4
+    "clicks": 4,
+    "impr": 112,
+    "pos": 15.0
    },
    "series": [
     {
@@ -2288,8 +2252,8 @@
     }
    ],
    "range": [
-    "2026-10-19",
-    "2026-10-25"
+    "2026-10-20",
+    "2026-10-26"
    ],
    "growingPages": [
     {
@@ -2305,28 +2269,19 @@
      "key": "https://coloursofbangladesh.com/data/district/brahmanbaria",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 89,
-     "imprPrev": 0,
+     "impr": 88,
+     "imprPrev": 1,
      "pos": 8.5,
-     "posPrev": null
+     "posPrev": 9
     },
     {
      "key": "https://coloursofbangladesh.com/data/upazila/savar",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 47,
-     "imprPrev": 1,
+     "impr": 46,
+     "imprPrev": 2,
      "pos": 9.6,
-     "posPrev": 9
-    },
-    {
-     "key": "https://coloursofbangladesh.com/data/upazila/nazirpur",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 13,
-     "imprPrev": 1,
-     "pos": 7.7,
-     "posPrev": 5
+     "posPrev": 8.5
     },
     {
      "key": "https://coloursofbangladesh.com/data/people/ronan-sullivan",
@@ -2350,28 +2305,10 @@
      "key": "https://coloursofbangladesh.com/data/district/gazipur",
      "clicks": 1,
      "clicksPrev": 0,
-     "impr": 10,
-     "imprPrev": 4,
-     "pos": 29.7,
-     "posPrev": 27.8
-    },
-    {
-     "key": "https://coloursofbangladesh.com/data/people/atish-dipankar",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 3,
-     "imprPrev": 0,
-     "pos": 27.3,
-     "posPrev": null
-    },
-    {
-     "key": "https://coloursofbangladesh.com/data/division/chattogram",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 23,
-     "imprPrev": 2,
-     "pos": 9.5,
-     "posPrev": 8.5
+     "impr": 9,
+     "imprPrev": 5,
+     "pos": 23,
+     "posPrev": 40.2
     },
     {
      "key": "https://coloursofbangladesh.com/data/people/declan-sullivan",
@@ -2381,17 +2318,44 @@
      "imprPrev": 0,
      "pos": 7.5,
      "posPrev": null
+    },
+    {
+     "key": "https://coloursofbangladesh.com/data/division/chattogram",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 21,
+     "imprPrev": 4,
+     "pos": 9.4,
+     "posPrev": 9.2
+    },
+    {
+     "key": "https://coloursofbangladesh.com/data/upazila/zakiganj",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 16,
+     "imprPrev": 0,
+     "pos": 10.2,
+     "posPrev": null
+    },
+    {
+     "key": "https://coloursofbangladesh.com/data/people/tasnia-farin",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 12,
+     "imprPrev": 0,
+     "pos": 20.7,
+     "posPrev": null
     }
    ],
    "fallingPages": [
     {
-     "key": "https://coloursofbangladesh.com/",
-     "clicks": 1,
-     "clicksPrev": 1,
-     "impr": 4,
-     "imprPrev": 7,
-     "pos": 1.2,
-     "posPrev": 2.3
+     "key": "https://coloursofbangladesh.com/data/district/chandpur",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 17,
+     "imprPrev": 23,
+     "pos": 9.8,
+     "posPrev": 17.9
     },
     {
      "key": "https://coloursofbangladesh.com/c/international",
@@ -2403,22 +2367,22 @@
      "posPrev": 5
     },
     {
-     "key": "https://coloursofbangladesh.com/news/probashir-kofin-14-coffins-a-day",
-     "clicks": 0,
+     "key": "https://coloursofbangladesh.com/",
+     "clicks": 1,
      "clicksPrev": 1,
-     "impr": 0,
-     "imprPrev": 2,
-     "pos": null,
-     "posPrev": 50.5
+     "impr": 4,
+     "imprPrev": 7,
+     "pos": 1.2,
+     "posPrev": 2.3
     },
     {
-     "key": "https://coloursofbangladesh.com/data/places",
+     "key": "https://coloursofbangladesh.com/data/upazila/sarail",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 3,
-     "pos": 5,
-     "posPrev": 4.3
+     "impr": 5,
+     "imprPrev": 8,
+     "pos": 6.8,
+     "posPrev": 7.5
     },
     {
      "key": "https://coloursofbangladesh.com/data/places/sonargaon",
@@ -2498,19 +2462,28 @@
      "key": "সিলেট জেলার জনসংখ্যা কত ২০২৪",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 9,
-     "imprPrev": 7,
+     "impr": 8,
+     "imprPrev": 8,
      "pos": 10.1,
-     "posPrev": 7.9
+     "posPrev": 8.1
     },
     {
      "key": "চাঁদপুর জেলার জনসংখ্যা কত ২০২৬",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 8,
-     "imprPrev": 1,
-     "pos": 10.2,
-     "posPrev": 10
+     "impr": 7,
+     "imprPrev": 2,
+     "pos": 10.1,
+     "posPrev": 10.5
+    },
+    {
+     "key": "তাসনিয়া ফারিন এর পরিচয়",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 6,
+     "imprPrev": 0,
+     "pos": 18,
+     "posPrev": null
     },
     {
      "key": "ব্রাহ্মণবাড়িয়া জনসংখ্যা কত",
@@ -2531,24 +2504,6 @@
      "posPrev": null
     },
     {
-     "key": "তাসনিয়া ফারিন এর পরিচয়",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 6,
-     "imprPrev": 0,
-     "pos": 18,
-     "posPrev": null
-    },
-    {
-     "key": "বি বাড়িয়া জেলার জনসংখ্যা কত",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 5,
-     "imprPrev": 0,
-     "pos": 9,
-     "posPrev": null
-    },
-    {
      "key": "emiliano martínez কোন ক্লাবে খেলে",
      "clicks": 0,
      "clicksPrev": 0,
@@ -2556,6 +2511,15 @@
      "imprPrev": 0,
      "pos": 8.2,
      "posPrev": null
+    },
+    {
+     "key": "বি বাড়িয়া জেলার জনসংখ্যা কত",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 4,
+     "imprPrev": 1,
+     "pos": 9,
+     "posPrev": 9
     },
     {
      "key": "এমি মার্টিনেজ এখন কোন ক্লাবে খেলে",
@@ -2632,13 +2596,13 @@
      "posPrev": 11
     },
     {
-     "key": "চাঁদপুর জেলার জনসংখ্যা কত ২০২৬",
+     "key": "তাসনিয়া ফারিন এর পরিচয়",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 8,
-     "imprPrev": 1,
-     "pos": 10.2,
-     "posPrev": 10
+     "impr": 6,
+     "imprPrev": 0,
+     "pos": 18,
+     "posPrev": null
     },
     {
      "key": "ব্রাহ্মণবাড়িয়া জনসংখ্যা কত",
@@ -2662,14 +2626,14 @@
   },
   "aiu": {
    "week": {
-    "clicks": 17,
-    "impr": 704,
-    "pos": 8.5
+    "clicks": 14,
+    "impr": 641,
+    "pos": 8.4
    },
    "prevWeek": {
-    "clicks": 6,
-    "impr": 57,
-    "pos": 8.0
+    "clicks": 9,
+    "impr": 120,
+    "pos": 8.6
    },
    "series": [
     {
@@ -2734,63 +2698,45 @@
     }
    ],
    "range": [
-    "2026-10-19",
-    "2026-10-25"
+    "2026-10-20",
+    "2026-10-26"
    ],
    "growingPages": [
     {
      "key": "https://aiuniversitybd.com/blog/prothomik-chikitsa-kake-bole",
      "clicks": 1,
      "clicksPrev": 1,
-     "impr": 157,
-     "imprPrev": 11,
-     "pos": 8.2,
-     "posPrev": 12.8
+     "impr": 146,
+     "imprPrev": 22,
+     "pos": 8.3,
+     "posPrev": 10.3
     },
     {
      "key": "https://aiuniversitybd.com/about",
-     "clicks": 6,
-     "clicksPrev": 0,
-     "impr": 25,
-     "imprPrev": 0,
-     "pos": 15.0,
-     "posPrev": null
+     "clicks": 5,
+     "clicksPrev": 1,
+     "impr": 20,
+     "imprPrev": 5,
+     "pos": 16.2,
+     "posPrev": 10.2
     },
     {
      "key": "https://aiuniversitybd.com/blog/fish-feeding-management-rules",
      "clicks": 1,
      "clicksPrev": 0,
-     "impr": 109,
-     "imprPrev": 10,
+     "impr": 97,
+     "imprPrev": 22,
      "pos": 7.1,
-     "posPrev": 8.3
+     "posPrev": 7.8
     },
     {
      "key": "https://aiuniversitybd.com/blog/bishadhor-sap-chenar-upay",
-     "clicks": 2,
-     "clicksPrev": 1,
-     "impr": 96,
-     "imprPrev": 19,
-     "pos": 8.4,
-     "posPrev": 7.4
-    },
-    {
-     "key": "https://aiuniversitybd.com/blog/online-spoken-english-course-selection",
-     "clicks": 2,
-     "clicksPrev": 0,
-     "impr": 12,
-     "imprPrev": 0,
-     "pos": 7.2,
-     "posPrev": null
-    },
-    {
-     "key": "https://aiuniversitybd.com/",
-     "clicks": 3,
+     "clicks": 1,
      "clicksPrev": 2,
-     "impr": 17,
-     "imprPrev": 9,
-     "pos": 7.5,
-     "posPrev": 5.1
+     "impr": 81,
+     "imprPrev": 34,
+     "pos": 8.3,
+     "posPrev": 8.0
     },
     {
      "key": "https://aiuniversitybd.com/course/air-ticketing",
@@ -2820,25 +2766,34 @@
      "posPrev": null
     },
     {
+     "key": "https://aiuniversitybd.com/",
+     "clicks": 3,
+     "clicksPrev": 2,
+     "impr": 14,
+     "imprPrev": 12,
+     "pos": 4.6,
+     "posPrev": 9.1
+    },
+    {
+     "key": "https://aiuniversitybd.com/blog/ai-course-learning-guide-bangla",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 18,
+     "imprPrev": 1,
+     "pos": 8.9,
+     "posPrev": 11
+    },
+    {
      "key": "https://aiuniversitybd.com/blog/ielts-ki",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 29,
-     "imprPrev": 7,
-     "pos": 7.2,
-     "posPrev": 9.4
+     "impr": 26,
+     "imprPrev": 10,
+     "pos": 7.3,
+     "posPrev": 8.6
     }
    ],
    "fallingPages": [
-    {
-     "key": "https://aiuniversitybd.com/refund",
-     "clicks": 0,
-     "clicksPrev": 1,
-     "impr": 1,
-     "imprPrev": 5,
-     "pos": 10,
-     "posPrev": 8
-    },
     {
      "key": "https://aiuniversitybd.com/course/ielts-prep",
      "clicks": 0,
@@ -2847,6 +2802,15 @@
      "imprPrev": 6,
      "pos": 7.5,
      "posPrev": 2.3
+    },
+    {
+     "key": "https://aiuniversitybd.com/refund",
+     "clicks": 0,
+     "clicksPrev": 1,
+     "impr": 1,
+     "imprPrev": 5,
+     "pos": 10,
+     "posPrev": 8
     },
     {
      "key": "https://aiuniversitybd.com/blog/category/snake",
@@ -2858,6 +2822,15 @@
      "posPrev": 7.3
     },
     {
+     "key": "https://aiuniversitybd.com/blog/freelancing-how-to-learn",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 0,
+     "imprPrev": 3,
+     "pos": null,
+     "posPrev": 19
+    },
+    {
      "key": "https://aiuniversitybd.com/pocket",
      "clicks": 0,
      "clicksPrev": 0,
@@ -2865,15 +2838,6 @@
      "imprPrev": 2,
      "pos": null,
      "posPrev": 2
-    },
-    {
-     "key": "https://aiuniversitybd.com/blog/category/graphic-design",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 0,
-     "imprPrev": 2,
-     "pos": null,
-     "posPrev": 6.5
     }
    ],
    "topQueries": [
@@ -2881,19 +2845,19 @@
      "key": "প্রাথমিক চিকিৎসা কাকে বলে",
      "clicks": 1,
      "clicksPrev": 0,
-     "impr": 51,
-     "imprPrev": 2,
-     "pos": 8.0,
-     "posPrev": 8
+     "impr": 46,
+     "imprPrev": 7,
+     "pos": 8.1,
+     "posPrev": 7.6
     },
     {
      "key": "ai university",
      "clicks": 1,
      "clicksPrev": 0,
-     "impr": 4,
-     "imprPrev": 0,
-     "pos": 5,
-     "posPrev": null
+     "impr": 3,
+     "imprPrev": 1,
+     "pos": 3.7,
+     "posPrev": 9
     },
     {
      "key": "aiuniversity",
@@ -2908,46 +2872,28 @@
      "key": "গোখরা সাপ চেনার উপায়",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 49,
-     "imprPrev": 5,
-     "pos": 8.9,
-     "posPrev": 8.6
+     "impr": 41,
+     "imprPrev": 13,
+     "pos": 9.0,
+     "posPrev": 8.5
     },
     {
      "key": "প্রাথমিক চিকিৎসার উদ্দেশ্য কি",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 18,
-     "imprPrev": 0,
+     "impr": 17,
+     "imprPrev": 1,
      "pos": 9.1,
-     "posPrev": null
+     "posPrev": 8
     },
     {
      "key": "প্রাথমিক চিকিৎসা কি",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 13,
-     "imprPrev": 1,
-     "pos": 9.8,
-     "posPrev": 11
-    },
-    {
-     "key": "ai58104",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 5,
-     "imprPrev": 0,
-     "pos": 3.6,
-     "posPrev": null
-    },
-    {
-     "key": "বিষধর সাপ চেনার উপায়",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 5,
-     "imprPrev": 0,
-     "pos": 10.2,
-     "posPrev": null
+     "impr": 11,
+     "imprPrev": 3,
+     "pos": 10.1,
+     "posPrev": 9.3
     },
     {
      "key": "মক টেস্ট মানে কি",
@@ -2968,12 +2914,30 @@
      "posPrev": null
     },
     {
+     "key": "বিষধর সাপ চেনার উপায়",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 4,
+     "imprPrev": 1,
+     "pos": 10.2,
+     "posPrev": 10
+    },
+    {
      "key": "প্রাথমিক চিকিৎসা বলতে কী বোঝো",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 4,
      "imprPrev": 0,
      "pos": 9.2,
+     "posPrev": null
+    },
+    {
+     "key": "vibe coding website",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 3,
+     "imprPrev": 0,
+     "pos": 6.7,
      "posPrev": null
     },
     {
@@ -2995,22 +2959,22 @@
      "posPrev": null
     },
     {
-     "key": "vibe coding website",
+     "key": "ai58104",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 3,
-     "imprPrev": 0,
-     "pos": 6.7,
-     "posPrev": null
+     "imprPrev": 2,
+     "pos": 3,
+     "posPrev": 4.5
     },
     {
-     "key": "শূন্য থেকে ielts প্রস্তুতি",
+     "key": "মাছকে খাবার খাওয়ালে কি হয়",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 3,
-     "imprPrev": 1,
-     "pos": 8.3,
-     "posPrev": 8
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 11,
+     "posPrev": null
     }
    ],
    "risingQueries": [
@@ -3018,55 +2982,37 @@
      "key": "প্রাথমিক চিকিৎসা কাকে বলে",
      "clicks": 1,
      "clicksPrev": 0,
-     "impr": 51,
-     "imprPrev": 2,
-     "pos": 8.0,
-     "posPrev": 8
+     "impr": 46,
+     "imprPrev": 7,
+     "pos": 8.1,
+     "posPrev": 7.6
     },
     {
      "key": "গোখরা সাপ চেনার উপায়",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 49,
-     "imprPrev": 5,
-     "pos": 8.9,
-     "posPrev": 8.6
+     "impr": 41,
+     "imprPrev": 13,
+     "pos": 9.0,
+     "posPrev": 8.5
     },
     {
      "key": "প্রাথমিক চিকিৎসার উদ্দেশ্য কি",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 18,
-     "imprPrev": 0,
+     "impr": 17,
+     "imprPrev": 1,
      "pos": 9.1,
-     "posPrev": null
+     "posPrev": 8
     },
     {
      "key": "প্রাথমিক চিকিৎসা কি",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 13,
-     "imprPrev": 1,
-     "pos": 9.8,
-     "posPrev": 11
-    },
-    {
-     "key": "ai58104",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 5,
-     "imprPrev": 0,
-     "pos": 3.6,
-     "posPrev": null
-    },
-    {
-     "key": "বিষধর সাপ চেনার উপায়",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 5,
-     "imprPrev": 0,
-     "pos": 10.2,
-     "posPrev": null
+     "impr": 11,
+     "imprPrev": 3,
+     "pos": 10.1,
+     "posPrev": 9.3
     }
    ]
   }
