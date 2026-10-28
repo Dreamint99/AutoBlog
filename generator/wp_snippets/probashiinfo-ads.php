@@ -12,6 +12,13 @@ if ( ! function_exists( 'pi_ads_tag' ) ) {
 		return '<' . $t . ' async' . $extra . ' src="https://' . 'pl3180' . $path . '"></' . $t . '>';
 	}
 }
+// one LiteSpeed purge per ad-code version, so cached pages pick the ads up (same idea as #14 / BMET)
+add_action( 'init', function () {
+	if ( get_option( 'pi_ads_purged' ) !== '2' ) {
+		update_option( 'pi_ads_purged', '2', false );
+		do_action( 'litespeed_purge_all' );
+	}
+} );
 if ( ! function_exists( 'pi_ads_on' ) ) {
 	function pi_ads_on() {
 		return ! is_admin() && ! is_user_logged_in() && ! is_feed();
