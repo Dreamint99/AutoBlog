@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-07-28..2026-10-26, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-07-29..2026-10-27, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "average dubai salary",
@@ -283,6 +283,12 @@
    "src": "gsc"
   },
   {
+   "q": "gcc driving license",
+   "impr": 14,
+   "pos": 38.2,
+   "src": "gsc"
+  },
+  {
    "q": "brunch deals doha",
    "impr": 14,
    "pos": 37.9,
@@ -346,12 +352,6 @@
    "q": "visa status qatar",
    "impr": 14,
    "pos": 72.8,
-   "src": "gsc"
-  },
-  {
-   "q": "gcc driving license",
-   "impr": 13,
-   "pos": 35.8,
    "src": "gsc"
   },
   {

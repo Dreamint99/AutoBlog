@@ -1,9 +1,9 @@
 {
- "source": "Search Console API 2026-07-28..2026-10-26",
+ "source": "Search Console API 2026-07-29..2026-10-27",
  "pages": [
   {
    "url": "https://infkey.com/",
-   "impressions": 126,
+   "impressions": 124,
    "clicks": 3,
    "queries": [
     [
@@ -17,12 +17,6 @@
      4,
      0,
      96.2
-    ],
-    [
-     "portkey pricing",
-     3,
-     0,
-     59.7
     ],
     [
      "how much does an api key cost",
@@ -55,16 +49,16 @@
      73
     ],
     [
-     "api key price",
-     1,
-     0,
-     87
-    ],
-    [
      "batch 1key",
      1,
      0,
      75
+    ],
+    [
+     "batch.1key me",
+     1,
+     0,
+     71
     ],
     [
      "cheapest inference",
@@ -77,10 +71,16 @@
      1,
      0,
      68
+    ],
+    [
+     "flatkey ai",
+     1,
+     0,
+     22
     ]
    ],
-   "position": 50.8,
-   "ctr": 0.0238
+   "position": 50.3,
+   "ctr": 0.0242
   },
   {
    "url": "https://infkey.com/cheapest-llm-for-document-qa-2025-api-cost-quality",
