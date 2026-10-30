@@ -1,7 +1,7 @@
 {
  "site": "aiu",
  "property": "https://aiuniversitybd.com/",
- "checked": "2026-10-29T08:58:05+00:00",
+ "checked": "2026-10-30T09:03:41+00:00",
  "sitemaps": [
   {
    "path": "https://aiuniversitybd.com/sitemap.xml",
@@ -21,10 +21,10 @@
    ]
   }
  ],
- "sitemap_count": 132,
+ "sitemap_count": 135,
  "byState": {
-  "Submitted and indexed": 26,
-  "Discovered - currently not indexed": 10,
+  "Submitted and indexed": 25,
+  "Discovered - currently not indexed": 11,
   "URL is unknown to Google": 5
  },
  "urls": [
@@ -37,7 +37,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/",
    "userCanonical": "https://aiuniversitybd.com/",
-   "lastCrawlTime": "2026-10-29T03:04:40Z",
+   "lastCrawlTime": "2026-10-29T14:44:56Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/",
@@ -164,7 +164,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/app",
    "userCanonical": "https://aiuniversitybd.com/app",
-   "lastCrawlTime": "2026-10-28T18:39:28Z",
+   "lastCrawlTime": "2026-10-29T09:22:28Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/app"
@@ -237,6 +237,19 @@
   },
   {
    "url": "https://aiuniversitybd.com/reviews",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://aiuniversitybd.com/gds-lab",
    "verdict": "NEUTRAL",
    "coverageState": "URL is unknown to Google",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
@@ -361,17 +374,15 @@
   {
    "url": "https://aiuniversitybd.com/course/ai-video",
    "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
+   "coverageState": "URL is unknown to Google",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": [
-    "https://www.aiuniversitybd.com/course/ai-video"
-   ]
+   "crawledAs": null,
+   "referringUrls": null
   },
   {
    "url": "https://aiuniversitybd.com/course/prompt-engineering",
@@ -421,15 +432,17 @@
   {
    "url": "https://aiuniversitybd.com/course/freelancing",
    "verdict": "NEUTRAL",
-   "coverageState": "URL is unknown to Google",
+   "coverageState": "Discovered - currently not indexed",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": null,
-   "referringUrls": null
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": [
+    "https://www.aiuniversitybd.com/course/freelancing"
+   ]
   },
   {
    "url": "https://aiuniversitybd.com/course/spoken-english",
@@ -495,18 +508,15 @@
   {
    "url": "https://aiuniversitybd.com/course/cooking-30",
    "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
+   "coverageState": "URL is unknown to Google",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": [
-    "https://www.aiuniversitybd.com/course/cooking-30",
-    "http://www.aiuniversitybd.com/course/cooking-30"
-   ]
+   "crawledAs": null,
+   "referringUrls": null
   },
   {
    "url": "https://aiuniversitybd.com/course/food-business",
@@ -526,15 +536,17 @@
   {
    "url": "https://aiuniversitybd.com/course/first-aid",
    "verdict": "NEUTRAL",
-   "coverageState": "URL is unknown to Google",
+   "coverageState": "Discovered - currently not indexed",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": null,
-   "referringUrls": null
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": [
+    "https://www.aiuniversitybd.com/course/first-aid"
+   ]
   },
   {
    "url": "https://aiuniversitybd.com/course/personal-finance",
@@ -560,7 +572,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/course/snake-rescue",
    "userCanonical": "https://aiuniversitybd.com/course/snake-rescue",
-   "lastCrawlTime": "2026-10-22T15:49:44Z",
+   "lastCrawlTime": "2026-10-29T13:16:18Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/course/snake-rescue",
@@ -570,15 +582,18 @@
   {
    "url": "https://aiuniversitybd.com/course/arabic-gulf",
    "verdict": "NEUTRAL",
-   "coverageState": "URL is unknown to Google",
+   "coverageState": "Discovered - currently not indexed",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": null,
-   "referringUrls": null
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": [
+    "https://www.aiuniversitybd.com/course/arabic-gulf",
+    "http://www.aiuniversitybd.com/course/arabic-gulf"
+   ]
   },
   {
    "url": "https://aiuniversitybd.com/course/korean-eps",
@@ -592,24 +607,22 @@
    "lastCrawlTime": null,
    "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
    "referringUrls": [
+    "https://www.aiuniversitybd.com/course/korean-eps",
     "http://www.aiuniversitybd.com/course/korean-eps"
    ]
   },
   {
    "url": "https://aiuniversitybd.com/course/japanese-work",
    "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
+   "coverageState": "URL is unknown to Google",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": [
-    "https://www.aiuniversitybd.com/course/japanese-work",
-    "http://www.aiuniversitybd.com/course/japanese-work"
-   ]
+   "crawledAs": null,
+   "referringUrls": null
   },
   {
    "url": "https://aiuniversitybd.com/course/biggan-velki",
@@ -641,22 +654,6 @@
    "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
    "referringUrls": [
     "https://www.aiuniversitybd.com/course/forensic-science"
-   ]
-  },
-  {
-   "url": "https://aiuniversitybd.com/course/survival-72",
-   "verdict": "PASS",
-   "coverageState": "Submitted and indexed",
-   "robotsTxtState": "ALLOWED",
-   "indexingState": "INDEXING_ALLOWED",
-   "pageFetchState": "SUCCESSFUL",
-   "googleCanonical": "https://aiuniversitybd.com/course/survival-72",
-   "userCanonical": "https://aiuniversitybd.com/course/survival-72",
-   "lastCrawlTime": "2026-10-20T01:34:41Z",
-   "crawledAs": "MOBILE",
-   "referringUrls": [
-    "https://www.aiuniversitybd.com/course/survival-72",
-    "http://www.aiuniversitybd.com/course/survival-72"
    ]
   }
  ]
