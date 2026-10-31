@@ -6,6 +6,7 @@ import { fontVars } from "./fonts";
 import { NM_COMPS, compOf, ago, type NmComp } from "./comps";
 import { ScoreStrip } from "./LiveScores";
 import { thumb } from "@/lib/img";
+import { AppBanner, AppPopup } from "./AppPromo";
 
 /* Shared NinetyMins chrome: watch-guide strip (scoreboard style), header with
    the sport rail, footer, and the card primitives every page uses. */
@@ -83,6 +84,9 @@ export function Header({ site }: { site: Site }) {
             <Link href={`${s}/scores`} className="nm-rail-live">
               <i className="nm-dot" /> Live Scores
             </Link>
+            <Link href={`${s}/saff`} className="nm-rail-saff">
+              SAFF Live
+            </Link>
             {NAV_SLUGS.map((slug) => {
               const c = NM_COMPS.find((x) => x.slug === slug)!;
               return (
@@ -105,6 +109,7 @@ export function Footer({ site }: { site: Site }) {
   return (
     <footer className="nm-footer">
       <div className="nm-wrap">
+        <AppBanner variant="footer" medium="footer" />
         <div className="nm-foot-grid">
           <div>
             <Link href={s} className="nm-logo" aria-label={`${site.name} home`}>
@@ -140,6 +145,7 @@ export function Footer({ site }: { site: Site }) {
             <h4>NinetyMins</h4>
             <ul>
               <li><Link href={`${s}/scores`}>Live scores</Link></li>
+              <li><Link href={`${s}/saff`}>SAFF live centre</Link></li>
               <li><Link href={`${s}/about`}>About</Link></li>
               <li><Link href={`${s}/contact`}>Contact</Link></li>
               <li><Link href={`${s}/privacy`}>Privacy Policy</Link></li>
@@ -168,6 +174,7 @@ export function Shell({ site, strip, children }: { site: Site; strip?: Article[]
       {strip?.length ? <GuideStrip site={site} articles={strip} /> : null}
       <main id="nm-main">{children}</main>
       <Footer site={site} />
+      <AppPopup />
     </div>
   );
 }

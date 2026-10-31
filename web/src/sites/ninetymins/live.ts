@@ -48,6 +48,7 @@ export const NM_LEAGUES: Record<string, { label: string; path: string; table?: b
   "fifa.worldq.afc": { label: "World Cup Qualifiers (AFC)", path: "soccer/fifa.worldq.afc" },
   "afc.asian.cupq": { label: "AFC Asian Cup Qualifiers", path: "soccer/afc.asian.cupq" },
   "fifa.friendly": { label: "International Friendlies", path: "soccer/fifa.friendly" },
+  "afc.saff.championship": { label: "SAFF Championship", path: "soccer/afc.saff.championship" },
   nba: { label: "NBA", path: "basketball/nba" },
   f1: { label: "Formula 1", path: "racing/f1" },
   atp: { label: "ATP Tennis", path: "tennis/atp" },
