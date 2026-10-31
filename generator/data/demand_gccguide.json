@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-07-30..2026-10-28, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-07-31..2026-10-29, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "average dubai salary",
@@ -247,6 +247,12 @@
    "src": "gsc"
   },
   {
+   "q": "gcc driving license",
+   "impr": 15,
+   "pos": 42.3,
+   "src": "gsc"
+  },
+  {
    "q": "freelance visa qatar",
    "impr": 15,
    "pos": 68.3,
@@ -280,12 +286,6 @@
    "q": "visa check qatar online",
    "impr": 15,
    "pos": 72,
-   "src": "gsc"
-  },
-  {
-   "q": "gcc driving license",
-   "impr": 14,
-   "pos": 38.2,
    "src": "gsc"
   },
   {

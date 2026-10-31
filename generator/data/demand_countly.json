@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-07-30..2026-10-28, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-07-31..2026-10-29, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "richest countries in world",
@@ -719,15 +719,15 @@
    "src": "bing"
   },
   {
-   "q": "most starred github repo",
-   "impr": 23,
-   "pos": 8.3,
-   "src": "bing"
-  },
-  {
    "q": "who is the richest person in the world 2026",
    "impr": 18,
    "pos": 8.7,
+   "src": "bing"
+  },
+  {
+   "q": "most starred github repo",
+   "impr": 18,
+   "pos": 8.4,
    "src": "bing"
   },
   {
@@ -770,6 +770,12 @@
    "q": "top 10 most visited websites in the world",
    "impr": 13,
    "pos": 10.0,
+   "src": "bing"
+  },
+  {
+   "q": "which is the world's largest company based on the number of employees?",
+   "impr": 12,
+   "pos": 8.8,
    "src": "bing"
   },
   {

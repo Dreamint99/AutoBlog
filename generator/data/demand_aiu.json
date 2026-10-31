@@ -1,28 +1,34 @@
 {
- "_note": "Real queries (Search Console 2026-07-30..2026-10-28, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-07-31..2026-10-29, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "প্রাথমিক চিকিৎসা কাকে বলে",
-   "impr": 86,
+   "impr": 109,
    "pos": 8.1,
    "src": "gsc"
   },
   {
    "q": "গোখরা সাপ চেনার উপায়",
-   "impr": 58,
-   "pos": 8.7,
+   "impr": 62,
+   "pos": 8.8,
    "src": "gsc"
   },
   {
    "q": "প্রাথমিক চিকিৎসার উদ্দেশ্য কি",
-   "impr": 25,
-   "pos": 9,
+   "impr": 30,
+   "pos": 9.1,
    "src": "gsc"
   },
   {
    "q": "প্রাথমিক চিকিৎসা কি",
-   "impr": 17,
-   "pos": 9.9,
+   "impr": 18,
+   "pos": 9.8,
+   "src": "gsc"
+  },
+  {
+   "q": "প্রাথমিক চিকিৎসা বলতে কী বোঝো",
+   "impr": 11,
+   "pos": 9.1,
    "src": "gsc"
   }
  ]

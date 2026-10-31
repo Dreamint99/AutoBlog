@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-07-30..2026-10-28, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-07-31..2026-10-29, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "এমিলিয়ানো মার্টিনেজ কোন ক্লাবে খেলে",
@@ -9,8 +9,8 @@
   },
   {
    "q": "সিলেট জেলার জনসংখ্যা কত ২০২৪",
-   "impr": 16,
-   "pos": 9.1,
+   "impr": 18,
+   "pos": 8.8,
    "src": "gsc"
   },
   {
@@ -21,20 +21,26 @@
   },
   {
    "q": "রোনান সুলিভান",
-   "impr": 13,
-   "pos": 8.5,
+   "impr": 14,
+   "pos": 8.6,
    "src": "gsc"
   },
   {
    "q": "চট্টগ্রাম বিভাগের আয়তন কত",
-   "impr": 10,
-   "pos": 9.7,
+   "impr": 11,
+   "pos": 9.5,
    "src": "gsc"
   },
   {
    "q": "রোনান সুলিভান কোন দেশের",
+   "impr": 11,
+   "pos": 9.2,
+   "src": "gsc"
+  },
+  {
+   "q": "চাঁদপুর জেলার জনসংখ্যা কত ২০২৬",
    "impr": 10,
-   "pos": 9.1,
+   "pos": 10.2,
    "src": "gsc"
   }
  ]
