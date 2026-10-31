@@ -5,6 +5,7 @@ import { Shell, Card, Badge } from "./Chrome";
 import { compOf, fmtDate, ago } from "./comps";
 import { LeagueFixtures } from "./LiveScores";
 import { heroSrc, thumb } from "@/lib/img";
+import { AppBanner } from "./AppPromo";
 
 /* Competition → ESPN feed shown in the article rail. */
 const FEED: Record<string, [string, string]> = {
@@ -43,6 +44,26 @@ function Share({ url, title }: { url: string; title: string }) {
       <a href={`https://wa.me/?text=${t}%20${u}`} target="_blank" rel="noopener noreferrer">WhatsApp</a>
     </div>
   );
+}
+
+/** Split HTML after the n-th top-level </p> (not inside lists, tables or blockquotes). */
+function splitAfterParagraph(html: string, n: number): [string, string] {
+  let depth = 0;
+  let count = 0;
+  const re = /<(\/?)(ul|ol|table|blockquote|div|figure|p)(?=[\s>])[^>]*>/gi;
+  for (let m = re.exec(html); m; m = re.exec(html)) {
+    const tag = m[2].toLowerCase();
+    if (tag === "p") {
+      if (m[1] && depth === 0 && ++count === n) {
+        const at = m.index + m[0].length;
+        return [html.slice(0, at), html.slice(at)];
+      }
+      continue;
+    }
+    depth += m[1] ? -1 : 1;
+    if (depth < 0) depth = 0;
+  }
+  return [html, ""];
 }
 
 export default function Article({ site, article, related, bodyHtml, toc, popular = [] }: SiteArticleProps) {
@@ -90,7 +111,17 @@ export default function Article({ site, article, related, bodyHtml, toc, popular
         <div className="nm-wrap nm-art-grid">
           <div className="nm-art-main">
             <Toc items={toc} variant="inline" />
-            <div id="article-body" className="article-content" dangerouslySetInnerHTML={{ __html: bodyHtml }} />
+            {(() => {
+              // App banner after the 3rd paragraph (or after the body when it is short).
+              const [head, tail] = splitAfterParagraph(bodyHtml, 3);
+              return (
+                <>
+                  <div id="article-body" className="article-content" dangerouslySetInnerHTML={{ __html: head }} />
+                  <AppBanner variant="article" medium="article" />
+                  {tail ? <div className="article-content" dangerouslySetInnerHTML={{ __html: tail }} /> : null}
+                </>
+              );
+            })()}
             <CiteBox url={`https://${site.domain}/${article.slug}`} title={article.title} site={site.name} date={article.created_at} />
             <aside className="nm-art-note">
               <b>Before kick-off:</b> broadcast rights and kick-off times can change. Confirm with the official

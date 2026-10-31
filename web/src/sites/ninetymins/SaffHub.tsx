@@ -64,6 +64,7 @@ export default function SaffHub({ site, comp, articles }: { site: Site; comp: Nm
             </div>
           </div>
           <nav className="nm-saff-tabs" aria-label="On this page">
+            <Link href={`${s}/saff`} className="nm-saff-livetab">● Live scores &amp; tables</Link>
             <a href="#champions">Champions</a>
             <a href="#finals">All finals</a>
             <a href="#teams">Teams</a>

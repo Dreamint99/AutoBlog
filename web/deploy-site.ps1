@@ -43,7 +43,8 @@ if ($NoRoutes) {
 }
 
 $env:SITE_ID = $Site
-npx opennextjs-cloudflare build
+# Next 15 passed its 2-year support window (Oct 2026); OpenNext refuses it without this flag. Upgrade to Next 16 to drop it.
+npx opennextjs-cloudflare build --dangerouslyUseUnsupportedNextVersion
 if ($LASTEXITCODE -ne 0) { throw "build failed" }
 if ($DryRun) {
     npx wrangler deploy --dry-run
