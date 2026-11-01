@@ -3,9 +3,9 @@
  "queries": [
   {
    "q": "visapoint",
-   "impr": 5,
+   "impr": 7,
    "clicks": 0,
-   "pos": 8.0
+   "pos": 7.7
   },
   {
    "q": "visapoint global",
@@ -18,6 +18,12 @@
    "impr": 1,
    "clicks": 0,
    "pos": 10.0
+  },
+  {
+   "q": "visapoint belgium",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 3.0
   }
  ]
 }

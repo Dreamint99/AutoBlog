@@ -1,5 +1,5 @@
 {
- "source": "Search Console API 2026-07-31..2026-10-29",
+ "source": "Search Console API 2026-08-01..2026-10-30",
  "pages": [
   {
    "url": "https://visapoint.net/visa-check/romania",
@@ -498,14 +498,14 @@
   },
   {
    "url": "https://visapoint.net/",
-   "impressions": 63,
+   "impressions": 65,
    "clicks": 4,
    "queries": [
     [
      "visapoint",
-     12,
+     13,
      1,
-     9.7
+     10.8
     ],
     [
      "visa point",
@@ -568,14 +568,14 @@
      69
     ],
     [
-     "work permit check",
+     "visum check",
      1,
      0,
-     80
+     33
     ]
    ],
-   "position": 21.7,
-   "ctr": 0.0635
+   "position": 21.9,
+   "ctr": 0.0615
   },
   {
    "url": "https://visapoint.net/cleaner-salary-in-germany-2026-gross-net-savings-guide",
@@ -1367,6 +1367,39 @@
    "ctr": 0.0
   },
   {
+   "url": "https://visapoint.net/saudi-visa-status-2026-official-check-guide",
+   "impressions": 28,
+   "clicks": 0,
+   "queries": [
+    [
+     "saudi visa check",
+     2,
+     0,
+     59.5
+    ],
+    [
+     "check saudi visa",
+     1,
+     0,
+     50
+    ],
+    [
+     "saudi immigration iqama inquiry section",
+     1,
+     0,
+     77
+    ],
+    [
+     "saudi visa status",
+     1,
+     0,
+     55
+    ]
+   ],
+   "position": 16.4,
+   "ctr": 0.0
+  },
+  {
    "url": "https://visapoint.net/slovakia-work-visa-2026-complete-guide-for-bangladeshis",
    "impressions": 27,
    "clicks": 1,
@@ -1402,39 +1435,6 @@
    "clicks": 0,
    "queries": [],
    "position": 7.2,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/saudi-visa-status-2026-official-check-guide",
-   "impressions": 27,
-   "clicks": 0,
-   "queries": [
-    [
-     "saudi visa check",
-     2,
-     0,
-     59.5
-    ],
-    [
-     "check saudi visa",
-     1,
-     0,
-     50
-    ],
-    [
-     "saudi immigration iqama inquiry section",
-     1,
-     0,
-     77
-    ],
-    [
-     "saudi visa status",
-     1,
-     0,
-     55
-    ]
-   ],
-   "position": 16.8,
    "ctr": 0.0
   },
   {
@@ -1535,7 +1535,7 @@
   },
   {
    "url": "https://visapoint.net/about",
-   "impressions": 22,
+   "impressions": 23,
    "clicks": 0,
    "queries": [
     [
@@ -1551,7 +1551,7 @@
      23
     ]
    ],
-   "position": 7.4,
+   "position": 7.1,
    "ctr": 0.0
   },
   {
@@ -2913,6 +2913,14 @@
    "ctr": 0.0
   },
   {
+   "url": "https://visapoint.net/hungary-work-permit-2025-bangladesh-guest-worker-guide",
+   "impressions": 8,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.6,
+   "ctr": 0.0
+  },
+  {
    "url": "https://visapoint.net/india-to-bulgaria-work-permit-2026-step-by-step-guide-salary",
    "impressions": 8,
    "clicks": 0,
@@ -2965,14 +2973,6 @@
    "clicks": 0,
    "queries": [],
    "position": 6.3,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/hungary-work-permit-2025-bangladesh-guest-worker-guide",
-   "impressions": 7,
-   "clicks": 0,
-   "queries": [],
-   "position": 6.1,
    "ctr": 0.0
   },
   {

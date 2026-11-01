@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-07-31..2026-10-29, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-01..2026-10-30, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "richest countries in world",
@@ -510,13 +510,13 @@
    "src": "bingkw"
   },
   {
-   "q": "michael maclay net worth",
+   "q": "julia stiles net worth",
    "impr": 998,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "julia stiles net worth",
+   "q": "michael maclay net worth",
    "impr": 998,
    "pos": null,
    "src": "bingkw"
@@ -641,15 +641,15 @@
    "src": "bing"
   },
   {
-   "q": "who has the most subscribers on youtube",
-   "impr": 210,
-   "pos": 8.5,
+   "q": "top 10 richest people in the world",
+   "impr": 232,
+   "pos": 9.0,
    "src": "bing"
   },
   {
-   "q": "top 10 richest people in the world",
-   "impr": 188,
-   "pos": 9.0,
+   "q": "who has the most subscribers on youtube",
+   "impr": 210,
+   "pos": 8.5,
    "src": "bing"
   },
   {
@@ -660,13 +660,13 @@
   },
   {
    "q": "who is the richest person in the world",
-   "impr": 63,
+   "impr": 104,
    "pos": 9.0,
    "src": "bing"
   },
   {
    "q": "top 10 richest people",
-   "impr": 63,
+   "impr": 81,
    "pos": 9.0,
    "src": "bing"
   },
@@ -683,15 +683,21 @@
    "src": "bing"
   },
   {
-   "q": "highest paid athletes 2026",
-   "impr": 37,
-   "pos": 8.1,
+   "q": "what is the fastest car in the world",
+   "impr": 51,
+   "pos": 9.0,
    "src": "bing"
   },
   {
-   "q": "how many mcdonalds are there in the world",
+   "q": "top ten richest people in the world",
+   "impr": 39,
+   "pos": 9.0,
+   "src": "bing"
+  },
+  {
+   "q": "highest paid athletes 2026",
    "impr": 37,
-   "pos": 8.0,
+   "pos": 8.1,
    "src": "bing"
   },
   {
@@ -713,7 +719,7 @@
    "src": "bing"
   },
   {
-   "q": "open ai revenue 2026",
+   "q": "fastest car in the world",
    "impr": 24,
    "pos": 8.0,
    "src": "bing"
@@ -755,9 +761,9 @@
    "src": "bing"
   },
   {
-   "q": "top ten richest people in the world",
-   "impr": 15,
-   "pos": 9.0,
+   "q": "the fastest car in the world",
+   "impr": 14,
+   "pos": 8.0,
    "src": "bing"
   },
   {
@@ -797,6 +803,12 @@
    "src": "bing"
   },
   {
+   "q": "who is the richest man on earth",
+   "impr": 11,
+   "pos": 8.0,
+   "src": "bing"
+  },
+  {
    "q": "who is the world's richest person?",
    "impr": 10,
    "pos": 8.0,
@@ -830,6 +842,12 @@
    "q": "youtube tubes 2026",
    "impr": 10,
    "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "how many mcdonald's in worldwide",
+   "impr": 10,
+   "pos": 17.0,
    "src": "bing"
   }
  ]

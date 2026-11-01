@@ -1,32 +1,44 @@
 {
- "_note": "Real queries (Search Console 2026-07-31..2026-10-29, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-01..2026-10-30, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "প্রাথমিক চিকিৎসা কাকে বলে",
-   "impr": 109,
-   "pos": 8.1,
+   "impr": 127,
+   "pos": 8.0,
    "src": "gsc"
   },
   {
    "q": "গোখরা সাপ চেনার উপায়",
-   "impr": 62,
-   "pos": 8.8,
+   "impr": 68,
+   "pos": 8.7,
    "src": "gsc"
   },
   {
    "q": "প্রাথমিক চিকিৎসার উদ্দেশ্য কি",
-   "impr": 30,
-   "pos": 9.1,
+   "impr": 32,
+   "pos": 9.2,
    "src": "gsc"
   },
   {
    "q": "প্রাথমিক চিকিৎসা কি",
-   "impr": 18,
+   "impr": 19,
+   "pos": 9.8,
+   "src": "gsc"
+  },
+  {
+   "q": "prathomik chikitsa kake bole",
+   "impr": 14,
    "pos": 9.8,
    "src": "gsc"
   },
   {
    "q": "প্রাথমিক চিকিৎসা বলতে কী বোঝো",
+   "impr": 14,
+   "pos": 9.1,
+   "src": "gsc"
+  },
+  {
+   "q": "বিষধর সাপ চেনার উপায়",
    "impr": 11,
    "pos": 9.1,
    "src": "gsc"

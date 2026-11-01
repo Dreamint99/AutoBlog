@@ -1,16 +1,16 @@
 {
- "source": "Search Console API 2026-07-31..2026-10-29",
+ "source": "Search Console API 2026-08-01..2026-10-30",
  "pages": [
   {
    "url": "https://countly.net/",
-   "impressions": 636,
+   "impressions": 626,
    "clicks": 2,
    "queries": [
     [
      "countly",
-     75,
+     69,
      0,
-     23.7
+     24.8
     ],
     [
      "quintly",
@@ -79,12 +79,12 @@
      90
     ]
    ],
-   "position": 36.5,
-   "ctr": 0.0031
+   "position": 36.6,
+   "ctr": 0.0032
   },
   {
    "url": "https://countly.net/top-21-richest-people-in-greece-2026",
-   "impressions": 216,
+   "impressions": 215,
    "clicks": 0,
    "queries": [
     [
@@ -230,29 +230,8 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/how-many-linkedin-users-are-there-in-2026-global-by-country",
-   "impressions": 42,
-   "clicks": 0,
-   "queries": [
-    [
-     "linkedin usage by country",
-     1,
-     0,
-     94
-    ],
-    [
-     "total linkedin users in world",
-     1,
-     0,
-     94
-    ]
-   ],
-   "position": 85.7,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/top-100-richest-people-in-united-states-2026",
-   "impressions": 42,
+   "impressions": 43,
    "clicks": 0,
    "queries": [
     [
@@ -328,7 +307,28 @@
      73
     ]
    ],
-   "position": 48.5,
+   "position": 47.4,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/how-many-linkedin-users-are-there-in-2026-global-by-country",
+   "impressions": 42,
+   "clicks": 0,
+   "queries": [
+    [
+     "linkedin usage by country",
+     1,
+     0,
+     94
+    ],
+    [
+     "total linkedin users in world",
+     1,
+     0,
+     94
+    ]
+   ],
+   "position": 85.7,
    "ctr": 0.0
   },
   {
@@ -866,6 +866,27 @@
    "ctr": 0.0
   },
   {
+   "url": "https://countly.net/how-many-roblox-users-are-there-in-2026-global-by-country",
+   "impressions": 19,
+   "clicks": 1,
+   "queries": [
+    [
+     "roblox dau",
+     1,
+     0,
+     23
+    ],
+    [
+     "site:countly.net",
+     1,
+     0,
+     77
+    ]
+   ],
+   "position": 13.8,
+   "ctr": 0.0526
+  },
+  {
    "url": "https://countly.net/topic/internet",
    "impressions": 19,
    "clicks": 0,
@@ -879,21 +900,6 @@
    ],
    "position": 10.1,
    "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/how-many-roblox-users-are-there-in-2026-global-by-country",
-   "impressions": 18,
-   "clicks": 1,
-   "queries": [
-    [
-     "site:countly.net",
-     1,
-     0,
-     77
-    ]
-   ],
-   "position": 13.3,
-   "ctr": 0.0556
   },
   {
    "url": "https://countly.net/how-many-people-use-instagram-in-2026-global-users-trends",
@@ -1317,27 +1323,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/top-21-richest-people-in-thailand-2026",
-   "impressions": 11,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     2,
-     0,
-     23
-    ],
-    [
-     "forbes thailand richest 2026",
-     1,
-     0,
-     62
-    ]
-   ],
-   "position": 20.8,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/top-universities-in-bangladesh-2026-ranking-guide",
    "impressions": 11,
    "clicks": 0,
@@ -1413,6 +1398,27 @@
     ]
    ],
    "position": 21.2,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/top-21-richest-people-in-thailand-2026",
+   "impressions": 10,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     2,
+     0,
+     23
+    ],
+    [
+     "forbes thailand richest 2026",
+     1,
+     0,
+     62
+    ]
+   ],
+   "position": 22.0,
    "ctr": 0.0
   },
   {
@@ -1749,6 +1755,14 @@
    "ctr": 0.0
   },
   {
+   "url": "https://countly.net/how-many-x-users-are-there-in-2026-global-by-country-193c",
+   "impressions": 5,
+   "clicks": 0,
+   "queries": [],
+   "position": 9.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://countly.net/richest-people-in-nigeria-2026-billionaires-net-worth",
    "impressions": 5,
    "clicks": 0,
@@ -1884,11 +1898,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/how-many-x-users-are-there-in-2026-global-by-country-193c",
+   "url": "https://countly.net/how-many-uber-riders-are-there-in-2026-global-by-country-24aa",
    "impressions": 4,
    "clicks": 0,
    "queries": [],
-   "position": 10.0,
+   "position": 6.0,
    "ctr": 0.0
   },
   {
@@ -2193,14 +2207,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/how-many-uber-riders-are-there-in-2026-global-by-country-24aa",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [],
-   "position": 4.5,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/how-many-xiaomi-smartphones-are-sold-in-2026-global-by-count-74f8",
    "impressions": 2,
    "clicks": 0,
@@ -2364,6 +2370,14 @@
    "clicks": 0,
    "queries": [],
    "position": 2.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/how-many-shopify-merchants-are-there-in-2026-global-by-count-99f7",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.0,
    "ctr": 0.0
   },
   {
