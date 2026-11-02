@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-08-01..2026-10-30, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-02..2026-10-31, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "best ai laptop 2026",
@@ -242,12 +242,6 @@
    "src": "bingkw"
   },
   {
-   "q": "image ai generator",
-   "impr": 933,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
    "q": "adobe ai image generator",
    "impr": 926,
    "pos": null,
@@ -256,6 +250,12 @@
   {
    "q": "best ai for image generation",
    "impr": 925,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ai apps free",
+   "impr": 923,
    "pos": null,
    "src": "bingkw"
   },
@@ -346,12 +346,6 @@
   {
    "q": "what is the best ai detector",
    "impr": 699,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "ai generate image",
-   "impr": 697,
    "pos": null,
    "src": "bingkw"
   },
@@ -478,6 +472,12 @@
   {
    "q": "free ai image generator no restrictions",
    "impr": 467,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "best ai for math",
+   "impr": 466,
    "pos": null,
    "src": "bingkw"
   },

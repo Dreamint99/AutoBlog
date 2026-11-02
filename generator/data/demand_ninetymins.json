@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-08-01..2026-10-30, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-02..2026-10-31, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "champions league quiz",
@@ -22,12 +22,6 @@
   {
    "q": "premier league schedule",
    "impr": 37335,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "fiba world cup 2026 berlin",
-   "impr": 35071,
    "pos": null,
    "src": "bingkw"
   },
@@ -116,8 +110,8 @@
    "src": "bingkw"
   },
   {
-   "q": "where to watch champions league",
-   "impr": 5039,
+   "q": "women's basketball world cup 2026",
+   "impr": 5138,
    "pos": null,
    "src": "bingkw"
   },
@@ -262,6 +256,12 @@
   {
    "q": "champions league table",
    "impr": 1468,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "world cup schedule 2026 today",
+   "impr": 1426,
    "pos": null,
    "src": "bingkw"
   },
@@ -446,12 +446,6 @@
    "src": "bingkw"
   },
   {
-   "q": "the world cup",
-   "impr": 720,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
    "q": "world cup 2026 schedule",
    "impr": 714,
    "pos": null,
@@ -472,6 +466,12 @@
   {
    "q": "shakira world cup 2026",
    "impr": 698,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "la liga 2 standings",
+   "impr": 673,
    "pos": null,
    "src": "bingkw"
   },
@@ -513,7 +513,7 @@
   },
   {
    "q": "us open tennis 2026 dates",
-   "impr": 357,
+   "impr": 358,
    "pos": 8.0,
    "src": "bing"
   },
@@ -734,13 +734,13 @@
    "src": "bing"
   },
   {
-   "q": "fifa 2026 group standings",
+   "q": "world cup 2026 group standings",
    "impr": 14,
    "pos": 8.0,
    "src": "bing"
   },
   {
-   "q": "world cup 2026 group standings",
+   "q": "fifa 2026 group standings",
    "impr": 14,
    "pos": 8.0,
    "src": "bing"

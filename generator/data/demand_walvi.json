@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-08-01..2026-10-30, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-02..2026-10-31, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "japan work visa",
@@ -138,6 +138,12 @@
    "src": "bingkw"
   },
   {
+   "q": "italy visa requirements",
+   "impr": 109,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
    "q": "uk visa requirements",
    "impr": 93,
    "pos": null,
@@ -192,12 +198,6 @@
    "src": "bingkw"
   },
   {
-   "q": "spain schengen visa",
-   "impr": 70,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
    "q": "schengen visa insurance",
    "impr": 66,
    "pos": null,
@@ -210,7 +210,7 @@
    "src": "bingkw"
   },
   {
-   "q": "trip to macau visa requirements",
+   "q": "spain visa requirements",
    "impr": 62,
    "pos": null,
    "src": "bingkw"
@@ -228,13 +228,13 @@
    "src": "bingkw"
   },
   {
-   "q": "south africa visa requirements",
+   "q": "south korea visa requirements",
    "impr": 55,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "south korea visa requirements",
+   "q": "south africa visa requirements",
    "impr": 55,
    "pos": null,
    "src": "bingkw"
@@ -246,7 +246,19 @@
    "src": "bingkw"
   },
   {
+   "q": "tanzania immigration visa",
+   "impr": 52,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
    "q": "work visa canada",
+   "impr": 51,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "what is a visa sponsorship",
    "impr": 51,
    "pos": null,
    "src": "bingkw"

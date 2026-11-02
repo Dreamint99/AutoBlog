@@ -1,5 +1,5 @@
 {
- "source": "Search Console API 2026-08-01..2026-10-30",
+ "source": "Search Console API 2026-08-02..2026-10-31",
  "pages": [
   {
    "url": "https://ninetymins.com/",
@@ -33,26 +33,26 @@
    "ctr": 0.0
   },
   {
+   "url": "https://ninetymins.com/players/dan-burn",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [
+    [
+     "ninetymins.com",
+     2,
+     0,
+     86
+    ]
+   ],
+   "position": 86.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://ninetymins.com/en/product/twist-go-hair-spray-120ml/",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
    "position": 1.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://ninetymins.com/players/dan-burn",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [
-    [
-     "ninetymins.com",
-     1,
-     0,
-     87
-    ]
-   ],
-   "position": 87.0,
    "ctr": 0.0
   },
   {
