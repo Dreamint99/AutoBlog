@@ -1,16 +1,16 @@
 {
- "source": "Search Console API 2026-08-02..2026-10-31",
+ "source": "Search Console API 2026-08-03..2026-11-01",
  "pages": [
   {
    "url": "https://infkey.com/",
-   "impressions": 125,
+   "impressions": 124,
    "clicks": 2,
    "queries": [
     [
      "agentkey pricing",
-     5,
+     4,
      0,
-     70.8
+     71.5
     ],
     [
      "cheap inference",
@@ -79,8 +79,8 @@
      22
     ]
    ],
-   "position": 48.0,
-   "ctr": 0.016
+   "position": 47.8,
+   "ctr": 0.0161
   }
  ]
 }

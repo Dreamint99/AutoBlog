@@ -2,12 +2,6 @@
  "source": "Bing Webmaster GetQueryStats",
  "queries": [
   {
-   "q": "uai bd",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 1.0
-  },
-  {
    "q": "ailuqai",
    "impr": 1,
    "clicks": 0,
@@ -20,10 +14,10 @@
    "pos": 7.0
   },
   {
-   "q": "aiun",
+   "q": "fytechai",
    "impr": 1,
    "clicks": 0,
-   "pos": 4.0
+   "pos": 1.0
   },
   {
    "q": "aialivebd",
@@ -32,13 +26,7 @@
    "pos": 1.0
   },
   {
-   "q": "fytechai",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 1.0
-  },
-  {
-   "q": "ailearninbangla",
+   "q": "aiun",
    "impr": 1,
    "clicks": 0,
    "pos": 4.0
@@ -48,6 +36,18 @@
    "impr": 1,
    "clicks": 0,
    "pos": 7.0
+  },
+  {
+   "q": "ailearninbangla",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 4.0
+  },
+  {
+   "q": "uai bd",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 1.0
   }
  ]
 }

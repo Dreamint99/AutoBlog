@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-08-02..2026-10-31, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-03..2026-11-01, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "richest countries in world",
@@ -73,349 +73,409 @@
   },
   {
    "q": "world's richest people",
-   "impr": 30555,
+   "impr": 30523,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "elon musk net worth",
-   "impr": 27278,
+   "impr": 26115,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "billboard hot 100",
-   "impr": 22720,
+   "impr": 22766,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "ilhan omar net worth",
-   "impr": 8620,
+   "impr": 9223,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "taylor swift net worth",
-   "impr": 6667,
+   "impr": 6636,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "mr beast net worth",
-   "impr": 5360,
+   "impr": 5354,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "most visited websites",
-   "impr": 4713,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "travis kelce net worth",
-   "impr": 3652,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "lebron james net worth",
-   "impr": 3629,
+   "impr": 4183,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "donald trump net worth",
-   "impr": 3607,
+   "impr": 3721,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "ben affleck net worth",
-   "impr": 3568,
+   "q": "travis kelce net worth",
+   "impr": 3671,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "jeff bezos net worth",
-   "impr": 3534,
+   "impr": 3531,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "celebrity net worth",
-   "impr": 3451,
+   "impr": 3469,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "who is the richest man in the world",
-   "impr": 3230,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "michael jordan net worth",
-   "impr": 3187,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "tom cruise net worth",
-   "impr": 3111,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "richest people in the world",
-   "impr": 3096,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "bernie sanders net worth",
-   "impr": 3041,
+   "impr": 3319,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "hasan piker net worth",
-   "impr": 3027,
+   "impr": 3298,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "richest man in the world",
-   "impr": 2972,
+   "q": "lebron james net worth",
+   "impr": 3288,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "zendaya net worth",
-   "impr": 2971,
+   "q": "michael jordan net worth",
+   "impr": 3125,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "caitlin clark net worth",
-   "impr": 2941,
+   "q": "ben affleck net worth",
+   "impr": 3097,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "sydney sweeney net worth",
-   "impr": 2886,
+   "q": "richest people in the world",
+   "impr": 3092,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "elizabeth holmes net worth",
-   "impr": 2832,
+   "impr": 3075,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "sophie cunningham net worth",
-   "impr": 2759,
+   "q": "richest man in the world",
+   "impr": 2997,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "tom cruise net worth",
+   "impr": 2942,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "sydney sweeney net worth",
+   "impr": 2939,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "tom brady net worth",
-   "impr": 2627,
+   "impr": 2880,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "net worth calculator",
-   "impr": 2583,
+   "q": "bernie sanders net worth",
+   "impr": 2717,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "caitlin clark net worth",
+   "impr": 2686,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "zendaya net worth",
+   "impr": 2632,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "mark zuckerberg net worth",
-   "impr": 2569,
+   "impr": 2614,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "sophie cunningham net worth",
+   "impr": 2566,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "drake net worth",
-   "impr": 2456,
+   "impr": 2550,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "net worth calculator",
+   "impr": 2544,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "bill gates net worth",
-   "impr": 2437,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "kim kardashian net worth",
-   "impr": 2206,
+   "impr": 2539,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "vivek ramaswamy net worth",
-   "impr": 2203,
+   "impr": 2512,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "mrbeast net worth",
-   "impr": 2095,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "richest person in the world",
-   "impr": 2086,
+   "q": "kim kardashian net worth",
+   "impr": 2286,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "troy aikman net worth",
-   "impr": 2009,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "what is the most popular game",
-   "impr": 1852,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "aoc's net worth",
-   "impr": 1844,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "kylie jenner net worth",
-   "impr": 1827,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "adam sandler net worth",
-   "impr": 1811,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "kanye west net worth",
-   "impr": 1688,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "mike tyson net worth",
-   "impr": 1681,
+   "impr": 2284,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "bill belichick net worth",
-   "impr": 1667,
+   "impr": 2271,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "trump net worth",
-   "impr": 1611,
+   "q": "richest person in the world",
+   "impr": 2116,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "beyonce net worth",
-   "impr": 1594,
+   "q": "mrbeast net worth",
+   "impr": 2093,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "patrick stewart net worth",
+   "impr": 2028,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "mike tyson net worth",
+   "impr": 1934,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "kylie jenner net worth",
+   "impr": 1871,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "nicki minaj net worth",
+   "impr": 1868,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "what is the most popular game",
+   "impr": 1853,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "adam sandler net worth",
+   "impr": 1840,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "aoc's net worth",
+   "impr": 1826,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "lewis hamilton net worth",
-   "impr": 1591,
+   "impr": 1783,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "rihanna net worth",
-   "impr": 1535,
+   "q": "jennifer lawrence net worth",
+   "impr": 1781,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "paris hilton net worth",
-   "impr": 1516,
+   "q": "beyonce net worth",
+   "impr": 1703,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "mark cuban net worth",
-   "impr": 1496,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "christina applegate net worth",
-   "impr": 1456,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "britney spears net worth",
-   "impr": 1446,
+   "q": "kanye west net worth",
+   "impr": 1676,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "jay z net worth",
-   "impr": 1405,
+   "impr": 1637,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "what is net worth",
-   "impr": 1397,
+   "q": "britney spears net worth",
+   "impr": 1636,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "shaq net worth",
-   "impr": 1393,
+   "q": "paris hilton net worth",
+   "impr": 1618,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "aoc net worth",
-   "impr": 1372,
+   "q": "trump net worth",
+   "impr": 1592,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "countries by population",
-   "impr": 1338,
+   "q": "rihanna net worth",
+   "impr": 1567,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "most populated countries",
-   "impr": 1314,
+   "q": "christina applegate net worth",
+   "impr": 1557,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "sean hannity net worth",
+   "impr": 1543,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "mark cuban net worth",
+   "impr": 1534,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "halle berry net worth",
-   "impr": 1298,
+   "impr": 1452,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "william shatner net worth",
+   "impr": 1448,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "what is net worth",
+   "impr": 1416,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "shaq net worth",
+   "impr": 1412,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "countries by population",
+   "impr": 1385,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "aoc net worth",
+   "impr": 1385,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "nick saban net worth",
+   "impr": 1382,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "nas net worth",
+   "impr": 1357,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "pat mcafee net worth",
+   "impr": 1353,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "most populated countries",
+   "impr": 1340,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "clint eastwood net worth",
+   "impr": 1334,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "floyd mayweather net worth",
-   "impr": 1273,
+   "impr": 1323,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "jason galanis net worth",
+   "impr": 1289,
    "pos": null,
    "src": "bingkw"
   },
@@ -426,110 +486,56 @@
    "src": "bingkw"
   },
   {
-   "q": "clint eastwood net worth",
-   "impr": 1256,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "nick saban net worth",
-   "impr": 1243,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "pat mcafee net worth",
-   "impr": 1235,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "nas net worth",
-   "impr": 1160,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "cardi b net worth",
-   "impr": 1136,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "william shatner net worth",
-   "impr": 1135,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "barack obama net worth",
-   "impr": 1133,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "james talarico net worth",
-   "impr": 1019,
+   "q": "walter koenig net worth",
+   "impr": 1239,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "michael maclay net worth",
-   "impr": 998,
+   "impr": 1231,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "most popular games",
-   "impr": 988,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "jennifer lawrence net worth",
-   "impr": 884,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "world population by country",
-   "impr": 864,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "fifa world rankings",
-   "impr": 863,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "largest country in the world",
-   "impr": 845,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "sean hannity net worth",
-   "impr": 832,
+   "q": "barack obama net worth",
+   "impr": 1218,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "most popular halloween costumes 2026",
-   "impr": 817,
+   "impr": 1203,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "most popular baby names 2026",
-   "impr": 815,
+   "q": "cardi b net worth",
+   "impr": 1202,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "nicki minaj net worth",
-   "impr": 813,
+   "q": "james talarico net worth",
+   "impr": 1149,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "ric flair net worth",
+   "impr": 1091,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "billy evans net worth",
+   "impr": 1057,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "jennifer lawrence net worth 2026",
+   "impr": 1024,
    "pos": null,
    "src": "bingkw"
   },
@@ -720,14 +726,8 @@
   },
   {
    "q": "most starred github repo",
-   "impr": 23,
-   "pos": 8.3,
-   "src": "bing"
-  },
-  {
-   "q": "who is the richest person in the world 2026",
-   "impr": 21,
-   "pos": 8.6,
+   "impr": 18,
+   "pos": 8.4,
    "src": "bing"
   },
   {
@@ -761,6 +761,12 @@
    "src": "bing"
   },
   {
+   "q": "who is the richest person in the world 2026",
+   "impr": 13,
+   "pos": 8.2,
+   "src": "bing"
+  },
+  {
    "q": "github most starred repositories",
    "impr": 13,
    "pos": 8.0,
@@ -776,12 +782,6 @@
    "q": "top 10 most visited websites in the world",
    "impr": 13,
    "pos": 10.0,
-   "src": "bing"
-  },
-  {
-   "q": "which is the world's largest company based on the number of employees?",
-   "impr": 12,
-   "pos": 8.8,
    "src": "bing"
   },
   {
@@ -818,6 +818,12 @@
    "q": "richest perosn in argentina",
    "impr": 10,
    "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "most subscribed youtube channel",
+   "impr": 10,
+   "pos": 8.4,
    "src": "bing"
   },
   {
