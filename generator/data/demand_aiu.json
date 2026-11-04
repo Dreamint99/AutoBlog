@@ -1,52 +1,46 @@
 {
- "_note": "Real queries (Search Console 2026-08-03..2026-11-01, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-04..2026-11-02, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
-   "q": "প্রাথমিক চিকিৎসা কাকে বলে",
-   "impr": 135,
-   "pos": 8.0,
-   "src": "gsc"
-  },
-  {
    "q": "গোখরা সাপ চেনার উপায়",
-   "impr": 71,
+   "impr": 76,
    "pos": 8.5,
    "src": "gsc"
   },
   {
    "q": "প্রাথমিক চিকিৎসার উদ্দেশ্য কি",
-   "impr": 33,
-   "pos": 9.2,
+   "impr": 35,
+   "pos": 9.1,
    "src": "gsc"
   },
   {
    "q": "প্রাথমিক চিকিৎসা কি",
-   "impr": 21,
+   "impr": 24,
+   "pos": 9.4,
+   "src": "gsc"
+  },
+  {
+   "q": "prathomik chikitsa kake bole",
+   "impr": 20,
    "pos": 9.6,
    "src": "gsc"
   },
   {
    "q": "প্রাথমিক চিকিৎসা বলতে কী বোঝো",
-   "impr": 17,
-   "pos": 9,
-   "src": "gsc"
-  },
-  {
-   "q": "prathomik chikitsa kake bole",
-   "impr": 16,
-   "pos": 9.8,
+   "impr": 20,
+   "pos": 8.9,
    "src": "gsc"
   },
   {
    "q": "বিষধর সাপ চেনার উপায়",
-   "impr": 12,
-   "pos": 9,
+   "impr": 17,
+   "pos": 8.2,
    "src": "gsc"
   },
   {
    "q": "শূন্য থেকে ielts প্রস্তুতি",
-   "impr": 10,
-   "pos": 8.2,
+   "impr": 11,
+   "pos": 8.1,
    "src": "gsc"
   }
  ]
