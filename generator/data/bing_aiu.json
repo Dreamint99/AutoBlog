@@ -2,40 +2,10 @@
  "source": "Bing Webmaster GetQueryStats",
  "queries": [
   {
-   "q": "aiun",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 4.0
-  },
-  {
    "q": "ailearninbangla",
    "impr": 1,
    "clicks": 0,
    "pos": 4.0
-  },
-  {
-   "q": "aialivebd",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 1.0
-  },
-  {
-   "q": "aitinstitutebd vip coure",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 7.0
-  },
-  {
-   "q": "fytechai",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 1.0
-  },
-  {
-   "q": "uai bd",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 1.0
   },
   {
    "q": "ailuqai",
@@ -48,6 +18,36 @@
    "impr": 1,
    "clicks": 0,
    "pos": 7.0
+  },
+  {
+   "q": "aialivebd",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 1.0
+  },
+  {
+   "q": "fytechai",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 1.0
+  },
+  {
+   "q": "aitinstitutebd vip coure",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 7.0
+  },
+  {
+   "q": "uai bd",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 1.0
+  },
+  {
+   "q": "aiun",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 4.0
   }
  ]
 }

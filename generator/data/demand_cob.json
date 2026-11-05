@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-08-04..2026-11-02, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-05..2026-11-03, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "এমিলিয়ানো মার্টিনেজ কোন ক্লাবে খেলে",
@@ -21,8 +21,14 @@
   },
   {
    "q": "চাঁদপুর জেলার জনসংখ্যা কত ২০২৬",
-   "impr": 13,
-   "pos": 10.3,
+   "impr": 14,
+   "pos": 10.2,
+   "src": "gsc"
+  },
+  {
+   "q": "চট্টগ্রাম বিভাগের আয়তন কত",
+   "impr": 14,
+   "pos": 9.7,
    "src": "gsc"
   },
   {
@@ -32,9 +38,9 @@
    "src": "gsc"
   },
   {
-   "q": "চট্টগ্রাম বিভাগের আয়তন কত",
-   "impr": 12,
-   "pos": 9.7,
+   "q": "বি বাড়িয়া জেলার আয়তন কত",
+   "impr": 10,
+   "pos": 9.9,
    "src": "gsc"
   },
   {
