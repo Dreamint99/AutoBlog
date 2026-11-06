@@ -2,6 +2,18 @@
  "source": "Bing Webmaster GetQueryStats",
  "queries": [
   {
+   "q": "aiun",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 4.0
+  },
+  {
+   "q": "uai bd",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 1.0
+  },
+  {
    "q": "ailearninbangla",
    "impr": 1,
    "clicks": 0,
@@ -36,18 +48,6 @@
    "impr": 1,
    "clicks": 0,
    "pos": 7.0
-  },
-  {
-   "q": "uai bd",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 1.0
-  },
-  {
-   "q": "aiun",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 4.0
   }
  ]
 }

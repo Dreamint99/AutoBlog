@@ -1,9 +1,9 @@
 {
- "source": "Search Console API 2026-08-05..2026-11-03",
+ "source": "Search Console API 2026-08-06..2026-11-04",
  "pages": [
   {
    "url": "https://infkey.com/",
-   "impressions": 123,
+   "impressions": 120,
    "clicks": 3,
    "queries": [
     [
@@ -79,8 +79,8 @@
      22
     ]
    ],
-   "position": 49.4,
-   "ctr": 0.0244
+   "position": 49.8,
+   "ctr": 0.025
   }
  ]
 }
