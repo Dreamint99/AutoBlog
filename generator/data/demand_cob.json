@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-08-06..2026-11-04, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-07..2026-11-05, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "এমিলিয়ানো মার্টিনেজ কোন ক্লাবে খেলে",
@@ -9,8 +9,8 @@
   },
   {
    "q": "রোনান সুলিভান",
-   "impr": 35,
-   "pos": 9.2,
+   "impr": 36,
+   "pos": 9.1,
    "src": "gsc"
   },
   {
@@ -20,15 +20,15 @@
    "src": "gsc"
   },
   {
-   "q": "চাঁদপুর জেলার জনসংখ্যা কত ২০২৬",
-   "impr": 14,
-   "pos": 10.2,
+   "q": "চট্টগ্রাম বিভাগের আয়তন কত",
+   "impr": 15,
+   "pos": 9.8,
    "src": "gsc"
   },
   {
-   "q": "চট্টগ্রাম বিভাগের আয়তন কত",
+   "q": "চাঁদপুর জেলার জনসংখ্যা কত ২০২৬",
    "impr": 14,
-   "pos": 9.7,
+   "pos": 10.2,
    "src": "gsc"
   },
   {
@@ -38,15 +38,27 @@
    "src": "gsc"
   },
   {
-   "q": "বি বাড়িয়া জেলার আয়তন কত",
-   "impr": 10,
-   "pos": 9.9,
+   "q": "ব্রাহ্মণবাড়িয়া জেলার আয়তন কত",
+   "impr": 12,
+   "pos": 10.8,
    "src": "gsc"
   },
   {
-   "q": "ব্রাহ্মণবাড়িয়া জেলার আয়তন কত",
+   "q": "বি বাড়িয়া জেলার আয়তন কত",
+   "impr": 11,
+   "pos": 10,
+   "src": "gsc"
+  },
+  {
+   "q": "ব্রাহ্মণবাড়িয়া কত বর্গ কিলোমিটার",
    "impr": 10,
-   "pos": 10.8,
+   "pos": 9,
+   "src": "gsc"
+  },
+  {
+   "q": "fazlul qadir chaudhry",
+   "impr": 10,
+   "pos": 9.4,
    "src": "gsc"
   }
  ]

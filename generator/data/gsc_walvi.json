@@ -1,5 +1,5 @@
 {
- "source": "Search Console API 2026-08-06..2026-11-04",
+ "source": "Search Console API 2026-08-07..2026-11-05",
  "pages": [
   {
    "url": "https://visapoint.net/visa-check/romania",
@@ -498,7 +498,7 @@
   },
   {
    "url": "https://visapoint.net/",
-   "impressions": 70,
+   "impressions": 71,
    "clicks": 4,
    "queries": [
     [
@@ -506,6 +506,12 @@
      13,
      1,
      10.8
+    ],
+    [
+     "visa index",
+     3,
+     0,
+     58.3
     ],
     [
      "visa point",
@@ -530,12 +536,6 @@
      2,
      0,
      56.5
-    ],
-    [
-     "visa index",
-     2,
-     0,
-     39.5
     ],
     [
      "check passport visa",
@@ -574,8 +574,8 @@
      69
     ]
    ],
-   "position": 23.3,
-   "ctr": 0.0571
+   "position": 24.4,
+   "ctr": 0.0563
   },
   {
    "url": "https://visapoint.net/cleaner-salary-in-germany-2026-gross-net-savings-guide",
