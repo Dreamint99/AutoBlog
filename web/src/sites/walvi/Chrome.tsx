@@ -221,6 +221,7 @@ export function Footer({ site }: { site: Site }) {
             <Link href={`${b}/privacy`}>Privacy Policy</Link>
             <Link href={`${b}/terms`}>Terms</Link>
             <Link href={`${b}/disclaimer`}>Disclaimer</Link>
+            <Link href={`${b}/archive`}>All articles</Link>
           </div>
         </div>
         <div className="vp-foot-pop">

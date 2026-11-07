@@ -35,8 +35,38 @@ function isRscRequest(request, url) {
     h.has("next-router-prefetch") || url.searchParams.has("_rsc");
 }
 
+// The site components build links as /s/<site>/<path> (the internal route); on a
+// single-site deployment middleware 308s those to /<path>. Every internal link was
+// therefore a redirect hop for Googlebot — wasted crawl budget, and some /s/ URLs got
+// indexed as duplicates. Rewrite them to the clean URL in the served HTML.
+function cleanLinks(res, siteId) {
+  if (!siteId) return res;
+  const prefix = `/s/${siteId}`;
+  const fix = (attr) => ({
+    element(el) {
+      const v = el.getAttribute(attr);
+      if (!v || !v.startsWith(prefix)) return;
+      const rest = v.slice(prefix.length);
+      if (rest && !/^[/?#]/.test(rest)) return; // e.g. /s/countly-foo is not ours
+      el.setAttribute(attr, rest.startsWith("/") ? rest : `/${rest}`);
+    },
+  });
+  return new HTMLRewriter()
+    .on(`a[href^="${prefix}"]`, fix("href"))
+    .on(`link[href^="${prefix}"]`, fix("href"))
+    .on(`form[action^="${prefix}"]`, fix("action"))
+    .transform(res);
+}
+
 export default {
   async fetch(request, env, ctx) {
+    const res = await route(request, env, ctx);
+    const ct = res.headers.get("content-type") || "";
+    return ct.includes("text/html") ? cleanLinks(res, env.SITE_ID) : res;
+  },
+};
+
+const route = async (request, env, ctx) => {
     if (request.method !== "GET") return worker.fetch(request, env, ctx);
     const url = new URL(request.url);
     if (url.pathname.startsWith("/api/")) return worker.fetch(request, env, ctx);
@@ -80,5 +110,4 @@ export default {
       }
     }
     return res;
-  },
 };

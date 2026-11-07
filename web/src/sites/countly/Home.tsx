@@ -612,6 +612,9 @@ export function SiteFooter({ siteName, siteId, domain }: { siteName: string; sit
                 <li>
                   <Link href={`/s/${siteId}/disclaimer`}>Disclaimer</Link>
                 </li>
+                <li>
+                  <Link href={`/s/${siteId}/archive`}>All articles</Link>
+                </li>
               </ul>
             </div>
           </div>

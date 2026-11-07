@@ -21,6 +21,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const entries: MetadataRoute.Sitemap = [
     { url: `${base}/`, changeFrequency: "daily", priority: 1 },
+    // HTML sitemap — gives every article an internal link two clicks from home.
+    ...(["countly", "walvi", "infkey", "ninetymins", "gccguide"].includes(site.id)
+      ? [{ url: `${base}/archive`, changeFrequency: "daily" as const, priority: 0.6 }]
+      : []),
     ...articles.map((a) => ({
       url: `${base}/${a.slug}`,
       lastModified: a.created_at,

@@ -116,8 +116,18 @@ def stale(arts: list, site_id: str = "") -> list:
     cutoff = datetime.now(timezone.utc) - timedelta(days=DAYS)
     recent = datetime.now(timezone.utc) - timedelta(days=21)
     dem = search_demand(site_id, arts) if site_id else {}
+    # boost_top.py just strengthened these in place (title, FAQ, links) — give that a month
+    # to show in Search Console before a full rewrite would throw it away.
+    try:
+        cut = (datetime.now(timezone.utc) - timedelta(days=30)).isoformat()
+        boosted = {r["slug"] for r in json.load(open(os.path.join(ROOT, "data", "boost_log.json"), encoding="utf-8"))
+                   if r.get("site") == site_id and r.get("at", "") > cut}
+    except Exception:
+        boosted = set()
     out = []
     for a in arts:
+        if a.get("slug") in boosted:
+            continue
         title = a.get("title", "")
         try:
             created = datetime.fromisoformat(str(a.get("created_at", "")).replace("Z", "+00:00"))

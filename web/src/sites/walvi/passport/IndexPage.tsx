@@ -165,6 +165,20 @@ export default function PassportIndexPage({ site, rows, updatedAt }: { site: Sit
           <div className="vp-wrap">
             <h2 className="vp-h2">Full passport ranking</h2>
             <PassportTable siteId={site.id} rows={rows} />
+            {/* The table shows 50 rows until "show more" (client-side), so crawlers never
+                reached the other passport pages. A plain A–Z list links every one. */}
+            <details className="vp-az">
+              <summary>All {rows.length} passports A–Z</summary>
+              <p style={{ columns: "12rem", lineHeight: 1.9, fontSize: 14 }}>
+                {[...rows]
+                  .sort((x, y) => x.name.localeCompare(y.name))
+                  .map((r) => (
+                    <a key={r.slug} href={`${b}/passport/${r.slug}`} style={{ display: "block" }}>
+                      {r.name} passport
+                    </a>
+                  ))}
+              </p>
+            </details>
           </div>
         </section>
 

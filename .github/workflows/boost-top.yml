@@ -1,0 +1,65 @@
+name: Boost top articles (search demand)
+
+# Manual: strengthen the articles Google/Bing already show (generator/boost_top.py) —
+# query-matched title/description, quick answer, FAQ from the article's own facts,
+# schema dateModified, and up to 3 topical incoming links each. Free LLM chain only.
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: "Write to D1 (false = dry run, print only)"
+        type: boolean
+        default: false
+      count:
+        description: "Articles across the 5 sites"
+        default: "50"
+
+concurrency:
+  group: autoblog-drip
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  boost:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    defaults:
+      run:
+        working-directory: generator
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: npm install -g wrangler@4
+      - name: Boost
+        env:
+          STORAGE_BACKEND: d1
+          LLM_PROVIDER: chain
+          # Free providers only (no DeepSeek key: that one is paid).
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          PYTHONUTF8: "1"
+        run: python boost_top.py ${{ inputs.apply && '--apply' || '' }} ${{ inputs.count }}
+      - name: Upload backups (previous article fields)
+        if: inputs.apply
+        uses: actions/upload-artifact@v4
+        with:
+          name: boost-backup
+          path: generator/output/boost_backup/
+          retention-days: 90
+      - name: Commit log
+        if: inputs.apply
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/boost_log.json
+          git diff --cached --quiet || (git commit -m "Boost top articles $(date -u +%F)" && git pull --rebase && git push)

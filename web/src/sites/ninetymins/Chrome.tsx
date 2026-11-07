@@ -155,6 +155,7 @@ export function Footer({ site }: { site: Site }) {
               <li><Link href={`${s}/privacy`}>Privacy Policy</Link></li>
               <li><Link href={`${s}/terms`}>Terms</Link></li>
               <li><Link href={`${s}/disclaimer`}>Disclaimer</Link></li>
+              <li><Link href={`${s}/archive`}>All articles</Link></li>
             </ul>
           </div>
         </div>

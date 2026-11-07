@@ -65,8 +65,14 @@ def main():
     sites = {s["id"]: s for s in store.load_sites()}
     failed = [sid for sid in SITES if sid in sites and not run(sites[sid])]
     if failed:
+        # A site with no fresh, non-duplicate trend is normal (countly's trends often repeat
+        # articles it already has, and the duplicate guard rightly skips them). Only fail the
+        # run when NOTHING was published anywhere — that means the pipeline itself is broken.
         log(f"no hot article for: {', '.join(failed)}")
-        sys.exit(1)
+        ran = [sid for sid in SITES if sid in sites]
+        if len(failed) == len(ran):
+            sys.exit(1)
+        print(f"::warning::no hot article for {', '.join(failed)} (no fresh non-duplicate trend)")
 
 
 if __name__ == "__main__":

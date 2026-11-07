@@ -3,7 +3,7 @@ import { notFound, permanentRedirect } from "next/navigation";
 import { isVcArticle, vcFor } from "@/sites/walvi/visacheck/data";
 import type { Metadata } from "next";
 import { getSite, getArticle, getArticles, getRedirect } from "@/lib/data";
-import { processBody } from "@/lib/article";
+import { processBody, dropDeadLinks } from "@/lib/article";
 import { SITE_COMPONENTS } from "@/sites/registry";
 import { siteBaseUrl } from "@/lib/sites.config";
 import { JsonLd, breadcrumbSchema } from "@/lib/seo";
@@ -110,10 +110,12 @@ export default async function ArticlePage({
   const components = SITE_COMPONENTS[site.id];
   if (!components) notFound();
 
-  const { html, toc } = processBody(article.body_html);
-
   // Relevance-ranked related (shared topic words) → more pages/session, lower bounce.
-  const all = (await getArticles(id)).filter((a) => a.slug !== slug);
+  const everything = await getArticles(id);
+  const all = everything.filter((a) => a.slug !== slug);
+  const { html, toc } = processBody(
+    dropDeadLinks(article.body_html, site.domain, new Set(everything.map((a) => a.slug))),
+  );
   const STOP = new Set(
     "best top ten list lists 2024 2025 2026 data statistics report rankings ranking world worldwide by country countries most largest update updated guide".split(" ")
   );
