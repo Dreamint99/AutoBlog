@@ -1,7 +1,7 @@
 {
  "site": "aiu",
  "property": "https://aiuniversitybd.com/",
- "checked": "2026-11-06T09:56:01+00:00",
+ "checked": "2026-11-07T09:17:51+00:00",
  "sitemaps": [
   {
    "path": "https://aiuniversitybd.com/sitemap.xml",
@@ -21,10 +21,10 @@
    ]
   }
  ],
- "sitemap_count": 149,
+ "sitemap_count": 151,
  "byState": {
-  "Submitted and indexed": 26,
-  "Discovered - currently not indexed": 14,
+  "Submitted and indexed": 27,
+  "Discovered - currently not indexed": 13,
   "URL is unknown to Google": 1
  },
  "urls": [
@@ -37,7 +37,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/",
    "userCanonical": "https://aiuniversitybd.com/",
-   "lastCrawlTime": "2026-11-04T20:11:33Z",
+   "lastCrawlTime": "2026-11-06T09:51:06Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/",
@@ -54,7 +54,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/courses",
    "userCanonical": "https://aiuniversitybd.com/courses",
-   "lastCrawlTime": "2026-11-03T13:09:48Z",
+   "lastCrawlTime": "2026-11-07T06:02:57Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/courses?fac=language",
@@ -142,15 +142,15 @@
   },
   {
    "url": "https://aiuniversitybd.com/delete-account",
-   "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
-   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
-   "indexingState": "INDEXING_STATE_UNSPECIFIED",
-   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
-   "googleCanonical": null,
+   "verdict": "PASS",
+   "coverageState": "Submitted and indexed",
+   "robotsTxtState": "ALLOWED",
+   "indexingState": "INDEXING_ALLOWED",
+   "pageFetchState": "SUCCESSFUL",
+   "googleCanonical": "https://aiuniversitybd.com/delete-account",
    "userCanonical": null,
-   "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "lastCrawlTime": "2026-11-07T09:15:58Z",
+   "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/delete-account"
    ]
@@ -164,7 +164,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/app",
    "userCanonical": "https://aiuniversitybd.com/app",
-   "lastCrawlTime": "2026-11-03T07:36:45Z",
+   "lastCrawlTime": "2026-11-06T12:20:59Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/app"
@@ -377,17 +377,15 @@
   {
    "url": "https://aiuniversitybd.com/course/ai-video",
    "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
+   "coverageState": "URL is unknown to Google",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": [
-    "https://www.aiuniversitybd.com/course/ai-video"
-   ]
+   "crawledAs": null,
+   "referringUrls": null
   },
   {
    "url": "https://aiuniversitybd.com/course/prompt-engineering",
@@ -593,15 +591,18 @@
   {
    "url": "https://aiuniversitybd.com/course/arabic-gulf",
    "verdict": "NEUTRAL",
-   "coverageState": "URL is unknown to Google",
+   "coverageState": "Discovered - currently not indexed",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": null,
-   "referringUrls": null
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": [
+    "https://www.aiuniversitybd.com/course/arabic-gulf",
+    "http://www.aiuniversitybd.com/course/arabic-gulf"
+   ]
   },
   {
    "url": "https://aiuniversitybd.com/course/korean-eps",
