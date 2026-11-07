@@ -1,7 +1,7 @@
 {
  "site": "walvi",
  "property": "https://visapoint.net/",
- "checked": "2026-10-17T22:07:55+00:00",
+ "checked": "2026-11-07T14:35:08+00:00",
  "sitemaps": [
   {
    "path": "https://visapoint.net/sitemap.xml",
@@ -9,23 +9,23 @@
    "isPending": false,
    "isSitemapsIndex": false,
    "type": "sitemap",
-   "lastDownloaded": "2026-10-17T01:18:54.204Z",
+   "lastDownloaded": "2026-11-07T02:29:27.614Z",
    "warnings": "0",
    "errors": "0",
    "contents": [
     {
      "type": "web",
-     "submitted": "526",
+     "submitted": "606",
      "indexed": "0"
     }
    ]
   }
  ],
- "sitemap_count": 545,
+ "sitemap_count": 607,
  "byState": {
-  "Submitted and indexed": 22,
-  "URL is unknown to Google": 6,
-  "Discovered - currently not indexed": 13
+  "Submitted and indexed": 7,
+  "URL is unknown to Google": 16,
+  "Discovered - currently not indexed": 38
  },
  "urls": [
   {
@@ -37,16 +37,16 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://visapoint.net/",
    "userCanonical": "https://visapoint.net/",
-   "lastCrawlTime": "2026-10-13T10:58:45Z",
+   "lastCrawlTime": "2026-11-02T08:13:00Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
+    "https://visapoint.net/north-macedonia-to-netherlands-work-permit-2026-process-sala",
     "https://visapoint.net/bangladesh-to-hungary-work-visa-2026-cost-process-salary",
-    "http://visapoint.net/",
     "http://www.visapoint.net/"
    ]
   },
   {
-   "url": "https://visapoint.net/usa-work-visa-2026-costs-times-requirements",
+   "url": "https://visapoint.net/polar-vortex-europe-2026-heating-costs-workwear-prices-rights",
    "verdict": "NEUTRAL",
    "coverageState": "URL is unknown to Google",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
@@ -59,7 +59,100 @@
    "referringUrls": null
   },
   {
-   "url": "https://visapoint.net/us-citizens-europe-visa-2026-etias-eur7-work-visas-savings",
+   "url": "https://visapoint.net/qatar-to-france-work-visa-2025-routes-for-skilled-workers",
+   "verdict": "PASS",
+   "coverageState": "Submitted and indexed",
+   "robotsTxtState": "ALLOWED",
+   "indexingState": "INDEXING_ALLOWED",
+   "pageFetchState": "SUCCESSFUL",
+   "googleCanonical": "https://visapoint.net/qatar-to-france-work-visa-2025-routes-for-skilled-workers",
+   "userCanonical": "https://visapoint.net/qatar-to-france-work-visa-2025-routes-for-skilled-workers",
+   "lastCrawlTime": "2026-11-02T09:21:10Z",
+   "crawledAs": "MOBILE",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/bangladesh-visa-free-countries-2026-15-visa-free-21-on-arrival-36-tota",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/india-passport-ranking-2026-80th-with-58-visa-free-destinations",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/moldova-work-permit-2025-complete-guide-for-bangladeshi-workers",
+   "verdict": "PASS",
+   "coverageState": "Submitted and indexed",
+   "robotsTxtState": "ALLOWED",
+   "indexingState": "INDEXING_ALLOWED",
+   "pageFetchState": "SUCCESSFUL",
+   "googleCanonical": "https://visapoint.net/moldova-work-permit-2025-complete-guide-for-bangladeshi-workers",
+   "userCanonical": "https://visapoint.net/moldova-work-permit-2025-complete-guide-for-bangladeshi-workers",
+   "lastCrawlTime": "2026-11-02T01:23:55Z",
+   "crawledAs": "MOBILE",
+   "referringUrls": [
+    "https://visapoint.net/sitemap.xml"
+   ]
+  },
+  {
+   "url": "https://visapoint.net/etias-for-us-citizens-eur70-fee-rules-2026-guide",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/portugal-work-visa-2026-complete-guide-from-saudi-arabia",
+   "verdict": "PASS",
+   "coverageState": "Submitted and indexed",
+   "robotsTxtState": "ALLOWED",
+   "indexingState": "INDEXING_ALLOWED",
+   "pageFetchState": "SUCCESSFUL",
+   "googleCanonical": "https://visapoint.net/portugal-work-visa-2026-complete-guide-from-saudi-arabia",
+   "userCanonical": "https://visapoint.net/portugal-work-visa-2026-complete-guide-from-saudi-arabia",
+   "lastCrawlTime": "2026-10-09T09:18:49Z",
+   "crawledAs": "MOBILE",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/pakistani-passport-e-visa-countries-2026-full-list-fees",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/tanzania-immigration-visa-2026-50-usd-fee-10-day-processing-portal-gui",
    "verdict": "NEUTRAL",
    "coverageState": "URL is unknown to Google",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
@@ -72,7 +165,7 @@
    "referringUrls": null
   },
   {
-   "url": "https://visapoint.net/countries-with-visa-on-arrival-38-options-fees-2026",
+   "url": "https://visapoint.net/electrician-salary-poland-2026-eur1500-eur2400-net-after-zus",
    "verdict": "NEUTRAL",
    "coverageState": "URL is unknown to Google",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
@@ -85,7 +178,7 @@
    "referringUrls": null
   },
   {
-   "url": "https://visapoint.net/o1-visa-requirements-2026-3-criteria-checklist-1055-fee-15-day-premium",
+   "url": "https://visapoint.net/uk-immigration-facial-recognition-24-hour-rule-ps75m-palantir-2026-vis",
    "verdict": "NEUTRAL",
    "coverageState": "URL is unknown to Google",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
@@ -98,87 +191,22 @@
    "referringUrls": null
   },
   {
-   "url": "https://visapoint.net/us-visa-requirements-2026-etias-uk-eta-china-l-visa",
-   "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
-   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
-   "indexingState": "INDEXING_STATE_UNSPECIFIED",
-   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
-   "googleCanonical": null,
-   "userCanonical": null,
-   "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": null
-  },
-  {
-   "url": "https://visapoint.net/eu-visa-on-arrival-5-eu-spots-for-skilled-workers-2026",
-   "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
-   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
-   "indexingState": "INDEXING_STATE_UNSPECIFIED",
-   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
-   "googleCanonical": null,
-   "userCanonical": null,
-   "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": null
-  },
-  {
-   "url": "https://visapoint.net/canada-work-permit-processing-time-2026-20-22-weeks",
-   "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
-   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
-   "indexingState": "INDEXING_STATE_UNSPECIFIED",
-   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
-   "googleCanonical": null,
-   "userCanonical": null,
-   "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": null
-  },
-  {
-   "url": "https://visapoint.net/canada-work-permit-processing-time-2026-exact-timeline-cost",
-   "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
-   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
-   "indexingState": "INDEXING_STATE_UNSPECIFIED",
-   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
-   "googleCanonical": null,
-   "userCanonical": null,
-   "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": null
-  },
-  {
-   "url": "https://visapoint.net/italy-digital-nomad-visa-earn-eur2k-save-eur300-400-in-rome",
-   "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
-   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
-   "indexingState": "INDEXING_STATE_UNSPECIFIED",
-   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
-   "googleCanonical": null,
-   "userCanonical": null,
-   "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": null
-  },
-  {
-   "url": "https://visapoint.net/qatar-to-europe-work-permit-2026-costs-routes-step-by-step-guide",
+   "url": "https://visapoint.net/serbia-work-visa-2025-saudi-arabia-to-serbia-guide",
    "verdict": "PASS",
    "coverageState": "Submitted and indexed",
    "robotsTxtState": "ALLOWED",
    "indexingState": "INDEXING_ALLOWED",
    "pageFetchState": "SUCCESSFUL",
-   "googleCanonical": "https://visapoint.net/qatar-to-europe-work-permit-2026-costs-routes-step-by-step-guide",
-   "userCanonical": "https://visapoint.net/qatar-to-europe-work-permit-2026-costs-routes-step-by-step-guide",
-   "lastCrawlTime": "2026-10-10T03:45:20Z",
+   "googleCanonical": "https://visapoint.net/serbia-work-visa-2025-saudi-arabia-to-serbia-guide",
+   "userCanonical": "https://visapoint.net/serbia-work-visa-2025-saudi-arabia-to-serbia-guide",
+   "lastCrawlTime": "2026-10-09T02:58:17Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://visapoint.net/sitemap.xml"
    ]
   },
   {
-   "url": "https://visapoint.net/easiest-work-visa-5-european-trades-picks-2026",
+   "url": "https://visapoint.net/tanzania-evisa-2026-us-50-single-us-100-multi-us-20-rush",
    "verdict": "NEUTRAL",
    "coverageState": "Discovered - currently not indexed",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
@@ -191,7 +219,33 @@
    "referringUrls": null
   },
   {
-   "url": "https://visapoint.net/canada-work-permit-processing-306-365-days-wait-in-2026",
+   "url": "https://visapoint.net/plumber-salary-slovakia-2026-gross-vs-net-pay-savings",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/truck-driver-salary-lithuania-2026-eur1600-eur2600-pay",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/welder-salary-croatia-2026-net-pay-savings-reality",
    "verdict": "NEUTRAL",
    "coverageState": "URL is unknown to Google",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
@@ -204,7 +258,7 @@
    "referringUrls": null
   },
   {
-   "url": "https://visapoint.net/canada-work-permit-time-11-weeks-fees-steps-wait-2026",
+   "url": "https://visapoint.net/electrician-salary-poland-2026-real-pay-savings-2",
    "verdict": "NEUTRAL",
    "coverageState": "Discovered - currently not indexed",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
@@ -217,7 +271,7 @@
    "referringUrls": null
   },
   {
-   "url": "https://visapoint.net/us-europe-work-visa-2026-etias-fee-salary-thresholds-savings",
+   "url": "https://visapoint.net/unemployment-insurance-foreign-workers-2026-7-eu-states-eur220-eur700",
    "verdict": "NEUTRAL",
    "coverageState": "Discovered - currently not indexed",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
@@ -230,7 +284,20 @@
    "referringUrls": null
   },
   {
-   "url": "https://visapoint.net/japan-work-visa-fees-y-3000-y-6000-2026-step-by-step-guide",
+   "url": "https://visapoint.net/serbia-work-permit-2025-cost-documents-timeline-for-bangladeshi",
+   "verdict": "PASS",
+   "coverageState": "Submitted and indexed",
+   "robotsTxtState": "ALLOWED",
+   "indexingState": "INDEXING_ALLOWED",
+   "pageFetchState": "SUCCESSFUL",
+   "googleCanonical": "https://visapoint.net/serbia-work-permit-2025-cost-documents-timeline-for-bangladeshi",
+   "userCanonical": "https://visapoint.net/serbia-work-permit-2025-cost-documents-timeline-for-bangladeshi",
+   "lastCrawlTime": "2026-10-31T06:26:40Z",
+   "crawledAs": "MOBILE",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/tanzania-immigration-2026-evisa-costs-steps-portal-guide",
    "verdict": "NEUTRAL",
    "coverageState": "Discovered - currently not indexed",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
@@ -243,345 +310,7 @@
    "referringUrls": null
   },
   {
-   "url": "https://visapoint.net/digital-nomad-visa-salaries-7-high-pay-trade-jobs-2026",
-   "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
-   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
-   "indexingState": "INDEXING_STATE_UNSPECIFIED",
-   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
-   "googleCanonical": null,
-   "userCanonical": null,
-   "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": null
-  },
-  {
-   "url": "https://visapoint.net/hot-work-permit-eur56800-salary-guide-for-eu-trades-2026",
-   "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
-   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
-   "indexingState": "INDEXING_STATE_UNSPECIFIED",
-   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
-   "googleCanonical": null,
-   "userCanonical": null,
-   "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": null
-  },
-  {
-   "url": "https://visapoint.net/spain-digital-nomad-visa-eur80-fee-eur2849-income-2026",
-   "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
-   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
-   "indexingState": "INDEXING_STATE_UNSPECIFIED",
-   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
-   "googleCanonical": null,
-   "userCanonical": null,
-   "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": null
-  },
-  {
-   "url": "https://visapoint.net/uk-construction-work-visa-2026-essential-guide",
-   "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
-   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
-   "indexingState": "INDEXING_STATE_UNSPECIFIED",
-   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
-   "googleCanonical": null,
-   "userCanonical": null,
-   "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": null
-  },
-  {
-   "url": "https://visapoint.net/canada-work-visa-2026-complete-guide-for-skilled-trades",
-   "verdict": "PASS",
-   "coverageState": "Submitted and indexed",
-   "robotsTxtState": "ALLOWED",
-   "indexingState": "INDEXING_ALLOWED",
-   "pageFetchState": "SUCCESSFUL",
-   "googleCanonical": "https://visapoint.net/canada-work-visa-2026-complete-guide-for-skilled-trades",
-   "userCanonical": "https://visapoint.net/canada-work-visa-2026-complete-guide-for-skilled-trades",
-   "lastCrawlTime": "2026-10-13T15:19:54Z",
-   "crawledAs": "MOBILE",
-   "referringUrls": [
-    "https://visapoint.net/sitemap.xml"
-   ]
-  },
-  {
-   "url": "https://visapoint.net/bangladeshi-carpenter-visa-free-top-5-best-2026",
-   "verdict": "PASS",
-   "coverageState": "Submitted and indexed",
-   "robotsTxtState": "ALLOWED",
-   "indexingState": "INDEXING_ALLOWED",
-   "pageFetchState": "SUCCESSFUL",
-   "googleCanonical": "https://visapoint.net/bangladeshi-carpenter-visa-free-top-5-best-2026",
-   "userCanonical": "https://visapoint.net/bangladeshi-carpenter-visa-free-top-5-best-2026",
-   "lastCrawlTime": "2026-10-13T13:14:53Z",
-   "crawledAs": "MOBILE",
-   "referringUrls": [
-    "https://visapoint.net/sitemap.xml"
-   ]
-  },
-  {
-   "url": "https://visapoint.net/visa-free-europe-trades-2026-9-top-hotspots-salary-guide",
-   "verdict": "PASS",
-   "coverageState": "Submitted and indexed",
-   "robotsTxtState": "ALLOWED",
-   "indexingState": "INDEXING_ALLOWED",
-   "pageFetchState": "SUCCESSFUL",
-   "googleCanonical": "https://visapoint.net/visa-free-europe-trades-2026-9-top-hotspots-salary-guide",
-   "userCanonical": "https://visapoint.net/visa-free-europe-trades-2026-9-top-hotspots-salary-guide",
-   "lastCrawlTime": "2026-10-13T16:12:35Z",
-   "crawledAs": "MOBILE",
-   "referringUrls": [
-    "https://visapoint.net/sitemap.xml"
-   ]
-  },
-  {
-   "url": "https://visapoint.net/lithuania-work-visa-2024-complete-guide-for-bangladeshis",
-   "verdict": "PASS",
-   "coverageState": "Submitted and indexed",
-   "robotsTxtState": "ALLOWED",
-   "indexingState": "INDEXING_ALLOWED",
-   "pageFetchState": "SUCCESSFUL",
-   "googleCanonical": "https://visapoint.net/lithuania-work-visa-2024-complete-guide-for-bangladeshis",
-   "userCanonical": "https://visapoint.net/lithuania-work-visa-2024-complete-guide-for-bangladeshis",
-   "lastCrawlTime": "2026-10-08T13:06:36Z",
-   "crawledAs": "MOBILE",
-   "referringUrls": [
-    "https://visapoint.net/sitemap.xml"
-   ]
-  },
-  {
-   "url": "https://visapoint.net/europe-visa-on-arrival-2026-complete-9-country-guide",
-   "verdict": "PASS",
-   "coverageState": "Submitted and indexed",
-   "robotsTxtState": "ALLOWED",
-   "indexingState": "INDEXING_ALLOWED",
-   "pageFetchState": "SUCCESSFUL",
-   "googleCanonical": "https://visapoint.net/europe-visa-on-arrival-2026-complete-9-country-guide",
-   "userCanonical": "https://visapoint.net/europe-visa-on-arrival-2026-complete-9-country-guide",
-   "lastCrawlTime": "2026-10-13T07:20:33Z",
-   "crawledAs": "MOBILE",
-   "referringUrls": [
-    "https://visapoint.net/sitemap.xml"
-   ]
-  },
-  {
-   "url": "https://visapoint.net/e-visa-europe-india-5-top-options-for-2026",
-   "verdict": "PASS",
-   "coverageState": "Submitted and indexed",
-   "robotsTxtState": "ALLOWED",
-   "indexingState": "INDEXING_ALLOWED",
-   "pageFetchState": "SUCCESSFUL",
-   "googleCanonical": "https://visapoint.net/e-visa-europe-india-5-top-options-for-2026",
-   "userCanonical": "https://visapoint.net/e-visa-europe-india-5-top-options-for-2026",
-   "lastCrawlTime": "2026-10-13T18:49:54Z",
-   "crawledAs": "MOBILE",
-   "referringUrls": [
-    "https://www.visapoint.net/e-visa-europe-india-5-top-options-for-2026"
-   ]
-  },
-  {
-   "url": "https://visapoint.net/uk-skilled-worker-visa-2026-essential-guide-for-south-asian",
-   "verdict": "PASS",
-   "coverageState": "Submitted and indexed",
-   "robotsTxtState": "ALLOWED",
-   "indexingState": "INDEXING_ALLOWED",
-   "pageFetchState": "SUCCESSFUL",
-   "googleCanonical": "https://visapoint.net/uk-skilled-worker-visa-2026-essential-guide-for-south-asian",
-   "userCanonical": "https://visapoint.net/uk-skilled-worker-visa-2026-essential-guide-for-south-asian",
-   "lastCrawlTime": "2026-10-14T08:09:41Z",
-   "crawledAs": "MOBILE",
-   "referringUrls": [
-    "https://www.visapoint.net/uk-skilled-worker-visa-2026-essential-guide-for-south-asian"
-   ]
-  },
-  {
-   "url": "https://visapoint.net/saudi-visa-status-check-2026-complete-guide",
-   "verdict": "PASS",
-   "coverageState": "Submitted and indexed",
-   "robotsTxtState": "ALLOWED",
-   "indexingState": "INDEXING_ALLOWED",
-   "pageFetchState": "SUCCESSFUL",
-   "googleCanonical": "https://visapoint.net/saudi-visa-status-check-2026-complete-guide",
-   "userCanonical": "https://visapoint.net/saudi-visa-status-check-2026-complete-guide",
-   "lastCrawlTime": "2026-10-15T16:18:31Z",
-   "crawledAs": "MOBILE",
-   "referringUrls": [
-    "https://www.visapoint.net/saudi-visa-status-check-2026-complete-guide"
-   ]
-  },
-  {
-   "url": "https://visapoint.net/us-visa-appointment-2026-essential-guide-for-indian-engineers",
-   "verdict": "PASS",
-   "coverageState": "Submitted and indexed",
-   "robotsTxtState": "ALLOWED",
-   "indexingState": "INDEXING_ALLOWED",
-   "pageFetchState": "SUCCESSFUL",
-   "googleCanonical": "https://visapoint.net/us-visa-appointment-2026-essential-guide-for-indian-engineers",
-   "userCanonical": "https://visapoint.net/us-visa-appointment-2026-essential-guide-for-indian-engineers",
-   "lastCrawlTime": "2026-10-16T07:38:32Z",
-   "crawledAs": "MOBILE",
-   "referringUrls": [
-    "https://www.visapoint.net/us-visa-appointment-2026-essential-guide-for-indian-engineers"
-   ]
-  },
-  {
-   "url": "https://visapoint.net/visa-on-arrival-2026-35-top-options-for-south-asian-workers",
-   "verdict": "PASS",
-   "coverageState": "Submitted and indexed",
-   "robotsTxtState": "ALLOWED",
-   "indexingState": "INDEXING_ALLOWED",
-   "pageFetchState": "SUCCESSFUL",
-   "googleCanonical": "https://visapoint.net/visa-on-arrival-2026-35-top-options-for-south-asian-workers",
-   "userCanonical": "https://visapoint.net/visa-on-arrival-2026-35-top-options-for-south-asian-workers",
-   "lastCrawlTime": "2026-10-13T12:09:09Z",
-   "crawledAs": "MOBILE",
-   "referringUrls": [
-    "https://www.visapoint.net/visa-on-arrival-2026-35-top-options-for-south-asian-workers"
-   ]
-  },
-  {
-   "url": "https://visapoint.net/digital-nomad-visa-2026-complete-guide-for-skilled-trades",
-   "verdict": "PASS",
-   "coverageState": "Submitted and indexed",
-   "robotsTxtState": "ALLOWED",
-   "indexingState": "INDEXING_ALLOWED",
-   "pageFetchState": "SUCCESSFUL",
-   "googleCanonical": "https://visapoint.net/digital-nomad-visa-2026-complete-guide-for-skilled-trades",
-   "userCanonical": "https://visapoint.net/digital-nomad-visa-2026-complete-guide-for-skilled-trades",
-   "lastCrawlTime": "2026-10-17T04:10:48Z",
-   "crawledAs": "MOBILE",
-   "referringUrls": [
-    "https://www.visapoint.net/digital-nomad-visa-2026-complete-guide-for-skilled-trades"
-   ]
-  },
-  {
-   "url": "https://visapoint.net/uk-work-visa-2026-complete-guide-for-electricians",
-   "verdict": "PASS",
-   "coverageState": "Submitted and indexed",
-   "robotsTxtState": "ALLOWED",
-   "indexingState": "INDEXING_ALLOWED",
-   "pageFetchState": "SUCCESSFUL",
-   "googleCanonical": "https://visapoint.net/uk-work-visa-2026-complete-guide-for-electricians",
-   "userCanonical": "https://visapoint.net/uk-work-visa-2026-complete-guide-for-electricians",
-   "lastCrawlTime": "2026-10-13T15:32:21Z",
-   "crawledAs": "MOBILE",
-   "referringUrls": [
-    "https://www.visapoint.net/uk-work-visa-2026-complete-guide-for-electricians"
-   ]
-  },
-  {
-   "url": "https://visapoint.net/visa-requirements-for-indian-citizens-7-essential-steps",
-   "verdict": "PASS",
-   "coverageState": "Submitted and indexed",
-   "robotsTxtState": "ALLOWED",
-   "indexingState": "INDEXING_ALLOWED",
-   "pageFetchState": "SUCCESSFUL",
-   "googleCanonical": "https://visapoint.net/visa-requirements-for-indian-citizens-7-essential-steps",
-   "userCanonical": "https://visapoint.net/visa-requirements-for-indian-citizens-7-essential-steps",
-   "lastCrawlTime": "2026-10-13T02:44:00Z",
-   "crawledAs": "MOBILE",
-   "referringUrls": [
-    "https://www.visapoint.net/visa-requirements-for-indian-citizens-7-essential-steps"
-   ]
-  },
-  {
-   "url": "https://visapoint.net/schengen-visa-countries-2026-best-work-destinations",
-   "verdict": "PASS",
-   "coverageState": "Submitted and indexed",
-   "robotsTxtState": "ALLOWED",
-   "indexingState": "INDEXING_ALLOWED",
-   "pageFetchState": "SUCCESSFUL",
-   "googleCanonical": "https://visapoint.net/schengen-visa-countries-2026-best-work-destinations",
-   "userCanonical": "https://visapoint.net/schengen-visa-countries-2026-best-work-destinations",
-   "lastCrawlTime": "2026-10-11T03:53:32Z",
-   "crawledAs": "MOBILE",
-   "referringUrls": [
-    "https://visapoint.net/sitemap.xml"
-   ]
-  },
-  {
-   "url": "https://visapoint.net/portugal-work-visa-2024-bangladesh-to-portugal-step-by-step-guide",
-   "verdict": "PASS",
-   "coverageState": "Submitted and indexed",
-   "robotsTxtState": "ALLOWED",
-   "indexingState": "INDEXING_ALLOWED",
-   "pageFetchState": "SUCCESSFUL",
-   "googleCanonical": "https://visapoint.net/portugal-work-visa-2024-bangladesh-to-portugal-step-by-step-guide",
-   "userCanonical": "https://visapoint.net/portugal-work-visa-2024-bangladesh-to-portugal-step-by-step-guide",
-   "lastCrawlTime": "2026-10-13T21:58:27Z",
-   "crawledAs": "MOBILE",
-   "referringUrls": [
-    "https://www.visapoint.net/portugal-work-visa-2024-bangladesh-to-portugal-step-by-step-guide",
-    "https://visapoint.net/sitemap.xml"
-   ]
-  },
-  {
-   "url": "https://visapoint.net/schengen-visa-requirements-2026-7-easy-steps-checklist",
-   "verdict": "PASS",
-   "coverageState": "Submitted and indexed",
-   "robotsTxtState": "ALLOWED",
-   "indexingState": "INDEXING_ALLOWED",
-   "pageFetchState": "SUCCESSFUL",
-   "googleCanonical": "https://visapoint.net/schengen-visa-requirements-2026-7-easy-steps-checklist",
-   "userCanonical": "https://visapoint.net/schengen-visa-requirements-2026-7-easy-steps-checklist",
-   "lastCrawlTime": "2026-10-11T05:59:34Z",
-   "crawledAs": "MOBILE",
-   "referringUrls": [
-    "http://www.visapoint.net/schengen-visa-requirements-2026-7-easy-steps-checklist",
-    "https://visapoint.net/sitemap.xml"
-   ]
-  },
-  {
-   "url": "https://visapoint.net/e-visa-countries-for-indians-2026-5-best-destinations",
-   "verdict": "PASS",
-   "coverageState": "Submitted and indexed",
-   "robotsTxtState": "ALLOWED",
-   "indexingState": "INDEXING_ALLOWED",
-   "pageFetchState": "SUCCESSFUL",
-   "googleCanonical": "https://visapoint.net/e-visa-countries-for-indians-2026-5-best-destinations",
-   "userCanonical": "https://visapoint.net/e-visa-countries-for-indians-2026-5-best-destinations",
-   "lastCrawlTime": "2026-10-11T03:16:03Z",
-   "crawledAs": "MOBILE",
-   "referringUrls": [
-    "https://visapoint.net/sitemap.xml"
-   ]
-  },
-  {
-   "url": "https://visapoint.net/schengen-visa-application-2026-complete-90-eur-guide",
-   "verdict": "PASS",
-   "coverageState": "Submitted and indexed",
-   "robotsTxtState": "ALLOWED",
-   "indexingState": "INDEXING_ALLOWED",
-   "pageFetchState": "SUCCESSFUL",
-   "googleCanonical": "https://visapoint.net/schengen-visa-application-2026-complete-90-eur-guide",
-   "userCanonical": "https://visapoint.net/schengen-visa-application-2026-complete-90-eur-guide",
-   "lastCrawlTime": "2026-10-15T17:26:02Z",
-   "crawledAs": "MOBILE",
-   "referringUrls": [
-    "https://www.visapoint.net/schengen-visa-application-2026-complete-90-eur-guide",
-    "https://visapoint.net/sitemap.xml"
-   ]
-  },
-  {
-   "url": "https://visapoint.net/poland-work-permit-from-bangladesh-2026-guide",
-   "verdict": "PASS",
-   "coverageState": "Submitted and indexed",
-   "robotsTxtState": "ALLOWED",
-   "indexingState": "INDEXING_ALLOWED",
-   "pageFetchState": "SUCCESSFUL",
-   "googleCanonical": "https://visapoint.net/poland-work-permit-from-bangladesh-2026-guide",
-   "userCanonical": "https://visapoint.net/poland-work-permit-from-bangladesh-2026-guide",
-   "lastCrawlTime": "2026-10-10T21:52:46Z",
-   "crawledAs": "MOBILE",
-   "referringUrls": null
-  },
-  {
-   "url": "https://visapoint.net/croatia-work-permit-from-india-2026-7-essential-steps-salaries",
+   "url": "https://visapoint.net/tanzania-visa-2026-50-fee-10-day-processing-documents",
    "verdict": "NEUTRAL",
    "coverageState": "URL is unknown to Google",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
@@ -594,16 +323,513 @@
    "referringUrls": null
   },
   {
-   "url": "https://visapoint.net/poland-work-permit-2026-costs-salary-visa-guide",
+   "url": "https://visapoint.net/european-work-permits-2026-9-country-visa-routes-salaries-savings",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/schengen-visa-photo-2026-35x45-mm-digital-upload-vfs-costs",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/serbia-work-permit-2025-complete-guide-from-qatar",
    "verdict": "PASS",
    "coverageState": "Submitted and indexed",
    "robotsTxtState": "ALLOWED",
    "indexingState": "INDEXING_ALLOWED",
    "pageFetchState": "SUCCESSFUL",
-   "googleCanonical": "https://visapoint.net/poland-work-permit-2026-costs-salary-visa-guide",
-   "userCanonical": "https://visapoint.net/poland-work-permit-2026-costs-salary-visa-guide",
-   "lastCrawlTime": "2026-10-08T13:18:07Z",
+   "googleCanonical": "https://visapoint.net/serbia-work-permit-2025-complete-guide-from-qatar",
+   "userCanonical": "https://visapoint.net/serbia-work-permit-2025-complete-guide-from-qatar",
+   "lastCrawlTime": "2026-10-30T21:48:28Z",
    "crawledAs": "MOBILE",
+   "referringUrls": [
+    "https://visapoint.net/visa-check/serbia",
+    "https://visapoint.net/sitemap.xml"
+   ]
+  },
+  {
+   "url": "https://visapoint.net/electrician-poland-2026-eur2-3k-gross-eur1-6k-net-eur800-saved",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/europe-work-visa-trades-2026-10-countries-eur600-800-savings",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/visa-free-countries-for-indians-2026-34-destinations-stay-limits-fees",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/hvac-jobs-poland-2026-eur1800-eur2550-salary-visa-costs",
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": null,
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/carpenter-jobs-in-croatia-2026-eur1400-gross-eur470-760-savings",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/poland-work-visa-for-welders-2026-salaries-permits",
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": null,
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/germany-schengen-visa-2026-eur80-fee-15-day-processing-south-asia-guid",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/south-africa-visa-requirements-2026-fees-docs-time",
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": null,
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/south-korea-visa-2026-fees-40-80-documents-5-15-day-processing",
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": null,
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/australia-visa-requirements-2026-fees-docs-timeline",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/macau-visa-requirements-2026-fees-steps-5-nation-guide",
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": null,
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/check-saudi-arabia-visa-status-online-4-portals-fees-sar-2600-3200-202",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/european-work-visa-2026-10-countries-8-trades-net-salaries-savings",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/tn-visa-requirements-2026-63-professions-185-fee-3-year-limit",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/check-saudi-visa-status-online-2026-passport-number-steps-fees",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/europe-work-permits-2026-82k-italy-65k-croatia-eur520-eur1-2k",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/spain-visa-requirements-2026-eur90-schengen-fee-15-day-processing-work",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/australia-work-visa-2026-types-costs-aud-4770-steps",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/spain-schengen-visa-2026-eur80-fee-15-45-day-processing-checklist",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/sherpa-visa-requirements-2026-10-30-fees-docs-12-hr-evisa",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/plumber-portugal-salary-2026-pay-visa-savings",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/italy-work-permit-2026-bangladeshi-worker-s-complete-guide",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/minimum-salary-to-work-in-hungary-2026-net-pay-savings",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/turkey-to-croatia-work-permit-2026-cost-process-salary",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/nepal-europe-work-visa-2026-12400-permits-costs-3-4-weeks",
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": null,
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/new-zealand-visa-requirements-2026-fees-evisa-nzeta",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/vietnam-visa-requirements-2026-us-25-e-visa-3-5-day-processing",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/e-visa-countries-for-indian-passport-66-destinations-in-2026",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/schengen-visa-insurance-2026-cost-rules",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/pakistan-e-visa-2026-35-destinations-fees",
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": null,
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/canada-visa-requirements-2026-7-essential-documents",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/uk-visa-sponsorship-jobs-2026-salaries-apply-guide",
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": null,
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/jobs-abroad-with-visa-sponsorship-7-trades-paying-eur1k-eur2-6k-in-202",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/italy-visa-requirements-2026-fees-steps",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/thailand-visa-requirements-2026-fees-tdac-entry-rules",
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": null,
+   "referringUrls": null
+  },
+  {
+   "url": "https://visapoint.net/digital-nomad-visa-portugal-2026-income-steps",
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": null,
    "referringUrls": null
   }
  ]
