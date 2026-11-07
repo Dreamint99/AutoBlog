@@ -38,9 +38,11 @@ jobs:
       - run: python site_health.py ${{ github.event.inputs.sites }}
         env:
           HEALTH_LINKS: ${{ github.event.inputs.links || '1' }}
+      - name: Crawl audit (orphans, click depth, redirecting/broken internal links)
+        run: python seo_crawl.py ${{ github.event.inputs.sites }}
       - name: Commit results
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/site_health.json
+          git add data/site_health.json data/seo_crawl.json
           git diff --cached --quiet || (git commit -m "Site health $(date -u +%F)" && git pull --rebase && git push)

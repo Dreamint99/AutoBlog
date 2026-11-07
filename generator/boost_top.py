@@ -111,8 +111,12 @@ def full_article(site_id: str, slug: str) -> dict | None:
 
 
 # ── picking ───────────────────────────────────────────────────────────
+STOP = set("the and for with from what who how which best top most list lists world worldwide guide 2024 2025 2026 2027 "
+           "online free new latest full complete ranked ranking rankings".split())
+
+
 def toks(s: str) -> set:
-    return {w for w in re.findall(r"[a-z0-9]+", s.lower()) if len(w) > 2 and not w.isdigit()}
+    return {w for w in re.findall(r"[a-z0-9]+", s.lower()) if len(w) > 2 and not w.isdigit() and w not in STOP}
 
 
 def demand(site_id: str, arts: list) -> dict:
@@ -141,11 +145,13 @@ def demand(site_id: str, arts: list) -> dict:
     try:
         titles = [(a["slug"], toks(a.get("title", "") + " " + a["slug"].replace("-", " "))) for a in arts]
         for q in json.load(open(os.path.join(HERE, "data", f"bing_{site_id}.json"), encoding="utf-8")).get("queries", []):
+            # Bing reports queries, not pages: attach a query only when the article title/slug
+            # holds EVERY topic word of it ("top websites" must not land on "top universities").
             qt = toks(q.get("q", ""))
-            if len(qt) < 2:
+            if not qt:
                 continue
             best = max(titles, key=lambda t: len(qt & t[1]), default=None)
-            if best and len(qt & best[1]) >= max(2, int(len(qt) * 0.6 + 0.5)):
+            if best and qt <= best[1]:
                 add(best[0], q["q"], q.get("impr", 0), q.get("pos", 0))
     except Exception as e:
         log(f"[{site_id}] no Bing data ({e})")
@@ -174,6 +180,8 @@ Return JSON only:
 {"meta_title": "...", "meta_description": "...", "quick_answer": "...", "faq": [{"q": "...", "a": "..."}]}
 Rules:
 - Use ONLY facts, numbers and names that appear in the article text. Never invent figures, dates, fees or laws.
+- Never add an "as of <date>" or "in <month year>" that the article itself does not state.
+- Skip any search query that is about a different subject than the article.
 - meta_title: 40-60 characters, starts with the main search topic, plain and specific (a number or year when the
   article has one). No clickbait, no ALL CAPS, never the words Complete, Essential, Ultimate, Comprehensive.
 - meta_description: 120-155 characters, ONE OR TWO full sentences ending with a period, says what the reader gets.
@@ -244,9 +252,8 @@ def write_boost(a: dict, queries: list) -> dict | None:
 
 def apply_boost(a: dict, b: dict) -> dict:
     body = QA_BLOCK.sub("", BOOST.sub("", a["body_html"]))
-    stamp = NOW.strftime("%B %Y")
     quick = (f'<!-- ab-boost --><p class="quick-answer"><strong>Quick answer:</strong> {esc(b["quick_answer"])}'
-             f' <small>(Updated {stamp})</small></p><!-- /ab-boost -->\n')
+             '</p><!-- /ab-boost -->\n')
     body = quick + body.lstrip()
     if b["faq"]:
         items = "".join(f"<div class='faq-item'><h3>{esc(f['q'])}</h3><p>{esc(f['a'])}</p></div>" for f in b["faq"])
