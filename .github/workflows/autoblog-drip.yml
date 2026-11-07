@@ -5,10 +5,10 @@ name: AutoBlog daily auto-post (D1)
 #   15:00 UTC = 21:00 BST   |   20:00 UTC = 02:00 BST
 on:
   schedule:
+    # ONE run a day since 2026-11-07 (was 2 + a NinetyMins extra = 100-160 posts/site/month).
+    # Google was leaving most of those "Discovered – not indexed"; fewer, better posts plus
+    # boost_top.py / content refresh on the pages search engines already show.
     - cron: "0 15 * * *"
-    - cron: "0 20 * * *"
-    # NinetyMins-only 3rd daily article (09:30 UTC = 15:30 BST).
-    - cron: "30 9 * * *"
   workflow_dispatch:
     inputs:
       per_site:
@@ -89,10 +89,10 @@ jobs:
           # GCCGuide: one extra article per run, picked from the country x topic coverage matrix
           # (generator/data/coverage_gccguide.json) so all six Gulf countries fill up evenly.
           python drip.py gccguide 1 500 || FAIL=1
-          # Countly: the 20:00 run takes the wealth category, the 15:00 run a general topic.
+          # Countly: even days take the wealth category, odd days a general topic.
           # The wealth angle rotates daily — one fixed seed produced near-duplicate titles
           # ("Richest billionaires net worth: Top 10 …") that cannibalise each other.
-          if [ "${{ github.event.schedule }}" = "0 20 * * *" ]; then
+          if [ $(( $(date +%j | sed 's/^0*//') % 2 )) -eq 0 ]; then
             WEALTH=(
               "richest people in a specific country (pick a country not yet covered) net worth ranking"
               "richest women in the world self-made female billionaires ranking"

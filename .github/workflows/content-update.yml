@@ -75,6 +75,8 @@ jobs:
             python content_update.py "${{ github.event.inputs.job }}" "${{ github.event.inputs.site }}" "${{ github.event.inputs.count }}"
             exit 0
           fi
-          python content_update.py fill infkey 2 || true
-          for s in countly walvi ninetymins gccguide; do python content_update.py fill $s 1 || true; done
+          # New pillar articles once a week (Monday); refreshing existing pages runs daily.
+          if [ "$(date -u +%u)" = "1" ]; then
+            for s in infkey countly walvi ninetymins gccguide; do python content_update.py fill $s 1 || true; done
+          fi
           python content_update.py refresh all 1 --days 60 || true

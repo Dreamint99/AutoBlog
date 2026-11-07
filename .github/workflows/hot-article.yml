@@ -5,7 +5,7 @@ name: Hot keyword article (daily)
 # Autocomplete, filtered by the LLM). 06:30 UTC = 12:30 BST.
 on:
   schedule:
-    - cron: "30 6 * * *"
+    - cron: "30 6 */2 * *"   # every other day (fewer, better posts — see autoblog-drip.yml)
   workflow_dispatch:
     inputs:
       sites:
