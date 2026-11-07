@@ -2,13 +2,17 @@
 
 import { useEffect, useRef, useState } from "react";
 
-/** Number that counts up from 0 when it scrolls into view. */
+/** Number that counts up from 0 when it scrolls into view.
+ *  The final value is server-rendered (crawlers saw "0" before, and the 0→199 width
+ *  change shifted the hero: CLS 0.2) and the box keeps the final width throughout. */
 export function CountUp({ to, duration = 1200 }: { to: number; duration?: number }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const [v, setV] = useState(0);
+  const [v, setV] = useState(to);
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
+    if (!el || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // Already on screen at load: no count (it would only flicker the first paint).
+    if (el.getBoundingClientRect().top < innerHeight) return;
     let raf = 0;
     const run = () => {
       const t0 = performance.now();
@@ -31,7 +35,14 @@ export function CountUp({ to, duration = 1200 }: { to: number; duration?: number
       cancelAnimationFrame(raf);
     };
   }, [to, duration]);
-  return <span ref={ref}>{v}</span>;
+  return (
+    <span
+      ref={ref}
+      style={{ display: "inline-block", minWidth: `${String(to).length}ch`, fontVariantNumeric: "tabular-nums" }}
+    >
+      {v}
+    </span>
+  );
 }
 
 /** Adds .is-in to children with [data-reveal] once visible (bars grow, rows fade in). */

@@ -1,5 +1,7 @@
 import "./theme.css";
 import "./editorial.css";
+import "./bold.css";
+import CountUp from "./CountUp";
 import Link from "next/link";
 import { fontVars } from "./fonts";
 import { top10Articles, topNumber, CN_CATEGORIES } from "./categories";
@@ -376,15 +378,15 @@ export default function Home({ site, articles }: SiteHomeProps) {
         <section className="cx-numbers" aria-label="Countly by the numbers">
           <div className="cx-wrap">
             <div className="cx-num">
-              <b>{reportsCount.toLocaleString("en-US")}</b>
+              <CountUp value={reportsCount} />
               <span>Data reports</span>
             </div>
             <div className="cx-num">
-              <b>{topListCount}</b>
+              <CountUp value={topListCount} />
               <span>Ranked lists</span>
             </div>
             <div className="cx-num">
-              <b>{countryCount}</b>
+              <CountUp value={countryCount} />
               <span>Country rich lists</span>
             </div>
             <div className="cx-num">

@@ -66,15 +66,19 @@ export function thumb(url: string | null | undefined, title?: string, w: 600 | 3
     if (!/[?&]w=/.test(url)) return url + (url.includes("?") ? "&" : "?") + "w=600";
     return url;
   }
-  const wm = url.match(/^(https:\/\/upload\.wikimedia\.org\/wikipedia\/commons\/thumb\/.+\/)(\d+)px-([^/]+)$/);
-  if (wm && Number(wm[2]) > w) return `${wm[1]}${w === 600 ? 640 : 320}px-${wm[3]}`;
+  const wm = url.match(/^https:\/\/(?:upload|thumb)\.wikimedia\.org(\/wikipedia\/commons\/thumb\/.+\/)(\d+)px-([^/?#]+)/);
+  if (wm && Number(wm[2]) > w) return `https://upload.wikimedia.org${wm[1]}${w === 600 ? 640 : 320}px-${wm[3]}`;
   const espn = url.match(/^https:\/\/a\.espncdn\.com(\/i\/teamlogos\/.+\.png)$/);
   if (espn) return `https://a.espncdn.com/combiner/i?img=${espn[1]}&w=96&h=96`;
   return url;
 }
 
-/** Hero/lead image: a title card becomes the inline SVG; real photos stay full size. */
+/** Hero/lead image: a title card becomes the inline SVG; Wikimedia photos use the 960px
+ *  rendition (the 1280px+ originals were ~800 KB — the LCP image took 5 s on mobile). */
 export function heroSrc(url: string | null | undefined, title: string): string {
   if (!url) return "";
-  return /\/card\/[^/?#]+/.test(url) ? cardSvg(title) : url;
+  if (/\/card\/[^/?#]+/.test(url)) return cardSvg(title);
+  const wm = url.match(/^https:\/\/(?:upload|thumb)\.wikimedia\.org(\/wikipedia\/commons\/thumb\/.+\/)(\d+)px-([^/?#]+)/);
+  if (wm && Number(wm[2]) > 960) return `https://upload.wikimedia.org${wm[1]}960px-${wm[3]}`;
+  return url;
 }

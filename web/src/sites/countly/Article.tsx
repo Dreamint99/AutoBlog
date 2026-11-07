@@ -1,5 +1,6 @@
 import CiteBox from "@/lib/CiteBox";
 import "./theme.css";
+import "./bold.css";
 import Link from "next/link";
 import { fontVars } from "./fonts";
 import ShareButtons from "./ShareButtons";
