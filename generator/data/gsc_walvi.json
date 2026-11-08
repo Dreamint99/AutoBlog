@@ -1,5 +1,5 @@
 {
- "source": "Search Console API 2026-08-07..2026-11-05",
+ "source": "Search Console API 2026-08-08..2026-11-06",
  "pages": [
   {
    "url": "https://visapoint.net/visa-check/romania",
@@ -378,14 +378,14 @@
   },
   {
    "url": "https://visapoint.net/passport-index",
-   "impressions": 81,
+   "impressions": 82,
    "clicks": 1,
    "queries": [
     [
      "passport index",
-     10,
+     11,
      0,
-     35.9
+     37.8
     ],
     [
      "visa index",
@@ -454,8 +454,8 @@
      48
     ]
    ],
-   "position": 37.4,
-   "ctr": 0.0123
+   "position": 37.6,
+   "ctr": 0.0122
   },
   {
    "url": "https://visapoint.net/welder-salary-europe-2026-5-best-countries-to-earn-big",
@@ -498,7 +498,7 @@
   },
   {
    "url": "https://visapoint.net/",
-   "impressions": 71,
+   "impressions": 74,
    "clicks": 4,
    "queries": [
     [
@@ -506,6 +506,12 @@
      13,
      1,
      10.8
+    ],
+    [
+     "all country visa check website",
+     3,
+     0,
+     57.3
     ],
     [
      "visa index",
@@ -532,10 +538,10 @@
      72
     ],
     [
-     "all country visa check website",
-     2,
+     "check my visa",
+     1,
      0,
-     56.5
+     30
     ],
     [
      "check passport visa",
@@ -566,16 +572,10 @@
      1,
      0,
      28
-    ],
-    [
-     "visa map world",
-     1,
-     0,
-     69
     ]
    ],
-   "position": 24.4,
-   "ctr": 0.0563
+   "position": 24.7,
+   "ctr": 0.0541
   },
   {
    "url": "https://visapoint.net/cleaner-salary-in-germany-2026-gross-net-savings-guide",
@@ -900,7 +900,7 @@
   },
   {
    "url": "https://visapoint.net/serbia-work-permit-2025-cost-documents-timeline-for-bangladeshi",
-   "impressions": 35,
+   "impressions": 36,
    "clicks": 0,
    "queries": [
     [
@@ -910,13 +910,19 @@
      10.5
     ],
     [
+     "how to get serbia work permit",
+     1,
+     0,
+     135
+    ],
+    [
      "serbia work permit",
      1,
      0,
      62
     ]
    ],
-   "position": 9.8,
+   "position": 13.3,
    "ctr": 0.0
   },
   {
@@ -2733,6 +2739,27 @@
    "ctr": 0.0
   },
   {
+   "url": "https://visapoint.net/visa-check",
+   "impressions": 10,
+   "clicks": 0,
+   "queries": [
+    [
+     "all country visa check website",
+     1,
+     0,
+     7
+    ],
+    [
+     "visa validity check online",
+     1,
+     0,
+     4
+    ]
+   ],
+   "position": 8.8,
+   "ctr": 0.0
+  },
+  {
    "url": "https://visapoint.net/welder-salary-poland-2026-complete-net-pay-savings-work-visa",
    "impressions": 9,
    "clicks": 1,
@@ -2852,18 +2879,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/visa-check",
+   "url": "https://visapoint.net/tiles-worker-salary-italy-2026-complete-guide-savings",
    "impressions": 9,
    "clicks": 0,
-   "queries": [
-    [
-     "all country visa check website",
-     1,
-     0,
-     7
-    ]
-   ],
-   "position": 9.3,
+   "queries": [],
+   "position": 4.0,
    "ctr": 0.0
   },
   {
@@ -2941,14 +2961,6 @@
    "clicks": 0,
    "queries": [],
    "position": 10.4,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/tiles-worker-salary-italy-2026-complete-guide-savings",
-   "impressions": 8,
-   "clicks": 0,
-   "queries": [],
-   "position": 4.2,
    "ctr": 0.0
   },
   {

@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-08-07..2026-11-05, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-08..2026-11-06, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "champions league quiz",
@@ -590,6 +590,12 @@
    "src": "bing"
   },
   {
+   "q": "saff championship schedule",
+   "impr": 47,
+   "pos": 8.0,
+   "src": "bing"
+  },
+  {
    "q": "norway team world cup",
    "impr": 43,
    "pos": 9.0,
@@ -626,6 +632,12 @@
    "src": "bing"
   },
   {
+   "q": "saff championship 2026 schedule",
+   "impr": 37,
+   "pos": 9.1,
+   "src": "bing"
+  },
+  {
    "q": "2030 world cup",
    "impr": 36,
    "pos": 8.0,
@@ -653,6 +665,12 @@
    "q": "world cup 2026 fixtures",
    "impr": 32,
    "pos": 9.0,
+   "src": "bing"
+  },
+  {
+   "q": "saff football championship",
+   "impr": 29,
+   "pos": 8.0,
    "src": "bing"
   },
   {
@@ -776,6 +794,12 @@
    "src": "bing"
   },
   {
+   "q": "saff football championship 2026 schedule",
+   "impr": 12,
+   "pos": 8.0,
+   "src": "bing"
+  },
+  {
    "q": "switzerland world cup squad",
    "impr": 11,
    "pos": 8.0,
@@ -807,6 +831,12 @@
   },
   {
    "q": "live match today t20 world cup 2026",
+   "impr": 11,
+   "pos": 9.0,
+   "src": "bing"
+  },
+  {
+   "q": "veto streams saff championship 2026, india vs pakistan clash set for november 5",
    "impr": 11,
    "pos": 9.0,
    "src": "bing"

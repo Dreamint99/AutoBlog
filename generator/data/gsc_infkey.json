@@ -1,9 +1,9 @@
 {
- "source": "Search Console API 2026-08-07..2026-11-05",
+ "source": "Search Console API 2026-08-08..2026-11-06",
  "pages": [
   {
    "url": "https://infkey.com/",
-   "impressions": 121,
+   "impressions": 126,
    "clicks": 3,
    "queries": [
     [
@@ -19,10 +19,22 @@
      96.2
     ],
     [
+     "ai key",
+     2,
+     0,
+     83
+    ],
+    [
      "ai keying software",
      2,
      0,
      69
+    ],
+    [
+     "batch1key me",
+     2,
+     0,
+     68
     ],
     [
      "how much does an api key cost",
@@ -35,12 +47,6 @@
      2,
      0,
      87.5
-    ],
-    [
-     "ai key",
-     1,
-     0,
-     68
     ],
     [
      "ai keyer",
@@ -71,16 +77,10 @@
      1,
      0,
      68
-    ],
-    [
-     "flatkey ai",
-     1,
-     0,
-     22
     ]
    ],
-   "position": 49.4,
-   "ctr": 0.0248
+   "position": 49.3,
+   "ctr": 0.0238
   }
  ]
 }

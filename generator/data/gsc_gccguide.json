@@ -1,5 +1,5 @@
 {
- "source": "Search Console API 2026-08-07..2026-11-05",
+ "source": "Search Console API 2026-08-08..2026-11-06",
  "pages": [
   {
    "url": "https://gccguide.com/qatar-visa-status-check-2026-7-simple-steps-to-verify-online",
@@ -704,59 +704,8 @@
    "ctr": 0.0141
   },
   {
-   "url": "https://gccguide.com/oman-average-salaries-2026-10-top-expat-jobs-pay",
-   "impressions": 69,
-   "clicks": 2,
-   "queries": [
-    [
-     "average omani salary",
-     2,
-     0,
-     6.5
-    ],
-    [
-     "average salary in oman for foreigners",
-     2,
-     0,
-     6.5
-    ],
-    [
-     "normal salary in oman",
-     2,
-     0,
-     9.5
-    ],
-    [
-     "oman average salary",
-     2,
-     0,
-     9
-    ],
-    [
-     "average pay in oman",
-     1,
-     0,
-     10
-    ],
-    [
-     "average salary in oman",
-     1,
-     0,
-     63
-    ],
-    [
-     "oman salary",
-     1,
-     0,
-     62
-    ]
-   ],
-   "position": 8.9,
-   "ctr": 0.029
-  },
-  {
    "url": "https://gccguide.com/",
-   "impressions": 65,
+   "impressions": 70,
    "clicks": 0,
    "queries": [
     [
@@ -814,8 +763,59 @@
      68
     ]
    ],
-   "position": 29.2,
+   "position": 28.4,
    "ctr": 0.0
+  },
+  {
+   "url": "https://gccguide.com/oman-average-salaries-2026-10-top-expat-jobs-pay",
+   "impressions": 69,
+   "clicks": 2,
+   "queries": [
+    [
+     "average omani salary",
+     2,
+     0,
+     6.5
+    ],
+    [
+     "average salary in oman for foreigners",
+     2,
+     0,
+     6.5
+    ],
+    [
+     "normal salary in oman",
+     2,
+     0,
+     9.5
+    ],
+    [
+     "oman average salary",
+     2,
+     0,
+     9
+    ],
+    [
+     "average pay in oman",
+     1,
+     0,
+     10
+    ],
+    [
+     "average salary in oman",
+     1,
+     0,
+     63
+    ],
+    [
+     "oman salary",
+     1,
+     0,
+     62
+    ]
+   ],
+   "position": 8.9,
+   "ctr": 0.029
   },
   {
    "url": "https://gccguide.com/kuwait-visa-status-check-2026-moi-mobile-id-guide",
@@ -2638,6 +2638,14 @@
    "ctr": 0.0
   },
   {
+   "url": "https://gccguide.com/disclaimer",
+   "impressions": 7,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.4,
+   "ctr": 0.0
+  },
+  {
    "url": "https://gccguide.com/doha-brunch-2025-10-hidden-gem-cafes-locals-love-with-prices",
    "impressions": 7,
    "clicks": 0,
@@ -2710,14 +2718,6 @@
    "clicks": 0,
    "queries": [],
    "position": 4.7,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://gccguide.com/disclaimer",
-   "impressions": 6,
-   "clicks": 0,
-   "queries": [],
-   "position": 8.2,
    "ctr": 0.0
   },
   {
