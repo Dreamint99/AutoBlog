@@ -1,7 +1,7 @@
 {
  "site": "aiu",
  "property": "https://aiuniversitybd.com/",
- "checked": "2026-11-08T09:34:18+00:00",
+ "checked": "2026-11-09T10:25:26+00:00",
  "sitemaps": [
   {
    "path": "https://aiuniversitybd.com/sitemap.xml",
@@ -21,11 +21,11 @@
    ]
   }
  ],
- "sitemap_count": 153,
+ "sitemap_count": 155,
  "byState": {
-  "Submitted and indexed": 28,
-  "URL is unknown to Google": 5,
-  "Discovered - currently not indexed": 8
+  "Submitted and indexed": 31,
+  "Discovered - currently not indexed": 8,
+  "URL is unknown to Google": 2
  },
  "urls": [
   {
@@ -37,7 +37,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/",
    "userCanonical": "https://aiuniversitybd.com/",
-   "lastCrawlTime": "2026-11-06T09:51:06Z",
+   "lastCrawlTime": "2026-11-08T14:49:05Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/",
@@ -82,16 +82,18 @@
   },
   {
    "url": "https://aiuniversitybd.com/books",
-   "verdict": "NEUTRAL",
-   "coverageState": "URL is unknown to Google",
-   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
-   "indexingState": "INDEXING_STATE_UNSPECIFIED",
-   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
-   "googleCanonical": null,
-   "userCanonical": null,
-   "lastCrawlTime": null,
-   "crawledAs": null,
-   "referringUrls": null
+   "verdict": "PASS",
+   "coverageState": "Submitted and indexed",
+   "robotsTxtState": "ALLOWED",
+   "indexingState": "INDEXING_ALLOWED",
+   "pageFetchState": "SUCCESSFUL",
+   "googleCanonical": "https://aiuniversitybd.com/books",
+   "userCanonical": "https://aiuniversitybd.com/books",
+   "lastCrawlTime": "2026-11-08T12:24:47Z",
+   "crawledAs": "MOBILE",
+   "referringUrls": [
+    "https://www.aiuniversitybd.com/books"
+   ]
   },
   {
    "url": "https://aiuniversitybd.com/about",
@@ -102,7 +104,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/about",
    "userCanonical": "https://aiuniversitybd.com/about",
-   "lastCrawlTime": "2026-11-06T20:15:43Z",
+   "lastCrawlTime": "2026-11-08T20:22:42Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://aiuniversitybd.com/"
@@ -236,19 +238,6 @@
   {
    "url": "https://aiuniversitybd.com/reviews",
    "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
-   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
-   "indexingState": "INDEXING_STATE_UNSPECIFIED",
-   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
-   "googleCanonical": null,
-   "userCanonical": null,
-   "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": null
-  },
-  {
-   "url": "https://aiuniversitybd.com/gds-lab",
-   "verdict": "NEUTRAL",
    "coverageState": "URL is unknown to Google",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
@@ -258,6 +247,22 @@
    "lastCrawlTime": null,
    "crawledAs": null,
    "referringUrls": null
+  },
+  {
+   "url": "https://aiuniversitybd.com/gds-lab",
+   "verdict": "NEUTRAL",
+   "coverageState": "Discovered - currently not indexed",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "googleCanonical": null,
+   "userCanonical": null,
+   "lastCrawlTime": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": [
+    "https://www.aiuniversitybd.com/gds-lab?demo=1",
+    "https://www.aiuniversitybd.com/gds-lab"
+   ]
   },
   {
    "url": "https://aiuniversitybd.com/course/computer-basics",
@@ -363,7 +368,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/course/air-ticketing",
    "userCanonical": "https://aiuniversitybd.com/course/air-ticketing",
-   "lastCrawlTime": "2026-10-19T15:04:23Z",
+   "lastCrawlTime": "2026-11-09T01:52:21Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/course/air-ticketing"
@@ -372,17 +377,15 @@
   {
    "url": "https://aiuniversitybd.com/course/ai-video",
    "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
+   "coverageState": "URL is unknown to Google",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": [
-    "https://www.aiuniversitybd.com/course/ai-video"
-   ]
+   "crawledAs": null,
+   "referringUrls": null
   },
   {
    "url": "https://aiuniversitybd.com/course/prompt-engineering",
@@ -510,15 +513,15 @@
   },
   {
    "url": "https://aiuniversitybd.com/course/cooking-30",
-   "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
-   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
-   "indexingState": "INDEXING_STATE_UNSPECIFIED",
-   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
-   "googleCanonical": null,
-   "userCanonical": null,
-   "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "verdict": "PASS",
+   "coverageState": "Submitted and indexed",
+   "robotsTxtState": "ALLOWED",
+   "indexingState": "INDEXING_ALLOWED",
+   "pageFetchState": "SUCCESSFUL",
+   "googleCanonical": "https://aiuniversitybd.com/course/cooking-30",
+   "userCanonical": "https://aiuniversitybd.com/course/cooking-30",
+   "lastCrawlTime": "2026-11-09T05:29:47Z",
+   "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/course/cooking-30",
     "http://www.aiuniversitybd.com/course/cooking-30"
@@ -556,16 +559,18 @@
   },
   {
    "url": "https://aiuniversitybd.com/course/personal-finance",
-   "verdict": "NEUTRAL",
-   "coverageState": "URL is unknown to Google",
-   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
-   "indexingState": "INDEXING_STATE_UNSPECIFIED",
-   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
-   "googleCanonical": null,
-   "userCanonical": null,
-   "lastCrawlTime": null,
-   "crawledAs": null,
-   "referringUrls": null
+   "verdict": "PASS",
+   "coverageState": "Submitted and indexed",
+   "robotsTxtState": "ALLOWED",
+   "indexingState": "INDEXING_ALLOWED",
+   "pageFetchState": "SUCCESSFUL",
+   "googleCanonical": "https://aiuniversitybd.com/course/personal-finance",
+   "userCanonical": "https://aiuniversitybd.com/course/personal-finance",
+   "lastCrawlTime": "2026-11-09T08:37:18Z",
+   "crawledAs": "MOBILE",
+   "referringUrls": [
+    "https://www.aiuniversitybd.com/course/personal-finance"
+   ]
   },
   {
    "url": "https://aiuniversitybd.com/course/snake-rescue",
@@ -618,15 +623,18 @@
   {
    "url": "https://aiuniversitybd.com/course/japanese-work",
    "verdict": "NEUTRAL",
-   "coverageState": "URL is unknown to Google",
+   "coverageState": "Discovered - currently not indexed",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": null,
-   "referringUrls": null
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": [
+    "https://www.aiuniversitybd.com/course/japanese-work",
+    "http://www.aiuniversitybd.com/course/japanese-work"
+   ]
   },
   {
    "url": "https://aiuniversitybd.com/course/biggan-velki",
@@ -648,15 +656,17 @@
   {
    "url": "https://aiuniversitybd.com/course/forensic-science",
    "verdict": "NEUTRAL",
-   "coverageState": "URL is unknown to Google",
+   "coverageState": "Discovered - currently not indexed",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": null,
-   "referringUrls": null
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": [
+    "https://www.aiuniversitybd.com/course/forensic-science"
+   ]
   }
  ]
 }
