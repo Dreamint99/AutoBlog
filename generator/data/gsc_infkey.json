@@ -1,10 +1,10 @@
 {
- "source": "Search Console API 2026-08-08..2026-11-06",
+ "source": "Search Console API 2026-08-09..2026-11-07",
  "pages": [
   {
    "url": "https://infkey.com/",
-   "impressions": 126,
-   "clicks": 3,
+   "impressions": 127,
+   "clicks": 4,
    "queries": [
     [
      "agentkey pricing",
@@ -31,6 +31,12 @@
      69
     ],
     [
+     "batch 1key",
+     2,
+     0,
+     77.5
+    ],
+    [
      "batch1key me",
      2,
      0,
@@ -55,12 +61,6 @@
      76
     ],
     [
-     "batch 1key",
-     1,
-     0,
-     75
-    ],
-    [
      "batch.1key me",
      1,
      0,
@@ -79,8 +79,8 @@
      68
     ]
    ],
-   "position": 49.3,
-   "ctr": 0.0238
+   "position": 49.6,
+   "ctr": 0.0315
   }
  ]
 }

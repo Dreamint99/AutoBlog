@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-08-08..2026-11-06, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-09..2026-11-07, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "average dubai salary",
@@ -163,14 +163,8 @@
    "volume": 1000
   },
   {
-   "q": "cost of living in dubai",
-   "impr": 87,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "jobs in qatar",
-   "impr": 50,
+   "q": "qatar airways jobs",
+   "impr": 66,
    "pos": null,
    "src": "bingkw"
   },
@@ -241,6 +235,12 @@
    "src": "gsc"
   },
   {
+   "q": "gcc driving license",
+   "impr": 16,
+   "pos": 45.8,
+   "src": "gsc"
+  },
+  {
    "q": "qatar visa check online by passport number moi",
    "impr": 16,
    "pos": 73.5,
@@ -250,12 +250,6 @@
    "q": "visa status check online",
    "impr": 16,
    "pos": 62.7,
-   "src": "gsc"
-  },
-  {
-   "q": "gcc driving license",
-   "impr": 15,
-   "pos": 42.3,
    "src": "gsc"
   },
   {
