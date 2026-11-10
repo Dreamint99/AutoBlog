@@ -8759,6 +8759,2269 @@
      ]
     }
    }
+  },
+  {
+   "date": "2026-11-10",
+   "sites": {
+    "countly": {
+     "lighthouse": [
+      {
+       "url": "https://countly.net/",
+       "form": "mobile",
+       "performance": 0,
+       "accessibility": 0,
+       "best-practices": 0,
+       "seo": 0,
+       "lcp_s": 0.0,
+       "cls": 0,
+       "tbt_ms": 0,
+       "seo_fails": []
+      },
+      {
+       "url": "https://countly.net/",
+       "form": "desktop",
+       "performance": 0,
+       "accessibility": 0,
+       "best-practices": 0,
+       "seo": 0,
+       "lcp_s": 0.0,
+       "cls": 0,
+       "tbt_ms": 0,
+       "seo_fails": []
+      }
+     ],
+     "broken": [
+      {
+       "url": "https://countly.net/",
+       "status": 0,
+       "on": null
+      }
+     ]
+    },
+    "walvi": {
+     "lighthouse": [
+      {
+       "url": "https://visapoint.net/",
+       "form": "mobile",
+       "performance": 86,
+       "accessibility": 91,
+       "best-practices": 96,
+       "seo": 100,
+       "lcp_s": 2.44,
+       "cls": 0,
+       "tbt_ms": 426,
+       "seo_fails": []
+      },
+      {
+       "url": "https://visapoint.net/e2-visa-requirements-2026-investment-amounts-5-steps",
+       "form": "mobile",
+       "performance": 82,
+       "accessibility": 100,
+       "best-practices": 96,
+       "seo": 100,
+       "lcp_s": 4.09,
+       "cls": 0.115,
+       "tbt_ms": 26,
+       "seo_fails": []
+      },
+      {
+       "url": "https://visapoint.net/",
+       "form": "desktop",
+       "performance": 87,
+       "accessibility": 95,
+       "best-practices": 96,
+       "seo": 100,
+       "lcp_s": 0.77,
+       "cls": 0.239,
+       "tbt_ms": 0,
+       "seo_fails": []
+      },
+      {
+       "url": "https://visapoint.net/e2-visa-requirements-2026-investment-amounts-5-steps",
+       "form": "desktop",
+       "performance": 99,
+       "accessibility": 100,
+       "best-practices": 96,
+       "seo": 100,
+       "lcp_s": 0.85,
+       "cls": 0.007,
+       "tbt_ms": 0,
+       "seo_fails": []
+      }
+     ],
+     "broken": [
+      {
+       "url": "https://visapoint.net/images/oman-visa-status-check.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/visa-check/oman"
+      },
+      {
+       "url": "https://visapoint.net/assets/uae-visa-status-portal-choice.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/visa-check/uae"
+      },
+      {
+       "url": "https://visapoint.net/assets/uae-visa-status-check-icp-portal.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/visa-check/uae"
+      },
+      {
+       "url": "https://visapoint.net/assets/uae-pass-app-visa-status.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/visa-check/uae"
+      },
+      {
+       "url": "https://visapoint.net/golden-visa-eligibility",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/visa-check/uae"
+      },
+      {
+       "url": "https://visapoint.net/emirates-id-application",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/visa-check/uae"
+      },
+      {
+       "url": "https://visapoint.net/uae-work-visa-requirements",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/visa-check/uae"
+      },
+      {
+       "url": "https://visapoint.net/images/passport-index-2026.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/passport-index-2026-199-rankings-india-82nd-62-visa-free"
+      },
+      {
+       "url": "https://visapoint.net/assets/images/qatar-france-work-visa-vfs-doha.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/qatar-to-france-work-visa-2025-routes-for-skilled-workers"
+      },
+      {
+       "url": "https://visapoint.net/poland-payroll-tax-guide-2026",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/plumber-salary-in-poland-2026-gross-pay-living-costs-monthly-savings"
+      },
+      {
+       "url": "https://visapoint.net/cost-of-living-poland-2026",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/plumber-salary-in-poland-2026-gross-pay-living-costs-monthly-savings"
+      },
+      {
+       "url": "https://visapoint.net/poland-work-permit-type-a-guide",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/plumber-salary-in-poland-2026-gross-pay-living-costs-monthly-savings"
+      },
+      {
+       "url": "https://visapoint.net/images/moldova-work-permit-process.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/moldova-work-permit-2025-complete-guide-for-bangladeshi-workers"
+      },
+      {
+       "url": "https://visapoint.net/assets/images/serbia-work-visa-documents.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/serbia-work-visa-2025-saudi-arabia-to-serbia-guide"
+      },
+      {
+       "url": "https://visapoint.net/images/serbia-work-permit-application.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/serbia-work-permit-2025-complete-guide-from-qatar"
+      },
+      {
+       "url": "https://visapoint.net/poland-work-permit-2026",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/electrician-salary-poland-2026-real-pay-savings-2"
+      },
+      {
+       "url": "https://visapoint.net/images/europe-work-visa-trades-2026-map.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/europe-work-visa-trades-2026-10-countries-eur600-800-savings"
+      },
+      {
+       "url": "https://visapoint.net/images/schengen-visa-photo-example.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/schengen-visa-photo-2026-35x45-mm-digital-upload-vfs-costs"
+      },
+      {
+       "url": "https://visapoint.net/schengen-visa-appointment-2026",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/schengen-visa-photo-2026-35x45-mm-digital-upload-vfs-costs"
+      },
+      {
+       "url": "https://visapoint.net/schengen-visa-documents-checklist",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/schengen-visa-photo-2026-35x45-mm-digital-upload-vfs-costs"
+      },
+      {
+       "url": "https://visapoint.net/images/tn-visa-requirements-2026.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/tn-visa-requirements-2026-63-professions-185-fee-3-year-limit"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/serbia-work-permit-process.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/serbia-work-permit-2025-cost-documents-timeline-for-bangladeshi"
+      },
+      {
+       "url": "https://visapoint.net/images/carpenter-croatia-2026.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/carpenter-jobs-in-croatia-2026-eur1400-gross-eur470-760-savings"
+      },
+      {
+       "url": "https://visapoint.net/assets/images/europe-work-permits-2026-quota-chart.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/europe-work-permits-2026-82k-italy-65k-croatia-eur520-eur1-2k"
+      },
+      {
+       "url": "https://visapoint.net/poland-electrician-checklist-2026.pdf",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/europe-work-permits-2026-82k-italy-65k-croatia-eur520-eur1-2k"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/south-africa-visa-2026.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/south-africa-visa-requirements-2026-fees-docs-time"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/south-korea-visa-documents.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/south-korea-visa-2026-fees-40-80-documents-5-15-day-processing"
+      },
+      {
+       "url": "https://visapoint.net/germany-work-visa-2026",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/germany-schengen-visa-2026-eur80-fee-15-day-processing-south-asia-guid"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/spain-visa-requirements-checklist.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/spain-visa-requirements-2026-eur90-schengen-fee-15-day-processing-work"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/spain-schengen-visa-application.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/spain-schengen-visa-2026-eur80-fee-15-45-day-processing-checklist"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/new-zealand-visa-requirements.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/new-zealand-visa-requirements-2026-fees-evisa-nzeta"
+      },
+      {
+       "url": "https://visapoint.net/malaysia-work-permit-guide-indians",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/visa-free-countries-for-indians-2026-34-destinations-stay-limits-fees"
+      },
+      {
+       "url": "https://visapoint.net/images/european-work-visa-application.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/easiest-countries-to-get-work-visa-6-permits-for-2026"
+      },
+      {
+       "url": "https://visapoint.net/poland-work-visa-guide",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/europe-visa-requirements-2026-fees-docs-etias"
+      },
+      {
+       "url": "https://visapoint.net/croatia-work-permit-process",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/europe-visa-requirements-2026-fees-docs-etias"
+      },
+      {
+       "url": "https://visapoint.net/romania-seasonal-visa-guide",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/europe-visa-requirements-2026-fees-docs-etias"
+      },
+      {
+       "url": "https://visapoint.net/images/us-citizens-europe-visa.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/us-citizens-europe-visa-2026-etias-eur7-work-visas-savings"
+      },
+      {
+       "url": "https://visapoint.net/lithuania-national-d-visa",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/europe-visa-requirements-2026-fees-docs-etias"
+      },
+      {
+       "url": "https://visapoint.net/schengen-90-180-rule",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/us-visa-requirements-2026-etias-uk-eta-china-l-visa"
+      },
+      {
+       "url": "https://visapoint.net/hungary-blue-card-requirements",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/europe-visa-requirements-2026-fees-docs-etias"
+      },
+      {
+       "url": "https://visapoint.net/skilled-worker-europe/electrician-salary-guide",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/skilled-worker-europe-complete-2026-salary-savings-guide"
+      },
+      {
+       "url": "https://visapoint.net/skilled-worker-europe/welder-salary-guide",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/skilled-worker-europe-complete-2026-salary-savings-guide"
+      },
+      {
+       "url": "https://visapoint.net/skilled-worker-europe/truck-driver-salary-guide",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/skilled-worker-europe-complete-2026-salary-savings-guide"
+      },
+      {
+       "url": "https://visapoint.net/s/walvi/welder-croatia-shipyard.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/welder-jobs-in-croatia-2026-pay-permits-savings"
+      },
+      {
+       "url": "https://visapoint.net/poland-work-permit",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/europe-work-visa-2026-complete-permit-guide-scam-alerts"
+      },
+      {
+       "url": "https://visapoint.net/country-work-permits",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/europe-work-visa-2026-complete-permit-guide-scam-alerts"
+      },
+      {
+       "url": "https://visapoint.net/portugal-work-visa",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/europe-work-visa-2026-complete-permit-guide-scam-alerts"
+      },
+      {
+       "url": "https://visapoint.net/croatia-work-permit",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/europe-work-visa-2026-complete-permit-guide-scam-alerts"
+      },
+      {
+       "url": "https://visapoint.net/romania-work-permit",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/europe-work-visa-2026-complete-permit-guide-scam-alerts"
+      },
+      {
+       "url": "https://visapoint.net/worker-predeparture-checklist",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/europe-work-visa-2026-complete-permit-guide-scam-alerts"
+      },
+      {
+       "url": "https://visapoint.net/scam-check",
+       "status": 404,
+       "on": "https://visapoint.net/s/walvi/europe-work-visa-2026-complete-permit-guide-scam-alerts"
+      },
+      {
+       "url": "https://visapoint.net/serbia-work-permit-process.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/serbia-work-permit-2025-cost-documents-timeline-for-bangladeshi"
+      },
+      {
+       "url": "https://visapoint.net/south-africa-visa-2026.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/south-africa-visa-requirements-2026-fees-docs-time"
+      },
+      {
+       "url": "https://visapoint.net/south-korea-visa-documents.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/south-korea-visa-2026-fees-40-80-documents-5-15-day-processing"
+      },
+      {
+       "url": "https://visapoint.net/uk-immigration-facial-recognition-border.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/uk-immigration-facial-recognition-24-hour-rule-ps75m-palantir-2026-vis"
+      },
+      {
+       "url": "https://visapoint.net/spain-visa-requirements-checklist.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/spain-visa-requirements-2026-eur90-schengen-fee-15-day-processing-work"
+      },
+      {
+       "url": "https://visapoint.net/spain-schengen-visa-application.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/spain-schengen-visa-2026-eur80-fee-15-45-day-processing-checklist"
+      },
+      {
+       "url": "https://visapoint.net/travel-visa-requirements-2026-airport.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/travel-visa-requirements-2026-eur20-etias-fee-docs"
+      },
+      {
+       "url": "https://visapoint.net/new-zealand-visa-requirements.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/new-zealand-visa-requirements-2026-fees-evisa-nzeta"
+      },
+      {
+       "url": "https://visapoint.net/welder-croatia-shipyard.jpg",
+       "status": 404,
+       "on": "https://visapoint.net/welder-jobs-in-croatia-2026-pay-permits-savings"
+      }
+     ]
+    },
+    "infkey": {
+     "lighthouse": [
+      {
+       "url": "https://infkey.com/",
+       "form": "mobile",
+       "performance": 97,
+       "accessibility": 92,
+       "best-practices": 96,
+       "seo": 92,
+       "lcp_s": 2.4,
+       "cls": 0.001,
+       "tbt_ms": 28,
+       "seo_fails": [
+        "robots.txt is not valid"
+       ]
+      },
+      {
+       "url": "https://infkey.com/ai-automation-tools-10-hidden-gems-save-5-10-hrs-week",
+       "form": "mobile",
+       "performance": 95,
+       "accessibility": 91,
+       "best-practices": 96,
+       "seo": 92,
+       "lcp_s": 2.71,
+       "cls": 0,
+       "tbt_ms": 14,
+       "seo_fails": [
+        "robots.txt is not valid"
+       ]
+      },
+      {
+       "url": "https://infkey.com/",
+       "form": "desktop",
+       "performance": 99,
+       "accessibility": 95,
+       "best-practices": 96,
+       "seo": 92,
+       "lcp_s": 0.81,
+       "cls": 0.001,
+       "tbt_ms": 0,
+       "seo_fails": [
+        "robots.txt is not valid"
+       ]
+      },
+      {
+       "url": "https://infkey.com/ai-automation-tools-10-hidden-gems-save-5-10-hrs-week",
+       "form": "desktop",
+       "performance": 99,
+       "accessibility": 95,
+       "best-practices": 96,
+       "seo": 92,
+       "lcp_s": 0.75,
+       "cls": 0.021,
+       "tbt_ms": 0,
+       "seo_fails": [
+        "robots.txt is not valid"
+       ]
+      }
+     ],
+     "broken": [
+      {
+       "url": "https://infkey.com/best-ai-productivity-apps-2026",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/ai-automation-tools-10-hidden-gems-save-5-10-hrs-week"
+      },
+      {
+       "url": "https://infkey.com/ssh-certificate-authentication-2026",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/ssh-agent-forwarding-12400-breach-cost-secure-setup"
+      },
+      {
+       "url": "https://infkey.com/proxyjump-vs-agent-forwarding-2026",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/ssh-agent-forwarding-12400-breach-cost-secure-setup"
+      },
+      {
+       "url": "https://infkey.com/images/ai-passport-photo-prompts-testing.jpg",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/ai-passport-photo-prompts-2-of-12-pass-icao-2026-test"
+      },
+      {
+       "url": "https://infkey.com/ai-humanizer-guide",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/best-ai-humanizer-2026-96-turnitin-bypass-14-99-mo"
+      },
+      {
+       "url": "https://infkey.com/ai-detector-comparison",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/best-ai-humanizer-2026-96-turnitin-bypass-14-99-mo"
+      },
+      {
+       "url": "https://infkey.com/ai-writing-tools",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/best-ai-humanizer-2026-96-turnitin-bypass-14-99-mo"
+      },
+      {
+       "url": "https://infkey.com/ai-pricing-calculator",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/best-ai-humanizer-2026-96-turnitin-bypass-14-99-mo"
+      },
+      {
+       "url": "https://image\r\r\n<section class='faq'><h2 id=",
+       "status": 0,
+       "on": "https://infkey.com/s/infkey/function-calling-cost-complete-2026-guide-3x-reality"
+      },
+      {
+       "url": "https://infkey.com/ai-api-cost-tracker-2026",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/llm-pricing-table-2026-cheapest-long-context-apis"
+      },
+      {
+       "url": "https://infkey.com/rag-embedding-cost-calculator",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/llm-pricing-table-2026-cheapest-long-context-apis"
+      },
+      {
+       "url": "https://infkey.com/llm-cost-optimization-guide",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/llm-pricing-table-2026-cheapest-long-context-apis"
+      },
+      {
+       "url": "https://infkey.com/structured-output-prompting-json-schema-2026",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/gemini-prompt-engineering-5-tweaks-for-confident-outputs-2026"
+      },
+      {
+       "url": "https://infkey.com/llm-token-optimization-guide-2026",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/gemini-prompt-engineering-5-tweaks-for-confident-outputs-2026"
+      },
+      {
+       "url": "https://infkey.com/real-time-voice-agents",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/voice-ai-api-cost-2026-elevenlabs-vs-openai-vs-deepgram"
+      },
+      {
+       "url": "https://infkey.com/voice-ai-api-cost-comparison",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/voice-ai-api-cost-2026-elevenlabs-vs-openai-vs-deepgram"
+      },
+      {
+       "url": "https://infkey.com/how-to-choose-llm-api-2026",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/chatgpt-plus-20-vs-free-2026-cost-feature-breakdown"
+      },
+      {
+       "url": "https://infkey.com/gpu-rental-pricing-2026",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/self-host-llm-cost-2026-7b-70b-break-even-guide"
+      },
+      {
+       "url": "https://infkey.com/templates/ai-cost-calculator.csv",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/deepseek-pricing-2026-0-15-m-input-vs-gpt-4o-mini"
+      },
+      {
+       "url": "https://infkey.com/optimize-ai-inference-costs",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/ai-research-acceleration-2026-5-ways-to-cut-tool-costs"
+      },
+      {
+       "url": "https://infkey.com/api-combos",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/deepseek-pricing-2026-0-15-m-input-vs-gpt-4o-mini"
+      },
+      {
+       "url": "https://infkey.com/vertex-ai-multimodal-deployment-patterns",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/gemini-omni-1-2-flash-30-cheaper-api-15s-video"
+      },
+      {
+       "url": "https://infkey.com/images/chatgpt-headshot-prompt.jpg",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/chatgpt-prompt-for-professional-headshot-5-second-formula"
+      },
+      {
+       "url": "https://infkey.com/future-proofing-gemini-integration",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/gemini-omni-1-2-flash-30-cheaper-api-15s-video"
+      },
+      {
+       "url": "https://infkey.com/youtube-seo-tips-2026",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/best-ai-video-generator-2026-5-tools-ranked-by-cost-speed"
+      },
+      {
+       "url": "https://infkey.com/ai-cost-calculator/",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/llm-cost-per-token-2026-complete-14-model-price-table"
+      },
+      {
+       "url": "https://image\r\r\n<section class='faq'><h2 id=",
+       "status": 0,
+       "on": "https://infkey.com/function-calling-cost-complete-2026-guide-3x-reality"
+      },
+      {
+       "url": "https://infkey.com/software-qa-automation",
+       "status": 404,
+       "on": "https://infkey.com/llm-testing-cost-drops-40-in-2026-pricing-roi-data"
+      },
+      {
+       "url": "https://infkey.com/developer-productivity-metrics",
+       "status": 404,
+       "on": "https://infkey.com/llm-testing-cost-drops-40-in-2026-pricing-roi-data"
+      },
+      {
+       "url": "https://infkey.com/ai-testing-tools-2026",
+       "status": 404,
+       "on": "https://infkey.com/llm-testing-cost-drops-40-in-2026-pricing-roi-data"
+      },
+      {
+       "url": "https://infkey.com/ci-cd-best-practices",
+       "status": 404,
+       "on": "https://infkey.com/llm-testing-cost-drops-40-in-2026-pricing-roi-data"
+      },
+      {
+       "url": "https://infkey.com/claude-3-5-sonnet-pricing-2026",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/kimi-k3-1-pro-pricing-2026-1-54-m-input-210-ms-latency"
+      },
+      {
+       "url": "https://infkey.com/gpt-4o-pricing-2026",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/kimi-k3-1-pro-pricing-2026-1-54-m-input-210-ms-latency"
+      },
+      {
+       "url": "https://infkey.com/s/infkey/fine-tuning-vs-rag-cost-comparison-chart-2026.png",
+       "status": 404,
+       "on": "https://infkey.com/s/infkey/fine-tuning-vs-rag-cost-real-2026-pricing-per-1m-queries"
+      },
+      {
+       "url": "https://infkey.com/fine-tuning-vs-rag-cost-comparison-chart-2026.png",
+       "status": 404,
+       "on": "https://infkey.com/fine-tuning-vs-rag-cost-real-2026-pricing-per-1m-queries"
+      }
+     ]
+    },
+    "gccguide": {
+     "lighthouse": [
+      {
+       "url": "https://gccguide.com/",
+       "form": "mobile",
+       "performance": 77,
+       "accessibility": 97,
+       "best-practices": 75,
+       "seo": 100,
+       "lcp_s": 5.01,
+       "cls": 0.12,
+       "tbt_ms": 48,
+       "seo_fails": []
+      },
+      {
+       "url": "https://gccguide.com/qatar-visa-status-by-passport-number-2026-moi-steps-fees-processing-ti",
+       "form": "mobile",
+       "performance": 79,
+       "accessibility": 97,
+       "best-practices": 75,
+       "seo": 100,
+       "lcp_s": 5.22,
+       "cls": 0.003,
+       "tbt_ms": 57,
+       "seo_fails": []
+      },
+      {
+       "url": "https://gccguide.com/",
+       "form": "desktop",
+       "performance": 96,
+       "accessibility": 97,
+       "best-practices": 74,
+       "seo": 100,
+       "lcp_s": 1.3,
+       "cls": 0.073,
+       "tbt_ms": 0,
+       "seo_fails": []
+      },
+      {
+       "url": "https://gccguide.com/qatar-visa-status-by-passport-number-2026-moi-steps-fees-processing-ti",
+       "form": "desktop",
+       "performance": 98,
+       "accessibility": 97,
+       "best-practices": 74,
+       "seo": 100,
+       "lcp_s": 1.12,
+       "cls": 0.003,
+       "tbt_ms": 0,
+       "seo_fails": []
+      }
+     ],
+     "broken": [
+      {
+       "url": "https://gccguide.com/philippine-airlines-baggage-allowance-2026",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/pal-seat-sale-2026-40-50-off-gcc-phl-flights"
+      },
+      {
+       "url": "https://gccguide.com/qatar-cost-of-living-2026-expats",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/qatar-airways-jobs-2026-106-openings-4k-12k-qar-salaries-how-to-apply"
+      },
+      {
+       "url": "https://gccguide.com/saudi-rental-guide-2026",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/saudi-cost-of-living-2026-essential-guide-for-expats"
+      },
+      {
+       "url": "https://gccguide.com/engineering-salaries-qatar-2026",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/work-in-qatar-salary-2026-pay-scales"
+      },
+      {
+       "url": "https://gccguide.com/uae-golden-visa-application-guide-2026",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/uae-golden-visa-requirements-2026-aed-30k-salary-aed-2m"
+      },
+      {
+       "url": "https://gccguide.com/family-visa-sponsorship-qatar-2026",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/work-in-qatar-salary-2026-pay-scales"
+      },
+      {
+       "url": "https://gccguide.com/saudi-residency-guide",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/saudi-driving-license-for-expats-2026-cost-steps"
+      },
+      {
+       "url": "https://gccguide.com/saudi-arabia-work-visa-process-2026",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/adnoc-openai-partnership-5-ways-it-transforms-tech-careers"
+      },
+      {
+       "url": "https://gccguide.com/freelance-visa-qatar-2026-work-without-a-sponsor",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/work-in-qatar-salary-2026-pay-scales"
+      },
+      {
+       "url": "https://gccguide.com/saudi-absher-guide-2026",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/moi-application-status-2026-check-visa-id-online-instantly"
+      },
+      {
+       "url": "https://gccguide.com/driving-school-reviews-saudi",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/saudi-driving-license-for-expats-2026-cost-steps"
+      },
+      {
+       "url": "https://gccguide.com/uae-emirates-id-tracking-2026",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/moi-application-status-2026-check-visa-id-online-instantly"
+      },
+      {
+       "url": "https://gccguide.com/international-driving-permit-saudi",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/saudi-driving-license-for-expats-2026-cost-steps"
+      },
+      {
+       "url": "https://gccguide.com/doha-outdoor-activities-2026",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/qatar-weather-forecast-october-2026-35degc-temps-guide"
+      },
+      {
+       "url": "https://gccguide.com/best-beaches-gcc-2026",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/bahrain-day-trips-from-manama-7-beaches-gems-bhd-45"
+      },
+      {
+       "url": "https://gccguide.com/bahrain-visa-indians-2026",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/bahrain-day-trips-from-manama-7-beaches-gems-bhd-45"
+      },
+      {
+       "url": "https://gccguide.com/qatar-work-permit",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/hamad-international-airport-2026-terminal-21-visa-transit-guide"
+      },
+      {
+       "url": "https://gccguide.com/doha-cost-of-living",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/hamad-international-airport-2026-terminal-21-visa-transit-guide"
+      },
+      {
+       "url": "https://www.gccguide.com/downloads/oman-cost-of-living-2026.xlsx",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/oman-cost-of-living-2026-guide-for-singles-families"
+      },
+      {
+       "url": "https://gccguide.com/saudi-arabia-expat-banking-guide",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/gcc-expat-guide-2026-6-countries-visas-gratuity-licences"
+      },
+      {
+       "url": "https://gccguide.com/qatar-visa-guide",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/hamad-international-airport-2026-terminal-21-visa-transit-guide"
+      },
+      {
+       "url": "https://gccguide.com/kuwait-labour-law-gratuity",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/kuwait-nurse-salary-2026-pay-benefits-tax-free-guide"
+      },
+      {
+       "url": "https://gccguide.com/uae-golden-visa-vs-bahrain-golden-residency",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/bahrain-visa-update-2026-bd-5-voa-fees-requirements"
+      },
+      {
+       "url": "https://gccguide.com/qatar-work-visa-guide-2026",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/qatar-residence-permit-check-2-moi-steps-to-track-qid-status-2026"
+      },
+      {
+       "url": "https://gccguide.com/qatar-work-visa-requirements-2026",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/check-qatar-visa-status-with-passport-number-2026-free-steps"
+      },
+      {
+       "url": "https://gccguide.com/kuwait-traffic-fines-online-payment",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/kuwait-civil-id-renewal-2026-5-250-kd-fee-2-day-online-steps"
+      },
+      {
+       "url": "https://gccguide.com/qatar-medical-centers-approved-2026",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/qatar-residence-permit-check-2-moi-steps-to-track-qid-status-2026"
+      },
+      {
+       "url": "https://gccguide.com/saudi-arabia-iqama-renewal-2026",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/fingerprint-status-check-2026-5-free-gcc-portals-global-times"
+      },
+      {
+       "url": "https://gccguide.com/uae-residence-visa-medical-test-2026",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/fingerprint-status-check-2026-5-free-gcc-portals-global-times"
+      },
+      {
+       "url": "https://gccguide.com/qatar-visa-types-guide-2026",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/qid-status-check-qatar-2026-2-min-moi-portal-metrash2-qvc"
+      },
+      {
+       "url": "https://gccguide.com/qid-renewal-guide-2026",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/qid-status-check-qatar-2026-2-min-moi-portal-metrash2-qvc"
+      },
+      {
+       "url": "https://gccguide.com/qatar-driving-licence-conversion-2026",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/qid-status-check-qatar-2026-2-min-moi-portal-metrash2-qvc"
+      },
+      {
+       "url": "https://gccguide.com/gcc-labour-law-eid-bonuses",
+       "status": 404,
+       "on": "https://gccguide.com/s/gccguide/eid-al-adha-2027-gcc-holiday-calendar-dates-expat-tips"
+      }
+     ]
+    },
+    "ninetymins": {
+     "lighthouse": [
+      {
+       "url": "https://ninetymins.com/",
+       "form": "mobile",
+       "performance": 0,
+       "accessibility": 0,
+       "best-practices": 0,
+       "seo": 0,
+       "lcp_s": 0.0,
+       "cls": 0,
+       "tbt_ms": 0,
+       "seo_fails": []
+      },
+      {
+       "url": "https://ninetymins.com/",
+       "form": "desktop",
+       "performance": 0,
+       "accessibility": 0,
+       "best-practices": 0,
+       "seo": 0,
+       "lcp_s": 0.0,
+       "cls": 0,
+       "tbt_ms": 0,
+       "seo_fails": []
+      }
+     ],
+     "broken": [
+      {
+       "url": "https://ninetymins.com/",
+       "status": 500,
+       "on": null
+      }
+     ]
+    },
+    "probashiinfo": {
+     "lighthouse": [
+      {
+       "url": "https://probashiinfo.com/",
+       "form": "mobile",
+       "performance": 70,
+       "accessibility": 95,
+       "best-practices": 96,
+       "seo": 100,
+       "lcp_s": 4.92,
+       "cls": 0,
+       "tbt_ms": 0,
+       "seo_fails": []
+      },
+      {
+       "url": "https://probashiinfo.com/australia-work-visa-2026-details/",
+       "form": "mobile",
+       "performance": 68,
+       "accessibility": 93,
+       "best-practices": 96,
+       "seo": 100,
+       "lcp_s": 6.23,
+       "cls": 0,
+       "tbt_ms": 0,
+       "seo_fails": []
+      },
+      {
+       "url": "https://probashiinfo.com/",
+       "form": "desktop",
+       "performance": 91,
+       "accessibility": 95,
+       "best-practices": 96,
+       "seo": 100,
+       "lcp_s": 1.37,
+       "cls": 0.119,
+       "tbt_ms": 0,
+       "seo_fails": []
+      },
+      {
+       "url": "https://probashiinfo.com/australia-work-visa-2026-details/",
+       "form": "desktop",
+       "performance": 76,
+       "accessibility": 93,
+       "best-practices": 96,
+       "seo": 100,
+       "lcp_s": 2.33,
+       "cls": 0.022,
+       "tbt_ms": 0,
+       "seo_fails": []
+      }
+     ],
+     "broken": [
+      {
+       "url": "https://probashiinfo.com/australia-points-calculator",
+       "status": 404,
+       "on": "https://probashiinfo.com/australia-work-visa-2026-details/"
+      },
+      {
+       "url": "https://probashiinfo.com/australia-skill-assessment",
+       "status": 404,
+       "on": "https://probashiinfo.com/australia-work-visa-2026-details/"
+      },
+      {
+       "url": "https://probashiinfo.com/work-permit-visa-cost-list/",
+       "status": 404,
+       "on": "https://probashiinfo.com/denmark-work-visa-requirements-salary-2026/"
+      },
+      {
+       "url": "https://probashiinfo.com/bmet-registration-process-bangladesh/",
+       "status": 404,
+       "on": "https://probashiinfo.com/denmark-work-visa-requirements-salary-2026/"
+      },
+      {
+       "url": "https://probashiinfo.com/bangladeshi-workers-europe",
+       "status": 404,
+       "on": "https://probashiinfo.com/serbia-europe-work-permit-2026/"
+      },
+      {
+       "url": "https://probashiinfo.com/evisa-my-portal-visa-status-check",
+       "status": 404,
+       "on": "https://probashiinfo.com/malaysia-work-permit-2026/"
+      },
+      {
+       "url": "https://probashiinfo.com/bangladeshi-workers-malaysia-salary-2026",
+       "status": 404,
+       "on": "https://probashiinfo.com/malaysia-work-permit-2026/"
+      },
+      {
+       "url": "https://probashiinfo.com/probashi-call-center-16111",
+       "status": 404,
+       "on": "https://probashiinfo.com/malaysia-work-permit-2026/"
+      },
+      {
+       "url": "https://probashiinfo.com/bangladeshi-migrant-workers-guide",
+       "status": 404,
+       "on": "https://probashiinfo.com/remittyaans-shtaansh-baanlaadeshi-prbaasiiraa-aayr-15-25-paatthaan-202/"
+      },
+      {
+       "url": "https://probashiinfo.com/bkash-remittance-guide-2026",
+       "status": 404,
+       "on": "https://probashiinfo.com/remittyaans-paatthaaneaar-seraa-7-upaay-2026-khrc-o-smyer-tulnaa/"
+      },
+      {
+       "url": "https://probashiinfo.com/remittance-cost-comparison-2026",
+       "status": 404,
+       "on": "https://probashiinfo.com/remittance-bangladesh-2026/"
+      },
+      {
+       "url": "https://probashiinfo.com/remittance-tips",
+       "status": 404,
+       "on": "https://probashiinfo.com/remittance-fee-2026-cheapest-methods/"
+      },
+      {
+       "url": "https://probashiinfo.com/probashi-kallyan-desk",
+       "status": 404,
+       "on": "https://probashiinfo.com/remittyaans-paatthaaneaar-upaay-2026-seraa-5-cyaanel-o-khrc/"
+      },
+      {
+       "url": "https://probashiinfo.com/bangladesh-remittance-tax",
+       "status": 404,
+       "on": "https://probashiinfo.com/remittance-send-zero-fee-fast-guide/"
+      },
+      {
+       "url": "https://probashiinfo.com/best-remittance-services-2026",
+       "status": 404,
+       "on": "https://probashiinfo.com/remittance-send-zero-fee-fast-guide/"
+      },
+      {
+       "url": "https://probashiinfo.com/blog/bkash-remittance-guide",
+       "status": 404,
+       "on": "https://probashiinfo.com/remittyaans-paatthaaneaar-upaay-2026-5-shj-o-sstaa-maadhym/"
+      },
+      {
+       "url": "https://probashiinfo.com/remittance-digital-wallets",
+       "status": 404,
+       "on": "https://probashiinfo.com/remittance-send-zero-fee-fast-guide/"
+      },
+      {
+       "url": "https://probashiinfo.com/probashi-health-tips-kuwait",
+       "status": 404,
+       "on": "https://probashiinfo.com/kuyet-bhisaa-cek-2026-paaspeaartt-naambaare-shj-yaacaai-niym/"
+      },
+      {
+       "url": "https://probashiinfo.com/bangladesh-passport-renewal-2026",
+       "status": 404,
+       "on": "https://probashiinfo.com/kuyet-bhisaa-cek-2026-paaspeaartt-naambaare-shj-yaacaai-niym/"
+      },
+      {
+       "url": "https://probashiinfo.com/%E0%A6%95%E0%A7%81%E0%A7%9F%E0%A7%87%E0%A6%A4-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE-%E0%A6%86%E0%A6%87%E0%A6%A8/",
+       "status": 404,
+       "on": "https://probashiinfo.com/kuyete-prbaasii-betn-2026-snycy-o-khrcer-smpuurnn-haalnaagaad-taalikaa/"
+      },
+      {
+       "url": "https://probashiinfo.com/bangladesh-recruitment-agencies-singapore",
+       "status": 404,
+       "on": "https://probashiinfo.com/singgaapur-oyaark-paarmitt-2026-phi-14500-ttaakaa-lebhi-500-1200/"
+      },
+      {
+       "url": "https://probashiinfo.com/singapore-work-permit-renewal",
+       "status": 404,
+       "on": "https://probashiinfo.com/singgaapur-oyaark-paarmitt-2026-phi-14500-ttaakaa-lebhi-500-1200/"
+      },
+      {
+       "url": "https://probashiinfo.com/bangladesh-singapore-work-permit-guide",
+       "status": 404,
+       "on": "https://probashiinfo.com/singgaapur-oyaark-paarmitt-2026-phi-26000-ttaakaa-gaaidd/"
+      },
+      {
+       "url": "https://probashiinfo.com/remittance-singapore",
+       "status": 404,
+       "on": "https://probashiinfo.com/singgaapure-baanlaadeshi-shrmiker-betn-2026-snycy-hisaab/"
+      },
+      {
+       "url": "https://probashiinfo.com/visa-dubai-europe-guide",
+       "status": 404,
+       "on": "https://probashiinfo.com/dubaai-iureaap-bhisaa-8-desh-o-12-20k-aed-khrc-2026-gaaidd/"
+      },
+      {
+       "url": "https://probashiinfo.com/employment-pass-checklist",
+       "status": 404,
+       "on": "https://probashiinfo.com/singgaapur-oyaark-bhisaa-2026-ntun-niym-betn-o-aabedn/"
+      },
+      {
+       "url": "https://probashiinfo.com/dubai-visa-requirements",
+       "status": 404,
+       "on": "https://probashiinfo.com/dubaai-bhisaa-cek-2026-paaspeaartt-nmbr-diye-shj-niym/"
+      },
+      {
+       "url": "https://probashiinfo.com/study-abroad-scholarship-guide/",
+       "status": 404,
+       "on": "https://probashiinfo.com/dubaai-theke-iureaap-7-shj-desh-khrc-12-22-haajaar-aed-2026/"
+      },
+      {
+       "url": "https://probashiinfo.com/gulf-to-europe-job-migration/",
+       "status": 404,
+       "on": "https://probashiinfo.com/dubaai-theke-iureaap-7-shj-desh-khrc-12-22-haajaar-aed-2026/"
+      },
+      {
+       "url": "https://probashiinfo.com/eu-candidate-countries-list",
+       "status": 404,
+       "on": "https://probashiinfo.com/saarbiyaa-ki-iureaap-kaanttri-2026-saaler-stthik-tthy-o-betn/"
+      },
+      {
+       "url": "https://probashiinfo.com/europe-candidate-countries-2026",
+       "status": 404,
+       "on": "https://probashiinfo.com/saarbiyaa-ki-iureaap-kaanttri-2026-saaler-stthik-tthy-o-betn/"
+      },
+      {
+       "url": "https://probashiinfo.com/serbia-visa-fees-2026",
+       "status": 404,
+       "on": "https://probashiinfo.com/saarbiyaa-ki-iureaap-kaanttri-2026-saaler-stthik-tthy-o-betn/"
+      },
+      {
+       "url": "https://probashiinfo.com/bangladesh-passport-fees-guide/",
+       "status": 404,
+       "on": "https://probashiinfo.com/malaysia-visa-cost-2026/"
+      },
+      {
+       "url": "https://probashiinfo.com/saudi-arabia-work-visa-cost-breakdown/",
+       "status": 404,
+       "on": "https://probashiinfo.com/malaysia-visa-cost-2026/"
+      },
+      {
+       "url": "https://probashiinfo.com/malaysia-work-visa-process-2026",
+       "status": 404,
+       "on": "https://probashiinfo.com/maalyeshiyaa-yete-kt-ttaakaa-laage-kaajer-bhisaa-2026-saaler-khrc/"
+      },
+      {
+       "url": "https://probashiinfo.com/malaysia-remittance-guide",
+       "status": 404,
+       "on": "https://probashiinfo.com/malaysia-basic-salary-2026/"
+      },
+      {
+       "url": "https://probashiinfo.com/%E0%A6%AE%E0%A6%BE%E0%A6%B2%E0%A6%AF%E0%A6%BC%E0%A7%87%E0%A6%B6%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE-%E0%A6%AD%E0%A6%BF%E0%A6%B8%E0%A6%BE-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%87%E0%A6%B8%E0%A6%BF%E0%A6%82-%E0%A6%9F%E0%A6%BE%E0%A6%87%E0%A6%AE",
+       "status": 404,
+       "on": "https://probashiinfo.com/maalyeshiyaa-oyaark-bhisaa-2026-khrc-betn-o-aabedn/"
+      },
+      {
+       "url": "https://probashiinfo.com/g2g-visa-application-guide/",
+       "status": 404,
+       "on": "https://probashiinfo.com/malaysia-visa-cost-2026/"
+      },
+      {
+       "url": "https://probashiinfo.com/%E0%A6%AE%E0%A6%BE%E0%A6%B2%E0%A6%AF%E0%A6%BC%E0%A7%87%E0%A6%B6%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE-%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%95-%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%9F-%E0%A6%B0%E0%A6%BF%E0%A6%A8%E0%A6%BF%E0%A6%89",
+       "status": 404,
+       "on": "https://probashiinfo.com/maalyeshiyaa-oyaark-bhisaa-2026-khrc-betn-o-aabedn/"
+      },
+      {
+       "url": "https://probashiinfo.com/malaysia-work-permit-fee-2026/",
+       "status": 404,
+       "on": "https://probashiinfo.com/maalyeshiyaa-bhisaa-cek-2026-paaspeaartt-naambaar-diye-shj-upaay/"
+      },
+      {
+       "url": "https://probashiinfo.com/malaysia-work-permit-process/",
+       "status": 404,
+       "on": "https://probashiinfo.com/maalyeshiyaa-bhisaa-cek-2026-paaspeaartt-naambaar-diye-shj-upaay/"
+      },
+      {
+       "url": "https://probashiinfo.com/malaysia-epf-benefits",
+       "status": 404,
+       "on": "https://probashiinfo.com/malaysia-basic-salary-2026/"
+      },
+      {
+       "url": "https://probashiinfo.com/%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%AE%E0%A6%87%E0%A6%9F%E0%A6%BF-%E0%A6%85%E0%A6%A8%E0%A7%81%E0%A6%AE%E0%A7%8B%E0%A6%A6%E0%A6%BF%E0%A6%A4-%E0%A6%8F%E0%A6%9C%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%9F-%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A6%BE",
+       "status": 404,
+       "on": "https://probashiinfo.com/maalyeshiyaa-oyaark-bhisaa-2026-khrc-betn-o-aabedn/"
+      },
+      {
+       "url": "https://probashiinfo.com/%e0%a6%87%e0%a6%89%e0%a6%b0%e0%a7%8b%e0%a6%aa%e0%a7%87%e0%a6%b0-%e0%a6%95%e0%a7%8b%e0%a6%a8-%e0%a6%a6%e0%a7%87%e0%a6%b6%e0%a7%87-%e0%a6%b8%e0%a7%8d%e0%a6%9f%e0%a7%81%e0%a6%a1%e0%a7%87%e0%a6%a8%e0%a7%8d%e0%a6%9f-%e0%a6%ad%e0%a6%bf%e0%a6%b8%e0%a6%be-%e0%a6%aa%e0%a6%be%e0%a6%93%e0%a6%af%e0%a6%bc%e0%a6%be-%e0%a6%b8%e0%a6%b9%e0%a6%9c-%e0%a7%a8%e0%a7%a6%e0%a7%a8%e0%a7%ab/",
+       "status": 404,
+       "on": "https://probashiinfo.com/uk-student-visa-2025-application-cost-work-permit/"
+      },
+      {
+       "url": "https://probashiinfo.com/japanese-language-preparation-bangladesh",
+       "status": 404,
+       "on": "https://probashiinfo.com/jaapaan-esesddaaliu-bhisaa-2026-baanlaadeshir-niym-khrc-3-5-laakh-betn/"
+      },
+      {
+       "url": "https://probashiinfo.com/blog/canada-work-visa-guide",
+       "status": 404,
+       "on": "https://probashiinfo.com/jaapaan-oyaark-bhisaa-2026-ntun-niym-betn-o-aabedn-gaaidd/"
+      },
+      {
+       "url": "https://probashiinfo.com/bmet-%E0%A6%AD%E0%A6%BF%E0%A6%B8%E0%A6%BE-%E0%A6%AF%E0%A6%BE%E0%A6%9A%E0%A6%BE%E0%A6%87-%E0%A6%A8%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%AE",
+       "status": 404,
+       "on": "https://probashiinfo.com/se-di-bhisaa-cek-2026-4-dhaape-sttyaattaas-o-phi-yaacaai/"
+      },
+      {
+       "url": "https://probashiinfo.com/%E0%A6%B8%E0%A7%8C%E0%A6%A6%E0%A6%BF-%E0%A6%AD%E0%A6%BF%E0%A6%B8%E0%A6%BE-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%87%E0%A6%B8%E0%A6%BF%E0%A6%82-%E0%A7%A8%E0%A7%A6%E0%A7%A8%E0%A7%AC",
+       "status": 404,
+       "on": "https://probashiinfo.com/se-di-bhisaa-cek-2026-4-dhaape-sttyaattaas-o-phi-yaacaai/"
+      },
+      {
+       "url": "https://probashiinfo.com/boesl-brms-registration-guide",
+       "status": 404,
+       "on": "https://probashiinfo.com/g2g-job-2026/"
+      },
+      {
+       "url": "https://probashiinfo.com/verify-job-contract-bangladesh",
+       "status": 404,
+       "on": "https://probashiinfo.com/baanlaadeshi-prbaasii-betn-2026-ttp-5-deshe-beddeche-mjuri-keaathaay-k/"
+      },
+      {
+       "url": "https://probashiinfo.com/probashi-visa-process-2026",
+       "status": 404,
+       "on": "https://probashiinfo.com/prbaasii-adhikaar-2026-14-2-miliyn-krmiir-kaardd-rnn-betn-aapddett/"
+      },
+      {
+       "url": "https://probashiinfo.com/bmet-license-check",
+       "status": 404,
+       "on": "https://probashiinfo.com/prbaasii-obhaarttaaim-2026-se-di-1-5-gunn-haar-o-ntun-cukti/"
+      },
+      {
+       "url": "https://probashiinfo.com/bmet-online-registration-2026",
+       "status": 404,
+       "on": "https://probashiinfo.com/probashi-card-2026-suvidha-odhikar/"
+      },
+      {
+       "url": "https://probashiinfo.com/saudi-work-visa-cost-20%3Csection%20class='faq'%3E%3Ch2%3EFrequently%20asked%20questions%3C/h2%3E%3Cdiv%20class='faq-item'%3E%3Ch3%3EJapan%20SSW%20visa%202026-%E0%A6%8F%20%E0%A6%86%E0%A6%AC%E0%A7%87%E0%A6%A6%E0%A6%A8%20%E0%A6%AB%E0%A6%BF%20%E0%A6%95%E0%A6%A4?%3C/h3%3E%3Cp%3EJapan%20SSW%20visa%202026-%E0%A6%8F%20%E0%A6%86%E0%A6%AC%E0%A7%87%E0%A6%A6%E0%A6%A8%20%E0%A6%AB%E0%A6%BF%20%C2%A54,500%20(%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AF%E0%A6%BC%20%E0%A7%B34,150)%E0%A5%A4%20%E0%A6%8F%E0%A6%9B%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%BE%20CoE%20%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B0%20%E0%A6%AB%E0%A6%BF%20%C2%A53,000%20(%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AF%E0%A6%BC%20%E0%A7%B32,750)%20%E0%A6%B2%E0%A6%BE%E0%A6%97%E0%A7%87%E0%A5%A4%3C/p%3E%3C/div%3E%3Cdiv%20class=%27faq-item%27%3E%3Ch3%3ESSW%20(i)%20%E0%A6%8F%E0%A6%AC%E0%A6%82%20SSW%20(ii)-%E0%A6%8F%E0%A6%B0%20%E0%A6%AC%E0%A7%87%E0%A6%A4%E0%A6%A8%20%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A5%E0%A6%95%E0%A7%8D%E0%A6%AF%20%E0%A6%95%E0%A7%80?%3C/h3%3E%3Cp%3ESSW%20(i)-%E0%A6%B0%20%E0%A6%A8%E0%A7%8D%E0%A6%AF%E0%A7%82%E0%A6%A8%E0%A6%A4%E0%A6%AE%20%E0%A6%AC%E0%A7%87%E0%A6%A4%E0%A6%A8%20%C2%A5250,000%20(%E2%89%88%E0%A7%B32.30%20%E0%A6%B2%E0%A6%BE%E0%A6%96),%20SSW%20(ii)-%E0%A6%B0%20%C2%A5300,000%20(%E2%89%88%E0%A7%B32.75%20%E0%A6%B2%E0%A6%BE%E0%A6%96)%E0%A5%A4%20SSW%20(ii)%20%E0%A6%AA%E0%A7%87%E0%A6%B2%E0%A7%87%20%E0%A6%85%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%8D%E0%A6%A6%E0%A6%BF%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%95%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%A8%20%E0%A6%AC%E0%A6%B8%E0%A6%AC%E0%A6%BE%E0%A6%B8%20%E0%A6%93%20%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0%20%E0%A6%A8%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A7%87%20%E0%A6%AF%E0%A6%BE%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A6%BE%20%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC%E0%A5%A4%3C/p%3E%3C/div%3E%3Cdiv%20class=%27faq-item%27%3E%3Ch3%3EJapan%20SSW%20visa%20%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%87%E0%A6%B8%E0%A6%BF%E0%A6%82%20%E0%A6%95%E0%A6%A4%20%E0%A6%A6%E0%A6%BF%E0%A6%A8%20%E0%A6%B2%E0%A6%BE%E0%A6%97%E0%A7%87%20%E0%A7%A8%E0%A7%A6%E0%A7%A8%E0%A7%AC%20%E0%A6%B8%E0%A6%BE%E0%A6%B2%E0%A7%87?%3C/h3%3E%3Cp%3ECoE%20%E0%A6%85%E0%A6%A8%E0%A7%81%E0%A6%AE%E0%A7%8B%E0%A6%A6%E0%A6%A8%20%E0%A6%97%E0%A6%A1%E0%A6%BC%E0%A7%87%20%E0%A7%AA%E0%A7%AB%E2%80%93%E0%A7%AB%E0%A7%A6%20%E0%A6%A6%E0%A6%BF%E0%A6%A8,%20%E0%A6%AD%E0%A6%BF%E0%A6%B8%E0%A6%BE%20%E0%A6%87%E0%A6%B8%E0%A7%8D%E0%A6%AF%E0%A7%81%20%E0%A7%AD%E2%80%93%E0%A7%A7%E0%A7%A6%20%E0%A6%A6%E0%A6%BF%E0%A6%A8%E0%A5%A4%20%E0%A6%AE%E0%A7%8B%E0%A6%9F%20%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%20%E0%A7%AC%E0%A7%AB%20%E0%A6%A6%E0%A6%BF%E0%A6%A8%E0%A7%87%E0%A6%B0%20%E0%A6%AE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A7%87%20%E0%A6%B8%E0%A6%AE%E0%A7%8D%E0%A6%AA%E0%A6%A8%E0%A7%8D%E0%A6%A8%20%E0%A6%B9%E0%A6%AF%E0%A6%BC%20(%E0%A6%AA%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%87%20%E0%A7%AF%E0%A7%A6%20%E0%A6%A6%E0%A6%BF%E0%A6%A8%20%E0%A6%B2%E0%A6%BE%E0%A6%97%E0%A6%A4)%E0%A5%A4%3C/p%3E%3C/div%3E%3Cdiv%20class=%27faq-item%27%3E%3Ch3%3ESSW%20(i)%20%E0%A6%AD%E0%A6%BF%E0%A6%B8%E0%A6%BE%E0%A6%AF%E0%A6%BC%20%E0%A6%95%E0%A6%BF%20%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0%20%E0%A6%A8%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A7%87%20%E0%A6%AF%E0%A6%BE%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A6%BE%20%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC?%3C/h3%3E%3Cp%3E%E0%A6%B9%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%81,%20%E0%A7%A8%E0%A7%A6%E0%A7%A8%E0%A7%AC%20%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87%20SSW%20(i)%20%E0%A6%B9%E0%A7%8B%E0%A6%B2%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%E0%A6%B0%E0%A6%BE%20%E0%A6%AC%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%A4%20%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A6%A8%E0%A6%B8%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%80%20%E0%A6%93%20%E0%A7%A7%E0%A7%AE%20%E0%A6%AC%E0%A6%9B%E0%A6%B0%E0%A7%87%E0%A6%B0%20%E0%A6%A8%E0%A6%BF%E0%A6%9A%E0%A7%87%E0%A6%B0%20%E0%A6%B8%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A6%BE%E0%A6%A8%E0%A6%95%E0%A7%87%20%E0%A6%A8%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A7%87%20%E0%A6%AF%E0%A7%87%E0%A6%A4%E0%A7%87%20%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%A8%E0%A5%A4%20%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%9F%E0%A6%BF%20%E0%A6%B8%E0%A6%A6%E0%A6%B8%E0%A7%8D%E0%A6%AF%E0%A7%87%E0%A6%B0%20%E0%A6%9C%E0%A6%A8%E0%A7%8D%E0%A6%AF%20%E0%A6%86%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A6%BE%20CoE%20%E0%A6%8F%E0%A6%AC%E0%A6%82%20%C2%A54,500%20%E0%A6%AD%E0%A6%BF%E0%A6%B8%E0%A6%BE%20%E0%A6%AB%E0%A6%BF%20%E0%A6%B2%E0%A6%BE%E0%A6%97%E0%A7%87%E0%A5%A4%3C/p%3E%3C/div%3E%3Cdiv%20class=%27faq-item%27%3E%3Ch3%3E%E0%A6%9C%E0%A6%BE%E0%A6%AA%E0%A6%BE%E0%A6%A8%E0%A6%BF%20%E0%A6%AD%E0%A6%BE%E0%A6%B7%E0%A6%BE%20%E0%A6%9F%E0%A7%87%E0%A6%B8%E0%A7%8D%E0%A6%9F%20%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%9F%E0%A6%BF%20%E0%A6%A6%E0%A6%BF%E0%A6%A4%E0%A7%87%20%E0%A6%B9%E0%A6%AF%E0%A6%BC%20SSW%20%E0%A6%AD%E0%A6%BF%E0%A6%B8%E0%A6%BE%E0%A6%B0%20%E0%A6%9C%E0%A6%A8%E0%A7%8D%E0%A6%AF?%3C/h3%3E%3Cp%3ESSW%20(i)-%E0%A6%B0%20%E0%A6%9C%E0%A6%A8%E0%A7%8D%E0%A6%AF%20JLPT%20N5%20(%E0%A6%AA%E0%A6%BE%E0%A6%B8%E0%A6%BF%E0%A6%82%20%E0%A6%B8%E0%A7%8D%E0%A6%95%E0%A7%8B%E0%A6%B0%20%E0%A7%A8.%E0%A7%A6/%E0%A7%A9.%E0%A7%A6),%20SSW%20(ii)-%E0%A6%B0%20%E0%A6%9C%E0%A6%A8%E0%A7%8D%E0%A6%AF%20JLPT%20N4%20(%E0%A6%AA%E0%A6%BE%E0%A6%B8%E0%A6%BF%E0%A6%82%20%E0%A6%B8%E0%A7%8D%E0%A6%95%E0%A7%8B%E0%A6%B0%20%E0%A7%A8.%E0%A7%AB/%E0%A7%A9.%E0%A7%A6)%E0%A5%A4%20%E0%A6%B0%E0%A7%87%E0%A6%9C%E0%A6%BE%E0%A6%B2%E0%A7%8D%E0%A6%9F%20%E0%A7%A8%20%E0%A6%AC%E0%A6%9B%E0%A6%B0%20%E0%A6%AC%E0%A7%88%E0%A6%A7%20%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A7%87%E0%A5%A4%3C/p%3E%3C/div%3E%3C/section%3E%3Cp%20class=",
+       "status": 404,
+       "on": "https://probashiinfo.com/japan-ssw-visa-2026-khrc-4150-ttaakaa-betn-2-75-laakh-phyaamili-subidh/"
+      },
+      {
+       "url": "https://probashiinfo.com/probashi-kalyan-bank",
+       "status": 404,
+       "on": "https://probashiinfo.com/prbaasii-nibndhn-2026-5-minitte-anlaain-o-5-laakh-biimaa-subidhaa/"
+      },
+      {
+       "url": "https://probashiinfo.com/bulgaria-work-permit-process-2026",
+       "status": 404,
+       "on": "https://probashiinfo.com/bulgeriyaa-srbnimn-betn-2026-780-iureaa-o-shrt/"
+      },
+      {
+       "url": "https://probashiinfo.com/best-european-countries-bangladeshi-workers-2026",
+       "status": 404,
+       "on": "https://probashiinfo.com/bulgeriyaa-srbnimn-betn-2026-780-iureaa-o-shrt/"
+      },
+      {
+       "url": "https://probashiinfo.com/work-permit-application-process",
+       "status": 404,
+       "on": "https://probashiinfo.com/oyaark-paarmitt-2026-prkaarbhed-betn-o-5tti-yaacaaiyer-ttips/"
+      },
+      {
+       "url": "https://probashiinfo.com/%E0%A6%87%E0%A6%89%E0%A6%B0%E0%A7%8B%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A7%87%E0%A6%A8%E0%A6%9C%E0%A7%87%E0%A6%A8-%E0%A6%AD%E0%A7%81%E0%A6%95%E0%A7%8D%E0%A6%A4-%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A6%BE-%E0%A7%A8%E0%A7%A6%E0%A7%A8%E0%A7%AC",
+       "status": 404,
+       "on": "https://probashiinfo.com/bangladesh-to-europe-work-visa-easy-countries-2025/"
+      },
+      {
+       "url": "https://probashiinfo.com/probashi-passport-expiry-checklist",
+       "status": 404,
+       "on": "https://probashiinfo.com/paaspeaartt-nbaayn-2026-shj-anlaain-prkriyaa-o-khrc/"
+      },
+      {
+       "url": "https://probashiinfo.com/biman-expatriate-welfare-fare",
+       "status": 404,
+       "on": "https://probashiinfo.com/aantrjaatik-phlaaitt-baanlaadesh-2026-5-ntun-rutt-prbaasiir-ttikett-ss/"
+      },
+      {
+       "url": "https://probashiinfo.com/germany-job-search-tips",
+       "status": 404,
+       "on": "https://probashiinfo.com/jaarmaani-blu-kaardd-2026-baanlaadeshi-inyjiniyaarder-syaalaari-45934/"
+      },
+      {
+       "url": "https://probashiinfo.com/gamca-medical-test-bangladesh-2026",
+       "status": 404,
+       "on": "https://probashiinfo.com/ktr-bhisaa-cek-2026-3-aphisiyaal-upaay-phi-qar-800-paaspeaartt-diye-ya/"
+      },
+      {
+       "url": "https://probashiinfo.com/qatar-work-visa-processing-time-2026",
+       "status": 404,
+       "on": "https://probashiinfo.com/ktr-bhisaa-cek-2026-3-aphisiyaal-upaay-phi-qar-800-paaspeaartt-diye-ya/"
+      },
+      {
+       "url": "https://probashiinfo.com/bmet-clearance-check-online-2026",
+       "status": 404,
+       "on": "https://probashiinfo.com/ktr-bhisaa-cek-2026-3-aphisiyaal-upaay-phi-qar-800-paaspeaartt-diye-ya/"
+      },
+      {
+       "url": "https://probashiinfo.com/qatar-id-application-process-2026",
+       "status": 404,
+       "on": "https://probashiinfo.com/ktr-bhisaa-cek-2026-3-aphisiyaal-upaay-phi-qar-800-paaspeaartt-diye-ya/"
+      },
+      {
+       "url": "https://probashiinfo.com/probashee-visa-procurement-guide",
+       "status": 404,
+       "on": "https://probashiinfo.com/probashi-card-benefits-2026/"
+      },
+      {
+       "url": "https://probashiinfo.com/bd-migration-guide",
+       "status": 404,
+       "on": "https://probashiinfo.com/bangladeshi-probashi-desh-top-5-2026/"
+      },
+      {
+       "url": "https://probashiinfo.com/bangladeshi-worker-rights-saudi",
+       "status": 404,
+       "on": "https://probashiinfo.com/saudi-visa-2026-guide/"
+      },
+      {
+       "url": "https://probashiinfo.com/lebanon-visa-fees-2026",
+       "status": 404,
+       "on": "https://probashiinfo.com/lebanon-work-permit-2026/"
+      },
+      {
+       "url": "https://probashiinfo.com/lebanon-salary-requirements",
+       "status": 404,
+       "on": "https://probashiinfo.com/lebanon-work-permit-2026/"
+      },
+      {
+       "url": "https://probashiinfo.com/blog/passport-visa-guide",
+       "status": 404,
+       "on": "https://probashiinfo.com/bmet-prshikssnn-2026-phri-keaars-bhaataa-o-skill-pass/"
+      },
+      {
+       "url": "https://probashiinfo.com/images/bmet-smart-card-2026-front-back.jpg",
+       "status": 404,
+       "on": "https://probashiinfo.com/biemitti-smaartt-kaardd-2026-niym-phi-o-aabedn-pddhti/"
+      },
+      {
+       "url": "https://probashiinfo.com/bmet-registration-guide",
+       "status": 404,
+       "on": "https://probashiinfo.com/biemitti-smaartt-kaardd-2026-niym-phi-o-aabedn-pddhti/"
+      },
+      {
+       "url": "https://probashiinfo.com/blog/bangladesh-bank-remittance-incentive-2026",
+       "status": 404,
+       "on": "https://probashiinfo.com/prbaase-betn-paatthaaneaar-upaay-2026-seraa-7tti-pddhti/"
+      },
+      {
+       "url": "https://probashiinfo.com/wage-earners-welfare-board",
+       "status": 404,
+       "on": "https://probashiinfo.com/prbaasii-sntaaner-bideshe-pddaasheaanaa-2026-shj-khrc-priklpnaa-o-nira/"
+      },
+      {
+       "url": "https://probashiinfo.com/probashi-kallyan-bank-loan",
+       "status": 404,
+       "on": "https://probashiinfo.com/prbaasii-sntaaner-bideshe-pddaasheaanaa-2026-shj-khrc-priklpnaa-o-nira/"
+      },
+      {
+       "url": "https://probashiinfo.com/bmet-smart-card-renewal-guide",
+       "status": 404,
+       "on": "https://probashiinfo.com/aami-prbaasii-ayaap-2026-smaartt-kaardd-prshikssnn-o-sebaar-smpuurnn-g/"
+      },
+      {
+       "url": "https://probashiinfo.com/blog/probashi-income-tax-2026",
+       "status": 404,
+       "on": "https://probashiinfo.com/se-di-theke-ttaakaa-paatthaaneaar-niym-2026-remittyaans-khrc-kmaaneaar/"
+      },
+      {
+       "url": "https://probashiinfo.com/bideshe-caakri-2026-smpuurnn-gaaidd-o-haalnaagaad-tthy/images/dhaka-airport-departure-2026.jpg",
+       "status": 404,
+       "on": "https://probashiinfo.com/bideshe-caakri-2026-smpuurnn-gaaidd-o-haalnaagaad-tthy/"
+      },
+      {
+       "url": "https://probashiinfo.com/bideshe-caakri-2026-smpuurnn-gaaidd-o-haalnaagaad-tthy/images/saudi-construction-workers-2026.jpg",
+       "status": 404,
+       "on": "https://probashiinfo.com/bideshe-caakri-2026-smpuurnn-gaaidd-o-haalnaagaad-tthy/"
+      },
+      {
+       "url": "https://probashiinfo.com/bideshe-caakri-2026-smpuurnn-gaaidd-o-haalnaagaad-tthy/images/malaysia-plantation-worker-2026.jpg",
+       "status": 404,
+       "on": "https://probashiinfo.com/bideshe-caakri-2026-smpuurnn-gaaidd-o-haalnaagaad-tthy/"
+      },
+      {
+       "url": "https://probashiinfo.com/bideshe-caakri-2026-smpuurnn-gaaidd-o-haalnaagaad-tthy/images/bmet-training-center-2026.jpg",
+       "status": 404,
+       "on": "https://probashiinfo.com/bideshe-caakri-2026-smpuurnn-gaaidd-o-haalnaagaad-tthy/"
+      },
+      {
+       "url": "https://probashiinfo.com/probashi-kalyan-bank-loan",
+       "status": 404,
+       "on": "https://probashiinfo.com/oyaark-bhisaa-2026-saaler-smpuurnn-gaaidd-o-khrc/"
+      },
+      {
+       "url": "https://probashiinfo.com/overseas-jobs-bangladesh",
+       "status": 404,
+       "on": "https://probashiinfo.com/biemitti-rejisttreshn-2026-ntun-niym-o-smpuurnn-prkriyaa/"
+      },
+      {
+       "url": "https://probashiinfo.com/maldives-recruitment-agencies-2026",
+       "status": 404,
+       "on": "https://probashiinfo.com/maldives-work-visa-cost-2026/"
+      },
+      {
+       "url": "https://probashiinfo.com/%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A6%BF-%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%95-%E0%A6%AD%E0%A6%BF%E0%A6%B8%E0%A6%BE/",
+       "status": 404,
+       "on": "https://probashiinfo.com/reaamaaniyaa-oyaark-bhisaa-2026-betn-khrc-o-shj-gaaidd/"
+      },
+      {
+       "url": "https://probashiinfo.com/%e0%a6%87%e0%a6%89%e0%a6%b0%e0%a7%8b%e0%a6%aa%e0%a7%87%e0%a6%b0-%e0%a6%95%e0%a7%8b%e0%a6%a8-%e0%a6%a6%e0%a7%87%e0%a6%b6%e0%a7%87-%e0%a6%b8%e0%a7%8d%e0%a6%9f%e0%a7%81%e0%a6%a1%e0%a7%87%e0%a6%a8%e0%a6%a4-%e0%a6%ad%e0%a6%bf%e0%a6%b8%e0%a6%be-%e0%a6%aa%e0%a6%be%e0%a6%93%e0%a7%9f%e0%a6%be-%e0%a6%b8%e0%a6%b9%e0%a6%9c/",
+       "status": 404,
+       "on": "https://probashiinfo.com/europe-student-visa-bank-balance-2025/"
+      },
+      {
+       "url": "https://probashiinfo.com/blog/passport-police-clearance-guide",
+       "status": 404,
+       "on": "https://probashiinfo.com/europe-work-permit-2026/"
+      },
+      {
+       "url": "https://probashiinfo.com/arabic-pronunciation-tips",
+       "status": 404,
+       "on": "https://probashiinfo.com/arbi-theke-bangla-uchcharon-gulf-visa-guide-2026/"
+      },
+      {
+       "url": "https://probashiinfo.com/blog/europe-job-market-2026",
+       "status": 404,
+       "on": "https://probashiinfo.com/europe-work-permit-2026/"
+      },
+      {
+       "url": "https://probashiinfo.com/bn/canada-immigration-process",
+       "status": 404,
+       "on": "https://probashiinfo.com/canada-work-permit-2026/"
+      },
+      {
+       "url": "https://probashiinfo.com/bmet-registration-process/",
+       "status": 404,
+       "on": "https://probashiinfo.com/maldives-work-permit-cost-2026/"
+      },
+      {
+       "url": "https://probashiinfo.com/schengen-visa-process/",
+       "status": 404,
+       "on": "https://probashiinfo.com/portugal-work-visa-2026/"
+      },
+      {
+       "url": "https://probashiinfo.com/blog/greece-digital-nomad-visa/",
+       "status": 404,
+       "on": "https://probashiinfo.com/gris-oyaark-bhisaa-2026-khrc-betn-o-shj-gaaidd/"
+      },
+      {
+       "url": "https://probashiinfo.com/blog/bmet-approved-recruiting-agency/",
+       "status": 404,
+       "on": "https://probashiinfo.com/gris-oyaark-bhisaa-2026-khrc-betn-o-shj-gaaidd/"
+      },
+      {
+       "url": "https://probashiinfo.com/skill-training-for-oman",
+       "status": 404,
+       "on": "https://probashiinfo.com/omaan-oyaark-bhisaa-2026-niym-betn-o-khrcer-gaaidd/"
+      },
+      {
+       "url": "https://probashiinfo.com/blog/german-language-guide",
+       "status": 404,
+       "on": "https://probashiinfo.com/jaarmaani-oyaark-bhisaa-2026-betn-khrc-o-aabedn-gaaidd/"
+      },
+      {
+       "url": "https://probashiinfo.com/blog/bmet-clearance",
+       "status": 404,
+       "on": "https://probashiinfo.com/jaarmaani-oyaark-bhisaa-2026-betn-khrc-o-aabedn-gaaidd/"
+      },
+      {
+       "url": "https://probashiinfo.com/blog/canada-work-visa",
+       "status": 404,
+       "on": "https://probashiinfo.com/jaarmaani-oyaark-bhisaa-2026-betn-khrc-o-aabedn-gaaidd/"
+      },
+      {
+       "url": "https://probashiinfo.com/bangladesh-overseas-jobs-guide",
+       "status": 404,
+       "on": "https://probashiinfo.com/dkssinn-keaariyaa-oyaark-bhisaa-2026-smpuurnn-eps-lttaari-betn-o-aabed/"
+      },
+      {
+       "url": "https://probashiinfo.com/blog/germany-work-visa-documents",
+       "status": 404,
+       "on": "https://probashiinfo.com/jaarmaani-oyaark-bhisaa-2026-betn-khrc-o-aabedn-gaaidd/"
+      }
+     ]
+    },
+    "cob": {
+     "lighthouse": [
+      {
+       "url": "https://coloursofbangladesh.com/",
+       "form": "mobile",
+       "performance": 66,
+       "accessibility": 86,
+       "best-practices": 93,
+       "seo": 100,
+       "lcp_s": 7.22,
+       "cls": 0.002,
+       "tbt_ms": 0,
+       "seo_fails": []
+      },
+      {
+       "url": "https://coloursofbangladesh.com/news/argentina-squad-after-messi-ziaa",
+       "form": "mobile",
+       "performance": 69,
+       "accessibility": 83,
+       "best-practices": 93,
+       "seo": 100,
+       "lcp_s": 8.23,
+       "cls": 0.002,
+       "tbt_ms": 0,
+       "seo_fails": []
+      },
+      {
+       "url": "https://coloursofbangladesh.com/",
+       "form": "desktop",
+       "performance": 70,
+       "accessibility": 90,
+       "best-practices": 67,
+       "seo": 100,
+       "lcp_s": 1.78,
+       "cls": 0.198,
+       "tbt_ms": 0,
+       "seo_fails": []
+      },
+      {
+       "url": "https://coloursofbangladesh.com/news/argentina-squad-after-messi-ziaa",
+       "form": "desktop",
+       "performance": 78,
+       "accessibility": 92,
+       "best-practices": 89,
+       "seo": 100,
+       "lcp_s": 1.63,
+       "cls": 0.136,
+       "tbt_ms": 0,
+       "seo_fails": []
+      }
+     ],
+     "broken": [
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%86%E0%A6%B0%E0%A7%8D%E0%A6%9C%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%A8%E0%A6%BE%20%E0%A6%9C%E0%A6%BE%E0%A6%A4%E0%A7%80%E0%A6%AF%E0%A6%BC%20%E0%A6%A6%E0%A6%B2",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B8%E0%A6%BE%E0%A6%82%E0%A6%AC%E0%A6%BE%E0%A6%A6%E0%A6%BF%E0%A6%95%20%E0%A6%86%E0%A6%B2%E0%A6%BF%E0%A6%AB%20%E0%A6%B9%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%BE",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/journalist-alif-murder-confession-p5dn"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B8%E0%A6%BE%E0%A6%89%E0%A6%A5%E0%A6%87%E0%A6%B8%E0%A7%8D%E0%A6%9F%20%E0%A6%87%E0%A6%89%E0%A6%A8%E0%A6%BF%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%B8%E0%A6%BF%E0%A6%9F%E0%A6%BF",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/ieee-women-engineering-conference-southeast-university-62sr"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%87%E0%A6%B2%E0%A7%87%E0%A6%95%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%20%E0%A6%85%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A1%20%E0%A6%95%E0%A6%AE%E0%A7%8D%E0%A6%AA%E0%A6%BF%E0%A6%89%E0%A6%9F%E0%A6%BE%E0%A6%B0%20%E0%A6%87%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A6%BF%E0%A6%A8%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B0%E0%A6%BF%E0%A6%82",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/ieee-women-engineering-conference-southeast-university-62sr"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%20%E0%A6%A4%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%95%20%E0%A6%B0%E0%A6%B9%E0%A6%AE%E0%A6%BE%E0%A6%A8",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/startup-fund-youth-day-announcement-j19k"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AE%E0%A6%AF%E0%A6%BC%E0%A6%AE%E0%A6%A8%E0%A6%B8%E0%A6%BF%E0%A6%82%E0%A6%B9%20%E0%A6%B6%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%20%E0%A6%AC%E0%A7%8B%E0%A6%B0%E0%A7%8D%E0%A6%A1",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/hsc-zero-pass-rate-15-colleges-iam2"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%A1%E0%A6%BF%E0%A6%8F%E0%A6%B8%E0%A6%87%20%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%B8%20%E0%A6%85%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A7%8B%E0%A6%B8%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A7%87%E0%A6%B6%E0%A6%A8",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/dse-brokers-association-tax-exemption-capital-market-zfwb"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A7%87%E0%A6%B8%E0%A7%8D%E0%A6%9F%20%E0%A6%87%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BF%E0%A6%9C%20%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%9F",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/bangladesh-vs-west-indies-test-day-4-0ehw"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%20%E0%A6%AC%E0%A6%A8%E0%A6%BE%E0%A6%AE%20%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A7%87%E0%A6%B8%E0%A7%8D%E0%A6%9F%20%E0%A6%87%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BF%E0%A6%9C",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/bangladesh-vs-west-indies-test-day-4-0ehw"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B6%E0%A7%87%E0%A6%B0%E0%A7%87%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%20%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A7%87%E0%A6%A1%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%AE",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/bangladesh-vs-west-indies-test-day-4-0ehw"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B0%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%A6%20%E0%A6%AC%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%B0",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/hefazat-islam-compensation-demand-houthi-attack-l0tc"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A7%8D%E0%A6%AF%20%E0%A6%AA%E0%A6%B0%E0%A7%80%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/malaysia-worker-medical-fee-8000-taka-xpmc"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80%E0%A6%95%E0%A6%B2%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%A3%20%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A6%BE%E0%A6%B2%E0%A6%AF%E0%A6%BC",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/malaysia-worker-medical-fee-8000-taka-xpmc"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AC%E0%A7%87%E0%A6%A8%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%AE%E0%A6%BF%E0%A6%A8%20%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%A8%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B9%E0%A7%81",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/israel-election-no-majority-government-3ng8"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AC%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%A8%20%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%20%E0%A6%8F%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B0%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%A8%E0%A6%B8",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/tarek-rahman-flight-mechanical-issue-8siq"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A6%BE%20%E0%A6%AC%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%B0",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/tarek-rahman-flight-mechanical-issue-8siq"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%A8%E0%A6%BF%E0%A6%89%20%E0%A6%97%E0%A6%AD%E0%A6%B0%E0%A7%8D%E0%A6%A8%E0%A6%AE%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%9F%20%E0%A6%A1%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BF%20%E0%A6%95%E0%A6%B2%E0%A7%87%E0%A6%9C",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/abu-bakkar-siddique-sniper-comment-a7m5"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%9C%E0%A6%BE%E0%A6%A4%E0%A7%80%E0%A6%AF%E0%A6%BC%20%E0%A6%AC%E0%A6%BF%E0%A6%B6%E0%A7%8D%E0%A6%AC%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A6%AF%E0%A6%BC",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/abu-bakkar-siddique-sniper-comment-a7m5"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%96%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%95%E0%A6%BE%E0%A6%B0%20%E0%A6%86%E0%A6%AC%E0%A7%8D%E0%A6%A6%E0%A7%81%E0%A6%B2%20%E0%A6%AE%E0%A7%81%E0%A6%95%E0%A7%8D%E0%A6%A4%E0%A6%BE%E0%A6%A6%E0%A6%BF%E0%A6%B0",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/edible-oil-price-ramadan-2mwg"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B8%E0%A6%BE%E0%A6%AB%20%E0%A6%9A%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AE%E0%A7%8D%E0%A6%AA%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%A8%E0%A6%B6%E0%A6%BF%E0%A6%AA",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/saff-championship-ticket-price-dhaka-cunl"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%9C%E0%A6%BE%E0%A6%A4%E0%A7%80%E0%A6%AF%E0%A6%BC%20%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A7%87%E0%A6%A1%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%AE",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/saff-championship-ticket-price-dhaka-cunl"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%95%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%B0%E0%A6%B8%20%E0%A6%85%E0%A6%AC%20%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/growth-video-explainer"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%9C%E0%A6%BE%E0%A6%A4%E0%A7%80%E0%A6%AF%E0%A6%BC%20%E0%A6%AC%E0%A6%BF%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%AC%20%E0%A6%93%20%E0%A6%B8%E0%A6%82%E0%A6%B9%E0%A6%A4%E0%A6%BF%20%E0%A6%A6%E0%A6%BF%E0%A6%AC%E0%A6%B8",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/bank-holiday-november-7-zond"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AA%E0%A6%BE%E0%A6%95%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BE%E0%A6%A8%20%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%9F%20%E0%A6%A6%E0%A6%B2",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/shadab-khan-century-pakistan-win-england-odi-8j67"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%87%E0%A6%82%E0%A6%B2%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A1%20%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%9F%20%E0%A6%A6%E0%A6%B2",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/shadab-khan-century-pakistan-win-england-odi-8j67"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF%20%E0%A6%85%E0%A6%AD%E0%A6%BF%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/sujat-shimul-wedding-999-dowry-bgoe"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A7%8D%E0%A6%AF%20%E0%A6%85%E0%A6%A7%E0%A6%BF%E0%A6%A6%E0%A6%AA%E0%A7%8D%E0%A6%A4%E0%A6%B0",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/bangladesh-measles-death-toll-october-d17u"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A7%8D%E0%A6%AF%20%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BF%E0%A6%A4%E0%A6%BF",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/dengue-cases-deaths-bangladesh-october-atgz"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%B6%E0%A6%BE%E0%A6%B9%E0%A7%80%20%E0%A6%AC%E0%A6%BF%E0%A6%B6%E0%A7%8D%E0%A6%AC%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A6%AF%E0%A6%BC",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/rajshahi-private-car-rickshaw-puller-death-g5os"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/home-minister-visits-injured-police-officer-ny7n"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%8F%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A6%95%E0%A7%87%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B0%20%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%E0%A6%B2",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/home-minister-visits-injured-police-officer-ny7n"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%A7%E0%A7%80%E0%A6%A8%20%E0%A6%A4%E0%A6%A6%E0%A6%A8%E0%A7%8D%E0%A6%A4%20%E0%A6%95%E0%A6%AE%E0%A6%BF%E0%A6%B6%E0%A6%A8",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/israel-election-protests-netanyahu-october-pbb6"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%AE%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%9F%20%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%9A%E0%A6%A8",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/israel-election-protests-netanyahu-october-pbb6"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%AE%E0%A7%80%20%E0%A6%9A%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%AE%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%A8%E0%A6%A8%E0%A7%8D%E0%A6%A6",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/modi-chinmayananda-ai-avatar-o8zo"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%9A%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%AE%E0%A6%AF%E0%A6%BC%20%E0%A6%85%E0%A6%AE%E0%A7%83%E0%A6%A4%20%E0%A6%AE%E0%A6%B9%E0%A7%8B%E0%A7%8E%E0%A6%B8%E0%A6%AC",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/modi-chinmayananda-ai-avatar-o8zo"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA%E0%A6%A3%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%20%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/houthi-denies-attack-mecca-medina-lngw"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%95%E0%A7%8B%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%A8%20%E0%A6%AD%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%A8%E0%A6%95%E0%A7%8B",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/ukrainian-soldier-amputates-leg-drone-rescue-q17z"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B0%E0%A6%BE%E0%A6%B6%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE-%E0%A6%87%E0%A6%89%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%A8%20%E0%A6%AF%E0%A7%81%E0%A6%A6%E0%A7%8D%E0%A6%A7",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/ukrainian-soldier-amputates-leg-drone-rescue-q17z"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%95%E0%A7%8C%E0%A6%B6%E0%A6%B2%E0%A6%97%E0%A6%A4%20%E0%A6%85%E0%A6%82%E0%A6%B6%E0%A7%80%E0%A6%A6%E0%A6%BE%E0%A6%B0%E0%A6%A4%E0%A7%8D%E0%A6%AC",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/tareq-rahman-tokyo-visit-japan-strategic-partnership-2e5m"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%9C%E0%A6%BE%E0%A6%AA%E0%A6%BE%E0%A6%A8%20%E0%A6%AA%E0%A6%B0%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0%20%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A6%BE%E0%A6%B2%E0%A6%AF%E0%A6%BC",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/tareq-rahman-tokyo-visit-japan-strategic-partnership-2e5m"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%87%E0%A6%B8%E0%A6%B0%E0%A6%BE%E0%A6%AF%E0%A6%BC%E0%A7%87%E0%A6%B2%20%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%9A%E0%A6%A8",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/trump-supports-netanyahu-israel-election-9t5z"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AB%E0%A6%BF%E0%A6%89%E0%A6%9A%E0%A6%BE%E0%A6%B0%20%E0%A6%87%E0%A6%A8%E0%A6%AD%E0%A7%87%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%AE%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%9F%20%E0%A6%87%E0%A6%A8%E0%A6%BF%E0%A6%B6%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A7%87%E0%A6%9F%E0%A6%BF%E0%A6%AD",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/houthi-attacks-saudi-investment-conference-postponed-07dv"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%86%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A6%B0%E0%A7%8D%E0%A6%9C%E0%A6%BE%E0%A6%A4%E0%A6%BF%E0%A6%95%20%E0%A6%AC%E0%A6%BF%E0%A6%A8%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A7%8B%E0%A6%97%20%E0%A6%B8%E0%A6%AE%E0%A7%8D%E0%A6%AE%E0%A7%87%E0%A6%B2%E0%A6%A8",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/houthi-attacks-saudi-investment-conference-postponed-07dv"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B2%E0%A6%B0%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%B8%20%E0%A6%AC%E0%A6%BF%E0%A6%B7%E0%A7%8D%E0%A6%A3%E0%A7%8B%E0%A6%87%20%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/tiger-shroff-mumbai-shooting-elqa"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%B0%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%20%E0%A6%B8%E0%A6%B9%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A6%BF%E0%A6%A4%E0%A6%BE",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/badr-pact-turkey-pakistan-qatar-indonesia-i8yr"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%95%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A6%A1%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%A8%20%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A7%8D%E0%A6%B8%E0%A7%87%E0%A6%B8%20%E0%A6%AC%E0%A7%87%E0%A6%9C",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/canada-military-base-fire-wainwright-219b"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%9C%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%A8%E0%A6%BF%20%E0%A6%AE%E0%A7%82%E0%A6%B2%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A7%83%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BF",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/france-protests-police-clash-iyig"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%A8%E0%A7%80%E0%A6%B2%E0%A6%B8%E0%A6%BE%E0%A6%97%E0%A6%B0%20%E0%A6%8F%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%B8",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/tangail-train-derailment-k5mp"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%97%E0%A6%A3%E0%A6%AA%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%A4%20%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A6%BE%E0%A6%B2%E0%A6%AF%E0%A6%BC",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/old-trade-fair-ground-mela-suspended-l0ib"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A6%A8%20%E0%A6%AC%E0%A6%BE%E0%A6%A3%E0%A6%BF%E0%A6%9C%E0%A7%8D%E0%A6%AF%20%E0%A6%AE%E0%A7%87%E0%A6%B2%E0%A6%BE%20%E0%A6%AE%E0%A6%BE%E0%A6%A0",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/old-trade-fair-ground-mela-suspended-l0ib"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AF%E0%A7%81%E0%A6%AC%20%E0%A6%93%20%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%A1%E0%A6%BC%E0%A6%BE%20%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A6%BE%E0%A6%B2%E0%A6%AF%E0%A6%BC",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/old-trade-fair-ground-mela-suspended-l0ib"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AF%E0%A6%BE%E0%A6%AC%E0%A6%9C%E0%A7%8D%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A6%A8%20%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A6%A3%E0%A7%8D%E0%A6%A1",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/bogura-shalika-rape-life-imprisonment-no1d"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A7%80%20%E0%A6%93%20%E0%A6%B6%E0%A6%BF%E0%A6%B6%E0%A7%81%20%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A6%A8%20%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%87%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A6%A8%E0%A6%BE%E0%A6%B2",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/bogura-shalika-rape-life-imprisonment-no1d"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%86%E0%A6%B2%20%E0%A6%AE%E0%A7%8B%E0%A6%B9%E0%A6%BE%E0%A6%87%E0%A6%AE%E0%A6%BF%E0%A6%A8%E0%A7%81%20%E0%A6%AE%E0%A7%87%E0%A6%B9%E0%A7%87%E0%A6%A6%E0%A7%80%20%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A6%A8",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/bogura-shalika-rape-life-imprisonment-no1d"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%20%E0%A6%B8%E0%A6%BF%E0%A6%9F%E0%A6%BF%20%E0%A6%95%E0%A6%B0%E0%A6%AA%E0%A7%8B%E0%A6%B0%E0%A7%87%E0%A6%B6%E0%A6%A8",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/shahadat-hossain-chattogram-city-corporation-administrator-n64j"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%AF%E0%A6%BC%20%E0%A6%B8%E0%A6%B0%E0%A6%95%E0%A6%BE%E0%A6%B0%20%E0%A6%AC%E0%A6%BF%E0%A6%AD%E0%A6%BE%E0%A6%97",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/shahadat-hossain-chattogram-city-corporation-administrator-n64j"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%9C%E0%A6%BE%E0%A6%A4%E0%A7%80%E0%A6%AF%E0%A6%BC%20%E0%A6%AD%E0%A7%8B%E0%A6%95%E0%A7%8D%E0%A6%A4%E0%A6%BE-%E0%A6%85%E0%A6%A7%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%B0%20%E0%A6%B8%E0%A6%82%E0%A6%B0%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A3%20%E0%A6%85%E0%A6%A7%E0%A6%BF%E0%A6%A6%E0%A6%AA%E0%A7%8D%E0%A6%A4%E0%A6%B0",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/consumer-rights-campaign-36-districts-fine-mj6q"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AC%E0%A7%87%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A6%B2%20%E0%A6%95%E0%A6%AE%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%B6%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B2%20%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/janata-bank-website-cyber-attack-closed-latc"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%9C%E0%A6%BE%E0%A6%A4%E0%A7%80%E0%A6%AF%E0%A6%BC%20%E0%A6%A8%E0%A6%BE%E0%A6%97%E0%A6%B0%E0%A6%BF%E0%A6%95%20%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%9F%E0%A6%BF",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/nahim-islam-allegation-india-secret-deal-7sdh"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%AF%E0%A6%BC%20%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%9A%E0%A6%A8",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/shafiqur-rahman-moulvibazar-visit-local-election-criticism-sgza"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B0%E0%A7%81%E0%A6%B9%E0%A7%81%E0%A6%B2%20%E0%A6%95%E0%A7%81%E0%A6%A6%E0%A7%8D%E0%A6%A6%E0%A7%81%E0%A6%B8%20%E0%A6%95%E0%A6%BE%E0%A6%9C%E0%A6%B2",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/ishrak-hossain-resignation-attorney-general-g5k8"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%85%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%9F%E0%A6%B0%E0%A7%8D%E0%A6%A8%E0%A6%BF%20%E0%A6%9C%E0%A7%87%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B2",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/ishrak-hossain-resignation-attorney-general-g5k8"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%87%E0%A6%B8%E0%A6%B2%E0%A6%BE%E0%A6%AE%E0%A7%80%20%E0%A6%86%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8B%E0%A6%B2%E0%A6%A8%20%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/mob-justice-political-violence-deaths-0gxy"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AE%E0%A6%BE%E0%A6%93%E0%A6%B2%E0%A6%BE%E0%A6%A8%E0%A6%BE%20%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%20%E0%A6%86%E0%A6%A4%E0%A6%BE%E0%A6%89%E0%A6%B0%20%E0%A6%B0%E0%A6%B9%E0%A6%AE%E0%A6%BE%E0%A6%A8",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/mob-justice-political-violence-deaths-0gxy"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%8F%E0%A6%B9%E0%A6%B8%E0%A6%BE%E0%A6%A8%E0%A7%81%E0%A6%B2%20%E0%A6%AE%E0%A6%BE%E0%A6%B9%E0%A6%AC%E0%A7%81%E0%A6%AC%20%E0%A6%9C%E0%A7%81%E0%A6%AC%E0%A6%BE%E0%A6%AF%E0%A6%BC%E0%A7%87%E0%A6%B0",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/ishrak-hossain-pistol-jamaat-condemnation-fiuu"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AE%E0%A6%BE%E0%A6%A6%E0%A6%95%E0%A6%AC%E0%A6%BF%E0%A6%B0%E0%A7%8B%E0%A6%A7%E0%A7%80%20%E0%A6%85%E0%A6%AD%E0%A6%BF%E0%A6%AF%E0%A6%BE%E0%A6%A8",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/ishrak-hossain-pistol-jamaat-condemnation-fiuu"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AE%E0%A7%81%E0%A6%95%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%AF%E0%A7%81%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%AC%E0%A6%BF%E0%A6%B7%E0%A6%AF%E0%A6%BC%E0%A6%95%20%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/israk-hossain-firearm-anti-drug-operation-0s13"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AA%E0%A6%B0%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0%20%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A6%BE%E0%A6%B2%E0%A6%AF%E0%A6%BC",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/saudi-arabia-execution-bangladeshi-citizens-je4q"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%86%E0%A6%AC%E0%A6%A6%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B9%20%E0%A6%AC%E0%A6%BF%E0%A6%A8%20%E0%A6%9C%E0%A6%BE%E0%A6%AB%E0%A6%B0",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/saudi-arabia-execution-bangladeshi-citizens-je4q"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B6%E0%A6%BE%E0%A6%B9%E0%A6%B0%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B0%20%E0%A6%95%E0%A6%AC%E0%A6%BF%E0%A6%B0%20%E0%A6%B0%E0%A7%81%E0%A6%AC%E0%A7%87%E0%A6%B2",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/bagerhat-bnp-leader-expelled-facebook-post-lftq"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%9C%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%A8%E0%A6%BF%20%E0%A6%A4%E0%A7%87%E0%A6%B2%E0%A7%87%E0%A6%B0%20%E0%A6%A6%E0%A6%BE%E0%A6%AE",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/bagerhat-bnp-leader-expelled-facebook-post-lftq"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B8%E0%A6%82%E0%A6%AC%E0%A6%BF%E0%A6%A7%E0%A6%BE%E0%A6%A8%20%E0%A6%B8%E0%A6%82%E0%A6%B6%E0%A7%8B%E0%A6%A7%E0%A6%A8%20%E0%A6%95%E0%A6%AE%E0%A6%BF%E0%A6%9F%E0%A6%BF",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/ncp-three-demands-referendum-verdict-5xeq"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B8%E0%A6%82%E0%A6%AC%E0%A6%BF%E0%A6%A7%E0%A6%BE%E0%A6%A8%20%E0%A6%B8%E0%A6%82%E0%A6%B8%E0%A7%8D%E0%A6%95%E0%A6%BE%E0%A6%B0%20%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%B7%E0%A6%A6",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/ncp-three-demands-referendum-verdict-5xeq"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B8%E0%A6%BE%E0%A6%82%E0%A6%AC%E0%A6%BE%E0%A6%A6%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0%20%E0%A6%93%E0%A6%AA%E0%A6%B0%20%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/magura-bnp-clash-journalist-attack-z98s"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%9A%E0%A7%8D%E0%A6%AF%20%E0%A6%89%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A7%87%E0%A6%9C%E0%A6%A8%E0%A6%BE",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/gold-price-falls-oil-price-hits-five-month-high-zjvg"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AA%E0%A6%BE%E0%A6%95%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BE%E0%A6%A8%20%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%9F",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/pakistan-pink-jersey-breast-cancer-awareness-md6u"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%A8%20%E0%A6%95%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A6%B8%E0%A6%BE%E0%A6%B0%20%E0%A6%B8%E0%A6%9A%E0%A7%87%E0%A6%A4%E0%A6%A8%E0%A6%A4%E0%A6%BE",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/pakistan-pink-jersey-breast-cancer-awareness-md6u"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%9C%E0%A6%BE%E0%A6%A4%E0%A7%80%E0%A6%AF%E0%A6%BC%20%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%BE%E0%A6%B0%20%E0%A6%85%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%A5%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A6%BF%E0%A6%95%E0%A6%B8",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/imranur-shirin-200m-gold-national-summer-athletics-or1f"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%20%E0%A6%A8%E0%A7%8C%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%A8%E0%A7%80",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/imranur-shirin-200m-gold-national-summer-athletics-or1f"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%20%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%9F%20%E0%A6%AC%E0%A7%8B%E0%A6%B0%E0%A7%8D%E0%A6%A1",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/mohammad-ashraful-batting-coach-removed-cr92"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AE%E0%A7%8B%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A7%8D%E0%A6%AE%E0%A6%A6%20%E0%A6%B8%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%B9%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A6%E0%A7%80%E0%A6%A8",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/mohammad-ashraful-batting-coach-removed-cr92"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%85%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%B2%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%20%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%9F",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/steve-smith-11000-test-runs-kh8w"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%20%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A7%80%20%E0%A6%B9%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%AC%E0%A6%B2",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/bangladesh-women-handball-final-india-3g1h"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AC%E0%A7%87%E0%A6%97%E0%A6%AE%20%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%87%E0%A6%A6%E0%A6%BE%20%E0%A6%9C%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%20%E0%A6%86%E0%A6%87%E0%A6%8F%E0%A6%87%E0%A6%9A%E0%A6%8F%E0%A6%AB%20%E0%A6%A8%E0%A7%87%E0%A6%B6%E0%A6%A8%E0%A7%8D%E0%A6%B8%20%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%AB%E0%A6%BF",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/bangladesh-women-handball-final-india-3g1h"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%86%E0%A6%AB%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BE%E0%A6%A8%20%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%9F",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/bangladesh-tri-series-final-equation-2w6g"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%9C%E0%A6%BF%E0%A6%AE%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%AC%E0%A7%81%E0%A6%AF%E0%A6%BC%E0%A7%87%20%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%9F",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/bangladesh-tri-series-final-equation-2w6g"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%A8%E0%A7%8B%20%E0%A6%B0%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A6%B2%E0%A6%A6%E0%A7%8B",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/ronaldo-ban-portugal-xgx4"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AA%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A7%81%E0%A6%97%E0%A6%BE%E0%A6%B2%20%E0%A6%AB%E0%A7%81%E0%A6%9F%E0%A6%AC%E0%A6%B2%20%E0%A6%AB%E0%A7%87%E0%A6%A1%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B6%E0%A6%A8",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/ronaldo-ban-portugal-xgx4"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%A8%E0%A6%BF%E0%A6%97%E0%A6%BE%E0%A6%B0%20%E0%A6%B8%E0%A7%81%E0%A6%B2%E0%A6%A4%E0%A6%BE%E0%A6%A8%E0%A6%BE%20%E0%A6%9C%E0%A7%8D%E0%A6%AF%E0%A7%8B%E0%A6%A4%E0%A6%BF",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/nahida-aktar-t20-captain-nigar-sultana-jyoti-i45d"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%20%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A7%80%20%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%9F%20%E0%A6%A6%E0%A6%B2",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/nahida-aktar-t20-captain-nigar-sultana-jyoti-i45d"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%9F%E0%A6%BF-%E0%A6%9F%E0%A7%8B%E0%A6%AF%E0%A6%BC%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%9F%E0%A6%BF%20%E0%A6%85%E0%A6%A7%E0%A6%BF%E0%A6%A8%E0%A6%BE%E0%A6%AF%E0%A6%BC%E0%A6%95",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/nahida-aktar-t20-captain-nigar-sultana-jyoti-i45d"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%9C%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A8%E0%A6%BF%20%E0%A6%87%E0%A6%A8%E0%A6%AB%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%A8%E0%A7%8B",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/infantino-dhaka-transit-bff-meeting-1kf0"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B9%E0%A6%AF%E0%A6%B0%E0%A6%A4%20%E0%A6%B6%E0%A6%BE%E0%A6%B9%E0%A6%9C%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%B2%20%E0%A6%AC%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%B0",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/infantino-dhaka-transit-bff-meeting-1kf0"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B9%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%AC%E0%A6%B2%20%E0%A6%AB%E0%A7%87%E0%A6%A1%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B6%E0%A6%A8",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/polton-handball-stadium-iphone-theft-71eq"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AC%E0%A7%87%E0%A6%97%E0%A6%AE%20%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%87%E0%A6%A6%E0%A6%BE%20%E0%A6%9C%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%20%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%AB%E0%A6%BF",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/polton-handball-stadium-iphone-theft-71eq"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%9C%E0%A6%BE%E0%A6%A4%E0%A7%80%E0%A6%AF%E0%A6%BC%20%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%9F%20%E0%A6%B2%E0%A6%BF%E0%A6%97",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/rajshahi-cricketers-luggage-theft-b2q3"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A7%8D%E0%A6%AF%20%E0%A6%85%E0%A6%A7%E0%A6%BF%E0%A6%A6%E0%A6%AB%E0%A6%A4%E0%A6%B0",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/measles-death-bangladesh-l9ut"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%93%E0%A6%9C%E0%A6%A8%20%E0%A6%95%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%8B%E0%A6%B0%20%E0%A6%87%E0%A6%A8%E0%A6%9C%E0%A7%87%E0%A6%95%E0%A6%B6%E0%A6%A8",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/cbl-514-fat-cell-injection-cwli"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%95%E0%A7%8D%E0%A6%B2%E0%A6%BF%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%20%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B2",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/cbl-514-fat-cell-injection-cwli"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A7%81%E0%A6%95%E0%A6%A6%E0%A6%BE%E0%A6%B0%E0%A6%AC%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%BF%20%E0%A6%AC%E0%A6%BE%E0%A6%A3%E0%A7%80%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%BF%E0%A6%B0",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/puja-cheri-chittagong-ripu-rajani-mandap-oxqu"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AD%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B8%20%E0%A6%B8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%9F",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/barbara-palvin-ramp-return-lykw"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%9A%E0%A6%B2%E0%A6%9A%E0%A7%8D%E0%A6%9A%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%B0%20%E0%A6%85%E0%A6%AD%E0%A6%BF%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/nasima-khan-death-burial-arkg"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%9C%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%89%E0%A6%B2%20%E0%A6%AB%E0%A6%BE%E0%A6%B0%E0%A7%81%E0%A6%95%20%E0%A6%85%E0%A6%AA%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%AC",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/ziyaul-faruq-apurba-daughter-birthday-photo-c9t1"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%95%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%AE%20%E0%A6%AC%E0%A7%81%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BF%E0%A6%AE%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%BE",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/mehjabin-chowdhury-ai-content-to00"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B8%E0%A6%BE%E0%A6%A8%E0%A6%9C%E0%A6%BF%E0%A6%A6%E0%A6%BE%20%E0%A6%AE%E0%A6%BE%E0%A6%B9%E0%A6%AE%E0%A7%81%E0%A6%A6%20%E0%A6%A8%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%BF%E0%A6%A4%E0%A6%BE",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/nandita-shuvendu-sydney-concert-o7fq"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%A8%20%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%89%E0%A6%A8%20%E0%A6%A5%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A7%87%E0%A6%9F%E0%A6%BE%E0%A6%B0",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/nandita-shuvendu-sydney-concert-o7fq"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%A8%E0%A7%87%E0%A6%AA%E0%A7%8B%E0%A6%B2%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%A8%20%E0%A6%AC%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%9F",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/napoleon-ai-decoded-letter-ugdd"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A6%AD%E0%A6%BE%E0%A6%B0%20%E0%A6%B0%E0%A7%87%E0%A6%87%E0%A6%B2%20%E0%A6%8F%E0%A6%B2%E0%A6%BF%E0%A6%AE%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%9F%E0%A6%BE%E0%A6%B0%E0%A6%BF%20%E0%A6%B8%E0%A7%8D%E0%A6%95%E0%A7%81%E0%A6%B2",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/bend-school-shooting-y1b7"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A6%A6%E0%A6%A3%E0%A7%8D%E0%A6%A1%20%E0%A6%B8%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A6%B0%E0%A6%BF%20%E0%A6%B8%E0%A6%AE%E0%A7%8D%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%9A%E0%A6%BE%E0%A6%B0",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/nidal-hasan-execution-not-streamed-9wke"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AB%E0%A6%BE%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B0%E0%A6%BF%E0%A6%82%20%E0%A6%B8%E0%A7%8D%E0%A6%95%E0%A7%8B%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%A1",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/nidal-hasan-execution-not-streamed-9wke"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B8%E0%A7%88%E0%A6%AF%E0%A6%BC%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0%20%E0%A6%B8%E0%A6%B0%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%BF%20%E0%A6%AC%E0%A6%BF%E0%A6%9C%E0%A7%8D%E0%A6%9E%E0%A6%BE%E0%A6%A8%20%E0%A6%95%E0%A6%B2%E0%A7%87%E0%A6%9C",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/pm-tarique-rahman-selfie-students-saidpur-1ffd"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%9F%20%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A7%87%E0%A6%A8%E0%A6%B8%E0%A7%87%E0%A6%A8",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/us-ambassador-visits-puja-panam-nagar-m1n0"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AE%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%95%E0%A6%BF%E0%A6%A8%20%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A7%82%E0%A6%A4",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/us-ambassador-visits-puja-panam-nagar-m1n0"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AC%E0%A6%BE%E0%A6%B8-%E0%A6%85%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A6%B6%E0%A6%BE%20%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/satkania-bus-auto-rickshaw-accident-gd3u"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%93%E0%A6%B7%E0%A7%81%E0%A6%A7%20%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A6%AF%E0%A6%BC%20%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/ibne-sina-fire-gazipur-4oix"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%A8%E0%A6%BE%E0%A6%B8%E0%A6%B0%E0%A6%BF%E0%A6%A8%20%E0%A6%86%E0%A6%95%E0%A7%8D%E0%A6%A4%E0%A6%BE%E0%A6%B0%20%E0%A6%AE%E0%A7%81%E0%A6%95%E0%A7%8D%E0%A6%A4%E0%A6%BE",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/tuptup-resort-fire-coxs-bazar-3vz9"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A6%BE%E0%A6%AA%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%BE%20%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%B8%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%B8",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/tup-tup-resort-fire-no-license-nhh9"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%A6%E0%A7%81%E0%A6%9C%E0%A7%8D%E0%A6%9C%E0%A6%BE%E0%A6%AE%E0%A6%BE%E0%A6%A8%20%E0%A6%B6%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%AE",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/golam-parwar-blames-untrialed-allegation-shamim-murder-96dn"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AE%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%20%E0%A6%97%E0%A7%8B%E0%A6%B2%E0%A6%BE%E0%A6%AE%20%E0%A6%AA%E0%A6%B0%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B0",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/golam-parwar-blames-untrialed-allegation-shamim-murder-96dn"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%9A%E0%A7%8D%E0%A6%AF%20%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%BE%E0%A6%A4",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/diesel-crisis-2027-iea-p2wj"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A7%E0%A6%BE%E0%A6%A8%20%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%9A%E0%A6%A8%20%E0%A6%95%E0%A6%AE%E0%A6%BF%E0%A6%B6%E0%A6%A8%E0%A6%BE%E0%A6%B0",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/cockroach-janta-party-arrested-jantar-mantar-cjtk"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B8%E0%A7%88%E0%A6%AF%E0%A6%BC%E0%A6%A6%20%E0%A6%86%E0%A6%95%E0%A7%8D%E0%A6%A4%E0%A6%BE%E0%A6%B0%E0%A7%81%E0%A6%9C%E0%A7%8D%E0%A6%9C%E0%A6%BE%E0%A6%AE%E0%A6%BE%E0%A6%A8",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/hsc-result-29-october-dpdo"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B6%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%20%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A6%BE%E0%A6%B2%E0%A6%AF%E0%A6%BC",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/hsc-result-29-october-dpdo"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%96%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%95%E0%A6%BE%E0%A6%B0%20%E0%A6%86%E0%A6%AC%E0%A6%A6%E0%A7%81%E0%A6%B2%20%E0%A6%AE%E0%A7%81%E0%A6%95%E0%A7%8D%E0%A6%A4%E0%A6%BE%E0%A6%A6%E0%A6%BF%E0%A6%B0",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/shahjalal-shrine-donation-box-88-lakh-akyy"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B9%E0%A7%83%E0%A6%A6%E0%A6%AF%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%B0%20%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%20%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A7",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/madaripur-mobile-theft-death-elderly-w4wb"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%A8%E0%A6%BE%E0%A6%9F%E0%A7%8B%E0%A6%B0%20%E0%A6%AA%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A7%80%20%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A7%8E%20%E0%A6%B8%E0%A6%AE%E0%A6%BF%E0%A6%A4%E0%A6%BF-%E0%A7%A8",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/electricity-gas-disruption-saturday-5uil"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%A4%E0%A6%BF%E0%A6%A4%E0%A6%BE%E0%A6%B8%20%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%20%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A7%83%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/electricity-gas-disruption-saturday-5uil"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%95%E0%A7%81%E0%A6%AE%E0%A6%BF%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%20%E0%A6%AC%E0%A6%BF%E0%A6%B6%E0%A7%8D%E0%A6%AC%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A6%AF%E0%A6%BC",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/opprotim-murder-chargesheet-jeqm"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%93%E0%A6%B8%E0%A6%BF%20%E0%A6%AE%E0%A6%A8%E0%A6%9C%E0%A7%81%E0%A6%B0%20%E0%A6%95%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B0%20%E0%A6%AD%E0%A7%82%E0%A6%81%E0%A6%87%E0%A6%AF%E0%A6%BC%E0%A6%BE",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/rumin-farhana-osi-bakbitanda-bjfz"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A7%82%E0%A6%A4%20%E0%A6%AE%E0%A7%8B.%20%E0%A6%A6%E0%A6%BE%E0%A6%89%E0%A6%A6%20%E0%A6%86%E0%A6%B2%E0%A7%80",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/pm-japan-visit-ambassador-absence-fk3a"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%9C%E0%A6%BE%E0%A6%A4%E0%A7%80%E0%A6%AF%E0%A6%BC%20%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A8%20%E0%A6%87%E0%A6%A8%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%9F%E0%A6%BF%E0%A6%89%E0%A6%9F",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/narsingdi-boiler-explosion-dg-qlbg"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AE%E0%A7%8B%E0%A6%B8%E0%A6%B2%E0%A7%87%E0%A6%AE%20%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A6%E0%A6%BF%E0%A6%A8%20%E0%A6%B9%E0%A6%BE%E0%A6%93%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A6%BE%E0%A6%B0",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/patuakhali-bnp-leader-tree-branch-death-jjao"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%95%E0%A6%BF%E0%A6%B6%E0%A7%8B%E0%A6%B0%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%20%E0%A6%8F%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%B8",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/kishoreganj-express-engine-failure-delay-ixc2"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%95%E0%A6%BF%E0%A6%B6%E0%A7%8B%E0%A6%B0%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%20%E0%A6%B0%E0%A7%87%E0%A6%B2%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A7%87%20%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A7%87%E0%A6%B6%E0%A6%A8",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/kishoreganj-express-engine-failure-delay-ixc2"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%20%E0%A6%89%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%B0%20%E0%A6%B8%E0%A6%BF%E0%A6%9F%E0%A6%BF%20%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AA%E0%A7%8B%E0%A6%B0%E0%A7%87%E0%A6%B6%E0%A6%A8",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/dncc-administrator-family-card-0u08"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B2%E0%A7%81%E0%A7%8E%E0%A6%AB%E0%A7%81%E0%A6%9C%E0%A7%8D%E0%A6%9C%E0%A6%BE%E0%A6%AE%E0%A6%BE%E0%A6%A8%20%E0%A6%86%E0%A6%B2%E0%A6%BF%E0%A6%AB",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/netrokona-journalist-killed-8dhb"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B6%E0%A6%BE%E0%A6%AE%E0%A6%BE%20%E0%A6%93%E0%A6%AC%E0%A6%BE%E0%A6%AF%E0%A6%BC%E0%A7%87%E0%A6%A6%20%E0%A6%87%E0%A6%B8%E0%A6%B2%E0%A6%BE%E0%A6%AE",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/bangladesh-seeks-saudi-help-repatriate-bodies-n6wx"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AE%E0%A6%AF%E0%A6%BC%E0%A6%AE%E0%A6%A8%E0%A6%B8%E0%A6%BF%E0%A6%82%E0%A6%B9%20%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%A1%E0%A6%BC%E0%A6%95",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/dhaka-mymensingh-highway-project-cancelled-1fpv"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B8%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A6%AC%E0%A6%BF%E0%A6%B0%E0%A7%8B%E0%A6%A7%E0%A7%80%20%E0%A6%86%E0%A6%87%E0%A6%A8",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/dhaka-arrest-awami-league-leaders-x7rv"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%86%E0%A6%87%E0%A6%A8%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%20%E0%A6%86%E0%A6%B8%E0%A6%BE%E0%A6%A6%E0%A7%81%E0%A6%9C%E0%A7%8D%E0%A6%9C%E0%A6%BE%E0%A6%AE%E0%A6%BE%E0%A6%A8",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/up-election-party-discipline-yonm"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%95%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%AE%E0%A6%B8%20%E0%A6%97%E0%A7%8B%E0%A6%AF%E0%A6%BC%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%BE",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/gold-iphone-seized-dhaka-chittagong-airports-ayhr"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B6%E0%A6%BE%E0%A6%B9%E0%A6%9C%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%B2%20%E0%A6%AC%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%B0",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/gold-iphone-seized-dhaka-chittagong-airports-ayhr"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B6%E0%A6%BE%E0%A6%B9%20%E0%A6%86%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A6%A4%20%E0%A6%AC%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%B0",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/gold-iphone-seized-dhaka-chittagong-airports-ayhr"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B9%E0%A6%AF%E0%A6%B0%E0%A6%A4%20%E0%A6%B6%E0%A6%BE%E0%A6%B9%E0%A6%9C%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%B2%20%E0%A6%86%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A6%B0%E0%A7%8D%E0%A6%9C%E0%A6%BE%E0%A6%A4%E0%A6%BF%E0%A6%95%20%E0%A6%AC%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%B0",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/indian-national-arrested-kush-dhaka-airport-03z9"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B6%E0%A7%87%E0%A6%96%20%E0%A6%86%E0%A6%AC%E0%A7%8D%E0%A6%A6%E0%A7%81%E0%A6%B2%20%E0%A6%B9%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A8%E0%A6%BE%E0%A6%A8",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/sheikh-abdul-hannan-arrested-qatar-5zls"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95%20%E0%A6%A1%E0%A6%BF%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%20%E0%A6%95%E0%A6%AE%E0%A6%BF%E0%A6%B6%E0%A6%A8%E0%A6%BE%E0%A6%B0",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/former-dmp-commissioner-faruk-assets-frozen-n7cm"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%96%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%95%E0%A6%BE%E0%A6%B0%20%E0%A6%97%E0%A7%8B%E0%A6%B2%E0%A6%BE%E0%A6%AE%20%E0%A6%AB%E0%A6%BE%E0%A6%B0%E0%A7%81%E0%A6%95",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/former-dmp-commissioner-faruk-assets-frozen-n7cm"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%95%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%AA%E0%A7%81%E0%A6%B0%20%E0%A6%B0%E0%A7%87%E0%A6%B2%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A7%87%20%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A7%87%E0%A6%B6%E0%A6%A8",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/customs-raid-seized-goods-dhaka-airport-railway-ep9j"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%95%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%AE%E0%A6%B8%20%E0%A6%97%E0%A7%8B%E0%A6%AF%E0%A6%BC%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%BE%20%E0%A6%93%20%E0%A6%A4%E0%A6%A6%E0%A6%A8%E0%A7%8D%E0%A6%A4%20%E0%A6%85%E0%A6%A7%E0%A6%BF%E0%A6%A6%E0%A6%AA%E0%A7%8D%E0%A6%A4%E0%A6%B0",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/customs-raid-seized-goods-dhaka-airport-railway-ep9j"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%B6%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A5%E0%A7%80%20%E0%A6%86%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8B%E0%A6%B2%E0%A6%A8",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/cuet-vc-chest-pain-doctors-differ-9pl4"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%96%E0%A6%BE%E0%A6%A6%E0%A7%8D%E0%A6%AF%20%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A6%BE%E0%A6%B2%E0%A6%AF%E0%A6%BC",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/food-ministry-vacant-posts-recruitment-uefk"
+      },
+      {
+       "url": "https://coloursofbangladesh.com/search?q=%E0%A6%AE%E0%A7%8B.%20%E0%A6%86%E0%A6%AC%E0%A6%A6%E0%A7%81%E0%A6%B8%20%E0%A6%B8%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%AE%20%E0%A6%AA%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%9F%E0%A7%81",
+       "status": 500,
+       "on": "https://coloursofbangladesh.com/news/food-ministry-vacant-posts-recruitment-uefk"
+      }
+     ]
+    }
+   }
   }
  ]
 }
