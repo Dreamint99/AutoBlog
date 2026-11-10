@@ -1,5 +1,5 @@
 {
- "source": "Search Console API 2026-08-09..2026-11-07",
+ "source": "Search Console API 2026-08-10..2026-11-08",
  "pages": [
   {
    "url": "https://visapoint.net/visa-check/romania",
@@ -378,14 +378,14 @@
   },
   {
    "url": "https://visapoint.net/",
-   "impressions": 82,
+   "impressions": 84,
    "clicks": 4,
    "queries": [
     [
      "visapoint",
-     15,
+     16,
      1,
-     14.8
+     14.9
     ],
     [
      "abroad visa point",
@@ -454,8 +454,8 @@
      28
     ]
    ],
-   "position": 25.2,
-   "ctr": 0.0488
+   "position": 25.9,
+   "ctr": 0.0476
   },
   {
    "url": "https://visapoint.net/passport-index",
@@ -2516,6 +2516,27 @@
    "ctr": 0.0
   },
   {
+   "url": "https://visapoint.net/visa-check",
+   "impressions": 11,
+   "clicks": 0,
+   "queries": [
+    [
+     "all country visa check website",
+     1,
+     0,
+     7
+    ],
+    [
+     "visa validity check online",
+     1,
+     0,
+     4
+    ]
+   ],
+   "position": 8.9,
+   "ctr": 0.0
+  },
+  {
    "url": "https://visapoint.net/welder-salaries-europe-2026-complete-net-pay-permit-guide",
    "impressions": 11,
    "clicks": 0,
@@ -2752,27 +2773,6 @@
    "clicks": 0,
    "queries": [],
    "position": 6.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/visa-check",
-   "impressions": 10,
-   "clicks": 0,
-   "queries": [
-    [
-     "all country visa check website",
-     1,
-     0,
-     7
-    ],
-    [
-     "visa validity check online",
-     1,
-     0,
-     4
-    ]
-   ],
-   "position": 8.8,
    "ctr": 0.0
   },
   {

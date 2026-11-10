@@ -1,22 +1,22 @@
 {
- "source": "Search Console API 2026-08-09..2026-11-07",
+ "source": "Search Console API 2026-08-10..2026-11-08",
  "pages": [
   {
    "url": "https://coloursofbangladesh.com/data/district/brahmanbaria",
-   "impressions": 272,
+   "impressions": 279,
    "clicks": 1,
    "queries": [
+    [
+     "ব্রাহ্মণবাড়িয়া জেলার আয়তন কত",
+     14,
+     0,
+     10.7
+    ],
     [
      "বি বাড়িয়া জেলার আয়তন কত",
      13,
      0,
      10
-    ],
-    [
-     "ব্রাহ্মণবাড়িয়া জেলার আয়তন কত",
-     13,
-     0,
-     10.8
     ],
     [
      "ব্রাহ্মণবাড়িয়া কত বর্গ কিলোমিটার",
@@ -79,12 +79,12 @@
      12
     ]
    ],
-   "position": 9.1,
-   "ctr": 0.0037
+   "position": 9.0,
+   "ctr": 0.0036
   },
   {
    "url": "https://coloursofbangladesh.com/data/people/emiliano-martinez",
-   "impressions": 196,
+   "impressions": 197,
    "clicks": 0,
    "queries": [
     [
@@ -160,12 +160,12 @@
      8
     ]
    ],
-   "position": 9.6,
+   "position": 9.5,
    "ctr": 0.0
   },
   {
    "url": "https://coloursofbangladesh.com/data/upazila/savar",
-   "impressions": 115,
+   "impressions": 117,
    "clicks": 0,
    "queries": [
     [
@@ -204,7 +204,7 @@
   },
   {
    "url": "https://coloursofbangladesh.com/data/district/gopalganj",
-   "impressions": 106,
+   "impressions": 115,
    "clicks": 0,
    "queries": [
     [
@@ -232,7 +232,7 @@
      11
     ]
    ],
-   "position": 10.5,
+   "position": 10.3,
    "ctr": 0.0
   },
   {
@@ -285,14 +285,14 @@
   },
   {
    "url": "https://coloursofbangladesh.com/data/people/ronan-sullivan",
-   "impressions": 80,
+   "impressions": 81,
    "clicks": 0,
    "queries": [
     [
      "রোনান সুলিভান",
-     36,
+     37,
      0,
-     9.1
+     9.2
     ],
     [
      "রোনান সুলিভান কোন দেশের",
@@ -342,24 +342,24 @@
   },
   {
    "url": "https://coloursofbangladesh.com/data/people/declan-sullivan",
-   "impressions": 72,
+   "impressions": 79,
    "clicks": 0,
    "queries": [
     [
      "ডেকলান সুলিভান",
-     34,
+     35,
      0,
      4.9
     ],
     [
      "ডেক্লান সুলিভান",
-     5,
+     7,
      0,
-     4.8
+     4.9
     ],
     [
      "declan sullivan bangladesh",
-     1,
+     2,
      0,
      10
     ],
@@ -375,14 +375,14 @@
   },
   {
    "url": "https://coloursofbangladesh.com/data/district/gazipur",
-   "impressions": 53,
+   "impressions": 56,
    "clicks": 1,
    "queries": [
     [
      "গাজীপুর জেলার জনসংখ্যা কত ২০২৪",
-     5,
+     7,
      0,
-     7.6
+     7.7
     ],
     [
      "gazipur",
@@ -415,8 +415,8 @@
      90
     ]
    ],
-   "position": 15.0,
-   "ctr": 0.0189
+   "position": 14.6,
+   "ctr": 0.0179
   },
   {
    "url": "https://coloursofbangladesh.com/data/division/chattogram",
@@ -453,7 +453,7 @@
   },
   {
    "url": "https://coloursofbangladesh.com/data/upazila/sarail",
-   "impressions": 46,
+   "impressions": 47,
    "clicks": 0,
    "queries": [],
    "position": 6.9,
@@ -482,7 +482,7 @@
   },
   {
    "url": "https://coloursofbangladesh.com/data/upazila/hajiganj",
-   "impressions": 36,
+   "impressions": 39,
    "clicks": 0,
    "queries": [
     [
@@ -492,16 +492,45 @@
      66
     ]
    ],
-   "position": 13.8,
+   "position": 13.5,
    "ctr": 0.0
   },
   {
    "url": "https://coloursofbangladesh.com/data/upazila/nazirpur",
-   "impressions": 32,
+   "impressions": 35,
    "clicks": 1,
    "queries": [],
    "position": 8.1,
-   "ctr": 0.0312
+   "ctr": 0.0286
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/district/coxs-bazar",
+   "impressions": 25,
+   "clicks": 1,
+   "queries": [
+    [
+     "কক্সবাজার জেলার জনসংখ্যা কত ২০২৪",
+     3,
+     0,
+     10.3
+    ],
+    [
+     "coxsbazar",
+     1,
+     0,
+     49
+    ]
+   ],
+   "position": 10.7,
+   "ctr": 0.04
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/district/sirajganj",
+   "impressions": 24,
+   "clicks": 0,
+   "queries": [],
+   "position": 8.8,
+   "ctr": 0.0
   },
   {
    "url": "https://coloursofbangladesh.com/data/people/fazlul-qadir-chaudhry",
@@ -543,74 +572,24 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/data/district/sirajganj",
-   "impressions": 23,
-   "clicks": 0,
-   "queries": [],
-   "position": 8.8,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/data/district/coxs-bazar",
-   "impressions": 22,
-   "clicks": 1,
-   "queries": [
-    [
-     "কক্সবাজার জেলার জনসংখ্যা কত ২০২৪",
-     3,
-     0,
-     10.3
-    ],
-    [
-     "coxsbazar",
-     1,
-     0,
-     49
-    ]
-   ],
-   "position": 10.9,
-   "ctr": 0.0455
-  },
-  {
    "url": "https://coloursofbangladesh.com/data/district/joypurhat",
-   "impressions": 20,
+   "impressions": 21,
    "clicks": 1,
    "queries": [],
    "position": 9.0,
-   "ctr": 0.05
+   "ctr": 0.0476
   },
   {
    "url": "https://coloursofbangladesh.com/data/upazila/chandpur-sadar",
-   "impressions": 19,
+   "impressions": 21,
    "clicks": 0,
    "queries": [],
    "position": 10.2,
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/data/people/shakib-khan",
-   "impressions": 18,
-   "clicks": 0,
-   "queries": [
-    [
-     "shakib khan",
-     2,
-     0,
-     23
-    ],
-    [
-     "সাকিব খানের",
-     1,
-     0,
-     35
-    ]
-   ],
-   "position": 14.7,
-   "ctr": 0.0
-  },
-  {
    "url": "https://coloursofbangladesh.com/data/people/rajnath-singh",
-   "impressions": 17,
+   "impressions": 19,
    "clicks": 0,
    "queries": [
     [
@@ -620,35 +599,12 @@
      9
     ]
    ],
-   "position": 9.3,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/data/upazila/dharmapasha",
-   "impressions": 17,
-   "clicks": 0,
-   "queries": [],
-   "position": 7.8,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/data/upazila/zakiganj",
-   "impressions": 17,
-   "clicks": 0,
-   "queries": [
-    [
-     "zakiganj",
-     1,
-     0,
-     41
-    ]
-   ],
-   "position": 10.2,
+   "position": 8.9,
    "ctr": 0.0
   },
   {
    "url": "https://coloursofbangladesh.com/data/people/apu-biswas",
-   "impressions": 15,
+   "impressions": 18,
    "clicks": 1,
    "queries": [
     [
@@ -676,8 +632,67 @@
      25
     ]
    ],
-   "position": 22.8,
-   "ctr": 0.0667
+   "position": 20.8,
+   "ctr": 0.0556
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/people/shakib-khan",
+   "impressions": 18,
+   "clicks": 0,
+   "queries": [
+    [
+     "shakib khan",
+     2,
+     0,
+     23
+    ],
+    [
+     "সাকিব খানের",
+     1,
+     0,
+     35
+    ]
+   ],
+   "position": 14.7,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/upazila/dharmapasha",
+   "impressions": 17,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/upazila/zakiganj",
+   "impressions": 17,
+   "clicks": 0,
+   "queries": [
+    [
+     "zakiganj",
+     1,
+     0,
+     41
+    ]
+   ],
+   "position": 10.2,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/district/sunamganj",
+   "impressions": 15,
+   "clicks": 0,
+   "queries": [
+    [
+     "sunamganj district",
+     1,
+     0,
+     64
+    ]
+   ],
+   "position": 11.5,
+   "ctr": 0.0
   },
   {
    "url": "https://coloursofbangladesh.com/",
@@ -693,6 +708,27 @@
    ],
    "position": 2.4,
    "ctr": 0.1429
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/people/mohammad-ashraful",
+   "impressions": 14,
+   "clicks": 1,
+   "queries": [
+    [
+     "মোহাম্মদ আশরাফুল",
+     3,
+     0,
+     47.3
+    ],
+    [
+     "ক্রিকেটার আশরাফুলের বাড়ি কোথায়",
+     1,
+     0,
+     7
+    ]
+   ],
+   "position": 25.4,
+   "ctr": 0.0714
   },
   {
    "url": "https://coloursofbangladesh.com/data/people/mehazabien-chowdhury",
@@ -716,25 +752,47 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/data/people/mohammad-ashraful",
-   "impressions": 13,
-   "clicks": 1,
+   "url": "https://coloursofbangladesh.com/data/places/madhabkunda-waterfall",
+   "impressions": 14,
+   "clicks": 0,
    "queries": [
     [
-     "মোহাম্মদ আশরাফুল",
-     3,
+     "madhabkunda waterfall",
+     2,
      0,
-     47.3
+     70.5
     ],
     [
-     "ক্রিকেটার আশরাফুলের বাড়ি কোথায়",
+     "madhabkunda waterfall photos",
      1,
      0,
-     7
+     56
+    ],
+    [
+     "মাধবকুন্ড",
+     1,
+     0,
+     49
     ]
    ],
-   "position": 19.1,
-   "ctr": 0.0769
+   "position": 26.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/upazila/haimchar",
+   "impressions": 14,
+   "clicks": 0,
+   "queries": [],
+   "position": 8.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/district/pirojpur",
+   "impressions": 13,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.5,
+   "ctr": 0.0
   },
   {
    "url": "https://coloursofbangladesh.com/data/people/tasnia-farin",
@@ -764,61 +822,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/data/places/madhabkunda-waterfall",
-   "impressions": 13,
-   "clicks": 0,
-   "queries": [
-    [
-     "madhabkunda waterfall",
-     2,
-     0,
-     70.5
-    ],
-    [
-     "madhabkunda waterfall photos",
-     1,
-     0,
-     56
-    ],
-    [
-     "মাধবকুন্ড",
-     1,
-     0,
-     49
-    ]
-   ],
-   "position": 28.6,
-   "ctr": 0.0
-  },
-  {
    "url": "https://coloursofbangladesh.com/data/upazila/faridgonj",
    "impressions": 13,
    "clicks": 0,
    "queries": [],
    "position": 7.6,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/data/upazila/haimchar",
-   "impressions": 13,
-   "clicks": 0,
-   "queries": [],
-   "position": 8.2,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/data/district/sunamganj",
-   "impressions": 12,
-   "clicks": 0,
-   "queries": [
-    [
-     "sunamganj district",
-     1,
-     0,
-     64
-    ]
-   ],
-   "position": 12.8,
    "ctr": 0.0
   },
   {
@@ -876,11 +884,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/data/district/pirojpur",
-   "impressions": 11,
+   "url": "https://coloursofbangladesh.com/data/upazila/jagannathpur",
+   "impressions": 12,
    "clicks": 0,
    "queries": [],
-   "position": 7.7,
+   "position": 9.0,
    "ctr": 0.0
   },
   {
@@ -902,6 +910,39 @@
     ]
    ],
    "position": 35.3,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/people/jaya-ahsan",
+   "impressions": 10,
+   "clicks": 0,
+   "queries": [
+    [
+     "জয়া আহসান",
+     2,
+     0,
+     18.5
+    ],
+    [
+     "jaya ahsan",
+     1,
+     0,
+     84
+    ],
+    [
+     "জয়া আহসান উইকিপিডিয়া",
+     1,
+     0,
+     10
+    ],
+    [
+     "জয়া আহসান",
+     1,
+     0,
+     121
+    ]
+   ],
+   "position": 29.3,
    "ctr": 0.0
   },
   {
@@ -948,6 +989,35 @@
    "ctr": 0.0
   },
   {
+   "url": "https://coloursofbangladesh.com/data/upazila/bishwambarpur",
+   "impressions": 9,
+   "clicks": 1,
+   "queries": [
+    [
+     "বিশ্বম্ভরপুর",
+     1,
+     1,
+     22
+    ],
+    [
+     "bishwambarpur sunamganj",
+     1,
+     0,
+     18
+    ]
+   ],
+   "position": 10.2,
+   "ctr": 0.1111
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/division/khulna",
+   "impressions": 9,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.4,
+   "ctr": 0.0
+  },
+  {
    "url": "https://coloursofbangladesh.com/data/people/delwar-hossain-sayeedi",
    "impressions": 9,
    "clicks": 0,
@@ -975,65 +1045,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/data/people/jaya-ahsan",
-   "impressions": 9,
-   "clicks": 0,
-   "queries": [
-    [
-     "jaya ahsan",
-     1,
-     0,
-     84
-    ],
-    [
-     "জয়া আহসান",
-     1,
-     0,
-     17
-    ],
-    [
-     "জয়া আহসান উইকিপিডিয়া",
-     1,
-     0,
-     10
-    ],
-    [
-     "জয়া আহসান",
-     1,
-     0,
-     121
-    ]
-   ],
-   "position": 30.3,
-   "ctr": 0.0
-  },
-  {
    "url": "https://coloursofbangladesh.com/data/people/atish-dipankar",
    "impressions": 8,
    "clicks": 1,
    "queries": [],
    "position": 16.4,
-   "ctr": 0.125
-  },
-  {
-   "url": "https://coloursofbangladesh.com/data/upazila/bishwambarpur",
-   "impressions": 8,
-   "clicks": 1,
-   "queries": [
-    [
-     "বিশ্বম্ভরপুর",
-     1,
-     1,
-     22
-    ],
-    [
-     "bishwambarpur sunamganj",
-     1,
-     0,
-     18
-    ]
-   ],
-   "position": 10.2,
    "ctr": 0.125
   },
   {
@@ -1052,11 +1068,27 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/data/upazila/jagannathpur",
+   "url": "https://coloursofbangladesh.com/data/division/mymensingh",
    "impressions": 8,
    "clicks": 0,
    "queries": [],
-   "position": 8.5,
+   "position": 16.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/upazila/derai",
+   "impressions": 8,
+   "clicks": 0,
+   "queries": [],
+   "position": 19.1,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/upazila/tahirpur",
+   "impressions": 8,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.5,
    "ctr": 0.0
   },
   {
@@ -1068,19 +1100,26 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/data/division/khulna",
-   "impressions": 7,
-   "clicks": 0,
-   "queries": [],
-   "position": 8.0,
-   "ctr": 0.0
-  },
-  {
    "url": "https://coloursofbangladesh.com/data/people/gabriel-martinelli",
    "impressions": 7,
    "clicks": 0,
    "queries": [],
    "position": 21.3,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/people/sadia-ayman",
+   "impressions": 7,
+   "clicks": 0,
+   "queries": [
+    [
+     "সাদিয়া আয়মান",
+     1,
+     0,
+     9
+    ]
+   ],
+   "position": 15.1,
    "ctr": 0.0
   },
   {
@@ -1108,14 +1147,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/data/division/mymensingh",
-   "impressions": 6,
-   "clicks": 0,
-   "queries": [],
-   "position": 20.0,
-   "ctr": 0.0
-  },
-  {
    "url": "https://coloursofbangladesh.com/data/people/jasimuddin",
    "impressions": 6,
    "clicks": 0,
@@ -1137,42 +1168,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/data/people/sadia-ayman",
-   "impressions": 6,
-   "clicks": 0,
-   "queries": [
-    [
-     "সাদিয়া আয়মান",
-     1,
-     0,
-     9
-    ]
-   ],
-   "position": 8.7,
-   "ctr": 0.0
-  },
-  {
    "url": "https://coloursofbangladesh.com/data/places/inani-beach",
    "impressions": 6,
    "clicks": 0,
    "queries": [],
    "position": 15.3,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/data/upazila/derai",
-   "impressions": 6,
-   "clicks": 0,
-   "queries": [],
-   "position": 23.8,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/data/upazila/tahirpur",
-   "impressions": 6,
-   "clicks": 0,
-   "queries": [],
-   "position": 7.5,
    "ctr": 0.0
   },
   {
@@ -1328,6 +1328,14 @@
    "ctr": 0.0
   },
   {
+   "url": "https://coloursofbangladesh.com/data/people/mahmudullah",
+   "impressions": 4,
+   "clicks": 0,
+   "queries": [],
+   "position": 8.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://coloursofbangladesh.com/data/people/orchita-sporshia",
    "impressions": 4,
    "clicks": 0,
@@ -1458,14 +1466,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/data/people/mahmudullah",
-   "impressions": 3,
-   "clicks": 0,
-   "queries": [],
-   "position": 7.0,
-   "ctr": 0.0
-  },
-  {
    "url": "https://coloursofbangladesh.com/data/people/sabina-khatun",
    "impressions": 3,
    "clicks": 0,
@@ -1503,6 +1503,14 @@
    "clicks": 0,
    "queries": [],
    "position": 6.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/news/honey-trap-targeting-probashi-online",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 28.7,
    "ctr": 0.0
   },
   {
@@ -1733,6 +1741,14 @@
    "ctr": 0.0
   },
   {
+   "url": "https://coloursofbangladesh.com/data/upazila/madhyanagar",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [],
+   "position": 2.5,
+   "ctr": 0.0
+  },
+  {
    "url": "https://coloursofbangladesh.com/epaper?d=2026-10-31",
    "impressions": 2,
    "clicks": 0,
@@ -1770,14 +1786,6 @@
    "clicks": 0,
    "queries": [],
    "position": 18.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/news/honey-trap-targeting-probashi-online",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [],
-   "position": 34.0,
    "ctr": 0.0
   },
   {
@@ -1924,14 +1932,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/data/upazila/madhyanagar",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 4.0,
-   "ctr": 0.0
-  },
-  {
    "url": "https://coloursofbangladesh.com/data/upazila/south-sunamganj",
    "impressions": 1,
    "clicks": 0,
@@ -1961,6 +1961,14 @@
    "clicks": 0,
    "queries": [],
    "position": 5.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/news/dhaka-mymensingh-highway-project-cancelled-1fpv",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 8.0,
    "ctr": 0.0
   },
   {

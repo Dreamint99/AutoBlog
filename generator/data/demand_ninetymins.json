@@ -1,123 +1,129 @@
 {
- "_note": "Real queries (Search Console 2026-08-09..2026-11-07, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-10..2026-11-08, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "champions league quiz",
-   "impr": 88817,
+   "impr": 88223,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "premier league standings",
-   "impr": 72830,
+   "impr": 80262,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "uefa champions league",
-   "impr": 52740,
+   "impr": 63869,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "premier league schedule",
-   "impr": 40591,
+   "impr": 43485,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "la liga standings",
-   "impr": 35287,
+   "impr": 38610,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "la liga schedule",
-   "impr": 28676,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "premier league records quiz",
-   "impr": 26087,
+   "impr": 30740,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "uefa champions league standings",
-   "impr": 21655,
+   "impr": 27917,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "who won the world cup 2026",
-   "impr": 17334,
+   "q": "premier league records quiz",
+   "impr": 25578,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "champions league schedule",
-   "impr": 15592,
+   "impr": 18048,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "premier league table",
-   "impr": 13551,
+   "impr": 15148,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "uefa champions league schedule",
-   "impr": 11349,
+   "impr": 14087,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "who won the world cup 2026",
+   "impr": 12948,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "champions league draw 2026",
-   "impr": 10919,
+   "impr": 10925,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "english premier league",
-   "impr": 10054,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "fantasy premier league",
-   "impr": 8860,
+   "impr": 10816,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "la liga stats",
-   "impr": 8564,
+   "impr": 9291,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "fantasy premier league",
+   "impr": 8938,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "premier league most red cards players",
-   "impr": 8384,
+   "impr": 8262,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "premier league stats",
-   "impr": 6211,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "where to watch champions league",
-   "impr": 4516,
+   "impr": 6717,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "champions league standings",
-   "impr": 4139,
+   "impr": 5617,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "champions league scores",
+   "impr": 4255,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "la liga table",
+   "impr": 4148,
    "pos": null,
    "src": "bingkw"
   },
@@ -128,350 +134,344 @@
    "src": "bingkw"
   },
   {
-   "q": "world cup games today",
-   "impr": 3824,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "la liga table",
-   "impr": 3739,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "fifa world cup 2026",
-   "impr": 3246,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "champions league scores",
-   "impr": 3181,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "fifa world cup 2026 schedule",
-   "impr": 3110,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
    "q": "uefa champions league stats",
-   "impr": 3076,
+   "impr": 3772,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "soccer world cup",
-   "impr": 2931,
+   "q": "where to watch champions league",
+   "impr": 3684,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "champions league games",
-   "impr": 2690,
+   "impr": 3591,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "world cup games today",
+   "impr": 3430,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "fifa world cup 2026",
+   "impr": 2953,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "soccer world cup",
+   "impr": 2903,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "premier league scores",
-   "impr": 2631,
+   "impr": 2886,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "fifa world cup 2026 schedule",
+   "impr": 2812,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "champions league draw",
-   "impr": 2621,
+   "impr": 2601,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "rma la liga schedule",
-   "impr": 2386,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "2026 fifa world cup",
-   "impr": 2271,
+   "impr": 2499,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "premier league games",
-   "impr": 2259,
+   "impr": 2400,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "2026 fifa world cup",
+   "impr": 2218,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "premier league fixtures",
-   "impr": 2115,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "2026 world cup",
-   "impr": 2010,
+   "impr": 2210,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "champions league today",
-   "impr": 1618,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "premier league teams",
-   "impr": 1603,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "champions league games today",
-   "impr": 1584,
+   "impr": 2182,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "champions league table",
-   "impr": 1577,
+   "impr": 2071,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "champions league games today",
+   "impr": 1970,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "2026 world cup",
+   "impr": 1954,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "premier league games today",
-   "impr": 1459,
+   "impr": 1614,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "ucl champions league",
-   "impr": 1404,
+   "impr": 1603,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "world cup schedule",
-   "impr": 1339,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "fifa world cup score",
-   "impr": 1319,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "premier league matches",
-   "impr": 1311,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "soccer world cup 2026",
-   "impr": 1306,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "la liga games",
-   "impr": 1277,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "premier league standings 2026",
-   "impr": 1262,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "world cup games",
-   "impr": 1214,
+   "q": "premier league teams",
+   "impr": 1506,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "rso la liga schedule",
-   "impr": 1185,
+   "impr": 1462,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "english premier league table",
-   "impr": 1110,
+   "q": "premier league matches",
+   "impr": 1413,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "champions league 2026-27 schedule",
-   "impr": 1103,
+   "q": "la liga games",
+   "impr": 1354,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "champions league fixtures",
-   "impr": 1062,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "champions league final",
-   "impr": 1040,
+   "q": "premier league standings 2026",
+   "impr": 1321,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "champions league matches",
-   "impr": 1029,
+   "impr": 1307,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "fifa world cup score",
+   "impr": 1262,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "english premier league table",
+   "impr": 1254,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "champions league fixtures",
+   "impr": 1229,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "world cup schedule",
+   "impr": 1181,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "soccer world cup 2026",
+   "impr": 1176,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "world cup games",
+   "impr": 1158,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "champions league 2026-27 schedule",
+   "impr": 1139,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "champions league final",
+   "impr": 1128,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "barclays premier league",
-   "impr": 1028,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "la liga scores",
-   "impr": 995,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "la liga standings 2026",
-   "impr": 991,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "english premier league standings",
-   "impr": 947,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "who won world cup 2026",
-   "impr": 936,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "la liga mx",
-   "impr": 931,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "barcelona la liga schedule",
-   "impr": 910,
+   "impr": 1126,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "real madrid champions league",
-   "impr": 903,
+   "impr": 1071,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "premier league table 2026",
-   "impr": 891,
+   "q": "la liga standings 2026",
+   "impr": 1070,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "english premier league standings",
+   "impr": 1044,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "la liga scores",
+   "impr": 1042,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "la liga mx",
+   "impr": 1028,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "barcelona la liga schedule",
+   "impr": 1011,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "premier league today",
-   "impr": 887,
+   "impr": 946,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "premier league table 2026",
+   "impr": 938,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "english premier league schedule",
-   "impr": 846,
+   "impr": 876,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "premier league results",
-   "impr": 815,
+   "impr": 873,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "champions league winners",
-   "impr": 770,
+   "q": "champions league results",
+   "impr": 849,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "women's world cup 2026",
-   "impr": 757,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "premier league schedule 2026",
-   "impr": 739,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "champions league 2026",
-   "impr": 736,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "rvc la liga schedule",
-   "impr": 731,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "la liga games today",
-   "impr": 720,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "premier league news",
-   "impr": 719,
+   "q": "who won world cup 2026",
+   "impr": 828,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "la liga 2 standings",
-   "impr": 716,
+   "impr": 816,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "rvc la liga schedule",
+   "impr": 795,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "champions league 2026",
+   "impr": 791,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "la liga 2",
+   "impr": 772,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "la liga games today",
+   "impr": 772,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "champions league bracket",
-   "impr": 708,
+   "impr": 770,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "premier league highlights",
-   "impr": 705,
+   "impr": 763,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "the world cup",
-   "impr": 676,
+   "q": "champions league winners",
+   "impr": 753,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "panini world cup 2026",
-   "impr": 673,
+   "q": "premier league schedule 2026",
+   "impr": 742,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "women's world cup 2026",
+   "impr": 741,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "afc champions league",
+   "impr": 734,
    "pos": null,
    "src": "bingkw"
   },
@@ -513,7 +513,7 @@
   },
   {
    "q": "us open tennis 2026 dates",
-   "impr": 358,
+   "impr": 357,
    "pos": 8.0,
    "src": "bing"
   },
@@ -752,13 +752,13 @@
    "src": "bing"
   },
   {
-   "q": "fifa 2026 group standings",
+   "q": "world cup 2026 group standings",
    "impr": 14,
    "pos": 8.0,
    "src": "bing"
   },
   {
-   "q": "world cup 2026 group standings",
+   "q": "fifa 2026 group standings",
    "impr": 14,
    "pos": 8.0,
    "src": "bing"

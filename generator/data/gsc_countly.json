@@ -1,16 +1,16 @@
 {
- "source": "Search Console API 2026-08-09..2026-11-07",
+ "source": "Search Console API 2026-08-10..2026-11-08",
  "pages": [
   {
    "url": "https://countly.net/",
-   "impressions": 515,
+   "impressions": 499,
    "clicks": 2,
    "queries": [
     [
      "countly",
-     38,
+     36,
      0,
-     35.8
+     37.5
     ],
     [
      "quintly",
@@ -20,7 +20,7 @@
     ],
     [
      "site:countly.net",
-     7,
+     8,
      0,
      1
     ],
@@ -79,8 +79,8 @@
      84
     ]
    ],
-   "position": 38.8,
-   "ctr": 0.0039
+   "position": 38.9,
+   "ctr": 0.004
   },
   {
    "url": "https://countly.net/top-21-richest-people-in-greece-2026",
@@ -121,16 +121,16 @@
      87
     ],
     [
+     "site:countly.net",
+     8,
+     0,
+     3
+    ],
+    [
      "crypto stats",
      7,
      0,
      96.3
-    ],
-    [
-     "site:countly.net",
-     7,
-     0,
-     3
     ],
     [
      "crypto real time",
@@ -311,6 +311,21 @@
    "ctr": 0.0
   },
   {
+   "url": "https://countly.net/best-ai-tools",
+   "impressions": 40,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     8,
+     0,
+     9
+    ]
+   ],
+   "position": 6.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://countly.net/how-many-linkedin-users-are-there-in-2026-global-by-country",
    "impressions": 40,
    "clicks": 0,
@@ -332,36 +347,21 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/best-ai-tools",
-   "impressions": 39,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     7,
-     0,
-     9
-    ]
-   ],
-   "position": 6.0,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/contact",
    "impressions": 36,
    "clicks": 0,
    "queries": [
     [
+     "site:countly.net",
+     8,
+     0,
+     4
+    ],
+    [
      "\"countly analytics\"",
      7,
      0,
      1.1
-    ],
-    [
-     "site:countly.net",
-     7,
-     0,
-     4
     ],
     [
      "\"countly\"",
@@ -375,7 +375,7 @@
   },
   {
    "url": "https://countly.net/top-100-richest-people-in-russia-2026",
-   "impressions": 34,
+   "impressions": 33,
    "clicks": 0,
    "queries": [
     [
@@ -391,46 +391,7 @@
      18
     ]
    ],
-   "position": 14.1,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/how-many-paypal-users-are-there-in-2026-global-by-country",
-   "impressions": 33,
-   "clicks": 0,
-   "queries": [
-    [
-     "paypal usage by country",
-     3,
-     0,
-     50
-    ],
-    [
-     "paypal users",
-     2,
-     0,
-     76
-    ],
-    [
-     "site:countly.net",
-     2,
-     0,
-     73.5
-    ],
-    [
-     "paypal active accounts",
-     1,
-     0,
-     84
-    ],
-    [
-     "which country use paypal most",
-     1,
-     0,
-     37
-    ]
-   ],
-   "position": 66.1,
+   "position": 14.2,
    "ctr": 0.0
   },
   {
@@ -462,12 +423,12 @@
   },
   {
    "url": "https://countly.net/currency-converter",
-   "impressions": 31,
+   "impressions": 32,
    "clicks": 0,
    "queries": [
     [
      "site:countly.net",
-     7,
+     8,
      0,
      5
     ],
@@ -514,34 +475,46 @@
      88
     ]
    ],
-   "position": 36.9,
+   "position": 35.9,
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/top-100-richest-people-in-india-2026",
-   "impressions": 31,
+   "url": "https://countly.net/how-many-paypal-users-are-there-in-2026-global-by-country",
+   "impressions": 32,
    "clicks": 0,
    "queries": [
+    [
+     "paypal usage by country",
+     3,
+     0,
+     50
+    ],
+    [
+     "paypal users",
+     2,
+     0,
+     76
+    ],
     [
      "site:countly.net",
      2,
      0,
-     15
+     73.5
     ],
     [
-     "india richest man 2026 top 100",
+     "paypal active accounts",
      1,
      0,
-     77
+     84
     ],
     [
-     "top 100 richest person in india",
+     "which country use paypal most",
      1,
      0,
-     24
+     37
     ]
    ],
-   "position": 8.5,
+   "position": 67.0,
    "ctr": 0.0
   },
   {
@@ -594,14 +567,14 @@
   },
   {
    "url": "https://countly.net/topic/rankings",
-   "impressions": 27,
+   "impressions": 28,
    "clicks": 0,
    "queries": [
     [
      "site:countly.net",
-     7,
+     8,
      0,
-     8
+     7.9
     ]
    ],
    "position": 7.2,
@@ -609,7 +582,7 @@
   },
   {
    "url": "https://countly.net/how-many-pinterest-users-are-there-in-2026-global-by-country-e388",
-   "impressions": 26,
+   "impressions": 25,
    "clicks": 0,
    "queries": [
     [
@@ -625,7 +598,7 @@
      14
     ]
    ],
-   "position": 42.8,
+   "position": 43.8,
    "ctr": 0.0
   },
   {
@@ -675,38 +648,44 @@
   },
   {
    "url": "https://countly.net/topic/countries",
-   "impressions": 24,
+   "impressions": 25,
    "clicks": 0,
    "queries": [
     [
      "site:countly.net",
-     7,
+     8,
      0,
      6
     ]
    ],
-   "position": 4.5,
+   "position": 4.6,
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/openai-revenue-2026-8-5b-annual-earnings-growth",
-   "impressions": 23,
+   "url": "https://countly.net/top-100-richest-people-in-india-2026",
+   "impressions": 22,
    "clicks": 0,
    "queries": [
     [
      "site:countly.net",
      2,
      0,
-     33.5
+     15
     ],
     [
-     "openai annualized revenue run rate 2026",
+     "india richest man 2026 top 100",
      1,
      0,
-     9
+     77
+    ],
+    [
+     "top 100 richest person in india",
+     1,
+     0,
+     24
     ]
    ],
-   "position": 7.9,
+   "position": 11.5,
    "ctr": 0.0
   },
   {
@@ -738,7 +717,7 @@
   },
   {
    "url": "https://countly.net/top-41-richest-people-in-israel-2026",
-   "impressions": 21,
+   "impressions": 20,
    "clicks": 0,
    "queries": [
     [
@@ -758,15 +737,9 @@
    "queries": [
     [
      "site:countly.net",
-     7,
+     8,
      0,
      2
-    ],
-    [
-     "top 10 list",
-     1,
-     0,
-     14
     ],
     [
      "top ten lists",
@@ -775,12 +748,69 @@
      13
     ]
    ],
-   "position": 3.5,
+   "position": 3.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/openai-revenue-2026-8-5b-annual-earnings-growth",
+   "impressions": 19,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     2,
+     0,
+     33.5
+    ],
+    [
+     "openai annualized revenue run rate 2026",
+     1,
+     0,
+     9
+    ]
+   ],
+   "position": 9.2,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/top-68-richest-people-in-taiwan-2026",
+   "impressions": 18,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     3,
+     0,
+     10.7
+    ]
+   ],
+   "position": 8.1,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/how-many-roblox-users-are-there-in-2026-global-by-country",
+   "impressions": 17,
+   "clicks": 0,
+   "queries": [
+    [
+     "roblox dau",
+     1,
+     0,
+     23
+    ],
+    [
+     "site:countly.net",
+     1,
+     0,
+     77
+    ]
+   ],
+   "position": 15.1,
    "ctr": 0.0
   },
   {
    "url": "https://countly.net/how-many-starbucks-stores-are-there-in-2026-global-by-countr",
-   "impressions": 18,
+   "impressions": 17,
    "clicks": 0,
    "queries": [
     [
@@ -808,28 +838,7 @@
      27
     ]
    ],
-   "position": 20.4,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/how-many-roblox-users-are-there-in-2026-global-by-country",
-   "impressions": 17,
-   "clicks": 0,
-   "queries": [
-    [
-     "roblox dau",
-     1,
-     0,
-     23
-    ],
-    [
-     "site:countly.net",
-     1,
-     0,
-     77
-    ]
-   ],
-   "position": 15.1,
+   "position": 21.5,
    "ctr": 0.0
   },
   {
@@ -865,36 +874,6 @@
     ]
    ],
    "position": 73.6,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/top-68-richest-people-in-taiwan-2026",
-   "impressions": 17,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     2,
-     0,
-     11
-    ]
-   ],
-   "position": 7.9,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/topic/internet",
-   "impressions": 17,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     7,
-     0,
-     7
-    ]
-   ],
-   "position": 10.8,
    "ctr": 0.0
   },
   {
@@ -949,24 +928,18 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/how-many-youtube-music-subscribers-are-there-in-2026-global",
-   "impressions": 15,
+   "url": "https://countly.net/topic/internet",
+   "impressions": 16,
    "clicks": 0,
    "queries": [
     [
      "site:countly.net",
-     2,
+     7,
      0,
-     56
-    ],
-    [
-     "how many youtube premium subscribers",
-     1,
-     0,
-     27
+     7
     ]
    ],
-   "position": 26.6,
+   "position": 10.9,
    "ctr": 0.0
   },
   {
@@ -1014,18 +987,24 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/richest-people-in-finland-2026-billionaires-net-worth",
+   "url": "https://countly.net/how-many-youtube-music-subscribers-are-there-in-2026-global",
    "impressions": 14,
    "clicks": 0,
    "queries": [
     [
      "site:countly.net",
+     2,
+     0,
+     56
+    ],
+    [
+     "how many youtube premium subscribers",
      1,
      0,
-     35
+     27
     ]
    ],
-   "position": 8.8,
+   "position": 28.0,
    "ctr": 0.0
   },
   {
@@ -1086,6 +1065,21 @@
    "ctr": 0.0
   },
   {
+   "url": "https://countly.net/richest-people-in-finland-2026-billionaires-net-worth",
+   "impressions": 12,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     1,
+     0,
+     35
+    ]
+   ],
+   "position": 9.8,
+   "ctr": 0.0
+  },
+  {
    "url": "https://countly.net/smartphone-users-by-country-2026-top-10-global-penetration",
    "impressions": 12,
    "clicks": 0,
@@ -1113,21 +1107,6 @@
     ]
    ],
    "position": 19.4,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/top-42-richest-people-in-switzerland-2026",
-   "impressions": 12,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     2,
-     0,
-     29
-    ]
-   ],
-   "position": 14.3,
    "ctr": 0.0
   },
   {
@@ -1206,21 +1185,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/richest-people-in-colombia-2026-billionaires-net-worth",
-   "impressions": 10,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     2,
-     0,
-     30.5
-    ]
-   ],
-   "position": 12.4,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/richest-people-in-morocco-2026-billionaires-net-worth",
    "impressions": 10,
    "clicks": 0,
@@ -1248,21 +1212,6 @@
     ]
    ],
    "position": 20.7,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/top-10-tech-startups-2026-fastest-growing-companies-to-watch",
-   "impressions": 10,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     2,
-     0,
-     59
-    ]
-   ],
-   "position": 17.0,
    "ctr": 0.0
   },
   {
@@ -1299,6 +1248,21 @@
     ]
    ],
    "position": 20.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/top-42-richest-people-in-switzerland-2026",
+   "impressions": 10,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     2,
+     0,
+     29
+    ]
+   ],
+   "position": 15.8,
    "ctr": 0.0
   },
   {
@@ -1350,6 +1314,36 @@
    "ctr": 0.0
   },
   {
+   "url": "https://countly.net/richest-people-in-colombia-2026-billionaires-net-worth",
+   "impressions": 9,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     2,
+     0,
+     30.5
+    ]
+   ],
+   "position": 12.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/top-10-tech-startups-2026-fastest-growing-companies-to-watch",
+   "impressions": 9,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     2,
+     0,
+     59
+    ]
+   ],
+   "position": 18.2,
+   "ctr": 0.0
+  },
+  {
    "url": "https://countly.net/how-many-electric-vehicle-charging-stations-are-there-in-202",
    "impressions": 8,
    "clicks": 0,
@@ -1377,27 +1371,6 @@
     ]
    ],
    "position": 48.4,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/richest-people-in-austria-2026-billionaires-net-worth",
-   "impressions": 8,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     2,
-     0,
-     32.5
-    ],
-    [
-     "richest man in austria",
-     1,
-     0,
-     56
-    ]
-   ],
-   "position": 21.0,
    "ctr": 0.0
   },
   {
@@ -1476,7 +1449,7 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/how-many-snapchat-users-are-there-in-2026-global-by-country",
+   "url": "https://countly.net/richest-people-in-austria-2026-billionaires-net-worth",
    "impressions": 7,
    "clicks": 0,
    "queries": [
@@ -1484,10 +1457,16 @@
      "site:countly.net",
      2,
      0,
-     69
+     32.5
+    ],
+    [
+     "richest man in austria",
+     1,
+     0,
+     56
     ]
    ],
-   "position": 24.1,
+   "position": 22.7,
    "ctr": 0.0
   },
   {
@@ -1544,6 +1523,21 @@
    "ctr": 0.0
   },
   {
+   "url": "https://countly.net/how-many-snapchat-users-are-there-in-2026-global-by-country",
+   "impressions": 6,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     2,
+     0,
+     69
+    ]
+   ],
+   "position": 26.7,
+   "ctr": 0.0
+  },
+  {
    "url": "https://countly.net/how-many-uber-riders-are-there-in-2026-global-by-country",
    "impressions": 6,
    "clicks": 0,
@@ -1562,21 +1556,6 @@
     ]
    ],
    "position": 17.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/how-many-youtube-users-are-there-in-2026-global-by-country",
-   "impressions": 6,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     1,
-     0,
-     76
-    ]
-   ],
-   "position": 16.7,
    "ctr": 0.0
   },
   {
@@ -1652,21 +1631,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/top-25-cryptocurrencies-by-market-cap-june-2026",
-   "impressions": 6,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     2,
-     0,
-     42
-    ]
-   ],
-   "position": 30.8,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/best-hospitals-in-dubai-2026-top-10-ranked-compared",
    "impressions": 5,
    "clicks": 0,
@@ -1706,6 +1670,21 @@
    "ctr": 0.0
   },
   {
+   "url": "https://countly.net/how-many-youtube-users-are-there-in-2026-global-by-country",
+   "impressions": 5,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     1,
+     0,
+     76
+    ]
+   ],
+   "position": 17.8,
+   "ctr": 0.0
+  },
+  {
    "url": "https://countly.net/richest-people-in-nigeria-2026-billionaires-net-worth",
    "impressions": 5,
    "clicks": 0,
@@ -1736,11 +1715,18 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/topic/companies",
+   "url": "https://countly.net/top-25-cryptocurrencies-by-market-cap-june-2026",
    "impressions": 5,
    "clicks": 0,
-   "queries": [],
-   "position": 53.4,
+   "queries": [
+    [
+     "site:countly.net",
+     2,
+     0,
+     42
+    ]
+   ],
+   "position": 35.6,
    "ctr": 0.0
   },
   {
@@ -1851,6 +1837,14 @@
    "ctr": 0.0
   },
   {
+   "url": "https://countly.net/topic/companies",
+   "impressions": 4,
+   "clicks": 0,
+   "queries": [],
+   "position": 65.2,
+   "ctr": 0.0
+  },
+  {
    "url": "https://countly.net/ecommerce-statistics-2026-online-shoppers-revenue-by-country",
    "impressions": 3,
    "clicks": 0,
@@ -1914,14 +1908,6 @@
   },
   {
    "url": "https://countly.net/richest-people-in-denmark-2026-billionaires-net-worth",
-   "impressions": 3,
-   "clicks": 0,
-   "queries": [],
-   "position": 1.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/richest-people-in-ukraine-2026-billionaires-net-worth",
    "impressions": 3,
    "clicks": 0,
    "queries": [],
@@ -2175,27 +2161,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/s/countly",
+   "url": "https://countly.net/richest-people-in-ukraine-2026-billionaires-net-worth",
    "impressions": 2,
    "clicks": 0,
    "queries": [],
-   "position": 2.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/s/countly/best-ai-tools",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [],
-   "position": 2.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/s/countly/crypto",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [],
-   "position": 2.5,
+   "position": 1.0,
    "ctr": 0.0
   },
   {
@@ -2204,14 +2174,6 @@
    "clicks": 0,
    "queries": [],
    "position": 1.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/s/countly/top10",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [],
-   "position": 2.5,
    "ctr": 0.0
   },
   {
@@ -2231,14 +2193,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/how-many-amazon-prime-members-are-there-in-2026-global-by-co",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 8.0,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/how-many-google-drive-users-are-there-in-2026-global-by-coun-87b6",
    "impressions": 1,
    "clicks": 0,
@@ -2251,6 +2205,14 @@
     ]
    ],
    "position": 84.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/how-many-icloud-users-are-there-in-2026-global-by-country-8ea9",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 1.0,
    "ctr": 0.0
   },
   {
@@ -2372,11 +2334,43 @@
    "ctr": 0.0
   },
   {
+   "url": "https://countly.net/s/countly",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 2.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/s/countly/best-ai-tools",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 2.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/s/countly/crypto",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 2.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://countly.net/s/countly/game-store-industry-2026-definitive-market-size-retailer-stats",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
    "position": 10.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/s/countly/top10",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 2.0,
    "ctr": 0.0
   },
   {
@@ -2422,16 +2416,15 @@
    "url": "https://countly.net/topic/social-media",
    "impressions": 1,
    "clicks": 0,
-   "queries": [],
-   "position": 9.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/us-dollar-exchange-rates-today-june-2026",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 10.0,
+   "queries": [
+    [
+     "site:countly.net",
+     1,
+     0,
+     8
+    ]
+   ],
+   "position": 8.0,
    "ctr": 0.0
   }
  ]
