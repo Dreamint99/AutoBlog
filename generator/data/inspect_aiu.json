@@ -1,7 +1,7 @@
 {
  "site": "aiu",
  "property": "https://aiuniversitybd.com/",
- "checked": "2026-11-09T10:25:26+00:00",
+ "checked": "2026-11-10T10:29:34+00:00",
  "sitemaps": [
   {
    "path": "https://aiuniversitybd.com/sitemap.xml",
@@ -9,23 +9,23 @@
    "isPending": false,
    "isSitemapsIndex": false,
    "type": "sitemap",
-   "lastDownloaded": "2026-11-07T16:23:44.807Z",
+   "lastDownloaded": "2026-11-09T14:56:27.235Z",
    "warnings": "0",
    "errors": "0",
    "contents": [
     {
      "type": "web",
-     "submitted": "152",
+     "submitted": "156",
      "indexed": "0"
     }
    ]
   }
  ],
- "sitemap_count": 155,
+ "sitemap_count": 157,
  "byState": {
   "Submitted and indexed": 31,
-  "Discovered - currently not indexed": 8,
-  "URL is unknown to Google": 2
+  "Discovered - currently not indexed": 9,
+  "URL is unknown to Google": 1
  },
  "urls": [
   {
@@ -37,7 +37,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/",
    "userCanonical": "https://aiuniversitybd.com/",
-   "lastCrawlTime": "2026-11-08T14:49:05Z",
+   "lastCrawlTime": "2026-11-09T16:07:19Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/",
@@ -119,7 +119,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/refund",
    "userCanonical": "https://aiuniversitybd.com/refund",
-   "lastCrawlTime": "2026-11-05T07:08:04Z",
+   "lastCrawlTime": "2026-11-09T03:49:47Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://aiuniversitybd.com/privacy"
@@ -134,7 +134,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/privacy",
    "userCanonical": "https://aiuniversitybd.com/privacy",
-   "lastCrawlTime": "2026-11-04T04:23:36Z",
+   "lastCrawlTime": "2026-11-09T11:32:17Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://aiuniversitybd.com/"
@@ -164,7 +164,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/app",
    "userCanonical": "https://aiuniversitybd.com/app",
-   "lastCrawlTime": "2026-11-06T12:20:59Z",
+   "lastCrawlTime": "2026-11-09T04:39:47Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/app"
@@ -238,14 +238,14 @@
   {
    "url": "https://aiuniversitybd.com/reviews",
    "verdict": "NEUTRAL",
-   "coverageState": "URL is unknown to Google",
+   "coverageState": "Discovered - currently not indexed",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": null,
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
    "referringUrls": null
   },
   {
@@ -377,15 +377,17 @@
   {
    "url": "https://aiuniversitybd.com/course/ai-video",
    "verdict": "NEUTRAL",
-   "coverageState": "URL is unknown to Google",
+   "coverageState": "Discovered - currently not indexed",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": null,
-   "referringUrls": null
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": [
+    "https://www.aiuniversitybd.com/course/ai-video"
+   ]
   },
   {
    "url": "https://aiuniversitybd.com/course/prompt-engineering",
@@ -422,17 +424,15 @@
   {
    "url": "https://aiuniversitybd.com/course/digital-marketing",
    "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
+   "coverageState": "URL is unknown to Google",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": [
-    "https://www.aiuniversitybd.com/course/digital-marketing"
-   ]
+   "crawledAs": null,
+   "referringUrls": null
   },
   {
    "url": "https://aiuniversitybd.com/course/freelancing",
@@ -459,7 +459,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/course/spoken-english",
    "userCanonical": "https://aiuniversitybd.com/course/spoken-english",
-   "lastCrawlTime": "2026-11-03T17:11:32Z",
+   "lastCrawlTime": "2026-11-10T08:29:14Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/course/spoken-english",
