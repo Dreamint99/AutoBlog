@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-08-10..2026-11-08, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-11..2026-11-09, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "richest countries in world",
@@ -725,15 +725,15 @@
    "src": "bing"
   },
   {
-   "q": "who is the richest person in the world 2026",
-   "impr": 34,
-   "pos": 8.4,
-   "src": "bing"
-  },
-  {
    "q": "countries with the most roblox players",
    "impr": 33,
    "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "who is the richest person in the world 2026",
+   "impr": 31,
+   "pos": 8.4,
    "src": "bing"
   },
   {
@@ -750,8 +750,8 @@
   },
   {
    "q": "most starred github repo",
-   "impr": 23,
-   "pos": 8.3,
+   "impr": 18,
+   "pos": 8.4,
    "src": "bing"
   },
   {

@@ -1,22 +1,22 @@
 {
- "source": "Search Console API 2026-08-10..2026-11-08",
+ "source": "Search Console API 2026-08-11..2026-11-09",
  "pages": [
   {
    "url": "https://countly.net/",
-   "impressions": 499,
+   "impressions": 477,
    "clicks": 2,
    "queries": [
     [
      "countly",
-     36,
+     31,
      0,
-     37.5
+     39.9
     ],
     [
      "quintly",
-     10,
+     9,
      0,
-     44.5
+     43.3
     ],
     [
      "site:countly.net",
@@ -49,12 +49,6 @@
      1
     ],
     [
-     "chosenly.com business model",
-     1,
-     0,
-     96
-    ],
-    [
      "count company",
      1,
      0,
@@ -77,10 +71,16 @@
      1,
      0,
      84
+    ],
+    [
+     "countfly",
+     1,
+     0,
+     52
     ]
    ],
-   "position": 38.9,
-   "ctr": 0.004
+   "position": 39.2,
+   "ctr": 0.0042
   },
   {
    "url": "https://countly.net/top-21-richest-people-in-greece-2026",
@@ -201,7 +201,7 @@
   },
   {
    "url": "https://countly.net/top-25-richest-people-in-bangladesh-2026-estimated-net-worth",
-   "impressions": 62,
+   "impressions": 61,
    "clicks": 0,
    "queries": [
     [
@@ -211,7 +211,7 @@
      58
     ]
    ],
-   "position": 8.4,
+   "position": 8.5,
    "ctr": 0.0
   },
   {
@@ -231,7 +231,7 @@
   },
   {
    "url": "https://countly.net/top-100-richest-people-in-united-states-2026",
-   "impressions": 43,
+   "impressions": 44,
    "clicks": 0,
    "queries": [
     [
@@ -307,7 +307,7 @@
      73
     ]
    ],
-   "position": 47.4,
+   "position": 47.0,
    "ctr": 0.0
   },
   {
@@ -371,27 +371,6 @@
     ]
    ],
    "position": 3.2,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/top-100-richest-people-in-russia-2026",
-   "impressions": 33,
-   "clicks": 0,
-   "queries": [
-    [
-     "forbes russia top 100",
-     2,
-     0,
-     50.5
-    ],
-    [
-     "site:countly.net",
-     2,
-     0,
-     18
-    ]
-   ],
-   "position": 14.2,
    "ctr": 0.0
   },
   {
@@ -479,8 +458,29 @@
    "ctr": 0.0
   },
   {
+   "url": "https://countly.net/top-100-richest-people-in-russia-2026",
+   "impressions": 31,
+   "clicks": 0,
+   "queries": [
+    [
+     "forbes russia top 100",
+     2,
+     0,
+     50.5
+    ],
+    [
+     "site:countly.net",
+     2,
+     0,
+     18
+    ]
+   ],
+   "position": 14.8,
+   "ctr": 0.0
+  },
+  {
    "url": "https://countly.net/how-many-paypal-users-are-there-in-2026-global-by-country",
-   "impressions": 32,
+   "impressions": 30,
    "clicks": 0,
    "queries": [
     [
@@ -514,28 +514,7 @@
      37
     ]
    ],
-   "position": 67.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/top-82-richest-people-in-canada-2026",
-   "impressions": 31,
-   "clicks": 0,
-   "queries": [
-    [
-     "richard warke net worth",
-     14,
-     0,
-     18
-    ],
-    [
-     "site:countly.net",
-     2,
-     0,
-     28
-    ]
-   ],
-   "position": 13.7,
+   "position": 69.3,
    "ctr": 0.0
   },
   {
@@ -566,8 +545,29 @@
    "ctr": 0.0
   },
   {
+   "url": "https://countly.net/top-82-richest-people-in-canada-2026",
+   "impressions": 30,
+   "clicks": 0,
+   "queries": [
+    [
+     "richard warke net worth",
+     14,
+     0,
+     18
+    ],
+    [
+     "site:countly.net",
+     2,
+     0,
+     28
+    ]
+   ],
+   "position": 13.9,
+   "ctr": 0.0
+  },
+  {
    "url": "https://countly.net/topic/rankings",
-   "impressions": 28,
+   "impressions": 27,
    "clicks": 0,
    "queries": [
     [
@@ -577,7 +577,7 @@
      7.9
     ]
    ],
-   "position": 7.2,
+   "position": 7.4,
    "ctr": 0.0
   },
   {
@@ -662,35 +662,8 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/top-100-richest-people-in-india-2026",
-   "impressions": 22,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     2,
-     0,
-     15
-    ],
-    [
-     "india richest man 2026 top 100",
-     1,
-     0,
-     77
-    ],
-    [
-     "top 100 richest person in india",
-     1,
-     0,
-     24
-    ]
-   ],
-   "position": 11.5,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/how-many-twitch-streamers-are-there-in-2026-global-by-countr",
-   "impressions": 21,
+   "impressions": 20,
    "clicks": 0,
    "queries": [
     [
@@ -712,7 +685,34 @@
      76
     ]
    ],
-   "position": 31.8,
+   "position": 31.1,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/top-100-richest-people-in-india-2026",
+   "impressions": 20,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     2,
+     0,
+     15
+    ],
+    [
+     "india richest man 2026 top 100",
+     1,
+     0,
+     77
+    ],
+    [
+     "top 100 richest person in india",
+     1,
+     0,
+     24
+    ]
+   ],
+   "position": 11.8,
    "ctr": 0.0
   },
   {
@@ -752,42 +752,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/openai-revenue-2026-8-5b-annual-earnings-growth",
-   "impressions": 19,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     2,
-     0,
-     33.5
-    ],
-    [
-     "openai annualized revenue run rate 2026",
-     1,
-     0,
-     9
-    ]
-   ],
-   "position": 9.2,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/top-68-richest-people-in-taiwan-2026",
-   "impressions": 18,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     3,
-     0,
-     10.7
-    ]
-   ],
-   "position": 8.1,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/how-many-roblox-users-are-there-in-2026-global-by-country",
    "impressions": 17,
    "clicks": 0,
@@ -809,71 +773,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/how-many-starbucks-stores-are-there-in-2026-global-by-countr",
-   "impressions": 17,
-   "clicks": 0,
-   "queries": [
-    [
-     "how many starbucks are there",
-     2,
-     0,
-     23
-    ],
-    [
-     "how many starbucks locations are there in the world",
-     2,
-     0,
-     15.5
-    ],
-    [
-     "site:countly.net",
-     2,
-     0,
-     77.5
-    ],
-    [
-     "how many starbucks in the us",
-     1,
-     0,
-     27
-    ]
-   ],
-   "position": 21.5,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/how-many-tesla-vehicles-are-on-the-road-in-2026-global-fleet",
    "impressions": 17,
    "clicks": 0,
    "queries": [],
    "position": 18.2,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/how-many-weibo-users-are-there-in-2026-global-by-country",
-   "impressions": 17,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     1,
-     0,
-     74
-    ],
-    [
-     "weibo maus 578 million august 2026 q2 2026 weibo mau 578",
-     1,
-     0,
-     8
-    ],
-    [
-     "weibo users",
-     1,
-     0,
-     96
-    ]
-   ],
-   "position": 73.6,
    "ctr": 0.0
   },
   {
@@ -913,6 +817,60 @@
    "ctr": 0.0
   },
   {
+   "url": "https://countly.net/how-many-starbucks-stores-are-there-in-2026-global-by-countr",
+   "impressions": 16,
+   "clicks": 0,
+   "queries": [
+    [
+     "how many starbucks are there",
+     2,
+     0,
+     23
+    ],
+    [
+     "how many starbucks locations are there in the world",
+     2,
+     0,
+     15.5
+    ],
+    [
+     "site:countly.net",
+     2,
+     0,
+     77.5
+    ],
+    [
+     "how many starbucks in the us",
+     1,
+     0,
+     27
+    ]
+   ],
+   "position": 22.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/how-many-weibo-users-are-there-in-2026-global-by-country",
+   "impressions": 16,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     1,
+     0,
+     74
+    ],
+    [
+     "weibo maus 578 million august 2026 q2 2026 weibo mau 578",
+     1,
+     0,
+     8
+    ]
+   ],
+   "position": 72.2,
+   "ctr": 0.0
+  },
+  {
    "url": "https://countly.net/richest-people-in-the-world-2026-net-worth-rankings-trends",
    "impressions": 16,
    "clicks": 0,
@@ -937,6 +895,27 @@
      7,
      0,
      7
+    ]
+   ],
+   "position": 10.9,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/openai-revenue-2026-8-5b-annual-earnings-growth",
+   "impressions": 15,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     2,
+     0,
+     33.5
+    ],
+    [
+     "openai annualized revenue run rate 2026",
+     1,
+     0,
+     9
     ]
    ],
    "position": 10.9,
@@ -1005,6 +984,21 @@
     ]
    ],
    "position": 28.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/top-68-richest-people-in-taiwan-2026",
+   "impressions": 14,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     3,
+     0,
+     10.7
+    ]
+   ],
+   "position": 8.6,
    "ctr": 0.0
   },
   {
@@ -1299,21 +1293,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/how-many-tiktok-users-are-there-in-2026-global-by-country",
-   "impressions": 9,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     2,
-     0,
-     72
-    ]
-   ],
-   "position": 22.1,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/richest-people-in-colombia-2026-billionaires-net-worth",
    "impressions": 9,
    "clicks": 0,
@@ -1359,7 +1338,7 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/how-many-slack-users-are-there-in-2026-global-by-country",
+   "url": "https://countly.net/how-many-tiktok-users-are-there-in-2026-global-by-country",
    "impressions": 8,
    "clicks": 0,
    "queries": [
@@ -1367,10 +1346,10 @@
      "site:countly.net",
      2,
      0,
-     71
+     72
     ]
    ],
-   "position": 48.4,
+   "position": 24.8,
    "ctr": 0.0
   },
   {
@@ -1446,6 +1425,21 @@
     ]
    ],
    "position": 45.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/how-many-slack-users-are-there-in-2026-global-by-country",
+   "impressions": 7,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     2,
+     0,
+     71
+    ]
+   ],
+   "position": 48.9,
    "ctr": 0.0
   },
   {
@@ -1538,27 +1532,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/how-many-uber-riders-are-there-in-2026-global-by-country",
-   "impressions": 6,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     1,
-     0,
-     69
-    ],
-    [
-     "uber monthly active users",
-     1,
-     0,
-     16
-    ]
-   ],
-   "position": 17.5,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/richest-people-in-romania-2026-billionaires-net-worth",
    "impressions": 6,
    "clicks": 0,
@@ -1592,21 +1565,6 @@
     ]
    ],
    "position": 33.7,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/top-11-richest-people-in-poland-2026",
-   "impressions": 6,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     2,
-     0,
-     14
-    ]
-   ],
-   "position": 11.7,
    "ctr": 0.0
   },
   {
@@ -1662,15 +1620,7 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/how-many-x-users-are-there-in-2026-global-by-country-193c",
-   "impressions": 5,
-   "clicks": 0,
-   "queries": [],
-   "position": 9.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/how-many-youtube-users-are-there-in-2026-global-by-country",
+   "url": "https://countly.net/how-many-uber-riders-are-there-in-2026-global-by-country",
    "impressions": 5,
    "clicks": 0,
    "queries": [
@@ -1678,10 +1628,24 @@
      "site:countly.net",
      1,
      0,
-     76
+     69
+    ],
+    [
+     "uber monthly active users",
+     1,
+     0,
+     16
     ]
    ],
-   "position": 17.8,
+   "position": 19.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/how-many-x-users-are-there-in-2026-global-by-country-193c",
+   "impressions": 5,
+   "clicks": 0,
+   "queries": [],
+   "position": 9.0,
    "ctr": 0.0
   },
   {
@@ -1784,6 +1748,21 @@
    "ctr": 0.0
   },
   {
+   "url": "https://countly.net/top-11-richest-people-in-poland-2026",
+   "impressions": 4,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     2,
+     0,
+     14
+    ]
+   ],
+   "position": 10.8,
+   "ctr": 0.0
+  },
+  {
    "url": "https://countly.net/top-11-richest-people-in-saudi-arabia-2026",
    "impressions": 4,
    "clicks": 0,
@@ -1826,14 +1805,6 @@
     ]
    ],
    "position": 13.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/top-72-richest-people-in-hong-kong-2026",
-   "impressions": 4,
-   "clicks": 0,
-   "queries": [],
-   "position": 5.0,
    "ctr": 0.0
   },
   {
@@ -1896,6 +1867,21 @@
     ]
    ],
    "position": 34.7,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/how-many-youtube-users-are-there-in-2026-global-by-country",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     1,
+     0,
+     76
+    ]
+   ],
+   "position": 27.0,
    "ctr": 0.0
   },
   {
@@ -1999,6 +1985,14 @@
    "ctr": 0.0
   },
   {
+   "url": "https://countly.net/top-72-richest-people-in-hong-kong-2026",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://countly.net/topic/ai-chatgpt",
    "impressions": 3,
    "clicks": 0,
@@ -2061,21 +2055,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/how-many-subway-restaurants-are-there-in-2026-global-by-coun",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     1,
-     0,
-     71
-    ]
-   ],
-   "position": 36.0,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/how-many-twitch-viewers-are-there-in-2026-global-by-country",
    "impressions": 2,
    "clicks": 0,
@@ -2096,14 +2075,6 @@
     ]
    ],
    "position": 77.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/how-many-xiaomi-smartphones-are-sold-in-2026-global-by-count-74f8",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [],
-   "position": 9.5,
    "ctr": 0.0
   },
   {
@@ -2248,11 +2219,34 @@
    "ctr": 0.0
   },
   {
+   "url": "https://countly.net/how-many-subway-restaurants-are-there-in-2026-global-by-coun",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     1,
+     0,
+     71
+    ]
+   ],
+   "position": 71.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://countly.net/how-many-tiktok-users-are-there-in-2026-global-by-country-899c",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
    "position": 2.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/how-many-xiaomi-smartphones-are-sold-in-2026-global-by-count-74f8",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.0,
    "ctr": 0.0
   },
   {
@@ -2387,14 +2381,6 @@
    "clicks": 0,
    "queries": [],
    "position": 2.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/top-45-richest-people-in-south-korea-2026",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 8.0,
    "ctr": 0.0
   },
   {

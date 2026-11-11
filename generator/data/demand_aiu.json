@@ -1,28 +1,28 @@
 {
- "_note": "Real queries (Search Console 2026-08-10..2026-11-08, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-11..2026-11-09, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
-   "q": "গোখরা সাপ চেনার উপায়",
-   "impr": 106,
-   "pos": 8.1,
-   "src": "gsc"
-  },
-  {
    "q": "প্রাথমিক চিকিৎসার উদ্দেশ্য কি",
-   "impr": 42,
+   "impr": 43,
    "pos": 9.0,
    "src": "gsc"
   },
   {
    "q": "প্রাথমিক চিকিৎসা কি",
-   "impr": 38,
-   "pos": 9.1,
+   "impr": 42,
+   "pos": 9.0,
    "src": "gsc"
   },
   {
    "q": "prathomik chikitsa kake bole",
+   "impr": 29,
+   "pos": 9.0,
+   "src": "gsc"
+  },
+  {
+   "q": "বিষধর সাপ চেনার উপায়",
    "impr": 28,
-   "pos": 9.1,
+   "pos": 8.1,
    "src": "gsc"
   },
   {
@@ -32,39 +32,33 @@
    "src": "gsc"
   },
   {
-   "q": "বিষধর সাপ চেনার উপায়",
-   "impr": 26,
-   "pos": 8.1,
+   "q": "মাছ কখন খাবার গ্রহণ করে",
+   "impr": 21,
+   "pos": 9.5,
    "src": "gsc"
   },
   {
    "q": "চন্দ্রবোড়া সাপের কামড়ের লক্ষণ",
-   "impr": 18,
-   "pos": 9.4,
+   "impr": 19,
+   "pos": 9.5,
    "src": "gsc"
   },
   {
    "q": "প্রাথমিক চিকিৎসা কি?",
-   "impr": 16,
-   "pos": 8.8,
+   "impr": 17,
+   "pos": 8.7,
    "src": "gsc"
   },
   {
-   "q": "শূন্য থেকে ielts প্রস্তুতি",
-   "impr": 15,
-   "pos": 8,
+   "q": "prathomik chikitsa bolte ki bojho",
+   "impr": 12,
+   "pos": 8.8,
    "src": "gsc"
   },
   {
    "q": "prathomik chikitsa ki",
    "impr": 12,
    "pos": 11.1,
-   "src": "gsc"
-  },
-  {
-   "q": "prathomik chikitsa bolte ki bojho",
-   "impr": 11,
-   "pos": 8.8,
    "src": "gsc"
   }
  ]
