@@ -256,7 +256,10 @@ async function renderer() {
     r.writeHead(200, { "content-type": u.endsWith(".js") ? "text/javascript" : u.endsWith(".png") ? "image/png" : u.endsWith(".svg") ? "image/svg+xml" : "application/octet-stream" }); fs.createReadStream(f).pipe(r);
   }).listen(8792);
   const exe = env.CHROME || ["C:/Program Files/Google/Chrome/Application/chrome.exe", "/usr/bin/google-chrome", "/usr/bin/chromium-browser"].find((p) => fs.existsSync(p));
-  browser = await puppeteer.launch({ executablePath: exe, headless: "new", args: ["--no-sandbox"] });
+  // pipe: true talks to Chrome over stdio instead of waiting for the WebSocket URL on stdout — newer Chrome on the
+  // GitHub runner timed out there ("waiting for the WS endpoint URL", 2026-11-11)
+  const opts = { executablePath: exe, headless: true, pipe: true, timeout: 90000, protocolTimeout: 120000, args: ["--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu", "--no-first-run"] };
+  try { browser = await puppeteer.launch(opts); } catch (e) { log("  chrome retry —", e.message.slice(0, 120)); browser = await puppeteer.launch({ ...opts, pipe: false }); }
   pg = await browser.newPage(); await pg.goto("http://localhost:8792/", { waitUntil: "networkidle0" });
   return pg;
 }
