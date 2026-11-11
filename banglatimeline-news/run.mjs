@@ -132,28 +132,55 @@ const SYSTEM = `তুমি "কালারস অব বাংলাদেশ
 - স্বাস্থ্য বা টিপস বিষয়ে কেবল সূত্রে থাকা পরামর্শ লিখবে; চিকিৎসার সিদ্ধান্তে চিকিৎসকের পরামর্শ নিতে বলবে।
 - মতামত, প্রচারণা বা আবেগপ্রবণ শব্দ নয়; নিরপেক্ষ থাকবে।
 - সূত্র যথেষ্ট না হলে বা বিজ্ঞাপন/প্রেস রিলিজ/রাশিফল/বিনোদন-গসিপ হলে skip=true দেবে।
+- পুরো লেখা শুদ্ধ, প্রমিত বাংলায়; বাক্যের মধ্যে ইংরেজি শব্দ মেশাবে না (ব্যক্তি/প্রতিষ্ঠানের নাম ও সংক্ষেপ ছাড়া)।
 শুধু JSON ফেরত দেবে।`;
+// Bangla quality gate: free models sometimes slip an English word ("whereas") or garble letters into the text.
+// Checks the reader-facing fields; proper nouns/acronyms (Capitalised or ALLCAPS Latin) are allowed.
+function banglaIssue(o) {
+  if (!o || typeof o !== "object" || o.skip) return "";
+  const text = [o.title, o.subtitle, o.summary, ...(o.points || []), ...(o.body || [])].filter((x) => typeof x === "string").join(" ");
+  if (!text.trim()) return "empty";
+  if (/\uFFFD/.test(text)) return "replacement char";
+  if (/[\u0900-\u0963\u0966-\u097F\u0A00-\u0DFF\u0600-\u06FF\u3040-\u30FF\u4E00-\u9FFF\uAC00-\uD7AF]/.test(text)) return "foreign script";
+  const letters = text.match(/\p{L}/gu) || [], bn = text.match(/[\u0980-\u09FF]/g) || [];
+  if (bn.length / Math.max(1, letters.length) < 0.85) return "too little Bangla";
+  const eng = (text.match(/(?<![\w.@\/-])[a-z]{3,}(?![\w.@\/-])/g) || []).filter((w) => !/^(www|http|https|com|org|net)$/.test(w));
+  if (eng.length) return "English words: " + [...new Set(eng)].slice(0, 5).join(",");
+  if (!Array.isArray(o.body) || o.body.length < 3) return "short body";
+  return "";
+}
 async function llm(messages, { json = true, maxTokens = 2500 } = {}) {
+  const site = (env.SITE || SITE_PUBLIC).replace(/\/+$/, "");
   const providers = [
-    // optional free models (OPENROUTER_FREE_MODEL, comma list) — off by default: their Bangla came out garbled; DeepSeek writes it well
+    // FREE (2026-11-11): Cloudflare Workers AI via the site's /api/llm (AI binding, same INGEST_TOKEN). DeepSeek v4.1 Flash
+    // writes the same clean Bangla as the paid DeepSeek; Gemma 4 is the free backup. ~150–250 neurons a story (10k/day free).
+    ...(env.INGEST_TOKEN ? ["@cf/deepseek-ai/deepseek-v4.1-flash-1017", "@cf/google/gemma-4-26b-a4b-it"].map((m) => ["cf:" + m.split("/").pop(), site + "/api/llm", env.INGEST_TOKEN, m, "cf"]) : []),
+    // optional free OpenRouter models (OPENROUTER_FREE_MODEL, comma list) — off by default: their Bangla came out garbled
     ...(env.OPENROUTER_API_KEY ? (env.OPENROUTER_FREE_MODEL ? env.OPENROUTER_FREE_MODEL.split(",") : []).map((m) => ["free:" + m.trim(), "https://openrouter.ai/api/v1/chat/completions", env.OPENROUTER_API_KEY, m.trim()]) : []),
     env.OPENROUTER_API_KEY && ["openrouter", "https://openrouter.ai/api/v1/chat/completions", env.OPENROUTER_API_KEY, env.OPENROUTER_MODEL || "deepseek/deepseek-v4-flash"],
     env.DEEPSEEK_API_KEY && ["deepseek", "https://api.deepseek.com/chat/completions", env.DEEPSEEK_API_KEY, "deepseek-chat"],
   ].filter(Boolean);
   let lastErr = "no LLM key";
-  for (const [name, url, key, model] of providers) {
-    try {
-      const r = await fetch(url, { method: "POST", signal: AbortSignal.timeout(180000),
-        headers: { authorization: `Bearer ${key}`, "content-type": "application/json", "HTTP-Referer": SITE_PUBLIC, "X-Title": "Colours of Bangladesh" },
-        body: JSON.stringify({ model, temperature: 0.3, max_tokens: maxTokens, ...(json ? { response_format: { type: "json_object" } } : {}), messages }) });
-      const j = await r.json();
-      const txt = j.choices?.[0]?.message?.content;
-      if (!r.ok || !txt) { lastErr = `${name}: ${(j.error?.message || j.choices?.[0]?.finish_reason || JSON.stringify(j)).toString().slice(0, 160)}`; log("  llm fallback —", lastErr); continue; }
-      if (!json) return { out: txt, usage: j.usage, via: name };
-      const m = txt.replace(/^[\s\S]*?```(?:json)?/, "").replace(/```[\s\S]*$/, "").trim() || txt;
-      const s = m.slice(m.indexOf("{"), m.lastIndexOf("}") + 1);
-      return { out: JSON.parse(s), usage: j.usage, via: name };
-    } catch (e) { lastErr = `${name}: ${e.message}`; log("  llm fallback —", lastErr); }
+  for (const [name, url, key, model, kind] of providers) {
+    for (let attempt = 0; attempt < 2; attempt++) { // a 2nd try only after the Bangla gate fails
+      const msgs = attempt ? [...messages, { role: "user", content: "আগের উত্তরে সমস্যা ছিল (" + lastErr + ")। পুরো লেখা আবার দাও — সব বাক্য শুদ্ধ বাংলায়, কোনো ইংরেজি শব্দ মেশাবে না (নাম ও সংক্ষেপ ছাড়া)। শুধু JSON।" }] : messages;
+      try {
+        const body = kind === "cf"
+          ? { model, temperature: attempt ? 0.2 : 0.3, max_tokens: Math.max(maxTokens, 4000), json, messages: msgs }
+          : { model, temperature: 0.3, max_tokens: maxTokens, ...(json ? { response_format: { type: "json_object" } } : {}), messages: msgs };
+        const r = await fetch(url, { method: "POST", signal: AbortSignal.timeout(180000),
+          headers: { authorization: `Bearer ${key}`, "content-type": "application/json", "HTTP-Referer": SITE_PUBLIC, "X-Title": "Colours of Bangladesh" }, body: JSON.stringify(body) });
+        const j = await r.json();
+        const txt = kind === "cf" ? j.content : j.choices?.[0]?.message?.content;
+        if (!r.ok || !txt) { lastErr = `${name}: ${(j.error?.message || j.error || j.choices?.[0]?.finish_reason || JSON.stringify(j)).toString().slice(0, 160)}`; log("  llm fallback —", lastErr); break; }
+        if (!json) return { out: txt, usage: j.usage, via: name };
+        const m = txt.replace(/^[\s\S]*?```(?:json)?/, "").replace(/```[\s\S]*$/, "").trim() || txt;
+        const out = JSON.parse(m.slice(m.indexOf("{"), m.lastIndexOf("}") + 1));
+        const bad = banglaIssue(out);
+        if (!bad) return { out, usage: j.usage, via: name + (attempt ? " (retry)" : "") };
+        lastErr = `${name}: bangla check — ${bad}`; log("  llm", attempt ? "fallback —" : "retry —", lastErr);
+      } catch (e) { lastErr = `${name}: ${e.message}`; log("  llm fallback —", lastErr); break; }
+    }
   }
   throw new Error("LLM failed: " + lastErr);
 }
