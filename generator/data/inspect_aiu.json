@@ -1,7 +1,7 @@
 {
  "site": "aiu",
  "property": "https://aiuniversitybd.com/",
- "checked": "2026-11-10T10:29:34+00:00",
+ "checked": "2026-11-11T09:53:32+00:00",
  "sitemaps": [
   {
    "path": "https://aiuniversitybd.com/sitemap.xml",
@@ -9,23 +9,23 @@
    "isPending": false,
    "isSitemapsIndex": false,
    "type": "sitemap",
-   "lastDownloaded": "2026-11-09T14:56:27.235Z",
+   "lastDownloaded": "2026-11-11T08:29:38.504Z",
    "warnings": "0",
    "errors": "0",
    "contents": [
     {
      "type": "web",
-     "submitted": "156",
+     "submitted": "159",
      "indexed": "0"
     }
    ]
   }
  ],
- "sitemap_count": 157,
+ "sitemap_count": 159,
  "byState": {
   "Submitted and indexed": 31,
-  "Discovered - currently not indexed": 9,
-  "URL is unknown to Google": 1
+  "URL is unknown to Google": 4,
+  "Discovered - currently not indexed": 6
  },
  "urls": [
   {
@@ -58,9 +58,8 @@
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/courses?fac=language",
-    "http://www.aiuniversitybd.com/courses?fac=language",
-    "https://www.aiuniversitybd.com/courses",
     "http://www.aiuniversitybd.com/learn?c=vibe-coding&l=web-security",
+    "https://www.aiuniversitybd.com/courses",
     "https://aiuniversitybd.com/blog/english-speaking-tips-bangla"
    ]
   },
@@ -73,7 +72,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/pocket",
    "userCanonical": "https://aiuniversitybd.com/pocket",
-   "lastCrawlTime": "2026-11-01T07:53:16Z",
+   "lastCrawlTime": "2026-11-09T09:52:17Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://aiuniversitybd.com/blog/category/ielts",
@@ -214,26 +213,21 @@
    "lastCrawlTime": "2026-11-03T14:39:33Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
-    "https://www.aiuniversitybd.com/kids",
-    "http://www.aiuniversitybd.com/kids?v=me",
-    "http://www.aiuniversitybd.com/kids"
+    "https://www.aiuniversitybd.com/kids"
    ]
   },
   {
    "url": "https://aiuniversitybd.com/subscription",
    "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
+   "coverageState": "URL is unknown to Google",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": [
-    "https://www.aiuniversitybd.com/subscription",
-    "https://www.aiuniversitybd.com/subscription?next=%2Fkids"
-   ]
+   "crawledAs": null,
+   "referringUrls": null
   },
   {
    "url": "https://aiuniversitybd.com/reviews",
@@ -260,8 +254,7 @@
    "lastCrawlTime": null,
    "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
    "referringUrls": [
-    "https://www.aiuniversitybd.com/gds-lab?demo=1",
-    "https://www.aiuniversitybd.com/gds-lab"
+    "https://www.aiuniversitybd.com/gds-lab?demo=1"
    ]
   },
   {
@@ -446,8 +439,7 @@
    "lastCrawlTime": "2026-11-06T07:23:20Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
-    "https://www.aiuniversitybd.com/course/freelancing",
-    "https://aiuniversitybd.com/courses"
+    "https://www.aiuniversitybd.com/course/freelancing"
    ]
   },
   {
@@ -545,17 +537,15 @@
   {
    "url": "https://aiuniversitybd.com/course/first-aid",
    "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
+   "coverageState": "URL is unknown to Google",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": [
-    "https://www.aiuniversitybd.com/course/first-aid"
-   ]
+   "crawledAs": null,
+   "referringUrls": null
   },
   {
    "url": "https://aiuniversitybd.com/course/personal-finance",
@@ -623,18 +613,15 @@
   {
    "url": "https://aiuniversitybd.com/course/japanese-work",
    "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
+   "coverageState": "URL is unknown to Google",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": [
-    "https://www.aiuniversitybd.com/course/japanese-work",
-    "http://www.aiuniversitybd.com/course/japanese-work"
-   ]
+   "crawledAs": null,
+   "referringUrls": null
   },
   {
    "url": "https://aiuniversitybd.com/course/biggan-velki",
