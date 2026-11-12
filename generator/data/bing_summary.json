@@ -36,6 +36,15 @@
      "posPrev": null
     },
     {
+     "key": "সার্বিয়া দেশ থেকে কোন কোন দেশে যাওয়া সহজ",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 1.0,
+     "posPrev": null
+    },
+    {
      "key": "পাসপোর্ট নাম্বার দিয়ে ভিসা চেক মালয়েশিয়া",
      "clicks": 1,
      "clicksPrev": 0,
@@ -51,15 +60,6 @@
      "impr": 1,
      "imprPrev": 0,
      "pos": 4.0,
-     "posPrev": null
-    },
-    {
-     "key": "সার্বিয়া দেশ থেকে কোন কোন দেশে যাওয়া সহজ",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 1.0,
      "posPrev": null
     },
     {
@@ -99,6 +99,15 @@
      "posPrev": null
     },
     {
+     "key": "সিঙ্গাপুরে এয়ারকন টেকনিশিয়ান নিয়োগ কোম্পানি ২০২৬",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 4,
+     "imprPrev": 0,
+     "pos": 7.0,
+     "posPrev": null
+    },
+    {
      "key": "ভিসা চেক মালয়েশিয়া",
      "clicks": 0,
      "clicksPrev": 0,
@@ -117,12 +126,12 @@
      "posPrev": null
     },
     {
-     "key": "সিঙ্গাপুরে এয়ারকন টেকনিশিয়ান নিয়োগ কোম্পানি ২০২৬",
+     "key": "বিএমএটি রেজিস্ট্রেশন করতে কি কি",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 4,
      "imprPrev": 0,
-     "pos": 7.0,
+     "pos": 1.0,
      "posPrev": null
     },
     {
@@ -135,12 +144,12 @@
      "posPrev": null
     },
     {
-     "key": "বিএমএটি রেজিস্ট্রেশন করতে কি কি",
+     "key": "মালয়েশিয়ায় ওয়ার্ক ভিসা কি ছাড়ছে",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 4,
+     "impr": 3,
      "imprPrev": 0,
-     "pos": 1.0,
+     "pos": 6.0,
      "posPrev": null
     },
     {
@@ -150,15 +159,6 @@
      "impr": 3,
      "imprPrev": 0,
      "pos": 3.0,
-     "posPrev": null
-    },
-    {
-     "key": "মালয়েশিয়ায় ওয়ার্ক ভিসা কি ছাড়ছে",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 3,
-     "imprPrev": 0,
-     "pos": 6.0,
      "posPrev": null
     }
    ],
@@ -264,15 +264,6 @@
      "posPrev": null
     },
     {
-     "key": "fastest car in the world 2026 top speed",
-     "clicks": 2,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 2.0,
-     "posPrev": null
-    },
-    {
      "key": "what is the largest bookstore chain in asia pacifc",
      "clicks": 2,
      "clicksPrev": 0,
@@ -291,12 +282,12 @@
      "posPrev": 1.0
     },
     {
-     "key": "what is the tallest building in the world in 2026",
+     "key": "fastest car in the world 2026 top speed",
      "clicks": 2,
      "clicksPrev": 0,
      "impr": 2,
      "imprPrev": 0,
-     "pos": 1.0,
+     "pos": 2.0,
      "posPrev": null
     },
     {
@@ -309,28 +300,10 @@
      "posPrev": null
     },
     {
-     "key": "top 10 youtubers in subscriber count",
+     "key": "what is the tallest building in the world in 2026",
      "clicks": 2,
      "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 4.0,
-     "posPrev": null
-    },
-    {
-     "key": "which language is most spoken in 2026?",
-     "clicks": 2,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 1.0,
-     "posPrev": null
-    },
-    {
-     "key": "which bank has the highest number of branches in bangladesh bank",
-     "clicks": 2,
-     "clicksPrev": 0,
-     "impr": 1,
+     "impr": 2,
      "imprPrev": 0,
      "pos": 1.0,
      "posPrev": null
@@ -345,12 +318,39 @@
      "posPrev": null
     },
     {
-     "key": "number of mobile users by country",
+     "key": "top 10 youtubers in subscriber count",
      "clicks": 2,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 2.0,
+     "pos": 4.0,
+     "posPrev": null
+    },
+    {
+     "key": "which bank has the highest number of branches in bangladesh bank",
+     "clicks": 2,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 1.0,
+     "posPrev": null
+    },
+    {
+     "key": "what country is tiktok most used in by %",
+     "clicks": 2,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 10.0,
+     "posPrev": null
+    },
+    {
+     "key": "top 10 growing companies 2026",
+     "clicks": 2,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 3.0,
      "posPrev": null
     }
    ],
@@ -559,7 +559,7 @@
      "posPrev": null
     },
     {
-     "key": "azad visa status saudi",
+     "key": "how to check kuwait evisa check status",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 2,
@@ -568,13 +568,13 @@
      "posPrev": null
     },
     {
-     "key": "how to check saudia e visa status",
+     "key": "visapoint",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 2,
-     "imprPrev": 0,
+     "imprPrev": 2,
      "pos": 6.0,
-     "posPrev": null
+     "posPrev": 7.0
     },
     {
      "key": "which is the safest country in the world 2026",
@@ -586,12 +586,12 @@
      "posPrev": null
     },
     {
-     "key": "visa success rate of romania for working nepalese",
+     "key": "croatia work visa process from bd, finger and biometric",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 2,
      "imprPrev": 0,
-     "pos": 8.0,
+     "pos": 7.0,
      "posPrev": null
     },
     {
@@ -615,6 +615,15 @@
      "posPrev": null
     },
     {
+     "key": "kuwait visa check online",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 5,
+     "imprPrev": 0,
+     "pos": 9.0,
+     "posPrev": null
+    },
+    {
      "key": "kuwait visa check",
      "clicks": 0,
      "clicksPrev": 0,
@@ -630,15 +639,6 @@
      "impr": 5,
      "imprPrev": 0,
      "pos": 7.0,
-     "posPrev": null
-    },
-    {
-     "key": "kuwait visa check online",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 5,
-     "imprPrev": 0,
-     "pos": 9.0,
      "posPrev": null
     }
    ]
@@ -688,21 +688,21 @@
      "posPrev": null
     },
     {
-     "key": "rag pipelines subscription cost",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 4,
-     "imprPrev": 0,
-     "pos": 9.0,
-     "posPrev": null
-    },
-    {
      "key": "d270 benchmarks",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 4,
      "imprPrev": 0,
      "pos": 5.0,
+     "posPrev": null
+    },
+    {
+     "key": "rag pipelines subscription cost",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 4,
+     "imprPrev": 0,
+     "pos": 9.0,
      "posPrev": null
     },
     {
@@ -724,12 +724,21 @@
      "posPrev": null
     },
     {
-     "key": "opencode price",
+     "key": "is rag still costly",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 2,
      "imprPrev": 0,
-     "pos": 8.0,
+     "pos": 2.0,
+     "posPrev": null
+    },
+    {
+     "key": "donde se paga la licencia de opencode",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 6.0,
      "posPrev": null
     },
     {
@@ -742,22 +751,13 @@
      "posPrev": null
     },
     {
-     "key": "as rag light tank cost per",
+     "key": "cheapest ai video generation api 2026 price comparison per second",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 2,
      "imprPrev": 0,
-     "pos": 10.0,
+     "pos": 8.0,
      "posPrev": null
-    },
-    {
-     "key": "intel d270 price",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 11,
-     "pos": 4.0,
-     "posPrev": 3.0
     },
     {
      "key": "is opencode free unlimited",
@@ -769,16 +769,16 @@
      "posPrev": null
     },
     {
-     "key": "intel gpu d270 price",
+     "key": "intel d270",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 2,
-     "imprPrev": 1,
-     "pos": 5.0,
-     "posPrev": 3.0
+     "imprPrev": 0,
+     "pos": 10.0,
+     "posPrev": null
     },
     {
-     "key": "cheapest ai video generation api 2026 price comparison per second",
+     "key": "opencode price",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 2,
@@ -796,7 +796,7 @@
      "posPrev": null
     },
     {
-     "key": "intel d270",
+     "key": "as rag light tank cost per",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 2,
@@ -828,21 +828,12 @@
    ],
    "topQueries": [
     {
-     "key": "mechanical engineer saudi aramco salary",
+     "key": "traffic fines inquiry",
      "clicks": 1,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
      "pos": 3.0,
-     "posPrev": null
-    },
-    {
-     "key": "e&h specialist manager  salary in aramco",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 2.0,
      "posPrev": null
     },
     {
@@ -855,6 +846,15 @@
      "posPrev": null
     },
     {
+     "key": "mechanical engineer saudi aramco salary",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 3.0,
+     "posPrev": null
+    },
+    {
      "key": "https://kuwaitvisa.moi.gov.kw check",
      "clicks": 1,
      "clicksPrev": 0,
@@ -864,21 +864,30 @@
      "posPrev": null
     },
     {
-     "key": "traffic fines inquiry",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 3.0,
-     "posPrev": null
-    },
-    {
      "key": "when are oman visa fees waived off",
      "clicks": 1,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
      "pos": 1.0,
+     "posPrev": null
+    },
+    {
+     "key": "e&h specialist manager  salary in aramco",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 2.0,
+     "posPrev": null
+    },
+    {
+     "key": "kuwait ban kyse chwck kare visa",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 3,
+     "imprPrev": 0,
+     "pos": 8.0,
      "posPrev": null
     },
     {
@@ -900,15 +909,6 @@
      "posPrev": null
     },
     {
-     "key": "kuwait ban kyse chwck kare visa",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 3,
-     "imprPrev": 0,
-     "pos": 8.0,
-     "posPrev": null
-    },
-    {
      "key": "traffic fine",
      "clicks": 0,
      "clicksPrev": 0,
@@ -918,12 +918,21 @@
      "posPrev": null
     },
     {
-     "key": "\"traffic renewal\" bahrain",
+     "key": "re exit entry visa duration and fee saudi",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 2,
      "imprPrev": 0,
-     "pos": 6.0,
+     "pos": 9.0,
+     "posPrev": null
+    },
+    {
+     "key": "salary petroleum engineer saudi aramco",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 5.0,
      "posPrev": null
     },
     {
@@ -936,25 +945,16 @@
      "posPrev": null
     },
     {
-     "key": "gcc driving licence conversion abu dhabi",
+     "key": "kuwait visa status check by passport number",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 2,
-     "imprPrev": 0,
-     "pos": 7.0,
-     "posPrev": null
+     "imprPrev": 2,
+     "pos": 8.0,
+     "posPrev": 6.0
     },
     {
-     "key": "how to kuwait visa check by passport number",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 5.0,
-     "posPrev": null
-    },
-    {
-     "key": "aramco average salaries for expatriates from africa 2026",
+     "key": "traffic payment online",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 2,
@@ -1100,12 +1100,12 @@
      "posPrev": null
     },
     {
-     "key": "ban saff games",
+     "key": "saff championship 2026 bangladesh squad",
      "clicks": 2,
      "clicksPrev": 0,
      "impr": 2,
      "imprPrev": 0,
-     "pos": 2.0,
+     "pos": 6.0,
      "posPrev": null
     },
     {
@@ -1118,12 +1118,12 @@
      "posPrev": null
     },
     {
-     "key": "saff championship 2026 bangladesh squad",
+     "key": "ban saff games",
      "clicks": 2,
      "clicksPrev": 0,
      "impr": 2,
      "imprPrev": 0,
-     "pos": 6.0,
+     "pos": 2.0,
      "posPrev": null
     }
    ],
@@ -1299,21 +1299,21 @@
      "posPrev": null
     },
     {
-     "key": "gds galileo",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 9.0,
-     "posPrev": null
-    },
-    {
      "key": "basic computer course for beginners in bangla tutorial ba",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 2,
      "imprPrev": 0,
      "pos": 6.0,
+     "posPrev": null
+    },
+    {
+     "key": "gds galileo",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 9.0,
      "posPrev": null
     },
     {
@@ -1326,15 +1326,6 @@
      "posPrev": null
     },
     {
-     "key": "aiub business communication book",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 9.0,
-     "posPrev": null
-    },
-    {
      "key": "aiub সন্ধ্যাকালীন কোর্স",
      "clicks": 0,
      "clicksPrev": 0,
@@ -1344,21 +1335,12 @@
      "posPrev": null
     },
     {
-     "key": "linguacorebd.com",
+     "key": "aiub bvusscomm book",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 3.0,
-     "posPrev": null
-    },
-    {
-     "key": "gsrytesd",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 5.0,
+     "pos": 7.0,
      "posPrev": null
     },
     {
@@ -1371,6 +1353,24 @@
      "posPrev": null
     },
     {
+     "key": "linguacorebd.com",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 3.0,
+     "posPrev": null
+    },
+    {
+     "key": "aiub business communication book",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 9.0,
+     "posPrev": null
+    },
+    {
      "key": "gallileo gds",
      "clicks": 0,
      "clicksPrev": 0,
@@ -1380,12 +1380,12 @@
      "posPrev": null
     },
     {
-     "key": "aiub bvusscomm book",
+     "key": "gsrytesd",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 7.0,
+     "pos": 5.0,
      "posPrev": null
     }
    ],

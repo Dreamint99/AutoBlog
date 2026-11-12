@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-08-11..2026-11-09, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-12..2026-11-10, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "richest countries in world",
@@ -282,13 +282,13 @@
    "src": "bingkw"
   },
   {
-   "q": "nicki minaj net worth",
+   "q": "martha stewart net worth",
    "impr": 2043,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "martha stewart net worth",
+   "q": "nicki minaj net worth",
    "impr": 2043,
    "pos": null,
    "src": "bingkw"
@@ -630,8 +630,8 @@
   },
   {
    "q": "crypto price data",
-   "impr": 11,
-   "pos": 93.2,
+   "impr": 10,
+   "pos": 92.8,
    "src": "gsc"
   },
   {
@@ -707,12 +707,6 @@
    "src": "bing"
   },
   {
-   "q": "highest paid athletes 2026",
-   "impr": 37,
-   "pos": 8.1,
-   "src": "bing"
-  },
-  {
    "q": "global linkedin",
    "impr": 37,
    "pos": 9.0,
@@ -725,15 +719,21 @@
    "src": "bing"
   },
   {
-   "q": "countries with the most roblox players",
-   "impr": 33,
-   "pos": 8.0,
+   "q": "highest paid athletes 2026",
+   "impr": 34,
+   "pos": 8.1,
    "src": "bing"
   },
   {
    "q": "who is the richest person in the world 2026",
-   "impr": 31,
+   "impr": 34,
    "pos": 8.4,
+   "src": "bing"
+  },
+  {
+   "q": "countries with the most roblox players",
+   "impr": 33,
+   "pos": 8.0,
    "src": "bing"
   },
   {
@@ -745,6 +745,12 @@
   {
    "q": "what is the fastest car",
    "impr": 24,
+   "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "top 10 richest people 2026",
+   "impr": 19,
    "pos": 8.0,
    "src": "bing"
   },
@@ -776,12 +782,6 @@
    "q": "most downloaded apps",
    "impr": 15,
    "pos": 9.0,
-   "src": "bing"
-  },
-  {
-   "q": "github most starred repositories",
-   "impr": 13,
-   "pos": 8.0,
    "src": "bing"
   },
   {

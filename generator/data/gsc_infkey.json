@@ -1,9 +1,9 @@
 {
- "source": "Search Console API 2026-08-11..2026-11-09",
+ "source": "Search Console API 2026-08-12..2026-11-10",
  "pages": [
   {
    "url": "https://infkey.com/",
-   "impressions": 126,
+   "impressions": 128,
    "clicks": 4,
    "queries": [
     [
@@ -55,6 +55,12 @@
      87.5
     ],
     [
+     "key ai",
+     2,
+     0,
+     68.5
+    ],
+    [
      "ai keyer",
      1,
      0,
@@ -71,16 +77,10 @@
      1,
      0,
      78
-    ],
-    [
-     "cheating daddy api key",
-     1,
-     0,
-     68
     ]
    ],
-   "position": 49.2,
-   "ctr": 0.0317
+   "position": 48.9,
+   "ctr": 0.0312
   }
  ]
 }

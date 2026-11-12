@@ -1,5 +1,5 @@
 {
- "source": "Search Console API 2026-08-11..2026-11-09",
+ "source": "Search Console API 2026-08-12..2026-11-10",
  "pages": [
   {
    "url": "https://visapoint.net/visa-check/romania",
@@ -314,71 +314,8 @@
    "ctr": 0.02
   },
   {
-   "url": "https://visapoint.net/moldova-visa-status-online-2026-step-by-step-guide",
-   "impressions": 89,
-   "clicks": 3,
-   "queries": [
-    [
-     "moldova visa status check",
-     8,
-     0,
-     9.6
-    ],
-    [
-     "moldova visa check online by passport number",
-     6,
-     1,
-     10
-    ],
-    [
-     "how to check moldova visa online",
-     3,
-     1,
-     11
-    ],
-    [
-     "moldova e visa check online",
-     3,
-     0,
-     9.3
-    ],
-    [
-     "e visa check moldova",
-     2,
-     0,
-     10
-    ],
-    [
-     "evisa gov md check my visa",
-     2,
-     0,
-     9
-    ],
-    [
-     "moldova e visa check by passport number",
-     1,
-     0,
-     7
-    ],
-    [
-     "moldova visa check",
-     1,
-     0,
-     9
-    ],
-    [
-     "moldova work permit check online",
-     1,
-     0,
-     15
-    ]
-   ],
-   "position": 8.3,
-   "ctr": 0.0337
-  },
-  {
    "url": "https://visapoint.net/",
-   "impressions": 86,
+   "impressions": 89,
    "clicks": 4,
    "queries": [
     [
@@ -442,20 +379,83 @@
      51
     ],
     [
+     "visa check",
+     1,
+     0,
+     40
+    ],
+    [
      "visa country",
      1,
      0,
      77
-    ],
-    [
-     "visa information for all countries",
-     1,
-     0,
-     28
     ]
    ],
-   "position": 25.4,
-   "ctr": 0.0465
+   "position": 25.0,
+   "ctr": 0.0449
+  },
+  {
+   "url": "https://visapoint.net/moldova-visa-status-online-2026-step-by-step-guide",
+   "impressions": 89,
+   "clicks": 3,
+   "queries": [
+    [
+     "moldova visa status check",
+     8,
+     0,
+     9.6
+    ],
+    [
+     "moldova visa check online by passport number",
+     6,
+     1,
+     10
+    ],
+    [
+     "how to check moldova visa online",
+     3,
+     1,
+     11
+    ],
+    [
+     "moldova e visa check online",
+     3,
+     0,
+     9.3
+    ],
+    [
+     "e visa check moldova",
+     2,
+     0,
+     10
+    ],
+    [
+     "evisa gov md check my visa",
+     2,
+     0,
+     9
+    ],
+    [
+     "moldova e visa check by passport number",
+     1,
+     0,
+     7
+    ],
+    [
+     "moldova visa check",
+     1,
+     0,
+     9
+    ],
+    [
+     "moldova work permit check online",
+     1,
+     0,
+     15
+    ]
+   ],
+   "position": 8.3,
+   "ctr": 0.0337
   },
   {
    "url": "https://visapoint.net/passport-index",
@@ -1031,29 +1031,8 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/bangladesh-to-romania-work-visa-2026-cost-process-salary",
-   "impressions": 30,
-   "clicks": 0,
-   "queries": [
-    [
-     "কাজের ভিসা",
-     1,
-     0,
-     4
-    ],
-    [
-     "জানতে চাই",
-     1,
-     0,
-     5
-    ]
-   ],
-   "position": 6.4,
-   "ctr": 0.0
-  },
-  {
    "url": "https://visapoint.net/visa-checker",
-   "impressions": 30,
+   "impressions": 31,
    "clicks": 0,
    "queries": [
     [
@@ -1111,7 +1090,28 @@
      51
     ]
    ],
-   "position": 22.2,
+   "position": 21.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/bangladesh-to-romania-work-visa-2026-cost-process-salary",
+   "impressions": 30,
+   "clicks": 0,
+   "queries": [
+    [
+     "কাজের ভিসা",
+     1,
+     0,
+     4
+    ],
+    [
+     "জানতে চাই",
+     1,
+     0,
+     5
+    ]
+   ],
+   "position": 6.4,
    "ctr": 0.0
   },
   {
@@ -1421,6 +1421,27 @@
    "ctr": 0.037
   },
   {
+   "url": "https://visapoint.net/about",
+   "impressions": 27,
+   "clicks": 0,
+   "queries": [
+    [
+     "visapoint",
+     7,
+     0,
+     6.3
+    ],
+    [
+     "visa point",
+     1,
+     0,
+     23
+    ]
+   ],
+   "position": 7.3,
+   "ctr": 0.0
+  },
+  {
    "url": "https://visapoint.net/europe-work-visa-processing-time-by-country-2026-fastest-guide",
    "impressions": 27,
    "clicks": 0,
@@ -1441,27 +1462,6 @@
    "clicks": 0,
    "queries": [],
    "position": 7.2,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/about",
-   "impressions": 26,
-   "clicks": 0,
-   "queries": [
-    [
-     "visapoint",
-     7,
-     0,
-     6.3
-    ],
-    [
-     "visa point",
-     1,
-     0,
-     23
-    ]
-   ],
-   "position": 7.3,
    "ctr": 0.0
   },
   {
@@ -2342,6 +2342,22 @@
    "ctr": 0.0
   },
   {
+   "url": "https://visapoint.net/cleaner-salary-in-portugal-2026-gross-net-savings-guide",
+   "impressions": 12,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/contact",
+   "impressions": 12,
+   "clicks": 0,
+   "queries": [],
+   "position": 8.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://visapoint.net/croatia-work-permit-2025-complete-guide-for-bangladeshi-workers",
    "impressions": 12,
    "clicks": 0,
@@ -2417,22 +2433,6 @@
     ]
    ],
    "position": 10.9,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/cleaner-salary-in-portugal-2026-gross-net-savings-guide",
-   "impressions": 11,
-   "clicks": 0,
-   "queries": [],
-   "position": 7.1,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/contact",
-   "impressions": 11,
-   "clicks": 0,
-   "queries": [],
-   "position": 8.0,
    "ctr": 0.0
   },
   {
@@ -2690,6 +2690,14 @@
    "ctr": 0.0
   },
   {
+   "url": "https://visapoint.net/disclaimer",
+   "impressions": 10,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.3,
+   "ctr": 0.0
+  },
+  {
    "url": "https://visapoint.net/guides",
    "impressions": 10,
    "clicks": 0,
@@ -2841,14 +2849,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/disclaimer",
-   "impressions": 9,
-   "clicks": 0,
-   "queries": [],
-   "position": 7.4,
-   "ctr": 0.0
-  },
-  {
    "url": "https://visapoint.net/passport/syria",
    "impressions": 9,
    "clicks": 0,
@@ -2861,6 +2861,14 @@
     ]
    ],
    "position": 9.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/privacy",
+   "impressions": 9,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.7,
    "ctr": 0.0
   },
   {
@@ -2977,14 +2985,6 @@
    "clicks": 0,
    "queries": [],
    "position": 10.4,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/privacy",
-   "impressions": 8,
-   "clicks": 0,
-   "queries": [],
-   "position": 5.9,
    "ctr": 0.0
   },
   {
@@ -4306,6 +4306,14 @@
    "ctr": 0.0
   },
   {
+   "url": "https://visapoint.net/visa-check/south-korea",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 10.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://visapoint.net/bangladesh-to-czechia-work-permit-2026-cost-process",
    "impressions": 2,
    "clicks": 0,
@@ -4626,14 +4634,6 @@
    "clicks": 0,
    "queries": [],
    "position": 8.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/visa-check/south-korea",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [],
-   "position": 9.5,
    "ctr": 0.0
   },
   {

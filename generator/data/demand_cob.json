@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-08-11..2026-11-09, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-12..2026-11-10, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "এমিলিয়ানো মার্টিনেজ কোন ক্লাবে খেলে",
@@ -27,7 +27,7 @@
   },
   {
    "q": "সাদিয়া আয়মান",
-   "impr": 18,
+   "impr": 19,
    "pos": 10.4,
    "src": "gsc"
   },
@@ -38,15 +38,15 @@
    "src": "gsc"
   },
   {
-   "q": "চট্টগ্রাম বিভাগের আয়তন কত",
+   "q": "ব্রাহ্মণবাড়িয়া জেলার আয়তন কত",
    "impr": 15,
-   "pos": 9.8,
+   "pos": 10.7,
    "src": "gsc"
   },
   {
-   "q": "ব্রাহ্মণবাড়িয়া জেলার আয়তন কত",
-   "impr": 14,
-   "pos": 10.7,
+   "q": "চট্টগ্রাম বিভাগের আয়তন কত",
+   "impr": 15,
+   "pos": 9.8,
    "src": "gsc"
   },
   {
