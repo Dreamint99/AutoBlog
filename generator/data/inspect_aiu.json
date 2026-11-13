@@ -1,7 +1,7 @@
 {
  "site": "aiu",
  "property": "https://aiuniversitybd.com/",
- "checked": "2026-11-12T10:22:35+00:00",
+ "checked": "2026-11-13T10:05:04+00:00",
  "sitemaps": [
   {
    "path": "https://aiuniversitybd.com/sitemap.xml",
@@ -9,23 +9,23 @@
    "isPending": false,
    "isSitemapsIndex": false,
    "type": "sitemap",
-   "lastDownloaded": "2026-11-11T08:29:38.504Z",
+   "lastDownloaded": "2026-11-13T07:33:43.863Z",
    "warnings": "0",
    "errors": "0",
    "contents": [
     {
      "type": "web",
-     "submitted": "159",
+     "submitted": "164",
      "indexed": "0"
     }
    ]
   }
  ],
- "sitemap_count": 162,
+ "sitemap_count": 164,
  "byState": {
-  "Submitted and indexed": 32,
-  "Discovered - currently not indexed": 8,
-  "URL is unknown to Google": 1
+  "Submitted and indexed": 33,
+  "Discovered - currently not indexed": 6,
+  "URL is unknown to Google": 2
  },
  "urls": [
   {
@@ -37,7 +37,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/",
    "userCanonical": "https://aiuniversitybd.com/",
-   "lastCrawlTime": "2026-11-09T16:07:19Z",
+   "lastCrawlTime": "2026-11-12T23:06:55Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/",
@@ -148,7 +148,9 @@
    "userCanonical": "https://aiuniversitybd.com/privacy",
    "lastCrawlTime": "2026-11-09T11:32:17Z",
    "crawledAs": "MOBILE",
-   "referringUrls": null
+   "referringUrls": [
+    "https://aiuniversitybd.com/"
+   ]
   },
   {
    "url": "https://aiuniversitybd.com/delete-account",
@@ -239,22 +241,23 @@
    "lastCrawlTime": null,
    "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
    "referringUrls": [
-    "https://www.aiuniversitybd.com/subscription?course=computer-basics",
+    "http://www.aiuniversitybd.com/subscription?plan=12m&course=biggan-velki",
     "https://www.aiuniversitybd.com/subscription",
+    "https://www.aiuniversitybd.com/subscription?course=computer-basics",
     "https://www.aiuniversitybd.com/subscription?next=%2Fkids"
    ]
   },
   {
    "url": "https://aiuniversitybd.com/reviews",
-   "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
-   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
-   "indexingState": "INDEXING_STATE_UNSPECIFIED",
-   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
-   "googleCanonical": null,
-   "userCanonical": null,
-   "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "verdict": "PASS",
+   "coverageState": "Submitted and indexed",
+   "robotsTxtState": "ALLOWED",
+   "indexingState": "INDEXING_ALLOWED",
+   "pageFetchState": "SUCCESSFUL",
+   "googleCanonical": "https://aiuniversitybd.com/reviews",
+   "userCanonical": "https://aiuniversitybd.com/reviews",
+   "lastCrawlTime": "2026-11-13T04:04:01Z",
+   "crawledAs": "MOBILE",
    "referringUrls": null
   },
   {
@@ -432,17 +435,15 @@
   {
    "url": "https://aiuniversitybd.com/course/digital-marketing",
    "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
+   "coverageState": "URL is unknown to Google",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": [
-    "https://www.aiuniversitybd.com/course/digital-marketing"
-   ]
+   "crawledAs": null,
+   "referringUrls": null
   },
   {
    "url": "https://aiuniversitybd.com/course/freelancing",
