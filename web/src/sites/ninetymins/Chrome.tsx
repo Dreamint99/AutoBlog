@@ -6,7 +6,7 @@ import { fontVars } from "./fonts";
 import { NM_COMPS, compOf, ago, type NmComp } from "./comps";
 import { ScoreStrip } from "./LiveScores";
 import { thumb } from "@/lib/img";
-import { AppBanner, AppPopup } from "./AppPromo";
+import { AppBanner, AppPopup, AppTopBar } from "./AppPromo";
 
 /* Shared NinetyMins chrome: watch-guide strip (scoreboard style), header with
    the sport rail, footer, and the card primitives every page uses. */
@@ -64,6 +64,7 @@ export function Header({ site }: { site: Site }) {
   const s = `/s/${site.id}`;
   return (
     <>
+      <AppTopBar />
       <ScoreStrip />
       <header className="nm-header">
         <div className="nm-wrap nm-header-row">
