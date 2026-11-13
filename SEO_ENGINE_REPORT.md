@@ -43,3 +43,16 @@ Countly, distribution, broader monitoring, monthly data stories and the other th
 - Twelve weeks: evaluate sustained real search visits against the 100,000/month network objective. Expand only page types with useful data and evidence of demand. No ranking or traffic guarantee.
 
 Primary references: https://developers.google.com/search/docs/essentials/spam-policies ; https://developers.google.com/search/docs/crawling-indexing/sitemaps/news-sitemap ; https://developers.google.com/search/docs/appearance/structured-data/event ; https://www.indexnow.org/documentation .
+
+## Countly — deployed data foundation
+
+The real Worker import completed with 648 pages (645 country/indicator pages and three rankings). Population, GDP per capita and real GDP growth pages require at least three observations and show up to six. Country/economy observations exclude World Bank regional/income aggregates. Rankings align every row to one common observation year. Comparison pages align a common year separately per metric. Source update dates and observation years are distinct; 2025 figures are not called 2026 estimates.
+
+Five live samples (all HTTP 200, expected indexing, country/ranking Dataset JSON-LD and server-rendered tables/SVG charts validated):
+- https://countly.net/data/population/india-ind
+- https://countly.net/data/gdp-per-capita/united-states-usa
+- https://countly.net/data/ranking/population
+- https://countly.net/data/compare/china-chn-vs-india-ind
+- https://countly.net/data/embed/population (noindex duplicate view)
+
+The Countly pruning audit reviewed 363 published articles, applied zero noindex changes for the same evidence reasons as NinetyMins. Daily data refresh is 03:17 UTC; notification retries run hourly at :23. The initial World Bank GDP history call exceeded 15 seconds; increasing the bounded source timeout to 45 seconds allowed the production import to complete. Subsequent failures retain existing data and are logged. A later frontend deploy encountered a transient Cloudflare authentication error; the initial verified deployment remains live and the final retry is pending.

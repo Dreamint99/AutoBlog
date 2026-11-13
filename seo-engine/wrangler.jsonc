@@ -1,0 +1,11 @@
+{
+  "name": "autoblog-seo-engine",
+  "main": "src/worker.mjs",
+  "compatibility_date": "2026-06-01",
+  "workers_dev": true,
+  "triggers": { "crons": ["17 3 * * *", "23 * * * *"] },
+  "d1_databases": [{ "binding": "DB", "database_name": "autoblog-content", "database_id": "58dacf96-c574-4f0b-88e6-3005d895eb90" }],
+  "kv_namespaces": [{ "binding": "SEO_LOG", "id": "0c4c1aa2ea0d47b1b3f59379ef41edb3" }],
+  "vars": { "MONTHLY_PAID_API_CAP_USD": "0", "PUBLISH_ENABLED": "true" },
+  "observability": { "enabled": true }
+}

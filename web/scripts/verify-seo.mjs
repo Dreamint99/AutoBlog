@@ -11,7 +11,7 @@ for (const path of paths) {
   assert(!html.includes("data-dgst="), `${path}: streamed server error`);
   const robots = [...html.matchAll(/<meta\b[^>]*>/g)].find(m => /name="robots"/.test(m[0]))?.[0] || "";
   assert(/follow/.test(robots), `${path}: follow directive`);
-  assert(path.startsWith("/embed/") ? /noindex/.test(robots) : /content="index[, ]/.test(robots), `${path}: index policy`);
+  assert((path.startsWith("/embed/") || path.startsWith("/data/embed/")) ? /noindex/.test(robots) : /content="index[, ]/.test(robots), `${path}: index policy`);
   const nodes = [...html.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)].flatMap(m => {
     const j = JSON.parse(m[1]); return Array.isArray(j) ? j : j["@graph"] || [j];
   });
@@ -25,6 +25,7 @@ for (const path of paths) {
     assert(types.includes("BreadcrumbList"));
     assert.equal(e.url, r.url);
   }
+  if (/^\/data\/(population|gdp-per-capita|gdp-growth|ranking)\//.test(path)) { assert(types.includes("Dataset")); assert(html.includes("<table") && html.includes("<svg")); }
   if (path.startsWith("/team/")) assert(types.includes("SportsTeam") || types.includes("Person"));
   if (path.startsWith("/league/")) assert(types.includes("ItemList"));
   assert(!types.includes("BroadcastEvent"), "No broadcast markup without an official embedded stream");

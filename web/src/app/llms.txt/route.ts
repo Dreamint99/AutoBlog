@@ -1,3 +1,4 @@
+import { dataIndex } from "@/sites/countly/data-engine";
 import { hubs, prunedSlugs } from "@/sites/ninetymins/engine";
 import { getArticles } from "@/lib/data";
 import { activeSite } from "@/lib/site-context";
@@ -11,7 +12,7 @@ export async function GET() {
   const base = siteBaseUrl(site);
   const hidden = ["ninetymins", "countly"].includes(site.id) ? await prunedSlugs(site.id) : new Set<string>();
   const articles = (await getArticles(site.id)).filter(a => !hidden.has(a.slug));
-  const dataPages = site.id === "ninetymins" ? `## Live data\n- [Today](${base}/today)\n- [Tomorrow](${base}/tomorrow)\n- [Free widgets](${base}/widgets)\n${(await hubs()).map(h => `- [${h.path}](${base}${h.path})`).join("\n")}\n` : "";
+  const dataPages = site.id === "ninetymins" ? `## Live data\n- [Today](${base}/today)\n- [Tomorrow](${base}/tomorrow)\n- [Free widgets](${base}/widgets)\n${(await hubs()).map(h => `- [${h.path}](${base}${h.path})`).join("\n")}\n` : site.id === "countly" ? `## Country data\n- [Data and comparisons](${base}/data)\n${(await dataIndex()).filter(p => ["ranking", "stories"].includes(p.kind)).map(p => `- [${p.title}](${base}/data/${p.kind}/${p.slug})`).join("\n")}\n` : "";
   const line = (a: (typeof articles)[number]) =>
     `- [${a.title}](${base}/${a.slug})${a.meta_description || a.excerpt ? `: ${(a.meta_description || a.excerpt).replace(/\s+/g, " ").trim()}` : ""}`;
   const body = `# ${site.name}

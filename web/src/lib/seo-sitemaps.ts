@@ -3,12 +3,14 @@ import { activeSite } from "./site-context";
 import { getArticles, d1 } from "./data";
 import { fixtures, hubs, months, prunedSlugs } from "@/sites/ninetymins/engine";
 import legacySitemap from "./legacy-sitemap";
+import { dataIndex, comparisonLinks } from "@/sites/countly/data-engine";
 const BASE = "https://ninetymins.com";
 export const xmlEscape = (s: string) => s.replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&apos;" })[c]!);
 const xml = (body: string) => new Response(`<?xml version="1.0" encoding="UTF-8"?>${body}`, { headers: { "content-type": "application/xml; charset=utf-8", "cache-control": "public, max-age=60" } });
 const urls = (items: { url: string; lastmod?: string }[]) => xml(`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${items.map(i => `<url><loc>${xmlEscape(i.url)}</loc>${i.lastmod ? `<lastmod>${xmlEscape(i.lastmod)}</lastmod>` : ""}</url>`).join("")}</urlset>`);
 
 export async function sitemapResponse(name: string): Promise<Response> {
+  if (activeSite().id === "countly") return countlySitemap(name);
   if (activeSite().id !== "ninetymins") {
     if (name !== "sitemap.xml") return new Response("Not found", { status: 404 });
     return urls((await legacySitemap()).map(i => ({ url: i.url, lastmod: i.lastModified instanceof Date ? i.lastModified.toISOString() : i.lastModified })));
@@ -17,7 +19,7 @@ export async function sitemapResponse(name: string): Promise<Response> {
     const maps = ["sitemap-hubs.xml", "sitemap-articles.xml", "sitemap-news.xml", ...(await monthMaps())];
     return xml(`<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${maps.map(m => `<sitemap><loc>${BASE}/${m}</loc></sitemap>`).join("")}</sitemapindex>`);
   }
-  if (name === "sitemap-hubs.xml") return urls([{ url: BASE + "/" }, { url: BASE + "/league/f1" }, ...(await races()).map(r => ({ url: BASE + "/race/" + r.slug, lastmod: r.lastmod })), ...["today", "tomorrow", "scores", "widgets", "archive"].map(p => ({ url: `${BASE}/${p}` })), ...(await hubs()).map(h => ({ url: BASE + h.path, lastmod: h.lastmod }))]);
+  if (name === "sitemap-hubs.xml") return urls([{ url: BASE + "/" }, { url: BASE + "/league/f1" }, ...(await races()).map(r => ({ url: BASE + "/race/" + r.slug, lastmod: r.lastmod })), ...(d1() ? (await d1()!.prepare("SELECT slug,lastmod FROM seo_pages WHERE site_id=\'ninetymins\' AND kind=\'stories\'").all<{ slug: string; lastmod: string }>()).results.map(r => ({ url: BASE + "/stories/" + r.slug, lastmod: r.lastmod })) : []), ...["today", "tomorrow", "scores", "widgets", "archive"].map(p => ({ url: `${BASE}/${p}` })), ...(await hubs()).map(h => ({ url: BASE + h.path, lastmod: h.lastmod }))]);
   const pruned = await prunedSlugs("ninetymins");
   const articles = (await getArticles("ninetymins")).filter(a => !pruned.has(a.slug));
   if (name === "sitemap-articles.xml") return urls(articles.map(a => ({ url: `${BASE}/${a.slug}`, lastmod: a.created_at })));
@@ -33,6 +35,19 @@ export async function sitemapResponse(name: string): Promise<Response> {
     const db = d1()!;
     const rows = (await db.prepare("SELECT path,lastmod FROM seo_matches WHERE starts>=? AND starts<? ORDER BY starts LIMIT 50000 OFFSET ?").bind(month + "-01", nextMonth(month), (page - 1) * 50000).all<{ path: string; lastmod: string }>()).results;
     return urls(rows.map(r => ({ url: BASE + r.path, lastmod: r.lastmod })));
+  }
+  return new Response("Not found", { status: 404 });
+}
+async function countlySitemap(name: string): Promise<Response> {
+  const base = "https://countly.net";
+  if (name === "sitemap.xml") return xml(`<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${["sitemap-hubs.xml", "sitemap-data.xml", "sitemap-articles.xml"].map(m => `<sitemap><loc>${base}/${m}</loc></sitemap>`).join("")}</sitemapindex>`);
+  const hidden = await prunedSlugs("countly");
+  const articles = await getArticles("countly");
+  if (name === "sitemap-articles.xml") return urls(articles.filter(a => !hidden.has(a.slug)).map(a => ({ url: `${base}/${a.slug}`, lastmod: a.created_at })));
+  if (name === "sitemap-data.xml") return urls([...(await dataIndex()).map(p => ({ url: `${base}/data/${p.kind}/${p.slug}`, lastmod: p.lastmod })), ...(await comparisonLinks()).map(c => ({ url: base + c.path }))]);
+  if (name === "sitemap-hubs.xml") {
+    const articleUrls = new Set(articles.map(a => `${base}/${a.slug}`));
+    return urls([{ url: base + "/data" }, ...(await legacySitemap()).filter(p => !articleUrls.has(p.url)).map(p => ({ url: p.url }))]);
   }
   return new Response("Not found", { status: 404 });
 }
