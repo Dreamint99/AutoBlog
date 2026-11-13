@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-08-12..2026-11-10, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-13..2026-11-11, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "richest countries in world",
@@ -624,7 +624,7 @@
   },
   {
    "q": "crypto market data",
-   "impr": 12,
+   "impr": 11,
    "pos": 99.1,
    "src": "gsc"
   },
@@ -707,6 +707,12 @@
    "src": "bing"
   },
   {
+   "q": "highest paid athletes 2026",
+   "impr": 37,
+   "pos": 8.1,
+   "src": "bing"
+  },
+  {
    "q": "global linkedin",
    "impr": 37,
    "pos": 9.0,
@@ -716,12 +722,6 @@
    "q": "mark zuckerberg net worth 2026",
    "impr": 36,
    "pos": 8.0,
-   "src": "bing"
-  },
-  {
-   "q": "highest paid athletes 2026",
-   "impr": 34,
-   "pos": 8.1,
    "src": "bing"
   },
   {
@@ -749,15 +749,9 @@
    "src": "bing"
   },
   {
-   "q": "top 10 richest people 2026",
-   "impr": 19,
-   "pos": 8.0,
-   "src": "bing"
-  },
-  {
    "q": "most starred github repo",
-   "impr": 18,
-   "pos": 8.4,
+   "impr": 21,
+   "pos": 8.2,
    "src": "bing"
   },
   {
@@ -794,6 +788,12 @@
    "q": "top 10 most visited websites in the world",
    "impr": 13,
    "pos": 10.0,
+   "src": "bing"
+  },
+  {
+   "q": "which is the world's largest company based on the number of employees?",
+   "impr": 12,
+   "pos": 8.8,
    "src": "bing"
   },
   {
