@@ -1,3 +1,4 @@
+import { isPruned } from "@/sites/ninetymins/engine";
 import { publicPath } from "@/lib/site-context";
 import { notFound, permanentRedirect } from "next/navigation";
 import { isVcArticle, vcFor } from "@/sites/walvi/visacheck/data";
@@ -70,6 +71,7 @@ export async function generateMetadata({
     metadataBase: new URL(siteBaseUrl(site)),
     alternates: { canonical: `/${slug}` },
     keywords: article.tags,
+    ...(["ninetymins", "countly"].includes(id) && await isPruned(id, slug) ? { robots: { index: false, follow: true } } : {}),
     openGraph: {
       title: clamp(article.title, 60),
       description,

@@ -69,7 +69,7 @@ export default {
 const route = async (request, env, ctx) => {
     if (request.method !== "GET") return worker.fetch(request, env, ctx);
     const url = new URL(request.url);
-    if (url.pathname.startsWith("/api/")) return worker.fetch(request, env, ctx);
+    if (url.pathname.startsWith("/admin/") || url.pathname.startsWith("/api/")) return worker.fetch(request, env, ctx);
     if (isRscRequest(request, url)) return worker.fetch(request, env, ctx);
 
     // Key on the deployed version so a deploy never serves HTML from the previous
@@ -98,7 +98,8 @@ const route = async (request, env, ctx) => {
         // A streamed SSR error still returns 200 — never store it.
         const bad = ct.includes("text/html") && new TextDecoder().decode(buf).includes("data-dgst=");
         const storeHeaders = new Headers(res.headers);
-        storeHeaders.set("cache-control", `public, s-maxage=${TTL}`);
+        const livePath = env.SITE_ID === "ninetymins" && /^\/(match|embed|league|team|today|tomorrow|sitemap)/.test(url.pathname);
+        storeHeaders.set("cache-control", `public, s-maxage=${livePath ? 30 : TTL}`);
         storeHeaders.delete("set-cookie");
         if (!bad) ctx.waitUntil(cache.put(cacheKey, new Response(buf, { status: 200, headers: storeHeaders })));
         const h = new Headers(res.headers);
