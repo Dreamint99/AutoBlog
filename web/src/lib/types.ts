@@ -61,6 +61,14 @@ export interface InfModel {
   last_verified: string | null;
   sort: number;
   notes: string | null;
+  supports_reasoning?: boolean;
+  tier?: number;
+  description?: string | null;
+  or_id?: string | null;
+  hf_id?: string | null;
+  input_modalities?: string | null;
+  output_modalities?: string | null;
+  created?: number | null;
 }
 
 /** Props every per-site Home component receives. */

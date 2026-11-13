@@ -3,6 +3,7 @@ import "./ai.css";
 import Link from "next/link";
 import type { SiteHomeProps, Site, Article } from "@/lib/types";
 import CostCalculator from "./CostCalculator";
+import LivePrices from "./LivePrices";
 import { Masthead, Footer } from "./Chrome";
 import { aiFont } from "./fonts";
 import { TOPICS, PROFESSIONS, TOOLS, PROMPT_PACKS, topicOf, bestMatch } from "./topics";
@@ -31,7 +32,7 @@ function Hero({ site, count }: { site: Site; count: number }) {
       </div>
       <div className="ai-hero-in">
         <span className="ai-pill">
-          <span className="ai-dot" /> {count} AI guides · updated daily
+          <span className="ai-dot" /> Live prices for 400+ AI models · updated daily
         </span>
         <h1>
           The best AI for
@@ -264,6 +265,7 @@ export default function Home({ site, articles }: SiteHomeProps) {
       <main>
         <Hero site={site} count={real.length} />
         <div className="shell">
+          <LivePrices site={site} />
           <Trending site={site} articles={trending} />
           <Prompts site={site} articles={real} />
           <Professions site={site} articles={real} />

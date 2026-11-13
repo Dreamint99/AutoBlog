@@ -1,0 +1,10 @@
+{
+  "name": "infkey-sync",
+  "main": "src/index.js",
+  "compatibility_date": "2026-06-01",
+  "workers_dev": true,
+  "triggers": { "crons": ["23 4 * * *"] },
+  "d1_databases": [
+    { "binding": "DB", "database_name": "autoblog-content", "database_id": "58dacf96-c574-4f0b-88e6-3005d895eb90" }
+  ]
+}

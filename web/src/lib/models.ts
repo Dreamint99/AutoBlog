@@ -1,18 +1,17 @@
 import "server-only";
 import type { InfModel } from "./types";
+import { d1 } from "./data";
 
-const SUPABASE_URL = process.env.SUPABASE_URL || "";
-const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY || "";
-const useSupabase = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
+/* InfKey model database. Rows live in D1 `infkey_models`, refreshed daily from the public
+   OpenRouter model list by `workers/infkey-sync` (prices, context, modalities), with a
+   per-day price history in `infkey_price_history`. */
 
-function num(v: unknown): number | null {
+const num = (v: unknown): number | null => {
   if (v === null || v === undefined || v === "") return null;
   const n = Number(v);
   return Number.isFinite(n) ? n : null;
-}
+};
 
-/* PostgREST may serialise numeric columns as strings — coerce defensively so
-   the UI always gets real numbers (or null). */
 function normalize(row: Record<string, unknown>): InfModel {
   return {
     id: String(row.id),
@@ -32,30 +31,72 @@ function normalize(row: Record<string, unknown>): InfModel {
     supports_audio: Boolean(row.supports_audio),
     supports_functions: Boolean(row.supports_functions),
     supports_structured: Boolean(row.supports_structured),
+    supports_reasoning: Boolean(row.supports_reasoning),
     commercial_use: Boolean(row.commercial_use),
     official_source: (row.official_source as string) ?? null,
     last_verified: (row.last_verified as string) ?? null,
-    sort: num(row.sort) ?? 100,
+    sort: num(row.sort) ?? 100000,
+    tier: num(row.tier) ?? 2,
     notes: (row.notes as string) ?? null,
+    description: (row.description as string) ?? null,
+    or_id: (row.or_id as string) ?? null,
+    hf_id: (row.hf_id as string) ?? null,
+    input_modalities: (row.input_modalities as string) ?? null,
+    output_modalities: (row.output_modalities as string) ?? null,
+    created: num(row.created),
   };
 }
 
+let cache: { at: number; rows: InfModel[] } | null = null;
+
+async function all(): Promise<InfModel[]> {
+  if (cache && Date.now() - cache.at < 5 * 60_000) return cache.rows;
+  const db = d1();
+  if (!db) return [];
+  try {
+    const { results } = await db
+      .prepare("SELECT * FROM infkey_models WHERE active = 1 ORDER BY sort ASC")
+      .all<Record<string, unknown>>();
+    const rows = (results ?? []).map(normalize);
+    cache = { at: Date.now(), rows };
+    return rows;
+  } catch {
+    return [];
+  }
+}
+
 export async function getModels(category?: string): Promise<InfModel[]> {
-  if (!useSupabase) return [];
-  let url = `${SUPABASE_URL}/rest/v1/infkey_models?select=*&order=sort.asc`;
-  if (category) url += `&category=eq.${category}`;
-  const r = await fetch(url, {
-    headers: { apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${SUPABASE_ANON_KEY}` },
-    cache: "no-store",
-  });
-  if (!r.ok) return [];
-  const rows = (await r.json()) as Record<string, unknown>[];
-  return rows.map(normalize);
+  const rows = await all();
+  return category ? rows.filter((m) => m.category === category) : rows;
 }
 
 export async function getModel(id: string): Promise<InfModel | undefined> {
-  const all = await getModels();
-  return all.find((m) => m.id === id);
+  return (await all()).find((m) => m.id === id);
+}
+
+/** Flagship models (newest paid models of the major labs) — the pairs we let Google index. */
+export async function getFlagships(): Promise<InfModel[]> {
+  return (await all()).filter((m) => m.tier === 0);
+}
+
+/** Daily price points for one model, oldest first (for the price-history chart). */
+export async function getPriceHistory(id: string): Promise<{ day: string; input: number | null; output: number | null }[]> {
+  const db = d1();
+  if (!db) return [];
+  try {
+    const { results } = await db
+      .prepare("SELECT day, input_per_m, output_per_m FROM infkey_price_history WHERE id = ? ORDER BY day ASC LIMIT 400")
+      .bind(id)
+      .all<{ day: string; input_per_m: number | null; output_per_m: number | null }>();
+    return (results ?? []).map((r) => ({ day: r.day, input: num(r.input_per_m), output: num(r.output_per_m) }));
+  } catch {
+    return [];
+  }
+}
+
+/** A comparison page is worth indexing when both models are flagships. */
+export function isIndexablePair(a: InfModel, b: InfModel): boolean {
+  return a.tier === 0 && b.tier === 0;
 }
 
 /** Latest `last_verified` date across the price table (for "verified on" UI). */

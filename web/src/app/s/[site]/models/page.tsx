@@ -70,7 +70,7 @@ export default async function ModelsPage({
       <PageHead
         kicker="Model database"
         title="AI model pricing database"
-        dek="Every model's verified price per million tokens, context window and capabilities — sorted cheapest first, each linking to its official pricing source."
+        dek="Live API prices for 400+ AI models, updated every day: price per million tokens, context window and capabilities. Flagship models from the big labs first, then everything else by price."
         verified={verified}
       />
 
@@ -80,14 +80,13 @@ export default async function ModelsPage({
             ▦
           </div>
           <h2>No models loaded</h2>
-          <p>The pricing database returned no rows. Check the Supabase connection for this deployment.</p>
+          <p>The price list is refreshing. Please check back in a few minutes.</p>
         </div>
       ) : (
         <>
           <ModelTable site={site} models={models} />
           <p className="src-note">
-            {models.length} models tracked. Prices are USD per 1M tokens, collected from each
-            provider&apos;s public pricing page. They exclude taxes, prompt-caching discounts and
+            {models.length} models tracked, refreshed daily from public provider listings. Prices are USD per 1M tokens. They exclude taxes, prompt-caching discounts and
             failed-generation retries — confirm with the provider before relying on a figure.
           </p>
         </>

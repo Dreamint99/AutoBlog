@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getArticles } from "@/lib/data";
-import { getModels } from "@/lib/models";
+import { getModels, getFlagships } from "@/lib/models";
 import { COUNTRIES, JOBS, DATA_VERIFIED } from "@/lib/walvi";
 import { CN_CATEGORIES } from "@/sites/countly/categories";
 import { NM_COMPS } from "@/sites/ninetymins/comps";
@@ -45,10 +45,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       entries.push({
         url: `${base}/models/${m.id}`,
         lastModified: m.last_verified ?? undefined,
-        changeFrequency: "weekly",
-        priority: 0.7,
+        changeFrequency: "daily",
+        priority: m.tier === 0 ? 0.8 : 0.6,
       });
     }
+    // Comparison pages: only flagship-vs-flagship pairs (others are noindex).
+    const flag = await getFlagships();
+    for (let i = 0; i < flag.length; i++)
+      for (let j = i + 1; j < flag.length; j++)
+        entries.push({
+          url: `${base}/compare/${[flag[i].id, flag[j].id].sort().join("-vs-")}`,
+          lastModified: flag[i].last_verified ?? undefined,
+          changeFrequency: "weekly",
+          priority: 0.6,
+        });
   }
 
   // Countly: Top 10 hub + topic/category landing pages + free tools.

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getSite } from "@/lib/data";
-import { getModel } from "@/lib/models";
+import { getModel, isIndexablePair } from "@/lib/models";
 import { siteBaseUrl } from "@/lib/sites.config";
 import { InfShell } from "@/sites/infkey/Chrome";
 import { fmtUsd, fmtContext, fmtDate } from "@/sites/infkey/data-ui";
@@ -30,11 +30,14 @@ export async function generateMetadata({
   if (!site || site.id !== "infkey" || !pair) return {};
   const [a, b] = await Promise.all([getModel(pair[0]), getModel(pair[1])]);
   if (!a || !b) return {};
+  // One canonical URL per pair (alphabetical), and only flagship pairs are indexed.
+  const canon = [a.id, b.id].sort().join("-vs-");
   return {
+    robots: isIndexablePair(a, b) ? undefined : { index: false, follow: true },
     title: `${a.name} vs ${b.name}: API Pricing Compared — InfKey`,
     description: `${a.name} vs ${b.name} on input/output price, context window and capabilities. Verified pricing with official sources.`,
     metadataBase: new URL(siteBaseUrl(site)),
-    alternates: { canonical: `/compare/${slug}` },
+    alternates: { canonical: `/compare/${canon}` },
     openGraph: { images: defaultOgImages(),
       title: `${a.name} vs ${b.name}: API Pricing Compared — InfKey`,
       description: `${a.name} vs ${b.name} on price, context window and capabilities.`,

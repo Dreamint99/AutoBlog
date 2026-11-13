@@ -4,7 +4,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getSite } from "@/lib/data";
-import { getModel, getModels } from "@/lib/models";
+import { getModel, getModels, getFlagships, getPriceHistory } from "@/lib/models";
+import { PriceHistory } from "@/sites/infkey/PriceHistory";
 import { siteBaseUrl } from "@/lib/sites.config";
 import { InfShell } from "@/sites/infkey/Chrome";
 import { fmtUsd, fmtContext, fmtDate } from "@/sites/infkey/data-ui";
@@ -22,10 +23,11 @@ export async function generateMetadata({
   const model = site?.id === "infkey" ? await getModel(modelId) : undefined;
   if (!site || !model) return {};
   return {
-    title: `${model.name} API Pricing & Specs — InfKey`,
-    description: `${model.name} (${model.provider}): verified input/output pricing, ${fmtContext(
-      model.max_context,
-    )} context, capabilities and official source.`,
+    title: `${model.name} API pricing: ${fmtUsd(model.input_per_m, 3)} in / ${fmtUsd(model.output_per_m, 2)} out per 1M tokens`,
+    description: `${model.name} by ${model.provider} costs ${fmtUsd(model.input_per_m, 3)} per 1M input and ${fmtUsd(
+      model.output_per_m,
+      2,
+    )} per 1M output tokens, with a ${fmtContext(model.max_context)} context window. Updated daily, with price history and comparisons.`,
     metadataBase: new URL(siteBaseUrl(site)),
     alternates: { canonical: `/models/${model.id}` },
     openGraph: { images: defaultOgImages(),
@@ -51,13 +53,19 @@ export default async function ModelDetailPage({
 
   const b = `/s/${site.id}`;
   const base = siteBaseUrl(site);
-  const others = (await getModels(model.category)).filter((m) => m.id !== model.id).slice(0, 4);
+  const flag = (await getFlagships()).filter((m) => m.id !== model.id && m.category === model.category);
+  const seenProv = new Set<string>([model.provider]);
+  const others = flag.filter((m) => (seenProv.has(m.provider) ? false : (seenProv.add(m.provider), true))).slice(0, 8);
+  if (others.length < 4) others.push(...(await getModels(model.category)).filter((m) => m.id !== model.id && !others.includes(m)).slice(0, 4 - others.length));
+  const history = await getPriceHistory(model.id);
+  const mods = (s?: string | null) => (s ? s.split(",").filter(Boolean).join(", ") : "—");
 
   const specs: ReadonlyArray<[string, string]> = [
     ["Context window", fmtContext(model.max_context) + (model.max_context ? " tokens" : "")],
     ["Max output", model.max_output ? model.max_output.toLocaleString("en-US") + " tokens" : "—"],
     ["Latency", model.latency_note ?? "—"],
-    ["Commercial use", model.commercial_use ? "Allowed" : "Restricted"],
+    ["Inputs", mods(model.input_modalities)],
+    ["Outputs", mods(model.output_modalities)],
     ["Version", model.version ?? "—"],
   ];
 
@@ -66,6 +74,7 @@ export default async function ModelDetailPage({
     ["Audio", model.supports_audio],
     ["Function calling", model.supports_functions],
     ["Structured / JSON", model.supports_structured],
+    ["Reasoning mode", Boolean(model.supports_reasoning)],
   ];
 
   return (
@@ -156,6 +165,15 @@ export default async function ModelDetailPage({
         </section>
       </div>
 
+      {model.description ? (
+        <section className="spec-block">
+          <h2 className="block-h">About {model.name}</h2>
+          <p className="page-dek">{model.description}</p>
+        </section>
+      ) : null}
+
+      <PriceHistory history={history} />
+
       <div className="cta-row">
         <Link className="btn btn-primary" href={`${b}/calculators#calculator`}>
           ▸ Estimate cost in the calculator
@@ -173,7 +191,7 @@ export default async function ModelDetailPage({
           </div>
           <div className="vs-links">
             {others.map((o) => (
-              <Link className="vs-link" href={`${b}/compare/${model.id}-vs-${o.id}`} key={o.id}>
+              <Link className="vs-link" href={`${b}/compare/${[model.id, o.id].sort().join("-vs-")}`} key={o.id}>
                 {model.name} <span className="vs">vs</span> {o.name}
               </Link>
             ))}
