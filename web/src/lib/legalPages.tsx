@@ -11,7 +11,7 @@
 import type { ReactNode } from "react";
 import type { Site } from "@/lib/types";
 
-export const contactEmail = (site: Site) => `contact@${site.domain}`;
+export const contactEmail = (_site: Site) => "hello@dreamithq.com";
 
 const monthYear = () =>
   new Date().toLocaleDateString("en-US", { year: "numeric", month: "long" });

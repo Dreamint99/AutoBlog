@@ -1,3 +1,5 @@
+import { d1 } from "@/lib/data";
+import DataChart from "@/sites/countly/DataChart";
 import { notFound } from "next/navigation";
 import { fixtureById, leagueFixtures } from "@/sites/ninetymins/engine";
 import FixtureList from "@/sites/ninetymins/FixtureList";
@@ -7,7 +9,13 @@ export const dynamic = "force-dynamic";
 export const metadata = { title: "NinetyMins live score widget", robots: { index: false, follow: true } };
 export default async function Embed({ params }: { params: Promise<{ site: string; kind: string; slug: string }> }) {
   const { site, kind, slug } = await params;
-  if (site !== "ninetymins" || !["match", "league"].includes(kind)) notFound();
+  if (site !== "ninetymins" || !["match", "league", "story"].includes(kind)) notFound();
+  if (kind === "story") {
+    const db = d1(); if (!db) notFound();
+    const row = (await db.prepare("SELECT title,body FROM seo_pages WHERE site_id='ninetymins' AND kind='stories' AND slug=?").bind(slug).all<{ title: string; body: string }>()).results[0]; if (!row) notFound();
+    const data = JSON.parse(row.body) as { rows: { label: string; value: number }[] };
+    return <main style={{ padding: 12 }}><DataChart title={row.title} rows={data.rows} format={n => n.toFixed(2)} /><p><a href={`https://ninetymins.com/stories/${slug}`} rel="nofollow noopener" target="_blank">Data by NinetyMins</a> · Partial catalogue sample, source: ESPN</p></main>;
+  }
   let fs;
   if (kind === "match") {
     const sep = slug.lastIndexOf("_");

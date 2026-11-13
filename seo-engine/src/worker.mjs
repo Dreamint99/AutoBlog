@@ -1,3 +1,8 @@
+import { monitor } from "./monitor.mjs";
+import { stories } from "./stories.mjs";
+import { distribute } from "./social.mjs";
+import { mentions } from "./mentions.mjs";
+import baseline from "./search-baseline.json";
 import { METRICS, buildPages, digest } from "./data.mjs";
 const KEY = "7cb730425493bd6250188aee25110d83";
 async function json(url) { let r; try { r = await fetch(url, { signal: AbortSignal.timeout(45000), headers: { accept: "application/json", "user-agent": "CountlyData/1.0 (+https://countly.net/contact)" } }); } catch (e) { throw new Error(`Source request failed: ${url}: ${e}`); } if (!r.ok) throw new Error(`${url}: ${r.status}`); const j = await r.json(); if (!Array.isArray(j) || j.length < 2 || j[0].pages !== 1) throw new Error("Incomplete World Bank response; retaining last good dataset"); return j; }
@@ -39,8 +44,10 @@ async function notifySite(env, site) {
 
 async function report(env) {
   const counts = (await env.DB.prepare("SELECT site_id,kind,COUNT(*) AS pages,MAX(lastmod) AS last_change FROM seo_pages GROUP BY site_id,kind").all()).results;
-  const value = { at: new Date().toISOString(), counts, refresh: await env.SEO_LOG.get("engine:refresh", "json"), indexnow: await env.SEO_LOG.get("engine:indexnow:countly:last", "json"), paidApiUsd: 0, monthlyPaidApiCapUsd: Number(env.MONTHLY_PAID_API_CAP_USD || 0), indexedShare: null };
-  await env.SEO_LOG.put("engine:report", JSON.stringify(value)); return value;
+  const value = { at: new Date().toISOString(), counts, refresh: await env.SEO_LOG.get("engine:refresh", "json"), indexnow: { countly: await env.SEO_LOG.get("engine:indexnow:countly:last", "json"), ninetymins: await env.SEO_LOG.get("engine:indexnow:ninetymins:last", "json") }, baseline, liveSearch: await env.SEO_LOG.get("engine:search", "json"), social: await env.SEO_LOG.get("engine:social", "json"), mentions: await env.SEO_LOG.get("engine:mentions", "json"), sportsStory: await env.SEO_LOG.get("engine:stories:sports", "json"), paidApiUsd: 0, monthlyPaidApiCapUsd: Number(env.MONTHLY_PAID_API_CAP_USD || 0), indexedShare: null, indexedShareReason: "Requires actual URL Inspection coverage, not inferred from search performance" };
+  await env.SEO_LOG.put("engine:report", JSON.stringify(value));
+  if (new Date().getUTCDay() === 1) await env.SEO_LOG.put(`engine:weekly:${new Date().toISOString().slice(0, 10)}`, JSON.stringify(value), { expirationTtl: 365 * 86400 });
+  return value;
 }
 
 async function authorized(req, env) {
@@ -54,7 +61,9 @@ export default {
     const path = new URL(req.url).pathname;
     if (path === "/health") return Response.json({ ok: true });
     if (!await authorized(req, env)) return new Response("Unauthorized", { status: 401, headers: { "cache-control": "no-store" } });
-    if (path === "/run" && req.method === "POST") { try { const result = await refresh(env); await report(env); return Response.json(result); } catch (e) { await error(env, "refresh", e); return Response.json({ error: String(e) }, { status: 502 }); } }
+    if (path === "/run" && req.method === "POST") { try { const result = await refresh(env); await stories(env); await report(env); return Response.json(result); } catch (e) { await error(env, "refresh", e); return Response.json({ error: String(e) }, { status: 502 }); } }
+    if (path === "/operations" && req.method === "POST") { await stories(env); await monitor(env).catch(e => error(env, "monitor", e)); await mentions(env).catch(e => error(env, "mentions", e)); await distribute(env).catch(e => error(env, "social", e)); return Response.json(await report(env)); }
+    if (path.startsWith("/press/")) { const key = path.slice(7).replaceAll("/", ":"); const body = await env.SEO_LOG.get(`engine:press:${key}`); return new Response(body || "Not found", { status: body ? 200 : 404, headers: { "content-type": "application/json", "cache-control": "no-store" } }); }
     if (path === "/report") {
       const keys = await env.SEO_LOG.list({ prefix: "engine:error:", limit: 30 });
       return Response.json({ report: await report(env), errors: await Promise.all(keys.keys.map(k => env.SEO_LOG.get(k.name, "json"))) }, { headers: { "cache-control": "no-store" } });
@@ -62,8 +71,12 @@ export default {
     return new Response("Not found", { status: 404 });
   },
   async scheduled(event, env) {
-    if (event.cron === "17 3 * * *") await refresh(env).catch(e => error(env, "refresh", e));
-    if (event.cron === "23 * * * *") await notifySite(env, "countly").catch(e => error(env, "indexnow", e));
+    if (event.cron === "41 4 * * 1") { await monitor(env).catch(e => error(env, "monitor", e)); await mentions(env).catch(e => error(env, "mentions", e)); }
+    if (event.cron === "17 3 * * *") { await refresh(env).catch(e => error(env, "refresh", e)); await stories(env).catch(e => error(env, "stories", e)); }
+    if (event.cron === "23 * * * *") {
+      for (const site of ["countly", "ninetymins"]) await notifySite(env, site).catch(e => error(env, `indexnow:${site}`, e));
+      await distribute(env).catch(e => error(env, "social", e));
+    }
     await report(env).catch(e => error(env, "report", e));
   },
 };
