@@ -8,7 +8,7 @@ export function fmtUsd(n: number | null, digits = 2): string {
   if (n === 0) return "$0";
   if (n < 0.01) return "$" + n.toFixed(4);
   if (n < 1) return "$" + n.toFixed(Math.max(digits, 3));
-  return "$" + n.toFixed(digits);
+  return "$" + n.toFixed(2);
 }
 
 export function fmtContext(n: number | null): string {

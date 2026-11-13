@@ -1,4 +1,5 @@
 import "server-only";
+import { cache } from "react";
 import type { InfModel } from "./types";
 import { d1 } from "./data";
 
@@ -47,23 +48,19 @@ function normalize(row: Record<string, unknown>): InfModel {
   };
 }
 
-let cache: { at: number; rows: InfModel[] } | null = null;
-
-async function all(): Promise<InfModel[]> {
-  if (cache && Date.now() - cache.at < 5 * 60_000) return cache.rows;
+// Deduped per request (React cache); pages are edge-cached for 30 min by cache-worker.js.
+const all = cache(async (): Promise<InfModel[]> => {
   const db = d1();
   if (!db) return [];
   try {
     const { results } = await db
       .prepare("SELECT * FROM infkey_models WHERE active = 1 ORDER BY sort ASC")
       .all<Record<string, unknown>>();
-    const rows = (results ?? []).map(normalize);
-    cache = { at: Date.now(), rows };
-    return rows;
+    return (results ?? []).map(normalize);
   } catch {
     return [];
   }
-}
+});
 
 export async function getModels(category?: string): Promise<InfModel[]> {
   const rows = await all();
