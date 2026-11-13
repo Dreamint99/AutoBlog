@@ -46,6 +46,40 @@ export function AppBanner({ variant, medium }: { variant: "footer" | "article"; 
   );
 }
 
+/* Slim "open in app" bar above the header, like the smart banners big sites use.
+   Android only (the app is Android-only), hidden for 7 days after the close button. */
+const BAR_CLOSED = "nm-appbar-closed";
+export function AppTopBar() {
+  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    if (!/Android/i.test(navigator.userAgent)) return;
+    const until = Number(store(BAR_CLOSED) || 0);
+    if (until > Date.now()) return;
+    setOpen(true);
+  }, []);
+  if (!open) return null;
+  const close = () => {
+    store(BAR_CLOSED, String(Date.now() + 7 * 864e5));
+    setOpen(false);
+  };
+  return (
+    <div className="nm-appbar" role="region" aria-label="NinetyMins app">
+      <button className="nm-appbar-x" onPointerUp={close} onClick={close} aria-label="Close">
+        ×
+      </button>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="/brand/ninetymins-app-icon.webp" alt="" width={36} height={36} />
+      <span className="nm-appbar-txt">
+        <b>NinetyMins app</b>
+        <small>Live scores &amp; goal alerts · free</small>
+      </span>
+      <a className="nm-appbar-btn" href={playUrl("topbar")} target="_blank" rel="noopener">
+        Open
+      </a>
+    </div>
+  );
+}
+
 export function AppPopup() {
   const [open, setOpen] = useState(false);
 
