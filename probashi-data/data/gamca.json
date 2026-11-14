@@ -1,0 +1,1954 @@
+{
+ "updated": "2026-11-14",
+ "source": "Gulf Health Council — Wafid (wafid.com)",
+ "source_url": "https://wafid.com/en/medical-center/search/?country=BD",
+ "booking_url": "https://wafid.com/en/book-appointment/",
+ "slip_url": "https://wafid.com/en/search-slip/",
+ "status_url": "https://wafid.com/en/medical-status-search/",
+ "result_days": 26,
+ "fee": "Standard $১০ / Premium $২৫ (অনলাইনে Wafid-কে দিতে হয়)",
+ "exam_fee_note": "সেন্টারে পরীক্ষার ফি কত, তা Wafid বা জিসিসি নিয়মে প্রকাশ করা নেই — সেন্টার থেকে লিখিত রসিদ নিন।",
+ "validity": "মেডিকেল সার্টিফিকেট ইস্যুর তারিখ থেকে ২ মাস বৈধ (জিসিসি নিয়মাবলি ২০২১, অনুচ্ছেদ ৪২)।",
+ "validity_source": "https://wafid.com/static/pdf/Regulations%20of%20Medical%20Examination%20of%20Expatriates%20Coming%20to%20GCC%20States%20for%20Work%20or%20Residence.pdf",
+ "steps": [
+  "wafid.com খুলে 'Book an Appointment' চাপুন।",
+  "পরীক্ষার দেশ বাংলাদেশ, আপনার শহর আর যে দেশে যাবেন (সৌদি, কাতার, কুয়েত, ওমান, বাহরাইন, আমিরাত) বাছাই করুন।",
+  "ধরন বাছুন: Standard ($১০ — সেন্টার নিজে থেকে ঠিক হয়) অথবা Premium ($২৫ — সেন্টার ও তারিখ আপনি বাছবেন)।",
+  "পাসপোর্টের মতো করে নাম, জন্ম তারিখ, পাসপোর্ট নম্বর, ভিসার ধরন, ইমেইল, ফোন দিন; ইমেইলে আসা OTP দিয়ে নিশ্চিত করুন।",
+  "কার্ডে ফি দিন (কার্ডের মেয়াদ বছর-মাস ক্রমে, YYMM)।",
+  "স্লিপ পাওয়ার পর যত দ্রুত সম্ভব সেই মেডিকেল সেন্টারে গিয়ে পরীক্ষা দিন।"
+ ],
+ "points": [
+  "Standard বুকিংয়ে সেন্টার বাছাই করা যায় না; শহর অনুযায়ী নিজে থেকে ঠিক হয়।",
+  "পরীক্ষার তারিখ বদলানো যায় না। শহর বদলাতে হলে আগের স্লিপের মেয়াদ শেষ হওয়া পর্যন্ত অপেক্ষা করে নতুন স্লিপ নিতে হয়।",
+  "ভুল তথ্য দিলে মেডিকেল সেন্টারকে বিনা খরচে 'Change candidate details' আবেদন করতে বলুন — এর জন্য কোনো টাকা দেবেন না।",
+  "আগের মেডিকেল রিপোর্ট বৈধ থাকলে নতুন অ্যাপয়েন্টমেন্ট নেওয়া যায় রিপোর্টের ২ মাস পর।"
+ ],
+ "unfit": {
+  "সংক্রামক রোগ": [
+   "এইচআইভি (এইডস) পজিটিভ",
+   "হেপাটাইটিস বি (HBsAg) পজিটিভ",
+   "হেপাটাইটিস সি (Anti-HCV) পজিটিভ",
+   "মাইক্রোফাইলেরিয়া ও ম্যালেরিয়া",
+   "কুষ্ঠ",
+   "বুকের এক্স-রেতে যেকোনো অস্বাভাবিকতা — সক্রিয় বা পুরনো যক্ষ্মাসহ"
+  ],
+  "অন্যান্য রোগ": [
+   "কিডনি বিকল",
+   "লিভার বিকল",
+   "হার্ট ফেইলিওর",
+   "অনিয়ন্ত্রিত উচ্চ রক্তচাপ",
+   "অনিয়ন্ত্রিত ডায়াবেটিস",
+   "যেকোনো ধরনের ক্যান্সার",
+   "মানসিক ও স্নায়বিক রোগ",
+   "কাজে বাধা দেয় এমন শারীরিক প্রতিবন্ধিতা",
+   "হিমোগ্লোবিন ৭ g/dL-এর কম"
+  ],
+  "অন্য": [
+   "কাজের ভিসার ক্ষেত্রে গর্ভাবস্থা"
+  ]
+ },
+ "unfit_source": "https://wafid.com/static/pdf/Regulations%20of%20Medical%20Examination%20of%20Expatriates%20Coming%20to%20GCC%20States%20for%20Work%20or%20Residence.pdf",
+ "status_post": "https://probashiinfo.com/mediglass-visa-check-2026/",
+ "cities": [
+  {
+   "slug": "dhaka",
+   "name": "ঢাকা",
+   "count": 187,
+   "index": true,
+   "centres": [
+    {
+     "name": "ABRAR MEDICAL CHECKUP CENTRE",
+     "address": "HR Complex, 100, Mohakhali, Dhaka.",
+     "phone": "+8801717357306",
+     "email": "mdasraful05@yahoo.com",
+     "website": "https://abrarmedicalcheckupcentre.com"
+    },
+    {
+     "name": "ADVANCE HEALTH CARE",
+     "address": "K-40/2/A, jogonnathpur, progoti soroni, Vatara Dhaka-1229",
+     "phone": "+8801958323200",
+     "email": "info@advancehealthcarebd.com",
+     "website": "https://advancehealthcarebd.com"
+    },
+    {
+     "name": "AF MEDICAL CENTRE",
+     "address": "RUPAYAN KARIM TOWER (4TH FLOOR) 80 KAKRAIL,VIP ROAD,DHAKA",
+     "phone": "+8801711262952",
+     "email": "afmedicalcen@gmail.com",
+     "website": "https://afmedicalcentre.com"
+    },
+    {
+     "name": "AJ MEDICAL AND DIAGNOSTIC CENTER",
+     "address": "PRAASAD PALTON SQUARE (3RD FLOOR), 3/11 NAYA PALTON ,DIT ROAD, DHAKA-1000",
+     "phone": "+8801329710557",
+     "email": "ajmdc1064@gmail.com",
+     "website": "https://ajmedicaldiagnosticcenter.com"
+    },
+    {
+     "name": "Al Arouba Medical Services P.Ltd",
+     "address": "First Floor, 28 Purana Poltan Dhaka 1000 Near South DC Traffic HQ, Opposite Rajjak Tower",
+     "phone": "+8802226638443",
+     "email": "arouba.medical2022@gmail.com",
+     "website": "https://www.al-aroubamedical.com"
+    },
+    {
+     "name": "Al Hayatt Medical Centre",
+     "address": "304, Tejgaon Commercial Area, Bhuiyan Shikdar Tower, Ground Floor,Dhaka 1208 – Bangladesh. Phone : +8802889127,+88028891286, +8801733777799, [email protected] , web- www.alhayattdhaka.com",
+     "phone": "+88028891287",
+     "email": "alhayattdhaka@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "Al Jami Diagnostic Centre",
+     "address": "87-Purana Paltan Lane, Paltan Tower, 3rd Floor Dhaka",
+     "phone": "+8801817696418",
+     "email": "aljamidiagnosticcenter@gmail.com",
+     "website": "https://www.al-jamidiagnosticcenterbd.com/"
+    },
+    {
+     "name": "AL MAHMUD MEDICAL CENTER",
+     "address": "Grameen Banglar Akshay Tower, 51 Madani Avenue Natun Bazar (100 Feet Road), Vatara, Dhaka",
+     "phone": "+880248814712",
+     "email": "almahmudmedicalcenter@gmail.com",
+     "website": "https://almahmudmedicalcenter.com"
+    },
+    {
+     "name": "Al Maktoum Health Care",
+     "address": "House:01,Road 1/A, Sector 4, Uttara, Dhaka, Dhaka Metropolitan, Dhaka District, Dhaka Division, 1230, Bangladesh Dhaka-1230",
+     "phone": "+8801766420609",
+     "email": "ed.almaktoum.h.c@gmail.com",
+     "website": "http://www.almaktoumhc.com"
+    },
+    {
+     "name": "Al Mubasher Medical Diagnostic Services",
+     "address": "Padma Life Tower,115 kazi Nazrul Islam Avenue(1st Floor) Bangla motor Dhaka-1000, Bangladesh. Dhaka – 1000, Bangladesh",
+     "phone": "+8802222227583",
+     "email": "almubasharmds@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "Al Qassimi Health Care",
+     "address": "Sheikh Tamim Bin Hamad Road, Namapara, Matikata, Dhaka, Dhaka Metropolitan, Dhaka District, Dhaka Division, 1206, BangladeshOnline Fagun Bhaban, House: 279/6, Matikata, Dhaka Cantonment,Dhaka",
+     "phone": "+8801766424359",
+     "email": "ed.alqassimi.h.c@gmail.com",
+     "website": "https://www.google.com/"
+    },
+    {
+     "name": "AL TAWAF MEDICAL CENTER",
+     "address": "Wasi Tower 3rd Floor, 572/K, ECB Chattar Matikata, Dhaka Cantonment, Dhaka-1206",
+     "phone": "+8802222225639",
+     "email": "tarekhossan1994@gmail.com",
+     "website": "https://altawafmedical.com"
+    },
+    {
+     "name": "AL-ARABI MEDICAL CENTER",
+     "address": "Graphics, Fakirapool Road, Bijoynagar, Fakirapool, Dhaka, Dhaka Metropolitan, Dhaka District, Dhaka Division, 1000, Bangladesh",
+     "phone": "+8801832880288",
+     "email": "alarabimc21@gmail.com",
+     "website": "http://www.alarabimedical.com"
+    },
+    {
+     "name": "AL-BAHA MEDICAL CENTER",
+     "address": "KHA-198/22, Middle Badda, Badda, U-Loop Gulshan, Dhaka-1212",
+     "phone": "+8802226603102",
+     "email": "albahamedicalcenter@gmail.com",
+     "website": "https://albahamedicalcenter.com"
+    },
+    {
+     "name": "AL-BARAKAH MEDICAL CENTRE LIMITED",
+     "address": "Nikunja 1, Joar Sahara, Dhaka, Dhaka Metropolitan, Dhaka District, Dhaka Division, 1229, Bangladesh HOUSE#KA-90, KURIL, PRAGATI SHARANI ROAD, VATARA, DHAKA-1229",
+     "phone": "+8801336984501",
+     "email": "sobhan.abmc@gmail.com",
+     "website": "http://www.al-barakahmedical.com"
+    },
+    {
+     "name": "Al-Humyra Health Centre Ltd",
+     "address": "House # 06(1st& 2nd Floor) , Road # 2/B, Block #J Baridhara, Vatara, Dhaka",
+     "phone": "+02222294532",
+     "email": "info@al-humyramedicalbd.com",
+     "website": ""
+    },
+    {
+     "name": "Al-Jazeera Medical Center",
+     "address": "Praasad Paltan Square, 3/11, Naya Paltan Box Culvert Road, Motijheel, Dhaka",
+     "phone": "+8801943324724",
+     "email": "khurshid170@gmail.com",
+     "website": "https://al-jazeeramedicalcenter.com"
+    },
+    {
+     "name": "Al-Madina Medical Services",
+     "address": "KA-43/6, JAGANNATHPUR, PRAGATI SARANI VATARA, DHAKA, BANGLADESH",
+     "phone": "8801999939473",
+     "email": "info@al-madinamedicalbd.com",
+     "website": ""
+    },
+    {
+     "name": "Al-Nahda Medical Centre",
+     "address": "147 Green Road, Ejab Rabeya Heritage (1st Floor) Near Panthapath Signal, Phone +880248112032-33",
+     "phone": "+8801730445711",
+     "email": "info@nahdadhaka.com",
+     "website": ""
+    },
+    {
+     "name": "Al-Riyadh Medical Check up",
+     "address": "34, Madani Avenue (2nd Floor), 100 Feet Road, Vatara, Dhaka Bangladesh",
+     "phone": "+880255042105",
+     "email": "armcbd14@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "Al-Salma Medical Center",
+     "address": "Mollah Tower, Ulon Road, Ulon, Rampura, Dhaka, Dhaka Metropolitan, Dhaka District, Dhaka Division, 1219, Bangladesh",
+     "phone": "+8801935902252",
+     "email": "alsalmamedicalcenter@gmail.com",
+     "website": "http://al-salmamedicalcenter.com"
+    },
+    {
+     "name": "AL-ZAYAN MEDICAL CENTER",
+     "address": "Aqua Tower, 43, Road Number 01, Korail, Gulshan, Dhaka, Dhaka Metropolitan, Dhaka District, Dhaka Division, 1212, Bangladesh",
+     "phone": "+01730311618",
+     "email": "alzayandhk@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "ALIF-LAM-MIM HEALTH SERVICES LTD",
+     "address": "NOOR TOWER, 110 BIR UTTAM C.R. DUTTA ROAD, ( 3RD FLOOR ) OLD SORARGAON ROAD, DHAKA",
+     "phone": "+8801819295135",
+     "email": "aliflammimhs@gmail.com",
+     "website": "http://www.aliflammimhs.com"
+    },
+    {
+     "name": "Aline Medical Services Ltd.",
+     "address": "AJ Heights (2nd Floor) Cha-72/1/D, Progoti Shoroni, North Badda,Dhaka-1212",
+     "phone": "+8801714509737",
+     "email": "alinemedicalserviceltd@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "Allied Diagnostics Ltd",
+     "address": "SAR Bhaban (1st & 2nd Floor), Ka-78, Progoti Sarani, Kuril, Vatara, Dhaka 1229 – Bangladesh",
+     "phone": "+880284114612",
+     "email": "info@allieddiagnosticsltd.com",
+     "website": ""
+    },
+    {
+     "name": "ALTASHKHIS MARKAZ LIMITED",
+     "address": "Rupayan Fpab Tower 4th Floor, 2 Naya Paltan, Culvert Road Dhaka, Bangladesh",
+     "phone": "+02226622924",
+     "email": "altashkhismedical@gmail.com",
+     "website": "https://www.altashkhismedical.com"
+    },
+    {
+     "name": "AMIR JAHAN MEDICAL CENTER",
+     "address": "Anchor Tower, 2nd Floor, 108 Bir Uttam C R Datta Road (Beside of Bangla Vision TV) Kawran Bazar, Dhaka",
+     "phone": "+8801714177881",
+     "email": "amirjmc3@gmail.com",
+     "website": "http://www.amirjahanmedicalcenter.com"
+    },
+    {
+     "name": "AMMAR MEDICAL CENTER",
+     "address": "Chand Pur Tower, 4th Floor, DIT Road, Malibag Railgate, Malibag, Dhaka +8801969696997",
+     "phone": "+880244613435",
+     "email": "ammarmedicaldhaka@gmail.com",
+     "website": "https://ammarmedicalcenter.com"
+    },
+    {
+     "name": "ANAS MEDICAL CENTER",
+     "address": "60/E/1, Dewan Complex (4th Floor) Purana Paltan, Dhaka-1000, Bangladesh",
+     "phone": "+8801791375444",
+     "email": "anasmedicalcentre@gmail.com",
+     "website": "https://anasmedicalcenter.com/"
+    },
+    {
+     "name": "AOC Medical Center",
+     "address": "Bijoynagar, Paltan, Dhaka, Dhaka Metropolitan, Dhaka District, Dhaka Division, 1000, Bangladesh 42-43 Purana Paltan, Dhaka",
+     "phone": "+8802226638041",
+     "email": "ayub.uniton@gmail.com",
+     "website": "https://aocmedicalbd.com"
+    },
+    {
+     "name": "Arabian Medical Center",
+     "address": "1st floor, Antique Tower, 1040 Japanese school road, Baridhara, Dhaka – Bangladesh.",
+     "phone": "+8802222294503",
+     "email": "info@arabianmedicalbd.com",
+     "website": ""
+    },
+    {
+     "name": "AUSAF BANGLADESH",
+     "address": "Printers Building, 5 Rajuk Avenue, Level-3, Motijheel Dhaka-1000",
+     "phone": "+8801816173821",
+     "email": "ausaf.bangladesh@gmail.com",
+     "website": "https://ausafbd.com"
+    },
+    {
+     "name": "AYAZ MEDICAL CENTER",
+     "address": "Salam Plaza, 2nd Floor, 83/1, Ibrahimpur, Khafrul, Dhaka",
+     "phone": "+88029836599",
+     "email": "ayzmedicalcenter@gmail.com",
+     "website": "https://ayazmedicalcenter.com"
+    },
+    {
+     "name": "AZWA MEDICAL CENTRE",
+     "address": "15 Nayapaltan, Mosjid Goli",
+     "phone": "+8801715111065",
+     "email": "azwamedicalcentre@gmail.com",
+     "website": "https://www.azwamedical.com/"
+    },
+    {
+     "name": "BANANI MEDICARE CENTER",
+     "address": "H-82, Bir Uttam Ziaur Rahman Road, Banani C/A, Dhaka-1213",
+     "phone": "+88022278908",
+     "email": "nazmarahaman@bananimedicare.com",
+     "website": "https://bananimedicare.com"
+    },
+    {
+     "name": "Bashundhara Medical Center",
+     "address": "156, Green Majeda Park (2nd Floor); Shanti-Nagar; Dhaka-1217",
+     "phone": "0088017626960",
+     "email": "bmdc.bd17@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "BMS Medical Checkup Centre",
+     "address": "Graphics Building (3rd Floor), 9/G Motijheel Commercial Area",
+     "phone": "+966555985997",
+     "email": "bmsmedicalcheckupcentre@gmail.com",
+     "website": "https://bmsmedicalcheckupcentre.com/"
+    },
+    {
+     "name": "Capital Medical Center",
+     "address": "SN Center, Plot No- I/15-18, Road-6 Block-D, Section-12, Pallabi, Mirpur, Dhaka",
+     "phone": "+8801710641007",
+     "email": "capitalmedicalcenter73@gmail.com",
+     "website": "http://capitalmedicalcenter.com"
+    },
+    {
+     "name": "CARBON MEDICAL CENTER",
+     "address": "J K Tower, 31, Segunbagicha Road, Kakrail, Segunbagicha, Dhaka, Dhaka Metropolitan, Dhaka District, Dhaka Division, 1000, Bangladesh Ramna, Dhaka-1000",
+     "phone": "+8801688984958",
+     "email": "merajulislamshimanto@gmail.com",
+     "website": "https://carbonmedicalbd.com"
+    },
+    {
+     "name": "CARE WAVE",
+     "address": "90, Musafir Tower (1st Floor), Kakrail, Dhaka Kakrail",
+     "phone": "+8801816173821",
+     "email": "carewave.bd@gmail.com",
+     "website": "https://carewavebd.com"
+    },
+    {
+     "name": "Catharsis Medical Centre Limited",
+     "address": "Catharsis Tower, House-133 Road-12, Block-E, Banani, Dhaka, Bangladesh Catharsis Tower, House-133 Road-12, Block-E, Banani, Dhaka, Bangladesh",
+     "phone": "+8801713230055",
+     "email": "contact@cmcl.ltd",
+     "website": ""
+    },
+    {
+     "name": "Central Health Checkup",
+     "address": "Nasir Dominno Pioggia, 116, 116/1, West Malibagh DIT Road, Dhaka, Bangladesh",
+     "phone": "+8802222220445",
+     "email": "info@chclbd.com",
+     "website": "https://chclbd.com"
+    },
+    {
+     "name": "Chandshi Medical Center",
+     "address": "Plot-42, Block-J, Progati Sarani, Baridhara, Dhaka-1212, Bangladesh Plot- 42, Block – J ,Pragati sarani, Baridhara Dhaka 1212, Bangladesh.",
+     "phone": "+880258817559",
+     "email": "info@chandshimedicalbd.com",
+     "website": "http://www.chandshimedicalbd.com"
+    },
+    {
+     "name": "City Lab",
+     "address": "SN Center (2nd Floor), Plot No- I/15-18, Road-6 Block-D, Section-12, Pallabi, Mirpur",
+     "phone": "+8801762774407",
+     "email": "citylab626@gmail.com",
+     "website": "https://citylabbd.net"
+    },
+    {
+     "name": "City Medical Centre",
+     "address": "Ka-33/8, Jogonnathpur, Vatara",
+     "phone": "+8801321176810",
+     "email": "citymedicalcentrebd@gmail.com",
+     "website": "https://citymedicalcentrebd.com/"
+    },
+    {
+     "name": "CLEARVIEW MEDICAL AND DIAGNOSTIC CENTER",
+     "address": "PRAASAD PALTON SQUARE (2ND FLOOR), 3/11 NAYA PALTON DIT ROAD, DHAKA - 1000",
+     "phone": "+8801329710537",
+     "email": "cmdc1064@gmail.com",
+     "website": "https://clearviewmedicalcenter.com"
+    },
+    {
+     "name": "COMFORT MEDICAL CHECKUP CENTER",
+     "address": "24/A, Bijoynagar, Skylark Point(2nd Floor), Dhaka-1000",
+     "phone": "+8801711479484",
+     "email": "comfortmedcheckcentre@gmail.com",
+     "website": "http://www.comfortmedical.center"
+    },
+    {
+     "name": "Confidence Medical Centre",
+     "address": "34, Gagon Tower (2nd Floor), Madani Avenue, 100 Feet Road, Vatara, Dhaka",
+     "phone": "+8801327203231",
+     "email": "confidencemc123@gmail.com",
+     "website": "https://confidencemedicalcenter.com"
+    },
+    {
+     "name": "DAHMASHI MEDICAL CENTER",
+     "address": "Mirpur Road No.14, Kochukhet, Kafrul, Dhaka, Dhaka Metropolitan, Dhaka District, Dhaka Division, 1103, Bangladesh",
+     "phone": "+8801336440429",
+     "email": "dahmashimedical@gmail.com",
+     "website": "http://www.dahmashimedical.com"
+    },
+    {
+     "name": "DAWA MEDICAL CENTRE",
+     "address": "Ka-40/2/A, Jogonnathpur, Pragati Sarani, Vatara, Dhaka",
+     "phone": "+8801985554133",
+     "email": "info@dawamedicalbd.com",
+     "website": "https://dawamedicalbd.com"
+    },
+    {
+     "name": "Dhaka Crown Medical Centre",
+     "address": "Fuji Tower(1st Floor), Cha-87/C, North Badda, Dhaka – Bangladesh",
+     "phone": "0088028832224",
+     "email": "info@dhakacrownmedicalbd.com",
+     "website": ""
+    },
+    {
+     "name": "DIGILAB MEDICAL SERVICES LTD",
+     "address": "Pathao Fulfillment, 464, DIT Road, South Badda, Gulshan, Dhaka, Dhaka Metropolitan, Dhaka District, Dhaka Division, 1219, Bangladesh",
+     "phone": "+01894965895",
+     "email": "dglabmsl@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "Dynamic Lab",
+     "address": "58 East Hazipara (3rd Floor) DIT Road, Rampura, Dhaka, Bangladesh",
+     "phone": "+880258317628",
+     "email": "info@dynamiclabmedical.com",
+     "website": "https://dynamiclabmedical.com"
+    },
+    {
+     "name": "EchoLab Medical Services",
+     "address": "Rupayan FPAB Tower, 3rd Floor 2, Noya Paltan, Box Culver Road, Paltan, Dhaka",
+     "phone": "+8809613660505",
+     "email": "echolabmedical@gmail.com",
+     "website": "http://www.echolabmedical.com"
+    },
+    {
+     "name": "Elite Medical Center",
+     "address": "Sara Sondhani Tower, 22/10, Shamoli Opposite of NIMH",
+     "phone": "+8801409999532",
+     "email": "elitemedicalbd20@gmail.com",
+     "website": "http://www.elitebd.com"
+    },
+    {
+     "name": "ELITE MEDICAL CENTRE",
+     "address": "34/2 (2nd Floor), Shahid Syed Nazrul Islam Sarak, Hatkhola Road (Ittefaq More), Dhaka-1203",
+     "phone": "+8801711372496",
+     "email": "elitemedicalcenter790@gmail.com",
+     "website": "https://elitemedicalbd.com"
+    },
+    {
+     "name": "Evergreen Health",
+     "address": "13,1, New Eskaton Road, Moghbazar, Dhaka Mobile & WhatsApp: +8801831358184",
+     "phone": "+8801982666777",
+     "email": "khurshid170@gmail.com",
+     "website": "https://evergreenhealth.health"
+    },
+    {
+     "name": "Evergreen Medical Center",
+     "address": "The Flamenco (2nd & 3rd floor), 32 Airport Road, Farmgate, Tejgaon",
+     "phone": "+8801933862191",
+     "email": "info@evergreenmedicalbd.com",
+     "website": "https://www.evergreenmedicalbd.com"
+    },
+    {
+     "name": "Fairways Medical Center",
+     "address": "31, Bir Uttam A. K. Khandakar Road, (4th Floor), Mohakhali C/A, Dhaka-1212, Bangladesh",
+     "phone": "+8801748470345",
+     "email": "info@fairwaysmedicalbd.com",
+     "website": ""
+    },
+    {
+     "name": "Fortune Health Care Ltd",
+     "address": "Chadpur Tower. DIT Road, Malibag Railgate , Malibag, Dhaka-1217",
+     "phone": "+880181986009",
+     "email": "fourtuneh@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "Fortune Medical Centre",
+     "address": "Holding No: 57, Madani Avenue, Vatara",
+     "phone": "+8801958239290",
+     "email": "fortunemedicalcentrebd@gmail.com",
+     "website": "https://fortunemedicalcentrebd.com/"
+    },
+    {
+     "name": "FUTURE MEDICAL",
+     "address": "Zebun Index Trade Center (4th Floor), 191 Sayed Nazrul Islam Sharani, Bijoynagar Mor(Segunbagicha), Dhaka-1000. +8801713-079626, +8801713-079627.",
+     "phone": "+8801710958957",
+     "email": "futuremedical24@gmail.com",
+     "website": "https://futuremedicalbd.com"
+    },
+    {
+     "name": "GENOMICS HEALTH CARE",
+     "address": "UCEP Cheyne Tower (3rd Floor), 25 Segunbagicha Ramna, Dhaka-1000",
+     "phone": "+8801686197387",
+     "email": "genomicshealthcare10@gmail.com",
+     "website": "https://www.genomicshealthcarebd.com/"
+    },
+    {
+     "name": "Global Medicare Diagnostics Ltd.",
+     "address": "H-82, (1st Floor), Bir Uttam Ziaur Rahman Road, C/A, Dhaka",
+     "phone": "+880248811529",
+     "email": "globalmedicareltd@gmail.com",
+     "website": "https://www.globalmedicareltd.com"
+    },
+    {
+     "name": "Green Crescent Health Services",
+     "address": "House # 60, Park Road, Baridhara Diplomatic Zone, Dhaka 1212 - Bangladesh",
+     "phone": "+880258810486",
+     "email": "info@greencrescenthealthservices.com",
+     "website": ""
+    },
+    {
+     "name": "Greenland Medical Center Limited",
+     "address": "Wireless, Shiddheswari, Dhaka, Dhaka Metropolitan, Dhaka District, Dhaka Division, 1217, Bangladesh Greenland Tower, 2 6 Shahid Sangbadik Selina Parvin Sarak, Mogbazar, Dhaka-1217.",
+     "phone": "+8801713452576",
+     "email": "almamun@glandgroup.com",
+     "website": "http://www.greenlandmedicalltd.com"
+    },
+    {
+     "name": "Gulf Medical Center",
+     "address": "House # 59 (1st & 2nd Floor), Road # 7/B, Block # H, Banani Model Town, Dhaka-1213.",
+     "phone": "+88-02 222276324",
+     "email": "info@gulfmedicalbd.com",
+     "website": ""
+    },
+    {
+     "name": "Gulshan Medicare - Dhaka",
+     "address": "59, 61 Gulshan South Avenue (3rd Floor), Lotus Kamal Tower 2, Dhaka-1212",
+     "phone": "+88029896213",
+     "email": "info@gulshanmedicalbd.com",
+     "website": "www.gulshanmedicalbd.com"
+    },
+    {
+     "name": "HASAN MEDICAL SERVICE LTD.",
+     "address": "173 ARAMABAGH, MOTIJHEEL A&A Tower (2nd Floor)",
+     "phone": "+88029360937",
+     "email": "mas063@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "Health Care Center",
+     "address": "Tropical Mollah Tower (2nd Floor), Sha-15/1 . Sha-15/2, Sha-15/3, Sha-15/4, Progoti Sharani, Middle Badda, Badda, Dhaka-1212",
+     "phone": "+01762157991",
+     "email": "info@healthcaremedicalbd.com",
+     "website": "http://www.healthcaremedicalbd.com"
+    },
+    {
+     "name": "HEALTH CONNECT MEDICAL",
+     "address": "Green Sathmohol, 206, 207, 208 No Boro Mogbazar (Wireless More), Ramna, Dhaka-1217",
+     "phone": "+8801710958957",
+     "email": "healthconnectmedical@gmail.com",
+     "website": "https://healthconnectmedicalbd.com"
+    },
+    {
+     "name": "Health Plus Medical Center",
+     "address": "153/1, Green Road, Dhanmondi",
+     "phone": "+8801710812120",
+     "email": "info@healthplusmc.com",
+     "website": "http://www.healthplusmc.com"
+    },
+    {
+     "name": "Healthcare Diagnostic Center Ltd",
+     "address": "Plot-23/2 (Opposite to Shishumela), Adjacent to Footover Bridge, Mirpur Road, Shyamoli, Dhaka-1207 প্লট-২৩/২ (শিশুমেলার বিপরীতে), ফুটওভার ব্রিজ সংলগ্ন, মিরপুর রোড, শ্যামলী, ঢাকা-১২০৭",
+     "phone": "+8801313785333",
+     "email": "healthcare.support@hdclbd.com",
+     "website": "https://www.hdclbd.com"
+    },
+    {
+     "name": "HOMETOWN HEALTH CARE",
+     "address": "HOUSE # 572/K, MATIKATA,ECB CHATTAR,MIRPUR DOHS ROAD DHAKA CANTONMENT,DHAKA-1206",
+     "phone": "+8801819609537",
+     "email": "hometown.bangladesh@gmail.com",
+     "website": "https://home-hc.com"
+    },
+    {
+     "name": "HUMAN DIAGNOSTIC & MEDICAL CENTRE LTD.",
+     "address": "House No. 102/1-A, Nayapaltan (1st Floor) Box culvert Road, Paltan, Dhaka",
+     "phone": "+8801911023349",
+     "email": "khurshid170@gmail.com",
+     "website": "https://humandmc.com/"
+    },
+    {
+     "name": "HYGIENIC HEALTH CARE",
+     "address": "Navana Obaid Eternia, 28B/ 29A & B , VIP Road ( 1ST Floor ), Kakrail, Dhaka-1000 +8801629370831, +8801908279097",
+     "phone": "+8801777777750",
+     "email": "rubel2dhaka@gmail.com",
+     "website": "https://hygienichealthcarebd.com"
+    },
+    {
+     "name": "IBN OMAR MEDICAL AND DIAGNOSTIC CENTER",
+     "address": "FAHIMA TOWER (2ND FLOOR), 42,43 PURANA PALTAN, DHAKA-1000",
+     "phone": "+8802226638040",
+     "email": "info@ibnomar.com.bd",
+     "website": "https://ibnomar.com.bd"
+    },
+    {
+     "name": "Ibn Rushd Medical Center",
+     "address": "Ahmed Mansion, 46 Kazi Nazrul Islam Avenue Kawran Bazar C/A (Opposite Of WASA Bahban),Tajganon, Dhaka, Bangladesh.",
+     "phone": "+880258151300",
+     "email": "ibnrushdmc@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "Ibn Sina Medical Check Up Unit",
+     "address": "Greenland Tower (1st floor), 26 Shahid Sangbadik Selina Parveen Sarak, Siddheshwari, Moghbazar, Dhaka-1217, Phone: 01847-262990, Hotline: 09610009627 Phone: 01847-262990, Hotline: 09610009627",
+     "phone": "+880258810268",
+     "email": "info@ibnsinamedicalbd.com",
+     "website": "http://www.ibnsinamedicalbd.com"
+    },
+    {
+     "name": "ICON MEDICAL CENTRE",
+     "address": "House-30, Road-04, Block-C, Banani",
+     "phone": "+8801321176965",
+     "email": "iconmedicalcentrebd@gmail.com",
+     "website": "https://iconmedicalcentrebd.com/"
+    },
+    {
+     "name": "IMARAH HEALTH CARE",
+     "address": "1B/GA Progoti Sarani, Badda, Dhaka- 1212",
+     "phone": "+8802222225639",
+     "email": "afadalsaud@gmail.com",
+     "website": "https://imarahhealthcare.com"
+    },
+    {
+     "name": "INDEX DIAGNOSTIC CENTER",
+     "address": "M.Mahdir Villa House No:08, Road no: 5/A Baridhara, Block-J . Progati sarani, Dhaka- 1212 M.Mahdir Villa House No:08, Road no: 5/A Baridhara, Block-J . Progati sarani, Dhaka- 1212",
+     "phone": "+8801711506180",
+     "email": "indexdiagnosticcenter@gmail.com",
+     "website": "https://indexdiagnosticcenter.com"
+    },
+    {
+     "name": "Indigo Healthcare Ltd.",
+     "address": "Orchard Faruque Tower, Level 4 72 Nayapaltan",
+     "phone": "+8801819473860",
+     "email": "imran.director@indigohcare.com",
+     "website": "http://www.indigohcare.com"
+    },
+    {
+     "name": "International Health Center",
+     "address": "Zabed And Son Tower KA-70/B, Kuril Pragoti Sarani. P,O-Khilket,PS-Vatara Dhaka-1229 Bangladesh",
+     "phone": "+88028418303",
+     "email": "info@ihcmedicalbd.com",
+     "website": ""
+    },
+    {
+     "name": "Ishtiyaq Medical Center",
+     "address": "571, (1st floor), ECP Chottor, Main Road, South Manikdi, Dhaka Cantonment, Dhaka-1206, Bangladesh.",
+     "phone": "+88029836828",
+     "email": "ishtiyaq.mc@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "Islamia Diagnostic Center",
+     "address": "SN Center (1st Floor), Plot No- I/15-18, Road-6 Block-D, Section-12, Pallabi, Mirpur",
+     "phone": "+8801915894687",
+     "email": "islamiadiagnosticcentre1@gmail.com",
+     "website": "https://islamiadiagnostic.com/"
+    },
+    {
+     "name": "JG HEALTHCARE LIMITED",
+     "address": "Matikata, Dhaka, Dhaka Metropolitan, Dhaka District, Dhaka Division, 1206, Bangladesh",
+     "phone": "+8801894965898",
+     "email": "jghealthcare1@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "Kent Medical Services Ltd.",
+     "address": "Nova Tower-3, 3rd Floor, 2/1 Naya Paltan, Dhaka.",
+     "phone": "+8801327217367",
+     "email": "mykentmedical@gmail.com",
+     "website": "https://kentmedicalbd.com"
+    },
+    {
+     "name": "KGN Medicare Limited",
+     "address": "Wahab Point, Plot-13, Road-02, Dhanmondi,",
+     "phone": "+8801715986514",
+     "email": "tasneemshefa706@gmail.com",
+     "website": "https://www.kgnmedicare.com"
+    },
+    {
+     "name": "Khoulud Medical Check-up",
+     "address": "kha-198,(1st floor) Progoti Sharani, Middle Badda ,Dhaka-1212",
+     "phone": "+8801894965872",
+     "email": "khuludcheckupdhk@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "LAB QUEST LIMITED",
+     "address": "Pearl Trade Center (3rd Floor) Cha-90/3, Pragati Sarani",
+     "phone": "+8809642882211",
+     "email": "labquestbd@gmail.com",
+     "website": "https://www.thelabquest.com"
+    },
+    {
+     "name": "LAB SCIENCE DIAGNOSTIC",
+     "address": "153/1, Green Road, Panthapath, Dhaka 1205 https://maps.app.goo.gl/ZAkmSVY66CsELAhv9",
+     "phone": "+8801709918868",
+     "email": "labscince12@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "LABWALL DIAGNOSTIC CENTER",
+     "address": "UCEP Cheyne Tower(1st Floor), 25 Segunbagicha Ramna, Dhaka-1000",
+     "phone": "+8802722203398",
+     "email": "labwalldiagnosticcenter@gmail.com",
+     "website": "https://labwalldiagnostic.com"
+    },
+    {
+     "name": "LAMIA MEDICAL HEALTH CHECKUP CENTRE",
+     "address": "Nasirertek, Bhatara, Dhaka, Dhaka Metropolitan, Dhaka District, Dhaka Division, 1229, Bangladesh House-2153, I-Extension Commercial Zone Basundhara, 1st Floor, PS: Vatara, Dhaka-1212",
+     "phone": "+8809639290671",
+     "email": "lamiamhc.center@gmail.com",
+     "website": "http://www.lamiamedical.com"
+    },
+    {
+     "name": "Leading Health Check up",
+     "address": "58, East Hazipara, D.I.T. Road, Dhaka – Bangladesh",
+     "phone": "+8802222222042",
+     "email": "info@leadinghealthcheckupbd.com",
+     "website": ""
+    },
+    {
+     "name": "Life Diagnostic Center",
+     "address": "35/C Naya Paltan (2n Floor) VIP Road, Dhaka 1000",
+     "phone": "0088029333704",
+     "email": "info@lifemedicalbd.com",
+     "website": ""
+    },
+    {
+     "name": "LIFE-SCAN MEDICAL AND DIAGNOSTIC CENTER",
+     "address": "NAVANA HR TOWER (3RD FLOOR),PLOT:410-412,I/A, 1 BIR UTTOM , MIR SARAK , DHAKA",
+     "phone": "+8801329710544",
+     "email": "lmdc1064@gmail.com",
+     "website": "https://lifescanmedicalbd.com"
+    },
+    {
+     "name": "Lifeline Diagnostic Services",
+     "address": "1.1/1, Rupayan Taj, 2nd Floor, Box Culvert Road, Naya Paltan, Dhaka, Bangladesh +8801324727490",
+     "phone": "+8801324727490",
+     "email": "lifelinedhk@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "Lifeline Health Care",
+     "address": "Prashad Paltan Square, 3/11,Box Culvert road, Naya Paltan in front of ( Fokiraful Panir Tank )",
+     "phone": "+8801982666777",
+     "email": "khurshid170@gmail.com",
+     "website": "https://lifelinehealthcare.com"
+    },
+    {
+     "name": "Lifeline Medical Centre",
+     "address": "Ka-40/2/A, Jogonnathpur, Progoti Soroni, Vatara",
+     "phone": "+8801958527357",
+     "email": "lifelinemedicalcentrebd@gmail.com",
+     "website": "https://lifelinemedicalcentrebd.com/"
+    },
+    {
+     "name": "LIGHT MEDICAL CENTRE",
+     "address": "Wahid Masafi Center, 2nd Floor, 73 Purana Paltan Line, Bijoy Nagar, Dhaka.",
+     "phone": "+8802222225639",
+     "email": "lightmedical2020@gmail.com",
+     "website": "https://lightmedicalcentre.com/"
+    },
+    {
+     "name": "Lotus Medical Centre",
+     "address": "Jahangir Tower, Plot- M5, 3rd Floor, Mirpur Housing Estate, Mirpur-14, Kafrul",
+     "phone": "+8801321176700",
+     "email": "lotusmedicalcentrebd@gmail.com",
+     "website": "https://lotusmedicalcentrebd.com/"
+    },
+    {
+     "name": "Luminous Diagnostic",
+     "address": "Hashim Tower, 205/1, Tejgaon Gulshan Link Road, Mohanagar, Niketan, Dhaka, Dhaka Metropolitan, Dhaka District, Dhaka Division, 1208, Bangladesh",
+     "phone": "+8801819363333",
+     "email": "luminous.diagnostic.tejgaon@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "M. RAHMAN MEDICAL & DIAGNOSTIC CENTER",
+     "address": "DAG NO – 9132, SOLMAED VATARA",
+     "phone": "+8801958527208",
+     "email": "mrahmanmedicalbd@gmail.com",
+     "website": "https://mrahmanmedicalbd.com"
+    },
+    {
+     "name": "Mahtab Medical Center",
+     "address": "Jahangir Tower, Plot-M5 (2nd Floor), Section-14, Mirpur Dhaka-1206",
+     "phone": "+8801810020470",
+     "email": "mahtabmedicalcenter@gmail.com",
+     "website": "http://mahtabmedicalcenter.com"
+    },
+    {
+     "name": "MAJUMDER HEATLH CARE",
+     "address": "Adamjee Court, Annex Building 2, Level-3, 119-120 Motijheel C/A, Dhaka 1000",
+     "phone": "+8802222225639",
+     "email": "majumderhealthcare2025@gmail.com",
+     "website": "https://majumderhealthcare.com"
+    },
+    {
+     "name": "Makkha Medical Center",
+     "address": "Ahmed Tower (L-3rd ), 28 & 30 Kamal Ataturk Ave., Banani, Dhaka-1213.",
+     "phone": "+88028816074",
+     "email": "info@makkhamedicalbd.com",
+     "website": ""
+    },
+    {
+     "name": "Medifly Health Services",
+     "address": "1-A, Alauddin Vaban (4th floor), Fokirapool Dhaka Division, 1000, Bangladesh",
+     "phone": "+8801618505945",
+     "email": "mediflyhealthservice@gmail.com",
+     "website": "https://mediflyhealth.com"
+    },
+    {
+     "name": "MEDIFY HEALTH SERVICE",
+     "address": "Green Sathmohol (3rd Floor),206,207,208 No Boro Moghbazar (Wireless More) Romna Dhaka 1217",
+     "phone": "+8801710958957",
+     "email": "medifyhealthservice@gmail.com",
+     "website": "https://medifyhealthbd.com"
+    },
+    {
+     "name": "Medinet Medical Services",
+     "address": "Plot:1,2,3 Kalwalapara Main Road (BNS Bhavan-3rd Floor), Mirpur-1Dhaka-1216",
+     "phone": "+8801601312246",
+     "email": "medinetmedicalservices@gmail.com",
+     "website": "http://www.medinetbd.com"
+    },
+    {
+     "name": "Medinova Medical Services Ltd",
+     "address": "House # 71 Road # 5/A Dhanmondi R/A- Dhaka",
+     "phone": "+86203536",
+     "email": "info@medinovamedicalbd.com",
+     "website": ""
+    },
+    {
+     "name": "MediPath Medical & Diagnostic Center",
+     "address": "Medipath Medical and Diagnostic Center Grand Tower(1st Floor) 517/2, ECB Chattar, Kalshi Road, Matikata Rd, Dhaka 1206",
+     "phone": "+01329710537",
+     "email": "medipath1064@gmail.com",
+     "website": "https://medipathbd.com"
+    },
+    {
+     "name": "Mediquest Diagnostics Ltd",
+     "address": "Jamalpur Twin Tower (2nd Floor),Ga-37/1, Pragati Sarani Main Road, Baridhara View, Block-J, Gulshan, Dhaka-1212, Bangladesh.",
+     "phone": "+8802226616255",
+     "email": "medical.director@mediquestdiagnosticsltd.com",
+     "website": "https://www.mediquestdiagnosticsltd.com/"
+    },
+    {
+     "name": "Medison Medical Services Limited",
+     "address": "Plot: 22/10, Mirpur Road, (Opposit of NIMH) Shaymoli, Dhaka",
+     "phone": "+8801409999526",
+     "email": "medisonmedicalbd@gmail.com",
+     "website": "https://medisonbd.com"
+    },
+    {
+     "name": "MediTest Medical Services",
+     "address": "Bir Muktijuddha Mannan Tower(1st Floor & 2nd Floor) KA-96/3 Progoti Sarani, Kuril, Vatara",
+     "phone": "+8801774542124",
+     "email": "meditestmedicalservicesltd@gmail.com",
+     "website": "https://meditestmedicalservices.com"
+    },
+    {
+     "name": "MEDSCAPE LAB",
+     "address": "GULFESHA PLAZA 08 S.S SELINA PARVEEN SARAK (OLD-69) MOGHBAZAR,DHAKA-1205",
+     "phone": "+8801919715274",
+     "email": "medscapelab@gmail.com",
+     "website": "https://medscapelab.com"
+    },
+    {
+     "name": "MEEM MEDICAL CENTER",
+     "address": "Nasirertek, Bhatara, Dhaka, Dhaka Metropolitan, Dhaka District, Dhaka Division, 1229, Bangladesh",
+     "phone": "+8801722372100",
+     "email": "contact@meem.center",
+     "website": ""
+    },
+    {
+     "name": "MICARE HEALTH LIMITED",
+     "address": "24/1, 24/2 Bir uttam Nuruzzaman Road, Shyamoly Cinema Complex Building (Ring Road), 3rd Floor, Shyamoli, Mohammadpur, Dhaka, Bangladesh.",
+     "phone": "+8801829174174",
+     "email": "micarehl@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "Miracle Medical Centre",
+     "address": "Ka-33/8, Jogonnathpur, Vatara, Dhaka-1229",
+     "phone": "+8801950099106",
+     "email": "miraclemedicalcentrebd@gmail.com",
+     "website": "https://miraclemedicalbd.com/"
+    },
+    {
+     "name": "MODERN MEDICAL CENTER",
+     "address": "Nova Tower - 03, 2/1, Culvert Road Naya Paltan",
+     "phone": "+8801935902252",
+     "email": "modernmedicalcenter6@gmail.com",
+     "website": "https://modernmedicalcenters.com"
+    },
+    {
+     "name": "Mohaimid Medical Center",
+     "address": "15177, Madani Avenue 100 Feet, Vatara, Gulshan, Dhaka 1212 – Bangladesh.",
+     "phone": "+880258817332",
+     "email": "mohaimidmedical@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "Moon Check-up OPC",
+     "address": "Rupayan Millennium Square (2nd Floor),. Cha-70,70/A Pragati Sarani,Uttar Badda,Dhaka.",
+     "phone": "+8801753872682",
+     "email": "moonopcdhal@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "Mostafa Health Care",
+     "address": "Joypurhat Tower, 2nd Floor, House: 2,3, Road: Main Road Block: F, Banasree, Rampura, Dhaka-1219, Bangladesh",
+     "phone": "+880255123713",
+     "email": "mostafahealthcare2022@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "MUSA HEALTH CHECKUP CENTRE",
+     "address": "Nasirertek, Bhatara, Dhaka, Dhaka Metropolitan, Dhaka District, Dhaka Division, 1229, Bangladesh House-2153, I-Extension Commercial Zone, Basundhara, Ground Floor, PS: VAtara, Dhaka-1212",
+     "phone": "+8809639290670",
+     "email": "musahc.center@gmail.com",
+     "website": "http://www.musa-medical.com"
+    },
+    {
+     "name": "Muscat Medical Center",
+     "address": "101 Fulu tower 1st and 2nd floor new airport road Kakoli- Banani Dhaka 1213",
+     "phone": "+88029892140",
+     "email": "muscatmedicalcenter@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "MyLab Medical and Diagnostic Centre Pvt. Ltd",
+     "address": "House-95, Road 7, Sector 4, Uttara, Dhaka-1276, Bangladesh. 01894-443135",
+     "phone": "+8801671040325",
+     "email": "mylabdhk@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "MYSA MEDICAL SERVICES (PVT) LTD",
+     "address": "66/A, SHEMA COMPLEX (2ND FLOOR), V.I.P. ROAD ,NAYAPALTAN, DHAKA-1000",
+     "phone": "+8802222225639",
+     "email": "mysamedicalservices@gmail.com",
+     "website": "http://mysamedicalbd.com"
+    },
+    {
+     "name": "NAFA MEDICAL CENTRE",
+     "address": "House#30, Road #04, Block#C, Banani Model Town Dhaka-1213",
+     "phone": "+8801950099208",
+     "email": "info.nafamedical@gmail.com",
+     "website": "https://www.nafamedicalbd.com"
+    },
+    {
+     "name": "Namirah Medical Center",
+     "address": "224/1, NMG Tower (2nd & 3rd floor),New Eskaton Road, Hatirjheel,",
+     "phone": "+8802222224372",
+     "email": "info@namirahmedicalbd.com",
+     "website": "https://www.namirahmedicalbd.com"
+    },
+    {
+     "name": "National Medical Center Limited",
+     "address": "House No. 9, Road No. 8, Block-J, Baridhara, Dhaka-1212",
+     "phone": "+8802222282964",
+     "email": "info@nationalmedicalbd.com",
+     "website": "http://test.com"
+    },
+    {
+     "name": "Nazrul Islam Diagnostic",
+     "address": "S.K Tower, 1st Floor, Plot: 15-16, Block: M (Avenue Road) Road: 08, South Banasree, Dhaka-1219, Bangladesh",
+     "phone": "+8802222281920",
+     "email": "nislamdiagnostic@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "NEW KARAMA MEDICAL SERVICES",
+     "address": "Roayel Plaza (2nd Floor), House-8, Road-4, Mirpur Road, Dhanmondi",
+     "phone": "+8801787681170",
+     "email": "nkaramamedical@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "Nova Medical Center",
+     "address": "BH Plaza (1st floor), 50/2 Abdul Aziz Sharak, Vattara, Baridhar, Dhaka , Bangladesh",
+     "phone": "8801758435039",
+     "email": "info@novamedicalbd.com",
+     "website": ""
+    },
+    {
+     "name": "Orbitals Medical Centre Limited",
+     "address": "KA/74 Progoti Shorni, Kuril Chowrasta, Dhaka 1229 - Bangladesh",
+     "phone": "8801730715710",
+     "email": "orbitalsmedicalcentre@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "Overseas Health Checkup Ltd",
+     "address": "Paltan China Town, 67/1 & 68, VIP Road, Bijoynagar, Noya Paltan, Dhaka, Bangladesh Mobile# +8801988228874",
+     "phone": "+8802222229518",
+     "email": "overseashealthcheckup@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "PACIFIC MEDICAL & DIAGNOSTIC CENTER",
+     "address": "Tropical Molla Tower (1st Floor), 15/1-15/4, Middle Badda, Badda, Dhaka-1212.",
+     "phone": "008801619482619",
+     "email": "pmdc1064@gmail.com",
+     "website": "https://pacificmedicalbd.com/"
+    },
+    {
+     "name": "Paradyne Medical Centre",
+     "address": "107, DIT Road, Malibagh, Dhaka 1217, Bangladesh",
+     "phone": "8801813867444",
+     "email": "paradynebd@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "Paramount Medical Centre",
+     "address": "GA-2/1 Bir Uttam Rafiqul Islam Avenue Shahjadpur, Dhaka",
+     "phone": "+8801886037093",
+     "email": "paramountbd2022@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "PERFECT MEDICARE LTD.",
+     "address": "Sayed Nazrul Islam Sharani, Bijoynagar, Paltan, Dhaka, Dhaka Metropolitan, Dhaka District, Dhaka Division, 1000, Bangladesh 186, Shahid Sayed Nazrul Islam Sarani, 40, Bijoy Nagar, Dhaka-1000, Bangladesh",
+     "phone": "+880258314798",
+     "email": "perfectmcltd@gmail.com",
+     "website": "http://www.perfectmedicare.com.bd"
+    },
+    {
+     "name": "PHOENIX MEDICAL CENTER",
+     "address": "Grameen Banglar Akshay Tower, 51 Madani Avenue Natun Bazar (100 Feet Road), Vatara, Dhaka",
+     "phone": "+8801744164775",
+     "email": "medicalcenterphoenix@gmail.com",
+     "website": "http://phoenixmedicalbd.com"
+    },
+    {
+     "name": "Praava Health",
+     "address": "Plot-9, Road #17, Block C,Banani, Dhaka-1213, Bangladesh",
+     "phone": "+8809609550026",
+     "email": "gcchc@praavahealth.com",
+     "website": "https://praavahealth.com/"
+    },
+    {
+     "name": "Precision Diagnostics Ltd",
+     "address": "Feroza Tower (3rd & 4th Floor), 91/B Khilgaon, Chowdhury Para, Rampura DIT Road,",
+     "phone": "+8802222220117",
+     "email": "info@precisiondiagnosticsltd.com",
+     "website": "https://www.precisiondiagnosticsltd.com"
+    },
+    {
+     "name": "Prime Diagnostic Limited",
+     "address": "Rupayan FPAB Tower 5th Floor",
+     "phone": "+8801774814004",
+     "email": "primediagnostic96@gmail.com",
+     "website": "http://www.primediagnosticltd.com"
+    },
+    {
+     "name": "Prime Medical Centre",
+     "address": "Ka-33/8, Jagonnathpur, Vatara",
+     "phone": "+8801958239255",
+     "email": "primemedical16@gmail.com",
+     "website": "https://primemedicalcentrebd.com/"
+    },
+    {
+     "name": "Pulse Medical Center",
+     "address": "House # 111, Road # 4, Block B, Banani - Dhaka 1213",
+     "phone": "+88029887243",
+     "email": "info@pulsemedicalbd.com",
+     "website": ""
+    },
+    {
+     "name": "Pure Health Medical Center",
+     "address": "464 Mollah Tower (4th Floor), DIT Road, West Rampura Dhaka-1212, Bangladesh.",
+     "phone": "+8801335521407",
+     "email": "purehealthmdc@gmail.com",
+     "website": "https://purehealthmedicalcenter.com"
+    },
+    {
+     "name": "Purelife Health Care",
+     "address": "Praasad Paltan Square, 3/11, Box Culvert Road, Naya Paltan. Opposite Side of ( Fokiraful Panir Tank).Dhaka",
+     "phone": "+8801982666777",
+     "email": "khurshid170@gmail.com",
+     "website": "https://purelifehealthcare.care"
+    },
+    {
+     "name": "Pushpo Clinic",
+     "address": "\"PHULU TOWER\"(LEVEL-4&5), HOUSE NO: H/101,NEW AIRPORT ROAD, BANANI COMERCIAL AREA, DHAKA -1213,BANGLADESH,Dhaka,Bangladesh-88-0208824",
+     "phone": "+88028824881",
+     "email": "info@pushpomedicalbd.com",
+     "website": "http://www.pushpomedicalbd.com"
+    },
+    {
+     "name": "Rainbow Hearts Medical Center Ltd",
+     "address": "House# 79, Block# J, 2nd Floor, Airport Road, Chairman Bari,(Chairman Bari FootOver Bridge) Banani , Dhaka, +8801806008629",
+     "phone": "+8801806008629",
+     "email": "rainbowhmcl@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "RAMIN HEALTH CENTER",
+     "address": "Adamjee Court, Annex Building 2, 119-120 Motijheel C/A Dhaka 1000",
+     "phone": "+8802222225639",
+     "email": "raminhealthcenter@gmail.com",
+     "website": "https://raminhealthcenter.com"
+    },
+    {
+     "name": "Reliance Lab",
+     "address": "Praasad Paltan Square, 3/11, Naya Paltan Box Culvert Road, Motijheel, Dhaka",
+     "phone": "+8801935902252",
+     "email": "salmasharif013@gmail.com",
+     "website": "https://reliancelab.net"
+    },
+    {
+     "name": "RELYON MEDICARE",
+     "address": "23-24, Kawran Bazar, Tejaon, Dhaka",
+     "phone": "+8801326882092",
+     "email": "relyonmedicarebd@gmail.com",
+     "website": "http://relyonmedicare.com/"
+    },
+    {
+     "name": "Rx Medical Centre",
+     "address": "CWN(B)6, Road # 36, Gulshan-2, Dhaka – Bangladesh",
+     "phone": "0088029890105",
+     "email": "info@rxmedicalbd.com",
+     "website": ""
+    },
+    {
+     "name": "Saam Health Checkup Ltd",
+     "address": "Imam Heights, 473, Malibagh, DIT Road, Dhaka",
+     "phone": "+8802222227633",
+     "email": "info@saamhealthcheckupltd.com",
+     "website": "https://www.saamhealthcheckupltd.com"
+    },
+    {
+     "name": "Safa Diagnostic Center",
+     "address": "BHSK Shun Shing Tower KA-49 To KA-50/4/A 2nd Floor Shaheed Abdul Aziz Road Vatara",
+     "phone": "+8801913492765",
+     "email": "rakabir765@gmail.com",
+     "website": "https://www.safadiagnosticcenter.com"
+    },
+    {
+     "name": "Saimon Medical Centre",
+     "address": "1st & 2nd Floor, Ishaque Tower, KA 96/B, Progati Sharoni, Kuril, Bhatara, Dhaka 1229 – Bangladesh",
+     "phone": "+01762009898",
+     "email": "info@saimonmedicalbd.com",
+     "website": "www.saimonmedicalbd.com"
+    },
+    {
+     "name": "Sara Health Care",
+     "address": "Banani Chairman Bari, House No-79, 4th Floor. Airport Road Banani Dhaka",
+     "phone": "+8801721269132",
+     "email": "sarahealthcare576@gmail.com",
+     "website": "https://sarahealthbd.com"
+    },
+    {
+     "name": "Saudi Bangladesh Services Company",
+     "address": "SEL Trident Tower (Level 1 & Level 2), 57 Purana Paltan Line, Paltan, Dhaka – 1000, Bangladesh.",
+     "phone": "+88029352462",
+     "email": "info@saudibanglamedicalbd.com",
+     "website": ""
+    },
+    {
+     "name": "SHELTER POINT MEDICAL CENTER LTD.",
+     "address": "66 Bir Uttam K.M Safiullah Sarak, Green Road, Dhaka-1205.",
+     "phone": "+8801760233333",
+     "email": "info@shelterpointmedical.com",
+     "website": "https://shelterpointmedical.com"
+    },
+    {
+     "name": "SHOHAG DIAGNOSTIC & MEDICAL CENTRE",
+     "address": ": 66/1, Sky View trade vally Center, Naya Paltan (2nd Floor), VIP Road, Dhaka-1000",
+     "phone": "+8801329646997",
+     "email": "shohagmedicaldcenter@gmail.com",
+     "website": "https://www.shohagmedicalbd.com"
+    },
+    {
+     "name": "SKN Health Services",
+     "address": "80 Kakrail, Rupayan Karim Tower, Level-2, Dhaka-1000, Bangladesh.",
+     "phone": "+028392022",
+     "email": "sknhealthservices@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "Skyline Medical Centre",
+     "address": "Ka-33/8, Jogonnathpur, Vatara, Dhaka-1229",
+     "phone": "+8801950099147",
+     "email": "skylinemedicalcentrebd@gmail.com",
+     "website": "https://skylinemedicalbd.com/"
+    },
+    {
+     "name": "Smart Medical Centre",
+     "address": "83/1, Salam Plaza (1st Floor), Ibrahimpur, Kafrul Dhaka",
+     "phone": "+88029833953",
+     "email": "smartmedicaldhaka@gmail.com",
+     "website": "http://www.smartmedicalsmc.com"
+    },
+    {
+     "name": "SR Medical & Diagnostic Center",
+     "address": "First Floor 2/1 Nova Tower Naya Paltan, Dhaka-1000",
+     "phone": "+8801329692747",
+     "email": "smdc2021.bd@gmail.com",
+     "website": "http://www.srmedical.com.bd"
+    },
+    {
+     "name": "Standard Medical Centre",
+     "address": "Gagon Tower, House # 34, Madani Avenue, Vatara, Dhaka – Bangladesh",
+     "phone": "+88025504210",
+     "email": "standardmedicalcentre@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "Stemz Helath Care (BD)ltd",
+     "address": "Rupayan Trade Center (11th & 7th Floor), 114 Kazi Nazrul Islam Avenue,Banglamotor, Dhaka-1000. Rupayan Trade Center (11th & 7th Floor), 114 Kazi Nazrul Islam Avenue,Banglamotor, Dhaka-1000.",
+     "phone": "+966505521234",
+     "email": "mahbubor_rahman@sq-bd.com",
+     "website": ""
+    },
+    {
+     "name": "Sunmoon Medical Centre Ltd.",
+     "address": "H-79 (1st Floor), Block-J, New Airport Road Chairman Bari, Banani C/A, Dhaka",
+     "phone": "+8801716229161",
+     "email": "sunmoonmedicalltd@gmail.com",
+     "website": "https://sunmoonmedicalcentreltd.com"
+    },
+    {
+     "name": "Sunshine Medical Centre",
+     "address": "Ka-33/8, Jogonnathpur, Vatara, Dhaka-1229",
+     "phone": "+8801950099120",
+     "email": "sunshinemedicalcentrebd@gmail.com",
+     "website": "https://sunshinemedicalbd.com/"
+    },
+    {
+     "name": "SUROKKHA MEDICAL CENTER",
+     "address": "Nasirertek, Bhatara, Dhaka, Dhaka Metropolitan, Dhaka District, Dhaka Division, 1229, Bangladesh",
+     "phone": "+01713236955",
+     "email": "surokkhamcdhk@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "The Classic Medical Centre Ltd",
+     "address": "Wahid Masafi Centre, 1st floor, 73, Purana Paltan Line, Bijoy Nagar, Dhaka – Bangladesh.",
+     "phone": "+0880258316591",
+     "email": "classicmedical.info@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "Transworld Medical Center",
+     "address": "Cemex Shimul Trishna Trade Center, 2nd Floor, KA 86/1, Progati Sharoni, Kuril, Bhatara, Dhaka-2129, Bangladesh.",
+     "phone": "+881730715714",
+     "email": "transworldmedicalcenter@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "TRIPLE ZERO BANGLADESH LIMITED",
+     "address": "AR CENTER, 754/1,WEST SHEWRAPARA MIRPUR,DHAKA-1216",
+     "phone": "+8801400322734",
+     "email": "3zero.bangladesh@gmail.com",
+     "website": "https://triplezerobangladesh.com"
+    },
+    {
+     "name": "True Health Medical And Diagnostic Center",
+     "address": "Sheikh Tamim Bin Hamad Road, Namapara, Matikata, Dhaka, Dhaka Metropolitan, Dhaka District, Dhaka Division, 1206, Bangladesh 517/2 GRAND TOWER, ECB CHOTTOR, MANIKDI, DHAKA-1206",
+     "phone": "+8801717680669",
+     "email": "truehealthmdc@gmail.com",
+     "website": "http://www.truehealthmedicalanddiagnosticcenter.com"
+    },
+    {
+     "name": "Tulip Medical Center",
+     "address": "23/KA-(1 st Floor)Chowdhury Center,New Eskaton Road. Dhaka-1000.",
+     "phone": "+01627040012",
+     "email": "tulipdhk@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "UNICARE MEDICAL SERVICES",
+     "address": "13,1 New Eskaton Road (Lazz Pharma Building, Lift-2), Moghbazar, Dhaka-1217. (Mobile & Whats App: 01973727466)",
+     "phone": "+8802222224375",
+     "email": "dr.badruzzaman@gmail.com",
+     "website": "https://www.unicaremedicalbd.co"
+    },
+    {
+     "name": "Union Health Center",
+     "address": "Koyla Restaurant Ltd, Bir Uttam Mir Shawkat Sarak, East Nakhalpara, Niketan, Dhaka, Dhaka Metropolitan, Dhaka District, Dhaka Division, 1208, Bangladesh Dhaka, Bangladesh.",
+     "phone": "+8802222225639",
+     "email": "unionhealthcenter24@gmail.com",
+     "website": "https://unionhealthcarebd.com"
+    },
+    {
+     "name": "Unique Medical Centre",
+     "address": "Islam Tower 1st Floor (opposite of BTV Center), 464/H, DIT Road, West Rampura, Dhaka, Bangladesh.",
+     "phone": "+880255128241",
+     "email": "uniquemcdhk@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "UNITY MEDICAL CHECKUP CENTRE",
+     "address": "Trust Bhavan-3, Komrade Monisinha Sarak 21/2 (2nd Floor), Purana Platan",
+     "phone": "+8801819223279",
+     "email": "unitymedicalcheckupcentre23@gmail.com",
+     "website": "https://unitymedicalcheckupcentre.com/"
+    },
+    {
+     "name": "UTTARA CRESCENT CLINIC (PVT) LTD",
+     "address": "HOUSE-40,RABINDRA SARANI ROAD SECTOR-7,UTTARA,DHAKA-1230",
+     "phone": "+0088013523529",
+     "email": "uccpvt2024@gmail.com",
+     "website": "https://uchbd.com"
+    },
+    {
+     "name": "Veritas Healthcare Limited",
+     "address": "5C, Road 2E, Khilbarirtek, Nurer Chala, Dhaka, Dhaka Metropolitan, Dhaka District, Dhaka Division, 1212, Bangladesh",
+     "phone": "+8801711698076",
+     "email": "gmgtrading@ymail.com",
+     "website": "https://gmggroupbd.com/about-us-veritas-healthcare/"
+    },
+    {
+     "name": "Vita Health Medical Center",
+     "address": "Praasad Palton Square (14th Floor) 3/11 Naya Paltan, 167 Fakirapool, DIT Ave Dhaka",
+     "phone": "+8801779816522",
+     "email": "rafsanjhasan@icloud.com",
+     "website": "https://vitahealthmedicalcenter.com"
+    },
+    {
+     "name": "Wadi Health Checkup",
+     "address": "Alauddin Bhaban,1/A, Fakirapool DIT Extension Road, Dhaka",
+     "phone": "+8802222222042",
+     "email": "mesbauddin511@gmail.com",
+     "website": "http://www.wadihealth.com"
+    },
+    {
+     "name": "Warm Wellness Center",
+     "address": "Tropical Cantt View, 167 Matikata Road, Dhaka.",
+     "phone": "+8801843616161",
+     "email": "warmwellnescenter@gmail.com",
+     "website": "https://warmwellnesscenter.com"
+    },
+    {
+     "name": "WORLD HORIZON MEDICAL SERVICES LTD",
+     "address": "Second Floor, 99 Kazi Nazrul Islam Avenue Road Karwan Bazar C/A Opposite of Wasa Building above Al Arafa Islamic Bank Ltd",
+     "phone": "+880255012243",
+     "email": "wmedical2022@gmail.com",
+     "website": "https://www.worldhorizonmedical.com"
+    },
+    {
+     "name": "YADAN MEDICAL",
+     "address": "34/2,Shaid Sayed Nazrul Islam Sarak Hatkhola ) Road, (Ittefaq Mor)",
+     "phone": "+880247110142",
+     "email": "yadan.medical@gmail.com",
+     "website": "https://yadanmedical.com"
+    },
+    {
+     "name": "ZAM ZAM MEDICAL CENTER",
+     "address": "Wireless, Shiddheswari, Dhaka, Dhaka Metropolitan, Dhaka District, Dhaka Division, 1217, Bangladesh Siddeshwari , Dhaka-1217",
+     "phone": "+8802222227555",
+     "email": "dastagirsafin@gmail.com",
+     "website": "http://www.zzmcbd.com"
+    },
+    {
+     "name": "Zara Health Care",
+     "address": "RANGS GH Tower (Ground Floor) 335/B, Tejgaon I/A",
+     "phone": "+8801721268171",
+     "email": "zarahealthcare300@gmail.com",
+     "website": "https://zarahealthcares.com"
+    }
+   ]
+  },
+  {
+   "slug": "chattogram",
+   "name": "চট্টগ্রাম",
+   "count": 18,
+   "index": true,
+   "centres": [
+    {
+     "name": "Ajbahur Medical Center",
+     "address": "Shah Amanat Tower (1st Floor), Kaptai Raster Matha, Mohora, Chandgaon, Chattogram",
+     "phone": "+8801810020464",
+     "email": "ajbahurmedicalcenter@gmail.com",
+     "website": "https://ajbahurmedicalcenter.com"
+    },
+    {
+     "name": "Ali Shah Diagnostic & Specialish Doctors Consultation Centre",
+     "address": "BTI Landmark, Plot # 549/646, Wireless Moor, Zakir Hussain Road, West Khulshi, Chittagong – Bangladesh",
+     "phone": "+880312566134",
+     "email": "alishahdcc@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "Apex Diagnostic Services (pvt) Ltd.",
+     "address": "Holding No. 829/866 The Dawning A K Khan Circle Zakir Hossain Road Chittagong Bangladesh.",
+     "phone": "+880312516664",
+     "email": "service.apexdaignostic@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "Check Up Diagnostic Centre",
+     "address": "Rowshan Osman Heights ,Holding Number-812/823/824 A.K.Khan Circle, D.T Road , Pahartali, Chattogram ,Bangladesh",
+     "phone": "+8802333333830",
+     "email": "checkup132@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "Chittagong Healthcare",
+     "address": "Amity Caview Islam Tower, 3rd Floor (Level-3) 1705/B, Chuna Factory Moor, Atillery Road, Halishahar, Chittagong, Bangladesh.",
+     "phone": "+88033337860",
+     "email": "chittagonghealthcare@gmail.com",
+     "website": "https://chittagonghealthcare.com"
+    },
+    {
+     "name": "FENI HEALTH CARE",
+     "address": "Total Tower, New Monsurabad, Ferozshah H/A Cornelhat, Chittagong",
+     "phone": "+8802222225639",
+     "email": "fenihealthcarectg2024@gmail.com",
+     "website": "https://fenihealthcare.com"
+    },
+    {
+     "name": "Ferdous Medical Centre",
+     "address": "Chawk Bazar, Chattogram, Chattogram District, Chattogram Division, 4208, Bangladesh 7, Katalgonj, Panchlaish",
+     "phone": "+8802334451710",
+     "email": "kaderdxb007@gmail.com",
+     "website": "https://www.idolgroup.com.bd/concerns/ferdousMedical"
+    },
+    {
+     "name": "Green Crescent Medical Diagnostic",
+     "address": "Khan Plaza, Commercial Tower 13th Floor, 1407 Sk Mujib Road, Agrabad, Chattogram",
+     "phone": "+88031656524",
+     "email": "gchslab@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "Human Diagnostic and Medical Check up Center",
+     "address": "Plot No. 4, Block – K, P. C. Road, Halishahar, Chittagong – Bangladesh",
+     "phone": "+88312522745",
+     "email": "hdmc@f-lix.net",
+     "website": ""
+    },
+    {
+     "name": "INNOVATIVE HEALTH CARE",
+     "address": "993/2121, Argabad Access Road, Block L, Chattogram",
+     "phone": "+8801766667282",
+     "email": "masudzadid@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "KRBR MEDICAL",
+     "address": "H&M TOWER (5th Floor) 23, Agrabad Commercial Area, Sheikh Mujib Road, Chattogram. 01713-079619",
+     "phone": "+8801710958957",
+     "email": "krbrmedical@gmail.com",
+     "website": "https://krbrmedical.com"
+    },
+    {
+     "name": "Medical Centre",
+     "address": "953, OR Nizam Road, Nasirabad, Chattogram, Chattogram District, Chittagong Division, 4200, Bangladesh Panchlaish",
+     "phone": "+8801816155378",
+     "email": "medicalcentrebd@gmail.com",
+     "website": "http://www.medicalcentrectg.com"
+    },
+    {
+     "name": "Medical Point Diagnostic Center",
+     "address": "607/C, Acia Complex 1st Floor(opposite of Foy’s Lake Ticket Counter ), Foy’s Lake, Chattogram. Bangladesh.",
+     "phone": "+8802334466345",
+     "email": "medicalpointdc@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "Medicare Medical Check-up Centre",
+     "address": "IIUC Tower, Plot # 9, Agrabad C/A, Sk. Mujib Road, Chittagong – Bangladesh",
+     "phone": "0088031712493",
+     "email": "Info@medicaremedicalbd.com",
+     "website": ""
+    },
+    {
+     "name": "PORT CITY MEDICAL SERVICE",
+     "address": "SK Tower (1st floor), Kamal Bazar, (Opposite of Bashir Tower) Mohora, Kalurghat road, Chandgaon,Chattogram. 01713-079623",
+     "phone": "+8801710958957",
+     "email": "portcitymedicalservice@gmail.com",
+     "website": "https://portcm.com"
+    },
+    {
+     "name": "Sunway Medical Centre",
+     "address": "Fatema Heights 16, Agrabad C/A, Chittagong.",
+     "phone": "02333315300",
+     "email": "sunway_medical@yahoo.com",
+     "website": ""
+    },
+    {
+     "name": "The Urbane Clinical Services",
+     "address": "341/A, Heaven Hossain Complex, (Be Side Al Amin Hospital) Zakir Hossain Road, A K Khan Circle, Chattogram. +8801894965853",
+     "phone": "+01717378800",
+     "email": "Urbaneclinic@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "TIMES BANGLADESH",
+     "address": "H&M TOWER (3rd Floor) 23, Agrabad Commercial Area, Sheikh Mujib Road, Chattogram. 01713-079620",
+     "phone": "+8801777777750",
+     "email": "timesbangladesh6@gmail.com",
+     "website": "https://times-bangladesh.com"
+    }
+   ]
+  },
+  {
+   "slug": "sherpur",
+   "name": "শেরপুর",
+   "count": 18,
+   "index": true,
+   "centres": [
+    {
+     "name": "ACTUAL MEDICAL NETWORK",
+     "address": "Nawhata,Sherpur Town Sherpur",
+     "phone": "+8801714103747",
+     "email": "actualmednet2@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "Al-Khalez Medical Center",
+     "address": "Saudia Bhawan, Holding # 0225-09, New Bus Terminal Gouripur, Sherpur Town, Sherpur",
+     "phone": "+8801935902252",
+     "email": "salmasharif013@gmail.com",
+     "website": "https://al-khalezmedicalcenter.com"
+    },
+    {
+     "name": "ALABEER MEDICAL CENTER",
+     "address": "ISIBPUR, THANA ROAD, NAKLA, SHERPUR.",
+     "phone": "+8801806968929",
+     "email": "alabeermedicalcenter73@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "AQSA HEALTH CARE",
+     "address": "Shah Jamal Moriom Complex. ile:ar Market More,Roghunath Bazar, Sherpur town Sherpur",
+     "phone": "+8802222225639",
+     "email": "afadalsaud@gmail.com",
+     "website": "https://aqsahealthcare.com/"
+    },
+    {
+     "name": "BENGAL MEDICAL CENTER",
+     "address": "ABRAR PLAZA ,GAURIPUR, SHERPUR TOWN, SHERPUR,BANGLADESH. 01339-651406",
+     "phone": "+8802222225639",
+     "email": "bengalmedicalcenter@gmail.com",
+     "website": "https://bengalmedicalcenter.com/"
+    },
+    {
+     "name": "Corporate Health Checkup",
+     "address": "Tarakandi Bazar, Rampur, Sherpur Sadar, Sherpur.",
+     "phone": "+8801718500221",
+     "email": "corporatehealthcheckup@gmail.com",
+     "website": "https://corporatehealthcheckup.org"
+    },
+    {
+     "name": "Faith Medical Centre",
+     "address": "Holding No-78, Shajbarkhila, Sherpur Sadar, Sherpur-2100",
+     "phone": "+8801321176061",
+     "email": "faithmedicalcentrebd@gmail.com",
+     "website": "https://faithmedicalbd.com/"
+    },
+    {
+     "name": "FREEDOM HEALTH CENTER",
+     "address": "Paddamoni Complex, Tera Bazar, Sherpur Sadar, Sherpur.",
+     "phone": "+02222225639",
+     "email": "freedomhealthcenter24@gmail.com",
+     "website": "http://freedomhealthcenterbd.com"
+    },
+    {
+     "name": "Infinity Lab",
+     "address": "LB Market, Tarakandi Bazar, Rampur Sherpur Sadar, Sherpur",
+     "phone": "+8801612031987",
+     "email": "khurshid170@gmail.com",
+     "website": "https://infinitylab.dev"
+    },
+    {
+     "name": "IRFAN MEDICAL & DIAGNOSTIC CENTRE",
+     "address": "Sherpur, Sherpur Sadar Upazila, Sherpur District, Mymensingh Division, 2100, Bangladesh",
+     "phone": "+8801339460501",
+     "email": "irfanmedicalsherpur@gmail.com",
+     "website": "http://www.irfanmedicalimdc.com"
+    },
+    {
+     "name": "LABCLOUD",
+     "address": "Hazi Siddiq Villa, Kasba, Kacharipara, Sherpur Sadar, Sherpur, Bangladesh. 01713-079614",
+     "phone": "+8801710958957",
+     "email": "labcloud3@gmail.com",
+     "website": "http://labcloudbd.com"
+    },
+    {
+     "name": "Royal Medical Center",
+     "address": "Holding # 6009 , Gouripur Sherpur Town, Sherpur",
+     "phone": "+8801804756049",
+     "email": "royalmedicalcenter73@gmail.com",
+     "website": "https://royalmedicalcenter.net"
+    },
+    {
+     "name": "Sherpur Medical Point",
+     "address": "Ozufa Villa, 319/5, Bagrakosa, Sherpur Sadar, Sherpur District, Mymensingh Division, 2100, Bangladesh",
+     "phone": "+8801329692744",
+     "email": "sherpurmedicalpoint@gmail.com",
+     "website": "http://sherpurmedicalpoint.com"
+    },
+    {
+     "name": "SKY LAB",
+     "address": "MOSTAFA PLAZA 1ST FLOOR, THANA ROAD NAKLA, SHERPUR",
+     "phone": "+8802222225639",
+     "email": "Skylab24medical@gmail.com",
+     "website": "https://skylabbd.com"
+    },
+    {
+     "name": "Talukder Medical and Diagnostic Center",
+     "address": "392/01, Ward No- 05, Shahid Shajahan Super Market, Thana Road, Nakla, Sherpur-2150 . Call: +88 01322214428",
+     "phone": "+8801713005037",
+     "email": "pnecod@gmail.com",
+     "website": "http://www.talukdermedical.com"
+    },
+    {
+     "name": "Tanjim Medical Center",
+     "address": "Pervez Tower (1st Floor), South side of Rangmahal, Sajbarkhila Sherpur City, Sherpur-2100.",
+     "phone": "+8801810020465",
+     "email": "tanjimmedicalcenter@gmail.com",
+     "website": "https://tanjimmedicalcenter.com"
+    },
+    {
+     "name": "URBAN MEDICAL CENTER",
+     "address": "Elias Plaza,Rogunath Bazar Sherpur Town,Sherpur",
+     "phone": "+8801795989899",
+     "email": "urbanmedcentre@gmail.com",
+     "website": "http://urbanmedicalbd.com"
+    },
+    {
+     "name": "ZOBEDA SAMAD DIAGNOSTIC CENTER",
+     "address": "182/16 Shajabarkhila",
+     "phone": "+8801670508041",
+     "email": "shuvosar2018@gmail.com",
+     "website": "https://zobedasamaddiagnosticcenter.com/"
+    }
+   ]
+  },
+  {
+   "slug": "sylhet",
+   "name": "সিলেট",
+   "count": 16,
+   "index": true,
+   "centres": [
+    {
+     "name": "A. Rahman Medical Center",
+     "address": "Averest Center, 1st Floor, Noberun-71, Sahajalalupshar Road, Sylhet – Bangladesh",
+     "phone": "+880821760841",
+     "email": "arahmanmc17@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "ABC Diagnostic Center",
+     "address": "Chowhatta Sylhet",
+     "phone": "+0821721725",
+     "email": "abcdiagnosticcentre@yahoo.com",
+     "website": ""
+    },
+    {
+     "name": "AL ABDULLAH HEALTH CARE",
+     "address": "Mira Garden, Mira Tower, Mira Bazar, (2nd Floor) kotwali, Sylhet. 01713-079622",
+     "phone": "+8801711712504",
+     "email": "alabdullahhealth@gmail.com",
+     "website": "http://www.alabdullahhealthcare.com"
+    },
+    {
+     "name": "AL IMRAN MEDICAL CENTRE",
+     "address": ": Shamim Plaza, 17 Onamika (2nd Floor) South Shahi Eidgah Road Kotwali",
+     "phone": "+8801710958957",
+     "email": "alimranmedicalcentre@gmail.com",
+     "website": "http://WWW.ALIMRANMEDICALCENTRE"
+    },
+    {
+     "name": "AL WASIF MEDICARE",
+     "address": "Merchant Tower, East Mira Bazar, Kotwali",
+     "phone": "+8801974103747",
+     "email": "alwasifmedicare@gmail.com",
+     "website": "http://WWW.ALWASIFMEDICARE.COM.BD"
+    },
+    {
+     "name": "Al-Hamad Medical Centre Ltd",
+     "address": "Malik House, Waivs / 86 Amberkhana - Sylhet",
+     "phone": "+821717279",
+     "email": "hamadsylhet@alhamadmedical.com",
+     "website": ""
+    },
+    {
+     "name": "Al-Khaled Medical Services",
+     "address": "Mouban (Ground Floor), Sobhani Ghat, Sylhet – Bangladesh",
+     "phone": "+8802996638622",
+     "email": "alkhaledsylhet@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "ALIFA DIAGNOSTIC MEDICAL CENTER",
+     "address": "4 MOUBAN, 1ST FLOOR, SUBHANIGHAT, SYLHET 3100",
+     "phone": "+8801821153137",
+     "email": "alifamedicalcenter@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "Green Crescent Medilab",
+     "address": "Time Square, Shibgonj Upzela, Sonapara, Sylhet, Bangladesh",
+     "phone": "+8802760601",
+     "email": "gchslab@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "Healthfirst Medical Centre",
+     "address": "Kumarpara, Sylhet",
+     "phone": "+2996638595",
+     "email": "healthfirstbd@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "HI-TECH MEDICAL SERVICES",
+     "address": "Airport Rd, Sylhet, Sylhet Sadar Upazila, Sylhet District, Sylhet Division, 3100, Bangladesh Airport Road, Amberkhana",
+     "phone": "+8801714608195",
+     "email": "akramhossainjbmc@gmail.com",
+     "website": "https://hi-techmedicalservices.site/"
+    },
+    {
+     "name": "Hillview Medical Centre",
+     "address": "Holding No: 0783-00, Ward No: 04, Airport Road, Mojumdari, Kotwali, Sylhet-3100",
+     "phone": "+8801321176550",
+     "email": "hillviewmedicalcantrebd@gmail.com",
+     "website": "https://hillviewmedicalcantrebd.com/"
+    },
+    {
+     "name": "J B Medical Center Ltd",
+     "address": "House-40/1, Nabarun, Khan Complex, Upashahar Main Road, Sylhet, Bangladesh",
+     "phone": "+880821761196",
+     "email": "info@jbmedicalbd.com",
+     "website": ""
+    },
+    {
+     "name": "Medinova Medical Services",
+     "address": "29, Excel tower (Ground & first Floor) Subidh bazaar, Sunamgonj Road, Sylhet 3100 – Bangladesh",
+     "phone": "8801671012941",
+     "email": "info@medinovasylhet.com",
+     "website": ""
+    },
+    {
+     "name": "NUSAYEB HEALTH CARE",
+     "address": "Mira Garden, Mira Tower, Mira Bazar, (1st Floor) kotwali, Sylhet. 01713-079621",
+     "phone": "+8801711712504",
+     "email": "nusayebhealthcare@gmail.com",
+     "website": "http://www.nusayebhealthcare.com"
+    },
+    {
+     "name": "Sylhet City Medical Centre",
+     "address": "House # 79, Road # 3, Block # E, Uposhahar, Sylhet – Bangladesh",
+     "phone": "+880821719494",
+     "email": "info@sylhetcitymedicalbd.com",
+     "website": ""
+    }
+   ]
+  },
+  {
+   "slug": "chandpur",
+   "name": "চাঁদপুর",
+   "count": 11,
+   "index": true,
+   "centres": [
+    {
+     "name": "Al-Amar Medical Centre",
+     "address": "Holding No-0397-00, Bhuiyan Manson, Warless Bazar, Faridganj Road, Chandpur",
+     "phone": "+8801958692877",
+     "email": "alamarmedicalbd@gmail.com",
+     "website": "https://Al-Amarmedicalcentrebd.com/"
+    },
+    {
+     "name": "CHANDPUR MEDICAL POINT",
+     "address": "0499-05, Techno Vally (1st Floor), Chairman Ghat, Chandpur Sadar, Chandpur",
+     "phone": "+8801329692743",
+     "email": "chandpurmp.2024@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "FAMOUS MEDICAL CENTER",
+     "address": "246, Ziku Tower, Comilla Road, Chandpur.",
+     "phone": "+8801614757307",
+     "email": "famousmedicalcp@gmail.com",
+     "website": "https://famousmedical.com/"
+    },
+    {
+     "name": "FORTUNE MEDICAL CENTER",
+     "address": "716 Abdul Karim Patwary Road, Chandpur Sadar, Chandpur.",
+     "phone": "+8802222225639",
+     "email": "fortunemedicalcenter2025@gmail.com",
+     "website": "https://fortunemedicalcenter.com"
+    },
+    {
+     "name": "Green Diagnostic Centre",
+     "address": "Shahid Muktijoddha Road, Bara Station, Puran Bazar, Chandpur, Chandpur Sadar Upazila, Chandpur District, Chattogram Division, 3601, Bangladesh Chandpur",
+     "phone": "+8801913662687",
+     "email": "greendiagnosticchandpur@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "INSHIRAH MEDICAL",
+     "address": "BS plot No. 322, Techno Valley, Chairman Ghat, Chandpur Sadar, Chandpur",
+     "phone": "+8801711372496",
+     "email": "inshirahmedical2@gmail.com",
+     "website": "https://inshirahmedical.com"
+    },
+    {
+     "name": "LIFETECH MEDICAL",
+     "address": "Chairman Ghat Chandpur Sadar, Chandpur",
+     "phone": "+8801974103747",
+     "email": "lifetechmedical2@gmail.com",
+     "website": "https://lifetechmedical.com"
+    },
+    {
+     "name": "SMART MEDICAL & DIAGNOISTIC CENTRE",
+     "address": "Cumilla Road, Sholaghar, Chandpur, Chandpur Sadar Upazila, Chandpur District, Chittagong Division, 3602, Bangladesh",
+     "phone": "+8801339411459",
+     "email": "smartmedicalchandpur@gmail.com",
+     "website": "http://www.smartmedicalsmdc.com"
+    },
+    {
+     "name": "TAQDIR MEDICAL CENTER",
+     "address": "Najma Plaza (2nd Floor), Chankhar Dokan, Ashikathi 02 No. Union, (Cumilla Road) Chandpur Sadar, Chandpur.",
+     "phone": "+8801810020454",
+     "email": "taqdirmedicalcenter@gmail.com",
+     "website": "https://www.taqdirmedicalcenter.com"
+    },
+    {
+     "name": "TRAVELLERS HEALTH CENTER",
+     "address": "Holding No. 280, Cumilla Road, Chandpur sadar, Chandpur Chandpur, Bangladesh",
+     "phone": "+8802222225639",
+     "email": "travellershealthcenter@gmail.com",
+     "website": "https://www.travellershealthcenter.com/"
+    },
+    {
+     "name": "WELLNESS MEDICAL CENTER",
+     "address": "CHANDPUR SADAR CHANDPUR",
+     "phone": "+8801711372496",
+     "email": "wellnessmedicalcenter2@gmail.com",
+     "website": "http://wellnessmcc.com"
+    }
+   ]
+  },
+  {
+   "slug": "cumilla",
+   "name": "কুমিল্লা",
+   "count": 5,
+   "index": true,
+   "centres": [
+    {
+     "name": "Jeeshan Check-up Services",
+     "address": "German House , Medical Collage Road , Adarsha Sadar, Comilla, Bangladesh.",
+     "phone": "+8801894965875",
+     "email": "jeeshancheckup@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "Medi Check Medical Service Limited",
+     "address": "Civic Square, House 1031-1033, Jhawtala, Cumilla Adarsha Sadar, Cumilla 3500.",
+     "phone": "+8801898 207841",
+     "email": "directors.medicheck@gmail.com",
+     "website": "http://www.medicheckbd.com/"
+    },
+    {
+     "name": "Reda Hamzah Diagnostic",
+     "address": "Holding # 557, Road # Laksam Road, Hakim Plaza, Paduar Bazar, Bishwaroad, Cumilla",
+     "phone": "+880258817560",
+     "email": "redahamzah2022@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "Tabuk Medical Center",
+     "address": "Holding # 3/6, HK Tower, Laksham Road, Kachua Ahmed Nagar, Sadar Dakshin",
+     "phone": "+8809613660404",
+     "email": "tabukmedicalcenter@gmail.com",
+     "website": "http://tabukmedical.com"
+    },
+    {
+     "name": "TRUST MEDICAL & DIAGNOSTIC CENTER",
+     "address": "4/5 NAJRUL AVENUE MAIN ROAD, JOINT LIFE S.S GARDEN ASHOKTOLA,",
+     "phone": "+8801762696004",
+     "email": "tmdc1064@gmail.com",
+     "website": "https://TMADC.COM"
+    }
+   ]
+  },
+  {
+   "slug": "barishal",
+   "name": "বরিশাল",
+   "count": 2,
+   "index": false,
+   "centres": [
+    {
+     "name": "Alif Check-up Services",
+     "address": "Nexus Monjur tower (1st floor), Major M A Jalil Road ( in front of govt. Hatim ali College), Chowmatha,Barisal.",
+     "phone": "+8802478861778",
+     "email": "alifcheckup@gmail.com",
+     "website": ""
+    },
+    {
+     "name": "Yaqeen Medical Centre",
+     "address": "Kalish Chandra Road, Barisal Main PS, Barisal, Bangladesh",
+     "phone": "+8801886062032",
+     "email": "drzhaq62@gmail.com",
+     "website": "https://yaqeenmedicalcentre.com/"
+    }
+   ]
+  },
+  {
+   "slug": "coxs-bazar",
+   "name": "কক্সবাজার",
+   "count": 2,
+   "index": false,
+   "centres": [
+    {
+     "name": "AL MAN MEDICAL CENTER",
+     "address": "1709/15, Shaheda Complex, (Near Sadar Upazila) Cox's Bazar",
+     "phone": "+8809613660460",
+     "email": "almanmedicalcenter@gmail.com",
+     "website": "http://almanmedical.com"
+    },
+    {
+     "name": "Shouq Medical Point",
+     "address": "World Beach Resort ,(1st Floor),Kolatoli Circle, Coxs Bazar,Bangladesh.",
+     "phone": "+8801894965874",
+     "email": "shouqmccox@gmail.com",
+     "website": ""
+    }
+   ]
+  },
+  {
+   "slug": "rajshahi",
+   "name": "রাজশাহী",
+   "count": 2,
+   "index": false,
+   "centres": [
+    {
+     "name": "AL ALI DIAGNOSTIC CENTER",
+     "address": "208, Sochho Tower, Shekherchok Ghoramara, Boalia",
+     "phone": "+8809613660760",
+     "email": "alalidiagnosticcenter@gmail.com",
+     "website": "http://alalidiagnostic.com"
+    },
+    {
+     "name": "AL- NAHIYAN DIAGNOSTIC & MEDICAL SERVICES",
+     "address": "AD Complex (1st Floor), Gonokpara Shaheb Bazar Word No.12, Boalia, Rajshahi",
+     "phone": "+8801915894704",
+     "email": "salmasharif013@gmail.com",
+     "website": "http://alnahiyanmedical.com/"
+    }
+   ]
+  }
+ ]
+}

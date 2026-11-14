@@ -1,0 +1,937 @@
+{
+ "updated": "2026-11-14",
+ "verified": "2026-10-08",
+ "existing": [
+  {
+   "slug": "saudi-arabia",
+   "name": "সৌদি আরব",
+   "url": "https://probashiinfo.com/se-di-bhisaa-cek-2026-paaspeaartt-diye-shj-niym/"
+  },
+  {
+   "slug": "uae",
+   "name": "দুবাই / আমিরাত",
+   "url": "https://probashiinfo.com/dubaai-bhisaa-cek-2026-paaspeaartt-nmbr-diye-shj-niym/"
+  },
+  {
+   "slug": "kuwait",
+   "name": "কুয়েত",
+   "url": "https://probashiinfo.com/kuyet-bhisaa-cek-2026-paaspeaartt-naambaare-shj-yaacaai-niym/"
+  },
+  {
+   "slug": "qatar",
+   "name": "কাতার",
+   "url": "https://probashiinfo.com/kaataar-bhisaa-cek-2026-paaspeaartt-naambaar-diye-anlaaine-shj-gaaidd/"
+  },
+  {
+   "slug": "malaysia",
+   "name": "মালয়েশিয়া",
+   "url": "https://probashiinfo.com/maalyeshiyaa-bhisaa-cek-2026-paaspeaartt-naambaar-diye-shj-upaay/"
+  }
+ ],
+ "countries": [
+  {
+   "slug": "oman",
+   "iso2": "om",
+   "name": "ওমান",
+   "region": "Gulf",
+   "kind": "form",
+   "portal": "Royal Oman Police — eVisa",
+   "url": "https://evisa.rop.gov.om",
+   "also": "",
+   "need": [
+    "আবেদন নম্বর বা ভিসা নম্বর",
+    "পাসপোর্ট নম্বর"
+   ],
+   "note": "ওমানের কাজের ভিসা (এমপ্লয়মেন্ট ভিসা) ও ই-ভিসা দুটোই রয়্যাল ওমান পুলিশের (ROP) ই-ভিসা পোর্টালে দেখা যায়। নিয়োগকর্তা ভিসা করলে তার কাছ থেকে ভিসা/আবেদন নম্বর নিয়ে নিন।",
+   "steps": [
+    "ব্রাউজারে লিখুন evisa.rop.gov.om — ঠিকানাটি অক্ষরে অক্ষরে মিলিয়ে নিন (গুগলের বিজ্ঞাপনের লিংক নয়)।",
+    "পেজে স্ট্যাটাস দেখার অপশন খুঁজুন — ইংরেজিতে সাধারণত 'Check status', 'Track application' বা 'Inquiry' লেখা থাকে।",
+    "ফর্মে দিন: আবেদন নম্বর বা ভিসা নম্বর, পাসপোর্ট নম্বর। পাসপোর্টে যেমন আছে ঠিক তেমন বানানে লিখুন।",
+    "ছবির মতো দেখতে কোড (ক্যাপচা) থাকলে সেটি লিখে 'Search' বা 'Submit' চাপুন।",
+    "ফলাফলে আবেদনের অবস্থা দেখাবে। অনুমোদিত হলে ভিসার PDF ডাউনলোড বা প্রিন্ট করে রাখুন।"
+   ],
+   "source": "Royal Oman Police — eVisa — https://evisa.rop.gov.om",
+   "related": [
+    {
+     "title": "ওমান ওয়ার্ক ভিসা ২০২৬: নিয়ম, বেতন ও খরচের গাইড",
+     "url": "https://probashiinfo.com/omaan-oyaark-bhisaa-2026-niym-betn-o-khrcer-gaaidd/"
+    },
+    {
+     "title": "ওমান বনাম সৌদি আরব ২০২৬: সঞ্চয়ের সেরা তুলনা – কত টাকা বাঁচবেন?",
+     "url": "https://probashiinfo.com/omaan-bnaam-se-di-aarb-2026-snycyer-seraa-tulnaa-kt-ttaakaa-baancben/"
+    }
+   ]
+  },
+  {
+   "slug": "bahrain",
+   "iso2": "bh",
+   "name": "বাহরাইন",
+   "region": "Gulf",
+   "kind": "form",
+   "portal": "Kingdom of Bahrain eVisa",
+   "url": "https://www.evisa.gov.bh",
+   "also": "",
+   "need": [
+    "আবেদনের রেফারেন্স নম্বর",
+    "পাসপোর্ট নম্বর"
+   ],
+   "note": "বাহরাইনের ই-ভিসা পোর্টালে আবেদনের সময় পাওয়া রেফারেন্স নম্বর দিয়ে স্ট্যাটাস দেখা যায়। কাজের ভিসার কাগজ নিয়োগকর্তা/এলএমআরএ-এর মাধ্যমে হয়, তাই রেফারেন্স নম্বর নিয়োগকর্তার কাছ থেকে চেয়ে নিন।",
+   "steps": [
+    "ব্রাউজারে লিখুন www.evisa.gov.bh — ঠিকানাটি অক্ষরে অক্ষরে মিলিয়ে নিন (গুগলের বিজ্ঞাপনের লিংক নয়)।",
+    "পেজে স্ট্যাটাস দেখার অপশন খুঁজুন — ইংরেজিতে সাধারণত 'Check status', 'Track application' বা 'Inquiry' লেখা থাকে।",
+    "ফর্মে দিন: আবেদনের রেফারেন্স নম্বর, পাসপোর্ট নম্বর। পাসপোর্টে যেমন আছে ঠিক তেমন বানানে লিখুন।",
+    "ছবির মতো দেখতে কোড (ক্যাপচা) থাকলে সেটি লিখে 'Search' বা 'Submit' চাপুন।",
+    "ফলাফলে আবেদনের অবস্থা দেখাবে। অনুমোদিত হলে ভিসার PDF ডাউনলোড বা প্রিন্ট করে রাখুন।"
+   ],
+   "source": "Kingdom of Bahrain eVisa — https://www.evisa.gov.bh",
+   "related": [
+    {
+     "title": "বাহরাইন ওয়ার্ক ভিসা ২০২৬: বেতন, নিয়ম ও খরচ (সম্পূর্ণ গাইড)",
+     "url": "https://probashiinfo.com/baahraain-oyaark-bhisaa-2026-betn-niym-o-khrc-smpuurnn-gaaidd/"
+    }
+   ]
+  },
+  {
+   "slug": "singapore",
+   "iso2": "sg",
+   "name": "সিঙ্গাপুর",
+   "region": "Asia",
+   "kind": "form",
+   "portal": "Ministry of Manpower — check work pass status",
+   "url": "https://www.mom.gov.sg",
+   "also": "Visit visas: ICA (ica.gov.sg)",
+   "need": [
+    "পাসপোর্ট নম্বর",
+    "জন্ম তারিখ",
+    "আবেদন নম্বর বা FIN নম্বর"
+   ],
+   "note": "সিঙ্গাপুরে ওয়ার্ক পারমিট ও এস পাস দেখা হয় শ্রম মন্ত্রণালয়ের (MOM) সাইটে, আর ভ্রমণ ভিসা দেখা হয় ICA-র সাইটে (ica.gov.sg)। ইন-প্রিন্সিপাল অ্যাপ্রুভাল (IPA) চিঠি পেলে তার নম্বর মিলিয়ে নিন।",
+   "steps": [
+    "ব্রাউজারে লিখুন www.mom.gov.sg — ঠিকানাটি অক্ষরে অক্ষরে মিলিয়ে নিন (গুগলের বিজ্ঞাপনের লিংক নয়)।",
+    "পেজে স্ট্যাটাস দেখার অপশন খুঁজুন — ইংরেজিতে সাধারণত 'Check status', 'Track application' বা 'Inquiry' লেখা থাকে।",
+    "ফর্মে দিন: পাসপোর্ট নম্বর, জন্ম তারিখ, আবেদন নম্বর বা FIN নম্বর। পাসপোর্টে যেমন আছে ঠিক তেমন বানানে লিখুন।",
+    "ছবির মতো দেখতে কোড (ক্যাপচা) থাকলে সেটি লিখে 'Search' বা 'Submit' চাপুন।",
+    "ফলাফলে আবেদনের অবস্থা দেখাবে। অনুমোদিত হলে ভিসার PDF ডাউনলোড বা প্রিন্ট করে রাখুন।"
+   ],
+   "source": "Ministry of Manpower — check work pass status — https://www.mom.gov.sg",
+   "related": [
+    {
+     "title": "সিঙ্গাপুর ওয়ার্ক ভিসা ২০২৬: নতুন নিয়ম ও বেতন সম্পূর্ণ গাইড",
+     "url": "https://probashiinfo.com/singgaapur-oyaark-bhisaa-2026-ntun-niym-betn-o-aabedn/"
+    },
+    {
+     "title": "সিঙ্গাপুরে বাংলাদেশি শ্রমিকের বেতন ২০২৬: সঞ্চয় হিসাব",
+     "url": "https://probashiinfo.com/singgaapure-baanlaadeshi-shrmiker-betn-2026-snycy-hisaab/"
+    }
+   ]
+  },
+  {
+   "slug": "south-korea",
+   "iso2": "kr",
+   "name": "দক্ষিণ কোরিয়া",
+   "region": "Asia",
+   "kind": "form",
+   "portal": "Korea Visa Portal",
+   "url": "https://www.visa.go.kr",
+   "also": "",
+   "need": [
+    "পাসপোর্ট নম্বর",
+    "ইংরেজিতে নাম (পাসপোর্টের মতো)",
+    "জন্ম তারিখ"
+   ],
+   "note": "কোরিয়া ভিসা পোর্টালের 'Check application status' অংশে পাসপোর্ট নম্বর, ইংরেজি নাম ও জন্ম তারিখ দিলে আবেদনের অবস্থা দেখা যায়। ইপিএস কর্মীদের ভিসা প্রক্রিয়া বোয়েসেল (BOESL) হয়ে হয় — দালালের কাছে টাকা দেবেন না।",
+   "steps": [
+    "ব্রাউজারে লিখুন www.visa.go.kr — ঠিকানাটি অক্ষরে অক্ষরে মিলিয়ে নিন (গুগলের বিজ্ঞাপনের লিংক নয়)।",
+    "পেজে স্ট্যাটাস দেখার অপশন খুঁজুন — ইংরেজিতে সাধারণত 'Check status', 'Track application' বা 'Inquiry' লেখা থাকে।",
+    "ফর্মে দিন: পাসপোর্ট নম্বর, ইংরেজিতে নাম (পাসপোর্টের মতো), জন্ম তারিখ। পাসপোর্টে যেমন আছে ঠিক তেমন বানানে লিখুন।",
+    "ছবির মতো দেখতে কোড (ক্যাপচা) থাকলে সেটি লিখে 'Search' বা 'Submit' চাপুন।",
+    "ফলাফলে আবেদনের অবস্থা দেখাবে। অনুমোদিত হলে ভিসার PDF ডাউনলোড বা প্রিন্ট করে রাখুন।"
+   ],
+   "source": "Korea Visa Portal — https://www.visa.go.kr",
+   "related": [
+    {
+     "title": "দক্ষিণ কোরিয়া ইপিএস ভিসা ২০২৬: বেতন, নিয়ম ও আবেদন গাইড",
+     "url": "https://probashiinfo.com/dkssinn-keaariyaa-ipies-bhisaa-2026-betn-niym-o-aabedn-gaaidd/"
+    },
+    {
+     "title": "বাংলাদেশ থেকে দক্ষিণ কোরিয়া যাওয়ার উপায় ২০২৫: ভিসা ও চাকরির সুযোগ",
+     "url": "https://probashiinfo.com/bangladesh-to-south-korea-visa-jobs-2025/"
+    }
+   ]
+  },
+  {
+   "slug": "japan",
+   "iso2": "jp",
+   "name": "জাপান",
+   "region": "Asia",
+   "kind": "account",
+   "portal": "Japan eVISA (Ministry of Foreign Affairs)",
+   "url": "https://www.evisa.mofa.go.jp",
+   "also": "",
+   "need": [
+    "আবেদন নম্বর",
+    "পাসপোর্ট নম্বর"
+   ],
+   "note": "জাপানের ই-ভিসা (MOFA) পোর্টালে আবেদন করলে নিজের অ্যাকাউন্টে স্ট্যাটাস দেখা যায়। কাগজে আবেদন হলে দূতাবাস/ভিএফএস রসিদের নম্বর দিয়ে খোঁজ নিন।",
+   "steps": [
+    "ব্রাউজারে লিখুন www.evisa.mofa.go.jp — ঠিকানাটি অক্ষরে অক্ষরে মিলিয়ে নিন (গুগলের বিজ্ঞাপনের লিংক নয়)।",
+    "যে অ্যাকাউন্ট দিয়ে আবেদন করেছিলেন, সেটিতে 'Sign in' / 'Login' করুন (পাসওয়ার্ড কাউকে দেবেন না)।",
+    "অ্যাকাউন্টে আপনার আবেদনের তালিকা খুলুন। মিলিয়ে নিন: আবেদন নম্বর, পাসপোর্ট নম্বর।",
+    "আবেদনের পাশে লেখা অবস্থা (Status) দেখুন — নতুন বার্তা বা অতিরিক্ত কাগজ চাইলে সেখানেই জানানো হয়।",
+    "অনুমোদিত হলে ভিসা/অনুমতিপত্রের কপি ডাউনলোড করে রাখুন।"
+   ],
+   "source": "Japan eVISA (Ministry of Foreign Affairs) — https://www.evisa.mofa.go.jp",
+   "related": [
+    {
+     "title": "জাপান ওয়ার্ক ভিসা ২০২৬: নতুন নিয়ম, বেতন ও আবেদনের সম্পূর্ণ গাইড",
+     "url": "https://probashiinfo.com/jaapaan-oyaark-bhisaa-2026-ntun-niym-betn-o-aabedn-gaaidd/"
+    },
+    {
+     "title": "জাপান এসএসডালিউ ভিসা ২০২৬: বাংলাদেশির জন্য নিয়ম, খরচ ৩-৫ লাখ ও বেতন",
+     "url": "https://probashiinfo.com/jaapaan-esesddaaliu-bhisaa-2026-baanlaadeshir-niym-khrc-3-5-laakh-betn/"
+    }
+   ]
+  },
+  {
+   "slug": "turkey",
+   "iso2": "tr",
+   "name": "তুরস্ক",
+   "region": "Europe",
+   "kind": "form",
+   "portal": "Republic of Türkiye e-Visa",
+   "url": "https://www.evisa.gov.tr",
+   "also": "",
+   "need": [
+    "রেফারেন্স নম্বর",
+    "পাসপোর্ট নম্বর"
+   ],
+   "note": "তুরস্কের ই-ভিসা শুধু evisa.gov.tr থেকে নিন — একই রকম দেখতে অনেক ভুয়া সাইট বাড়তি টাকা নেয়। রেফারেন্স নম্বর ও পাসপোর্ট নম্বর দিয়ে স্ট্যাটাস ও ভিসার PDF পাওয়া যায়।",
+   "steps": [
+    "ব্রাউজারে লিখুন www.evisa.gov.tr — ঠিকানাটি অক্ষরে অক্ষরে মিলিয়ে নিন (গুগলের বিজ্ঞাপনের লিংক নয়)।",
+    "পেজে স্ট্যাটাস দেখার অপশন খুঁজুন — ইংরেজিতে সাধারণত 'Check status', 'Track application' বা 'Inquiry' লেখা থাকে।",
+    "ফর্মে দিন: রেফারেন্স নম্বর, পাসপোর্ট নম্বর। পাসপোর্টে যেমন আছে ঠিক তেমন বানানে লিখুন।",
+    "ছবির মতো দেখতে কোড (ক্যাপচা) থাকলে সেটি লিখে 'Search' বা 'Submit' চাপুন।",
+    "ফলাফলে আবেদনের অবস্থা দেখাবে। অনুমোদিত হলে ভিসার PDF ডাউনলোড বা প্রিন্ট করে রাখুন।"
+   ],
+   "source": "Republic of Türkiye e-Visa — https://www.evisa.gov.tr",
+   "related": []
+  },
+  {
+   "slug": "romania",
+   "iso2": "ro",
+   "name": "রোমানিয়া",
+   "region": "Europe",
+   "kind": "employer",
+   "portal": "Romanian eVisa portal (Ministry of Foreign Affairs)",
+   "url": "https://evisa.mae.ro",
+   "also": "Work permits: General Inspectorate for Immigration (igi.mai.gov.ro)",
+   "need": [
+    "আবেদন নম্বর",
+    "পাসপোর্ট নম্বর"
+   ],
+   "note": "রোমানিয়ায় আগে নিয়োগকর্তা ইমিগ্রেশন অফিস (IGI) থেকে ওয়ার্ক পারমিট (aviz de muncă) নেয়, তারপর দীর্ঘমেয়াদি ভিসার আবেদন রোমানিয়ার ই-ভিসা পোর্টালে ট্র্যাক করা যায়।",
+   "steps": [
+    "আগে নিয়োগকর্তার কাছ থেকে কাজের অনুমতির আবেদন নম্বর লিখিতভাবে নিন — এটা ছাড়া কোনো এজেন্টকে টাকা দেবেন না।",
+    "ব্রাউজারে লিখুন evisa.mae.ro — ঠিকানাটি অক্ষরে অক্ষরে মিলিয়ে নিন (গুগলের বিজ্ঞাপনের লিংক নয়)।",
+    "সেখানে স্ট্যাটাস দেখার অপশনে যান এবং দিন: আবেদন নম্বর, পাসপোর্ট নম্বর।",
+    "কাজের অনুমতি অনুমোদিত হলে তারপর দূতাবাস/ভিএফএসে ভিসার আবেদন হয়; সেই রসিদের নম্বর দিয়ে ভিসার অবস্থাও দেখুন।",
+    "অনুমোদনপত্র ও ভিসার কপি প্রিন্ট করে রাখুন — বিএমইটি ছাড়পত্রে লাগবে।"
+   ],
+   "source": "Romanian eVisa portal (Ministry of Foreign Affairs) — https://evisa.mae.ro",
+   "related": [
+    {
+     "title": "রোমানিয়া ওয়ার্ক ভিসা ২০২৬: বেতন, খরচ ও সহজ গাইড",
+     "url": "https://probashiinfo.com/reaamaaniyaa-oyaark-bhisaa-2026-betn-khrc-o-shj-gaaidd/"
+    },
+    {
+     "title": "রোমানিয়া ওয়ার্ক ভিসা ২০২৬: সেরা আবেদন ও খরচ নির্দেশিকা",
+     "url": "https://probashiinfo.com/romania-work-visa-application-cost-2026/"
+    }
+   ]
+  },
+  {
+   "slug": "serbia",
+   "iso2": "rs",
+   "name": "সার্বিয়া",
+   "region": "Europe",
+   "kind": "employer",
+   "portal": "Welcome to Serbia — Government portal for the single work & residence permit",
+   "url": "https://welcometoserbia.gov.rs",
+   "also": "Type D visa: Ministry of Foreign Affairs (mfa.gov.rs); e-Government: euprava.gov.rs",
+   "need": [
+    "আবেদন নম্বর",
+    "পাসপোর্ট নম্বর",
+    "নিয়োগকর্তা কোম্পানির নাম"
+   ],
+   "note": "২০২৪ থেকে সার্বিয়ায় নিয়োগকর্তা অনলাইনে একসাথে কাজ ও বসবাসের অনুমতি (সিঙ্গেল পারমিট) আবেদন করে; এর অবস্থা সরকারি 'Welcome to Serbia' পোর্টালে দেখা যায়।",
+   "steps": [
+    "আগে নিয়োগকর্তার কাছ থেকে কাজের অনুমতির আবেদন নম্বর লিখিতভাবে নিন — এটা ছাড়া কোনো এজেন্টকে টাকা দেবেন না।",
+    "ব্রাউজারে লিখুন welcometoserbia.gov.rs — ঠিকানাটি অক্ষরে অক্ষরে মিলিয়ে নিন (গুগলের বিজ্ঞাপনের লিংক নয়)।",
+    "সেখানে স্ট্যাটাস দেখার অপশনে যান এবং দিন: আবেদন নম্বর, পাসপোর্ট নম্বর, নিয়োগকর্তা কোম্পানির নাম।",
+    "কাজের অনুমতি অনুমোদিত হলে তারপর দূতাবাস/ভিএফএসে ভিসার আবেদন হয়; সেই রসিদের নম্বর দিয়ে ভিসার অবস্থাও দেখুন।",
+    "অনুমোদনপত্র ও ভিসার কপি প্রিন্ট করে রাখুন — বিএমইটি ছাড়পত্রে লাগবে।"
+   ],
+   "source": "Welcome to Serbia — Government portal for the single work & residence permit — https://welcometoserbia.gov.rs",
+   "related": [
+    {
+     "title": "বাংলাদেশ থেকে সার্বিয়া ওয়ার্ক পারমিট ভিসা: সম্পূর্ণ গাইডলাইন",
+     "url": "https://probashiinfo.com/bangladesh-to-serbia/"
+    },
+    {
+     "title": "সার্বিয়া কি ইউরোপ কান্ট্রি? ২০২৬‑এ বেতন ৫০,০০০ টাকা ও ভিসা গাইড",
+     "url": "https://probashiinfo.com/saarbiyaa-ki-iureaap-kaanttri-2026-saaler-stthik-tthy-o-betn/"
+    }
+   ]
+  },
+  {
+   "slug": "moldova",
+   "iso2": "md",
+   "name": "মলদোভা",
+   "region": "Europe",
+   "kind": "form",
+   "portal": "Republic of Moldova e-Visa (Ministry of Foreign Affairs)",
+   "url": "https://www.evisa.gov.md",
+   "also": "Work & residence permits: General Inspectorate for Migration (igm.gov.md)",
+   "need": [
+    "ই-ভিসা আবেদন নম্বর",
+    "পাসপোর্ট নম্বর"
+   ],
+   "note": "মলদোভার ভিসা ই-ভিসা পোর্টালে ট্র্যাক হয়; কাজের অনুমতি দেয় মাইগ্রেশন ইন্সপেক্টরেট (igm.gov.md)।",
+   "steps": [
+    "ব্রাউজারে লিখুন www.evisa.gov.md — ঠিকানাটি অক্ষরে অক্ষরে মিলিয়ে নিন (গুগলের বিজ্ঞাপনের লিংক নয়)।",
+    "পেজে স্ট্যাটাস দেখার অপশন খুঁজুন — ইংরেজিতে সাধারণত 'Check status', 'Track application' বা 'Inquiry' লেখা থাকে।",
+    "ফর্মে দিন: ই-ভিসা আবেদন নম্বর, পাসপোর্ট নম্বর। পাসপোর্টে যেমন আছে ঠিক তেমন বানানে লিখুন।",
+    "ছবির মতো দেখতে কোড (ক্যাপচা) থাকলে সেটি লিখে 'Search' বা 'Submit' চাপুন।",
+    "ফলাফলে আবেদনের অবস্থা দেখাবে। অনুমোদিত হলে ভিসার PDF ডাউনলোড বা প্রিন্ট করে রাখুন।"
+   ],
+   "source": "Republic of Moldova e-Visa (Ministry of Foreign Affairs) — https://www.evisa.gov.md",
+   "related": []
+  },
+  {
+   "slug": "north-macedonia",
+   "iso2": "mk",
+   "name": "উত্তর মেসিডোনিয়া",
+   "region": "Europe",
+   "kind": "embassy",
+   "portal": "Ministry of Foreign Affairs and Foreign Trade",
+   "url": "https://mfa.gov.mk",
+   "also": "Work permits: Employment Service Agency (av.gov.mk); residence: Ministry of Interior (mvr.gov.mk)",
+   "need": [
+    "দূতাবাসের রসিদ/আবেদন নম্বর",
+    "পাসপোর্ট নম্বর"
+   ],
+   "note": "উত্তর মেসিডোনিয়ার ভিসার কোনো পাবলিক অনলাইন ট্র্যাকার নেই। যে দূতাবাস/কনস্যুলেটে আবেদন করেছেন, রসিদ নম্বর দিয়ে তাদের কাছে খোঁজ নিন। ওয়ার্ক পারমিট নিয়োগকর্তাকে দেয় এমপ্লয়মেন্ট সার্ভিস এজেন্সি (av.gov.mk)।",
+   "steps": [
+    "এই দেশের ভিসার জন্য সরকারি কোনো অনলাইন ট্র্যাকার নেই।",
+    "যে দূতাবাস/কনস্যুলেটে আবেদন করেছেন, তাদের অফিসিয়াল ইমেইল বা ফোনে যোগাযোগ করুন এবং দিন: দূতাবাসের রসিদ/আবেদন নম্বর, পাসপোর্ট নম্বর।",
+    "দেশটির পররাষ্ট্র মন্ত্রণালয়ের সাইট (mfa.gov.mk) থেকে দূতাবাসের সঠিক ঠিকানা ও ইমেইল নিন।",
+    "কেউ 'অনলাইনে চেক করে দেব' বলে টাকা চাইলে সতর্ক থাকুন।"
+   ],
+   "source": "Ministry of Foreign Affairs and Foreign Trade — https://mfa.gov.mk",
+   "related": [
+    {
+     "title": "নর্থ মেসেডোনিয়া ভিসা গাইড ২০২৫: কীভাবে যাবেন, ভিসার ধরন ও প্রয়োজনীয় তথ্য",
+     "url": "https://probashiinfo.com/%e0%a6%a8%e0%a6%b0%e0%a7%8d%e0%a6%a5-%e0%a6%ae%e0%a7%87%e0%a6%b8%e0%a7%87%e0%a6%a1%e0%a7%8b%e0%a6%a8%e0%a6%bf%e0%a6%af%e0%a6%bc%e0%a6%be-%e0%a6%ad%e0%a6%bf%e0%a6%b8%e0%a6%be-%e0%a6%97%e0%a6%be/"
+    }
+   ]
+  },
+  {
+   "slug": "schengen-vfs",
+   "iso2": "eu",
+   "name": "ইউরোপ (শেনজেন, ভিএফএস)",
+   "region": "Europe",
+   "kind": "form",
+   "portal": "VFS Global — Track your application",
+   "url": "https://www.vfsglobal.com",
+   "also": "Some countries use TLScontact or BLS instead",
+   "need": [
+    "রসিদে থাকা রেফারেন্স নম্বর",
+    "পদবি (Last name) বা জন্ম তারিখ"
+   ],
+   "note": "ভিএফএস গ্লোবালের ট্র্যাকিং শুধু দেখায় আপনার পাসপোর্ট কোথায় আছে; ভিসা দেবে কি না সেই সিদ্ধান্ত দূতাবাসের। কিছু দেশ ভিএফএসের বদলে TLScontact বা BLS ব্যবহার করে — রসিদে যে প্রতিষ্ঠানের নাম আছে সেখানেই ট্র্যাক করুন।",
+   "steps": [
+    "ব্রাউজারে লিখুন www.vfsglobal.com — ঠিকানাটি অক্ষরে অক্ষরে মিলিয়ে নিন (গুগলের বিজ্ঞাপনের লিংক নয়)।",
+    "পেজে স্ট্যাটাস দেখার অপশন খুঁজুন — ইংরেজিতে সাধারণত 'Check status', 'Track application' বা 'Inquiry' লেখা থাকে।",
+    "ফর্মে দিন: রসিদে থাকা রেফারেন্স নম্বর, পদবি (Last name) বা জন্ম তারিখ। পাসপোর্টে যেমন আছে ঠিক তেমন বানানে লিখুন।",
+    "ছবির মতো দেখতে কোড (ক্যাপচা) থাকলে সেটি লিখে 'Search' বা 'Submit' চাপুন।",
+    "ফলাফলে আবেদনের অবস্থা দেখাবে। অনুমোদিত হলে ভিসার PDF ডাউনলোড বা প্রিন্ট করে রাখুন।"
+   ],
+   "source": "VFS Global — Track your application — https://www.vfsglobal.com",
+   "related": []
+  },
+  {
+   "slug": "uk",
+   "iso2": "gb",
+   "name": "যুক্তরাজ্য (ইউকে)",
+   "region": "UK & Americas",
+   "kind": "account",
+   "portal": "GOV.UK — UK Visas and Immigration",
+   "url": "https://www.gov.uk/visas-immigration",
+   "also": "UK Immigration: ID Check app / UKVI account",
+   "need": [
+    "GWF বা আবেদন রেফারেন্স নম্বর",
+    "আবেদনে দেওয়া ইমেইল"
+   ],
+   "note": "যুক্তরাজ্যের ভিসা এখন ই-ভিসা: আপনার UKVI অ্যাকাউন্টে স্ট্যাটাস ও ই-ভিসা দেখা যায়। আবেদনের GWF/রেফারেন্স নম্বর ও আবেদনে দেওয়া ইমেইল লাগবে।",
+   "steps": [
+    "ব্রাউজারে লিখুন www.gov.uk — ঠিকানাটি অক্ষরে অক্ষরে মিলিয়ে নিন (গুগলের বিজ্ঞাপনের লিংক নয়)।",
+    "যে অ্যাকাউন্ট দিয়ে আবেদন করেছিলেন, সেটিতে 'Sign in' / 'Login' করুন (পাসওয়ার্ড কাউকে দেবেন না)।",
+    "অ্যাকাউন্টে আপনার আবেদনের তালিকা খুলুন। মিলিয়ে নিন: GWF বা আবেদন রেফারেন্স নম্বর, আবেদনে দেওয়া ইমেইল।",
+    "আবেদনের পাশে লেখা অবস্থা (Status) দেখুন — নতুন বার্তা বা অতিরিক্ত কাগজ চাইলে সেখানেই জানানো হয়।",
+    "অনুমোদিত হলে ভিসা/অনুমতিপত্রের কপি ডাউনলোড করে রাখুন।"
+   ],
+   "source": "GOV.UK — UK Visas and Immigration — https://www.gov.uk/visas-immigration",
+   "related": [
+    {
+     "title": "যুক্তরাজ্য স্টুডেন্ট ভিসা ২০২৫: আবেদন, খরচ ও কাজের অনুমতি",
+     "url": "https://probashiinfo.com/uk-student-visa-2025-application-cost-work-permit/"
+    }
+   ]
+  },
+  {
+   "slug": "usa",
+   "iso2": "us",
+   "name": "আমেরিকা (যুক্তরাষ্ট্র)",
+   "region": "UK & Americas",
+   "kind": "form",
+   "portal": "CEAC — Visa Status Check (U.S. Department of State)",
+   "url": "https://ceac.state.gov",
+   "also": "",
+   "need": [
+    "অ্যাপ্লিকেশন আইডি বা কেস নম্বর",
+    "যে দূতাবাসে আবেদন করেছেন (ঢাকা)"
+   ],
+   "note": "আমেরিকার ভিসার স্ট্যাটাস দেখা যায় CEAC সাইটে। 'Refused' লেখা থাকলে সঙ্গে 221(g) থাকলে বুঝবেন অতিরিক্ত কাগজ/যাচাই চলছে — 'Administrative Processing'।",
+   "steps": [
+    "ব্রাউজারে লিখুন ceac.state.gov — ঠিকানাটি অক্ষরে অক্ষরে মিলিয়ে নিন (গুগলের বিজ্ঞাপনের লিংক নয়)।",
+    "পেজে স্ট্যাটাস দেখার অপশন খুঁজুন — ইংরেজিতে সাধারণত 'Check status', 'Track application' বা 'Inquiry' লেখা থাকে।",
+    "ফর্মে দিন: অ্যাপ্লিকেশন আইডি বা কেস নম্বর, যে দূতাবাসে আবেদন করেছেন (ঢাকা)। পাসপোর্টে যেমন আছে ঠিক তেমন বানানে লিখুন।",
+    "ছবির মতো দেখতে কোড (ক্যাপচা) থাকলে সেটি লিখে 'Search' বা 'Submit' চাপুন।",
+    "ফলাফলে আবেদনের অবস্থা দেখাবে। অনুমোদিত হলে ভিসার PDF ডাউনলোড বা প্রিন্ট করে রাখুন।"
+   ],
+   "source": "CEAC — Visa Status Check (U.S. Department of State) — https://ceac.state.gov",
+   "related": [
+    {
+     "title": "বাংলাদেশ থেকে আমেরিকা যাওয়ার উপায়: বিস্তারিত গাইড",
+     "url": "https://probashiinfo.com/bangladesh-to-usa/"
+    }
+   ]
+  },
+  {
+   "slug": "canada",
+   "iso2": "ca",
+   "name": "কানাডা",
+   "region": "UK & Americas",
+   "kind": "account",
+   "portal": "IRCC — Check your application status",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship.html",
+   "also": "",
+   "need": [
+    "IRCC অ্যাকাউন্টের লগইন",
+    "আবেদন নম্বর"
+   ],
+   "note": "কানাডার ভিসার স্ট্যাটাস দেখা যায় IRCC-র নিজের সিকিউর অ্যাকাউন্টে 'application status tracker' দিয়ে। আবেদন নম্বর মিলিয়ে নিন; অন্য কারো লগইন ব্যবহার করবেন না।",
+   "steps": [
+    "ব্রাউজারে লিখুন www.canada.ca — ঠিকানাটি অক্ষরে অক্ষরে মিলিয়ে নিন (গুগলের বিজ্ঞাপনের লিংক নয়)।",
+    "যে অ্যাকাউন্ট দিয়ে আবেদন করেছিলেন, সেটিতে 'Sign in' / 'Login' করুন (পাসওয়ার্ড কাউকে দেবেন না)।",
+    "অ্যাকাউন্টে আপনার আবেদনের তালিকা খুলুন। মিলিয়ে নিন: IRCC অ্যাকাউন্টের লগইন, আবেদন নম্বর।",
+    "আবেদনের পাশে লেখা অবস্থা (Status) দেখুন — নতুন বার্তা বা অতিরিক্ত কাগজ চাইলে সেখানেই জানানো হয়।",
+    "অনুমোদিত হলে ভিসা/অনুমতিপত্রের কপি ডাউনলোড করে রাখুন।"
+   ],
+   "source": "IRCC — Check your application status — https://www.canada.ca/en/immigration-refugees-citizenship.html",
+   "related": [
+    {
+     "title": "কানাডা ওয়ার্ক ভিসা ২০২৬: সহজ আবেদন, বেতন ও খরচের সম্পূর্ণ গাইড",
+     "url": "https://probashiinfo.com/kaanaaddaa-oyaark-bhisaa-2026-shj-aabedn-betn-o-khrcer-smpuurnn-gaaidd/"
+    },
+    {
+     "title": "কানাডা যাওয়ার খরচ ২০২৫: সম্পূর্ণ গাইড",
+     "url": "https://probashiinfo.com/canada-visa-from-bangladesh/"
+    }
+   ]
+  },
+  {
+   "slug": "australia",
+   "iso2": "au",
+   "name": "অস্ট্রেলিয়া",
+   "region": "UK & Americas",
+   "kind": "account",
+   "portal": "ImmiAccount / VEVO (Department of Home Affairs)",
+   "url": "https://immi.homeaffairs.gov.au",
+   "also": "",
+   "need": [
+    "ট্রানজ্যাকশন রেফারেন্স নম্বর (TRN)",
+    "পাসপোর্ট নম্বর"
+   ],
+   "note": "অস্ট্রেলিয়ার ভিসা আবেদন ImmiAccount-এ দেখা যায়; ভিসা মঞ্জুর হলে তার শর্তাবলি VEVO দিয়ে যাচাই করা যায় (TRN ও পাসপোর্ট নম্বর লাগে)।",
+   "steps": [
+    "ব্রাউজারে লিখুন immi.homeaffairs.gov.au — ঠিকানাটি অক্ষরে অক্ষরে মিলিয়ে নিন (গুগলের বিজ্ঞাপনের লিংক নয়)।",
+    "যে অ্যাকাউন্ট দিয়ে আবেদন করেছিলেন, সেটিতে 'Sign in' / 'Login' করুন (পাসওয়ার্ড কাউকে দেবেন না)।",
+    "অ্যাকাউন্টে আপনার আবেদনের তালিকা খুলুন। মিলিয়ে নিন: ট্রানজ্যাকশন রেফারেন্স নম্বর (TRN), পাসপোর্ট নম্বর।",
+    "আবেদনের পাশে লেখা অবস্থা (Status) দেখুন — নতুন বার্তা বা অতিরিক্ত কাগজ চাইলে সেখানেই জানানো হয়।",
+    "অনুমোদিত হলে ভিসা/অনুমতিপত্রের কপি ডাউনলোড করে রাখুন।"
+   ],
+   "source": "ImmiAccount / VEVO (Department of Home Affairs) — https://immi.homeaffairs.gov.au",
+   "related": [
+    {
+     "title": "অস্ট্রেলিয়া স্কিল্ড ভিসা (সাবক্লাস ১৮৯/১৯০) ২০২৫: পয়েন্ট সিস্টেম ও আবেদন প্রক্রিয়া",
+     "url": "https://probashiinfo.com/australia-skilled-visa-189-190-2025-points-system-application-guide/"
+    },
+    {
+     "title": "অস্ট্রেলিয়া ওয়ার্ক ভিসা ২০২৬: খরচ, পয়েন্ট ও আবেদন নিয়ম",
+     "url": "https://probashiinfo.com/australia-work-visa-2026-details/"
+    }
+   ]
+  },
+  {
+   "slug": "croatia",
+   "iso2": "hr",
+   "name": "ক্রোয়েশিয়া",
+   "region": "Europe",
+   "kind": "employer",
+   "portal": "Ministry of the Interior (MUP) — residence and work permits",
+   "url": "https://mup.gov.hr",
+   "also": "Type D / Schengen visa: Ministry of Foreign and European Affairs (mvep.gov.hr)",
+   "need": [
+    "আবেদন নম্বর",
+    "পাসপোর্ট নম্বর",
+    "নিয়োগকর্তা কোম্পানির নাম"
+   ],
+   "note": "ক্রোয়েশিয়ায় কাজের জন্য নিয়োগকর্তা পুলিশ প্রশাসনে থাকা-ও-কাজের সম্মিলিত অনুমতির আবেদন করে (MUP)। কোনো এজেন্টকে টাকা দেওয়ার আগে নিয়োগকর্তার কাছ থেকে আবেদন নম্বর নিয়ে নিন।",
+   "steps": [
+    "আগে নিয়োগকর্তার কাছ থেকে কাজের অনুমতির আবেদন নম্বর লিখিতভাবে নিন — এটা ছাড়া কোনো এজেন্টকে টাকা দেবেন না।",
+    "ব্রাউজারে লিখুন mup.gov.hr — ঠিকানাটি অক্ষরে অক্ষরে মিলিয়ে নিন (গুগলের বিজ্ঞাপনের লিংক নয়)।",
+    "সেখানে স্ট্যাটাস দেখার অপশনে যান এবং দিন: আবেদন নম্বর, পাসপোর্ট নম্বর, নিয়োগকর্তা কোম্পানির নাম।",
+    "কাজের অনুমতি অনুমোদিত হলে তারপর দূতাবাস/ভিএফএসে ভিসার আবেদন হয়; সেই রসিদের নম্বর দিয়ে ভিসার অবস্থাও দেখুন।",
+    "অনুমোদনপত্র ও ভিসার কপি প্রিন্ট করে রাখুন — বিএমইটি ছাড়পত্রে লাগবে।"
+   ],
+   "source": "Ministry of the Interior (MUP) — residence and work permits — https://mup.gov.hr",
+   "related": [
+    {
+     "title": "ক্রোয়েশিয়া ওয়ার্ক পারমিট এবং ভিসা ক্যাটাগরি",
+     "url": "https://probashiinfo.com/croatia-work-permit/"
+    },
+    {
+     "title": "২০২৪ সালে ক্রোয়েশিয়ায় ওয়ার্ক পারমিট ইস্যুর তথ্য",
+     "url": "https://probashiinfo.com/%e0%a7%a8%e0%a7%a6%e0%a7%a8%e0%a7%aa-%e0%a6%b8%e0%a6%be%e0%a6%b2%e0%a7%87-%e0%a6%95%e0%a7%8d%e0%a6%b0%e0%a7%8b%e0%a6%af%e0%a6%bc%e0%a7%87%e0%a6%b6%e0%a6%bf%e0%a6%af%e0%a6%bc%e0%a6%be%e0%a6%af%e0%a6%bc/"
+    }
+   ]
+  },
+  {
+   "slug": "poland",
+   "iso2": "pl",
+   "name": "পোল্যান্ড",
+   "region": "Europe",
+   "kind": "employer",
+   "portal": "e-Konsulat — Polish consular visa system",
+   "url": "https://secure2.e-konsulat.gov.pl",
+   "also": "Work permits: praca.gov.pl (filed by the employer at the Voivodeship Office)",
+   "need": [
+    "ভিসা আবেদন নম্বর",
+    "পাসপোর্ট নম্বর"
+   ],
+   "note": "পোল্যান্ডের কাজের ভিসার আগে নিয়োগকর্তা ভয়েভোডশিপ অফিস থেকে ওয়ার্ক পারমিট (zezwolenie na pracę) পায়। ভিসার আবেদন e-Konsulat সিস্টেমে, আর পারমিট যাচাই করুন নিয়োগকর্তা/ভয়েভোডশিপ অফিসের মাধ্যমে — এজেন্টের কথায় নয়।",
+   "steps": [
+    "আগে নিয়োগকর্তার কাছ থেকে কাজের অনুমতির আবেদন নম্বর লিখিতভাবে নিন — এটা ছাড়া কোনো এজেন্টকে টাকা দেবেন না।",
+    "ব্রাউজারে লিখুন secure2.e-konsulat.gov.pl — ঠিকানাটি অক্ষরে অক্ষরে মিলিয়ে নিন (গুগলের বিজ্ঞাপনের লিংক নয়)।",
+    "সেখানে স্ট্যাটাস দেখার অপশনে যান এবং দিন: ভিসা আবেদন নম্বর, পাসপোর্ট নম্বর।",
+    "কাজের অনুমতি অনুমোদিত হলে তারপর দূতাবাস/ভিএফএসে ভিসার আবেদন হয়; সেই রসিদের নম্বর দিয়ে ভিসার অবস্থাও দেখুন।",
+    "অনুমোদনপত্র ও ভিসার কপি প্রিন্ট করে রাখুন — বিএমইটি ছাড়পত্রে লাগবে।"
+   ],
+   "source": "e-Konsulat — Polish consular visa system — https://secure2.e-konsulat.gov.pl",
+   "related": [
+    {
+     "title": "পোল্যান্ড ওয়ার্ক ভিসা ২০২৬: সহজ পথ ও বেতন কত?",
+     "url": "https://probashiinfo.com/peaalyaandd-oyaark-bhisaa-2026-shj-pth-o-betn-kt/"
+    },
+    {
+     "title": "পোল্যান্ড ওয়ার্ক পারমিট সম্পর্কে জানুন বিস্তারিত…",
+     "url": "https://probashiinfo.com/poland-work-permit/"
+    }
+   ]
+  },
+  {
+   "slug": "hungary",
+   "iso2": "hu",
+   "name": "হাঙ্গেরি",
+   "region": "Europe",
+   "kind": "account",
+   "portal": "Enter Hungary — National Directorate-General for Aliens Policing",
+   "url": "https://enterhungary.gov.hu",
+   "also": "",
+   "need": [
+    "Enter Hungary অ্যাকাউন্টের লগইন",
+    "অ্যাপ্লিকেশন আইডি"
+   ],
+   "note": "হাঙ্গেরিতে কাজের জন্য বসবাসের অনুমতির আবেদন ও তার অবস্থা অনলাইনে 'Enter Hungary' অ্যাকাউন্টে লগইন করে দেখা যায়।",
+   "steps": [
+    "ব্রাউজারে লিখুন enterhungary.gov.hu — ঠিকানাটি অক্ষরে অক্ষরে মিলিয়ে নিন (গুগলের বিজ্ঞাপনের লিংক নয়)।",
+    "যে অ্যাকাউন্ট দিয়ে আবেদন করেছিলেন, সেটিতে 'Sign in' / 'Login' করুন (পাসওয়ার্ড কাউকে দেবেন না)।",
+    "অ্যাকাউন্টে আপনার আবেদনের তালিকা খুলুন। মিলিয়ে নিন: Enter Hungary অ্যাকাউন্টের লগইন, অ্যাপ্লিকেশন আইডি।",
+    "আবেদনের পাশে লেখা অবস্থা (Status) দেখুন — নতুন বার্তা বা অতিরিক্ত কাগজ চাইলে সেখানেই জানানো হয়।",
+    "অনুমোদিত হলে ভিসা/অনুমতিপত্রের কপি ডাউনলোড করে রাখুন।"
+   ],
+   "source": "Enter Hungary — National Directorate-General for Aliens Policing — https://enterhungary.gov.hu",
+   "related": []
+  },
+  {
+   "slug": "czech-republic",
+   "iso2": "cz",
+   "name": "চেক প্রজাতন্ত্র",
+   "region": "Europe",
+   "kind": "form",
+   "portal": "Ministry of the Interior — information for foreigners (status of application)",
+   "url": "https://ipc.gov.cz",
+   "also": "Employee Card: the job must be listed in the Labour Office's central register first",
+   "need": [
+    "আবেদনের (প্রসিডিং) নম্বর",
+    "জন্ম তারিখ"
+   ],
+   "note": "চেক প্রজাতন্ত্রের দীর্ঘমেয়াদি ভিসা ও এমপ্লয়ি কার্ডের সিদ্ধান্ত নেয় স্বরাষ্ট্র মন্ত্রণালয়। দূতাবাসের রসিদে থাকা প্রসিডিং নম্বর দিয়ে অবস্থা দেখুন। এমপ্লয়ি কার্ডের চাকরিটি আগে লেবার অফিসের কেন্দ্রীয় তালিকায় থাকতে হয়।",
+   "steps": [
+    "ব্রাউজারে লিখুন ipc.gov.cz — ঠিকানাটি অক্ষরে অক্ষরে মিলিয়ে নিন (গুগলের বিজ্ঞাপনের লিংক নয়)।",
+    "পেজে স্ট্যাটাস দেখার অপশন খুঁজুন — ইংরেজিতে সাধারণত 'Check status', 'Track application' বা 'Inquiry' লেখা থাকে।",
+    "ফর্মে দিন: আবেদনের (প্রসিডিং) নম্বর, জন্ম তারিখ। পাসপোর্টে যেমন আছে ঠিক তেমন বানানে লিখুন।",
+    "ছবির মতো দেখতে কোড (ক্যাপচা) থাকলে সেটি লিখে 'Search' বা 'Submit' চাপুন।",
+    "ফলাফলে আবেদনের অবস্থা দেখাবে। অনুমোদিত হলে ভিসার PDF ডাউনলোড বা প্রিন্ট করে রাখুন।"
+   ],
+   "source": "Ministry of the Interior — information for foreigners (status of application) — https://ipc.gov.cz",
+   "related": [
+    {
+     "title": "চেক রিপাবলিক ইমিগ্রেশন ২০২৫: কর্মসংস্থান ও স্থায়ী বসবাসের সুযোগ",
+     "url": "https://probashiinfo.com/czech-republic-immigration-2025-jobs-permanent-residence/"
+    }
+   ]
+  },
+  {
+   "slug": "lithuania",
+   "iso2": "lt",
+   "name": "লিথুয়ানিয়া",
+   "region": "Europe",
+   "kind": "account",
+   "portal": "MIGRIS — Migration Department information system",
+   "url": "https://www.migracija.lt",
+   "also": "",
+   "need": [
+    "MIGRIS অ্যাকাউন্টের লগইন",
+    "আবেদন নম্বর"
+   ],
+   "note": "লিথুয়ানিয়ার জাতীয় (D) ভিসা ও কাজের জন্য অস্থায়ী বসবাসের অনুমতির আবেদন ও স্ট্যাটাস দুটোই MIGRIS সিস্টেমে।",
+   "steps": [
+    "ব্রাউজারে লিখুন www.migracija.lt — ঠিকানাটি অক্ষরে অক্ষরে মিলিয়ে নিন (গুগলের বিজ্ঞাপনের লিংক নয়)।",
+    "যে অ্যাকাউন্ট দিয়ে আবেদন করেছিলেন, সেটিতে 'Sign in' / 'Login' করুন (পাসওয়ার্ড কাউকে দেবেন না)।",
+    "অ্যাকাউন্টে আপনার আবেদনের তালিকা খুলুন। মিলিয়ে নিন: MIGRIS অ্যাকাউন্টের লগইন, আবেদন নম্বর।",
+    "আবেদনের পাশে লেখা অবস্থা (Status) দেখুন — নতুন বার্তা বা অতিরিক্ত কাগজ চাইলে সেখানেই জানানো হয়।",
+    "অনুমোদিত হলে ভিসা/অনুমতিপত্রের কপি ডাউনলোড করে রাখুন।"
+   ],
+   "source": "MIGRIS — Migration Department information system — https://www.migracija.lt",
+   "related": [
+    {
+     "title": "লিথুনিয়া ওয়ার্ক পারমিট ভিসা – ২০২৫ সালের সম্পূর্ণ গাইড",
+     "url": "https://probashiinfo.com/lithuania-work-permit-visa-from-bangladesh-guide-2025/"
+    }
+   ]
+  },
+  {
+   "slug": "portugal",
+   "iso2": "pt",
+   "name": "পর্তুগাল",
+   "region": "Europe",
+   "kind": "form",
+   "portal": "Portal das Comunidades / Vistos — Ministry of Foreign Affairs",
+   "url": "https://vistos.mne.gov.pt",
+   "also": "Residence after arrival: AIMA (aima.gov.pt)",
+   "need": [
+    "ভিসা আবেদন নম্বর",
+    "পাসপোর্ট নম্বর"
+   ],
+   "note": "পর্তুগালের ভিসা সাইটে ভিসার ধরন অনুযায়ী কাগজের তালিকা আছে; দেশে পৌঁছানোর পর রেসিডেন্স পারমিটের কাজ করে AIMA (aima.gov.pt)।",
+   "steps": [
+    "ব্রাউজারে লিখুন vistos.mne.gov.pt — ঠিকানাটি অক্ষরে অক্ষরে মিলিয়ে নিন (গুগলের বিজ্ঞাপনের লিংক নয়)।",
+    "পেজে স্ট্যাটাস দেখার অপশন খুঁজুন — ইংরেজিতে সাধারণত 'Check status', 'Track application' বা 'Inquiry' লেখা থাকে।",
+    "ফর্মে দিন: ভিসা আবেদন নম্বর, পাসপোর্ট নম্বর। পাসপোর্টে যেমন আছে ঠিক তেমন বানানে লিখুন।",
+    "ছবির মতো দেখতে কোড (ক্যাপচা) থাকলে সেটি লিখে 'Search' বা 'Submit' চাপুন।",
+    "ফলাফলে আবেদনের অবস্থা দেখাবে। অনুমোদিত হলে ভিসার PDF ডাউনলোড বা প্রিন্ট করে রাখুন।"
+   ],
+   "source": "Portal das Comunidades / Vistos — Ministry of Foreign Affairs — https://vistos.mne.gov.pt",
+   "related": [
+    {
+     "title": "পর্তুগাল ওয়ার্ক পারমিট ২০২৬: সম্পূর্ণ নতুন গাইড ও খরচ",
+     "url": "https://probashiinfo.com/portugal-work-visa-2026/"
+    },
+    {
+     "title": "পর্তুগাল জব সিকার ভিসা এবং ডাউনলোড ফর্ম",
+     "url": "https://probashiinfo.com/%e0%a6%aa%e0%a6%b0%e0%a7%8d%e0%a6%a4%e0%a7%81%e0%a6%97%e0%a6%be%e0%a6%b2-%e0%a6%9c%e0%a6%ac-%e0%a6%b8%e0%a6%bf%e0%a6%95%e0%a6%be%e0%a6%b0-%e0%a6%ad%e0%a6%bf%e0%a6%b8%e0%a6%be-%e0%a6%8f%e0%a6%ac/"
+    }
+   ]
+  },
+  {
+   "slug": "italy",
+   "iso2": "it",
+   "name": "ইতালি",
+   "region": "Europe",
+   "kind": "employer",
+   "portal": "Il Visto per l'Italia — Ministry of Foreign Affairs",
+   "url": "https://vistoperitalia.esteri.it",
+   "also": "Work: nulla osta issued to the employer by the Sportello Unico per l'Immigrazione",
+   "need": [
+    "নুলা ওস্তা (কাজের অনুমতি) নম্বর",
+    "পাসপোর্ট নম্বর"
+   ],
+   "note": "ইতালির কাজের ভিসা শুরু হয় নুলা ওস্তা (nulla osta) দিয়ে — প্রতি বছরের ডিক্রেতো ফ্লুসি কোটায় নিয়োগকর্তা এটা পায়। নুলা ওস্তা ছাড়া শুধু চাকরির অফার কোনো কাজের ভিসা নয়।",
+   "steps": [
+    "আগে নিয়োগকর্তার কাছ থেকে কাজের অনুমতির আবেদন নম্বর লিখিতভাবে নিন — এটা ছাড়া কোনো এজেন্টকে টাকা দেবেন না।",
+    "ব্রাউজারে লিখুন vistoperitalia.esteri.it — ঠিকানাটি অক্ষরে অক্ষরে মিলিয়ে নিন (গুগলের বিজ্ঞাপনের লিংক নয়)।",
+    "সেখানে স্ট্যাটাস দেখার অপশনে যান এবং দিন: নুলা ওস্তা (কাজের অনুমতি) নম্বর, পাসপোর্ট নম্বর।",
+    "কাজের অনুমতি অনুমোদিত হলে তারপর দূতাবাস/ভিএফএসে ভিসার আবেদন হয়; সেই রসিদের নম্বর দিয়ে ভিসার অবস্থাও দেখুন।",
+    "অনুমোদনপত্র ও ভিসার কপি প্রিন্ট করে রাখুন — বিএমইটি ছাড়পত্রে লাগবে।"
+   ],
+   "source": "Il Visto per l'Italia — Ministry of Foreign Affairs — https://vistoperitalia.esteri.it",
+   "related": [
+    {
+     "title": "ইতালি ওয়ার্ক ভিসা ২০২৬: খরচ, বেতন ও আবেদন গাইড",
+     "url": "https://probashiinfo.com/itaali-oyaark-bhisaa-2026-khrc-betn-o-aabedner-shj-gaaidd/"
+    },
+    {
+     "title": "ইতালি স্টুডেন্ট ভিসা ২০২৫",
+     "url": "https://probashiinfo.com/italy-student-visa/"
+    }
+   ]
+  },
+  {
+   "slug": "albania",
+   "iso2": "al",
+   "name": "আলবেনিয়া",
+   "region": "Europe",
+   "kind": "form",
+   "portal": "e-Albania — Government e-services (e-Visa)",
+   "url": "https://e-albania.al",
+   "also": "",
+   "need": [
+    "ই-ভিসা আবেদন নম্বর",
+    "পাসপোর্ট নম্বর"
+   ],
+   "note": "আলবেনিয়ার ভিসা ও কাজ-ও-বসবাসের একক অনুমতি দুটোই সরকারি e-Albania পোর্টালে আবেদন ও ট্র্যাক করা হয়।",
+   "steps": [
+    "ব্রাউজারে লিখুন e-albania.al — ঠিকানাটি অক্ষরে অক্ষরে মিলিয়ে নিন (গুগলের বিজ্ঞাপনের লিংক নয়)।",
+    "পেজে স্ট্যাটাস দেখার অপশন খুঁজুন — ইংরেজিতে সাধারণত 'Check status', 'Track application' বা 'Inquiry' লেখা থাকে।",
+    "ফর্মে দিন: ই-ভিসা আবেদন নম্বর, পাসপোর্ট নম্বর। পাসপোর্টে যেমন আছে ঠিক তেমন বানানে লিখুন।",
+    "ছবির মতো দেখতে কোড (ক্যাপচা) থাকলে সেটি লিখে 'Search' বা 'Submit' চাপুন।",
+    "ফলাফলে আবেদনের অবস্থা দেখাবে। অনুমোদিত হলে ভিসার PDF ডাউনলোড বা প্রিন্ট করে রাখুন।"
+   ],
+   "source": "e-Albania — Government e-services (e-Visa) — https://e-albania.al",
+   "related": []
+  },
+  {
+   "slug": "germany",
+   "iso2": "de",
+   "name": "জার্মানি",
+   "region": "Europe",
+   "kind": "account",
+   "portal": "Consular Services Portal (Auslandsportal) — Federal Foreign Office",
+   "url": "https://digital.diplo.de",
+   "also": "Some missions still use VFS Global appointments",
+   "need": [
+    "পোর্টাল অ্যাকাউন্টের লগইন",
+    "আবেদন নম্বর"
+   ],
+   "note": "জার্মানির জাতীয় (D) ভিসা, যেমন স্কিলড ওয়ার্কার ভিসা, এখন বেশিরভাগ ক্ষেত্রে কনস্যুলার সার্ভিস পোর্টালে (Auslandsportal) আবেদন ও ট্র্যাক হয়। কিছু ক্ষেত্রে অ্যাপয়েন্টমেন্ট এখনো ভিএফএস দিয়ে।",
+   "steps": [
+    "ব্রাউজারে লিখুন digital.diplo.de — ঠিকানাটি অক্ষরে অক্ষরে মিলিয়ে নিন (গুগলের বিজ্ঞাপনের লিংক নয়)।",
+    "যে অ্যাকাউন্ট দিয়ে আবেদন করেছিলেন, সেটিতে 'Sign in' / 'Login' করুন (পাসওয়ার্ড কাউকে দেবেন না)।",
+    "অ্যাকাউন্টে আপনার আবেদনের তালিকা খুলুন। মিলিয়ে নিন: পোর্টাল অ্যাকাউন্টের লগইন, আবেদন নম্বর।",
+    "আবেদনের পাশে লেখা অবস্থা (Status) দেখুন — নতুন বার্তা বা অতিরিক্ত কাগজ চাইলে সেখানেই জানানো হয়।",
+    "অনুমোদিত হলে ভিসা/অনুমতিপত্রের কপি ডাউনলোড করে রাখুন।"
+   ],
+   "source": "Consular Services Portal (Auslandsportal) — Federal Foreign Office — https://digital.diplo.de",
+   "related": [
+    {
+     "title": "জার্মানি ওয়ার্ক ভিসা ২০২৬: সম্পূর্ণ গাইড (বেতন, শর্ত ও খরচ)",
+     "url": "https://probashiinfo.com/jaarmaani-oyaark-bhisaa-2026-betn-khrc-o-aabedn-gaaidd/"
+    },
+    {
+     "title": "জার্মানি জব সিকার ভিসা ২০২৫: কীভাবে আবেদন করবেন ও চাকরি পাবেন",
+     "url": "https://probashiinfo.com/germany-job-seeker-visa-2025-bangla-guide/"
+    }
+   ]
+  },
+  {
+   "slug": "ireland",
+   "iso2": "ie",
+   "name": "আয়ারল্যান্ড",
+   "region": "UK & Americas",
+   "kind": "form",
+   "portal": "Irish Immigration Service — visa decisions",
+   "url": "https://www.irishimmigration.ie",
+   "also": "Work: employment permit from the Department of Enterprise (enterprise.gov.ie)",
+   "need": [
+    "ভিসা আবেদনের ট্রানজ্যাকশন নম্বর"
+   ],
+   "note": "আয়ারল্যান্ড প্রতি সপ্তাহে আবেদন নম্বর অনুযায়ী ভিসার সিদ্ধান্তের তালিকা ইমিগ্রেশন সাইটে প্রকাশ করে। কাজের জন্য আগে এন্টারপ্রাইজ বিভাগের এমপ্লয়মেন্ট পারমিট লাগে।",
+   "steps": [
+    "ব্রাউজারে লিখুন www.irishimmigration.ie — ঠিকানাটি অক্ষরে অক্ষরে মিলিয়ে নিন (গুগলের বিজ্ঞাপনের লিংক নয়)।",
+    "পেজে স্ট্যাটাস দেখার অপশন খুঁজুন — ইংরেজিতে সাধারণত 'Check status', 'Track application' বা 'Inquiry' লেখা থাকে।",
+    "ফর্মে দিন: ভিসা আবেদনের ট্রানজ্যাকশন নম্বর। পাসপোর্টে যেমন আছে ঠিক তেমন বানানে লিখুন।",
+    "ছবির মতো দেখতে কোড (ক্যাপচা) থাকলে সেটি লিখে 'Search' বা 'Submit' চাপুন।",
+    "ফলাফলে আবেদনের অবস্থা দেখাবে। অনুমোদিত হলে ভিসার PDF ডাউনলোড বা প্রিন্ট করে রাখুন।"
+   ],
+   "source": "Irish Immigration Service — visa decisions — https://www.irishimmigration.ie",
+   "related": []
+  },
+  {
+   "slug": "new-zealand",
+   "iso2": "nz",
+   "name": "নিউজিল্যান্ড",
+   "region": "UK & Americas",
+   "kind": "account",
+   "portal": "Immigration New Zealand",
+   "url": "https://www.immigration.govt.nz",
+   "also": "",
+   "need": [
+    "Immigration Online অ্যাকাউন্টের লগইন",
+    "আবেদন নম্বর"
+   ],
+   "note": "নিউজিল্যান্ডের ভিসা ইলেকট্রনিকভাবে দেওয়া হয়; Immigration Online অ্যাকাউন্টে লগইন করে ই-ভিসা দেখুন।",
+   "steps": [
+    "ব্রাউজারে লিখুন www.immigration.govt.nz — ঠিকানাটি অক্ষরে অক্ষরে মিলিয়ে নিন (গুগলের বিজ্ঞাপনের লিংক নয়)।",
+    "যে অ্যাকাউন্ট দিয়ে আবেদন করেছিলেন, সেটিতে 'Sign in' / 'Login' করুন (পাসওয়ার্ড কাউকে দেবেন না)।",
+    "অ্যাকাউন্টে আপনার আবেদনের তালিকা খুলুন। মিলিয়ে নিন: Immigration Online অ্যাকাউন্টের লগইন, আবেদন নম্বর।",
+    "আবেদনের পাশে লেখা অবস্থা (Status) দেখুন — নতুন বার্তা বা অতিরিক্ত কাগজ চাইলে সেখানেই জানানো হয়।",
+    "অনুমোদিত হলে ভিসা/অনুমতিপত্রের কপি ডাউনলোড করে রাখুন।"
+   ],
+   "source": "Immigration New Zealand — https://www.immigration.govt.nz",
+   "related": [
+    {
+     "title": "নিউজিল্যান্ডে বেতন ২০২৬: বিস্তারিত আপডেটেড গাইডলাইন",
+     "url": "https://probashiinfo.com/new-zealand-salary-2026-updated-information/"
+    }
+   ]
+  },
+  {
+   "slug": "india",
+   "iso2": "in",
+   "name": "ভারত",
+   "region": "Asia",
+   "kind": "form",
+   "portal": "Indian Visa Online — Government of India",
+   "url": "https://indianvisaonline.gov.in",
+   "also": "Bangladesh applicants: Indian Visa Application Center (ivacbd.com)",
+   "need": [
+    "অ্যাপ্লিকেশন আইডি / ওয়েব ফাইল নম্বর",
+    "পাসপোর্ট নম্বর"
+   ],
+   "note": "বাংলাদেশ থেকে ভারতের ভিসার পাসপোর্ট জমা হয় IVAC-এ (ivacbd.com)। রসিদে থাকা ওয়েব ফাইল নম্বর দিয়ে আবেদনের অবস্থা দেখা যায়।",
+   "steps": [
+    "ব্রাউজারে লিখুন indianvisaonline.gov.in — ঠিকানাটি অক্ষরে অক্ষরে মিলিয়ে নিন (গুগলের বিজ্ঞাপনের লিংক নয়)।",
+    "পেজে স্ট্যাটাস দেখার অপশন খুঁজুন — ইংরেজিতে সাধারণত 'Check status', 'Track application' বা 'Inquiry' লেখা থাকে।",
+    "ফর্মে দিন: অ্যাপ্লিকেশন আইডি / ওয়েব ফাইল নম্বর, পাসপোর্ট নম্বর। পাসপোর্টে যেমন আছে ঠিক তেমন বানানে লিখুন।",
+    "ছবির মতো দেখতে কোড (ক্যাপচা) থাকলে সেটি লিখে 'Search' বা 'Submit' চাপুন।",
+    "ফলাফলে আবেদনের অবস্থা দেখাবে। অনুমোদিত হলে ভিসার PDF ডাউনলোড বা প্রিন্ট করে রাখুন।"
+   ],
+   "source": "Indian Visa Online — Government of India — https://indianvisaonline.gov.in",
+   "related": [
+    {
+     "title": "ইন্ডিয়ান ভিসা করতে কি কি লাগে (টুরিস্ট ও মেডিকেল) – একটি সম্পূর্ণ ও বিস্তারিত গাইড",
+     "url": "https://probashiinfo.com/%e0%a6%87%e0%a6%a8%e0%a7%8d%e0%a6%a1%e0%a6%bf%e0%a6%af%e0%a6%bc%e0%a6%be%e0%a6%a8-%e0%a6%ad%e0%a6%bf%e0%a6%b8%e0%a6%be-%e0%a6%95%e0%a6%b0%e0%a6%a4%e0%a7%87-%e0%a6%95%e0%a6%bf-%e0%a6%95%e0%a6%bf/"
+    }
+   ]
+  },
+  {
+   "slug": "thailand",
+   "iso2": "th",
+   "name": "থাইল্যান্ড",
+   "region": "Asia",
+   "kind": "account",
+   "portal": "Thailand e-Visa — Ministry of Foreign Affairs",
+   "url": "https://www.thaievisa.go.th",
+   "also": "",
+   "need": [
+    "ই-ভিসা অ্যাকাউন্টের লগইন",
+    "আবেদন নম্বর"
+   ],
+   "note": "থাইল্যান্ডের ই-ভিসার স্ট্যাটাস ও অনুমোদনের PDF আবেদনের অ্যাকাউন্টেই দেখা যায়।",
+   "steps": [
+    "ব্রাউজারে লিখুন www.thaievisa.go.th — ঠিকানাটি অক্ষরে অক্ষরে মিলিয়ে নিন (গুগলের বিজ্ঞাপনের লিংক নয়)।",
+    "যে অ্যাকাউন্ট দিয়ে আবেদন করেছিলেন, সেটিতে 'Sign in' / 'Login' করুন (পাসওয়ার্ড কাউকে দেবেন না)।",
+    "অ্যাকাউন্টে আপনার আবেদনের তালিকা খুলুন। মিলিয়ে নিন: ই-ভিসা অ্যাকাউন্টের লগইন, আবেদন নম্বর।",
+    "আবেদনের পাশে লেখা অবস্থা (Status) দেখুন — নতুন বার্তা বা অতিরিক্ত কাগজ চাইলে সেখানেই জানানো হয়।",
+    "অনুমোদিত হলে ভিসা/অনুমতিপত্রের কপি ডাউনলোড করে রাখুন।"
+   ],
+   "source": "Thailand e-Visa — Ministry of Foreign Affairs — https://www.thaievisa.go.th",
+   "related": []
+  },
+  {
+   "slug": "vietnam",
+   "iso2": "vn",
+   "name": "ভিয়েতনাম",
+   "region": "Asia",
+   "kind": "form",
+   "portal": "Vietnam e-Visa — Immigration Department",
+   "url": "https://evisa.gov.vn",
+   "also": "",
+   "need": [
+    "রেজিস্ট্রেশন কোড",
+    "ইমেইল",
+    "জন্ম তারিখ"
+   ],
+   "note": "ভিয়েতনামের ই-ভিসা শুধু evisa.gov.vn থেকে নিন — অনেক ভুয়া সাইট বাড়তি ফি নেয়। রেজিস্ট্রেশন কোড, ইমেইল ও জন্ম তারিখ দিয়ে ফল দেখা যায়।",
+   "steps": [
+    "ব্রাউজারে লিখুন evisa.gov.vn — ঠিকানাটি অক্ষরে অক্ষরে মিলিয়ে নিন (গুগলের বিজ্ঞাপনের লিংক নয়)।",
+    "পেজে স্ট্যাটাস দেখার অপশন খুঁজুন — ইংরেজিতে সাধারণত 'Check status', 'Track application' বা 'Inquiry' লেখা থাকে।",
+    "ফর্মে দিন: রেজিস্ট্রেশন কোড, ইমেইল, জন্ম তারিখ। পাসপোর্টে যেমন আছে ঠিক তেমন বানানে লিখুন।",
+    "ছবির মতো দেখতে কোড (ক্যাপচা) থাকলে সেটি লিখে 'Search' বা 'Submit' চাপুন।",
+    "ফলাফলে আবেদনের অবস্থা দেখাবে। অনুমোদিত হলে ভিসার PDF ডাউনলোড বা প্রিন্ট করে রাখুন।"
+   ],
+   "source": "Vietnam e-Visa — Immigration Department — https://evisa.gov.vn",
+   "related": []
+  },
+  {
+   "slug": "sri-lanka",
+   "iso2": "lk",
+   "name": "শ্রীলঙ্কা",
+   "region": "Asia",
+   "kind": "form",
+   "portal": "Sri Lanka ETA — Department of Immigration and Emigration",
+   "url": "https://www.eta.gov.lk",
+   "also": "",
+   "need": [
+    "রেফারেন্স নম্বর",
+    "পাসপোর্ট নম্বর"
+   ],
+   "note": "শ্রীলঙ্কায় যাওয়ার আগে ETA-র অবস্থা eta.gov.lk-এ রেফারেন্স ও পাসপোর্ট নম্বর দিয়ে দেখে নিন।",
+   "steps": [
+    "ব্রাউজারে লিখুন www.eta.gov.lk — ঠিকানাটি অক্ষরে অক্ষরে মিলিয়ে নিন (গুগলের বিজ্ঞাপনের লিংক নয়)।",
+    "পেজে স্ট্যাটাস দেখার অপশন খুঁজুন — ইংরেজিতে সাধারণত 'Check status', 'Track application' বা 'Inquiry' লেখা থাকে।",
+    "ফর্মে দিন: রেফারেন্স নম্বর, পাসপোর্ট নম্বর। পাসপোর্টে যেমন আছে ঠিক তেমন বানানে লিখুন।",
+    "ছবির মতো দেখতে কোড (ক্যাপচা) থাকলে সেটি লিখে 'Search' বা 'Submit' চাপুন।",
+    "ফলাফলে আবেদনের অবস্থা দেখাবে। অনুমোদিত হলে ভিসার PDF ডাউনলোড বা প্রিন্ট করে রাখুন।"
+   ],
+   "source": "Sri Lanka ETA — Department of Immigration and Emigration — https://www.eta.gov.lk",
+   "related": []
+  },
+  {
+   "slug": "indonesia",
+   "iso2": "id",
+   "name": "ইন্দোনেশিয়া",
+   "region": "Asia",
+   "kind": "form",
+   "portal": "Indonesia e-Visa — Directorate General of Immigration",
+   "url": "https://evisa.imigrasi.go.id",
+   "also": "",
+   "need": [
+    "আবেদন নম্বর বা ই-ভিসা নম্বর",
+    "পাসপোর্ট নম্বর"
+   ],
+   "note": "ইন্দোনেশিয়ার ই-ভিসা শুধু evisa.imigrasi.go.id থেকে নিন; সেখানেই ই-ভিসার PDF যাচাই করা যায়।",
+   "steps": [
+    "ব্রাউজারে লিখুন evisa.imigrasi.go.id — ঠিকানাটি অক্ষরে অক্ষরে মিলিয়ে নিন (গুগলের বিজ্ঞাপনের লিংক নয়)।",
+    "পেজে স্ট্যাটাস দেখার অপশন খুঁজুন — ইংরেজিতে সাধারণত 'Check status', 'Track application' বা 'Inquiry' লেখা থাকে।",
+    "ফর্মে দিন: আবেদন নম্বর বা ই-ভিসা নম্বর, পাসপোর্ট নম্বর। পাসপোর্টে যেমন আছে ঠিক তেমন বানানে লিখুন।",
+    "ছবির মতো দেখতে কোড (ক্যাপচা) থাকলে সেটি লিখে 'Search' বা 'Submit' চাপুন।",
+    "ফলাফলে আবেদনের অবস্থা দেখাবে। অনুমোদিত হলে ভিসার PDF ডাউনলোড বা প্রিন্ট করে রাখুন।"
+   ],
+   "source": "Indonesia e-Visa — Directorate General of Immigration — https://evisa.imigrasi.go.id",
+   "related": []
+  }
+ ]
+}
