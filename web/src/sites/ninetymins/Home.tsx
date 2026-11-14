@@ -1,9 +1,14 @@
 import Link from "next/link";
 import type { SiteHomeProps, Article } from "@/lib/types";
-import { Shell, Card, Badge, Kicker, Thumb } from "./Chrome";
+import { Shell, Card, Thumb } from "./Chrome";
 import { NM_COMPS, compOf, ago } from "./comps";
-import { LeagueTable, LeagueFixtures } from "./LiveScores";
+import { LeagueTable, LeagueFixtures, MatchdayBoard } from "./LiveScores";
 import { heroSrc } from "@/lib/img";
+
+/* Sports-first home. Live scores, today's fixtures, league tables and the app
+   download come first; the blog is kept (every article URL stays the same) and
+   sits below as "Latest reads". Live parts are client components that poll
+   /api/scores, so the page updates without a rebuild. */
 
 /** Hands out articles once per page; real reports before mock ones. */
 function picker(all: Article[]) {
@@ -21,7 +26,7 @@ function picker(all: Article[]) {
   };
 }
 
-// Front-page order: the competitions readers come for first.
+const PLAY = "https://play.google.com/store/apps/details?id=com.ninetymins.app";
 const ROWS = ["saff-championship", "champions-league", "premier-league", "world-cup", "cricket", "basketball", "formula-1", "tennis", "football"];
 
 export default function Home({ site, articles }: SiteHomeProps) {
@@ -29,77 +34,70 @@ export default function Home({ site, articles }: SiteHomeProps) {
   const href = (a: Article) => `${s}/${a.slug}`;
   const take = picker(articles);
 
-  const [hero] = take(null, 1);
-  const seconds = take(null, 3);
-  const headlines = take(null, 8);
+  const latest = take(null, 8);
   const rows = ROWS.map((slug) => ({
     comp: NM_COMPS.find((c) => c.slug === slug)!,
     items: take(articles.filter((a) => compOf(a).slug === slug), 4),
-  })).filter((r) => r.items.length >= 2);
-  const latest = take(null, 12);
+  })).filter((r) => r.comp && r.items.length >= 2);
 
-  if (!hero) {
-    return (
-      <Shell site={site}>
-        <div className="nm-wrap nm-empty">
-          <h1>Match guides are on the way</h1>
-          <p>Fixtures, kick-off times and where to watch — landing here soon.</p>
-        </div>
-      </Shell>
-    );
-  }
-
-  const hc = compOf(hero);
   return (
     <Shell site={site} strip={articles.slice(0, 10)}>
-      {/* ── TOP: headlines | hero | table ── */}
-      <div className="nm-wrap nm-top">
-        <aside className="nm-headlines" aria-label="Top headlines">
-          <h2 className="nm-box-h">Top Headlines</h2>
-          <ol>
-            {headlines.map((a) => (
-              <li key={a.id}>
-                <Badge comp={compOf(a)} />
-                <Link href={href(a)}>{a.title}</Link>
-              </li>
-            ))}
-          </ol>
-        </aside>
-
-        <div className="nm-heroCol">
-          <article className="nm-hero">
-            <Link href={href(hero)} className="nm-thumb nm-hero-link">
-              {hero.image_url ? <img src={heroSrc(hero.image_url, hero.title)} alt={hero.title} fetchPriority="high" /> : <span className="nm-thumb-ph" />}
-              <span className="nm-hero-shade" />
-              <div className="nm-hero-copy">
-                <span className="nm-hero-kicker" style={{ background: hc.color }}>
-                  {hc.label}
-                </span>
-                <h1 className="nm-hero-h">{hero.title}</h1>
-                {hero.excerpt ? <p>{hero.excerpt}</p> : null}
-                <span className="nm-time light">{ago(hero.created_at)} · {hero.reading_time} min read</span>
-              </div>
-            </Link>
-          </article>
-          <div className="nm-seconds">
-            {seconds.map((a) => (
-              <article className="nm-mini" key={a.id}>
-                <Thumb href={href(a)} article={a} ratio="16 / 10" />
-                <Kicker comp={compOf(a)} siteId={site.id} />
-                <h3 className="nm-h sm">
-                  <Link href={href(a)}>{a.title}</Link>
-                </h3>
-              </article>
-            ))}
+      {/* ── 1. MATCHDAY HERO: live + today's matches, auto-refreshing ── */}
+      <section className="nm-mdhero" aria-label="Live scores and today's matches">
+        <div className="nm-wrap">
+          <div className="nm-mdhero-head">
+            <div>
+              <h1>Live scores &amp; today&apos;s matches</h1>
+              <p>Football, cricket and NBA — updates every minute, kick-offs in your time zone.</p>
+            </div>
+            <div className="nm-mdhero-links">
+              <Link href={`${s}/today`}>Today</Link>
+              <Link href={`${s}/tomorrow`}>Tomorrow</Link>
+              <Link href={`${s}/scores`}>All scores</Link>
+            </div>
           </div>
+          <MatchdayBoard />
         </div>
+      </section>
 
-        <aside className="nm-rightCol">
+      {/* ── 2. TABLES · FIXTURES · APP ── */}
+      <section className="nm-wrap nm-hub">
+        <div className="nm-hub-tables">
           <LeagueTable league="eng.1" title="Premier League table" rows={10} />
+          <LeagueTable league="esp.1" title="LaLiga table" rows={10} />
+        </div>
+        <div className="nm-hub-fx">
+          <LeagueFixtures league="uefa.champions" title="Champions League" />
+          <LeagueFixtures league="eng.1" title="Premier League fixtures" />
+        </div>
+        <aside className="nm-hub-side">
+          <section className="nm-appcard" aria-label="Get the NinetyMins app">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/brand/ninetymins-app-icon.webp" alt="" width={56} height={56} />
+            <h3>NinetyMins app</h3>
+            <ul>
+              <li>Instant goal &amp; wicket alerts</li>
+              <li>Live scores for every match</li>
+              <li>Free, no sign-up needed</li>
+            </ul>
+            <a className="nm-appbtn" href={`${PLAY}&referrer=${encodeURIComponent("utm_source=ninetymins.com&utm_medium=home")}`} target="_blank" rel="noopener">
+              Get it on Google Play
+            </a>
+          </section>
+          <section className="nm-box">
+            <h3 className="nm-box-h">Competitions</h3>
+            <div className="nm-comps">
+              {NM_COMPS.map((c) => (
+                <Link href={`${s}/topic/${c.slug}`} key={c.slug}>
+                  {c.label}
+                </Link>
+              ))}
+            </div>
+          </section>
         </aside>
-      </div>
+      </section>
 
-      {/* ── COMPETITION ROWS ── */}
+      {/* ── 3. COMPETITION FIXTURES ── */}
       {rows.map(({ comp, items }) => (
         <section className="nm-wrap nm-row" key={comp.slug} aria-label={comp.label}>
           <div className="nm-rowhead" style={{ borderColor: comp.color }}>
@@ -121,18 +119,17 @@ export default function Home({ site, articles }: SiteHomeProps) {
         </section>
       ))}
 
-      {/* ── LATEST + RAIL ── */}
+      {/* ── 4. LATEST READS (blog, same URLs) ── */}
       {latest.length ? (
-        <section className="nm-wrap nm-river" aria-label="Latest">
+        <section className="nm-wrap nm-river" aria-label="Latest reads">
           <div>
             <div className="nm-rowhead">
-              <h2>Latest</h2>
+              <h2>Latest reads</h2>
             </div>
             <div className="nm-list">
               {latest.map((a) => (
                 <article className="nm-listrow" key={a.id}>
                   <div>
-                    <Kicker comp={compOf(a)} siteId={site.id} />
                     <h3 className="nm-h">
                       <Link href={href(a)}>{a.title}</Link>
                     </h3>
@@ -145,7 +142,6 @@ export default function Home({ site, articles }: SiteHomeProps) {
             </div>
           </div>
           <aside className="nm-rail2">
-            <LeagueFixtures league="uefa.champions" title="Champions League fixtures" />
             <section className="nm-box nm-promise">
               <h3 className="nm-box-h">How we cover a match</h3>
               <ul>
@@ -153,16 +149,6 @@ export default function Home({ site, articles }: SiteHomeProps) {
                 <li><b>Legal ways to watch</b> Official broadcasters and streaming services only.</li>
                 <li><b>Checked against rights holders</b> Rights and times change — confirm before kick-off.</li>
               </ul>
-            </section>
-            <section className="nm-box">
-              <h3 className="nm-box-h">Competitions</h3>
-              <div className="nm-comps">
-                {NM_COMPS.map((c) => (
-                  <Link href={`${s}/topic/${c.slug}`} key={c.slug}>
-                    <Badge comp={c} /> {c.label}
-                  </Link>
-                ))}
-              </div>
             </section>
           </aside>
         </section>

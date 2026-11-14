@@ -471,10 +471,11 @@
 .site-ninetymins .nm-board-days button.on, .site-ninetymins .nm-board-filter button.on { background: var(--nm-ink); border-color: var(--nm-ink); color: #fff; }
 .site-ninetymins .nm-board-filter { display: flex; gap: 6px; margin: 10px 0 16px; }
 .site-ninetymins .nm-bd-group { background: #fff; border-radius: 10px; box-shadow: 0 1px 2px rgba(15, 17, 21, 0.06); margin-bottom: 14px; overflow: hidden; }
-.site-ninetymins .nm-bd-group h2 { margin: 0; padding: 12px 16px; background: var(--nm-night); color: #fff; font: 800 16px/1 var(--nm-display); letter-spacing: 0.08em; text-transform: uppercase; border-left: 4px solid var(--nm-red); }
-.site-ninetymins .nm-bd-row { display: grid; grid-template-columns: 92px 1fr 18px; align-items: center; gap: 12px; padding: 12px 16px; border-top: 1px solid var(--nm-line); transition: background 0.15s; }
+.site-ninetymins .nm-bd-group h2 { margin: 0; padding: 12px 16px; background: var(--nm-night); color: #fff; font: 800 16px/1 var(--nm-display); letter-spacing: 0.08em; text-transform: uppercase; border-left: 4px solid var(--nm-red); position: sticky; top: 0; z-index: 10; }
+.site-ninetymins .nm-bd-row { display: grid; grid-template-columns: 92px 1fr 18px; align-items: center; gap: 12px; padding: 12px 16px; border-top: 1px solid var(--nm-line); transition: background 0.15s; min-height: 48px; }
 .site-ninetymins .nm-bd-group .nm-bd-row:first-of-type { border-top: 0; }
 .site-ninetymins a.nm-bd-row:hover { background: #fff6f6; }
+.site-ninetymins a.nm-bd-row:focus-visible { outline: 3px solid var(--nm-red); outline-offset: -3px; }
 .site-ninetymins .nm-bd-when { font: 700 12px/1.2 var(--nm-sans); color: var(--nm-faint); display: inline-flex; align-items: center; }
 .site-ninetymins .nm-bd-row.st-in .nm-bd-when { color: #0e9f50; }
 .site-ninetymins .nm-bd-teams { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px; font: 600 15px/1.2 var(--nm-sans); }
@@ -486,7 +487,7 @@
 .site-ninetymins .nm-bd-teams b { font: 800 19px/1 var(--nm-display); min-width: 64px; text-align: center; padding: 6px 8px; background: var(--nm-bg); border-radius: 6px; font-variant-numeric: tabular-nums; }
 .site-ninetymins .nm-bd-row.st-in .nm-bd-teams b { background: var(--nm-red); color: #fff; }
 .site-ninetymins .nm-bd-go { font: 800 22px/1 var(--nm-display); color: var(--nm-faint); }
-.site-ninetymins .nm-board-mini .nm-bd-row { grid-template-columns: 1fr; gap: 6px; padding: 10px 0; }
+.site-ninetymins .nm-board-mini .nm-bd-row { grid-template-columns: 1fr; gap: 6px; padding: 10px 0; min-height: auto; }
 .site-ninetymins .nm-board-mini .nm-bd-go { display: none; }
 .site-ninetymins .nm-board-mini .nm-bd-teams { font-size: 13.5px; gap: 8px; }
 .site-ninetymins .nm-board-mini .nm-bd-teams b { min-width: 48px; font-size: 16px; }
@@ -831,3 +832,78 @@
 .site-ninetymins .nm-appbar-txt small { font: 500 12px/1.2 var(--nm-sans); opacity: 0.75; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .site-ninetymins .nm-appbar-btn { flex: none; background: var(--nm-live); color: #04140a; font: 800 14px/1 var(--nm-sans); padding: 10px 18px; border-radius: 999px; text-decoration: none; }
 .site-ninetymins .nm-appbar-x { flex: none; width: 32px; height: 32px; border: 0; background: transparent; color: rgba(255, 255, 255, 0.6); font-size: 22px; line-height: 1; cursor: pointer; }
+
+/* ── Enhanced mobile fixture cards (card layout on phones) ── */
+@media (max-width: 640px) {
+  .site-ninetymins .nm-bd-group { background: transparent; box-shadow: none; }
+  .site-ninetymins .nm-bd-group h2 { position: static; background: var(--nm-night); margin: 0 0 8px 0; border-radius: 8px 8px 0 0; }
+  .site-ninetymins .nm-bd-row { display: flex; flex-direction: column; gap: 8px; padding: 14px; background: #fff; border: 1px solid var(--nm-line); border-radius: 8px; margin-bottom: 8px; min-height: auto; }
+  .site-ninetymins .nm-bd-when { width: 100%; font-size: 11px; }
+  .site-ninetymins .nm-bd-teams { grid-template-columns: 1fr auto 1fr; margin: 4px 0 0; }
+  .site-ninetymins .nm-bd-teams img { width: 24px; height: 24px; }
+  .site-ninetymins .nm-bd-teams b { font-size: 18px; min-width: 52px; }
+}
+
+/* ── Match stats: improve bar visualization ── */
+@media (prefers-reduced-motion: no-preference) {
+  .site-ninetymins .nm-dot { animation: nm-pulse 1.6s infinite; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-ninetymins .nm-dot { box-shadow: none; animation: none; }
+}
+
+/* ── Home: Matchday hero (live + today) ─────────────────────────────── */
+.site-ninetymins .nm-mdhero { background: radial-gradient(1200px 400px at 10% -10%, rgba(25, 210, 107, 0.18), transparent 60%), linear-gradient(180deg, var(--nm-night) 0%, var(--nm-night-2) 100%); color: #fff; padding: 26px 0 30px; }
+.site-ninetymins .nm-mdhero-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 14px; margin-bottom: 16px; }
+.site-ninetymins .nm-mdhero h1 { margin: 0; font: 800 clamp(30px, 4.2vw, 46px)/1 var(--nm-display); text-transform: uppercase; letter-spacing: 0.01em; }
+.site-ninetymins .nm-mdhero p { margin: 6px 0 0; color: rgba(255, 255, 255, 0.7); font: 500 15px/1.4 var(--nm-sans); }
+.site-ninetymins .nm-mdhero-links { display: flex; gap: 8px; }
+.site-ninetymins .nm-mdhero-links a { color: #fff; text-decoration: none; font: 700 14px/1 var(--nm-sans); padding: 10px 14px; border-radius: 999px; border: 1px solid var(--nm-night-line); background: rgba(255, 255, 255, 0.04); }
+.site-ninetymins .nm-mdhero-links a:hover { border-color: var(--nm-live); color: var(--nm-live); }
+
+.site-ninetymins .nm-md-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+.site-ninetymins .nm-md-tabs { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
+.site-ninetymins .nm-md-tabs button { flex: none; cursor: pointer; border: 0; border-radius: 999px; padding: 9px 15px; font: 700 13px/1 var(--nm-sans); color: rgba(255, 255, 255, 0.75); background: var(--nm-night-3); }
+.site-ninetymins .nm-md-tabs button.on { background: var(--nm-live); color: #04140a; }
+.site-ninetymins .nm-md-tabs button:focus-visible { outline: 3px solid var(--nm-live); outline-offset: 2px; }
+.site-ninetymins .nm-md-live { display: inline-flex; align-items: center; font: 800 13px/1 var(--nm-sans); color: var(--nm-live); text-transform: uppercase; letter-spacing: 0.06em; }
+
+.site-ninetymins .nm-md-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px; }
+.site-ninetymins .nm-md-card { display: flex; flex-direction: column; gap: 9px; padding: 13px 14px; border-radius: 12px; background: var(--nm-night-3); border: 1px solid var(--nm-night-line); color: #fff; text-decoration: none; min-height: 112px; transition: border-color 0.15s, transform 0.15s; }
+.site-ninetymins a.nm-md-card:hover { border-color: rgba(25, 210, 107, 0.6); transform: translateY(-2px); }
+.site-ninetymins a.nm-md-card:focus-visible { outline: 3px solid var(--nm-live); outline-offset: 2px; }
+.site-ninetymins .nm-md-card.st-in { border-color: rgba(25, 210, 107, 0.45); box-shadow: inset 3px 0 0 var(--nm-live); }
+.site-ninetymins .nm-md-card.sk { background: linear-gradient(90deg, var(--nm-night-3), #262a35, var(--nm-night-3)); background-size: 200% 100%; animation: nm-sk 1.4s infinite; }
+@keyframes nm-sk { to { background-position: -200% 0; } }
+.site-ninetymins .nm-md-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; font: 700 11px/1 var(--nm-sans); text-transform: uppercase; letter-spacing: 0.06em; }
+.site-ninetymins .nm-md-lg { color: rgba(255, 255, 255, 0.55); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.site-ninetymins .nm-md-st { flex: none; display: inline-flex; align-items: center; padding: 4px 8px; border-radius: 6px; background: rgba(255, 255, 255, 0.08); color: rgba(255, 255, 255, 0.85); font-variant-numeric: tabular-nums; }
+.site-ninetymins .nm-md-st.st-in { background: rgba(25, 210, 107, 0.16); color: var(--nm-live); }
+.site-ninetymins .nm-md-st.st-post { color: rgba(255, 255, 255, 0.6); }
+.site-ninetymins .nm-md-team { display: grid; grid-template-columns: 28px 1fr auto; align-items: center; gap: 10px; font: 600 15px/1.2 var(--nm-sans); color: rgba(255, 255, 255, 0.92); }
+.site-ninetymins .nm-md-team img { width: 28px; height: 28px; object-fit: contain; }
+.site-ninetymins .nm-md-team i { width: 28px; height: 28px; border-radius: 50%; background: #2b2f3b; display: grid; place-items: center; font: 800 9px/1 var(--nm-sans); font-style: normal; color: #cfd3dc; text-transform: uppercase; }
+.site-ninetymins .nm-md-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.site-ninetymins .nm-md-team b { font: 800 22px/1 var(--nm-display); font-variant-numeric: tabular-nums; min-width: 24px; text-align: right; }
+.site-ninetymins .nm-md-card.st-post .nm-md-team:not(.win) { color: rgba(255, 255, 255, 0.55); }
+.site-ninetymins .nm-md-empty { color: rgba(255, 255, 255, 0.7); padding: 18px 0; }
+
+/* ── Home: tables · fixtures · app ─────────────────────────────────── */
+.site-ninetymins .nm-hub { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) 300px; gap: 18px; padding-top: 22px; padding-bottom: 10px; align-items: start; }
+.site-ninetymins .nm-hub-tables, .site-ninetymins .nm-hub-fx, .site-ninetymins .nm-hub-side { display: grid; gap: 16px; min-width: 0; }
+.site-ninetymins .nm-appcard { position: relative; overflow: hidden; border-radius: 14px; padding: 18px; color: #fff; background: radial-gradient(400px 200px at 100% 0%, rgba(25, 210, 107, 0.35), transparent 60%), linear-gradient(150deg, #0b1a12, #0f3d24); }
+.site-ninetymins .nm-appcard img { width: 56px; height: 56px; border-radius: 14px; display: block; }
+.site-ninetymins .nm-appcard h3 { margin: 12px 0 8px; font: 800 26px/1 var(--nm-display); text-transform: uppercase; }
+.site-ninetymins .nm-appcard ul { list-style: none; margin: 0 0 14px; padding: 0; display: grid; gap: 6px; font: 500 14px/1.35 var(--nm-sans); color: rgba(255, 255, 255, 0.85); }
+.site-ninetymins .nm-appcard li::before { content: "✓ "; color: var(--nm-live); font-weight: 800; }
+.site-ninetymins .nm-appbtn { display: flex; align-items: center; justify-content: center; min-height: 48px; border-radius: 10px; background: var(--nm-live); color: #04140a; font: 800 15px/1 var(--nm-sans); text-decoration: none; }
+.site-ninetymins .nm-appbtn:hover { background: #fff; }
+.site-ninetymins .nm-appbtn:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+
+@media (max-width: 1080px) { .site-ninetymins .nm-hub { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .site-ninetymins .nm-hub-side { grid-column: 1 / -1; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); } }
+@media (max-width: 720px) {
+  .site-ninetymins .nm-hub { grid-template-columns: minmax(0, 1fr); }
+  .site-ninetymins .nm-md-grid { grid-template-columns: minmax(0, 1fr); }
+  .site-ninetymins .nm-mdhero-head { align-items: flex-start; }
+}
+@media (prefers-reduced-motion: reduce) { .site-ninetymins .nm-md-card, .site-ninetymins .nm-md-card.sk { transition: none; animation: none; } .site-ninetymins a.nm-md-card:hover { transform: none; } }

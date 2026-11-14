@@ -374,3 +374,84 @@ export function RegionFixtures({ teams, title }: { teams: string[]; title: strin
     </section>
   );
 }
+
+/* ── Home "Matchday" board: big live/today cards, sport tabs, polls every 60s ── */
+const MD_TABS: Array<[string, string]> = [
+  ["eng.1,uefa.champions,esp.1,ita.1,ger.1,fra.1,cricket,nba", "All sports"],
+  ["eng.1,uefa.champions,esp.1,ita.1,ger.1,fra.1", "Football"],
+  ["cricket", "Cricket"],
+  ["nba", "NBA"],
+];
+
+function MdTeam({ t, state }: { t: Team; state: Ev["state"] }) {
+  return (
+    <span className={`nm-md-team${state === "post" && t.winner ? " win" : ""}`}>
+      {t.logo ? <img src={thumb(t.logo)} alt="" width={28} height={28} loading="lazy" /> : <i aria-hidden="true">{(t.abbr || t.name).slice(0, 3)}</i>}
+      <span className="nm-md-name">{t.name}</span>
+      {state !== "pre" ? <b>{t.score}</b> : null}
+    </span>
+  );
+}
+
+export function MatchdayBoard() {
+  const [tab, setTab] = useState(MD_TABS[0][0]);
+  const data = useJson<{ events: Ev[] }>(`/api/scores?l=${tab}`);
+  const all = order(data?.events || []);
+  const live = all.filter((e) => e.state === "in").length;
+  const evs = all.filter((e) => e.home && e.away).slice(0, 12);
+  return (
+    <div className="nm-md">
+      <div className="nm-md-bar">
+        <div className="nm-md-tabs" role="tablist" aria-label="Sport">
+          {MD_TABS.map(([v, label]) => (
+            <button key={v} type="button" role="tab" aria-selected={tab === v} className={tab === v ? "on" : ""} onClick={() => setTab(v)}>
+              {label}
+            </button>
+          ))}
+        </div>
+        {live > 0 ? (
+          <span className="nm-md-live">
+            <i className="nm-dot" /> {live} live now
+          </span>
+        ) : null}
+      </div>
+      {!data ? (
+        <div className="nm-md-grid" aria-busy="true">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div className="nm-md-card sk" key={i} />
+          ))}
+        </div>
+      ) : evs.length === 0 ? (
+        <p className="nm-md-empty">No matches in this sport right now. Check tomorrow&apos;s fixtures.</p>
+      ) : (
+        <div className="nm-md-grid">
+          {evs.map((e) => {
+            const href = matchHref(e);
+            const body = (
+              <>
+                <span className="nm-md-top">
+                  <span className="nm-md-lg">{e.leagueLabel}</span>
+                  <span className={`nm-md-st st-${e.state}`}>
+                    {e.state === "in" ? <i className="nm-dot" /> : null}
+                    {e.state === "pre" ? kickoff(e.date) : e.state === "post" ? "FT" : e.detail || "Live"}
+                  </span>
+                </span>
+                <MdTeam t={e.home!} state={e.state} />
+                <MdTeam t={e.away!} state={e.state} />
+              </>
+            );
+            return href ? (
+              <Link key={e.id} href={href} prefetch={false} className={`nm-md-card st-${e.state}`}>
+                {body}
+              </Link>
+            ) : (
+              <div key={e.id} className={`nm-md-card st-${e.state}`}>
+                {body}
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
