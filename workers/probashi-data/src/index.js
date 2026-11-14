@@ -3,6 +3,21 @@
 import visaCheck from "../../../probashi-data/data/visa_check.json";
 import gamca from "../../../probashi-data/data/gamca.json";
 import customs from "../../../probashi-data/data/customs.json";
+import visaExtra from "../../../probashi-data/data/visa_extra.json";
+
+// /v1/visa: live Bangladesh-passport codes from D1 (pi_passport, refreshed weekly) + Bangladeshi-specific extras
+async function visaData(env) {
+  const meta = await env.DB.prepare("SELECT k, v FROM pi_meta WHERE k IN ('dest','updated_at','source')").all();
+  const M = Object.fromEntries(meta.results.map((r) => [r.k, r.v]));
+  const bd = await env.DB.prepare("SELECT codes, rank, free, voa, eta, evisa, required FROM pi_passport WHERE iso2 = 'BD'").first();
+  const dest = JSON.parse(M.dest), codes = JSON.parse(bd.codes);
+  const code = Object.fromEntries(dest.map((d, i) => [d.iso2, codes[i]]));
+  return {
+    updated: (M.updated_at || "").slice(0, 10), source: "Passport Index dataset (ilyankou/passport-index-dataset, MIT)", source_url: M.source,
+    rank: bd.rank, counts: { free: bd.free, voa: bd.voa, eta: bd.eta, evisa: bd.evisa, required: bd.required },
+    countries: visaExtra.countries.map((c) => ({ ...c, code: code[c.iso2] || "" })).filter((c) => c.code),
+  };
+}
 import agency from "../../../probashi-data/data/agency.json";
 import migrationCost from "../../../probashi-data/data/migration_cost.json";
 const AG = new Map(agency.agencies.map((a) => [a.slug, a]));
@@ -14,15 +29,17 @@ const SITE = "https://probashiinfo.com";
 const DATA = { "visa-check": visaCheck, gamca, customs, "agency-index": agencyIndex, "migration-cost": migrationCost };
 
 function pages() {
+  const today = new Date().toISOString().slice(0, 10);
   const out = [{ path: "/visa-check/", index: false, lastmod: visaCheck.updated }];
   for (const c of visaCheck.countries) out.push({ path: `/visa-check/${c.slug}/`, index: true, lastmod: visaCheck.updated });
+  out.push({ path: "/visa/", index: true, lastmod: visaExtra.updated });
+  for (const c of visaExtra.countries) out.push({ path: `/visa/${c.slug}/`, index: !!(c.index && c.release && c.release <= today), lastmod: c.release && c.release > visaExtra.updated ? c.release : visaExtra.updated });
   out.push({ path: "/customs/", index: true, lastmod: customs.updated });
   for (const t of customs.topics) out.push({ path: `/customs/${t.slug}/`, index: true, lastmod: customs.updated });
   out.push({ path: "/baggage/", index: true, lastmod: customs.updated });
   for (const a of customs.airlines) out.push({ path: `/baggage/${a.slug}/`, index: true, lastmod: customs.updated });
   out.push({ path: "/gamca/", index: true, lastmod: gamca.updated });
   for (const c of gamca.cities) out.push({ path: `/gamca/${c.slug}/`, index: c.index, lastmod: gamca.updated });
-  const today = new Date().toISOString().slice(0, 10);
   out.push({ path: "/agency/", index: true, lastmod: agency.updated });
   out.push({ path: "/migration-cost/", index: true, lastmod: migrationCost.updated });
   for (const a of agency.agencies) out.push({ path: `/agency/${a.slug}/`, index: a.release <= today, lastmod: a.release > agency.updated ? a.release : agency.updated });
@@ -50,6 +67,14 @@ export default {
     if (!m) return json({ error: "not found" }, 404, 30);
     if (m[1] === "pages") return json({ site: SITE, pages: pages() });
     if (DATA[m[1]]) return json(DATA[m[1]]);
+    if (m[1] === "visa") {
+      const cache = caches.default, key = new Request("https://pbd.cache/visa-v1");
+      let hit = await cache.match(key);
+      if (hit) return hit;
+      const res = json(await visaData(env), 200, 12 * 3600);
+      await cache.put(key, res.clone());
+      return res;
+    }
     if (m[1] === "remittance") {
       const cache = caches.default, key = new Request("https://pbd.cache/remittance-v2");
       let hit = await cache.match(key);

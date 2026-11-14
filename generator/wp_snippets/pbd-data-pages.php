@@ -13,7 +13,7 @@ define('PBD_LOADED', 1);
 define('PBD_MODE', 'live');               // 'test' | 'live'
 define('PBD_KEY', '__PBD_TEST_KEY__');
 define('PBD_API', 'https://probashi-data.iamkashimuddin.workers.dev/v1/');
-define('PBD_VER', '8');
+define('PBD_VER', '9');
 
 function pbd_enabled() {
     if (PBD_MODE === 'live') { return true; }
@@ -57,7 +57,7 @@ function pbd_match() {
     $m = null;
     $path = rawurldecode((string) wp_parse_url(isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '', PHP_URL_PATH));
     if (PBD_MODE === 'live' && $path === '/pbd-sitemap.xml') { return $m = array('type' => 'sitemap'); }
-    if (!preg_match('#^/(visa-check|remittance|gamca|agency|migration-cost|customs|baggage)(?:/([a-z0-9-]+))?/?$#', $path, $x)) { return $m; }
+    if (!preg_match('#^/(visa-check|visa|remittance|gamca|agency|migration-cost|customs|baggage)(?:/([a-z0-9-]+))?/?$#', $path, $x)) { return $m; }
     if (!pbd_enabled()) { return $m; }
     $type = $x[1];
     $slug = isset($x[2]) ? $x[2] : '';
@@ -73,7 +73,7 @@ function pbd_match() {
     $d = pbd_data($type === 'agency' ? 'agency-index' : (($type === 'customs' || $type === 'baggage') ? 'customs' : $type));
     if (!$d) { return $m; }
     if ($slug !== '') {
-        $lists = array('remittance' => 'currencies', 'gamca' => 'cities', 'customs' => 'topics', 'baggage' => 'airlines');
+        $lists = array('visa' => 'countries', 'remittance' => 'currencies', 'gamca' => 'cities', 'customs' => 'topics', 'baggage' => 'airlines');
         $list = $d[isset($lists[$type]) ? $lists[$type] : 'countries'];
         foreach ($list as $c) { if ($c['slug'] === $slug) { $item = $c; break; } }
         if (!$item) { return $m; }   // unknown slug → normal WordPress 404
@@ -199,6 +199,21 @@ function pbd_seo() {
         $s['index'] = true;
         if ($m['item']) { $a = $m['item']; $s['title'] = $a['name'] . ' লাগেজ কত কেজি ২০২৬: ইকোনমি ভাড়া অনুযায়ী (' . $a['name_en'] . ')'; $s['desc'] = $a['name'] . ' ঢাকা রুটে ইকোনমিতে চেকড লাগেজ ' . $a['fares'][0][1] . ' থেকে; হাতব্যাগ ' . preg_replace('/\s*\(.*$/u', '', $a['cabin']) . '। ভাড়ার ধরন অনুযায়ী পুরো তালিকা, এয়ারলাইনের নিজের সূত্রসহ।'; }
         else { $s['title'] = 'কোন এয়ারলাইনে কত কেজি লাগেজ: এমিরেটস, কাতার, গালফ এয়ারসহ'; $s['desc'] = 'ঢাকা থেকে মধ্যপ্রাচ্য, মালয়েশিয়া ও সিঙ্গাপুর রুটে ' . pbd_bn(count($m['data']['airlines'])) . 'টি এয়ারলাইনের ইকোনমি লাগেজ ও হাতব্যাগের নিয়ম — প্রতিটির নিজের সাইট থেকে।'; }
+    }
+    if ($m['type'] === 'visa') {
+        $d = $m['data'];
+        if ($m['item']) {
+            $c = $m['item'];
+            $k = pbd_vs_kind($c['code']);
+            $s['index'] = !empty($c['index']) && !empty($c['release']) && $c['release'] <= gmdate('Y-m-d');
+            $s['title'] = 'বাংলাদেশি পাসপোর্টে ' . $c['name'] . ' যেতে ভিসা লাগে? ' . $k[0] . ' (২০২৬)';
+            $s['desc'] = 'বাংলাদেশিদের জন্য ' . $c['name'] . ': ' . $k[0] . ' — ' . $k[3] . '। ঢাকা বিমানবন্দরের নিয়ম, কাজের ভিসা, টাকা পাঠানো ও সরকারি সাইটের লিংক।';
+            $s['faq'] = pbd_vs_faq($d, $c);
+        } else {
+            $s['index'] = true;
+            $s['title'] = 'বাংলাদেশি পাসপোর্টে ভিসা ছাড়া কোন কোন দেশে যাওয়া যায় ২০২৬';
+            $s['desc'] = 'বাংলাদেশি পাসপোর্টে ' . pbd_bn($d['counts']['free']) . 'টি দেশে ভিসা লাগে না, ' . pbd_bn($d['counts']['voa']) . 'টিতে অন-অ্যারাইভাল, ' . pbd_bn($d['counts']['evisa']) . 'টিতে ই-ভিসা — ' . pbd_bn(count($d['countries'])) . 'টি দেশের পুরো তালিকা।';
+        }
     }
     if (function_exists('mb_strlen') && mb_strlen($s['desc']) > 158) { $s['desc'] = mb_substr($s['desc'], 0, 155) . '…'; }
     return $s;
@@ -350,6 +365,7 @@ function pbd_vc_faq($c) {
 function pbd_render($m) {
     if ($m['type'] === 'visa-check') { return $m['item'] ? pbd_vc_country($m['data'], $m['item']) : pbd_vc_hub($m['data']); }
     if ($m['type'] === 'gamca') { $h = $m['item'] ? pbd_gm_city($m['data'], $m['item']) : pbd_gm_hub($m['data']); $f = ''; foreach (pbd_gm_faq($m['data'], $m['item']) as $q) { $f .= '<details><summary>' . esc_html($q[0]) . '</summary><p>' . esc_html($q[1]) . '</p></details>'; } return pbd_gm_css() . str_replace('<h2>প্রশ্ন ও উত্তর</h2>', '<h2>প্রশ্ন ও উত্তর</h2>' . $f, $h); }
+    if ($m['type'] === 'visa') { return pbd_gm_css() . pbd_ag_css() . ($m['item'] ? pbd_vs_one($m['data'], $m['item']) : pbd_vs_hub($m['data'])); }
     if ($m['type'] === 'customs') { return pbd_rm_css() . ($m['item'] ? pbd_cu_topic($m['data'], $m['item']) : pbd_cu_hub($m['data'])); }
     if ($m['type'] === 'baggage') { return $m['item'] ? pbd_bg_one($m['data'], $m['item']) : pbd_bg_hub($m['data']); }
     if ($m['type'] === 'agency') { return pbd_ag_css() . ($m['item'] ? pbd_ag_one($m['data'], $m['item']) : pbd_ag_hub($m['data'])); }
@@ -745,4 +761,84 @@ function pbd_bg_hub($d) {
 }
 function pbd_bg_tile($x) {
     return '<a href="' . esc_url(home_url('/baggage/' . $x['slug'] . '/')) . '">' . pbd_flag($x['flag']) . '<span>' . esc_html($x['name']) . '<small>' . esc_html($x['fares'][0][1]) . ' থেকে</small></span></a>';
+}
+
+/* ---------- visa rules for the Bangladeshi passport ---------- */
+function pbd_vs_kind($code) {
+    $k = substr((string) $code, 0, 1);
+    $days = preg_replace('/\D/', '', (string) $code);
+    $map = array(
+        'F' => array('ভিসা লাগে না', 'up', '✅', $days ? pbd_bn($days) . ' দিন পর্যন্ত ভিসা ছাড়া থাকা যায়' : 'আগে থেকে ভিসা ছাড়াই যাওয়া যায়'),
+        'A' => array('অন-অ্যারাইভাল ভিসা', 'up', '🛬', 'পৌঁছে বিমানবন্দর/সীমান্তে ভিসা নেওয়া যায়'),
+        'T' => array('ইটিএ (অনলাইন অনুমতি)', 'warn', '📝', 'যাওয়ার আগে অনলাইনে ইলেকট্রনিক ট্রাভেল অথরাইজেশন নিতে হয়'),
+        'E' => array('ই-ভিসা', 'warn', '💻', 'যাওয়ার আগে অনলাইনে ই-ভিসা আবেদন করতে হয়'),
+        'V' => array('ভিসা লাগবে', 'dn', '🏛️', 'যাওয়ার আগে দূতাবাস বা তাদের ভিসা সেন্টারে আবেদন করতে হয়'),
+        'X' => array('প্রবেশ নিষেধ', 'dn', '⛔', 'বাংলাদেশি পাসপোর্টে এই দেশে প্রবেশের অনুমতি নেই'),
+    );
+    return isset($map[$k]) ? $map[$k] + array(4 => $k) : array('তথ্য নেই', 'warn', 'ℹ️', '', $k);
+}
+function pbd_vs_faq($d, $c) {
+    $k = pbd_vs_kind($c['code']);
+    $q = array(array('বাংলাদেশি পাসপোর্টে ' . $c['name'] . ' যেতে কি ভিসা লাগে?', $k[0] . ' — ' . $k[3] . ' (' . pbd_date($d['updated']) . ' পর্যন্ত তথ্য অনুযায়ী)।'));
+    $q[] = array($c['name'] . ' কাজের জন্য গেলে কী লাগবে?', 'ভ্রমণ ভিসায় কাজ করা যায় না। কাজের জন্য সেই দেশের ওয়ার্ক ভিসা/পারমিট, আর বাংলাদেশ থেকে বিএমইটি ছাড়পত্র (স্মার্ট কার্ড) লাগবে।');
+    if (!empty($c['portal'])) { $q[] = array($c['name'] . 'র ভিসা কোথায় চেক করব?', 'সরকারি সাইট ' . pbd_host($c['portal']['url']) . '-এ।'); }
+    return $q;
+}
+function pbd_vs_one($d, $c) {
+    $k = pbd_vs_kind($c['code']);
+    $o = pbd_head(array(array('দেশভিত্তিক ভিসা', '/visa/'), array($c['name'], '')), 'বাংলাদেশি পাসপোর্টে ' . $c['name'] . ': ' . $k[0]);
+    $o .= '<div class="pbd-hero"><small>' . pbd_flag($c['iso2']) . ' ' . esc_html($c['name_en']) . ' · বাংলাদেশি পাসপোর্ট</small><div class="big">' . $k[2] . ' ' . esc_html($k[0]) . '</div>'
+        . '<span class="pbd-chip ' . $k[1] . '">' . esc_html($k[3]) . '</span><span class="pbd-chip">📅 ' . pbd_date($d['updated']) . '</span>';
+    if (!empty($c['portal'])) { $o .= '<a class="pbd-go" href="' . esc_url($c['portal']['url']) . '" target="_blank" rel="nofollow noopener"><i>🏛️</i><div><b>সরকারি ভিসা সাইট</b><span>' . esc_html(pbd_host($c['portal']['url'])) . '</span></div><em>➜</em></a>'; }
+    $o .= '</div>';
+    if (!empty($c['owned'])) { $o .= '<p>📖 ' . esc_html($c['name']) . ' ভিসার কাগজপত্র ও আবেদনের বিস্তারিত: <a href="' . esc_url($c['owned']['url']) . '">' . esc_html($c['owned']['title']) . '</a></p>'; }
+    $rows = array();
+    if ($k[4] === 'F') { $rows[] = array('🛂', 'ভিসা ছাড়া মানে', 'আগে আবেদন লাগে না, তবে ইমিগ্রেশন অফিসার প্রবেশ দেবেন কি না তা তাঁর সিদ্ধান্ত। ফিরতি টিকিট, থাকার ঠিকানা আর খরচের টাকা দেখাতে প্রস্তুত থাকুন।'); }
+    if ($k[4] === 'A') { $rows[] = array('🛬', 'অন-অ্যারাইভাল মানে', 'পৌঁছানোর পর ভিসা ফি দিয়ে ভিসা নিতে হয়। ফিরতি টিকিট, হোটেল বুকিং ও পর্যাপ্ত টাকা সাথে রাখুন।'); }
+    if ($k[4] === 'E' || $k[4] === 'T') { $rows[] = array('💻', 'অনলাইনে আবেদন', 'শুধু দেশটির সরকারি সাইট থেকে আবেদন করুন — একই রকম দেখতে অনেক ভুয়া সাইট বাড়তি টাকা নেয়।' . (!empty($c['portal']) ? ' সরকারি সাইট: ' . pbd_host($c['portal']['url']) . '।' : '')); }
+    if ($k[4] === 'V') { $rows[] = array('🏛️', 'কোথায় আবেদন', 'ঢাকায় দেশটির দূতাবাস বা তাদের নিয়োজিত ভিসা সেন্টারে (যেমন ভিএফএস)। দূতাবাস না থাকলে পাশের দেশের (প্রায়ই দিল্লি) দূতাবাস দায়িত্বে থাকে।'); }
+    $rows[] = array('🛫', 'ঢাকা বিমানবন্দরে', 'পাসপোর্টের মেয়াদ অন্তত ৬ মাস রাখুন। কাজের উদ্দেশ্যে গেলে বিএমইটি ছাড়পত্র ছাড়া ইমিগ্রেশন পার হওয়া যায় না।');
+    $o .= '<h2>বাংলাদেশিদের জন্য যা জানা দরকার</h2>' . pbd_cu_rows($rows);
+    $links = array();
+    if (!empty($c['portal'])) { $links[] = array('🔎', 'ভিসা চেক', home_url($c['portal']['check'])); }
+    if (!empty($c['currency'])) { $links[] = array('💱', 'টাকা পাঠানোর হিসাব', home_url('/remittance/' . $c['currency'] . '/')); }
+    if (!empty($c['gcc'])) { $links[] = array('🩺', 'গামকা মেডিকেল', home_url('/gamca/')); }
+    if (!empty($c['cost'])) { $links[] = array('🧾', 'সরকারি খরচ ৳' . pbd_num($c['cost']['bdt']), home_url('/migration-cost/')); }
+    $links[] = array('🏢', 'এজেন্সি যাচাই', home_url('/agency/'));
+    $links[] = array('🧳', 'ফেরার সময় কাস্টমস', home_url('/customs/'));
+    $o .= '<h2>' . esc_html($c['name']) . ' যাওয়ার আগে কাজে লাগবে</h2><div class="pbd-tiles">';
+    foreach ($links as $l) { $o .= '<a href="' . esc_url($l[2]) . '"><span style="font-size:1.4em">' . $l[0] . '</span><span>' . esc_html($l[1]) . '</span></a>'; }
+    $o .= '</div>';
+    if (!empty($c['rel'])) {
+        $o .= '<h2>' . esc_html($c['name']) . ' নিয়ে আরও পড়ুন</h2><ul class="pbd-rel">';
+        foreach ($c['rel'] as $r) { $o .= '<li><a href="' . esc_url($r['url']) . '">' . esc_html($r['title']) . '</a></li>'; }
+        $o .= '</ul>';
+    }
+    $o .= '<h2>প্রশ্ন ও উত্তর</h2>';
+    foreach (pbd_vs_faq($d, $c) as $f) { $o .= '<details><summary>' . esc_html($f[0]) . '</summary><p>' . esc_html($f[1]) . '</p></details>'; }
+    $o .= '<p><a href="' . esc_url(home_url('/visa/')) . '">সব দেশের তালিকা →</a></p>';
+    $o .= '<p class="pbd-src">সূত্র: ' . esc_html($d['source']) . ', হালনাগাদ ' . pbd_date($d['updated']) . '। এটি সরকারি তালিকা নয় — নিয়ম হঠাৎ বদলাতে পারে, টিকিট কাটার আগে দূতাবাস বা এয়ারলাইনে নিশ্চিত হোন।</p>';
+    return $o . pbd_foot();
+}
+function pbd_vs_hub($d) {
+    $o = pbd_head(array(array('দেশভিত্তিক ভিসা', '')), 'বাংলাদেশি পাসপোর্টে কোন দেশে ভিসা লাগে, কোথায় লাগে না');
+    $n = $d['counts'];
+    $o .= '<div class="pbd-hero"><small>🛂 বাংলাদেশি পাসপোর্ট</small><div class="big">' . pbd_bn($n['free'] + $n['voa'] + $n['eta']) . 'টি দেশে আগে ভিসা লাগে না</div>'
+        . '<span class="pbd-chip up">✅ ভিসা ছাড়া ' . pbd_bn($n['free']) . '</span><span class="pbd-chip up">🛬 অন-অ্যারাইভাল ' . pbd_bn($n['voa']) . '</span><span class="pbd-chip">💻 ই-ভিসা ' . pbd_bn($n['evisa']) . '</span><span class="pbd-chip">📅 ' . pbd_date($d['updated']) . '</span></div>';
+    $o .= '<input class="pbd-find" type="search" placeholder="🔍 দেশের নাম লিখুন" oninput="var q=this.value.toLowerCase();document.querySelectorAll(\'.pbd-vs a\').forEach(function(e){e.style.display=e.textContent.toLowerCase().indexOf(q)>-1?\'\':\'none\'})">';
+    $groups = array('F' => array(), 'A' => array(), 'T' => array(), 'E' => array(), 'V' => array(), 'X' => array());
+    foreach ($d['countries'] as $c) { $g = substr($c['code'], 0, 1); if (isset($groups[$g])) { $groups[$g][] = $c; } }
+    foreach ($groups as $g => $cs) {
+        if (!$cs) { continue; }
+        $k = pbd_vs_kind($g);
+        usort($cs, function ($a, $b) { return strcmp($a['name'], $b['name']); });
+        $o .= '<h2>' . $k[2] . ' ' . esc_html($k[0]) . ' (' . pbd_bn(count($cs)) . ')</h2><div class="pbd-tiles pbd-vs">';
+        foreach ($cs as $c) {
+            $days = preg_replace('/\D/', '', $c['code']);
+            $o .= '<a href="' . esc_url(home_url('/visa/' . $c['slug'] . '/')) . '">' . pbd_flag($c['iso2']) . '<span>' . esc_html($c['name']) . ($days ? '<small>' . pbd_bn($days) . ' দিন</small>' : '') . '</span></a>';
+        }
+        $o .= '</div>';
+    }
+    $o .= '<p class="pbd-src">সূত্র: ' . esc_html($d['source']) . ', হালনাগাদ ' . pbd_date($d['updated']) . '। সরকারি তালিকা নয় — ভ্রমণের আগে দূতাবাসে নিশ্চিত হোন।</p>';
+    return $o . pbd_foot();
 }
