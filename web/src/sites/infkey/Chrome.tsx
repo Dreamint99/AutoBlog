@@ -32,10 +32,12 @@ export function KeyMark() {
 }
 
 export function Logo({ site }: { site: Site }) {
+  /* Text wordmark: "inf" + gradient "key" + muted ".com" (Space Grotesk, set in ai.css). */
   return (
-    <Link href={`/s/${site.id}`} className="logo ik-logo-img" aria-label={`${site.name} home`}>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/brand/infkey-logo-ondark.webp" alt="InfKey.com" width={168} height={48} />
+    <Link href={`/s/${site.id}`} className="logo ik-wordmark" aria-label={`${site.name} home`}>
+      <span className="ik-wm-a">inf</span>
+      <span className="ik-wm-k">key</span>
+      <span className="ik-wm-d">.com</span>
     </Link>
   );
 }

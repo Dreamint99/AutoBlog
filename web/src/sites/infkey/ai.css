@@ -151,10 +151,13 @@
 @media (max-width: 600px) { .site-infkey .ai-prompts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
 /* real logo */
-.site-infkey .ik-logo-img { display: inline-flex; align-items: center; }
-.site-infkey .ik-logo-img img { height: 40px; width: auto; display: block; filter: drop-shadow(0 4px 14px rgba(34, 211, 238, 0.25)); }
-.site-infkey .footer .ik-logo-img img { height: 44px; }
-@media (max-width: 600px) { .site-infkey .ik-logo-img img { height: 32px; } }
+/* Text wordmark logo */
+.site-infkey .ik-wordmark { display: inline-flex; align-items: baseline; font-family: var(--ik-display), "Space Grotesk", system-ui, sans-serif; font-weight: 700; font-size: 29px; line-height: 1; letter-spacing: -0.045em; text-decoration: none; white-space: nowrap; color: var(--text); }
+.site-infkey .ik-wordmark .ik-wm-k { background: linear-gradient(100deg, #9d8cff 0%, #7b6cff 45%, #34d8e0 100%); -webkit-background-clip: text; background-clip: text; color: transparent; padding-right: 0.02em; }
+.site-infkey .ik-wordmark .ik-wm-d { font-weight: 500; letter-spacing: -0.02em; color: var(--faint); margin-left: 0.04em; }
+.site-infkey .ik-wordmark:hover .ik-wm-d { color: var(--muted); }
+.site-infkey .footer .ik-wordmark { font-size: 32px; }
+@media (max-width: 600px) { .site-infkey .ik-wordmark { font-size: 25px; } }
 
 /* ════════════════════════════════════════════════════════════════════
    DATA HERO — Premium Linear/Vercel/Stripe-docs style
