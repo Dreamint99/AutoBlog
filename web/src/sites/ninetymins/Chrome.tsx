@@ -94,8 +94,8 @@ export function Footer({ site }: { site: Site }) {
         <div className="nm-foot-grid">
           <div>
             <Link href={s} className="nm-logo" aria-label={`${site.name} home`}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img className="nm-logo-img" src="/brand/ninetymins-logo-ondark.webp" alt="NinetyMins.com" width={230} height={36} loading="lazy" />
+              <span className="nm-hd-90" aria-hidden="true">90</span>
+              <span className="nm-hd-word">NinetyMins</span>
             </Link>
             <p>
               Independent viewing guides: dates, kick-off times by timezone and legal ways to watch. We are not

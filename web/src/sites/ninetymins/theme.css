@@ -1216,3 +1216,14 @@ html[data-nm-theme="dark"] .site-ninetymins .nm-sf-score { background: var(--mp-
 .site-ninetymins .nm-hub-saff .nm-hub-sport { display: inline-flex; align-items: center; gap: 6px; background: var(--mp-volt); color: var(--mp-ink); border: 2px solid var(--mp-ink); padding: 6px 10px; font: 800 12px/1 var(--nm-sans); letter-spacing: 0.04em; opacity: 1; transform: rotate(-2deg); }
 .site-ninetymins .nm-hub-saff .nm-hub-sport .nm-dot { background: var(--mp-live); box-shadow: none; }
 .site-ninetymins .nm-hub-saff h1 { font: 400 clamp(44px, 7vw, 76px)/0.95 var(--nm-display); }
+
+/* Footer in the poster system: "90 NinetyMins" mark + volt app banner */
+.site-ninetymins .nm-footer .nm-logo { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; color: #fff; }
+.site-ninetymins .nm-footer .nm-hd-90 { background: var(--mp-paper); color: var(--mp-ink); }
+.site-ninetymins .nm-footer .nm-hd-word { color: #fff; }
+.site-ninetymins .nm-footer h4 { font-family: var(--nm-display); font-weight: 400; letter-spacing: 0.04em; }
+.site-ninetymins .nm-appban { background: var(--mp-volt); color: var(--mp-ink); border: 2px solid var(--mp-ink); border-radius: 22px; padding: 14px 16px; }
+.site-ninetymins .nm-appban-txt b { font: 400 22px/1.05 var(--nm-display); }
+.site-ninetymins .nm-appban-txt small { opacity: 1; font-weight: 600; }
+.site-ninetymins .nm-appban .nm-appban-btn, .site-ninetymins .nm-appban > span:last-child:not(.nm-appban-txt) { background: var(--mp-ink); color: var(--mp-paper); border-radius: 999px; }
+.site-ninetymins .nm-footer .nm-appban { border-color: var(--mp-volt); }
