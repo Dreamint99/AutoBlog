@@ -13,7 +13,7 @@ define('PBD_LOADED', 1);
 define('PBD_MODE', 'live');               // 'test' | 'live'
 define('PBD_KEY', '__PBD_TEST_KEY__');
 define('PBD_API', 'https://probashi-data.iamkashimuddin.workers.dev/v1/');
-define('PBD_VER', '2');
+define('PBD_VER', '3');
 
 function pbd_enabled() {
     if (PBD_MODE === 'live') { return true; }
@@ -177,7 +177,7 @@ add_filter('wp_robots', function ($r) {
 }, 99);
 add_action('wp_head', function () {   // Rank Math prints no canonical on these virtual pages
     $s = pbd_seo();
-    if ($s) { echo '<link rel="canonical" href="' . esc_url($s['canonical']) . '" />' . "
+    if ($s && !(PBD_MODE === 'live' && $s['index'])) { echo '<link rel="canonical" href="' . esc_url($s['canonical']) . '" />' . "
 "; }
 }, 2);
 add_filter('body_class', function ($c) { if (pbd_seo()) { $c[] = 'pbd-page'; } return $c; });
@@ -210,6 +210,7 @@ add_action('init', function () {
     update_option('pbd_purged', PBD_VER, false);
     $p = pbd_data('pages');
     if ($p && !empty($p['pages'])) { foreach ($p['pages'] as $r) { do_action('litespeed_purge_url', home_url($r['path'])); } }
+    if (class_exists('\RankMath\Sitemap\Cache')) { \RankMath\Sitemap\Cache::invalidate_storage(); }  // rebuild index with our sitemap
     do_action('litespeed_purge_url', home_url('/sitemap_index.xml'));
 }, 99);
 
