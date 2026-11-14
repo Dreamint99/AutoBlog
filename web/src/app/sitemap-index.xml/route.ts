@@ -6,7 +6,7 @@ import { sitemapIndex, xmlResponse, siteAndBase, abs } from "@/lib/gcc-sitemaps"
 export async function GET() {
   const { base } = siteAndBase();
   const today = new Date().toISOString().slice(0, 10);
-  const parts = ["rates", "gold", "fuel", "calculators", "prayer", "embassy", "holidays"];
+  const parts = ["rates", "gold", "fuel", "calculators", "prayer", "embassy", "visa", "holidays"];
   const urls = [
     { loc: abs(base, "/sitemap.xml"), lastmod: today },
     ...parts.map((p) => ({ loc: abs(base, `/sitemap-${p}.xml`), lastmod: today })),
