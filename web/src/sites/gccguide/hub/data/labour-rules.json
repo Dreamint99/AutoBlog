@@ -1,0 +1,102 @@
+{
+  "generated": "2026-11-14",
+  "_readme": "Placeholder written before the verification pass. Records are confirmed:false until hub/data/labour-rules.json is filled from official sources; the calculator refuses to compute for an unconfirmed country rather than guessing.",
+  "rules": [
+    {
+      "country": "uae",
+      "gratuity": {
+        "confirmed": false,
+        "article": "",
+        "source_url": "",
+        "wage_base": "basic",
+        "min_service_years": 1,
+        "daily_divisor": 30,
+        "tiers": [],
+        "cap_months": null,
+        "resignation_factors": [],
+        "plain_english": "",
+        "notes": "Awaiting verification from an official source."
+      }
+    },
+    {
+      "country": "saudi-arabia",
+      "gratuity": {
+        "confirmed": false,
+        "article": "",
+        "source_url": "",
+        "wage_base": "full",
+        "min_service_years": 1,
+        "daily_divisor": 30,
+        "tiers": [],
+        "cap_months": null,
+        "resignation_factors": [],
+        "plain_english": "",
+        "notes": "Awaiting verification from an official source."
+      }
+    },
+    {
+      "country": "qatar",
+      "gratuity": {
+        "confirmed": false,
+        "article": "",
+        "source_url": "",
+        "wage_base": "basic",
+        "min_service_years": 1,
+        "daily_divisor": 30,
+        "tiers": [],
+        "cap_months": null,
+        "resignation_factors": [],
+        "plain_english": "",
+        "notes": "Awaiting verification from an official source."
+      }
+    },
+    {
+      "country": "kuwait",
+      "gratuity": {
+        "confirmed": false,
+        "article": "",
+        "source_url": "",
+        "wage_base": "basic",
+        "min_service_years": 1,
+        "daily_divisor": 30,
+        "tiers": [],
+        "cap_months": null,
+        "resignation_factors": [],
+        "plain_english": "",
+        "notes": "Awaiting verification from an official source."
+      }
+    },
+    {
+      "country": "oman",
+      "gratuity": {
+        "confirmed": false,
+        "article": "",
+        "source_url": "",
+        "wage_base": "basic",
+        "min_service_years": 1,
+        "daily_divisor": 30,
+        "tiers": [],
+        "cap_months": null,
+        "resignation_factors": [],
+        "plain_english": "",
+        "notes": "Awaiting verification from an official source."
+      }
+    },
+    {
+      "country": "bahrain",
+      "gratuity": {
+        "confirmed": false,
+        "article": "",
+        "source_url": "",
+        "wage_base": "basic",
+        "min_service_years": 1,
+        "daily_divisor": 30,
+        "tiers": [],
+        "cap_months": null,
+        "resignation_factors": [],
+        "plain_english": "",
+        "notes": "Awaiting verification from an official source."
+      }
+    }
+  ]
+}

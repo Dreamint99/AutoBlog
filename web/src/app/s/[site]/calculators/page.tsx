@@ -9,6 +9,7 @@ import { InfShell } from "@/sites/infkey/Chrome";
 import { PageHead } from "@/sites/infkey/data-ui";
 import CostCalculator, { type CalcModel } from "@/sites/infkey/CostCalculator";
 import { JsonLd, webAppSchema, breadcrumbSchema } from "@/lib/seo";
+import GccCalculatorsHub, { gccCalculatorsMeta } from "@/sites/gccguide/hub/CalculatorsHub";
 
 export const dynamic = "force-dynamic";
 
@@ -26,6 +27,22 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { site: id } = await params;
   const site = getSite(id);
+  // gccguide shares this URL with infkey's AI-cost calculators: the Gulf hub is
+  // mounted here for gccguide, everything below stays infkey's.
+  if (site?.id === "gccguide") {
+    return {
+      ...gccCalculatorsMeta,
+      metadataBase: new URL(siteBaseUrl(site)),
+      alternates: { canonical: "/calculators" },
+      openGraph: {
+        images: defaultOgImages(),
+        title: gccCalculatorsMeta.title,
+        description: gccCalculatorsMeta.description,
+        type: "website",
+        url: "/calculators",
+      },
+    };
+  }
   if (!site || site.id !== "infkey") return {};
   return {
     title: "AI API Cost Calculators — InfKey",
@@ -50,7 +67,9 @@ export default async function CalculatorsPage({
 }) {
   const { site: id } = await params;
   const site = getSite(id);
-  if (!site || site.id !== "infkey") notFound();
+  if (!site) notFound();
+  if (site.id === "gccguide") return <GccCalculatorsHub site={site} />;
+  if (site.id !== "infkey") notFound();
 
   const models = await getModels("llm");
   const calcModels: CalcModel[] = models
