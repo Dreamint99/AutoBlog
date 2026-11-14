@@ -24,3 +24,7 @@ Thumbs.db
 
 # wrangler local cache (account info)
 .wrangler/
+
+# local wrangler D1 state + generated SQL
+.wrangler-local/
+workers/gcc-data/out/

@@ -1,0 +1,31 @@
+{
+  // Scheduled data job for gccguide.com. Writes ONLY to the shared D1 database
+  // `autoblog-content` (same binding name/DB as every site Worker). It has no
+  // public route: run it with `wrangler dev --test-scheduled` locally, or let
+  // Cloudflare Cron Triggers call it in production.
+  //
+  //   cd ../web && npx wrangler dev -c ../workers/gcc-data/wrangler.jsonc --local --test-scheduled
+  //   curl "http://localhost:8787/__scheduled?cron=0+2,10,18+*+*+*"
+  //
+  // Deploy (only when the reviewer is ready):
+  //   cd web && npx wrangler deploy -c ../workers/gcc-data/wrangler.jsonc
+  "name": "gcc-data",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-06-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "d1_databases": [
+    { "binding": "DB", "database_name": "autoblog-content", "database_id": "58dacf96-c574-4f0b-88e6-3005d895eb90" }
+  ],
+  "vars": {
+    "SITE_URL": "https://gccguide.com",
+    // IndexNow key: the *public* verification file name already published in
+    // web/public/7cb730425493bd6250188aee25110d83.txt — not a secret.
+    "INDEXNOW_KEY": "7cb730425493bd6250188aee25110d83",
+    "INDEXNOW_ENABLED": "1"
+  },
+  "triggers": {
+    // UTC. Currency 3×/day, gold hourly, daily history snapshot at 00:30.
+    "crons": ["0 2,10,18 * * *", "15 * * * *", "30 0 * * *"]
+  },
+  "observability": { "enabled": true }
+}

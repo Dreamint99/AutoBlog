@@ -1,0 +1,419 @@
+/* Gulf Expat Data Hub — components.
+   Scoped under .site-gccguide like theme.css; only --vars are consumed from it,
+   so this file can be reviewed on its own. Mobile-first: one column by default,
+   grids widen at 720px. */
+
+.site-gccguide .gh-wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 28px 20px 64px;
+}
+
+/* ── crumbs + page head ───────────────────────────────────────────────────── */
+.site-gccguide .gh-crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+.site-gccguide .gh-crumbs a { color: var(--muted); text-decoration: none; }
+.site-gccguide .gh-crumbs a:hover { color: var(--navy); text-decoration: underline; }
+.site-gccguide .gh-crumbs span { display: inline-flex; align-items: center; gap: 6px; }
+.site-gccguide .gh-crumbs i { font-style: normal; color: var(--faint); }
+.site-gccguide .gh-crumbs b { color: var(--head); font-weight: 650; }
+
+.site-gccguide .gh-head { margin-bottom: 26px; }
+.site-gccguide .gh-kicker {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 8px;
+}
+.site-gccguide .gh-head h1 {
+  font-size: clamp(1.55rem, 1.15rem + 1.7vw, 2.35rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--head);
+  margin: 0 0 10px;
+  text-wrap: balance;
+}
+.site-gccguide .gh-dek {
+  font-size: 1.02rem;
+  line-height: 1.55;
+  color: var(--muted);
+  margin: 0;
+  max-width: 68ch;
+}
+
+.site-gccguide .gh-sechead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 34px 0 14px;
+}
+.site-gccguide .gh-sechead h2 {
+  font-size: 1.18rem;
+  letter-spacing: -0.01em;
+  color: var(--head);
+  margin: 0;
+}
+.site-gccguide .gh-sechead p { margin: 4px 0 0; color: var(--muted); font-size: 0.92rem; }
+
+/* ── stat cards ───────────────────────────────────────────────────────────── */
+.site-gccguide .gh-stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin: 18px 0 24px;
+}
+@media (min-width: 640px) {
+  .site-gccguide .gh-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 960px) {
+  .site-gccguide .gh-stats { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+.site-gccguide .gh-stat {
+  position: relative;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px 18px 15px;
+  min-width: 0;
+  overflow: hidden;
+}
+.site-gccguide .gh-stat::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: var(--navy);
+}
+.site-gccguide .gh-t-gold::before { background: var(--gold); }
+.site-gccguide .gh-t-teal::before { background: var(--teal); }
+.site-gccguide .gh-stat-k {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-bottom: 6px;
+}
+.site-gccguide .gh-stat-v {
+  display: block;
+  font-size: clamp(1.45rem, 1.1rem + 1.2vw, 1.95rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--head);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+.site-gccguide .gh-stat-v small {
+  font-size: 0.5em;
+  font-weight: 700;
+  color: var(--muted);
+  margin-left: 6px;
+  letter-spacing: 0;
+}
+.site-gccguide .gh-stat-s { display: block; margin-top: 6px; font-size: 0.86rem; color: var(--muted); }
+
+/* ── chart ────────────────────────────────────────────────────────────────── */
+.site-gccguide .gh-chart {
+  margin: 18px 0 8px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 14px 14px 10px;
+}
+.site-gccguide .gh-chart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  color: var(--teal);
+}
+.site-gccguide .gh-chart svg.down { color: var(--rose); }
+.site-gccguide .gh-chart-x {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11.5px;
+  color: var(--faint);
+  padding: 4px 2px 0;
+  font-variant-numeric: tabular-nums;
+}
+.site-gccguide .gh-chart-cap { margin: 10px 2px 0; font-size: 12.5px; color: var(--muted); }
+.site-gccguide .gh-chart-data { margin-top: 10px; font-size: 0.9rem; }
+.site-gccguide .gh-chart-data summary {
+  cursor: pointer;
+  color: var(--navy);
+  font-weight: 650;
+  padding: 6px 0;
+}
+.site-gccguide .gh-chart-data summary:hover { text-decoration: underline; }
+
+/* ── tables ───────────────────────────────────────────────────────────────── */
+.site-gccguide .gh-tablewrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  margin: 14px 0;
+}
+.site-gccguide .gh-tablewrap table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.94rem;
+  font-variant-numeric: tabular-nums;
+}
+.site-gccguide .gh-tablewrap caption {
+  text-align: left;
+  padding: 12px 14px 4px;
+  font-weight: 700;
+  color: var(--head);
+  font-size: 0.9rem;
+}
+.site-gccguide .gh-tablewrap th,
+.site-gccguide .gh-tablewrap td {
+  padding: 9px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--table-border);
+  white-space: nowrap;
+}
+.site-gccguide .gh-tablewrap td:last-child,
+.site-gccguide .gh-tablewrap th:last-child { text-align: right; }
+.site-gccguide .gh-tablewrap thead th {
+  background: var(--table-head);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.site-gccguide .gh-tablewrap tbody tr:nth-child(even) { background: var(--table-zebra); }
+.site-gccguide .gh-tablewrap tbody tr:hover { background: var(--table-hover); }
+.site-gccguide .gh-tablewrap tbody tr:last-child td { border-bottom: 0; }
+.site-gccguide .gh-tablefoot { margin: 0; padding: 0 14px 12px; font-size: 0.84rem; color: var(--muted); }
+.site-gccguide .gh-amounts td:first-child { color: var(--muted); }
+
+/* ── FAQ ──────────────────────────────────────────────────────────────────── */
+.site-gccguide .gh-faq { margin: 34px 0 10px; }
+.site-gccguide .gh-faq h2 { font-size: 1.18rem; color: var(--head); margin: 0 0 12px; }
+.site-gccguide .gh-faq dl { margin: 0; display: grid; gap: 10px; }
+.site-gccguide .gh-faq dl > div {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 13px 15px;
+}
+.site-gccguide .gh-faq dt { font-weight: 750; color: var(--head); margin-bottom: 5px; }
+.site-gccguide .gh-faq dd { margin: 0; color: var(--muted); line-height: 1.55; font-size: 0.95rem; }
+
+/* ── source line ──────────────────────────────────────────────────────────── */
+.site-gccguide .gh-source {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px;
+  margin: 16px 0 0;
+  padding: 10px 13px;
+  background: #eef3f8;
+  border-radius: 10px;
+  font-size: 0.84rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.site-gccguide .gh-source a { color: var(--navy); font-weight: 650; }
+.site-gccguide .gh-src-k {
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.site-gccguide .gh-src-sep { color: var(--faint); }
+.site-gccguide .gh-src-note { flex-basis: 100%; color: var(--faint); }
+
+/* ── related ──────────────────────────────────────────────────────────────── */
+.site-gccguide .gh-related { margin: 34px 0 0; }
+.site-gccguide .gh-related h2 { font-size: 1.05rem; color: var(--head); margin: 0 0 10px; }
+.site-gccguide .gh-related ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.site-gccguide .gh-related a {
+  display: inline-block;
+  padding: 7px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--panel);
+  font-size: 0.87rem;
+  font-weight: 600;
+  color: var(--navy);
+  text-decoration: none;
+}
+.site-gccguide .gh-related a:hover { border-color: var(--teal); color: var(--teal); }
+
+/* ── callout / empty state ────────────────────────────────────────────────── */
+.site-gccguide .gh-callout {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 13px 15px;
+  border-radius: 12px;
+  margin: 16px 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  background: #eef3f8;
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+.site-gccguide .gh-callout b { color: var(--head); }
+.site-gccguide .gh-c-warn { background: #fdf6e7; border-color: #f0dfae; }
+.site-gccguide .gh-c-law { background: #eef7f6; border-color: #c9e6e4; }
+.site-gccguide .gh-nodata {
+  padding: 14px 16px;
+  background: #fdf6e7;
+  border: 1px solid #f0dfae;
+  border-radius: 12px;
+  color: #7a5a10;
+  font-size: 0.92rem;
+}
+
+/* ── deltas ───────────────────────────────────────────────────────────────── */
+.site-gccguide .gh-delta { font-weight: 700; font-variant-numeric: tabular-nums; }
+.site-gccguide .gh-d-up { color: var(--teal); }
+.site-gccguide .gh-d-down { color: var(--rose); }
+.site-gccguide .gh-d-flat { color: var(--muted); }
+
+/* ── hub link grid (rates / gold / fuel / calculators indexes) ────────────── */
+.site-gccguide .gh-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin: 14px 0 8px;
+}
+@media (min-width: 560px) { .site-gccguide .gh-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 900px) { .site-gccguide .gh-grid.cols3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 900px) { .site-gccguide .gh-grid.cols4 { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.site-gccguide .gh-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 14px;
+  text-decoration: none;
+  min-width: 0;
+}
+.site-gccguide .gh-card:hover { border-color: var(--teal); }
+.site-gccguide .gh-card b { color: var(--head); font-size: 0.95rem; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.site-gccguide .gh-card span { color: var(--muted); font-size: 0.85rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.site-gccguide .gh-card .gh-card-v { color: var(--navy); font-weight: 750; }
+
+/* ── prayer times ─────────────────────────────────────────────────────────── */
+.site-gccguide .gh-prayer {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+@media (min-width: 720px) { .site-gccguide .gh-prayer { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+.site-gccguide .gh-prayer div {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 11px 8px;
+  text-align: center;
+}
+.site-gccguide .gh-prayer span { display: block; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--faint); font-weight: 750; }
+.site-gccguide .gh-prayer b { display: block; margin-top: 4px; font-size: 1.12rem; color: var(--head); font-variant-numeric: tabular-nums; }
+.site-gccguide .gh-prayer .now { border-color: var(--gold); background: #fdf6e7; }
+
+/* ── calculators ──────────────────────────────────────────────────────────── */
+.site-gccguide .gh-form { display: grid; gap: 12px; margin: 16px 0; }
+@media (min-width: 640px) { .site-gccguide .gh-form { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.site-gccguide .gh-form label { display: block; font-size: 0.86rem; font-weight: 700; color: var(--head); margin-bottom: 5px; }
+.site-gccguide .gh-form input,
+.site-gccguide .gh-form select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel);
+  font: inherit;
+  color: var(--text);
+}
+.site-gccguide .gh-form button {
+  grid-column: 1 / -1;
+  padding: 12px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--navy);
+  color: #fff;
+  font: 750 1rem/1 var(--font);
+  cursor: pointer;
+}
+.site-gccguide .gh-form button:hover { background: var(--teal); }
+.site-gccguide .gh-form .gh-hint { grid-column: 1 / -1; font-size: 0.82rem; color: var(--faint); }
+.site-gccguide .gh-answer {
+  margin: 18px 0;
+  padding: 18px;
+  border-radius: 16px;
+  background: var(--grad);
+  color: #fff;
+}
+.site-gccguide .gh-answer span { font-size: 12px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.85; }
+.site-gccguide .gh-answer b { display: block; font-size: clamp(1.7rem, 1.3rem + 2vw, 2.6rem); letter-spacing: -0.02em; margin: 6px 0; font-variant-numeric: tabular-nums; }
+.site-gccguide .gh-answer p { margin: 0; opacity: 0.92; font-size: 0.9rem; line-height: 1.5; }
+.site-gccguide .gh-steps { counter-reset: s; list-style: none; padding: 0; margin: 12px 0; display: grid; gap: 8px; }
+.site-gccguide .gh-steps li { position: relative; padding-left: 34px; color: var(--muted); line-height: 1.55; }
+.site-gccguide .gh-steps li::before {
+  counter-increment: s;
+  content: counter(s);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #fff;
+  font: 700 12px/24px var(--font);
+  text-align: center;
+}
+
+/* ── home "Today in the Gulf" strip ───────────────────────────────────────── */
+.site-gccguide .gh-today {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin: 0 0 26px;
+}
+@media (min-width: 720px) { .site-gccguide .gh-today { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.site-gccguide .gh-today > a,
+.site-gccguide .gh-today > div {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 13px 15px;
+  text-decoration: none;
+  min-width: 0;
+}
+.site-gccguide .gh-today > a:hover { border-color: var(--teal); }
+.site-gccguide .gh-today .k { display: block; font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--faint); }
+.site-gccguide .gh-today .v { display: block; margin-top: 5px; font-size: 1.18rem; font-weight: 800; color: var(--head); font-variant-numeric: tabular-nums; }
+.site-gccguide .gh-today .s { display: block; margin-top: 3px; font-size: 0.82rem; color: var(--muted); }

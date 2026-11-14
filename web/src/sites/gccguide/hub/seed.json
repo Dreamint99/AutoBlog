@@ -1,0 +1,30 @@
+{
+  "_readme": "Real FX + gold snapshot used only as a fallback when D1 has no rows. Regenerate with workers/gcc-data/scripts/capture-seed.mjs.",
+  "captured_at": "2026-11-13T00:02:31Z",
+  "fx_source": "open.er-api.com",
+  "gold_usd_per_oz": 3887.600098,
+  "gold_source": "gold-api.com",
+  "gold_asof": "2026-11-13T23:38:26Z",
+  "fx": {
+    "AED": 3.6725,
+    "SAR": 3.75,
+    "QAR": 3.64,
+    "OMR": 0.384497,
+    "BHD": 0.376,
+    "KWD": 0.31098,
+    "INR": 94.086126,
+    "PKR": 276.622899,
+    "BDT": 124.773951,
+    "PHP": 63.786172,
+    "NPR": 150.536611,
+    "LKR": 332.42858,
+    "EGP": 53.448759,
+    "IDR": 18250.530965,
+    "KES": 130.03512,
+    "NGN": 1350.459083,
+    "ETB": 161.454253,
+    "USD": 1,
+    "EUR": 0.903491,
+    "GBP": 0.755149
+  }
+}

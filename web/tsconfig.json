@@ -10,6 +10,9 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
+    // Test files import their subject as "./x.ts" so `node --test` (native type
+    // stripping, no bundler) resolves it. Safe because noEmit is on.
+    "allowImportingTsExtensions": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
