@@ -52,8 +52,9 @@ def _find(name=NAME):
 
 def _toggle(sid, on):
     r = requests.post(f"{API}/{sid}/{'activate' if on else 'deactivate'}", headers=_h(), timeout=60)
-    ok = r.ok and bool(r.json().get("active")) == on
-    print("activate" if on else "deactivate", sid, r.status_code, "ok" if ok else r.text[:300])
+    g = requests.get(f"{API}/{sid}", headers=_h(), timeout=60)
+    ok = r.ok and g.ok and bool(g.json().get("active")) == on
+    print("activate" if on else "deactivate", sid, r.status_code, "now", "active" if g.ok and g.json().get("active") else "off", "ok" if ok else "MISMATCH")
     return ok
 
 
