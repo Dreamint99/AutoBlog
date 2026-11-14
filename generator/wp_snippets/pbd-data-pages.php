@@ -13,7 +13,7 @@ define('PBD_LOADED', 1);
 define('PBD_MODE', 'live');               // 'test' | 'live'
 define('PBD_KEY', '__PBD_TEST_KEY__');
 define('PBD_API', 'https://probashi-data.iamkashimuddin.workers.dev/v1/');
-define('PBD_VER', '10');
+define('PBD_VER', '11');
 
 function pbd_enabled() {
     if (PBD_MODE === 'live') { return true; }
@@ -24,17 +24,20 @@ function pbd_enabled() {
 function pbd_data($set) {
     $t = get_transient('pbd' . PBD_VER . '_' . $set);
     if (is_array($t)) { return $t; }
-    $r = wp_remote_get(PBD_API . $set, array('timeout' => 8, 'user-agent' => 'probashiinfo-pbd/' . PBD_VER));
+    $one = strpos($set, '/') !== false;   // single item (agency/…, ramadan/…): no long-term stale copy
     $d = null;
-    if (!is_wp_error($r) && wp_remote_retrieve_response_code($r) === 200) {
-        $d = json_decode(wp_remote_retrieve_body($r), true);
+    if (!get_transient('pbd_down')) {      // worker failed in the last 5 min: don't wait on it again
+        $r = wp_remote_get(PBD_API . $set, array('timeout' => 6, 'user-agent' => 'probashiinfo-pbd/' . PBD_VER));
+        $code = is_wp_error($r) ? 0 : wp_remote_retrieve_response_code($r);
+        if ($code === 200) { $d = json_decode(wp_remote_retrieve_body($r), true); }
+        elseif ($code === 0 || $code >= 500) { set_transient('pbd_down', 1, 5 * MINUTE_IN_SECONDS); }
     }
     if (is_array($d)) {
         set_transient('pbd' . PBD_VER . '_' . $set, $d, (strpos($set, 'ramadan') === 0 ? 1 : ($set === 'remittance' ? 3 : 6)) * HOUR_IN_SECONDS);
-        update_option('pbd_stale_' . $set, $d, false);
+        if (!$one) { update_option('pbd_stale_' . $set, $d, false); }
         return $d;
     }
-    $s = get_option('pbd_stale_' . $set);   // worker down: serve last good copy
+    $s = $one ? null : get_option('pbd_stale_' . $set);   // worker down: serve last good copy
     if (is_array($s)) { set_transient('pbd' . PBD_VER . '_' . $set, $s, 15 * MINUTE_IN_SECONDS); return $s; }
     return null;
 }
@@ -977,3 +980,53 @@ function pbd_rz_js() {
         . 'function dl(b){var a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},1500)}'
         . 'document.querySelectorAll("[data-rz]").forEach(function(btn){btn.addEventListener("click",function(){var k=btn.getAttribute("data-rz"),t=btn.textContent;btn.textContent="তৈরি হচ্ছে…";blob().then(function(b){btn.textContent=t;if(k==="share"){var f=new File([b],name,{type:"image/png"});if(navigator.canShare&&navigator.canShare({files:[f]}))return navigator.share({files:[f],title:D.title,text:D.title+" — "+location.href}).catch(function(){});if(navigator.share)return navigator.share({title:D.title,url:location.href}).catch(function(){});window.open("https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(location.href),"_blank");return}dl(b)})})})})();</script>';
 }
+
+/* ---------- homepage: "এক ক্লিকে প্রবাসী সেবা" (data tools) under the hero ---------- */
+add_action('wp_footer', function () {
+    if (!is_front_page() || is_paged() || is_admin()) { return; }
+    $rm = pbd_data('remittance'); $vs = pbd_data('visa'); $rz = pbd_data('ramadan'); $ag = pbd_data('agency-index');
+    $gm = pbd_data('gamca'); $vc = pbd_data('visa-check'); $cu = pbd_data('customs'); $mc = pbd_data('migration-cost');
+    $sar = null;
+    if ($rm) { foreach ($rm['currencies'] as $c) { if ($c['code'] === 'sar') { $sar = $c; break; } } }
+    $vfree = $vs ? $vs['counts']['free'] + $vs['counts']['voa'] + $vs['counts']['eta'] : 0;
+    $gmn = $gm ? array_sum(array_column($gm['cities'], 'count')) : 0;
+    $tiles = array(
+        array('/ramadan/', '🌙', 'রমজান ক্যালেন্ডার', $rz ? 'শুরু ' . preg_replace('/\s\S+$/u', '', pbd_date($rz['ramadan']['start'])) . ' · ' . pbd_bn(count($rz['cities'])) . ' শহর' : 'প্রবাসের শহরে', '#7c3aed'),
+        array('/remittance/', '💱', 'টাকার হিসাব', $sar ? '১ রিয়াল = ৳' . pbd_num($sar['rate'], 2) . ' + ২.৫%' : 'প্রণোদনাসহ', '#16a34a'),
+        array('/visa-check/', '🛂', 'ভিসা চেক', $vc ? pbd_bn(count($vc['countries']) + count($vc['existing'])) . ' দেশ · সরকারি সাইট' : 'সরকারি সাইট', '#0b56c4'),
+        array('/visa/', '🌍', 'কোথায় ভিসা লাগে না', $vfree ? pbd_bn($vfree) . 'টি দেশে আগে ভিসা ছাড়া' : 'বাংলাদেশি পাসপোর্ট', '#0891b2'),
+        array('/agency/', '🏢', 'এজেন্সি যাচাই', $ag ? pbd_num(count($ag['agencies'])) . ' লাইসেন্স' : 'বিএমইটি তালিকা', '#e11d48'),
+        array('/gamca/', '🩺', 'গামকা মেডিকেল', $gmn ? pbd_bn($gmn) . 'টি সেন্টার' : 'সেন্টার তালিকা', '#db2777'),
+        array('/customs/', '🧳', 'কাস্টমস নিয়ম', '৬৫+৩৫ কেজি ফ্রি · স্বর্ণ · মোবাইল', '#d97706'),
+        array('/baggage/', '✈️', 'লাগেজ কত কেজি', $cu ? pbd_bn(count($cu['airlines'])) . 'টি এয়ারলাইন' : 'এয়ারলাইন', '#0284c7'),
+        array('/migration-cost/', '🧾', 'সরকারি খরচ', $mc ? pbd_bn(count($mc['countries'])) . ' দেশে সর্বোচ্চ কত' : 'অভিবাসন ব্যয়', '#475569'),
+    );
+    ?>
+<section class="pbh" id="pbh" aria-label="এক ক্লিকে প্রবাসী সেবা"><div class="w">
+  <div class="pbh-hd"><h2>এক ক্লিকে প্রবাসী সেবা</h2><span>সরকারি সূত্রের তথ্য · প্রতিদিন হালনাগাদ</span></div>
+  <div class="pbh-g">
+<?php foreach ($tiles as $t) { ?>
+    <a class="pbh-t" href="<?php echo esc_url(home_url($t[0])); ?>" style="--c:<?php echo esc_attr($t[4]); ?>"><i><?php echo $t[1]; ?></i><b><?php echo esc_html($t[2]); ?></b><small><?php echo esc_html($t[3]); ?></small></a>
+<?php } ?>
+  </div>
+  <form class="pbh-s" method="get" action="<?php echo esc_url(home_url('/agency/')); ?>"><span>🏢</span><input name="q" type="search" placeholder="এজেন্সির নাম বা আরএল নম্বর লিখে যাচাই করুন" aria-label="এজেন্সি যাচাই"><button type="submit">যাচাই</button></form>
+</div></section>
+<style>
+.pbh{padding:26px 0 8px}.pbh .w{box-sizing:border-box}
+.pbh-hd{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:0 0 14px}
+.pbh-hd h2{margin:0;font-size:24px}.pbh-hd span{font-size:14px;color:var(--mut,#6a7a93)}
+.pbh-g{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.pbh-t{position:relative;display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:12px;align-items:center;padding:14px;border-radius:18px;background:var(--card,#fff);border:1px solid var(--line,#e2e8f1);text-decoration:none!important;color:var(--ink,#0f1f38)!important;min-width:0;overflow:hidden;transition:transform .15s,box-shadow .15s}
+.pbh-t:before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:var(--c)}
+.pbh-t:hover{transform:translateY(-2px);box-shadow:0 10px 22px -12px var(--c)}
+.pbh-t i{grid-row:1/3;font-style:normal;font-size:26px;width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--c) 14%,#fff)}
+.pbh-t b{font-size:17px;line-height:1.3;min-width:0}.pbh-t small{font-size:13.5px;color:var(--c);font-weight:700;line-height:1.35;min-width:0;overflow-wrap:anywhere}
+.pbh-s{display:flex;align-items:center;gap:8px;margin:14px 0 0;padding:8px 8px 8px 14px;border-radius:16px;background:var(--bs,#e9f1fd)}
+.pbh-s span{font-size:20px}.pbh-s input{flex:1;min-width:0;border:0;background:transparent;font-size:16px;padding:8px 0;outline:0}
+.pbh-s button{border:0;background:var(--b,#0b56c4);color:#fff;font-weight:700;border-radius:12px;padding:10px 18px;font-size:15px;cursor:pointer}
+@media(max-width:820px){.pbh-g{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:420px){.pbh-g{gap:8px}.pbh-t{padding:11px;column-gap:9px}.pbh-t i{width:42px;height:42px;font-size:22px;border-radius:13px}.pbh-t b{font-size:15px}.pbh-t small{font-size:12px}.pbh-hd h2{font-size:20px}}
+</style>
+<script>(function(){var s=document.getElementById('pbh'),h=document.querySelector('section.hero3');if(s&&h&&h.parentNode){h.parentNode.insertBefore(s,h.nextSibling);}})();</script>
+<?php
+}, 5);
