@@ -1,0 +1,57 @@
+name: probashiinfo data refresh
+
+# Weekly: re-read the BMET RAIMS recruiting-agency list (licence status / expiry), rebuild
+# probashi-data/data/agency.json (existing release dates never move) and redeploy the
+# probashi-data Worker that feeds probashiinfo.com /agency/ pages. Commits only when data changed.
+on:
+  schedule:
+    - cron: "10 3 * * 1"
+  workflow_dispatch:
+    inputs:
+      force_deploy:
+        description: "Deploy the worker even when the data did not change (tests the Cloudflare token)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: probashi-data-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: pip install requests
+      - name: Fetch + rebuild
+        working-directory: probashi-data
+        env:
+          PYTHONUTF8: "1"
+        run: |
+          python fetch_agencies.py
+          python build_agency.py
+      - name: Deploy worker + commit when data changed
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          changed=1; git diff --quiet -- probashi-data/data/agency.json && changed=0
+          if [ "$changed" = 0 ] && [ "${{ github.event.inputs.force_deploy }}" != "true" ]; then echo "agency list unchanged"; exit 0; fi
+          npm install -g wrangler@4
+          (cd workers/probashi-data && wrangler deploy)
+          if [ "$changed" = 0 ]; then echo "deployed (forced), nothing to commit"; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add probashi-data/data/agency.json probashi-data/research/agencies.json
+          git commit -m "probashiinfo agency list $(date -u +%F)"
+          git pull --rebase && git push

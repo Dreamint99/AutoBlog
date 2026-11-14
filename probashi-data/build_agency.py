@@ -23,12 +23,27 @@ def rl_num(rl):
 def agencies():
     R = json.load(open(os.path.join(H, "research", "agencies.json"), encoding="utf-8"))
     rows = sorted((a for a in R["agencies"] if rl_num(a["rl"]) > 0), key=lambda a: (a["status"] != "Active", rl_num(a["rl"])))
-    out = []
+    # a refresh must never move an existing page's release date (an indexed page would flip back to noindex)
+    prev_path = os.path.join(H, "data", "agency.json")
+    prev = {}
+    if os.path.exists(prev_path):
+        prev = {a["slug"]: a["release"] for a in json.load(open(prev_path, encoding="utf-8"))["agencies"]}
+    out, new_i = [], 0
+    last = max(prev.values()) if prev else None
     for i, a in enumerate(rows):
+        slug = "rl-" + str(rl_num(a["rl"]))
+        if prev:
+            if slug in prev:
+                rel = prev[slug]
+            else:  # new licence: next free days after the current schedule, PER_DAY a day
+                rel = (max(dt.date.fromisoformat(last), dt.date.today()) + dt.timedelta(days=1 + new_i // PER_DAY)).isoformat()
+                new_i += 1
+        else:
+            rel = (RELEASE_START + dt.timedelta(days=i // PER_DAY)).isoformat()
         out.append({
-            "slug": "rl-" + str(rl_num(a["rl"])), "rl": rl_num(a["rl"]), "name": " ".join(a["name"].split()),
+            "slug": slug, "rl": rl_num(a["rl"]), "name": " ".join(a["name"].split()),
             "address": re.sub(r"(,\s*)+", ", ", a["address"]).strip(" ,"), "phone": a["phone"], "status": a["status"],
-            "expiry": a["expiry"], "release": (RELEASE_START + dt.timedelta(days=i // PER_DAY)).isoformat(),
+            "expiry": a["expiry"], "release": rel,
         })
     return {"updated": R["accessed"], "source": "BMET — RAIMS (raims.oep.gov.bd/agencies)", "source_url": R["source"],
             "agencies": out}
