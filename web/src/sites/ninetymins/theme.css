@@ -907,3 +907,12 @@
   .site-ninetymins .nm-mdhero-head { align-items: flex-start; }
 }
 @media (prefers-reduced-motion: reduce) { .site-ninetymins .nm-md-card, .site-ninetymins .nm-md-card.sk { transition: none; animation: none; } .site-ninetymins a.nm-md-card:hover { transform: none; } }
+/* Data catalogue: server-rendered, shared only within NinetyMins. */
+.site-ninetymins .nm-engine { padding-top: 24px; padding-bottom: 36px; overflow-wrap: anywhere; }
+.site-ninetymins .nm-engine h1 { font-size: clamp(24px, 4vw, 36px); line-height: 1.2; margin: 0 0 16px; }
+.site-ninetymins .nm-engine h2 { margin: 28px 0 12px; }
+.site-ninetymins .nm-engine p { line-height: 1.7; margin-bottom: 16px; }
+.site-ninetymins .nm-engine a { text-decoration: underline; }
+.site-ninetymins .nm-fixtures { width: 100%; border-collapse: collapse; font-size: 14px; }
+.site-ninetymins .nm-fixtures th, .site-ninetymins .nm-fixtures td { text-align: left; padding: 12px 8px; border-bottom: 1px solid #586174; }
+.site-ninetymins .nm-fixtures caption { text-align: left; padding: 12px 0; }

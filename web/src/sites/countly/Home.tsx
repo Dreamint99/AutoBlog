@@ -157,6 +157,7 @@ export function CnHeader({ site }: { site: { id: string; name: string } }) {
         <div className="cx-wrap">
           <nav className="cx-nav" aria-label="Sections">
             <Link href={s}>Latest</Link>
+            <Link href={`${s}/data`}>Country Data</Link>
             <Link href={`${s}/top10`} className="cx-nav-gold">
               Top 10 Lists
             </Link>

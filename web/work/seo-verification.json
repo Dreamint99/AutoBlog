@@ -1,0 +1,76 @@
+{
+  "at": "2026-11-14T00:08:22.942Z",
+  "checks": [
+    {
+      "url": "https://ninetymins.com/match/fifa-friendly/401921325-colombia-vs-chile",
+      "status": 200,
+      "robots": "<meta name=\"robots\" content=\"index, follow, max-image-preview:large\"/>",
+      "types": [
+        "SportsEvent",
+        "BreadcrumbList"
+      ],
+      "bytes": 44448
+    },
+    {
+      "url": "https://ninetymins.com/match/fifa-friendly/401916338-singapore-vs-paraguay",
+      "status": 200,
+      "robots": "<meta name=\"robots\" content=\"index, follow, max-image-preview:large\"/>",
+      "types": [
+        "SportsEvent",
+        "BreadcrumbList"
+      ],
+      "bytes": 55590
+    },
+    {
+      "url": "https://ninetymins.com/team/colombia-football-208",
+      "status": 200,
+      "robots": "<meta name=\"robots\" content=\"index, follow, max-image-preview:large\"/>",
+      "types": [
+        "SportsTeam",
+        "ItemList",
+        "BreadcrumbList"
+      ],
+      "bytes": 31069
+    },
+    {
+      "url": "https://ninetymins.com/league/fifa-friendly",
+      "status": 200,
+      "robots": "<meta name=\"robots\" content=\"index, follow, max-image-preview:large\"/>",
+      "types": [
+        "ItemList",
+        "BreadcrumbList"
+      ],
+      "bytes": 87845
+    },
+    {
+      "url": "https://ninetymins.com/embed/match/fifa-friendly_401921325",
+      "status": 200,
+      "robots": "<meta name=\"robots\" content=\"noindex, follow\"/>",
+      "types": [],
+      "bytes": 15643
+    },
+    {
+      "url": "https://ninetymins.com/stories/2026-11",
+      "status": 200,
+      "robots": "<meta name=\"robots\" content=\"index, follow\"/>",
+      "types": [
+        "Dataset",
+        "BreadcrumbList"
+      ],
+      "bytes": 33729
+    },
+    {
+      "url": "https://ninetymins.com/embed/story/2026-11",
+      "status": 200,
+      "robots": "<meta name=\"robots\" content=\"noindex, follow\"/>",
+      "types": [],
+      "bytes": 16303
+    }
+  ],
+  "sitemaps": [
+    "https://ninetymins.com/sitemap-hubs.xml",
+    "https://ninetymins.com/sitemap-articles.xml",
+    "https://ninetymins.com/sitemap-news.xml",
+    "https://ninetymins.com/sitemap-matches-2026-11.xml"
+  ]
+}

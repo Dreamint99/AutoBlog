@@ -60,6 +60,7 @@ function cleanLinks(res, siteId) {
 
 export default {
   async fetch(request, env, ctx) {
+    if (request.method === "GET" && request.headers.get("sec-fetch-dest") === "iframe" && /^\/(?:embed\/|data\/embed\/)/.test(new URL(request.url).pathname)) ctx.waitUntil(logEmbedHost(request, env));
     const res = await route(request, env, ctx);
     const ct = res.headers.get("content-type") || "";
     return ct.includes("text/html") ? cleanLinks(res, env.SITE_ID) : res;
@@ -69,7 +70,7 @@ export default {
 const route = async (request, env, ctx) => {
     if (request.method !== "GET") return worker.fetch(request, env, ctx);
     const url = new URL(request.url);
-    if (url.pathname.startsWith("/api/")) return worker.fetch(request, env, ctx);
+    if (url.pathname.startsWith("/admin/") || url.pathname.startsWith("/api/")) return worker.fetch(request, env, ctx);
     // Live status pages must stay fresh (data changes every 5 min).
     if (url.pathname === "/status" || url.pathname.startsWith("/status/")) return worker.fetch(request, env, ctx);
     if (isRscRequest(request, url)) return worker.fetch(request, env, ctx);
@@ -100,7 +101,8 @@ const route = async (request, env, ctx) => {
         // A streamed SSR error still returns 200 — never store it.
         const bad = ct.includes("text/html") && new TextDecoder().decode(buf).includes("data-dgst=");
         const storeHeaders = new Headers(res.headers);
-        storeHeaders.set("cache-control", `public, s-maxage=${TTL}`);
+        const livePath = env.SITE_ID === "ninetymins" && /^\/(match|embed|league|team|today|tomorrow|sitemap)/.test(url.pathname);
+        storeHeaders.set("cache-control", `public, s-maxage=${livePath ? 30 : TTL}`);
         storeHeaders.delete("set-cookie");
         if (!bad) ctx.waitUntil(cache.put(cacheKey, new Response(buf, { status: 200, headers: storeHeaders })));
         const h = new Headers(res.headers);
@@ -113,3 +115,18 @@ const route = async (request, env, ctx) => {
     }
     return res;
 };
+
+async function logEmbedHost(request, env) {
+  if (!["ninetymins", "countly"].includes(env.SITE_ID)) return;
+  try {
+    const ref = new URL(request.headers.get("referer") || "");
+    const own = env.SITE_ID === "ninetymins" ? "ninetymins.com" : "countly.net";
+    if (ref.hostname === own || ref.hostname.endsWith("." + own) || !/^[a-z0-9-]+(?:\.[a-z0-9-]+)+$/i.test(ref.hostname)) return;
+    const marker = new Request(`https://seo-embed-log.internal/${env.SITE_ID}/${ref.hostname}`);
+    if (await caches.default.match(marker)) return;
+    const now = new Date().toISOString();
+    // Store the host only: no visitor identifiers, query strings or private paths.
+    await env.DB.prepare("INSERT INTO seo_embed_hosts(site_id,host,first_seen,last_seen) VALUES(?,?,?,?) ON CONFLICT(site_id,host) DO UPDATE SET last_seen=excluded.last_seen").bind(env.SITE_ID, ref.hostname, now, now).run();
+    await caches.default.put(marker, new Response("logged", { headers: { "cache-control": "public, s-maxage=86400" } }));
+  } catch { /* telemetry never affects the widget response */ }
+}
