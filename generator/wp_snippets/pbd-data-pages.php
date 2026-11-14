@@ -13,7 +13,7 @@ define('PBD_LOADED', 1);
 define('PBD_MODE', 'live');               // 'test' | 'live'
 define('PBD_KEY', '__PBD_TEST_KEY__');
 define('PBD_API', 'https://probashi-data.iamkashimuddin.workers.dev/v1/');
-define('PBD_VER', '3');
+define('PBD_VER', '4');
 
 function pbd_enabled() {
     if (PBD_MODE === 'live') { return true; }
@@ -30,7 +30,7 @@ function pbd_data($set) {
         $d = json_decode(wp_remote_retrieve_body($r), true);
     }
     if (is_array($d)) {
-        set_transient('pbd' . PBD_VER . '_' . $set, $d, 6 * HOUR_IN_SECONDS);
+        set_transient('pbd' . PBD_VER . '_' . $set, $d, ($set === 'remittance' ? 3 : 6) * HOUR_IN_SECONDS);
         update_option('pbd_stale_' . $set, $d, false);
         return $d;
     }
@@ -57,7 +57,7 @@ function pbd_match() {
     $m = null;
     $path = rawurldecode((string) wp_parse_url(isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '', PHP_URL_PATH));
     if (PBD_MODE === 'live' && $path === '/pbd-sitemap.xml') { return $m = array('type' => 'sitemap'); }
-    if (!preg_match('#^/(visa-check)(?:/([a-z0-9-]+))?/?$#', $path, $x)) { return $m; }
+    if (!preg_match('#^/(visa-check|remittance)(?:/([a-z0-9-]+))?/?$#', $path, $x)) { return $m; }
     if (!pbd_enabled()) { return $m; }
     $type = $x[1];
     $slug = isset($x[2]) ? $x[2] : '';
@@ -65,7 +65,8 @@ function pbd_match() {
     if (!$d) { return $m; }
     $item = null;
     if ($slug !== '') {
-        foreach ($d['countries'] as $c) { if ($c['slug'] === $slug) { $item = $c; break; } }
+        $list = $type === 'remittance' ? $d['currencies'] : $d['countries'];
+        foreach ($list as $c) { if ($c['slug'] === $slug) { $item = $c; break; } }
         if (!$item) { return $m; }   // unknown slug → normal WordPress 404
     }
     $m = array('type' => $type, 'slug' => $slug, 'data' => $d, 'item' => $item, 'path' => '/' . $type . '/' . ($slug !== '' ? $slug . '/' : ''));
@@ -104,6 +105,7 @@ add_action('template_redirect', function () {
         nocache_headers();
         if (isset($_GET['pbd'])) { setcookie('pbd', PBD_KEY, time() + 86400, '/', '', is_ssl(), true); }
     }
+    if ($m['type'] === 'remittance') { do_action('litespeed_control_set_ttl', 3 * 3600); }
     $app = function_exists('pa_head') && function_exists('pa_foot') && function_exists('pa_app') && pa_app();
     if ($app) { pa_head(); } else { get_header(); }   // site shell (probashiinfo app snippet) or theme fallback
     echo pbd_css();
@@ -129,6 +131,19 @@ function pbd_seo() {
         } else {
             $s['title'] = 'ভিসা চেক: দেশভিত্তিক সরকারি ওয়েবসাইটের তালিকা';
             $s['desc'] = 'কোন দেশের ভিসা কোথায় চেক করবেন — শুধু সরকারি পোর্টালের ঠিকানা ও ধাপে ধাপে বাংলা গাইড।';
+        }
+    }
+    if ($m['type'] === 'remittance') {
+        $d = $m['data'];
+        $s['index'] = true;
+        if ($m['item']) {
+            $c = $m['item'];
+            $s['title'] = $c['name'] . ' থেকে টাকা: আজকের রেট ও ২.৫% প্রণোদনাসহ হিসাব';
+            $s['desc'] = '১ ' . $c['name'] . ' = ৳' . pbd_num($c['rate'], 2) . ' (' . pbd_date($d['updated']) . ')। যত ' . $c['unit'] . ' পাঠাবেন, ২.৫% সরকারি প্রণোদনাসহ পরিবার কত টাকা পাবে — সাথে সাথে হিসাব করুন।';
+            $s['faq'] = pbd_rm_faq($d, $c);
+        } else {
+            $s['title'] = 'রেমিট্যান্স ক্যালকুলেটর: ২.৫% প্রণোদনাসহ কত টাকা পাবেন';
+            $s['desc'] = 'রিয়াল, দিরহাম, রিংগিত, দিনার, ইউরোসহ ' . pbd_bn(count($d['currencies'])) . 'টি মুদ্রায় পাঠানো টাকার হিসাব — আজকের রেট ও ২.৫% সরকারি প্রণোদনা যোগ করে।';
         }
     }
     if (function_exists('mb_strlen') && mb_strlen($s['desc']) > 158) { $s['desc'] = mb_substr($s['desc'], 0, 155) . '…'; }
@@ -259,6 +274,7 @@ function pbd_vc_faq($c) {
 
 function pbd_render($m) {
     if ($m['type'] === 'visa-check') { return $m['item'] ? pbd_vc_country($m['data'], $m['item']) : pbd_vc_hub($m['data']); }
+    if ($m['type'] === 'remittance') { return $m['item'] ? pbd_rm_one($m['data'], $m['item']) : pbd_rm_hub($m['data']); }
     return '';
 }
 
@@ -322,4 +338,73 @@ function pbd_vc_hub($d) {
 }
 function pbd_tile($x) {
     return '<a href="' . esc_url(home_url('/visa-check/' . $x['slug'] . '/')) . '">' . esc_html($x['name']) . '<small>' . esc_html(pbd_host($x['url'])) . '</small></a>';
+}
+
+/* ---------- remittance ---------- */
+function pbd_num($n, $dec = 0) {   // Indian grouping (১২,৩৪,৫৬৭.৮৯) in Bangla digits
+    $neg = $n < 0; $n = abs((float) $n);
+    $f = number_format($n, $dec, '.', '');
+    $p = explode('.', $f); $i = $p[0];
+    if (strlen($i) > 3) { $last = substr($i, -3); $rest = substr($i, 0, -3); $rest = preg_replace('/\B(?=(\d{2})+(?!\d))/', ',', $rest); $i = $rest . ',' . $last; }
+    return ($neg ? '-' : '') . pbd_bn($i . (isset($p[1]) ? '.' . $p[1] : ''));
+}
+function pbd_rm_faq($d, $c) {
+    $one = $c['rate']; $pct = $d['incentive']['pct'];
+    return array(
+        array('১ ' . $c['name'] . ' সমান কত টাকা?', pbd_date($d['updated']) . ' তারিখের বাজার রেটে ১ ' . $c['name'] . ' = প্রায় ৳' . pbd_num($one, 2) . '। ব্যাংক বা এক্সচেঞ্জ হাউসের রেট এর চেয়ে কিছুটা কম-বেশি হতে পারে।'),
+        array('১০০০ ' . $c['unit'] . ' পাঠালে প্রণোদনাসহ কত টাকা পাবে?', 'প্রায় ৳' . pbd_num(1000 * $one, 0) . ' + ' . pbd_bn($pct) . '% প্রণোদনা ৳' . pbd_num(1000 * $one * $pct / 100, 0) . ' = মোট প্রায় ৳' . pbd_num(1000 * $one * (1 + $pct / 100), 0) . '।'),
+        array('২.৫% প্রণোদনা কীভাবে পাওয়া যায়?', 'বৈধ পথে — ব্যাংক, এক্সচেঞ্জ হাউস বা অনুমোদিত মোবাইল ব্যাংকিং — টাকা পাঠালে প্রাপকের হিসাবে ব্যাংক নিজেই প্রণোদনা যোগ করে। হুন্ডিতে কোনো প্রণোদনা নেই, আর তা আইনত অপরাধ।'),
+    );
+}
+function pbd_rm_calc($d, $c) {
+    $pct = (float) $d['incentive']['pct'];
+    $opts = '';
+    foreach ($d['currencies'] as $x) { $opts .= '<option value="' . esc_attr($x['rate']) . '"' . ($c && $x['code'] === $c['code'] ? ' selected' : '') . '>' . esc_html($x['name']) . '</option>'; }
+    return '<div class="pbd-calc"><label>কত পাঠাবেন?<input id="pbdAmt" type="number" inputmode="decimal" min="0" value="1000"></label>'
+        . '<label>মুদ্রা<select id="pbdCur">' . $opts . '</select></label>'
+        . '<div class="pbd-res"><div><span>টাকায়</span><b id="pbdT">—</b></div><div><span>+ ' . pbd_bn($pct) . '% প্রণোদনা</span><b id="pbdI">—</b></div><div class="tot"><span>পরিবার পাবে (প্রায়)</span><b id="pbdS">—</b></div></div></div>'
+        . '<script>(function(){var a=document.getElementById("pbdAmt"),c=document.getElementById("pbdCur"),P=' . $pct . ';function bn(s){return String(s).replace(/\d/g,function(d){return "০১২৩৪৫৬৭৮৯"[d]})}function f(n){return "৳ "+bn(Math.round(n).toLocaleString("en-IN"))}function r(){var v=parseFloat(a.value)||0,t=v*parseFloat(c.value);document.getElementById("pbdT").textContent=f(t);document.getElementById("pbdI").textContent=f(t*P/100);document.getElementById("pbdS").textContent=f(t*(1+P/100));}a.oninput=r;c.onchange=r;r();})();</script>';
+}
+function pbd_rm_css() {
+    return '<style>.pbd .pbd-calc{background:var(--bs,#e9f1fd);border-radius:var(--r,16px);padding:16px;margin:1em 0;display:grid;gap:12px;grid-template-columns:1fr 1fr}
+.pbd .pbd-calc label{display:grid;gap:4px;font-weight:700;min-width:0}.pbd .pbd-calc input,.pbd .pbd-calc select{font-size:1.15em;padding:10px;border:2px solid var(--line,#e2e8f1);border-radius:12px;width:100%;box-sizing:border-box;background:#fff}
+.pbd .pbd-res{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.pbd .pbd-res div{background:#fff;border-radius:12px;padding:10px;min-width:0}.pbd .pbd-res span{display:block;font-size:.8em;color:var(--mut,#6a7a93)}.pbd .pbd-res b{font-size:1.15em;overflow-wrap:anywhere}.pbd .pbd-res .tot{background:var(--g,#16a34a);color:#fff}.pbd .pbd-res .tot span{color:#e8f7ee}
+.pbd .pbd-rate{font-size:1.5em;font-weight:800;margin:.3em 0}
+@media(max-width:560px){.pbd .pbd-calc{grid-template-columns:1fr}.pbd .pbd-res{grid-template-columns:1fr}}</style>';
+}
+function pbd_rm_one($d, $c) {
+    $pct = $d['incentive']['pct'];
+    $o = pbd_head(array(array('রেমিট্যান্স', '/remittance/'), array($c['name'], '')), $c['name'] . ' থেকে টাকা: আজকের রেট ও প্রণোদনাসহ হিসাব') . pbd_rm_css();
+    $o .= '<p class="pbd-rate">১ ' . esc_html($c['name']) . ' = ৳ ' . pbd_num($c['rate'], 2) . '</p>';
+    $o .= '<p class="pbd-src">' . pbd_date($d['updated']) . ' তারিখের বাজার রেট · সূত্র: ' . esc_html($d['source']) . '। ব্যাংক/এক্সচেঞ্জ হাউসের রেট কিছুটা কম-বেশি হয়।</p>';
+    $o .= pbd_rm_calc($d, $c);
+    $o .= '<h2>' . esc_html($c['country']) . ' থেকে পাঠালে পরিবার কত পাবে</h2><table><tr><th>' . esc_html($c['unit']) . '</th><th>টাকায়</th><th>+ ' . pbd_bn($pct) . '% প্রণোদনা</th><th>মোট</th></tr>';
+    $amts = $c['rate'] > 100 ? array(10, 50, 100, 200, 500, 1000) : ($c['rate'] < 1 ? array(10000, 50000, 100000, 500000, 1000000) : array(100, 500, 1000, 1500, 2000, 5000));
+    foreach ($amts as $a) { $t = $a * $c['rate']; $o .= '<tr><td>' . pbd_num($a) . '</td><td>৳' . pbd_num($t) . '</td><td>৳' . pbd_num($t * $pct / 100) . '</td><td><b>৳' . pbd_num($t * (1 + $pct / 100)) . '</b></td></tr>'; }
+    $o .= '</table>';
+    if (!empty($c['rate7']) || !empty($c['rate30'])) {
+        $o .= '<h2>রেট কেমন যাচ্ছে</h2><table><tr><th>সময়</th><th>১ ' . esc_html($c['unit']) . '</th></tr><tr><td>আজ</td><td>৳' . pbd_num($c['rate'], 2) . '</td></tr>';
+        if (!empty($c['rate7'])) { $o .= '<tr><td>৭ দিন আগে</td><td>৳' . pbd_num($c['rate7'], 2) . '</td></tr>'; }
+        if (!empty($c['rate30'])) { $o .= '<tr><td>৩০ দিন আগে</td><td>৳' . pbd_num($c['rate30'], 2) . '</td></tr>'; }
+        $o .= '</table>';
+    }
+    $o .= '<div class="pbd-warn"><b>⚠️ হুন্ডি নয়, বৈধ পথে পাঠান</b><ul><li>' . esc_html($d['incentive']['note']) . '</li><li>হুন্ডিতে প্রণোদনা নেই, টাকা হারানোর ঝুঁকি আর আইনি শাস্তি আছে।</li></ul></div>';
+    $o .= '<p>সব মুদ্রার আজকের রেট একসাথে: <a href="' . esc_url(home_url('/taka-rate/')) . '">আজকের টাকার রেট লাইভ</a> · কোন পথে পাঠাবেন: <a href="' . esc_url(home_url('/remittance-channels-2026-safe-ways-fees-bonus/')) . '">রেমিট্যান্স চ্যানেল গাইড</a>';
+    if (!empty($d['routing_url'])) { $o .= ' · <a href="' . esc_url($d['routing_url']) . '">ব্যাংকের রাউটিং নম্বর</a>'; }
+    $o .= '</p><h2>প্রশ্ন ও উত্তর</h2>';
+    foreach (pbd_rm_faq($d, $c) as $f) { $o .= '<details><summary>' . esc_html($f[0]) . '</summary><p>' . esc_html($f[1]) . '</p></details>'; }
+    $o .= '<h2>অন্য মুদ্রা</h2><div class="pbd-tiles">';
+    foreach ($d['currencies'] as $x) { if ($x['code'] !== $c['code']) { $o .= '<a href="' . esc_url(home_url('/remittance/' . $x['slug'] . '/')) . '">' . esc_html($x['name']) . '<small>৳' . pbd_num($x['rate'], 2) . '</small></a>'; } }
+    $o .= '</div><p class="pbd-src">রেট: ' . esc_html($d['source']) . ', ' . pbd_date($d['updated']) . '। প্রণোদনা: ' . esc_html($d['incentive']['source']) . '। এটি আনুমানিক হিসাব; চূড়ান্ত অঙ্ক আপনার ব্যাংক/এক্সচেঞ্জ হাউস বলবে।</p>';
+    return $o . pbd_foot();
+}
+function pbd_rm_hub($d) {
+    $o = pbd_head(array(array('রেমিট্যান্স', '')), 'রেমিট্যান্স ক্যালকুলেটর: প্রণোদনাসহ কত টাকা পাবেন') . pbd_rm_css();
+    $o .= '<p>বিদেশ থেকে যত টাকা পাঠাবেন, আজকের রেটে তা কত টাকা হয় আর ২.৫% সরকারি প্রণোদনা যোগ করে পরিবার মোট কত পাবে — নিচে মুদ্রা বেছে হিসাব করুন।</p>';
+    $o .= '<p class="pbd-src">' . pbd_date($d['updated']) . ' তারিখের বাজার রেট · সূত্র: ' . esc_html($d['source']) . '</p>';
+    $o .= pbd_rm_calc($d, $d['currencies'][0]) . '<h2>মুদ্রা অনুযায়ী হিসাব</h2><div class="pbd-tiles">';
+    foreach ($d['currencies'] as $x) { $o .= '<a href="' . esc_url(home_url('/remittance/' . $x['slug'] . '/')) . '">' . esc_html($x['name']) . '<small>১ = ৳' . pbd_num($x['rate'], 2) . '</small></a>'; }
+    $o .= '</div><div class="pbd-warn"><b>প্রণোদনা</b><ul><li>' . esc_html($d['incentive']['note']) . '</li></ul></div>';
+    $o .= '<p class="pbd-src">প্রণোদনার সূত্র: ' . esc_html($d['incentive']['source']) . '। রেট আনুমানিক; চূড়ান্ত অঙ্ক ব্যাংক/এক্সচেঞ্জ হাউস বলবে।</p>';
+    return $o . pbd_foot();
 }
