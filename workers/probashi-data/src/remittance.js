@@ -25,6 +25,7 @@ export const CURRENCIES = [
   ["bnd", "brunei-dollar", "ব্রুনাই ডলার", "ডলার", "ব্রুনাই"],
   ["mur", "mauritian-rupee", "মরিশাস রুপি", "রুপি", "মরিশাস"],
 ];
+export const FLAG = {"sar": "sa", "aed": "ae", "qar": "qa", "kwd": "kw", "omr": "om", "bhd": "bh", "myr": "my", "sgd": "sg", "eur": "eu", "gbp": "gb", "usd": "us", "jod": "jo", "mvr": "mv", "krw": "kr", "jpy": "jp", "ron": "ro", "rsd": "rs", "pln": "pl", "cad": "ca", "aud": "au", "lbp": "lb", "bnd": "bn", "mur": "mu"};
 export const INCENTIVE = {
   pct: 2.5,
   note: "বৈধ পথে (ব্যাংক, এক্সচেঞ্জ হাউস, অনুমোদিত মোবাইল ব্যাংকিং) পাঠানো রেমিট্যান্সে সরকারের ২.৫% নগদ প্রণোদনা; ২০২৬-২৭ অর্থবছরের বাজেটে এটি বহাল রাখার ঘোষণা দেওয়া হয়েছে।",
@@ -55,7 +56,7 @@ export async function remittance() {
   return {
     updated: now.date, source: SRC, incentive: INCENTIVE, routing_url: null,
     currencies: CURRENCIES.map(([code, slug, name, unit, country]) => ({
-      code, slug, name, unit, country,
+      code, slug, name, unit, country, flag: FLAG[code],
       rate: per(now, code), rate7: per(w, code), rate30: per(m, code),
     })).filter((c) => c.rate),
   };

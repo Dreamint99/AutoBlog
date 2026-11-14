@@ -13,7 +13,7 @@ define('PBD_LOADED', 1);
 define('PBD_MODE', 'live');               // 'test' | 'live'
 define('PBD_KEY', '__PBD_TEST_KEY__');
 define('PBD_API', 'https://probashi-data.iamkashimuddin.workers.dev/v1/');
-define('PBD_VER', '4');
+define('PBD_VER', '5');
 
 function pbd_enabled() {
     if (PBD_MODE === 'live') { return true; }
@@ -233,27 +233,48 @@ add_action('init', function () {
 function pbd_css() {
     return '<style id="pbd-css">
 .pbd{font-size:var(--fs,18px);color:var(--ink,#0f1f38);line-height:1.75}
-.pbd .pbd-src{font-size:.85em;color:var(--mut,#6a7a93);margin:.2em 0 1.2em}
-.pbd .pbd-go{display:flex;align-items:center;gap:14px;background:var(--gs,#e8f7ee);border:2px solid var(--g,#16a34a);border-radius:var(--r,16px);padding:16px 18px;margin:1em 0 1.4em;text-decoration:none;color:var(--ink,#0f1f38)}
-.pbd .pbd-go b{display:block;font-size:1.15em}.pbd .pbd-go span{font-size:.9em;color:var(--ink2,#34465f);word-break:break-all}
-.pbd .pbd-go i{font-style:normal;font-size:2em}
-.pbd h2{font-size:1.25em;margin:1.4em 0 .6em}
+.pbd *{box-sizing:border-box}
+.pbd .pbd-src{font-size:.82em;color:var(--mut,#6a7a93);margin:1.4em 0 .4em}
+.pbd .pbd-hero{position:relative;overflow:hidden;border-radius:22px;padding:22px 20px;margin:.4em 0 1.2em;color:#fff;background:linear-gradient(135deg,var(--b,#0b56c4),var(--nv,#082a63))}
+.pbd .pbd-hero:after{content:"";position:absolute;right:-40px;top:-40px;width:170px;height:170px;border-radius:50%;background:rgba(255,255,255,.08)}
+.pbd .pbd-hero .fl{width:44px;height:30px;border-radius:6px;object-fit:cover;box-shadow:0 2px 8px rgba(0,0,0,.25);vertical-align:middle}
+.pbd .pbd-hero small{display:block;opacity:.85;font-size:.85em}
+.pbd .pbd-hero .big{font-size:2.1em;font-weight:800;line-height:1.2;margin:.15em 0;overflow-wrap:anywhere}
+.pbd .pbd-chip{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.16);border-radius:999px;padding:3px 12px;font-size:.82em;margin:6px 6px 0 0}
+.pbd .pbd-chip.up{background:#16a34a}.pbd .pbd-chip.dn{background:#e11d48}
+.pbd .pbd-go{display:flex;align-items:center;gap:14px;background:#fff;color:var(--ink,#0f1f38)!important;border-radius:16px;padding:14px 16px;margin-top:14px;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.18);position:relative;z-index:1}
+.pbd .pbd-go b{display:block;font-size:1.1em}.pbd .pbd-go span{font-size:.85em;color:var(--mut,#6a7a93);word-break:break-all}
+.pbd .pbd-go i{font-style:normal;font-size:1.7em;background:var(--gs,#e8f7ee);border-radius:12px;width:48px;height:48px;display:flex;align-items:center;justify-content:center;flex:none}
+.pbd .pbd-go em{margin-left:auto;font-style:normal;font-size:1.4em;color:var(--g,#16a34a)}
+.pbd h2{font-size:1.2em;margin:1.6em 0 .6em}
 .pbd .pbd-need{display:flex;flex-wrap:wrap;gap:10px;list-style:none;padding:0;margin:0}
-.pbd .pbd-need li{background:var(--bs,#e9f1fd);border-radius:12px;padding:8px 14px;font-weight:600}
-.pbd ol.pbd-steps{list-style:none;counter-reset:s;padding:0;margin:0}
-.pbd ol.pbd-steps li{counter-increment:s;position:relative;padding:12px 12px 12px 58px;margin:0 0 10px;background:var(--card,#fff);border:1px solid var(--line,#e2e8f1);border-radius:14px}
-.pbd ol.pbd-steps li:before{content:counter(s);position:absolute;left:12px;top:10px;width:34px;height:34px;border-radius:50%;background:var(--b,#0b56c4);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center}
-.pbd table{width:100%;border-collapse:collapse;font-size:.95em}.pbd td,.pbd th{border:1px solid var(--line,#e2e8f1);padding:8px 10px;text-align:left;vertical-align:top}
-.pbd .pbd-warn{background:#fff4f5;border-left:5px solid var(--red,#e11d48);border-radius:12px;padding:12px 16px;margin:1.2em 0}
+.pbd .pbd-need li{background:var(--bs,#e9f1fd);color:var(--b2,#0a3f96);border-radius:12px;padding:8px 14px;font-weight:700}
+.pbd .pbd-need li:before{content:"✓ ";color:var(--g,#16a34a)}
+.pbd ol.pbd-steps{list-style:none;counter-reset:s;padding:0;margin:0;position:relative}
+.pbd ol.pbd-steps li{counter-increment:s;position:relative;padding:12px 14px 12px 60px;margin:0 0 10px;background:var(--card,#fff);border:1px solid var(--line,#e2e8f1);border-radius:16px}
+.pbd ol.pbd-steps li:before{content:counter(s);position:absolute;left:12px;top:11px;width:36px;height:36px;border-radius:12px;background:var(--b,#0b56c4);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center}
+.pbd .pbd-tw{overflow-x:auto;border-radius:16px;border:1px solid var(--line,#e2e8f1);margin:.4em 0}
+.pbd table{width:100%;border-collapse:collapse;font-size:.92em;margin:0}
+.pbd th{background:var(--bs,#e9f1fd);color:var(--b2,#0a3f96);font-weight:700}
+.pbd td,.pbd th{border:0;border-bottom:1px solid var(--line,#e2e8f1);padding:9px 10px;text-align:left;vertical-align:top}
+.pbd tr:last-child td{border-bottom:0}.pbd tr:nth-child(even) td{background:#f8fafd}
+.pbd .pbd-st{display:grid;gap:8px}.pbd .pbd-st div{display:flex;gap:12px;align-items:center;background:var(--card,#fff);border:1px solid var(--line,#e2e8f1);border-radius:14px;padding:10px 12px}
+.pbd .pbd-st i{font-style:normal;font-size:1.4em;flex:none}.pbd .pbd-st b{display:block;font-size:.85em;color:var(--mut,#6a7a93);font-weight:600}
+.pbd .pbd-warn{background:#fff4f5;border:1px solid #fecdd3;border-radius:16px;padding:12px 16px;margin:1.4em 0}
 .pbd .pbd-warn ul{margin:.3em 0 0;padding-left:1.2em}
 .pbd .pbd-tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:.6em 0 1em}
-.pbd .pbd-tiles a{display:block;background:var(--card,#fff);border:1px solid var(--line,#e2e8f1);border-radius:14px;padding:12px;text-decoration:none;font-weight:600;color:var(--ink,#0f1f38);min-width:0}
-.pbd .pbd-tiles a small{display:block;font-weight:400;color:var(--mut,#6a7a93);font-size:.8em}
-.pbd details{border:1px solid var(--line,#e2e8f1);border-radius:12px;padding:10px 14px;margin:0 0 8px;background:var(--card,#fff)}
+.pbd .pbd-tiles a{display:flex;align-items:center;gap:10px;background:var(--card,#fff);border:1px solid var(--line,#e2e8f1);border-radius:14px;padding:10px 12px;text-decoration:none;font-weight:700;color:var(--ink,#0f1f38);min-width:0;line-height:1.35;transition:transform .15s,box-shadow .15s}
+.pbd .pbd-tiles a:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(11,86,196,.12)}
+.pbd .pbd-tiles img{width:30px;height:21px;border-radius:4px;object-fit:cover;flex:none}
+.pbd .pbd-tiles small{display:block;font-weight:500;color:var(--mut,#6a7a93);font-size:.78em;overflow-wrap:anywhere}
+.pbd .pbd-tiles span{min-width:0}
+.pbd details{border:1px solid var(--line,#e2e8f1);border-radius:14px;padding:10px 14px;margin:0 0 8px;background:var(--card,#fff)}
 .pbd summary{font-weight:700;cursor:pointer}
+.pbd ul.pbd-rel{list-style:none;padding:0}.pbd ul.pbd-rel li{margin:0 0 8px}.pbd ul.pbd-rel a{display:block;background:var(--gs,#e8f7ee);border-radius:12px;padding:10px 14px;font-weight:600;text-decoration:none;color:var(--ink,#0f1f38)}
+.pbd ul.pbd-rel a:before{content:"📖 "}
+@media(max-width:560px){.pbd .pbd-hero .big{font-size:1.7em}}
 </style>';
 }
-
 function pbd_head($crumbs, $h1) {
     $o = '<div class="art-hd"><div class="w"><nav class="crumbs" aria-label="ব্রেডক্রাম্ব"><a href="' . esc_url(home_url('/')) . '">হোম</a>';
     foreach ($crumbs as $c) {
@@ -281,26 +302,27 @@ function pbd_render($m) {
 function pbd_vc_country($d, $c) {
     $host = pbd_host($c['url']);
     $o = pbd_head(array(array('ভিসা চেক', '/visa-check/'), array($c['name'], '')), $c['name'] . ' ভিসা চেক: সরকারি সাইটে ধাপে ধাপে');
+    $o .= '<div class="pbd-hero"><small>' . pbd_flag($c['iso2']) . ' ' . esc_html($c['name']) . ' · সরকারি পোর্টাল</small><div class="big" style="font-size:1.35em">' . esc_html($c['portal']) . '</div>'
+        . '<span class="pbd-chip">✔️ শুধু সরকারি সাইট</span><span class="pbd-chip">📅 যাচাই ' . pbd_date($d['updated']) . '</span>'
+        . '<a class="pbd-go" href="' . esc_url($c['url']) . '" target="_blank" rel="nofollow noopener"><i>🏛️</i><div><b>সরকারি সাইট খুলুন</b><span>' . esc_html($host) . '</span></div><em>➜</em></a></div>';
     $o .= '<p>' . esc_html($c['note']) . '</p>';
-    $o .= '<p class="pbd-src">তথ্য যাচাই: ' . pbd_date($d['updated']) . ' · সূত্র: ' . esc_html($c['portal']) . '</p>';
-    $o .= '<a class="pbd-go" href="' . esc_url($c['url']) . '" target="_blank" rel="nofollow noopener"><i>🏛️</i><div><b>সরকারি সাইট খুলুন</b><span>' . esc_html($host) . '</span></div></a>';
     $o .= '<h2>যা যা লাগবে</h2><ul class="pbd-need">';
     foreach ($c['need'] as $n) { $o .= '<li>' . esc_html($n) . '</li>'; }
     $o .= '</ul><h2>ধাপে ধাপে ' . esc_html($c['name']) . ' ভিসা চেক</h2><ol class="pbd-steps">';
     foreach ($c['steps'] as $s) { $o .= '<li>' . esc_html($s) . '</li>'; }
     $o .= '</ol>';
     if (!empty($c['also'])) { $o .= '<p><b>আরও কাজে লাগবে:</b> ' . esc_html($c['also']) . '</p>'; }
-    $o .= '<h2>স্ট্যাটাসে কী লেখা থাকলে কী বোঝায়</h2><table><tr><th>ইংরেজিতে যা দেখবেন</th><th>মানে</th></tr>'
-        . '<tr><td>Approved / Issued / Granted</td><td>ভিসা অনুমোদিত — কপি ডাউনলোড বা প্রিন্ট করুন</td></tr>'
-        . '<tr><td>Pending / In process / Under review</td><td>আবেদন প্রক্রিয়াধীন — অপেক্ষা করুন</td></tr>'
-        . '<tr><td>Additional documents required</td><td>আরও কাগজ চাওয়া হয়েছে — দ্রুত জমা দিন</td></tr>'
-        . '<tr><td>Refused / Rejected</td><td>আবেদন বাতিল — কারণ জেনে নতুন করে আবেদন করুন</td></tr>'
-        . '<tr><td>No record found</td><td>তথ্য মেলেনি — নম্বর ও বানান আবার দেখুন; বারবার না পেলে নিয়োগকর্তা/দূতাবাসে জানুন</td></tr></table>';
+    $o .= '<h2>স্ট্যাটাসে কী লেখা থাকলে কী বোঝায়</h2><div class="pbd-st">'
+        . '<div><i>✅</i><span><b>Approved / Issued / Granted</b>ভিসা অনুমোদিত — কপি ডাউনলোড বা প্রিন্ট করুন</span></div>'
+        . '<div><i>⏳</i><span><b>Pending / In process / Under review</b>প্রক্রিয়াধীন — অপেক্ষা করুন</span></div>'
+        . '<div><i>📄</i><span><b>Additional documents required</b>আরও কাগজ চেয়েছে — দ্রুত জমা দিন</span></div>'
+        . '<div><i>❌</i><span><b>Refused / Rejected</b>বাতিল — কারণ জেনে নতুন করে আবেদন করুন</span></div>'
+        . '<div><i>🔍</i><span><b>No record found</b>তথ্য মেলেনি — নম্বর ও বানান আবার দেখুন</span></div></div>';
     $o .= '<div class="pbd-warn"><b>⚠️ ভুয়া ভিসা থেকে সাবধান</b><ul><li>ভিসা আসল কি না দেখার একমাত্র জায়গা সরকারি সাইট (' . esc_html($host) . ')।</li>'
         . '<li>হোয়াটসঅ্যাপে পাঠানো ছবি বা PDF দেখে টাকা দেবেন না — নিজে সাইটে নম্বর দিয়ে মিলিয়ে নিন।</li>'
         . '<li>বিদেশে কাজে যেতে বিএমইটি ছাড়পত্র লাগে; শুধু সরকার অনুমোদিত রিক্রুটিং এজেন্সির মাধ্যমে যান।</li></ul></div>';
     if (!empty($c['related'])) {
-        $o .= '<h2>' . esc_html($c['name']) . ' নিয়ে আরও পড়ুন</h2><ul>';
+        $o .= '<h2>' . esc_html($c['name']) . ' নিয়ে আরও পড়ুন</h2><ul class="pbd-rel">';
         foreach ($c['related'] as $r) { $o .= '<li><a href="' . esc_url($r['url']) . '">' . esc_html($r['title']) . '</a></li>'; }
         $o .= '</ul>';
     }
@@ -310,7 +332,7 @@ function pbd_vc_country($d, $c) {
     $n = 0;
     foreach ($d['countries'] as $x) {
         if ($x['slug'] === $c['slug'] || $x['region'] !== $c['region']) { continue; }
-        $o .= '<a href="' . esc_url(home_url('/visa-check/' . $x['slug'] . '/')) . '">' . esc_html($x['name']) . '<small>' . esc_html(pbd_host($x['url'])) . '</small></a>';
+        $o .= pbd_tile($x);
         if (++$n >= 6) { break; }
     }
     foreach ($d['existing'] as $x) { if ($n++ < 9) { $o .= '<a href="' . esc_url($x['url']) . '">' . esc_html($x['name']) . '<small>ভিসা চেক গাইড</small></a>'; } }
@@ -337,10 +359,12 @@ function pbd_vc_hub($d) {
     return $o . pbd_foot();
 }
 function pbd_tile($x) {
-    return '<a href="' . esc_url(home_url('/visa-check/' . $x['slug'] . '/')) . '">' . esc_html($x['name']) . '<small>' . esc_html(pbd_host($x['url'])) . '</small></a>';
+    return '<a href="' . esc_url(home_url('/visa-check/' . $x['slug'] . '/')) . '">' . pbd_flag($x['iso2']) . '<span>' . esc_html($x['name']) . '<small>' . esc_html(pbd_host($x['url'])) . '</small></span></a>';
 }
-
-/* ---------- remittance ---------- */
+function pbd_flag($iso) {
+    $iso = strtolower(preg_replace('/[^a-z]/i', '', (string) $iso));
+    return $iso ? '<img class="fl" src="https://flagcdn.com/w80/' . $iso . '.png" alt="" width="30" height="21" loading="lazy">' : '';
+}
 function pbd_num($n, $dec = 0) {   // Indian grouping (১২,৩৪,৫৬৭.৮৯) in Bangla digits
     $neg = $n < 0; $n = abs((float) $n);
     $f = number_format($n, $dec, '.', '');
@@ -359,34 +383,45 @@ function pbd_rm_faq($d, $c) {
 function pbd_rm_calc($d, $c) {
     $pct = (float) $d['incentive']['pct'];
     $opts = '';
-    foreach ($d['currencies'] as $x) { $opts .= '<option value="' . esc_attr($x['rate']) . '"' . ($c && $x['code'] === $c['code'] ? ' selected' : '') . '>' . esc_html($x['name']) . '</option>'; }
-    return '<div class="pbd-calc"><label>কত পাঠাবেন?<input id="pbdAmt" type="number" inputmode="decimal" min="0" value="1000"></label>'
-        . '<label>মুদ্রা<select id="pbdCur">' . $opts . '</select></label>'
-        . '<div class="pbd-res"><div><span>টাকায়</span><b id="pbdT">—</b></div><div><span>+ ' . pbd_bn($pct) . '% প্রণোদনা</span><b id="pbdI">—</b></div><div class="tot"><span>পরিবার পাবে (প্রায়)</span><b id="pbdS">—</b></div></div></div>'
-        . '<script>(function(){var a=document.getElementById("pbdAmt"),c=document.getElementById("pbdCur"),P=' . $pct . ';function bn(s){return String(s).replace(/\d/g,function(d){return "০১২৩৪৫৬৭৮৯"[d]})}function f(n){return "৳ "+bn(Math.round(n).toLocaleString("en-IN"))}function r(){var v=parseFloat(a.value)||0,t=v*parseFloat(c.value);document.getElementById("pbdT").textContent=f(t);document.getElementById("pbdI").textContent=f(t*P/100);document.getElementById("pbdS").textContent=f(t*(1+P/100));}a.oninput=r;c.onchange=r;r();})();</script>';
+    foreach ($d['currencies'] as $x) { $opts .= '<option value="' . esc_attr($x['rate']) . '" data-u="' . esc_attr($x['unit']) . '"' . ($c && $x['code'] === $c['code'] ? ' selected' : '') . '>' . esc_html($x['name']) . '</option>'; }
+    return '<div class="pbd-calc"><div class="row"><label>কত পাঠাবেন?<input id="pbdAmt" type="number" inputmode="decimal" min="0" value="1000"></label>'
+        . '<label>মুদ্রা<select id="pbdCur">' . $opts . '</select></label></div>'
+        . '<div class="pbd-q"><button type="button" data-v="500">৫০০</button><button type="button" data-v="1000">১,০০০</button><button type="button" data-v="2000">২,০০০</button><button type="button" data-v="5000">৫,০০০</button></div>'
+        . '<div class="pbd-tot"><small>পরিবার পাবে (প্রায়)</small><b id="pbdS">—</b><p id="pbdB"></p></div></div>'
+        . '<script>(function(){var a=document.getElementById("pbdAmt"),c=document.getElementById("pbdCur"),P=' . $pct . ';function bn(s){return String(s).replace(/\d/g,function(d){return "০১২৩৪৫৬৭৮৯"[d]})}function f(n){return "৳ "+bn(Math.round(n).toLocaleString("en-IN"))}function r(){var v=parseFloat(a.value)||0,t=v*parseFloat(c.value);document.getElementById("pbdS").textContent=f(t*(1+P/100));document.getElementById("pbdB").textContent="টাকায় "+f(t)+"  +  "+bn(P)+"% প্রণোদনা "+f(t*P/100);}a.oninput=r;c.onchange=r;document.querySelectorAll(".pbd-q button").forEach(function(b){b.onclick=function(){a.value=b.dataset.v;r();}});r();})();</script>';
 }
 function pbd_rm_css() {
-    return '<style>.pbd .pbd-calc{background:var(--bs,#e9f1fd);border-radius:var(--r,16px);padding:16px;margin:1em 0;display:grid;gap:12px;grid-template-columns:1fr 1fr}
-.pbd .pbd-calc label{display:grid;gap:4px;font-weight:700;min-width:0}.pbd .pbd-calc input,.pbd .pbd-calc select{font-size:1.15em;padding:10px;border:2px solid var(--line,#e2e8f1);border-radius:12px;width:100%;box-sizing:border-box;background:#fff}
-.pbd .pbd-res{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.pbd .pbd-res div{background:#fff;border-radius:12px;padding:10px;min-width:0}.pbd .pbd-res span{display:block;font-size:.8em;color:var(--mut,#6a7a93)}.pbd .pbd-res b{font-size:1.15em;overflow-wrap:anywhere}.pbd .pbd-res .tot{background:var(--g,#16a34a);color:#fff}.pbd .pbd-res .tot span{color:#e8f7ee}
-.pbd .pbd-rate{font-size:1.5em;font-weight:800;margin:.3em 0}
-@media(max-width:560px){.pbd .pbd-calc{grid-template-columns:1fr}.pbd .pbd-res{grid-template-columns:1fr}}</style>';
+    return '<style>.pbd .pbd-calc{background:var(--card,#fff);border:1px solid var(--line,#e2e8f1);border-radius:20px;padding:16px;margin:0 0 1em;box-shadow:0 4px 16px rgba(15,31,56,.06)}
+.pbd .pbd-calc .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pbd .pbd-calc label{display:grid;gap:4px;font-weight:700;font-size:.9em;min-width:0}
+.pbd .pbd-calc input,.pbd .pbd-calc select{font-size:1.2em;font-weight:700;padding:10px 12px;border:2px solid var(--line,#e2e8f1);border-radius:12px;width:100%;background:#fff;color:var(--ink,#0f1f38)}
+.pbd .pbd-calc input:focus,.pbd .pbd-calc select:focus{border-color:var(--b,#0b56c4);outline:0}
+.pbd .pbd-q{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.pbd .pbd-q button{border:0;background:var(--bs,#e9f1fd);color:var(--b2,#0a3f96);font-weight:700;border-radius:999px;padding:6px 14px;font-size:.9em;cursor:pointer}
+.pbd .pbd-tot{background:linear-gradient(135deg,var(--g,#16a34a),#15803d);color:#fff;border-radius:16px;padding:14px 16px;margin-top:6px}
+.pbd .pbd-tot small{display:block;opacity:.9;font-size:.85em}.pbd .pbd-tot b{display:block;font-size:2em;line-height:1.2;overflow-wrap:anywhere}
+.pbd .pbd-tot p{margin:.3em 0 0;font-size:.85em;opacity:.95}
+@media(max-width:560px){.pbd .pbd-calc .row{grid-template-columns:1fr}}</style>';
 }
 function pbd_rm_one($d, $c) {
     $pct = $d['incentive']['pct'];
     $o = pbd_head(array(array('রেমিট্যান্স', '/remittance/'), array($c['name'], '')), $c['name'] . ' থেকে টাকা: আজকের রেট ও প্রণোদনাসহ হিসাব') . pbd_rm_css();
-    $o .= '<p class="pbd-rate">১ ' . esc_html($c['name']) . ' = ৳ ' . pbd_num($c['rate'], 2) . '</p>';
-    $o .= '<p class="pbd-src">' . pbd_date($d['updated']) . ' তারিখের বাজার রেট · সূত্র: ' . esc_html($d['source']) . '। ব্যাংক/এক্সচেঞ্জ হাউসের রেট কিছুটা কম-বেশি হয়।</p>';
+    $chg = '';
+    if (!empty($c['rate7'])) {
+        $dlt = $c['rate'] - $c['rate7'];
+        $chg = '<span class="pbd-chip ' . ($dlt >= 0 ? 'up' : 'dn') . '">' . ($dlt >= 0 ? '▲' : '▼') . ' ৭ দিনে ৳' . pbd_num(abs($dlt), 2) . '</span>';
+    }
+    $o .= '<div class="pbd-hero"><small>' . pbd_flag($c['flag'] ?? '') . ' আজকের রেট</small><div class="big">১ ' . esc_html($c['unit']) . ' = ৳' . pbd_num($c['rate'], 2) . '</div>'
+        . '<span class="pbd-chip">📅 ' . pbd_date($d['updated']) . '</span>' . $chg . '<span class="pbd-chip">🎁 +' . pbd_bn($d['incentive']['pct']) . '% প্রণোদনা</span></div>';
     $o .= pbd_rm_calc($d, $c);
-    $o .= '<h2>' . esc_html($c['country']) . ' থেকে পাঠালে পরিবার কত পাবে</h2><table><tr><th>' . esc_html($c['unit']) . '</th><th>টাকায়</th><th>+ ' . pbd_bn($pct) . '% প্রণোদনা</th><th>মোট</th></tr>';
+    $o .= '<h2>' . esc_html($c['country']) . ' থেকে পাঠালে পরিবার কত পাবে</h2><div class="pbd-tw"><table><tr><th>' . esc_html($c['unit']) . '</th><th>টাকায়</th><th>+ ' . pbd_bn($pct) . '% প্রণোদনা</th><th>মোট</th></tr>';
     $amts = $c['rate'] > 100 ? array(10, 50, 100, 200, 500, 1000) : ($c['rate'] < 1 ? array(10000, 50000, 100000, 500000, 1000000) : array(100, 500, 1000, 1500, 2000, 5000));
     foreach ($amts as $a) { $t = $a * $c['rate']; $o .= '<tr><td>' . pbd_num($a) . '</td><td>৳' . pbd_num($t) . '</td><td>৳' . pbd_num($t * $pct / 100) . '</td><td><b>৳' . pbd_num($t * (1 + $pct / 100)) . '</b></td></tr>'; }
-    $o .= '</table>';
+    $o .= '</table></div>';
     if (!empty($c['rate7']) || !empty($c['rate30'])) {
-        $o .= '<h2>রেট কেমন যাচ্ছে</h2><table><tr><th>সময়</th><th>১ ' . esc_html($c['unit']) . '</th></tr><tr><td>আজ</td><td>৳' . pbd_num($c['rate'], 2) . '</td></tr>';
+        $o .= '<h2>রেট কেমন যাচ্ছে</h2><div class="pbd-tw"><table><tr><th>সময়</th><th>১ ' . esc_html($c['unit']) . '</th></tr><tr><td>আজ</td><td>৳' . pbd_num($c['rate'], 2) . '</td></tr>';
         if (!empty($c['rate7'])) { $o .= '<tr><td>৭ দিন আগে</td><td>৳' . pbd_num($c['rate7'], 2) . '</td></tr>'; }
         if (!empty($c['rate30'])) { $o .= '<tr><td>৩০ দিন আগে</td><td>৳' . pbd_num($c['rate30'], 2) . '</td></tr>'; }
-        $o .= '</table>';
+        $o .= '</table></div>';
     }
     $o .= '<div class="pbd-warn"><b>⚠️ হুন্ডি নয়, বৈধ পথে পাঠান</b><ul><li>' . esc_html($d['incentive']['note']) . '</li><li>হুন্ডিতে প্রণোদনা নেই, টাকা হারানোর ঝুঁকি আর আইনি শাস্তি আছে।</li></ul></div>';
     $o .= '<p>সব মুদ্রার আজকের রেট একসাথে: <a href="' . esc_url(home_url('/taka-rate/')) . '">আজকের টাকার রেট লাইভ</a> · কোন পথে পাঠাবেন: <a href="' . esc_url(home_url('/remittance-channels-2026-safe-ways-fees-bonus/')) . '">রেমিট্যান্স চ্যানেল গাইড</a>';
@@ -394,7 +429,7 @@ function pbd_rm_one($d, $c) {
     $o .= '</p><h2>প্রশ্ন ও উত্তর</h2>';
     foreach (pbd_rm_faq($d, $c) as $f) { $o .= '<details><summary>' . esc_html($f[0]) . '</summary><p>' . esc_html($f[1]) . '</p></details>'; }
     $o .= '<h2>অন্য মুদ্রা</h2><div class="pbd-tiles">';
-    foreach ($d['currencies'] as $x) { if ($x['code'] !== $c['code']) { $o .= '<a href="' . esc_url(home_url('/remittance/' . $x['slug'] . '/')) . '">' . esc_html($x['name']) . '<small>৳' . pbd_num($x['rate'], 2) . '</small></a>'; } }
+    foreach ($d['currencies'] as $x) { if ($x['code'] !== $c['code']) { $o .= '<a href="' . esc_url(home_url('/remittance/' . $x['slug'] . '/')) . '">' . pbd_flag($x['flag'] ?? '') . '<span>' . esc_html($x['name']) . '<small>১ = ৳' . pbd_num($x['rate'], 2) . '</small></span></a>'; } }
     $o .= '</div><p class="pbd-src">রেট: ' . esc_html($d['source']) . ', ' . pbd_date($d['updated']) . '। প্রণোদনা: ' . esc_html($d['incentive']['source']) . '। এটি আনুমানিক হিসাব; চূড়ান্ত অঙ্ক আপনার ব্যাংক/এক্সচেঞ্জ হাউস বলবে।</p>';
     return $o . pbd_foot();
 }
@@ -403,7 +438,7 @@ function pbd_rm_hub($d) {
     $o .= '<p>বিদেশ থেকে যত টাকা পাঠাবেন, আজকের রেটে তা কত টাকা হয় আর ২.৫% সরকারি প্রণোদনা যোগ করে পরিবার মোট কত পাবে — নিচে মুদ্রা বেছে হিসাব করুন।</p>';
     $o .= '<p class="pbd-src">' . pbd_date($d['updated']) . ' তারিখের বাজার রেট · সূত্র: ' . esc_html($d['source']) . '</p>';
     $o .= pbd_rm_calc($d, $d['currencies'][0]) . '<h2>মুদ্রা অনুযায়ী হিসাব</h2><div class="pbd-tiles">';
-    foreach ($d['currencies'] as $x) { $o .= '<a href="' . esc_url(home_url('/remittance/' . $x['slug'] . '/')) . '">' . esc_html($x['name']) . '<small>১ = ৳' . pbd_num($x['rate'], 2) . '</small></a>'; }
+    foreach ($d['currencies'] as $x) { $o .= '<a href="' . esc_url(home_url('/remittance/' . $x['slug'] . '/')) . '">' . pbd_flag($x['flag'] ?? '') . '<span>' . esc_html($x['name']) . '<small>১ = ৳' . pbd_num($x['rate'], 2) . '</small></span></a>'; }
     $o .= '</div><div class="pbd-warn"><b>প্রণোদনা</b><ul><li>' . esc_html($d['incentive']['note']) . '</li></ul></div>';
     $o .= '<p class="pbd-src">প্রণোদনার সূত্র: ' . esc_html($d['incentive']['source']) . '। রেট আনুমানিক; চূড়ান্ত অঙ্ক ব্যাংক/এক্সচেঞ্জ হাউস বলবে।</p>';
     return $o . pbd_foot();

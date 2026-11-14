@@ -30,7 +30,7 @@ export default {
     if (m[1] === "pages") return json({ site: SITE, pages: pages() });
     if (DATA[m[1]]) return json(DATA[m[1]]);
     if (m[1] === "remittance") {
-      const cache = caches.default, key = new Request("https://pbd.cache/remittance");
+      const cache = caches.default, key = new Request("https://pbd.cache/remittance-v2");
       let hit = await cache.match(key);
       if (hit) return hit;
       const d = await remittance();
