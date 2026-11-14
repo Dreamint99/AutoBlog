@@ -47,6 +47,7 @@ add_action('wp_head', function () { if (!pbb_on()) { return; } ?>
 .pbb-strip button{flex:none;border:0;background:rgba(255,255,255,.22);color:#fff;width:30px;height:30px;border-radius:50%;font-size:17px;cursor:pointer;line-height:1}
 .pbb-strip[hidden]{display:none}
 @media(min-width:900px){.pbb-strip{justify-content:center}.pbb-strip p{flex:0 1 auto}}
+@media(max-width:640px){.pbb-strip{padding:7px 10px;gap:8px}.pbb-strip p small{display:none}.pbb-strip p b{font-size:14.5px}.pbb-strip img{width:30px;height:30px}html.pbb-strip-on .pbb-hbtn{display:none}}
 .pbb-ft{margin:34px auto 0;padding:0 16px;max-width:1180px;box-sizing:border-box}
 .pbb-card{display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:center;border-radius:26px;padding:26px;background:linear-gradient(135deg,#E11D48,#F97316);color:#fff;font-family:"Hind Siliguri","Anek Bangla",system-ui,sans-serif;position:relative;overflow:hidden;box-shadow:0 22px 50px -24px rgba(225,29,72,.75)}
 .pbb-card:after{content:"";position:absolute;right:-60px;bottom:-80px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.09)}
@@ -73,7 +74,7 @@ add_action('wp_footer', function () {
     $qr = 'https://api.qrserver.com/v1/create-qr-code/?size=224x224&margin=0&data=' . rawurlencode(PBB_PLAY . '&referrer=utm_source%3Dprobashiinfo%26utm_medium%3Dqr');
     ?>
 <template id="pbb-tpl-btn"><a class="pbb-hbtn" href="<?php echo pbb_link('header'); ?>" target="_blank" rel="noopener" aria-label="প্রবাসী বন্ধু অ্যাপ ডাউনলোড"><i>📲</i><span>অ্যাপ</span></a></template>
-<template id="pbb-tpl-strip"><div class="pbb-strip" role="region" aria-label="প্রবাসী বন্ধু অ্যাপ"><img src="<?php echo esc_url(PBB_ICON); ?>" alt="" width="34" height="34"><p><b>প্রবাসী বন্ধু অ্যাপ — একদম ফ্রি</b><small>নামাজ, টাকার রেট, দূতাবাস, প্রবাস কার্ড এক অ্যাপে</small></p><a href="<?php echo pbb_link('strip'); ?>" target="_blank" rel="noopener">ডাউনলোড</a><button type="button" aria-label="বন্ধ করুন">×</button></div></template>
+<template id="pbb-tpl-strip"><div class="pbb-strip" role="region" aria-label="প্রবাসী বন্ধু অ্যাপ"><img src="<?php echo esc_url(PBB_ICON); ?>" alt="" width="34" height="34"><p><b>প্রবাসী বন্ধু অ্যাপ · ফ্রি</b><small>নামাজ, টাকার রেট, দূতাবাস, প্রবাস কার্ড এক অ্যাপে</small></p><a href="<?php echo pbb_link('strip'); ?>" target="_blank" rel="noopener">ডাউনলোড</a><button type="button" aria-label="বন্ধ করুন">×</button></div></template>
 <template id="pbb-tpl-ft"><section class="pbb-ft" aria-label="প্রবাসী বন্ধু অ্যাপ"><div class="pbb-card"><img src="<?php echo esc_url(PBB_ICON); ?>" alt="প্রবাসী বন্ধু অ্যাপ" width="96" height="96" loading="lazy"><div style="position:relative;z-index:1"><h3>প্রবাসী বন্ধু অ্যাপ</h3><p>প্রবাসীদের নিজের অ্যাপ — বাংলায়, একদম ফ্রি।</p><div class="pbb-feat"><span>🕌 নামাজ ও কিবলা</span><span>💱 টাকার রেট</span><span>🏛 দূতাবাস</span><span>🏅 প্রবাস কার্ড</span></div></div><div class="pbb-get"><a class="pbb-play" href="<?php echo pbb_link('footer'); ?>" target="_blank" rel="noopener"><?php echo pbb_play_svg(); ?><span><small>ডাউনলোড করুন</small><b>Google Play</b></span></a><span class="pbb-qr"><img src="<?php echo esc_url($qr); ?>" alt="প্লে স্টোরের কিউআর কোড" width="112" height="112" loading="lazy"></span><em>ফোনের ক্যামেরায় স্ক্যান করুন</em></div></div></section></template>
 <script>(function(){try{
 if(/iPhone|iPad|iPod/.test(navigator.userAgent))return;
@@ -81,8 +82,8 @@ function tpl(id){var t=document.getElementById(id);return t?t.content.firstEleme
 var h=document.getElementById('hdr2'),b=tpl('pbb-tpl-btn');
 if(h&&b){var top=h.querySelector('.top')||h,burger=document.getElementById('burger');if(burger&&burger.parentNode===top)top.insertBefore(b,burger);else top.appendChild(b);}
 var K='pbb-strip-next',s=tpl('pbb-tpl-strip'),next=0;try{next=+localStorage.getItem(K)||0}catch(e){}
-if(s&&next<Date.now()){var after=h||document.querySelector('header');if(after&&after.parentNode)after.parentNode.insertBefore(s,after.nextSibling);else document.body.insertBefore(s,document.body.firstChild);
-s.querySelector('button').onclick=function(){s.hidden=true;try{localStorage.setItem(K,Date.now()+3*864e5)}catch(e){}};}
+if(s&&next<Date.now()){document.documentElement.classList.add('pbb-strip-on');var after=h||document.querySelector('header');if(after&&after.parentNode)after.parentNode.insertBefore(s,after.nextSibling);else document.body.insertBefore(s,document.body.firstChild);
+s.querySelector('button').onclick=function(){s.hidden=true;document.documentElement.classList.remove('pbb-strip-on');try{localStorage.setItem(K,Date.now()+3*864e5)}catch(e){}};}
 var f=document.querySelector('footer.ft')||document.querySelector('footer'),c=tpl('pbb-tpl-ft');
 if(f&&c)f.parentNode.insertBefore(c,f);
 }catch(e){}})();</script>
