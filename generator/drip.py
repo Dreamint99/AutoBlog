@@ -128,6 +128,39 @@ def datapage_avoid(site_id: str) -> list:
     except Exception:
         return []
 
+
+def ranked_guard(site_id: str):
+    """probashiinfo: a function text -> (query, url) when an existing page already ranks in the top 20 for a
+    query that `text` would target (Search Console, data/gsc_<site>.json). Writing a new post there splits
+    the ranking between two of our own pages (one query = one URL) — improve the ranking page instead."""
+    if site_id != "probashiinfo":
+        return lambda text: None
+    try:
+        g = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", f"gsc_{site_id}.json"), encoding="utf-8"))
+    except Exception:
+        return lambda text: None
+    owned = {}
+    for page in g.get("pages", []):
+        for q in page.get("queries", []):
+            if q[3] <= 20 and q[1] >= 10 and q[0] not in owned:
+                owned[q[0]] = page["url"]
+    qs = list(owned)
+
+    qtw = [(q, _topic_words(q)) for q in qs if len(_pipe._tokens(q)) >= 2]  # a bare name ("সার্বিয়া") is too broad
+
+    def check(text: str):
+        # compare topic words only (country, subject) — generic words like "যেতে কত টাকা লাগে" match everything
+        tw = _topic_words(text)
+        if not tw:
+            return None
+        for q, w in qtw:
+            if not w:
+                continue
+            if w == tw or (len(w) >= 3 and w <= tw) or len(w & tw) / len(w | tw) >= 0.75:
+                return (q, owned[q])
+        return None
+    return check
+
 def drip_site(site: dict):
     if STYLE:
         site = dict(site, tone=f"{site['tone']} STYLE FOR THIS BATCH: {STYLE}")
@@ -147,6 +180,7 @@ def drip_site(site: dict):
     # Real demand first: Search Console / Bing AI queries (data/demand_<site>.json) that no
     # existing article answers yet. Covered = an existing title holds all the query's topic words.
     demand_titles = []
+    ranked = ranked_guard(site["id"])
     if not SEED:
         try:
             dq = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", f"demand_{site['id']}.json"),
@@ -162,6 +196,10 @@ def drip_site(site: dict):
             if any(b in q["q"].lower() for b in _BRANDS):
                 continue
             if not core or any(_covers(h, core) for h in have_tok) or _pipe.too_similar(q["q"], avoid + demand_titles):
+                continue
+            own = ranked(q["q"])
+            if own:
+                log(f"[{site['id']}] skip demand (already ranks: {own[1]} for \"{own[0]}\"): {q['q']}")
                 continue
             seed = (f"Write the article that directly answers this REAL search query: \"{q['q']}\" "
                     f"({q.get('impr', '?')} searches/AI citations seen). The title must use the query's own words "
@@ -204,6 +242,10 @@ def drip_site(site: dict):
     log(f"[{site['id']}] planning {len(titles)} new ({have}/{TARGET})" + (f" [seed: {SEED}]" if SEED else ""))
     done = 0
     for t in titles:
+        own = ranked(t)
+        if own:
+            log(f"[{site['id']}] skip title (already ranks: {own[1]} for \"{own[0]}\"): {t}")
+            continue
         # One retry: a rejected draft (thin, wrong language, all providers briefly
         # rate-limited) usually succeeds on a second pass.
         for attempt in (1, 2):
