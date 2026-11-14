@@ -82,10 +82,25 @@ def migration_cost(live_urls):
     return {"updated": R["accessed"], "countries": rows}
 
 
+def write_sql(a):
+    """data/agency.sql: full replace of D1 table pbd_agency (read by the probashi-data worker)."""
+    q = lambda v: "'" + str(v).replace("'", "''") + "'"
+    lines = ["CREATE TABLE IF NOT EXISTS pbd_agency (slug TEXT PRIMARY KEY, rl INTEGER, name TEXT, address TEXT, phone TEXT, status TEXT, expiry TEXT, release TEXT);",
+             "CREATE TABLE IF NOT EXISTS pbd_meta (k TEXT PRIMARY KEY, v TEXT);",
+             "DELETE FROM pbd_agency;"]
+    rows = a["agencies"]
+    for i in range(0, len(rows), 200):
+        vals = ",".join("(" + ",".join(q(r[k]) if k != "rl" else str(int(r[k])) for k in ("slug", "rl", "name", "address", "phone", "status", "expiry", "release")) + ")" for r in rows[i:i + 200])
+        lines.append("INSERT INTO pbd_agency (slug, rl, name, address, phone, status, expiry, release) VALUES " + vals + ";")
+    lines.append("INSERT OR REPLACE INTO pbd_meta (k, v) VALUES ('agency_updated', " + q(a["updated"]) + ");")
+    open(os.path.join(H, "data", "agency.sql"), "w", encoding="utf-8").write(chr(10).join(lines) + chr(10))
+
+
 def main():
     a = agencies()
     os.makedirs(os.path.join(H, "data"), exist_ok=True)
     json.dump(a, open(os.path.join(H, "data", "agency.json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
+    write_sql(a)
     audit = os.path.join(H, "audit", "all_posts.json")
     if not os.path.exists(audit):  # CI has no local post dump: keep the committed migration_cost.json
         print(len(a["agencies"]), "agencies; last release", a["agencies"][-1]["release"], "| migration cost kept")
