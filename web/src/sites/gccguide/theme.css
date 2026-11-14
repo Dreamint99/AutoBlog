@@ -6,43 +6,60 @@
    ════════════════════════════════════════════════════════════════════════════ */
 
 .site-gccguide {
-  /* Light, minimal theme: navy + teal brand from logo */
-  --bg: #f9fafb;
-  --bg2: #f0f4f9;
-  --panel: #ffffff;
-  --panel-2: #f8f9fb;
-  --line: #e5e8ef;
-  --line-2: #d8dce8;
-  --text: #0f1419;
-  --head: #070b0f;
-  --muted: #6b7280;
-  --faint: #9ca3af;
-  
-  /* Brand colours */
-  --navy: #10356b;
-  --teal: #0f9a94;
-  --gold: #c98a12;
-  --rose: #e04f5f;
-  --orange: #ea7a3c;
-  --green: #16a34a;
-  --violet: #7c3aed;
-  
-  /* Gradients */
-  --grad-main: linear-gradient(100deg, #10356b 0%, #0f9a94 100%);
-  --grad-gold: linear-gradient(135deg, #c98a12, #d4a850);
-  --grad-navy: linear-gradient(135deg, #10356b, #1e4d8b);
-  
-  /* Shadows: layered, soft */
-  --shadow-sm: 0 1px 2px rgba(15, 20, 25, 0.04);
-  --shadow-md: 0 4px 12px rgba(15, 20, 25, 0.08);
-  --shadow-lg: 0 12px 32px rgba(15, 20, 25, 0.12);
-  
-  /* Type scale */
+  /* InfKey-style dark dashboard, GCC teal signal (matches the logo) */
+  --bg: #080a12;
+  --bg2: #0b0e18;
+  --panel: #0f1220;
+  --panel-2: #141828;
+  --elevated: #1a1f33;
+  --line: #1b2236;
+  --line-2: #283150;
+  --text: #e9ebf5;
+  --head: #ffffff;
+  --muted: #9197ad;
+  --faint: #616a85;
+
+  /* signal + functional colours, tuned for dark */
+  --accent: #2fd3c7;
+  --accent-soft: rgba(47, 211, 199, 0.1);
+  --accent-line: rgba(47, 211, 199, 0.32);
+  --accent-glow: rgba(47, 211, 199, 0.45);
+  --navy: #8fb4ff;
+  --teal: #2fd3c7;
+  --gold: #f5b941;
+  --rose: #ff6f6f;
+  --orange: #ff9a57;
+  --green: #3ddc97;
+  --violet: #9d8cff;
+
+  --grad-main: linear-gradient(100deg, #2fd3c7 0%, #5aa9ff 100%);
+  --grad-gold: linear-gradient(135deg, #f5b941, #ffd27a);
+  --grad-navy: linear-gradient(135deg, #2fd3c7, #5aa9ff);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 16px 44px rgba(0, 0, 0, 0.5);
+
+  /* shared globals.css table vars */
+  --table-head: #11162a;
+  --table-border: #232c44;
+  --table-zebra: rgba(255, 255, 255, 0.022);
+  --table-hover: rgba(47, 211, 199, 0.07);
+
+  --mono: ui-monospace, "SF Mono", "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
   --font: var(--gc-font), "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  
+
   background: var(--bg);
+  background-image:
+    radial-gradient(1000px 520px at 82% -10%, rgba(47, 211, 199, 0.1), transparent 60%),
+    radial-gradient(760px 440px at 4% 2%, rgba(90, 169, 255, 0.06), transparent 55%),
+    linear-gradient(rgba(47, 211, 199, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(47, 211, 199, 0.025) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 46px 46px, 46px 46px;
+  background-attachment: fixed;
   color: var(--text);
   min-height: 100vh;
+  color-scheme: dark;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
@@ -86,7 +103,7 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(249, 250, 251, 0.95);
+  background: rgba(8, 10, 18, 0.82);
   backdrop-filter: saturate(1.5) blur(12px);
   border-bottom: 1px solid var(--line);
   box-shadow: var(--shadow-sm);
@@ -238,7 +255,7 @@
   overflow: hidden;
   padding: 48px 0 0;
   border-bottom: 1px solid var(--line);
-  background: linear-gradient(180deg, #ffffff 0%, #fafbfc 100%);
+  background: transparent;
 }
 
 .site-gccguide .gc-aurora {
@@ -269,7 +286,7 @@
 .site-gccguide .gc-aurora i:nth-child(2) {
   right: 0;
   top: 5%;
-  background: radial-gradient(circle, rgba(16, 53, 107, 0.14), transparent 65%);
+  background: radial-gradient(circle, rgba(47, 211, 199, 0.14), transparent 65%);
   animation-delay: -7s;
 }
 
@@ -346,11 +363,11 @@
   margin: 0 auto;
   padding: 8px 8px 8px 16px;
   border-radius: 16px;
-  background-image: linear-gradient(#ffffff, #ffffff), var(--grad-main);
+  background-image: linear-gradient(var(--panel), var(--panel)), var(--grad-main);
   background-origin: border-box;
   background-clip: padding-box, border-box;
   border: 1px solid transparent;
-  box-shadow: 0 12px 32px rgba(16, 53, 107, 0.15);
+  box-shadow: 0 12px 32px rgba(47, 211, 199, 0.15);
 }
 
 .site-gccguide .gc-hsearch > span {
@@ -379,7 +396,7 @@
   border-radius: 12px;
   padding: 12px 20px;
   background: var(--grad-main);
-  color: #ffffff;
+  color: #04131a;
   font: 700 14px/1 var(--font);
   cursor: pointer;
   transition: all 0.2s;
@@ -388,7 +405,7 @@
 
 .site-gccguide .gc-hsearch button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(16, 53, 107, 0.25);
+  box-shadow: 0 8px 20px rgba(47, 211, 199, 0.25);
 }
 
 /* Quick action pills */
@@ -546,7 +563,7 @@
   gap: 14px;
   padding: 20px;
   border-radius: 18px;
-  background: linear-gradient(160deg, color-mix(in srgb, var(--ca) 8%, #fff), #fff 70%);
+  background: linear-gradient(160deg, color-mix(in srgb, var(--ca) 10%, var(--panel)), var(--panel) 70%);
   border: 1px solid var(--line);
   text-decoration: none;
   transition: all 0.25s ease;
@@ -555,7 +572,7 @@
 
 .site-gccguide .gc-country:hover {
   transform: translateY(-4px);
-  border-color: color-mix(in srgb, var(--ca) 60%, #fff);
+  border-color: color-mix(in srgb, var(--ca) 60%, var(--panel));
   box-shadow: 0 16px 40px -12px color-mix(in srgb, var(--ca) 60%, transparent);
 }
 
@@ -567,7 +584,7 @@
 
 .site-gccguide .gc-country-top img {
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(15, 20, 25, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   object-fit: cover;
 }
 
@@ -922,7 +939,7 @@
   display: block;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  background: linear-gradient(135deg, #dcebf7, #d6f0ee);
+  background: linear-gradient(135deg, rgba(90,169,255,.12), rgba(47,211,199,.12));
 }
 
 .site-gccguide .gc-amedia img {
@@ -954,11 +971,11 @@
   gap: 6px;
   padding: 6px 10px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(15, 18, 32, 0.92);
   border: 1px solid var(--line-2);
   font: 600 11px/1 var(--font);
   color: var(--head);
-  box-shadow: 0 2px 8px rgba(15, 20, 25, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .site-gccguide .gc-badge.solid {
@@ -1038,7 +1055,7 @@
   display: grid;
   place-items: center;
   font-size: 22px;
-  background: linear-gradient(135deg, #e3eef9, #ddf4f2);
+  background: linear-gradient(135deg, rgba(90,169,255,.12), rgba(47,211,199,.12));
 }
 
 .site-gccguide .gc-topic b {
@@ -1065,7 +1082,7 @@
 .site-gccguide .gc-chero {
   position: relative;
   padding: 40px 0 32px;
-  background: radial-gradient(900px 400px at 0% 0%, color-mix(in srgb, var(--ca) 12%, transparent), transparent 65%), linear-gradient(180deg, #ffffff, var(--bg));
+  background: radial-gradient(900px 400px at 0% 0%, color-mix(in srgb, var(--ca) 12%, transparent), transparent 65%), transparent;
   border-bottom: 1px solid var(--line);
 }
 
@@ -1096,7 +1113,7 @@
 
 .site-gccguide .gc-chero-title img {
   border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(15, 20, 25, 0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   object-fit: cover;
 }
 
@@ -1233,7 +1250,7 @@
    ───────────────────────────────────────────────────────────────────────── */
 .site-gccguide .gc-art-head {
   padding: 40px 0 28px;
-  background: linear-gradient(180deg, #ffffff, var(--bg));
+  background: transparent;
   border-bottom: 1px solid var(--line);
 }
 
@@ -1332,7 +1349,7 @@
 
 .site-gccguide .gc-content {
   font: 400 17px/1.8 var(--font);
-  color: #0f1419;
+  color: #e9ebf5;
   overflow-wrap: anywhere;
 }
 
@@ -1388,9 +1405,9 @@
   margin-top: 28px;
   padding: 16px;
   border-radius: 12px;
-  background: #fef9e8;
-  border: 1px solid #f1d593;
-  color: #64430a;
+  background: rgba(245,185,65,.1);
+  border: 1px solid rgba(245,185,65,.35);
+  color: #f5b941;
   font-size: 14px;
   line-height: 1.6;
 }
@@ -1408,7 +1425,7 @@
 }
 
 .site-gccguide .gc-factbox {
-  background: linear-gradient(160deg, color-mix(in srgb, var(--ca) 8%, #fff), #fff 70%);
+  background: linear-gradient(160deg, color-mix(in srgb, var(--ca) 10%, var(--panel)), var(--panel) 70%);
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 16px;
@@ -1448,7 +1465,7 @@
   padding: 14px;
   border-radius: 12px;
   background: var(--grad-main);
-  color: #ffffff;
+  color: #04131a;
   font: 700 13px/1 var(--font);
   text-decoration: none;
   transition: all 0.2s;
@@ -1456,7 +1473,7 @@
 
 .site-gccguide .gc-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(16, 53, 107, 0.25);
+  box-shadow: 0 8px 20px rgba(47, 211, 199, 0.25);
 }
 
 .site-gccguide .gc-next {
@@ -1485,7 +1502,7 @@
   margin-top: 64px;
   padding: 48px 0 100px;
   border-top: 2px solid var(--teal);
-  background: #0d1b2a;
+  background: #060810;
 }
 
 .site-gccguide .gc-foot-grid {
@@ -1613,10 +1630,10 @@
     z-index: 60;
     padding: 6px;
     border-radius: 16px;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(15, 18, 32, 0.92);
     backdrop-filter: saturate(1.5) blur(12px);
     border: 1px solid var(--line-2);
-    box-shadow: 0 16px 32px rgba(15, 20, 25, 0.2);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
   }
 
   .site-gccguide .gc-tabs a {
@@ -1637,7 +1654,7 @@
   }
 
   .site-gccguide .gc-tabs a.on {
-    color: #ffffff;
+    color: #04131a;
     background: var(--grad-main);
   }
 }
@@ -1762,3 +1779,110 @@
 .site-gccguide .gc-foot .gc-logo img {
   height: 40px;
 }
+
+/* ════════════════════════════════════════════════════════════════════
+   InfKey skin — dark dashboard look shared with infkey.com:
+   mono section labels with a glowing diamond, quiet panels, no décor.
+   ════════════════════════════════════════════════════════════════════ */
+.site-gccguide .gc-sky,
+.site-gccguide .gc-aurora { display: none; }
+.site-gccguide .gc-hero { border-bottom: 1px solid var(--line); }
+.site-gccguide .gc-hero-in { padding-bottom: 40px; }
+.site-gccguide .gc-hero h1 {
+  color: var(--head);
+  font-size: clamp(2.1rem, 1.4rem + 3.4vw, 3.6rem);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+}
+.site-gccguide .gc-wrap > .gh-today { margin-top: 28px; }
+/* country cards: keep only a faint tint of the flag colour */
+.site-gccguide .gc-country { background: linear-gradient(160deg, color-mix(in srgb, var(--ca) 6%, var(--panel)), var(--panel) 60%); }
+.site-gccguide .gc-grad { animation: none; }
+
+/* section heads: small mono caps + diamond + fading rule */
+.site-gccguide .gc-head h2 {
+  font: 700 13px/1.2 var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+.site-gccguide .gc-head h2::before {
+  content: "";
+  flex: none;
+  width: 9px; height: 9px;
+  border-radius: 2px;
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent-glow);
+  transform: rotate(45deg);
+}
+.site-gccguide .gc-head h2::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--line-2), transparent);
+}
+.site-gccguide .gc-head h2 .gc-live { display: none; }
+.site-gccguide .gc-head p { font: 400 12.5px/1.5 var(--mono); color: var(--faint); }
+.site-gccguide .gc-head { margin-bottom: 18px; }
+
+/* small labels and pills in mono */
+.site-gccguide .gc-pill,
+.site-gccguide .gc-cc span,
+.site-gccguide .gc-crumb,
+.site-gccguide .gc-src,
+.site-gccguide .gh-src,
+.site-gccguide .gh-stat small,
+.site-gccguide .gh-stat .gh-k { font-family: var(--mono); }
+.site-gccguide .gc-pill {
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-line);
+  color: var(--muted);
+}
+
+/* inputs + selects */
+.site-gccguide input,
+.site-gccguide select,
+.site-gccguide textarea {
+  background: var(--panel-2);
+  color: var(--text);
+  border-color: var(--line-2);
+}
+.site-gccguide input::placeholder { color: var(--faint); }
+
+/* every card: quiet panel, accent edge on hover, no lift */
+.site-gccguide [class*="card"],
+.site-gccguide .gh-stat,
+.site-gccguide .gc-tile {
+  box-shadow: none;
+}
+.site-gccguide a[class*="card"]:hover,
+.site-gccguide a.gc-tile:hover {
+  transform: none;
+  border-color: var(--accent-line);
+  box-shadow: 0 0 0 1px var(--accent-line), 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* tables */
+.site-gccguide table { color: var(--text); }
+.site-gccguide th { background: var(--table-head); color: var(--muted); font: 600 11.5px/1.3 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; }
+.site-gccguide td, .site-gccguide th { border-color: var(--table-border); }
+
+/* mobile bottom tab bar */
+@media (max-width: 860px) {
+  .site-gccguide .gc-tabs { border: 1px solid var(--line-2); box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55); }
+}
+
+/* answer box (gratuity, leave, overtime results) */
+.site-gccguide .gh-answer {
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-line);
+  color: var(--text);
+}
+.site-gccguide .gh-answer span { font-family: var(--mono); color: var(--muted); opacity: 1; }
+.site-gccguide .gh-answer b { color: var(--accent); }
+.site-gccguide .gh-answer p { color: var(--muted); opacity: 1; }
+
+/* article body tables (shared globals.css paints them white) */
+.site-gccguide .article-content table { background: var(--panel); color: var(--text); }
+.site-gccguide .article-content thead th { color: var(--muted); }
+.site-gccguide .article-content tbody td { color: var(--text); }

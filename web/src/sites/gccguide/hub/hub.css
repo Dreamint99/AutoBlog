@@ -224,7 +224,7 @@
   gap: 6px;
   margin: 16px 0 0;
   padding: 10px 13px;
-  background: #eef3f8;
+  background: var(--panel-2);
   border-radius: 10px;
   font-size: 0.84rem;
   color: var(--muted);
@@ -275,19 +275,19 @@
   margin: 16px 0;
   font-size: 0.92rem;
   line-height: 1.55;
-  background: #eef3f8;
+  background: var(--panel-2);
   border: 1px solid var(--line);
   color: var(--muted);
 }
 .site-gccguide .gh-callout b { color: var(--head); }
-.site-gccguide .gh-c-warn { background: #fdf6e7; border-color: #f0dfae; }
-.site-gccguide .gh-c-law { background: #eef7f6; border-color: #c9e6e4; }
+.site-gccguide .gh-c-warn { background: rgba(245,185,65,.08); border-color: rgba(245,185,65,.3); }
+.site-gccguide .gh-c-law { background: rgba(47,211,199,.08); border-color: rgba(47,211,199,.3); }
 .site-gccguide .gh-nodata {
   padding: 14px 16px;
-  background: #fdf6e7;
-  border: 1px solid #f0dfae;
+  background: rgba(245,185,65,.08);
+  border: 1px solid rgba(245,185,65,.3);
   border-radius: 12px;
-  color: #7a5a10;
+  color: #f5b941;
   font-size: 0.92rem;
 }
 
@@ -341,7 +341,7 @@
 }
 .site-gccguide .gh-prayer span { display: block; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--faint); font-weight: 750; }
 .site-gccguide .gh-prayer b { display: block; margin-top: 4px; font-size: 1.12rem; color: var(--head); font-variant-numeric: tabular-nums; }
-.site-gccguide .gh-prayer .now { border-color: var(--gold); background: #fdf6e7; }
+.site-gccguide .gh-prayer .now { border-color: var(--gold); background: rgba(245,185,65,.08); }
 
 /* ── calculators ──────────────────────────────────────────────────────────── */
 .site-gccguide .gh-form { display: grid; gap: 12px; margin: 16px 0; }
@@ -363,7 +363,7 @@
   border: 0;
   border-radius: 10px;
   background: var(--navy);
-  color: #fff;
+  color: var(--panel);
   font: 750 1rem/1 var(--font);
   cursor: pointer;
 }
@@ -374,7 +374,7 @@
   padding: 18px;
   border-radius: 16px;
   background: var(--grad);
-  color: #fff;
+  color: var(--panel);
 }
 .site-gccguide .gh-answer span { font-size: 12px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.85; }
 .site-gccguide .gh-answer b { display: block; font-size: clamp(1.7rem, 1.3rem + 2vw, 2.6rem); letter-spacing: -0.02em; margin: 6px 0; font-variant-numeric: tabular-nums; }
@@ -391,7 +391,7 @@
   height: 24px;
   border-radius: 50%;
   background: var(--navy);
-  color: #fff;
+  color: var(--panel);
   font: 700 12px/24px var(--font);
   text-align: center;
 }
