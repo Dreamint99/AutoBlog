@@ -104,6 +104,25 @@ def steps(kind, url, need):
     return s
 
 
+ALT = {"দক্ষিণ কোরিয়া": "কোরিয়া", "উত্তর মেসিডোনিয়া": "মেসেডোনিয়া", "চেক প্রজাতন্ত্র": "চেক রিপাবলিক", "লিথুয়ানিয়া": "লিথুনিয়া",
+       "আমেরিকা (যুক্তরাষ্ট্র)": "আমেরিকা", "যুক্তরাজ্য (ইউকে)": "যুক্তরাজ্য", "ভারত": "ইন্ডিয়ান"}
+
+
+def related(name):
+    """Up to 2 existing probashiinfo posts about this country (most Search impressions first) for cross-links."""
+    import html as _h
+    posts = json.load(open(os.path.join(H, "audit", "all_posts.json"), encoding="utf-8"))
+    imp = {x["url"]: x["impressions"] for x in json.load(open(os.path.join(H, "..", "generator", "data", "gsc_probashiinfo.json"), encoding="utf-8"))["pages"]}
+    nm = ALT.get(name, name)
+    out = []
+    for p in posts:
+        t = _h.unescape(p["title"]["rendered"])
+        if nm in t and not (" থেকে " in t and not t.startswith("বাংলাদেশ থেকে")):
+            out.append((imp.get(p["link"], 0), t, p["link"]))
+    out.sort(reverse=True)
+    return [{"title": t, "url": u} for _, t, u in out[:2]]
+
+
 def main():
     out = {"updated": "2026-11-14", "verified": SRC["verified"], "existing": [], "countries": []}
     for slug, (name, url) in EXISTING.items():
@@ -118,6 +137,7 @@ def main():
             "portal": c["portal"], "url": c["url"], "also": c.get("app") or "", "need": need, "note": note,
             "steps": steps(kind, c["url"], need),
             "source": c["portal"] + " — " + c["url"],
+            "related": related(name),
         })
     os.makedirs(os.path.join(H, "data"), exist_ok=True)
     json.dump(out, open(os.path.join(H, "data", "visa_check.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)

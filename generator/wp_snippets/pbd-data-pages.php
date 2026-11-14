@@ -10,10 +10,10 @@
  */
 if (!defined('ABSPATH') || defined('PBD_LOADED')) { return; }
 define('PBD_LOADED', 1);
-define('PBD_MODE', 'test');               // 'test' | 'live'
+define('PBD_MODE', 'live');               // 'test' | 'live'
 define('PBD_KEY', '__PBD_TEST_KEY__');
 define('PBD_API', 'https://probashi-data.iamkashimuddin.workers.dev/v1/');
-define('PBD_VER', '1');
+define('PBD_VER', '2');
 
 function pbd_enabled() {
     if (PBD_MODE === 'live') { return true; }
@@ -22,7 +22,7 @@ function pbd_enabled() {
 }
 
 function pbd_data($set) {
-    $t = get_transient('pbd_' . $set);
+    $t = get_transient('pbd' . PBD_VER . '_' . $set);
     if (is_array($t)) { return $t; }
     $r = wp_remote_get(PBD_API . $set, array('timeout' => 8, 'user-agent' => 'probashiinfo-pbd/' . PBD_VER));
     $d = null;
@@ -30,12 +30,12 @@ function pbd_data($set) {
         $d = json_decode(wp_remote_retrieve_body($r), true);
     }
     if (is_array($d)) {
-        set_transient('pbd_' . $set, $d, 6 * HOUR_IN_SECONDS);
+        set_transient('pbd' . PBD_VER . '_' . $set, $d, 6 * HOUR_IN_SECONDS);
         update_option('pbd_stale_' . $set, $d, false);
         return $d;
     }
     $s = get_option('pbd_stale_' . $set);   // worker down: serve last good copy
-    if (is_array($s)) { set_transient('pbd_' . $set, $s, 15 * MINUTE_IN_SECONDS); return $s; }
+    if (is_array($s)) { set_transient('pbd' . PBD_VER . '_' . $set, $s, 15 * MINUTE_IN_SECONDS); return $s; }
     return null;
 }
 
@@ -282,6 +282,11 @@ function pbd_vc_country($d, $c) {
     $o .= '<div class="pbd-warn"><b>⚠️ ভুয়া ভিসা থেকে সাবধান</b><ul><li>ভিসা আসল কি না দেখার একমাত্র জায়গা সরকারি সাইট (' . esc_html($host) . ')।</li>'
         . '<li>হোয়াটসঅ্যাপে পাঠানো ছবি বা PDF দেখে টাকা দেবেন না — নিজে সাইটে নম্বর দিয়ে মিলিয়ে নিন।</li>'
         . '<li>বিদেশে কাজে যেতে বিএমইটি ছাড়পত্র লাগে; শুধু সরকার অনুমোদিত রিক্রুটিং এজেন্সির মাধ্যমে যান।</li></ul></div>';
+    if (!empty($c['related'])) {
+        $o .= '<h2>' . esc_html($c['name']) . ' নিয়ে আরও পড়ুন</h2><ul>';
+        foreach ($c['related'] as $r) { $o .= '<li><a href="' . esc_url($r['url']) . '">' . esc_html($r['title']) . '</a></li>'; }
+        $o .= '</ul>';
+    }
     $o .= '<h2>প্রশ্ন ও উত্তর</h2>';
     foreach (pbd_vc_faq($c) as $f) { $o .= '<details><summary>' . esc_html($f[0]) . '</summary><p>' . esc_html($f[1]) . '</p></details>'; }
     $o .= '<h2>অন্য দেশের ভিসা চেক</h2><div class="pbd-tiles">';
