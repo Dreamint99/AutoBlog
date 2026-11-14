@@ -111,19 +111,19 @@ export default async function ModelDetailPage({
       </header>
 
       <div className="price-cards">
-        <div className="pcard">
+        <div className="pcard lg">
           <div className="k">Input</div>
           <div className="v">
             {fmtUsd(model.input_per_m, 3)} <small>/1M</small>
           </div>
         </div>
-        <div className="pcard">
+        <div className="pcard lg">
           <div className="k">Output</div>
           <div className="v">
             {fmtUsd(model.output_per_m, 2)} <small>/1M</small>
           </div>
         </div>
-        <div className="pcard">
+        <div className="pcard lg">
           <div className="k">Cached input</div>
           <div className="v">
             {model.cached_input_per_m !== null ? fmtUsd(model.cached_input_per_m, 3) : "—"}{" "}

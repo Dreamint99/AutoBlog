@@ -96,17 +96,90 @@ export function ModelTable({ site, models }: { site: Site; models: InfModel[] })
                   <span className="m-vendor">{m.provider}</span>
                 </Link>
               </td>
-              <td className="num accent">{fmtUsd(m.input_per_m, 3)}</td>
-              <td className="num accent">{fmtUsd(m.output_per_m, 2)}</td>
-              <td className="num">{fmtContext(m.max_context)}</td>
-              <td>
+              <td className="num accent" data-label="Input">
+                {fmtUsd(m.input_per_m, 3)}
+              </td>
+              <td className="num accent" data-label="Output">
+                {fmtUsd(m.output_per_m, 2)}
+              </td>
+              <td className="num" data-label="Context">
+                {fmtContext(m.max_context)}
+              </td>
+              <td data-label="Caps">
                 <Caps model={m} />
               </td>
-              <td className="mono-faint">{fmtDate(m.last_verified)}</td>
+              <td className="mono-faint" data-label="Verified">
+                {fmtDate(m.last_verified)}
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
     </div>
+  );
+}
+
+/** Status badge component */
+export function StatusBadge({ indicator }: { indicator: string }) {
+  const cls =
+    indicator === "none"
+      ? "operational"
+      : indicator === "minor" || indicator === "maintenance"
+        ? indicator === "maintenance" ? "maintenance" : "degraded"
+        : "outage";
+  const label =
+    indicator === "none"
+      ? "Operational"
+      : indicator === "minor"
+        ? "Degraded"
+        : indicator === "maintenance"
+          ? "Maintenance"
+          : "Outage";
+  return <span className={`status-badge ${cls}`}>{label}</span>;
+}
+
+/** Fit badge for "Can I run it?" */
+export function FitBadge({ fit }: { fit: "fits" | "tight" | "no" }) {
+  const cls = fit === "fits" ? "runs" : fit === "tight" ? "barely" : "toobig";
+  const label = fit === "fits" ? "Runs" : fit === "tight" ? "Barely fits" : "Too big";
+  return <span className={`fit-badge ${cls}`}>{label}</span>;
+}
+
+/** Memory bar showing needed vs available */
+export function MemoryBar({
+  need,
+  available,
+  fit,
+}: {
+  need: number;
+  available: number;
+  fit: "fits" | "tight" | "no";
+}) {
+  const pct = Math.min((need / available) * 100, 120);
+  const fillClass = fit === "fits" ? "fits" : fit === "tight" ? "tight" : "over";
+  return (
+    <div className="mem-bar-wrap">
+      <div className="mem-bar-label">
+        <span>Needed: {need.toFixed(1)} GB</span>
+        <span>Available: {available.toFixed(0)} GB</span>
+      </div>
+      <div className="mem-bar">
+        <div className={`mem-bar-fill ${fillClass}`} style={{ width: `${Math.min(pct, 100)}%` }} />
+        {pct > 100 && <div className="mem-bar-threshold" style={{ left: `${(available / need) * 100}%` }} />}
+      </div>
+    </div>
+  );
+}
+
+/** Price change chip with arrow */
+export function ChangeChip({ pct }: { pct: number }) {
+  if (pct === 0) return <span className="faint-dash">—</span>;
+  const isDown = pct < 0;
+  return (
+    <span className={`change-chip ${isDown ? "down" : "up"}`}>
+      <span className="arrow">{isDown ? "▼" : "▲"}</span>
+      {isDown ? "" : "+"}
+      {pct}%
+    </span>
   );
 }

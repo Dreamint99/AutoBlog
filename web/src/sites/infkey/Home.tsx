@@ -4,63 +4,61 @@ import Link from "next/link";
 import type { SiteHomeProps, Site, Article } from "@/lib/types";
 import CostCalculator from "./CostCalculator";
 import LivePrices from "./LivePrices";
+import { StatusStrip, ChangesSummary, NewModels } from "./HomeWidgets";
 import { Masthead, Footer } from "./Chrome";
 import { aiFont } from "./fonts";
 import { TOPICS, PROFESSIONS, TOOLS, PROMPT_PACKS, topicOf, bestMatch } from "./topics";
 import { heroSrc, thumb } from "@/lib/img";
 
-/* InfKey home — "AI tools, explained". Prompt-style search hero, Best-AI-for
-   profession grid, free-use tool cards, trending guides and topic rails, with
-   the original API cost calculator kept as its own section. */
-
-const ROTATE = ["students", "doctors", "teachers", "lawyers", "developers", "marketers", "writers", "small business"];
-const CHIPS = ["viral ai photo prompt", "gemini photo editing prompt", "best ai for students", "how to use claude free", "chatgpt plus worth it", "gemini vs chatgpt"];
+/* InfKey home — Data-first AI data product.
+   Hero: one line, search, 4 entry tiles.
+   Then: live prices, status strip, changes, new models.
+   Blog sections smaller below. */
 
 function formatDate(iso: string): string {
   const d = new Date(iso);
   return Number.isNaN(d.getTime()) ? "" : d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
 }
 
-function Hero({ site, count }: { site: Site; count: number }) {
+function DataHero({ site }: { site: Site }) {
   const b = `/s/${site.id}`;
   return (
-    <section className="ai-hero">
-      <div className="ai-aurora" aria-hidden="true">
-        <i />
-        <i />
-        <i />
-      </div>
-      <div className="ai-hero-in">
-        <span className="ai-pill">
-          <span className="ai-dot" /> Live prices for 400+ AI models · updated daily
-        </span>
+    <section className="data-hero">
+      <div className="data-hero-in">
+        <p className="tagline">Updated daily · Verified from official sources</p>
         <h1>
-          The best AI for
-          <span className="ai-rotate" aria-hidden="true">
-            <span>
-              {[...ROTATE, ROTATE[0]].map((w, i) => (
-                <b key={i}>{w}</b>
-              ))}
-            </span>
-          </span>
-          <span className="ai-sr">students, doctors, teachers, lawyers and everyone</span>
+          Live prices, status &amp; specs for <span className="count">445+</span> AI models
         </h1>
-        <p className="ai-sub">
-          What to use, how to use it free, and what it really costs — tested AI tool guides for real people, plus verified API pricing for builders.
-        </p>
-        <form className="ai-prompt" action={`${b}/search`} role="search">
-          <span className="ai-spark" aria-hidden="true">
-            ✦
-          </span>
-          <input name="q" type="search" placeholder="Ask anything… e.g. best AI for doctors" aria-label="Search AI guides" />
+        <form className="hero-search" action={`${b}/models`} role="search">
+          <input
+            name="q"
+            type="search"
+            placeholder="Search models… GPT-4o, Claude, Gemini…"
+            aria-label="Search AI models"
+          />
           <button type="submit">Search</button>
         </form>
-        <div className="ai-chips">
-          {CHIPS.map((c) => (
-            <Link key={c} href={`${b}/search?q=${encodeURIComponent(c)}`}>
-              {c}
-            </Link>
-          ))}
+        <div className="entry-tiles">
+          <Link href={`${b}/models`} className="entry-tile">
+            <span className="tile-icon">$</span>
+            <h3>AI Prices</h3>
+            <p>Per-token pricing for 445+ models</p>
+          </Link>
+          <Link href={`${b}/compare`} className="entry-tile">
+            <span className="tile-icon">⚖</span>
+            <h3>Compare</h3>
+            <p>Side-by-side model comparisons</p>
+          </Link>
+          <Link href={`${b}/status`} className="entry-tile">
+            <span className="tile-icon">●</span>
+            <h3>Is It Down?</h3>
+            <p>Live status for 9 AI services</p>
+          </Link>
+          <Link href={`${b}/run`} className="entry-tile">
+            <span className="tile-icon">▸</span>
+            <h3>Can I Run It?</h3>
+            <p>GPU memory calculator</p>
+          </Link>
         </div>
       </div>
     </section>
@@ -258,14 +256,26 @@ export default function Home({ site, articles }: SiteHomeProps) {
   const skip = new Set(trending.map((a) => a.id));
   return (
     <div className={`ai-root ${aiFont.variable}`}>
-      <a href="#guides" className="skip-link">
-        Skip to guides
+      <a href="#live-prices" className="skip-link">
+        Skip to data
       </a>
       <Masthead site={site} />
       <main>
-        <Hero site={site} count={real.length} />
+        <DataHero site={site} />
         <div className="shell">
+          {/* Status strip — all 9 services as colored pills */}
+          <StatusStrip site={site} />
+          
+          {/* Live API prices table */}
           <LivePrices site={site} />
+          
+          {/* Today's price changes summary */}
+          <ChangesSummary site={site} />
+          
+          {/* New models this week */}
+          <NewModels site={site} />
+          
+          {/* Old article sections — smaller, below data */}
           <Trending site={site} articles={trending} />
           <Prompts site={site} articles={real} />
           <Professions site={site} articles={real} />

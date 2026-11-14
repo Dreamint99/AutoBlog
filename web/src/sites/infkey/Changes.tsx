@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Site, InfModel } from "@/lib/types";
 import { getDayChanges, getModels, getChangeDays, type PriceChange } from "@/lib/models";
-import { PageHead, ModelTable, fmtUsd, fmtDate } from "./data-ui";
+import { PageHead, ModelTable, fmtUsd, fmtDate, ChangeChip } from "./data-ui";
 
 /* "AI price changes" for one day, built only from the daily price snapshots (no AI writing). */
 
@@ -45,15 +45,14 @@ function ChangeTable({ site, rows }: { site: Site; rows: PriceChange[] }) {
                   <span className="m-vendor">{c.model.provider}</span>
                 </Link>
               </td>
-              <td className="num">
+              <td className="num" data-label="Input">
                 {fmtUsd(c.oldIn, 3)} → {fmtUsd(c.newIn, 3)}
               </td>
-              <td className="num">
+              <td className="num" data-label="Output">
                 {fmtUsd(c.oldOut, 2)} → {fmtUsd(c.newOut, 2)}
               </td>
-              <td className="num accent">
-                {pct(c) > 0 ? "+" : ""}
-                {pct(c)}%
+              <td data-label="Change">
+                <ChangeChip pct={pct(c)} />
               </td>
             </tr>
           ))}

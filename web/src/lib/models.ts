@@ -167,3 +167,22 @@ export async function getDayChanges(day: string): Promise<{ day: string; up: Pri
   added.sort((a, b) => (a.tier ?? 2) - (b.tier ?? 2) || a.sort - b.sort);
   return { day, up, down, added, first };
 }
+
+/** Models added in the last N days. */
+export async function getNewModels(days: number): Promise<InfModel[]> {
+  const allDays = await getChangeDays();
+  const cutoff = allDays[Math.min(days - 1, allDays.length - 1)];
+  if (!cutoff) return [];
+  const added: InfModel[] = [];
+  for (const day of allDays.slice(0, days)) {
+    const { added: a } = await getDayChanges(day);
+    added.push(...a);
+  }
+  // Dedupe by id
+  const seen = new Set<string>();
+  return added.filter((m) => {
+    if (seen.has(m.id)) return false;
+    seen.add(m.id);
+    return true;
+  });
+}

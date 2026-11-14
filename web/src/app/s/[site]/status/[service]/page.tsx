@@ -6,7 +6,7 @@ import { getSite } from "@/lib/data";
 import { getStatuses, getStatusDaily, statusWord } from "@/lib/aidata";
 import { siteBaseUrl } from "@/lib/sites.config";
 import { InfShell } from "@/sites/infkey/Chrome";
-import { PageHead } from "@/sites/infkey/data-ui";
+import { PageHead, StatusBadge } from "@/sites/infkey/data-ui";
 import { JsonLd, breadcrumbSchema } from "@/lib/seo";
 import { infMeta } from "@/sites/infkey/meta";
 
@@ -18,6 +18,29 @@ export async function generateMetadata({ params }: { params: Promise<{ site: str
   const s = (await getStatuses()).find((x) => x.service === p.service);
   if (!site || site.id !== "infkey" || !s) return {};
   return infMeta(site, `Is ${s.name} down right now? Live status & outages`, `${s.name} status right now: ${statusWord(s.indicator).toLowerCase()}. Live component status, current incidents and outage history, checked every 5 minutes.`, `/status/${s.service}`);
+}
+
+function UptimeBar({ daily }: { daily: { day: string; checks: number; bad: number }[] }) {
+  // Show last 90 days
+  const last90 = daily.slice(-90);
+  const worstClass = (d: { checks: number; bad: number }) => {
+    if (d.checks === 0) return "none";
+    const badPct = d.bad / d.checks;
+    if (badPct === 0) return "ok";
+    if (badPct < 0.1) return "warn";
+    return "bad";
+  };
+  return (
+    <div className="uptime-bar" role="img" aria-label="90-day uptime history">
+      {last90.map((d, i) => (
+        <div
+          key={d.day}
+          className={`day ${worstClass(d)}`}
+          title={`${d.day}: ${d.checks ? Math.round((1 - d.bad / d.checks) * 100) : 0}% up`}
+        />
+      ))}
+    </div>
+  );
 }
 
 export default async function ServiceStatusPage({ params }: { params: Promise<{ site: string; service: string }> }) {
@@ -38,21 +61,42 @@ export default async function ServiceStatusPage({ params }: { params: Promise<{ 
     <>
       <JsonLd data={breadcrumbSchema([{ name: site.name, url: base }, { name: "AI status", url: `${base}/status` }, { name: s.name, url: `${base}/status/${s.service}` }])} />
       <InfShell site={site}>
-        <PageHead kicker="Live status" title={`Is ${s.name} down?`} dek={`${down ? "Yes — there is a reported problem right now." : "No — no known problems right now."} ${s.description}. Last checked ${new Date(s.checked_at).toUTCString()}.`} />
+        {/* Big status answer at top */}
+        <div className={`status-answer ${down ? "is-down" : "is-up"}`}>
+          <h2>{down ? `Yes, ${s.name} has problems` : `No, ${s.name} is up`}</h2>
+          <p>{down ? "There is a reported problem right now." : "No known problems right now."}</p>
+        </div>
+
+        <PageHead kicker="Live status" title={`Is ${s.name} down?`} dek={`${s.description}. Last checked ${new Date(s.checked_at).toUTCString()}.`} />
+        
         <div className="price-cards">
           <div className="pcard">
             <div className="k">Status now</div>
-            <div className="v">{statusWord(s.indicator)}</div>
+            <div className="v"><StatusBadge indicator={s.indicator} /></div>
           </div>
           <div className="pcard">
             <div className="k">Active incidents</div>
             <div className="v">{s.incidents.length}</div>
           </div>
           <div className="pcard">
-            <div className="k">Uptime (tracked days)</div>
+            <div className="k">Uptime (tracked)</div>
             <div className="v">{uptime ? `${uptime}%` : "—"}</div>
           </div>
         </div>
+
+        {/* 90-day uptime bar */}
+        {daily.length > 0 && (
+          <section className="spec-block">
+            <h2 className="block-h">90-day uptime history</h2>
+            <UptimeBar daily={daily} />
+            <div className="uptime-legend">
+              <span className="ok">All checks passed</span>
+              <span className="warn">Some issues</span>
+              <span className="bad">Outage</span>
+            </div>
+          </section>
+        )}
+
         {s.incidents.length ? (
           <section className="spec-block">
             <h2 className="block-h">Current incidents</h2>
@@ -68,6 +112,7 @@ export default async function ServiceStatusPage({ params }: { params: Promise<{ 
             </ul>
           </section>
         ) : null}
+
         <section className="spec-block">
           <h2 className="block-h">Components</h2>
           <div className="itable-wrap">
@@ -76,7 +121,7 @@ export default async function ServiceStatusPage({ params }: { params: Promise<{ 
                 {s.components.map((c) => (
                   <tr key={c.n}>
                     <td>{c.n}</td>
-                    <td>{c.s.replace(/_/g, " ")}</td>
+                    <td><StatusBadge indicator={c.s === "operational" ? "none" : c.s === "degraded_performance" ? "minor" : "major"} /></td>
                   </tr>
                 ))}
               </tbody>

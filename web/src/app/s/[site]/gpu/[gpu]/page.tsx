@@ -6,7 +6,7 @@ import { getSite } from "@/lib/data";
 import { getHfModels, hfName, hfOrg } from "@/lib/aidata";
 import { siteBaseUrl } from "@/lib/sites.config";
 import { InfShell } from "@/sites/infkey/Chrome";
-import { PageHead } from "@/sites/infkey/data-ui";
+import { PageHead, FitBadge } from "@/sites/infkey/data-ui";
 import { estimate, fmtParams, getGpu } from "@/sites/infkey/gpus";
 import { JsonLd, breadcrumbSchema } from "@/lib/seo";
 import { infMeta } from "@/sites/infkey/meta";
@@ -60,10 +60,10 @@ export default async function GpuPage({ params }: { params: Promise<{ site: stri
                       <span className="m-vendor">{hfOrg(m)}</span>
                     </Link>
                   </td>
-                  <td className="num">{fmtParams(m.params)}</td>
-                  <td>{e4.fit === "fits" ? "Runs" : "Barely fits"}</td>
-                  <td>{e8.fit === "no" ? "Too big" : e8.fit === "fits" ? "Runs" : "Barely fits"}</td>
-                  <td className="num">~{e4.tps} tok/s</td>
+                  <td className="num" data-label="Size">{fmtParams(m.params)}</td>
+                  <td data-label="4-bit"><FitBadge fit={e4.fit} /></td>
+                  <td data-label="8-bit"><FitBadge fit={e8.fit} /></td>
+                  <td className="num" data-label="Speed">~{e4.tps} tok/s</td>
                 </tr>
               ))}
             </tbody>

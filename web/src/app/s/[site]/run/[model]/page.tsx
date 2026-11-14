@@ -6,7 +6,7 @@ import { getSite } from "@/lib/data";
 import { getHfModel, hfName, hfOrg, RUN_INDEX_TOP } from "@/lib/aidata";
 import { siteBaseUrl } from "@/lib/sites.config";
 import { InfShell } from "@/sites/infkey/Chrome";
-import { PageHead } from "@/sites/infkey/data-ui";
+import { PageHead, FitBadge } from "@/sites/infkey/data-ui";
 import { GPUS, QUANTS, estimate, fmtParams, needGb } from "@/sites/infkey/gpus";
 import { JsonLd, breadcrumbSchema } from "@/lib/seo";
 import { infMeta } from "@/sites/infkey/meta";
@@ -27,8 +27,6 @@ export async function generateMetadata({ params }: { params: Promise<{ site: str
     m.rank > RUN_INDEX_TOP,
   );
 }
-
-const label = { fits: "Runs", tight: "Barely fits", no: "Too big" } as const;
 
 export default async function RunModelPage({ params }: { params: Promise<{ site: string; model: string }> }) {
   const p = await params;
@@ -53,7 +51,7 @@ export default async function RunModelPage({ params }: { params: Promise<{ site:
         />
         <div className="price-cards">
           {QUANTS.map((q) => (
-            <div className="pcard" key={q.id}>
+            <div className="pcard lg" key={q.id}>
               <div className="k">{q.name}</div>
               <div className="v">
                 {needGb(m.params, q.bytes).toFixed(1)} <small>GB</small>
@@ -81,11 +79,11 @@ export default async function RunModelPage({ params }: { params: Promise<{ site:
                       <b>{g.name}</b>
                     </Link>
                   </td>
-                  <td className="num">{g.vram} GB</td>
-                  <td>{label[q[2].fit]}</td>
-                  <td>{label[q[1].fit]}</td>
-                  <td>{label[q[0].fit]}</td>
-                  <td className="num">{q[2].tps ? `~${q[2].tps} tok/s` : "—"}</td>
+                  <td className="num" data-label="VRAM">{g.vram} GB</td>
+                  <td data-label="4-bit"><FitBadge fit={q[2].fit} /></td>
+                  <td data-label="8-bit"><FitBadge fit={q[1].fit} /></td>
+                  <td data-label="16-bit"><FitBadge fit={q[0].fit} /></td>
+                  <td className="num" data-label="Speed">{q[2].tps ? `~${q[2].tps} tok/s` : "—"}</td>
                 </tr>
               ))}
             </tbody>

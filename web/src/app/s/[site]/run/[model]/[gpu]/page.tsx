@@ -6,7 +6,7 @@ import { getSite } from "@/lib/data";
 import { getHfModel, hfName } from "@/lib/aidata";
 import { siteBaseUrl } from "@/lib/sites.config";
 import { InfShell } from "@/sites/infkey/Chrome";
-import { PageHead } from "@/sites/infkey/data-ui";
+import { PageHead, FitBadge, MemoryBar } from "@/sites/infkey/data-ui";
 import { QUANTS, estimate, fmtParams, getGpu } from "@/sites/infkey/gpus";
 import { JsonLd, breadcrumbSchema } from "@/lib/seo";
 import { infMeta } from "@/sites/infkey/meta";
@@ -37,15 +37,31 @@ export default async function RunPairPage({ params }: { params: Promise<{ site: 
   const base = siteBaseUrl(site);
   const res = QUANTS.map((q) => ({ q, e: estimate(m.params, g, q.bytes) }));
   const best = res.find((r) => r.e.fit === "fits") ?? res.find((r) => r.e.fit === "tight");
+  const q4 = res[2]; // 4-bit is last in QUANTS
+  const available = g.vram * (g.usable ?? 0.95);
   return (
     <>
       <JsonLd data={breadcrumbSchema([{ name: site.name, url: base }, { name: n, url: `${base}/run/${m.id}` }, { name: g.name, url: `${base}/run/${m.id}/${g.id}` }])} />
       <InfShell site={site}>
+        {/* Big answer at top */}
+        <div className={`status-answer ${best ? "is-up" : "is-down"}`}>
+          <h2>{best ? `Yes, ${g.name} can run ${n}` : `No, ${n} is too big`}</h2>
+          <p>
+            {best
+              ? `Runs at ${best.q.name} with ~${best.e.tps} tokens/sec`
+              : `Needs ${q4.e.need.toFixed(1)} GB but ${g.name} only has ${g.vram} GB`}
+          </p>
+        </div>
+
         <PageHead
           kicker="Can I run it?"
-          title={`Can ${g.name} run ${n}?`}
-          dek={best ? `Yes. ${n} (${fmtParams(m.params)}) runs on the ${g.name} (${g.vram} GB) at ${best.q.name}, at roughly ${best.e.tps} tokens per second (estimate).` : `No. ${n} (${fmtParams(m.params)}) is too big for the ${g.name} (${g.vram} GB) even at 4-bit. Try a smaller model or a card with more memory.`}
+          title={`${n} on ${g.name}`}
+          dek={`${n} has ${fmtParams(m.params)} parameters. The ${g.name} has ${g.vram} GB of memory.`}
         />
+
+        {/* Memory bar visualization */}
+        <MemoryBar need={q4.e.need} available={available} fit={q4.e.fit} />
+
         <div className="itable-wrap">
           <table className="itable">
             <thead>
@@ -60,9 +76,9 @@ export default async function RunPairPage({ params }: { params: Promise<{ site: 
               {res.map(({ q, e }) => (
                 <tr key={q.id}>
                   <td>{q.name}</td>
-                  <td className="num">{e.need.toFixed(1)} GB</td>
-                  <td>{e.fit === "fits" ? "Runs" : e.fit === "tight" ? "Barely fits" : "Too big"}</td>
-                  <td className="num">{e.tps ? `~${e.tps} tok/s` : "—"}</td>
+                  <td className="num" data-label="Needed">{e.need.toFixed(1)} GB</td>
+                  <td data-label="Result"><FitBadge fit={e.fit} /></td>
+                  <td className="num" data-label="Speed">{e.tps ? `~${e.tps} tok/s` : "—"}</td>
                 </tr>
               ))}
             </tbody>
