@@ -117,6 +117,17 @@ def _covers(title_tokens: set, core: set) -> bool:
     return all(stem(w) in have for w in core)
 
 
+
+def datapage_avoid(site_id: str) -> list:
+    """Titles owned by probashiinfo data pages (one query = one URL): never write a competing post."""
+    if site_id != "probashiinfo":
+        return []
+    try:
+        p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "probashi_datapages.json")
+        return json.load(open(p, encoding="utf-8")).get("titles", [])
+    except Exception:
+        return []
+
 def drip_site(site: dict):
     if STYLE:
         site = dict(site, tone=f"{site['tone']} STYLE FOR THIS BATCH: {STYLE}")
@@ -127,6 +138,7 @@ def drip_site(site: dict):
         return 0
     n = min(PER_RUN, TARGET - have)
     avoid = [a.get("title", "") for a in existing] + [a.get("keyword", "") for a in existing]
+    avoid += datapage_avoid(site["id"])
     try:  # never reuse a hero photo another article already has
         from modules import image as _img
         _img._USED.update(a.get("image_url") for a in existing if a.get("image_url"))
