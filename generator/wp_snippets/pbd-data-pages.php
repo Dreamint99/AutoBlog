@@ -13,7 +13,7 @@ define('PBD_LOADED', 1);
 define('PBD_MODE', 'live');               // 'test' | 'live'
 define('PBD_KEY', '__PBD_TEST_KEY__');
 define('PBD_API', 'https://probashi-data.iamkashimuddin.workers.dev/v1/');
-define('PBD_VER', '9');
+define('PBD_VER', '10');
 
 function pbd_enabled() {
     if (PBD_MODE === 'live') { return true; }
@@ -30,7 +30,7 @@ function pbd_data($set) {
         $d = json_decode(wp_remote_retrieve_body($r), true);
     }
     if (is_array($d)) {
-        set_transient('pbd' . PBD_VER . '_' . $set, $d, ($set === 'remittance' ? 3 : 6) * HOUR_IN_SECONDS);
+        set_transient('pbd' . PBD_VER . '_' . $set, $d, (strpos($set, 'ramadan') === 0 ? 1 : ($set === 'remittance' ? 3 : 6)) * HOUR_IN_SECONDS);
         update_option('pbd_stale_' . $set, $d, false);
         return $d;
     }
@@ -57,12 +57,19 @@ function pbd_match() {
     $m = null;
     $path = rawurldecode((string) wp_parse_url(isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '', PHP_URL_PATH));
     if (PBD_MODE === 'live' && $path === '/pbd-sitemap.xml') { return $m = array('type' => 'sitemap'); }
-    if (!preg_match('#^/(visa-check|visa|remittance|gamca|agency|migration-cost|customs|baggage)(?:/([a-z0-9-]+))?/?$#', $path, $x)) { return $m; }
+    if (!preg_match('#^/(visa-check|visa|remittance|gamca|agency|migration-cost|customs|baggage|ramadan)(?:/([a-z0-9-]+))?/?$#', $path, $x)) { return $m; }
     if (!pbd_enabled()) { return $m; }
     $type = $x[1];
     $slug = isset($x[2]) ? $x[2] : '';
     if ($type === 'migration-cost' && $slug !== '') { return $m; }
     $item = null;
+    if ($type === 'ramadan' && $slug !== '') {
+        $one = pbd_data('ramadan/' . $slug);
+        if (!$one || empty($one['city'])) { return $m; }
+        $m = array('type' => $type, 'slug' => $slug, 'data' => $one, 'item' => $one['city'], 'path' => '/ramadan/' . $slug . '/');
+        if (substr($path, -1) !== '/') { $m['redirect'] = true; }
+        return $m;
+    }
     if ($type === 'agency' && $slug !== '') {
         $one = pbd_data('agency/' . $slug);
         if (!$one || empty($one['agency'])) { return $m; }
@@ -115,6 +122,7 @@ add_action('template_redirect', function () {
         if (isset($_GET['pbd'])) { setcookie('pbd', PBD_KEY, time() + 86400, '/', '', is_ssl(), true); }
     }
     if ($m['type'] === 'remittance') { do_action('litespeed_control_set_ttl', 3 * 3600); }
+    if ($m['type'] === 'ramadan') { do_action('litespeed_control_set_ttl', 3600); }
     if ($m['type'] === 'agency' && isset($_GET['q'])) { do_action('litespeed_control_set_nocache', 'pbd search'); }
     $app = function_exists('pa_head') && function_exists('pa_foot') && function_exists('pa_app') && pa_app();
     if ($app) { pa_head(); } else { get_header(); }   // site shell (probashiinfo app snippet) or theme fallback
@@ -213,6 +221,20 @@ function pbd_seo() {
             $s['index'] = true;
             $s['title'] = 'বাংলাদেশি পাসপোর্টে ভিসা ছাড়া কোন কোন দেশে যাওয়া যায় ২০২৬';
             $s['desc'] = 'বাংলাদেশি পাসপোর্টে ' . pbd_bn($d['counts']['free']) . 'টি দেশে ভিসা লাগে না, ' . pbd_bn($d['counts']['voa']) . 'টিতে অন-অ্যারাইভাল, ' . pbd_bn($d['counts']['evisa']) . 'টিতে ই-ভিসা — ' . pbd_bn(count($d['countries'])) . 'টি দেশের পুরো তালিকা।';
+        }
+    }
+    if ($m['type'] === 'ramadan') {
+        $d = $m['data'];
+        $s['index'] = true;
+        $yr = pbd_bn(substr($d['ramadan']['start'], 0, 4));
+        if ($m['item']) {
+            $c = $d['city']; $r0 = $d['rows'][0];
+            $s['title'] = pbd_rz_place($c) . ' রমজান ক্যালেন্ডার ' . $yr . ': সেহরি ও ইফতারের সময়সূচি';
+            $s['desc'] = $c['name'] . 'য় রমজান শুরু (সম্ভাব্য) ' . pbd_date($d['ramadan']['start']) . '। প্রথম রোজায় সেহরি ' . pbd_t($r0['sehri']) . ', ইফতার ' . pbd_t($r0['iftar']) . '। ৩০ দিনের সময়সূচি, আজকের নামাজের সময়, ছবি ডাউনলোড ও প্রিন্ট।';
+            $s['faq'] = pbd_rz_faq($d);
+        } else {
+            $s['title'] = 'প্রবাসে রমজান ক্যালেন্ডার ' . $yr . ': দোহা, দুবাই, ইতালি, প্যারিস, আমেরিকা, কানাডা';
+            $s['desc'] = pbd_bn(count($d['cities'])) . 'টি শহরের সেহরি ও ইফতারের সময়সূচি — মধ্যপ্রাচ্য, মালয়েশিয়া, ইউরোপ, আমেরিকা ও কানাডা। স্থানীয় সময়ে, ছবি ডাউনলোড ও প্রিন্টসহ।';
         }
     }
     if (function_exists('mb_strlen') && mb_strlen($s['desc']) > 158) { $s['desc'] = mb_substr($s['desc'], 0, 155) . '…'; }
@@ -365,6 +387,7 @@ function pbd_vc_faq($c) {
 function pbd_render($m) {
     if ($m['type'] === 'visa-check') { return $m['item'] ? pbd_vc_country($m['data'], $m['item']) : pbd_vc_hub($m['data']); }
     if ($m['type'] === 'gamca') { $h = $m['item'] ? pbd_gm_city($m['data'], $m['item']) : pbd_gm_hub($m['data']); $f = ''; foreach (pbd_gm_faq($m['data'], $m['item']) as $q) { $f .= '<details><summary>' . esc_html($q[0]) . '</summary><p>' . esc_html($q[1]) . '</p></details>'; } return pbd_gm_css() . str_replace('<h2>প্রশ্ন ও উত্তর</h2>', '<h2>প্রশ্ন ও উত্তর</h2>' . $f, $h); }
+    if ($m['type'] === 'ramadan') { return pbd_gm_css() . pbd_rz_css() . ($m['item'] ? pbd_rz_city($m['data']) : pbd_rz_hub($m['data'])); }
     if ($m['type'] === 'visa') { return pbd_gm_css() . pbd_ag_css() . ($m['item'] ? pbd_vs_one($m['data'], $m['item']) : pbd_vs_hub($m['data'])); }
     if ($m['type'] === 'customs') { return pbd_rm_css() . ($m['item'] ? pbd_cu_topic($m['data'], $m['item']) : pbd_cu_hub($m['data'])); }
     if ($m['type'] === 'baggage') { return $m['item'] ? pbd_bg_one($m['data'], $m['item']) : pbd_bg_hub($m['data']); }
@@ -841,4 +864,116 @@ function pbd_vs_hub($d) {
     }
     $o .= '<p class="pbd-src">সূত্র: ' . esc_html($d['source']) . ', হালনাগাদ ' . pbd_date($d['updated']) . '। সরকারি তালিকা নয় — ভ্রমণের আগে দূতাবাসে নিশ্চিত হোন।</p>';
     return $o . pbd_foot();
+}
+
+/* ---------- Ramadan calendars for expat cities ---------- */
+function pbd_t($min) {   // minutes after midnight → ৫:২৪ (12-hour, the way Bangladeshi calendars print it)
+    $min = (($min % 1440) + 1440) % 1440;
+    $h = intdiv($min, 60) % 12; if ($h === 0) { $h = 12; }
+    return pbd_bn($h . ':' . str_pad((string) ($min % 60), 2, '0', STR_PAD_LEFT));
+}
+function pbd_wd($i) { $w = array('রবিবার', 'সোমবার', 'মঙ্গলবার', 'বুধবার', 'বৃহস্পতিবার', 'শুক্রবার', 'শনিবার'); return $w[(int) $i]; }
+function pbd_rz_year($d) { return pbd_bn(substr($d['ramadan']['start'], 0, 4)); }
+function pbd_rz_place($c) { return $c['name'] === $c['country'] ? $c['name'] : $c['name'] . ' (' . $c['country'] . ')'; }
+function pbd_rz_days_left($start) {
+    $n = (int) floor((strtotime($start . ' 00:00:00 UTC') - time()) / 86400);
+    return $n;
+}
+function pbd_rz_faq($d) {
+    $c = $d['city']; $r0 = $d['rows'][0]; $place = pbd_rz_place($c);
+    return array(
+        array($place . ' রমজান কবে শুরু হবে?', 'সম্ভাব্য ' . pbd_date($d['ramadan']['start']) . ' (' . pbd_wd($r0['wd']) . ')। চাঁদ দেখার ওপর নির্ভর করে এক দিন আগে-পরে হতে পারে — স্থানীয় মসজিদের ঘোষণা দেখুন।'),
+        array($c['name'] . 'য় প্রথম রোজার সেহরি ও ইফতার কখন?', 'সেহরির শেষ সময় ভোর ' . pbd_t($r0['sehri']) . ', ইফতার সন্ধ্যা ' . pbd_t($r0['iftar']) . ' (স্থানীয় সময়)।'),
+        array('এই সময়সূচি কোন নিয়মে হিসাব করা?', $c['methodName'] . ' পদ্ধতিতে, ' . $c['name'] . 'র স্থানাঙ্ক ও স্থানীয় সময় অঞ্চল (ডেলাইট সেভিংসহ) ধরে। আসর হানাফি মতে।'),
+    );
+}
+function pbd_rz_city($d) {
+    $c = $d['city']; $rows = $d['rows']; $place = pbd_rz_place($c); $yr = pbd_rz_year($d);
+    $left = pbd_rz_days_left($d['ramadan']['start']);
+    $o = pbd_head(array(array('রমজান ক্যালেন্ডার', '/ramadan/'), array($c['name'], '')), $place . ' রমজান ক্যালেন্ডার ' . $yr . ': সেহরি ও ইফতারের সময়');
+    $o .= '<div class="pbd-hero"><small>' . pbd_flag($c['iso2']) . ' ' . esc_html($place) . ' · স্থানীয় সময়</small>'
+        . '<div class="big" style="font-size:1.45em">রমজান শুরু (সম্ভাব্য) ' . pbd_date($d['ramadan']['start']) . '</div>'
+        . ($left > 0 ? '<span class="pbd-chip up">⏳ আর ' . pbd_bn($left) . ' দিন</span>' : '<span class="pbd-chip up">🌙 রমজান চলছে</span>')
+        . '<span class="pbd-chip">🌅 প্রথম সেহরি ' . pbd_t($rows[0]['sehri']) . '</span><span class="pbd-chip">🌇 প্রথম ইফতার ' . pbd_t($rows[0]['iftar']) . '</span></div>';
+    $o .= '<div class="pbd-rz-act"><button type="button" data-rz="download">📥 ছবি ডাউনলোড</button><button type="button" data-rz="share">📤 শেয়ার করুন</button><button type="button" onclick="window.print()">🖨️ প্রিন্ট</button></div>';
+    $today = gmdate('Y-m-d');
+    $o .= '<div class="pbd-rz"><div class="pbd-rz-ttl">' . esc_html($place) . ' — রমজান ' . pbd_bn($d['ramadan']['hijriYear']) . ' হিজরি / ' . $yr . '</div><div class="pbd-tw"><table class="pbd-rzt"><tr><th>রোজা</th><th>তারিখ</th><th>বার</th><th>সেহরি শেষ</th><th>ইফতার</th></tr>';
+    $img = array();
+    foreach ($rows as $r) {
+        $cls = $r['date'] === $today ? ' class="now"' : (($r['day'] === 10 || $r['day'] === 20) ? ' class="mark"' : '');
+        $dt = pbd_date($r['date']);
+        $dt = preg_replace('/\s\S+$/u', '', $dt); // drop the year in the table
+        $o .= '<tr' . $cls . '><td>' . pbd_bn($r['day']) . '</td><td>' . $dt . '</td><td>' . pbd_wd($r['wd']) . '</td><td><b class="s">' . pbd_t($r['sehri']) . '</b></td><td><b class="i">' . pbd_t($r['iftar']) . '</b></td></tr>';
+        $img[] = array(pbd_bn($r['day']), $dt, pbd_wd($r['wd']), pbd_t($r['sehri']), pbd_t($r['iftar']));
+    }
+    $o .= '</table></div><p class="pbd-rz-note">চাঁদ দেখা সাপেক্ষে তারিখ এক দিন এদিক-ওদিক হতে পারে · সতর্কতার জন্য সেহরি ২–৩ মিনিট আগে শেষ করুন · probashiinfo.com</p></div>';
+    $t = $d['todayTimes'];
+    $o .= '<h2>আজ ' . esc_html($c['name']) . 'য় নামাজের সময় (' . pbd_date($d['localDate']) . ')</h2><div class="pbd-pt">';
+    foreach (array(array('ফজর', 'fajr', '🌄'), array('সূর্যোদয়', 'sunrise', '☀️'), array('যোহর', 'dhuhr', '🕛'), array('আসর (হানাফি)', 'asr', '🌤️'), array('মাগরিব', 'maghrib', '🌇'), array('এশা', 'isha', '🌙')) as $p) {
+        $o .= '<div><i>' . $p[2] . '</i><span>' . $p[0] . '</span><b>' . pbd_t($t[$p[1]]) . '</b></div>';
+    }
+    $o .= '</div>';
+    $o .= '<div class="pbd-warn"><b>ℹ️ জেনে রাখুন</b><ul><li>সময় ' . esc_html($c['methodName']) . ' পদ্ধতিতে হিসাব করা — আপনার এলাকার মসজিদের সময়সূচির সাথে ১–৫ মিনিট পার্থক্য হতে পারে, মসজিদের সময়ই মেনে চলুন।</li><li>রমজান শুরুর তারিখ উম্মুল কুরা (সৌদি) ক্যালেন্ডার অনুযায়ী; স্থানীয় চাঁদ দেখা কমিটি ভিন্ন দিন ঘোষণা করতে পারে।</li></ul></div>';
+    $o .= '<h2>প্রশ্ন ও উত্তর</h2>';
+    foreach (pbd_rz_faq($d) as $f) { $o .= '<details><summary>' . esc_html($f[0]) . '</summary><p>' . esc_html($f[1]) . '</p></details>'; }
+    if (!empty($d['others'])) {
+        $o .= '<h2>আশপাশের শহর</h2><div class="pbd-tiles">';
+        foreach ($d['others'] as $x) { $o .= '<a href="' . esc_url(home_url('/ramadan/' . $x['slug'] . '/')) . '">' . pbd_flag($x['iso2']) . '<span>' . esc_html($x['name']) . '<small>' . esc_html($x['country']) . '</small></span></a>'; }
+        $o .= '</div>';
+    }
+    $o .= '<p><a href="' . esc_url(home_url('/ramadan/')) . '">সব শহরের রমজান ক্যালেন্ডার →</a></p>';
+    $o .= '<p class="pbd-src">হিসাব: জ্যোতির্বিজ্ঞানের প্রচলিত পদ্ধতি (PrayTimes), ' . esc_html($c['methodName']) . ', স্থানাঙ্ক ' . pbd_bn(round($c['lat'], 2)) . ', ' . pbd_bn(round($c['lon'], 2)) . ', সময় অঞ্চল ' . esc_html($c['zone']) . '।</p>';
+    $data = array('title' => $c['name'] . ' রমজান ক্যালেন্ডার ' . $yr, 'sub' => $c['country'] . ' · রমজান ' . pbd_bn($d['ramadan']['hijriYear']) . ' হিজরি · স্থানীয় সময়', 'rows' => $img, 'slug' => $c['slug']);
+    $o .= '<script type="application/json" id="rzData">' . wp_json_encode($data, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) . '</script>' . pbd_rz_js();
+    return $o . pbd_foot();
+}
+function pbd_rz_hub($d) {
+    $yr = pbd_rz_year($d); $left = pbd_rz_days_left($d['ramadan']['start']);
+    $o = pbd_head(array(array('রমজান ক্যালেন্ডার', '')), 'প্রবাসে রমজান ক্যালেন্ডার ' . $yr . ': শহরভিত্তিক সেহরি ও ইফতার');
+    $o .= '<div class="pbd-hero"><small>🌙 রমজান ' . pbd_bn($d['ramadan']['hijriYear']) . ' হিজরি</small><div class="big" style="font-size:1.45em">শুরু (সম্ভাব্য) ' . pbd_date($d['ramadan']['start']) . '</div>'
+        . ($left > 0 ? '<span class="pbd-chip up">⏳ আর ' . pbd_bn($left) . ' দিন</span>' : '<span class="pbd-chip up">🌙 রমজান চলছে</span>')
+        . '<span class="pbd-chip">' . pbd_bn(count($d['cities'])) . 'টি শহর</span><span class="pbd-chip">📥 ছবি · 🖨️ প্রিন্ট</span></div>';
+    $o .= '<p>মধ্যপ্রাচ্য, মালয়েশিয়া, ইউরোপ, আমেরিকা, কানাডা — যে শহরে আছেন সেটি বেছে নিন। প্রতিটি পাতায় ৩০ দিনের সেহরি-ইফতারের সময়, আজকের নামাজের সময়, আর ছবি ডাউনলোড ও প্রিন্টের সুবিধা।</p>';
+    $o .= '<input class="pbd-find" type="search" placeholder="🔍 শহর বা দেশের নাম লিখুন" oninput="var q=this.value.toLowerCase();document.querySelectorAll(\'.pbd-rzh a\').forEach(function(e){e.style.display=e.textContent.toLowerCase().indexOf(q)>-1?\'\':\'none\'})">';
+    $lab = array('gulf' => 'মধ্যপ্রাচ্য', 'asia' => 'এশিয়া', 'europe' => 'ইউরোপ', 'americas' => 'আমেরিকা ও কানাডা', 'oceania' => 'অস্ট্রেলিয়া', 'africa' => 'আফ্রিকা');
+    $g = array();
+    foreach ($d['cities'] as $c) { $g[$c['region']][] = $c; }
+    foreach ($lab as $k => $name) {
+        if (empty($g[$k])) { continue; }
+        $o .= '<h2>' . esc_html($name) . '</h2><div class="pbd-tiles pbd-rzh">';
+        foreach ($g[$k] as $c) { $o .= '<a href="' . esc_url(home_url('/ramadan/' . $c['slug'] . '/')) . '">' . pbd_flag($c['iso2']) . '<span>' . esc_html($c['name']) . '<small>' . esc_html($c['country']) . ' · ইফতার ' . pbd_t($c['first']['iftar']) . '</small></span></a>'; }
+        $o .= '</div>';
+    }
+    $o .= '<p class="pbd-src">প্রথম রোজার ইফতারের সময় দেখানো হয়েছে (স্থানীয় সময়)। তারিখ উম্মুল কুরা ক্যালেন্ডার অনুযায়ী সম্ভাব্য।</p>';
+    return $o . pbd_foot();
+}
+function pbd_rz_css() {
+    return '<style>.pbd .pbd-rz-act{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}.pbd .pbd-rz-act button{flex:1 1 140px;border:0;border-radius:14px;padding:12px 10px;font-weight:700;font-size:1em;font-family:inherit;cursor:pointer;background:var(--bs,#e9f1fd);color:var(--b2,#0a3f96)}
+.pbd .pbd-rz-act button:first-child{background:var(--g,#16a34a);color:#fff}
+.pbd .pbd-rz-ttl{display:none;font-weight:800;font-size:1.3em;margin:0 0 8px}
+.pbd .pbd-rzt td,.pbd .pbd-rzt th{text-align:center;padding:7px 6px}.pbd .pbd-rzt b.s{color:var(--g,#16a34a)}.pbd .pbd-rzt b.i{color:#c2410c}
+.pbd .pbd-rzt tr.mark td{background:#fff7df}.pbd .pbd-rzt tr.now td{background:#dcfce7;font-weight:800}
+.pbd .pbd-rz-note{font-size:.82em;color:var(--mut,#6a7a93);margin:.5em 0 0}
+.pbd .pbd-pt{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.pbd .pbd-pt div{background:var(--card,#fff);border:1px solid var(--line,#e2e8f1);border-radius:14px;padding:10px;text-align:center;min-width:0}
+.pbd .pbd-pt i{font-style:normal;font-size:1.3em;display:block}.pbd .pbd-pt span{display:block;font-size:.85em;color:var(--mut,#6a7a93)}.pbd .pbd-pt b{font-size:1.25em}
+@media(max-width:420px){.pbd .pbd-rzt{font-size:.85em}.pbd .pbd-rzt td,.pbd .pbd-rzt th{padding:6px 3px}}
+@media print{body *{visibility:hidden!important}.pbd-rz,.pbd-rz *{visibility:visible!important}.pbd-rz{position:absolute;left:0;top:0;width:100%}.pbd .pbd-rz-ttl{display:block}.pbd .pbd-tw{border:0;overflow:visible}.pbd .pbd-rzt{font-size:12pt}.pbd .pbd-rzt td,.pbd .pbd-rzt th{padding:4px;border:1px solid #999}}</style>';
+}
+function pbd_rz_js() {
+    $logo = 'https://probashiinfo.com/wp-content/uploads/2026/10/probashiinfo-wordmark.webp';
+    return '<script>(function(){var el=document.getElementById("rzData");if(!el)return;var D=JSON.parse(el.textContent);var W=1080,H=1600,B="#0b56c4",NV="#082a63",SUN="#f5b301";'
+        . 'function img(s){return new Promise(function(ok){var i=new Image();i.onload=function(){ok(i)};i.onerror=function(){ok(null)};i.src=s})}'
+        . 'function draw(){var f=document.fonts?Promise.all([\'700 40px "Hind Siliguri"\',\'800 56px "Anek Bangla"\'].map(function(x){return document.fonts.load(x,"রমজান ০১২৩")})).catch(function(){}):Promise.resolve();'
+        . 'return f.then(function(){return img(' . wp_json_encode($logo) . ')}).then(function(logo){var c=document.createElement("canvas");c.width=W;c.height=H;var x=c.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,W,H);'
+        . 'if(logo){var lw=300,lh=lw*logo.height/logo.width;x.drawImage(logo,50,30,lw,lh)}x.textAlign="right";x.fillStyle=NV;x.font=\'700 26px "Hind Siliguri",sans-serif\';x.fillText("probashiinfo.com",W-50,72);'
+        . 'var g=x.createLinearGradient(0,130,W,330);g.addColorStop(0,B);g.addColorStop(1,NV);x.fillStyle=g;x.fillRect(0,130,W,200);x.fillStyle=SUN;x.fillRect(0,330,W,8);'
+        . 'x.textAlign="left";x.fillStyle="#fff";x.font=\'800 56px "Anek Bangla","Hind Siliguri",sans-serif\';x.fillText(D.title,50,222);x.font=\'500 30px "Hind Siliguri",sans-serif\';x.fillStyle="#dbe8fb";x.fillText(D.sub,50,284);'
+        . 'x.textAlign="right";x.fillStyle=SUN;x.font=\'700 80px "Hind Siliguri",sans-serif\';x.fillText("☪",W-50,262);'
+        . 'var top=370,rh=36,cols=[100,270,470,720,945],hd=["রোজা","তারিখ","বার","সেহরি শেষ","ইফতার"];x.fillStyle=NV;x.fillRect(30,top,W-60,52);x.fillStyle="#fff";x.font=\'700 28px "Hind Siliguri",sans-serif\';x.textAlign="center";hd.forEach(function(h,i){x.fillText(h,cols[i],top+36)});'
+        . 'D.rows.forEach(function(r,i){var y=top+52+i*rh;x.fillStyle=i%2?"#f1f6fd":"#fff";if(i===9||i===19)x.fillStyle="#fff7df";x.fillRect(30,y,W-60,rh);x.fillStyle="#1d2a3a";x.font=\'500 25px "Hind Siliguri",sans-serif\';x.fillText(r[0],cols[0],y+26);x.fillText(r[1],cols[1],y+26);x.fillText(r[2],cols[2],y+26);x.font=\'700 27px "Hind Siliguri",sans-serif\';x.fillStyle="#15803d";x.fillText(r[3],cols[3],y+26);x.fillStyle="#c2410c";x.fillText(r[4],cols[4],y+26)});'
+        . 'var end=top+52+D.rows.length*rh;x.strokeStyle="#d6e2f3";x.lineWidth=2;x.strokeRect(30,top,W-60,end-top);x.fillStyle="#5f6b7a";x.font=\'500 22px "Hind Siliguri",sans-serif\';x.fillText("চাঁদ দেখা সাপেক্ষে তারিখ এক দিন এদিক-ওদিক হতে পারে · সতর্কতার জন্য সেহরি ২–৩ মিনিট আগে শেষ করুন",W/2,end+40);'
+        . 'var g2=x.createLinearGradient(0,H-80,W,H);g2.addColorStop(0,"#E11D48");g2.addColorStop(1,"#F97316");x.fillStyle=g2;x.fillRect(0,H-80,W,80);x.fillStyle="#fff";x.font=\'700 28px "Hind Siliguri",sans-serif\';x.fillText("প্রবাসী ইনফো · probashiinfo.com/ramadan",W/2,H-30);return c})}'
+        . 'function blob(){return draw().then(function(c){return new Promise(function(ok){c.toBlob(ok,"image/png")})})}var name="ramadan-calendar-"+D.slug+".png";'
+        . 'function dl(b){var a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},1500)}'
+        . 'document.querySelectorAll("[data-rz]").forEach(function(btn){btn.addEventListener("click",function(){var k=btn.getAttribute("data-rz"),t=btn.textContent;btn.textContent="তৈরি হচ্ছে…";blob().then(function(b){btn.textContent=t;if(k==="share"){var f=new File([b],name,{type:"image/png"});if(navigator.canShare&&navigator.canShare({files:[f]}))return navigator.share({files:[f],title:D.title,text:D.title+" — "+location.href}).catch(function(){});if(navigator.share)return navigator.share({title:D.title,url:location.href}).catch(function(){});window.open("https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(location.href),"_blank");return}dl(b)})})})})();</script>';
 }
