@@ -54,7 +54,8 @@ def _all():
     return out
 
 
-def _find(name=NAME):
+def _find(name=None):
+    name = name or NAME  # read at call time (push/on/off may change NAME)
     return next((s for s in _all() if s.get("name") == name), None)
 
 
