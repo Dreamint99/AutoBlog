@@ -13,7 +13,7 @@ define('PBD_LOADED', 1);
 define('PBD_MODE', 'live');               // 'test' | 'live'
 define('PBD_KEY', '__PBD_TEST_KEY__');
 define('PBD_API', 'https://probashi-data.iamkashimuddin.workers.dev/v1/');
-define('PBD_VER', '12');
+define('PBD_VER', '13');
 
 function pbd_enabled() {
     if (PBD_MODE === 'live') { return true; }
@@ -317,11 +317,8 @@ function pbd_sitemap() {
 add_action('init', function () {
     if (PBD_MODE !== 'live' || get_option('pbd_purged') === PBD_VER) { return; }
     update_option('pbd_purged', PBD_VER, false);
-    $p = pbd_data('pages');
-    if ($p && !empty($p['pages'])) { foreach ($p['pages'] as $r) { do_action('litespeed_purge_url', home_url($r['path'])); } }
     if (class_exists('\RankMath\Sitemap\Cache')) { \RankMath\Sitemap\Cache::invalidate_storage(); }  // rebuild index with our sitemap
-    do_action('litespeed_purge_url', home_url('/sitemap_index.xml'));
-    do_action('litespeed_purge_url', home_url('/'));   // homepage shows the data tiles
+    do_action('litespeed_purge_all');   // new version: homepage tiles + every data page
 }, 99);
 
 /* ---------- rendering ---------- */
