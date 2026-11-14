@@ -23,6 +23,9 @@ on:
       upsert_name:
         description: "Snippet name for upsert"
         default: ""
+      data_cmd:
+        description: "Instead: data pages control, e.g. perm-test | status | health | push wp_snippets/pbd-data-pages.php off | on | off"
+        default: ""
       apply:
         description: "Apply the change (otherwise dry run)"
         type: boolean
@@ -49,7 +52,14 @@ jobs:
           REPL: ${{ github.event.inputs.replace }}
           UFILE: ${{ github.event.inputs.upsert_file }}
           UNAME: ${{ github.event.inputs.upsert_name }}
+          DATA_CMD: ${{ github.event.inputs.data_cmd }}
+          PBD_TEST_KEY: ${{ secrets.PBD_TEST_KEY }}
         run: |
+          if [ -n "$DATA_CMD" ]; then
+            case "$DATA_CMD" in push*) php -l "$(echo $DATA_CMD | awk '{print $2}')" || exit 1;; esac
+            python wp_probashi_data.py $DATA_CMD
+            exit $?
+          fi
           if [ -n "${{ github.event.inputs.media }}" ]; then
             for f in ${{ github.event.inputs.media }}; do python wp_media.py "wp_snippets/assets/$f"; done
             exit 0
