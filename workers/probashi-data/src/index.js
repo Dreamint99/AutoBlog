@@ -31,6 +31,7 @@ async function agencyIndex(env) {
   return { updated: await agencyUpdated(env), ...AG_SRC, agencies: rows.results };
 }
 import { remittance, CURRENCIES } from "./remittance.js";
+import { ramadanIndex, ramadanCity, CITIES as RZ_CITIES } from "./ramadan.js";
 
 const SITE = "https://probashiinfo.com";
 const DATA = { "visa-check": visaCheck, gamca, customs, "migration-cost": migrationCost };
@@ -52,6 +53,8 @@ async function pages(env) {
   out.push({ path: "/migration-cost/", index: true, lastmod: migrationCost.updated });
   const ags = await env.DB.prepare("SELECT slug, release FROM pbd_agency").all();
   for (const a of ags.results) out.push({ path: `/agency/${a.slug}/`, index: a.release <= today, lastmod: a.release > agUpd ? a.release : agUpd });
+  out.push({ path: "/ramadan/", index: true, lastmod: today });
+  for (const c of RZ_CITIES) out.push({ path: `/ramadan/${c[0]}/`, index: true, lastmod: today });
   out.push({ path: "/remittance/", index: true, lastmod: today });
   for (const c of CURRENCIES) out.push({ path: `/remittance/${c[1]}/`, index: true, lastmod: today });
   return out;
@@ -71,10 +74,16 @@ export default {
       const a = await env.DB.prepare("SELECT slug, rl, name, address, phone, status, expiry, release FROM pbd_agency WHERE slug = ?").bind(one[1]).first();
       return a ? json({ updated: await agencyUpdated(env), ...AG_SRC, agency: a }) : json({ error: "not found" }, 404, 30);
     }
+    const rz = url.pathname.match(/^\/v1\/ramadan\/([a-z-]+)\/?$/);
+    if (rz) {
+      const d = ramadanCity(rz[1], new Date().toISOString().slice(0, 10));
+      return d ? json(d, 200, 1800) : json({ error: "not found" }, 404, 30);
+    }
     const m = url.pathname.match(/^\/v1\/([a-z-]+)\/?$/);
     if (url.pathname === "/" || url.pathname === "/health") return json({ ok: true, datasets: Object.keys(DATA) }, 200, 60);
     if (!m) return json({ error: "not found" }, 404, 30);
     if (m[1] === "pages") return json({ site: SITE, pages: await pages(env) });
+    if (m[1] === "ramadan") return json(ramadanIndex(new Date().toISOString().slice(0, 10)), 200, 3600);
     if (m[1] === "agency-index") return json(await agencyIndex(env));
     if (DATA[m[1]]) return json(DATA[m[1]]);
     if (m[1] === "visa") {
