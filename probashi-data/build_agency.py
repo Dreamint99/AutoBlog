@@ -22,7 +22,7 @@ def rl_num(rl):
 
 def agencies():
     R = json.load(open(os.path.join(H, "research", "agencies.json"), encoding="utf-8"))
-    rows = sorted(R["agencies"], key=lambda a: (a["status"] != "Active", rl_num(a["rl"])))
+    rows = sorted((a for a in R["agencies"] if rl_num(a["rl"]) > 0), key=lambda a: (a["status"] != "Active", rl_num(a["rl"])))
     out = []
     for i, a in enumerate(rows):
         out.append({
