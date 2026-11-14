@@ -11,7 +11,7 @@
  */
 if (!defined('ABSPATH') || defined('PBB_LOADED')) { return; }
 define('PBB_LOADED', 1);
-define('PBB_MODE', 'test');               // 'test' | 'live'
+define('PBB_MODE', 'live');               // 'test' | 'live'
 define('PBB_KEY', '__PBD_TEST_KEY__');
 define('PBB_VER', '1');
 define('PBB_PLAY', 'https://play.google.com/store/apps/details?id=com.probashibondu.probashi_bondu');
