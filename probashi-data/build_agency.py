@@ -86,12 +86,15 @@ def main():
     a = agencies()
     os.makedirs(os.path.join(H, "data"), exist_ok=True)
     json.dump(a, open(os.path.join(H, "data", "agency.json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
-    live = {p["link"] for p in json.load(open(os.path.join(H, "audit", "all_posts.json"), encoding="utf-8"))}
+    audit = os.path.join(H, "audit", "all_posts.json")
+    if not os.path.exists(audit):  # CI has no local post dump: keep the committed migration_cost.json
+        print(len(a["agencies"]), "agencies; last release", a["agencies"][-1]["release"], "| migration cost kept")
+        return
+    live = {p["link"] for p in json.load(open(audit, encoding="utf-8"))}
     m = migration_cost(live)
     json.dump(m, open(os.path.join(H, "data", "migration_cost.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print(len(a["agencies"]), "agencies; last release", a["agencies"][-1]["release"], "|", len(m["countries"]), "cost rows,",
-          sum(1 for r in m["countries"] if r["post"]), "linked to posts; missing post links:",
-          [r["country"] for r in m["countries"] if not r["post"] and COST_BN.get(r["country"])])
+          sum(1 for r in m["countries"] if r["post"]), "linked to posts")
 
 
 if __name__ == "__main__":
