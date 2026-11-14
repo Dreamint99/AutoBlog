@@ -13,7 +13,7 @@ define('PBD_LOADED', 1);
 define('PBD_MODE', 'live');               // 'test' | 'live'
 define('PBD_KEY', '__PBD_TEST_KEY__');
 define('PBD_API', 'https://probashi-data.iamkashimuddin.workers.dev/v1/');
-define('PBD_VER', '6');
+define('PBD_VER', '7');
 
 function pbd_enabled() {
     if (PBD_MODE === 'live') { return true; }
@@ -57,13 +57,21 @@ function pbd_match() {
     $m = null;
     $path = rawurldecode((string) wp_parse_url(isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '', PHP_URL_PATH));
     if (PBD_MODE === 'live' && $path === '/pbd-sitemap.xml') { return $m = array('type' => 'sitemap'); }
-    if (!preg_match('#^/(visa-check|remittance|gamca)(?:/([a-z0-9-]+))?/?$#', $path, $x)) { return $m; }
+    if (!preg_match('#^/(visa-check|remittance|gamca|agency|migration-cost)(?:/([a-z0-9-]+))?/?$#', $path, $x)) { return $m; }
     if (!pbd_enabled()) { return $m; }
     $type = $x[1];
     $slug = isset($x[2]) ? $x[2] : '';
-    $d = pbd_data($type);
-    if (!$d) { return $m; }
+    if ($type === 'migration-cost' && $slug !== '') { return $m; }
     $item = null;
+    if ($type === 'agency' && $slug !== '') {
+        $one = pbd_data('agency/' . $slug);
+        if (!$one || empty($one['agency'])) { return $m; }
+        $m = array('type' => $type, 'slug' => $slug, 'data' => $one, 'item' => $one['agency'], 'path' => '/agency/' . $slug . '/');
+        if (substr($path, -1) !== '/') { $m['redirect'] = true; }
+        return $m;
+    }
+    $d = pbd_data($type === 'agency' ? 'agency-index' : $type);
+    if (!$d) { return $m; }
     if ($slug !== '') {
         $list = $type === 'remittance' ? $d['currencies'] : ($type === 'gamca' ? $d['cities'] : $d['countries']);
         foreach ($list as $c) { if ($c['slug'] === $slug) { $item = $c; break; } }
@@ -106,6 +114,7 @@ add_action('template_redirect', function () {
         if (isset($_GET['pbd'])) { setcookie('pbd', PBD_KEY, time() + 86400, '/', '', is_ssl(), true); }
     }
     if ($m['type'] === 'remittance') { do_action('litespeed_control_set_ttl', 3 * 3600); }
+    if ($m['type'] === 'agency' && isset($_GET['q'])) { do_action('litespeed_control_set_nocache', 'pbd search'); }
     $app = function_exists('pa_head') && function_exists('pa_foot') && function_exists('pa_app') && pa_app();
     if ($app) { pa_head(); } else { get_header(); }   // site shell (probashiinfo app snippet) or theme fallback
     echo pbd_css();
@@ -159,6 +168,26 @@ function pbd_seo() {
             $s['title'] = 'গামকা মেডিকেল সেন্টার তালিকা ২০২৬: শহরভিত্তিক, বুকিং ও রিপোর্ট';
             $s['desc'] = 'বাংলাদেশের সব জিসিসি (গামকা/Wafid) অনুমোদিত মেডিকেল সেন্টার — শহর অনুযায়ী তালিকা, অ্যাপয়েন্টমেন্টের ধাপ, ফি, রিপোর্ট ও মেয়াদ।';
         }
+    }
+    if ($m['type'] === 'agency') {
+        $d = $m['data'];
+        if ($m['item']) {
+            $a = $m['item'];
+            $st = pbd_ag_status($a['status']);
+            $s['index'] = $a['release'] <= gmdate('Y-m-d');
+            $s['title'] = $a['name'] . ' (আরএল-' . pbd_bn($a['rl']) . '): লাইসেন্স ' . $st[0];
+            $s['desc'] = $a['name'] . ' রিক্রুটিং এজেন্সির লাইসেন্স (আরএল-' . pbd_bn($a['rl']) . ') বিএমইটির তালিকায় ' . $st[0] . '। ঠিকানা, ফোন, লাইসেন্সের মেয়াদ ও টাকা দেওয়ার আগে যাচাইয়ের নিয়ম।';
+            $s['faq'] = pbd_ag_faq($d, $a);
+        } else {
+            $s['index'] = !isset($_GET['q']);
+            $s['title'] = 'রিক্রুটিং এজেন্সির লাইসেন্স যাচাই: নাম বা আরএল নম্বর দিয়ে খুঁজুন';
+            $s['desc'] = 'বিএমইটির তালিকার ' . pbd_bn(count($d['agencies'])) . 'টি রিক্রুটিং এজেন্সি — লাইসেন্স সক্রিয়, মেয়াদোত্তীর্ণ, স্থগিত না বাতিল, নাম বা আরএল নম্বর দিয়ে দেখুন।';
+        }
+    }
+    if ($m['type'] === 'migration-cost') {
+        $s['index'] = true;
+        $s['title'] = 'সরকার নির্ধারিত অভিবাসন ব্যয়: দেশভিত্তিক সর্বোচ্চ খরচ';
+        $s['desc'] = 'মালয়েশিয়া, কাতার, ওমান, কুয়েত, আমিরাত, জাপানসহ ' . pbd_bn(count($m['data']['countries'])) . 'টি দেশে কর্মী পাঠানোর সরকার নির্ধারিত সর্বোচ্চ খরচ — আদেশের তারিখ ও সূত্রসহ।';
     }
     if (function_exists('mb_strlen') && mb_strlen($s['desc']) > 158) { $s['desc'] = mb_substr($s['desc'], 0, 155) . '…'; }
     return $s;
@@ -310,6 +339,8 @@ function pbd_vc_faq($c) {
 function pbd_render($m) {
     if ($m['type'] === 'visa-check') { return $m['item'] ? pbd_vc_country($m['data'], $m['item']) : pbd_vc_hub($m['data']); }
     if ($m['type'] === 'gamca') { $h = $m['item'] ? pbd_gm_city($m['data'], $m['item']) : pbd_gm_hub($m['data']); $f = ''; foreach (pbd_gm_faq($m['data'], $m['item']) as $q) { $f .= '<details><summary>' . esc_html($q[0]) . '</summary><p>' . esc_html($q[1]) . '</p></details>'; } return pbd_gm_css() . str_replace('<h2>প্রশ্ন ও উত্তর</h2>', '<h2>প্রশ্ন ও উত্তর</h2>' . $f, $h); }
+    if ($m['type'] === 'agency') { return pbd_ag_css() . ($m['item'] ? pbd_ag_one($m['data'], $m['item']) : pbd_ag_hub($m['data'])); }
+    if ($m['type'] === 'migration-cost') { return pbd_ag_css() . pbd_mc_page($m['data']); }
     if ($m['type'] === 'remittance') { return $m['item'] ? pbd_rm_one($m['data'], $m['item']) : pbd_rm_hub($m['data']); }
     return '';
 }
@@ -525,4 +556,104 @@ function pbd_gm_css() {
 .pbd .pbd-mcs{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
 .pbd .pbd-mc{background:var(--card,#fff);border:1px solid var(--line,#e2e8f1);border-radius:14px;padding:12px 14px;display:grid;gap:4px;min-width:0;line-height:1.45}
 .pbd .pbd-mc span{font-size:.88em;color:var(--ink2,#34465f);overflow-wrap:anywhere}.pbd .pbd-mc a{font-weight:700;color:var(--b,#0b56c4);text-decoration:none}</style>';
+}
+
+/* ---------- recruiting agency licence + government migration cost ---------- */
+function pbd_ag_status($s) {
+    $m = array(
+        'Active' => array('বৈধ লাইসেন্স', 'up', '✅', 'বিএমইটির তালিকায় এই এজেন্সির লাইসেন্স এখন সক্রিয়। তবুও টাকা দেওয়ার আগে রসিদ নিন এবং ভিসা/চাকরির কাগজ সরকারি সাইটে মিলিয়ে নিন।'),
+        'Expired' => array('মেয়াদ শেষ', 'warn', '⚠️', 'লাইসেন্সের মেয়াদ শেষ — নবায়ন না হওয়া পর্যন্ত এই এজেন্সি বৈধভাবে কর্মী পাঠাতে পারে না। নতুন করে কোনো টাকা দেবেন না।'),
+        'Cancelled' => array('লাইসেন্স বাতিল', 'dn', '⛔', 'সরকার এই এজেন্সির লাইসেন্স বাতিল করেছে। এর মাধ্যমে বিদেশে যাওয়া বৈধ নয় — কোনো টাকা দেবেন না।'),
+        'Suspended' => array('লাইসেন্স স্থগিত', 'dn', '⛔', 'এই এজেন্সির লাইসেন্স স্থগিত আছে। স্থগিত থাকা অবস্থায় কর্মী পাঠানো যায় না — টাকা দেবেন না।'),
+        'Server Locked' => array('সার্ভার লক', 'warn', '🔒', 'বিএমইটির সিস্টেমে এই এজেন্সির অ্যাকাউন্ট লক করা — আপাতত কোনো কাজ করতে পারবে না। বিএমইটিতে খোঁজ নিন।'),
+    );
+    return isset($m[$s]) ? $m[$s] : array($s, 'warn', 'ℹ️', '');
+}
+function pbd_ag_faq($d, $a) {
+    $st = pbd_ag_status($a['status']);
+    return array(
+        array($a['name'] . ' কি সরকার অনুমোদিত এজেন্সি?', 'বিএমইটির তালিকায় এর রিক্রুটিং লাইসেন্স নম্বর আরএল-' . pbd_bn($a['rl']) . ', বর্তমান অবস্থা: ' . $st[0] . ' (' . pbd_date($d['updated']) . ' অনুযায়ী)।'),
+        array('এজেন্সির লাইসেন্স নিজে কীভাবে যাচাই করব?', 'বিএমইটির সরকারি সিস্টেম raims.oep.gov.bd/agencies-এ আরএল নম্বর বা নাম লিখে খুঁজুন।'),
+        array('লাইসেন্স বাতিল বা স্থগিত এজেন্সিকে টাকা দিয়ে ফেললে কী করব?', 'টাকা দেওয়ার রসিদ ও কাগজ নিয়ে বিএমইটি বা জেলা কর্মসংস্থান ও জনশক্তি অফিসে লিখিত অভিযোগ দিন।'),
+    );
+}
+function pbd_ag_one($d, $a) {
+    $st = pbd_ag_status($a['status']);
+    $o = pbd_head(array(array('এজেন্সি যাচাই', '/agency/'), array('আরএল-' . pbd_bn($a['rl']), '')), $a['name'] . ': লাইসেন্স যাচাই (আরএল-' . pbd_bn($a['rl']) . ')');
+    $o .= '<div class="pbd-hero"><small>🏢 রিক্রুটিং এজেন্সি · আরএল-' . pbd_bn($a['rl']) . '</small><div class="big" style="font-size:1.4em">' . esc_html($a['name']) . '</div>'
+        . '<span class="pbd-chip ' . $st[1] . '">' . $st[2] . ' ' . esc_html($st[0]) . '</span>'
+        . ($a['expiry'] ? '<span class="pbd-chip">⏳ মেয়াদ ' . pbd_date($a['expiry']) . '</span>' : '')
+        . '<span class="pbd-chip">📅 যাচাই ' . pbd_date($d['updated']) . '</span></div>';
+    $o .= '<div class="pbd-st"><div><i>' . $st[2] . '</i><span><b>এর মানে</b>' . esc_html($st[3]) . '</span></div>'
+        . '<div><i>📍</i><span><b>ঠিকানা</b>' . esc_html($a['address']) . '</span></div>'
+        . ($a['phone'] ? '<div><i>📞</i><span><b>অফিসের ফোন</b><a href="tel:' . esc_attr(preg_replace('/[^0-9+]/', '', $a['phone'])) . '">' . esc_html($a['phone']) . '</a></span></div>' : '')
+        . '<div><i>🏛️</i><span><b>সরকারি সূত্র</b><a href="' . esc_url($d['source_url']) . '" target="_blank" rel="nofollow noopener">raims.oep.gov.bd — বিএমইটি এজেন্সি তালিকা</a></span></div></div>';
+    $o .= '<h2>টাকা দেওয়ার আগে ৫টি যাচাই</h2><ol class="pbd-steps">'
+        . '<li>এজেন্সির লাইসেন্স সক্রিয় কি না দেখুন (এই পাতা বা raims.oep.gov.bd)।</li>'
+        . '<li>ভিসা আসল কি না সেই দেশের সরকারি সাইটে মিলিয়ে নিন — <a href="' . esc_url(home_url('/visa-check/')) . '">দেশভিত্তিক ভিসা চেক</a>।</li>'
+        . '<li>সরকার নির্ধারিত খরচের চেয়ে বেশি চাইলে লিখিত হিসাব চান — <a href="' . esc_url(home_url('/migration-cost/')) . '">সরকার নির্ধারিত অভিবাসন ব্যয়</a>।</li>'
+        . '<li>প্রতিটি টাকার রসিদ নিন, এজেন্সির নাম ও আরএল নম্বরসহ।</li>'
+        . '<li>বিএমইটি ছাড়পত্র (স্মার্ট কার্ড) ছাড়া কাজের ভিসায় বিদেশ যাবেন না।</li></ol>';
+    $o .= '<h2>প্রশ্ন ও উত্তর</h2>';
+    foreach (pbd_ag_faq($d, $a) as $f) { $o .= '<details><summary>' . esc_html($f[0]) . '</summary><p>' . esc_html($f[1]) . '</p></details>'; }
+    $o .= '<p><a href="' . esc_url(home_url('/agency/')) . '">অন্য এজেন্সি খুঁজুন →</a></p>';
+    $o .= '<p class="pbd-src">সূত্র: ' . esc_html($d['source']) . ', ' . pbd_date($d['updated']) . ' তারিখের তালিকা। অবস্থা বদলাতে পারে — চূড়ান্ত যাচাই বিএমইটির সাইটে করুন। ভুল দেখলে মন্তব্যে জানান।</p>';
+    return $o . pbd_foot();
+}
+function pbd_ag_hub($d) {
+    $q = isset($_GET['q']) ? trim(wp_unslash((string) $_GET['q'])) : '';
+    $cnt = array();
+    foreach ($d['agencies'] as $a) { $cnt[$a['status']] = (isset($cnt[$a['status']]) ? $cnt[$a['status']] : 0) + 1; }
+    $o = pbd_head(array(array('এজেন্সি যাচাই', '')), 'রিক্রুটিং এজেন্সির লাইসেন্স যাচাই');
+    $o .= '<div class="pbd-hero"><small>🏢 বিএমইটি তালিকা</small><div class="big">' . pbd_bn(count($d['agencies'])) . 'টি এজেন্সি</div>'
+        . '<span class="pbd-chip up">✅ সক্রিয় ' . pbd_bn(isset($cnt['Active']) ? $cnt['Active'] : 0) . '</span>'
+        . '<span class="pbd-chip dn">⛔ বাতিল/স্থগিত ' . pbd_bn((isset($cnt['Cancelled']) ? $cnt['Cancelled'] : 0) + (isset($cnt['Suspended']) ? $cnt['Suspended'] : 0)) . '</span>'
+        . '<span class="pbd-chip">📅 ' . pbd_date($d['updated']) . '</span></div>';
+    $o .= '<form class="pbd-srch" method="get" action="' . esc_url(home_url('/agency/')) . '"><input name="q" type="search" value="' . esc_attr($q) . '" placeholder="এজেন্সির নাম বা আরএল নম্বর (যেমন 1857)" aria-label="এজেন্সি খুঁজুন"><button type="submit">খুঁজুন</button></form>';
+    if ($q !== '') {
+        $qq = strtolower(preg_replace('/^rl[-\s]*/i', '', strtr($q, array('০' => '0', '১' => '1', '২' => '2', '৩' => '3', '৪' => '4', '৫' => '5', '৬' => '6', '৭' => '7', '৮' => '8', '৯' => '9'))));
+        $hits = array();
+        foreach ($d['agencies'] as $a) {
+            if ((ctype_digit($qq) && (string) $a['rl'] === $qq) || (!ctype_digit($qq) && strlen($qq) > 1 && strpos(strtolower($a['name']), $qq) !== false)) { $hits[] = $a; }
+            if (count($hits) >= 60) { break; }
+        }
+        $o .= '<h2>ফলাফল: ' . pbd_bn(count($hits)) . 'টি</h2>';
+        $o .= $hits ? '<div class="pbd-tiles">' . implode('', array_map('pbd_ag_tile', $hits)) . '</div>' : '<p>এই নামে বা নম্বরে কোনো এজেন্সি পাওয়া যায়নি। বানান বদলে চেষ্টা করুন — তালিকায় না থাকলে সেই "এজেন্সি" সরকার অনুমোদিত নয়।</p>';
+    }
+    $o .= '<h2>লাইসেন্সের অবস্থার মানে</h2><div class="pbd-st">';
+    foreach (array('Active', 'Expired', 'Suspended', 'Cancelled') as $s) { $st = pbd_ag_status($s); $o .= '<div><i>' . $st[2] . '</i><span><b>' . esc_html($st[0]) . ' (' . pbd_bn(isset($cnt[$s]) ? $cnt[$s] : 0) . 'টি)</b>' . esc_html($st[3]) . '</span></div>'; }
+    $o .= '</div><p>বিদেশে যাওয়ার খরচ কত হওয়া উচিত: <a href="' . esc_url(home_url('/migration-cost/')) . '">সরকার নির্ধারিত অভিবাসন ব্যয়</a></p>';
+    $o .= '<p class="pbd-src">সূত্র: ' . esc_html($d['source']) . ', ' . pbd_date($d['updated']) . '।</p>';
+    return $o . pbd_foot();
+}
+function pbd_ag_tile($a) {
+    $st = pbd_ag_status($a['status']);
+    return '<a href="' . esc_url(home_url('/agency/' . $a['slug'] . '/')) . '"><span style="font-size:1.3em">' . $st[2] . '</span><span>' . esc_html($a['name']) . '<small>আরএল-' . pbd_bn($a['rl']) . ' · ' . esc_html($st[0]) . '</small></span></a>';
+}
+function pbd_mc_page($d) {
+    $o = pbd_head(array(array('সরকার নির্ধারিত অভিবাসন ব্যয়', '')), 'সরকার নির্ধারিত অভিবাসন ব্যয়: কোন দেশে যেতে সর্বোচ্চ কত');
+    $o .= '<div class="pbd-hero"><small>🏛️ প্রবাসী কল্যাণ মন্ত্রণালয়ের আদেশ</small><div class="big" style="font-size:1.45em">এজেন্সি এর বেশি নিতে পারবে না</div><span class="pbd-chip">' . pbd_bn(count($d['countries'])) . 'টি দেশ</span><span class="pbd-chip">📅 যাচাই ' . pbd_date($d['updated']) . '</span></div>';
+    $o .= '<p>সরকার প্রতিটি দেশের জন্য একজন কর্মীর সর্বোচ্চ অভিবাসন ব্যয় নির্ধারণ করে দেয়। নিচের অঙ্কগুলো শুধু সরকারি আদেশ থেকে নেওয়া — কোন তারিখের আদেশ, তা প্রতিটি সারিতে লেখা আছে।</p>';
+    $o .= '<div class="pbd-tw"><table><tr><th>দেশ</th><th>সর্বোচ্চ খরচ</th><th>আদেশের তারিখ</th></tr>';
+    foreach ($d['countries'] as $c) {
+        $o .= '<tr><td>' . pbd_flag($c['iso2']) . ' ' . esc_html($c['country']) . '</td><td><b>৳' . pbd_num($c['bdt']) . '</b></td><td>' . pbd_date($c['date']) . '</td></tr>';
+    }
+    $o .= '</table></div><h2>কোন খরচে কী থাকে</h2><div class="pbd-st">';
+    $seen = array();
+    foreach ($d['countries'] as $c) {
+        if (isset($seen[$c['includes']])) { $seen[$c['includes']][] = $c['country']; continue; }
+        $seen[$c['includes']] = array($c['country']);
+    }
+    foreach ($seen as $inc => $cs) { $o .= '<div><i>🧾</i><span><b>' . esc_html(implode(', ', $cs)) . '</b>' . esc_html($inc) . '</span></div>'; }
+    $o .= '</div><div class="pbd-warn"><b>⚠️ জেনে রাখুন</b><ul><li>বেশিরভাগ দেশের অঙ্ক ২০১৭ সালের আদেশের — এরপর নতুন দেশভিত্তিক আদেশ সরকারি সাইটে পাওয়া যায়নি। মালয়েশিয়া (২০২২) ও জাপান (২০২৩) নতুন আদেশ।</li><li>এর বেশি টাকা চাইলে লিখিত হিসাব ও রসিদ চান; প্রয়োজনে বিএমইটিতে অভিযোগ করুন।</li><li>এজেন্সির লাইসেন্স আগে যাচাই করুন: <a href="' . esc_url(home_url('/agency/')) . '">এজেন্সি লাইসেন্স যাচাই</a>।</li></ul></div>';
+    $o .= '<h2>দেশভিত্তিক বিস্তারিত খরচ ও বেতন</h2><ul class="pbd-rel">';
+    foreach ($d['countries'] as $c) { if (!empty($c['post'])) { $o .= '<li><a href="' . esc_url($c['post']) . '">' . esc_html($c['country']) . ' যেতে কত টাকা লাগে — বিস্তারিত</a></li>'; } }
+    $o .= '</ul><p class="pbd-src">সূত্র: প্রবাসী কল্যাণ ও বৈদেশিক কর্মসংস্থান মন্ত্রণালয় / বিএমইটি অফিস আদেশ: ';
+    $src = array();
+    foreach ($d['countries'] as $c) { $src[$c['source']] = 1; }
+    foreach (array_keys($src) as $u) { $o .= '<a href="' . esc_url($u) . '" target="_blank" rel="nofollow noopener">' . esc_html(pbd_host($u)) . '</a> '; }
+    return $o . '</p>' . pbd_foot();
+}
+function pbd_ag_css() {
+    return '<style>.pbd .pbd-chip.warn{background:#d97706}.pbd .pbd-srch{display:flex;gap:8px;margin:.4em 0 1em}.pbd .pbd-srch input{flex:1;min-width:0;font-size:1.05em;padding:12px 14px;border:2px solid var(--line,#e2e8f1);border-radius:14px}.pbd .pbd-srch button{border:0;background:var(--b,#0b56c4);color:#fff;font-weight:700;border-radius:14px;padding:0 18px;font-size:1em}.pbd td img.fl{width:24px;height:17px;border-radius:3px;vertical-align:-3px}</style>';
 }

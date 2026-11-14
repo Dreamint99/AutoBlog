@@ -2,10 +2,15 @@
 // Every dataset carries `updated` and per-row `source`. Pages list = what the snippet may render + index.
 import visaCheck from "../../../probashi-data/data/visa_check.json";
 import gamca from "../../../probashi-data/data/gamca.json";
+import agency from "../../../probashi-data/data/agency.json";
+import migrationCost from "../../../probashi-data/data/migration_cost.json";
+const AG = new Map(agency.agencies.map((a) => [a.slug, a]));
+const agencyIndex = { updated: agency.updated, source: agency.source, source_url: agency.source_url,
+  agencies: agency.agencies.map((a) => ({ slug: a.slug, rl: a.rl, name: a.name, status: a.status, release: a.release })) };
 import { remittance, CURRENCIES } from "./remittance.js";
 
 const SITE = "https://probashiinfo.com";
-const DATA = { "visa-check": visaCheck, gamca };
+const DATA = { "visa-check": visaCheck, gamca, "agency-index": agencyIndex, "migration-cost": migrationCost };
 
 function pages() {
   const out = [{ path: "/visa-check/", index: false, lastmod: visaCheck.updated }];
@@ -13,6 +18,9 @@ function pages() {
   out.push({ path: "/gamca/", index: true, lastmod: gamca.updated });
   for (const c of gamca.cities) out.push({ path: `/gamca/${c.slug}/`, index: c.index, lastmod: gamca.updated });
   const today = new Date().toISOString().slice(0, 10);
+  out.push({ path: "/agency/", index: true, lastmod: agency.updated });
+  out.push({ path: "/migration-cost/", index: true, lastmod: migrationCost.updated });
+  for (const a of agency.agencies) out.push({ path: `/agency/${a.slug}/`, index: a.release <= today, lastmod: a.release > agency.updated ? a.release : agency.updated });
   out.push({ path: "/remittance/", index: true, lastmod: today });
   for (const c of CURRENCIES) out.push({ path: `/remittance/${c[1]}/`, index: true, lastmod: today });
   return out;
@@ -27,6 +35,11 @@ const json = (body, status = 200, maxAge = 3600) =>
 export default {
   async fetch(req, env, ctx) {
     const url = new URL(req.url);
+    const one = url.pathname.match(/^\/v1\/agency\/(rl-\d+)\/?$/);
+    if (one) {
+      const a = AG.get(one[1]);
+      return a ? json({ updated: agency.updated, source: agency.source, source_url: agency.source_url, agency: a }) : json({ error: "not found" }, 404, 30);
+    }
     const m = url.pathname.match(/^\/v1\/([a-z-]+)\/?$/);
     if (url.pathname === "/" || url.pathname === "/health") return json({ ok: true, datasets: Object.keys(DATA) }, 200, 60);
     if (!m) return json({ error: "not found" }, 404, 30);
