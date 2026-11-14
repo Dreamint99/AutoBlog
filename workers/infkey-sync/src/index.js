@@ -135,13 +135,23 @@ export async function sync(env) {
       .join(",")},active=1,updated_at=excluded.updated_at`;
   const hist =
     "INSERT INTO infkey_price_history (id,day,input_per_m,output_per_m) VALUES (?,?,?,?) ON CONFLICT(id,day) DO UPDATE SET input_per_m=excluded.input_per_m,output_per_m=excluded.output_per_m";
+  const before = new Set(((await env.DB.prepare("SELECT id FROM infkey_models").all()).results || []).map((r) => r.id));
+  const fresh = rows.filter((x) => !before.has(x.id)).map((x) => x.id);
   const stmts = [env.DB.prepare("UPDATE infkey_models SET active=0")];
   for (const x of rows) {
     stmts.push(env.DB.prepare(up).bind(...cols.map((c) => x[c] ?? null), now));
     stmts.push(env.DB.prepare(hist).bind(x.id, today, x.input_per_m, x.output_per_m));
   }
   for (let i = 0; i < stmts.length; i += 90) await env.DB.batch(stmts.slice(i, i + 90));
-  return { models: rows.length, flagship: flagship.size, day: today };
+  // Tell Bing/Yandex (IndexNow) about brand-new model pages right away.
+  if (fresh.length && before.size) {
+    const key = "7cb730425493bd6250188aee25110d83";
+    const urlList = ["https://infkey.com/new", "https://infkey.com/models", ...fresh.slice(0, 500).map((id) => `https://infkey.com/models/${id}`)];
+    try {
+      await fetch("https://api.indexnow.org/indexnow", { method: "POST", headers: { "content-type": "application/json; charset=utf-8" }, body: JSON.stringify({ host: "infkey.com", key, keyLocation: `https://infkey.com/${key}.txt`, urlList }) });
+    } catch {}
+  }
+  return { models: rows.length, flagship: flagship.size, fresh: fresh.length, day: today };
 }
 
 // ---------- AI status (every 5 min) ----------
