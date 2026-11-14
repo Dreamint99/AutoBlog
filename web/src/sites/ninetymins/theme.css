@@ -889,8 +889,8 @@
 .site-ninetymins .nm-md-empty { color: rgba(255, 255, 255, 0.7); padding: 18px 0; }
 
 /* ── Home: tables · fixtures · app ─────────────────────────────────── */
-.site-ninetymins .nm-hub { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) 300px; gap: 18px; padding-top: 22px; padding-bottom: 10px; align-items: start; }
-.site-ninetymins .nm-hub-tables, .site-ninetymins .nm-hub-fx, .site-ninetymins .nm-hub-side { display: grid; gap: 16px; min-width: 0; }
+.site-ninetymins .nm-homehub { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) 300px; gap: 18px; padding-top: 22px; padding-bottom: 10px; align-items: start; }
+.site-ninetymins .nm-homehub-tables, .site-ninetymins .nm-homehub-fx, .site-ninetymins .nm-homehub-side { display: grid; gap: 16px; min-width: 0; }
 .site-ninetymins .nm-appcard { position: relative; overflow: hidden; border-radius: 14px; padding: 18px; color: #fff; background: radial-gradient(400px 200px at 100% 0%, rgba(25, 210, 107, 0.35), transparent 60%), linear-gradient(150deg, #0b1a12, #0f3d24); }
 .site-ninetymins .nm-appcard img { width: 56px; height: 56px; border-radius: 14px; display: block; }
 .site-ninetymins .nm-appcard h3 { margin: 12px 0 8px; font: 800 26px/1 var(--nm-display); text-transform: uppercase; }
@@ -900,9 +900,9 @@
 .site-ninetymins .nm-appbtn:hover { background: #fff; }
 .site-ninetymins .nm-appbtn:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
 
-@media (max-width: 1080px) { .site-ninetymins .nm-hub { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .site-ninetymins .nm-hub-side { grid-column: 1 / -1; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); } }
+@media (max-width: 1080px) { .site-ninetymins .nm-homehub { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .site-ninetymins .nm-homehub-side { grid-column: 1 / -1; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); } }
 @media (max-width: 720px) {
-  .site-ninetymins .nm-hub { grid-template-columns: minmax(0, 1fr); }
+  .site-ninetymins .nm-homehub { grid-template-columns: minmax(0, 1fr); }
   .site-ninetymins .nm-md-grid { grid-template-columns: minmax(0, 1fr); }
   .site-ninetymins .nm-mdhero-head { align-items: flex-start; }
 }

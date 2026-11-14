@@ -41,7 +41,7 @@ export default function Home({ site, articles }: SiteHomeProps) {
   })).filter((r) => r.comp && r.items.length >= 2);
 
   return (
-    <Shell site={site} strip={articles.slice(0, 10)}>
+    <Shell site={site} home>
       {/* ── 1. MATCHDAY HERO: live + today's matches, auto-refreshing ── */}
       <section className="nm-mdhero" aria-label="Live scores and today's matches">
         <div className="nm-wrap">
@@ -51,9 +51,7 @@ export default function Home({ site, articles }: SiteHomeProps) {
               <p>Football, cricket and NBA — updates every minute, kick-offs in your time zone.</p>
             </div>
             <div className="nm-mdhero-links">
-              <Link href={`${s}/today`}>Today</Link>
-              <Link href={`${s}/tomorrow`}>Tomorrow</Link>
-              <Link href={`${s}/scores`}>All scores</Link>
+              <Link href={`${s}/tomorrow`}>Tomorrow&apos;s matches →</Link>
             </div>
           </div>
           <MatchdayBoard />
@@ -61,16 +59,16 @@ export default function Home({ site, articles }: SiteHomeProps) {
       </section>
 
       {/* ── 2. TABLES · FIXTURES · APP ── */}
-      <section className="nm-wrap nm-hub">
-        <div className="nm-hub-tables">
+      <section className="nm-wrap nm-homehub">
+        <div className="nm-homehub-tables">
           <LeagueTable league="eng.1" title="Premier League table" rows={10} />
           <LeagueTable league="esp.1" title="LaLiga table" rows={10} />
         </div>
-        <div className="nm-hub-fx">
+        <div className="nm-homehub-fx">
           <LeagueFixtures league="uefa.champions" title="Champions League" />
           <LeagueFixtures league="eng.1" title="Premier League fixtures" />
         </div>
-        <aside className="nm-hub-side">
+        <aside className="nm-homehub-side">
           <section className="nm-appcard" aria-label="Get the NinetyMins app">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/brand/ninetymins-app-icon.webp" alt="" width={56} height={56} />

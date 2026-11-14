@@ -60,12 +60,13 @@ function GuideStrip({ site, articles }: { site: Site; articles: Article[] }) {
   );
 }
 
-export function Header({ site }: { site: Site }) {
+export function Header({ site, home = false }: { site: Site; home?: boolean }) {
   const s = `/s/${site.id}`;
   return (
     <>
       <AppTopBar />
-      <ScoreStrip />
+      {/* The home page has its own live board, so the ticker would repeat it. */}
+      {home ? null : <ScoreStrip />}
       <header className="nm-header">
         <div className="nm-wrap nm-header-row">
           <Link href={s} className="nm-logo" aria-label={`${site.name} home`}>
@@ -73,9 +74,6 @@ export function Header({ site }: { site: Site }) {
             <img className="nm-logo-img" src="/brand/ninetymins-logo-ondark.webp" alt="NinetyMins.com" width={230} height={36} />
           </Link>
           <span className="nm-tag">{site.tagline}</span>
-          <Link href={`${s}/scores`} className="nm-live">
-            <i /> Live scores
-          </Link>
         </div>
         <nav className="nm-rail" aria-label="Sports">
           <div className="nm-wrap nm-rail-in">
@@ -170,13 +168,13 @@ export function Footer({ site }: { site: Site }) {
 }
 
 /** Page wrapper: fonts in scope + header + footer. */
-export function Shell({ site, strip, children }: { site: Site; strip?: Article[]; children: ReactNode }) {
+export function Shell({ site, strip, home = false, children }: { site: Site; strip?: Article[]; home?: boolean; children: ReactNode }) {
   return (
     <div className={`nm-root ${fontVars}`}>
       <a href="#nm-main" className="nm-skip">
         Skip to content
       </a>
-      <Header site={site} />
+      <Header site={site} home={home} />
       {strip?.length ? <GuideStrip site={site} articles={strip} /> : null}
       <main id="nm-main">{children}</main>
       <Footer site={site} />
