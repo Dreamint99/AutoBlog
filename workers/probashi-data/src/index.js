@@ -18,17 +18,24 @@ async function visaData(env) {
     countries: visaExtra.countries.map((c) => ({ ...c, code: code[c.iso2] || "" })).filter((c) => c.code),
   };
 }
-import agency from "../../../probashi-data/data/agency.json";
 import migrationCost from "../../../probashi-data/data/migration_cost.json";
-const AG = new Map(agency.agencies.map((a) => [a.slug, a]));
-const agencyIndex = { updated: agency.updated, source: agency.source, source_url: agency.source_url,
-  agencies: agency.agencies.map((a) => ({ slug: a.slug, rl: a.rl, name: a.name, status: a.status, release: a.release })) };
+
+// agencies live in D1 (pbd_agency, refreshed weekly by probashi-data-refresh.yml from BMET RAIMS)
+const AG_SRC = { source: "BMET — RAIMS (raims.oep.gov.bd/agencies)", source_url: "https://raims.oep.gov.bd/agencies" };
+async function agencyUpdated(env) {
+  const r = await env.DB.prepare("SELECT v FROM pbd_meta WHERE k = 'agency_updated'").first();
+  return r ? r.v : "";
+}
+async function agencyIndex(env) {
+  const rows = await env.DB.prepare("SELECT slug, rl, name, status, release FROM pbd_agency ORDER BY rl").all();
+  return { updated: await agencyUpdated(env), ...AG_SRC, agencies: rows.results };
+}
 import { remittance, CURRENCIES } from "./remittance.js";
 
 const SITE = "https://probashiinfo.com";
-const DATA = { "visa-check": visaCheck, gamca, customs, "agency-index": agencyIndex, "migration-cost": migrationCost };
+const DATA = { "visa-check": visaCheck, gamca, customs, "migration-cost": migrationCost };
 
-function pages() {
+async function pages(env) {
   const today = new Date().toISOString().slice(0, 10);
   const out = [{ path: "/visa-check/", index: false, lastmod: visaCheck.updated }];
   for (const c of visaCheck.countries) out.push({ path: `/visa-check/${c.slug}/`, index: true, lastmod: visaCheck.updated });
@@ -40,9 +47,11 @@ function pages() {
   for (const a of customs.airlines) out.push({ path: `/baggage/${a.slug}/`, index: true, lastmod: customs.updated });
   out.push({ path: "/gamca/", index: true, lastmod: gamca.updated });
   for (const c of gamca.cities) out.push({ path: `/gamca/${c.slug}/`, index: c.index, lastmod: gamca.updated });
-  out.push({ path: "/agency/", index: true, lastmod: agency.updated });
+  const agUpd = await agencyUpdated(env);
+  out.push({ path: "/agency/", index: true, lastmod: agUpd });
   out.push({ path: "/migration-cost/", index: true, lastmod: migrationCost.updated });
-  for (const a of agency.agencies) out.push({ path: `/agency/${a.slug}/`, index: a.release <= today, lastmod: a.release > agency.updated ? a.release : agency.updated });
+  const ags = await env.DB.prepare("SELECT slug, release FROM pbd_agency").all();
+  for (const a of ags.results) out.push({ path: `/agency/${a.slug}/`, index: a.release <= today, lastmod: a.release > agUpd ? a.release : agUpd });
   out.push({ path: "/remittance/", index: true, lastmod: today });
   for (const c of CURRENCIES) out.push({ path: `/remittance/${c[1]}/`, index: true, lastmod: today });
   return out;
@@ -59,13 +68,14 @@ export default {
     const url = new URL(req.url);
     const one = url.pathname.match(/^\/v1\/agency\/(rl-\d+)\/?$/);
     if (one) {
-      const a = AG.get(one[1]);
-      return a ? json({ updated: agency.updated, source: agency.source, source_url: agency.source_url, agency: a }) : json({ error: "not found" }, 404, 30);
+      const a = await env.DB.prepare("SELECT slug, rl, name, address, phone, status, expiry, release FROM pbd_agency WHERE slug = ?").bind(one[1]).first();
+      return a ? json({ updated: await agencyUpdated(env), ...AG_SRC, agency: a }) : json({ error: "not found" }, 404, 30);
     }
     const m = url.pathname.match(/^\/v1\/([a-z-]+)\/?$/);
     if (url.pathname === "/" || url.pathname === "/health") return json({ ok: true, datasets: Object.keys(DATA) }, 200, 60);
     if (!m) return json({ error: "not found" }, 404, 30);
-    if (m[1] === "pages") return json({ site: SITE, pages: pages() });
+    if (m[1] === "pages") return json({ site: SITE, pages: await pages(env) });
+    if (m[1] === "agency-index") return json(await agencyIndex(env));
     if (DATA[m[1]]) return json(DATA[m[1]]);
     if (m[1] === "visa") {
       const cache = caches.default, key = new Request("https://pbd.cache/visa-v1");

@@ -1,15 +1,16 @@
 name: probashiinfo data refresh
 
 # Weekly: re-read the BMET RAIMS recruiting-agency list (licence status / expiry), rebuild
-# probashi-data/data/agency.json (existing release dates never move) and redeploy the
-# probashi-data Worker that feeds probashiinfo.com /agency/ pages. Commits only when data changed.
+# probashi-data/data/agency.json (existing release dates never move) and load it into D1
+# (pbd_agency), which the probashi-data Worker reads for probashiinfo.com /agency/ pages.
+# No worker deploy needed. Commits only when data changed.
 on:
   schedule:
     - cron: "10 3 * * 1"
   workflow_dispatch:
     inputs:
-      force_deploy:
-        description: "Deploy the worker even when the data did not change (tests the Cloudflare token)"
+      force_load:
+        description: "Load D1 even when the data did not change (tests the Cloudflare token)"
         type: boolean
         default: false
 
@@ -40,18 +41,18 @@ jobs:
         run: |
           python fetch_agencies.py
           python build_agency.py
-      - name: Deploy worker + commit when data changed
+      - name: Load D1 + commit when data changed
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
           changed=1; git diff --quiet -- probashi-data/data/agency.json && changed=0
-          if [ "$changed" = 0 ] && [ "${{ github.event.inputs.force_deploy }}" != "true" ]; then echo "agency list unchanged"; exit 0; fi
+          if [ "$changed" = 0 ] && [ "${{ github.event.inputs.force_load }}" != "true" ]; then echo "agency list unchanged"; exit 0; fi
           npm install -g wrangler@4
-          (cd workers/probashi-data && wrangler deploy)
-          if [ "$changed" = 0 ]; then echo "deployed (forced), nothing to commit"; exit 0; fi
+          (cd workers/probashi-data && wrangler d1 execute autoblog-content --remote --file ../../probashi-data/data/agency.sql -y)
+          if [ "$changed" = 0 ]; then echo "loaded (forced), nothing to commit"; exit 0; fi
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add probashi-data/data/agency.json probashi-data/research/agencies.json
+          git add probashi-data/data/agency.json probashi-data/data/agency.sql probashi-data/research/agencies.json
           git commit -m "probashiinfo agency list $(date -u +%F)"
           git pull --rebase && git push
