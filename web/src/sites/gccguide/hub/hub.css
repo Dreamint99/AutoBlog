@@ -417,3 +417,25 @@
 .site-gccguide .gh-today .k { display: block; font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--faint); }
 .site-gccguide .gh-today .v { display: block; margin-top: 5px; font-size: 1.18rem; font-weight: 800; color: var(--head); font-variant-numeric: tabular-nums; }
 .site-gccguide .gh-today .s { display: block; margin-top: 3px; font-size: 0.82rem; color: var(--muted); }
+
+/* ── home: daily data tiles ───────────────────────────────────────────────── */
+.site-gccguide .gh-hometiles { display: grid; grid-template-columns: 1fr; gap: 12px; }
+@media (min-width: 560px) { .site-gccguide .gh-hometiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 900px) { .site-gccguide .gh-hometiles { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.site-gccguide .gh-hometiles > a {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px 16px 15px;
+  text-decoration: none;
+  min-width: 0;
+  transition: border-color 0.15s, transform 0.15s;
+}
+.site-gccguide .gh-hometiles > a:hover { border-color: var(--teal); transform: translateY(-2px); }
+.site-gccguide .gh-hometiles .ic { font-size: 1.5rem; line-height: 1; }
+.site-gccguide .gh-hometiles .tt { font-size: 1.02rem; font-weight: 800; color: var(--head); margin-top: 4px; }
+.site-gccguide .gh-hometiles .tx { font-size: 0.88rem; line-height: 1.45; color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { .site-gccguide .gh-hometiles > a { transition: none; } .site-gccguide .gh-hometiles > a:hover { transform: none; } }

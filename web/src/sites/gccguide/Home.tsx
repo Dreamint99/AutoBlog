@@ -4,13 +4,15 @@ import { GcShell } from "./Chrome";
 import { COUNTRIES, TOPICS, countryOf, topicOf, flag } from "./data";
 import { Clocks, Converter, CityPulse } from "./Widgets";
 import TodayStrip from "./hub/TodayStrip";
+import HomeData from "./hub/HomeData";
 import { heroSrc, thumb } from "@/lib/img";
 
-const QUICK: [string, string][] = [
+// [icon, label, page]. A page value sends the chip straight to a hub page; otherwise it searches the label.
+const QUICK: [string, string, string?][] = [
   ["🛂", "Check visa status"],
   ["🪪", "Renew residence ID"],
   ["🚗", "Driving licence"],
-  ["💼", "Salary & gratuity"],
+  ["💼", "Salary & gratuity", "calculators"],
   ["🏠", "Rent & cost of living"],
   ["⚖️", "Laws for expats"],
 ];
@@ -90,8 +92,8 @@ export default function Home({ site, articles }: SiteHomeProps) {
             <button type="submit">Search</button>
           </form>
           <div className="gc-quick">
-            {QUICK.map(([i, q]) => (
-              <Link key={q} href={`${b}/search?q=${encodeURIComponent(q)}`}>
+            {QUICK.map(([i, q, page]) => (
+              <Link key={q} href={page ? `${b}/${page}` : `${b}/search?q=${encodeURIComponent(q)}`}>
                 <span aria-hidden="true">{i}</span>
                 {q}
               </Link>
@@ -138,6 +140,8 @@ export default function Home({ site, articles }: SiteHomeProps) {
             ))}
           </div>
         </section>
+
+        <HomeData site={site} />
 
         <section className="gc-sec" id="tools">
           <div className="gc-head">
