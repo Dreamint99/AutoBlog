@@ -13,7 +13,7 @@ define('PBD_LOADED', 1);
 define('PBD_MODE', 'live');               // 'test' | 'live'
 define('PBD_KEY', '__PBD_TEST_KEY__');
 define('PBD_API', 'https://probashi-data.iamkashimuddin.workers.dev/v1/');
-define('PBD_VER', '5');
+define('PBD_VER', '6');
 
 function pbd_enabled() {
     if (PBD_MODE === 'live') { return true; }
@@ -57,7 +57,7 @@ function pbd_match() {
     $m = null;
     $path = rawurldecode((string) wp_parse_url(isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '', PHP_URL_PATH));
     if (PBD_MODE === 'live' && $path === '/pbd-sitemap.xml') { return $m = array('type' => 'sitemap'); }
-    if (!preg_match('#^/(visa-check|remittance)(?:/([a-z0-9-]+))?/?$#', $path, $x)) { return $m; }
+    if (!preg_match('#^/(visa-check|remittance|gamca)(?:/([a-z0-9-]+))?/?$#', $path, $x)) { return $m; }
     if (!pbd_enabled()) { return $m; }
     $type = $x[1];
     $slug = isset($x[2]) ? $x[2] : '';
@@ -65,7 +65,7 @@ function pbd_match() {
     if (!$d) { return $m; }
     $item = null;
     if ($slug !== '') {
-        $list = $type === 'remittance' ? $d['currencies'] : $d['countries'];
+        $list = $type === 'remittance' ? $d['currencies'] : ($type === 'gamca' ? $d['cities'] : $d['countries']);
         foreach ($list as $c) { if ($c['slug'] === $slug) { $item = $c; break; } }
         if (!$item) { return $m; }   // unknown slug → normal WordPress 404
     }
@@ -144,6 +144,20 @@ function pbd_seo() {
         } else {
             $s['title'] = 'রেমিট্যান্স ক্যালকুলেটর: ২.৫% প্রণোদনাসহ কত টাকা পাবেন';
             $s['desc'] = 'রিয়াল, দিরহাম, রিংগিত, দিনার, ইউরোসহ ' . pbd_bn(count($d['currencies'])) . 'টি মুদ্রায় পাঠানো টাকার হিসাব — আজকের রেট ও ২.৫% সরকারি প্রণোদনা যোগ করে।';
+        }
+    }
+    if ($m['type'] === 'gamca') {
+        $d = $m['data'];
+        $s['faq'] = pbd_gm_faq($d, $m['item']);
+        if ($m['item']) {
+            $c = $m['item'];
+            $s['index'] = !empty($c['index']);
+            $s['title'] = $c['name'] . 'র গামকা মেডিকেল সেন্টার তালিকা ২০২৬ (' . pbd_bn($c['count']) . 'টি, Wafid অনুমোদিত)';
+            $s['desc'] = $c['name'] . 'য় জিসিসি অনুমোদিত ' . pbd_bn($c['count']) . 'টি মেডিকেল সেন্টারের ঠিকানা ও ফোন নম্বর, Wafid অ্যাপয়েন্টমেন্ট, রিপোর্ট দেখার নিয়ম ও মেয়াদ।';
+        } else {
+            $s['index'] = true;
+            $s['title'] = 'গামকা মেডিকেল সেন্টার তালিকা ২০২৬: শহরভিত্তিক, বুকিং ও রিপোর্ট';
+            $s['desc'] = 'বাংলাদেশের সব জিসিসি (গামকা/Wafid) অনুমোদিত মেডিকেল সেন্টার — শহর অনুযায়ী তালিকা, অ্যাপয়েন্টমেন্টের ধাপ, ফি, রিপোর্ট ও মেয়াদ।';
         }
     }
     if (function_exists('mb_strlen') && mb_strlen($s['desc']) > 158) { $s['desc'] = mb_substr($s['desc'], 0, 155) . '…'; }
@@ -295,6 +309,7 @@ function pbd_vc_faq($c) {
 
 function pbd_render($m) {
     if ($m['type'] === 'visa-check') { return $m['item'] ? pbd_vc_country($m['data'], $m['item']) : pbd_vc_hub($m['data']); }
+    if ($m['type'] === 'gamca') { $h = $m['item'] ? pbd_gm_city($m['data'], $m['item']) : pbd_gm_hub($m['data']); $f = ''; foreach (pbd_gm_faq($m['data'], $m['item']) as $q) { $f .= '<details><summary>' . esc_html($q[0]) . '</summary><p>' . esc_html($q[1]) . '</p></details>'; } return pbd_gm_css() . str_replace('<h2>প্রশ্ন ও উত্তর</h2>', '<h2>প্রশ্ন ও উত্তর</h2>' . $f, $h); }
     if ($m['type'] === 'remittance') { return $m['item'] ? pbd_rm_one($m['data'], $m['item']) : pbd_rm_hub($m['data']); }
     return '';
 }
@@ -442,4 +457,72 @@ function pbd_rm_hub($d) {
     $o .= '</div><div class="pbd-warn"><b>প্রণোদনা</b><ul><li>' . esc_html($d['incentive']['note']) . '</li></ul></div>';
     $o .= '<p class="pbd-src">প্রণোদনার সূত্র: ' . esc_html($d['incentive']['source']) . '। রেট আনুমানিক; চূড়ান্ত অঙ্ক ব্যাংক/এক্সচেঞ্জ হাউস বলবে।</p>';
     return $o . pbd_foot();
+}
+
+/* ---------- GAMCA / Wafid medical centres ---------- */
+function pbd_gm_faq($d, $c) {
+    $n = $c ? $c['name'] : 'বাংলাদেশ';
+    return array(
+        array($n . 'য় কয়টি গামকা (Wafid) মেডিকেল সেন্টার আছে?', $c ? $c['name'] . 'য় Wafid তালিকায় ' . pbd_bn($c['count']) . 'টি অনুমোদিত সেন্টার আছে (' . pbd_date($d['updated']) . ' অনুযায়ী)।' : 'Wafid তালিকায় বাংলাদেশে মোট ' . pbd_bn(array_sum(array_column($d['cities'], 'count'))) . 'টি অনুমোদিত সেন্টার আছে।'),
+        array('গামকা মেডিকেলের রিপোর্ট কীভাবে দেখব?', 'wafid.com-এর Medical Status Search পেজে পাসপোর্ট নম্বর ও জাতীয়তা দিয়ে, অথবা স্লিপ নম্বর দিয়ে। Wafid বলছে ফল ' . pbd_bn($d['result_days']) . ' দিনের মধ্যে আসে।'),
+        array('গামকা মেডিকেল কতদিন বৈধ থাকে?', $d['validity']),
+        array('অ্যাপয়েন্টমেন্টের ফি কত?', $d['fee'] . '। ' . $d['exam_fee_note']),
+    );
+}
+function pbd_gm_city($d, $c) {
+    $o = pbd_head(array(array('গামকা মেডিকেল', '/gamca/'), array($c['name'], '')), $c['name'] . 'র গামকা (Wafid) মেডিকেল সেন্টার তালিকা');
+    $o .= '<div class="pbd-hero"><small>🩺 জিসিসি অনুমোদিত মেডিকেল সেন্টার</small><div class="big">' . esc_html($c['name']) . ': ' . pbd_bn($c['count']) . 'টি সেন্টার</div>'
+        . '<span class="pbd-chip">✔️ সূত্র: Wafid</span><span class="pbd-chip">📅 ' . pbd_date($d['updated']) . '</span>'
+        . '<a class="pbd-go" href="' . esc_url($d['booking_url']) . '" target="_blank" rel="nofollow noopener"><i>📅</i><div><b>Wafid-এ অ্যাপয়েন্টমেন্ট নিন</b><span>wafid.com</span></div><em>➜</em></a></div>';
+    $o .= '<p>সৌদি আরব, কাতার, কুয়েত, ওমান, বাহরাইন ও আমিরাতে কাজের ভিসার জন্য জিসিসি অনুমোদিত (গামকা/Wafid) সেন্টারে মেডিকেল করতে হয়। নিচে ' . esc_html($c['name']) . 'র সব অনুমোদিত সেন্টারের ঠিকানা ও ফোন নম্বর — Wafid-এর সরকারি তালিকা থেকে।</p>';
+    if ($c['count'] > 8) { $o .= '<input class="pbd-find" type="search" placeholder="🔍 সেন্টারের নাম বা এলাকা লিখুন" oninput="var q=this.value.toLowerCase();document.querySelectorAll(\'.pbd-mc\').forEach(function(e){e.style.display=e.textContent.toLowerCase().indexOf(q)>-1?\'\':\'none\'})">'; }
+    $o .= '<div class="pbd-mcs">';
+    foreach ($c['centres'] as $x) {
+        $o .= '<div class="pbd-mc"><b>' . esc_html($x['name']) . '</b><span>📍 ' . esc_html($x['address']) . '</span>';
+        if ($x['phone']) { $o .= '<a href="tel:' . esc_attr(preg_replace('/[^0-9+]/', '', $x['phone'])) . '">📞 ' . esc_html($x['phone']) . '</a>'; }
+        $o .= '</div>';
+    }
+    $o .= '</div>' . pbd_gm_common($d);
+    $o .= '<h2>অন্য শহর</h2><div class="pbd-tiles">';
+    foreach ($d['cities'] as $x) { if ($x['slug'] !== $c['slug']) { $o .= pbd_gm_tile($x); } }
+    $o .= '</div><p class="pbd-src">সূত্র: ' . esc_html($d['source']) . ' — ' . esc_html($d['source_url']) . ', ' . pbd_date($d['updated']) . '। তালিকায় থাকা মানেই সেন্টার এখন অ্যাপয়েন্টমেন্ট নিচ্ছে এমন নয় — Wafid-এ বুক করার সময় দেখে নিন।</p>';
+    return $o . pbd_foot();
+}
+function pbd_gm_hub($d) {
+    $tot = array_sum(array_column($d['cities'], 'count'));
+    $o = pbd_head(array(array('গামকা মেডিকেল', '')), 'গামকা (Wafid) মেডিকেল: সেন্টার তালিকা, বুকিং ও রিপোর্ট');
+    $o .= '<div class="pbd-hero"><small>🩺 জিসিসি অনুমোদিত মেডিকেল</small><div class="big">বাংলাদেশে ' . pbd_bn($tot) . 'টি সেন্টার</div>'
+        . '<span class="pbd-chip">' . pbd_bn(count($d['cities'])) . 'টি শহর</span><span class="pbd-chip">📅 ' . pbd_date($d['updated']) . '</span>'
+        . '<a class="pbd-go" href="' . esc_url($d['booking_url']) . '" target="_blank" rel="nofollow noopener"><i>📅</i><div><b>Wafid-এ অ্যাপয়েন্টমেন্ট নিন</b><span>wafid.com</span></div><em>➜</em></a></div>';
+    $o .= '<h2>আপনার শহর বাছুন</h2><div class="pbd-tiles">';
+    foreach ($d['cities'] as $x) { $o .= pbd_gm_tile($x); }
+    $o .= '</div>' . pbd_gm_common($d);
+    $o .= '<p class="pbd-src">সূত্র: ' . esc_html($d['source']) . ', ' . pbd_date($d['updated']) . '।</p>';
+    return $o . pbd_foot();
+}
+function pbd_gm_tile($x) {
+    return '<a href="' . esc_url(home_url('/gamca/' . $x['slug'] . '/')) . '"><span style="font-size:1.4em">🏥</span><span>' . esc_html($x['name']) . '<small>' . pbd_bn($x['count']) . 'টি সেন্টার</small></span></a>';
+}
+function pbd_gm_common($d) {
+    $o = '<h2>ধাপে ধাপে অ্যাপয়েন্টমেন্ট</h2><ol class="pbd-steps">';
+    foreach ($d['steps'] as $s) { $o .= '<li>' . esc_html($s) . '</li>'; }
+    $o .= '</ol><div class="pbd-st">'
+        . '<div><i>🔎</i><span><b>রিপোর্ট দেখুন</b><a href="' . esc_url($d['status_url']) . '" target="_blank" rel="nofollow noopener">wafid.com — Medical Status Search</a> · ফল আসে ' . pbd_bn($d['result_days']) . ' দিনের মধ্যে</span></div>'
+        . '<div><i>🧾</i><span><b>স্লিপ হারিয়ে গেলে</b><a href="' . esc_url($d['slip_url']) . '" target="_blank" rel="nofollow noopener">wafid.com — Search Slip</a> (পাসপোর্ট নম্বর দিয়ে)</span></div>'
+        . '<div><i>⏱️</i><span><b>মেয়াদ</b>' . esc_html($d['validity']) . '</span></div>'
+        . '<div><i>💵</i><span><b>ফি</b>' . esc_html($d['fee']) . '। ' . esc_html($d['exam_fee_note']) . '</span></div></div>';
+    $o .= '<h2>জেনে রাখুন</h2><ul>';
+    foreach ($d['points'] as $p) { $o .= '<li>' . esc_html($p) . '</li>'; }
+    $o .= '</ul><h2>যেসব কারণে "আনফিট" হতে পারেন</h2>';
+    foreach ($d['unfit'] as $g => $xs) { $o .= '<p><b>' . esc_html($g) . ':</b> ' . esc_html(implode(', ', $xs)) . '।</p>'; }
+    $o .= '<p class="pbd-src">তালিকা: জিসিসি "প্রবাসীদের মেডিকেল পরীক্ষার নিয়মাবলি" (৬ষ্ঠ সংস্করণ ২০২১)।</p>';
+    $o .= '<div class="pbd-warn"><b>⚠️ সাবধান</b><ul><li>"ফিট করে দেব" বলে কেউ টাকা চাইলে তা প্রতারণা — রিপোর্ট সরাসরি Wafid সিস্টেমে যায়।</li><li>মেডিকেল রিপোর্টের অবস্থা দেখার বিস্তারিত গাইড: <a href="' . esc_url($d['status_post']) . '">মিডিগ্লাস/Wafid ভিসা চেক</a></li></ul></div>';
+    $o .= '<h2>প্রশ্ন ও উত্তর</h2>';
+    return $o;
+}
+function pbd_gm_css() {
+    return '<style>.pbd .pbd-find{width:100%;font-size:1.05em;padding:12px 14px;border:2px solid var(--line,#e2e8f1);border-radius:14px;margin:.4em 0 .8em}
+.pbd .pbd-mcs{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
+.pbd .pbd-mc{background:var(--card,#fff);border:1px solid var(--line,#e2e8f1);border-radius:14px;padding:12px 14px;display:grid;gap:4px;min-width:0;line-height:1.45}
+.pbd .pbd-mc span{font-size:.88em;color:var(--ink2,#34465f);overflow-wrap:anywhere}.pbd .pbd-mc a{font-weight:700;color:var(--b,#0b56c4);text-decoration:none}</style>';
 }
