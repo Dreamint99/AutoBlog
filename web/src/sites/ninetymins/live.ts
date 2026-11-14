@@ -135,15 +135,17 @@ export function slugToLeague(s: string): string | null {
 export async function getScores(league: string, date = ""): Promise<NmEvent[]> {
   const L = NM_LEAGUES[league];
   if (!L) return [];
+  if (date && !/^\d{8}$/.test(date)) date = "";
+  // A past/future day changes rarely; today (± a day for time zones) must stay live.
+  const near = !date || Math.abs(Date.parse(`${date.slice(0, 4)}-${date.slice(4, 6)}-${date.slice(6)}T12:00:00Z`) - Date.now()) < 36 * 3600 * 1000;
   if (league === "cricket") {
     // CricketData has no per-day board on the free plan — today's list only.
-    if (date) return [];
+    if (date && Math.abs(Date.parse(`${date.slice(0, 4)}-${date.slice(4, 6)}-${date.slice(6)}T12:00:00Z`) - Date.now()) > 18 * 3600 * 1000) return [];
     const { getCricket, cricketToEvents } = await import("./cricket");
     return cricketToEvents(await getCricket());
   }
-  if (date && !/^\d{8}$/.test(date)) date = "";
   try {
-    return await cached(`scores/${league}/${date || "now"}`, date ? 300 : FRESH_S, async () => {
+    return await cached(`scores/${league}/${date || "now"}`, near ? FRESH_S : 300, async () => {
       const j = await getJson(`${API}/site/v2/sports/${L.path}/scoreboard${date ? `?dates=${date}` : ""}`);
       return ((j.events as Any[]) || []).slice(0, 40).map((e): NmEvent => {
         const comp = (e.competitions || [])[0] || {};

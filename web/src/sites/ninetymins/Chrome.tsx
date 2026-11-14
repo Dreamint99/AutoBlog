@@ -4,17 +4,13 @@ import type { ReactNode } from "react";
 import type { Site, Article } from "@/lib/types";
 import { fontVars } from "./fonts";
 import { NM_COMPS, compOf, ago, type NmComp } from "./comps";
-import { ScoreStrip } from "./LiveScores";
 import { thumb } from "@/lib/img";
 import { AppBanner, AppPopup, AppTopBar } from "./AppPromo";
+import { ThemeToggle } from "./Livescore";
+import { PLAY_URL } from "./sports";
 
-/* Shared NinetyMins chrome: watch-guide strip (scoreboard style), header with
-   the sport rail, footer, and the card primitives every page uses. */
+/* Shared NinetyMins chrome: header (quick links, theme, app, sports row), footer, and the card primitives every page uses. */
 
-const NAV_SLUGS = [
-  "champions-league", "premier-league", "saff-championship", "world-cup",
-  "cricket", "basketball", "formula-1", "tennis",
-];
 
 export function Badge({ comp }: { comp: NmComp }) {
   return (
@@ -32,72 +28,55 @@ export function Kicker({ comp, siteId }: { comp: NmComp; siteId: string }) {
   );
 }
 
-/** Horizontal strip of the freshest watch guides — reads like a scoreboard. */
-function GuideStrip({ site, articles }: { site: Site; articles: Article[] }) {
-  if (!articles.length) return null;
-  return (
-    <div className="nm-strip" aria-label="Latest watch guides">
-      <div className="nm-strip-in">
-        <span className="nm-strip-label">
-          <i aria-hidden="true" /> Watch guides
-        </span>
-        <div className="nm-strip-row">
-          {articles.slice(0, 10).map((a) => {
-            const c = compOf(a);
-            return (
-              <Link href={`/s/${site.id}/${a.slug}`} className="nm-chip" key={a.id}>
-                <span className="nm-chip-top">
-                  <Badge comp={c} />
-                  <small>{ago(a.created_at)}</small>
-                </span>
-                <b>{a.title}</b>
-              </Link>
-            );
-          })}
-        </div>
-      </div>
-    </div>
-  );
-}
+const SPORT_NAV: Array<[string, string]> = [
+  ["/scores", "Football"],
+  ["/cricket", "Cricket"],
+  ["/saff", "SAFF"],
+  ["/league/uefa-champions", "Champions League"],
+  ["/league/eng-1", "Premier League"],
+  ["/league/nba", "Basketball"],
+  ["/league/atp", "Tennis"],
+  ["/league/nhl", "Hockey"],
+  ["/league/nfl", "NFL"],
+  ["/league/mlb", "Baseball"],
+  ["/league/ufc", "MMA"],
+  ["/league/f1", "F1"],
+];
 
-export function Header({ site, home = false }: { site: Site; home?: boolean }) {
+export function Header({ site }: { site: Site; home?: boolean }) {
   const s = `/s/${site.id}`;
   return (
     <>
       <AppTopBar />
-      {/* The home page has its own live board, so the ticker would repeat it. */}
-      {home ? null : <ScoreStrip />}
-      <header className="nm-header">
-        <div className="nm-wrap nm-header-row">
-          <Link href={s} className="nm-logo" aria-label={`${site.name} home`}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className="nm-logo-img" src="/brand/ninetymins-logo-ondark.webp" alt="NinetyMins.com" width={230} height={36} />
+      <header className="nm-hd">
+        <div className="nm-wrap nm-hd-row">
+          <Link href={s} className="nm-hd-logo" aria-label={`${site.name} home`}>
+            <span className="nm-hd-90" aria-hidden="true">90</span>
+            <span className="nm-hd-word">NinetyMins</span>
           </Link>
-          <span className="nm-tag">{site.tagline}</span>
+          <nav className="nm-hd-quick" aria-label="Main">
+            <Link href={s} className="nm-hd-live">
+              <i className="nm-dot" aria-hidden="true" />
+              Live scores
+            </Link>
+            <Link href={`${s}/today`}>Today</Link>
+            <Link href={`${s}/tomorrow`}>Tomorrow</Link>
+            <Link href={`${s}/archive`}>Stories</Link>
+          </nav>
+          <div className="nm-hd-act">
+            <ThemeToggle />
+            <a className="nm-hd-app" href={PLAY_URL("header")} target="_blank" rel="noopener">
+              Get the app
+            </a>
+          </div>
         </div>
-        <nav className="nm-rail" aria-label="Sports">
-          <div className="nm-wrap nm-rail-in">
-            <Link href={s} className="nm-rail-home">
-              Home
-            </Link>
-            <Link href={`${s}/scores`} className="nm-rail-live">
-              <i className="nm-dot" /> Live Scores
-            </Link>
-            <Link href={`${s}/today`} className="nm-rail-today">
-              Today
-            </Link>
-            <Link href={`${s}/saff`} className="nm-rail-saff">
-              SAFF Live
-            </Link>
-            {NAV_SLUGS.map((slug) => {
-              const c = NM_COMPS.find((x) => x.slug === slug)!;
-              return (
-                <Link href={`${s}/topic/${c.slug}`} key={c.slug}>
-                  {c.label}
-                </Link>
-              );
-            })}
-            <Link href={`${s}/topic/football`}>All Football</Link>
+        <nav className="nm-hd-sports" aria-label="Sports and competitions">
+          <div className="nm-wrap nm-hd-sports-in">
+            {SPORT_NAV.map(([path, label]) => (
+              <Link href={`${s}${path}`} key={path}>
+                {label}
+              </Link>
+            ))}
           </div>
         </nav>
       </header>
@@ -174,8 +153,14 @@ export function Shell({ site, strip, home = false, children }: { site: Site; str
       <a href="#nm-main" className="nm-skip">
         Skip to content
       </a>
+      <script
+        // Apply the saved light/dark choice before paint (no flash).
+        dangerouslySetInnerHTML={{
+          __html:
+            "try{var t=localStorage.getItem('nm-theme');document.documentElement.dataset.nmTheme=t||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){}",
+        }}
+      />
       <Header site={site} home={home} />
-      {strip?.length ? <GuideStrip site={site} articles={strip} /> : null}
       <main id="nm-main">{children}</main>
       <Footer site={site} />
       <AppPopup />

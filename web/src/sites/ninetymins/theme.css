@@ -916,3 +916,237 @@
 .site-ninetymins .nm-fixtures { width: 100%; border-collapse: collapse; font-size: 14px; }
 .site-ninetymins .nm-fixtures th, .site-ninetymins .nm-fixtures td { text-align: left; padding: 12px 8px; border-bottom: 1px solid #586174; }
 .site-ninetymins .nm-fixtures caption { text-align: left; padding: 12px 0; }
+
+/* ══ "Matchday Poster" system — same palette, type and shapes as the app (lib/theme.dart) ══ */
+.site-ninetymins, .site-ninetymins .nm-root {
+  --mp-bg: #f4f1ea; --mp-surface: #ebe6da; --mp-card: #ffffff; --mp-cardhi: #f1ede4; --mp-line: rgba(13, 13, 13, 0.15);
+  --mp-rule: #0d0d0d; --mp-text: #0d0d0d; --mp-muted: #5e5e5e; --mp-faint: #6f6a60; --mp-volt: #c6ff3d; --mp-ink: #0d0d0d;
+  --mp-paper: #f4f1ea; --mp-live: #c8102e; --mp-ember: #b8430a; --mp-win: #0a7a35; --mp-flash: #fff3a6;
+  /* the older nm-* tokens follow the poster palette so every page matches */
+  --nm-bg: var(--mp-bg); --nm-card: var(--mp-card); --nm-line: var(--mp-line); --nm-ink: var(--mp-text); --nm-ink-2: #262626;
+  --nm-muted: var(--mp-muted); --nm-faint: var(--mp-faint);
+  font-synthesis: none;
+}
+html[data-nm-theme="dark"] .site-ninetymins, html[data-nm-theme="dark"] .site-ninetymins .nm-root {
+  --mp-bg: #0e0e0f; --mp-surface: #18181a; --mp-card: #1a1a1c; --mp-cardhi: #242427; --mp-line: rgba(244, 241, 234, 0.2);
+  --mp-rule: #f4f1ea; --mp-text: #f4f1ea; --mp-muted: #b3aea3; --mp-faint: #9a958a; --mp-live: #ff4d5a; --mp-ember: #ff8a3d;
+  --mp-win: #3ddc84; --mp-flash: #4a4413; --nm-ink-2: #e2ded4;
+}
+body.site-ninetymins, .site-ninetymins .nm-root { background: var(--mp-bg); color: var(--mp-text); }
+
+/* ── Header ── */
+.site-ninetymins .nm-hd { background: var(--mp-bg); color: var(--mp-text); position: sticky; top: 0; z-index: 40; border-bottom: 2px solid var(--mp-rule); }
+.site-ninetymins .nm-hd-row { display: flex; align-items: center; gap: 18px; min-height: 62px; }
+.site-ninetymins .nm-hd-logo { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; color: var(--mp-text); flex: none; }
+.site-ninetymins .nm-hd-90 { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 9px; background: var(--mp-ink); color: var(--mp-paper); font: 400 21px/1 var(--nm-display); }
+html[data-nm-theme="dark"] .site-ninetymins .nm-hd-90 { background: var(--mp-paper); color: var(--mp-ink); }
+.site-ninetymins .nm-hd-word { font: 400 26px/1 var(--nm-display); letter-spacing: 0.005em; }
+.site-ninetymins .nm-hd-quick { display: flex; align-items: center; gap: 4px; flex: 1; min-width: 0; }
+.site-ninetymins .nm-hd-quick a { color: var(--mp-text); text-decoration: none; font: 700 14px/1 var(--nm-sans); padding: 10px 13px; border-radius: 999px; white-space: nowrap; }
+.site-ninetymins .nm-hd-quick a:hover { background: var(--mp-surface); }
+.site-ninetymins .nm-hd-quick .nm-hd-live { background: var(--mp-volt); color: var(--mp-ink); }
+.site-ninetymins .nm-hd-live .nm-dot { background: var(--mp-live); box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.2); }
+.site-ninetymins .nm-hd-act { display: flex; align-items: center; gap: 10px; }
+.site-ninetymins .lv-theme { width: 38px; height: 38px; border-radius: 50%; border: 2px solid var(--mp-rule); background: var(--mp-card); color: var(--mp-text); font-size: 16px; cursor: pointer; }
+.site-ninetymins .nm-hd-app { background: var(--mp-ink); color: var(--mp-paper); text-decoration: none; font: 800 13px/1 var(--nm-sans); padding: 11px 15px; border-radius: 999px; white-space: nowrap; }
+html[data-nm-theme="dark"] .site-ninetymins .nm-hd-app { background: var(--mp-volt); color: var(--mp-ink); }
+.site-ninetymins .nm-hd-sports { border-top: 1px solid var(--mp-line); }
+.site-ninetymins .nm-hd-sports-in { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding: 8px 16px; }
+.site-ninetymins .nm-hd-sports-in::-webkit-scrollbar { display: none; }
+.site-ninetymins .nm-hd-sports a { flex: none; color: var(--mp-text); text-decoration: none; font: 700 13px/1 var(--nm-sans); padding: 9px 13px; border-radius: 999px; border: 1.5px solid var(--mp-line); background: var(--mp-card); }
+.site-ninetymins .nm-hd-sports a:hover { border-color: var(--mp-rule); }
+.site-ninetymins .nm-hd a:focus-visible, .site-ninetymins .nm-hd button:focus-visible, .site-ninetymins .lv-board button:focus-visible, .site-ninetymins .lv-board a:focus-visible { outline: 3px solid var(--mp-live); outline-offset: 2px; }
+@media (max-width: 860px) {
+  .site-ninetymins .nm-hd { position: static; }
+  .site-ninetymins .nm-hd-row { flex-wrap: wrap; gap: 8px 10px; min-height: 0; padding-top: 10px; }
+  .site-ninetymins .nm-hd-word { font-size: 23px; }
+  .site-ninetymins .nm-hd-90 { width: 34px; height: 34px; font-size: 19px; }
+  .site-ninetymins .nm-hd-act { margin-left: auto; }
+  .site-ninetymins .nm-hd-app { padding: 10px 12px; font-size: 12px; }
+  .site-ninetymins .nm-hd-quick { order: 3; flex-basis: 100%; overflow-x: auto; scrollbar-width: none; padding-bottom: 8px; }
+  .site-ninetymins .nm-hd-sports-in { padding: 8px; }
+}
+
+/* ── Page frame ── */
+.site-ninetymins .lv-page { background: var(--mp-bg); color: var(--mp-text); padding: 16px 0 36px; }
+.site-ninetymins .lv-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+.site-ninetymins .lv-top h1 { margin: 0; font: 400 34px/1 var(--nm-display); text-transform: uppercase; }
+.site-ninetymins .lv-top h1 span { color: var(--mp-muted); font: 700 15px/1 var(--nm-sans); text-transform: none; }
+.site-ninetymins .lv-top .lv-theme { display: none; }
+.site-ninetymins .lv-grid { display: grid; grid-template-columns: 220px minmax(0, 1fr) 300px; gap: 18px; align-items: start; }
+
+/* Left rail */
+.site-ninetymins .lv-left { position: sticky; top: 120px; background: var(--mp-card); border: 2px solid var(--mp-rule); border-radius: 18px; padding: 10px 6px; }
+.site-ninetymins .lv-left h2, .site-ninetymins .lv-stories h2 { margin: 10px 10px 6px; font: 800 11.5px/1 var(--nm-sans); text-transform: uppercase; letter-spacing: 0.1em; color: var(--mp-faint); }
+.site-ninetymins .lv-left ul, .site-ninetymins .lv-stories ul { list-style: none; margin: 0 0 6px; padding: 0; }
+.site-ninetymins .lv-left a { display: block; padding: 8px 10px; border-radius: 10px; color: var(--mp-text); text-decoration: none; font: 600 14px/1.2 var(--nm-sans); }
+.site-ninetymins .lv-left a:hover { background: var(--mp-cardhi); }
+
+/* Board */
+.site-ninetymins .lv-board { min-width: 0; }
+.site-ninetymins .lv-sports { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding-bottom: 10px; }
+.site-ninetymins .lv-sports button { flex: none; cursor: pointer; padding: 11px 17px; border-radius: 999px; border: 2px solid var(--mp-line); background: var(--mp-card); color: var(--mp-text); font: 800 14px/1 var(--nm-sans); }
+.site-ninetymins .lv-sports button.on { background: var(--mp-win); border-color: var(--mp-win); color: #fff; box-shadow: 0 6px 16px rgba(10, 122, 53, 0.25); }
+.site-ninetymins .lv-days { display: grid; grid-template-columns: repeat(7, minmax(62px, 1fr)); gap: 8px; overflow-x: auto; scrollbar-width: none; padding-bottom: 10px; }
+.site-ninetymins .lv-days button { display: grid; gap: 4px; justify-items: center; padding: 9px 4px; border-radius: 16px; border: 1.5px solid var(--mp-line); background: var(--mp-card); color: var(--mp-text); cursor: pointer; font: 700 12px/1 var(--nm-sans); }
+.site-ninetymins .lv-days button span { color: var(--mp-muted); }
+.site-ninetymins .lv-days small { font: 400 26px/1 var(--nm-display); color: var(--mp-text); }
+.site-ninetymins .lv-days button.on { background: var(--mp-ink); border-color: var(--mp-ink); }
+.site-ninetymins .lv-days button.on span, .site-ninetymins .lv-days button.on small { color: var(--mp-paper); }
+html[data-nm-theme="dark"] .site-ninetymins .lv-days button.on { background: var(--mp-paper); border-color: var(--mp-paper); }
+html[data-nm-theme="dark"] .site-ninetymins .lv-days button.on span, html[data-nm-theme="dark"] .site-ninetymins .lv-days button.on small { color: var(--mp-ink); }
+.site-ninetymins .lv-filters { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding-bottom: 14px; }
+.site-ninetymins .lv-filters button { display: inline-flex; align-items: center; gap: 5px; cursor: pointer; padding: 9px 15px; border-radius: 999px; border: 1.5px solid var(--mp-line); background: var(--mp-card); color: var(--mp-text); font: 800 13px/1 var(--nm-sans); }
+.site-ninetymins .lv-filters button.on { background: var(--mp-volt); border-color: var(--mp-volt); color: var(--mp-ink); }
+.site-ninetymins .lv-filters .nm-dot { background: var(--mp-live); box-shadow: none; }
+.site-ninetymins .lv-filters em { font-style: normal; background: var(--mp-live); color: #fff; border-radius: 999px; padding: 2px 7px; font-size: 11px; }
+.site-ninetymins .lv-loading { margin-left: auto; font: 600 12px/1 var(--nm-sans); color: var(--mp-faint); }
+
+/* Live now: kit-colour poster cards */
+.site-ninetymins .lv-now h2 { display: flex; align-items: center; gap: 9px; margin: 2px 0 10px; font: 400 26px/1 var(--nm-display); }
+.site-ninetymins .lv-rec { width: 11px; height: 11px; border-radius: 50%; background: var(--mp-live); box-shadow: 0 0 0 5px rgba(200, 16, 46, 0.15); animation: nm-pulse 1.6s infinite; }
+.site-ninetymins .lv-now h2 em { font: 800 12px/1 var(--nm-sans); font-style: normal; color: var(--mp-live); background: rgba(200, 16, 46, 0.12); padding: 5px 9px; border-radius: 999px; }
+.site-ninetymins .lv-posters { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(250px, 300px); gap: 12px; overflow-x: auto; scrollbar-width: none; padding-bottom: 16px; scroll-snap-type: x mandatory; }
+.site-ninetymins .lv-poster { position: relative; display: grid; grid-template-rows: auto 1fr auto; min-height: 168px; padding: 14px; border-radius: 22px; border: 2px solid var(--mp-rule); color: #fff; text-decoration: none; overflow: hidden; scroll-snap-align: start; background: linear-gradient(115deg, var(--h) 0 52%, var(--a) 52% 100%); }
+.site-ninetymins .lv-poster::before { content: ""; position: absolute; inset: 0; background: radial-gradient(rgba(255, 255, 255, 0.18) 1px, transparent 1.5px) 0 0 / 12px 12px; mask-image: linear-gradient(90deg, #000, transparent 45%); pointer-events: none; }
+.site-ninetymins .lv-p-lg { justify-self: start; background: #fff; color: var(--mp-ink); font: 800 11px/1 var(--nm-sans); text-transform: uppercase; letter-spacing: 0.04em; padding: 6px 8px; max-width: 70%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; position: relative; }
+.site-ninetymins .lv-p-min { position: absolute; top: 14px; right: 14px; background: var(--mp-ink); color: var(--mp-volt); font: 800 12px/1 var(--nm-sans); padding: 6px 8px; }
+.site-ninetymins .lv-p-sc { align-self: center; justify-self: center; font: 400 58px/1 var(--nm-display); text-shadow: 0 3px 0 rgba(0, 0, 0, 0.25); position: relative; }
+.site-ninetymins .lv-p-h, .site-ninetymins .lv-p-a { font: 400 21px/1 var(--nm-display); text-transform: uppercase; position: relative; max-width: 48%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.site-ninetymins .lv-p-h { grid-row: 3; justify-self: start; }
+.site-ninetymins .lv-p-a { grid-row: 3; grid-column: 1; justify-self: end; }
+
+/* Competition cards */
+.site-ninetymins .lv-group { background: var(--mp-card); border: 2px solid var(--mp-rule); border-radius: 22px; overflow: hidden; }
+.site-ninetymins .lv-group + .lv-group { margin-top: 14px; }
+.site-ninetymins .lv-ghead { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-bottom: 2px solid var(--mp-rule); }
+.site-ninetymins .lv-star { border: 0; background: none; cursor: pointer; font-size: 17px; line-height: 1; color: var(--mp-faint); padding: 2px; }
+.site-ninetymins .lv-star.on { color: #e0a400; }
+.site-ninetymins .lv-glabel { background: var(--mp-ink); color: var(--mp-paper); font: 800 12.5px/1 var(--nm-sans); text-transform: uppercase; letter-spacing: 0.05em; padding: 7px 10px; border-left: 6px solid var(--mp-win); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+html[data-nm-theme="dark"] .site-ninetymins .lv-glabel { background: var(--mp-paper); color: var(--mp-ink); }
+.site-ninetymins .lv-gl-live { background: var(--mp-volt); color: var(--mp-ink); border: 2px solid var(--mp-ink); font: 800 12px/1 var(--nm-sans); padding: 5px 9px; transform: rotate(-3deg); white-space: nowrap; }
+.site-ninetymins .lv-gmore { margin-left: auto; font: 700 12.5px/1 var(--nm-sans); color: var(--mp-text); text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+.site-ninetymins .lv-group ul { list-style: none; margin: 0; padding: 0; }
+.site-ninetymins .lv-row + .lv-row { border-top: 1px solid var(--mp-line); }
+.site-ninetymins .lv-row > a, .site-ninetymins .lv-row > div { display: grid; grid-template-columns: 64px minmax(0, 1fr); align-items: center; gap: 14px; padding: 12px 16px; color: var(--mp-text); text-decoration: none; transition: background 0.15s; }
+.site-ninetymins .lv-row > a:hover { background: var(--mp-cardhi); }
+.site-ninetymins .lv-clock { align-self: stretch; display: grid; place-items: center; border-right: 2px solid var(--mp-rule); padding-right: 12px; font: 400 19px/1 var(--nm-display); color: var(--mp-text); font-variant-numeric: tabular-nums; text-align: center; }
+.site-ninetymins .lv-clock.st-post { color: var(--mp-faint); font: 800 12px/1 var(--nm-sans); }
+.site-ninetymins .lv-clock.st-in { color: var(--mp-live); font: 800 14px/1 var(--nm-sans); }
+.site-ninetymins .lv-clock.st-in::before { content: "●"; display: block; font-size: 10px; margin-bottom: 3px; }
+.site-ninetymins .lv-clock.st-in::after { content: "'"; animation: lv-blink 1s steps(1) infinite; }
+@keyframes lv-blink { 50% { opacity: 0; } }
+.site-ninetymins .lv-teams { display: grid; gap: 8px; min-width: 0; }
+.site-ninetymins .lv-side { display: grid; grid-template-columns: 26px minmax(0, 1fr) 34px; align-items: center; gap: 10px; font: 600 16px/1.2 var(--nm-sans); }
+.site-ninetymins .lv-side img { width: 26px; height: 26px; object-fit: contain; }
+.site-ninetymins .lv-side i { width: 26px; height: 26px; border-radius: 50%; background: var(--mp-cardhi); display: grid; place-items: center; font: 800 8px/1 var(--nm-sans); font-style: normal; color: var(--mp-muted); text-transform: uppercase; }
+.site-ninetymins .lv-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.site-ninetymins .lv-side b { text-align: right; font: 400 24px/1 var(--nm-display); font-variant-numeric: tabular-nums; border-radius: 4px; }
+.site-ninetymins .lv-side.lose { color: var(--mp-muted); }
+.site-ninetymins .lv-flash { background: var(--mp-flash); animation: lv-fl 1s ease-in-out 3; }
+@keyframes lv-fl { 50% { background: transparent; } }
+.site-ninetymins .lv-empty { padding: 30px 16px; text-align: center; color: var(--mp-muted); margin: 0; background: var(--mp-card); border: 2px solid var(--mp-rule); border-radius: 22px; }
+.site-ninetymins .lv-note { margin: 12px 4px 0; font: 500 12px/1.4 var(--nm-sans); color: var(--mp-faint); }
+
+/* Right rail */
+.site-ninetymins .lv-right { display: grid; gap: 14px; position: sticky; top: 120px; }
+.site-ninetymins .lv-app { display: grid; grid-template-columns: 44px 1fr auto; align-items: center; gap: 10px; padding: 14px; border-radius: 22px; border: 2px solid var(--mp-rule); text-decoration: none; color: var(--mp-ink); background: var(--mp-volt); }
+.site-ninetymins .lv-app img { border-radius: 11px; }
+.site-ninetymins .lv-app b { display: block; font: 400 20px/1 var(--nm-display); text-transform: uppercase; }
+.site-ninetymins .lv-app small { font: 600 12px/1.3 var(--nm-sans); }
+.site-ninetymins .lv-app em { font-style: normal; background: var(--mp-ink); color: var(--mp-paper); font: 800 12.5px/1 var(--nm-sans); padding: 10px 13px; border-radius: 999px; }
+.site-ninetymins .lv-right .nm-box { background: var(--mp-card); border: 2px solid var(--mp-rule); border-radius: 22px; color: var(--mp-text); }
+.site-ninetymins .lv-right .nm-box-h { color: var(--mp-text); }
+.site-ninetymins .lv-right .nm-box td { border-top-color: var(--mp-line); }
+.site-ninetymins .lv-stories { background: var(--mp-card); border: 2px solid var(--mp-rule); border-radius: 22px; padding: 8px 4px 14px; }
+.site-ninetymins .lv-stories li { padding: 9px 10px; }
+.site-ninetymins .lv-stories li + li { border-top: 1px solid var(--mp-line); }
+.site-ninetymins .lv-stories li a { color: var(--mp-text); text-decoration: none; font: 600 13.5px/1.35 var(--nm-sans); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.site-ninetymins .lv-stories li a:hover { text-decoration: underline; }
+.site-ninetymins .lv-stories small { font: 500 11.5px/1 var(--nm-sans); color: var(--mp-faint); }
+.site-ninetymins .lv-more { display: inline-block; margin: 6px 10px 0; font: 800 13px/1 var(--nm-sans); color: var(--mp-text); }
+
+/* Every other page: cards and boxes in the same poster style */
+.site-ninetymins .nm-box, .site-ninetymins .nm-card { background: var(--mp-card); color: var(--mp-text); border-color: var(--mp-rule); }
+.site-ninetymins .nm-box { border: 2px solid var(--mp-rule); border-radius: 22px; }
+.site-ninetymins .nm-box-h { color: var(--mp-text); }
+html[data-nm-theme="dark"] .site-ninetymins .nm-table tr:nth-child(-n + 4) td:first-child { color: #8fb4ff; }
+html[data-nm-theme="dark"] .site-ninetymins .nm-h a, html[data-nm-theme="dark"] .site-ninetymins .nm-listrow a { color: var(--mp-text); }
+
+@media (max-width: 1100px) {
+  .site-ninetymins .lv-grid { grid-template-columns: minmax(0, 1fr) 290px; }
+  .site-ninetymins .lv-left { display: none; }
+}
+@media (max-width: 800px) {
+  .site-ninetymins .lv-page { padding-top: 12px; }
+  .site-ninetymins .lv-grid { grid-template-columns: minmax(0, 1fr); }
+  .site-ninetymins .lv-right { position: static; }
+  .site-ninetymins .lv-top h1 { font-size: 28px; }
+  .site-ninetymins .lv-top h1 span { display: none; }
+  .site-ninetymins .lv-page > .nm-wrap { padding-left: 12px; padding-right: 12px; }
+  .site-ninetymins .lv-days { grid-template-columns: repeat(7, 62px); }
+  .site-ninetymins .lv-row > a, .site-ninetymins .lv-row > div { grid-template-columns: 54px minmax(0, 1fr); gap: 12px; padding: 12px; }
+  .site-ninetymins .lv-group, .site-ninetymins .lv-poster { border-radius: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-ninetymins .lv-clock.st-in::after, .site-ninetymins .lv-flash, .site-ninetymins .lv-rec { animation: none; }
+}
+
+.site-ninetymins .lv-grid-2 { grid-template-columns: minmax(0, 1fr) 300px; }
+@media (max-width: 800px) { .site-ninetymins .lv-grid-2 { grid-template-columns: minmax(0, 1fr); } }
+
+/* ── Data pages (league / team / player / today / tomorrow / widgets) in the poster style ── */
+.site-ninetymins .nm-engine { padding-top: 22px; padding-bottom: 40px; color: var(--mp-text); }
+.site-ninetymins .nm-engine h1 { font: 400 clamp(30px, 4.4vw, 46px)/1.02 var(--nm-display); text-transform: uppercase; margin: 0 0 10px; }
+.site-ninetymins .nm-engine h2 { display: inline-block; font: 800 13px/1 var(--nm-sans); text-transform: uppercase; letter-spacing: 0.06em; background: var(--mp-ink); color: var(--mp-paper); border-left: 6px solid var(--mp-win); padding: 8px 11px; margin: 28px 0 12px; }
+html[data-nm-theme="dark"] .site-ninetymins .nm-engine h2 { background: var(--mp-paper); color: var(--mp-ink); }
+.site-ninetymins .nm-engine > p { color: var(--mp-muted); max-width: 75ch; font: 500 15px/1.55 var(--nm-sans); }
+.site-ninetymins .nm-engine a { color: var(--mp-text); text-underline-offset: 3px; }
+.site-ninetymins .nm-engine > div[style] { background: var(--mp-card); border: 2px solid var(--mp-rule); border-radius: 22px; overflow: hidden; }
+.site-ninetymins .nm-fixtures { width: 100%; border-collapse: collapse; font: 500 14.5px/1.3 var(--nm-sans); font-variant-numeric: tabular-nums; background: var(--mp-card); color: var(--mp-text); }
+.site-ninetymins .nm-fixtures caption { text-align: left; padding: 12px 16px; font: 700 12px/1 var(--nm-sans); color: var(--mp-faint); text-transform: uppercase; letter-spacing: 0.06em; caption-side: top; background: var(--mp-card); }
+.site-ninetymins .nm-fixtures th { text-align: left; padding: 10px 16px; font: 800 11.5px/1 var(--nm-sans); text-transform: uppercase; letter-spacing: 0.06em; color: var(--mp-muted); border-bottom: 2px solid var(--mp-rule); }
+.site-ninetymins .nm-fixtures td { padding: 12px 16px; border-top: 1px solid var(--mp-line); }
+.site-ninetymins .nm-fixtures tbody tr:hover { background: var(--mp-cardhi); }
+.site-ninetymins .nm-fixtures td:first-child { white-space: nowrap; font: 400 16px/1 var(--nm-display); }
+.site-ninetymins .nm-fixtures td a { font-weight: 700; text-decoration: none; }
+.site-ninetymins .nm-fixtures td a:hover { text-decoration: underline; }
+.site-ninetymins .nm-engine ul, .site-ninetymins .nm-engine ol { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0 0 8px; }
+.site-ninetymins .nm-engine ul li a, .site-ninetymins .nm-engine ol li { display: inline-block; padding: 9px 13px; border-radius: 999px; border: 1.5px solid var(--mp-line); background: var(--mp-card); font: 700 13px/1 var(--nm-sans); text-decoration: none; }
+.site-ninetymins .nm-engine ol li a { text-decoration: none; font-weight: 800; }
+.site-ninetymins .nm-engine ul li a:hover { border-color: var(--mp-rule); }
+@media (max-width: 700px) {
+  .site-ninetymins .nm-fixtures th:nth-child(4), .site-ninetymins .nm-fixtures td:nth-child(4) { display: none; }
+  .site-ninetymins .nm-fixtures td, .site-ninetymins .nm-fixtures th { padding: 10px; }
+}
+
+/* ── Match page hero = the app's poster: kit colours split on a diagonal ── */
+.site-ninetymins .nm-mc-board { position: relative; overflow: hidden; color: #fff; border-bottom: 2px solid var(--mp-rule);
+  background: linear-gradient(rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.28)), linear-gradient(115deg, var(--hc) 0 50%, var(--ac) 50% 100%) !important; }
+.site-ninetymins .nm-mc-board::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1.5px) 0 0 / 14px 14px; mask-image: linear-gradient(90deg, #000, transparent 40%); }
+.site-ninetymins .nm-mc-board > * { position: relative; }
+.site-ninetymins .nm-mc-league { font-family: var(--nm-sans); }
+.site-ninetymins .nm-mc-board .nm-mc-league > :first-child { background: #fff; color: var(--mp-ink); padding: 6px 10px; font: 800 12px/1 var(--nm-sans); text-transform: uppercase; letter-spacing: 0.05em; }
+.site-ninetymins .nm-mc-state { background: var(--mp-ink); color: var(--mp-volt); padding: 6px 10px; font: 800 12px/1 var(--nm-sans); }
+.site-ninetymins .nm-mc-score, .site-ninetymins .nm-mc-vs { font-family: var(--nm-display) !important; font-weight: 400 !important; text-shadow: 0 4px 0 rgba(0, 0, 0, 0.25); }
+.site-ninetymins .nm-mc-side { font-family: var(--nm-display); text-transform: uppercase; }
+
+/* Long scores and status lines (cricket, F1, tennis) */
+.site-ninetymins .lv-side { grid-template-columns: 26px minmax(0, 1fr) auto; }
+.site-ninetymins .lv-side b { min-width: 34px; white-space: nowrap; }
+.site-ninetymins .lv-side b.lv-long { font: 800 15px/1.2 var(--nm-sans); }
+.site-ninetymins .lv-detail { font: 600 12.5px/1.35 var(--nm-sans); color: var(--mp-live); }
+.site-ninetymins .lv-row.st-post .lv-detail { color: var(--mp-muted); }
+.site-ninetymins .lv-p-sc.lv-p-long { font-size: 30px; line-height: 1.05; text-align: center; white-space: pre-line; max-width: 100%; overflow-wrap: anywhere; }
+/* Poster grid: label / score / two names, each in its own cell */
+.site-ninetymins .lv-poster { grid-template-columns: 1fr 1fr; grid-template-rows: auto 1fr auto; gap: 6px; }
+.site-ninetymins .lv-p-lg { grid-column: 1 / -1; grid-row: 1; align-self: start; max-width: 62%; }
+.site-ninetymins .lv-p-sc { grid-column: 1 / -1; grid-row: 2; display: flex; align-items: center; justify-content: center; gap: 4px; }
+.site-ninetymins .lv-p-sc i { font-style: normal; }
+.site-ninetymins .lv-p-sc.lv-p-long { flex-direction: column; gap: 2px; font-size: 26px; }
+.site-ninetymins .lv-p-sc.lv-p-long i { display: none; }
+.site-ninetymins .lv-p-h { grid-row: 3; grid-column: 1; justify-self: start; max-width: 100%; }
+.site-ninetymins .lv-p-a { grid-row: 3; grid-column: 2; justify-self: end; max-width: 100%; text-align: right; }
+
+/* ESPN minutes already carry the apostrophe */
+.site-ninetymins .lv-clock.st-in::after { content: none; }

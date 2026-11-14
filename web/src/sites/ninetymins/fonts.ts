@@ -1,12 +1,11 @@
-// Sports-desk type pairing for NinetyMins, self-hosted via next/font (no CLS).
-// Barlow Condensed — tall, tight, broadcast-style headlines and scoreboard labels.
+// Same type system as the NinetyMins app ("Matchday Poster"), self-hosted via next/font (no CLS).
+// Anton — tall poster type for headlines, scores and labels (single weight: never fake-bold it).
 // Inter — body copy, UI and tabular figures.
-import { Barlow_Condensed, Inter } from "next/font/google";
+import { Anton, Inter } from "next/font/google";
 
-export const display = Barlow_Condensed({
+export const display = Anton({
   subsets: ["latin"],
-  weight: ["600", "700", "800"],
-  style: ["normal", "italic"],
+  weight: "400",
   variable: "--nm-display",
   display: "swap",
 });

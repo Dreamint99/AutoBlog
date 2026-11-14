@@ -1,156 +1,117 @@
 import Link from "next/link";
 import type { SiteHomeProps, Article } from "@/lib/types";
-import { Shell, Card, Thumb } from "./Chrome";
-import { NM_COMPS, compOf, ago } from "./comps";
-import { LeagueTable, LeagueFixtures, MatchdayBoard } from "./LiveScores";
-import { heroSrc } from "@/lib/img";
+import { Shell } from "./Chrome";
+import { ago } from "./comps";
+import { LeagueTable } from "./LiveScores";
+import { Livescore, type LsEvent } from "./Livescore";
+import { LS_SPORTS, PLAY_URL } from "./sports";
+import { getScores, NM_LEAGUES, leagueToSlug } from "./live";
 
-/* Sports-first home. Live scores, today's fixtures, league tables and the app
-   download come first; the blog is kept (every article URL stays the same) and
-   sits below as "Latest reads". Live parts are client components that poll
-   /api/scores, so the page updates without a rebuild. */
+/* Home = the scoreboard. Every match the feeds expose, grouped by competition,
+   with sport tabs, a date strip and live filters in the middle; competitions on
+   the left; the app, a mini table and a small stories column on the right.
+   Article URLs are unchanged — stories just moved into the side column. */
 
-/** Hands out articles once per page; real reports before mock ones. */
-function picker(all: Article[]) {
-  const used = new Set<string>();
-  const pool = [...all.filter((a) => !a.is_mock), ...all.filter((a) => a.is_mock)];
-  return (from: Article[] | null, n: number): Article[] => {
-    const out: Article[] = [];
-    for (const a of from ?? pool) {
-      if (out.length >= n) break;
-      if (used.has(a.id) || (from && a.is_mock)) continue;
-      used.add(a.id);
-      out.push(a);
-    }
-    return out;
-  };
+const TOP = ["eng.1", "uefa.champions", "esp.1", "ita.1", "ger.1", "fra.1", "uefa.europa", "afc.saff.championship", "fifa.worldq.afc", "ind.1", "usa.1"];
+const OTHER = ["cricket", "nba", "nfl", "nhl", "mlb", "atp", "wta", "ufc", "f1"];
+
+async function todayFootball(day: string): Promise<LsEvent[]> {
+  try {
+    const lists = await Promise.all(LS_SPORTS[0].leagues.map((l) => getScores(l, day)));
+    return lists.flat() as LsEvent[];
+  } catch {
+    return [];
+  }
 }
 
-const PLAY = "https://play.google.com/store/apps/details?id=com.ninetymins.app";
-const ROWS = ["saff-championship", "champions-league", "premier-league", "world-cup", "cricket", "basketball", "formula-1", "tennis", "football"];
+function leagueHref(l: string) {
+  if (l === "cricket") return "/cricket";
+  return `/league/${leagueToSlug(l)}`;
+}
 
-export default function Home({ site, articles }: SiteHomeProps) {
+export default async function Home({ site, articles }: SiteHomeProps) {
   const s = `/s/${site.id}`;
   const href = (a: Article) => `${s}/${a.slug}`;
-  const take = picker(articles);
-
-  const latest = take(null, 8);
-  const rows = ROWS.map((slug) => ({
-    comp: NM_COMPS.find((c) => c.slug === slug)!,
-    items: take(articles.filter((a) => compOf(a).slug === slug), 4),
-  })).filter((r) => r.comp && r.items.length >= 2);
+  const stories = [...articles.filter((a) => !a.is_mock), ...articles.filter((a) => a.is_mock)].slice(0, 8);
+  // Server day in UTC; the client re-fetches if the visitor's local day differs.
+  const day = new Date().toISOString().slice(0, 10).replace(/-/g, "");
+  const initial = await todayFootball(day);
 
   return (
     <Shell site={site} home>
-      {/* ── 1. MATCHDAY HERO: live + today's matches, auto-refreshing ── */}
-      <section className="nm-mdhero" aria-label="Live scores and today's matches">
-        <div className="nm-wrap">
-          <div className="nm-mdhero-head">
-            <div>
-              <h1>Live scores &amp; today&apos;s matches</h1>
-              <p>Football, cricket and NBA — updates every minute, kick-offs in your time zone.</p>
-            </div>
-            <div className="nm-mdhero-links">
-              <Link href={`${s}/tomorrow`}>Tomorrow&apos;s matches →</Link>
-            </div>
-          </div>
-          <MatchdayBoard />
+      <div className="lv-page">
+        <div className="nm-wrap lv-top">
+          <h1>
+            Live scores <span>· football, cricket &amp; more</span>
+          </h1>
         </div>
-      </section>
 
-      {/* ── 2. TABLES · FIXTURES · APP ── */}
-      <section className="nm-wrap nm-homehub">
-        <div className="nm-homehub-tables">
-          <LeagueTable league="eng.1" title="Premier League table" rows={10} />
-          <LeagueTable league="esp.1" title="LaLiga table" rows={10} />
-        </div>
-        <div className="nm-homehub-fx">
-          <LeagueFixtures league="uefa.champions" title="Champions League" />
-          <LeagueFixtures league="eng.1" title="Premier League fixtures" />
-        </div>
-        <aside className="nm-homehub-side">
-          <section className="nm-appcard" aria-label="Get the NinetyMins app">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/brand/ninetymins-app-icon.webp" alt="" width={56} height={56} />
-            <h3>NinetyMins app</h3>
+        <div className="nm-wrap lv-grid">
+          {/* Left: competitions */}
+          <aside className="lv-left" aria-label="Competitions">
+            <h2>Top competitions</h2>
             <ul>
-              <li>Instant goal &amp; wicket alerts</li>
-              <li>Live scores for every match</li>
-              <li>Free, no sign-up needed</li>
+              {TOP.filter((l) => NM_LEAGUES[l]).map((l) => (
+                <li key={l}>
+                  <Link href={leagueHref(l)}>{NM_LEAGUES[l].label}</Link>
+                </li>
+              ))}
             </ul>
-            <a className="nm-appbtn" href={`${PLAY}&referrer=${encodeURIComponent("utm_source=ninetymins.com&utm_medium=home")}`} target="_blank" rel="noopener">
-              Get it on Google Play
-            </a>
-          </section>
-          <section className="nm-box">
-            <h3 className="nm-box-h">Competitions</h3>
-            <div className="nm-comps">
-              {NM_COMPS.map((c) => (
-                <Link href={`${s}/topic/${c.slug}`} key={c.slug}>
-                  {c.label}
-                </Link>
+            <h2>Other sports</h2>
+            <ul>
+              {OTHER.filter((l) => NM_LEAGUES[l]).map((l) => (
+                <li key={l}>
+                  <Link href={leagueHref(l)}>{NM_LEAGUES[l].label}</Link>
+                </li>
               ))}
-            </div>
-          </section>
-        </aside>
-      </section>
-
-      {/* ── 3. COMPETITION FIXTURES ── */}
-      {rows.map(({ comp, items }) => (
-        <section className="nm-wrap nm-row" key={comp.slug} aria-label={comp.label}>
-          <div className="nm-rowhead" style={{ borderColor: comp.color }}>
-            <h2>
-              <span className="nm-rowchip" style={{ background: comp.color }}>
-                {comp.short}
-              </span>
-              {comp.label}
-            </h2>
-            <Link href={`${s}/topic/${comp.slug}`} className="nm-more">
-              See all <span aria-hidden="true">→</span>
-            </Link>
-          </div>
-          <div className="nm-grid4">
-            {items.map((a) => (
-              <Card site={site} article={a} key={a.id} />
-            ))}
-          </div>
-        </section>
-      ))}
-
-      {/* ── 4. LATEST READS (blog, same URLs) ── */}
-      {latest.length ? (
-        <section className="nm-wrap nm-river" aria-label="Latest reads">
-          <div>
-            <div className="nm-rowhead">
-              <h2>Latest reads</h2>
-            </div>
-            <div className="nm-list">
-              {latest.map((a) => (
-                <article className="nm-listrow" key={a.id}>
-                  <div>
-                    <h3 className="nm-h">
-                      <Link href={href(a)}>{a.title}</Link>
-                    </h3>
-                    {a.excerpt ? <p className="nm-dek">{a.excerpt}</p> : null}
-                    <span className="nm-time">{ago(a.created_at)} · {a.reading_time} min read</span>
-                  </div>
-                  <Thumb href={href(a)} article={a} ratio="4 / 3" />
-                </article>
-              ))}
-            </div>
-          </div>
-          <aside className="nm-rail2">
-            <section className="nm-box nm-promise">
-              <h3 className="nm-box-h">How we cover a match</h3>
-              <ul>
-                <li><b>Kick-off in your timezone</b> UK, US ET/PT, India IST and Australia.</li>
-                <li><b>Legal ways to watch</b> Official broadcasters and streaming services only.</li>
-                <li><b>Checked against rights holders</b> Rights and times change — confirm before kick-off.</li>
-              </ul>
-            </section>
+            </ul>
+            <h2>Browse</h2>
+            <ul>
+              <li><Link href={`${s}/today`}>Today&apos;s matches</Link></li>
+              <li><Link href={`${s}/tomorrow`}>Tomorrow</Link></li>
+              <li><Link href={`${s}/saff`}>SAFF Championship</Link></li>
+              <li><Link href={`${s}/widgets`}>Free score widgets</Link></li>
+            </ul>
           </aside>
-        </section>
-      ) : null}
+
+          {/* Centre: the board */}
+          <div className="lv-main" id="scores">
+            <Livescore initial={initial} day={day} />
+          </div>
+
+          {/* Right: app, table, stories */}
+          <aside className="lv-right" aria-label="App, table and stories">
+            <a className="lv-app" href={PLAY_URL("home-side")} target="_blank" rel="noopener">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/brand/ninetymins-app-icon.webp" alt="" width={44} height={44} />
+              <span>
+                <b>NinetyMins app</b>
+                <small>Goal alerts &amp; live scores · free</small>
+              </span>
+              <em>Get it</em>
+            </a>
+
+            <LeagueTable league="eng.1" title="Premier League" rows={8} />
+
+            {stories.length ? (
+              <section className="lv-stories" aria-label="Stories">
+                <h2>Stories</h2>
+                <ul>
+                  {stories.map((a) => (
+                    <li key={a.id}>
+                      <Link href={href(a)}>{a.title}</Link>
+                      <small>{ago(a.created_at)}</small>
+                    </li>
+                  ))}
+                </ul>
+                <Link className="lv-more" href={`${s}/archive`}>
+                  All stories →
+                </Link>
+              </section>
+            ) : null}
+          </aside>
+        </div>
+      </div>
     </Shell>
   );
 }
