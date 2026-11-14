@@ -2,6 +2,7 @@
 // Every dataset carries `updated` and per-row `source`. Pages list = what the snippet may render + index.
 import visaCheck from "../../../probashi-data/data/visa_check.json";
 import gamca from "../../../probashi-data/data/gamca.json";
+import customs from "../../../probashi-data/data/customs.json";
 import agency from "../../../probashi-data/data/agency.json";
 import migrationCost from "../../../probashi-data/data/migration_cost.json";
 const AG = new Map(agency.agencies.map((a) => [a.slug, a]));
@@ -10,11 +11,15 @@ const agencyIndex = { updated: agency.updated, source: agency.source, source_url
 import { remittance, CURRENCIES } from "./remittance.js";
 
 const SITE = "https://probashiinfo.com";
-const DATA = { "visa-check": visaCheck, gamca, "agency-index": agencyIndex, "migration-cost": migrationCost };
+const DATA = { "visa-check": visaCheck, gamca, customs, "agency-index": agencyIndex, "migration-cost": migrationCost };
 
 function pages() {
   const out = [{ path: "/visa-check/", index: false, lastmod: visaCheck.updated }];
   for (const c of visaCheck.countries) out.push({ path: `/visa-check/${c.slug}/`, index: true, lastmod: visaCheck.updated });
+  out.push({ path: "/customs/", index: true, lastmod: customs.updated });
+  for (const t of customs.topics) out.push({ path: `/customs/${t.slug}/`, index: true, lastmod: customs.updated });
+  out.push({ path: "/baggage/", index: true, lastmod: customs.updated });
+  for (const a of customs.airlines) out.push({ path: `/baggage/${a.slug}/`, index: true, lastmod: customs.updated });
   out.push({ path: "/gamca/", index: true, lastmod: gamca.updated });
   for (const c of gamca.cities) out.push({ path: `/gamca/${c.slug}/`, index: c.index, lastmod: gamca.updated });
   const today = new Date().toISOString().slice(0, 10);

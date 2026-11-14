@@ -13,7 +13,7 @@ define('PBD_LOADED', 1);
 define('PBD_MODE', 'live');               // 'test' | 'live'
 define('PBD_KEY', '__PBD_TEST_KEY__');
 define('PBD_API', 'https://probashi-data.iamkashimuddin.workers.dev/v1/');
-define('PBD_VER', '7');
+define('PBD_VER', '8');
 
 function pbd_enabled() {
     if (PBD_MODE === 'live') { return true; }
@@ -57,7 +57,7 @@ function pbd_match() {
     $m = null;
     $path = rawurldecode((string) wp_parse_url(isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '', PHP_URL_PATH));
     if (PBD_MODE === 'live' && $path === '/pbd-sitemap.xml') { return $m = array('type' => 'sitemap'); }
-    if (!preg_match('#^/(visa-check|remittance|gamca|agency|migration-cost)(?:/([a-z0-9-]+))?/?$#', $path, $x)) { return $m; }
+    if (!preg_match('#^/(visa-check|remittance|gamca|agency|migration-cost|customs|baggage)(?:/([a-z0-9-]+))?/?$#', $path, $x)) { return $m; }
     if (!pbd_enabled()) { return $m; }
     $type = $x[1];
     $slug = isset($x[2]) ? $x[2] : '';
@@ -70,10 +70,11 @@ function pbd_match() {
         if (substr($path, -1) !== '/') { $m['redirect'] = true; }
         return $m;
     }
-    $d = pbd_data($type === 'agency' ? 'agency-index' : $type);
+    $d = pbd_data($type === 'agency' ? 'agency-index' : (($type === 'customs' || $type === 'baggage') ? 'customs' : $type));
     if (!$d) { return $m; }
     if ($slug !== '') {
-        $list = $type === 'remittance' ? $d['currencies'] : ($type === 'gamca' ? $d['cities'] : $d['countries']);
+        $lists = array('remittance' => 'currencies', 'gamca' => 'cities', 'customs' => 'topics', 'baggage' => 'airlines');
+        $list = $d[isset($lists[$type]) ? $lists[$type] : 'countries'];
         foreach ($list as $c) { if ($c['slug'] === $slug) { $item = $c; break; } }
         if (!$item) { return $m; }   // unknown slug → normal WordPress 404
     }
@@ -188,6 +189,16 @@ function pbd_seo() {
         $s['index'] = true;
         $s['title'] = 'সরকার নির্ধারিত অভিবাসন ব্যয়: দেশভিত্তিক সর্বোচ্চ খরচ';
         $s['desc'] = 'মালয়েশিয়া, কাতার, ওমান, কুয়েত, আমিরাত, জাপানসহ ' . pbd_bn(count($m['data']['countries'])) . 'টি দেশে কর্মী পাঠানোর সরকার নির্ধারিত সর্বোচ্চ খরচ — আদেশের তারিখ ও সূত্রসহ।';
+    }
+    if ($m['type'] === 'customs') {
+        $s['index'] = true;
+        if ($m['item']) { $t = $m['item']; $s['title'] = $t['title']; $s['desc'] = $t['desc']; $s['faq'] = pbd_cu_faq($t); }
+        else { $s['title'] = 'বিদেশ থেকে কী কী আনা যায়: ব্যাগেজ রুল ২০২৫ সহজ বাংলায়'; $s['desc'] = '৬৫+৩৫ কেজি শুল্কমুক্ত, মোবাইল, স্বর্ণ, টিভি, ডলার — অপর্যটক যাত্রী ব্যাগেজ বিধিমালা ২০২৫-এর সব নিয়ম এক পাতায়, এনবিআরের সূত্রসহ।'; }
+    }
+    if ($m['type'] === 'baggage') {
+        $s['index'] = true;
+        if ($m['item']) { $a = $m['item']; $s['title'] = $a['name'] . ' লাগেজ কত কেজি ২০২৬: ইকোনমি ভাড়া অনুযায়ী (' . $a['name_en'] . ')'; $s['desc'] = $a['name'] . ' ঢাকা রুটে ইকোনমিতে চেকড লাগেজ ' . $a['fares'][0][1] . ' থেকে; হাতব্যাগ ' . preg_replace('/\s*\(.*$/u', '', $a['cabin']) . '। ভাড়ার ধরন অনুযায়ী পুরো তালিকা, এয়ারলাইনের নিজের সূত্রসহ।'; }
+        else { $s['title'] = 'কোন এয়ারলাইনে কত কেজি লাগেজ: এমিরেটস, কাতার, গালফ এয়ারসহ'; $s['desc'] = 'ঢাকা থেকে মধ্যপ্রাচ্য, মালয়েশিয়া ও সিঙ্গাপুর রুটে ' . pbd_bn(count($m['data']['airlines'])) . 'টি এয়ারলাইনের ইকোনমি লাগেজ ও হাতব্যাগের নিয়ম — প্রতিটির নিজের সাইট থেকে।'; }
     }
     if (function_exists('mb_strlen') && mb_strlen($s['desc']) > 158) { $s['desc'] = mb_substr($s['desc'], 0, 155) . '…'; }
     return $s;
@@ -339,6 +350,8 @@ function pbd_vc_faq($c) {
 function pbd_render($m) {
     if ($m['type'] === 'visa-check') { return $m['item'] ? pbd_vc_country($m['data'], $m['item']) : pbd_vc_hub($m['data']); }
     if ($m['type'] === 'gamca') { $h = $m['item'] ? pbd_gm_city($m['data'], $m['item']) : pbd_gm_hub($m['data']); $f = ''; foreach (pbd_gm_faq($m['data'], $m['item']) as $q) { $f .= '<details><summary>' . esc_html($q[0]) . '</summary><p>' . esc_html($q[1]) . '</p></details>'; } return pbd_gm_css() . str_replace('<h2>প্রশ্ন ও উত্তর</h2>', '<h2>প্রশ্ন ও উত্তর</h2>' . $f, $h); }
+    if ($m['type'] === 'customs') { return pbd_rm_css() . ($m['item'] ? pbd_cu_topic($m['data'], $m['item']) : pbd_cu_hub($m['data'])); }
+    if ($m['type'] === 'baggage') { return $m['item'] ? pbd_bg_one($m['data'], $m['item']) : pbd_bg_hub($m['data']); }
     if ($m['type'] === 'agency') { return pbd_ag_css() . ($m['item'] ? pbd_ag_one($m['data'], $m['item']) : pbd_ag_hub($m['data'])); }
     if ($m['type'] === 'migration-cost') { return pbd_ag_css() . pbd_mc_page($m['data']); }
     if ($m['type'] === 'remittance') { return $m['item'] ? pbd_rm_one($m['data'], $m['item']) : pbd_rm_hub($m['data']); }
@@ -656,4 +669,80 @@ function pbd_mc_page($d) {
 }
 function pbd_ag_css() {
     return '<style>.pbd .pbd-chip.warn{background:#d97706}.pbd .pbd-srch{display:flex;gap:8px;margin:.4em 0 1em}.pbd .pbd-srch input{flex:1;min-width:0;font-size:1.05em;padding:12px 14px;border:2px solid var(--line,#e2e8f1);border-radius:14px}.pbd .pbd-srch button{border:0;background:var(--b,#0b56c4);color:#fff;font-weight:700;border-radius:14px;padding:0 18px;font-size:1em}.pbd td img.fl{width:24px;height:17px;border-radius:3px;vertical-align:-3px}</style>';
+}
+
+/* ---------- customs (NBR baggage rules) + airline baggage ---------- */
+function pbd_cu_rows($rows) {
+    $o = '<div class="pbd-st">';
+    foreach ($rows as $r) { $o .= '<div><i>' . esc_html($r[0]) . '</i><span><b>' . esc_html($r[1]) . '</b>' . esc_html($r[2]) . '</span></div>'; }
+    return $o . '</div>';
+}
+function pbd_cu_faq($t) { return isset($t['faq']) ? $t['faq'] : array(); }
+function pbd_cu_topic($d, $t) {
+    $o = pbd_head(array(array('কাস্টমস ও ব্যাগেজ', '/customs/'), array($t['name'], '')), $t['h1']);
+    $o .= '<div class="pbd-hero"><small>' . esc_html($t['icon']) . ' ব্যাগেজ বিধিমালা ২০২৫</small><div class="big" style="font-size:1.6em">' . esc_html($t['big']) . '</div>'
+        . '<span class="pbd-chip">🏛️ সরকারি নিয়ম</span><span class="pbd-chip">📅 যাচাই ' . pbd_date($d['updated']) . '</span></div>';
+    $o .= pbd_cu_rows($t['rows']);
+    if (!empty($t['table'])) {
+        $o .= '<h2>শুল্কের তালিকা (প্রতিটি ১টি)</h2><div class="pbd-tw"><table><tr><th>পণ্য</th><th>শুল্ক (টাকা)</th></tr>';
+        foreach ($t['table'] as $r) { $o .= '<tr><td>' . esc_html($r[0]) . '</td><td><b>৳' . esc_html($r[1]) . '</b></td></tr>'; }
+        $o .= '</table></div>';
+    }
+    if (!empty($t['calc'])) {
+        $c = $t['calc'];
+        $o .= '<h2>স্বর্ণের বারে কত শুল্ক — হিসাব করুন</h2><div class="pbd-calc"><label>বারের ওজন (গ্রাম)<input id="pbdG" type="number" min="0" max="' . (int) $c['max_g'] . '" value="' . (int) $c['max_g'] . '"></label>'
+            . '<div class="pbd-tot"><small>শুল্ক দিতে হবে (প্রায়)</small><b id="pbdGD">—</b><p id="pbdGN"></p></div></div>'
+            . '<script>(function(){var g=document.getElementById("pbdG");function bn(s){return String(s).replace(/\d/g,function(d){return "০১২৩৪৫৬৭৮৯"[d]})}function r(){var v=parseFloat(g.value)||0,t=v/' . (float) $c['per_g'] . ';document.getElementById("pbdGD").textContent="৳ "+bn(Math.round(t*' . (int) $c['duty'] . ').toLocaleString("en-IN"));document.getElementById("pbdGN").textContent=v>' . (int) $c['max_g'] . '?"⚠️ ' . pbd_bn($c['max_g']) . ' গ্রামের বেশি আনা যায় না — বাজেয়াপ্ত হবে":"প্রায় "+bn(t.toFixed(2))+" ভরি × ৳৫,০০০";}g.oninput=r;r();})();</script>';
+    }
+    if (!empty($t['note'])) { $o .= '<div class="pbd-warn"><b>ℹ️ জেনে রাখুন</b><ul><li>' . esc_html($t['note']) . '</li></ul></div>'; }
+    $o .= '<h2>প্রশ্ন ও উত্তর</h2>';
+    foreach (pbd_cu_faq($t) as $f) { $o .= '<details><summary>' . esc_html($f[0]) . '</summary><p>' . esc_html($f[1]) . '</p></details>'; }
+    $o .= pbd_cu_more($d, $t['slug']);
+    $o .= '<p class="pbd-src">সূত্র: ' . esc_html(implode('; ', $t['src'])) . '। <a href="' . esc_url($d['sro_url']) . '" target="_blank" rel="nofollow noopener">বিধিমালার পিডিএফ (nbr.gov.bd)</a>। যাচাই ' . pbd_date($d['updated']) . '।</p>';
+    return $o . pbd_foot();
+}
+function pbd_cu_more($d, $skip) {
+    $o = '<h2>আরও নিয়ম</h2><div class="pbd-tiles">';
+    foreach ($d['topics'] as $x) { if ($x['slug'] !== $skip) { $o .= '<a href="' . esc_url(home_url('/customs/' . $x['slug'] . '/')) . '"><span style="font-size:1.4em">' . esc_html($x['icon']) . '</span><span>' . esc_html($x['name']) . '</span></a>'; } }
+    if ($skip !== '') { $o .= '<a href="' . esc_url(home_url('/customs/')) . '"><span style="font-size:1.4em">🧳</span><span>সব কাস্টমস নিয়ম</span></a>'; }
+    $o .= '<a href="' . esc_url(home_url('/baggage/')) . '"><span style="font-size:1.4em">✈️</span><span>এয়ারলাইনের লাগেজ</span></a></div>';
+    return $o;
+}
+function pbd_cu_hub($d) {
+    $h = $d['hub'];
+    $o = pbd_head(array(array('কাস্টমস ও ব্যাগেজ', '')), 'বিদেশ থেকে কী কী আনা যায়: ব্যাগেজ রুল ২০২৫');
+    $o .= '<div class="pbd-hero"><small>🧳 অপর্যটক যাত্রী ব্যাগেজ বিধিমালা ২০২৫</small><div class="big" style="font-size:1.6em">৬৫ কেজি + ৩৫ কেজি ফ্রি</div>'
+        . '<span class="pbd-chip">🏛️ এনবিআর</span><span class="pbd-chip">📅 যাচাই ' . pbd_date($d['updated']) . '</span></div>';
+    $o .= pbd_cu_more($d, '') . '<h2>মূল নিয়ম এক নজরে</h2>' . pbd_cu_rows($h['rows']);
+    $o .= '<h2>যা শুল্কমুক্ত আনা যায় (প্রতিটি ১টি)</h2><ul class="pbd-need">';
+    foreach ($h['free'] as $x) { $o .= '<li>' . esc_html($x) . '</li>'; }
+    $o .= '</ul><div class="pbd-warn"><b>⛔ নিষিদ্ধ ও ঘোষণা দিতে হবে</b><ul><li>' . esc_html($h['banned']) . '</li></ul></div>';
+    $o .= '<p class="pbd-src">সূত্র: ' . esc_html($d['sro']) . '; ' . esc_html($d['bb']) . '। <a href="' . esc_url($d['sro_url']) . '" target="_blank" rel="nofollow noopener">বিধিমালার পিডিএফ</a></p>';
+    return $o . pbd_foot();
+}
+function pbd_bg_one($d, $a) {
+    $o = pbd_head(array(array('এয়ারলাইনের লাগেজ', '/baggage/'), array($a['name'], '')), $a['name'] . ' লাগেজ কত কেজি: ইকোনমি ভাড়া অনুযায়ী');
+    $o .= '<div class="pbd-hero"><small>' . pbd_flag($a['flag']) . ' ' . esc_html($a['name_en']) . '</small><div class="big" style="font-size:1.6em">চেকড লাগেজ</div>'
+        . '<span class="pbd-chip">✔️ এয়ারলাইনের নিজের সাইট</span><span class="pbd-chip">📅 ' . pbd_date($a['accessed']) . '</span></div>';
+    $o .= '<div class="pbd-tw"><table><tr><th>ভাড়ার ধরন (ইকোনমি)</th><th>চেকড লাগেজ</th></tr>';
+    foreach ($a['fares'] as $f) { $o .= '<tr><td>' . esc_html($f[0]) . '</td><td><b>' . esc_html($f[1]) . '</b></td></tr>'; }
+    $o .= '</table></div>' . pbd_cu_rows(array(array('🎒', 'হাতব্যাগ (কেবিন)', $a['cabin']), array('ℹ️', 'আরও', $a['note']),
+        array('🎟️', 'আপনার টিকিটে কত', 'টিকিট বা ই-টিকিটের "Baggage" ঘরে আপনার ভাড়ার আসল ওজন লেখা থাকে — সেটাই চূড়ান্ত।')));
+    $o .= '<div class="pbd-warn"><b>দেশে নামার পর কাস্টমস</b><ul><li>এয়ারলাইন যত কেজিই দিক, শুল্কমুক্ত সীমা ৬৫ + ৩৫ কেজি — <a href="' . esc_url(home_url('/customs/')) . '">ব্যাগেজ রুল ২০২৫</a>।</li></ul></div>';
+    $o .= '<h2>অন্য এয়ারলাইন</h2><div class="pbd-tiles">';
+    foreach ($d['airlines'] as $x) { if ($x['slug'] !== $a['slug']) { $o .= pbd_bg_tile($x); } }
+    $o .= '</div><p class="pbd-src">সূত্র: <a href="' . esc_url($a['source']) . '" target="_blank" rel="nofollow noopener">' . esc_html(pbd_host($a['source'])) . '</a>, দেখা হয়েছে ' . pbd_date($a['accessed']) . '। এয়ারলাইন নিয়ম বদলাতে পারে — টিকিট কাটার সময় মিলিয়ে নিন।</p>';
+    return $o . pbd_foot();
+}
+function pbd_bg_hub($d) {
+    $o = pbd_head(array(array('এয়ারলাইনের লাগেজ', '')), 'কোন এয়ারলাইনে কত কেজি লাগেজ: ঢাকা রুট');
+    $o .= '<div class="pbd-hero"><small>✈️ ইকোনমি ক্লাস</small><div class="big" style="font-size:1.6em">' . pbd_bn(count($d['airlines'])) . 'টি এয়ারলাইন</div><span class="pbd-chip">✔️ প্রতিটির নিজের সাইট থেকে</span><span class="pbd-chip">📅 ' . pbd_date($d['updated']) . '</span></div>';
+    $o .= '<div class="pbd-tw"><table><tr><th>এয়ারলাইন</th><th>সবচেয়ে সস্তা ভাড়ায়</th><th>হাতব্যাগ</th></tr>';
+    foreach ($d['airlines'] as $a) { $o .= '<tr><td><a href="' . esc_url(home_url('/baggage/' . $a['slug'] . '/')) . '">' . esc_html($a['name']) . '</a></td><td>' . esc_html($a['fares'][0][1]) . '</td><td>' . esc_html(preg_replace('/\s*\(.*$/u', '', $a['cabin'])) . '</td></tr>'; }
+    $o .= '</table></div><p>বিমান বাংলাদেশ, ইউএস-বাংলা, সৌদিয়া ও টার্কিশের ঢাকা রুটের লাগেজ তাদের সাইটে এখন পড়া যাচ্ছে না — যাচাই করা গেলে যোগ হবে।</p>';
+    $o .= pbd_cu_more($d, '') . '<p class="pbd-src">প্রতিটি এয়ারলাইনের সূত্র তার নিজের পাতায় দেওয়া আছে।</p>';
+    return $o . pbd_foot();
+}
+function pbd_bg_tile($x) {
+    return '<a href="' . esc_url(home_url('/baggage/' . $x['slug'] . '/')) . '">' . pbd_flag($x['flag']) . '<span>' . esc_html($x['name']) . '<small>' . esc_html($x['fares'][0][1]) . ' থেকে</small></span></a>';
 }

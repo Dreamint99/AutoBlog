@@ -1,0 +1,475 @@
+{
+  "accessed": "2026-11-14",
+  "customs": {
+    "rules": [
+      {
+        "topic": "current_rules",
+        "rule_en": "The Non-Tourist Passenger Baggage Rules, 2025 replace the 2024 rules (SRO 203-Ain/2024/55/Customs). They do not apply to tourists, privileged persons, transit passengers or crew. Customs' FY2026-27 SRO compilation (customs.gov.bd 'All SRO 2026-2027') still cites SRO 261/2025 as the baggage rule, and no newer baggage SRO appears in NBR's June/Aug 2026 budget SRO lists.",
+        "figure": "Rules 2025 in force; 2024 rules repealed (rule 11)",
+        "sro": "SRO No. 261-Ain/2025/71/Customs (Non-Tourist Passenger Baggage Rules, 2025)",
+        "date": "2025-06-02 (gazette 2025-06-03; in force 30 days after publication)",
+        "source": "https://nbr.gov.bd/uploads/sros/অপর্যটক_যাত্রী_ব্যাগেজ_বিধিমালা,_২০২৫.pdf",
+        "status": "verified"
+      },
+      {
+        "topic": "definition_baggage",
+        "rule_en": "Baggage means a reasonable quantity of food, clothing, household or other personal items, with no single item weighing more than 15 kg.",
+        "figure": "max 15 kg per item",
+        "sro": "SRO No. 261-Ain/2025/71/Customs (Non-Tourist Passenger Baggage Rules, 2025)",
+        "date": "2025-06-02 (gazette 2025-06-03; in force 30 days after publication)",
+        "source": "https://nbr.gov.bd/uploads/sros/অপর্যটক_যাত্রী_ব্যাগেজ_বিধিমালা,_২০২৫.pdf",
+        "status": "verified"
+      },
+      {
+        "topic": "general_weight_allowance",
+        "rule_en": "A passenger aged 12 or over arriving by air or sea may clear up to 65 kg of accompanied baggage (hand bag, cabin bag, etc.) free of all duties and taxes.",
+        "figure": "65 kg duty-free (age 12+)",
+        "sro": "SRO No. 261-Ain/2025/71/Customs (Non-Tourist Passenger Baggage Rules, 2025)",
+        "date": "2025-06-02 (gazette 2025-06-03; in force 30 days after publication)",
+        "source": "https://nbr.gov.bd/uploads/sros/অপর্যটক_যাত্রী_ব্যাগেজ_বিধিমালা,_২০২৫.pdf",
+        "status": "verified"
+      },
+      {
+        "topic": "extra_personal_effects",
+        "rule_en": "On top of the 65 kg, up to 35 kg of clothing, personal-use items, books, periodicals and study materials is also duty-free.",
+        "figure": "+35 kg (clothes, personal effects, books)",
+        "sro": "SRO No. 261-Ain/2025/71/Customs (Non-Tourist Passenger Baggage Rules, 2025)",
+        "date": "2025-06-02 (gazette 2025-06-03; in force 30 days after publication)",
+        "source": "https://nbr.gov.bd/uploads/sros/অপর্যটক_যাত্রী_ব্যাগেজ_বিধিমালা,_২০২৫.pdf",
+        "status": "verified"
+      },
+      {
+        "topic": "children_under_12",
+        "rule_en": "A passenger under 12 gets one carton/bag of personal baggage up to 40 kg duty-free and no other benefit; gold/silver bars or ornaments, liquor and the 1 carton of cigarettes are not allowed for them.",
+        "figure": "40 kg, one piece; no gold/silver/cigarette/liquor benefit",
+        "sro": "SRO No. 261-Ain/2025/71/Customs (Non-Tourist Passenger Baggage Rules, 2025)",
+        "date": "2025-06-02 (gazette 2025-06-03; in force 30 days after publication)",
+        "source": "https://nbr.gov.bd/uploads/sros/অপর্যটক_যাত্রী_ব্যাগেজ_বিধিমালা,_২০২৫.pdf",
+        "status": "verified"
+      },
+      {
+        "topic": "one_item_rule",
+        "rule_en": "A passenger may bring one of each item in Schedule-3 duty-free and one of each item in Schedule-2 on payment of the fixed duty listed. Extra or other goods (not banned/restricted) are cleared by adjudication with full duty/taxes and an import-control clearance where needed (rule 10).",
+        "figure": "1 of each listed item",
+        "sro": "SRO No. 261-Ain/2025/71/Customs (Non-Tourist Passenger Baggage Rules, 2025)",
+        "date": "2025-06-02 (gazette 2025-06-03; in force 30 days after publication)",
+        "source": "https://nbr.gov.bd/uploads/sros/অপর্যটক_যাত্রী_ব্যাগেজ_বিধিমালা,_২০২৫.pdf",
+        "status": "verified"
+      },
+      {
+        "topic": "duty_free_list_schedule3",
+        "rule_en": "Schedule-3 duty-free items (one each): desktop/laptop computer with one UPS; computer scanner; printer; non-professional video camera; non-professional still/digital camera; ordinary/electric/microwave oven; rice cooker/pressure cooker/gas oven with burner; toaster/sandwich maker/blender/food processor/juicer/coffee maker; household sewing machine; table/pedestal/ceiling fan; personal sports equipment; gold jewellery up to 100 g and silver jewellery up to 200 g (max 12 of one kind); 1 carton (200 sticks) cigarettes; TV up to 29 inch (Plasma/LCD/TFT/LED/CRT); music centre with CD and 2 speakers; music centre/CD/DVD/Blu-ray player with 4 speakers; 2 used mobile phones; 1 new mobile phone; one carpet up to 15 sq m.",
+        "figure": "19 item lines (see rule)",
+        "sro": "SRO No. 261-Ain/2025/71/Customs (Non-Tourist Passenger Baggage Rules, 2025)",
+        "date": "2025-06-02 (gazette 2025-06-03; in force 30 days after publication)",
+        "source": "https://nbr.gov.bd/uploads/sros/অপর্যটক_যাত্রী_ব্যাগেজ_বিধিমালা,_২০২৫.pdf",
+        "status": "verified"
+      },
+      {
+        "topic": "dutiable_tv",
+        "rule_en": "Schedule-2 fixed duty on TVs (Plasma/LCD/TFT/LED): 30-36 inch Tk 10,000; 37-42 inch Tk 20,000; 43-46 inch Tk 30,000; 47-52 inch Tk 50,000; 53-65 inch Tk 70,000; 66 inch and above Tk 90,000. Up to 29 inch is duty-free.",
+        "figure": "Tk 10,000 / 20,000 / 30,000 / 50,000 / 70,000 / 90,000",
+        "sro": "SRO No. 261-Ain/2025/71/Customs (Non-Tourist Passenger Baggage Rules, 2025)",
+        "date": "2025-06-02 (gazette 2025-06-03; in force 30 days after publication)",
+        "source": "https://nbr.gov.bd/uploads/sros/অপর্যটক_যাত্রী_ব্যাগেজ_বিধিমালা,_২০২৫.pdf",
+        "status": "verified"
+      },
+      {
+        "topic": "dutiable_other_items",
+        "rule_en": "Schedule-2 fixed duty: home theatre/music centre with more than 4 and up to 8 speakers Tk 8,000; refrigerator/deep freezer Tk 5,000; window AC Tk 7,000; split AC up to 18,000 BTU Tk 15,000; split AC above 18,000 BTU Tk 20,000; dish antenna Tk 7,000; professional cameras (HD Cam, DV Cam, BETA Cam, DSLR, mirrorless, interchangeable-lens) Tk 15,000; air gun/air rifle Tk 5,000 (needs Commerce Ministry approval); chandelier Tk 300 per point; dishwasher/washing machine/cloth dryer Tk 3,000.",
+        "figure": "see rule (Tk per item)",
+        "sro": "SRO No. 261-Ain/2025/71/Customs (Non-Tourist Passenger Baggage Rules, 2025)",
+        "date": "2025-06-02 (gazette 2025-06-03; in force 30 days after publication)",
+        "source": "https://nbr.gov.bd/uploads/sros/অপর্যটক_যাত্রী_ব্যাগেজ_বিধিমালা,_২০২৫.pdf",
+        "status": "verified"
+      },
+      {
+        "topic": "dutiable_general",
+        "rule_en": "Anything not for personal/household use, baggage above the rule-3 limits, and any goods in commercial quantity are dutiable (Schedule-2 heads a-c).",
+        "figure": "full duty / adjudication",
+        "sro": "SRO No. 261-Ain/2025/71/Customs (Non-Tourist Passenger Baggage Rules, 2025)",
+        "date": "2025-06-02 (gazette 2025-06-03; in force 30 days after publication)",
+        "source": "https://nbr.gov.bd/uploads/sros/অপর্যটক_যাত্রী_ব্যাগেজ_বিধিমালা,_২০২৫.pdf",
+        "status": "verified"
+      },
+      {
+        "topic": "laptop",
+        "rule_en": "One desktop or laptop computer (with one UPS) is duty-free under Schedule-3.",
+        "figure": "1 laptop/desktop free",
+        "sro": "SRO No. 261-Ain/2025/71/Customs (Non-Tourist Passenger Baggage Rules, 2025)",
+        "date": "2025-06-02 (gazette 2025-06-03; in force 30 days after publication)",
+        "source": "https://nbr.gov.bd/uploads/sros/অপর্যটক_যাত্রী_ব্যাগেজ_বিধিমালা,_২০২৫.pdf",
+        "status": "verified"
+      },
+      {
+        "topic": "mobile_phones_base",
+        "rule_en": "Base 2025 rule: up to 2 used mobile phones, plus 1 new phone once per year, duty-free; phones beyond that fall under rule 10 (full duty by adjudication).",
+        "figure": "2 used + 1 new per year free",
+        "sro": "SRO No. 261-Ain/2025/71/Customs (Non-Tourist Passenger Baggage Rules, 2025)",
+        "date": "2025-06-02 (gazette 2025-06-03; in force 30 days after publication)",
+        "source": "https://nbr.gov.bd/uploads/sros/অপর্যটক_যাত্রী_ব্যাগেজ_বিধিমালা,_২০২৫.pdf",
+        "status": "verified"
+      },
+      {
+        "topic": "mobile_phones_bmet",
+        "rule_en": "Amendment of 2 July 2025: any passenger may bring 1 new phone per calendar year duty-free; a Bangladeshi expatriate holding a BMET card who has stayed abroad at least 6 months may bring 2 new phones per year duty-free. Same amendment allows online baggage declaration. Only press reports of the SRO were readable; the SRO text itself is not posted on NBR's SRO or baggage-rules pages.",
+        "figure": "BMET card + 6 months abroad: 2 new phones/year free; others 1 new/year",
+        "sro": "SRO No. 312-Ain/2025/102/Customs",
+        "date": "2025-07-02",
+        "source": "https://thefinancialexpress.com.bd/national/nbr-amends-baggage-rules-to-facilitate-expatriates",
+        "status": "unverified"
+      },
+      {
+        "topic": "mobile_imei_btrc",
+        "rule_en": "BTRC's NEIR portal lets users register a handset with valid documents and check status by SMS 'KYD <IMEI>' to 16002. A mandatory deadline for registering phones brought from abroad (press reports: 30 days; NEIR rollout targeted 1 Jan 2027) is not stated on an official BTRC page.",
+        "figure": "SMS KYD <IMEI> to 16002; deadline unverified",
+        "sro": "BTRC NEIR (no SRO)",
+        "date": "",
+        "source": "https://neir.btrc.gov.bd/",
+        "status": "unverified"
+      },
+      {
+        "topic": "gold_jewellery",
+        "rule_en": "Worn or not, a passenger may bring up to 100 g of gold jewellery (22 carat or lower, designed and wearable) duty-free once per year, with a declaration; no more than 12 pieces of one kind.",
+        "figure": "100 g/year free, max 12 of a kind",
+        "sro": "SRO No. 261-Ain/2025/71/Customs (Non-Tourist Passenger Baggage Rules, 2025)",
+        "date": "2025-06-02 (gazette 2025-06-03; in force 30 days after publication)",
+        "source": "https://nbr.gov.bd/uploads/sros/অপর্যটক_যাত্রী_ব্যাগেজ_বিধিমালা,_২০২৫.pdf",
+        "status": "verified"
+      },
+      {
+        "topic": "silver_jewellery",
+        "rule_en": "Up to 200 g of silver jewellery duty-free once per year with declaration (max 12 pieces of one kind).",
+        "figure": "200 g/year free",
+        "sro": "SRO No. 261-Ain/2025/71/Customs (Non-Tourist Passenger Baggage Rules, 2025)",
+        "date": "2025-06-02 (gazette 2025-06-03; in force 30 days after publication)",
+        "source": "https://nbr.gov.bd/uploads/sros/অপর্যটক_যাত্রী_ব্যাগেজ_বিধিমালা,_২০২৫.pdf",
+        "status": "verified"
+      },
+      {
+        "topic": "gold_bar",
+        "rule_en": "Once per year, with declaration, a passenger may bring a gold bar/bullion up to 117 g (10 tola) on payment of fixed duty Tk 5,000 per 11.664 g (1 bhori/tola), i.e. about Tk 50,000 for the full 117 g. Excess or concealed bars are confiscated.",
+        "figure": "max 117 g (10 tola); Tk 5,000 per 11.664 g; once/year",
+        "sro": "SRO No. 261-Ain/2025/71/Customs (Non-Tourist Passenger Baggage Rules, 2025)",
+        "date": "2025-06-02 (gazette 2025-06-03; in force 30 days after publication)",
+        "source": "https://nbr.gov.bd/uploads/sros/অপর্যটক_যাত্রী_ব্যাগেজ_বিধিমালা,_২০২৫.pdf",
+        "status": "verified"
+      },
+      {
+        "topic": "silver_bar",
+        "rule_en": "Once per year, with declaration, silver bar/bullion up to 234 g (20 tola) on payment of Tk 6 per 11.664 g. Excess or concealed silver bars are confiscated. Note: the Schedule-1 declaration form text says 200 g silver for bars, conflicting with the 234 g in rule 3(10) and Schedule-2.",
+        "figure": "max 234 g (20 tola); Tk 6 per 11.664 g; once/year",
+        "sro": "SRO No. 261-Ain/2025/71/Customs (Non-Tourist Passenger Baggage Rules, 2025)",
+        "date": "2025-06-02 (gazette 2025-06-03; in force 30 days after publication)",
+        "source": "https://nbr.gov.bd/uploads/sros/অপর্যটক_যাত্রী_ব্যাগেজ_বিধিমালা,_২০২৫.pdf",
+        "status": "verified"
+      },
+      {
+        "topic": "cigarettes",
+        "rule_en": "1 carton (200 sticks) of cigarettes duty-free (not for under-12s).",
+        "figure": "200 sticks",
+        "sro": "SRO No. 261-Ain/2025/71/Customs (Non-Tourist Passenger Baggage Rules, 2025)",
+        "date": "2025-06-02 (gazette 2025-06-03; in force 30 days after publication)",
+        "source": "https://nbr.gov.bd/uploads/sros/অপর্যটক_যাত্রী_ব্যাগেজ_বিধিমালা,_২০২৫.pdf",
+        "status": "verified"
+      },
+      {
+        "topic": "alcohol",
+        "rule_en": "Foreign passport holders may bring up to 1 litre of liquor/beer duty-free; Bangladeshi passport holders may not import liquor at all.",
+        "figure": "foreigners 1 L; Bangladeshis 0",
+        "sro": "SRO No. 261-Ain/2025/71/Customs (Non-Tourist Passenger Baggage Rules, 2025)",
+        "date": "2025-06-02 (gazette 2025-06-03; in force 30 days after publication)",
+        "source": "https://nbr.gov.bd/uploads/sros/অপর্যটক_যাত্রী_ব্যাগেজ_বিধিমালা,_২০২৫.pdf",
+        "status": "verified"
+      },
+      {
+        "topic": "professional_tools",
+        "rule_en": "Portable tools/equipment used for the passenger's profession are duty-free.",
+        "figure": "free",
+        "sro": "SRO No. 261-Ain/2025/71/Customs (Non-Tourist Passenger Baggage Rules, 2025)",
+        "date": "2025-06-02 (gazette 2025-06-03; in force 30 days after publication)",
+        "source": "https://nbr.gov.bd/uploads/sros/অপর্যটক_যাত্রী_ব্যাগেজ_বিধিমালা,_২০২৫.pdf",
+        "status": "verified"
+      },
+      {
+        "topic": "buy_after_arrival",
+        "rule_en": "Schedule-2/3 items not brought along may be bought within 7 working days of arrival from Bangladesh Parjatan Corporation's city sales centre using the Schedule-4 form.",
+        "figure": "within 7 working days",
+        "sro": "SRO No. 261-Ain/2025/71/Customs (Non-Tourist Passenger Baggage Rules, 2025)",
+        "date": "2025-06-02 (gazette 2025-06-03; in force 30 days after publication)",
+        "source": "https://nbr.gov.bd/uploads/sros/অপর্যটক_যাত্রী_ব্যাগেজ_বিধিমালা,_২০২৫.pdf",
+        "status": "verified"
+      },
+      {
+        "topic": "land_route",
+        "rule_en": "Passengers arriving by land may bring baggage worth up to USD 400 duty-free, no more than 3 times per calendar year.",
+        "figure": "USD 400, max 3 times/year",
+        "sro": "SRO No. 261-Ain/2025/71/Customs (Non-Tourist Passenger Baggage Rules, 2025)",
+        "date": "2025-06-02 (gazette 2025-06-03; in force 30 days after publication)",
+        "source": "https://nbr.gov.bd/uploads/sros/অপর্যটক_যাত্রী_ব্যাগেজ_বিধিমালা,_২০২৫.pdf",
+        "status": "verified"
+      },
+      {
+        "topic": "sick_elderly",
+        "rule_en": "Medical equipment and wheelchairs used by sick, disabled or elderly passengers are duty-free.",
+        "figure": "free",
+        "sro": "SRO No. 261-Ain/2025/71/Customs (Non-Tourist Passenger Baggage Rules, 2025)",
+        "date": "2025-06-02 (gazette 2025-06-03; in force 30 days after publication)",
+        "source": "https://nbr.gov.bd/uploads/sros/অপর্যটক_যাত্রী_ব্যাগেজ_বিধিমালা,_২০২৫.pdf",
+        "status": "verified"
+      },
+      {
+        "topic": "deceased_expat",
+        "rule_en": "Baggage of a Bangladeshi citizen who died abroad is exempt from all duties and taxes.",
+        "figure": "fully exempt",
+        "sro": "SRO No. 261-Ain/2025/71/Customs (Non-Tourist Passenger Baggage Rules, 2025)",
+        "date": "2025-06-02 (gazette 2025-06-03; in force 30 days after publication)",
+        "source": "https://nbr.gov.bd/uploads/sros/অপর্যটক_যাত্রী_ব্যাগেজ_বিধিমালা,_২০২৫.pdf",
+        "status": "verified"
+      },
+      {
+        "topic": "crew",
+        "rule_en": "Bangladeshi airline crew returning from duty: baggage up to USD 300 free; Bangladeshi seafarers: USD 300; seafarer on sign-off: up to USD 2,000 on payment of duty.",
+        "figure": "USD 300 / 2,000",
+        "sro": "SRO No. 261-Ain/2025/71/Customs (Non-Tourist Passenger Baggage Rules, 2025)",
+        "date": "2025-06-02 (gazette 2025-06-03; in force 30 days after publication)",
+        "source": "https://nbr.gov.bd/uploads/sros/অপর্যটক_যাত্রী_ব্যাগেজ_বিধিমালা,_২০২৫.pdf",
+        "status": "verified"
+      },
+      {
+        "topic": "unaccompanied_baggage",
+        "rule_en": "Unaccompanied baggage: declare on the Schedule-1 form before leaving the customs hall (or within 30 days through an Assistant Commissioner if missed), only once per calendar year, only from the country where the journey started, with booking proof; cleared on payment of duty and taxes. Booked bags that missed the flight are treated as accompanied.",
+        "figure": "once/year; declare before leaving customs hall",
+        "sro": "SRO No. 261-Ain/2025/71/Customs (Non-Tourist Passenger Baggage Rules, 2025)",
+        "date": "2025-06-02 (gazette 2025-06-03; in force 30 days after publication)",
+        "source": "https://nbr.gov.bd/uploads/sros/অপর্যটক_যাত্রী_ব্যাগেজ_বিধিমালা,_২০২৫.pdf",
+        "status": "verified"
+      },
+      {
+        "topic": "declaration",
+        "rule_en": "All arriving passengers must fill the Schedule-1 baggage declaration form or file it online. Green channel only if nothing dutiable; up to 5% of green-channel passengers may be randomly scanned, and any can be checked on intelligence.",
+        "figure": "Schedule-1 form / online; 5% random green-channel checks",
+        "sro": "SRO No. 261-Ain/2025/71/Customs (Non-Tourist Passenger Baggage Rules, 2025)",
+        "date": "2025-06-02 (gazette 2025-06-03; in force 30 days after publication)",
+        "source": "https://nbr.gov.bd/uploads/sros/অপর্যটক_যাত্রী_ব্যাগেজ_বিধিমালা,_২০২৫.pdf",
+        "status": "verified"
+      },
+      {
+        "topic": "currency_foreign",
+        "rule_en": "Any amount of foreign currency may be brought in, but amounts above USD 10,000 (or equivalent) must be declared on Form FMJ to Customs on arrival. No declaration needed up to USD 10,000. The USD 5,000 figure in older guides is not in the current rule.",
+        "figure": "declare above USD 10,000 on FMJ",
+        "sro": "Bangladesh Bank FEPD-1 Circular No. 30 (consolidated import-transactions circular), para 8 'Import of foreign currency notes and coins'",
+        "date": "2026-08-13",
+        "source": "https://www.bb.org.bd/mediaroom/circulars/fepd/aug132026fepd-130e.pdf",
+        "status": "verified"
+      },
+      {
+        "topic": "currency_bdt",
+        "rule_en": "An incoming or outgoing passenger may carry up to Tk 10,000 in Bangladesh currency.",
+        "figure": "Tk 10,000",
+        "sro": "Bangladesh Bank FEPD-1 Circular No. 30 (consolidated import-transactions circular), para 8 'Import of foreign currency notes and coins'",
+        "date": "2026-08-13",
+        "source": "https://www.bb.org.bd/mediaroom/circulars/fepd/aug132026fepd-130e.pdf",
+        "status": "verified"
+      },
+      {
+        "topic": "currency_retention",
+        "rule_en": "An arriving person may keep up to USD 10,000 brought in without declaration. A resident Bangladeshi must encash or deposit any excess over USD 10,000 in a foreign-currency account within 30 days; a non-resident Bangladeshi can do so any time.",
+        "figure": "USD 10,000; excess within 30 days (residents)",
+        "sro": "Bangladesh Bank FEPD-1 Circular No. 30 (consolidated import-transactions circular), para 8 'Import of foreign currency notes and coins'",
+        "date": "2026-08-13",
+        "source": "https://www.bb.org.bd/mediaroom/circulars/fepd/aug132026fepd-130e.pdf",
+        "status": "verified"
+      },
+      {
+        "topic": "currency_baggage_form",
+        "rule_en": "The baggage declaration form asks passengers to report foreign currency above USD 10,000 and to fill the separate FMJ currency form.",
+        "figure": "USD 10,000",
+        "sro": "SRO No. 261-Ain/2025/71/Customs (Non-Tourist Passenger Baggage Rules, 2025)",
+        "date": "2025-06-02 (gazette 2025-06-03; in force 30 days after publication)",
+        "source": "https://nbr.gov.bd/uploads/sros/অপর্যটক_যাত্রী_ব্যাগেজ_বিধিমালা,_২০২৫.pdf",
+        "status": "verified"
+      },
+      {
+        "topic": "jewellery_bb",
+        "rule_en": "Bangladesh Bank gives general permission to adult female incoming passengers to bring any quantity of personal jewellery worn or in personal baggage (foreign-exchange side only; customs limits above still apply).",
+        "figure": "no FX limit for worn jewellery (adult women)",
+        "sro": "Bangladesh Bank FEPD-1 Circular No. 30 (consolidated import-transactions circular), para 8 'Import of foreign currency notes and coins'",
+        "date": "2026-08-13",
+        "source": "https://www.bb.org.bd/mediaroom/circulars/fepd/aug132026fepd-130e.pdf",
+        "status": "verified"
+      },
+      {
+        "topic": "prohibited_restricted",
+        "rule_en": "Must be declared at the red channel: banned import goods; meat/dairy/fish/poultry products; seeds, plants, fruit, flowers; gold/silver above the limits; new mobile phones; currency above USD 10,000. All firearms are banned for passengers except an air gun/air rifle (Commerce Ministry approval + Tk 5,000). Goods in commercial quantity and concealed gold are seized. HSIA customs page adds that cigarettes above 1 carton, vapes and liquid nicotine are seized. The full banned-goods list (Import Policy Order) was not compiled here.",
+        "figure": "declare at red channel; firearms banned",
+        "sro": "SRO No. 261-Ain/2025/71/Customs (Non-Tourist Passenger Baggage Rules, 2025)",
+        "date": "2025-06-02 (gazette 2025-06-03; in force 30 days after publication)",
+        "source": "https://nbr.gov.bd/uploads/sros/অপর্যটক_যাত্রী_ব্যাগেজ_বিধিমালা,_২০২৫.pdf ; https://www.hsia.gov.bd/content-details/10/Customs",
+        "status": "verified"
+      }
+    ]
+  },
+  "airlines": [
+    {
+      "slug": "biman",
+      "name": "Biman Bangladesh Airlines",
+      "checked": "Unverified for Dhaka–Middle East by fare. Biman station citizen charters (Feb 2026) show: Abu Dhabi '50/40 kg in 2 pieces, and 20 kg in 1 piece' (class/fare split not stated); Bangkok Economy 35 kg (2 pcs, max 32 kg each); Manchester Economy 40 kg (2 pcs).",
+      "cabin": "1 piece, 7 kg (Economy), per station charters",
+      "notes": "biman-airlines.com was behind a Cloudflare bot check. No worker/labour allowance found in the charters. Dammam charter: 23 kg/1 pc package for SAR 350; excess SAR 40/kg. Abu Dhabi excess AED 50/kg.",
+      "source": "https://biman.gov.bd/pages/office-citizen-charters",
+      "status": "unverified",
+      "accessed": "2026-11-14"
+    },
+    {
+      "slug": "us-bangla",
+      "name": "US-Bangla Airlines",
+      "checked": "Not readable: the route allowance table (usbair.com/app/baggageapp.php) returned HTTP 503. Ticketing T&C: each checked piece max 30 kg and 158 cm.",
+      "cabin": "7 kg; max total dimensions 115 cm (B737) / 72 cm (ATR/Dash-8), per T&C PDF",
+      "notes": "No worker fare found.",
+      "source": "https://usbair.com/assets/frontend/img/travel_info/USBA_Ticketing_Terms_And_Condition.pdf",
+      "status": "unverified",
+      "accessed": "2026-11-14"
+    },
+    {
+      "slug": "air-astra",
+      "name": "Air Astra",
+      "checked": "20 kg (adult/child), infant 10 kg; max 32 kg per piece. Domestic network only; no Middle East/KL/SG route listed.",
+      "cabin": "7 kg, 22x34x48 cm",
+      "notes": "+10 kg on a domestic connection the same day as an international arrival (documents needed).",
+      "source": "https://www.airastra.com/baggage-information",
+      "status": "verified",
+      "accessed": "2026-11-14"
+    },
+    {
+      "slug": "emirates",
+      "name": "Emirates",
+      "checked": "Weight concept (Dhaka–Middle East): Economy Special 20 kg, Saver 25 kg, Flex 30 kg, Flex Plus 35 kg; max 32 kg per bag, 203 cm.",
+      "cabin": "1 bag, 7 kg, max 55x38x22 cm",
+      "notes": "Skywards Silver/Gold/Platinum get extra allowance. No worker fare found.",
+      "source": "https://www.emirates.com/english/before-you-fly/baggage/checked-baggage/",
+      "status": "verified",
+      "accessed": "2026-11-14"
+    },
+    {
+      "slug": "qatar-airways",
+      "name": "Qatar Airways",
+      "checked": "Weight concept (routes outside Africa/Americas): Economy Lite 20 kg, Classic 25 kg, Convenience 30 kg, Comfort 35 kg; no piece limit, max 32 kg per bag, 300 cm. Page says exceptions apply on certain routes.",
+      "cabin": "1 piece, 7 kg, max 50x37x25 cm, plus a small personal item",
+      "notes": "No worker fare found.",
+      "source": "https://www.qatarairways.com/en-bd/baggage/allowance.html",
+      "status": "verified",
+      "accessed": "2026-11-14"
+    },
+    {
+      "slug": "saudia",
+      "name": "Saudia",
+      "checked": "Not published on reachable pages (old allowance page redirects to Branded Fares, which has no baggage rows). AlFursan Silver and above get +1 piece of 23 kg in economy.",
+      "cabin": "1 piece, 7 kg, max 56x45x25 cm, plus 1 personal item",
+      "notes": "No Bangladesh exception or worker fare found.",
+      "source": "https://www.saudia.com/en-SA/manage/baggage/carry-on-baggage",
+      "status": "unverified",
+      "accessed": "2026-11-14"
+    },
+    {
+      "slug": "flynas",
+      "name": "flynas",
+      "checked": "Light: none; Value: 1x20 kg; Plus: 1x30 kg; Premium: 2x23 kg; max 32 kg per piece, 75x50x33 cm.",
+      "cabin": "1 piece, 7 kg, 56x36x23 cm",
+      "notes": "Codeshare/interline: 20 kg economy. No worker fare found.",
+      "source": "https://www.flynas.com/en/booking-flynas/fare-types",
+      "status": "verified",
+      "accessed": "2026-11-14"
+    },
+    {
+      "slug": "flydubai",
+      "name": "flydubai",
+      "checked": "Lite: no checked bag (paid add-on); Value: 20 kg; Flex: 30 kg; up to 3 pieces within the allowance, each under 32 kg, max 203 cm. Site says allowance may vary by route.",
+      "cabin": "1 item, 7 kg, 55x38x20 cm (personal item counts within it)",
+      "notes": "No Dhaka-specific figure or worker fare found.",
+      "source": "https://www.flydubai.com/en/flying-with-us/fare-types/",
+      "status": "verified",
+      "accessed": "2026-11-14"
+    },
+    {
+      "slug": "air-arabia",
+      "name": "Air Arabia",
+      "checked": "UAE-hub flights: Basic: chargeable; Value: 20/30 kg; Ultimate: 30/40 kg (page does not say which routes get which figure).",
+      "cabin": "7 kg bag (55x40x20 cm) + 3 kg personal item (25x33x20 cm); 10 kg total",
+      "notes": "No Bangladesh-specific row or worker fare found.",
+      "source": "https://www.airarabia.com/en/checked-and-hand-baggages",
+      "status": "verified",
+      "accessed": "2026-11-14"
+    },
+    {
+      "slug": "salamair",
+      "name": "SalamAir",
+      "checked": "Lite: none; Saver: none (adds 10 kg trolley bag); Value and Flexi include checked baggage but weights are not published. Bags sold in 10/20/30/40 kg; max 32 kg and 160 cm per piece.",
+      "cabin": "1 under-seat piece, 5 kg, 25x33x20 cm; 10 kg trolley bag (56x45x25 cm) paid or in Saver",
+      "notes": "No worker fare found.",
+      "source": "https://www.salamair.com/en/plan/baggage-information",
+      "status": "unverified",
+      "accessed": "2026-11-14"
+    },
+    {
+      "slug": "kuwait-airways",
+      "name": "Kuwait Airways",
+      "checked": "All destinations: Economy 2x23 kg; Economy Saver 1x32 kg; Economy Zero Bag (since 3 Sep 2025): no checked bag. Max 158 cm per bag.",
+      "cabin": "1 piece, 7 kg, max 56x46x25 cm",
+      "notes": "Oasis Club Gold/Platinum extras. No worker fare found.",
+      "source": "https://kuwaitairways.com/en/is/free-baggage",
+      "status": "verified",
+      "accessed": "2026-11-14"
+    },
+    {
+      "slug": "oman-air",
+      "name": "Oman Air",
+      "checked": "Dhaka is on the 'selected routes' list: Economy Super Saver 20 kg, Comfort 30 kg, Flex 40 kg (other routes 0/20/30 kg). Max 32 kg per bag, 158 cm.",
+      "cabin": "1 piece, 7 kg, max 115 cm total",
+      "notes": "Infants +10 kg (not Super Saver). No worker fare found.",
+      "source": "https://www.omanair.com/en/baggage-policy/baggage-allowance",
+      "status": "verified",
+      "accessed": "2026-11-14"
+    },
+    {
+      "slug": "gulf-air",
+      "name": "Gulf Air",
+      "checked": "Bangladesh routes (to/from Bahrain, UAE, Saudi Arabia, Qatar, Kuwait etc.): Light 30 kg, Smart 35 kg, Flex 40 kg (default elsewhere 25/30/35 kg). Up to 5 bags within the weight, max 32 kg each, 158 cm.",
+      "cabin": "1 bag, 6 kg, max 45x40x30 cm, plus personal item",
+      "notes": "Read from the data behind the official baggage calculator (fare codes YL/YS/YF mapped to Light/Smart/Flex). No worker fare found.",
+      "source": "https://www.gulfair.com/help/baggage/baggage-information",
+      "status": "verified",
+      "accessed": "2026-11-14"
+    },
+    {
+      "slug": "malaysia-airlines",
+      "name": "Malaysia Airlines",
+      "checked": "Dhaka–KL (all MH routes except Malaysia–Japan/AMAL, from 10 Apr 2025): Economy Value 20 kg, Basic 25 kg, Flex 35 kg; max 32 kg per bag, 158 cm.",
+      "cabin": "7 kg total, 56x36x23 cm, personal item counts within 7 kg",
+      "notes": "Source is the official fare-family FAQ PDF; live page shows no figures. No worker fare found.",
+      "source": "https://www.malaysiaairlines.com/content/dam/mh/my/en/plan-trip/cabin-classes/hff/faq/v2/External_FAQ%20_Economy_HFF_enhancement_Finalised_20250324.pdf",
+      "status": "verified",
+      "accessed": "2026-11-14"
+    },
+    {
+      "slug": "singapore-airlines",
+      "name": "Singapore Airlines",
+      "checked": "Weight concept (Dhaka–Singapore): Economy Lite 25 kg, Value 25 kg, Standard 30 kg, Flexi 30 kg; max 32 kg per bag, 158 cm.",
+      "cabin": "1 piece, 7 kg, max 115 cm total",
+      "notes": "No worker fare found.",
+      "source": "https://www.singaporeair.com/en_UK/bd/travel-info/baggage/checked-baggage/",
+      "status": "verified",
+      "accessed": "2026-11-14"
+    },
+    {
+      "slug": "turkish-airlines",
+      "name": "Turkish Airlines",
+      "checked": "Dhaka figure not readable (route calculator behind bot check). General: piece-concept routes 23 kg per bag in economy, max 32 kg, 158 cm. EcoFly 15 / ExtraFly 20 / PrimeFly 25 kg are domestic-only.",
+      "cabin": "1 bag 8 kg, 23x40x55 cm, plus 1 personal item 4 kg, 40x30x15 cm",
+      "notes": "No worker fare found.",
+      "source": "https://www.turkishairlines.com/en-int/any-questions/checked-baggage/",
+      "status": "unverified",
+      "accessed": "2026-11-14"
+    }
+  ]
+}
