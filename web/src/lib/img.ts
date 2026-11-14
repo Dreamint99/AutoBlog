@@ -1,4 +1,5 @@
 import sitesJson from "@/data/sites.json";
+import { artUri } from "@/sites/countly/art";
 
 // Client-safe (no server-only data layer): the active site comes from SITE_ID + the static config.
 type SiteLite = { id: string; theme: string; domain: string };
@@ -39,6 +40,8 @@ function wrap(title: string, width: number, maxLines: number): string[] {
 }
 
 export function cardSvg(title: string): string {
+  // countly: a data-art chart drawn from the title's own figure instead of a bold text card.
+  if (activeSite().id === "countly") return artUri(title);
   const t = THEME[activeSite().theme] ?? { a: "#111827", b: "#1f2937", accent: "#fbbf24" };
   const n = title.length;
   const [fs, width] = n <= 36 ? [70, 20] : n <= 60 ? [60, 24] : [52, 28];

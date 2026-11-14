@@ -1,7 +1,8 @@
 import "./theme.css";
 import "./editorial.css";
 import "./bold.css";
-import CountUp from "./CountUp";
+import "./data.css";
+import DataHero from "./DataHero";
 import Link from "next/link";
 import { fontVars } from "./fonts";
 import { top10Articles, topNumber, CN_CATEGORIES } from "./categories";
@@ -10,6 +11,10 @@ import NewsletterForm from "./NewsletterForm";
 import HouseAd from "./HouseAd";
 import type { SiteHomeProps, Article } from "@/lib/types";
 import { heroSrc, thumb } from "@/lib/img";
+
+/** Countly feature image: a real photo when the article has one, otherwise data-art built
+ *  from the title (via the /card/ URL path, which img.ts renders as art on countly). */
+const src = (a: Article) => a.image_url || `/card/${a.slug}`;
 
 /* ────────────────────────────────────────────────────────────
    Inline icons (no client JS, no extra packages)
@@ -204,9 +209,9 @@ function Byline({ article }: { article: Article }) {
 function Img({ href, article, className = "", badge, priority = false }: { href: string; article: Article; className?: string; badge?: string; priority?: boolean }) {
   return (
     <Link href={href} className={`cx-img ${className}`} aria-label={article.title} tabIndex={-1}>
-      {article.image_url ? (priority
-        ? <img src={heroSrc(article.image_url, article.title)} alt={article.title} fetchPriority="high" />
-        : <img src={thumb(article.image_url, article.title)} alt={article.title} loading="lazy" decoding="async" />) : null}
+      {priority
+        ? <img src={heroSrc(src(article), article.title)} alt={article.title} fetchPriority="high" />
+        : <img src={thumb(src(article), article.title)} alt={article.title} loading="lazy" decoding="async" />}
       {badge ? <span className="cx-badge">{badge}</span> : null}
     </Link>
   );
@@ -247,7 +252,7 @@ export function StatCard({ siteId, article, index }: { siteId: string; article: 
   return (
     <article className="cn-card">
       <Link href={href} className="cn-card-media" aria-label={article.title}>
-        {article.image_url ? <img src={thumb(article.image_url, article.title)} alt={article.title} loading="lazy" decoding="async" /> : <span aria-hidden="true" />}
+        <img src={thumb(src(article), article.title)} alt={article.title} loading="lazy" decoding="async" />
         <span className="cn-card-index" aria-hidden="true">
           {String(index).padStart(2, "0")}
         </span>
@@ -287,15 +292,13 @@ export default function Home({ site, articles }: SiteHomeProps) {
   })).filter((d) => d.items.length >= 2);
   const river = take(null, 14);
 
-  const reportsCount = articles.length;
-  const countryCount = articles.filter((a) => /richest people in /i.test(a.title)).length;
-  const topListCount = top10Articles(articles).length;
-  const updated = articles[0] ? fmtDate(articles[0].created_at) : fmtDate(new Date().toISOString());
 
   return (
     <div className={`cn-root ${fontVars}`}>
       <LiveTicker />
       <CnHeader site={site} />
+
+      <DataHero s={s} />
 
       {articles.length === 0 ? (
         <section className="cx-sec">
@@ -374,30 +377,6 @@ export default function Home({ site, articles }: SiteHomeProps) {
         </div>
       ) : null}
 
-      {/* ── BY THE NUMBERS ── */}
-      {articles.length ? (
-        <section className="cx-numbers" aria-label="Countly by the numbers">
-          <div className="cx-wrap">
-            <div className="cx-num">
-              <CountUp value={reportsCount} />
-              <span>Data reports</span>
-            </div>
-            <div className="cx-num">
-              <CountUp value={topListCount} />
-              <span>Ranked lists</span>
-            </div>
-            <div className="cx-num">
-              <CountUp value={countryCount} />
-              <span>Country rich lists</span>
-            </div>
-            <div className="cx-num">
-              <b>Daily</b>
-              <span>Updated {updated}</span>
-            </div>
-          </div>
-        </section>
-      ) : null}
-
       {/* ── WEALTH BAND ── */}
       {wealth.length >= 3 ? (
         <section className="cx-wealth" aria-label="Wealth">
@@ -428,7 +407,7 @@ export default function Home({ site, articles }: SiteHomeProps) {
                       <small>{fmtDate(a.created_at)}</small>
                     </span>
                     <span className="cx-img cx-thumb">
-                      {a.image_url ? <img src={thumb(a.image_url, a.title)} alt={a.title} loading="lazy" decoding="async" /> : null}
+                      <img src={thumb(src(a), a.title)} alt={a.title} loading="lazy" decoding="async" />
                     </span>
                   </Link>
                 ))}

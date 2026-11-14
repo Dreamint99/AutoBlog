@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 import { ogFonts } from "@/lib/ogFonts";
 import { getArticle, getSite } from "@/lib/data";
+import { artUri, figureOf, accentOf } from "@/sites/countly/art";
 
 // 1200×630 title card for an article, used as its feature/share image when there is no
 // on-topic photo (generator/modules/site_images.py points image_url here). Built on request and
@@ -32,6 +33,28 @@ export async function GET(req: Request, { params }: { params: Promise<{ site: st
   const k = new URL(req.url).searchParams.get("w") === "600" ? 0.5 : 1;
   const z = (n: number) => Math.round(n * k);
   const fonts = await ogFonts();
+  if (site?.id === "countly") {
+    // countly: data-art chart (no text inside the SVG) + the headline figure and a calm title.
+    const fig = figureOf(title);
+    const c = accentOf(title);
+    const short = title.length > 78 ? title.slice(0, 76).replace(/\s+\S*$/, "") + "…" : title;
+    return new ImageResponse(
+      (
+        <div style={{ width: "100%", height: "100%", display: "flex", position: "relative", fontFamily: "Inter", color: "#fff", background: "#0b1220" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={artUri(title, { label: false, w: z(1200), h: z(630) })} width={z(1200)} height={z(630)} alt="" style={{ position: "absolute", top: 0, left: 0, opacity: 0.55 }} />
+          <div style={{ display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: `${z(64)}px ${z(200)}px`, width: "100%", height: "100%",
+            backgroundImage: "linear-gradient(180deg, rgba(11,18,32,0) 30%, rgba(11,18,32,.92) 100%)" }}>
+            {fig ? <div style={{ display: "flex", fontSize: z(96), fontWeight: 800, letterSpacing: -z(3), lineHeight: 1 }}>{fig.text}</div> : null}
+            <div style={{ display: "flex", width: z(64), height: z(7), borderRadius: z(4), background: c, margin: `${z(18)}px 0 ${z(18)}px` }} />
+            <div style={{ display: "flex", fontSize: z(38), fontWeight: 600, lineHeight: 1.2, opacity: 0.92 }}>{short}</div>
+            <div style={{ display: "flex", marginTop: z(18), fontSize: z(22), fontWeight: 700, color: c }}>{site.domain}</div>
+          </div>
+        </div>
+      ),
+      { width: z(1200), height: z(630), fonts, headers: { "cache-control": "public, max-age=86400, s-maxage=86400", "x-og-fonts": String(fonts.length) } },
+    );
+  }
   return new ImageResponse(
     (
       <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "Inter",

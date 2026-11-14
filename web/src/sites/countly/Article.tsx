@@ -1,6 +1,7 @@
 import CiteBox from "@/lib/CiteBox";
 import "./theme.css";
 import "./bold.css";
+import "./data.css";
 import Link from "next/link";
 import { fontVars } from "./fonts";
 import ShareButtons from "./ShareButtons";
@@ -132,11 +133,7 @@ function RelatedCard({ siteId, article }: { siteId: string; article: Article }) 
   return (
     <article className="cn-card">
       <Link href={href} className="cn-card-media" aria-label={article.title}>
-        {article.image_url ? (
-          <img src={thumb(article.image_url, article.title)} alt={article.title} loading="lazy" decoding="async" />
-        ) : (
-          <span aria-hidden="true" />
-        )}
+        <img src={thumb(article.image_url || `/card/${article.slug}`, article.title)} alt={article.title} loading="lazy" decoding="async" />
       </Link>
       <div className="cn-card-body">
         {article.tags.length > 0 ? (
@@ -225,11 +222,9 @@ export default function Article({ site, article, related, bodyHtml, toc, popular
 
             <ShareButtons url={`https://${site.domain}/${article.slug}`} title={article.title} />
 
-            {article.image_url ? (
-              <div className="cn-hero-img">
-                <img src={heroSrc(article.image_url, article.title)} alt={article.title} fetchPriority="high" />
-              </div>
-            ) : null}
+            <div className="cn-hero-img">
+              <img src={heroSrc(article.image_url || `/card/${article.slug}`, article.title)} alt={article.title} fetchPriority="high" />
+            </div>
           </div>
         </div>
 
