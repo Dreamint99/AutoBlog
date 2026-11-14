@@ -43,6 +43,13 @@ def _all():
         if len(rows) < 100 or page >= 10:
             break
         page += 1
+    seen = {x.get("id") for x in out}
+    for i in range(1, 80):  # some plugin versions list only part: probe ids directly
+        if i in seen:
+            continue
+        g = requests.get(f"{API}/{i}", headers=_h(), timeout=30)
+        if g.ok and isinstance(g.json(), dict) and g.json().get("id") == i:
+            out.append(g.json())
     return out
 
 
