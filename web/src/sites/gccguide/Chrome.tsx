@@ -35,14 +35,23 @@ export function Logo({ site }: { site: Site }) {
 
 export function TopBar({ site }: { site: Site }) {
   const b = `/s/${site.id}`;
+  // The hub's five data sections live in the top bar; the topic taxonomy stays
+  // in the footer and the search page.
+  const hubs: [string, string][] = [
+    ["Rates", `${b}/rates`],
+    ["Gold", `${b}/gold-rate`],
+    ["Fuel", `${b}/fuel-price`],
+    ["Prayer", `${b}/prayer-times`],
+    ["Embassies", `${b}/embassy`],
+  ];
   return (
     <header className="gc-top">
       <div className="gc-wrap gc-top-in">
         <Logo site={site} />
         <nav className="gc-nav" aria-label="Primary">
-          {TOPICS.slice(0, 5).map((t) => (
-            <Link key={t.key} href={`${b}/search?q=${encodeURIComponent(t.label.split(" ")[0])}`}>
-              {t.label}
+          {hubs.map(([label, href]) => (
+            <Link key={label} href={href}>
+              {label}
             </Link>
           ))}
         </nav>
@@ -122,6 +131,17 @@ export function Footer({ site }: { site: Site }) {
           </div>
           <div>
             <h4>GCCGuide</h4>
+            <Link href={`${b}/rates`}>Exchange rates</Link>
+            <Link href={`${b}/gold-rate`}>Gold rates</Link>
+            <Link href={`${b}/fuel-price`}>Fuel prices</Link>
+            <Link href={`${b}/prayer-times`}>Prayer times</Link>
+            <Link href={`${b}/embassy`}>Embassies</Link>
+            <Link href={`${b}/visa-fees`}>Visa fees</Link>
+            <Link href={`${b}/public-holidays`}>Public holidays</Link>
+            <Link href={`${b}/calculators`}>Calculators</Link>
+          </div>
+          <div>
+            <h4>About</h4>
             <Link href={`${b}/about`}>About</Link>
             <Link href={`${b}/contact`}>Contact</Link>
             <Link href={`${b}/privacy`}>Privacy Policy</Link>

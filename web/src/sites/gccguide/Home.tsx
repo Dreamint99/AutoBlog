@@ -3,6 +3,7 @@ import type { SiteHomeProps, Site, Article } from "@/lib/types";
 import { GcShell } from "./Chrome";
 import { COUNTRIES, TOPICS, countryOf, topicOf, flag } from "./data";
 import { Clocks, Converter, CityPulse } from "./Widgets";
+import TodayStrip from "./hub/TodayStrip";
 import { heroSrc, thumb } from "@/lib/img";
 
 const QUICK: [string, string][] = [
@@ -102,6 +103,7 @@ export default function Home({ site, articles }: SiteHomeProps) {
       </section>
 
       <div className="gc-wrap">
+        <TodayStrip site={site} />
         <section className="gc-sec" id="countries">
           <div className="gc-head">
             <h2>Pick your country</h2>
