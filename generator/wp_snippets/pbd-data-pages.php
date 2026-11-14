@@ -13,7 +13,7 @@ define('PBD_LOADED', 1);
 define('PBD_MODE', 'live');               // 'test' | 'live'
 define('PBD_KEY', '__PBD_TEST_KEY__');
 define('PBD_API', 'https://probashi-data.iamkashimuddin.workers.dev/v1/');
-define('PBD_VER', '15');
+define('PBD_VER', '16');
 
 function pbd_enabled() {
     if (PBD_MODE === 'live') { return true; }
@@ -1139,7 +1139,16 @@ add_action('wp_footer', function () {
     if (!is_search()) { return; }
     $q = strtolower(trim(get_search_query()));
     if (mb_strlen($q) < 2) { return; }
-    $has = function ($words) use ($q) { foreach ((array) $words as $w) { if ($w !== '' && mb_strpos($q, $w) !== false) { return true; } } return false; };
+    // whole-word match for Latin words ("rate" must not hit "emirates"), substring for Bangla
+    $hit = function ($w) use ($q) {
+        if ($w === '') { return false; }
+        if (preg_match('/^[a-z0-9 \-]+$/', $w)) { return (bool) preg_match('/(?<![a-z])' . preg_quote(trim($w), '/') . '(?![a-z])/', $q); }
+        return mb_strpos($q, $w) !== false;
+    };
+    $has = function ($words) use ($hit) { foreach ((array) $words as $w) { if ($hit($w)) { return true; } } return false; };
+    $iso_en = array();   // country English names (from the passport data) so "italy ramadan" finds Rome/Milan/Venice
+    $vsd = pbd_data('visa');
+    if ($vsd) { foreach ($vsd['countries'] as $c) { $iso_en[strtolower($c['iso2'])] = strtolower($c['name_en']); } }
     $kind = array(
         'ramadan' => array('ramadan', 'ramzan', 'romjan', 'iftar', 'ifter', 'sehri', 'sehri', 'seheri', 'sahri', 'roja', 'রমজান', 'ইফতার', 'সেহরি', 'রোজা'),
         'visa-check' => array('visa check', 'visa status', 'visa cek', 'ভিসা চেক', 'ভিসা যাচাই'),
@@ -1162,8 +1171,10 @@ add_action('wp_footer', function () {
             $bn = isset($x['name']) ? $x['name'] : '';
             $alias = array($en, str_replace('-', ' ', $x['slug']), $bn);
             if (isset($x['country'])) { $alias[] = $x['country']; }
+            if (isset($x['iso2'], $iso_en[strtolower($x['iso2'])])) { $alias[] = $iso_en[strtolower($x['iso2'])]; }
+            if (isset($x['flag'], $iso_en[$x['flag']])) { $alias[] = $iso_en[$x['flag']]; }
             $match = false;
-            foreach ($alias as $a) { if ($a !== '' && mb_strlen($a) > 2 && mb_strpos($q, mb_strtolower($a)) !== false) { $match = true; break; } }
+            foreach ($alias as $a) { if ($a !== '' && mb_strlen($a) > 2 && $hit(mb_strtolower($a))) { $match = true; break; } }
             if (!$match || ($want && empty($want[$type]))) { continue; }
             $lab = array('ramadan' => 'রমজান ক্যালেন্ডার', 'visa-check' => 'ভিসা চেক', 'visa' => 'ভিসা লাগে কি না', 'remittance' => 'টাকার রেট', 'gamca' => 'গামকা মেডিকেল', 'baggage' => 'লাগেজ');
             $add(home_url('/' . $type . '/' . $x['slug'] . '/'), $bn . ' — ' . $lab[$type], ucwords($en));
