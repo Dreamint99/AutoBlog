@@ -2,6 +2,7 @@ import { monitor } from "./monitor.mjs";
 import { stories } from "./stories.mjs";
 import { distribute } from "./social.mjs";
 import { mentions } from "./mentions.mjs";
+import { refreshVisa } from "./visa.mjs";
 import baseline from "./search-baseline.json";
 import { METRICS, buildPages, digest } from "./data.mjs";
 const KEY = "7cb730425493bd6250188aee25110d83";
@@ -45,7 +46,8 @@ async function notifySite(env, site) {
 async function report(env) {
   const budget = await env.DB.prepare("SELECT reserved_usd FROM seo_budget WHERE month=?").bind(new Date().toISOString().slice(0, 7)).first();
   const counts = (await env.DB.prepare("SELECT site_id,kind,COUNT(*) AS pages,SUM(created_at>=?) AS created_last7days,MAX(lastmod) AS last_change FROM seo_pages GROUP BY site_id,kind").bind(new Date(Date.now() - 7 * 86400000).toISOString()).all()).results;
-  const value = { at: new Date().toISOString(), counts, refresh: await env.SEO_LOG.get("engine:refresh", "json"), indexnow: { countly: await env.SEO_LOG.get("engine:indexnow:countly:last", "json"), ninetymins: await env.SEO_LOG.get("engine:indexnow:ninetymins:last", "json") }, baseline, liveSearch: await env.SEO_LOG.get("engine:search", "json"), social: await env.SEO_LOG.get("engine:social", "json"), mentions: await env.SEO_LOG.get("engine:mentions", "json"), sportsStory: await env.SEO_LOG.get("engine:stories:sports", "json"), countlyStory: await env.SEO_LOG.get("engine:stories:countly", "json"), paidApiReservedUsd: Number(budget?.reserved_usd || 0), costMethod: "Conservative maximum reservation before each X call; not an invoice total", paidApiUsd: Number(budget?.reserved_usd || 0), monthlyPaidApiCapUsd: Number(env.MONTHLY_PAID_API_CAP_USD || 0), indexedShare: null, indexedShareReason: "Requires actual URL Inspection coverage, not inferred from search performance" };
+  const visaCounts = (await env.DB.prepare("SELECT COUNT(DISTINCT passport) as passports, COUNT(*) as pairs FROM visa_matrix").first()) || {};
+  const value = { at: new Date().toISOString(), counts, visa: { ...visaCounts, refresh: await env.SEO_LOG.get("engine:visa", "json") }, refresh: await env.SEO_LOG.get("engine:refresh", "json"), indexnow: { countly: await env.SEO_LOG.get("engine:indexnow:countly:last", "json"), ninetymins: await env.SEO_LOG.get("engine:indexnow:ninetymins:last", "json") }, baseline, liveSearch: await env.SEO_LOG.get("engine:search", "json"), social: await env.SEO_LOG.get("engine:social", "json"), mentions: await env.SEO_LOG.get("engine:mentions", "json"), sportsStory: await env.SEO_LOG.get("engine:stories:sports", "json"), countlyStory: await env.SEO_LOG.get("engine:stories:countly", "json"), paidApiReservedUsd: Number(budget?.reserved_usd || 0), costMethod: "Conservative maximum reservation before each X call; not an invoice total", paidApiUsd: Number(budget?.reserved_usd || 0), monthlyPaidApiCapUsd: Number(env.MONTHLY_PAID_API_CAP_USD || 0), indexedShare: null, indexedShareReason: "Requires actual URL Inspection coverage, not inferred from search performance" };
   await env.SEO_LOG.put("engine:report", JSON.stringify(value));
   if (new Date().getUTCDay() === 1) await env.SEO_LOG.put(`engine:weekly:${new Date().toISOString().slice(0, 10)}`, JSON.stringify(value), { expirationTtl: 365 * 86400 });
   return value;
@@ -63,6 +65,7 @@ export default {
     if (path === "/health") return Response.json({ ok: true });
     if (!await authorized(req, env)) return new Response("Unauthorized", { status: 401, headers: { "cache-control": "no-store" } });
     if (path === "/run" && req.method === "POST") { try { const result = await refresh(env); await stories(env); await report(env); return Response.json(result); } catch (e) { await error(env, "refresh", e); return Response.json({ error: String(e) }, { status: 502 }); } }
+    if (path === "/visa" && req.method === "POST") { try { const result = await refreshVisa(env); await report(env); return Response.json(result); } catch (e) { await error(env, "visa", e); return Response.json({ error: String(e) }, { status: 502 }); } }
     if (path === "/operations" && req.method === "POST") { await stories(env); await monitor(env).catch(e => error(env, "monitor", e)); await mentions(env).catch(e => error(env, "mentions", e)); await distribute(env).catch(e => error(env, "social", e)); return Response.json(await report(env)); }
     if (path.startsWith("/press/")) { const key = path.slice(7).replaceAll("/", ":"); const body = await env.SEO_LOG.get(`engine:press:${key}`); return new Response(body || "Not found", { status: body ? 200 : 404, headers: { "content-type": "application/json", "cache-control": "no-store" } }); }
     if (path === "/report") {
@@ -72,7 +75,7 @@ export default {
     return new Response("Not found", { status: 404 });
   },
   async scheduled(event, env) {
-    if (event.cron === "41 4 * * 1") { await monitor(env).catch(e => error(env, "monitor", e)); await mentions(env).catch(e => error(env, "mentions", e)); }
+    if (event.cron === "41 4 * * 1") { await monitor(env).catch(e => error(env, "monitor", e)); await mentions(env).catch(e => error(env, "mentions", e)); await refreshVisa(env).catch(e => error(env, "visa", e)); }
     if (event.cron === "17 3 * * *") { await refresh(env).catch(e => error(env, "refresh", e)); await stories(env).catch(e => error(env, "stories", e)); }
     if (event.cron === "23 * * * *") {
       for (const site of ["countly", "ninetymins"]) await notifySite(env, site).catch(e => error(env, `indexnow:${site}`, e));
