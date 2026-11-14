@@ -144,13 +144,77 @@ export async function sync(env) {
   return { models: rows.length, flagship: flagship.size, day: today };
 }
 
+// ---------- AI status (every 5 min) ----------
+export const STATUS = [
+  ["chatgpt", "ChatGPT & OpenAI API", "https://status.openai.com"],
+  ["claude", "Claude (Anthropic)", "https://status.anthropic.com"],
+  ["cursor", "Cursor", "https://status.cursor.com"],
+  ["perplexity", "Perplexity", "https://status.perplexity.com"],
+  ["mistral", "Mistral AI", "https://status.mistral.ai"],
+  ["elevenlabs", "ElevenLabs", "https://status.elevenlabs.io"],
+  ["cohere", "Cohere", "https://status.cohere.com"],
+  ["github-copilot", "GitHub & Copilot", "https://www.githubstatus.com"],
+  ["runway", "Runway", "https://status.runwayml.com"],
+];
+const RANK = { none: 0, minor: 1, major: 2, critical: 3, maintenance: 1 };
+
+export async function syncStatus(env) {
+  const now = new Date();
+  const day = now.toISOString().slice(0, 10);
+  const stmts = [];
+  await Promise.all(
+    STATUS.map(async ([svc, name, page]) => {
+      try {
+        const r = await fetch(`${page}/api/v2/summary.json`, { headers: { "user-agent": "infkey-status/1.0 (+https://infkey.com/status)" }, cf: { cacheTtl: 0 } });
+        if (!r.ok) return;
+        const d = await r.json();
+        const ind = d.status?.indicator || "none";
+        const comps = (d.components || []).filter((c) => !c.group).map((c) => ({ n: c.name, s: c.status }));
+        const inc = (d.incidents || []).slice(0, 10).map((i) => ({ n: i.name, s: i.status, i: i.impact, at: i.created_at, u: i.shortlink || `${page}/incidents/${i.id}` }));
+        stmts.push(
+          env.DB.prepare("INSERT INTO infkey_status (service,name,page_url,indicator,description,components,incidents,checked_at) VALUES (?,?,?,?,?,?,?,?) ON CONFLICT(service) DO UPDATE SET name=excluded.name,page_url=excluded.page_url,indicator=excluded.indicator,description=excluded.description,components=excluded.components,incidents=excluded.incidents,checked_at=excluded.checked_at").bind(svc, name, page, ind, d.status?.description || "", JSON.stringify(comps), JSON.stringify(inc), now.toISOString()),
+          env.DB.prepare("INSERT INTO infkey_status_daily (service,day,checks,bad,worst) VALUES (?,?,1,?,?) ON CONFLICT(service,day) DO UPDATE SET checks=checks+1,bad=bad+excluded.bad,worst=CASE WHEN (CASE excluded.worst WHEN 'critical' THEN 3 WHEN 'major' THEN 2 WHEN 'minor' THEN 1 ELSE 0 END) > (CASE worst WHEN 'critical' THEN 3 WHEN 'major' THEN 2 WHEN 'minor' THEN 1 ELSE 0 END) THEN excluded.worst ELSE worst END").bind(svc, day, RANK[ind] >= 2 ? 1 : 0, ind),
+        );
+      } catch {}
+    }),
+  );
+  if (stmts.length) await env.DB.batch(stmts);
+  return { services: stmts.length / 2 };
+}
+
+// ---------- Hugging Face models for "Can I run it?" (daily) ----------
+export async function syncHf(env) {
+  const r = await fetch("https://huggingface.co/api/models?pipeline_tag=text-generation&sort=downloads&direction=-1&limit=1000&expand[]=safetensors&expand[]=downloads&expand[]=likes", { headers: { "user-agent": "infkey-sync/1.0 (+https://infkey.com)" } });
+  if (!r.ok) throw new Error(`hf ${r.status}`);
+  const list = await r.json();
+  const now = new Date().toISOString();
+  const rows = [];
+  const seen = new Set();
+  for (const m of list) {
+    const params = m.safetensors?.total;
+    if (!params || params < 1e8) continue;
+    const id = m.id.toLowerCase().replace(/[/_.:]+/g, "-").replace(/[^a-z0-9-]+/g, "-").replace(/-vs-/g, "-v-").replace(/-+/g, "-").replace(/^-|-$/g, "");
+    if (seen.has(id)) continue;
+    seen.add(id);
+    rows.push([id, m.id, params, m.downloads || 0, m.likes || 0, rows.length + 1, now]);
+  }
+  const stmts = [env.DB.prepare("DELETE FROM infkey_hf")];
+  for (const x of rows) stmts.push(env.DB.prepare("INSERT INTO infkey_hf (id,hf_id,params,downloads,likes,rank,updated_at) VALUES (?,?,?,?,?,?,?)").bind(...x));
+  for (let i = 0; i < stmts.length; i += 90) await env.DB.batch(stmts.slice(i, i + 90));
+  return { hf: rows.length };
+}
+
 export default {
-  async scheduled(_e, env, ctx) {
-    ctx.waitUntil(sync(env));
+  async scheduled(e, env, ctx) {
+    if (e.cron === "*/5 * * * *") return ctx.waitUntil(syncStatus(env));
+    ctx.waitUntil(Promise.allSettled([sync(env), syncHf(env)]));
   },
   async fetch(req, env) {
     const u = new URL(req.url);
     if (u.pathname === "/run" && env.RUN_KEY && u.searchParams.get("key") === env.RUN_KEY) {
+      const what = u.searchParams.get("what") || "models";
+      if (what === "status") return Response.json(await syncStatus(env));
+      if (what === "hf") return Response.json(await syncHf(env));
       return Response.json(await sync(env));
     }
     return new Response("infkey-sync", { status: 200 });

@@ -70,6 +70,8 @@ const route = async (request, env, ctx) => {
     if (request.method !== "GET") return worker.fetch(request, env, ctx);
     const url = new URL(request.url);
     if (url.pathname.startsWith("/api/")) return worker.fetch(request, env, ctx);
+    // Live status pages must stay fresh (data changes every 5 min).
+    if (url.pathname === "/status" || url.pathname.startsWith("/status/")) return worker.fetch(request, env, ctx);
     if (isRscRequest(request, url)) return worker.fetch(request, env, ctx);
 
     // Key on the deployed version so a deploy never serves HTML from the previous

@@ -42,3 +42,31 @@ CREATE TABLE IF NOT EXISTS infkey_price_history (
   output_per_m REAL,
   PRIMARY KEY (id, day)
 );
+CREATE TABLE IF NOT EXISTS infkey_hf (
+  id TEXT PRIMARY KEY,
+  hf_id TEXT NOT NULL,
+  params INTEGER NOT NULL,
+  downloads INTEGER DEFAULT 0,
+  likes INTEGER DEFAULT 0,
+  rank INTEGER,
+  updated_at TEXT
+);
+CREATE INDEX IF NOT EXISTS infkey_hf_rank ON infkey_hf(rank);
+CREATE TABLE IF NOT EXISTS infkey_status (
+  service TEXT PRIMARY KEY,
+  name TEXT,
+  page_url TEXT,
+  indicator TEXT,
+  description TEXT,
+  components TEXT,
+  incidents TEXT,
+  checked_at TEXT
+);
+CREATE TABLE IF NOT EXISTS infkey_status_daily (
+  service TEXT NOT NULL,
+  day TEXT NOT NULL,
+  checks INTEGER DEFAULT 0,
+  bad INTEGER DEFAULT 0,
+  worst TEXT,
+  PRIMARY KEY (service, day)
+);

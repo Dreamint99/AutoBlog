@@ -10,13 +10,13 @@ import { aiFont } from "./fonts";
 export function navFor(site: Site): ReadonlyArray<readonly [string, string]> {
   const b = `/s/${site.id}`;
   return [
-    ["Prompts", `${b}#prompt-library`],
-    ["Best AI for…", `${b}#best-ai-for`],
-    ["Use AI free", `${b}#use-free`],
-    ["AI vs AI", `${b}#compare`],
-    ["Plans & deals", `${b}#deals`],
+    ["AI prices", `${b}/models`],
+    ["Compare", `${b}/compare`],
+    ["Can I run it?", `${b}/run`],
+    ["Is it down?", `${b}/status`],
+    ["New models", `${b}/new`],
     ["API cost", `${b}/calculators`],
-    ["Models", `${b}/models`],
+    ["Best AI for…", `${b}#best-ai-for`],
   ];
 }
 
