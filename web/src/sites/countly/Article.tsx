@@ -133,7 +133,7 @@ function RelatedCard({ siteId, article }: { siteId: string; article: Article }) 
   return (
     <article className="cn-card">
       <Link href={href} className="cn-card-media" aria-label={article.title}>
-        <img src={thumb(article.image_url || `/card/${article.slug}`, article.title)} alt={article.title} loading="lazy" decoding="async" />
+        <img src={thumb(`/card/${article.slug}`, article.title)} alt={article.title} loading="lazy" decoding="async" />
       </Link>
       <div className="cn-card-body">
         {article.tags.length > 0 ? (
@@ -223,7 +223,7 @@ export default function Article({ site, article, related, bodyHtml, toc, popular
             <ShareButtons url={`https://${site.domain}/${article.slug}`} title={article.title} />
 
             <div className="cn-hero-img">
-              <img src={heroSrc(article.image_url || `/card/${article.slug}`, article.title)} alt={article.title} fetchPriority="high" />
+              <img src={heroSrc(`/card/${article.slug}`, article.title)} alt={article.title} fetchPriority="high" />
             </div>
           </div>
         </div>

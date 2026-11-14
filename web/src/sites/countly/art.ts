@@ -40,14 +40,14 @@ const SHORT: Record<string, string> = { trillion: "T", billion: "B", million: "M
 
 /** The headline figure of a title, e.g. "$65.2B", "410M", "35%". Bare years are skipped. */
 export function figureOf(title: string): Figure | null {
-  const re = /([$€£₹])?\s?(\d{1,3}(?:,\d{3})+|\d+(?:\.\d+)?)\s?(trillion|billion|million|thousand|[TBMK](?![a-z]))?\s?(%)?/gi;
+  const re = /([$€£₹])?\s?(\d{1,3}(?:,\d{3})+|\d+(?:\.\d+)?)\s?(?:(trillion|billion|million|thousand|[TBMK])(?![a-z]))?\s?(%)?/gi;
   let best: (Figure & { score: number }) | null = null;
   for (const m of title.matchAll(re)) {
     const [, cur, num, sfx, pct] = m;
     const n = Number(num.replace(/,/g, ""));
     if (!isFinite(n)) continue;
     if (!cur && !sfx && !pct && /^(19|20)\d\d$/.test(num)) continue; // a year
-    if (/top\s*$/i.test(title.slice(0, m.index))) continue; // "Top 10" is the list size, not the figure
+    if (!cur && !sfx && /top\s*$/i.test(title.slice(0, m.index))) continue; // "Top 10" is the list size, not the figure
     const s = (sfx || "").toLowerCase();
     const value = n * (MULT[s] || 1);
     const score = (cur ? 3 : 0) + (sfx ? 3 : 0) + (pct ? 4 : 0) + (num.includes(",") ? 2 : 0) + (n >= 10 ? 1 : 0);

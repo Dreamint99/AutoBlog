@@ -12,9 +12,10 @@ import HouseAd from "./HouseAd";
 import type { SiteHomeProps, Article } from "@/lib/types";
 import { heroSrc, thumb } from "@/lib/img";
 
-/** Countly feature image: a real photo when the article has one, otherwise data-art built
- *  from the title (via the /card/ URL path, which img.ts renders as art on countly). */
-const src = (a: Article) => a.image_url || `/card/${a.slug}`;
+/** Countly feature image: always the data-art built from the title (the /card/ path, which
+ *  img.ts renders as art on countly). The auto-picked stock photos were often off-topic. The
+ *  article's og:image (image_url) is unchanged. */
+const src = (a: Article) => `/card/${a.slug}`;
 
 /* ────────────────────────────────────────────────────────────
    Inline icons (no client JS, no extra packages)
