@@ -1150,3 +1150,69 @@ html[data-nm-theme="dark"] .site-ninetymins .nm-engine h2 { background: var(--mp
 
 /* ESPN minutes already carry the apostrophe */
 .site-ninetymins .lv-clock.st-in::after { content: none; }
+
+/* ══ Match centre tabs — app style ═════════════════════════════════════ */
+.site-ninetymins .nm-mc-body { max-width: 960px; }
+.site-ninetymins .nm-mc-tabs { background: transparent; box-shadow: none; padding: 0; gap: 8px; overflow-x: auto; scrollbar-width: none; margin-bottom: 16px; }
+.site-ninetymins .nm-mc-tabs button { flex: none; padding: 12px 18px; border-radius: 999px; border: 2px solid var(--mp-line); background: var(--mp-card); color: var(--mp-muted); font: 800 14px/1 var(--nm-sans); letter-spacing: 0; text-transform: none; }
+.site-ninetymins .nm-mc-tabs button.on { background: var(--mp-ink); border-color: var(--mp-ink); color: var(--mp-paper); }
+html[data-nm-theme="dark"] .site-ninetymins .nm-mc-tabs button.on { background: var(--mp-paper); border-color: var(--mp-paper); color: var(--mp-ink); }
+.site-ninetymins .nm-mc-timeline, .site-ninetymins .nm-mc-comm, .site-ninetymins .nm-mc-stats, .site-ninetymins .nm-mc-xi { background: var(--mp-card); color: var(--mp-text); border: 2px solid var(--mp-rule); border-radius: 22px; }
+.site-ninetymins .nm-mc-timeline, .site-ninetymins .nm-mc-comm { padding: 6px 18px; }
+.site-ninetymins .nm-mc-timeline li, .site-ninetymins .nm-mc-comm li, .site-ninetymins .nm-mc-xi li { border-bottom-color: var(--mp-line); }
+.site-ninetymins .nm-mc-timeline .min, .site-ninetymins .nm-mc-comm .min { font: 400 20px/1.1 var(--nm-display); color: var(--mp-text); }
+.site-ninetymins .nm-mc-timeline li.k-goal, .site-ninetymins .nm-mc-timeline li.k-pen, .site-ninetymins .nm-mc-timeline li.k-own { background: none; box-shadow: inset 5px 0 0 var(--mp-volt); padding-left: 10px; margin-left: -10px; font-weight: 800; }
+.site-ninetymins .nm-mc-timeline li.k-red { background: none; box-shadow: inset 5px 0 0 var(--mp-live); padding-left: 10px; margin-left: -10px; }
+.site-ninetymins .nm-mc-comm p { color: var(--mp-text); }
+.site-ninetymins .nm-mc-stats { padding: 18px 20px; }
+.site-ninetymins .nm-mc-stats-h { font: 400 22px/1 var(--nm-display); letter-spacing: 0.02em; color: var(--mp-text); }
+.site-ninetymins .nm-mc-stat .row { color: var(--mp-muted); font: 600 14px/1 var(--nm-sans); }
+.site-ninetymins .nm-mc-stat .row b { font: 400 24px/1 var(--nm-display); color: var(--mp-text); }
+.site-ninetymins .nm-mc-stat .bar { height: 9px; gap: 6px; background: var(--mp-cardhi); border-radius: 999px; }
+.site-ninetymins .nm-mc-stat .bar i { border-radius: 999px; }
+.site-ninetymins .nm-mc-xi { padding: 16px 18px; }
+.site-ninetymins .nm-mc-xi h4 { font: 400 22px/1 var(--nm-display); }
+.site-ninetymins .nm-mc-xi h4 small { color: var(--mp-win); font-family: var(--nm-sans); font-weight: 800; font-size: 13px; }
+.site-ninetymins .nm-mc-xi h5 { font: 800 11.5px/1 var(--nm-sans); color: var(--mp-faint); }
+.site-ninetymins .nm-mc-xi .n { font: 400 16px/1 var(--nm-display); color: var(--mp-muted); }
+.site-ninetymins .nm-mc-xi .pos { color: var(--mp-faint); }
+.site-ninetymins .nm-mc-empty { border: 2px solid var(--mp-rule); border-radius: 22px; }
+@media (max-width: 640px) { .site-ninetymins .nm-mc-lineups { grid-template-columns: 1fr; } }
+
+/* ══ SAFF centre — app style ═══════════════════════════════════════════ */
+.site-ninetymins .nm-sf-card { background: var(--mp-card); color: var(--mp-text); border: 2px solid var(--mp-rule); border-radius: 22px; box-shadow: none; padding: 18px; }
+.site-ninetymins .nm-sf-livebox { border-color: var(--mp-live); box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.12); }
+.site-ninetymins .nm-sf-card h2, .site-ninetymins .nm-sf-h { font: 400 28px/1 var(--nm-display); }
+.site-ninetymins .nm-sf-head p { color: var(--mp-muted); }
+.site-ninetymins .nm-sf-chips button { border: 2px solid var(--mp-line); background: var(--mp-card); color: var(--mp-text); font-weight: 800; border-radius: 999px; }
+.site-ninetymins .nm-sf-chips button.on { background: var(--mp-win); border-color: var(--mp-win); color: #fff; }
+.site-ninetymins .nm-sf-tabs { background: transparent; padding: 0; gap: 8px; }
+.site-ninetymins .nm-sf-tabs button { border: 2px solid var(--mp-line); background: var(--mp-card); color: var(--mp-muted); border-radius: 999px; font-weight: 800; }
+.site-ninetymins .nm-sf-tabs button.on { background: var(--mp-ink); border-color: var(--mp-ink); color: var(--mp-paper); box-shadow: none; }
+html[data-nm-theme="dark"] .site-ninetymins .nm-sf-tabs button.on { background: var(--mp-paper); border-color: var(--mp-paper); color: var(--mp-ink); }
+.site-ninetymins .nm-sf-days h4, .site-ninetymins .nm-sf-sub { color: var(--mp-faint); }
+.site-ninetymins .nm-sf-m { border-bottom-color: var(--mp-line); }
+.site-ninetymins .nm-sf-meta { color: var(--mp-muted); }
+.site-ninetymins .nm-sf-meta b, .site-ninetymins .nm-sf-live { color: var(--mp-live); }
+.site-ninetymins .nm-sf-line, .site-ninetymins .nm-sf-line:disabled { color: var(--mp-text); }
+.site-ninetymins .nm-sf-score { font: 400 24px/1 var(--nm-display); background: var(--mp-ink); color: var(--mp-paper); border-radius: 10px; }
+html[data-nm-theme="dark"] .site-ninetymins .nm-sf-score { background: var(--mp-paper); color: var(--mp-ink); }
+.site-ninetymins .nm-sf-m.live .nm-sf-score { background: var(--mp-live); color: #fff; }
+.site-ninetymins .nm-sf-goals a { color: var(--mp-text); text-decoration: underline; }
+.site-ninetymins .nm-sf-table { color: var(--mp-text); }
+.site-ninetymins .nm-sf-table caption { font: 400 22px/1 var(--nm-display); }
+.site-ninetymins .nm-sf-table th { color: var(--mp-muted); }
+.site-ninetymins .nm-sf-table td { border-top: 1px solid var(--mp-line); }
+
+/* F1 hub list: race cards */
+.site-ninetymins .nm-engine > ul:has(a[href^="/race/"]) { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+.site-ninetymins .nm-engine > ul:has(a[href^="/race/"]) li { background: var(--mp-card); border: 2px solid var(--mp-rule); border-radius: 18px; padding: 14px 16px; color: var(--mp-muted); font: 600 13px/1.4 var(--nm-sans); }
+.site-ninetymins .nm-engine > ul:has(a[href^="/race/"]) li a { display: block; border: 0; padding: 0; background: none; border-radius: 0; font: 400 20px/1.1 var(--nm-display); text-transform: uppercase; color: var(--mp-text); margin-bottom: 4px; }
+
+/* SAFF hero = the app's "Today" poster (green / ink diagonal + volt sticker) */
+.site-ninetymins .nm-hub-saff { position: relative; overflow: hidden; border-bottom: 2px solid var(--mp-rule); background: linear-gradient(115deg, #0a7a35 0 56%, #0d0d0d 56% 100%) !important; }
+.site-ninetymins .nm-hub-saff::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1.5px) 0 0 / 14px 14px; mask-image: linear-gradient(90deg, #000, transparent 45%); }
+.site-ninetymins .nm-hub-saff .nm-wrap { position: relative; }
+.site-ninetymins .nm-hub-saff .nm-hub-sport { display: inline-flex; align-items: center; gap: 6px; background: var(--mp-volt); color: var(--mp-ink); border: 2px solid var(--mp-ink); padding: 6px 10px; font: 800 12px/1 var(--nm-sans); letter-spacing: 0.04em; opacity: 1; transform: rotate(-2deg); }
+.site-ninetymins .nm-hub-saff .nm-hub-sport .nm-dot { background: var(--mp-live); box-shadow: none; }
+.site-ninetymins .nm-hub-saff h1 { font: 400 clamp(44px, 7vw, 76px)/0.95 var(--nm-display); }
