@@ -50,11 +50,20 @@ def _find(name=NAME):
     return next((s for s in _all() if s.get("name") == name), None)
 
 
+def _state(sid):
+    g = requests.get(f"{API}/{sid}", headers=_h(), params={"_": time.time()}, timeout=60)
+    return bool(g.ok and g.json().get("active"))
+
+
 def _toggle(sid, on):
     r = requests.post(f"{API}/{sid}/{'activate' if on else 'deactivate'}", headers=_h(), timeout=60)
-    g = requests.get(f"{API}/{sid}", headers=_h(), timeout=60)
-    ok = r.ok and g.ok and bool(g.json().get("active")) == on
-    print("activate" if on else "deactivate", sid, r.status_code, "now", "active" if g.ok and g.json().get("active") else "off", "ok" if ok else "MISMATCH")
+    now = _state(sid)
+    if now != on:  # some plugin versions ignore the route: fall back to a plain update
+        u = requests.post(f"{API}/{sid}", headers=_h(), json={"active": on}, timeout=60)
+        print("  route", r.status_code, "→ fallback update", u.status_code)
+        now = _state(sid)
+    ok = now == on
+    print("activate" if on else "deactivate", sid, r.status_code, "now", "active" if now else "off", "ok" if ok else "MISMATCH")
     return ok
 
 
