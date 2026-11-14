@@ -4,7 +4,8 @@ Run only from GitHub Actions (probashi-snippets.yml, input data_cmd); never prin
 
     python wp_probashi_data.py perm-test            # create inactive test snippet, activate, deactivate, delete
     python wp_probashi_data.py push <file> [on|off] # create/replace snippet "PBD data pages" from file; on = active
-    python wp_probashi_data.py on | off             # activate / deactivate it (rollback = off)
+    python wp_probashi_data.py on | off [name]      # activate / deactivate it (rollback = off)
+    python wp_probashi_data.py push <file> on PBA app bar   # any other snippet: name after the state
     python wp_probashi_data.py status               # list snippets (id, active, name)
     python wp_probashi_data.py health               # homepage, 10 posts, sitemap, wp-login → 200
 
@@ -53,7 +54,8 @@ def _all():
     return out
 
 
-def _find(name=NAME):
+def _find(name=None):
+    name = name or NAME  # read at call time (push/on/off may change NAME)
     return next((s for s in _all() if s.get("name") == name), None)
 
 
@@ -117,8 +119,11 @@ def main():
         print("PERM", "OK" if (a and d and x.ok) else "FAIL")
         health()
         sys.exit(0 if (a and d and x.ok) else 1)
+    global NAME
     if cmd == "push":
         path, state = sys.argv[2], (sys.argv[3] if len(sys.argv) > 3 else "off")
+        if len(sys.argv) > 4:  # optional snippet name (default "PBD data pages")
+            NAME = " ".join(sys.argv[4:])
         code = open(path, encoding="utf-8").read()
         code = code[5:].lstrip() if code.startswith("<?php") else code
         key = os.environ.get("PBD_TEST_KEY", "")
@@ -145,6 +150,8 @@ def main():
             sys.exit(1)
         return
     if cmd in ("on", "off"):
+        if len(sys.argv) > 2:
+            NAME = " ".join(sys.argv[2:])
         ex = _find()
         if not ex:
             sys.exit("snippet not found")
