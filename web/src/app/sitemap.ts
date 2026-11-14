@@ -27,7 +27,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...(["countly", "walvi", "infkey", "ninetymins", "gccguide"].includes(site.id)
       ? [{ url: `${base}/archive`, changeFrequency: "daily" as const, priority: 0.6 }]
       : []),
-    ...articles.map((a) => ({
+    // InfKey articles are noindex (data pages only), so keep them out of its sitemap.
+    ...(site.id === "infkey" ? [] : articles).map((a) => ({
       url: `${base}/${a.slug}`,
       lastModified: a.created_at,
       changeFrequency: "weekly" as const,

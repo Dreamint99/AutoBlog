@@ -69,6 +69,9 @@ export async function generateMetadata({
     description,
     metadataBase: new URL(siteBaseUrl(site)),
     alternates: { canonical: `/${slug}` },
+    // InfKey is a data site now: its generic AI articles earned 0 Google impressions in
+    // 90 days (owner approved 14 Nov 2026), so they stay readable but are not indexed.
+    robots: site.id === "infkey" ? { index: false, follow: true } : undefined,
     keywords: article.tags,
     openGraph: {
       title: clamp(article.title, 60),

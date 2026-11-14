@@ -69,7 +69,7 @@ jobs:
           PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
           PYTHONUTF8: "1"
         run: |
-          SITES="${{ github.event.inputs.sites || 'infkey countly walvi ninetymins gccguide' }}"
+          SITES="${{ github.event.inputs.sites || 'countly walvi ninetymins gccguide' }}"
           if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
             python hot_drip.py $SITES --dry-run
           else
