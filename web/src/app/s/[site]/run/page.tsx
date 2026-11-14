@@ -40,6 +40,9 @@ export default async function RunHub({ params }: { params: Promise<{ site: strin
               {g.name} <span className="vs">{g.vram} GB</span>
             </Link>
           ))}
+          <Link className="vs-link" href={`${b}/gpu`}>
+            All {GPUS.length} GPUs →
+          </Link>
         </div>
         <div className="section-head">
           <h2>Popular open models</h2>
