@@ -104,10 +104,11 @@ add_action('template_redirect', function () {
         nocache_headers();
         if (isset($_GET['pbd'])) { setcookie('pbd', PBD_KEY, time() + 86400, '/', '', is_ssl(), true); }
     }
-    get_header();
+    $app = function_exists('pa_head') && function_exists('pa_foot') && function_exists('pa_app') && pa_app();
+    if ($app) { pa_head(); } else { get_header(); }   // site shell (probashiinfo app snippet) or theme fallback
     echo pbd_css();
     echo pbd_render($m);
-    get_footer();
+    if ($app) { pa_foot(); } else { get_footer(); }
     exit;
 }, 1);
 
@@ -174,6 +175,11 @@ add_filter('wp_robots', function ($r) {
     $r['follow'] = true;
     return $r;
 }, 99);
+add_action('wp_head', function () {   // Rank Math prints no canonical on these virtual pages
+    $s = pbd_seo();
+    if ($s) { echo '<link rel="canonical" href="' . esc_url($s['canonical']) . '" />' . "
+"; }
+}, 2);
 add_filter('body_class', function ($c) { if (pbd_seo()) { $c[] = 'pbd-page'; } return $c; });
 
 /* ---------- sitemap (live only) ---------- */
@@ -233,13 +239,13 @@ function pbd_css() {
 }
 
 function pbd_head($crumbs, $h1) {
-    $o = '<main id="main"><div class="art-hd"><div class="w"><nav class="crumbs" aria-label="ব্রেডক্রাম্ব"><a href="' . esc_url(home_url('/')) . '">হোম</a>';
+    $o = '<div class="art-hd"><div class="w"><nav class="crumbs" aria-label="ব্রেডক্রাম্ব"><a href="' . esc_url(home_url('/')) . '">হোম</a>';
     foreach ($crumbs as $c) {
         $o .= '<span>›</span>' . ($c[1] ? '<a href="' . esc_url(home_url($c[1])) . '">' . esc_html($c[0]) . '</a>' : '<span>' . esc_html($c[0]) . '</span>');
     }
-    return $o . '</nav><h1>' . esc_html($h1) . '</h1></div></div><div class="w"><div class="art"><article class="art-main"><div class="ct pbd">';
+    return $o . '</nav><h1>' . esc_html($h1) . '</h1></div></div><div class="w"><div class="art" style="grid-template-columns:minmax(0,1fr)"><article class="art-main"><div class="ct pbd">';
 }
-function pbd_foot() { return '</div></article></div></div></main>'; }
+function pbd_foot() { return '</div></article></div></div>'; }
 
 function pbd_vc_faq($c) {
     $host = pbd_host($c['url']);
