@@ -20,6 +20,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from modules import store
 from modules.pipeline import generate_article, suggest_titles
 from modules.trend_radar import hot_topics
+from drip import datapage_avoid
 
 DRY = "--dry-run" in sys.argv
 SITES = [a for a in sys.argv[1:] if not a.startswith("--")]
@@ -32,6 +33,7 @@ def log(msg: str):
 def run(site: dict) -> bool:
     existing = store.list_articles(site["id"])
     avoid = [a.get("title", "") for a in existing] + [a.get("keyword", "") for a in existing]
+    avoid += datapage_avoid(site["id"])
     picks = hot_topics(site, max_out=5, avoid=avoid, log=log)
     if not picks:  # trend scoring uses the free LLM chain; a rate-limited moment returns nothing
         time.sleep(60)
