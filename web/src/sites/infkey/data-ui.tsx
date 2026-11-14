@@ -13,7 +13,7 @@ export function fmtUsd(n: number | null, digits = 2): string {
 
 export function fmtContext(n: number | null): string {
   if (!n) return "—";
-  if (n >= 1_000_000) return (n / 1_000_000).toString().replace(/\.0$/, "") + "M";
+  if (n >= 1_000_000) return (Math.round((n / 1_000_000) * 10) / 10).toString().replace(/\.0$/, "") + "M";
   if (n >= 1000) return Math.round(n / 1000) + "K";
   return String(n);
 }

@@ -25,9 +25,9 @@ export async function generateMetadata({
   };
   const HOME: Record<string, { title: string; description: string }> = {
     infkey: {
-      title: "InfKey — Best AI Tools, Viral Prompts & How to Use AI Free",
+      title: "InfKey — Live AI Model Prices, Status & Specs (445+ models)",
       description:
-        "Find the best AI for your job, copy viral photo and video prompts, learn to use ChatGPT, Claude and Gemini free, and compare real AI prices — tested, updated daily.",
+        "Live API prices for 445+ AI models, side-by-side comparisons, ChatGPT/Claude status, which GPU can run a model, and daily price changes — updated every day.",
     },
     ninetymins: {
       title: "NinetyMins — Live Scores, Fixtures & How to Watch Today",

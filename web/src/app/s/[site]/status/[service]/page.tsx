@@ -21,8 +21,8 @@ export async function generateMetadata({ params }: { params: Promise<{ site: str
 }
 
 function UptimeBar({ daily }: { daily: { day: string; checks: number; bad: number }[] }) {
-  // Show last 90 days
-  const last90 = daily.slice(-90);
+  // getStatusDaily returns newest first; draw oldest -> newest so the bar reads left to right.
+  const last90 = [...daily].reverse().slice(-90);
   const worstClass = (d: { checks: number; bad: number }) => {
     if (d.checks === 0) return "none";
     const badPct = d.bad / d.checks;
