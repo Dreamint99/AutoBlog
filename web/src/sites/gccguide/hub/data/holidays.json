@@ -1,0 +1,659 @@
+{
+  "generated": "2026-11-14",
+  "records": [
+    {
+      "country": "uae",
+      "year": 2026,
+      "holidays": [
+        {
+          "name": "New Year's Day",
+          "date": "2026-01-01",
+          "end_date": "",
+          "expected": false,
+          "note": "Gregorian New Year, fixed 1 January (Cabinet Resolution No. 27 of 2024)."
+        },
+        {
+          "name": "Eid al-Fitr",
+          "date": "2026-03-19",
+          "end_date": "2026-03-22",
+          "expected": true,
+          "note": "1-3 Shawwal 1447 plus 30 Ramadan; the Presidential Court announced 19 March 2026 as the last day of Ramadan and 20 March 2026 as the first day of Eid. Moon-sighting dependent."
+        },
+        {
+          "name": "Arafah Day",
+          "date": "2026-05-26",
+          "end_date": "",
+          "expected": true,
+          "note": "9 Dhu al-Hijjah 1447; moon-sighting dependent."
+        },
+        {
+          "name": "Eid al-Adha",
+          "date": "2026-05-27",
+          "end_date": "2026-05-29",
+          "expected": true,
+          "note": "10-12 Dhu al-Hijjah 1447 (three days); moon-sighting dependent."
+        },
+        {
+          "name": "Hijri New Year (Islamic New Year)",
+          "date": "2026-06-16",
+          "end_date": "",
+          "expected": true,
+          "note": "1 Muharram 1448; moon-sighting dependent."
+        },
+        {
+          "name": "Prophet Mohammed's birthday",
+          "date": "2026-08-28",
+          "end_date": "",
+          "expected": true,
+          "note": "12 Rabi' al-Awwal 1448; moon-sighting dependent."
+        },
+        {
+          "name": "National Day (Eid Al Etihad)",
+          "date": "2026-12-02",
+          "end_date": "2026-12-03",
+          "expected": false,
+          "note": "Fixed 2-3 December per Cabinet Resolution No. 27 of 2024."
+        }
+      ],
+      "ramadan_note": "Ramadan 1447 ran from 18 February to 19 March 2026; UAE employers must reduce daily working hours by two hours for all employees during Ramadan.",
+      "source_url": "https://u.ae/en/information-and-services/public-holidays-and-religious-affairs/public-holidays",
+      "checked": "2026-11-14"
+    },
+    {
+      "country": "uae",
+      "year": 2027,
+      "holidays": [
+        {
+          "name": "New Year's Day",
+          "date": "2027-01-01",
+          "end_date": "",
+          "expected": false,
+          "note": "Gregorian New Year, fixed 1 January."
+        },
+        {
+          "name": "Eid al-Fitr",
+          "date": "2027-03-09",
+          "end_date": "2027-03-12",
+          "expected": true,
+          "note": "1-3 Shawwal 1448 plus the 30th day of Ramadan if Ramadan lasts 30 days; projected, moon-sighting dependent."
+        },
+        {
+          "name": "Arafah Day",
+          "date": "2027-05-16",
+          "end_date": "",
+          "expected": true,
+          "note": "9 Dhu al-Hijjah 1448; projected, moon-sighting dependent."
+        },
+        {
+          "name": "Eid al-Adha",
+          "date": "2027-05-17",
+          "end_date": "2027-05-19",
+          "expected": true,
+          "note": "10-12 Dhu al-Hijjah 1448; projected, moon-sighting dependent."
+        },
+        {
+          "name": "Hijri New Year (Islamic New Year)",
+          "date": "2027-06-06",
+          "end_date": "",
+          "expected": true,
+          "note": "1 Muharram 1449; projected, moon-sighting dependent."
+        },
+        {
+          "name": "Prophet Mohammed's birthday",
+          "date": "2027-08-15",
+          "end_date": "",
+          "expected": true,
+          "note": "12 Rabi' al-Awwal 1449; projected, moon-sighting dependent."
+        },
+        {
+          "name": "National Day (Eid Al Etihad)",
+          "date": "2027-12-02",
+          "end_date": "2027-12-03",
+          "expected": false,
+          "note": "Fixed 2-3 December."
+        }
+      ],
+      "ramadan_note": "Ramadan 1448 is expected to start around 8 February 2027 (ending around 9 March 2027); during Ramadan, UAE employers reduce daily working hours by two hours for all employees.",
+      "source_url": "https://u.ae/en/information-and-services/public-holidays-and-religious-affairs/public-holidays",
+      "checked": "2026-11-14"
+    },
+    {
+      "country": "saudi-arabia",
+      "year": 2026,
+      "holidays": [
+        {
+          "name": "Founding Day",
+          "date": "2026-02-22",
+          "end_date": "",
+          "expected": false,
+          "note": "Fixed 22 February; if it falls on a Friday the holiday is moved to Thursday, if Saturday to Sunday (SAMA)."
+        },
+        {
+          "name": "Eid al-Fitr",
+          "date": "2026-03-17",
+          "end_date": "2026-03-23",
+          "expected": true,
+          "note": "SAMA official holiday window for financial institutions: 28 Ramadan - 4 Shawwal 1447 (17-23 March 2026); moon-sighting dependent."
+        },
+        {
+          "name": "Eid al-Adha",
+          "date": "2026-05-24",
+          "end_date": "2026-05-28",
+          "expected": true,
+          "note": "SAMA official holiday window for financial institutions: 7-11 Dhu al-Hijjah 1447 (24-28 May 2026); Eid al-Adha itself expected 27 May. Moon-sighting dependent."
+        },
+        {
+          "name": "National Day",
+          "date": "2026-09-23",
+          "end_date": "",
+          "expected": false,
+          "note": "Fixed 23 September; if it falls on a Friday the holiday is moved to Thursday, if Saturday to Sunday (SAMA)."
+        }
+      ],
+      "ramadan_note": "Ramadan 1447 ran from 18 February to 19 March 2026; SAMA sets bank and RTGS working hours during Ramadan to 10:00-16:00.",
+      "source_url": "https://www.sama.gov.sa/en-US/Supervision/Pages/holidayschedules.aspx",
+      "checked": "2026-11-14"
+    },
+    {
+      "country": "saudi-arabia",
+      "year": 2027,
+      "holidays": [
+        {
+          "name": "Founding Day",
+          "date": "2027-02-22",
+          "end_date": "",
+          "expected": false,
+          "note": "Fixed 22 February."
+        },
+        {
+          "name": "Eid al-Fitr",
+          "date": "2027-03-07",
+          "end_date": "2027-03-11",
+          "expected": true,
+          "note": "SAMA official holiday window: 28 Ramadan - 3 Shawwal 1448 (7-11 March 2027); Eid al-Fitr expected 9-10 March. Projected, moon-sighting dependent."
+        },
+        {
+          "name": "Eid al-Adha",
+          "date": "2027-05-16",
+          "end_date": "2027-05-20",
+          "expected": true,
+          "note": "SAMA official holiday window: 10-14 Dhu al-Hijjah 1448 (16-20 May 2027). Projected, moon-sighting dependent."
+        },
+        {
+          "name": "National Day",
+          "date": "2027-09-23",
+          "end_date": "",
+          "expected": false,
+          "note": "Fixed 23 September."
+        }
+      ],
+      "ramadan_note": "Ramadan 1448 is expected to start around 8 February 2027 (ending around 9 March 2027); SAMA sets bank and RTGS working hours during Ramadan to 10:00-16:00.",
+      "source_url": "https://www.sama.gov.sa/en-US/Supervision/Pages/holidayschedules.aspx",
+      "checked": "2026-11-14"
+    },
+    {
+      "country": "qatar",
+      "year": 2026,
+      "holidays": [
+        {
+          "name": "National Sports Day",
+          "date": "2026-02-10",
+          "end_date": "",
+          "expected": false,
+          "note": "Second Tuesday of February (Amiri Decision No. 57 of 2025)."
+        },
+        {
+          "name": "Eid al-Fitr",
+          "date": "2026-03-17",
+          "end_date": "2026-03-23",
+          "expected": true,
+          "note": "Official holiday from 28 Ramadan to the end of 4 Shawwal 1447 (Amiri Decision No. 57 of 2025); moon-sighting dependent."
+        },
+        {
+          "name": "Eid al-Adha",
+          "date": "2026-05-26",
+          "end_date": "2026-05-30",
+          "expected": true,
+          "note": "Official holiday from 9 to the end of 13 Dhu al-Hijjah 1447 (Amiri Decision No. 57 of 2025); moon-sighting dependent."
+        },
+        {
+          "name": "National Day",
+          "date": "2026-12-18",
+          "end_date": "",
+          "expected": false,
+          "note": "Fixed 18 December (Amiri Decision No. 57 of 2025)."
+        }
+      ],
+      "ramadan_note": "Ramadan 1447 ran from 18 February to 19 March 2026; working hours for ministries and government bodies are reduced during Ramadan.",
+      "source_url": "https://almeezan.qa/legislations/emiri-decision/2025/57/general",
+      "checked": "2026-11-14"
+    },
+    {
+      "country": "qatar",
+      "year": 2027,
+      "holidays": [
+        {
+          "name": "National Sports Day",
+          "date": "2027-02-09",
+          "end_date": "",
+          "expected": false,
+          "note": "Second Tuesday of February."
+        },
+        {
+          "name": "Eid al-Fitr",
+          "date": "2027-03-07",
+          "end_date": "2027-03-12",
+          "expected": true,
+          "note": "28 Ramadan - 4 Shawwal 1448; projected, moon-sighting dependent."
+        },
+        {
+          "name": "Eid al-Adha",
+          "date": "2027-05-15",
+          "end_date": "2027-05-19",
+          "expected": true,
+          "note": "9-13 Dhu al-Hijjah 1448; projected, moon-sighting dependent."
+        },
+        {
+          "name": "National Day",
+          "date": "2027-12-18",
+          "end_date": "",
+          "expected": false,
+          "note": "Fixed 18 December."
+        }
+      ],
+      "ramadan_note": "Ramadan 1448 is expected to start around 8 February 2027 (ending around 9 March 2027); working hours for ministries and government bodies are reduced during Ramadan.",
+      "source_url": "https://almeezan.qa/legislations/emiri-decision/2025/57/general",
+      "checked": "2026-11-14"
+    },
+    {
+      "country": "kuwait",
+      "year": 2026,
+      "holidays": [
+        {
+          "name": "New Year's Day",
+          "date": "2026-01-01",
+          "end_date": "",
+          "expected": false,
+          "note": "Gregorian New Year, fixed 1 January."
+        },
+        {
+          "name": "Isra and Mi'raj",
+          "date": "2026-01-16",
+          "end_date": "",
+          "expected": true,
+          "note": "27 Rajab 1447; moon-sighting dependent."
+        },
+        {
+          "name": "National Day",
+          "date": "2026-02-25",
+          "end_date": "",
+          "expected": false,
+          "note": "Fixed 25 February; the Civil Service Commission declared Wednesday 25 and Thursday 26 February 2026 official holidays."
+        },
+        {
+          "name": "Liberation Day",
+          "date": "2026-02-26",
+          "end_date": "",
+          "expected": false,
+          "note": "Fixed 26 February; combined with National Day in the CSC circular."
+        },
+        {
+          "name": "Eid al-Fitr",
+          "date": "2026-03-19",
+          "end_date": "2026-03-22",
+          "expected": true,
+          "note": "30 Ramadan (or 1 Shawwal if Ramadan is 29 days) through 3 Shawwal 1447; the CSC circular set the holiday to begin Thursday 19 March 2026. Moon-sighting dependent."
+        },
+        {
+          "name": "Waqfat Arafat Day",
+          "date": "2026-05-26",
+          "end_date": "",
+          "expected": true,
+          "note": "9 Dhu al-Hijjah 1447; moon-sighting dependent."
+        },
+        {
+          "name": "Eid al-Adha",
+          "date": "2026-05-27",
+          "end_date": "2026-05-29",
+          "expected": true,
+          "note": "10-12 Dhu al-Hijjah 1447; moon-sighting dependent."
+        },
+        {
+          "name": "Islamic New Year",
+          "date": "2026-06-16",
+          "end_date": "",
+          "expected": true,
+          "note": "1 Muharram 1448; moon-sighting dependent."
+        },
+        {
+          "name": "Prophet's Birthday",
+          "date": "2026-08-27",
+          "end_date": "",
+          "expected": true,
+          "note": "12 Rabi' al-Awwal 1448; moon-sighting dependent."
+        }
+      ],
+      "ramadan_note": "Ramadan 1447 ran from 18 February to 19 March 2026; government working hours are reduced during Ramadan under Civil Service Commission rules.",
+      "source_url": "https://www.e.gov.kw/sites/kgoenglish/Pages/ApplicationPages/NewsDetail.aspx?nid=34680827",
+      "checked": "2026-11-14"
+    },
+    {
+      "country": "kuwait",
+      "year": 2027,
+      "holidays": [
+        {
+          "name": "New Year's Day",
+          "date": "2027-01-01",
+          "end_date": "",
+          "expected": false,
+          "note": "Gregorian New Year, fixed 1 January."
+        },
+        {
+          "name": "Isra and Mi'raj",
+          "date": "2027-01-06",
+          "end_date": "",
+          "expected": true,
+          "note": "27 Rajab 1448; projected, moon-sighting dependent."
+        },
+        {
+          "name": "National Day",
+          "date": "2027-02-25",
+          "end_date": "",
+          "expected": false,
+          "note": "Fixed 25 February."
+        },
+        {
+          "name": "Liberation Day",
+          "date": "2027-02-26",
+          "end_date": "",
+          "expected": false,
+          "note": "Fixed 26 February."
+        },
+        {
+          "name": "Eid al-Fitr",
+          "date": "2027-03-09",
+          "end_date": "2027-03-12",
+          "expected": true,
+          "note": "30 Ramadan - 3 Shawwal 1448; projected, moon-sighting dependent."
+        },
+        {
+          "name": "Waqfat Arafat Day",
+          "date": "2027-05-15",
+          "end_date": "",
+          "expected": true,
+          "note": "9 Dhu al-Hijjah 1448; projected, moon-sighting dependent."
+        },
+        {
+          "name": "Eid al-Adha",
+          "date": "2027-05-16",
+          "end_date": "2027-05-18",
+          "expected": true,
+          "note": "10-12 Dhu al-Hijjah 1448; projected, moon-sighting dependent."
+        },
+        {
+          "name": "Islamic New Year",
+          "date": "2027-06-06",
+          "end_date": "",
+          "expected": true,
+          "note": "1 Muharram 1449; projected, moon-sighting dependent."
+        },
+        {
+          "name": "Prophet's Birthday",
+          "date": "2027-08-15",
+          "end_date": "",
+          "expected": true,
+          "note": "12 Rabi' al-Awwal 1449; projected, moon-sighting dependent."
+        }
+      ],
+      "ramadan_note": "Ramadan 1448 is expected to start around 8 February 2027 (ending around 9 March 2027); government working hours are reduced during Ramadan under Civil Service Commission rules.",
+      "source_url": "https://www.e.gov.kw/sites/kgoenglish/Pages/ApplicationPages/NewsDetail.aspx?nid=34680827",
+      "checked": "2026-11-14"
+    },
+    {
+      "country": "oman",
+      "year": 2026,
+      "holidays": [
+        {
+          "name": "Sultan's Accession Day",
+          "date": "2026-01-15",
+          "end_date": "",
+          "expected": false,
+          "note": "Thursday 15 January 2026 per the Ministry of Labour 2026 holiday calendar."
+        },
+        {
+          "name": "Isra and Mi'raj",
+          "date": "2026-01-18",
+          "end_date": "",
+          "expected": true,
+          "note": "Sunday 18 January 2026 per the Ministry of Labour calendar; moon-sighting dependent."
+        },
+        {
+          "name": "Eid al-Fitr",
+          "date": "2026-03-20",
+          "end_date": "2026-03-22",
+          "expected": true,
+          "note": "Announced separately from the annual calendar by the Main Committee for the Sighting of the Hijri Month Crescents; expected 20-22 March 2026. Moon-sighting dependent."
+        },
+        {
+          "name": "Eid al-Adha",
+          "date": "2026-05-27",
+          "end_date": "2026-05-29",
+          "expected": true,
+          "note": "Announced by the crescent-sighting committee; expected 27-29 May 2026. Moon-sighting dependent."
+        },
+        {
+          "name": "Hijri New Year",
+          "date": "2026-06-18",
+          "end_date": "",
+          "expected": true,
+          "note": "Thursday 18 June 2026 per the Ministry of Labour calendar; moon-sighting dependent."
+        },
+        {
+          "name": "Prophet Muhammad's Birthday",
+          "date": "2026-08-27",
+          "end_date": "",
+          "expected": true,
+          "note": "Thursday 27 August 2026 per the Ministry of Labour calendar; moon-sighting dependent."
+        },
+        {
+          "name": "National Day",
+          "date": "2026-11-25",
+          "end_date": "2026-11-26",
+          "expected": false,
+          "note": "The Ministry of Labour 2026 calendar sets the National Day holiday on Wednesday and Thursday 25-26 November 2026 (the National Day itself is 18 November)."
+        }
+      ],
+      "ramadan_note": "Ramadan 1447 ran from 18 February to 19 March 2026; working hours in government units and private-sector establishments are reduced during Ramadan.",
+      "source_url": "https://shuoon.om/?p=207438",
+      "checked": "2026-11-14"
+    },
+    {
+      "country": "oman",
+      "year": 2027,
+      "holidays": [
+        {
+          "name": "Sultan's Accession Day",
+          "date": "2027-01-14",
+          "end_date": "",
+          "expected": true,
+          "note": "2027 date not yet announced; the 2026 calendar placed it on Thursday 15 January, so a mid-January Thursday is assumed."
+        },
+        {
+          "name": "Isra and Mi'raj",
+          "date": "2027-01-06",
+          "end_date": "",
+          "expected": true,
+          "note": "27 Rajab 1448; projected, moon-sighting dependent."
+        },
+        {
+          "name": "Eid al-Fitr",
+          "date": "2027-03-09",
+          "end_date": "2027-03-11",
+          "expected": true,
+          "note": "Announced by the crescent-sighting committee shortly before the date; projected. Moon-sighting dependent."
+        },
+        {
+          "name": "Eid al-Adha",
+          "date": "2027-05-16",
+          "end_date": "2027-05-18",
+          "expected": true,
+          "note": "Announced by the crescent-sighting committee shortly before the date; projected. Moon-sighting dependent."
+        },
+        {
+          "name": "Hijri New Year",
+          "date": "2027-06-06",
+          "end_date": "",
+          "expected": true,
+          "note": "1 Muharram 1449; projected, moon-sighting dependent."
+        },
+        {
+          "name": "Prophet Muhammad's Birthday",
+          "date": "2027-08-15",
+          "end_date": "",
+          "expected": true,
+          "note": "12 Rabi' al-Awwal 1449; projected, moon-sighting dependent."
+        },
+        {
+          "name": "National Day",
+          "date": "2027-11-18",
+          "end_date": "",
+          "expected": false,
+          "note": "National Day is 18 November; the 2026 Ministry of Labour calendar scheduled the public holiday on 25-26 November 2026, and the 2027 window has not been announced yet."
+        }
+      ],
+      "ramadan_note": "Ramadan 1448 is expected to start around 8 February 2027 (ending around 9 March 2027); working hours in government units and private-sector establishments are reduced during Ramadan.",
+      "source_url": "https://shuoon.om/?p=207438",
+      "checked": "2026-11-14"
+    },
+    {
+      "country": "bahrain",
+      "year": 2026,
+      "holidays": [
+        {
+          "name": "Gregorian New Year",
+          "date": "2026-01-01",
+          "end_date": "",
+          "expected": false,
+          "note": "1 January, 1 day (Bahrain AIC 01/26)."
+        },
+        {
+          "name": "Eid al-Fitr",
+          "date": "2026-03-20",
+          "end_date": "2026-03-22",
+          "expected": true,
+          "note": "3 days from 20 March 2026 (Bahrain AIC 01/26, asterisked +/-1 day); moon-sighting dependent."
+        },
+        {
+          "name": "Labour Day",
+          "date": "2026-05-01",
+          "end_date": "",
+          "expected": false,
+          "note": "1 May, 1 day (Bahrain AIC 01/26)."
+        },
+        {
+          "name": "Eid al-Adha (Arafah Day and Eid al-Adha)",
+          "date": "2026-05-26",
+          "end_date": "2026-05-29",
+          "expected": true,
+          "note": "4 days from 26 May 2026 (Bahrain AIC 01/26: Arafah Day plus Eid al-Adha, asterisked +/-1 day); moon-sighting dependent."
+        },
+        {
+          "name": "Al Hijra New Year",
+          "date": "2026-06-16",
+          "end_date": "",
+          "expected": true,
+          "note": "1 day from 16 June 2026, asterisked +/-1 day; moon-sighting dependent."
+        },
+        {
+          "name": "Ashoora",
+          "date": "2026-06-24",
+          "end_date": "2026-06-25",
+          "expected": true,
+          "note": "2 days from 24 June 2026 (9-10 Muharram 1448), asterisked +/-1 day; moon-sighting dependent."
+        },
+        {
+          "name": "Prophet Mohammed's Birthday",
+          "date": "2026-08-25",
+          "end_date": "",
+          "expected": true,
+          "note": "25 August 2026 per Bahrain AIC 01/26 (listed without the +/-1 day asterisk); moon-sighting dependent."
+        },
+        {
+          "name": "Bahrain National Day",
+          "date": "2026-12-16",
+          "end_date": "2026-12-17",
+          "expected": false,
+          "note": "2 days from 16 December 2026 (Bahrain AIC 01/26)."
+        }
+      ],
+      "ramadan_note": "Ramadan 1447 ran from 18 February to 19 March 2026; working hours are reduced during Ramadan for Muslims under Bahraini labour law.",
+      "source_url": "https://aim.mtt.gov.bh/eAIP/2026-03-19/html/eAIC/OB-eAIC-26-01-en-BH.html",
+      "checked": "2026-11-14"
+    },
+    {
+      "country": "bahrain",
+      "year": 2027,
+      "holidays": [
+        {
+          "name": "Gregorian New Year",
+          "date": "2027-01-01",
+          "end_date": "",
+          "expected": false,
+          "note": "1 January, 1 day."
+        },
+        {
+          "name": "Eid al-Fitr",
+          "date": "2027-03-09",
+          "end_date": "2027-03-11",
+          "expected": true,
+          "note": "3 days; projected for 1448 AH. Moon-sighting dependent - Bahrain's aeronautical information circular for 2027 is not published yet."
+        },
+        {
+          "name": "Labour Day",
+          "date": "2027-05-01",
+          "end_date": "",
+          "expected": false,
+          "note": "1 May, 1 day."
+        },
+        {
+          "name": "Eid al-Adha (Arafah Day and Eid al-Adha)",
+          "date": "2027-05-15",
+          "end_date": "2027-05-18",
+          "expected": true,
+          "note": "4 days (Arafah Day plus Eid al-Adha); projected for 1448 AH. Moon-sighting dependent."
+        },
+        {
+          "name": "Al Hijra New Year",
+          "date": "2027-06-06",
+          "end_date": "",
+          "expected": true,
+          "note": "1 Muharram 1449; projected, moon-sighting dependent."
+        },
+        {
+          "name": "Ashoora",
+          "date": "2027-06-14",
+          "end_date": "2027-06-15",
+          "expected": true,
+          "note": "9-10 Muharram 1449; projected, moon-sighting dependent."
+        },
+        {
+          "name": "Prophet Mohammed's Birthday",
+          "date": "2027-08-15",
+          "end_date": "",
+          "expected": true,
+          "note": "12 Rabi' al-Awwal 1449; projected, moon-sighting dependent."
+        },
+        {
+          "name": "Bahrain National Day",
+          "date": "2027-12-16",
+          "end_date": "2027-12-17",
+          "expected": false,
+          "note": "2 days from 16 December."
+        }
+      ],
+      "ramadan_note": "Ramadan 1448 is expected to start around 8 February 2027 (ending around 9 March 2027); working hours are reduced during Ramadan for Muslims under Bahraini labour law.",
+      "source_url": "https://aim.mtt.gov.bh/eAIP/2026-03-19/html/eAIC/OB-eAIC-26-01-en-BH.html",
+      "checked": "2026-11-14"
+    }
+  ]
+}

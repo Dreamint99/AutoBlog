@@ -1,0 +1,220 @@
+{
+  "generated": "2026-11-14",
+  "records": [
+    {
+      "country": "uae",
+      "item": "Employment residence permit - private sector (ICP emirates)",
+      "category": "residence",
+      "fee": 100,
+      "currency": "AED",
+      "basis": "AED 100 issuance fee per year of residence; a 2-year private-sector permit therefore carries AED 200. Charged on top: AED 100 application fee, AED 100 smart service fee and (if converting status inside the UAE) AED 500 status adjustment. Dubai (GDRFA) publishes a separate fee schedule.",
+      "steps": [
+        "Employer (sponsor) submits the residence application through ICP eChannels or the UAEICP app, usually as part of the work bundle with MoHRE",
+        "Applicant completes the medical fitness test and Emirates ID biometrics",
+        "Residence permit is issued electronically (no passport sticker) and linked to the Emirates ID application",
+        "Employee/employer checks issued visa validity and expiry on ICP or GDRFA Dubai"
+      ],
+      "notes": "ICP service card last updated 11 Dec 2024. Fees vary by category (Golden/Green/family/investor) and by emirate; Dubai-issued visas are priced by GDRFA, not ICP. Excludes typing-centre, medical, insurance and delivery charges.",
+      "source_url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+      "official": true,
+      "checked": "2026-11-14"
+    },
+    {
+      "country": "uae",
+      "item": "Emirates ID card - new issuance for residents",
+      "category": "id-card",
+      "fee": 100,
+      "currency": "AED",
+      "basis": "AED 100 per year of residence, plus a flat AED 100 smart service fee. A 2-year residence therefore gives AED 200 for the card + AED 100 service fee; a 10-year UAE-national card is AED 200.",
+      "steps": [
+        "Apply through ICP smart services / UAEICP app or an accredited typing centre",
+        "Attend an ICP customer happiness centre for fingerprint and signature capture (age 15+)",
+        "Pay the card fee plus the smart service fee",
+        "Card is delivered by courier (standard) or collected at an ICP centre (urgent, +AED 150)"
+      ],
+      "notes": "Renewal uses the same per-year rate; a late-renewal fine of AED 20 per day applies after one month, capped at AED 1,000. Card is cancelled automatically when the residence visa is cancelled.",
+      "source_url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5a",
+      "official": true,
+      "checked": "2026-11-14"
+    },
+    {
+      "country": "uae",
+      "item": "Visa status check - application tracking and visa validity",
+      "category": "other",
+      "fee": null,
+      "currency": "AED",
+      "basis": "Free enquiry service - no fee is stated on the official page.",
+      "steps": [
+        "Abu Dhabi, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah, Fujairah: track the application on the ICP eChannels portal (applicationTracking) or check visa validity (fileValidity)",
+        "Dubai: use the GDRFA Dubai status-inquiry page (smart.gdrfad.gov.ae/Public_Th/StatusInquiry_New.aspx)",
+        "Keep the entry-permit/application number and passport number to hand",
+        "ICP call centre 600522222; GDRFA Dubai 800 5111 inside the UAE, +9714-313-9999 from abroad"
+      ],
+      "notes": "Fee intentionally null: the page describes the portals only and publishes no charge.",
+      "source_url": "https://u.ae/en/information-and-services/visa-and-emirates-id/Apply-and-track-visa/track-visa-application-and-validity",
+      "official": true,
+      "checked": "2026-11-14"
+    },
+    {
+      "country": "saudi-arabia",
+      "item": "Iqama (residence permit) issue and renewal - fee not published on Absher",
+      "category": "residence",
+      "fee": null,
+      "currency": "SAR",
+      "basis": "Not stated. Absher's service guides list 'payment of resident identity issuance fees' as a condition but do not publish the amount or the duration it covers.",
+      "steps": [
+        "Employer logs in to Absher Business (or the individual to Absher Individuals for dependants/domestic workers)",
+        "Selects 'Issue residence' / 'Renew residence', picks the worker and the renewal period",
+        "Pays the iqama fee plus any late fine and traffic violations, with a valid medical test, medical insurance and work permit",
+        "Iqama is issued/renewed electronically; the card is delivered via Saudi Post (WASEL), 3-5 working days"
+      ],
+      "notes": "The official fee schedule lives on my.gov.sa service cards (e.g. 'Iqama renewal', which lists a per-year service cost), but my.gov.sa returned HTTP 403 behind Cloudflare on every attempt on 2026-11-14, so no amount could be read from an official page. Absher's own guide pages confirm only that the fee is paid. Confirm on Absher/my.gov.sa before budgeting; do not use visa-agency figures.",
+      "source_url": "https://www.absher.sa/wps/wcm/connect/business/business+portal/eservices+user+guide+ar/electronic+services/services_1_ar",
+      "official": true,
+      "checked": "2026-11-14"
+    },
+    {
+      "country": "saudi-arabia",
+      "item": "Exit/re-entry visa - fee not published on Absher",
+      "category": "entry-visa",
+      "fee": null,
+      "currency": "SAR",
+      "basis": "Not stated on the Absher service page, which only requires 'payment of visa fees' before the visa is issued.",
+      "steps": [
+        "Log in to Absher Individuals or Absher Business",
+        "Open Passport services > 'Issuance of Exit/Re-Entry or Final Exit Visa'",
+        "Choose single or multiple entry, set the duration or 'return before' date (up to 7 days before iqama expiry)",
+        "Pay the visa fee; the visa is then issued electronically if the iqama is valid and no unused visa is outstanding"
+      ],
+      "notes": "Fee intentionally null: Absher publishes the conditions and the payment step but not the amounts. The fee schedule is on my.gov.sa, which blocked automated access (HTTP 403) on 2026-11-14. Multiple-entry option exists on the page; the duration limits (e.g. maximum extension of 180 days) are stated in Absher's FAQ PDF.",
+      "source_url": "https://www.absher.sa/wps/portal/individuals/static/guide/service-contents/!ut/p/z1/rVPBbuIwEP0VLhwjj01im2OaUNKGtmlLoPgSmcQF70JI4xD289fpckCrllKpPliepxm_9zQzSKAXJErZ6pVs9K6UGxsvBM0wDnlExjCB-9AHGoM3mg0nGLCH5u8JXpAEN_xugMdJyoBcM_c2oPF4BgyJS-rhk-PDZfVnEsT572dIIJGXTdWs0SLflY0qG9MHXRa61cVebmygjKpbnSvT29tXb7XXhTpB-1BJY6pd3Tj_QXVjsiNEO54q1wVaYA4eI0XhMErBcfGr6_AlIQ7hXp6zgrqKUPSsSnT7Lp6SSYAjTuKHaTiEx5gxuCMJtvK77uhfb2_CtxY66X8a9PKhh56s-1Cqg_l32zBf69aakEuzVnVmwQywg60IIFhmsj6Sw43rRti15HAVgu8PIaGjEYHxz5KbzFID7djJCfuZtl7M_lPtm3cNPNXE46cQHoOE4mkUDfiVd0w4twtfTePCTjP71HZkVbRaHVBa7uqt3c7nbw5VBKjapmm65QNXLL1Nu507v5_4Yfq6-gsZb6m0/dz/d5/L2dBISEvZ0FBIS9nQSEh/",
+      "official": true,
+      "checked": "2026-11-14"
+    },
+    {
+      "country": "qatar",
+      "item": "Residence permit renewal (expatriate worker)",
+      "category": "renewal",
+      "fee": 300,
+      "currency": "QAR",
+      "basis": "QR 300 per year of residence, plus QR 100 for the ID card for the same validity. The work permit is charged separately at QR 100 per year. A 20% discount applies when the permit is renewed for 3 years.",
+      "steps": [
+        "Sponsor (employer or individual) prints the residence renewal application and signs/stamps it",
+        "Pays the work-permit and residence-permit fees",
+        "Submits the worker's original passport plus the establishment ID (company) or sponsor ID",
+        "Submits at the Expatriates Affairs Department / MOI service centres, or through Metrash2 or the MOI e-services portal"
+      ],
+      "notes": "Amounts as published on the MOI e-service page (Qatar MOI, General Administration of Nationality, Borders and Expatriate Affairs). Different flat fees apply to family/sponsored categories (QR 400 for those on parent sponsorship, accompanying persons, separate permits and newborns). Hukoomi, the government service portal, was serving a maintenance page throughout the check, so the MOI page is the source used.",
+      "source_url": "https://portal.moi.gov.qa/wps/wcm/connect/wcmlib-internet-en/sa-departmentcommittee/generaladministrationofnationalitybordersandexpatriateaffairs/services/residence+visas/egama1",
+      "official": true,
+      "checked": "2026-11-14"
+    },
+    {
+      "country": "qatar",
+      "item": "Qatar ID card (QID) issued with the residence permit",
+      "category": "id-card",
+      "fee": 100,
+      "currency": "QAR",
+      "basis": "QR 100 for the ID card, charged according to the validity of the residence permit (i.e. per permit, not per year).",
+      "steps": [
+        "The ID-card fee is collected together with the residence permit issue/renewal fee",
+        "Applicant provides fingerprints and photo at an MOI service centre or the Expatriates Affairs Department",
+        "Card is printed and can be collected or delivered via Qatar Post for an extra QR 20"
+      ],
+      "notes": "The same MOI fee paragraph states the ID card as '+ QR 100 for ID card (as per the validity of residence permit)'. Replacement of a lost/damaged residence permit card is a separate QR 200 service on Hukoomi (not readable during the check).",
+      "source_url": "https://portal.moi.gov.qa/wps/wcm/connect/wcmlib-internet-en/sa-departmentcommittee/generaladministrationofnationalitybordersandexpatriateaffairs/services/residence+visas/egama1",
+      "official": true,
+      "checked": "2026-11-14"
+    },
+    {
+      "country": "kuwait",
+      "item": "Civil ID card - renewal for non-Kuwaitis",
+      "category": "id-card",
+      "fee": 5,
+      "currency": "KWD",
+      "basis": "KD 5 per card, paid through the PACI website or the Sahel app. A KD 20 violation is recorded if registration is more than 30 days after the residence is issued (60 days after the work permit for articles 18/19).",
+      "steps": [
+        "Renew automatically by phone (1889988), on paci.gov.kw, via the Sahel app or by SMS",
+        "Provide a valid civil number, valid passport and the residence stamp extract",
+        "Pay KD 5 online before the card is printed; collect the card or use the delivery envelope service",
+        "Cards not collected within 6 months are destroyed and must be re-applied for (fee payable again)"
+      ],
+      "notes": "PACI terms also warn that from 13/03/2017 issuance fees must be paid before printing. The card fee above is the renewal fee for non-Kuwaitis; new-borns/first registrations and lost-card replacements are priced separately on the same PACI service guide.",
+      "source_url": "https://services.paci.gov.kw/applications-guide/detail/card-renewal-(non-kuwaiti)/17",
+      "official": true,
+      "checked": "2026-11-14"
+    },
+    {
+      "country": "kuwait",
+      "item": "Residence permit (iqama) fee - not published on the MOI portal",
+      "category": "residence",
+      "fee": null,
+      "currency": "KWD",
+      "basis": "Not stated. The MOI Residency e-services only collect the fee against a visa number; the amount is not published on the page.",
+      "steps": [
+        "Employer/sponsor files the residence application through the MOI Residency e-services platform (eres.moi.gov.kw) or the service centre",
+        "Medical examination and fingerprinting for the worker",
+        "Sponsor pays the residence fee through the 'Pay Visa Fees' page using the visa number",
+        "Residence sticker/electronic permit issued; civil ID card then renewed separately through PACI"
+      ],
+      "notes": "The MOI 'Pay Visa Fees' page is a payment form (visa number only) and publishes no tariff. Kuwait's revised residence/visa fee schedule (published in the Official Gazette, effective December 2025) appears only in press summaries and consultancy notes, which this dataset excludes. The full tariff is in the Ministerial Decree PDF linked from the MOI residency page; confirm the amount there or on eres.moi.gov.kw before paying - entered here as null rather than guessed.",
+      "source_url": "https://www.moi.gov.kw/main/eservices/residence/visa-fees",
+      "official": true,
+      "checked": "2026-11-14"
+    },
+    {
+      "country": "oman",
+      "item": "Residence card - first-time issuance",
+      "category": "residence",
+      "fee": 6,
+      "currency": "OMR",
+      "basis": "OMR 6 for a one-year card; OMR 11 for a two-year card; OMR 10 for each month of delay in applying. The page quotes the amounts without repeating the currency name.",
+      "steps": [
+        "Apply within 30 days of entry into Oman - applicant must appear in person",
+        "Submit the residence-card application form, original passport, original plus copies of the Manpower form after the medical examination, and an employer letter",
+        "The registrar checks the application and the fee is paid",
+        "Applicant collects the residence card"
+      ],
+      "notes": "Royal Oman Police page for Civil Status & Passport services. Amounts are printed on the page as '6 for one year / 11 for two years / 10 for each month of delay'; OMR is the currency of Oman. Labour-clearance (work permit) fees are handled separately by the Ministry of Labour and are not stated on this ROP page.",
+      "source_url": "https://www.rop.gov.om/english/resident_id.aspx",
+      "official": true,
+      "checked": "2026-11-14"
+    },
+    {
+      "country": "bahrain",
+      "item": "Work permit + residence permit renewal (LMRA), 2 years",
+      "category": "renewal",
+      "fee": 200,
+      "currency": "BHD",
+      "basis": "BD 200 for a two-year work permit (BD 100 for one year, BD 50 for six months). Basic health-care fee for the same permit: BD 144 for two years (BD 72 one year, BD 36 six months). Dependants' permit renewal: BD 90 each.",
+      "steps": [
+        "Employer submits the renewal through LMRA's EMS system or an accredited bank before expiry (up to 6 months early for 1- and 2-year permits)",
+        "Employee must be inside Bahrain; passport valid at least two months; dependants are renewed with the main worker",
+        "Pay the work-permit fee and the basic health-care fee online",
+        "Print the residence permit via the Bahrain national portal or through NPRA"
+      ],
+      "notes": "Legal basis cited on the page: Resolution No. (26) of 2008 on fees imposed on employers for work permits and residence permits. Service provider is LMRA, with NPRA as the cooperating entity. The page also notes that permits may be renewed for 6 months, 1 year or 2 years depending on the employer's request.",
+      "source_url": "https://www.bahrain.bh/wps/portal/en/BNP/ServicesCatalogue/GSX-UI-PServiceDetails?psID=2531",
+      "official": true,
+      "checked": "2026-11-14"
+    },
+    {
+      "country": "bahrain",
+      "item": "CPR / identity card - non-Bahraini",
+      "category": "id-card",
+      "fee": 10,
+      "currency": "BHD",
+      "basis": "BD 10 to renew the card and BD 10 to replace a lost/damaged one. First issuance is free for employees registered with LMRA; BD 10 for a first card for children under 10 and for domestic workers in some cases; BD 1 for a chip-detail update. Card validity is 5 years (10 years above age 70).",
+      "steps": [
+        "Apply online on bahrain.bh or at an Identity Card Centre / kiosk; physical attendance is required for biometrics and address checks",
+        "Bring a valid passport and, for address updates, the EWA bill or a municipality statement",
+        "Pay the card fee (online fees equal counter fees); add BD 1 if the card is posted",
+        "Collect the card; a fast-track lounge is available for an extra BD 10"
+      ],
+      "notes": "Figures are from the official 'Important Information Related to ID Card' page (last updated 29 Jul 2026). Non-Bahrainis under LMRA can update their address through the LMRA eService.",
+      "source_url": "https://www.bahrain.bh/wps/portal/en/!ut/p/z1/jZFBD4IwDIV_iweutG4K09s0KqhEo6K4iwGDgMFhEMWf7xIvmiDSW5v3vZe2IMADIf1HEvlFkkk_Vf1eGAdrgUabMDJlW3uE3HSXzJxRghaB3bcAKVWChWEuzW2PGAxBNOGROMO23VG84yByNljNN-Mh4oQ25H8Ub5hfIxD19utQKg_xHVNxhbdPzZr_gqYgojQL3j_hMqAsApGHpzAPc_2eq3FcFNdbX0MNy7LUg0RG-jG7aFgFxNmtAO9TB9eL67re0z5308ect1ovPMO2NA!!/dz/d5/L3dHQSEvUUt3SS9nQSEh/",
+      "official": true,
+      "checked": "2026-11-14"
+    }
+  ]
+}
