@@ -1,6 +1,7 @@
 export async function distribute(env) {
   // Only our configured account/channel; no mentions, replies, groups or DMs.
   const pages = (await env.DB.prepare(`SELECT 'https://countly.net/data/'||kind||'/'||slug AS url,title,created_at AS at FROM seo_pages WHERE site_id='countly'
+    UNION ALL SELECT 'https://ninetymins.com/'||CASE kind WHEN 'race' THEN 'race' ELSE 'stories' END||'/'||slug AS url,title,created_at AS at FROM seo_pages WHERE site_id='ninetymins' AND kind IN ('race','stories')
     UNION ALL SELECT 'https://ninetymins.com'||path AS url,json_extract(ev_json,'$.home.name')||' '||json_extract(ev_json,'$.home.score')||'–'||json_extract(ev_json,'$.away.score')||' '||json_extract(ev_json,'$.away.name')||': result' AS title,result_at AS at FROM seo_matches WHERE state='post' AND result_at IS NOT NULL ORDER BY at DESC LIMIT 1000`).all()).results;
   const status = { at: new Date().toISOString(), telegram: !!(env.TELEGRAM_BOT_TOKEN && env.TELEGRAM_CHANNEL_ID), x: !!env.X_USER_ACCESS_TOKEN, paidMonthlyCapUsd: Number(env.MONTHLY_PAID_API_CAP_USD || 0), maxPostsPerChannelPerRun: 1 };
   for (const channel of ["telegram", "x"]) {
@@ -8,7 +9,7 @@ export async function distribute(env) {
     if (!status[channel]) continue;
     const prior = new Set((await env.DB.prepare("SELECT url FROM seo_social WHERE channel=?").bind(channel).all()).results.map(r => r.url));
     const jobs = pages.filter(p => !prior.has(p.url)).map(p => env.DB.prepare("INSERT OR IGNORE INTO seo_social(channel,url,updated_at) VALUES(?,?,?)").bind(channel, p.url, status.at));
-    for (let i = 0; i < jobs.length; i += 100) await env.DB.batch(jobs.slice(i, i + 100));
+    for (let i = 0; i < jobs.length; i += 200) await env.DB.batch(jobs.slice(i, i + 200));
     const row = await env.DB.prepare("SELECT url FROM seo_social WHERE channel=? AND status='pending' AND attempts<5 ORDER BY updated_at LIMIT 1").bind(channel).first();
     if (!row) continue;
     const p = pages.find(p => p.url === row.url); if (!p) continue;
@@ -16,6 +17,7 @@ export async function distribute(env) {
       const cap = Number(env.MONTHLY_PAID_API_CAP_USD || 0), cost = Number(env.X_POST_MAX_COST_USD || 0);
       // An explicit maximum per call is required; never assume X writes are free.
       if (!(cap > 0 && cost > 0)) { status.xBudget = "disabled: set a positive cap and maximum per-call cost"; continue; }
+      status.xReservedMaxCostUsd = cost;
       const month = status.at.slice(0, 7);
       const [, reserved] = await env.DB.batch([env.DB.prepare("INSERT OR IGNORE INTO seo_budget(month) VALUES(?)").bind(month), env.DB.prepare("UPDATE seo_budget SET reserved_usd=reserved_usd+? WHERE month=? AND reserved_usd+?<=?").bind(cost, month, cost, cap)]);
       if (!reserved.meta.changes) { status.xBudget = "monthly cap reached"; continue; }

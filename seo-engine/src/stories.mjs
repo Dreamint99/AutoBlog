@@ -9,6 +9,7 @@ async function save(env, site, month, title, body) {
   ]);
   await env.SEO_LOG.put(`engine:press:${site}:${month}`, JSON.stringify({ title, url: `https://${host}${path}`, summary: body.analysis, methodology: body.methodology, source: body.source, at: now, pitching: "Human approval required for each email; no pitches are sent." }));
 }
+export const newMonthlyData = (previous, month, fingerprint) => !previous || previous.slug === month || previous.fingerprint !== fingerprint;
 export async function stories(env) {
   const month = new Date().toISOString().slice(0, 7), label = new Date().toLocaleString("en-US", { month: "long", year: "numeric", timeZone: "UTC" });
   const growth = await env.DB.prepare("SELECT body FROM seo_pages WHERE site_id='countly' AND kind='ranking' AND slug='gdp-growth'").first();
@@ -18,7 +19,11 @@ export async function stories(env) {
       const median = n % 2 ? values[(n - 1) / 2] : (values[n / 2 - 1] + values[n / 2]) / 2;
       const top = d.rows.slice(0, 10), avg = top.reduce((a, r) => a + r.value, 0) / top.length;
       const analysis = `In the ${label} data review, the ten fastest-growing economies in the available ${d.year} World Bank cohort averaged ${avg.toFixed(2)}% real GDP growth, compared with a median of ${median.toFixed(2)}% across ${n} economies: a gap of ${(avg - median).toFixed(2)} percentage points. ${values.filter(v => v < 0).length} economies recorded a contraction. These are annual ${d.year} observations, not growth during ${label}.`;
-      await save(env, "countly", month, `Growth gap: top ten vs median — ${label} data review`, { ...d, rows: top, coverage: n, analysis, methodology: d.methodology + " Countly calculated the unweighted country median, top-ten arithmetic mean and gap in percentage points; these are not global GDP growth estimates." });
+      const sourceFingerprint = await digest({ year: d.year, rows: d.rows.map(r => ({ code: r.countryCode, value: r.value })) });
+      const old = await env.DB.prepare("SELECT slug,body FROM seo_pages WHERE site_id='countly' AND kind='stories' ORDER BY slug DESC LIMIT 1").first();
+      const previous = old ? { slug: old.slug, fingerprint: JSON.parse(old.body).sourceFingerprint } : null;
+      if (newMonthlyData(previous, month, sourceFingerprint)) await save(env, "countly", month, `Growth gap: top ten vs median — ${label} data review`, { ...d, rows: top, coverage: n, analysis, sourceFingerprint, methodology: d.methodology + " Countly calculated the unweighted country median, top-ten arithmetic mean and gap in percentage points; these are not global GDP growth estimates." });
+      else await env.SEO_LOG.put("engine:stories:countly", JSON.stringify({ status: "unchanged_source", month, reason: "No new annual observations or revisions; avoid an otherwise duplicate monthly page." }));
     }
   }
   const scores = (await env.DB.prepare(`SELECT league, json_extract(ev_json,'$.leagueName') AS label, COUNT(*) AS matches,
