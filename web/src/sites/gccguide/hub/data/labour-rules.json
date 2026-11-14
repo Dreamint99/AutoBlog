@@ -1,37 +1,177 @@
 {
   "generated": "2026-11-14",
-  "_readme": "Placeholder written before the verification pass. Records are confirmed:false until hub/data/labour-rules.json is filled from official sources; the calculator refuses to compute for an unconfirmed country rather than guessing.",
   "rules": [
     {
       "country": "uae",
       "gratuity": {
-        "confirmed": false,
-        "article": "",
-        "source_url": "",
+        "confirmed": true,
+        "article": "Article 51, Federal Decree-Law No. 33 of 2021",
+        "source_url": "https://u.ae/en/information-and-services/jobs/Sector-of-employment/employment-in-the-private-sector/end-of-service-benefits-for-employees-in-the-private-sector",
         "wage_base": "basic",
         "min_service_years": 1,
         "daily_divisor": 30,
-        "tiers": [],
-        "cap_months": null,
-        "resignation_factors": [],
-        "plain_english": "",
-        "notes": "Awaiting verification from an official source."
+        "tiers": [{ "upToYears": 5, "daysPerYear": 21 }, { "upToYears": null, "daysPerYear": 30 }],
+        "cap_months": 24,
+        "resignation_factors": [{ "minYears": 0, "factor": 1 }],
+        "plain_english": "After one year of continuous service you get 21 days' basic pay for each of your first five years and 30 days' basic pay for each year after that, pro-rated for part years, up to a maximum of two years' total pay. Housing, transport and other allowances are not counted - only your basic wage.",
+        "notes": "Figures read from the official U.AE page (updated 15 Oct 2026), which cites Article 51. Resignation and dismissal are treated the same under the 2021 law (the old 1980 law's one-third/two-thirds resignation reductions no longer apply). A voluntary alternative 'Savings Scheme' (Cabinet Resolution No. 96 of 2023, Ministerial Resolution No. 668 of 2023) lets employers pay 5.83% of basic monthly instead of accruing gratuity. The law is Federal Decree-Law No. 33 of 2021 as amended (3 amendments listed on the UAE Legislation platform, which shows the law as 'Active')."
+      },
+      "overtime": {
+        "confirmed": true,
+        "article": "Federal Decree-Law No. 33 of 2021 - Article 17 cited for working hours; the article number for the overtime uplift is NOT quoted on the U.AE page",
+        "source_url": "https://u.ae/en/information-and-services/jobs/Sector-of-employment/employment-in-the-private-sector/working-hours",
+        "uplift_percent": 25,
+        "night_uplift_percent": 50,
+        "rest_day_note": "Work on the contractual weekly rest day: a substitute rest day, or normal pay for those hours plus 50%.",
+        "hourly_divisor": 240,
+        "notes": "Official U.AE page: normal working hours are 8 per day / 48 per week (Article 17); overtime pay = normal hourly remuneration (based on basic salary) + 25%, rising to 50% for overtime between 10pm and 4am (shift workers excluded); off-day work = substitute rest day or +50%. The page does not state a monthly/30/8 formula; 240 is derived from the statutory 8-hour day and 30-day month. Holiday work is governed separately (Article 28: another rest day or normal day's wage plus at least 50% of basic wage)."
+      },
+      "annual_leave": {
+        "confirmed": true,
+        "article": "Federal Decree-Law No. 33 of 2021 - the article number is NOT quoted on the U.AE page",
+        "source_url": "https://u.ae/en/information-and-services/jobs/Sector-of-employment/employment-in-the-private-sector/Types-of-leaves",
+        "tiers": [{ "minServiceYears": 0, "days": 30 }],
+        "day_type": "calendar",
+        "notes": "Official U.AE page (updated 14 Oct 2026): 30 fully paid days after one year of service; if service exceeds six months but is less than one year, 2 days of leave per month. Fractions of the final year are paid in lieu. The page gives the entitlement without citing the article number, so the article number is deliberately not asserted here. Carry-over is capped at half the leave under the Executive Regulations (Cabinet Resolution No. 1 of 2022, Article 19)."
+      },
+      "notice": {
+        "confirmed": true,
+        "article": "Article 43, Federal Decree-Law No. 33 of 2021",
+        "source_url": "https://u.ae/en/information-and-services/jobs/Sector-of-employment/employment-in-the-private-sector/terminating-employment-contracts",
+        "tiers": [{ "minServiceYears": 0, "days": 30 }],
+        "payment_in_lieu": true,
+        "notes": "Official U.AE page: written notice of not less than 30 days and not more than 90 days, the same for both parties unless the contract is more favourable to the worker (the statutory floor is 30 days for everyone, so notice does not vary by length of service). Pay in lieu = the worker's last wage for the notice period or the unserved part of it. Notice may be reduced or waived by mutual agreement. The UAE abolished 'unlimited' contracts in 2022 - all private-sector contracts are now fixed-term, so this notice rule is the one that applies."
       }
     },
     {
-      "country": "saudi-arabia",
+      "country": "saudi",
       "gratuity": {
-        "confirmed": false,
-        "article": "",
-        "source_url": "",
+        "confirmed": true,
+        "article": "Articles 84 and 85, Labour Law (Royal Decree M/51)",
+        "source_url": "https://www.hrsd.gov.sa/sites/default/files/2025-11/labor-law.pdf",
         "wage_base": "full",
-        "min_service_years": 1,
+        "min_service_years": 0,
         "daily_divisor": 30,
-        "tiers": [],
+        "tiers": [{ "upToYears": 5, "daysPerYear": 15 }, { "upToYears": null, "daysPerYear": 30 }],
         "cap_months": null,
-        "resignation_factors": [],
-        "plain_english": "",
-        "notes": "Awaiting verification from an official source."
+        "resignation_factors": [
+          { "minYears": 0, "factor": 0 },
+          { "minYears": 2, "factor": 0.3333 },
+          { "minYears": 5, "factor": 0.6667 },
+          { "minYears": 10, "factor": 1 }
+        ],
+        "plain_english": "If you leave, you get half a month's wage for each of your first five years and a full month's wage for each year after that, pro-rated for part years, with no ceiling. If you resign instead of being dismissed you only get part of it: nothing under two years, one third between two and five years, two thirds between five and ten years, and the full amount once you have ten years.",
+        "notes": "Article 84 sets half a month's wage per year for the first five years and one month per year thereafter, on the last wage, pro-rated for fractions of a year; Article 85 reduces the award on resignation. Article 84 uses the unqualified term 'wage' (الأجر الأخير), not 'basic wage', so regular allowances are included in practice. The consolidated text on the ministry site carries amendments up to Royal Decree M/44 dated 8/2/1446H (2024); the gratuity articles themselves are unchanged by those amendments."
+      },
+      "overtime": {
+        "confirmed": true,
+        "article": "Article 107, Labour Law (Royal Decree M/51)",
+        "source_url": "https://www.hrsd.gov.sa/sites/default/files/2025-11/labor-law.pdf",
+        "uplift_percent": 50,
+        "night_uplift_percent": null,
+        "rest_day_note": "All hours worked on weekly rest days and public holidays count as overtime hours (Article 107(3)), so the same 50% uplift applies.",
+        "hourly_divisor": 240,
+        "notes": "Article 107(1): overtime is paid at the hourly wage plus 50% of the basic wage, and the employer may instead give paid compensatory leave with the worker's agreement. The law sets no separate night or rest-day rate - it converts rest-day and holiday hours into overtime. Working hours are 8 per day or 48 per week (Article 98), reduced to 6/36 in Ramadan. The 240 divisor (30 days x 8 hours) is derived, not stated in the law."
+      },
+      "annual_leave": {
+        "confirmed": true,
+        "article": "Article 109, Labour Law (Royal Decree M/51)",
+        "source_url": "https://www.hrsd.gov.sa/sites/default/files/2025-11/labor-law.pdf",
+        "tiers": [{ "minServiceYears": 0, "days": 21 }, { "minServiceYears": 5, "days": 30 }],
+        "day_type": "calendar",
+        "notes": "Article 109(1): at least 21 days per year, increased to at least 30 days after five continuous years with the same employer, paid in advance. Leave must be taken in the year it is earned and cannot be exchanged for cash during service (Article 109(2)); it may be deferred by agreement or by the employer for up to 90 days (Article 110)."
+      },
+      "notice": {
+        "confirmed": true,
+        "article": "Articles 75 and 76, Labour Law (Royal Decree M/51)",
+        "source_url": "https://www.hrsd.gov.sa/sites/default/files/2025-11/labor-law.pdf",
+        "tiers": [{ "minServiceYears": 0, "days": 30 }],
+        "payment_in_lieu": true,
+        "notes": "Article 75 applies to unlimited-term contracts: where pay is monthly, the worker must give 30 days' written notice but the employer must give 60 days; where pay is not monthly, either party gives 30 days. Notice does not vary with length of service. Article 76: a party that ends the contract without observing the notice period pays the other an amount equal to the worker's wage for the notice period (or the balance), so pay in lieu is allowed. Fixed-term contracts simply expire; early termination is governed by Article 74."
+      }
+    },
+    {
+      "country": "oman",
+      "gratuity": {
+        "confirmed": true,
+        "article": "Article 61, Labour Law (Royal Decree 53/2023)",
+        "source_url": "https://www.mol.gov.om/Laborlaw",
+        "wage_base": "basic",
+        "min_service_years": 0,
+        "daily_divisor": 30,
+        "tiers": [{ "upToYears": null, "daysPerYear": 30 }],
+        "cap_months": null,
+        "resignation_factors": [{ "minYears": 0, "factor": 1 }],
+        "plain_english": "You get at least one month's basic wage for every year you worked, pro-rated for part years, with no cap and no minimum service period. Resigning does not reduce it.",
+        "notes": "Article 61: the employer must pay 'not less than one basic wage for each year of service', pro-rated for fractions of a year, using the last basic wage. Service before the 2023 law counts. This applies only to workers NOT covered by the Social Protection Law - the article is expressly interim, 'until the savings system under the Social Protection Law starts', and Article 48 allows an equivalent employer-funded savings programme to replace the gratuity. Read from the Ministry of Labour's official consolidated text (Arabic). The ministry publishes Royal Decree 53/2023 as the current 'Labour Law', with the gazetted PDF linked from the same page, so the new law is in force and has replaced Royal Decree 35/2003."
+      },
+      "overtime": {
+        "confirmed": true,
+        "article": "Articles 70 and 71, Labour Law (Royal Decree 53/2023)",
+        "source_url": "https://www.mol.gov.om/Laborlaw",
+        "uplift_percent": 25,
+        "night_uplift_percent": 50,
+        "rest_day_note": "Overtime on weekly rest days or official holidays: a cash amount equal to 100% of the daily basic wage in addition to that day's own wage, or a compensatory day off (one day per day worked). Where the employer can impose overtime without consent (Article 71), the uplifts are 50% by day, 75% at night and 200% of the daily basic wage on rest days/holidays.",
+        "hourly_divisor": 240,
+        "notes": "Article 70 (overtime with the worker's consent): basic wage for the overtime hours plus at least 25% for day hours and 50% for night hours (night = 9pm to 5am, Article 1(16)), or time off instead. Article 71 (overtime without consent: stocktaking, emergencies): 50% day / 75% night, 200% on rest days and holidays. Total hours including overtime may not exceed 12 per day. The 240 divisor is derived from the 30-day month defined in Article 1(24) and the 8-hour day; the law does not state an hourly divisor."
+      },
+      "annual_leave": {
+        "confirmed": true,
+        "article": "Article 78, Labour Law (Royal Decree 53/2023)",
+        "source_url": "https://www.mol.gov.om/Laborlaw",
+        "tiers": [{ "minServiceYears": 0, "days": 30 }],
+        "day_type": "calendar",
+        "notes": "Article 78: at least 30 days of annual leave on full (comprehensive) wage, not to be taken before six months' service; unused balance may be carried over up to 30 days. Article 81 requires the worker to take at least 30 days every two years, allows the employer to postpone leave by up to six months, and lets the employer pay basic wage for untaken days only with the worker's written consent; accrued leave is paid on the full wage if service ends."
+      },
+      "notice": {
+        "confirmed": true,
+        "article": "Article 38, Labour Law (Royal Decree 53/2023)",
+        "source_url": "https://www.mol.gov.om/Laborlaw",
+        "tiers": [{ "minServiceYears": 0, "days": 30 }],
+        "payment_in_lieu": true,
+        "notes": "Article 38: for an unlimited-term contract either party may terminate on a lawful ground with 30 days' written notice for monthly-paid workers and 15 days for others, unless the contract provides longer. Notice does not vary with length of service. If notice is not observed the terminating party pays the other compensation equal to the full (comprehensive) wage for the notice period or the remainder - so pay in lieu is allowed. Article 36(5) requires the employer's notice to be at least one month; Article 37 allows 7 days' notice during probation; Article 46 requires at least 3 months' notice for collective reductions for economic reasons."
+      }
+    },
+    {
+      "country": "bahrain",
+      "gratuity": {
+        "confirmed": true,
+        "article": "Article 116 (read with Article 47), Labour Law No. 36 of 2012",
+        "source_url": "https://www.lloc.gov.bh/Legislation/HTM/K3612",
+        "wage_base": "basic",
+        "min_service_years": 0,
+        "daily_divisor": 30,
+        "tiers": [{ "upToYears": 3, "daysPerYear": 15 }, { "upToYears": null, "daysPerYear": 30 }],
+        "cap_months": null,
+        "resignation_factors": [{ "minYears": 0, "factor": 1 }],
+        "plain_english": "You get half a month's wage for each of your first three years and a full month's wage for every year after that, pro-rated for part years, with no ceiling. Resigning does not reduce it.",
+        "notes": "Article 116: half a month's wage per year for the first three years, one month's wage per year thereafter, pro-rated. Article 47 fixes the calculation base as the last BASIC wage plus the social allowance, if any (piece-rate/commission workers use the average of the last three months). IMPORTANT: Article 116 applies only to a worker 'not subject to the Social Insurance Law' - Bahrain has been moving expatriate private-sector workers onto monthly SIO end-of-service contributions, so for many expatriates the SIO (not the employer lump sum) now pays this benefit. Verify the worker's SIO coverage before quoting a lump sum. The text read is the consolidated law on the Legislation and Legal Opinion Commission portal (last updated 4 Nov 2026), which lists amending Legislative Decree No. 16 of 2021."
+      },
+      "overtime": {
+        "confirmed": true,
+        "article": "Articles 54, 57(b) and 64, Labour Law No. 36 of 2012",
+        "source_url": "https://www.lloc.gov.bh/Legislation/HTM/K3612",
+        "uplift_percent": 25,
+        "night_uplift_percent": 50,
+        "rest_day_note": "Weekly rest day: the worker gets the day's wage plus an additional 150% of that wage, or another day off at the worker's choice (Article 57(b)). Public holidays follow the same rule (Article 64).",
+        "hourly_divisor": 240,
+        "notes": "Article 54: for each overtime hour the worker receives the wage due plus at least 25% for day hours and 50% for night hours. Normal hours are 48 per week (Article 51), reduced to 6 hours a day / 36 a week in Ramadan for Muslim workers. Article 56 excludes certain categories (authorised agents, preparatory/supplementary work, guards and cleaners) for whom the Minister sets the rate. The 240 divisor is derived (30 days x 8 hours); the law states no hourly divisor."
+      },
+      "annual_leave": {
+        "confirmed": true,
+        "article": "Article 59, Labour Law No. 36 of 2012",
+        "source_url": "https://www.lloc.gov.bh/Legislation/HTM/K3612",
+        "tiers": [{ "minServiceYears": 0, "days": 30 }],
+        "day_type": "calendar",
+        "notes": "Article 59: after one year's service, at least 30 days' paid annual leave, accruing at two and a half days per month; workers with less than a year get a pro-rated entitlement. Leave cannot be waived and may be paid in cash only under Article 59/61 (on termination, or where the employer schedules it and the worker refuses in writing - Article 61(d))."
+      },
+      "notice": {
+        "confirmed": true,
+        "article": "Article 99, Labour Law No. 36 of 2012",
+        "source_url": "https://www.lloc.gov.bh/Legislation/HTM/K3612",
+        "tiers": [{ "minServiceYears": 0, "days": 30 }],
+        "payment_in_lieu": true,
+        "notes": "Article 99(a): either party may terminate after giving the other at least 30 days' written notice; the contract continues during notice. Where the employer terminates, the parties may agree to a longer notice period. Notice is a flat 30 days whatever the length of service (Article 21 allows one day during probation). Article 99(b): terminating without observing notice obliges the terminating party to pay compensation equal to the worker's wage for the whole or remaining notice period, so pay in lieu is allowed; Article 103 voids any agreement reducing the employer's notice obligation."
       }
     },
     {
@@ -40,14 +180,40 @@
         "confirmed": false,
         "article": "",
         "source_url": "",
-        "wage_base": "basic",
-        "min_service_years": 1,
-        "daily_divisor": 30,
+        "wage_base": null,
+        "min_service_years": null,
+        "daily_divisor": null,
         "tiers": [],
         "cap_months": null,
         "resignation_factors": [],
-        "plain_english": "",
-        "notes": "Awaiting verification from an official source."
+        "plain_english": "Not verified for this release.",
+        "notes": "No official Qatar page could be read from this environment. mol.gov.qa and adlsa.gov.qa did not resolve or refused connections, hukoomi.gov.qa was showing a scheduled-maintenance page, and almeezan.qa (the official legal portal) returns only a JavaScript application shell - HTTP 406 'not being accepted by your browser' to every automated request, with no server-rendered article text. Labour Law No. 14 of 2004 is reported to provide three weeks' basic pay per year after one year of service (Article 54), but that has NOT been verified against an official page here, so all numeric fields are left null."
+      },
+      "overtime": {
+        "confirmed": false,
+        "article": "",
+        "source_url": "",
+        "uplift_percent": null,
+        "night_uplift_percent": null,
+        "rest_day_note": "",
+        "hourly_divisor": null,
+        "notes": "Not verified: the same access failures as for gratuity (mol.gov.qa unreachable, almeezan.qa JavaScript-only, hukoomi.gov.qa in maintenance). No number is asserted."
+      },
+      "annual_leave": {
+        "confirmed": false,
+        "article": "",
+        "source_url": "",
+        "tiers": [],
+        "day_type": null,
+        "notes": "Not verified: same access failures. No number is asserted."
+      },
+      "notice": {
+        "confirmed": false,
+        "article": "",
+        "source_url": "",
+        "tiers": [],
+        "payment_in_lieu": null,
+        "notes": "Not verified: same access failures. Note that Article 49 of the Labour Law is reported to have been replaced by Decree-Law No. 18 of 2020, so any pre-2020 text found elsewhere is out of date - do not fill this from a cached copy."
       }
     },
     {
@@ -56,46 +222,40 @@
         "confirmed": false,
         "article": "",
         "source_url": "",
-        "wage_base": "basic",
-        "min_service_years": 1,
-        "daily_divisor": 30,
+        "wage_base": null,
+        "min_service_years": null,
+        "daily_divisor": null,
         "tiers": [],
         "cap_months": null,
         "resignation_factors": [],
-        "plain_english": "",
-        "notes": "Awaiting verification from an official source."
-      }
-    },
-    {
-      "country": "oman",
-      "gratuity": {
+        "plain_english": "Not verified for this release.",
+        "notes": "The Ministry of Justice portal (moj.gov.kw) does host the official PDF of Law No. 6 of 2010 on private-sector labour, but the PDF embeds a legacy Arabic font with no Unicode mapping: the extracted text is unreadable, so no article could be confirmed. manpower.gov.kw and e.gov.kw were unreachable or returned 403. Article 51 (as amended by Law 17 of 2018 and a 2020 amendment) is reported to give 10 days' basic pay per year for the first five years and 15 days per year thereafter with a resignation reduction, but that is NOT verified here, so all numeric fields are null."
+      },
+      "overtime": {
         "confirmed": false,
         "article": "",
         "source_url": "",
-        "wage_base": "basic",
-        "min_service_years": 1,
-        "daily_divisor": 30,
-        "tiers": [],
-        "cap_months": null,
-        "resignation_factors": [],
-        "plain_english": "",
-        "notes": "Awaiting verification from an official source."
-      }
-    },
-    {
-      "country": "bahrain",
-      "gratuity": {
+        "uplift_percent": null,
+        "night_uplift_percent": null,
+        "rest_day_note": "",
+        "hourly_divisor": null,
+        "notes": "Not verified: the official PDF text is not machine-readable and the labour authority site was unreachable. No number is asserted."
+      },
+      "annual_leave": {
         "confirmed": false,
         "article": "",
         "source_url": "",
-        "wage_base": "basic",
-        "min_service_years": 1,
-        "daily_divisor": 30,
         "tiers": [],
-        "cap_months": null,
-        "resignation_factors": [],
-        "plain_english": "",
-        "notes": "Awaiting verification from an official source."
+        "day_type": null,
+        "notes": "Not verified: same access failures. No number is asserted."
+      },
+      "notice": {
+        "confirmed": false,
+        "article": "",
+        "source_url": "",
+        "tiers": [],
+        "payment_in_lieu": null,
+        "notes": "Not verified: same access failures. No number is asserted."
       }
     }
   ]

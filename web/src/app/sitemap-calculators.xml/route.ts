@@ -17,6 +17,9 @@ export async function GET() {
     const rule = allRules().find((r) => r.country === g.country)?.gratuity;
     if (!rule || !gate.calculator(rule.confirmed)) continue;
     entries.push({ loc: abs(base, `/gratuity/${g.country}`), lastmod, changefreq: "monthly", priority: 0.9 });
+    for (const kind of ["overtime", "annual-leave", "notice-period"]) {
+      entries.push({ loc: abs(base, `/${kind}/${g.country}`), lastmod, changefreq: "monthly", priority: 0.8 });
+    }
     for (const wage of EXAMPLE_WAGES) {
       for (const years of INDEXED_EXAMPLE_YEARS) {
         if (!gate.calculatorExample(years, rule.confirmed)) continue;
