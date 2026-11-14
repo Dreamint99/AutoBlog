@@ -104,3 +104,66 @@ export function latestVerified(models: InfModel[]): string | null {
   }
   return best;
 }
+
+export interface PriceChange {
+  model: InfModel;
+  oldIn: number | null;
+  oldOut: number | null;
+  newIn: number | null;
+  newOut: number | null;
+}
+
+/** Days we have price snapshots for, newest first. */
+export const getChangeDays = cache(async (): Promise<string[]> => {
+  const db = d1();
+  if (!db) return [];
+  try {
+    const { results } = await db.prepare("SELECT DISTINCT day FROM infkey_price_history ORDER BY day DESC LIMIT 120").all<{ day: string }>();
+    return (results ?? []).map((r) => r.day);
+  } catch {
+    return [];
+  }
+});
+
+/** What changed on `day` versus each model's previous snapshot: price moves and new models. */
+export async function getDayChanges(day: string): Promise<{ day: string; up: PriceChange[]; down: PriceChange[]; added: InfModel[]; first: boolean }> {
+  const empty = { day, up: [], down: [], added: [], first: true };
+  const db = d1();
+  if (!db) return empty;
+  const days = await getChangeDays();
+  if (!days.includes(day)) return empty;
+  const first = day === days[days.length - 1];
+  const models = new Map((await all()).map((m) => [m.id, m]));
+  const { results } = await db
+    .prepare(
+      `SELECT h.id, h.input_per_m ni, h.output_per_m no,
+              p.input_per_m oi, p.output_per_m oo, p.day pd
+         FROM infkey_price_history h
+         LEFT JOIN infkey_price_history p
+           ON p.id = h.id AND p.day = (SELECT max(day) FROM infkey_price_history WHERE id = h.id AND day < h.day)
+        WHERE h.day = ?`,
+    )
+    .bind(day)
+    .all<{ id: string; ni: number | null; no: number | null; oi: number | null; oo: number | null; pd: string | null }>();
+  const up: PriceChange[] = [];
+  const down: PriceChange[] = [];
+  const added: InfModel[] = [];
+  for (const r of results ?? []) {
+    const m = models.get(r.id);
+    if (!m) continue;
+    if (!r.pd) {
+      if (!first) added.push(m);
+      continue;
+    }
+    const before = (r.oi ?? 0) + (r.oo ?? 0);
+    const after = (r.ni ?? 0) + (r.no ?? 0);
+    if (Math.abs(after - before) < 1e-9) continue;
+    const c = { model: m, oldIn: r.oi, oldOut: r.oo, newIn: r.ni, newOut: r.no };
+    (after < before ? down : up).push(c);
+  }
+  const pct = (c: PriceChange) => ((c.newIn ?? 0) + (c.newOut ?? 0)) / Math.max(1e-9, (c.oldIn ?? 0) + (c.oldOut ?? 0));
+  down.sort((a, b) => pct(a) - pct(b));
+  up.sort((a, b) => pct(b) - pct(a));
+  added.sort((a, b) => (a.tier ?? 2) - (b.tier ?? 2) || a.sort - b.sort);
+  return { day, up, down, added, first };
+}

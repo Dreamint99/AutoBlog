@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getArticles } from "@/lib/data";
-import { getModels, getFlagships } from "@/lib/models";
+import { getModels, getFlagships, getChangeDays } from "@/lib/models";
+import { changeSummary } from "@/sites/infkey/Changes";
 import { getHfModels, getStatuses, RUN_INDEX_TOP } from "@/lib/aidata";
 import { GPUS } from "@/sites/infkey/gpus";
 import { COUNTRIES, JOBS, DATA_VERIFIED } from "@/lib/walvi";
@@ -55,6 +56,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Live status, new models, "Can I run it?" (top models + popular GPUs only).
     entries.push({ url: `${base}/status`, changeFrequency: "hourly", priority: 0.9 });
     for (const st of await getStatuses()) entries.push({ url: `${base}/status/${st.service}`, changeFrequency: "hourly", priority: 0.8 });
+    entries.push({ url: `${base}/changes`, changeFrequency: "daily", priority: 0.9 });
+    for (const d of (await getChangeDays()).slice(0, 60)) if ((await changeSummary(d)).n > 0) entries.push({ url: `${base}/changes/${d}`, lastModified: d, changeFrequency: "monthly", priority: 0.5 });
     entries.push({ url: `${base}/new`, changeFrequency: "daily", priority: 0.8 }, { url: `${base}/run`, changeFrequency: "weekly", priority: 0.8 });
     for (const hm of (await getHfModels()).filter((x) => x.rank <= RUN_INDEX_TOP)) entries.push({ url: `${base}/run/${hm.id}`, changeFrequency: "weekly", priority: 0.6 });
     for (const g of GPUS.filter((x) => x.top)) entries.push({ url: `${base}/gpu/${g.id}`, changeFrequency: "weekly", priority: 0.6 });

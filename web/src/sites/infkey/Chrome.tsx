@@ -14,6 +14,7 @@ export function navFor(site: Site): ReadonlyArray<readonly [string, string]> {
     ["Compare", `${b}/compare`],
     ["Can I run it?", `${b}/run`],
     ["Is it down?", `${b}/status`],
+    ["Price changes", `${b}/changes`],
     ["New models", `${b}/new`],
     ["API cost", `${b}/calculators`],
     ["Best AI for…", `${b}#best-ai-for`],

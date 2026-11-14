@@ -31,6 +31,9 @@ export default async function LivePrices({ site }: { site: Site }) {
         <Link className="btn btn-primary" href={`${b}/models`}>
           See all {all.length} models
         </Link>
+        <Link className="btn btn-ghost" href={`${b}/changes`}>
+          Today&apos;s price changes
+        </Link>
         <Link className="btn btn-ghost" href={`${b}/calculators#calculator`}>
           Estimate your monthly cost
         </Link>

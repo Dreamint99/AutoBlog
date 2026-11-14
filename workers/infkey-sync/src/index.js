@@ -144,9 +144,9 @@ export async function sync(env) {
   }
   for (let i = 0; i < stmts.length; i += 90) await env.DB.batch(stmts.slice(i, i + 90));
   // Tell Bing/Yandex (IndexNow) about brand-new model pages right away.
-  if (fresh.length && before.size) {
+  if (before.size) {
     const key = "7cb730425493bd6250188aee25110d83";
-    const urlList = ["https://infkey.com/new", "https://infkey.com/models", ...fresh.slice(0, 500).map((id) => `https://infkey.com/models/${id}`)];
+    const urlList = ["https://infkey.com/changes", `https://infkey.com/changes/${today}`, "https://infkey.com/new", "https://infkey.com/models", ...fresh.slice(0, 500).map((id) => `https://infkey.com/models/${id}`)];
     try {
       await fetch("https://api.indexnow.org/indexnow", { method: "POST", headers: { "content-type": "application/json; charset=utf-8" }, body: JSON.stringify({ host: "infkey.com", key, keyLocation: `https://infkey.com/${key}.txt`, urlList }) });
     } catch {}
