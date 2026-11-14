@@ -13,7 +13,7 @@ define('PBD_LOADED', 1);
 define('PBD_MODE', 'live');               // 'test' | 'live'
 define('PBD_KEY', '__PBD_TEST_KEY__');
 define('PBD_API', 'https://probashi-data.iamkashimuddin.workers.dev/v1/');
-define('PBD_VER', '14');
+define('PBD_VER', '15');
 
 function pbd_enabled() {
     if (PBD_MODE === 'live') { return true; }
@@ -130,7 +130,7 @@ add_action('template_redirect', function () {
     $app = function_exists('pa_head') && function_exists('pa_foot') && function_exists('pa_app') && pa_app();
     if ($app) { pa_head(); } else { get_header(); }   // site shell (probashiinfo app snippet) or theme fallback
     echo pbd_css();
-    echo pbd_render($m);
+    echo pbd_with_en(pbd_render($m));
     if ($app) { pa_foot(); } else { get_footer(); }
     exit;
 }, 1);
@@ -240,6 +240,12 @@ function pbd_seo() {
             $s['desc'] = pbd_bn(count($d['cities'])) . 'টি শহরের সেহরি ও ইফতারের সময়সূচি — মধ্যপ্রাচ্য, মালয়েশিয়া, ইউরোপ, আমেরিকা ও কানাডা। স্থানীয় সময়ে, ছবি ডাউনলোড ও প্রিন্টসহ।';
         }
     }
+    $en = pbd_en();   // English name next to the Bangla, for English/Banglish searchers
+    if ($en['label'] !== '') {
+        $s['title'] .= ' | ' . $en['label'];
+        $s['desc'] = $en['label'] . ': ' . $s['desc'];
+    }
+    if ($en['faq']) { $s['faq'] = array_merge($s['faq'], $en['faq']); }
     if (function_exists('mb_strlen') && mb_strlen($s['desc']) > 158) { $s['desc'] = mb_substr($s['desc'], 0, 155) . '…'; }
     return $s;
 }
@@ -1028,3 +1034,164 @@ add_action('wp_footer', function () {
 <script>(function(){var s=document.getElementById('pbh'),h=document.querySelector('section.hero3');if(s&&h&&h.parentNode){h.parentNode.insertBefore(s,h.nextSibling);}})();</script>
 <?php
 }, 5);
+
+/* ---------- English + Banglish: titles, one English + one Banglish FAQ per page, site search ---------- */
+// many expats type English ("oman visa check") or Banglish ("doha iftar time koto") — visible text only, no hidden keywords
+function pbd_slug_en($slug) {
+    $fix = array('uk' => 'UK', 'usa' => 'USA', 'uae' => 'UAE', 'schengen-vfs' => 'Schengen (VFS)', 'coxs-bazar' => "Cox's Bazar",
+        'kuwait-city' => 'Kuwait City', 'makkah' => 'Makkah', 'madinah' => 'Madinah', 'new-york' => 'New York', 'los-angeles' => 'Los Angeles',
+        'abu-dhabi' => 'Abu Dhabi', 'kuala-lumpur' => 'Kuala Lumpur', 'czech-republic' => 'Czech Republic', 'north-macedonia' => 'North Macedonia',
+        'new-zealand' => 'New Zealand', 'south-korea' => 'South Korea', 'sri-lanka' => 'Sri Lanka', 'tv-fridge-ac' => 'TV, fridge, AC',
+        'gold-silver' => 'gold and silver', 'mobile-phone' => 'mobile phone', 'money' => 'money and dollars');
+    return isset($fix[$slug]) ? $fix[$slug] : ucwords(str_replace('-', ' ', $slug));
+}
+function pbd_latin($s) {   // Bangla digits → 0-9 for English sentences
+    return strtr((string) $s, array('০' => '0', '১' => '1', '২' => '2', '৩' => '3', '৪' => '4', '৫' => '5', '৬' => '6', '৭' => '7', '৮' => '8', '৯' => '9', 'কেজি' => 'kg', ' টি' => '', 'টি' => ''));
+}
+function pbd_t_en($min) {
+    $min = (($min % 1440) + 1440) % 1440;
+    $h = intdiv($min, 60); $ap = $h >= 12 ? 'PM' : 'AM'; $h = $h % 12; if ($h === 0) { $h = 12; }
+    return $h . ':' . str_pad((string) ($min % 60), 2, '0', STR_PAD_LEFT) . ' ' . $ap;
+}
+function pbd_date_en($ymd) { $t = strtotime($ymd . ' 12:00:00 UTC'); return $t ? gmdate('j F Y', $t) : $ymd; }
+
+/** English label (title/description) + one English and one Banglish FAQ for the current data page. */
+function pbd_en() {
+    static $e = null;
+    if ($e !== null) { return $e; }
+    $e = array('label' => '', 'faq' => array());
+    $m = pbd_match();
+    if (!$m || $m['type'] === 'sitemap') { return $e; }
+    $d = $m['data']; $it = $m['item']; $t = $m['type'];
+    if ($t === 'visa-check') {
+        if ($it) {
+            $en = pbd_slug_en($it['slug']); $host = pbd_host($it['url']);
+            $e['label'] = $en . ' visa check online';
+            $e['faq'][] = array('How to check ' . $en . ' visa status online?', 'Only on the official government site ' . $host . ' (' . $it['portal'] . '). Checking is free — do not pay an agent or a look-alike website.');
+            $e['faq'][] = array($en . ' visa check kivabe korbo?', 'Shudhu sorkari site ' . $host . '-e giye passport number ar application/reference number diye check korun. Kono taka lage na.');
+        } else { $e['label'] = 'Visa check by country — official sites'; }
+    } elseif ($t === 'visa') {
+        if ($it) {
+            $en = $it['name_en']; $k = substr($it['code'], 0, 1); $days = preg_replace('/\D/', '', $it['code']);
+            $map = array('F' => 'Visa-free' . ($days ? ' (up to ' . $days . ' days)' : ''), 'A' => 'Visa on arrival', 'T' => 'eTA (online travel authorisation) before travel',
+                'E' => 'e-Visa (apply online before travel)', 'V' => 'Visa required (apply at the embassy or its visa centre)', 'X' => 'Entry not allowed');
+            $kind = isset($map[$k]) ? $map[$k] : 'Unknown';
+            $e['label'] = $en . ' visa for Bangladeshi passport';
+            $e['faq'][] = array('Do Bangladeshi passport holders need a visa for ' . $en . '?', $kind . '. Rules change — confirm with the embassy or airline before booking.');
+            $bl = array('F' => 'na, visa lagbe na', 'A' => 'airport-e pouchhe visa nite hobe (on arrival)', 'T' => 'jawar age online-e eTA nite hobe', 'E' => 'jawar age online-e e-visa korte hobe', 'V' => 'haan, embassy theke visa lagbe', 'X' => 'Bangladeshi passport-e probesh nishedh');
+            $e['faq'][] = array('Bangladeshi passport e ' . $en . ' jete visa lagbe?', isset($bl[$k]) ? ucfirst($bl[$k]) . '.' : '');
+        } else { $e['label'] = 'Visa-free countries for Bangladeshi passport'; }
+    } elseif ($t === 'remittance') {
+        if ($it) {
+            $en = pbd_slug_en($it['slug']); $r = number_format($it['rate'], 2);
+            $e['label'] = $en . ' to BDT rate today';
+            $e['faq'][] = array('1 ' . $en . ' = how many Bangladeshi taka today?', 'About ' . $r . ' taka (mid-market rate, ' . pbd_date_en($d['updated']) . '). With the 2.5% government incentive, 1,000 ' . $en . ' gives about ' . number_format(1000 * $it['rate'] * 1.025) . ' taka.');
+            $e['faq'][] = array('1 ' . $en . ' koto taka?', 'Aj prai ' . $r . ' taka. Boidho pothe pathale 2.5% pronodona (incentive) pabe.');
+        } else { $e['label'] = 'Remittance calculator — taka rate with 2.5% incentive'; }
+    } elseif ($t === 'gamca') {
+        if ($it) {
+            $en = pbd_slug_en($it['slug']);
+            $e['label'] = $en . ' GAMCA medical center list';
+            $e['faq'][] = array('How many GAMCA (Wafid) medical centers are in ' . $en . '?', $it['count'] . ' GCC-approved centers on the official Wafid list (' . pbd_date_en($d['updated']) . '). Book at wafid.com; the report is valid for 2 months.');
+            $e['faq'][] = array($en . ' e GAMCA medical kothay korbo?', 'Ei page-e ' . $en . '-er sob onumodito center-er thikana ar phone ache. Appointment nite hobe wafid.com theke.');
+        } else { $e['label'] = 'GAMCA medical center list Bangladesh'; }
+    } elseif ($t === 'agency') {
+        if ($it) {
+            $e['label'] = 'RL ' . $it['rl'] . ' license check';
+            $e['faq'][] = array('Is ' . $it['name'] . ' (RL ' . $it['rl'] . ') a licensed recruiting agency?', 'BMET list: license status "' . $it['status'] . '"' . ($it['expiry'] ? ', valid until ' . pbd_date_en($it['expiry']) : '') . '. Verify on raims.oep.gov.bd before paying.');
+            $e['faq'][] = array('RL ' . $it['rl'] . ' agency license valid ki?', 'BMET-er talika onujayi license: ' . $it['status'] . '. Taka deyar age raims.oep.gov.bd-e mile nin.');
+        } else { $e['label'] = 'Recruiting agency license check (BMET RL number)'; }
+    } elseif ($t === 'migration-cost') {
+        $e['label'] = 'Government migration cost by country';
+        $e['faq'][] = array('What is the government-fixed migration cost for Malaysia?', 'Tk 78,990 per worker (office order of 5 July 2022). The table above lists every country with its order date.');
+    } elseif ($t === 'customs') {
+        $lab = array('mobile-phone' => 'How many mobile phones can I bring to Bangladesh', 'gold-silver' => 'Gold allowance Bangladesh customs (100g)', 'tv-fridge-ac' => 'TV, fridge, AC customs duty Bangladesh', 'money' => 'How much money / dollars can I bring to Bangladesh');
+        $faq = array(
+            'mobile-phone' => array(array('How many mobile phones can I bring to Bangladesh duty-free?', '2 used phones and 1 new phone per year (Baggage Rules 2025).'), array('Bidesh theke koyta mobile ana jay?', '2ta puraton ar bochore 1ta notun mobile free.')),
+            'gold-silver' => array(array('How much gold can I bring to Bangladesh?', '100 g of gold jewellery a year duty-free. A gold bar up to 117 g (10 tola) once a year at Tk 5,000 per tola.'), array('Bidesh theke koto gram sona ana jay?', '100 gram gohona free. Sonar bar 117 gram porjonto, protiti bhori 5,000 taka shulko.')),
+            'tv-fridge-ac' => array(array('What is the customs duty on a TV in Bangladesh?', 'TV up to 29 inch is duty-free; 30–36 inch Tk 10,000, up to Tk 90,000 for 66 inch and above.'), array('TV anle koto tax?', '29 inch porjonto free, 30-36 inch e 10,000 taka.')),
+            'money' => array(array('How many dollars can I bring to Bangladesh?', 'Any amount, but declare above USD 10,000 on the FMJ form. Bangladeshi taka: up to Tk 10,000.'), array('Koto dollar ana jay?', 'Jotokhushi, tobe 10,000 dollar-er beshi hole FMJ form-e declare korte hobe.')),
+        );
+        if ($it) { $e['label'] = isset($lab[$it['slug']]) ? $lab[$it['slug']] : 'Bangladesh baggage rules'; $e['faq'] = isset($faq[$it['slug']]) ? $faq[$it['slug']] : array(); }
+        else { $e['label'] = 'Bangladesh baggage rules 2025 (customs)'; $e['faq'][] = array('How much baggage is duty-free in Bangladesh?', '65 kg plus 35 kg of clothes and personal items for passengers aged 12 and over (Baggage Rules 2025).'); }
+    } elseif ($t === 'baggage') {
+        if ($it) {
+            $e['label'] = $it['name_en'] . ' baggage allowance from Dhaka';
+            $f = array(); foreach ($it['fares'] as $x) { $f[] = $x[0] . ': ' . pbd_latin($x[1]); }
+            $e['faq'][] = array('What is the ' . $it['name_en'] . ' economy baggage allowance from Dhaka?', 'Checked baggage by fare (names in Bangla on this page): ' . implode('; ', array_slice($f, 0, 4)) . '. Your e-ticket shows the final figure.');
+            $e['faq'][] = array($it['name_en'] . ' e koto kg luggage newa jay?', 'Sobcheye kom bharay ' . pbd_latin($it['fares'][0][1]) . '. Ticket-er "Baggage" ghore asol ojon lekha thake.');
+        } else { $e['label'] = 'Airline baggage allowance from Dhaka'; }
+    } elseif ($t === 'ramadan') {
+        $yr = substr($d['ramadan']['start'], 0, 4);
+        if ($it) {
+            $en = pbd_slug_en($it['slug']); $r0 = $d['rows'][0];
+            $e['label'] = $en . ' Ramadan calendar ' . $yr . ' — sehri & iftar time';
+            $e['faq'][] = array('What time is iftar in ' . $en . ' on the first day of Ramadan ' . $yr . '?', 'Iftar about ' . pbd_t_en($r0['iftar']) . ', sehri ends ' . pbd_t_en($r0['sehri']) . ' (local time). Ramadan is expected to start on ' . pbd_date_en($d['ramadan']['start']) . '.');
+            $e['faq'][] = array($en . ' e iftar er somoy koto?', 'Prothom rojay iftar ' . pbd_t_en($r0['iftar']) . ', sehri sesh ' . pbd_t_en($r0['sehri']) . ' (sthaniyo somoy).');
+        } else { $e['label'] = 'Ramadan calendar ' . $yr . ' for expats — iftar time by city'; }
+    }
+    return $e;
+}
+function pbd_en_faq() { $e = pbd_en(); return $e['faq']; }
+
+/* site search: put matching data pages on top of the results (Bangla, Banglish or English queries) */
+add_action('wp_footer', function () {
+    if (!is_search()) { return; }
+    $q = strtolower(trim(get_search_query()));
+    if (mb_strlen($q) < 2) { return; }
+    $has = function ($words) use ($q) { foreach ((array) $words as $w) { if ($w !== '' && mb_strpos($q, $w) !== false) { return true; } } return false; };
+    $kind = array(
+        'ramadan' => array('ramadan', 'ramzan', 'romjan', 'iftar', 'ifter', 'sehri', 'sehri', 'seheri', 'sahri', 'roja', 'রমজান', 'ইফতার', 'সেহরি', 'রোজা'),
+        'visa-check' => array('visa check', 'visa status', 'visa cek', 'ভিসা চেক', 'ভিসা যাচাই'),
+        'visa' => array('visa free', 'on arrival', 'visa lagbe', 'visa lage', 'ভিসা লাগে', 'ভিসা ছাড়া'),
+        'remittance' => array('rate', 'taka', 'bdt', 'remittance', 'remitance', 'রেট', 'টাকা', 'রেমিট্যান্স'),
+        'gamca' => array('gamca', 'wafid', 'medical', 'গামকা', 'মেডিকেল'),
+        'agency' => array('agency', 'agenci', 'license', 'licence', 'rl ', 'rl-', 'এজেন্সি', 'লাইসেন্স'),
+        'customs' => array('custom', 'gold', 'sona', 'mobile', 'phone', 'dollar', 'কাস্টমস', 'স্বর্ণ', 'মোবাইল'),
+        'baggage' => array('baggage', 'luggage', 'lagej', 'kg', 'লাগেজ', 'ব্যাগেজ'),
+    );
+    $want = array(); foreach ($kind as $k => $w) { if ($has($w)) { $want[$k] = 1; } }
+    $hits = array();
+    $add = function ($url, $title, $sub) use (&$hits) { if (count($hits) < 8 && !isset($hits[$url])) { $hits[$url] = array($title, $sub); } };
+    $sets = array('ramadan' => array('ramadan', 'cities'), 'visa-check' => array('visa-check', 'countries'), 'visa' => array('visa', 'countries'),
+        'remittance' => array('remittance', 'currencies'), 'gamca' => array('gamca', 'cities'), 'baggage' => array('customs', 'airlines'));
+    foreach ($sets as $type => $src) {
+        $d = pbd_data($src[0]); if (!$d || empty($d[$src[1]])) { continue; }
+        foreach ($d[$src[1]] as $x) {
+            $en = strtolower(isset($x['name_en']) ? $x['name_en'] : pbd_slug_en($x['slug']));
+            $bn = isset($x['name']) ? $x['name'] : '';
+            $alias = array($en, str_replace('-', ' ', $x['slug']), $bn);
+            if (isset($x['country'])) { $alias[] = $x['country']; }
+            $match = false;
+            foreach ($alias as $a) { if ($a !== '' && mb_strlen($a) > 2 && mb_strpos($q, mb_strtolower($a)) !== false) { $match = true; break; } }
+            if (!$match || ($want && empty($want[$type]))) { continue; }
+            $lab = array('ramadan' => 'রমজান ক্যালেন্ডার', 'visa-check' => 'ভিসা চেক', 'visa' => 'ভিসা লাগে কি না', 'remittance' => 'টাকার রেট', 'gamca' => 'গামকা মেডিকেল', 'baggage' => 'লাগেজ');
+            $add(home_url('/' . $type . '/' . $x['slug'] . '/'), $bn . ' — ' . $lab[$type], ucwords($en));
+        }
+    }
+    if (preg_match('/(?:rl[\s-]*)?(\d{2,4})/i', $q, $mm) && (isset($want['agency']) || preg_match('/^\s*(rl[\s-]*)?\d{2,4}\s*$/i', $q))) {
+        $add(home_url('/agency/rl-' . (int) $mm[1] . '/'), 'আরএল-' . pbd_bn((int) $mm[1]) . ' এজেন্সির লাইসেন্স', 'RL ' . (int) $mm[1] . ' license check');
+    }
+    $hubs = array('ramadan' => array('/ramadan/', 'প্রবাসে রমজান ক্যালেন্ডার', 'Ramadan calendar'), 'visa-check' => array('/visa-check/', 'দেশভিত্তিক ভিসা চেক', 'Visa check'),
+        'visa' => array('/visa/', 'কোন দেশে ভিসা লাগে', 'Visa-free countries'), 'remittance' => array('/remittance/', 'রেমিট্যান্স ক্যালকুলেটর', 'Taka rate'),
+        'gamca' => array('/gamca/', 'গামকা মেডিকেল সেন্টার', 'GAMCA centers'), 'agency' => array('/agency/?q=' . rawurlencode(get_search_query()), 'এজেন্সি লাইসেন্স যাচাই', 'Agency license'),
+        'customs' => array('/customs/', 'কাস্টমস নিয়ম', 'Baggage rules'), 'baggage' => array('/baggage/', 'এয়ারলাইনের লাগেজ', 'Airline baggage'));
+    foreach ($want as $k => $_) { $add(home_url($hubs[$k][0]), $hubs[$k][1], $hubs[$k][2]); }
+    if (!$hits) { return; }
+    echo '<section class="pbs" id="pbs"><div class="w"><h2>সরাসরি তথ্য</h2><div class="pbs-g">';
+    foreach ($hits as $url => $h) { echo '<a href="' . esc_url($url) . '"><b>' . esc_html($h[0]) . '</b><small>' . esc_html($h[1]) . '</small></a>'; }
+    echo '</div></div></section><style>.pbs{padding:16px 0 4px}.pbs h2{font-size:20px;margin:0 0 10px}.pbs-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}.pbs-g a{display:block;padding:12px 14px;border-radius:14px;background:var(--bs,#e9f1fd);border:1px solid var(--line,#e2e8f1);text-decoration:none!important;color:var(--ink,#0f1f38)!important;min-width:0}.pbs-g b{display:block;font-size:16px}.pbs-g small{color:var(--b,#0b56c4);font-weight:600}</style>';
+    echo '<script>(function(){var s=document.getElementById("pbs"),h=document.querySelector("section.arch-hd")||document.querySelector("main");if(s&&h){if(h.tagName==="MAIN")h.insertBefore(s,h.firstChild);else h.parentNode.insertBefore(s,h.nextSibling);}})();</script>';
+}, 6);
+
+/* visible English + Banglish questions: on top of the page's FAQ, or as a small block at the end */
+function pbd_with_en($html) {
+    $f = pbd_en_faq();
+    if (!$f) { return $html; }
+    $x = '';
+    foreach ($f as $q) { $x .= '<details lang="en"><summary>' . esc_html($q[0]) . '</summary><p>' . esc_html($q[1]) . '</p></details>'; }
+    $h = '<h2>প্রশ্ন ও উত্তর</h2>';
+    if (strpos($html, $h) !== false) { return preg_replace('/' . preg_quote($h, '/') . '/u', $h . $x, $html, 1); }
+    $end = strrpos($html, '</div></article></div></div>');
+    return $end === false ? $html . $x : substr($html, 0, $end) . '<h2>In English</h2>' . $x . substr($html, $end);
+}
