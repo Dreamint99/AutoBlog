@@ -425,7 +425,7 @@ body.pi-app .v7in h1 span{color:#FFC9D2}
 .v7c{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
 .v7c a{color:#fff!important;font-size:14px;font-weight:600;padding:6px 13px;border-radius:999px;background:rgba(20,12,24,.42);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .v7c a:hover{background:rgba(20,12,24,.65)}
-.v7bar{padding:0 44px 14px}
+.v7bar{padding:0 44px 46px}
 .v7strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
 .v7strip button{position:relative;background:none;border:0;color:#fff;text-align:left;padding:0 0 9px;font:600 13px var(--body);opacity:.65;cursor:pointer}
 .v7strip button.on{opacity:1}
@@ -464,7 +464,7 @@ body.home #pbh{display:none!important}
  .v7in{padding:26px 18px 12px}
  .v7slide:before{background:linear-gradient(180deg,rgba(23,15,28,.55),rgba(23,15,28,.78))}
  .v7c{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-right:-18px}.v7c a{flex:none}
- .v7bar{padding:0 18px 12px}
+ .v7bar{padding:0 18px 36px}
  .v7strip{display:flex;overflow-x:auto;scrollbar-width:none;gap:14px}.v7strip button{flex:none;min-width:84px}
  .v7stats{margin:-26px 10px 0;gap:8px}.v7stats a{padding:11px 13px}.v7stats b{font-size:19px}
  .v7svc{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.v7svc a{padding:14px 6px 12px;border-radius:16px}
