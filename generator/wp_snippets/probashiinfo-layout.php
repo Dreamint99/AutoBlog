@@ -5,7 +5,7 @@
    output, URLs and Adsterra stay identical; the in-house ad blocks keep their places (home: Dream ad +
    Probashi Bondhu card; posts: unchanged views from #14).
    Rollout: PI_LAYOUT_PUBLIC false = only with ?v5=1 (cookie; ?v5=0 clears). Rollback = deactivate. */
-if ( ! defined( 'PI_LAYOUT_PUBLIC' ) ) define( 'PI_LAYOUT_PUBLIC', false );
+if ( ! defined( 'PI_LAYOUT_PUBLIC' ) ) define( 'PI_LAYOUT_PUBLIC', true );
 if ( ! defined( 'PI_LAYOUT_VERSION' ) ) define( 'PI_LAYOUT_VERSION', '5.0.0' );
 
 function pi_layout_on() {
@@ -50,12 +50,12 @@ function pi_v5_home() {
 	$bmN = $live && ! empty( $live['t'] ) ? (int) $live['t'] : ( $yk ? (int) $bd[ $yk ]['t'] : 0 );
 	$bmL = $live && ! empty( $live['t'] ) ? 'আজ বিএমইটি ছাড়পত্র' : 'গতকাল বিএমইটি ছাড়পত্র';
 	$u = function ( $p ) { return esc_url( home_url( $p ) ); };
-	$latest = get_posts( array( 'numberposts' => 8 ) );
+	$latest = get_posts( array( 'numberposts' => 12 ) );
 	?>
 <section class="hero3 v5h"><div class="w">
 	<div class="v5h-l">
 		<span class="v5k"><span class="ldot"></span>প্রতিদিন হালনাগাদ · সরকারি সূত্র</span>
-		<h1>প্রবাসের সব তথ্য,<br><span>এক জায়গায়।</span></h1>
+		<h1>প্রবাসের পথে,<br><span>পাশে আছি।</span></h1>
 		<form class="v5s" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">
 			<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
 			<input name="s" type="search" placeholder="কী জানতে চান? যেমন: সৌদি ভিসা চেক" aria-label="খুঁজুন">
