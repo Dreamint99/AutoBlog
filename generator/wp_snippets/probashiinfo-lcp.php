@@ -42,10 +42,14 @@ add_action( 'template_redirect', function () {
 		return;
 	}
 	ob_start( function ( $html ) {
-		return str_replace(
+		$html = str_replace(
 			array( 'Noto+Sans+Bengali:wght@400;500;600;700;800', 'Noto+Sans+Bengali:wght@400;500;600;700' ),
 			'Noto+Sans+Bengali:wght@400;600;700',
 			$html
 		);
+		// 4) Home LCP is the hero <h1> text: with display=swap it repaints when the web font lands (~4.8 s on slow
+		//    mobile), and that repaint is the LCP. display=optional keeps the first paint (Android ships Noto Sans
+		//    Bengali as its system Bengali font, so phones look the same); the web font is used once cached.
+		return preg_replace( '~(Noto\+Sans\+Bengali:wght@[0-9;]+)&(amp;)?display=swap~', '$1&$2display=optional', $html );
 	} );
 }, 2 );
