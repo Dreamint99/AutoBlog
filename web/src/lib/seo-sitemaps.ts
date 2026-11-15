@@ -2,6 +2,7 @@ import { races } from "@/sites/ninetymins/F1Hub";
 import { activeSite } from "./site-context";
 import { getArticles, d1 } from "./data";
 import { fixtures, hubs, months, prunedSlugs } from "@/sites/ninetymins/engine";
+import { sitemapHighlights, hlPath, cleanTitle, HL_SPORTS } from "@/sites/ninetymins/highlights";
 import legacySitemap from "./legacy-sitemap";
 import { dataIndex, comparisonLinks } from "@/sites/countly/data-engine";
 const BASE = "https://ninetymins.com";
@@ -16,10 +17,15 @@ export async function sitemapResponse(name: string): Promise<Response> {
     return urls((await legacySitemap()).map(i => ({ url: i.url, lastmod: i.lastModified instanceof Date ? i.lastModified.toISOString() : i.lastModified })));
   }
   if (name === "sitemap.xml") {
-    const maps = ["sitemap-hubs.xml", "sitemap-articles.xml", "sitemap-news.xml", ...(await monthMaps())];
+    const maps = ["sitemap-hubs.xml", "sitemap-articles.xml", "sitemap-news.xml", "sitemap-videos.xml", ...(await monthMaps())];
     return xml(`<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${maps.map(m => `<sitemap><loc>${BASE}/${m}</loc></sitemap>`).join("")}</sitemapindex>`);
   }
-  if (name === "sitemap-hubs.xml") return urls([{ url: BASE + "/" }, { url: BASE + "/league/f1" }, ...(await races()).map(r => ({ url: BASE + "/race/" + r.slug, lastmod: r.lastmod })), ...(d1() ? (await d1()!.prepare("SELECT slug,lastmod FROM seo_pages WHERE site_id=\'ninetymins\' AND kind=\'stories\'").all<{ slug: string; lastmod: string }>()).results.map(r => ({ url: BASE + "/stories/" + r.slug, lastmod: r.lastmod })) : []), ...["today", "tomorrow", "scores", "widgets", "archive"].map(p => ({ url: `${BASE}/${p}` })), ...(await hubs()).map(h => ({ url: BASE + h.path, lastmod: h.lastmod }))]);
+  if (name === "sitemap-hubs.xml") return urls([{ url: BASE + "/" }, { url: BASE + "/league/f1" }, ...(await races()).map(r => ({ url: BASE + "/race/" + r.slug, lastmod: r.lastmod })), ...(d1() ? (await d1()!.prepare("SELECT slug,lastmod FROM seo_pages WHERE site_id=\'ninetymins\' AND kind=\'stories\'").all<{ slug: string; lastmod: string }>()).results.map(r => ({ url: BASE + "/stories/" + r.slug, lastmod: r.lastmod })) : []), ...["today", "tomorrow", "scores", "widgets", "archive", "live-tv", "highlights", ...HL_SPORTS.filter(([k]) => k).map(([k]) => `highlights/${k}`)].map(p => ({ url: `${BASE}/${p}` })), ...(await hubs()).map(h => ({ url: BASE + h.path, lastmod: h.lastmod }))]);
+  if (name === "sitemap-videos.xml") {
+    // Google video sitemap: one watch page per official highlight (player = YouTube embed).
+    const vids = await sitemapHighlights();
+    return xml(`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">${vids.map(v => `<url><loc>${xmlEscape(BASE + hlPath(v))}</loc><lastmod>${xmlEscape(v.date)}</lastmod><video:video><video:thumbnail_loc>${xmlEscape(v.thumb)}</video:thumbnail_loc><video:title>${xmlEscape(cleanTitle(v.title).slice(0, 100))}</video:title><video:description>${xmlEscape(`Official highlights from ${v.channel.trim()}.`)}</video:description><video:player_loc>${xmlEscape(`https://www.youtube.com/embed/${v.id}`)}</video:player_loc><video:duration>${Math.max(1, v.dur | 0)}</video:duration><video:publication_date>${xmlEscape(v.date)}</video:publication_date><video:family_friendly>yes</video:family_friendly></video:video></url>`).join("")}</urlset>`);
+  }
   const pruned = await prunedSlugs("ninetymins");
   const articles = (await getArticles("ninetymins")).filter(a => !pruned.has(a.slug));
   if (name === "sitemap-articles.xml") return urls(articles.map(a => ({ url: `${BASE}/${a.slug}`, lastmod: a.created_at })));

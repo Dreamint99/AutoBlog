@@ -1,6 +1,6 @@
 import "./theme.css";
 import Link from "next/link";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import type { Site, Article } from "@/lib/types";
 import { fontVars } from "./fonts";
 import { NM_COMPS, compOf, ago, type NmComp } from "./comps";
@@ -22,7 +22,7 @@ export function Badge({ comp }: { comp: NmComp }) {
 
 export function Kicker({ comp, siteId }: { comp: NmComp; siteId: string }) {
   return (
-    <Link href={`/s/${siteId}/topic/${comp.slug}`} className="nm-kicker" style={{ color: comp.color === "#111827" ? undefined : comp.color }}>
+    <Link href={`/s/${siteId}/topic/${comp.slug}`} className="nm-kicker" style={comp.color === "#111827" ? undefined : ({ "--kc": comp.color } as CSSProperties)}>
       {comp.label}
     </Link>
   );
@@ -60,6 +60,8 @@ export function Header({ site }: { site: Site; home?: boolean }) {
               Live scores
             </Link>
             <Link href={`${s}/today`}>Today</Link>
+            <Link href={`${s}/live-tv`}>Live TV</Link>
+            <Link href={`${s}/highlights`}>Highlights</Link>
             <Link href={`${s}/tomorrow`}>Tomorrow</Link>
             <Link href={`${s}/archive`}>Stories</Link>
           </nav>
@@ -128,6 +130,8 @@ export function Footer({ site }: { site: Site }) {
               <li><Link href={`${s}/scores`}>Live scores</Link></li>
               <li><Link href={`${s}/today`}>Today&apos;s matches</Link></li>
               <li><Link href={`${s}/saff`}>SAFF live centre</Link></li>
+              <li><Link href={`${s}/live-tv`}>Live TV</Link></li>
+              <li><Link href={`${s}/highlights`}>Highlights</Link></li>
               <li><Link href={`${s}/about`}>About</Link></li>
               <li><Link href={`${s}/contact`}>Contact</Link></li>
               <li><Link href={`${s}/privacy`}>Privacy Policy</Link></li>
