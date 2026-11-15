@@ -5,6 +5,7 @@ LLM_PROVIDER=chain (default) walks LLM_CHAIN in order: when a provider is out of
 overloaded or errors, the call moves on to the next one. LLM_PROVIDER=deepseek|openrouter|
 gemini|groq|mistral|cerebras|workersai pins a single provider (the old behaviour).
 """
+import os
 import sys
 import time
 
@@ -19,6 +20,8 @@ _dead: set[str] = set()
 # "name:model" -> time.time() when a per-minute rate limit should have cleared.
 _cool: dict[str, float] = {}
 COOLDOWN_S = 65
+# "name:model" -> transient failures this process (exponential backoff, then skip).
+_fails: dict[str, int] = {}
 _last_used = ""
 
 
@@ -49,18 +52,26 @@ def _client(name):
         from openai import OpenAI
         p = PROVIDERS[name]
         # OpenRouter likes identifying headers; harmless for the others.
-        _clients[name] = OpenAI(api_key=p["key"], base_url=p["base"], timeout=240, max_retries=0,
+        # LLM_TIMEOUT (seconds per call) lets time-boxed workflows fail over sooner than the 240 s default.
+        _clients[name] = OpenAI(api_key=p["key"], base_url=p["base"], timeout=float(os.getenv("LLM_TIMEOUT", "240")), max_retries=0,
                                 default_headers={"HTTP-Referer": "https://autoblog.local",
                                                  "X-Title": "AutoBlog"})
     return _clients[name]
 
 
-def _classify(e: Exception) -> str:
+def _classify(e: Exception, name: str = "") -> str:
     """'account' = the whole provider is unusable this run (bad key / no balance),
     'model' = this model's daily quota is gone (other models may still have theirs),
     'next' = transient — just try the next entry now."""
     status = getattr(e, "status_code", None)
     msg = str(e).lower()
+    # Model gone / no longer free ("does not exist", "unavailable for free"): skip it for the run
+    # instead of retrying it on every call.
+    if status == 404 or "does not exist" in msg or "unavailable for free" in msg or "decommissioned" in msg:
+        return "model"
+    # OpenRouter answers 402 per model (a paid route with no credit) — its :free models still work.
+    if status == 402 and name == "openrouter":
+        return "model"
     if status in (401, 402, 403) or "insufficient balance" in msg or "credit" in msg:
         return "account"
     if status == 429:
@@ -136,12 +147,13 @@ def chat(system: str, user: str, temperature: float = 0.7,
             for attempt in range(2):  # one quick retry on empty/garbled output
                 try:
                     out = _call(name, use_model, system, user, temperature, max_tokens, json_mode)
+                    _fails.pop(f"{name}:{use_model}", None)
                     if _last_used != f"{name}:{use_model}":
                         _last_used = f"{name}:{use_model}"
                         print(f"LLM: using {_last_used}", file=sys.stderr, flush=True)
                     return out
                 except Exception as e:
-                    kind = _classify(e)
+                    kind = _classify(e, name)
                     errors.append(f"{name}:{use_model} → {str(e)[:160]}")
                     if kind in ("account", "model"):
                         _dead.add(name if kind == "account" else f"{name}:{use_model}")
@@ -153,7 +165,14 @@ def chat(system: str, user: str, temperature: float = 0.7,
                         break
                     if "empty content" in str(e) and attempt == 0:
                         continue
-                    # transient (503 overload, timeout, 5xx) — short pause before retrying it
-                    _cool[f"{name}:{use_model}"] = time.time() + 20
+                    # transient (503 overload, timeout, 5xx) — back off 20s, 40s, 80s… before retrying it
+                    key = f"{name}:{use_model}"
+                    _fails[key] = _fails.get(key, 0) + 1
+                    if _fails[key] >= 4:  # keeps failing this run — stop paying the wait on every call
+                        _dead.add(key)
+                        print(f"LLM: {key} disabled for this run after {_fails[key]} transient errors",
+                              file=sys.stderr, flush=True)
+                    else:
+                        _cool[key] = time.time() + 20 * 2 ** (_fails[key] - 1)
                     break
     raise RuntimeError("all LLM providers failed: " + " | ".join(errors[-6:]))
