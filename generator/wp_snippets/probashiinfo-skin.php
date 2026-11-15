@@ -6,7 +6,7 @@
    Brand = the Probashi app: sunset red→orange (#E11D48→#F97316), plum ink (#3A2150), calm white cards.
    Rollout: PI_SKIN_PUBLIC false = only with ?v4=1 (cookie; ?v4=0 clears). Rollback = deactivate snippet. */
 if ( ! defined( 'PI_SKIN_PUBLIC' ) ) define( 'PI_SKIN_PUBLIC', true );
-if ( ! defined( 'PI_SKIN_VERSION' ) ) define( 'PI_SKIN_VERSION', '4.0.1' );
+if ( ! defined( 'PI_SKIN_VERSION' ) ) define( 'PI_SKIN_VERSION', '4.0.2' );
 
 function pi_skin_on() {
 	static $on = null;
@@ -26,6 +26,13 @@ add_action( 'init', function () {
 		do_action( 'litespeed_purge_all' );
 	}
 } );
+
+/* favicon = new logo mark: WordPress keeps printing its usual icon tags, only the files change */
+add_filter( 'get_site_icon_url', function ( $url, $size ) {
+	if ( is_admin() ) return $url;
+	$s = (int) $size <= 32 ? 32 : ( (int) $size <= 180 ? 180 : ( (int) $size <= 192 ? 192 : 512 ) );
+	return home_url( '/wp-content/uploads/2026/11/pi-favicon-' . $s . '.png' );
+}, 20, 2 );
 
 add_action( 'wp_head', function () {
 	if ( ! pi_skin_on() ) return;
