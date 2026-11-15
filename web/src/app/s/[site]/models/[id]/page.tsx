@@ -1,5 +1,5 @@
 import { defaultOgImages } from "@/lib/og";
-import "@/sites/infkey/theme.css";
+import "@/sites/infkey/v2.css";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -176,7 +176,7 @@ export default async function ModelDetailPage({
 
       <div className="cta-row">
         <Link className="btn btn-primary" href={`${b}/calculators#calculator`}>
-          ▸ Estimate cost in the calculator
+          Estimate cost in the calculator
         </Link>
         <Link className="btn btn-ghost" href={`${b}/compare`}>
           Compare with another model

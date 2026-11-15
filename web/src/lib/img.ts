@@ -9,11 +9,11 @@ const activeSite = (): SiteLite => SITES.find((s) => s.id === process.env.SITE_I
 // /card/ PNG is rendered on demand by the Worker, 200+ KB and ~1 s before it can paint).
 //   /card/<slug> + title → the same title card as an inline SVG data URI: ~1 KB, no request at all
 //   /card/<slug> alone   → the PNG rendered at 600x315 (&w=600)
-//   upload.wikimedia.org → the 640px rendition instead of 1280px
+//   upload.wikimedia.org → the 500px rendition (Wikimedia only serves standard widths; 640 now 400s)
 //   ESPN team logos      → ESPN's own resizer at the displayed size
 // The PNG card URL stays the article's og:image for social previews.
 const THEME: Record<string, { a: string; b: string; accent: string }> = {
-  "infkey-noir": { a: "#1e1b4b", b: "#7c3aed", accent: "#c4b5fd" },
+  "infkey-noir": { a: "#0b1220", b: "#1d4ed8", accent: "#22d3ee" },
   "walvi-atlas": { a: "#0b1f3a", b: "#134e4a", accent: "#2dd4bf" },
   "countly-data": { a: "#1e1b4b", b: "#4f46e5", accent: "#a5b4fc" },
   "ninetymins-pitch": { a: "#052e16", b: "#15803d", accent: "#bef264" },
@@ -67,7 +67,7 @@ export function thumb(url: string | null | undefined, title?: string, w: 600 | 3
     return url;
   }
   const wm = url.match(/^https:\/\/(?:upload|thumb)\.wikimedia\.org(\/wikipedia\/commons\/thumb\/.+\/)(\d+)px-([^/?#]+)/);
-  if (wm && Number(wm[2]) > w) return `https://upload.wikimedia.org${wm[1]}${w === 600 ? 640 : 320}px-${wm[3]}`;
+  if (wm && Number(wm[2]) > w) return `https://upload.wikimedia.org${wm[1]}${w === 600 ? 500 : 330}px-${wm[3]}`;
   const espn = url.match(/^https:\/\/a\.espncdn\.com(\/i\/teamlogos\/.+\.png)$/);
   if (espn) return `https://a.espncdn.com/combiner/i?img=${espn[1]}&w=96&h=96`;
   return url;

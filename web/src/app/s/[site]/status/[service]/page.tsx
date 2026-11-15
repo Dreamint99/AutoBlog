@@ -1,4 +1,4 @@
-import "@/sites/infkey/theme.css";
+import "@/sites/infkey/v2.css";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -61,13 +61,13 @@ export default async function ServiceStatusPage({ params }: { params: Promise<{ 
     <>
       <JsonLd data={breadcrumbSchema([{ name: site.name, url: base }, { name: "AI status", url: `${base}/status` }, { name: s.name, url: `${base}/status/${s.service}` }])} />
       <InfShell site={site}>
+        <PageHead kicker="Live status" title={`Is ${s.name} down?`} dek={`${s.description}. Last checked ${new Date(s.checked_at).toUTCString()}.`} />
         {/* Big status answer at top */}
         <div className={`status-answer ${down ? "is-down" : "is-up"}`}>
           <h2>{down ? `Yes, ${s.name} has problems` : `No, ${s.name} is up`}</h2>
           <p>{down ? "There is a reported problem right now." : "No known problems right now."}</p>
         </div>
 
-        <PageHead kicker="Live status" title={`Is ${s.name} down?`} dek={`${s.description}. Last checked ${new Date(s.checked_at).toUTCString()}.`} />
         
         <div className="price-cards">
           <div className="pcard">

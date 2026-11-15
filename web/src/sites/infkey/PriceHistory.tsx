@@ -71,12 +71,12 @@ export function PriceHistory({ history }: { history: { day: string; input: numbe
         {/* Dots at endpoints with tooltips */}
         {last.output !== null && (
           <circle cx={x(history.length - 1)} cy={y(last.output)} r="5" className="dot">
-            <title>Output: {fmtUsd(last.output, 2)} on {fmtDate(last.day)}</title>
+            <title>{`Output: ${fmtUsd(last.output, 2)} on ${fmtDate(last.day)}`}</title>
           </circle>
         )}
         {first.output !== null && (
           <circle cx={x(0)} cy={y(first.output)} r="4" className="dot" opacity="0.6">
-            <title>Output: {fmtUsd(first.output, 2)} on {fmtDate(first.day)}</title>
+            <title>{`Output: ${fmtUsd(first.output, 2)} on ${fmtDate(first.day)}`}</title>
           </circle>
         )}
       </svg>

@@ -22,7 +22,7 @@ export function fmtDate(iso: string | null): string {
   if (!iso) return "";
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return iso;
-  return d.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
+  return d.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" });
 }
 
 export function PageHead({
@@ -72,43 +72,48 @@ export function Caps({ model }: { model: InfModel }) {
   );
 }
 
-export function ModelTable({ site, models }: { site: Site; models: InfModel[] }) {
+export function ModelTable({ site, models, id, sortable = false }: { site: Site; models: InfModel[]; id?: string; sortable?: boolean }) {
   const b = `/s/${site.id}`;
+  const sort = (kind: "num" | "text") => (sortable ? { "data-sort": kind } : {});
+  const ts = (iso: string | null) => {
+    const t = iso ? Date.parse(iso) : NaN;
+    return Number.isNaN(t) ? 0 : t;
+  };
   return (
     <div className="itable-wrap">
-      <table className="itable">
+      <table className="itable" id={id}>
         <thead>
           <tr>
-            <th>Model</th>
-            <th className="num">Input /1M</th>
-            <th className="num">Output /1M</th>
-            <th className="num">Context</th>
+            <th {...sort("text")}>Model</th>
+            <th className="num" {...sort("num")}>Input /1M</th>
+            <th className="num" {...sort("num")}>Output /1M</th>
+            <th className="num" {...sort("num")}>Context</th>
             <th>Capabilities</th>
-            <th>Verified</th>
+            <th {...sort("num")}>Verified</th>
           </tr>
         </thead>
         <tbody>
           {models.map((m) => (
-            <tr key={m.id}>
-              <td>
+            <tr key={m.id} data-s={`${m.name} ${m.provider} ${m.id}`.toLowerCase()}>
+              <td data-v={m.name.toLowerCase()}>
                 <Link className="m-name" href={`${b}/models/${m.id}`}>
                   <b>{m.name}</b>
                   <span className="m-vendor">{m.provider}</span>
                 </Link>
               </td>
-              <td className="num accent" data-label="Input">
+              <td className="num accent" data-label="Input" data-v={m.input_per_m ?? -1}>
                 {fmtUsd(m.input_per_m, 3)}
               </td>
-              <td className="num accent" data-label="Output">
+              <td className="num accent" data-label="Output" data-v={m.output_per_m ?? -1}>
                 {fmtUsd(m.output_per_m, 2)}
               </td>
-              <td className="num" data-label="Context">
+              <td className="num" data-label="Context" data-v={m.max_context ?? 0}>
                 {fmtContext(m.max_context)}
               </td>
               <td data-label="Caps">
                 <Caps model={m} />
               </td>
-              <td className="mono-faint" data-label="Verified">
+              <td className="mono-faint" data-label="Verified" data-v={ts(m.last_verified)}>
                 {fmtDate(m.last_verified)}
               </td>
             </tr>
@@ -182,4 +187,27 @@ export function ChangeChip({ pct }: { pct: number }) {
       {pct}%
     </span>
   );
+}
+
+/** The current headline model of each big lab (newest full-size LLM), for "popular comparisons". */
+const LABS = ["OpenAI", "Anthropic", "Google", "DeepSeek", "xAI", "Meta", "Mistral", "Qwen (Alibaba)"];
+const NOT_HEADLINE = /gemma|batch|preview|exp|mini|nano|lite|flash|haiku|small|tiny|oss|guard|audio|image|realtime|search|embed|tts|transcribe|vl-|-vl|coder|safeguard/i;
+export function headliners(models: InfModel[], n = 6): InfModel[] {
+  const out: InfModel[] = [];
+  for (const lab of LABS) {
+    const c = models.filter((m) => m.provider === lab && m.category === "llm" && !NOT_HEADLINE.test(`${m.name} ${m.id}`));
+    if (!c.length) continue;
+    c.sort((a, b) => (b.created ?? 0) - (a.created ?? 0) || (b.output_per_m ?? 0) - (a.output_per_m ?? 0));
+    out.push(c[0]);
+    if (out.length >= n) break;
+  }
+  return out;
+}
+
+/** All head-to-head pairs of the given models, canonical (alphabetical) slug first. */
+export function pairsOf(list: InfModel[], max: number): [string, InfModel, InfModel][] {
+  const pairs: [string, InfModel, InfModel][] = [];
+  for (let i = 0; i < list.length; i++)
+    for (let j = i + 1; j < list.length && pairs.length < max; j++) pairs.push([[list[i].id, list[j].id].sort().join("-vs-"), list[i], list[j]]);
+  return pairs;
 }

@@ -1,4 +1,4 @@
-import "@/sites/infkey/theme.css";
+import "@/sites/infkey/v2.css";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";

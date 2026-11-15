@@ -1,23 +1,33 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import type { Site } from "@/lib/types";
-import "./ai.css";
+import "./v2.css";
 import { aiFont } from "./fonts";
 
-/* Shared InfKey chrome — masthead, footer, logo, page shell.
-   Used by Home, Article and every data-product route so nav stays consistent. */
+/* Shared InfKey chrome (v2) — sticky header, footer, page shell.
+   Used by Home, Article and every data route so the nav stays consistent.
+   No client JS: the "More" menu and the phone drawer are <details>. */
 
 export function navFor(site: Site): ReadonlyArray<readonly [string, string]> {
   const b = `/s/${site.id}`;
   return [
-    ["AI prices", `${b}/models`],
+    ["Models", `${b}/models`],
     ["Compare", `${b}/compare`],
-    ["Can I run it?", `${b}/run`],
-    ["Is it down?", `${b}/status`],
     ["Price changes", `${b}/changes`],
+    ["Is it down?", `${b}/status`],
+    ["Can I run it?", `${b}/run`],
+    ["Calculator", `${b}/calculators`],
+  ];
+}
+
+function moreFor(site: Site): ReadonlyArray<readonly [string, string]> {
+  const b = `/s/${site.id}`;
+  return [
     ["New models", `${b}/new`],
-    ["API cost", `${b}/calculators`],
-    ["Best AI for…", `${b}#best-ai-for`],
+    ["GPU guide", `${b}/gpu`],
+    ["Guides", `${b}/archive`],
+    ["Search guides", `${b}/search`],
+    ["About", `${b}/about`],
   ];
 }
 
@@ -32,9 +42,9 @@ export function KeyMark() {
 }
 
 export function Logo({ site }: { site: Site }) {
-  /* Text wordmark: "inf" + gradient "key" + muted ".com" (Space Grotesk, set in ai.css). */
+  /* Brand wordmark: "inf" + gradient "key" + muted ".com" (Space Grotesk). */
   return (
-    <Link href={`/s/${site.id}`} className="logo ik-wordmark" aria-label={`${site.name} home`}>
+    <Link href={`/s/${site.id}`} className="ik-logo" aria-label={`${site.name} home`}>
       <span className="ik-wm-a">inf</span>
       <span className="ik-wm-k">key</span>
       <span className="ik-wm-d">.com</span>
@@ -42,26 +52,71 @@ export function Logo({ site }: { site: Site }) {
   );
 }
 
+const Chevron = () => (
+  <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true">
+    <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+const SearchIcon = () => (
+  <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true">
+    <circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" strokeWidth="1.8" />
+    <path d="M13.5 13.5L17 17" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+  </svg>
+);
+
+/* Removes images that fail to load (dead Wikimedia renditions etc.) so cards never show a broken icon.
+   Capture-phase listener, registered before any <img> in the page is parsed. */
+const IMG_GUARD =
+  "document.addEventListener('error',function(e){var t=e.target;if(t&&t.tagName==='IMG'){var f=t.closest('figure');if(f&&f.className.indexOf('hero-figure')>-1){f.remove()}else{t.remove()}}},true);";
+
 export function Masthead({ site }: { site: Site }) {
   const nav = navFor(site);
+  const more = moreFor(site);
+  const b = `/s/${site.id}`;
   return (
-    <header className={`masthead ai-masthead ${aiFont.variable}`}>
-      <div className="shell masthead-row">
-        <input type="checkbox" id="ik-nav" className="nav-toggle" aria-hidden="true" />
+    <header className={`ik-bar ${aiFont.variable}`}>
+      <script dangerouslySetInnerHTML={{ __html: IMG_GUARD }} />
+      <div className="ik-wrap ik-bar-in">
         <Logo site={site} />
-        <nav className="nav" aria-label="Primary">
+        <nav className="ik-nav" aria-label="Primary">
           {nav.map(([label, href]) => (
             <Link href={href} key={label}>
               {label}
             </Link>
           ))}
-          <Link href={`/s/${site.id}/search`} className="cta">
-            ✦ Ask InfKey
-          </Link>
+          <details className="ik-more">
+            <summary>
+              More <Chevron />
+            </summary>
+            <div className="ik-more-menu">
+              {more.map(([label, href]) => (
+                <Link href={href} key={label}>
+                  {label}
+                </Link>
+              ))}
+            </div>
+          </details>
         </nav>
-        <label className="nav-burger" htmlFor="ik-nav" aria-label="Toggle navigation menu">
-          <span />
-        </label>
+        <form className="ik-hsearch" action={`${b}/models`} role="search">
+          <SearchIcon />
+          <input name="q" type="search" placeholder="Search models" aria-label="Search AI models" />
+        </form>
+        <details className="ik-burger">
+          <summary aria-label="Open menu">
+            <span />
+          </summary>
+          <nav className="ik-drawer" aria-label="All sections">
+            <form className="ik-dsearch" action={`${b}/models`} role="search">
+              <SearchIcon />
+              <input name="q" type="search" placeholder="Search 400+ AI models" aria-label="Search AI models" />
+            </form>
+            {[...nav, ...more].map(([label, href]) => (
+              <Link href={href} key={label}>
+                {label}
+              </Link>
+            ))}
+          </nav>
+        </details>
       </div>
     </header>
   );
@@ -70,75 +125,77 @@ export function Masthead({ site }: { site: Site }) {
 export function Footer({ site }: { site: Site }) {
   const year = new Date().getFullYear();
   const b = `/s/${site.id}`;
+  const cols: ReadonlyArray<[string, ReadonlyArray<[string, string]>]> = [
+    [
+      "Data",
+      [
+        ["AI model prices", `${b}/models`],
+        ["Compare models", `${b}/compare`],
+        ["Price changes", `${b}/changes`],
+        ["New models", `${b}/new`],
+      ],
+    ],
+    [
+      "Tools",
+      [
+        ["Is it down?", `${b}/status`],
+        ["Can I run it?", `${b}/run`],
+        ["GPU guide", `${b}/gpu`],
+        ["API cost calculator", `${b}/calculators`],
+      ],
+    ],
+    [
+      "InfKey",
+      [
+        ["About", `${b}/about`],
+        ["Contact", `${b}/contact`],
+        ["Guides", `${b}/archive`],
+        ["Privacy Policy", `${b}/privacy`],
+        ["Terms", `${b}/terms`],
+        ["Disclaimer", `${b}/disclaimer`],
+      ],
+    ],
+  ];
   return (
-    <footer className="footer">
-      <div className="shell">
-        <div className="footer-row">
-          <div>
+    <footer className="ik-foot">
+      <div className="ik-wrap">
+        <div className="ik-foot-top">
+          <div className="ik-foot-brand">
             <Logo site={site} />
-            <p className="footer-tag" style={{ marginTop: "12px" }}>
-              {site.tagline}
-            </p>
+            <p>Live prices, status and specs for AI models. Refreshed every day.</p>
           </div>
-          <div className="footer-cols">
-            <div className="footer-col">
-              <h5>AI tools</h5>
-              <Link href={`${b}#prompt-library`}>Viral prompt library</Link>
-              <Link href={`${b}#best-ai-for`}>Best AI for your job</Link>
-              <Link href={`${b}#use-free`}>Use AI free</Link>
-              <Link href={`${b}#compare`}>ChatGPT vs Claude vs Gemini</Link>
-              <Link href={`${b}#deals`}>Plans, prices &amp; deals</Link>
+          {cols.map(([h, links]) => (
+            <div className="ik-foot-col" key={h}>
+              <h2>{h}</h2>
+              {links.map(([label, href]) => (
+                <Link href={href} key={label}>
+                  {label}
+                </Link>
+              ))}
             </div>
-            <div className="footer-col">
-              <h5>Builders</h5>
-              <Link href={`${b}/calculators`}>Cost calculators</Link>
-              <Link href={`${b}/compare`}>Comparisons</Link>
-              <Link href={`${b}/models`}>Model database</Link>
-              <Link href={`${b}#guides`}>Cost guides</Link>
-            </div>
-            <div className="footer-col">
-              <h5>Trust</h5>
-              <Link href={`${b}#method`}>Methodology</Link>
-              <Link href={`${b}/models`}>Pricing sources</Link>
-              <Link href={`${b}#guides`}>Update history</Link>
-            </div>
-          </div>
+          ))}
         </div>
-        <p className="footer-disclaimer" data-nosnippet>
+        <p className="ik-foot-note" data-nosnippet>
           InfKey is independent and not affiliated with OpenAI, Anthropic, Google, Microsoft or any AI provider; product
-          names are trademarks of their owners. Prices, plans and free limits are collected from public pages for guidance
-          only and change often — always confirm on the provider&apos;s official site before you pay.
+          names are trademarks of their owners. Prices are collected from public listings for guidance only and change
+          often — confirm on the provider&apos;s site before you pay.
         </p>
-        <div
-          className="footer-legal"
-          style={{ display: "flex", flexWrap: "wrap", gap: "6px 16px", margin: "14px 0", fontSize: "13px", opacity: 0.85 }}
-        >
-          <Link href={`${b}/about`}>About</Link>
-          <Link href={`${b}/contact`}>Contact</Link>
-          <Link href={`${b}/privacy`}>Privacy Policy</Link>
-          <Link href={`${b}/terms`}>Terms</Link>
-          <Link href={`${b}/disclaimer`}>Disclaimer</Link>
-          <Link href={`${b}/archive`}>All articles</Link>
-        </div>
-        <div className="footer-base">
-          <span>
-            © {year} <span className="accent">{site.name}</span>
-          </span>
-          <span>·</span>
-          <span>AI tools, explained.</span>
+        <div className="ik-foot-base">
+          <span>© {year} {site.name}</span>
+          <span>USD per 1M tokens unless noted</span>
         </div>
       </div>
     </footer>
   );
 }
 
-/** Standard page wrapper: masthead + shell main + footer. */
+/** Standard page wrapper: header + content column + footer. */
 export function InfShell({ site, children }: { site: Site; children: ReactNode }) {
   return (
-    <div className={`ai-root ${aiFont.variable}`}>
+    <div className={`ai-root ik ${aiFont.variable}`}>
       <Masthead site={site} />
-      <main>
-        <div className="shell">{children}</div>
+      <main className="ik-main">
+        <div className="ik-wrap shell">{children}</div>
       </main>
       <Footer site={site} />
     </div>

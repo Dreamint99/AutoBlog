@@ -11,7 +11,7 @@ export async function changeSummary(day: string) {
   return { ...c, n };
 }
 
-const pct = (c: PriceChange) => {
+export const changePct = (c: PriceChange) => {
   const a = (c.oldIn ?? 0) + (c.oldOut ?? 0);
   const b = (c.newIn ?? 0) + (c.newOut ?? 0);
   return a ? Math.round(((b - a) / a) * 100) : 0;
@@ -52,7 +52,7 @@ function ChangeTable({ site, rows }: { site: Site; rows: PriceChange[] }) {
                 {fmtUsd(c.oldOut, 2)} → {fmtUsd(c.newOut, 2)}
               </td>
               <td data-label="Change">
-                <ChangeChip pct={pct(c)} />
+                <ChangeChip pct={changePct(c)} />
               </td>
             </tr>
           ))}

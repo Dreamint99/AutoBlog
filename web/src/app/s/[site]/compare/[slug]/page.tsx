@@ -1,5 +1,5 @@
 import { defaultOgImages } from "@/lib/og";
-import "@/sites/infkey/theme.css";
+import "@/sites/infkey/v2.css";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -190,7 +190,7 @@ export default async function ComparePairPage({
 
       <div className="cta-row">
         <Link className="btn btn-primary" href={`${b}/calculators#calculator`}>
-          ▸ Price your own workload
+          Price your own workload
         </Link>
         <Link className="btn btn-ghost" href={`${b}/models`}>
           All models

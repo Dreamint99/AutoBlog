@@ -1,4 +1,4 @@
-import "@/sites/infkey/theme.css";
+import "@/sites/infkey/v2.css";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -43,6 +43,11 @@ export default async function RunPairPage({ params }: { params: Promise<{ site: 
     <>
       <JsonLd data={breadcrumbSchema([{ name: site.name, url: base }, { name: n, url: `${base}/run/${m.id}` }, { name: g.name, url: `${base}/run/${m.id}/${g.id}` }])} />
       <InfShell site={site}>
+        <PageHead
+          kicker="Can I run it?"
+          title={`${n} on ${g.name}`}
+          dek={`${n} has ${fmtParams(m.params)} parameters. The ${g.name} has ${g.vram} GB of memory.`}
+        />
         {/* Big answer at top */}
         <div className={`status-answer ${best ? "is-up" : "is-down"}`}>
           <h2>{best ? `Yes, ${g.name} can run ${n}` : `No, ${n} is too big`}</h2>
@@ -53,11 +58,6 @@ export default async function RunPairPage({ params }: { params: Promise<{ site: 
           </p>
         </div>
 
-        <PageHead
-          kicker="Can I run it?"
-          title={`${n} on ${g.name}`}
-          dek={`${n} has ${fmtParams(m.params)} parameters. The ${g.name} has ${g.vram} GB of memory.`}
-        />
 
         {/* Memory bar visualization */}
         <MemoryBar need={q4.e.need} available={available} fit={q4.e.fit} />

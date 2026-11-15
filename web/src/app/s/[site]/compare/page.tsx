@@ -1,5 +1,5 @@
 import { defaultOgImages } from "@/lib/og";
-import "@/sites/infkey/theme.css";
+import "@/sites/infkey/v2.css";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -7,19 +7,12 @@ import { getSite } from "@/lib/data";
 import { getModels, latestVerified } from "@/lib/models";
 import { siteBaseUrl } from "@/lib/sites.config";
 import { InfShell } from "@/sites/infkey/Chrome";
-import { PageHead, ModelTable } from "@/sites/infkey/data-ui";
+import { PageHead, ModelTable, headliners, pairsOf } from "@/sites/infkey/data-ui";
+import TableTools from "@/sites/infkey/TableTools";
 import { JsonLd, breadcrumbSchema } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
-const POPULAR: ReadonlyArray<[string, string]> = [
-  ["gpt-4o", "claude-3-5-sonnet"],
-  ["gemini-1-5-pro", "gpt-4o"],
-  ["deepseek-v3", "gpt-4o-mini"],
-  ["claude-3-5-sonnet", "gemini-1-5-pro"],
-  ["gpt-4o-mini", "gemini-1-5-flash"],
-  ["claude-3-5-haiku", "gpt-4o-mini"],
-];
 
 export async function generateMetadata({
   params,
@@ -55,11 +48,11 @@ export default async function ComparePage({
   if (!site || site.id !== "infkey") notFound();
 
   const models = await getModels();
-  const byId = new Map(models.map((m) => [m.id, m]));
   const verified = latestVerified(models);
   const b = `/s/${site.id}`;
 
-  const pairs = POPULAR.filter(([a, c]) => byId.has(a) && byId.has(c));
+  // popular head-to-heads: the headline model of each big lab
+  const pairs = pairsOf(headliners(models, 6), 15);
   const base = siteBaseUrl(site);
 
   return (
@@ -85,9 +78,9 @@ export default async function ComparePage({
             <span className="rule" />
           </div>
           <div className="vs-links">
-            {pairs.map(([a, c]) => (
-              <Link className="vs-link" href={`${b}/compare/${a}-vs-${c}`} key={`${a}-${c}`}>
-                {byId.get(a)!.name} <span className="vs">vs</span> {byId.get(c)!.name}
+            {pairs.map(([slug, a, c]) => (
+              <Link className="vs-link" href={`${b}/compare/${slug}`} key={slug}>
+                {a.name} <span className="vs">vs</span> {c.name}
               </Link>
             ))}
           </div>
@@ -97,9 +90,9 @@ export default async function ComparePage({
       <div className="section-head">
         <h2>Full pricing matrix</h2>
         <span className="rule" />
-        <span className="count">{String(models.length).padStart(2, "0")} models</span>
       </div>
-      <ModelTable site={site} models={models} />
+      <TableTools target="ik-matrix" />
+      <ModelTable site={site} models={models} id="ik-matrix" sortable />
       <p className="src-note">
         Tip: open any model to see full specs, or build a direct two-way comparison at{" "}
         <code>/compare/&lt;model-a&gt;-vs-&lt;model-b&gt;</code>.

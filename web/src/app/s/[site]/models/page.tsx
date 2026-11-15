@@ -1,5 +1,5 @@
 import { defaultOgImages } from "@/lib/og";
-import "@/sites/infkey/theme.css";
+import "@/sites/infkey/v2.css";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getSite } from "@/lib/data";
@@ -7,6 +7,7 @@ import { getModels, latestVerified } from "@/lib/models";
 import { siteBaseUrl } from "@/lib/sites.config";
 import { InfShell } from "@/sites/infkey/Chrome";
 import { PageHead, ModelTable } from "@/sites/infkey/data-ui";
+import TableTools from "@/sites/infkey/TableTools";
 import { JsonLd, datasetSchema, breadcrumbSchema } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
@@ -70,7 +71,7 @@ export default async function ModelsPage({
       <PageHead
         kicker="Model database"
         title="AI model pricing database"
-        dek="Live API prices for 400+ AI models, updated every day: price per million tokens, context window and capabilities. Flagship models from the big labs first, then everything else by price."
+        dek="API price per million tokens, context window and capabilities for every model — refreshed daily. Click a column to sort."
         verified={verified}
       />
 
@@ -84,7 +85,8 @@ export default async function ModelsPage({
         </div>
       ) : (
         <>
-          <ModelTable site={site} models={models} />
+          <TableTools target="ik-models" />
+          <ModelTable site={site} models={models} id="ik-models" sortable />
           <p className="src-note">
             {models.length} models tracked, refreshed daily from public provider listings. Prices are USD per 1M tokens. They exclude taxes, prompt-caching discounts and
             failed-generation retries — confirm with the provider before relying on a figure.

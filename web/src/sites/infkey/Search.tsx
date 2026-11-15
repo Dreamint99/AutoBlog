@@ -1,70 +1,57 @@
-import "./theme.css";
-import "./ai.css";
+import "./v2.css";
 import Link from "next/link";
 import type { Article, Site } from "@/lib/types";
 import { InfShell } from "./Chrome";
 import { topicOf, PROMPT_PACKS } from "./topics";
 import { thumb } from "@/lib/img";
 
-/* InfKey search — AI-style results page. When nothing matches yet, it says so
-   honestly and points to the closest pillars instead of a dead end. */
+/* InfKey guide search. When nothing matches yet it says so and offers close topics instead of a dead end.
+   (Model prices have their own instant filter on /models.) */
 export default function Search({ site, q, results }: { site: Site; q: string; results: Article[] }) {
   const b = `/s/${site.id}`;
   return (
     <InfShell site={site}>
-      <section className="ai-sec">
-        <div className="ai-head">
-          <h1 style={{ fontSize: "clamp(30px,4vw,46px)", margin: 0, color: "#fff" }}>
-            {q ? (
-              <>
-                Results for <span className="ai-grad">“{q}”</span>
-              </>
-            ) : (
-              "Ask InfKey"
-            )}
-          </h1>
-          <p>{q ? `${results.length} guide(s) found.` : "Search prompts, AI tools, how-tos and prices."}</p>
+      <header className="page-head">
+        <div className="article-cat">Search guides</div>
+        <h1 className="page-title">{q ? <>Results for “{q}”</> : "Search InfKey guides"}</h1>
+        <p className="page-dek">
+          {q ? `${results.length} guide${results.length === 1 ? "" : "s"} found. ` : ""}
+          Looking for a model&apos;s price? <Link href={`${b}/models${q ? `?q=${encodeURIComponent(q)}` : ""}`}>Search the model database</Link>.
+        </p>
+      </header>
+      <form className="ik-sform" action={`${b}/search`} role="search">
+        <input name="q" type="search" defaultValue={q} placeholder="e.g. cheapest coding model" aria-label="Search guides" />
+        <button type="submit">Search</button>
+      </form>
+      {results.length ? (
+        <div className="grid">
+          {results.map((a) => (
+            <article className="card" key={a.id}>
+              <Link href={`${b}/${a.slug}`} className="card-media" tabIndex={-1} aria-label={a.title}>
+                <span className="card-cat">{topicOf(a).label}</span>
+                {a.image_url ? <img src={thumb(a.image_url, a.title)} alt={a.title} loading="lazy" decoding="async" /> : null}
+              </Link>
+              <div className="card-body">
+                <h3 className="card-title">
+                  <Link href={`${b}/${a.slug}`}>{a.title}</Link>
+                </h3>
+                <div className="card-foot">{a.reading_time} min read</div>
+              </div>
+            </article>
+          ))}
         </div>
-        <form className="ai-prompt" action={`${b}/search`} role="search" style={{ margin: "0 0 28px" }}>
-          <span className="ai-spark" aria-hidden="true">
-            ✦
-          </span>
-          <input name="q" type="search" defaultValue={q} placeholder="e.g. viral ai video prompt" aria-label="Search" />
-          <button type="submit">Search</button>
-        </form>
-        {results.length ? (
-          <div className="ai-grid">
-            {results.map((a) => (
-              <article className="ai-card" key={a.id}>
-                <Link href={`${b}/${a.slug}`} className="ai-card-media" tabIndex={-1} aria-label={a.title}>
-                  {a.image_url ? <img src={thumb(a.image_url, a.title)} alt={a.title} loading="lazy" decoding="async" /> : <span className="ai-card-ph">✦</span>}
-                  <span className="ai-tag">{topicOf(a).label}</span>
-                </Link>
-                <div className="ai-card-body">
-                  <h3>
-                    <Link href={`${b}/${a.slug}`}>{a.title}</Link>
-                  </h3>
-                  <span className="ai-meta">{a.reading_time} min read</span>
-                </div>
-              </article>
+      ) : q ? (
+        <div className="spec-block">
+          <h2 className="block-h">No guide on this yet. Try:</h2>
+          <div className="vs-links">
+            {PROMPT_PACKS.slice(0, 6).map((p) => (
+              <Link className="vs-link" key={p.q} href={`${b}/search?q=${encodeURIComponent(p.q)}`}>
+                {p.q}
+              </Link>
             ))}
           </div>
-        ) : q ? (
-          <div className="ai-glass" style={{ padding: 24 }}>
-            <h2 style={{ marginTop: 0, color: "#fff" }}>This guide is being written</h2>
-            <p style={{ color: "var(--muted)" }}>
-              We publish new AI guides every day and this topic is in the queue. Meanwhile, try one of these:
-            </p>
-            <div className="ai-chips" style={{ justifyContent: "flex-start" }}>
-              {PROMPT_PACKS.slice(0, 6).map((p) => (
-                <Link key={p.q} href={`${b}/search?q=${encodeURIComponent(p.q)}`}>
-                  {p.q}
-                </Link>
-              ))}
-            </div>
-          </div>
-        ) : null}
-      </section>
+        </div>
+      ) : null}
     </InfShell>
   );
 }

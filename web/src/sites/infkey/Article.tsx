@@ -1,5 +1,5 @@
 import CiteBox from "@/lib/CiteBox";
-import "./theme.css";
+import "./v2.css";
 import Link from "next/link";
 import type { SiteArticleProps, Site, Article, TocItem } from "@/lib/types";
 import { Masthead, Footer } from "./Chrome";
@@ -10,11 +10,11 @@ import { heroSrc, thumb } from "@/lib/img";
 function formatDate(iso: string): string {
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return "";
-  return d.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
+  return d.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" });
 }
 
 function categoryOf(article: Article): string {
-  return topicOf(article).label.toUpperCase();
+  return topicOf(article).label;
 }
 
 function Toc({ items, variant }: { items: TocItem[]; variant: "inline" | "rail" }) {
@@ -60,7 +60,7 @@ export default function Article({ site, article, related, bodyHtml, toc }: SiteA
   const date = formatDate(article.created_at);
 
   return (
-    <div className={`ai-root ${aiFont.variable}`}>
+    <div className={`ai-root ik ${aiFont.variable}`}>
       <a href="#article-body" className="skip-link">
         Skip to article
       </a>
@@ -85,15 +85,6 @@ export default function Article({ site, article, related, bodyHtml, toc }: SiteA
             <h1 className="article-title">{article.title}</h1>
             {article.excerpt ? <p className="article-dek">{article.excerpt}</p> : null}
 
-            {/* InfKey signature: verified-pricing band */}
-            <div className="verified-band">
-              <span className="vb-tag">Pricing verified</span>
-              {date ? <span className="vb-date">{date}</span> : null}
-              <span className="vb-note">
-                USD · excludes taxes, caching &amp; retries — confirm with the provider before relying on it.
-              </span>
-            </div>
-
             <div className="article-meta">
               {date ? <span>{date}</span> : null}
               {date ? (
@@ -102,28 +93,7 @@ export default function Article({ site, article, related, bodyHtml, toc }: SiteA
                 </span>
               ) : null}
               <span>{article.reading_time} min read</span>
-              {article.keyword ? (
-                <>
-                  <span className="sep" aria-hidden="true">
-                    ·
-                  </span>
-                  <span className="kw">
-                    <span aria-hidden="true">🎯</span>
-                    {article.keyword}
-                  </span>
-                </>
-              ) : null}
             </div>
-
-            {article.tags.length > 0 ? (
-              <div className="article-tags">
-                {article.tags.map((t) => (
-                  <span className="chip" key={t}>
-                    {t}
-                  </span>
-                ))}
-              </div>
-            ) : null}
           </header>
 
           {article.image_url ? (

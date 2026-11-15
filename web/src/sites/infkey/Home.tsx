@@ -1,287 +1,304 @@
-import "./theme.css";
-import "./ai.css";
+import "./v2.css";
 import Link from "next/link";
+import type { ReactNode } from "react";
 import type { SiteHomeProps, Site, Article } from "@/lib/types";
-import CostCalculator from "./CostCalculator";
-import LivePrices from "./LivePrices";
-import { StatusStrip, ChangesSummary, NewModels } from "./HomeWidgets";
+import { getFlagships, getModels, getChangeDays, getDayChanges, latestVerified } from "@/lib/models";
+import { getStatuses } from "@/lib/aidata";
 import { Masthead, Footer } from "./Chrome";
 import { aiFont } from "./fonts";
-import { TOPICS, PROFESSIONS, TOOLS, PROMPT_PACKS, topicOf, bestMatch } from "./topics";
-import { heroSrc, thumb } from "@/lib/img";
+import { topicOf } from "./topics";
+import { ModelTable, ChangeChip, fmtUsd, fmtDate, headliners, pairsOf } from "./data-ui";
+import { changePct } from "./Changes";
+import { thumb } from "@/lib/img";
 
-/* InfKey home — Data-first AI data product.
-   Hero: one line, search, 4 entry tiles.
-   Then: live prices, status strip, changes, new models.
-   Blog sections smaller below. */
+/* InfKey home (v2) — data first, little text.
+   Hero search → KPI strip → today's prices + changes/status side panels →
+   providers → tools → popular comparisons → latest guides.
+   All data from D1 (refreshed by workers/infkey-sync); queries are React-cached per request. */
 
-function formatDate(iso: string): string {
+function fmtShort(iso: string): string {
   const d = new Date(iso);
-  return Number.isNaN(d.getTime()) ? "" : d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+  return Number.isNaN(d.getTime()) ? "" : d.toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
 }
 
-function DataHero({ site }: { site: Site }) {
-  const b = `/s/${site.id}`;
+const QUICK = ["GPT", "Claude", "Gemini", "DeepSeek", "Llama", "Qwen", "Mistral", "Grok"];
+
+const ICONS: Record<string, ReactNode> = {
+  compare: <path d="M7 4v16M17 4v16M3 8h8M13 16h8" />,
+  status: <path d="M3 12h4l3-7 4 14 3-7h4" />,
+  run: <path d="M4 7h16v10H4zM8 17v3M16 17v3M8 4v3M12 4v3M16 4v3" />,
+  calc: <path d="M6 3h12v18H6zM9 7h6M9 11h1M14 11h1M9 15h1M14 15h1" />,
+};
+function Icon({ k }: { k: string }) {
   return (
-    <section className="data-hero">
-      <div className="data-hero-in">
-        <p className="tagline">Updated daily · Verified from official sources</p>
-        <h1>
-          Live prices, status &amp; specs for <span className="count">445+</span> AI models
-        </h1>
-        <form className="hero-search" action={`${b}/models`} role="search">
-          <input
-            name="q"
-            type="search"
-            placeholder="Search models… GPT-4o, Claude, Gemini…"
-            aria-label="Search AI models"
-          />
-          <button type="submit">Search</button>
-        </form>
-        <div className="entry-tiles">
-          <Link href={`${b}/models`} className="entry-tile">
-            <span className="tile-icon">$</span>
-            <h3>AI Prices</h3>
-            <p>Per-token pricing for 445+ models</p>
-          </Link>
-          <Link href={`${b}/compare`} className="entry-tile">
-            <span className="tile-icon">⚖</span>
-            <h3>Compare</h3>
-            <p>Side-by-side model comparisons</p>
-          </Link>
-          <Link href={`${b}/status`} className="entry-tile">
-            <span className="tile-icon">●</span>
-            <h3>Is It Down?</h3>
-            <p>Live status for 9 AI services</p>
-          </Link>
-          <Link href={`${b}/run`} className="entry-tile">
-            <span className="tile-icon">▸</span>
-            <h3>Can I Run It?</h3>
-            <p>GPU memory calculator</p>
-          </Link>
-        </div>
-      </div>
-    </section>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      {ICONS[k]}
+    </svg>
   );
 }
 
-function Professions({ site, articles }: { site: Site; articles: Article[] }) {
-  const b = `/s/${site.id}`;
-  return (
-    <section className="ai-sec" id="best-ai-for">
-      <div className="ai-head">
-        <h2>
-          Best AI for <span className="ai-grad">your job</span>
-        </h2>
-        <p>Pick your role — we test the tools and tell you which one actually helps.</p>
-      </div>
-      <div className="ai-prof">
-        {PROFESSIONS.map((p) => {
-          const a = bestMatch(articles, ["best", "ai", p.k.toLowerCase().replace(/s$/, "")]);
-          const href = a ? `${b}/${a.slug}` : `${b}/search?q=${encodeURIComponent(`best ai for ${p.k.toLowerCase()}`)}`;
-          return (
-            <Link key={p.k} href={href} className="ai-glass ai-prof-card">
-              <span className="ai-emoji" aria-hidden="true">
-                {p.e}
-              </span>
-              <b>{p.k}</b>
-              <small>{a ? "Read the guide →" : "Explore →"}</small>
-            </Link>
-          );
-        })}
-      </div>
-    </section>
-  );
-}
-
-function Prompts({ site, articles }: { site: Site; articles: Article[] }) {
-  const b = `/s/${site.id}`;
-  return (
-    <section className="ai-sec" id="prompt-library">
-      <div className="ai-head">
-        <h2>
-          Viral <span className="ai-grad">prompt library</span>
-        </h2>
-        <p>Copy-paste prompts for the AI photo trends, editing, study and work — tested on ChatGPT, Gemini and more.</p>
-      </div>
-      <div className="ai-prompts">
-        {PROMPT_PACKS.map((p) => {
-          const a = bestMatch(articles, p.q.split(" ").filter((w) => w.length > 3));
-          const href = a ? `${b}/${a.slug}` : `${b}/search?q=${encodeURIComponent(p.q)}`;
-          return (
-            <Link key={p.k} href={href} className="ai-glass ai-prompt-card">
-              <span className="ai-emoji" aria-hidden="true">
-                {p.e}
-              </span>
-              <b>{p.k}</b>
-              <code>&gt; {p.q}</code>
-            </Link>
-          );
-        })}
-      </div>
-    </section>
-  );
-}
-
-function Tools({ site, articles }: { site: Site; articles: Article[] }) {
-  const b = `/s/${site.id}`;
-  return (
-    <section className="ai-sec" id="use-free">
-      <div className="ai-head">
-        <h2>
-          Use the top AIs <span className="ai-grad">free</span>
-        </h2>
-        <p>Free plans, limits, tips and the cheapest way to upgrade — for every major assistant.</p>
-      </div>
-      <div className="ai-tools">
-        {TOOLS.map((t) => {
-          const a = bestMatch(articles, [t.q, "free"]) || bestMatch(articles, ["how", t.q]) || bestMatch(articles, [t.q]);
-          const href = a ? `${b}/${a.slug}` : `${b}/search?q=${encodeURIComponent(`how to use ${t.q} free`)}`;
-          return (
-            <Link key={t.name} href={href} className="ai-glass ai-tool" style={{ ["--tc" as string]: t.color }}>
-              <span className="ai-tool-mark" aria-hidden="true">
-                {t.name[0]}
-              </span>
-              <span>
-                <b>{t.name}</b>
-                <small>by {t.by}</small>
-              </span>
-              <i aria-hidden="true">→</i>
-            </Link>
-          );
-        })}
-      </div>
-    </section>
-  );
-}
-
-function Card({ site, a, big = false }: { site: Site; a: Article; big?: boolean }) {
+function GuideCard({ site, a }: { site: Site; a: Article }) {
   const href = `/s/${site.id}/${a.slug}`;
   return (
-    <article className={`ai-card${big ? " big" : ""}`}>
-      <Link href={href} className="ai-card-media" tabIndex={-1} aria-label={a.title}>
-        {a.image_url ? (big
-          ? <img src={heroSrc(a.image_url, a.title)} alt={a.title} fetchPriority="high" />
-          : <img src={thumb(a.image_url, a.title)} alt={a.title} loading="lazy" decoding="async" />) : <span className="ai-card-ph" aria-hidden="true">✦</span>}
-        <span className="ai-tag">{topicOf(a).label}</span>
+    <article className="card">
+      <Link href={href} className="card-media" tabIndex={-1} aria-label={a.title}>
+        <span className="card-cat">{topicOf(a).label}</span>
+        {a.image_url ? <img src={thumb(a.image_url, a.title)} alt={a.title} loading="lazy" decoding="async" /> : null}
       </Link>
-      <div className="ai-card-body">
-        <h3>
+      <div className="card-body">
+        <h3 className="card-title">
           <Link href={href}>{a.title}</Link>
         </h3>
-        {big && a.excerpt ? <p>{a.excerpt}</p> : null}
-        <span className="ai-meta">
-          {formatDate(a.created_at)} · {a.reading_time} min read
-        </span>
+        <div className="card-foot">
+          <span>{fmtShort(a.created_at)}</span>
+          <span aria-hidden="true">·</span>
+          <span>{a.reading_time} min read</span>
+        </div>
       </div>
     </article>
   );
 }
 
-function Trending({ site, articles }: { site: Site; articles: Article[] }) {
-  if (!articles.length) return null;
-  const [lead, ...rest] = articles;
-  return (
-    <section className="ai-sec" id="guides">
-      <div className="ai-head">
-        <h2>
-          <span className="ai-live" /> Trending now
-        </h2>
-        <p>The AI questions people are searching this week.</p>
-      </div>
-      <div className="ai-trend">
-        <Card site={site} a={lead} big />
-        <div className="ai-trend-list">
-          {rest.slice(0, 4).map((a) => (
-            <Card site={site} a={a} key={a.id} />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Rails({ site, articles, skip }: { site: Site; articles: Article[]; skip: Set<string> }) {
-  return (
-    <>
-      {TOPICS.map((t) => {
-        const list = articles.filter((a) => !skip.has(a.id) && topicOf(a).key === t.key).slice(0, 6);
-        if (!list.length) return null;
-        return (
-          <section className="ai-sec" key={t.key} id={t.key}>
-            <div className="ai-head row">
-              <div>
-                <h2>{t.label}</h2>
-                <p>{t.blurb}</p>
-              </div>
-            </div>
-            <div className="ai-grid">
-              {list.map((a) => (
-                <Card site={site} a={a} key={a.id} />
-              ))}
-            </div>
-          </section>
-        );
-      })}
-    </>
-  );
-}
-
-function Builders({ site }: { site: Site }) {
+export default async function Home({ site, articles }: SiteHomeProps) {
   const b = `/s/${site.id}`;
-  return (
-    <section className="ai-sec ai-builders" id="calculator">
-      <div className="ai-builders-copy">
-        <span className="ai-pill">For builders</span>
-        <h2>
-          Know the <span className="ai-grad">real API cost</span> before you build
-        </h2>
-        <p>Verified per-token pricing, the math shown, and the cheapest model for your workload.</p>
-        <div className="ai-builders-links">
-          <Link href={`${b}/calculators`}>Cost calculators →</Link>
-          <Link href={`${b}/models`}>Model database →</Link>
-          <Link href={`${b}/compare`}>Compare models →</Link>
-        </div>
-      </div>
-      <div className="ai-builders-calc">
-        <CostCalculator />
-      </div>
-    </section>
-  );
-}
+  const [models, flag, statuses, days] = await Promise.all([getModels(), getFlagships(), getStatuses(), getChangeDays()]);
+  const latestDay = days[0];
+  const changes = latestDay ? await getDayChanges(latestDay) : null;
+  const nChanges = changes ? changes.up.length + changes.down.length + changes.added.length : 0;
+  const verified = latestVerified(models);
 
-export default function Home({ site, articles }: SiteHomeProps) {
-  const real = articles.filter((a) => !a.is_mock);
-  const trending = real.slice(0, 5);
-  const skip = new Set(trending.map((a) => a.id));
+  const top = flag.filter((m) => m.category === "llm").slice(0, 10);
+
+  // providers: most models first, with the cheapest paid input price
+  const provMap = new Map<string, { name: string; n: number; from: number | null }>();
+  for (const m of models) {
+    const p = provMap.get(m.provider) ?? { name: m.provider, n: 0, from: null };
+    p.n++;
+    const inP = m.input_per_m ?? 0;
+    if (inP > 0 && (p.from === null || inP < p.from)) p.from = inP;
+    provMap.set(m.provider, p);
+  }
+  const providers = [...provMap.values()].sort((x, y) => y.n - x.n).slice(0, 12);
+
+  // popular head-to-heads: the headline model of each big lab
+  const pairs = pairsOf(headliners(models, 6), 8);
+
+  const down = statuses.filter((s) => s.indicator !== "none");
+  const moves = changes ? [...changes.down, ...changes.up].slice(0, 6) : [];
+  const guides = articles.filter((a) => !a.is_mock).slice(0, 4);
+  const isToday = latestDay === new Date().toISOString().slice(0, 10);
+
   return (
-    <div className={`ai-root ${aiFont.variable}`}>
+    <div className={`ai-root ik ${aiFont.variable}`}>
       <a href="#live-prices" className="skip-link">
-        Skip to data
+        Skip to prices
       </a>
       <Masthead site={site} />
       <main>
-        <DataHero site={site} />
-        <div className="shell">
-          {/* Status strip — all 9 services as colored pills */}
-          <StatusStrip site={site} />
-          
-          {/* Live API prices table */}
-          <LivePrices site={site} />
-          
-          {/* Today's price changes summary */}
-          <ChangesSummary site={site} />
-          
-          {/* New models this week */}
-          <NewModels site={site} />
-          
-          {/* Old article sections — smaller, below data */}
-          <Trending site={site} articles={trending} />
-          <Prompts site={site} articles={real} />
-          <Professions site={site} articles={real} />
-          <Tools site={site} articles={real} />
-          <Rails site={site} articles={real} skip={skip} />
-          <Builders site={site} />
+        <section className="ik-hero">
+          <div className="ik-wrap">
+            <p className="ik-kicker">Updated {verified ? fmtDate(verified) : "daily"}</p>
+            <h1>
+              Live prices, status &amp; specs for <span className="count">{models.length || 400}+</span> AI models
+            </h1>
+            <p className="ik-sub">API prices per million tokens, outages and GPU fit, in one place.</p>
+            <form className="ik-search" action={`${b}/models`} role="search">
+              <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
+                <circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" strokeWidth="1.8" />
+                <path d="M13.5 13.5L17 17" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+              </svg>
+              <input name="q" type="search" placeholder="Search a model — GPT, Claude…" aria-label="Search AI models" />
+              <button type="submit">Search</button>
+            </form>
+            <div className="ik-quick">
+              {QUICK.map((q) => (
+                <Link key={q} href={`${b}/models?q=${encodeURIComponent(q)}`}>
+                  {q}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <div className="ik-wrap">
+          <div className="ik-kpis">
+            <Link className="ik-kpi" href={`${b}/models`}>
+              <b>{models.length}</b>
+              <span>Models tracked</span>
+            </Link>
+            <Link className="ik-kpi" href={`${b}/models`}>
+              <b>{provMap.size}</b>
+              <span>Providers</span>
+            </Link>
+            <Link className="ik-kpi" href={`${b}/changes`}>
+              <b>{nChanges}</b>
+              <span>Price changes{latestDay ? ` · ${fmtShort(latestDay)}` : ""}</span>
+            </Link>
+            <Link className="ik-kpi" href={`${b}/status`}>
+              <b className={down.some((s) => s.indicator !== "minor" && s.indicator !== "maintenance") ? "bad" : down.length ? "warn" : "ok"}>
+                {statuses.length - down.length}/{statuses.length || 9}
+              </b>
+              <span>AI services up</span>
+            </Link>
+          </div>
+
+          <section className="ik-sec" id="live-prices">
+            <div className="ik-split">
+              <div>
+                <div className="ik-sec-head">
+                  <div>
+                    <h2>AI API prices today</h2>
+                    <p>Newest models from the big labs · USD per 1M tokens</p>
+                  </div>
+                  <Link className="ik-all" href={`${b}/models`}>
+                    All {models.length} →
+                  </Link>
+                </div>
+                <ModelTable site={site} models={top} />
+              </div>
+
+              <aside className="ik-side">
+                <div className="ik-panel">
+                  <div className="ik-panel-h">
+                    <h2>{isToday ? "Price changes today" : "Latest price changes"}</h2>
+                    <Link href={`${b}/changes`}>All</Link>
+                  </div>
+                  {moves.length ? (
+                    <ul className="ik-rows">
+                      {moves.map((c) => (
+                        <li key={c.model.id}>
+                          <Link href={`${b}/models/${c.model.id}`}>
+                            <span className="nm">{c.model.name}</span>
+                            <ChangeChip pct={changePct(c)} />
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : changes && changes.added.length ? (
+                    <ul className="ik-rows">
+                      {changes.added.slice(0, 6).map((m) => (
+                        <li key={m.id}>
+                          <Link href={`${b}/models/${m.id}`}>
+                            <span className="nm">{m.name}</span>
+                            <span className="vl">New · {fmtUsd(m.input_per_m, 3)}</span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="ik-panel-empty">No price moves in the latest snapshot.</p>
+                  )}
+                </div>
+
+                <div className="ik-panel">
+                  <div className="ik-panel-h">
+                    <h2>Is it down?</h2>
+                    <Link href={`${b}/status`}>Status</Link>
+                  </div>
+                  <ul className="ik-rows">
+                    {statuses.map((s) => (
+                      <li key={s.service}>
+                        <Link href={`${b}/status/${s.service}`}>
+                          <span className={`dot ${s.indicator === "none" ? "ok" : s.indicator === "minor" || s.indicator === "maintenance" ? "warn" : "bad"}`} aria-hidden="true" />
+                          <span className="nm">{s.name}</span>
+                          <span className="vl">{s.indicator === "none" ? "Up" : s.indicator === "maintenance" ? "Maintenance" : s.indicator === "minor" ? "Degraded" : "Outage"}</span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </aside>
+            </div>
+          </section>
+
+          {providers.length ? (
+            <section className="ik-sec" id="providers">
+              <div className="ik-sec-head">
+                <h2>Providers</h2>
+                <Link className="ik-all" href={`${b}/models`}>
+                  All models →
+                </Link>
+              </div>
+              <div className="ik-provs">
+                {providers.map((p) => (
+                  <Link className="ik-prov" key={p.name} href={`${b}/models?q=${encodeURIComponent(p.name)}`}>
+                    <span className="ik-mono" aria-hidden="true">
+                      {p.name.replace(/[^A-Za-z0-9]/g, "").slice(0, 1).toUpperCase()}
+                    </span>
+                    <span>
+                      <b>{p.name}</b>
+                      <small>
+                        {p.n} model{p.n === 1 ? "" : "s"}
+                        {p.from !== null ? ` · from ${fmtUsd(p.from, 3)}` : ""}
+                      </small>
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          ) : null}
+
+          <section className="ik-sec" id="tools">
+            <div className="ik-sec-head">
+              <h2>Tools</h2>
+            </div>
+            <div className="ik-tools">
+              <Link className="ik-tool" href={`${b}/compare`}>
+                <Icon k="compare" />
+                <h3>Compare models</h3>
+                <p>Two models side by side on price and context.</p>
+              </Link>
+              <Link className="ik-tool" href={`${b}/status`}>
+                <Icon k="status" />
+                <h3>Is it down?</h3>
+                <p>ChatGPT, Claude and more, checked every 5 minutes.</p>
+              </Link>
+              <Link className="ik-tool" href={`${b}/run`}>
+                <Icon k="run" />
+                <h3>Can I run it?</h3>
+                <p>Which open models fit your GPU or Mac.</p>
+              </Link>
+              <Link className="ik-tool" href={`${b}/calculators`}>
+                <Icon k="calc" />
+                <h3>API cost calculator</h3>
+                <p>Monthly cost for your real workload.</p>
+              </Link>
+            </div>
+          </section>
+
+          {pairs.length ? (
+            <section className="ik-sec" id="compare">
+              <div className="ik-sec-head">
+                <h2>Popular comparisons</h2>
+                <Link className="ik-all" href={`${b}/compare`}>
+                  More →
+                </Link>
+              </div>
+              <div className="vs-links">
+                {pairs.map(([slug, a, c]) => (
+                  <Link className="vs-link" href={`${b}/compare/${slug}`} key={slug}>
+                    {a.name} <span className="vs">vs</span> {c.name}
+                  </Link>
+                ))}
+              </div>
+            </section>
+          ) : null}
+
+          {guides.length ? (
+            <section className="ik-sec" id="guides">
+              <div className="ik-sec-head">
+                <h2>Latest guides</h2>
+                <Link className="ik-all" href={`${b}/archive`}>
+                  All guides →
+                </Link>
+              </div>
+              <div className="ik-cards">
+                {guides.map((a) => (
+                  <GuideCard site={site} a={a} key={a.id} />
+                ))}
+              </div>
+            </section>
+          ) : null}
         </div>
       </main>
       <Footer site={site} />

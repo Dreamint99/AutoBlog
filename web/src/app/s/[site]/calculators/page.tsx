@@ -1,5 +1,5 @@
 import { defaultOgImages } from "@/lib/og";
-import "@/sites/infkey/theme.css";
+import "@/sites/infkey/v2.css";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getSite } from "@/lib/data";
