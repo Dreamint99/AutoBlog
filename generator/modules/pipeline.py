@@ -357,7 +357,10 @@ def generate_article(site: dict, title: str, log=lambda m: None, replace: dict |
         if prompt_leak.bad_title(fixed) or len(fixed) < 20:
             raise ValueError(f"title carries prompt text ({prompt_leak.bad_title(wa['title'])}): {wa['title']!r} — skipping")
         log(f"🧹 title repaired: {wa['title']!r} → {fixed!r}")
+        wa["body_html"] = prompt_leak.replace_bad_title_text(wa["body_html"], wa["title"], fixed)
         wa["title"] = fixed
+    else:  # image alts may still carry an earlier (unvalidated) boost title
+        wa["body_html"] = prompt_leak.replace_bad_title_text(wa["body_html"], "", wa["title"])
     if prompt_leak.bad_title(wa["meta_title"], max_len=70):
         wa["meta_title"] = seo.meta_title(wa["title"], site["name"])
     if prompt_leak.bad_description(wa["meta_description"]):

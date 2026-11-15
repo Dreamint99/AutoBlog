@@ -11,9 +11,12 @@ import re
 TITLE_MAX = 70
 
 # Instruction fragments that never belong in a real headline.
+# ("60 chars" / "<=65" / "120-150 characters" are instructions; "per 1M chars" in a real
+# text-to-speech pricing headline is not, so a bare "chars" is not enough on its own.)
 _BAD_TITLE = re.compile(
-    r"(\bchars?\b|\bcharacters\b|focus keyword|<=|>=|starts with (the )?(focus )?keyword|"
-    r"meta (title|description)|\bno filler\b|specific number)", re.I)
+    r"(<=|>=|\b\d{2,3}\s*(?:-\s*\d{2,3}\s*)?(?:chars?|characters)\b|focus[\s\-‑]keyword|"
+    r"starts with (the )?(focus )?keyword|\bpower word\b|\bno filler\b|has a (specific )?number|"
+    r"\bthe user\b|\bwe must\b|^wait\b|\n)", re.I)
 
 
 def bad_title(t: str, max_len: int = TITLE_MAX) -> str:
@@ -31,14 +34,14 @@ def bad_title(t: str, max_len: int = TITLE_MAX) -> str:
 
 def bad_description(d: str) -> str:
     d = (d or "").strip()
-    m = re.search(r"(focus keyword|\b\d+\s*-\s*\d+\s*chars\b|<=\s*\d+|complete sentences ending)", d, re.I)
+    m = re.search(r"(focus[\s\-‑]keyword|\b\d+\s*-\s*\d+\s*chars\b|<=\s*\d+|complete sentences ending|\bthe user\b|\bwe must\b)", d, re.I)
     return f"prompt text '{m.group(0)}'" if m else ""
 
 
 # A sentence is an instruction (not reader content) when it talks about the focus keyword,
 # or about the meta description / on-page checks together with SEO-mechanics words.
-_FOCUS = re.compile(r"focus[\s-]keyword", re.I)
-_SEO_TOPIC = re.compile(r"(meta[\s-]description|meta[\s-]title|on-page( seo)?( check)?s?\b)", re.I)
+_FOCUS = re.compile(r"focus[\s\-‑]keyword", re.I)
+_SEO_TOPIC = re.compile(r"(meta[\s\-‑]description|meta[\s\-‑]title|on[\s\-‑]page( seo)?( check)?s?\b)", re.I)
 _SEO_MECH = re.compile(r"(\bkeyword\b|\bchars?\b|characters|rank ?math|seo (check|score)|first (sentence|paragraph)|"
                        r"\bh2\b|\bh3\b|subheading|this (article|post|section)|we (have |)(included|added|used))", re.I)
 
@@ -106,3 +109,17 @@ def strip_title_instructions(t: str) -> str:
     t = re.split(r"\s*(?:[-–—|(,]\s*)?(?:<=|>=)\s*\d+\s*chars?.*$", t or "", flags=re.I)[0]
     t = re.sub(r"\s*[,(]?\s*starts with (the )?(focus )?keyword.*$", "", t, flags=re.I)
     return t.strip(" ,:;-–—|(")
+
+
+def replace_bad_title_text(html: str, old_title: str, new_title: str) -> str:
+    """The bad title is also copied into image alt text / captions — swap it for the clean one."""
+    if not html or not new_title:
+        return html
+    import html as _h
+    safe = _h.escape(new_title, quote=True)
+    if old_title and old_title != new_title:  # old_title "" = only fix instruction-text alts
+        for variant in {old_title, _h.escape(old_title), _h.escape(old_title, quote=True)}:
+            html = html.replace(variant, safe)
+    # any other alt="..." that is itself instruction text
+    return re.sub(r'alt="([^"]*)"',
+                  lambda m: f'alt="{safe}"' if _BAD_TITLE.search(_h.unescape(m.group(1))) else m.group(0), html)
