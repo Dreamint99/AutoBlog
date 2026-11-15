@@ -1,0 +1,30 @@
+name: Weekly open datasets (Hugging Face + Kaggle)
+
+# Exports infkey AI model prices and gccguide remittance rates from D1 and publishes them as
+# CC BY 4.0 datasets on Hugging Face and Kaggle (generator/datasets_export.py). Platforms whose
+# token secret is missing are skipped, so the job also works as a dry run.
+on:
+  schedule:
+    - cron: "47 4 * * 2"   # Tuesdays
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests huggingface_hub "kaggle>=1.8"
+      - run: python generator/datasets_export.py
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_USER: ${{ vars.HF_USER }}
+          KAGGLE_API_TOKEN: ${{ secrets.KAGGLE_API_TOKEN }}
+          KAGGLE_USER: ${{ vars.KAGGLE_USER }}
