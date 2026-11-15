@@ -16,22 +16,26 @@ import { getArticle, getSite } from "@/lib/data";
 export const dynamic = "force-dynamic";
 
 type Pal = { bg: string; bg2: string; fg: string; sub: string; accent: string; chip: string; chipFg: string; track: string; card: string };
-const BASE: Record<string, { a: string; b: string; accent: string; light: string; ink: string }> = {
+const BASE: Record<string, { a: string; b: string; accent: string; light: string; ink: string; hot?: string; dark?: string; head?: string }> = {
   "infkey-noir": { a: "#1e1b4b", b: "#7c3aed", accent: "#c4b5fd", light: "#f5f3ff", ink: "#4c1d95" },
   "walvi-atlas": { a: "#0b1f3a", b: "#134e4a", accent: "#2dd4bf", light: "#ecfeff", ink: "#0f766e" },
   "countly-data": { a: "#1e1b4b", b: "#4f46e5", accent: "#a5b4fc", light: "#eef2ff", ink: "#3730a3" },
   "ninetymins-pitch": { a: "#052e16", b: "#15803d", accent: "#bef264", light: "#f7fee7", ink: "#166534" },
-  "gcc-night": { a: "#0c1222", b: "#7a1e3a", accent: "#fbbf24", light: "#fffbeb", ink: "#9a3412" },
+  // GCCGuide v2: navy/teal on cool paper, Inter Tight headlines (matches v2.css)
+  "gcc-night": { a: "#083161", b: "#016a6d", accent: "#5eead4", light: "#e7f4f4", ink: "#006e70", hot: "#99f6e4", dark: "#0b1f3a", head: "Inter Tight" },
 };
+const headFont = (theme: string) => BASE[theme]?.head;
 function palettes(theme: string): Pal[] {
   const t = BASE[theme] ?? { a: "#111827", b: "#1f2937", accent: "#fbbf24", light: "#f9fafb", ink: "#111827" };
+  const hot = t.hot ?? "#fde047";
+  const dark = t.dark ?? "#111827";
   return [
     // dark gradient
-    { bg: t.a, bg2: t.b, fg: "#ffffff", sub: "rgba(255,255,255,.82)", accent: t.accent, chip: t.accent, chipFg: "#111111", track: "rgba(255,255,255,.14)", card: "rgba(255,255,255,.08)" },
+    { bg: t.a, bg2: t.b, fg: "#ffffff", sub: "rgba(255,255,255,.82)", accent: t.accent, chip: t.accent, chipFg: t.dark ?? "#111111", track: "rgba(255,255,255,.14)", card: "rgba(255,255,255,.08)" },
     // light paper
-    { bg: t.light, bg2: "#ffffff", fg: "#111827", sub: "#4b5563", accent: t.ink, chip: t.ink, chipFg: "#ffffff", track: "rgba(17,24,39,.08)", card: "#ffffff" },
+    { bg: t.light, bg2: "#ffffff", fg: dark, sub: "#4b5563", accent: t.ink, chip: t.ink, chipFg: "#ffffff", track: "rgba(17,24,39,.08)", card: "#ffffff" },
     // bold accent
-    { bg: t.ink, bg2: t.a, fg: "#ffffff", sub: "rgba(255,255,255,.85)", accent: "#fde047", chip: "#fde047", chipFg: "#111111", track: "rgba(255,255,255,.18)", card: "rgba(0,0,0,.18)" },
+    { bg: t.ink, bg2: t.a, fg: "#ffffff", sub: "rgba(255,255,255,.85)", accent: hot, chip: hot, chipFg: t.dark ?? "#111111", track: "rgba(255,255,255,.18)", card: "rgba(0,0,0,.18)" },
   ];
 }
 
@@ -97,7 +101,8 @@ export async function GET(_req: Request, { params }: { params: Promise<{ site: s
   if (!options.length) options.push(hero ? "bigstat" : "checklist");
   const layout = options[Math.floor(h / 3) % options.length];
 
-  const fonts = await ogFonts();
+  const head = headFont(site.theme);
+  const fonts = await ogFonts({ tight: !!head });
   const fs = title.length <= 40 ? 78 : title.length <= 70 ? 66 : 56;
   const max = Math.max(...rows.map((r) => r.v), 1);
 
@@ -107,7 +112,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ site: s
         padding: "10px 26px", borderRadius: 50, textTransform: "capitalize" }}>{clip(tag, 28)}</div>
     ) : <div style={{ display: "flex" }} />;
   const Title = ({ size = fs }: { size?: number }) => (
-    <div style={{ display: "flex", fontSize: size, fontWeight: 800, lineHeight: 1.06, letterSpacing: -1.5, color: pal.fg, marginTop: 28 }}>{title}</div>
+    <div style={{ display: "flex", fontSize: size, fontWeight: 800, lineHeight: 1.06, letterSpacing: head ? -0.5 : -1.5, color: pal.fg, marginTop: 28, ...(head ? { fontFamily: head } : {}) }}>{title}</div>
   );
   const Footer = ({ cta }: { cta: string }) => (
     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "auto", padding: "34px 64px",

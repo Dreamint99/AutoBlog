@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { COUNTRIES, flag, type Country } from "./data";
+import { COUNTRIES, type Country } from "./data";
 
-/* Live, keyless widgets: local clocks, GCC currency converter (official pegs),
-   prayer times (AlAdhan API) and current weather (Open-Meteo). */
+/* Live, keyless city widget: local time, prayer times (AlAdhan API) and
+   current weather (Open-Meteo). Used on country pages. */
 
 function useNow(ms = 1000) {
   const [now, setNow] = useState<Date | null>(null);
@@ -18,67 +18,6 @@ function useNow(ms = 1000) {
 
 const timeIn = (d: Date, tz: string, sec = false) =>
   d.toLocaleTimeString("en-GB", { timeZone: tz, hour: "2-digit", minute: "2-digit", ...(sec ? { second: "2-digit" } : {}) });
-
-export function Clocks({ base }: { base: string }) {
-  const now = useNow();
-  return (
-    <div className="gc-clocks" aria-label="Local time across the GCC">
-      {COUNTRIES.map((c) => (
-        <a key={c.slug} href={`${base}/country/${c.slug}`} className="gc-clock">
-          <img src={flag(c.iso, 40)} alt="" width={22} height={15} />
-          <span className="n">{c.short}</span>
-          <b>{now ? timeIn(now, c.tz) : "--:--"}</b>
-        </a>
-      ))}
-    </div>
-  );
-}
-
-export function Converter() {
-  const [amt, setAmt] = useState("1000");
-  const [from, setFrom] = useState("QAR");
-  const units = [{ code: "USD", perUsd: 1, iso: "us", name: "US dollar" }, ...COUNTRIES.map((c) => ({ code: c.code, perUsd: c.perUsd, iso: c.iso, name: c.currency })), { code: "BDT", perUsd: 0, iso: "bd", name: "Bangladeshi taka" }, { code: "INR", perUsd: 0, iso: "in", name: "Indian rupee" }, { code: "PKR", perUsd: 0, iso: "pk", name: "Pakistani rupee" }, { code: "PHP", perUsd: 0, iso: "ph", name: "Philippine peso" }];
-  const [live, setLive] = useState<Record<string, number>>({});
-  useEffect(() => {
-    // free, keyless daily rates for the home-country currencies (GCC pegs are fixed)
-    fetch("https://open.er-api.com/v6/latest/USD")
-      .then((r) => r.json())
-      .then((j) => j?.rates && setLive({ BDT: j.rates.BDT, INR: j.rates.INR, PKR: j.rates.PKR, PHP: j.rates.PHP, KWD: j.rates.KWD }))
-      .catch(() => {});
-  }, []);
-  const rate = (code: string) => live[code] || units.find((u) => u.code === code)?.perUsd || 0;
-  const usd = (Number(amt) || 0) / (rate(from) || 1);
-  return (
-    <div className="gc-card gc-conv">
-      <div className="gc-card-h">
-        <span>💱</span>
-        <b>GCC money converter</b>
-      </div>
-      <div className="gc-conv-in">
-        <input inputMode="decimal" value={amt} onChange={(e) => setAmt(e.target.value.replace(/[^\d.]/g, ""))} aria-label="Amount" />
-        <select value={from} onChange={(e) => setFrom(e.target.value)} aria-label="From currency">
-          {units.map((u) => (
-            <option key={u.code} value={u.code}>
-              {u.code}
-            </option>
-          ))}
-        </select>
-      </div>
-      <ul className="gc-conv-out">
-        {units
-          .filter((u) => u.code !== from && rate(u.code))
-          .map((u) => (
-            <li key={u.code}>
-              <img src={flag(u.iso, 40)} alt="" width={20} height={14} />
-              <span>{u.code}</span>
-              <b>{(usd * rate(u.code)).toLocaleString("en-US", { maximumFractionDigits: u.code === "KWD" || u.code === "OMR" || u.code === "BHD" ? 3 : 2 })}</b>
-            </li>
-          ))}
-      </ul>
-      <p className="gc-note">QAR, AED, SAR, OMR and BHD are pegged to the US dollar; KWD and home currencies use today&apos;s market rate. Banks and exchange houses add a margin.</p>
-    </div>
-  );
-}
 
 type Prayer = { name: string; time: string };
 export function CityPulse({ initial = "qatar" }: { initial?: string }) {

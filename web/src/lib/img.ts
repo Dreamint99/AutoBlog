@@ -53,7 +53,7 @@ export function cardSvg(title: string): string {
     `<rect width="1200" height="630" fill="url(#g)"/>` +
     `<circle cx="90" cy="50" r="210" fill="none" stroke="${t.accent}" stroke-opacity=".25" stroke-width="3"/>` +
     `<circle cx="1110" cy="640" r="180" fill="${t.accent}" fill-opacity=".12"/>` +
-    `<g fill="#fff" font-family="Inter,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-weight="800" font-size="${fs}" text-anchor="middle">${tx}</g>` +
+    `<g fill="#fff" font-family="${t === THEME["gcc-night"] ? "Inter Tight," : ""}Inter,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-weight="800" font-size="${fs}" text-anchor="middle">${tx}</g>` +
     `<g font-family="Inter,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-weight="800" font-size="24" text-anchor="middle" fill="#fff" fill-opacity=".9">` +
     `<circle cx="${600 - 8 - activeSite().domain.length * 7}" cy="${Math.round(y0 + lines.length * lh + 22)}" r="6" fill="${t.accent}"/>` +
     `<text x="600" y="${Math.round(y0 + lines.length * lh + 30)}">${xml(activeSite().domain)}</text></g></svg>`;

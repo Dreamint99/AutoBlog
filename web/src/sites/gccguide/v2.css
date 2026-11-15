@@ -1034,3 +1034,11 @@
   .site-gccguide .gv .gh-stat-s { font-size: 0.8rem; }
   .site-gccguide .gv .gh-stat-k { font-size: 11px; }
 }
+
+/* Trend charts: the 720x220 SVG stretched to ~360px tall on wide screens.
+   Cap the plot at 240px so the whole figure stays under ~360px (the SVG uses preserveAspectRatio="none" and a
+   non-scaling stroke, so the line stays crisp at any width). */
+.site-gccguide .gv .gh-chart svg { height: clamp(170px, 18vw, 240px); }
+@media (max-width: 480px) {
+  .site-gccguide .gv .gh-chart svg { height: 180px; }
+}

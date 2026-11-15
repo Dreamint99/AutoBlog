@@ -126,7 +126,7 @@ export function TrendChart({
 
   return (
     <figure className="gh-chart">
-      <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={label} className={up ? "up" : "down"}>
+      <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" role="img" aria-label={label} className={up ? "up" : "down"}>
         <defs>
           <linearGradient id="gh-fill" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0" stopColor="currentColor" stopOpacity="0.22" />

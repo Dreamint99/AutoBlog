@@ -17,7 +17,7 @@ const H = 630;
 export async function GET() {
   const site = getSite("gccguide");
   const [snap, gold] = await Promise.all([getFxSnapshot(), getGold()]);
-  const fonts = await ogFonts().catch(() => []);
+  const fonts = await ogFonts({ tight: true }).catch(() => []);
   const aed = snap.byCode.AED?.rate ?? 3.6725;
   const g22 = (gold.usdPerOz / GRAMS_PER_OZ) * aed * 0.916;
 
@@ -40,7 +40,7 @@ export async function GET() {
           height: "100%",
           display: "flex",
           flexDirection: "column",
-          background: "linear-gradient(135deg, #0b1020 0%, #14304f 55%, #0f4f4a 100%)",
+          background: "linear-gradient(135deg, #083161 0%, #0b3a66 50%, #016a6d 100%)",
           color: "#fff",
           fontFamily: "Inter, sans-serif",
           padding: 56,
@@ -48,13 +48,13 @@ export async function GET() {
       >
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <div style={{ display: "flex", fontSize: 22, fontWeight: 800, letterSpacing: 3, color: "#f6c453" }}>GCCGUIDE</div>
-            <div style={{ display: "flex", fontSize: 46, fontWeight: 800, marginTop: 6 }}>Today in the Gulf</div>
+            <div style={{ display: "flex", fontSize: 22, fontWeight: 800, letterSpacing: 3, color: "#5eead4" }}>GCCGUIDE</div>
+            <div style={{ display: "flex", fontSize: 46, fontWeight: 800, marginTop: 6, fontFamily: "Inter Tight, Inter" }}>Today in the Gulf</div>
           </div>
-          <div style={{ display: "flex", fontSize: 24, fontWeight: 700, color: "#9fd8d3" }}>{date}</div>
+          <div style={{ display: "flex", fontSize: 24, fontWeight: 700, color: "#99f6e4" }}>{date}</div>
         </div>
 
-        <div style={{ display: "flex", flexWrap: "wrap", marginTop: 34, width: 1088 }}>
+        <div style={{ display: "flex", flexWrap: "wrap", marginTop: 34, width: 1104 }}>
           {rows.map(([label, v]) => (
             <div
               key={label}
@@ -64,13 +64,13 @@ export async function GET() {
                 width: 350,
                 marginRight: 18,
                 marginBottom: 18,
-                padding: "18px 22px",
+                padding: "16px 22px",
                 borderRadius: 18,
                 background: "rgba(255,255,255,0.07)",
                 border: "1px solid rgba(255,255,255,0.12)",
               }}
             >
-              <div style={{ display: "flex", fontSize: 20, fontWeight: 700, color: "#9fb3c8" }}>{label}</div>
+              <div style={{ display: "flex", fontSize: 20, fontWeight: 700, color: "#b9cbe0" }}>{label}</div>
               <div style={{ display: "flex", fontSize: 40, fontWeight: 800, marginTop: 4 }}>{v == null ? "—" : fmt(v, v > 100 ? 2 : 4)}</div>
             </div>
           ))}
@@ -80,7 +80,7 @@ export async function GET() {
           <div style={{ display: "flex", fontSize: 28, fontWeight: 800, color: "#f6c453" }}>
             22K gold in Dubai: AED {fmt(g22, 2)}/g
           </div>
-          <div style={{ display: "flex", fontSize: 24, fontWeight: 700, color: "#9fd8d3" }}>{site ? siteBaseUrl(site).replace(/^https?:\/\//, "") : "gccguide.com"}</div>
+          <div style={{ display: "flex", fontSize: 24, fontWeight: 700, color: "#99f6e4" }}>{site ? siteBaseUrl(site).replace(/^https?:\/\//, "") : "gccguide.com"}</div>
         </div>
       </div>
     ),
