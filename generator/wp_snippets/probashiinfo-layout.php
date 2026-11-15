@@ -8,7 +8,7 @@
    Data pages (#32), BMET/flight/rates tools render themselves and only get the palette.
    Rollout: PI6_PUBLIC false = only with ?v6=1 (cookie; ?v6=0 clears). Rollback = deactivate. */
 if ( ! defined( 'PI6_PUBLIC' ) ) define( 'PI6_PUBLIC', true );
-if ( ! defined( 'PI6_VERSION' ) ) define( 'PI6_VERSION', '6.0.0' );
+if ( ! defined( 'PI6_VERSION' ) ) define( 'PI6_VERSION', '7.0.0' );
 
 function pi6_on() {
 	static $on = null;
@@ -64,27 +64,36 @@ function pi_v6_home() {
 	$u = function ( $p ) { return esc_url( home_url( $p ) ); };
 	$latest = get_posts( array( 'numberposts' => 12 ) );
 	?>
-<section class="hero3 v6h"><div class="w">
-	<div class="v6h-l">
-		<span class="v6k"><span class="ldot"></span>প্রতিদিন হালনাগাদ · সরকারি সূত্র</span>
-		<h1>প্রবাসের পথে,<br><span>পাশে আছি।</span></h1>
-		<p class="v6sub">ভিসা, টাকার রেট, এজেন্সি, বিএমইটি — প্রবাসের দরকারি তথ্য এক জায়গায়।</p>
-		<form class="v6s" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">
-			<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-			<input name="s" type="search" placeholder="কী জানতে চান? যেমন: সৌদি ভিসা চেক" aria-label="খুঁজুন">
-			<button type="submit">খুঁজুন</button>
-		</form>
-		<nav class="v6c" aria-label="জনপ্রিয়"><span>জনপ্রিয়:</span>
-			<a href="<?php echo $u( '/visa-check/' ); ?>">ভিসা চেক</a><a href="<?php echo $u( '/remittance/' ); ?>">টাকার হিসাব</a><a href="<?php echo $u( '/agency/' ); ?>">এজেন্সি যাচাই</a><a href="<?php echo $u( '/gamca/' ); ?>">গামকা</a><a href="<?php echo $u( '/ramadan/' ); ?>">রমজান</a>
-		</nav>
+<section class="hero3 v6h v7h" aria-label="প্রবাসী ইনফো">
+	<div class="w">
+		<div class="v7slide" id="v7slide">
+			<div class="v7imgs"><?php foreach ( pi_v7_slides() as $i => $s ) echo '<img src="' . esc_url( $s[0] ) . '" alt="' . esc_attr( $s[1] ) . '" width="1600" height="900"' . ( $i ? ' loading="lazy" decoding="async"' : ' fetchpriority="high"' ) . ( $i ? '' : ' class="on"' ) . '>'; ?></div>
+			<div class="v7in">
+				<span class="v6k"><span class="ldot"></span>প্রতিদিন হালনাগাদ · সরকারি সূত্র</span>
+				<h1>প্রবাসের পথে,<br><span>পাশে আছি।</span></h1>
+				<form class="v6s" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">
+					<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+					<input name="s" type="search" placeholder="কী জানতে চান? যেমন: সৌদি ভিসা চেক" aria-label="খুঁজুন">
+					<button type="submit">খুঁজুন</button>
+				</form>
+				<nav class="v7c" aria-label="জনপ্রিয়"><a href="<?php echo $u( '/visa-check/' ); ?>">ভিসা চেক</a><a href="<?php echo $u( '/remittance/' ); ?>">টাকার হিসাব</a><a href="<?php echo $u( '/agency/' ); ?>">এজেন্সি যাচাই</a><a href="<?php echo $u( '/gamca/' ); ?>">গামকা</a><a href="<?php echo $u( '/ramadan/' ); ?>">রমজান</a></nav>
+			</div>
+			<div class="v7bar"><div class="v7strip" id="v7strip"><?php foreach ( pi_v7_slides() as $i => $s ) echo '<button type="button" data-s="' . $i . '"' . ( $i ? '' : ' class="on"' ) . '>' . esc_html( $s[1] ) . '<i></i></button>'; ?></div><div class="v7cr" id="v7cr"><?php $s0 = pi_v7_slides(); echo esc_html( $s0[0][2] ); ?></div></div>
+		</div>
+		<div class="v7stats">
+			<a href="<?php echo $u( '/bmet-report/' ); ?>"><small><?php echo esc_html( $bmL ); ?></small><b><?php echo $bmN ? pa_bn( number_format( $bmN ) ) . ' জন' : 'লাইভ'; ?></b></a>
+			<a href="<?php echo $u( '/taka-rate/' ); ?>"><small>১ সৌদি রিয়াল</small><b>৳<?php echo $r2( 'sar' ); ?></b></a>
+			<a href="<?php echo $u( '/taka-rate/' ); ?>"><small>১ আমিরাত দিরহাম</small><b>৳<?php echo $r2( 'aed' ); ?></b></a>
+			<a href="<?php echo $u( '/taka-rate/' ); ?>"><small>১ মালয়েশিয়ান রিংগিত</small><b>৳<?php echo $r2( 'myr' ); ?></b></a>
+		</div>
 	</div>
-	<div class="v6h-r" aria-label="আজকের হিসাব">
-		<a class="v6t" href="<?php echo $u( '/bmet-report/' ); ?>"><small><?php echo esc_html( $bmL ); ?></small><b><?php echo $bmN ? pa_bn( number_format( $bmN ) ) . ' জন' : 'লাইভ'; ?></b></a>
-		<a class="v6t" href="<?php echo $u( '/taka-rate/' ); ?>"><small>১ সৌদি রিয়াল</small><b>৳<?php echo $r2( 'sar' ); ?></b></a>
-		<a class="v6t" href="<?php echo $u( '/taka-rate/' ); ?>"><small>১ আমিরাত দিরহাম</small><b>৳<?php echo $r2( 'aed' ); ?></b></a>
-		<a class="v6t" href="<?php echo $u( '/flight-tracker/' ); ?>"><small>ফ্লাইট ট্র্যাকার</small><b>লাইভ দেখুন</b></a>
-	</div>
-</div></section>
+</section>
+<div class="w v6">
+	<section class="sec" aria-labelledby="v7svc-h"><div class="sh"><h2 id="v7svc-h">এক ক্লিকে প্রবাসী সেবা</h2><span class="v7sub">সরকারি সূত্রের তথ্য · প্রতিদিন হালনাগাদ</span></div>
+		<div class="v7svc"><?php foreach ( pi_v7_services() as $i => $s ) echo '<a href="' . $u( $s[0] ) . '" style="--i:' . $i . '"><span class="ic ' . $s[3] . '">' . pi_v7_icon( $s[4] ) . '</span><b>' . esc_html( $s[1] ) . '</b><small>' . esc_html( $s[2] ) . '</small></a>'; ?></div>
+		<form class="v7ag" method="get" action="<?php echo $u( '/agency/' ); ?>"><span class="ic ac-ind"><?php echo pi_v7_icon( 'shield' ); ?></span><input name="q" type="search" placeholder="এজেন্সির নাম বা আরএল নম্বর লিখে যাচাই করুন" aria-label="এজেন্সি যাচাই"><button type="submit">যাচাই</button></form>
+	</section>
+</div>
 <div class="w v6">
 	<section class="sec" id="dash"><div class="sh"><h2>আজকের রেট ও নামাজ</h2></div><div class="dash">
 		<div class="box"><div class="bh">টাকার রেট<span class="live">লাইভ</span><a href="<?php echo $u( '/taka-rate/' ); ?>" class="v6more">সব রেট →</a></div><div class="rates" id="rates"></div>
@@ -164,6 +173,59 @@ function pi_v6_single() {
 <?php
 	}
 }
+
+/* v7 home: photo slider (Wikimedia Commons, credited) + service grid with drawn icons */
+function pi_v7_slides() {
+	$f = function ( $k ) { return home_url( '/wp-content/uploads/2026/11/pi-hero-' . $k . '.webp' ); };
+	return array_values( array_filter( array(
+		array( $f( 'riyadh' ), 'রিয়াদ', 'ছবি: রিয়াদ · B.alotaby, CC BY-SA 4.0, উইকিমিডিয়া কমন্স' ),
+		array( $f( 'dubai' ), 'দুবাই', 'ছবি: দুবাই মেরিনা · Norlando Pobre, CC BY 2.0, উইকিমিডিয়া কমন্স' ),
+		array( $f( 'doha' ), 'দোহা', 'ছবি: দোহা ওয়েস্ট বে · Nmnogueira, CC BY-SA 4.0, উইকিমিডিয়া কমন্স' ),
+		array( $f( 'kl' ), 'কুয়ালালামপুর', 'ছবি: কুয়ালালামপুর · CEphoto, Uwe Aranas, CC BY-SA 3.0, উইকিমিডিয়া কমন্স' ),
+		array( $f( 'dhaka' ), 'ঢাকা বিমানবন্দর', 'ছবি: শাহজালাল বিমানবন্দর · Md Shaifuzzaman Ayon, CC BY-SA 4.0, উইকিমিডিয়া কমন্স' ),
+	), function ( $s ) { return $s[0] !== ''; } ) );
+}
+function pi_v7_services() {
+	return array(
+		array( '/visa-check/', 'ভিসা চেক', 'সরকারি সাইটে যাচাই', 'ac-red', 'passport' ),
+		array( '/visa/', 'ভিসা ছাড়া দেশ', 'কোথায় ভিসা লাগে না', 'ac-sky', 'globe' ),
+		array( '/remittance/', 'টাকার হিসাব', 'প্রণোদনাসহ কত পাবেন', 'ac-mint', 'coin' ),
+		array( '/taka-rate/', 'টাকার রেট', 'আজকের লাইভ রেট', 'ac-mint', 'chart' ),
+		array( '/bmet-report/', 'বিএমইটি লাইভ', 'আজ কতজন গেলেন', 'ac-red', 'users' ),
+		array( '/agency/', 'এজেন্সি যাচাই', 'লাইসেন্স দেখুন', 'ac-ind', 'shield' ),
+		array( '/gamca/', 'গামকা মেডিকেল', 'সেন্টার ও বুকিং', 'ac-teal', 'medical' ),
+		array( '/ramadan/', 'রমজান ক্যালেন্ডার', 'সেহরি ও ইফতার', 'ac-plum', 'moon' ),
+		array( '/flight-tracker/', 'ফ্লাইট ট্র্যাকার', 'বিমান এখন কোথায়', 'ac-sky', 'plane' ),
+		array( '/customs/', 'কাস্টমস নিয়ম', 'কী আনা যায়', 'ac-amber', 'box' ),
+		array( '/baggage/', 'লাগেজ কত কেজি', 'এয়ারলাইনের নিয়ম', 'ac-amber', 'luggage' ),
+		array( '/migration-cost/', 'সরকারি খরচ', 'কোন দেশে কত', 'ac-ind', 'receipt' ),
+	);
+}
+function pi_v7_icon( $k ) {
+	$p = array(
+		'passport' => '<rect x="5" y="3" width="14" height="18" rx="2.5"/><circle cx="12" cy="10" r="3"/><path d="M9 17h6"/>',
+		'globe' => '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/>',
+		'coin' => '<circle cx="12" cy="12" r="9"/><path d="M8.5 8h6M8.5 11h7M10.5 8c3 0 3 5.5 0 5.5l4.5 3.5"/>',
+		'chart' => '<path d="M4 19V5M4 19h16"/><path d="M7 15l4-4 3 3 5-6"/>',
+		'users' => '<circle cx="9" cy="8" r="3.3"/><path d="M3 20c.5-3.4 3-5.4 6-5.4s5.5 2 6 5.4M16 4.8a3.3 3.3 0 0 1 0 6.4M18 14.6c1.8.6 3 2.4 3.3 5.4"/>',
+		'shield' => '<path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/>',
+		'medical' => '<rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><path d="M12 8v8M8 12h8"/>',
+		'moon' => '<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/><path d="M17 4.5l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z"/>',
+		'plane' => '<path d="M21 15.5v-1.6l-7.5-4.6V4.6a1.5 1.5 0 0 0-3 0v4.7L3 13.9v1.6l7.5-2.3v4.6L8.5 19.3v1.3l3.5-1 3.5 1v-1.3l-2-1.5v-4.6z"/>',
+		'box' => '<path d="M3.5 7.5L12 3l8.5 4.5v9L12 21l-8.5-4.5z"/><path d="M3.5 7.5L12 12l8.5-4.5M12 12v9"/>',
+		'luggage' => '<rect x="6" y="7" width="12" height="13" rx="2.5"/><path d="M9.5 7V4h5v3M10 11v5M14 11v5"/>',
+		'receipt' => '<path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h3"/>',
+	);
+	return '<svg viewBox="0 0 24 24" aria-hidden="true">' . ( $p[ $k ] ?? '' ) . '</svg>';
+}
+/* slider + small motion */
+add_action( 'wp_footer', function () {
+	if ( ! pi6_on() || ! is_front_page() || is_paged() ) return; ?>
+<script>(function(){var S=document.getElementById('v7slide');if(!S)return;var im=[].slice.call(S.querySelectorAll('.v7imgs img')),bt=[].slice.call(document.querySelectorAll('#v7strip button')),cr=document.getElementById('v7cr'),C=<?php echo wp_json_encode( array_map( function ( $s ) { return $s[2]; }, pi_v7_slides() ) ); ?>,n=0,t,rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function go(k){n=(k+im.length)%im.length;im.forEach(function(x,i){x.classList.toggle('on',i===n)});bt.forEach(function(b,i){b.classList.remove('on');b.classList.toggle('done',i<n);void b.offsetWidth;if(i===n)b.classList.add('on')});if(cr)cr.textContent=C[n]||'';clearTimeout(t);if(!rm)t=setTimeout(function(){go(n+1)},6500)}
+bt.forEach(function(b){b.addEventListener('click',function(){go(+b.getAttribute('data-s'))})});if(im.length>1)go(0);
+var pb=document.getElementById('pbh');if(pb)pb.remove();})();</script>
+<?php }, 50 );
 
 /* category / tag / search / older posts: light header, clean rows with a small image */
 function pi_v6_list() {
@@ -345,5 +407,70 @@ body.pi-app .pba-card b{color:var(--ink)!important}
  body.pi-app .art-main{padding:16px}
  #pi-ad-native{margin:24px 14px!important}
 }
+/* ---------- v7 home: photo slider card + stats + icon services ---------- */
+body.pi-app .hero3.v7h{background:transparent;border:0;padding-top:18px}
+body.pi-app .hero3.v7h .w{display:block;padding-top:0;padding-bottom:0}
+.v7slide{position:relative;border-radius:24px;overflow:hidden;min-height:440px;display:flex;flex-direction:column;justify-content:space-between;background:#221B29;color:#fff;isolation:isolate}
+.v7imgs{position:absolute;inset:0;z-index:-2}
+.v7imgs img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;opacity:0;transform:scale(1.04);transition:opacity 1.4s ease}
+.v7imgs img.on{opacity:1;animation:v7kb 8s linear forwards}
+@keyframes v7kb{from{transform:scale(1.04)}to{transform:scale(1.14) translate(-1.2%,-1%)}}
+.v7slide:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(23,15,28,.82) 0%,rgba(23,15,28,.55) 45%,rgba(23,15,28,.12) 100%),linear-gradient(0deg,rgba(23,15,28,.6),transparent 40%)}
+.v7in{padding:42px 44px 18px;max-width:660px}
+.v7in .v6k{color:#EDE6F0}
+.v7in .v6k .ldot{background:#fff}
+body.pi-app .v7in h1{color:#fff;font-size:clamp(32px,4.4vw,54px);font-weight:800;line-height:1.25;margin:10px 0 20px;text-shadow:0 2px 20px rgba(0,0,0,.3)}
+body.pi-app .v7in h1 span{color:#FFC9D2}
+.v7in .v6s{border:0;box-shadow:0 20px 40px -18px rgba(0,0,0,.6)}
+.v7c{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.v7c a{color:#fff!important;font-size:14px;font-weight:600;padding:6px 13px;border-radius:999px;background:rgba(20,12,24,.42);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.v7c a:hover{background:rgba(20,12,24,.65)}
+.v7bar{padding:0 44px 14px}
+.v7strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.v7strip button{position:relative;background:none;border:0;color:#fff;text-align:left;padding:0 0 9px;font:600 13px var(--body);opacity:.65;cursor:pointer}
+.v7strip button.on{opacity:1}
+.v7strip button:after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;border-radius:3px;background:rgba(255,255,255,.25)}
+.v7strip button i{position:absolute;left:0;bottom:0;height:3px;border-radius:3px;background:#fff;width:0;z-index:1}
+.v7strip button.on i{animation:v7fill 6.5s linear forwards}
+.v7strip button.done i{width:100%}
+@keyframes v7fill{to{width:100%}}
+.v7cr{margin-top:8px;font-size:11px;text-align:right;opacity:.7}
+.v7stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:-34px 28px 0;position:relative;z-index:2}
+.v7stats a{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 18px;color:var(--ink)!important;box-shadow:0 14px 30px -22px rgba(20,16,24,.5);transition:transform .2s}
+.v7stats a:hover{transform:translateY(-2px)}
+.v7stats small{display:block;font-size:12.5px;color:var(--mut)}
+.v7stats b{font:800 23px/1.3 var(--head);font-variant-numeric:tabular-nums}
+.v7sub{margin-left:auto;font-size:13px;color:var(--mut)}
+/* services: app-icon tiles */
+.v7svc{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+.v7svc a{display:grid;justify-items:center;text-align:center;gap:8px;padding:18px 10px 16px;background:#fff;border:1px solid var(--line);border-radius:18px;color:var(--ink)!important;transition:transform .25s cubic-bezier(.2,.8,.3,1),box-shadow .25s,border-color .25s;animation:v7pop .5s cubic-bezier(.2,1.3,.4,1) both;animation-delay:calc(var(--i)*40ms)}
+.v7svc a:hover{transform:translateY(-4px);border-color:transparent;box-shadow:0 18px 34px -20px rgba(20,16,24,.45)}
+@keyframes v7pop{from{transform:translateY(10px) scale(.94)}}
+.v7svc b{font:700 15px/1.3 var(--head)}
+.v7svc small{font-size:12px;color:var(--mut);line-height:1.35}
+.ic{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(140deg,var(--c1),var(--c2));box-shadow:0 10px 18px -10px var(--c1),inset 0 1px 0 rgba(255,255,255,.35);transition:transform .3s}
+.v7svc a:hover .ic{transform:rotate(-6deg) scale(1.06)}
+.ic svg{width:26px;height:26px;fill:none;stroke:#fff;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.ac-red{--c1:#E11D48;--c2:#FB7185}.ac-sky{--c1:#0284C7;--c2:#38BDF8}.ac-mint{--c1:#059669;--c2:#34D399}.ac-ind{--c1:#4338CA;--c2:#818CF8}.ac-teal{--c1:#0F766E;--c2:#2DD4BF}.ac-plum{--c1:#6D28D9;--c2:#A78BFA}.ac-amber{--c1:#D97706;--c2:#FBBF24}
+.v7ag{display:flex;align-items:center;gap:10px;margin-top:12px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:8px 8px 8px 10px}
+.v7ag .ic{width:38px;height:38px;border-radius:12px;flex:none}.v7ag .ic svg{width:20px;height:20px}
+.v7ag input{flex:1;min-width:0;border:0;outline:0;background:transparent;font:500 15px var(--body);color:var(--ink);padding:8px 2px}
+.v7ag button{border:0;border-radius:11px;background:var(--ink);color:#fff;font:700 14.5px var(--head);padding:10px 18px;cursor:pointer}
+body.home #pbh{display:none!important}
+@media(max-width:1020px){.v7svc{grid-template-columns:repeat(4,minmax(0,1fr))}.v7stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){
+ body.pi-app .hero3.v7h{padding-top:10px}
+ .v7slide{min-height:480px;border-radius:20px}
+ .v7in{padding:26px 18px 12px}
+ .v7slide:before{background:linear-gradient(180deg,rgba(23,15,28,.55),rgba(23,15,28,.78))}
+ .v7c{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-right:-18px}.v7c a{flex:none}
+ .v7bar{padding:0 18px 12px}
+ .v7strip{display:flex;overflow-x:auto;scrollbar-width:none;gap:14px}.v7strip button{flex:none;min-width:84px}
+ .v7stats{margin:-26px 10px 0;gap:8px}.v7stats a{padding:11px 13px}.v7stats b{font-size:19px}
+ .v7svc{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.v7svc a{padding:14px 6px 12px;border-radius:16px}
+ .v7svc small{display:none}.v7svc b{font-size:13.5px}.ic{width:48px;height:48px;border-radius:15px}
+ .v7sub{display:none}
+}
+@media(prefers-reduced-motion:reduce){.v7imgs img.on,.v7svc a,.v7strip button.on i{animation:none}.v7strip button.on i{width:100%}}
 </style>
 <?php }, 101 );
