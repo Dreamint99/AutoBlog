@@ -1,7 +1,7 @@
 {
  "site": "aiu",
  "property": "https://aiuniversitybd.com/",
- "checked": "2026-11-14T09:30:24+00:00",
+ "checked": "2026-11-15T09:57:35+00:00",
  "sitemaps": [
   {
    "path": "https://aiuniversitybd.com/sitemap.xml",
@@ -21,11 +21,11 @@
    ]
   }
  ],
- "sitemap_count": 199,
+ "sitemap_count": 399,
  "byState": {
-  "Submitted and indexed": 35,
-  "Discovered - currently not indexed": 5,
-  "URL is unknown to Google": 1
+  "Submitted and indexed": 36,
+  "Discovered - currently not indexed": 2,
+  "URL is unknown to Google": 3
  },
  "urls": [
   {
@@ -127,9 +127,11 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/guide",
    "userCanonical": "https://aiuniversitybd.com/guide",
-   "lastCrawlTime": "2026-11-13T17:58:40Z",
+   "lastCrawlTime": "2026-11-14T09:57:35Z",
    "crawledAs": "MOBILE",
-   "referringUrls": null
+   "referringUrls": [
+    "https://aiuniversitybd.com/guide/c/help"
+   ]
   },
   {
    "url": "https://aiuniversitybd.com/books",
@@ -301,16 +303,17 @@
   },
   {
    "url": "https://aiuniversitybd.com/gds-lab",
-   "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
-   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
-   "indexingState": "INDEXING_STATE_UNSPECIFIED",
-   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
-   "googleCanonical": null,
-   "userCanonical": null,
-   "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "verdict": "PASS",
+   "coverageState": "Submitted and indexed",
+   "robotsTxtState": "ALLOWED",
+   "indexingState": "INDEXING_ALLOWED",
+   "pageFetchState": "SUCCESSFUL",
+   "googleCanonical": "https://aiuniversitybd.com/gds-lab",
+   "userCanonical": "https://aiuniversitybd.com/gds-lab",
+   "lastCrawlTime": "2026-11-14T20:00:56Z",
+   "crawledAs": "MOBILE",
    "referringUrls": [
+    "https://www.aiuniversitybd.com/gds-lab",
     "https://www.aiuniversitybd.com/gds-lab?demo=1"
    ]
   },
@@ -472,17 +475,15 @@
   {
    "url": "https://aiuniversitybd.com/course/digital-marketing",
    "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
+   "coverageState": "URL is unknown to Google",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": [
-    "https://www.aiuniversitybd.com/course/digital-marketing"
-   ]
+   "crawledAs": null,
+   "referringUrls": null
   },
   {
    "url": "https://aiuniversitybd.com/course/freelancing",
@@ -533,17 +534,15 @@
   {
    "url": "https://aiuniversitybd.com/course/personal-branding",
    "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
+   "coverageState": "URL is unknown to Google",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": [
-    "https://www.aiuniversitybd.com/course/personal-branding"
-   ]
+   "crawledAs": null,
+   "referringUrls": null
   },
   {
    "url": "https://aiuniversitybd.com/course/youtube-creator",
