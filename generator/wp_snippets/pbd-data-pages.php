@@ -13,7 +13,7 @@ define('PBD_LOADED', 1);
 define('PBD_MODE', 'live');               // 'test' | 'live'
 define('PBD_KEY', '__PBD_TEST_KEY__');
 define('PBD_API', 'https://probashi-data.iamkashimuddin.workers.dev/v1/');
-define('PBD_VER', '16');
+define('PBD_VER', '17');
 
 function pbd_enabled() {
     if (PBD_MODE === 'live') { return true; }
@@ -187,8 +187,10 @@ function pbd_seo() {
             $a = $m['item'];
             $st = pbd_ag_status($a['status']);
             $s['index'] = $a['release'] <= gmdate('Y-m-d');
-            $s['title'] = $a['name'] . ' (আরএল-' . pbd_bn($a['rl']) . '): লাইসেন্স ' . $st[0];
-            $s['desc'] = $a['name'] . ' রিক্রুটিং এজেন্সির লাইসেন্স (আরএল-' . pbd_bn($a['rl']) . ') বিএমইটির তালিকায় ' . $st[0] . '। ঠিকানা, ফোন, লাইসেন্সের মেয়াদ ও টাকা দেওয়ার আগে যাচাইয়ের নিয়ম।';
+            // status labels already say "লাইসেন্স" for most states ("বৈধ লাইসেন্স") — don't repeat it
+            $lbl = (strpos($st[0], 'লাইসেন্স') !== false) ? $st[0] : ($a['status'] === 'Expired' ? 'লাইসেন্সের ' . $st[0] : 'লাইসেন্স: ' . $st[0]);
+            $s['title'] = $a['name'] . ' (আরএল-' . pbd_bn($a['rl']) . '): ' . $lbl;
+            $s['desc'] = $a['name'] . ' রিক্রুটিং এজেন্সি (আরএল-' . pbd_bn($a['rl']) . '): বিএমইটির তালিকায় ' . $lbl . '। ঠিকানা, ফোন, লাইসেন্সের মেয়াদ ও টাকা দেওয়ার আগে যাচাইয়ের নিয়ম।';
             $s['faq'] = pbd_ag_faq($d, $a);
         } else {
             $s['index'] = !isset($_GET['q']);
@@ -242,7 +244,11 @@ function pbd_seo() {
     }
     $en = pbd_en();   // English name next to the Bangla, for English/Banglish searchers
     if ($en['label'] !== '') {
-        $s['title'] .= ' | ' . $en['label'];
+        // English label only when the title stays short (the theme adds " | প্রবাসী ইনফো" after it);
+        // long agency names pushed titles past 90 characters. The description still carries it.
+        if (!function_exists('mb_strlen') || mb_strlen($s['title'] . ' | ' . $en['label']) <= 62) {
+            $s['title'] .= ' | ' . $en['label'];
+        }
         $s['desc'] = $en['label'] . ': ' . $s['desc'];
     }
     if ($en['faq']) { $s['faq'] = array_merge($s['faq'], $en['faq']); }
