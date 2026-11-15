@@ -29,7 +29,7 @@ export default function Search({ site, q, results }: { site: Site; q: string; re
                         {c ? <img src={flag(c.iso, 40)} alt="" width={18} height={12} style={{ marginRight: 8, verticalAlign: "middle", borderRadius: 2 }} /> : null}
                         {a.title}
                       </b>
-                      <span>{topicOf(a).icon}</span>
+                      <span>{topicOf(a).label}</span>
                     </Link>
                   </li>
                 );

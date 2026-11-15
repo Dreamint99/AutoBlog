@@ -1,217 +1,202 @@
 import Link from "next/link";
-import type { SiteHomeProps, Site, Article } from "@/lib/types";
-import { GcShell } from "./Chrome";
-import { COUNTRIES, TOPICS, countryOf, topicOf, flag } from "./data";
-import { Clocks, Converter, CityPulse } from "./Widgets";
-import TodayStrip from "./hub/TodayStrip";
-import HomeData from "./hub/HomeData";
-import { heroSrc, thumb } from "@/lib/img";
+import type { SiteHomeProps } from "@/lib/types";
+import { GcShell, GuideCard, Icon } from "./Chrome";
+import { COUNTRIES, TOPICS, topicOf, flag } from "./data";
+import { getFxSnapshot, crossRate, getGold } from "@/lib/gcc";
+import { buildFuelView } from "./hub/fuel";
+import { GRAMS_PER_OZ } from "./hub/config";
+import { fmt, dateLong } from "./hub/format";
 
-// [icon, label, page]. A page value sends the chip straight to a hub page; otherwise it searches the label.
-const QUICK: [string, string, string?][] = [
-  ["🛂", "Check visa status"],
-  ["🪪", "Renew residence ID"],
-  ["🚗", "Driving licence"],
-  ["💼", "Salary & gratuity", "calculators"],
-  ["🏠", "Rent & cost of living"],
-  ["⚖️", "Laws for expats"],
+/* GCCGuide home (v2): answer-first. Hero with search + today's key numbers,
+   the six country hubs, live-data tools, latest guides as uniform cards and a
+   compact "by topic" link block. No client widgets on the home page. */
+
+const GULF = ["QAR", "AED", "SAR"] as const;
+const HOME = ["BDT", "INR", "PKR"] as const;
+
+const TOOLS: { icon: string; title: string; text: string; path: string }[] = [
+  { icon: "rates", title: "Exchange rates", text: "Gulf currencies to INR, PKR, BDT, PHP", path: "rates" },
+  { icon: "report", title: "Remittance report", text: "Monthly rate review, 6 × 11 corridors", path: "reports/remittance" },
+  { icon: "gold", title: "Gold rate today", text: "24K–18K per gram, 14 cities", path: "gold-rate" },
+  { icon: "fuel", title: "Petrol prices", text: "Official monthly prices", path: "fuel-price" },
+  { icon: "calc", title: "Gratuity calculators", text: "End-of-service, overtime, leave", path: "calculators" },
+  { icon: "prayer", title: "Prayer times", text: "385 cities, monthly tables", path: "prayer-times" },
+  { icon: "embassy", title: "Embassies", text: "76 missions, phones & sites", path: "embassy" },
+  { icon: "visa", title: "Visa fees", text: "Official fee tables", path: "visa-fees" },
 ];
 
-function Skyline() {
-  // Stylised Gulf skyline: towers, a needle spire and a dhow sail.
-  return (
-    <svg className="gc-sky" viewBox="0 0 1200 220" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-      <defs>
-        <linearGradient id="gcs" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#1e2a4a" />
-          <stop offset="1" stopColor="#0b1020" />
-        </linearGradient>
-      </defs>
-      <path
-        fill="url(#gcs)"
-        d="M0 220V170h40v-30h30v30h20v-60h26v60h18v-90l14-14 14 14v90h24v-44h30v44h16v-120h10v-40h6v-60h4v60h6v40h10v120h22v-70h34v70h20v-36h28v36h18v-96l20-20 20 20v96h26v-58h36v58h24v-30h22v30h20v-110h8l12-24 12 24h8v110h30v-64h40v64h22v-40h30v40h26v-84l18-18 18 18v84h24v-50h30v50h24v-28h40v28h22v-70h34v70h30v-40h40v40h40V220z"
-      />
-      <g className="gc-win" fill="#f6c453">
-        {Array.from({ length: 60 }, (_, i) => (
-          <rect key={i} x={(i * 97) % 1180 + 10} y={120 + ((i * 53) % 80)} width="3" height="5" style={{ animationDelay: `${(i % 9) * 0.7}s` }} />
-        ))}
-      </g>
-    </svg>
-  );
-}
-
-function Card({ site, a, big = false }: { site: Site; a: Article; big?: boolean }) {
-  const c = countryOf(a);
-  const t = topicOf(a);
-  const href = `/s/${site.id}/${a.slug}`;
-  return (
-    <article className={`gc-acard${big ? " big" : ""}`}>
-      <Link href={href} className="gc-amedia" tabIndex={-1} aria-label={a.title}>
-        {a.image_url ? (big
-          ? <img src={heroSrc(a.image_url, a.title)} alt={a.title} fetchPriority="high" />
-          : <img src={thumb(a.image_url, a.title)} alt={a.title} loading="lazy" decoding="async" />) : <span className="gc-aph">{t.icon}</span>}
-        <span className="gc-badge">
-          {c ? <img src={flag(c.iso, 40)} alt="" width={16} height={11} /> : null}
-          {t.label}
-        </span>
-      </Link>
-      <div className="gc-abody">
-        <h3>
-          <Link href={href}>{a.title}</Link>
-        </h3>
-        {big && a.excerpt ? <p>{a.excerpt}</p> : null}
-        <span className="gc-meta">{a.reading_time} min read</span>
-      </div>
-    </article>
-  );
-}
-
-export default function Home({ site, articles }: SiteHomeProps) {
+export default async function Home({ site, articles }: SiteHomeProps) {
   const b = `/s/${site.id}`;
   const real = articles.filter((a) => !a.is_mock);
-  const [lead, ...rest] = real;
+  const [snap, gold] = await Promise.all([getFxSnapshot(), getGold()]);
+  const aed = snap.byCode.AED?.rate ?? 3.6725;
+  const g24 = (gold.usdPerOz / GRAMS_PER_OZ) * aed;
+  const fuel = buildFuelView("uae");
+  const p95 = fuel?.rows.find((r) => /95/.test(r.grade)) ?? fuel?.rows[0];
+  const p91 = fuel?.rows.find((r) => /91/.test(r.grade));
+  const updated = snap.updated.slice(0, 10);
+
   return (
     <GcShell site={site} active="home">
-      <section className="gc-hero">
-        <div className="gc-aurora" aria-hidden="true">
-          <i />
-          <i />
-          <i />
-        </div>
-        <div className="gc-wrap gc-hero-in">
-          <span className="gc-pill">
-            <span className="gc-dot" /> 6 countries · live time, prayer & weather
-          </span>
-          <h1>
-            Everything <span className="gc-grad">GCC</span>, in one place.
-          </h1>
-          <p className="gc-sub">Visas, jobs, driving licences, rules and the best things to do in Qatar, the UAE, Saudi Arabia, Kuwait, Oman and Bahrain — explained simply, linked to the official portals.</p>
-          <form className="gc-hsearch" action={`${b}/search`} role="search">
-            <span aria-hidden="true">⌕</span>
-            <input name="q" type="search" placeholder="Try “Qatar visa status”, “Dubai driving licence”, “Saudi iqama renewal”" aria-label="Search" />
-            <button type="submit">Search</button>
-          </form>
-          <div className="gc-quick">
-            {QUICK.map(([i, q, page]) => (
-              <Link key={q} href={page ? `${b}/${page}` : `${b}/search?q=${encodeURIComponent(q)}`}>
-                <span aria-hidden="true">{i}</span>
-                {q}
-              </Link>
-            ))}
+      <section className="gv-hero">
+        <div className="gv-wrap gv-hero-in">
+          <div className="gv-hero-copy">
+            <span className="gv-eyebrow">Qatar · UAE · Saudi Arabia · Kuwait · Oman · Bahrain</span>
+            <h1>Everything GCC, in one place.</h1>
+            <p className="gv-lede">Visas, jobs, driving and daily rates for Gulf expats — sourced, dated and linked to official portals.</p>
+            <form className="gv-hsearch" action={`${b}/search`} role="search">
+              <Icon name="search" size={20} />
+              <input name="q" type="search" placeholder="Search visas, jobs, driving…" aria-label="Search" />
+              <button type="submit">Search</button>
+            </form>
+            <div className="gv-quick">
+              {COUNTRIES.map((c) => (
+                <Link key={c.slug} href={`${b}/country/${c.slug}`}>
+                  <img src={flag(c.iso, 40)} alt="" width={20} height={14} />
+                  {c.name}
+                </Link>
+              ))}
+            </div>
           </div>
-          <Clocks base={b} />
+
+          <div className="gv-live" aria-label="Today in the Gulf">
+            <div className="gv-live-h">
+              <b>Today’s rates</b>
+              <span>
+                <i className="gv-dot" aria-hidden="true" /> {dateLong(updated)}
+              </span>
+            </div>
+            <table className="gv-fx">
+              <thead>
+                <tr>
+                  <th scope="col">1 unit</th>
+                  {HOME.map((h) => (
+                    <th scope="col" key={h}>
+                      {h}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {GULF.map((g) => (
+                  <tr key={g}>
+                    <th scope="row">{g}</th>
+                    {HOME.map((h) => {
+                      const r = crossRate(snap, g, h);
+                      return (
+                        <td key={h}>
+                          <Link href={`${b}/rates/${g.toLowerCase()}-to-${h.toLowerCase()}`}>{r == null ? "—" : fmt(r, 2)}</Link>
+                        </td>
+                      );
+                    })}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <div className="gv-live-tiles">
+              <Link href={`${b}/gold-rate/dubai`}>
+                <span className="k">Gold 24K · Dubai</span>
+                <span className="v">
+                  {fmt(g24, 2)} <small>AED/g</small>
+                </span>
+                <span className="s">22K {fmt(g24 * 0.916, 2)}</span>
+              </Link>
+              <Link href={`${b}/fuel-price/uae`}>
+                <span className="k">{p95 ? `Petrol ${p95.grade_key}` : "Petrol"} · UAE</span>
+                <span className="v">
+                  {p95 ? fmt(p95.price, 2) : "—"} <small>{p95?.currency ?? "AED"}/L</small>
+                </span>
+                <span className="s">{p91 ? `Petrol 91 ${fmt(p91.price, 2)} · ${fuel?.monthLabel ?? ""}` : fuel?.monthLabel ?? ""}</span>
+              </Link>
+            </div>
+            <Link href={`${b}/rates`} className="gv-live-more">
+              All rates <Icon name="arrow" size={16} />
+            </Link>
+          </div>
         </div>
-        <Skyline />
       </section>
 
-      <div className="gc-wrap">
-        <TodayStrip site={site} />
-        <section className="gc-sec" id="countries">
-          <div className="gc-head">
-            <h2>Pick your country</h2>
-            <p>Key facts, official portals and every guide for each Gulf state.</p>
+      <div className="gv-wrap">
+        <section className="gv-sec" id="countries">
+          <div className="gv-sechead">
+            <h2>Country guides</h2>
           </div>
-          <div className="gc-countries">
+          <div className="gv-countries">
             {COUNTRIES.map((c) => (
-              <Link key={c.slug} href={`${b}/country/${c.slug}`} className="gc-country" style={{ ["--ca" as string]: c.accent }}>
-                <div className="gc-country-top">
-                  <img src={flag(c.iso, 160)} alt="" width={56} height={38} />
-                  <div>
-                    <b>{c.name}</b>
-                    <span>{c.tagline}</span>
-                  </div>
-                </div>
-                <dl>
-                  <div>
-                    <dt>Currency</dt>
-                    <dd>{c.code}</dd>
-                  </div>
-                  <div>
-                    <dt>Weekend</dt>
-                    <dd>{c.weekend}</dd>
-                  </div>
-                  <div>
-                    <dt>Emergency</dt>
-                    <dd>{c.emergency.split(" ")[0]}</dd>
-                  </div>
-                </dl>
-                <span className="gc-go">Open guide →</span>
+              <Link key={c.slug} href={`${b}/country/${c.slug}`} className="gv-country">
+                <img src={flag(c.iso, 160)} alt="" width={48} height={32} />
+                <span>
+                  <b>{c.name}</b>
+                  <small>{c.tagline}</small>
+                </span>
+                <em>{c.code}</em>
               </Link>
             ))}
           </div>
         </section>
 
-        <HomeData site={site} />
-
-        <section className="gc-sec" id="tools">
-          <div className="gc-head">
-            <h2>Live tools</h2>
-            <p>Free, instant and always on — no sign-up.</p>
+        <section className="gv-sec" id="tools">
+          <div className="gv-sechead">
+            <h2>Rates & tools</h2>
+            <span>Updated daily, every figure sourced</span>
           </div>
-          <div className="gc-tools">
-            <CityPulse />
-            <Converter />
+          <div className="gv-tools">
+            {TOOLS.map((t) => (
+              <Link key={t.path} href={`${b}/${t.path}`} className="gv-tool">
+                <span className="gv-tool-ic">
+                  <Icon name={t.icon} size={22} />
+                </span>
+                <b>{t.title}</b>
+                <small>{t.text}</small>
+              </Link>
+            ))}
           </div>
         </section>
 
-        {lead ? (
-          <section className="gc-sec" id="latest">
-            <div className="gc-head">
-              <h2>
-                <span className="gc-live" /> Latest guides
-              </h2>
-              <p>New and updated this week.</p>
+        {real.length ? (
+          <section className="gv-sec" id="latest">
+            <div className="gv-sechead">
+              <h2>Latest guides</h2>
+              <Link href={`${b}/archive`}>
+                All guides <Icon name="arrow" size={16} />
+              </Link>
             </div>
-            <div className="gc-latest">
-              <Card site={site} a={lead} big />
-              <div className="gc-latest-list">
-                {rest.slice(0, 4).map((a) => (
-                  <Card site={site} a={a} key={a.id} />
-                ))}
-              </div>
+            <div className="gv-cards">
+              {real.slice(0, 8).map((a) => (
+                <GuideCard site={site} a={a} key={a.id} />
+              ))}
             </div>
           </section>
         ) : null}
 
-        <section className="gc-sec">
-          <div className="gc-head">
+        <section className="gv-sec" id="topics">
+          <div className="gv-sechead">
             <h2>Browse by topic</h2>
-            <p>From your first visa to your end-of-service gratuity.</p>
           </div>
-          <div className="gc-topics">
+          <div className="gv-topics">
             {TOPICS.map((t) => {
-              const n = real.filter((a) => topicOf(a).key === t.key).length;
+              const list = real.filter((a) => topicOf(a).key === t.key).slice(0, 4);
               return (
-                <Link key={t.key} href={`${b}/search?q=${encodeURIComponent(t.label.split(" ")[0])}`} className="gc-topic">
-                  <span className="gc-ti" aria-hidden="true">
-                    {t.icon}
-                  </span>
-                  <b>{t.label}</b>
-                  <small>{t.blurb}</small>
-                  <em>{n ? `${n} guides` : "New guides soon"}</em>
-                </Link>
+                <div className="gv-topic" key={t.key}>
+                  <Link href={`${b}/search?q=${encodeURIComponent(t.label.split(" ")[0])}`} className="gv-topic-h">
+                    {t.label} <Icon name="arrow" size={16} />
+                  </Link>
+                  {list.length ? (
+                    <ul>
+                      {list.map((a) => (
+                        <li key={a.id}>
+                          <Link href={`${b}/${a.slug}`}>{a.title}</Link>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p>{t.blurb}</p>
+                  )}
+                </div>
               );
             })}
           </div>
         </section>
-
-        {TOPICS.map((t) => {
-          const list = real.filter((a) => topicOf(a).key === t.key).slice(0, 3);
-          return list.length >= 2 ? (
-            <section className="gc-sec" key={t.key}>
-              <div className="gc-head row">
-                <h2>
-                  {t.icon} {t.label}
-                </h2>
-              </div>
-              <div className="gc-grid">
-                {list.map((a) => (
-                  <Card site={site} a={a} key={a.id} />
-                ))}
-              </div>
-            </section>
-          ) : null;
-        })}
       </div>
     </GcShell>
   );

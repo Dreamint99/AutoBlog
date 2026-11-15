@@ -1,103 +1,175 @@
 import "./theme.css";
+import "./hub/hub.css";
+import "./v2.css";
 import Link from "next/link";
 import type { ReactNode } from "react";
-import type { Site } from "@/lib/types";
-import { COUNTRIES, TOPICS, flag } from "./data";
-import { gccFont } from "./fonts";
+import type { Article, Site } from "@/lib/types";
+import { COUNTRIES, TOPICS, countryOf, topicOf, flag } from "./data";
+import { gccSans, gccHead } from "./fonts";
+import { thumb } from "@/lib/img";
 
-/* GCCGuide app shell: glass top bar with search, a country rail, a mobile
-   bottom tab bar (app feel), and a rich footer. Independent — not a government site. */
+/* GCCGuide shell (v2): one light design system. Sticky white bar with the brand
+   logo, six sections + More, search; a <details> drawer on phones (no client JS);
+   a calm footer. Independent — not a government site. Styles: v2.css (.gv). */
 
 export function Mark() {
-  return (
-    <svg viewBox="0 0 40 40" aria-hidden="true">
-      <defs>
-        <linearGradient id="gcm" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#f6c453" />
-          <stop offset="1" stopColor="#14b8a6" />
-        </linearGradient>
-      </defs>
-      <rect width="40" height="40" rx="11" fill="url(#gcm)" />
-      <path d="M8 29h24M11 29V18l3-3v14M17 29V10l3-3 3 3v19M26 29V15l3 3v11" fill="none" stroke="#0b1020" strokeWidth="2.4" strokeLinejoin="round" strokeLinecap="round" />
-      <circle cx="29.5" cy="10.5" r="2.6" fill="#0b1020" />
-    </svg>
-  );
+  // eslint-disable-next-line @next/next/no-img-element
+  return <img src="/brand/gccguide-mark.png" alt="" width={40} height={40} />;
 }
 
 export function Logo({ site }: { site: Site }) {
   return (
-    <Link href={`/s/${site.id}`} className="gc-logo" aria-label={`${site.name} home`}>
+    <Link href={`/s/${site.id}`} className="gc-logo gv-logo" aria-label={`${site.name} home`}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/brand/gccguide-logo-ondark.webp" alt="GCCGuide.com" width={140} height={40} />
+      <img src="/brand/gccguide-logo.webp" alt="GCCGuide.com" width={705} height={160} />
     </Link>
+  );
+}
+
+export const ICONS: Record<string, string> = {
+  rates: "M4 7h13l-3-3M20 17H7l3 3",
+  gold: "M3 18h18l-3-6H6zM7 12l2-5h6l2 5",
+  fuel: "M5 20V5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v15M3 20h13M5 10h9M14 8l3 2v7a1.5 1.5 0 0 0 3 0V9l-3-3",
+  prayer: "M12 3c3 2 5 4.5 5 7.5V20H7v-9.5C7 7.5 9 5 12 3zM4 20h16M12 14v6",
+  embassy: "M3 20h18M5 20v-9M9 20v-9M15 20v-9M19 20v-9M3 11h18L12 4z",
+  report: "M5 20V4M5 20h15M9 16v-4M13 16V8M17 16v-6",
+  calc: "M6 3h12a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zM8 7h8M8 12h.01M12 12h.01M16 12h.01M8 16h.01M12 16h.01M16 16h.01",
+  visa: "M6 3h12v18H6zM9 8h6M9 12h6M9 16h3",
+  calendar: "M4 6h16v14H4zM4 10h16M8 3v4M16 3v4",
+  search: "M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zm9 16-4-4",
+  arrow: "M5 12h13M13 6l6 6-6 6",
+  chev: "m6 9 6 6 6-6",
+  guides: "M4 5h7a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H4zM20 5h-7a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h7z",
+};
+
+export function Icon({ name, size = 20 }: { name: string; size?: number }) {
+  return (
+    <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true" className="gv-ico">
+      <path d={ICONS[name] ?? ICONS.arrow} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+const NAV: [string, string][] = [
+  ["Exchange rates", "rates"],
+  ["Gold", "gold-rate"],
+  ["Fuel", "fuel-price"],
+  ["Prayer times", "prayer-times"],
+  ["Embassies", "embassy"],
+  ["Remittance", "reports/remittance"],
+];
+
+const MORE_TOOLS: [string, string][] = [
+  ["Salary & gratuity calculators", "calculators"],
+  ["Visa & residence fees", "visa-fees"],
+  ["Public holidays", "public-holidays"],
+  ["All guides", "archive"],
+];
+
+function SearchForm({ b, className }: { b: string; className: string }) {
+  return (
+    <form className={className} action={`${b}/search`} role="search">
+      <Icon name="search" size={18} />
+      <input name="q" type="search" placeholder="Search visas, driving, jobs…" aria-label="Search GCCGuide" />
+    </form>
   );
 }
 
 export function TopBar({ site }: { site: Site }) {
   const b = `/s/${site.id}`;
-  // The hub's five data sections live in the top bar; the topic taxonomy stays
-  // in the footer and the search page.
-  const hubs: [string, string][] = [
-    ["Rates", `${b}/rates`],
-    ["Gold", `${b}/gold-rate`],
-    ["Fuel", `${b}/fuel-price`],
-    ["Prayer", `${b}/prayer-times`],
-    ["Embassies", `${b}/embassy`],
-  ];
   return (
-    <header className="gc-top">
-      <div className="gc-wrap gc-top-in">
+    <header className="gv-bar">
+      <div className="gv-wrap gv-bar-in">
         <Logo site={site} />
-        <nav className="gc-nav" aria-label="Primary">
-          {hubs.map(([label, href]) => (
-            <Link key={label} href={href}>
+        <nav className="gv-nav" aria-label="Primary">
+          {NAV.map(([label, p]) => (
+            <Link key={p} href={`${b}/${p}`}>
               {label}
             </Link>
           ))}
+          <details className="gv-more">
+            <summary>
+              More <Icon name="chev" size={16} />
+            </summary>
+            <div className="gv-more-menu">
+              <div>
+                <h4>Countries</h4>
+                {COUNTRIES.map((c) => (
+                  <Link key={c.slug} href={`${b}/country/${c.slug}`}>
+                    <img src={flag(c.iso, 40)} alt="" width={20} height={14} />
+                    {c.name}
+                  </Link>
+                ))}
+              </div>
+              <div>
+                <h4>Tools</h4>
+                {MORE_TOOLS.map(([label, p]) => (
+                  <Link key={p} href={`${b}/${p}`}>
+                    {label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </details>
         </nav>
-        <form className="gc-search" action={`${b}/search`} role="search">
-          <input name="q" type="search" placeholder="Search visas, driving, jobs…" aria-label="Search GCCGuide" />
-          <button type="submit" aria-label="Search">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" strokeWidth="2.4" />
-              <path d="M20 20l-3.6-3.6" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
+        <SearchForm b={b} className="gv-search" />
+        <details className="gv-burger">
+          <summary aria-label="Menu">
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+              <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
             </svg>
-          </button>
-        </form>
-      </div>
-      <div className="gc-rail">
-        <div className="gc-wrap gc-rail-in">
-          {COUNTRIES.map((c) => (
-            <Link key={c.slug} href={`${b}/country/${c.slug}`} style={{ ["--ca" as string]: c.accent }}>
-              <img src={flag(c.iso, 40)} alt="" width={20} height={14} />
-              {c.name}
-            </Link>
-          ))}
-        </div>
+          </summary>
+          <div className="gv-drawer">
+            <SearchForm b={b} className="gv-search gv-search-m" />
+            <div className="gv-drawer-grid">
+              {NAV.map(([label, p]) => (
+                <Link key={p} href={`${b}/${p}`}>
+                  {label}
+                </Link>
+              ))}
+              {MORE_TOOLS.map(([label, p]) => (
+                <Link key={p} href={`${b}/${p}`}>
+                  {label}
+                </Link>
+              ))}
+            </div>
+            <div className="gv-drawer-flags">
+              {COUNTRIES.map((c) => (
+                <Link key={c.slug} href={`${b}/country/${c.slug}`}>
+                  <img src={flag(c.iso, 40)} alt="" width={20} height={14} />
+                  {c.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </details>
       </div>
     </header>
   );
 }
 
-export function BottomTabs({ site, active = "home" }: { site: Site; active?: string }) {
-  const b = `/s/${site.id}`;
-  const tabs: [string, string, string, string][] = [
-    ["home", "Home", b, "M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"],
-    ["countries", "Countries", `${b}#countries`, "M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 0c3 3 3 17 0 20m0-20c-3 3-3 17 0 20M2 12h20"],
-    ["tools", "Tools", `${b}#tools`, "M14 7l3-3 3 3-3 3M4 20l9-9M4 14v6h6"],
-    ["search", "Search", `${b}/search`, "M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zm9 16l-4-4"],
-  ];
+/** Uniform guide card used on home, country, article "read next" and search. */
+export function GuideCard({ site, a }: { site: Site; a: Article }) {
+  const c = countryOf(a);
+  const t = topicOf(a);
+  const href = `/s/${site.id}/${a.slug}`;
+  const img = a.image_url ? thumb(a.image_url, a.title) : "";
   return (
-    <nav className="gc-tabs" aria-label="App navigation">
-      {tabs.map(([k, label, href, d]) => (
-        <Link key={k} href={href} className={active === k ? "on" : ""}>
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d={d} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          <span>{label}</span>
-        </Link>
-      ))}
-    </nav>
+    <article className="gv-card">
+      <Link href={href} className="gv-card-media" tabIndex={-1} aria-hidden="true">
+        {img ? <img src={img} alt="" loading="lazy" decoding="async" /> : <span className="gv-card-ph"><Icon name="guides" size={28} /></span>}
+      </Link>
+      <div className="gv-card-body">
+        <span className="gv-kicker">
+          {c ? <img src={flag(c.iso, 40)} alt="" width={16} height={11} /> : null}
+          {t.label}
+        </span>
+        <h3>
+          <Link href={href}>{a.title}</Link>
+        </h3>
+        <span className="gv-meta">{a.reading_time} min read</span>
+      </div>
+    </article>
   );
 }
 
@@ -106,12 +178,12 @@ export function BottomTabs({ site, active = "home" }: { site: Site; active?: str
 export function Footer({ site }: { site: Site }) {
   const b = `/s/${site.id}`;
   return (
-    <footer className="gc-foot">
-      <div className="gc-wrap">
-        <div className="gc-foot-grid">
-          <div>
+    <footer className="gv-foot">
+      <div className="gv-wrap">
+        <div className="gv-foot-grid">
+          <div className="gv-foot-brand">
             <Logo site={site} />
-            <p data-nosnippet>The all-in-one guide to living, working and travelling in the six Gulf countries — visas, jobs, driving, laws, money and the best things to do.</p>
+            <p data-nosnippet>Visas, jobs, driving, money and daily rates for the six Gulf countries — sourced and dated.</p>
           </div>
           <div>
             <h4>Countries</h4>
@@ -122,15 +194,7 @@ export function Footer({ site }: { site: Site }) {
             ))}
           </div>
           <div>
-            <h4>Guides</h4>
-            {TOPICS.map((t) => (
-              <Link key={t.key} href={`${b}/search?q=${encodeURIComponent(t.label.split(" ")[0])}`}>
-                {t.label}
-              </Link>
-            ))}
-          </div>
-          <div>
-            <h4>GCCGuide</h4>
+            <h4>Live data</h4>
             <Link href={`${b}/rates`}>Exchange rates</Link>
             <Link href={`${b}/reports/remittance`}>Remittance reports</Link>
             <Link href={`${b}/gold-rate`}>Gold rates</Link>
@@ -142,6 +206,14 @@ export function Footer({ site }: { site: Site }) {
             <Link href={`${b}/calculators`}>Calculators</Link>
           </div>
           <div>
+            <h4>Guides</h4>
+            {TOPICS.map((t) => (
+              <Link key={t.key} href={`${b}/search?q=${encodeURIComponent(t.label.split(" ")[0])}`}>
+                {t.label}
+              </Link>
+            ))}
+          </div>
+          <div>
             <h4>About</h4>
             <Link href={`${b}/about`}>About</Link>
             <Link href={`${b}/contact`}>Contact</Link>
@@ -151,11 +223,11 @@ export function Footer({ site }: { site: Site }) {
             <Link href={`${b}/archive`}>All articles</Link>
           </div>
         </div>
-        <p className="gc-legal" data-nosnippet>
+        <p className="gv-legal" data-nosnippet>
           GCCGuide is an independent guide and is not affiliated with any Gulf government, ministry or embassy. Rules, fees and
           visa conditions change — always confirm on the official portal linked on each country page before you apply or pay.
         </p>
-        <div className="gc-foot-base">
+        <div className="gv-foot-base" data-nosnippet>
           <span>© {new Date().getFullYear()} GCCGuide</span>
           <span>Qatar · UAE · Saudi Arabia · Kuwait · Oman · Bahrain</span>
         </div>
@@ -164,13 +236,12 @@ export function Footer({ site }: { site: Site }) {
   );
 }
 
-export function GcShell({ site, children, active }: { site: Site; children: ReactNode; active?: string }) {
+export function GcShell({ site, children }: { site: Site; children: ReactNode; active?: string }) {
   return (
-    <div className={`gc-root ${gccFont.variable}`}>
+    <div className={`gc-root gv ${gccSans.variable} ${gccHead.variable}`}>
       <TopBar site={site} />
-      <main className="gc-main">{children}</main>
+      <main className="gc-main gv-main">{children}</main>
       <Footer site={site} />
-      <BottomTabs site={site} active={active} />
     </div>
   );
 }

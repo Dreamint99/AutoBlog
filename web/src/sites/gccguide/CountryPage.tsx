@@ -45,7 +45,6 @@ export default function CountryPage({ site, c, articles }: { site: Site; c: Coun
           <div>
             <div className="gc-card">
               <div className="gc-card-h">
-                <span>🏛️</span>
                 <b>Official portals</b>
               </div>
               <ul className="gc-portals">
@@ -68,9 +67,7 @@ export default function CountryPage({ site, c, articles }: { site: Site; c: Coun
           return (
             <section className="gc-sec" key={t.key} id={t.key}>
               <div className="gc-head row">
-                <h2>
-                  {t.icon} {t.label}
-                </h2>
+                <h2>{t.label}</h2>
                 <p>{t.blurb}</p>
               </div>
               {list.length ? (
