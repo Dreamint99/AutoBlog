@@ -384,6 +384,30 @@
   .site-walvi .vx .vx-pp, .site-walvi .vx .vx-vc { grid-template-columns: repeat(4, 1fr); }
 }
 
+/* /guides: topic chips, count line, crawlable pager */
+.site-walvi .vx .vx-filter { margin: 4px 0 14px; }
+.site-walvi .vx .vx-filter small { font: 600 12px/1 var(--vx-body); color: var(--vx-mute); }
+.site-walvi .vx .vx-filter a[aria-current="page"] { background: var(--vx-tint); border-color: rgba(21, 84, 209, 0.35); color: var(--vx-blue-ink); font-weight: 600; }
+.site-walvi .vx .vx-filter a[aria-current="page"] small { color: var(--vx-blue-ink); }
+.site-walvi .vx .vx-count { margin: 0 0 16px; font: 400 14px/1.4 var(--vx-body); color: var(--vx-mute); }
+.site-walvi .vx .vx-guidegrid { margin-bottom: 8px; }
+.site-walvi .vx .vx-pager { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px 14px; margin: 28px 0 48px; }
+.site-walvi .vx .vx-pg-nums { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+.site-walvi .vx .vx-pager a,
+.site-walvi .vx .vx-pager .vx-pg-cur,
+.site-walvi .vx .vx-pager .vx-pg-step { display: inline-grid; place-items: center; min-width: 38px; height: 38px; padding: 0 10px; border: 1px solid var(--vx-line); border-radius: 10px; background: #fff; font: 500 14px/1 var(--vx-body); color: var(--vx-ink-2); text-decoration: none; box-sizing: border-box; }
+.site-walvi .vx .vx-pager a:hover { border-color: var(--vx-blue); color: var(--vx-blue-ink); }
+.site-walvi .vx .vx-pager .vx-pg-cur { background: var(--vx-tint); border-color: rgba(21, 84, 209, 0.35); color: var(--vx-blue-ink); font-weight: 700; }
+.site-walvi .vx .vx-pager .vx-pg-step { padding: 0 14px; }
+.site-walvi .vx .vx-pager .vx-pg-step.is-off { color: #a9b3c3; background: var(--vx-soft); }
+.site-walvi .vx .vx-pg-gap { align-self: center; color: var(--vx-mute); padding: 0 2px; }
+@media (max-width: 599px) {
+  .site-walvi .vx .vx-filter .vx-chips { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 6px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .site-walvi .vx .vx-filter .vx-chips a { white-space: nowrap; }
+  .site-walvi .vx .vx-pager { gap: 10px; }
+  .site-walvi .vx .vx-pg-nums { order: -1; width: 100%; }
+}
+
 /* guide cards */
 .site-walvi .vx .vx-cards { display: grid; grid-template-columns: 1fr; gap: 20px; }
 @media (min-width: 600px) { .site-walvi .vx .vx-cards { grid-template-columns: repeat(2, 1fr); } }
@@ -634,6 +658,22 @@
 .site-walvi .vx .vp-pi-table tbody td { padding: 10px 14px; }
 .site-walvi .vx .vp-rank,
 .site-walvi .vx .vp-podium-rank { color: var(--vx-blue-ink); }
+/* ranking table: rank number + score as light accent pills (no dark blocks) */
+.site-walvi .vx .vp-pi-table td.vp-rank { width: 56px; }
+.site-walvi .vx .vx-rk { display: inline-grid; place-items: center; min-width: 30px; height: 26px; padding: 0 7px; border-radius: 999px; background: var(--vx-tint); color: var(--vx-blue-ink); font: 700 13px/1 var(--vx-body); font-variant-numeric: tabular-nums; }
+.site-walvi .vx .vx-score { display: inline-flex; align-items: center; gap: 10px; min-width: 120px; }
+.site-walvi .vx .vx-score b { display: inline-grid; place-items: center; min-width: 46px; height: 26px; padding: 0 9px; border-radius: 999px; font: 700 13.5px/1 var(--vx-body); font-variant-numeric: tabular-nums; color: var(--vx-blue-ink); background: rgba(21, 84, 209, var(--s-a, 0.08)); box-shadow: inset 0 0 0 1px rgba(21, 84, 209, 0.14); }
+.site-walvi .vx .vx-score > i { flex: 1; height: 6px; min-width: 40px; border-radius: 999px; background: var(--vx-line-2); overflow: hidden; }
+.site-walvi .vx .vx-score > i > i { display: block; height: 100%; border-radius: inherit; background: rgba(21, 84, 209, var(--s-b, 0.35)); }
+.site-walvi .vx .vx-score.s1 { --s-a: 0.05; --s-b: 0.25; }
+.site-walvi .vx .vx-score.s2 { --s-a: 0.08; --s-b: 0.38; }
+.site-walvi .vx .vx-score.s3 { --s-a: 0.11; --s-b: 0.52; }
+.site-walvi .vx .vx-score.s4 { --s-a: 0.15; --s-b: 0.7; }
+.site-walvi .vx .vx-score.s5 { --s-a: 0.2; --s-b: 0.9; }
+@media (max-width: 599px) {
+  .site-walvi .vx .vx-score { min-width: 0; }
+  .site-walvi .vx .vx-score > i { display: none; }
+}
 .site-walvi .vx .vp-podium a,
 .site-walvi .vx .vp-podium-item { border-radius: 14px; animation: none; }
 .site-walvi .vx .vp-podium .p1 a { border-top-color: var(--vx-blue); box-shadow: 0 14px 34px -20px rgba(11, 27, 51, 0.35); }

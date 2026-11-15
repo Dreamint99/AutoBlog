@@ -32,9 +32,9 @@ export const RANKING_FAQ = [
   },
 ];
 
-function scoreColor(score: number, max: number): string {
-  const ramp = ["#f1e3c4", "#cfe6e2", "#8fcac2", "#3e9f97", "#14706b", "#0d2b4e"];
-  return ramp[Math.min(ramp.length - 1, Math.floor((score / (max + 1)) * ramp.length))];
+/** Score tier 1–5 for the light accent-tinted pill (stronger tint = stronger passport). */
+function scoreTier(score: number, max: number): number {
+  return Math.min(5, 1 + Math.floor((score / (max + 1)) * 5));
 }
 
 export default function PassportRankingPage({
@@ -128,7 +128,9 @@ export default function PassportRankingPage({
                 <tbody>
                   {ranking.map((r) => (
                     <tr key={r.passport}>
-                      <td className="vp-rank">{r.rank}</td>
+                      <td className="vp-rank">
+                        <span className="vx-rk">{r.rank}</span>
+                      </td>
                       <td>
                         <Link href={`${b}/passport/${r.slug}`} className="vp-pp-link">
                           <img
@@ -142,8 +144,11 @@ export default function PassportRankingPage({
                         </Link>
                       </td>
                       <td>
-                        <span className="vp-score-bar" style={{ background: scoreColor(r.score, max), width: `${(r.score / max) * 100}%` }}>
-                          {r.score}
+                        <span className={`vx-score s${scoreTier(r.score, max)}`}>
+                          <b>{r.score}</b>
+                          <i aria-hidden="true">
+                            <i style={{ width: `${Math.round((r.score / max) * 100)}%` }} />
+                          </i>
                         </span>
                       </td>
                       <td className="hide-mobile">{r.visa_free}</td>
