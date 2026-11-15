@@ -749,3 +749,11 @@
   .site-countly .cv .cv-sec { padding: 20px 0; }
 }
 .site-countly .cv .article-content tbody td { max-width: 360px; }
+/* very wide tables (7+ columns): smaller type, tighter cells, short cells never wrap */
+.site-countly .cv .article-content table:has(thead th:nth-child(7)) { font-size: 13.5px; }
+.site-countly .cv .article-content table:has(thead th:nth-child(7)) thead th,
+.site-countly .cv .article-content table:has(thead th:nth-child(7)) tbody td,
+.site-countly .cv .article-content table:has(thead th:nth-child(7)) tbody th { padding: 7px 10px; }
+.site-countly .cv .article-content table:has(thead th:nth-child(7)) tbody td { max-width: 220px; }
+.site-countly .cv .article-content tbody td:not(:has(*)) { white-space: normal; }
+.site-countly .cv .article-content tbody td:first-child { white-space: nowrap; }

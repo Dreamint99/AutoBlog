@@ -9,7 +9,11 @@ import GccSearch from "@/sites/gccguide/Search";
 
 export const dynamic = "force-dynamic";
 // Search results shouldn't be indexed.
-export const metadata: Metadata = { robots: { index: false, follow: true } };
+export async function generateMetadata({ params, searchParams }: { params: Promise<{ site: string }>; searchParams: Promise<{ q?: string }> }): Promise<Metadata> {
+  const site = getSite((await params).site);
+  const q = ((await searchParams).q || "").trim().slice(0, 60);
+  return { title: `${q ? `"${q}" — ` : ""}Search | ${site?.name || ""}`, robots: { index: false, follow: true } };
+}
 
 const SUPPORTED = new Set(["countly", "infkey", "walvi", "gccguide"]);
 const STOP = new Set("a an the of for to in on and or how is are what best with by my your free 2025 2026".split(" "));
