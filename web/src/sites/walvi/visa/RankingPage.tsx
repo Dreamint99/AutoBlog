@@ -98,7 +98,7 @@ export default function PassportRankingPage({
               {/* Top 3 Podium */}
               <div className="vp-pi-podium">
                 {top.map((r, i) => (
-                  <Link key={r.passport} href={`${b}/visa-free-countries/${r.slug}`} className={`vp-podium-item rank-${i + 1}`}>
+                  <Link key={r.passport} href={`${b}/passport/${r.slug}`} className={`vp-podium-item rank-${i + 1}`}>
                     <span className="vp-podium-rank">#{r.rank}</span>
                     <img
                       src={`https://flagcdn.com/w160/${r.passport.toLowerCase()}.png`}
@@ -130,7 +130,7 @@ export default function PassportRankingPage({
                     <tr key={r.passport}>
                       <td className="vp-rank">{r.rank}</td>
                       <td>
-                        <Link href={`${b}/visa-free-countries/${r.slug}`} className="vp-pp-link">
+                        <Link href={`${b}/passport/${r.slug}`} className="vp-pp-link">
                           <img
                             src={`https://flagcdn.com/w40/${r.passport.toLowerCase()}.png`}
                             alt=""
@@ -162,7 +162,7 @@ export default function PassportRankingPage({
                   <ul className="vp-mini-list">
                     {sa.map((r) => (
                       <li key={r.passport}>
-                        <Link href={`${b}/visa-free-countries/${r.slug}`}>
+                        <Link href={`${b}/passport/${r.slug}`}>
                           <img
                             src={`https://flagcdn.com/w40/${r.passport.toLowerCase()}.png`}
                             alt=""
@@ -211,8 +211,8 @@ export default function PassportRankingPage({
                 </p>
                 <p className="vp-credit">
                   Underlying dataset:{" "}
-                  <a href="https://github.com/imorte/passport-index-data" target="_blank" rel="noopener">
-                    passport-index-data
+                  <a href="https://github.com/ilyankou/passport-index-dataset" target="_blank" rel="noopener">
+                    passport-index-dataset
                   </a>{" "}
                   (MIT License).
                 </p>

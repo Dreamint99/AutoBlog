@@ -121,7 +121,7 @@ export default function VisaPairPage({
                   <div>
                     <dt>Passport</dt>
                     <dd>
-                      <Link href={`${b}/visa-free-countries/${passport.slug}`}>{passport.name}</Link>
+                      <Link href={`${b}/passport/${pair.passport_pi_slug ?? passport.slug}`}>{passport.name}</Link>
                     </dd>
                   </div>
                   <div>
@@ -187,7 +187,7 @@ export default function VisaPairPage({
                 <h3 className="vp-panel-h">More for {passport.name}</h3>
                 <ul className="vp-link-list">
                   <li>
-                    <Link href={`${b}/visa-free-countries/${passport.slug}`}>
+                    <Link href={`${b}/passport/${pair.passport_pi_slug ?? passport.slug}`}>
                       All visa-free countries for {passport.name}
                     </Link>
                   </li>
@@ -241,8 +241,8 @@ export default function VisaPairPage({
                 <h3 className="vp-panel-h">Source</h3>
                 <p className="vp-panel-sub">
                   Data from{" "}
-                  <a href="https://github.com/imorte/passport-index-data" target="_blank" rel="noopener">
-                    passport-index-data
+                  <a href="https://github.com/ilyankou/passport-index-dataset" target="_blank" rel="noopener">
+                    passport-index-dataset
                   </a>{" "}
                   (MIT License). Updated {dataDate}.
                 </p>

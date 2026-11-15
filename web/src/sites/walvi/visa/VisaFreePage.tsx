@@ -195,7 +195,7 @@ export default function VisaFreeCountriesPage({
                   <ul className="vp-mini-list">
                     {neighbours.map((n) => (
                       <li key={n.passport}>
-                        <Link href={`${b}/visa-free-countries/${n.slug}`}>
+                        <Link href={`${b}/passport/${n.slug}`}>
                           <img
                             src={`https://flagcdn.com/w40/${n.passport.toLowerCase()}.png`}
                             alt=""
@@ -223,8 +223,8 @@ export default function VisaFreeCountriesPage({
                 </p>
                 <p className="vp-credit">
                   Underlying dataset:{" "}
-                  <a href="https://github.com/imorte/passport-index-data" target="_blank" rel="noopener">
-                    passport-index-data
+                  <a href="https://github.com/ilyankou/passport-index-dataset" target="_blank" rel="noopener">
+                    passport-index-dataset
                   </a>{" "}
                   (MIT License).
                 </p>

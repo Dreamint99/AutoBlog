@@ -1,10 +1,11 @@
 import "server-only";
 import { cache } from "react";
 import { d1, cachedRead } from "./data";
+import { getPassports, getPassportByIso, getPiMeta, reqOf } from "./passports";
 
 /**
- * Visa data hub — read side. Data is written to D1 by seo-engine/src/visa.mjs (weekly).
- * Source: imorte/passport-index-data (MIT License)
+ * Visa data hub — read side. Country names/slugs: visa_countries. Requirements: pi_passport/pi_meta
+ * (see below). Source: ilyankou/passport-index-dataset (MIT License)
  */
 
 export type VisaRequirement = "visa_free" | "visa_on_arrival" | "eta" | "e_visa" | "visa_required" | "no_admission";
@@ -29,6 +30,8 @@ export interface VisaPair {
   passport_slug?: string;
   destination_name?: string;
   destination_slug?: string;
+  /** canonical /passport/<slug> of the passport */
+  passport_pi_slug?: string;
 }
 
 export interface PassportRanking {
@@ -107,10 +110,12 @@ export function shouldIndexPair(passport: string, destination: string): boolean 
 }
 
 /**
- * Check if a visa-free-countries page should be indexed (all are indexed).
+ * /visa-free-countries/<slug> duplicates the canonical /passport/<slug>; it stays reachable
+ * (old links) but points its canonical there and is not listed in the sitemap. No noindex on top
+ * of the canonical (mixed signals); Google folds it into the /passport/ page.
  */
 export function shouldIndexPassportPage(_passport: string): boolean {
-  return true; // All ~199 visa-free-countries pages are indexed
+  return true;
 }
 
 export const getVisaCountries = cache(async (): Promise<VisaCountry[]> => {
@@ -152,109 +157,83 @@ export const getVisaCountryByIso = cache(async (iso2: string): Promise<VisaCount
   }
 });
 
+/* Requirement data: ONE dataset for every VisaPoint passport page. /passport/<slug> (canonical),
+   /visa-free-countries/<slug>, /passport-ranking and /visa/<a>-to-<b> all read pi_passport + pi_meta
+   (generator/passport_index.py, weekly, ilyankou/passport-index-dataset). The older visa_matrix
+   snapshot (Feb 2026) gave the same passport different numbers on different URLs. visa_countries is
+   still used for names/slugs so existing /visa/<a>-to-<b> and /visa-free-countries/<slug> URLs keep working. */
+const PI_REQ: Record<string, VisaRequirement> = {
+  F: "visa_free", A: "visa_on_arrival", T: "eta", E: "e_visa", V: "visa_required", X: "no_admission",
+};
+const REQ_ORDER: VisaRequirement[] = ["visa_free", "visa_on_arrival", "eta", "e_visa", "visa_required", "no_admission"];
+
+const countryMap = cache(async (): Promise<Map<string, VisaCountry>> => new Map((await getVisaCountries()).map((c) => [c.iso2, c])));
+
+/** Canonical passport page slug (/passport/<slug>) for an ISO2 code. */
+export const passportSlug = cache(async (iso2: string): Promise<string | null> =>
+  (await getPassports()).find((p) => p.iso2 === iso2.toUpperCase())?.slug ?? null);
+
 export const getPassportRanking = cache(async (): Promise<PassportRanking[]> => {
-  const db = d1();
-  if (!db) return [];
-  try {
-    return await cachedRead("visa/ranking", 3600, async () => {
-      const { results } = await db.prepare(`
-        SELECT 
-          m.passport,
-          c.name,
-          c.slug,
-          c.population,
-          COUNT(CASE WHEN m.requirement IN ('visa_free', 'visa_on_arrival', 'eta') THEN 1 END) as score,
-          COUNT(CASE WHEN m.requirement = 'visa_free' THEN 1 END) as visa_free,
-          COUNT(CASE WHEN m.requirement = 'visa_on_arrival' THEN 1 END) as voa,
-          COUNT(CASE WHEN m.requirement = 'eta' THEN 1 END) as eta,
-          COUNT(CASE WHEN m.requirement = 'e_visa' THEN 1 END) as evisa,
-          COUNT(CASE WHEN m.requirement = 'visa_required' THEN 1 END) as required,
-          COUNT(CASE WHEN m.requirement = 'no_admission' THEN 1 END) as no_admission
-        FROM visa_matrix m
-        JOIN visa_countries c ON m.passport = c.iso2
-        GROUP BY m.passport
-        ORDER BY score DESC, c.name
-      `).all<Omit<PassportRanking, "rank">>();
-      
-      let rank = 0, lastScore = -1;
-      return (results ?? []).map((r, i) => {
-        if (r.score !== lastScore) { rank = i + 1; lastScore = r.score; }
-        return { ...r, rank };
-      });
-    });
-  } catch {
-    return [];
-  }
+  const [rows, cmap] = await Promise.all([getPassports(), countryMap()]);
+  return rows.map((p) => ({
+    passport: p.iso2,
+    name: cmap.get(p.iso2)?.name ?? p.name,
+    slug: p.slug, // canonical /passport/<slug>
+    population: cmap.get(p.iso2)?.population ?? null,
+    score: p.score,
+    visa_free: p.free,
+    voa: p.voa,
+    eta: p.eta,
+    evisa: p.evisa,
+    required: p.required,
+    no_admission: p.noadm,
+    rank: p.rank,
+  }));
 });
 
 export const getVisaFreeCountries = cache(async (passport: string): Promise<DestinationByCategory[]> => {
-  const db = d1();
-  if (!db) return [];
-  try {
-    return await cachedRead(`visa/free/${passport}`, 3600, async () => {
-      const { results } = await db.prepare(`
-        SELECT 
-          m.destination,
-          c.name,
-          c.slug,
-          m.requirement,
-          m.days,
-          m.data_date
-        FROM visa_matrix m
-        JOIN visa_countries c ON m.destination = c.iso2
-        WHERE m.passport = ?
-        ORDER BY 
-          CASE m.requirement 
-            WHEN 'visa_free' THEN 1 
-            WHEN 'visa_on_arrival' THEN 2
-            WHEN 'eta' THEN 3
-            WHEN 'e_visa' THEN 4
-            WHEN 'visa_required' THEN 5
-            ELSE 6 
-          END,
-          c.name
-      `).bind(passport.toUpperCase()).all<DestinationByCategory>();
-      return results ?? [];
-    });
-  } catch {
-    return [];
-  }
+  const [full, meta, cmap] = await Promise.all([getPassportByIso(passport), getPiMeta(), countryMap()]);
+  if (!full || !meta) return [];
+  const date = (meta.updatedAt || "").slice(0, 10);
+  const out: DestinationByCategory[] = [];
+  meta.dest.forEach((d, i) => {
+    const { req, days } = reqOf(full.codes[i] || "");
+    const requirement = PI_REQ[req];
+    if (!requirement || d.iso2 === full.iso2) return; // "S" = own country
+    const c = cmap.get(d.iso2);
+    out.push({ destination: d.iso2, name: c?.name ?? d.name, slug: c?.slug ?? d.slug, requirement, days, data_date: date });
+  });
+  return out.sort((a, b) => REQ_ORDER.indexOf(a.requirement) - REQ_ORDER.indexOf(b.requirement) || a.name.localeCompare(b.name));
 });
 
 export const getVisaPair = cache(async (passport: string, destination: string): Promise<VisaPair | null> => {
-  const db = d1();
-  if (!db) return null;
-  try {
-    return await cachedRead(`visa/pair/${passport}/${destination}`, 3600, async () => {
-      const { results } = await db.prepare(`
-        SELECT 
-          m.*,
-          p.name as passport_name,
-          p.slug as passport_slug,
-          d.name as destination_name,
-          d.slug as destination_slug
-        FROM visa_matrix m
-        JOIN visa_countries p ON m.passport = p.iso2
-        JOIN visa_countries d ON m.destination = d.iso2
-        WHERE m.passport = ? AND m.destination = ?
-        LIMIT 1
-      `).bind(passport.toUpperCase(), destination.toUpperCase()).all<VisaPair>();
-      return results?.[0] ?? null;
-    });
-  } catch {
-    return null;
-  }
+  const [full, meta, cmap] = await Promise.all([getPassportByIso(passport), getPiMeta(), countryMap()]);
+  if (!full || !meta) return null;
+  const i = meta.dest.findIndex((d) => d.iso2 === destination.toUpperCase());
+  if (i < 0) return null;
+  const { req, days } = reqOf(full.codes[i] || "");
+  const requirement = PI_REQ[req];
+  if (!requirement) return null;
+  const p = cmap.get(full.iso2), d = cmap.get(meta.dest[i].iso2);
+  return {
+    passport: full.iso2,
+    destination: meta.dest[i].iso2,
+    requirement,
+    days,
+    source: "https://github.com/ilyankou/passport-index-dataset",
+    data_date: (meta.updatedAt || "").slice(0, 10),
+    updated_at: meta.updatedAt,
+    passport_name: p?.name ?? full.name,
+    passport_slug: p?.slug ?? full.slug,
+    passport_pi_slug: full.slug,
+    destination_name: d?.name ?? meta.dest[i].name,
+    destination_slug: d?.slug ?? meta.dest[i].slug,
+  };
 });
 
 export const getVisaDataDate = cache(async (): Promise<string | null> => {
-  const db = d1();
-  if (!db) return null;
-  try {
-    const { results } = await db.prepare("SELECT data_date FROM visa_matrix LIMIT 1").all<{ data_date: string }>();
-    return results?.[0]?.data_date ?? null;
-  } catch {
-    return null;
-  }
+  const meta = await getPiMeta();
+  return meta?.updatedAt ? meta.updatedAt.slice(0, 10) : null;
 });
 
 export function fmtDataDate(iso: string | null): string {

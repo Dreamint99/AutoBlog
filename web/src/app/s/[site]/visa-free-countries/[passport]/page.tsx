@@ -11,6 +11,7 @@ import {
   getVisaDataDate,
   fmtDataDate,
   shouldIndexPassportPage,
+  passportSlug,
   REQ_LABELS,
   REQ_COLORS,
   type DestinationByCategory,
@@ -40,19 +41,21 @@ export async function generateMetadata({ params }: P): Promise<Metadata> {
   const description = `${country.name} passport holders can visit ${total} countries without a prior visa: ${visaFree} visa-free, ${voa} visa on arrival, ${eta} eTA. Full list with allowed days.`;
 
   const shouldIndex = shouldIndexPassportPage(country.iso2);
+  // One URL per passport: /passport/<slug> is canonical (same dataset, same numbers).
+  const canonical = `/passport/${(await passportSlug(country.iso2)) ?? slug}`;
 
   return {
     title,
     description,
     metadataBase: new URL(siteBaseUrl(site)),
-    alternates: { canonical: `/visa-free-countries/${slug}` },
+    alternates: { canonical },
     robots: { index: shouldIndex, follow: true },
     openGraph: {
       images: defaultOgImages(),
       title,
       description,
       type: "website",
-      url: `/visa-free-countries/${slug}`,
+      url: canonical,
       siteName: "VisaPoint",
     },
   };
@@ -98,18 +101,19 @@ export default async function Page({ params }: P) {
         data={[
           breadcrumbSchema([
             { name: "VisaPoint", url: base },
-            { name: "Visa-Free Countries", url: `${base}/visa-free-countries` },
-            { name: country.name, url: `${base}/visa-free-countries/${slug}` },
+            { name: "Passport Index", url: `${base}/passport-index` },
+            { name: country.name, url: `${base}/passport/${(await passportSlug(country.iso2)) ?? slug}` },
           ]),
           {
             "@context": "https://schema.org",
             "@type": "Dataset",
             name: `${country.name} Passport Visa Requirements`,
             description: `Visa requirements for ${country.name} passport holders to ${destinations.length} countries.`,
-            url: `${base}/visa-free-countries/${slug}`,
+            url: `${base}/passport/${(await passportSlug(country.iso2)) ?? slug}`,
             dateModified: dataDate,
             creator: { "@type": "Organization", name: "VisaPoint", url: base },
             license: "https://opensource.org/licenses/MIT",
+            isBasedOn: "https://github.com/ilyankou/passport-index-dataset",
             isAccessibleForFree: true,
           },
           {

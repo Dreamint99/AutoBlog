@@ -7,6 +7,7 @@ import { NM_COMPS } from "@/sites/ninetymins/comps";
 import { getScores, matchPath } from "@/sites/ninetymins/live";
 import { activeSite } from "@/lib/site-context";
 import { getPassports } from "@/lib/passports";
+import { getVisaCountries, shouldIndexPair } from "@/lib/visa";
 import { VC, isVcArticle, vcFor } from "@/sites/walvi/visacheck/data";
 import { siteBaseUrl } from "@/lib/sites.config";
 import { COUNTRIES as GCC } from "@/sites/gccguide/data";
@@ -100,6 +101,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     for (const e of VC) entries.push({ url: `${base}/visa-check/${e.slug}`, changeFrequency: "weekly", priority: 0.9 });
     for (const p of await getPassports()) {
       entries.push({ url: `${base}/passport/${p.slug}`, changeFrequency: "weekly", priority: 0.7 });
+    }
+    // Indexable visa data pages. /visa-free-countries/<slug> is NOT listed: it canonicalises to
+    // /passport/<slug>. /visa/<a>-to-<b> pairs are listed only where the page itself is index
+    // (top passport x top destination, ~2,000 URLs; the whole sitemap stays far below 50,000).
+    entries.push({ url: `${base}/passport-ranking`, changeFrequency: "weekly", priority: 0.8 });
+    const vc = await getVisaCountries();
+    for (const a of vc) {
+      for (const d of vc) {
+        if (a.iso2 !== d.iso2 && shouldIndexPair(a.iso2, d.iso2)) {
+          entries.push({ url: `${base}/visa/${a.slug}-to-${d.slug}`, changeFrequency: "monthly", priority: 0.5 });
+        }
+      }
     }
   }
 
