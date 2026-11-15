@@ -1,4 +1,5 @@
 import type { ReactElement } from "react";
+import { BRAND_DIR } from "./brandLogos";
 
 /* Shared structured-data (JSON-LD) helpers.
    Google's SEO starter guide recommends structured data + breadcrumbs so pages
@@ -25,8 +26,11 @@ export function organizationSchema(name: string, base: string, description: stri
     name,
     url: base,
     description,
-    // The per-site generated icon (192px) — gives Google a logo for the brand.
-    logo: `${new URL(base).origin}/icon`,
+    // Brand-kit sites: the wordmark as a 512px PNG (Google needs a raster logo);
+    // others: the per-site generated icon (192px).
+    logo: BRAND_DIR[process.env.SITE_ID || ""]
+      ? `${new URL(base).origin}${BRAND_DIR[process.env.SITE_ID || ""]}/logo-512.png`
+      : `${new URL(base).origin}/icon`,
   } as Record<string, unknown>;
 }
 

@@ -2,6 +2,7 @@ import { ImageResponse } from "next/og";
 import { ogFonts } from "@/lib/ogFonts";
 import type { ReactNode } from "react";
 import { getArticle, getSite } from "@/lib/data";
+import { BRAND_LOGOS } from "@/lib/brandLogos";
 
 // 1000×1500 (2:3) Pinterest pin for an article — graphics only (owner's call: no photos).
 // Pins that all look alike get ignored on Pinterest, so each article gets one of six layouts and
@@ -79,6 +80,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ site: s
   const site = getSite(id);
   const art = site ? await getArticle(site.id, slug) : undefined;
   if (!art || !site) return new Response("Not found", { status: 404 });
+  const logo = BRAND_LOGOS[site.id]; // brand-kit sites show their wordmark in the footer
 
   const body = art.body_html || "";
   const title = art.title.trim();
@@ -117,10 +119,15 @@ export async function GET(_req: Request, { params }: { params: Promise<{ site: s
   const Footer = ({ cta }: { cta: string }) => (
     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "auto", padding: "34px 64px",
       background: pal.card, borderTop: `2px solid ${pal.track}` }}>
-      <div style={{ display: "flex", alignItems: "center", fontSize: 38, fontWeight: 800, color: pal.fg }}>
-        <div style={{ display: "flex", width: 18, height: 18, borderRadius: 9, background: pal.accent, marginRight: 14 }} />
-        {site.domain}
-      </div>
+      {logo ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={pal.fg === "#ffffff" ? logo.onDark : logo.onLight} alt="" height={46} width={Math.round(46 * logo.ratio)} />
+      ) : (
+        <div style={{ display: "flex", alignItems: "center", fontSize: 38, fontWeight: 800, color: pal.fg }}>
+          <div style={{ display: "flex", width: 18, height: 18, borderRadius: 9, background: pal.accent, marginRight: 14 }} />
+          {site.domain}
+        </div>
+      )}
       <div style={{ display: "flex", fontSize: 32, fontWeight: 800, color: pal.accent }}>{cta}</div>
     </div>
   );

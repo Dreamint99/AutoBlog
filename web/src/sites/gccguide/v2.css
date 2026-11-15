@@ -118,7 +118,7 @@
 }
 .site-gccguide .gv .gv-bar-in { display: flex; align-items: center; gap: 12px; height: 64px; }
 .site-gccguide .gv .gv-logo { display: inline-flex; align-items: center; flex: none; text-decoration: none; }
-.site-gccguide .gv .gv-logo img { height: 34px; width: auto; display: block; }
+.site-gccguide .gv .gv-logo img { height: 24px; width: auto; display: block; }
 
 .site-gccguide .gv .gv-nav { display: none; align-items: center; gap: 2px; margin-left: 20px; flex: 1; min-width: 0; }
 .site-gccguide .gv .gv-nav > a,
@@ -262,7 +262,7 @@
   .site-gccguide .gv .gv-nav { display: flex; }
   .site-gccguide .gv .gv-search { display: flex; }
   .site-gccguide .gv .gv-burger { display: none; }
-  .site-gccguide .gv .gv-logo img { height: 36px; }
+  .site-gccguide .gv .gv-logo img { height: 26px; }
 }
 @media (min-width: 1080px) and (max-width: 1220px) {
   .site-gccguide .gv .gv-search { width: 180px; }
@@ -271,7 +271,7 @@
   .site-gccguide .gv .gv-more > summary { padding: 8px 8px; font-size: 14px; }
 }
 @media (max-width: 380px) {
-  .site-gccguide .gv .gv-logo img { height: 28px; }
+  .site-gccguide .gv .gv-logo img { height: 21px; }
 }
 
 /* ── section heads ──────────────────────────────────────────── */

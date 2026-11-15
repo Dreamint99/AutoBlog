@@ -7,8 +7,8 @@ const MARKS: Record<string, string> = {
   infkey: "/brand/infkey-mark-sq.png",
   ninetymins: "/brand/ninetymins-mark.png",
   countly: "/brand/countly-mark-sq.png",
-  gccguide: "/brand/gccguide-mark.png",
-  walvi: "/brand/visapoint-mark.png",
+  gccguide: "/brand/gccguide/icon-192.png",
+  walvi: "/brand/visapoint/icon-192.png",
 };
 
 // Per-site favicon, generated at build/runtime from the deployment's SITE_ID.

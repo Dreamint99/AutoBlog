@@ -1,5 +1,6 @@
 import { activeSite } from "@/lib/site-context";
 import { siteBaseUrl } from "@/lib/sites.config";
+import { BRAND_DIR } from "@/lib/brandLogos";
 import "./globals.css";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
@@ -90,6 +91,8 @@ const verification: Metadata["verification"] = {
   },
 };
 
+const brandDir = BRAND_DIR[process.env.SITE_ID || ""];
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteBaseUrl(activeSite())),
   title: { template: "%s", default: "AutoBlog" },
@@ -100,6 +103,17 @@ export const metadata: Metadata = {
   openGraph: process.env.SITE_ID ? { images: [{ url: `/og/${process.env.SITE_ID}.png`, width: 1200, height: 630 }] } : undefined,
   twitter: { card: "summary_large_image" },
   alternates: { types: { "application/rss+xml": "/rss.xml" } },
+  // Brand-kit sites list their own icons (setting metadata.icons replaces the app/icon.tsx link, so the
+  // 192px PNG — Google wants a multiple of 48px — is listed here too); other sites keep app/icon.tsx.
+  ...(brandDir
+    ? {
+        icons: {
+          icon: [{ url: `${brandDir}/icon-192.png`, sizes: "192x192", type: "image/png" }],
+          shortcut: `${brandDir}/favicon.ico`,
+          apple: `${brandDir}/apple-touch-icon.png`,
+        },
+      }
+    : {}),
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

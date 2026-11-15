@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 import { ogFonts } from "@/lib/ogFonts";
 import { getSite } from "@/lib/data";
+import { BRAND_LOGOS } from "@/lib/brandLogos";
 import { siteBaseUrl } from "@/lib/sites.config";
 import { getFxSnapshot, crossRate, getGold } from "@/lib/gcc";
 import { GRAMS_PER_OZ } from "@/sites/gccguide/hub/config";
@@ -48,7 +49,8 @@ export async function GET() {
       >
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <div style={{ display: "flex", fontSize: 22, fontWeight: 800, letterSpacing: 3, color: "#5eead4" }}>GCCGUIDE</div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={BRAND_LOGOS.gccguide.onDark} alt="" height={30} width={Math.round(30 * BRAND_LOGOS.gccguide.ratio)} />
             <div style={{ display: "flex", fontSize: 46, fontWeight: 800, marginTop: 6, fontFamily: "Inter Tight, Inter" }}>Today in the Gulf</div>
           </div>
           <div style={{ display: "flex", fontSize: 24, fontWeight: 700, color: "#99f6e4" }}>{date}</div>

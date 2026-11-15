@@ -14,14 +14,14 @@ import { thumb } from "@/lib/img";
 
 export function Mark() {
   // eslint-disable-next-line @next/next/no-img-element
-  return <img src="/brand/gccguide-mark.png" alt="" width={40} height={40} />;
+  return <img src="/brand/gccguide/mark.svg" alt="" width={40} height={40} />;
 }
 
 export function Logo({ site }: { site: Site }) {
   return (
     <Link href={`/s/${site.id}`} className="gc-logo gv-logo" aria-label={`${site.name} home`}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/brand/gccguide-logo.webp" alt="GCCGuide.com" width={705} height={160} />
+      <img src="/brand/gccguide/logo.svg" alt="GCCGuide" width={475} height={77} />
     </Link>
   );
 }
