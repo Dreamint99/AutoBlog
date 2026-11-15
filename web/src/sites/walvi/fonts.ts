@@ -1,14 +1,16 @@
-// VisaPoint type: Source Serif 4 (institutional headings, ministry/embassy register)
-// + Public Sans (body/UI — designed for government services, very legible).
-import { Source_Serif_4, Public_Sans } from "next/font/google";
+// VisaPoint type (2026-11 clean redesign): Inter Tight for headings and figures,
+// Inter for body/UI. The variable names stay --vp-display / --vp-body so every
+// older stylesheet that reads them picks the new faces up.
+import { Inter_Tight, Inter } from "next/font/google";
 
-export const display = Source_Serif_4({
+export const display = Inter_Tight({
   subsets: ["latin"],
-  weight: ["600", "700"],
+  weight: ["600", "700", "800"],
   variable: "--vp-display",
   display: "swap",
 });
 
-export const body = Public_Sans({ subsets: ["latin"], variable: "--vp-body", display: "swap" });
+export const body = Inter({ subsets: ["latin"], variable: "--vp-body", display: "swap" });
 
-export const fontVars = `vp-root ${display.variable} ${body.variable}`;
+/** Page-root class for every VisaPoint page: `vx` switches on the v2 design layer (v2.css). */
+export const fontVars = `vp-root vx ${display.variable} ${body.variable}`;

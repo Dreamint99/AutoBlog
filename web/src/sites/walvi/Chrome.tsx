@@ -1,14 +1,14 @@
 import "./theme.css";
 import "./embassy.css";
+import "./v2.css";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import type { Site } from "@/lib/types";
 import { fontVars } from "./fonts";
 
-/* Shared VisaPoint chrome: official-feeling but independent. Seal-style logo,
-   grouped mega-menu (CSS-only dropdowns, <details> on mobile), rich footer.
-   It deliberately avoids any government or EU insignia: VisaPoint is an
-   INDEPENDENT guide and says so in the service bar, footer and every guide. */
+/* Shared VisaPoint chrome (v2, 2026-11): one light sticky header — logo, six
+   links + More, search — and a quiet light footer. VisaPoint is an INDEPENDENT
+   guide and the footer says so on every page (no government/EU insignia). */
 
 type NavItem = { label: string; href: string; desc?: string };
 type NavGroup = { label: string; items: NavItem[] };
@@ -19,9 +19,10 @@ export function menuFor(site: Site): NavGroup[] {
     {
       label: "Visas",
       items: [
-        { label: "Visa status check", href: `${b}/visa-check`, desc: "Check a Qatar, Saudi, UAE or Schengen visa online" },
         { label: "Do I need a visa?", href: `${b}/visa-checker`, desc: "Any passport to any country, instantly" },
+        { label: "Visa status check", href: `${b}/visa-check`, desc: "Check a Qatar, Saudi, UAE or Schengen visa online" },
         { label: "Passport Index", href: `${b}/passport-index`, desc: "Every passport ranked by visa-free access" },
+        { label: "Passport ranking", href: `${b}/passport-ranking`, desc: "The world's strongest passports" },
       ],
     },
     {
@@ -49,114 +50,96 @@ export function navFor(site: Site): ReadonlyArray<readonly [string, string]> {
   return menuFor(site).flatMap((g) => g.items.map((i) => [i.label, i.href] as const));
 }
 
-/** VisaPoint seal: navy roundel, gold stamp ring, globe meridians and a check. */
-export function PinMark() {
+export function Logo({ site }: { site: Site; light?: boolean }) {
   return (
-    <svg viewBox="0 0 64 64" aria-hidden="true">
-      <circle cx="32" cy="32" r="31" fill="#0d2b4e" />
-      <circle cx="32" cy="32" r="27.5" fill="none" stroke="#c9a23a" strokeWidth="1.6" strokeDasharray="2.4 2" />
-      <circle cx="32" cy="32" r="22" fill="#11365f" stroke="#c9a23a" strokeWidth="1.2" />
-      <g fill="none" stroke="rgba(255,255,255,0.55)" strokeWidth="1.1">
-        <ellipse cx="32" cy="32" rx="9" ry="22" />
-        <path d="M10 32h44M13.5 21h37M13.5 43h37M32 10v44" />
-      </g>
-      <circle cx="32" cy="32" r="11" fill="#0f6e6a" stroke="#fff" strokeWidth="1.6" />
-      <path d="M26.8 32.4l3.6 3.6 7-7.4" fill="none" stroke="#fff" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
+    <Link href={`/s/${site.id}`} className="vx-logo" aria-label={`${site.name} home`}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="/brand/visapoint-logo.webp" alt="VisaPoint.net" width={124} height={42} />
+    </Link>
   );
 }
 
-export function Logo({ site, light = false }: { site: Site; light?: boolean }) {
+function SearchIcon() {
   return (
-    <Link href={`/s/${site.id}`} className={`vp-logo vp-logo-img${light ? " light" : ""}`} aria-label={`${site.name} home`}>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={light ? "/brand/visapoint-logo-ondark.webp" : "/brand/visapoint-logo.webp"} alt="VisaPoint.net" width={176} height={60} />
-    </Link>
+    <svg viewBox="0 0 24 24" aria-hidden="true" width="18" height="18">
+      <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" strokeWidth="2.2" />
+      <path d="M20 20l-3.6-3.6" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+    </svg>
   );
 }
 
 export function Masthead({ site }: { site: Site }) {
   const b = `/s/${site.id}`;
-  const menu = menuFor(site);
+  const main: [string, string][] = [
+    ["Visa checker", `${b}/visa-checker`],
+    ["Visa status", `${b}/visa-check`],
+    ["Passport Index", `${b}/passport-index`],
+    ["Work abroad", `${b}/countries`],
+    ["Jobs", `${b}/jobs`],
+    ["Guides", `${b}/guides`],
+  ];
+  const more: [string, string][] = [
+    ["Passport ranking", `${b}/passport-ranking`],
+    ["Salary calculator", `${b}/tools`],
+    ["Travel map", `${b}/travel-map`],
+    ["Bangladesh map", `${b}/bangladesh-map`],
+    ["Scam checklist", `${b}#scams`],
+    ["About & sources", `${b}/about`],
+  ];
   return (
-    <header className="vp-header">
-      <div className="vp-service">
-        <div className="vp-wrap vp-service-in">
-          <span>
-            <b>Independent guide</b> — not a government website, embassy or recruiter.
-          </span>
-          <span className="vp-service-r">
-            <Link href={`${b}/about`}>How we verify</Link>
-            <Link href={`${b}#scams`}>Scam alerts</Link>
-            <Link href={`${b}/contact`}>Contact</Link>
-          </span>
-        </div>
-      </div>
-      <div className="vp-wrap vp-brandrow">
+    <header className="vx-head">
+      <div className="vx-wrap vx-head-in">
         <Logo site={site} />
-        <form className="vp-hsearch" action={`${b}/search`} role="search">
-          <input name="q" type="search" placeholder="Search visas, countries, jobs…" aria-label="Search VisaPoint" />
+        <nav className="vx-nav" aria-label="Primary">
+          {main.map(([l, h]) => (
+            <Link href={h} key={h}>
+              {l}
+            </Link>
+          ))}
+          <details className="vx-more">
+            <summary>
+              More <i aria-hidden="true">▾</i>
+            </summary>
+            <div className="vx-more-menu">
+              {more.map(([l, h]) => (
+                <Link href={h} key={h}>
+                  {l}
+                </Link>
+              ))}
+            </div>
+          </details>
+        </nav>
+        <form className="vx-search" action={`${b}/search`} role="search">
+          <input name="q" type="search" placeholder="Search VisaPoint" aria-label="Search VisaPoint" />
           <button type="submit" aria-label="Search">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" strokeWidth="2.4" />
-              <path d="M20 20l-3.6-3.6" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
-            </svg>
+            <SearchIcon />
           </button>
         </form>
-        <div className="vp-brand-actions">
-          <Link href={`${b}/passport-index`} className="vp-btn vp-btn-outline">
-            Passport Index
-          </Link>
-          <Link href={`${b}/visa-check`} className="vp-btn vp-btn-gold">
-            Check my visa
-          </Link>
-        </div>
-      </div>
-      <nav className="vp-nav" aria-label="Primary">
-        <div className="vp-wrap vp-nav-in">
-          <Link href={b} className="vp-nav-home">
-            Home
-          </Link>
-          {menu.map((g) => (
-            <div className="vp-dd" key={g.label}>
-              <button type="button" className="vp-dd-btn" aria-haspopup="true">
-                {g.label} <i aria-hidden="true">▾</i>
-              </button>
-              <div className="vp-dd-menu">
-                {g.items.map((i) => (
-                  <Link href={i.href} key={i.href}>
-                    <b>{i.label}</b>
-                    {i.desc ? <span>{i.desc}</span> : null}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          ))}
-          <Link href={`${b}/visa-check`}>Visa check</Link>
-          <Link href={`${b}/travel-map`}>Travel map</Link>
-          <Link href={`${b}/bangladesh-map`}>Bangladesh map</Link>
-          <Link href={`${b}/guides`}>Guides</Link>
-        </div>
-        <details className="vp-mnav">
-          <summary>
-            <span aria-hidden="true">☰</span> Menu
+        <Link href={`${b}/search`} className="vx-icon-btn vx-m-only" aria-label="Search">
+          <SearchIcon />
+        </Link>
+        <details className="vx-mnav">
+          <summary aria-label="Menu">
+            <span aria-hidden="true" className="vx-burger">
+              <i />
+              <i />
+              <i />
+            </span>
           </summary>
-          <div className="vp-mnav-in">
+          <div className="vx-mnav-in">
+            <form className="vx-msearch" action={`${b}/search`} role="search">
+              <input name="q" type="search" placeholder="Search VisaPoint" aria-label="Search VisaPoint" />
+              <button type="submit">Search</button>
+            </form>
             <Link href={b}>Home</Link>
-            {menu.map((g) => (
-              <div key={g.label}>
-                <h4>{g.label}</h4>
-                {g.items.map((i) => (
-                  <Link href={i.href} key={i.href}>
-                    {i.label}
-                  </Link>
-                ))}
-              </div>
+            {[...main, ...more].map(([l, h]) => (
+              <Link href={h} key={h}>
+                {l}
+              </Link>
             ))}
-            <Link href={`${b}#scams`}>Scam alerts</Link>
           </div>
         </details>
-      </nav>
+      </div>
     </header>
   );
 }
@@ -177,31 +160,12 @@ export function Footer({ site }: { site: Site }) {
   const b = `/s/${site.id}`;
   const menu = menuFor(site);
   return (
-    <footer className="vp-footer">
-      <div className="vp-foot-cta">
-        <div className="vp-wrap vp-foot-cta-in">
-          <div>
-            <b>Planning to work or travel abroad?</b>
-            <span>Start with a free visa check — then read the official route for your country.</span>
-          </div>
-          <div className="vp-foot-cta-btns">
-            <Link href={`${b}/visa-checker`} className="vp-btn vp-btn-gold">
-              Do I need a visa?
-            </Link>
-            <Link href={`${b}/countries`} className="vp-btn vp-btn-ghost">
-              Work-permit routes
-            </Link>
-          </div>
-        </div>
-      </div>
-      <div className="vp-wrap">
-        <div className="vp-foot-grid">
-          <div className="vp-foot-brand">
-            <Logo site={site} light />
-            <p>
-              Plain-language guidance on visas, work permits, salaries and the real cost of living abroad — for workers and
-              travellers from Bangladesh, South Asia, Africa and the Gulf. Every country links its official government source.
-            </p>
+    <footer className="vx-foot">
+      <div className="vx-wrap">
+        <div className="vx-foot-grid">
+          <div className="vx-foot-brand">
+            <Logo site={site} />
+            <p>Plain-language visa, passport and work-permit guidance — every country linked to its official source.</p>
           </div>
           {menu.map((g) => (
             <div key={g.label}>
@@ -216,7 +180,6 @@ export function Footer({ site }: { site: Site }) {
           <div>
             <h4>VisaPoint</h4>
             <Link href={`${b}/about`}>About &amp; how we verify</Link>
-            <Link href={`${b}#scams`}>Recruitment scam checklist</Link>
             <Link href={`${b}/contact`}>Contact</Link>
             <Link href={`${b}/privacy`}>Privacy Policy</Link>
             <Link href={`${b}/terms`}>Terms</Link>
@@ -224,33 +187,27 @@ export function Footer({ site }: { site: Site }) {
             <Link href={`${b}/archive`}>All articles</Link>
           </div>
         </div>
-        <div className="vp-foot-pop">
-          <h4>Popular visa checks</h4>
-          <div>
-            {POPULAR.map(([slug, iso, name]) => (
-              <Link href={`${b}/visa-check/${slug}`} key={slug}>
-                <img src={`https://flagcdn.com/w40/${iso.toLowerCase()}.png`} alt="" width={20} height={14} loading="lazy" />
-                {name}
-              </Link>
-            ))}
-          </div>
+        <div className="vx-foot-pop">
+          <span>Popular visa checks</span>
+          {POPULAR.map(([slug, iso, name]) => (
+            <Link href={`${b}/visa-check/${slug}`} key={slug}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={`https://flagcdn.com/w40/${iso.toLowerCase()}.png`} alt="" width={18} height={13} loading="lazy" />
+              {name}
+            </Link>
+          ))}
         </div>
-        <p className="vp-foot-legal" data-nosnippet>
-          <b>
-            VisaPoint is an independent resource. It is not affiliated with the European Union, any national government, embassy,
-            consulate, visa application centre or recruitment agency.
-          </b>{" "}
-          Salary, cost-of-living and savings figures are indicative estimates, not quotes for any specific job. Visa and
-          work-permit rules are summarised for general guidance and change often — always confirm with the official government
-          source or embassy before you apply, accept an offer or pay any fee.
+        <p className="vx-foot-legal" data-nosnippet>
+          <b>VisaPoint is an independent guide</b> — not a government website, embassy, consulate, visa application centre or
+          recruiter, and not affiliated with the European Union. Salary and savings figures are estimates; visa and
+          work-permit rules change often, so confirm with the official source before you apply or pay any fee.
         </p>
-        <div className="vp-foot-base">
+        <div className="vx-foot-base">
           <span>© {year} VisaPoint · visapoint.net</span>
-          <span className="vp-foot-base-r">
+          <span>
             <Link href={`${b}/privacy`}>Privacy</Link>
             <Link href={`${b}/terms`}>Terms</Link>
             <Link href="/sitemap.xml">Sitemap</Link>
-            <span>Know before you move.</span>
           </span>
         </div>
       </div>

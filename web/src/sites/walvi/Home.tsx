@@ -1,41 +1,36 @@
 import Link from "next/link";
-import type { SiteHomeProps, Site, Article } from "@/lib/types";
-import { COUNTRIES, JOBS, DATA_VERIFIED, topSavings, countriesLite, eur } from "@/lib/walvi";
-import SalaryCalculator from "./SalaryCalculator";
+import type { SiteHomeProps } from "@/lib/types";
+import { COUNTRIES } from "@/lib/walvi";
 import { Masthead, Footer } from "./Chrome";
-import QuickFinder from "./QuickFinder";
 import { fontVars } from "./fonts";
-import { countryOf, topicOf, fmtDate } from "./guide-meta";
-import Flag from "./Flag";
-import { getPassports } from "@/lib/passports";
-import { CountUp } from "./Animated";
+import { getPassports, getPiMeta } from "@/lib/passports";
 import { VC, flagFor } from "./visacheck/data";
+import { GuideCard } from "./cards";
+import Flag from "./Flag";
+
+/* VisaPoint home (v2): one job up front — "do I need a visa?" — then popular
+   passports, official visa-status checks, latest guides, tools and the
+   work-permit country register. */
 
 const TOOLS = [
-  { h: "Visa status check", p: "Step-by-step: check a Qatar, Saudi, UAE, Schengen or UK visa on the official portal.", href: "/visa-check", ic: "✓", tone: "teal" },
-  { h: "Do I need a visa?", p: "Pick your passport and destination — visa-free, on arrival, e-visa or embassy visa.", href: "/visa-checker", ic: "?", tone: "navy" },
-  { h: "Passport Index", p: "199 passports ranked by how many countries they open without a visa.", href: "/passport-index", ic: "★", tone: "gold" },
-  { h: "Salary & savings", p: "Net pay after tax, rent and food — what you would really send home.", href: "/tools", ic: "€", tone: "green" },
-  { h: "My travel map", p: "Colour every country you've visited and share a stunning map.", href: "/travel-map", ic: "✈", tone: "violet" },
-  { h: "Scam checklist", p: "The warning signs of fake job offers and agents — before you pay.", href: "#scams", ic: "!", tone: "red" },
+  { h: "Do I need a visa?", p: "Any passport to any destination.", href: "/visa-checker", ic: "M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm0 0c2.5 2.5 2.5 15.5 0 18m0-18c-2.5 2.5-2.5 15.5 0 18M3 12h18" },
+  { h: "Visa status check", p: "Official portals, step by step.", href: "/visa-check", ic: "M5 12.5l4.5 4.5L19 7.5" },
+  { h: "Passport Index", p: "199 passports ranked.", href: "/passport-index", ic: "M6 3h12v18H6zM12 8.5a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM9 18h6" },
+  { h: "Salary & savings", p: "What you would really save.", href: "/tools", ic: "M4 7h16v10H4zM12 9.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z" },
+  { h: "Travel map", p: "Map the countries you've seen.", href: "/travel-map", ic: "M9 4L3 6v14l6-2 6 2 6-2V4l-6 2zM9 4v14M15 6v14" },
+  { h: "Scam checklist", p: "Spot a fake job offer.", href: "#scams", ic: "M12 3l9 16H3zM12 10v4M12 17h.01" },
 ] as const;
 
-const TASKS = [
-  { h: "Check a work-permit route", p: "Permit type, processing time and the official portal for each country.", href: "/countries" },
-  { h: "Compare salaries by job", p: "Electrician, welder, driver, cook and more — pay ranked across Europe.", href: "/jobs" },
-  { h: "Estimate what you would save", p: "Net pay after tax, rent, food and transport — with or without housing.", href: "/tools" },
-  { h: "Read step-by-step guides", p: "Documents, fees and timelines from Asia, Africa and the Gulf to Europe.", href: "/guides" },
-  { h: "Spot a recruitment scam", p: "The warning signs of fake offers and agents — before you pay anything.", href: "#scams" },
-  { h: "Find the official source", p: "Every country links its government immigration page to verify against.", href: "/countries" },
-] as const;
+const POPULAR_PAIRS: [string, string, string, string][] = [
+  ["india-to-united-arab-emirates", "in", "ae", "India → UAE"],
+  ["bangladesh-to-malaysia", "bd", "my", "Bangladesh → Malaysia"],
+  ["pakistan-to-turkey", "pk", "tr", "Pakistan → Turkey"],
+  ["nigeria-to-united-kingdom", "ng", "gb", "Nigeria → UK"],
+  ["philippines-to-japan", "ph", "jp", "Philippines → Japan"],
+  ["india-to-germany", "in", "de", "India → Germany"],
+];
 
-const STEPS = [
-  { h: "Get a genuine job offer", p: "A written contract from a real employer. Verify the company in the national business register." },
-  { h: "The employer applies for your permit", p: "In most countries the employer files the work permit with the labour or immigration office first." },
-  { h: "Book your visa appointment", p: "Apply for the national (type D) visa at the embassy or its official visa application centre." },
-  { h: "Submit documents and biometrics", p: "Passport, permit approval, contract, qualifications, police certificate and insurance as required." },
-  { h: "Travel and register", p: "Arrive within the visa dates, then register your address and collect your residence card." },
-] as const;
+const FEATURED_PASSPORTS = ["IN", "BD", "PK", "NG", "PH", "EG", "NP", "GH"];
 
 const SCAMS = [
   "You are asked to pay a “job guarantee”, “visa processing” or placement fee to an agent.",
@@ -45,44 +40,23 @@ const SCAMS = [
   "The agent keeps your passport or asks for money to a personal account.",
 ] as const;
 
-const METHOD = [
-  { n: "1", h: "Official sources first", p: "Each country entry links its government or immigration portal." },
-  { n: "2", h: "Estimates are labelled", p: "Salaries and savings are modelled ranges, never presented as quotes." },
-  { n: "3", h: "Savings, not just pay", p: "We show what is left after rent, food and transport." },
-  { n: "4", h: "Dated and reviewed", p: `Register figures last verified ${new Date(DATA_VERIFIED).toLocaleDateString("en-GB", { month: "long", year: "numeric" })}.` },
-] as const;
-
-function GuideRow({ site, a }: { site: Site; a: Article }) {
-  const c = countryOf(a);
+function Ic({ d }: { d: string }) {
   return (
-    <li className="vp-guide">
-      <span className="vp-guide-flag">
-        <Flag emoji={c?.flag} size={36} />
-      </span>
-      <div>
-        <span className="vp-kicker">
-          {topicOf(a)}
-          {c ? ` · ${c.name}` : ""}
-        </span>
-        <h3>
-          <Link href={`/s/${site.id}/${a.slug}`}>{a.title}</Link>
-        </h3>
-        {a.excerpt ? <p>{a.excerpt}</p> : null}
-        <span className="vp-date">Updated {fmtDate(a.created_at)} · {a.reading_time} min read</span>
-      </div>
-    </li>
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d={d} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
   );
 }
 
 export default async function Home({ site, articles }: SiteHomeProps) {
   const b = `/s/${site.id}`;
   const latest = articles.filter((a) => !a.is_mock).slice(0, 8);
-  const savings = topSavings(8);
   const sorted = [...COUNTRIES].sort((x, y) => x.name.localeCompare(y.name));
-  const inEU = COUNTRIES.filter((c) => c.inEU).length;
-  const passports = await getPassports();
-  const topPassports = passports.slice(0, 5);
-  const saPassports = ["BD", "IN", "PK", "NP", "LK"].map((i) => passports.find((p) => p.iso2 === i)).filter((p): p is NonNullable<typeof p> => !!p);
+  const [passports, meta] = await Promise.all([getPassports(), getPiMeta()]);
+  const byName = [...passports].sort((x, y) => x.name.localeCompare(y.name));
+  const dest = meta ? [...meta.dest].sort((x, y) => x.name.localeCompare(y.name)) : [];
+  const featured = FEATURED_PASSPORTS.map((i) => passports.find((p) => p.iso2 === i)).filter((p): p is NonNullable<typeof p> => !!p);
+  const top = passports[0];
 
   return (
     <div className={fontVars}>
@@ -91,120 +65,139 @@ export default async function Home({ site, articles }: SiteHomeProps) {
       </a>
       <Masthead site={site} />
 
-      {/* ── HERO ── */}
-      <section className="vp-hero vp-hero-x">
-        <div className="vp-hero-bg" aria-hidden="true">
-          <svg viewBox="0 0 600 600">
-            <g fill="none" stroke="rgba(201,162,58,0.22)" strokeWidth="1">
-              <circle cx="300" cy="300" r="290" />
-              <ellipse cx="300" cy="300" rx="120" ry="290" />
-              <ellipse cx="300" cy="300" rx="220" ry="290" />
-              <path d="M10 300h580M40 160h520M40 440h520M300 10v580" />
-            </g>
-          </svg>
-        </div>
-        <div className="vp-wrap vp-hero-grid">
-          <div>
-            <span className="vp-eyebrow">Visas · Work permits · Salaries abroad</span>
-            <h1>
-              Your trusted guide to <em>visas</em> and <em>working abroad</em>.
-            </h1>
-            <p className="vp-lede">
-              Check a visa in seconds, see how strong your passport is, and follow the official work-permit route for{" "}
-              {COUNTRIES.length} countries — with real salaries and what you would actually save. Free, independent and linked to
-              official government sources.
-            </p>
-            <div className="vp-hero-actions">
-              <Link href={`${b}/visa-check`} className="vp-btn vp-btn-gold vp-btn-lg">
-                Check my visa status
+      {/* ── HERO + visa requirement tool ── */}
+      <section className="vx-hero">
+        <div className="vx-wrap vx-hero-in">
+          <span className="vx-eyebrow">Visas · Passports · Work permits</span>
+          <h1>
+            Your trusted guide to <em>visas</em> and <em>working abroad</em>.
+          </h1>
+          <p className="vx-lede">Check what your passport needs for any country — free, independent, linked to official sources.</p>
+
+          {byName.length && dest.length ? (
+            <form className="vx-check" action={`${b}/visa-checker`} method="get">
+              <label>
+                <span>My passport</span>
+                <select name="from" required defaultValue="">
+                  <option value="" disabled>
+                    Choose passport
+                  </option>
+                  {byName.map((p) => (
+                    <option key={p.iso2} value={p.iso2.toLowerCase()}>
+                      {p.name}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <span className="vx-check-arrow" aria-hidden="true">
+                →
+              </span>
+              <label>
+                <span>Travelling to</span>
+                <select name="to" required defaultValue="">
+                  <option value="" disabled>
+                    Choose destination
+                  </option>
+                  {dest.map((d) => (
+                    <option key={d.iso2} value={d.iso2.toLowerCase()}>
+                      {d.name}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <button type="submit">Check requirements</button>
+            </form>
+          ) : (
+            <Link href={`${b}/visa-checker`} className="vx-btn vx-btn-lg">
+              Check visa requirements
+            </Link>
+          )}
+
+          <div className="vx-pop">
+            <span>Popular:</span>
+            {POPULAR_PAIRS.map(([slug, f, t, l]) => (
+              <Link href={`${b}/visa/${slug}`} key={slug}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={`https://flagcdn.com/w40/${f}.png`} alt="" width={18} height={13} />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={`https://flagcdn.com/w40/${t}.png`} alt="" width={18} height={13} />
+                {l}
               </Link>
-              <Link href={`${b}/visa-checker`} className="vp-btn vp-btn-ghost vp-btn-lg">
-                Do I need a visa?
-              </Link>
-            </div>
-            <ul className="vp-facts">
-              <li>
-                <b>
-                  <CountUp to={passports.length || 199} />
-                </b>{" "}
-                passports ranked
-              </li>
-              <li>
-                <b>
-                  <CountUp to={VC.length} />
-                </b>{" "}
-                visa-check guides
-              </li>
-              <li>
-                <b>
-                  <CountUp to={COUNTRIES.length} />
-                </b>{" "}
-                work-permit routes
-              </li>
-              <li>
-                <b>
-                  <CountUp to={articles.length} />
-                </b>{" "}
-                guides
-              </li>
-            </ul>
+            ))}
           </div>
-          <div className="vp-hero-panel">
-            <QuickFinder
-              siteId={site.id}
-              countries={sorted.map((c) => ({ slug: c.slug, name: c.name, flag: c.flag }))}
-              jobs={JOBS.map((j) => ({ slug: j.slug, name: j.name }))}
-            />
-          </div>
-        </div>
-        <div className="vp-trust">
-          <div className="vp-wrap vp-trust-in">
-            <span>Built on open, verifiable data</span>
-            <b>Official immigration portals</b>
-            <b>Passport Index dataset</b>
-            <b>World Bank</b>
-            <b>Eurostat</b>
-            <b>Embassy &amp; VFS guidance</b>
-          </div>
+
+          <ul className="vx-stats">
+            <li>
+              <b>{passports.length || 199}</b> passports
+            </li>
+            <li>
+              <b>{dest.length || 199}</b> destinations
+            </li>
+            <li>
+              <b>{VC.length}</b> visa-status guides
+            </li>
+            <li>
+              <b>{COUNTRIES.length}</b> work-permit routes
+            </li>
+          </ul>
         </div>
       </section>
 
       <main id="vp-main">
-        {/* ── FREE TOOLS ── */}
-        <section className="vp-sec vp-tools-sec">
-          <div className="vp-wrap">
-            <div className="vp-sechead">
-              <h2 className="vp-h2">Free tools travellers and workers use every day</h2>
-            </div>
-            <div className="vp-tools">
-              {TOOLS.map((t) => (
-                <Link key={t.h} href={`${b}${t.href}`} className={`vp-tool vp-tool-${t.tone}`}>
-                  <span className="vp-tool-ic" aria-hidden="true">
-                    {t.ic}
-                  </span>
-                  <b>{t.h}</b>
-                  <span>{t.p}</span>
-                  <i aria-hidden="true">Open →</i>
+        {/* ── PASSPORTS ── */}
+        {featured.length ? (
+          <section className="vx-sec">
+            <div className="vx-wrap">
+              <div className="vx-sechead">
+                <h2>Where can your passport go?</h2>
+                <Link href={`${b}/passport-index`} className="vx-more">
+                  All {passports.length} passports →
                 </Link>
-              ))}
+              </div>
+              <ul className="vx-pp">
+                {featured.map((p) => (
+                  <li key={p.iso2}>
+                    <Link href={`${b}/passport/${p.slug}`}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={`https://flagcdn.com/w80/${p.iso2.toLowerCase()}.png`} alt="" width={40} height={28} loading="lazy" />
+                      <span>
+                        <b>{p.name}</b>
+                        <small>
+                          {p.score} destinations · #{p.rank}
+                        </small>
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              {top ? (
+                <p className="vx-note">
+                  Strongest passport today:{" "}
+                  <Link href={`${b}/passport/${top.slug}`}>
+                    {top.name} ({top.score} destinations)
+                  </Link>{" "}
+                  · <Link href={`${b}/passport-ranking`}>Full ranking</Link>
+                </p>
+              ) : null}
             </div>
-          </div>
-        </section>
+          </section>
+        ) : null}
 
-        {/* ── POPULAR VISA CHECKS ── */}
-        <section className="vp-sec vp-sec-alt">
-          <div className="vp-wrap">
-            <div className="vp-sechead">
-              <h2 className="vp-h2">Check your visa status online</h2>
-              <Link href={`${b}/visa-check`} className="vp-more">
+        {/* ── VISA STATUS CHECKS ── */}
+        <section className="vx-sec vx-sec-soft">
+          <div className="vx-wrap">
+            <div className="vx-sechead">
+              <h2>Check your visa status online</h2>
+              <Link href={`${b}/visa-check`} className="vx-more">
                 All {VC.length} countries →
               </Link>
             </div>
-            <ul className="vp-vcgrid">
-              {VC.slice(0, 12).map((e) => (
+            <ul className="vx-vc">
+              {VC.slice(0, 8).map((e) => (
                 <li key={e.slug}>
                   <Link href={`${b}/visa-check/${e.slug}`}>
-                    <img src={flagFor(e, 80)} alt="" width={44} height={30} loading="lazy" />
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={flagFor(e, 80)} alt="" width={36} height={25} loading="lazy" />
                     <span>
                       <b>{e.country}</b>
                       <small>{e.portal}</small>
@@ -216,89 +209,64 @@ export default async function Home({ site, articles }: SiteHomeProps) {
           </div>
         </section>
 
-        {/* ── PASSPORT INDEX TEASER ── */}
-        {topPassports.length ? (
-          <section className="vp-sec vp-pi-teaser">
-            <div className="vp-wrap vp-split">
-              <div>
-                <span className="vp-eyebrow">VisaPoint Passport Index</span>
-                <h2 className="vp-h2" style={{ marginTop: 12 }}>
-                  How powerful is your passport?
-                </h2>
-                <ol className="vp-pi-top">
-                  {topPassports.map((p) => (
-                    <li key={p.iso2}>
-                      <Link href={`${b}/passport/${p.slug}`}>
-                        <span className="vp-pi-top-rank">#{p.rank}</span>
-                        <img className="vp-flag" src={`https://flagcdn.com/w80/${p.iso2.toLowerCase()}.png`} alt="" width={30} height={20} />
-                        <b>{p.name}</b>
-                        <span className="vp-pi-top-score">
-                          <CountUp to={p.score} />
-                        </span>
-                      </Link>
-                    </li>
-                  ))}
-                </ol>
-                <div className="vp-hero-actions" style={{ marginTop: 18 }}>
-                  <Link href={`${b}/passport-index`} className="vp-btn vp-btn-primary">
-                    Full ranking of {passports.length} passports
-                  </Link>
-                  <Link href={`${b}/visa-checker`} className="vp-btn vp-btn-outline">
-                    Do I need a visa?
-                  </Link>
-                </div>
-              </div>
-              <aside className="vp-panel">
-                <h3 className="vp-panel-h">South Asian passports</h3>
-                <ul className="vp-links">
-                  {saPassports.map((p) => (
-                    <li key={p.iso2}>
-                      <Link href={`${b}/passport/${p.slug}`}>
-                        <img className="vp-flag" src={`https://flagcdn.com/w40/${p.iso2.toLowerCase()}.png`} alt="" width={22} height={15} /> #{p.rank} {p.name} — {p.score} destinations
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </aside>
+        {/* ── LATEST GUIDES ── */}
+        <section className="vx-sec" id="guides">
+          <div className="vx-wrap">
+            <div className="vx-sechead">
+              <h2>Latest guides</h2>
+              <Link href={`${b}/guides`} className="vx-more">
+                All {articles.length} guides →
+              </Link>
             </div>
-          </section>
-        ) : null}
-        {/* ── TASKS ── */}
-        <section className="vp-sec">
-          <div className="vp-wrap">
-            <h2 className="vp-h2">What do you need to do?</h2>
-            <div className="vp-tasks">
-              {TASKS.map((t) => (
-                <Link className="vp-task" key={t.h} href={t.href.startsWith("#") ? `${b}${t.href}` : `${b}${t.href}`}>
-                  <b>{t.h}</b>
-                  <span>{t.p}</span>
-                  <i aria-hidden="true">→</i>
+            {latest.length ? (
+              <div className="vx-cards">
+                {latest.map((a) => (
+                  <GuideCard site={site} a={a} key={a.id} />
+                ))}
+              </div>
+            ) : (
+              <p className="vx-note">New guides are on the way.</p>
+            )}
+          </div>
+        </section>
+
+        {/* ── TOOLS ── */}
+        <section className="vx-sec vx-sec-soft">
+          <div className="vx-wrap">
+            <div className="vx-sechead">
+              <h2>Free tools</h2>
+            </div>
+            <div className="vx-tools">
+              {TOOLS.map((t) => (
+                <Link key={t.h} href={`${b}${t.href}`} className="vx-tool">
+                  <span className="vx-tool-ic">
+                    <Ic d={t.ic} />
+                  </span>
+                  <span>
+                    <b>{t.h}</b>
+                    <small>{t.p}</small>
+                  </span>
                 </Link>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ── DESTINATIONS ── */}
-        <section className="vp-sec vp-sec-alt" id="countries">
-          <div className="vp-wrap">
-            <div className="vp-sechead">
-              <h2 className="vp-h2">Choose a destination</h2>
-              <Link href={`${b}/countries`} className="vp-more">
-                Full country register →
+        {/* ── WORK-PERMIT COUNTRIES ── */}
+        <section className="vx-sec" id="countries">
+          <div className="vx-wrap">
+            <div className="vx-sechead">
+              <h2>Work permits by country</h2>
+              <Link href={`${b}/countries`} className="vx-more">
+                Country register →
               </Link>
             </div>
-            <ul className="vp-dest">
+            <ul className="vx-chips">
               {sorted.map((c) => (
                 <li key={c.id}>
                   <Link href={`${b}/countries/${c.slug}`}>
-                    <span className="vp-dest-flag">
-                      <Flag emoji={c.flag} size={30} />
-                    </span>
-                    <span className="vp-dest-name">{c.name}</span>
-                    <span className="vp-dest-meta">
-                      {c.schengen ? "Schengen" : c.inEU ? "EU" : "Non-EU"} · visa {c.visaWeeks[0]}–{c.visaWeeks[1]} wks
-                    </span>
+                    <Flag emoji={c.flag} size={20} />
+                    {c.name}
                   </Link>
                 </li>
               ))}
@@ -306,125 +274,25 @@ export default async function Home({ site, articles }: SiteHomeProps) {
           </div>
         </section>
 
-        {/* ── PROCESS ── */}
-        <section className="vp-sec">
-          <div className="vp-wrap">
-            <h2 className="vp-h2">How a European work permit usually works</h2>
-            <p className="vp-sub">The exact steps differ by country — each country page lists its own permit type and official portal.</p>
-            <ol className="vp-steps">
-              {STEPS.map((s, i) => (
-                <li key={s.h}>
-                  <span className="vp-step-n">{i + 1}</span>
-                  <div>
-                    <b>{s.h}</b>
-                    <p>{s.p}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
-
-        {/* ── LATEST GUIDANCE + SAVINGS ── */}
-        <section className="vp-sec vp-sec-alt" id="guides">
-          <div className="vp-wrap vp-split">
-            <div>
-              <div className="vp-sechead">
-                <h2 className="vp-h2">Latest guidance</h2>
-                <Link href={`${b}/guides`} className="vp-more">
-                  All {articles.length} guides →
-                </Link>
-              </div>
-              {latest.length ? (
-                <ul className="vp-guides">
-                  {latest.map((a) => (
-                    <GuideRow site={site} a={a} key={a.id} />
-                  ))}
-                </ul>
-              ) : (
-                <p className="vp-sub">New guides are on the way.</p>
-              )}
-            </div>
-            <aside>
-              <div className="vp-panel">
-                <h3 className="vp-panel-h">Where workers save the most</h3>
-                <p className="vp-panel-sub">Modelled monthly savings with employer housing.</p>
-                <table className="vp-table">
-                  <thead>
-                    <tr>
-                      <th>Job · country</th>
-                      <th>Saved / month</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {savings.map((e) => (
-                      <tr key={`${e.country.id}-${e.job.id}`}>
-                        <td>
-                          <Flag emoji={e.country.flag} size={20} /> {e.job.name}, {e.country.name}
-                        </td>
-                        <td>
-                          <b>{eur(e.savingsHousedEUR)}</b>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-                <Link href={`${b}/jobs`} className="vp-more">
-                  Salary by job →
-                </Link>
-              </div>
-            </aside>
-          </div>
-        </section>
-
-        {/* ── ESTIMATOR ── */}
-        <section className="vp-sec" id="estimator">
-          <div className="vp-wrap">
-            <h2 className="vp-h2">Salary &amp; savings estimator</h2>
-            <p className="vp-sub">
-              Enter a real monthly wage and a country to see net pay, realistic monthly savings and an approximate figure
-              in BDT. Employer housing is the single biggest savings lever.
-            </p>
-            <SalaryCalculator
-              countries={countriesLite()}
-              verifiedOn={new Date(DATA_VERIFIED).toLocaleDateString("en-US", { month: "short", year: "numeric" })}
-            />
-          </div>
-        </section>
-
         {/* ── SCAMS ── */}
-        <section className="vp-sec" id="scams">
-          <div className="vp-wrap">
-            <div className="vp-alert">
-              <div className="vp-alert-head">
-                <span aria-hidden="true">!</span>
+        <section className="vx-sec vx-sec-tight" id="scams">
+          <div className="vx-wrap">
+            <div className="vx-scam">
+              <div>
+                <span className="vx-scam-ic" aria-hidden="true">
+                  !
+                </span>
                 <h2>Recruitment scam warning signs</h2>
+                <p>
+                  <b>Never pay for a job offer you cannot verify.</b> Check the employer and permit with the destination&apos;s
+                  official immigration authority.
+                </p>
               </div>
               <ul>
                 {SCAMS.map((s) => (
                   <li key={s}>{s}</li>
                 ))}
               </ul>
-              <p>
-                <b>Never pay for a job offer you cannot verify.</b> Check the employer and the permit with the official
-                immigration authority of the destination country — every country page links it.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* ── METHOD ── */}
-        <section className="vp-sec vp-sec-alt" id="method">
-          <div className="vp-wrap">
-            <h2 className="vp-h2">How we keep the information reliable</h2>
-            <div className="vp-method">
-              {METHOD.map((m) => (
-                <div key={m.n}>
-                  <span className="vp-step-n">{m.n}</span>
-                  <b>{m.h}</b>
-                  <p>{m.p}</p>
-                </div>
-              ))}
             </div>
           </div>
         </section>
