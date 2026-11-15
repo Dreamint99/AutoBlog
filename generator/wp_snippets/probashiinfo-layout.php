@@ -8,7 +8,7 @@
    Data pages (#32), BMET/flight/rates tools render themselves and only get the palette.
    Rollout: PI6_PUBLIC false = only with ?v6=1 (cookie; ?v6=0 clears). Rollback = deactivate. */
 if ( ! defined( 'PI6_PUBLIC' ) ) define( 'PI6_PUBLIC', true );
-if ( ! defined( 'PI6_VERSION' ) ) define( 'PI6_VERSION', '7.1.0' );
+if ( ! defined( 'PI6_VERSION' ) ) define( 'PI6_VERSION', '7.1.1' );
 
 function pi6_on() {
 	static $on = null;
@@ -395,16 +395,21 @@ body.pi-app .ad-pb-big{background:#fff;color:var(--ink);border:1px solid var(--l
 body.pi-app .ad-pb-big h3{color:var(--ink)}body.pi-app .ad-pb-big p{color:var(--mut)}
 body.pi-app .ad-pb-links a{background:#F4F3F6;border-color:transparent;color:var(--ink)}
 body.pi-app .ad-pb-big .btn-w{background:var(--ink);color:#fff!important}
-body.pi-app .pbb-hbtn{background:#fff!important;color:var(--ink)!important;border:1px solid var(--line);box-shadow:none}
+.pbb-hbtn{background:#fff!important;color:var(--ink)!important;border:1px solid var(--line);box-shadow:none}
 body.pi-app .pbb-strip{background:#fff!important;color:var(--ink)!important;border-bottom:1px solid var(--line)}
 body.pi-app .pbb-strip p small{color:var(--mut)}
 body.pi-app .pbb-strip a{background:var(--ink)!important;color:#fff!important}
 body.pi-app .pbb-strip button{background:#F4F3F6!important;color:var(--ink)!important}
-body.pi-app .pbb-ft .pbb-card{background:#fff!important;color:var(--ink)!important;border:1px solid var(--line);box-shadow:none!important}
+.pbb-ft .pbb-card{background:#fff!important;color:var(--ink)!important;border:1px solid var(--line);box-shadow:none!important}
 /* extra app promos off: the popup (#28) and the top bar (#33); header button, footer card and in-article card stay */
 #pba-pop,body.pi-app .pbb-strip{display:none!important}
 body.pi-app .pba-card{background:#fff!important;color:var(--ink)!important;border:1px solid var(--line)!important;box-shadow:none!important;border-radius:14px!important}
 body.pi-app .pba-card b{color:var(--ink)!important}
+.pbb-card:after{display:none!important}
+.pbb-card h3{color:var(--ink,#17131B)!important}
+.pbb-card p{color:var(--mut,#6F6976)!important;opacity:1!important}
+.pbb-feat span{background:#F4F3F6!important;color:var(--ink2,#3E3944)!important}
+.pbb-card>img{box-shadow:none!important;border:1px solid var(--line,#E9E7EC)}
 #pi-ad-native{max-width:1160px!important;margin:32px auto!important;padding:12px 16px 16px!important;background:#fff;border:1px solid var(--line);border-radius:14px;box-sizing:border-box}
 #pi-ad-native:before{content:"বিজ্ঞাপন";display:block;text-align:left;font:600 11px var(--body,sans-serif);letter-spacing:.06em;color:var(--mut);margin-bottom:8px}
 @media(max-width:1020px){body.pi-app .hero3.v6h .w{grid-template-columns:minmax(0,1fr);gap:24px}body.pi-app .art{grid-template-columns:minmax(0,1fr)}}
