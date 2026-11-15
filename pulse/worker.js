@@ -12,7 +12,31 @@
 
 const SESSION_DAYS = 30;
 const SITE_IDS = new Set(["countly", "walvi", "infkey", "ninetymins", "gccguide", "cob",
-  "probashiinfo", "dreamintcs", "probashibondu", "dreamithq", "aiu", "aiublog"]);
+  "probashiinfo", "dreamintcs", "probashibondu", "dreamithq", "aiu", "aiublog",
+  // project sites added 2026-11-15 (beacon injected by the dream-concerns-inject edge Worker)
+  "findsoul", "qount", "landd", "ghurbo", "helloserbia", "bizpilot", "orbit", "moneybag", "buddy", "masum", "probashiapp"]);
+
+// ── traffic source classification (referrer host / utm_source → channel) ──
+const SRC_RULES = [
+  ["google", /(^|\.)google\.[a-z.]+$|googleusercontent|android-app:\/\/com\.google/],
+  ["bing", /(^|\.)bing\.com$|msn\.com$/],
+  ["ai", /chatgpt\.com|chat\.openai|openai\.com|perplexity\.ai|copilot\.microsoft|gemini\.google|claude\.ai|you\.com|phind\.com|deepseek/],
+  ["yahoo", /yahoo\./], ["duckduckgo", /duckduckgo\./], ["yandex", /yandex\./], ["baidu", /baidu\./],
+  ["facebook", /facebook\.com$|fb\.com$|fb\.me$|m\.facebook|l\.facebook|lm\.facebook|messenger\.com/],
+  ["instagram", /instagram\.com$/], ["youtube", /youtube\.com$|youtu\.be$/], ["whatsapp", /whatsapp\.(com|net)$|wa\.me$/],
+  ["telegram", /t\.me$|telegram\.(org|me)$/], ["pinterest", /pinterest\./], ["twitter", /(^|\.)x\.com$|twitter\.com$|t\.co$/],
+  ["linkedin", /linkedin\.com$|lnkd\.in$/], ["reddit", /reddit\.com$/], ["tiktok", /tiktok\.com$/],
+];
+function classify(ref, utm) {
+  const u = String(utm || "").toLowerCase();
+  if (u) for (const [k] of SRC_RULES) if (u.includes(k === "twitter" ? "twitter" : k)) return k;
+  if (u === "fb" || u === "ig") return u === "fb" ? "facebook" : "instagram";
+  const h = String(ref || "").toLowerCase();
+  if (!h) return u ? "campaign" : "direct";
+  for (const [k, re] of SRC_RULES) if (re.test(h)) return k;
+  return "referral";
+}
+const BOT_UA = /bot|crawl|spider|slurp|headless|lighthouse|pagespeed|preview|facebookexternalhit|embedly|curl|wget|python|httpclient|phantom|puppeteer|playwright/i;
 // Sites that are not Cloudflare zones (no edge analytics): their visitors/pageviews come from the beacon
 // (/b.js), counted per day in the LiveRoom Durable Object and merged into /api/data.
 const BEACON_SITES = { probashiinfo: "probashiinfo.com", dreamintcs: "dreamintcs.com", probashibondu: "probashibondu.online", aiublog: "aiuniversitybd.com/blog" }; // aiu (whole site) is a CF zone; aiublog = blog pages only
@@ -31,6 +55,18 @@ export class LiveRoom {
     const now = Date.now();
     if (request.method === "POST") {
       const b = await request.json();
+      // traffic source of a page load: {site, s: channel, h: referrer host, c: country}
+      if (b.s) {
+        const day = new Date(now + 6 * 3600e3).toISOString().slice(0, 10);
+        const k = "t:" + b.site + ":" + day;
+        const cur = (await this.ctx.storage.get(k)) || { n: 0, s: {}, c: {}, h: {} };
+        cur.n++;
+        cur.s[b.s] = (cur.s[b.s] || 0) + 1;
+        if (b.c) cur.c[b.c] = (cur.c[b.c] || 0) + 1;
+        if (b.h && Object.keys(cur.h).length < 300) cur.h[b.h] = (cur.h[b.h] || 0) + 1;
+        await this.ctx.storage.put(k, cur);
+        if (!b.id) return new Response(null, { status: 204 });
+      }
       this.sessions.set(b.id, { site: b.site, path: b.path, c: b.c || "", t: now });
       if (this.sessions.size > 8000) this.prune(now);
       // daily counters (UTC+6 day): pv = a page load, nv = first visit of the day on that browser
@@ -43,6 +79,21 @@ export class LiveRoom {
         await this.ctx.storage.put(k, cur);
       }
       return new Response(null, { status: 204 });
+    }
+    if (new URL(request.url).pathname === "/traffic") {
+      // aggregate traffic-source records since ?since=YYYY-MM-DD, per site
+      const since = new URL(request.url).searchParams.get("since") || "0000";
+      const all = await this.ctx.storage.list({ prefix: "t:" });
+      const out = {};
+      for (const [k, v] of all) {
+        const [, site, day] = k.split(":");
+        if (day < since) continue;
+        const o = (out[site] = out[site] || { n: 0, s: {}, c: {}, h: {}, days: {} });
+        o.n += v.n;
+        o.days[day] = (o.days[day] || 0) + v.n;
+        for (const f of ["s", "c", "h"]) for (const [x, n] of Object.entries(v[f] || {})) o[f][x] = (o[f][x] || 0) + n;
+      }
+      return new Response(JSON.stringify(out), { headers: { "content-type": "application/json" } });
     }
     if (new URL(request.url).pathname === "/stats") {
       const all = await this.ctx.storage.list({ prefix: "c:" });
@@ -229,12 +280,20 @@ async function handleBeat(request, env) {
   const id = String(b.id || "").slice(0, 64);
   const site = String(b.site || "");
   const path = String(b.path || "/").slice(0, 200);
-  if (!id || !SITE_IDS.has(site)) return new Response(null, { status: 400 });
+  const srcOnly = b.src === 1; // source event from sites whose own inline beacon already counts the visit
+  if ((!id && !srcOnly) || !SITE_IDS.has(site)) return new Response(null, { status: 400 });
+  if (BOT_UA.test(request.headers.get("user-agent") || "")) return new Response(null, { status: 204, headers: { "access-control-allow-origin": "*" } });
+  const c = (request.cf && request.cf.country) || "";
+  const msg = { id: srcOnly ? "" : id, site, path, c };
+  // a page load (pv) or a source event carries the referrer host + utm_source → traffic channel
+  if (b.pv || srcOnly) {
+    const h = String(b.r || "").toLowerCase().replace(/^www\./, "").slice(0, 80);
+    msg.s = classify(h, String(b.u || "").slice(0, 40));
+    msg.h = msg.s === "direct" ? "" : h;
+  }
+  if (!srcOnly) { msg.pv = b.pv ? 1 : 0; msg.nv = b.nv ? 1 : 0; }
   const stub = env.LIVE.get(env.LIVE.idFromName("global"));
-  await stub.fetch("https://do/beat", {
-    method: "POST",
-    body: JSON.stringify({ id, site, path, c: request.cf && request.cf.country || "" }),
-  });
+  await stub.fetch("https://do/beat", { method: "POST", body: JSON.stringify(msg) });
   return new Response(null, { status: 204, headers: { "access-control-allow-origin": "*" } });
 }
 
@@ -245,15 +304,20 @@ async function handleLive(env) {
 }
 
 // Drop-in beacon for sites outside the Next network: <script src="https://pulse.countly.net/b.js" data-site="ID" defer></script>
+// v2 (2026-11-15): page loads also carry the referrer host (r) + utm_source (u) → traffic channel.
+// data-mode="src": the site already runs its own inline beacon (visits counted there) → send only the source.
 const BEACON_JS = `(function(){try{
 var me=document.currentScript||document.querySelector('script[src*="pulse.countly.net/b.js"]');
 var s=me&&me.getAttribute('data-site');if(!s)return;
+var r='';try{if(document.referrer){var rh=new URL(document.referrer).hostname;if(rh&&rh.replace(/^www\\./,'')!==location.hostname.replace(/^www\\./,''))r=rh;}}catch(e){}
+var u='';try{u=new URLSearchParams(location.search).get('utm_source')||'';}catch(e){}
+if(me.getAttribute('data-mode')==='src'){try{navigator.sendBeacon('https://pulse.countly.net/api/beat',JSON.stringify({site:s,src:1,r:r,u:u,path:location.pathname}));}catch(e){}return;}
 var k='_plsid',id=sessionStorage.getItem(k);
 if(!id){id=(self.crypto&&crypto.randomUUID)?crypto.randomUUID():Date.now()+'-'+Math.random().toString(36).slice(2);sessionStorage.setItem(k,id);}
 var day=new Date(Date.now()+216e5).toISOString().slice(0,10),nv=0;
 try{if(localStorage.getItem('_pld_'+s)!==day){localStorage.setItem('_pld_'+s,day);nv=1;}}catch(e){}
 function send(o){try{navigator.sendBeacon('https://pulse.countly.net/api/beat',JSON.stringify(o));}catch(e){}}
-send({id:id,site:s,path:location.pathname,pv:1,nv:nv});
+send({id:id,site:s,path:location.pathname,pv:1,nv:nv,r:r,u:u});
 setInterval(function(){if(document.visibilityState!=='hidden')send({id:id,site:s,path:location.pathname});},25000);
 }catch(e){}})();`;
 
@@ -264,7 +328,52 @@ const MANIFEST = JSON.stringify({
           { src: "/icon-512.png", sizes: "512x512", type: "image/png", purpose: "maskable" }],
 });
 
+// ── income: Adsterra API (secret ADSTERRA_KEY) + affiliate accounts registry ──
+// Only real numbers: programs without a reporting API we can call show their status + dashboard link.
+const AFFILIATES = [
+  { id: "adsterra", name: "Adsterra ads", where: "all content sites", status: "live", api: true, url: "https://beta.publishers.adsterra.com/" },
+  { id: "travelpayouts", name: "Travelpayouts Drive", where: "probashiinfo · visapoint · gccguide", status: "live", url: "https://app.travelpayouts.com/dashboard", todo: "payout method not set" },
+  { id: "amazon", name: "Amazon Associates (countlynet-20)", where: "ninetymins card + app · Amazon links on 5 sites", status: "live", url: "https://affiliate-program.amazon.com/home", todo: "payment + tax info · 3 sales in 180 days" },
+  { id: "elevenlabs", name: "ElevenLabs", where: "infkey voice/audio pages", status: "live", url: "https://elevenlabs.io/app/affiliate" },
+  { id: "dreamlead", name: "Dream International leads (WhatsApp)", where: "visapoint · gccguide · probashiinfo", status: "live", url: "https://wa.me/97471382220" },
+  { id: "skimlinks", name: "Skimlinks", where: "countly (+ others after approval)", status: "review", url: "https://hub.skimlinks.com/" },
+  { id: "hostinger", name: "Hostinger", where: "infkey", status: "review", url: "https://affiliates.hostinger.com/" },
+  { id: "heygen", name: "HeyGen", where: "infkey", status: "review", url: "https://www.heygen.com/affiliate-program" },
+];
+async function adsterra(env, start, finish, group) {
+  const r = await fetch(`https://api3.adsterratools.com/publisher/stats.json?start_date=${start}&finish_date=${finish}&group_by=${group}`,
+    { headers: { "X-API-Key": env.ADSTERRA_KEY, accept: "application/json" } });
+  if (!r.ok) throw new Error("adsterra " + r.status);
+  return ((await r.json()).items) || [];
+}
+async function syncMoney(env) {
+  const d = (n) => new Date(Date.now() - n * 864e5).toISOString().slice(0, 10);
+  const out = { updatedAt: new Date().toISOString(), affiliates: AFFILIATES, adsterra: null };
+  if (env.ADSTERRA_KEY) {
+    try {
+      const [doms, byDate, byDom30] = await Promise.all([
+        fetch("https://api3.adsterratools.com/publisher/domains.json", { headers: { "X-API-Key": env.ADSTERRA_KEY } }).then((r) => r.json()),
+        adsterra(env, d(29), d(0), "date"),
+        adsterra(env, d(29), d(0), "domain"),
+      ]);
+      const name = Object.fromEntries((doms.items || []).map((x) => [x.id, x.title]));
+      const sum = (a, k) => a.reduce((s, x) => s + (x[k] || 0), 0);
+      const today = byDate.filter((x) => x.date === d(0)), wk = byDate.filter((x) => x.date >= d(6));
+      out.adsterra = {
+        today: { rev: sum(today, "revenue"), imp: sum(today, "impression") },
+        week: { rev: sum(wk, "revenue"), imp: sum(wk, "impression") },
+        month: { rev: sum(byDate, "revenue"), imp: sum(byDate, "impression"), clicks: sum(byDate, "clicks") },
+        daily: byDate.map((x) => ({ t: x.date, rev: x.revenue, imp: x.impression })),
+        domains: byDom30.map((x) => ({ domain: name[x.domain] || String(x.domain), rev: x.revenue, imp: x.impression, cpm: x.cpm })).sort((a, b) => b.rev - a.rev),
+      };
+    } catch (e) { out.adsterraError = String(e).slice(0, 120); }
+  }
+  await env.PULSE.put("pulse:money", JSON.stringify(out));
+  return out;
+}
+
 export default {
+  async scheduled(_ev, env, ctx) { ctx.waitUntil(syncMoney(env)); },
   async fetch(request, env) {
     const url = new URL(request.url);
     const p = url.pathname;
@@ -303,6 +412,15 @@ export default {
       if (p === "/api/data") return handleData(env, url.searchParams.get("range") || "7d");
       if (p === "/api/health") return handleHealth(env);
       if (p === "/api/live") return handleLive(env);
+      if (p === "/api/traffic") {
+        const days = { "24h": 1, "7d": 7, "14d": 14, "30d": 30, "1y": 365 }[url.searchParams.get("range") || "7d"] || 7;
+        const since = new Date(Date.now() + 6 * 3600e3 - (days - 1) * 864e5).toISOString().slice(0, 10);
+        const stub = env.LIVE.get(env.LIVE.idFromName("global"));
+        const r = await stub.fetch("https://do/traffic?since=" + since);
+        return new Response(r.body, { headers: { "content-type": "application/json" } });
+      }
+      if (p === "/api/money" && url.searchParams.get("refresh")) return json(await syncMoney(env));
+      if (p === "/api/money") return json((await env.PULSE.get("pulse:money", "json")) || { empty: true });
       if (p === "/api/seo") return json((await env.PULSE.get("pulse:seo", "json")) || { empty: true });
       if (p === "/api/bing") return json((await env.PULSE.get("pulse:bing", "json")) || { empty: true });
       return json({ error: "not found" }, 404);
@@ -577,6 +695,14 @@ const DASH_HTML = `<!doctype html>
       <div class="live-pages" id="live-pages"></div>
     </div>
     <div class="stats" id="stats"></div>
+    <div class="panel"><h3>💰 Income &amp; affiliates <small id="money-cap">syncing…</small></h3><div class="cmp" id="money-sum"></div><div id="aff" style="margin-top:12px"></div></div>
+    <div class="grid2">
+      <div class="panel"><h3>🧭 Where visitors come from <small id="src-cap">real browsers · bots removed</small></h3><div id="src"></div></div>
+      <div>
+        <div class="panel"><h3>🌍 Real visitors by country <small>beacon</small></h3><div id="rctry"></div></div>
+        <div class="panel"><h3>🔗 Referring sites</h3><div id="refs"></div></div>
+      </div>
+    </div>
     <div class="panel"><h3>⚖️ Compare <small id="cmp-cap">visitors · pageviews</small></h3><div class="cmp" id="cmp"></div></div>
     <div class="panel"><h3>🔎 Google search <small id="seo-cap">Search Console</small></h3><div class="cmp" id="seo-sum"></div></div>
     <div class="grid2">
@@ -660,6 +786,43 @@ function loadExtra(){
   fetch('/api/data?range=14d').then(function(r){return r.ok?r.json():null;}).then(function(d){if(d){D14=d;renderCmp();}}).catch(function(){});
   fetch('/api/seo').then(function(r){return r.ok?r.json():null;}).then(function(d){if(d){SEO=d;renderSeo();}}).catch(function(){});
   fetch('/api/bing').then(function(r){return r.ok?r.json():null;}).then(function(d){if(d){BING=d;renderBing();}}).catch(function(){});
+}
+var TRAF=null, MONEY=null;
+var CH={direct:['🔗','Direct / app'],google:['🟢','Google'],bing:['🅱️','Bing'],ai:['🤖','AI search (ChatGPT, Copilot…)'],yahoo:['🟣','Yahoo'],
+  duckduckgo:['🦆','DuckDuckGo'],yandex:['🟥','Yandex'],baidu:['🐾','Baidu'],facebook:['📘','Facebook'],instagram:['📸','Instagram'],
+  youtube:['▶️','YouTube'],whatsapp:['💬','WhatsApp'],telegram:['✈️','Telegram'],pinterest:['📌','Pinterest'],twitter:['𝕏','X / Twitter'],
+  linkedin:['💼','LinkedIn'],reddit:['👽','Reddit'],tiktok:['🎵','TikTok'],campaign:['🏷️','Campaign (utm)'],referral:['🌐','Other websites']};
+function ccFlag(c){if(!c||c.length!==2||c==='XX'||c==='T1')return '🌐';return String.fromCodePoint(127397+c.charCodeAt(0),127397+c.charCodeAt(1));}
+function bars(obj,top,label){var arr=Object.keys(obj||{}).map(function(k){return [k,obj[k]];}).sort(function(a,b){return b[1]-a[1];}).slice(0,top);
+  if(!arr.length)return '<div class="empty">No visits recorded yet — new beacon started 15 Nov</div>';
+  var tot=0;Object.keys(obj).forEach(function(k){tot+=obj[k];});var mx=arr[0][1]||1;
+  return arr.map(function(e){return '<div class="li">'+label(e[0])+'<span class="bar"><i style="width:'+Math.max(4,Math.round(e[1]*100/mx))+'%"></i></span><span class="n">'+fmt(e[1])+' <em style="color:var(--mut2);font-style:normal;font-size:10.5px">'+Math.round(e[1]*100/tot)+'%</em></span></div>';}).join('');}
+function loadTraffic(){fetch('/api/traffic?range='+RANGE).then(function(r){return r.ok?r.json():null;}).then(function(d){if(d){TRAF=d;renderTraffic();}}).catch(function(){});}
+function loadMoney(){fetch('/api/money').then(function(r){return r.ok?r.json():null;}).then(function(d){if(d){MONEY=d;renderMoney();}}).catch(function(){});}
+function renderTraffic(){
+  if(!TRAF)return;var agg={n:0,s:{},c:{},h:{}};
+  Object.keys(TRAF).forEach(function(id){if(SITE!=='all'&&id!==SITE)return;var t=TRAF[id];agg.n+=t.n;
+    ['s','c','h'].forEach(function(f){Object.keys(t[f]||{}).forEach(function(k){agg[f][k]=(agg[f][k]||0)+t[f][k];});});});
+  document.getElementById('src-cap').textContent=fmt(agg.n)+' page loads · '+RANGE+' · bots removed';
+  document.getElementById('src').innerHTML=bars(agg.s,20,function(k){var m=CH[k]||['•',k];return '<span class="flag">'+m[0]+'</span><span class="lbl">'+esc(m[1])+'</span>';});
+  document.getElementById('rctry').innerHTML=bars(agg.c,10,function(k){return '<span class="flag">'+ccFlag(k)+'</span><span class="lbl">'+esc(k)+'</span>';});
+  document.getElementById('refs').innerHTML=bars(agg.h,10,function(k){return '<span class="lbl">'+esc(k)+'</span>';});
+}
+function renderMoney(){
+  if(!MONEY||MONEY.empty){document.getElementById('money-sum').innerHTML='<div class="empty" style="grid-column:1/-1">First income sync runs within 30 min</div>';return;}
+  var a=MONEY.adsterra;document.getElementById('money-cap').textContent='synced '+ago(MONEY.updatedAt);
+  var m=function(v){return '$'+(v||0).toFixed(2);};
+  document.getElementById('money-sum').innerHTML=a?(
+    '<div><small>Ads · today</small><b>'+m(a.today.rev)+'</b><span class="xs">'+fmt(a.today.imp)+' ad views</span></div>'+
+    '<div><small>Ads · 7 days</small><b>'+m(a.week.rev)+'</b><span class="xs">'+fmt(a.week.imp)+' ad views</span></div>'+
+    '<div><small>Ads · 30 days</small><b>'+m(a.month.rev)+'</b><span class="xs">'+fmt(a.month.clicks)+' clicks</span></div>'+
+    '<div><small>Best site · 30 d</small><b style="font-size:15px">'+esc((a.domains[0]||{}).domain||'—')+'</b><span class="xs">'+m((a.domains[0]||{}).rev)+'</span></div>'):
+    '<div class="empty" style="grid-column:1/-1">Adsterra: '+esc(MONEY.adsterraError||'key not set')+'</div>';
+  var st={live:['ok','● LIVE'],review:['wt','⏳ IN REVIEW'],off:['no','OFF']};
+  document.getElementById('aff').innerHTML=(MONEY.affiliates||[]).map(function(x){var s=st[x.status]||st.off;
+    return '<div class="hrow"><span class="dm">'+esc(x.name)+'<br><em style="font-style:normal;color:var(--mut2);font-size:11px;font-weight:500">'+esc(x.where)+(x.todo?' · ⚠️ '+esc(x.todo):'')+'</em></span>'+
+      '<span class="hp '+s[0]+'">'+s[1]+'</span><a class="hp wt" style="text-decoration:none" target="_blank" rel="noopener" href="'+esc(x.url)+'">open ↗</a></div>';}).join('')+
+    '<p class="note" style="margin-top:8px">Sales & clicks of Amazon, Travelpayouts and ElevenLabs show in their own dashboards (open ↗). Adsterra numbers are live from its API.</p>';
 }
 function pct(a,b){if(!b)return a?'<span class="up">new</span>':'<span class="xs">—</span>';var p=Math.round((a-b)*100/b);
   return '<span class="'+(p>=0?'up':'dn')+'">'+(p>=0?'▲ ':'▼ ')+Math.abs(p)+'%</span>';}
@@ -832,7 +995,7 @@ function render(){
   }).join('');
 
   document.getElementById('notes').innerHTML=(DATA.notes||[]).map(function(n){return 'ⓘ '+esc(n);}).join('<br>');
-  renderCmp();renderSeo();renderBing();
+  renderCmp();renderSeo();renderBing();renderTraffic();renderMoney();
 }
 
 function merged(list,key,k1,k2,top){
@@ -895,7 +1058,7 @@ function renderHealth(){
 document.getElementById('ranges').addEventListener('click',function(e){
   var b=e.target.closest('[data-r]');if(!b)return;RANGE=b.dataset.r;
   document.querySelectorAll('#ranges .pill').forEach(function(x){x.classList.toggle('on',x===b);});
-  load();
+  load();loadTraffic();
 });
 document.addEventListener('click',function(e){
   var b=e.target.closest('[data-s]');if(!b)return;SITE=b.dataset.s;render();
@@ -904,6 +1067,7 @@ document.getElementById('rf').addEventListener('click',function(){load();loadHea
 document.getElementById('out').addEventListener('click',function(){
   fetch('/api/logout',{method:'POST'}).then(function(){location.reload();});
 });
-load();loadHealth();loadLive();loadExtra();
+load();loadHealth();loadLive();loadExtra();loadTraffic();loadMoney();
+setInterval(loadTraffic,120000);setInterval(loadMoney,300000);
 setInterval(load,120000);setInterval(loadHealth,180000);setInterval(loadLive,10000);setInterval(loadExtra,300000);
 </script></body></html>`;
