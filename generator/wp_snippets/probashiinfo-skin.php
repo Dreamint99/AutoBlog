@@ -103,6 +103,13 @@ body.pi-app .clocks .bd{border-color:#FFD9C2}
 body.pi-app .chips a.chip-fl{background:var(--g);border-color:var(--g)}
 body.pi-app .box select,body.pi-app .rate,body.pi-app .clocks div,body.pi-app .pray div{border-color:var(--line)}
 
+/* home data tiles (#32): one brand colour instead of a rainbow */
+body.pi-app .pbh-t{--c:#E11D48!important;border-color:transparent;box-shadow:var(--sh)}
+body.pi-app .pbh-t:before{display:none}
+body.pi-app .pbh-t i{background:linear-gradient(150deg,#FFF1E6,#FFE4E9)}
+body.pi-app .pbh-t small{color:var(--b2)}
+body.pi-app .pbh-t:hover{box-shadow:0 16px 32px -18px rgba(225,29,72,.35)}
+
 /* article: quiet headings, readable table */
 body.pi-app .art-hd{border-bottom-color:var(--line)}
 body.pi-app .ct h2{background:none;border-left:4px solid var(--b);border-radius:0;padding:2px 0 2px 14px}
