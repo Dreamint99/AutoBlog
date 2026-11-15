@@ -8,7 +8,7 @@
    Data pages (#32), BMET/flight/rates tools render themselves and only get the palette.
    Rollout: PI6_PUBLIC false = only with ?v6=1 (cookie; ?v6=0 clears). Rollback = deactivate. */
 if ( ! defined( 'PI6_PUBLIC' ) ) define( 'PI6_PUBLIC', true );
-if ( ! defined( 'PI6_VERSION' ) ) define( 'PI6_VERSION', '7.0.1' );
+if ( ! defined( 'PI6_VERSION' ) ) define( 'PI6_VERSION', '7.0.2' );
 
 function pi6_on() {
 	static $on = null;
@@ -261,6 +261,11 @@ add_action( 'wp_head', function () {
 html body.pi-app,html body.bm-app,html body.ft-app,html body.fx-app{--head:"Noto Sans Bengali","Hind Siliguri",system-ui,sans-serif;--body:"Noto Sans Bengali","Hind Siliguri",system-ui,sans-serif;--hf:"Noto Sans Bengali",system-ui,sans-serif;--tf:"Noto Sans Bengali",system-ui,sans-serif;font-family:"Noto Sans Bengali","Hind Siliguri",system-ui,sans-serif}
 html body.pi-app .ct,html body.pi-app input,html body.pi-app button,html body.pi-app select,html body.pi-app textarea{font-family:"Noto Sans Bengali","Hind Siliguri",system-ui,sans-serif}
 html body.pi-app h1,html body.pi-app h2,html body.pi-app h3{letter-spacing:-.005em}
+/* the "Bangla Web Fonts" plugin forces SolaimanLipi on body/headings/inputs; the app font wins here */
+html body.pi-app,html body.pi-app article,html body.pi-app h1,html body.pi-app h2,html body.pi-app h3,html body.pi-app h4,html body.pi-app h5,html body.pi-app h6,html body.pi-app textarea,html body.pi-app input,html body.pi-app select,
+html body.bm-app,html body.bm-app h1,html body.bm-app h2,html body.bm-app h3,html body.bm-app input,html body.bm-app select,
+html body.ft-app,html body.ft-app h1,html body.ft-app h2,html body.ft-app h3,html body.ft-app input,html body.ft-app select,
+html body.fx-app,html body.fx-app h1,html body.fx-app h2,html body.fx-app h3,html body.fx-app input,html body.fx-app select{font-family:"Noto Sans Bengali","Hind Siliguri",system-ui,sans-serif!important}
 
 /* neutral professional palette, one accent (beats #35's tokens) */
 html body.pi-app,html body.bm-app,html body.ft-app,html body.fx-app{--b:#D61F45;--b2:#B0173A;--nv:#221B29;--nv2:#221B29;--g:#D61F45;--g2:#D61F45;--gs:#F4F3F6;--bs:#F4F3F6;--red:#D61F45;--gold:#D61F45;--soft:#F4F3F6;--sky:#D61F45;
