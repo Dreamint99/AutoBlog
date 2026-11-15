@@ -8,7 +8,7 @@
    Data pages (#32), BMET/flight/rates tools render themselves and only get the palette.
    Rollout: PI6_PUBLIC false = only with ?v6=1 (cookie; ?v6=0 clears). Rollback = deactivate. */
 if ( ! defined( 'PI6_PUBLIC' ) ) define( 'PI6_PUBLIC', true );
-if ( ! defined( 'PI6_VERSION' ) ) define( 'PI6_VERSION', '7.0.2' );
+if ( ! defined( 'PI6_VERSION' ) ) define( 'PI6_VERSION', '7.1.0' );
 
 function pi6_on() {
 	static $on = null;
@@ -484,5 +484,24 @@ body.home #pbh{display:none!important}
  .v7sub{display:none}
 }
 @media(prefers-reduced-motion:reduce){.v7imgs img.on,.v7svc a,.v7strip button.on i{animation:none}.v7strip button.on i{width:100%}}
+/* ---------- tool pages (BMET live, flight tracker, taka rate): same header, logo, hero and footer as the main site ---------- */
+#pba-pop,.pbb-strip{display:none!important}
+html body.bm-app .ah,html body.ft-app .ah,html body.fx-app .ah{background:rgba(255,255,255,.97)!important;border-bottom:1px solid var(--line);box-shadow:none}
+html body.bm-app .ah .lg img,html body.ft-app .ah .lg img,html body.fx-app .ah .lg img{display:none!important}
+html body.bm-app .ah .lg:before,html body.ft-app .ah .lg:before,html body.fx-app .ah .lg:before{content:"";flex:none;width:38px;height:38px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23E11D48'/%3E%3Cstop offset='1' stop-color='%23F97316'/%3E%3C/linearGradient%3E%3CclipPath id='c'%3E%3Crect width='64' height='64' rx='16'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg clip-path='url(%23c)'%3E%3Crect width='64' height='64' fill='url(%23a)'/%3E%3Cpath d='M0 50c10-4 22-4 32-1s20 3 32-1v16H0z' fill='%23B3123A' opacity='.55'/%3E%3Ccircle cx='37' cy='27' r='15' fill='%23FFF7EC'/%3E%3Ccircle cx='37' cy='20' r='3.2' fill='%23E11D48'/%3E%3Crect x='34' y='25.5' width='6' height='12.5' rx='3' fill='%23E11D48'/%3E%3Cg fill='%23FFE2B8'%3E%3Ccircle cx='9' cy='47' r='2.4'/%3E%3Ccircle cx='13' cy='41.5' r='1.7'/%3E%3Ccircle cx='17.5' cy='37' r='1.5'/%3E%3Ccircle cx='22' cy='33.6' r='1.3'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat}
+html body.bm-app .ah .lg b,html body.ft-app .ah .lg b,html body.fx-app .ah .lg b{color:var(--ink)!important}
+html body.bm-app .ah .lg b i,html body.ft-app .ah .lg b i,html body.fx-app .ah .lg b i{color:var(--b)!important}
+html body.bm-app .ah nav a,html body.ft-app .ah nav a,html body.fx-app .ah nav a{color:var(--ink2)!important}
+html body.bm-app .ah nav a:hover,html body.ft-app .ah nav a:hover,html body.fx-app .ah nav a:hover,html body.bm-app .ah nav a.on,html body.ft-app .ah nav a.on,html body.fx-app .ah nav a.on{background:#F4F3F6!important;color:var(--ink)!important}
+html body.bm-app .ah .home,html body.ft-app .ah .home,html body.fx-app .ah .home{color:var(--mut)!important}
+html body.bm-app .hero,html body.ft-app .hero,html body.fx-app .hero{background:#221B29!important}
+html body.bm-app .hero:before,html body.ft-app .hero:before,html body.fx-app .hero:before{opacity:.35}
+html body.bm-app .af,html body.ft-app .af,html body.fx-app .af{background:#fff!important;color:var(--mut)!important;border-top:1px solid var(--line)}
+html body.bm-app .af h4,html body.ft-app .af h4,html body.fx-app .af h4{color:var(--ink)!important}
+html body.bm-app .af a,html body.ft-app .af a,html body.fx-app .af a{color:var(--ink2)!important}
+html body.bm-app .af a:hover,html body.ft-app .af a:hover,html body.fx-app .af a:hover{color:var(--b)!important}
+html body.bm-app .af .dl,html body.ft-app .af .dl,html body.fx-app .af .dl{color:var(--b)!important}
+html body.bm-app .af img,html body.ft-app .af img,html body.fx-app .af img{display:none!important}
+html body.bm-app .af .base,html body.ft-app .af .base,html body.fx-app .af .base{border-top-color:var(--line)!important}
 </style>
 <?php }, 101 );
