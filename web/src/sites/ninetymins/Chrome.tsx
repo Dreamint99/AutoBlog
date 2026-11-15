@@ -1,4 +1,5 @@
 import "./theme.css";
+import "./v2.css";
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 import type { Site, Article } from "@/lib/types";
@@ -8,6 +9,7 @@ import { thumb } from "@/lib/img";
 import { AppBanner, AppPopup, AppTopBar } from "./AppPromo";
 import { ThemeToggle } from "./Livescore";
 import { PLAY_URL } from "./sports";
+import { NavMore } from "./NavMore";
 
 /* Shared NinetyMins chrome: header (quick links, theme, app, sports row), footer, and the card primitives every page uses. */
 
@@ -28,59 +30,107 @@ export function Kicker({ comp, siteId }: { comp: NmComp; siteId: string }) {
   );
 }
 
-const SPORT_NAV: Array<[string, string]> = [
-  ["/scores", "Football"],
+const NAV: Array<[string, string]> = [
+  ["", "Live scores"],
+  ["/today", "Today"],
   ["/cricket", "Cricket"],
   ["/saff", "SAFF"],
-  ["/league/uefa-champions", "Champions League"],
-  ["/league/eng-1", "Premier League"],
-  ["/league/nba", "Basketball"],
-  ["/league/atp", "Tennis"],
-  ["/league/nhl", "Hockey"],
-  ["/league/nfl", "NFL"],
-  ["/league/mlb", "Baseball"],
-  ["/league/ufc", "MMA"],
-  ["/league/f1", "F1"],
+  ["/highlights", "Highlights"],
+  ["/live-tv", "Live TV"],
 ];
+
+const MORE: Array<{ h: string; links: Array<[string, string]> }> = [
+  {
+    h: "Football",
+    links: [
+      ["/scores", "All football"],
+      ["/league/eng-1", "Premier League"],
+      ["/league/uefa-champions", "Champions League"],
+      ["/league/esp-1", "LaLiga"],
+      ["/league/ita-1", "Serie A"],
+      ["/league/ger-1", "Bundesliga"],
+    ],
+  },
+  {
+    h: "More sports",
+    links: [
+      ["/league/nba", "Basketball"],
+      ["/league/atp", "Tennis"],
+      ["/league/nfl", "NFL"],
+      ["/league/nhl", "Hockey"],
+      ["/league/mlb", "Baseball"],
+      ["/league/ufc", "MMA"],
+      ["/league/f1", "Formula 1"],
+    ],
+  },
+  {
+    h: "NinetyMins",
+    links: [
+      ["/tomorrow", "Tomorrow"],
+      ["/archive", "Stories"],
+      ["/widgets", "Score widgets"],
+      ["/about", "About"],
+    ],
+  },
+];
+
+function SearchIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+      <circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" strokeWidth="2" />
+      <path d="M16 16l4.5 4.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+/** The app's "90" mark + wordmark. */
+export function Logo({ href, name, className = "nv-logo" }: { href: string; name: string; className?: string }) {
+  return (
+    <Link href={href} className={className} aria-label={`${name} home`}>
+      <span className="nv-logo-90" aria-hidden="true">90</span>
+      <span className="nv-logo-word">NinetyMins</span>
+    </Link>
+  );
+}
 
 export function Header({ site }: { site: Site; home?: boolean }) {
   const s = `/s/${site.id}`;
   return (
     <>
       <AppTopBar />
-      <header className="nm-hd">
-        <div className="nm-wrap nm-hd-row">
-          <Link href={s} className="nm-hd-logo" aria-label={`${site.name} home`}>
-            <span className="nm-hd-90" aria-hidden="true">90</span>
-            <span className="nm-hd-word">NinetyMins</span>
-          </Link>
-          <nav className="nm-hd-quick" aria-label="Main">
-            <Link href={s} className="nm-hd-live">
-              <i className="nm-dot" aria-hidden="true" />
-              Live scores
-            </Link>
-            <Link href={`${s}/today`}>Today</Link>
-            <Link href={`${s}/live-tv`}>Live TV</Link>
-            <Link href={`${s}/highlights`}>Highlights</Link>
-            <Link href={`${s}/tomorrow`}>Tomorrow</Link>
-            <Link href={`${s}/archive`}>Stories</Link>
+      <header className="nm-hd nv-hd">
+        <div className="nm-wrap nv-hd-row">
+          <Logo href={s} name={site.name} />
+          <nav className="nv-nav" aria-label="Main">
+            {NAV.map(([p, label]) => (
+              <Link href={`${s}${p}`} key={label} className={p === "" ? "nv-nav-live" : undefined}>
+                {p === "" ? <i className="nv-live-dot" aria-hidden="true" /> : null}
+                {label}
+              </Link>
+            ))}
+            <NavMore>
+              {MORE.map((g) => (
+                <div key={g.h}>
+                  <b>{g.h}</b>
+                  {g.links.map(([p, label]) => (
+                    <Link href={`${s}${p}`} key={p}>
+                      {label}
+                    </Link>
+                  ))}
+                </div>
+              ))}
+            </NavMore>
           </nav>
-          <div className="nm-hd-act">
+          <div className="nv-hd-act">
+            <Link href={`${s}/search`} className="nv-icon" aria-label="Search">
+              <SearchIcon />
+            </Link>
             <ThemeToggle />
-            <a className="nm-hd-app" href={PLAY_URL("header")} target="_blank" rel="noopener">
+            <a className="nv-getapp" href={PLAY_URL("header")} target="_blank" rel="noopener">
               Get the app
             </a>
           </div>
         </div>
-        <nav className="nm-hd-sports" aria-label="Sports and competitions">
-          <div className="nm-wrap nm-hd-sports-in">
-            {SPORT_NAV.map(([path, label]) => (
-              <Link href={`${s}${path}`} key={path}>
-                {label}
-              </Link>
-            ))}
-          </div>
-        </nav>
       </header>
     </>
   );
@@ -90,24 +140,31 @@ export function Footer({ site }: { site: Site }) {
   const s = `/s/${site.id}`;
   const year = new Date().getFullYear();
   return (
-    <footer className="nm-footer">
+    <footer className="nm-footer nv-footer">
       <div className="nm-wrap">
         <AppBanner variant="footer" medium="footer" />
-        <div className="nm-foot-grid">
-          <div>
-            <Link href={s} className="nm-logo" aria-label={`${site.name} home`}>
-              <span className="nm-hd-90" aria-hidden="true">90</span>
-              <span className="nm-hd-word">NinetyMins</span>
-            </Link>
-            <p>
-              Independent viewing guides: dates, kick-off times by timezone and legal ways to watch. We are not
-              affiliated with any league, club or broadcaster — always confirm with the official rights holder.
+        <div className="nv-foot-grid">
+          <div className="nv-foot-brand">
+            <Logo href={s} name={site.name} />
+            <p data-nosnippet="">
+              Live scores and legal viewing guides. Not affiliated with any league, club or broadcaster.
             </p>
+          </div>
+          <div>
+            <h4>Scores</h4>
+            <ul>
+              <li><Link href={s}>Live scores</Link></li>
+              <li><Link href={`${s}/today`}>Today&apos;s matches</Link></li>
+              <li><Link href={`${s}/tomorrow`}>Tomorrow</Link></li>
+              <li><Link href={`${s}/scores`}>Football</Link></li>
+              <li><Link href={`${s}/cricket`}>Cricket</Link></li>
+              <li><Link href={`${s}/saff`}>SAFF live centre</Link></li>
+            </ul>
           </div>
           <div>
             <h4>Competitions</h4>
             <ul>
-              {NM_COMPS.slice(0, 5).map((c) => (
+              {NM_COMPS.map((c) => (
                 <li key={c.slug}>
                   <Link href={`${s}/topic/${c.slug}`}>{c.label}</Link>
                 </li>
@@ -115,33 +172,26 @@ export function Footer({ site }: { site: Site }) {
             </ul>
           </div>
           <div>
-            <h4>More sports</h4>
+            <h4>Watch</h4>
             <ul>
-              {NM_COMPS.slice(5).map((c) => (
-                <li key={c.slug}>
-                  <Link href={`${s}/topic/${c.slug}`}>{c.label}</Link>
-                </li>
-              ))}
+              <li><Link href={`${s}/live-tv`}>Live TV</Link></li>
+              <li><Link href={`${s}/highlights`}>Highlights</Link></li>
+              <li><Link href={`${s}/archive`}>All stories</Link></li>
+              <li><Link href={`${s}/widgets`}>Score widgets</Link></li>
             </ul>
           </div>
           <div>
             <h4>NinetyMins</h4>
             <ul>
-              <li><Link href={`${s}/scores`}>Live scores</Link></li>
-              <li><Link href={`${s}/today`}>Today&apos;s matches</Link></li>
-              <li><Link href={`${s}/saff`}>SAFF live centre</Link></li>
-              <li><Link href={`${s}/live-tv`}>Live TV</Link></li>
-              <li><Link href={`${s}/highlights`}>Highlights</Link></li>
               <li><Link href={`${s}/about`}>About</Link></li>
               <li><Link href={`${s}/contact`}>Contact</Link></li>
               <li><Link href={`${s}/privacy`}>Privacy Policy</Link></li>
               <li><Link href={`${s}/terms`}>Terms</Link></li>
               <li><Link href={`${s}/disclaimer`}>Disclaimer</Link></li>
-              <li><Link href={`${s}/archive`}>All articles</Link></li>
             </ul>
           </div>
         </div>
-        <div className="nm-foot-base">
+        <div className="nv-foot-base">
           <span>© {year} {site.name}</span>
           <span>Never miss a match.</span>
         </div>
@@ -153,7 +203,7 @@ export function Footer({ site }: { site: Site }) {
 /** Page wrapper: fonts in scope + header + footer. */
 export function Shell({ site, strip, home = false, children }: { site: Site; strip?: Article[]; home?: boolean; children: ReactNode }) {
   return (
-    <div className={`nm-root ${fontVars}`}>
+    <div className={`nm-root nv ${fontVars}`}>
       <a href="#nm-main" className="nm-skip">
         Skip to content
       </a>
@@ -162,6 +212,13 @@ export function Shell({ site, strip, home = false, children }: { site: Site; str
         dangerouslySetInnerHTML={{
           __html:
             "try{var t=localStorage.getItem('nm-theme');document.documentElement.dataset.nmTheme=t||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){}",
+        }}
+      />
+      <script
+        // Hide images that fail to load (dead crests, removed thumbnails); the frame keeps its placeholder.
+        dangerouslySetInnerHTML={{
+          __html:
+            "document.addEventListener('error',function(e){var t=e.target;if(t&&t.tagName==='IMG')t.setAttribute('data-broken','')},true);addEventListener('load',function(){document.querySelectorAll('img').forEach(function(i){if(i.complete&&i.getAttribute('src')&&!i.naturalWidth)i.setAttribute('data-broken','')})})",
         }}
       />
       <Header site={site} home={home} />
