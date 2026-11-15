@@ -42,7 +42,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ site: st
       (
         <div style={{ width: "100%", height: "100%", display: "flex", position: "relative", fontFamily: "Inter", color: "#fff", background: "#0b1220" }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={artUri(title, { label: false, w: z(1200), h: z(630) })} width={z(1200)} height={z(630)} alt="" style={{ position: "absolute", top: 0, left: 0, opacity: 0.55 }} />
+          <img src={artUri(title, { label: false, w: z(1200), h: z(630), theme: "dark" })} width={z(1200)} height={z(630)} alt="" style={{ position: "absolute", top: 0, left: 0, opacity: 0.55 }} />
           <div style={{ display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: `${z(64)}px ${z(200)}px`, width: "100%", height: "100%",
             backgroundImage: "linear-gradient(180deg, rgba(11,18,32,0) 30%, rgba(11,18,32,.92) 100%)" }}>
             {fig ? <div style={{ display: "flex", fontSize: z(96), fontWeight: 800, letterSpacing: -z(3), lineHeight: 1 }}>{fig.text}</div> : null}

@@ -20,7 +20,7 @@ export default function InfoPage({
   wide?: boolean;
 }) {
   return (
-    <div className={`cn-root ${fontVars}`}>
+    <div className={`cn-root cv ${fontVars}`}>
       <CnHeader site={site} />
       <section className="cn-section">
         <div className={`cn-wrap${wide ? " cd-page" : ""}`} style={{ maxWidth: wide ? 980 : 820 }}>

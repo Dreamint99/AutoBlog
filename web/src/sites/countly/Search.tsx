@@ -13,7 +13,7 @@ export default function Search({
   results: Article[];
 }) {
   return (
-    <div className={`cn-root ${fontVars}`}>
+    <div className={`cn-root cv ${fontVars}`}>
       <CnHeader site={site} />
 
       <section className="cn-section">

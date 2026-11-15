@@ -32,7 +32,7 @@ export default async function Page({ params }: { params: Promise<{ site: string 
   if (!site || !SUPPORTED.has(site.id)) notFound();
 
   return (
-    <div className={`cn-root ${fontVars}`}>
+    <div className={`cn-root cv ${fontVars}`}>
       <CnHeader site={site} />
       <section className="cn-section">
         <div className="cn-wrap">

@@ -48,7 +48,7 @@ function Top10Card({ siteId, article }: { siteId: string; article: Article }) {
 
 export default function Top10({ site, articles }: { site: Site; articles: Article[] }) {
   return (
-    <div className={`cn-root ${fontVars}`}>
+    <div className={`cn-root cv ${fontVars}`}>
       <CnHeader site={site} />
 
       {/* ── HERO ── */}

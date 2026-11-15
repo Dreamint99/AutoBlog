@@ -148,7 +148,7 @@ export default function AiTools({
   const latest = live.reduce((m, t) => (t.updated_at > m ? t.updated_at : m), "");
 
   return (
-    <div className={`cn-root ${fontVars}`}>
+    <div className={`cn-root cv ${fontVars}`}>
       <CnHeader site={site} />
 
       {/* ── HERO ── */}

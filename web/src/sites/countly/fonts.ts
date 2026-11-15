@@ -1,13 +1,13 @@
-// Premium type pairing for Countly, loaded via next/font (self-hosted, no CLS).
-// Fraunces — an expressive editorial serif for display headlines & the wordmark.
-// Inter — a clean grotesk for body, UI and tabular figures.
-// Both are variable fonts; exposed as CSS variables consumed by theme.css.
-import { Fraunces, Inter } from "next/font/google";
+// Type pairing for Countly, loaded via next/font (self-hosted, size-adjusted fallbacks → no CLS).
+// Inter Tight — a tight grotesk for headlines, figures and the wordmark.
+// Inter — body, UI and tabular figures.
+// Both are variable fonts; exposed as CSS variables consumed by theme.css / v2.css.
+// (The variable name --font-display is kept so every existing rule picks up the new face.)
+import { Inter_Tight, Inter } from "next/font/google";
 
-export const display = Fraunces({
+export const display = Inter_Tight({
   subsets: ["latin"],
   variable: "--font-display",
-  style: ["normal", "italic"],
   display: "swap",
 });
 

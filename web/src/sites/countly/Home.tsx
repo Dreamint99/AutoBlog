@@ -2,6 +2,7 @@ import "./theme.css";
 import "./editorial.css";
 import "./bold.css";
 import "./data.css";
+import "./v2.css";
 import DataHero from "./DataHero";
 import Link from "next/link";
 import { fontVars } from "./fonts";
@@ -17,28 +18,17 @@ import { heroSrc, thumb } from "@/lib/img";
  *  article's og:image (image_url) is unchanged. */
 const src = (a: Article) => `/card/${a.slug}`;
 
+/** Root class for every Countly page: fonts + the v2 design layer (`cv`). */
+export const rootClass = `cn-root cv ${fontVars}`;
+
 /* ────────────────────────────────────────────────────────────
    Inline icons (no client JS, no extra packages)
    ──────────────────────────────────────────────────────────── */
-function IconChart() {
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M4 20V4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-      <path d="M4 20h16" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-      <rect x="7" y="12" width="3" height="5" rx="0.6" fill="currentColor" opacity=".25" />
-      <rect x="7" y="12" width="3" height="5" rx="0.6" stroke="currentColor" strokeWidth="1.5" />
-      <rect x="12.5" y="8" width="3" height="9" rx="0.6" fill="currentColor" opacity=".25" />
-      <rect x="12.5" y="8" width="3" height="9" rx="0.6" stroke="currentColor" strokeWidth="1.5" />
-      <rect x="18" y="5" width="3" height="12" rx="0.6" fill="currentColor" opacity=".25" />
-      <rect x="18" y="5" width="3" height="12" rx="0.6" stroke="currentColor" strokeWidth="1.5" />
-    </svg>
-  );
-}
 export function IconSearch() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <circle cx="11" cy="11" r="6.5" stroke="currentColor" strokeWidth="1.8" />
-      <path d="m16 16 4.5 4.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="11" cy="11" r="6.5" stroke="currentColor" strokeWidth="2" />
+      <path d="m16 16 4.5 4.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
     </svg>
   );
 }
@@ -50,11 +40,17 @@ function IconClock() {
     </svg>
   );
 }
-function IconCalendar() {
+function IconMenu() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+}
+function IconDown() {
   return (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <rect x="3.5" y="5" width="17" height="15.5" rx="2.5" stroke="currentColor" strokeWidth="1.8" />
-      <path d="M3.5 9.5h17M8 3.5v3M16 3.5v3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+      <path d="m6 9 6 6 6-6" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -105,8 +101,8 @@ function deskOf(a: Article): string {
   return "";
 }
 
-/** Section label shown above a headline (Forbes-style kicker). */
-function kickerOf(a: Article): string {
+/** Section label shown above a headline (kicker). */
+export function kickerOf(a: Article): string {
   if (WEALTH.test(a.title)) return "Wealth";
   const slug = deskOf(a);
   return CN_CATEGORIES.find((c) => c.slug === slug)?.label || "Data";
@@ -130,145 +126,134 @@ function picker(all: Article[]) {
   };
 }
 
-function todayLine(): string {
-  return new Date().toLocaleDateString("en-US", { weekday: "long", year: "numeric", month: "long", day: "numeric" });
-}
-
 /* ────────────────────────────────────────────────────────────
-   Shared header — masthead + section rail. Used by Home and every
-   other Countly page (topic, Top 10, search, info, AI tools).
+   Shared header — slim live ticker + sticky white bar. Used by Home
+   and every other Countly page (topic, Top 10, search, info, data…).
+   No client JS: "More" and the mobile menu are <details> disclosures.
    ──────────────────────────────────────────────────────────── */
+const PRIMARY: Array<[string, string]> = [
+  ["/data", "Country Data"],
+  ["/top10", "Top 10"],
+  ["/search?q=richest", "Wealth"],
+  ["/topic/ai-chatgpt", "AI"],
+  ["/topic/social-media", "Social"],
+  ["/topic/companies", "Companies"],
+];
+const MORE: Array<[string, string]> = [
+  ["/topic/internet", "Internet"],
+  ["/topic/countries", "Countries"],
+  ["/topic/rankings", "Rankings"],
+  ["/crypto", "Crypto prices"],
+  ["/currency-converter", "Currency converter"],
+  ["/best-ai-tools", "Best AI tools"],
+];
+
 export function CnHeader({ site }: { site: { id: string; name: string } }) {
   const s = `/s/${site.id}`;
   return (
-    <header className="cx-masthead">
-      <div className="cx-util">
-        <div className="cx-wrap">
-          <span className="cx-util-date">{todayLine()}</span>
-          <div className="cx-util-links">
-            <Link href={`${s}/top10`}>The Lists</Link>
-            <Link href={`${s}/best-ai-tools`}>Best AI Tools</Link>
-            <a href="#cn-newsletter">Newsletter</a>
-          </div>
-        </div>
-      </div>
-      <div className="cx-brandrow">
-        <Link href={s} className="cx-logo cx-logo-img" aria-label={`${site.name} home`}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/brand/countly-logo-dark.webp" alt="Countly" width={92} height={86} />
-          <small>The World in Numbers</small>
-        </Link>
-      </div>
-      <div className="cx-navrow">
-        <div className="cx-wrap">
-          <nav className="cx-nav" aria-label="Sections">
-            <Link href={s}>Latest</Link>
-            <Link href={`${s}/data`}>Country Data</Link>
-            <Link href={`${s}/top10`} className="cx-nav-gold">
-              Top 10 Lists
-            </Link>
-            <Link href={`${s}/search?q=richest`}>Wealth</Link>
-            <Link href={`${s}/topic/ai-chatgpt`}>AI</Link>
-            <Link href={`${s}/topic/social-media`}>Social</Link>
-            <Link href={`${s}/topic/companies`}>Companies</Link>
-            <Link href={`${s}/topic/internet`}>Internet</Link>
-            <Link href={`${s}/topic/countries`}>Countries</Link>
-            <Link href={`${s}/topic/rankings`}>Rankings</Link>
-            <Link href={`${s}/crypto`}>Crypto</Link>
-            <Link href={`${s}/currency-converter`}>Converter</Link>
-            <Link href={`${s}/best-ai-tools`}>AI Tools</Link>
+    <>
+      <LiveTicker />
+      <header className="cv-bar">
+        <div className="cv-wrap cv-bar-in">
+          <details className="cv-burger">
+            <summary aria-label="Open menu">
+              <IconMenu />
+            </summary>
+            <nav className="cv-drawer" aria-label="All sections">
+              <Link href={s}>Latest</Link>
+              {[...PRIMARY, ...MORE].map(([h, l]) => (
+                <Link href={`${s}${h}`} key={h}>
+                  {l}
+                </Link>
+              ))}
+            </nav>
+          </details>
+
+          <Link href={s} className="cv-logo" aria-label={`${site.name} home`}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/brand/countly-mark-96.webp" alt="" width={40} height={40} />
+            <span className="cv-word">
+              <b>Countly</b>
+              <small>The world in numbers</small>
+            </span>
+          </Link>
+
+          <nav className="cv-nav" aria-label="Sections">
+            {PRIMARY.map(([h, l]) => (
+              <Link href={`${s}${h}`} key={h}>
+                {l}
+              </Link>
+            ))}
+            <details className="cv-more">
+              <summary>
+                More <IconDown />
+              </summary>
+              <div className="cv-more-menu">
+                {MORE.map(([h, l]) => (
+                  <Link href={`${s}${h}`} key={h}>
+                    {l}
+                  </Link>
+                ))}
+              </div>
+            </details>
           </nav>
-          <form className="cx-navsearch" action={`${s}/search`} method="get" role="search">
+
+          <form className="cv-search" action={`${s}/search`} method="get" role="search">
             <IconSearch />
-            <input type="search" name="q" placeholder="Search data…" aria-label="Search" />
+            <input type="search" name="q" placeholder="Search data" aria-label="Search" />
           </form>
+          <Link href={`${s}/search`} className="cv-search-btn" aria-label="Search">
+            <IconSearch />
+          </Link>
         </div>
-      </div>
-      <div className="cx-disclaim">
-        Independent data &amp; statistics — best-available figures compiled from public sources. Verify before citing.
-      </div>
-    </header>
+      </header>
+    </>
   );
 }
 
-function Byline({ article }: { article: Article }) {
-  return (
-    <div className="cx-byline">
-      <b>Countly Data Desk</b>
-      <span>·</span>
-      <span>{fmtDate(article.created_at)}</span>
-      {article.reading_time ? (
-        <>
-          <span>·</span>
-          <span>{article.reading_time} min read</span>
-        </>
-      ) : null}
-    </div>
+/* ────────────────────────────────────────────────────────────
+   Cards
+   ──────────────────────────────────────────────────────────── */
+function Art({ a, priority = false }: { a: Article; priority?: boolean }) {
+  return priority ? (
+    <img src={heroSrc(src(a), a.title)} alt={a.title} width={1200} height={630} fetchPriority="high" />
+  ) : (
+    <img src={thumb(src(a), a.title)} alt={a.title} width={600} height={315} loading="lazy" decoding="async" />
   );
 }
 
-function Img({ href, article, className = "", badge, priority = false }: { href: string; article: Article; className?: string; badge?: string; priority?: boolean }) {
-  return (
-    <Link href={href} className={`cx-img ${className}`} aria-label={article.title} tabIndex={-1}>
-      {priority
-        ? <img src={heroSrc(src(article), article.title)} alt={article.title} fetchPriority="high" />
-        : <img src={thumb(src(article), article.title)} alt={article.title} loading="lazy" decoding="async" />}
-      {badge ? <span className="cx-badge">{badge}</span> : null}
-    </Link>
-  );
-}
-
-/* Kept for the topic / search pages, which still use the card grid. */
-function ArticleMeta({ article }: { article: Article }) {
-  return (
-    <div className="cn-meta">
-      <span>
-        <IconClock />
-        {article.reading_time} min read
-      </span>
-      <span className="cn-dot" aria-hidden="true" />
-      <span>
-        <IconCalendar />
-        {fmtDate(article.created_at)}
-      </span>
-    </div>
-  );
-}
-
-function CardChips({ tags }: { tags: string[] }) {
-  if (tags.length === 0) return null;
-  return (
-    <div className="cn-chips">
-      {tags.slice(0, 2).map((t) => (
-        <span className="cn-chip" key={t}>
-          {t}
-        </span>
-      ))}
-    </div>
-  );
-}
-
-export function StatCard({ siteId, article, index }: { siteId: string; article: Article; index: number }) {
+/** The one story card used across the site: art, category tag, headline, date. */
+export function Card({ siteId, article, priority = false }: { siteId: string; article: Article; priority?: boolean }) {
   const href = `/s/${siteId}/${article.slug}`;
   return (
-    <article className="cn-card">
-      <Link href={href} className="cn-card-media" aria-label={article.title}>
-        <img src={thumb(src(article), article.title)} alt={article.title} loading="lazy" decoding="async" />
-        <span className="cn-card-index" aria-hidden="true">
-          {String(index).padStart(2, "0")}
-        </span>
+    <article className="cv-card">
+      <Link href={href} className="cv-card-art" tabIndex={-1} aria-hidden="true">
+        <Art a={article} priority={priority} />
       </Link>
-      <div className="cn-card-body">
-        <CardChips tags={article.tags} />
-        <h3>
-          <Link href={href}>{article.title}</Link>
-        </h3>
-        <p className="cn-excerpt">{article.excerpt || article.meta_description}</p>
-        <div className="cn-card-foot">
-          <ArticleMeta article={article} />
-        </div>
-      </div>
+      <span className="cv-tag">{kickerOf(article)}</span>
+      <h3>
+        <Link href={href}>{article.title}</Link>
+      </h3>
+      <time dateTime={article.created_at}>{fmtDate(article.created_at)}</time>
     </article>
+  );
+}
+
+/** Kept for the topic / search pages (same signature as before), now the v2 card. */
+export function StatCard({ siteId, article }: { siteId: string; article: Article; index?: number }) {
+  return <Card siteId={siteId} article={article} />;
+}
+
+function SecHead({ title, href, more = "See all" }: { title: string; href?: string; more?: string }) {
+  return (
+    <div className="cv-sechead">
+      <h2>{title}</h2>
+      {href ? (
+        <Link href={href} className="cv-seeall">
+          {more} <IconArrow />
+        </Link>
+      ) : null}
+    </div>
   );
 }
 
@@ -283,334 +268,246 @@ export default function Home({ site, articles }: SiteHomeProps) {
   const take = picker(articles);
 
   const [lead] = take(null, 1);
-  const topStories = take(null, 4);
+  const trending = take(null, 5);
   const lists = take(top10Articles(articles), 6);
-  const wealthAll = articles.filter((a) => WEALTH.test(a.title));
-  const wealth = take(wealthAll, 6);
+  const wealth = take(articles.filter((a) => WEALTH.test(a.title)), 4);
   const desks = DESKS.map((slug) => ({
     cat: CN_CATEGORIES.find((c) => c.slug === slug)!,
     items: take(articles.filter((a) => !WEALTH.test(a.title) && deskOf(a) === slug), 4),
   })).filter((d) => d.items.length >= 2);
-  const river = take(null, 14);
-
+  const latest = take(null, 8);
 
   return (
-    <div className={`cn-root ${fontVars}`}>
-      <LiveTicker />
+    <div className={rootClass}>
       <CnHeader site={site} />
 
-      <DataHero s={s} />
-
-      {articles.length === 0 ? (
-        <section className="cx-sec">
-          <div className="cx-wrap">
-            <div className="cn-emptywrap">
-              <span className="cn-empty-ico">
-                <IconCompass />
-              </span>
-              <h3>New data reports are on the way</h3>
-              <p>We&apos;re compiling sourced, dated statistics on AI, social media, companies and countries.</p>
-            </div>
-          </div>
-        </section>
-      ) : null}
-
-      {/* ── LEAD PACKAGE ── */}
-      {lead ? (
-        <div className="cx-wrap">
-          <section className="cx-lead" aria-label="Top stories">
-            <div>
-              <div className="cx-colhead">Top Stories</div>
-              <div className="cx-stack">
-                {topStories.map((a, i) => (
-                  <article className="cx-stack-item" key={a.id}>
-                    {i === 0 ? <Img href={href(a)} article={a} priority /> : null}
-                    <span className="cx-kicker">{kickerOf(a)}</span>
-                    <h3 className="cx-hl">
-                      <Link href={href(a)}>{a.title}</Link>
-                    </h3>
-                    <div className="cx-byline">{fmtDate(a.created_at)}</div>
-                  </article>
-                ))}
+      <main>
+        {articles.length === 0 ? (
+          <section className="cv-sec">
+            <div className="cv-wrap">
+              <div className="cn-emptywrap">
+                <span className="cn-empty-ico">
+                  <IconCompass />
+                </span>
+                <h3>New data reports are on the way</h3>
+                <p>We&apos;re compiling sourced, dated statistics on AI, social media, companies and countries.</p>
               </div>
             </div>
-
-            <article className="cx-leadstory">
-              <Img href={href(lead)} article={lead} badge="Data report" priority />
-              <span className="cx-kicker">{kickerOf(lead)}</span>
-              <h1 className="cx-hl">
-                <Link href={href(lead)}>{lead.title}</Link>
-              </h1>
-              <p className="cx-dek">{lead.excerpt || lead.meta_description}</p>
-              <Byline article={lead} />
-            </article>
-
-            <aside>
-              <div className="cx-colhead">The Countly Lists</div>
-              <div className="cx-lists">
-                {lists.map((a, i) => (
-                  <Link href={href(a)} className="cx-listitem" key={a.id}>
-                    <span className="cx-listnum">{i + 1}</span>
-                    <span>
-                      <b>{a.title}</b>
-                      <small>Top {topNumber(a.title)} · {fmtDate(a.created_at)}</small>
-                    </span>
-                  </Link>
-                ))}
-              </div>
-              <div className="cx-tools">
-                <span className="cx-kicker gold">Live tools</span>
-                <Link href={`${s}/crypto`}>
-                  Crypto prices <span>›</span>
-                </Link>
-                <Link href={`${s}/currency-converter`}>
-                  Currency converter <span>›</span>
-                </Link>
-                <Link href={`${s}/best-ai-tools`}>
-                  Best AI tools ranked <span>›</span>
-                </Link>
-                <Link href={`${s}/top10`}>
-                  All Top 10 lists <span>›</span>
-                </Link>
-              </div>
-            </aside>
           </section>
-        </div>
-      ) : null}
+        ) : null}
 
-      {/* ── WEALTH BAND ── */}
-      {wealth.length >= 3 ? (
-        <section className="cx-wealth" aria-label="Wealth">
-          <div className="cx-wrap">
-            <div className="cx-sechead">
-              <h2>
-                Wealth &amp; <em>Billionaires</em>
-              </h2>
-              <Link href={`${s}/search?q=richest`} className="cx-more">
-                All rich lists →
-              </Link>
-            </div>
-            <div className="cx-wealth-grid">
-              <article className="cx-wealth-lead">
-                <Img href={href(wealth[0])} article={wealth[0]} />
-                <span className="cx-kicker gold">The Rich List</span>
-                <h3 className="cx-hl">
-                  <Link href={href(wealth[0])}>{wealth[0].title}</Link>
-                </h3>
-                <p className="cx-dek">{wealth[0].excerpt || wealth[0].meta_description}</p>
+        {/* ── HERO: featured story + trending ── */}
+        {lead ? (
+          <section className="cv-sec cv-hero" aria-label="Top stories">
+            <div className="cv-wrap cv-hero-grid">
+              <article className="cv-feature">
+                <Link href={href(lead)} className="cv-card-art" tabIndex={-1} aria-hidden="true">
+                  <Art a={lead} priority />
+                </Link>
+                <div className="cv-feature-body">
+                  <span className="cv-tag">{kickerOf(lead)}</span>
+                  <h1>
+                    <Link href={href(lead)}>{lead.title}</Link>
+                  </h1>
+                  <p className="cv-dek">{lead.excerpt || lead.meta_description}</p>
+                  <div className="cv-meta">
+                    <span>Countly Data Desk</span>
+                    <time dateTime={lead.created_at}>{fmtDate(lead.created_at)}</time>
+                    {lead.reading_time ? (
+                      <span>
+                        <IconClock /> {lead.reading_time} min read
+                      </span>
+                    ) : null}
+                  </div>
+                </div>
               </article>
-              <div className="cx-wealth-list">
-                {wealth.slice(1).map((a, i) => (
-                  <Link href={href(a)} key={a.id}>
-                    <span className="cx-rank">{String(i + 1).padStart(2, "0")}</span>
-                    <span>
-                      <b>{a.title}</b>
-                      <small>{fmtDate(a.created_at)}</small>
-                    </span>
-                    <span className="cx-img cx-thumb">
-                      <img src={thumb(src(a), a.title)} alt={a.title} loading="lazy" decoding="async" />
-                    </span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-      ) : null}
 
-      {/* ── TOPIC DESKS ── */}
-      {desks.length ? (
-        <section className="cx-sec">
-          <div className="cx-wrap cx-desks">
-            {desks.map(({ cat, items }) => {
-              const [top, ...more] = items;
-              return (
-                <div className="cx-desk" key={cat.slug}>
-                  <div className="cx-sechead">
-                    <h2>{cat.label}</h2>
-                    <Link href={`${s}/topic/${cat.slug}`} className="cx-more">
-                      More →
-                    </Link>
-                  </div>
-                  <article className="cx-desk-top">
-                    <Img href={href(top)} article={top} />
-                    <div>
-                      <h3 className="cx-hl">
-                        <Link href={href(top)}>{top.title}</Link>
-                      </h3>
-                      <p className="cx-dek">{top.excerpt || top.meta_description}</p>
-                    </div>
-                  </article>
-                  <ul>
-                    {more.map((a) => (
-                      <li key={a.id}>
-                        <h4 className="cx-hl">
-                          <Link href={href(a)}>{a.title}</Link>
-                        </h4>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              );
-            })}
-          </div>
-        </section>
-      ) : null}
-
-      {/* ── LATEST RIVER + RAIL ── */}
-      {river.length ? (
-        <section className="cx-sec">
-          <div className="cx-wrap">
-            <div className="cx-sechead">
-              <h2>Latest</h2>
-              <Link href={`${s}/search?q=2026`} className="cx-more">
-                All reports →
-              </Link>
-            </div>
-            <div className="cx-river-grid">
-              <div>
-                {river.map((a) => (
-                  <article className="cx-row" key={a.id}>
-                    <div>
-                      <span className="cx-kicker">{kickerOf(a)}</span>
-                      <h3 className="cx-hl">
+              <aside className="cv-trending" aria-label="Trending">
+                <h2 className="cv-label">Trending</h2>
+                <ol>
+                  {trending.map((a, i) => (
+                    <li key={a.id}>
+                      <span className="cv-num">{i + 1}</span>
+                      <div>
+                        <span className="cv-tag">{kickerOf(a)}</span>
                         <Link href={href(a)}>{a.title}</Link>
-                      </h3>
-                      <p className="cx-dek">{a.excerpt || a.meta_description}</p>
-                      <Byline article={a} />
-                    </div>
-                    <Img href={href(a)} article={a} />
-                  </article>
-                ))}
-              </div>
-
-              <aside className="cx-rail">
-                <div className="cx-railbox dark">
-                  <span className="cx-kicker gold">The Countly Lists</span>
-                  <h3>Rankings, re-checked every day.</h3>
-                  <p>Richest people by country, biggest companies, most-used apps — sourced, dated and ranked.</p>
-                  <Link href={`${s}/top10`} className="cx-btn">
-                    Explore the lists →
-                  </Link>
-                </div>
-                <div className="cx-railbox">
-                  <h3>Browse by topic</h3>
-                  <div className="cx-topics">
-                    {CN_CATEGORIES.map((c) => (
-                      <Link href={`${s}/topic/${c.slug}`} key={c.slug}>
-                        {c.label}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-                <div className="cx-railbox">
-                  <h3>How we work</h3>
-                  <div className="cx-method">
-                    <div>
-                      <b>Sourced figures</b>
-                      Filings, government databases and industry reports — named in every report.
-                    </div>
-                    <div>
-                      <b>Estimates, labelled</b>
-                      No false precision: official and estimated numbers are always marked apart.
-                    </div>
-                    <div>
-                      <b>Dated &amp; updated</b>
-                      Every report carries its date. Re-verify before you cite.
-                    </div>
-                  </div>
-                </div>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
               </aside>
             </div>
+          </section>
+        ) : null}
+
+        {/* ── WORLD IN NUMBERS ── */}
+        <DataHero s={s} />
+
+        {/* ── WEALTH ── */}
+        {wealth.length >= 2 ? (
+          <section className="cv-sec" aria-label="Wealth">
+            <div className="cv-wrap">
+              <SecHead title="Wealth & Billionaires" href={`${s}/search?q=richest`} />
+              <div className="cv-grid">
+                {wealth.map((a) => (
+                  <Card siteId={site.id} article={a} key={a.id} />
+                ))}
+              </div>
+            </div>
+          </section>
+        ) : null}
+
+        {/* ── TOP 10 LISTS ── */}
+        {lists.length ? (
+          <section className="cv-sec" aria-label="Top 10 lists">
+            <div className="cv-wrap">
+              <SecHead title="The Countly Lists" href={`${s}/top10`} more="All Top 10 lists" />
+              <ol className="cv-lists">
+                {lists.map((a, i) => (
+                  <li key={a.id}>
+                    <Link href={href(a)}>
+                      <span className="cv-num">{String(i + 1).padStart(2, "0")}</span>
+                      <span>
+                        <b>{a.title}</b>
+                        <small>
+                          Top {topNumber(a.title)} · {fmtDate(a.created_at)}
+                        </small>
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </section>
+        ) : null}
+
+        {/* ── TOPIC DESKS ── */}
+        {desks.map(({ cat, items }) => (
+          <section className="cv-sec" key={cat.slug} aria-label={cat.label}>
+            <div className="cv-wrap">
+              <SecHead title={cat.label} href={`${s}/topic/${cat.slug}`} />
+              <div className="cv-grid">
+                {items.map((a) => (
+                  <Card siteId={site.id} article={a} key={a.id} />
+                ))}
+              </div>
+            </div>
+          </section>
+        ))}
+
+        {/* ── TOOLS ── */}
+        <section className="cv-sec" aria-label="Tools">
+          <div className="cv-wrap">
+            <SecHead title="Live tools" />
+            <div className="cv-tools">
+              <Link href={`${s}/crypto`}>
+                <b>Crypto prices</b>
+                <small>Live market data</small>
+              </Link>
+              <Link href={`${s}/currency-converter`}>
+                <b>Currency converter</b>
+                <small>Daily exchange rates</small>
+              </Link>
+              <Link href={`${s}/data/compare`}>
+                <b>Compare countries</b>
+                <small>Population &amp; economy</small>
+              </Link>
+              <Link href={`${s}/best-ai-tools`}>
+                <b>Best AI tools</b>
+                <small>Ranked &amp; reviewed</small>
+              </Link>
+            </div>
           </div>
         </section>
-      ) : null}
 
-      <div id="cn-newsletter">
-        <NewsletterForm />
-      </div>
+        {/* ── LATEST ── */}
+        {latest.length ? (
+          <section className="cv-sec" aria-label="Latest">
+            <div className="cv-wrap">
+              <SecHead title="Latest reports" href={`${s}/archive`} more="All reports" />
+              <div className="cv-grid">
+                {latest.map((a) => (
+                  <Card siteId={site.id} article={a} key={a.id} />
+                ))}
+              </div>
+            </div>
+          </section>
+        ) : null}
+
+        <div id="cn-newsletter">
+          <NewsletterForm />
+        </div>
+      </main>
       <SiteFooter siteName={site.name} siteId={site.id} domain={site.domain} />
     </div>
   );
 }
 
 /* ────────────────────────────────────────────────────────────
-   Footer (shared shape with Article)
+   Footer (shared by every Countly page)
    ──────────────────────────────────────────────────────────── */
 export function SiteFooter({ siteName, siteId, domain }: { siteName: string; siteId: string; domain: string }) {
   const year = new Date().getFullYear();
+  const s = `/s/${siteId}`;
   return (
-    <footer className="cn-footer">
-      <div className="cn-wrap">
+    <footer className="cv-footer">
+      <div className="cv-wrap">
         <HouseAd />
-        <div className="cn-foot-top">
-          <div>
-            <Link href={`/s/${siteId}`} className="cn-brand" aria-label={`${siteName} home`}>
-              <span className="cn-logo cn-logo-img">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/brand/countly-mark.webp" alt="" width={34} height={21} />
-              </span>
-              <span className="cn-wordmark">
-                <b>
-                  Count<span>ly</span>
-                </b>
-                <small>The World in Numbers</small>
+        <div className="cv-foot-top">
+          <div className="cv-foot-brand">
+            <Link href={s} className="cv-logo" aria-label={`${siteName} home`}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/brand/countly-mark-96.webp" alt="" width={36} height={36} loading="lazy" />
+              <span className="cv-word">
+                <b>Countly</b>
+                <small>The world in numbers</small>
               </span>
             </Link>
-            <p className="cn-foot-about">
+            <p>
               {siteName} is an independent data &amp; statistics publication covering technology, AI, social media,
               companies, countries and global markets. We are not affiliated with any analytics company.
             </p>
           </div>
-          <div className="cn-foot-cols">
-            <div>
-              <h4>Topics</h4>
-              <ul>
-                <li>
-                  <Link href={`/s/${siteId}/topic/ai-chatgpt`}>AI &amp; ChatGPT</Link>
-                </li>
-                <li>
-                  <Link href={`/s/${siteId}/topic/social-media`}>Social media</Link>
-                </li>
-                <li>
-                  <Link href={`/s/${siteId}/topic/companies`}>Companies</Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4>About</h4>
-              <ul>
-                <li>
-                  <Link href={`/s/${siteId}/about`}>About us</Link>
-                </li>
-                <li>
-                  <Link href={`/s/${siteId}/contact`}>Contact</Link>
-                </li>
-                <li>
-                  <Link href={`/s/${siteId}/privacy`}>Privacy Policy</Link>
-                </li>
-                <li>
-                  <Link href={`/s/${siteId}/terms`}>Terms of Service</Link>
-                </li>
-                <li>
-                  <Link href={`/s/${siteId}/disclaimer`}>Disclaimer</Link>
-                </li>
-                <li>
-                  <Link href={`/s/${siteId}/archive`}>All articles</Link>
-                </li>
-              </ul>
-            </div>
+          <div>
+            <h4>Topics</h4>
+            <ul>
+              <li><Link href={`${s}/topic/ai-chatgpt`}>AI &amp; ChatGPT</Link></li>
+              <li><Link href={`${s}/topic/social-media`}>Social media</Link></li>
+              <li><Link href={`${s}/topic/companies`}>Companies</Link></li>
+              <li><Link href={`${s}/topic/internet`}>Internet</Link></li>
+              <li><Link href={`${s}/topic/countries`}>Countries</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Data</h4>
+            <ul>
+              <li><Link href={`${s}/data`}>Country data</Link></li>
+              <li><Link href={`${s}/top10`}>Top 10 lists</Link></li>
+              <li><Link href={`${s}/crypto`}>Crypto prices</Link></li>
+              <li><Link href={`${s}/currency-converter`}>Currency converter</Link></li>
+              <li><Link href={`${s}/archive`}>All articles</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h4>About</h4>
+            <ul>
+              <li><Link href={`${s}/about`}>About us</Link></li>
+              <li><Link href={`${s}/contact`}>Contact</Link></li>
+              <li><Link href={`${s}/privacy`}>Privacy Policy</Link></li>
+              <li><Link href={`${s}/terms`}>Terms of Service</Link></li>
+              <li><Link href={`${s}/disclaimer`}>Disclaimer</Link></li>
+            </ul>
           </div>
         </div>
 
-        <div className="cn-foot-disclaimer" data-nosnippet>
+        <p className="cv-foot-note" data-nosnippet>
           <b>About the data.</b> Statistics on {siteName} are best-available figures compiled from public sources and
           include estimates where exact numbers are not published. They are provided for general information only, may
           contain errors, and change over time. Always confirm against the original source before citing or making
           decisions based on these numbers.
-        </div>
+        </p>
 
-        <div className="cn-foot-bottom">
+        <div className="cv-foot-bottom">
           <span>
             © {year} {siteName}
             {domain ? ` · ${domain}` : ""}

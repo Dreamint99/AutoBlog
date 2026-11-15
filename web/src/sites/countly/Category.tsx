@@ -18,7 +18,7 @@ export default function Category({
   articles: Article[];
 }) {
   return (
-    <div className={`cn-root ${fontVars}`}>
+    <div className={`cn-root cv ${fontVars}`}>
       <CnHeader site={site} />
 
       {/* ── CATEGORY HERO ── */}

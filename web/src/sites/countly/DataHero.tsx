@@ -49,58 +49,55 @@ export default function DataHero({ s }: { s: string }) {
   const d = `${s}/data`;
   const top = byPop.slice(0, 10);
   const max = top[0][1].pop;
-  const shareTop = (top[0][1].pop + top[1][1].pop) / WORLD;
   const big = byArea.slice(0, 6);
   const bigMax = big[0][1].area;
+  const LAND = rows.reduce((t, [, v]) => t + v.area, 0);
+  const worldDensity = WORLD / LAND;
   const [dk, dv] = dense[0];
+  const pct = (n: number) => `${(n * 100).toFixed(1)}%`;
 
   return (
-    <section className="cd-hero" aria-label="The world in numbers">
-      <div className="cx-wrap">
-        <div className="cd-head">
-          <span className="cd-eyebrow">The world in numbers</span>
-          <Link href={d} className="cd-link">All country data →</Link>
+    <section className="cv-sec cd-hero" aria-label="The world in numbers">
+      <div className="cv-wrap">
+        <div className="cv-sechead">
+          <h2>The world in numbers</h2>
+          <Link href={d} className="cv-seeall">All country data →</Link>
         </div>
 
-        <div className="cd-tiles">
-          <div className="cd-tile cd-tile-xl">
-            <span className="cd-tl">World population</span>
-            <b className="cd-big">{compact(WORLD)}</b>
-            <span className="cd-sub">{full(WORLD)} people · {rows.length} countries</span>
-          </div>
-          <Link href={countryHref(top[0][0], d)} className="cd-tile">
-            <span className="cd-tl">Most populous</span>
-            <b>{NAMES[top[0][0]]}</b>
-            <span className="cd-num">{compact(top[0][1].pop)}</span>
-          </Link>
-          <Link href={countryHref(big[0][0], d)} className="cd-tile">
-            <span className="cd-tl">Largest country</span>
-            <b>{NAMES[big[0][0]]}</b>
-            <span className="cd-num">{compact(big[0][1].area)} km²</span>
-          </Link>
-          <Link href={countryHref(dk, d)} className="cd-tile">
-            <span className="cd-tl">Most crowded big country</span>
-            <b>{NAMES[dk]}</b>
-            <span className="cd-num">{full(dv)} / km²</span>
-          </Link>
-          <div className="cd-tile cd-ring-tile">
-            <svg viewBox="0 0 48 48" width="56" height="56" aria-hidden="true">
-              <circle cx="24" cy="24" r="19" fill="none" stroke="currentColor" strokeOpacity=".12" strokeWidth="6" />
-              <circle cx="24" cy="24" r="19" fill="none" stroke="var(--cd-green)" strokeWidth="6" strokeLinecap="round"
-                strokeDasharray={`${(2 * Math.PI * 19 * shareTop).toFixed(1)} 200`} transform="rotate(-90 24 24)" />
-            </svg>
-            <span>
-              <b className="cd-num">{Math.round(shareTop * 100)}%</b>
-              <span className="cd-tl">live in {NAMES[top[0][0]]} &amp; {NAMES[top[1][0]]}</span>
+        <div className="cv-kpis">
+          <div className="cv-kpi">
+            <span className="cv-kpi-l">World population</span>
+            <b className="cv-kpi-v">{compact(WORLD)}</b>
+            <span className="cv-kpi-s">{full(WORLD)} people · {rows.length} countries</span>
+            <span className="cv-kpi-bars" aria-hidden="true">
+              {top.slice(0, 8).map(([k, v]) => <i key={k} style={{ height: `${Math.max(12, (v.pop / max) * 100).toFixed(0)}%` }} />)}
             </span>
           </div>
+          <Link href={countryHref(top[0][0], d)} className="cv-kpi">
+            <span className="cv-kpi-l">Most populous</span>
+            <b className="cv-kpi-v">{compact(top[0][1].pop)}</b>
+            <span className="cv-kpi-s">{NAMES[top[0][0]]} · {pct(top[0][1].pop / WORLD)} of the world</span>
+            <span className="cv-kpi-meter" aria-hidden="true"><i style={{ width: pct(top[0][1].pop / WORLD) }} /></span>
+          </Link>
+          <Link href={countryHref(big[0][0], d)} className="cv-kpi">
+            <span className="cv-kpi-l">Largest country</span>
+            <b className="cv-kpi-v">{compact(big[0][1].area)} km²</b>
+            <span className="cv-kpi-s">{NAMES[big[0][0]]} · {pct(big[0][1].area / LAND)} of land</span>
+            <span className="cv-kpi-meter" aria-hidden="true"><i style={{ width: pct(big[0][1].area / LAND) }} /></span>
+          </Link>
+          <Link href={countryHref(dk, d)} className="cv-kpi">
+            <span className="cv-kpi-l">Most crowded big country</span>
+            <b className="cv-kpi-v">{full(dv)}<small>/km²</small></b>
+            <span className="cv-kpi-s">{NAMES[dk]} · {Math.round(dv / worldDensity)}× world average</span>
+            <span className="cv-kpi-meter" aria-hidden="true"><i style={{ width: `${Math.min(100, (worldDensity / dv) * 100).toFixed(1)}%` }} /></span>
+          </Link>
         </div>
 
         <div className="cd-charts">
           <figure className="cd-card">
             <figcaption>
               <b>Most populous countries</b>
-              <Link href={`${d}/ranking/population`}>Ranking →</Link>
+              <Link href={`${d}/ranking/population`}>Full ranking →</Link>
             </figcaption>
             <ol className="cd-bars">
               {top.map(([k, v], i) => (
@@ -151,8 +148,6 @@ export default function DataHero({ s }: { s: string }) {
           {COMPARE.map(([p, l]) => (
             <Link href={`${d}/compare/${p}`} key={p}>{l}</Link>
           ))}
-          <Link href={`${s}/crypto`} className="cd-chip-alt">Crypto prices</Link>
-          <Link href={`${s}/currency-converter`} className="cd-chip-alt">Currency converter</Link>
         </div>
       </div>
     </section>
