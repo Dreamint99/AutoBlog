@@ -14,6 +14,7 @@ import sys
 import json
 import os
 import time
+from urllib.parse import unquote
 from datetime import datetime
 
 for _s in (sys.stdout, sys.stderr):
@@ -27,12 +28,15 @@ from modules import store
 from modules import pipeline as _pipe
 from modules.pipeline import generate_article, suggest_titles
 
-SITE = sys.argv[1] if len(sys.argv) > 1 else "qatarexperts"
-PER_RUN = int(sys.argv[2]) if len(sys.argv) > 2 else 3
-TARGET = int(sys.argv[3]) if len(sys.argv) > 3 else 50
+# CLI values. Parsed in _parse_cli() under __main__ only, so other scripts
+# (hot_drip.py imports datapage_avoid / ranked_guard) can import this module
+# without their own argv being read as "site count target".
+SITE = "qatarexperts"
+PER_RUN = 3
+TARGET = 50
 # Optional 4th arg: a seed/theme so this run's titles stay in one category
 # (e.g. "richest billionaires net worth" for Countly's daily wealth article).
-SEED = sys.argv[4] if len(sys.argv) > 4 else ""
+SEED = ""
 # Optional batch knobs (used by the manual-batch workflow):
 #   DRIP_TAG   — forced FIRST tag, which sites render as the article's category label
 #   DRIP_STYLE — extra writing-style guidance appended to the site's tone
@@ -40,7 +44,18 @@ TAG = os.getenv("DRIP_TAG", "").strip()
 STYLE = os.getenv("DRIP_STYLE", "").strip()
 _LOG = os.path.join(os.path.dirname(os.path.abspath(__file__)), "output", "drip.log")
 
-if TAG:
+
+def _parse_cli(argv: list) -> None:
+    global SITE, PER_RUN, TARGET, SEED
+    SITE = argv[1] if len(argv) > 1 else "qatarexperts"
+    PER_RUN = int(argv[2]) if len(argv) > 2 else 3
+    TARGET = int(argv[3]) if len(argv) > 3 else 50
+    SEED = argv[4] if len(argv) > 4 else ""
+
+
+def _apply_tag() -> None:
+    if not TAG:
+        return
     _add_article = store.add_article
 
     def _add_tagged(article: dict) -> dict:
@@ -106,8 +121,110 @@ _GENERIC = set("how many much people person top best popular most largest bigges
 _BRANDS = ("countly", "visapoint", "infkey", "gccguide", "ninetymins", "probashi", "প্রবাসী ইনফো", "colours of bangladesh")
 
 
+# Bangla inflection suffixes: "ভিসায়" / "ভিসার" / "ভিসাতে" are all "ভিসা". Two words match when the
+# longer one is the shorter one plus one of these (both spellings of য়: U+09DF and য+nukta).
+_BN_SUFFIXES = sorted({"\u09df", "\u09af\u09bc", "\u09df\u09c7", "\u09af\u09bc\u09c7", "\u09df\u09c7\u09b0",
+                       "\u09af\u09bc\u09c7\u09b0", "র", "ের", "এর", "তে", "েতে", "কে", "দের", "গুলো", "গুলোর",
+                       "গুলোতে", "টি", "টা", "টির", "টার", "ে"}, key=len, reverse=True)
+
+
+def _bn_base(w: str) -> str:
+    """Drop ONE inflection suffix when what is left is still a word (2+ letters)."""
+    for suf in _BN_SUFFIXES:
+        if w.endswith(suf) and len(w) - len(suf) >= 2:
+            return w[: -len(suf)]
+    return w
+
+
+def _wmatch(a: str, b: str) -> bool:
+    if a == b:
+        return True
+    lo, hi = (a, b) if len(a) <= len(b) else (b, a)
+    return len(lo) >= 2 and hi.startswith(lo) and hi[len(lo):] in _BN_SUFFIXES
+
+
+def _fuzzy_overlap(a: set, b: set) -> int:
+    """|a & b| where Bangla inflected forms count as the same word."""
+    return sum(1 for x in a if any(_wmatch(x, y) for y in b))
+
+
 def _topic_words(text: str) -> set:
-    return {w for w in _pipe._tokens(text) if w not in _GENERIC}
+    return {w for w in _pipe._tokens(text) if w not in _GENERIC and _bn_base(w) not in _GENERIC}
+
+
+# probashiinfo: country + intent of a post (Bangla title, transliterated slug, or English). A topic is
+# blocked when 2+ published posts already target the same country AND intent (e.g. 13 Saudi visa-check
+# posts). Patterns are prefixes, so inflected forms (সৌদির, ভিসায়) match too.
+_YA = "(?:\u09df|\u09af\u09bc)"  # য় in either encoding
+_PB_COUNTRIES = {
+    "saudi": r"সৌদি|saudi|soudi|souDi",
+    "uae": r"দুবাই|আমিরাত|আবুধাবি|শারজা|dubai|dubaai|\buae\b|amiraat|emirates",
+    "qatar": r"কাতার|qatar|kaataar|kataar",
+    "kuwait": rf"কু{_YA}েত|kuwait|kuyet",
+    "oman": r"ওমান|\boman|omaan",
+    "bahrain": r"বাহরাইন|bahrain|baahraain",
+    "malaysia": rf"মাল{_YA}েশি{_YA}া|malaysia|maalyeshiyaa|malayeshia",
+    "singapore": r"সিঙ্গাপুর|singapore|singgaapur|singapur",
+    "italy": r"ইতালি|italy|itaali",
+    "romania": rf"রোমানি{_YA}া|romania|romaaniyaa",
+    "serbia": rf"সার্বি{_YA}া|serbia|saarbiyaa",
+    "poland": r"পোল্যান্ড|poland|polyaanD|polyand",
+    "croatia": rf"ক্রো{_YA}েশি{_YA}া|croatia|kroyeshiyaa",
+    "japan": r"জাপান|japan|jaapaan",
+    "korea": rf"কোরি{_YA}া|korea|koriyaa",
+    "maldives": r"মালদ্বীপ|maldives|maaldwiip",
+    "jordan": r"জর্ডান|jordan|jrDaan",
+    "portugal": r"পর্তুগাল|portugal|prtugaal",
+    "uk": r"যুক্তরাজ্য|লন্ডন|ইংল্যান্ড|united kingdom|\buk\b|london",
+    "canada": r"কানাডা|canada|kaanaaDaa",
+    "australia": rf"অস্ট্রেলি{_YA}া|australia",
+    "brunei": r"ব্রুনাই|brunei|brunaai",
+    "mauritius": r"মরিশাস|mauritius|morishaas",
+    "russia": rf"রাশি{_YA}া|russia|raashiyaa",
+    "germany": r"জার্মানি|germany|jaarmaani",
+    "bulgaria": rf"বুলগেরি{_YA}া|bulgaria",
+    "hungary": r"হাঙ্গেরি|hungary",
+    "libya": rf"লিবি{_YA}া|libya",
+    "iraq": r"ইরাক|\biraq",
+}
+_PB_INTENTS = {
+    "visa-check": r"ভিসা\s*(চেক|যাচাই|স্ট্যাটাস|দেখ)|visa[\s-]*(check|status)|bhisaa[\s-]*(cek|chek|check|jaacaai)",
+    "cost": r"খরচ|টাকা\s*লাগ|\bcost|khrc|khoroch",
+    "salary": r"বেতন|salary|wage|betn|beton",
+    "work-visa": rf"ও{_YA}ার্ক|কাজের\s*ভিসা|work[\s-]*(visa|permit)|oyaark|kaajer[\s-]*bhisaa",
+    "job": r"চাকরি|চাকুরি|\bjobs?\b|caakri",
+    "iqama": r"আকামা|ইকামা|iqama|aakaamaa",
+    "law": r"আইন|\blaws?\b|aain",
+}
+import re as _re
+_PB_C = {k: _re.compile(v, _re.I) for k, v in _PB_COUNTRIES.items()}
+_PB_I = {k: _re.compile(v, _re.I) for k, v in _PB_INTENTS.items()}
+
+
+def _country_intents(text: str) -> set:
+    t = unquote(text or "").replace("-", " ")
+    cs = [c for c, r in _PB_C.items() if r.search(t)]
+    ins = [i for i, r in _PB_I.items() if r.search(t)]
+    return {(c, i) for c in cs for i in ins}
+
+
+def intent_guard(site_id: str, existing: list, limit: int = 2):
+    """probashiinfo: text -> (label, examples) when `limit`+ published posts already target the same
+    country + intent. It never touches existing posts; it only stops writing more of them."""
+    if site_id != "probashiinfo":
+        return lambda text: None
+    posts = {}
+    for a in existing or []:
+        for ci in _country_intents(f"{a.get('title', '')} {a.get('slug', '')}"):
+            posts.setdefault(ci, []).append(a.get("slug") or a.get("title", ""))
+
+    def check(text: str):
+        for ci in sorted(_country_intents(text)):
+            got = posts.get(ci, [])
+            if len(got) >= limit:
+                return (f"{ci[0]} + {ci[1]}", f"{len(got)} posts e.g. /{got[0]}/")
+        return None
+    return check
 
 
 def _covers(title_tokens: set, core: set) -> bool:
@@ -149,14 +266,17 @@ def ranked_guard(site_id: str):
     qtw = [(q, _topic_words(q)) for q in qs if len(_pipe._tokens(q)) >= 2]  # a bare name ("সার্বিয়া") is too broad
 
     def check(text: str):
-        # compare topic words only (country, subject) — generic words like "যেতে কত টাকা লাগে" match everything
+        # compare topic words only (country, subject) — generic words like "যেতে কত টাকা লাগে" match everything.
+        # Bangla inflections are folded first ("ভিসায়" = "ভিসা", "সৌদির" = "সৌদি").
         tw = _topic_words(text)
         if not tw:
             return None
         for q, w in qtw:
             if not w:
                 continue
-            if w == tw or (len(w) >= 3 and w <= tw) or len(w & tw) / len(w | tw) >= 0.75:
+            inter = _fuzzy_overlap(w, tw)
+            union = len(w) + len(tw) - inter
+            if inter == len(w) == len(tw) or (len(w) >= 3 and inter == len(w)) or (union and inter / union >= 0.75):
                 return (q, owned[q])
         return None
     return check
@@ -171,6 +291,9 @@ def drip_site(site: dict):
         return 0
     n = min(PER_RUN, TARGET - have)
     avoid = [a.get("title", "") for a in existing] + [a.get("keyword", "") for a in existing]
+    # published slugs too ("check-saudi-arabia-visa-status-online" → words): the topic picker
+    # must never re-suggest a page we already have under a different headline
+    avoid += [unquote(a.get("slug") or "").replace("-", " ") for a in existing if a.get("slug")]
     avoid += datapage_avoid(site["id"])
     try:  # never reuse a hero photo another article already has
         from modules import image as _img
@@ -180,7 +303,8 @@ def drip_site(site: dict):
     # Real demand first: Search Console / Bing AI queries (data/demand_<site>.json) that no
     # existing article answers yet. Covered = an existing title holds all the query's topic words.
     demand_titles = []
-    ranked = ranked_guard(site["id"])
+    _rank, _intent = ranked_guard(site["id"]), intent_guard(site["id"], existing)
+    ranked = lambda text: _rank(text) or _intent(text)
     if not SEED:
         try:
             dq = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", f"demand_{site['id']}.json"),
@@ -199,7 +323,7 @@ def drip_site(site: dict):
                 continue
             own = ranked(q["q"])
             if own:
-                log(f"[{site['id']}] skip demand (already ranks: {own[1]} for \"{own[0]}\"): {q['q']}")
+                log(f"[{site['id']}] skip demand (already covered: {own[1]} for \"{own[0]}\"): {q['q']}")
                 continue
             seed = (f"Write the article that directly answers this REAL search query: \"{q['q']}\" "
                     f"({q.get('impr', '?')} searches/AI citations seen). The title must use the query's own words "
@@ -244,7 +368,7 @@ def drip_site(site: dict):
     for t in titles:
         own = ranked(t)
         if own:
-            log(f"[{site['id']}] skip title (already ranks: {own[1]} for \"{own[0]}\"): {t}")
+            log(f"[{site['id']}] skip title (already covered: {own[1]} for \"{own[0]}\"): {t}")
             continue
         # One retry: a rejected draft (thin, wrong language, all providers briefly
         # rate-limited) usually succeeds on a second pass.
@@ -295,4 +419,6 @@ def main():
 
 
 if __name__ == "__main__":
+    _parse_cli(sys.argv)
+    _apply_tag()
     main()
