@@ -70,7 +70,9 @@ SYSTEM = """You write Google search snippets for a Bangla website that helps Ban
 Return JSON: {"title": "...", "description": "..."}.
 Rules:
 - Bangla, natural, no clickbait or false promises. Use ONLY facts that appear in the article text given (costs, salaries, numbers, steps). Never invent numbers.
-- title: 40-60 characters. Put the main search query words first. Add the year %d when the topic is time-sensitive. Add one concrete hook from the article (a number, a cost, "ধাপে ধাপে", a count of countries). No site name, no pipes, no emoji.
+- title: 40-60 characters. START the title with the exact wording of the highest-impression search query
+  (keep its words and word order; write the year in Bangla digits, e.g. "মালয়েশিয়া যেতে কত টাকা লাগে ২০২৬?"),
+  then the answer. People click when the title repeats their own question. Add the year %d when the topic is time-sensitive. Add one concrete hook from the article (a number, a cost, "ধাপে ধাপে", a count of countries). No site name, no pipes, no emoji.
 - description: 120-155 characters, one or two complete sentences ending with "।". Say exactly what the reader gets (cost, salary, documents, process) and why it is current.
 - Correct, fluent Bangla grammar (e.g. "কোন কোন দেশে যাওয়া যায়", not "যায়"). Read it back before answering.
 - Never mention an earlier year than %d.
@@ -180,7 +182,9 @@ def main():
     pages = json.load(open(DATA, encoding="utf-8"))["pages"]
     targets = [p for p in pages if p["impressions"] >= 300 and p["ctr"] < 0.03 and p["position"] <= 15]
     log = json.load(open(LOG, encoding="utf-8")) if os.path.exists(LOG) else []
-    done = {e["url"] for e in log}
+    # REDO_BEFORE=YYYY-MM-DD: pages rewritten before that date may be rewritten again (one-off full pass).
+    redo = os.environ.get("REDO_BEFORE", "")
+    done = {e["url"] for e in log if not (redo and e.get("date", "") < redo)}
     targets = [p for p in targets if p["url"] not in done and p["url"] not in SKIP]
     if LIMIT:
         targets = targets[:LIMIT]

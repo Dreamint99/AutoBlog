@@ -18,6 +18,9 @@ on:
         description: "Only apply the hand-written fixes in data/ctr_overrides_probashiinfo.json"
         type: boolean
         default: false
+      redo_before:
+        description: "Also rewrite pages last rewritten before this date (YYYY-MM-DD); empty = never repeat"
+        default: ""
 
 concurrency:
   group: probashi-ctr
@@ -54,6 +57,7 @@ jobs:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           APPLY: ${{ github.event_name == 'schedule' || github.event.inputs.apply == 'true' }}
           LIMIT: ${{ github.event.inputs.limit || '25' }}
+          REDO_BEFORE: ${{ github.event.inputs.redo_before }}
         run: |
           if [ "${{ github.event.inputs.overrides }}" = "true" ]; then python wp_ctr.py --overrides; exit 0; fi
           if [ "$APPLY" = "true" ]; then python wp_ctr.py --apply "$LIMIT"; else python wp_ctr.py "$LIMIT"; fi
