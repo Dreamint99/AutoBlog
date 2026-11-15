@@ -44,6 +44,11 @@ LIMIT = next((int(a) for a in sys.argv[1:] if a.isdigit()), 0)
 YEAR = datetime.now(timezone.utc).year
 # Pages whose article facts need a human check before a number goes into the title.
 SKIP = {"https://probashiinfo.com/list-of-schengen-countries-in-europe-2026/"}  # title + facts fixed by hand in the overrides file
+# Every page with a hand-written override is left alone by the weekly automatic pass.
+try:
+    SKIP |= {o["url"] for o in json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "ctr_overrides_probashiinfo.json"), encoding="utf-8"))}
+except Exception:
+    pass
 
 BASE = os.environ["PROBASHIINFO_WP_URL"].rstrip("/")
 AUTH = base64.b64encode(f"{os.environ['PROBASHIINFO_WP_USER']}:{os.environ['PROBASHIINFO_WP_APP_PASSWORD']}".encode()).decode()
