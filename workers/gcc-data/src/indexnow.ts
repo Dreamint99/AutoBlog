@@ -30,9 +30,10 @@ export async function pingIndexNow(env: Env, paths: string[]): Promise<{ status:
     urlList: paths.map((p) => `${env.SITE_URL}${p}`),
   };
   try {
-    const res = await fetch("https://api.indexnow.org/indexnow", {
+    // IndexNow 429s Cloudflare egress IPs → relay through the orbit VPS proxy when its key is set.
+    const res = await fetch(env.INDEXNOW_RELAY_KEY ? "https://157-245-152-189.sslip.io/indexnow-relay" : "https://api.indexnow.org/indexnow", {
       method: "POST",
-      headers: { "content-type": "application/json; charset=utf-8" },
+      headers: { "content-type": "application/json; charset=utf-8", ...(env.INDEXNOW_RELAY_KEY ? { "x-relay-key": env.INDEXNOW_RELAY_KEY } : {}) },
       body: JSON.stringify(body),
     });
     // 200 = accepted, 202 = accepted (key pending validation). Both are fine.

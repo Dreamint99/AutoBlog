@@ -34,7 +34,8 @@ async function notifySite(env, site) {
   const next = await env.SEO_LOG.get(`engine:indexnow:${site}:next`); if (next && Date.parse(next) > Date.now()) return;
   const rows = (await env.DB.prepare("SELECT url,version,attempts FROM seo_engine_outbox WHERE site_id=? AND delivered_at IS NULL AND next_try<=? ORDER BY next_try LIMIT 100").bind(site, new Date().toISOString()).all()).results;
   if (!rows.length) return;
-  const r = await fetch("https://www.bing.com/indexnow", { method: "POST", signal: AbortSignal.timeout(15000), headers: { "content-type": "application/json" }, body: JSON.stringify({ host: site === "countly" ? "countly.net" : "ninetymins.com", key: KEY, keyLocation: `https://${site === "countly" ? "countly.net" : "ninetymins.com"}/${KEY}.txt`, urlList: rows.map(p => p.url) }) });
+  // IndexNow 429s Cloudflare egress IPs → go through the orbit VPS proxy when its key is set.
+  const r = await fetch(env.INDEXNOW_RELAY_KEY ? "https://157-245-152-189.sslip.io/indexnow-relay" : "https://api.indexnow.org/indexnow", { method: "POST", signal: AbortSignal.timeout(20000), headers: { "content-type": "application/json", ...(env.INDEXNOW_RELAY_KEY ? { "x-relay-key": env.INDEXNOW_RELAY_KEY } : {}) }, body: JSON.stringify({ host: site === "countly" ? "countly.net" : "ninetymins.com", key: KEY, keyLocation: `https://${site === "countly" ? "countly.net" : "ninetymins.com"}/${KEY}.txt`, urlList: rows.map(p => p.url) }) });
   const ok = [200, 202].includes(r.status), now = new Date().toISOString();
   const retry = r.status === 429 ? Math.max(3600000, Number(r.headers.get("retry-after") || 0) * 1000) : ok ? 3600000 : 600000;
   await env.SEO_LOG.put(`engine:indexnow:${site}:next`, new Date(Date.now() + retry).toISOString());
