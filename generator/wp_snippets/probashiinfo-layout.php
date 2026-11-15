@@ -8,7 +8,7 @@
    Data pages (#32), BMET/flight/rates tools render themselves and only get the palette.
    Rollout: PI6_PUBLIC false = only with ?v6=1 (cookie; ?v6=0 clears). Rollback = deactivate. */
 if ( ! defined( 'PI6_PUBLIC' ) ) define( 'PI6_PUBLIC', true );
-if ( ! defined( 'PI6_VERSION' ) ) define( 'PI6_VERSION', '7.1.2' );
+if ( ! defined( 'PI6_VERSION' ) ) define( 'PI6_VERSION', '7.1.3' );
 
 function pi6_on() {
 	static $on = null;
@@ -70,7 +70,7 @@ function pi_v6_home() {
 			<div class="v7imgs"><?php foreach ( pi_v7_slides() as $i => $s ) echo '<img src="' . esc_url( $s[0] ) . '" alt="' . esc_attr( $s[1] ) . '" width="1600" height="900"' . ( $i ? ' loading="lazy" decoding="async"' : ' fetchpriority="high"' ) . ( $i ? '' : ' class="on"' ) . '>'; ?></div>
 			<div class="v7in">
 				<span class="v6k"><span class="ldot"></span>প্রতিদিন হালনাগাদ · সরকারি সূত্র</span>
-				<h1>প্রবাসের পথে,<br><span>পাশে আছি।</span></h1>
+				<h1>বিদেশে আপনি একা নন —<br><span>প্রবাসী ইনফো আছে।</span></h1>
 				<form class="v6s" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">
 					<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
 					<input name="s" type="search" placeholder="কী জানতে চান? যেমন: সৌদি ভিসা চেক" aria-label="খুঁজুন">
