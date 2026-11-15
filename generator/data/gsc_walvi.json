@@ -1,5 +1,5 @@
 {
- "source": "Search Console API 2026-08-14..2026-11-12",
+ "source": "Search Console API 2026-08-15..2026-11-13",
  "pages": [
   {
    "url": "https://visapoint.net/visa-check/romania",
@@ -315,7 +315,7 @@
   },
   {
    "url": "https://visapoint.net/",
-   "impressions": 89,
+   "impressions": 94,
    "clicks": 4,
    "queries": [
     [
@@ -331,22 +331,22 @@
      58.8
     ],
     [
+     "visa index",
+     4,
+     0,
+     54.8
+    ],
+    [
+     "visa point",
+     4,
+     0,
+     46.5
+    ],
+    [
      "all country visa check website",
      3,
      0,
      57.3
-    ],
-    [
-     "visa index",
-     3,
-     0,
-     58.3
-    ],
-    [
-     "visa point",
-     3,
-     0,
-     40.3
     ],
     [
      "all countries visa apply",
@@ -379,20 +379,20 @@
      51
     ],
     [
+     "index visa",
+     1,
+     0,
+     35
+    ],
+    [
      "visa check",
      1,
      0,
      40
-    ],
-    [
-     "visa country",
-     1,
-     0,
-     77
     ]
    ],
-   "position": 25.0,
-   "ctr": 0.0449
+   "position": 26.5,
+   "ctr": 0.0426
   },
   {
    "url": "https://visapoint.net/moldova-visa-status-online-2026-step-by-step-guide",
@@ -459,7 +459,7 @@
   },
   {
    "url": "https://visapoint.net/passport-index",
-   "impressions": 82,
+   "impressions": 85,
    "clicks": 1,
    "queries": [
     [
@@ -475,16 +475,16 @@
      39.4
     ],
     [
+     "index passport",
+     4,
+     0,
+     36.2
+    ],
+    [
      "passport ranking",
      4,
      0,
      42.2
-    ],
-    [
-     "index passport",
-     3,
-     0,
-     42.7
     ],
     [
      "global passport index",
@@ -536,7 +536,7 @@
     ]
    ],
    "position": 37.6,
-   "ctr": 0.0122
+   "ctr": 0.0118
   },
   {
    "url": "https://visapoint.net/welder-salary-europe-2026-5-best-countries-to-earn-big",
@@ -2163,6 +2163,33 @@
    "ctr": 0.0
   },
   {
+   "url": "https://visapoint.net/visa-check",
+   "impressions": 15,
+   "clicks": 0,
+   "queries": [
+    [
+     "visa open data",
+     2,
+     0,
+     30
+    ],
+    [
+     "all country visa check website",
+     1,
+     0,
+     7
+    ],
+    [
+     "visa validity check online",
+     1,
+     0,
+     4
+    ]
+   ],
+   "position": 11.3,
+   "ctr": 0.0
+  },
+  {
    "url": "https://visapoint.net/farm-worker-salary-in-bulgaria-2026-gross-net-savings-guide",
    "impressions": 14,
    "clicks": 0,
@@ -2436,6 +2463,14 @@
    "ctr": 0.0
   },
   {
+   "url": "https://visapoint.net/guides",
+   "impressions": 11,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.7,
+   "ctr": 0.0
+  },
+  {
    "url": "https://visapoint.net/romania-work-visa-saudi-arabia-to-romania-guide-2025",
    "impressions": 11,
    "clicks": 0,
@@ -2513,27 +2548,6 @@
     ]
    ],
    "position": 6.8,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/visa-check",
-   "impressions": 11,
-   "clicks": 0,
-   "queries": [
-    [
-     "all country visa check website",
-     1,
-     0,
-     7
-    ],
-    [
-     "visa validity check online",
-     1,
-     0,
-     4
-    ]
-   ],
-   "position": 8.9,
    "ctr": 0.0
   },
   {
@@ -2695,14 +2709,6 @@
    "clicks": 0,
    "queries": [],
    "position": 7.3,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/guides",
-   "impressions": 10,
-   "clicks": 0,
-   "queries": [],
-   "position": 6.5,
    "ctr": 0.0
   },
   {

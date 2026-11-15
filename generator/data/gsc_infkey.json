@@ -1,11 +1,17 @@
 {
- "source": "Search Console API 2026-08-14..2026-11-12",
+ "source": "Search Console API 2026-08-15..2026-11-13",
  "pages": [
   {
    "url": "https://infkey.com/",
-   "impressions": 121,
+   "impressions": 122,
    "clicks": 4,
    "queries": [
+    [
+     "batch1key me",
+     4,
+     0,
+     69.5
+    ],
     [
      "cheap inference",
      4,
@@ -37,12 +43,6 @@
      77.5
     ],
     [
-     "batch1key me",
-     2,
-     0,
-     68
-    ],
-    [
      "how much does an api key cost",
      2,
      0,
@@ -67,20 +67,20 @@
      76
     ],
     [
+     "batch 1key me",
+     1,
+     0,
+     75
+    ],
+    [
      "batch.1key me",
      1,
      0,
      71
-    ],
-    [
-     "cheapest inference",
-     1,
-     0,
-     78
     ]
    ],
-   "position": 47.6,
-   "ctr": 0.0331
+   "position": 47.0,
+   "ctr": 0.0328
   }
  ]
 }

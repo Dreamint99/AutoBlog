@@ -1,9 +1,9 @@
 {
- "source": "Search Console API 2026-08-14..2026-11-12",
+ "source": "Search Console API 2026-08-15..2026-11-13",
  "pages": [
   {
    "url": "https://countly.net/",
-   "impressions": 436,
+   "impressions": 426,
    "clicks": 2,
    "queries": [
     [
@@ -13,16 +13,16 @@
      41.6
     ],
     [
+     "site:countly.net",
+     9,
+     0,
+     1
+    ],
+    [
      "quintly",
      8,
      0,
      43.2
-    ],
-    [
-     "site:countly.net",
-     8,
-     0,
-     1
     ],
     [
      "countly analytics",
@@ -79,12 +79,12 @@
      58
     ]
    ],
-   "position": 38.9,
-   "ctr": 0.0046
+   "position": 38.0,
+   "ctr": 0.0047
   },
   {
    "url": "https://countly.net/top-21-richest-people-in-greece-2026",
-   "impressions": 186,
+   "impressions": 173,
    "clicks": 0,
    "queries": [
     [
@@ -94,19 +94,19 @@
      26
     ]
    ],
-   "position": 8.2,
+   "position": 8.1,
    "ctr": 0.0
   },
   {
    "url": "https://countly.net/crypto",
-   "impressions": 82,
+   "impressions": 81,
    "clicks": 0,
    "queries": [
     [
      "crypto market data",
-     11,
+     10,
      0,
-     99.1
+     99
     ],
     [
      "crypto price data",
@@ -115,28 +115,28 @@
      92.8
     ],
     [
+     "site:countly.net",
+     9,
+     0,
+     3
+    ],
+    [
      "live crypto market",
      8,
      0,
      87
     ],
     [
-     "site:countly.net",
-     8,
-     0,
-     3
-    ],
-    [
-     "crypto stats",
-     7,
-     0,
-     96.3
-    ],
-    [
      "crypto real time",
      5,
      0,
      92.8
+    ],
+    [
+     "crypto stats",
+     5,
+     0,
+     96.8
     ],
     [
      "crypto market live",
@@ -175,12 +175,12 @@
      94
     ]
    ],
-   "position": 75.3,
+   "position": 72.7,
    "ctr": 0.0
   },
   {
    "url": "https://countly.net/chatgpt-users-2026-400m-monthly-active-demographics",
-   "impressions": 66,
+   "impressions": 65,
    "clicks": 0,
    "queries": [
     [
@@ -231,7 +231,7 @@
   },
   {
    "url": "https://countly.net/top-100-richest-people-in-united-states-2026",
-   "impressions": 41,
+   "impressions": 39,
    "clicks": 0,
    "queries": [
     [
@@ -301,47 +301,17 @@
      38
     ]
    ],
-   "position": 47.1,
+   "position": 49.4,
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/best-ai-tools",
+   "url": "https://countly.net/contact",
    "impressions": 37,
    "clicks": 0,
    "queries": [
     [
      "site:countly.net",
-     8,
-     0,
-     9
-    ]
-   ],
-   "position": 5.8,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/how-many-linkedin-users-are-there-in-2026-global-by-country",
-   "impressions": 36,
-   "clicks": 0,
-   "queries": [
-    [
-     "linkedin usage by country",
-     1,
-     0,
-     94
-    ]
-   ],
-   "position": 88.2,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/contact",
-   "impressions": 34,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     8,
+     9,
      0,
      4
     ],
@@ -358,17 +328,47 @@
      2
     ]
    ],
-   "position": 3.1,
+   "position": 3.2,
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/currency-converter",
-   "impressions": 30,
+   "url": "https://countly.net/best-ai-tools",
+   "impressions": 36,
    "clicks": 0,
    "queries": [
     [
      "site:countly.net",
-     8,
+     9,
+     0,
+     9
+    ]
+   ],
+   "position": 5.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/how-many-linkedin-users-are-there-in-2026-global-by-country",
+   "impressions": 34,
+   "clicks": 0,
+   "queries": [
+    [
+     "linkedin usage by country",
+     1,
+     0,
+     94
+    ]
+   ],
+   "position": 87.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/currency-converter",
+   "impressions": 31,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     9,
      0,
      5
     ],
@@ -415,7 +415,7 @@
      88
     ]
    ],
-   "position": 38.0,
+   "position": 36.9,
    "ctr": 0.0
   },
   {
@@ -458,6 +458,21 @@
     ]
    ],
    "position": 14.4,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/topic/rankings",
+   "impressions": 27,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     9,
+     0,
+     7.8
+    ]
+   ],
+   "position": 7.1,
    "ctr": 0.0
   },
   {
@@ -533,48 +548,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/topic/rankings",
-   "impressions": 25,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     8,
-     0,
-     7.9
-    ]
-   ],
-   "position": 7.3,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/top-71-richest-people-in-brazil-2026",
-   "impressions": 24,
-   "clicks": 0,
-   "queries": [
-    [
-     "richest families in brazil",
-     2,
-     0,
-     8.5
-    ],
-    [
-     "site:countly.net",
-     2,
-     0,
-     24
-    ],
-    [
-     "top 10 richest people in brazil",
-     1,
-     0,
-     70
-    ]
-   ],
-   "position": 10.5,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/how-many-pinterest-users-are-there-in-2026-global-by-country-e388",
    "impressions": 23,
    "clicks": 0,
@@ -596,13 +569,40 @@
    "ctr": 0.0
   },
   {
+   "url": "https://countly.net/top-71-richest-people-in-brazil-2026",
+   "impressions": 23,
+   "clicks": 0,
+   "queries": [
+    [
+     "richest families in brazil",
+     2,
+     0,
+     8.5
+    ],
+    [
+     "site:countly.net",
+     2,
+     0,
+     24
+    ],
+    [
+     "top 10 richest people in brazil",
+     1,
+     0,
+     70
+    ]
+   ],
+   "position": 10.6,
+   "ctr": 0.0
+  },
+  {
    "url": "https://countly.net/topic/countries",
-   "impressions": 22,
+   "impressions": 23,
    "clicks": 0,
    "queries": [
     [
      "site:countly.net",
-     8,
+     9,
      0,
      6
     ]
@@ -650,8 +650,29 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/how-many-twitch-streamers-are-there-in-2026-global-by-countr",
+   "url": "https://countly.net/top10",
    "impressions": 19,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     9,
+     0,
+     2
+    ],
+    [
+     "top ten lists",
+     1,
+     0,
+     13
+    ]
+   ],
+   "position": 3.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/how-many-twitch-streamers-are-there-in-2026-global-by-countr",
+   "impressions": 18,
    "clicks": 0,
    "queries": [
     [
@@ -673,28 +694,7 @@
      76
     ]
    ],
-   "position": 30.7,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/top10",
-   "impressions": 18,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     8,
-     0,
-     2
-    ],
-    [
-     "top ten lists",
-     1,
-     0,
-     13
-    ]
-   ],
-   "position": 3.1,
+   "position": 29.2,
    "ctr": 0.0
   },
   {
@@ -775,33 +775,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/top-100-richest-people-in-india-2026",
-   "impressions": 15,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     2,
-     0,
-     15
-    ],
-    [
-     "india richest man 2026 top 100",
-     1,
-     0,
-     77
-    ],
-    [
-     "top 100 richest person in india",
-     1,
-     0,
-     24
-    ]
-   ],
-   "position": 13.9,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/top-41-richest-people-in-israel-2026",
    "impressions": 15,
    "clicks": 0,
@@ -814,27 +787,6 @@
     ]
    ],
    "position": 8.9,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/how-many-etsy-sellers-are-there-in-2026-global-statistics-tr",
-   "impressions": 14,
-   "clicks": 0,
-   "queries": [
-    [
-     "etsy seller news 2026",
-     4,
-     0,
-     58.8
-    ],
-    [
-     "site:countly.net",
-     2,
-     0,
-     66
-    ]
-   ],
-   "position": 41.9,
    "ctr": 0.0
   },
   {
@@ -868,18 +820,30 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/topic/internet",
+   "url": "https://countly.net/top-100-richest-people-in-india-2026",
    "impressions": 14,
    "clicks": 0,
    "queries": [
     [
      "site:countly.net",
-     7,
+     2,
      0,
-     7
+     15
+    ],
+    [
+     "india richest man 2026 top 100",
+     1,
+     0,
+     77
+    ],
+    [
+     "top 100 richest person in india",
+     1,
+     0,
+     24
     ]
    ],
-   "position": 11.5,
+   "position": 14.1,
    "ctr": 0.0
   },
   {
@@ -904,6 +868,27 @@
    "ctr": 0.0
   },
   {
+   "url": "https://countly.net/how-many-etsy-sellers-are-there-in-2026-global-statistics-tr",
+   "impressions": 13,
+   "clicks": 0,
+   "queries": [
+    [
+     "etsy seller news 2026",
+     4,
+     0,
+     58.8
+    ],
+    [
+     "site:countly.net",
+     2,
+     0,
+     66
+    ]
+   ],
+   "position": 45.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://countly.net/how-many-internet-users-are-there-in-2026-global-by-country",
    "impressions": 13,
    "clicks": 0,
@@ -925,45 +910,18 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/how-many-youtube-music-subscribers-are-there-in-2026-global",
+   "url": "https://countly.net/topic/internet",
    "impressions": 13,
    "clicks": 0,
    "queries": [
     [
      "site:countly.net",
-     2,
+     7,
      0,
-     56
-    ],
-    [
-     "how many youtube premium subscribers",
-     1,
-     0,
-     27
+     7
     ]
    ],
-   "position": 30.1,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/fastest-growing-companies-2026-top-revenue-growth-leaders",
-   "impressions": 12,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     2,
-     0,
-     35
-    ],
-    [
-     "forbes fastest growing companies 2026",
-     1,
-     0,
-     79
-    ]
-   ],
-   "position": 27.4,
+   "position": 11.9,
    "ctr": 0.0
   },
   {
@@ -987,27 +945,6 @@
    "clicks": 0,
    "queries": [],
    "position": 74.1,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/openai-revenue-2026-8-5b-annual-earnings-growth",
-   "impressions": 12,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     2,
-     0,
-     33.5
-    ],
-    [
-     "openai annualized revenue run rate 2026",
-     1,
-     0,
-     9
-    ]
-   ],
-   "position": 12.7,
    "ctr": 0.0
   },
   {
@@ -1116,7 +1053,49 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/ai-companies-by-revenue-2026-who-earns-the-most",
+   "url": "https://countly.net/how-many-youtube-music-subscribers-are-there-in-2026-global",
+   "impressions": 11,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     2,
+     0,
+     56
+    ],
+    [
+     "how many youtube premium subscribers",
+     1,
+     0,
+     27
+    ]
+   ],
+   "position": 21.1,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/openai-revenue-2026-8-5b-annual-earnings-growth",
+   "impressions": 11,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     2,
+     0,
+     33.5
+    ],
+    [
+     "openai annualized revenue run rate 2026",
+     1,
+     0,
+     9
+    ]
+   ],
+   "position": 13.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/fastest-growing-companies-2026-top-revenue-growth-leaders",
    "impressions": 10,
    "clicks": 0,
    "queries": [
@@ -1124,10 +1103,16 @@
      "site:countly.net",
      2,
      0,
-     48
+     35
+    ],
+    [
+     "forbes fastest growing companies 2026",
+     1,
+     0,
+     79
     ]
    ],
-   "position": 30.3,
+   "position": 32.6,
    "ctr": 0.0
   },
   {
@@ -1227,24 +1212,18 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/how-many-weibo-users-are-there-in-2026-global-by-country",
+   "url": "https://countly.net/ai-companies-by-revenue-2026-who-earns-the-most",
    "impressions": 9,
    "clicks": 0,
    "queries": [
     [
      "site:countly.net",
-     1,
+     2,
      0,
-     74
-    ],
-    [
-     "weibo maus 578 million august 2026 q2 2026 weibo mau 578",
-     1,
-     0,
-     8
+     48
     ]
    ],
-   "position": 71.6,
+   "position": 32.9,
    "ctr": 0.0
   },
   {
@@ -1280,28 +1259,19 @@
      62
     ],
     [
+     "qs ranking 2026 bangladesh",
+     1,
+     0,
+     62
+    ],
+    [
      "top 10 university in bangladesh world ranking 2026",
      1,
      0,
      49
     ]
    ],
-   "position": 38.8,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/how-many-electric-vehicle-charging-stations-are-there-in-202",
-   "impressions": 8,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     2,
-     0,
-     64
-    ]
-   ],
-   "position": 49.9,
+   "position": 39.1,
    "ctr": 0.0
   },
   {
@@ -1317,6 +1287,27 @@
     ]
    ],
    "position": 24.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/how-many-weibo-users-are-there-in-2026-global-by-country",
+   "impressions": 8,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     1,
+     0,
+     74
+    ],
+    [
+     "weibo maus 578 million august 2026 q2 2026 weibo mau 578",
+     1,
+     0,
+     8
+    ]
+   ],
+   "position": 70.2,
    "ctr": 0.0
   },
   {
@@ -1362,6 +1353,21 @@
     ]
    ],
    "position": 25.1,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/how-many-electric-vehicle-charging-stations-are-there-in-202",
+   "impressions": 7,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     2,
+     0,
+     64
+    ]
+   ],
+   "position": 43.9,
    "ctr": 0.0
   },
   {
@@ -1476,21 +1482,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/top-universities-in-the-world-2026-global-rankings-for-researchers",
-   "impressions": 6,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     1,
-     0,
-     58
-    ]
-   ],
-   "position": 13.0,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/best-hospitals-in-dubai-2026-top-10-ranked-compared",
    "impressions": 5,
    "clicks": 0,
@@ -1557,6 +1548,21 @@
     ]
    ],
    "position": 24.4,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/top-10-car-brands-japan-2026-most-popular-automakers-ranked",
+   "impressions": 5,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     2,
+     0,
+     63
+    ]
+   ],
+   "position": 53.8,
    "ctr": 0.0
   },
   {
@@ -1637,14 +1643,6 @@
    "clicks": 0,
    "queries": [],
    "position": 6.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/largest-ecommerce-markets-2026-top-countries-by-revenue",
-   "impressions": 4,
-   "clicks": 0,
-   "queries": [],
-   "position": 85.5,
    "ctr": 0.0
   },
   {
@@ -1761,6 +1759,21 @@
    "ctr": 0.0
   },
   {
+   "url": "https://countly.net/top-universities-in-the-world-2026-global-rankings-for-researchers",
+   "impressions": 4,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     1,
+     0,
+     58
+    ]
+   ],
+   "position": 16.8,
+   "ctr": 0.0
+  },
+  {
    "url": "https://countly.net/how-many-electric-vehicles-are-there-in-2026-global-by-count",
    "impressions": 3,
    "clicks": 0,
@@ -1774,6 +1787,27 @@
    "clicks": 0,
    "queries": [],
    "position": 9.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/how-many-shopify-merchants-are-there-in-2026-global-by-count-99f7",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [
+    [
+     "how many shopify stores are there in the world",
+     1,
+     0,
+     1
+    ],
+    [
+     "site:countly.net",
+     1,
+     0,
+     10
+    ]
+   ],
+   "position": 5.7,
    "ctr": 0.0
   },
   {
@@ -1807,6 +1841,14 @@
    "ctr": 0.0
   },
   {
+   "url": "https://countly.net/largest-ecommerce-markets-2026-top-countries-by-revenue",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 86.7,
+   "ctr": 0.0
+  },
+  {
    "url": "https://countly.net/largest-ecommerce-websites-usa-2026-top-10-by-revenue",
    "impressions": 3,
    "clicks": 0,
@@ -1836,21 +1878,6 @@
    "clicks": 0,
    "queries": [],
    "position": 61.7,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/top-10-car-brands-japan-2026-most-popular-automakers-ranked",
-   "impressions": 3,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     2,
-     0,
-     63
-    ]
-   ],
-   "position": 66.3,
    "ctr": 0.0
   },
   {
@@ -1936,14 +1963,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/anthropic-revenue-2026-claude-maker-earnings-funding",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [],
-   "position": 10.0,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/digital-adoption-index-2026-top-10-countries-leading-internet-mobile-u",
    "impressions": 2,
    "clicks": 0,
@@ -1952,64 +1971,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/ecommerce-statistics-2026-online-shoppers-revenue-by-country",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     1,
-     0,
-     43
-    ]
-   ],
-   "position": 65.0,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/how-many-airbnb-listings-are-there-in-2026-global-by-country",
    "impressions": 2,
    "clicks": 0,
    "queries": [],
    "position": 32.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/how-many-chatgpt-users-are-there-in-2026-global-by-country-45ee",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [],
-   "position": 3.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/how-many-people-use-chatgpt-in-2026-global-users-trends",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     1,
-     0,
-     63
-    ]
-   ],
-   "position": 35.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/how-many-shopify-merchants-are-there-in-2026-global-by-count-99f7",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [
-    [
-     "how many shopify stores are there in the world",
-     1,
-     0,
-     1
-    ]
-   ],
-   "position": 3.5,
    "ctr": 0.0
   },
   {
@@ -2122,6 +2088,21 @@
    "ctr": 0.0
   },
   {
+   "url": "https://countly.net/topic/social-media",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     2,
+     0,
+     8
+    ]
+   ],
+   "position": 8.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://countly.net/ai-adoption-by-country-2026-global-leaders-laggards",
    "impressions": 1,
    "clicks": 0,
@@ -2130,11 +2111,42 @@
    "ctr": 0.0
   },
   {
+   "url": "https://countly.net/anthropic-revenue-2026-claude-maker-earnings-funding",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 10.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/ecommerce-statistics-2026-online-shoppers-revenue-by-country",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     1,
+     0,
+     43
+    ]
+   ],
+   "position": 43.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://countly.net/facebook-users-by-country-2026-global-reach-and-trends",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
    "position": 88.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/how-many-chatgpt-users-are-there-in-2026-global-by-country-45ee",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 3.0,
    "ctr": 0.0
   },
   {
@@ -2177,6 +2189,21 @@
    "ctr": 0.0
   },
   {
+   "url": "https://countly.net/how-many-people-use-chatgpt-in-2026-global-users-trends",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     1,
+     0,
+     63
+    ]
+   ],
+   "position": 63.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://countly.net/how-many-people-use-youtube-in-2026-global-users-trends",
    "impressions": 1,
    "clicks": 0,
@@ -2205,14 +2232,6 @@
     ]
    ],
    "position": 71.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/how-many-twitch-viewers-are-there-in-2026-global-by-country",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 77.0,
    "ctr": 0.0
   },
   {
@@ -2302,43 +2321,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/s/countly",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 2.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/s/countly/best-ai-tools",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 2.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/s/countly/crypto",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 2.0,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/s/countly/game-store-industry-2026-definitive-market-size-retailer-stats",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
    "position": 10.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/s/countly/top10",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 2.0,
    "ctr": 0.0
   },
   {
@@ -2370,21 +2357,6 @@
     ]
    ],
    "position": 25.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/topic/social-media",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     1,
-     0,
-     8
-    ]
-   ],
-   "position": 8.0,
    "ctr": 0.0
   }
  ]

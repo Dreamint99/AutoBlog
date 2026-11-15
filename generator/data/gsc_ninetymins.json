@@ -1,43 +1,50 @@
 {
- "source": "Search Console API 2026-08-14..2026-11-12",
+ "source": "Search Console API 2026-08-15..2026-11-13",
  "pages": [
   {
    "url": "https://ninetymins.com/",
-   "impressions": 16,
-   "clicks": 2,
+   "impressions": 22,
+   "clicks": 3,
    "queries": [
     [
      "ninetymins.com",
-     3,
+     5,
      0,
-     40
+     24.6
     ]
    ],
-   "position": 11.8,
-   "ctr": 0.125
+   "position": 9.2,
+   "ctr": 0.1364
   },
   {
    "url": "https://ninetymins.com/match/uefa-champions/401915396-lille-vs-galatasaray",
-   "impressions": 5,
-   "clicks": 1,
-   "queries": [],
-   "position": 2.2,
-   "ctr": 0.2
-  },
-  {
-   "url": "https://ninetymins.com/players/dan-burn",
-   "impressions": 5,
+   "impressions": 7,
    "clicks": 1,
    "queries": [
     [
      "ninetymins.com",
-     3,
+     1,
      0,
-     85.3
+     9
     ]
    ],
-   "position": 52.8,
-   "ctr": 0.2
+   "position": 3.3,
+   "ctr": 0.1429
+  },
+  {
+   "url": "https://ninetymins.com/players/dan-burn",
+   "impressions": 6,
+   "clicks": 1,
+   "queries": [
+    [
+     "ninetymins.com",
+     4,
+     0,
+     66
+    ]
+   ],
+   "position": 45.3,
+   "ctr": 0.1667
   },
   {
    "url": "https://ninetymins.com/s/ninetymins/real-betis-vs-barcelona-2026-oct-17-tv-stream-guide",
