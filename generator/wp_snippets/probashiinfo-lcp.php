@@ -9,6 +9,13 @@
 if ( is_admin() || wp_doing_ajax() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
 	return;
 }
+// one LiteSpeed purge per version, so cached pages pick the change up
+add_action( 'init', function () {
+	if ( get_option( 'pi_lcp_purged' ) !== '2' ) {
+		update_option( 'pi_lcp_purged', '2', false );
+		do_action( 'litespeed_purge_all' );
+	}
+} );
 if ( ! function_exists( 'pi_lcp_sizes' ) ) {
 	function pi_lcp_sizes() {
 		return '(max-width: 820px) 94vw, 763px';
