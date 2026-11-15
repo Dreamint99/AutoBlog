@@ -1,7 +1,7 @@
 name: VisaPoint Visa Check guides
 
 # "How to check <Country> visa status online" guides, one per entry in
-# web/src/data/visa-check.json that has no guide yet. Daily: 2 new guides
+# web/src/data/visa-check.json that has no guide yet. Daily: 1 new guide
 # (drip, not dump). Manual run: set "count" or a space-separated list of slugs.
 on:
   schedule:
@@ -51,5 +51,9 @@ jobs:
           IMAGE_PROVIDER: pixabay
           PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
           PYTHONUTF8: "1"
-          ARGS: ${{ github.event.inputs.args || '2' }}
-        run: python visa_check_batch.py $ARGS
+          ARGS: ${{ github.event.inputs.args || '1' }}
+          # stop starting new guides after 80 min and cap each LLM call at 150 s, so the job
+          # finishes (with a full log) inside the 120-min limit instead of being cancelled
+          VISA_CHECK_BUDGET_MIN: "80"
+          LLM_TIMEOUT: "150"
+        run: python -u visa_check_batch.py $ARGS
