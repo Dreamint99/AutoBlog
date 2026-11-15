@@ -2,7 +2,7 @@
 /* প্রবাসী ইনফো — Travelpayouts Drive (affiliate offers: flights, hotels, eSIM, insurance).
    Account: Travelpayouts marker 601438, project https://probashiinfo.com. Drive reads each page
    and places matching travel offers by itself. Front end only; not for logged-in editors or feeds.
-   snippet #19 once lost its <script src> tags. */
+   The <script> tag is built from pieces because snippet #19 once lost its <script src> tags. */
 add_action( 'wp_head', function () {
 	if ( is_admin() || is_feed() ) return;
 	// Editors don't get it, except on Travelpayouts' own "Check Drive connection" link.
