@@ -217,7 +217,7 @@ body.pi-app .hero3.v6h .w{display:grid;grid-template-columns:minmax(0,1.35fr) mi
 .v6k .ldot{background:var(--b)}
 body.pi-app .v6h h1{color:var(--ink);font-size:clamp(32px,4.2vw,50px);font-weight:800;line-height:1.25;margin:10px 0 8px}
 body.pi-app .v6h h1 span{color:var(--b)}
-.v6sub{margin:0 0 20px;color:var(--mut);font-size:16.5px}
+body.pi-app .hero3.v6h .v6sub{margin:0 0 20px;color:var(--mut);font-size:16.5px}
 .v6s{display:flex;align-items:center;gap:8px;background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:5px 5px 5px 14px;max-width:600px;transition:border-color .2s,box-shadow .2s}
 .v6s:focus-within{border-color:var(--ink);box-shadow:0 0 0 4px rgba(23,19,27,.06)}
 .v6s svg{width:19px;height:19px;flex:none;fill:none;stroke:var(--mut);stroke-width:2;stroke-linecap:round}
@@ -337,7 +337,7 @@ body.pi-app .pba-card b{color:var(--ink)!important}
 @media(max-width:760px){.v6l{grid-template-columns:minmax(0,1fr)}.v6l li:nth-last-child(2){border-bottom:1px solid var(--line)}.v6g a{grid-template-columns:110px minmax(0,1fr);gap:12px;padding:10px}.v6g .x{display:none}.v6g b{font-size:16px}}
 @media(max-width:640px){
  body.pi-app .hero3.v6h .w{padding-top:26px;padding-bottom:26px}
- .v6sub{font-size:15px;margin-bottom:16px}
+ body.pi-app .hero3.v6h .v6sub{font-size:15px;margin-bottom:16px}
  .v6s input{font-size:15px}.v6s button{padding:10px 14px}
  .v6t{padding:12px 14px}.v6t b{font-size:20px}
  .v6l{padding:2px 16px}
