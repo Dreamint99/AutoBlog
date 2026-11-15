@@ -167,7 +167,9 @@ def chat(system: str, user: str, temperature: float = 0.7,
                         continue
                     # transient (503 overload, timeout, 5xx) — back off 20s, 40s, 80s… before retrying it
                     key = f"{name}:{use_model}"
-                    _fails[key] = _fails.get(key, 0) + 1
+                    # a 503 "model overloaded" (Gemini can hang ~4 min before sending it) counts double,
+                    # so two of them retire the model for the run instead of four
+                    _fails[key] = _fails.get(key, 0) + (2 if getattr(e, "status_code", None) == 503 else 1)
                     if _fails[key] >= 4:  # keeps failing this run — stop paying the wait on every call
                         _dead.add(key)
                         print(f"LLM: {key} disabled for this run after {_fails[key]} transient errors",
