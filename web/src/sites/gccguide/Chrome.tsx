@@ -132,6 +132,7 @@ export function Footer({ site }: { site: Site }) {
           <div>
             <h4>GCCGuide</h4>
             <Link href={`${b}/rates`}>Exchange rates</Link>
+            <Link href={`${b}/reports/remittance`}>Remittance reports</Link>
             <Link href={`${b}/gold-rate`}>Gold rates</Link>
             <Link href={`${b}/fuel-price`}>Fuel prices</Link>
             <Link href={`${b}/prayer-times`}>Prayer times</Link>

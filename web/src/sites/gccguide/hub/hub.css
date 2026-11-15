@@ -439,3 +439,49 @@
 .site-gccguide .gh-hometiles .tt { font-size: 1.02rem; font-weight: 800; color: var(--head); margin-top: 4px; }
 .site-gccguide .gh-hometiles .tx { font-size: 0.88rem; line-height: 1.45; color: var(--muted); }
 @media (prefers-reduced-motion: reduce) { .site-gccguide .gh-hometiles > a { transition: none; } .site-gccguide .gh-hometiles > a:hover { transform: none; } }
+
+/* ── monthly remittance report ────────────────────────────────────────────── */
+.site-gccguide .gr-summary { margin: 6px 0 4px; }
+.site-gccguide .gr-summary p { margin: 0 0 12px; color: var(--text); font-size: 1rem; line-height: 1.65; }
+.site-gccguide .gr-month { flex-direction: column; align-items: flex-start; gap: 4px; }
+.site-gccguide .gr-month > span { white-space: normal; }
+.site-gccguide .gr-sparkcard { gap: 12px; }
+.site-gccguide .gr-sc-t { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.site-gccguide .gr-spark { flex: 0 0 96px; width: 96px; height: 30px; color: var(--teal); }
+.site-gccguide .gr-spark.down { color: var(--rose); }
+.site-gccguide .gr-use {
+  margin: 28px 0 8px;
+  padding: 16px;
+  background: var(--panel);
+  border: 1px solid var(--accent-line);
+  border-radius: 16px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  min-width: 0;
+}
+.site-gccguide .gr-use h2 { margin: 0 0 6px; font-size: 1.05rem; color: var(--head); }
+.site-gccguide .gr-use p { margin: 0 0 12px; }
+.site-gccguide .gr-use a { color: var(--teal); }
+.site-gccguide .gr-use-k { display: block; margin: 8px 0 6px; color: var(--head); font-size: 0.88rem; }
+.site-gccguide .gr-use code { font-family: var(--mono, ui-monospace, monospace); font-size: 0.85em; }
+.site-gccguide .gr-code {
+  margin: 0 0 8px;
+  padding: 12px;
+  background: var(--bg2);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  white-space: pre-wrap;
+  word-break: break-all;
+  color: var(--text);
+  user-select: all;
+}
+.site-gccguide .gr-use-note { font-size: 0.85rem; }
+.site-gccguide .gr-cite { padding: 10px 12px; background: var(--bg2); border-radius: 10px; color: var(--text); word-break: break-word; user-select: all; }
+.site-gccguide .gr-pager { display: flex; justify-content: space-between; gap: 10px; margin: 22px 0 6px; font-weight: 650; flex-wrap: wrap; }
+.site-gccguide .gr-pager a { color: var(--navy); text-decoration: none; }
+.site-gccguide .gr-method { margin: 28px 0 0; color: var(--muted); font-size: 0.88rem; line-height: 1.6; }
+.site-gccguide .gr-method h2 { font-size: 1rem; color: var(--head); margin: 0 0 8px; }
+.site-gccguide .gr-method ul { margin: 0; padding-left: 18px; }
+.site-gccguide .gr-method li { margin: 0 0 6px; }
+.site-gccguide .gr-method a { color: var(--navy); }

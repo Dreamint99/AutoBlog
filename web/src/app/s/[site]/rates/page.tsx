@@ -105,6 +105,13 @@ export default async function Page({ params }: { params: Promise<{ site: string 
           </p>
         </Callout>
 
+        <Callout tone="info" title="Monthly Remittance Report">
+          <p style={{ margin: 0 }}>
+            Month-end rates, monthly and yearly change and the best week to send for every Gulf corridor:{" "}
+            <Link href={`${b}/reports/remittance`}>read the monthly remittance reports →</Link>
+          </p>
+        </Callout>
+
         {GULF_CURRENCIES.map((g) => (
           <div key={g.code}>
             <SectionHead title={`${g.code} — ${g.name}`} dek={`${g.short}: all ${QUOTE_CURRENCIES.length} quote currencies`} />

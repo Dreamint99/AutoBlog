@@ -142,6 +142,7 @@ export default function RatePage({ site, v }: { site: Site; v: RateView }) {
             .slice(0, 8)
             .map((q) => ({ label: `${v.from} to ${q.code}`, href: `${b}/rates/${v.from.toLowerCase()}-to-${q.code.toLowerCase()}` })),
           { label: "All exchange rates", href: `${b}/rates` },
+          { label: "Monthly remittance report", href: `${b}/reports/remittance` },
         ]}
       />
 
