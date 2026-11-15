@@ -84,7 +84,7 @@ def _seo_nudge(body_html: str, keyword: str) -> str:
         return tag[:-1] + f' alt="{keyword}">' if tag.endswith(">") else tag
     return re.sub(r"<img[^>]*>", _fix, body_html, count=1, flags=re.I)
 
-from modules import store, seo, indexnow, seo_score
+from modules import store, seo, indexnow, seo_score, prompt_leak
 from modules.agents import strategize, write_draft, optimize, boost, time_context
 from modules.research import research_topic
 from modules.image import feature_image, embed_inline_images
@@ -245,11 +245,19 @@ def generate_article(site: dict, title: str, log=lambda m: None, replace: dict |
     final_title = data["title"]
     body = data["body_html"]
 
+    # Early cannibalisation check (the same check runs again before saving): a writer/optimizer
+    # title that already clashes with a published post is rejected now, before images, links and
+    # the boost loop spend more LLM calls on it.
+    siblings = store.list_articles(site["id"])
+    clash = too_similar(final_title, [a.get("title", "") for a in siblings if a.get("id") != article_id]
+                        + [(a.get("slug") or "").replace("-", " ") for a in siblings if a.get("id") != article_id])
+    if clash and not replace:
+        raise ValueError(f"near-duplicate of existing article '{clash}' — skipping")
+
     log("🖼️  Embedding inline images…")
     body = embed_inline_images(body, use_wiki=site.get("wiki_images", True), site_id=site.get("id", ""), context=final_title)
 
     log("🔗 Adding internal links…")
-    siblings = store.list_articles(site["id"])
     cands = [{"slug": a["slug"], "title": a["title"], "keyword": a.get("keyword", "")}
              for a in siblings]
     if site.get("publish_target") != "wordpress":
@@ -286,10 +294,13 @@ def generate_article(site: dict, title: str, log=lambda m: None, replace: dict |
             log(f"   boost skipped ({e})")
             break
         nb = _seo_nudge(b.get("body_html") or wa["body_html"], keyword)
-        cand = {"title": (b.get("title") or wa["title"])[:70], "keyword": keyword,
+        # A boost reply that copied the JSON template ("<=60 chars, starts with focus keyword")
+        # keeps the previous title/meta instead of publishing the instruction text.
+        bt, bmt, bmd = b.get("title") or "", b.get("meta_title") or "", b.get("meta_description") or ""
+        cand = {"title": bt if bt and not prompt_leak.bad_title(bt) else wa["title"], "keyword": keyword,
                 "body_html": nb, "slug": slug,
-                "meta_title": b.get("meta_title") or wa["meta_title"],
-                "meta_description": b.get("meta_description") or wa["meta_description"],
+                "meta_title": bmt if bmt and not prompt_leak.bad_title(bmt) else wa["meta_title"],
+                "meta_description": bmd if bmd and not prompt_leak.bad_description(bmd) else wa["meta_description"],
                 "excerpt": b.get("excerpt") or wa["excerpt"],
                 "faq": b.get("faq") or wa["faq"]}
         cres = seo_score.evaluate(cand)
@@ -334,6 +345,23 @@ def generate_article(site: dict, title: str, log=lambda m: None, replace: dict |
     stale = _past_event(wa["title"], wa.get("excerpt") or "")
     if stale:
         raise ValueError(f"past event written as upcoming ({stale}) — skipping")
+
+    # Prompt-leak validator: never save a title/meta that carries template instructions
+    # ("chars", "focus keyword", "<=") or runs past 70 chars, nor body sentences that are
+    # SEO instructions ("the focus keyword appears in…", "meta description includes…").
+    wa["body_html"], _cut = prompt_leak.clean_body(wa["body_html"])
+    if _cut:
+        log(f"🧹 removed {_cut} instruction sentence(s) from the body")
+    if prompt_leak.bad_title(wa["title"]):
+        fixed = prompt_leak.shorten_title(prompt_leak.strip_title_instructions(wa["title"]))
+        if prompt_leak.bad_title(fixed) or len(fixed) < 20:
+            raise ValueError(f"title carries prompt text ({prompt_leak.bad_title(wa['title'])}): {wa['title']!r} — skipping")
+        log(f"🧹 title repaired: {wa['title']!r} → {fixed!r}")
+        wa["title"] = fixed
+    if prompt_leak.bad_title(wa["meta_title"], max_len=70):
+        wa["meta_title"] = seo.meta_title(wa["title"], site["name"])
+    if prompt_leak.bad_description(wa["meta_description"]):
+        wa["meta_description"] = seo.meta_description(wa["excerpt"], wa["body_html"])
 
     wa["title"] = _cap_first(wa["title"])
     wa["meta_title"] = _cap_first(wa["meta_title"])
@@ -412,7 +440,8 @@ def generate_article(site: dict, title: str, log=lambda m: None, replace: dict |
 def suggest_titles(site: dict, count: int = 10, seed: str = "", avoid: list | None = None) -> list:
     """AI keyword ideas (Google-style) → clickable, viral-leaning SEO titles.
     Batches + dedupes for large counts so all titles are unique. Mock-templated without a key."""
-    avoid_set = set((a or "").lower() for a in (avoid or []))
+    avoid_order = list(dict.fromkeys((a or "").strip().lower() for a in (avoid or []) if (a or "").strip()))
+    avoid_set = set(avoid_order)
     if not have_llm():
         base = seed or site["niche"].split(",")[0]
         return [f"{base}: complete guide ({i + 1})" for i in range(count)]
@@ -435,11 +464,17 @@ def suggest_titles(site: dict, count: int = 10, seed: str = "", avoid: list | No
     empty_streak = 0
     while len(titles) < count and tries < (count // 5 + 6):
         tries += 1
-        need = min(12, count - len(titles))
+        # Ask for spare candidates: most near-duplicates are dropped by the filter below.
+        need = min(12, max(3 * (count - len(titles)), 6))
         system = (time_context() + "\n\n"
                   "You are an SEO editor planning a content calendar around keywords people actually "
                   "search on Google.\n\n" + SEO_PLAYBOOK + '\n\nReturn ONLY a JSON object: {"titles": ["..."]}.')
-        recent = "; ".join(list(avoid_set)[-40:])
+        # Show the model the existing titles that are closest to this site's niche/seed first
+        # (a plain set slice was arbitrary, so it kept re-suggesting topics we already have),
+        # then the newest ones. Candidates are still filtered below against EVERY title/slug.
+        focus = _tokens(f"{seed} {site['niche']}")
+        ranked_avoid = sorted(avoid_order, key=lambda a: -len(_tokens(a) & focus))
+        recent = "; ".join(dict.fromkeys(ranked_avoid[:50] + avoid_order[:30]))
         user = (f'Niche: {site["niche"]}\nAudience: {site["audience"]}\n'
                 + f'Language: {site["language"]} — write EVERY title in this language, not the audience\'s native tongue.\n'
                 + (f'Focus area / seed keyword: {seed}\n' if seed else "")
@@ -457,6 +492,8 @@ def suggest_titles(site: dict, count: int = 10, seed: str = "", avoid: list | No
                 data = data.get("titles") or next((v for v in data.values() if isinstance(v, list)), [])
             added = 0
             for t in data:
+                if len(titles) >= count:
+                    break
                 t = str(t).strip()
                 k = t.lower()
                 if t and k not in avoid_set and not too_similar(t, list(avoid_set)):
