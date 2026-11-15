@@ -5,7 +5,7 @@
    schema, URLs, Adsterra code and the in-house ad blocks (.ad-*) stay exactly as they are.
    Brand = the Probashi app: sunset red→orange (#E11D48→#F97316), plum ink (#3A2150), calm white cards.
    Rollout: PI_SKIN_PUBLIC false = only with ?v4=1 (cookie; ?v4=0 clears). Rollback = deactivate snippet. */
-if ( ! defined( 'PI_SKIN_PUBLIC' ) ) define( 'PI_SKIN_PUBLIC', false );
+if ( ! defined( 'PI_SKIN_PUBLIC' ) ) define( 'PI_SKIN_PUBLIC', true );
 if ( ! defined( 'PI_SKIN_VERSION' ) ) define( 'PI_SKIN_VERSION', '4.0.0' );
 
 function pi_skin_on() {
