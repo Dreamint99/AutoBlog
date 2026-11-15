@@ -2,6 +2,7 @@ import { ImageResponse } from "next/og";
 import { ogFonts } from "@/lib/ogFonts";
 import type { ReactNode } from "react";
 import { getArticle, getSite } from "@/lib/data";
+import { BRAND_LOGOS } from "@/lib/brandLogos";
 
 // 1000×1500 (2:3) Pinterest pin for an article — graphics only (owner's call: no photos).
 // Pins that all look alike get ignored on Pinterest, so each article gets one of six layouts and
@@ -18,7 +19,8 @@ export const dynamic = "force-dynamic";
 type Pal = { bg: string; bg2: string; fg: string; sub: string; accent: string; chip: string; chipFg: string; track: string; card: string };
 const BASE: Record<string, { a: string; b: string; accent: string; light: string; ink: string }> = {
   "infkey-noir": { a: "#1e1b4b", b: "#7c3aed", accent: "#c4b5fd", light: "#f5f3ff", ink: "#4c1d95" },
-  "walvi-atlas": { a: "#0b1f3a", b: "#134e4a", accent: "#2dd4bf", light: "#ecfeff", ink: "#0f766e" },
+  // VisaPoint v2: ink/blue on light blue paper (matches v2.css)
+  "walvi-atlas": { a: "#0b1b33", b: "#1554d1", accent: "#7fa8ff", light: "#edf3fe", ink: "#1554d1" },
   "countly-data": { a: "#1e1b4b", b: "#4f46e5", accent: "#a5b4fc", light: "#eef2ff", ink: "#3730a3" },
   "ninetymins-pitch": { a: "#052e16", b: "#15803d", accent: "#bef264", light: "#f7fee7", ink: "#166534" },
   "gcc-night": { a: "#0c1222", b: "#7a1e3a", accent: "#fbbf24", light: "#fffbeb", ink: "#9a3412" },
@@ -75,6 +77,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ site: s
   const site = getSite(id);
   const art = site ? await getArticle(site.id, slug) : undefined;
   if (!art || !site) return new Response("Not found", { status: 404 });
+  const logo = BRAND_LOGOS[site.id]; // brand-kit sites show their wordmark in the footer
 
   const body = art.body_html || "";
   const title = art.title.trim();
@@ -112,10 +115,15 @@ export async function GET(_req: Request, { params }: { params: Promise<{ site: s
   const Footer = ({ cta }: { cta: string }) => (
     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "auto", padding: "34px 64px",
       background: pal.card, borderTop: `2px solid ${pal.track}` }}>
-      <div style={{ display: "flex", alignItems: "center", fontSize: 38, fontWeight: 800, color: pal.fg }}>
-        <div style={{ display: "flex", width: 18, height: 18, borderRadius: 9, background: pal.accent, marginRight: 14 }} />
-        {site.domain}
-      </div>
+      {logo ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={pal.fg === "#ffffff" ? logo.onDark : logo.onLight} alt="" height={46} width={Math.round(46 * logo.ratio)} />
+      ) : (
+        <div style={{ display: "flex", alignItems: "center", fontSize: 38, fontWeight: 800, color: pal.fg }}>
+          <div style={{ display: "flex", width: 18, height: 18, borderRadius: 9, background: pal.accent, marginRight: 14 }} />
+          {site.domain}
+        </div>
+      )}
       <div style={{ display: "flex", fontSize: 32, fontWeight: 800, color: pal.accent }}>{cta}</div>
     </div>
   );

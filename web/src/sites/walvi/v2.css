@@ -154,7 +154,8 @@
 }
 .site-walvi .vx .vx-head-in { display: flex; align-items: center; gap: 10px; height: 64px; }
 .site-walvi .vx .vx-logo { display: inline-flex; align-items: center; flex: none; text-decoration: none; }
-.site-walvi .vx .vx-logo img { height: 40px; width: auto; display: block; }
+.site-walvi .vx .vx-logo img { height: 24px; width: auto; display: block; }
+@media (min-width: 1080px) { .site-walvi .vx .vx-logo img { height: 26px; } }
 .site-walvi .vx .vx-nav { display: none; align-items: center; gap: 2px; margin-left: 18px; flex: 1; min-width: 0; }
 .site-walvi .vx .vx-nav > a,
 .site-walvi .vx .vx-more > summary {

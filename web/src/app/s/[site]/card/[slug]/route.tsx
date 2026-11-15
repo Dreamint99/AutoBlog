@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 import { ogFonts } from "@/lib/ogFonts";
 import { getArticle, getSite } from "@/lib/data";
+import { BRAND_LOGOS } from "@/lib/brandLogos";
 
 // 1200×630 title card for an article, used as its feature/share image when there is no
 // on-topic photo (generator/modules/site_images.py points image_url here). Built on request and
@@ -13,7 +14,8 @@ export const dynamic = "force-dynamic";
 
 const THEME: Record<string, { a: string; b: string; accent: string }> = {
   "infkey-noir": { a: "#1e1b4b", b: "#7c3aed", accent: "#c4b5fd" },
-  "walvi-atlas": { a: "#0b1f3a", b: "#134e4a", accent: "#2dd4bf" },
+  // VisaPoint v2: ink -> logo blue, light-blue accent (matches v2.css + the wordmark)
+  "walvi-atlas": { a: "#0b1b33", b: "#1554d1", accent: "#7fa8ff" },
   "countly-data": { a: "#1e1b4b", b: "#4f46e5", accent: "#a5b4fc" },
   "ninetymins-pitch": { a: "#052e16", b: "#15803d", accent: "#bef264" },
   "gcc-night": { a: "#0c1222", b: "#7a1e3a", accent: "#fbbf24" },
@@ -28,6 +30,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ site: st
   const tag = art?.tags?.[0] || site?.niche?.split(/[,.]/)[0] || "";
   const fs = title.length <= 36 ? 64 : title.length <= 56 ? 54 : title.length <= 76 ? 46 : 40;
   if (!art) return new Response("Not found", { status: 404 });
+  const logo = site ? BRAND_LOGOS[site.id] : undefined; // brand-kit sites show their wordmark
   // ?w=600 renders the same card at half size for list thumbnails (~4x fewer bytes than 1200px)
   const k = new URL(req.url).searchParams.get("w") === "600" ? 0.5 : 1;
   const z = (n: number) => Math.round(n * k);
@@ -46,10 +49,15 @@ export async function GET(req: Request, { params }: { params: Promise<{ site: st
               borderRadius: z(40), textTransform: "capitalize", marginBottom: z(26) }}>{tag.slice(0, 36)}</div>
           ) : null}
           <div style={{ display: "flex", justifyContent: "center", textAlign: "center", fontSize: z(fs), fontWeight: 800, lineHeight: 1.12, letterSpacing: -k }}>{title}</div>
-          <div style={{ display: "flex", alignItems: "center", marginTop: z(28), fontSize: z(24), fontWeight: 800, opacity: 0.9 }}>
-            <div style={{ display: "flex", width: z(12), height: z(12), borderRadius: z(6), background: t.accent, marginRight: z(10) }} />
-            {site?.domain ?? ""}
-          </div>
+          {logo ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={logo.onDark} alt="" height={z(40)} width={Math.round(z(40) * logo.ratio)} style={{ marginTop: z(32) }} />
+          ) : (
+            <div style={{ display: "flex", alignItems: "center", marginTop: z(28), fontSize: z(24), fontWeight: 800, opacity: 0.9 }}>
+              <div style={{ display: "flex", width: z(12), height: z(12), borderRadius: z(6), background: t.accent, marginRight: z(10) }} />
+              {site?.domain ?? ""}
+            </div>
+          )}
         </div>
       </div>
     ),

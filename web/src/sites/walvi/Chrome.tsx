@@ -54,7 +54,7 @@ export function Logo({ site }: { site: Site; light?: boolean }) {
   return (
     <Link href={`/s/${site.id}`} className="vx-logo" aria-label={`${site.name} home`}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/brand/visapoint-logo.webp" alt="VisaPoint.net" width={124} height={42} />
+      <img src="/brand/visapoint/logo.svg" alt="VisaPoint" width={427} height={81} />
     </Link>
   );
 }
