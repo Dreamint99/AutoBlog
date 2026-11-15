@@ -1,4 +1,5 @@
 import MatchContext from "@/sites/ninetymins/MatchContext";
+import { h2hPath } from "@/sites/ninetymins/h2h";
 import { publicPath } from "@/lib/site-context";
 import { notFound, permanentRedirect } from "next/navigation";
 import type { Metadata } from "next";
@@ -119,7 +120,7 @@ export default async function MatchPage(p: P) {
       </nav>
       <section className="nm-wrap nm-engine">
         <h1>{titleOf(m)}</h1><p>{answer(m)}</p>
-        {fixture && <><p><a href={`/team/${fixture.home_slug}`}>{m.home.full} fixtures</a> · <a href={`/team/${fixture.away_slug}`}>{m.away.full} fixtures</a> · <a href={`/league/${fixture.league}`}>{m.leagueLabel} hub</a> · <a href={`/embed/match/${fixture.league}_${m.id}`}>Score widget</a></p><p>Data changed: <time dateTime={fixture.lastmod}>{fixture.lastmod}</time>. <a href={sourceUrl(fixture.ev)}>Source: ESPN</a>.</p></>}
+        {fixture && <><p><a href={`/team/${fixture.home_slug}`}>{m.home.full} fixtures</a> · <a href={`/team/${fixture.away_slug}`}>{m.away.full} fixtures</a> · <a href={`/league/${fixture.league}`}>{m.leagueLabel} hub</a> · <a href={`/embed/match/${fixture.league}_${m.id}`}>Score widget</a></p><p><a className="nm-h2h-link" href={h2hPath(fixture.home_slug, fixture.away_slug)}>{m.home.full} vs {m.away.full}: head to head →</a></p><p>Data changed: <time dateTime={fixture.lastmod}>{fixture.lastmod}</time>. <a href={sourceUrl(fixture.ev)}>Source: ESPN</a>.</p></>}
         {m.state === "post" && <p>{m.home.full} and {m.away.full} finished {m.home.score}–{m.away.score}. {m.events.filter(e => ["goal", "own", "pen"].includes(e.kind)).map(e => `${e.player || e.text} (${e.min})`).join("; ")}</p>}
         {standings.length > 0 && <p>League position before this match: {standings.filter(t => [m.home.name, m.home.full, m.away.name, m.away.full].includes(t.team)).map(t => `${t.team}: ${t.rank}, ${t.points} points from ${t.played} played`).join("; ")}. <a href={`/league/${fixture?.league || m.league.replace(/\./g, "-")}`}>Full standings</a>.</p>}
       </section>

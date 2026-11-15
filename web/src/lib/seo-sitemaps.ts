@@ -3,6 +3,7 @@ import { activeSite } from "./site-context";
 import { getArticles, d1 } from "./data";
 import { fixtures, hubs, months, prunedSlugs } from "@/sites/ninetymins/engine";
 import { sitemapHighlights, hlPath, cleanTitle, HL_SPORTS } from "@/sites/ninetymins/highlights";
+import { allPairs } from "@/sites/ninetymins/h2h";
 import legacySitemap from "./legacy-sitemap";
 import { dataIndex, comparisonLinks } from "@/sites/countly/data-engine";
 const BASE = "https://ninetymins.com";
@@ -17,10 +18,11 @@ export async function sitemapResponse(name: string): Promise<Response> {
     return urls((await legacySitemap()).map(i => ({ url: i.url, lastmod: i.lastModified instanceof Date ? i.lastModified.toISOString() : i.lastModified })));
   }
   if (name === "sitemap.xml") {
-    const maps = ["sitemap-hubs.xml", "sitemap-articles.xml", "sitemap-news.xml", "sitemap-videos.xml", ...(await monthMaps())];
+    const maps = ["sitemap-hubs.xml", "sitemap-articles.xml", "sitemap-news.xml", "sitemap-videos.xml", "sitemap-h2h.xml", ...(await monthMaps())];
     return xml(`<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${maps.map(m => `<sitemap><loc>${BASE}/${m}</loc></sitemap>`).join("")}</sitemapindex>`);
   }
   if (name === "sitemap-hubs.xml") return urls([{ url: BASE + "/" }, { url: BASE + "/league/f1" }, ...(await races()).map(r => ({ url: BASE + "/race/" + r.slug, lastmod: r.lastmod })), ...(d1() ? (await d1()!.prepare("SELECT slug,lastmod FROM seo_pages WHERE site_id=\'ninetymins\' AND kind=\'stories\'").all<{ slug: string; lastmod: string }>()).results.map(r => ({ url: BASE + "/stories/" + r.slug, lastmod: r.lastmod })) : []), ...["today", "tomorrow", "scores", "widgets", "archive", "live-tv", "highlights", ...HL_SPORTS.filter(([k]) => k).map(([k]) => `highlights/${k}`)].map(p => ({ url: `${BASE}/${p}` })), ...(await hubs()).map(h => ({ url: BASE + h.path, lastmod: h.lastmod }))]);
+  if (name === "sitemap-h2h.xml") return urls((await allPairs()).map(p => ({ url: `${BASE}/h2h/${p.slug}`, lastmod: p.lastmod })));
   if (name === "sitemap-videos.xml") {
     // Google video sitemap: one watch page per official highlight (player = YouTube embed).
     const vids = await sitemapHighlights();
