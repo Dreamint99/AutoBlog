@@ -27,7 +27,7 @@ Earned links only (links between our own sites are left out). Source: Bing Webma
 - Referring domains: **0** (0 links)
 
 ## News mentions (new this week)
-- First run: existing mentions recorded as the baseline; new ones are listed from next week.
+- None this week.
 
 ## Totals
 | Site | Referring domains | Links | New | Lost |
