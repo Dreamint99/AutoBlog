@@ -11,8 +11,8 @@ if ( is_admin() || wp_doing_ajax() || ( defined( 'REST_REQUEST' ) && REST_REQUES
 }
 // one LiteSpeed purge per version, so cached pages pick the change up
 add_action( 'init', function () {
-	if ( get_option( 'pi_lcp_purged' ) !== '2' ) {
-		update_option( 'pi_lcp_purged', '2', false );
+	if ( get_option( 'pi_lcp_purged' ) !== '3' ) {
+		update_option( 'pi_lcp_purged', '3', false );
 		do_action( 'litespeed_purge_all' );
 	}
 } );
@@ -57,6 +57,21 @@ add_action( 'template_redirect', function () {
 		// 4) Home LCP is the hero <h1> text: with display=swap it repaints when the web font lands (~4.8 s on slow
 		//    mobile), and that repaint is the LCP. display=optional keeps the first paint (Android ships Noto Sans
 		//    Bengali as its system Bengali font, so phones look the same); the web font is used once cached.
-		return preg_replace( '~(Noto\+Sans\+Bengali:wght@[0-9;]+)&(amp;)?display=swap~', '$1&$2display=optional', $html );
+		$html = preg_replace( '~(Noto\+Sans\+Bengali:wght@[0-9;]+)&(amp;)?display=swap~', '$1&$2display=optional', $html );
+		// 5) Home hero slideshow (portal snippet): the LCP element is the first 1600px hero photo, sent to phones at
+		//    full size. WordPress already has 768 / 1024 copies → srcset, and preload the first one.
+		$first = '';
+		$html  = preg_replace_callback( '~<img src="(https://probashiinfo\.com/wp-content/uploads/[0-9/]+pi-hero-[a-z]+)\.webp"([^>]*)>~', function ( $m ) use ( &$first ) {
+			$b      = $m[1];
+			$srcset = $b . '-768x432.webp 768w, ' . $b . '-1024x576.webp 1024w, ' . $b . '.webp 1600w';
+			if ( ! $first ) {
+				$first = $srcset;
+			}
+			return '<img src="' . $b . '.webp" srcset="' . $srcset . '" sizes="100vw"' . $m[2] . '>';
+		}, $html );
+		if ( $first && strpos( $html, 'rel="preload" as="image"' ) === false ) {
+			$html = preg_replace( '~<head([^>]*)>~i', '<head$1><link rel="preload" as="image" imagesrcset="' . $first . '" imagesizes="100vw" fetchpriority="high">', $html, 1 );
+		}
+		return $html;
 	} );
 }, 2 );
