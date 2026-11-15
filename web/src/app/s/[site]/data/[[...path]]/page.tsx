@@ -5,7 +5,7 @@ import { JsonLd, breadcrumbSchema } from "@/lib/seo";
 import InfoPage from "@/sites/countly/InfoPage";
 import DataChart from "@/sites/countly/DataChart";
 import { artUri } from "@/sites/countly/art";
-import { dataIndex, getDataPage, comparisonLinks, metricNames, metricLabels, formatNumber, datasetSchema } from "@/sites/countly/data-engine";
+import { dataIndex, getDataPage, comparisonLinks, metricNames, metricLabels, formatNumber, datasetSchema, dataDescription } from "@/sites/countly/data-engine";
 export const dynamic = "force-dynamic";
 type P = { params: Promise<{ site: string; path?: string[] }>; searchParams: Promise<{ a?: string; b?: string }> };
 export async function generateMetadata({ params }: P): Promise<Metadata> {
@@ -13,7 +13,10 @@ export async function generateMetadata({ params }: P): Promise<Metadata> {
   if (site !== "countly") return {};
   const [kind, slug] = path;
   const page = kind && slug && kind !== "compare" && kind !== "embed" ? await getDataPage(kind, slug) : null;
-  return { title: page?.title || (kind === "compare" ? "Compare country statistics" : "Country data, rankings & charts"), alternates: { canonical: `/data${path.length ? "/" + path.join("/") : ""}` }, robots: { index: kind !== "embed" && !(kind === "compare" && !slug), follow: true, "max-image-preview": "large" }, openGraph: { images: [{ url: "/og/countly.png", width: 1200, height: 630 }] } };
+  const description = page ? dataDescription(page)
+    : kind === "compare" && slug ? `Side-by-side population, GDP per capita and real GDP growth for ${slug.split("-vs-").map(s => s.replace(/-[a-z]{3}$/, "").replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase())).join(" and ")}, from World Bank data.`
+    : "Population, GDP per capita and real GDP growth for 217 countries and economies: World Bank data, rankings, charts and country comparisons.";
+  return { title: page?.title || (kind === "compare" ? "Compare country statistics" : "Country data, rankings & charts"), description, alternates: { canonical: `/data${path.length ? "/" + path.join("/") : ""}` }, robots: { index: kind !== "embed" && !(kind === "compare" && !slug), follow: true, "max-image-preview": "large" }, openGraph: { description, images: [{ url: "/og/countly.png", width: 1200, height: 630 }] } };
 }
 
 /** A dark stat tile: small label, big figure, optional note. */
