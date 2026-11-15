@@ -131,6 +131,22 @@ def to_bn(n):
     return str(n).translate(str.maketrans("0123456789", "০১২৩৪৫৬৭৮৯")).zfill(2)
 
 
+def _words(s):
+    s = re.sub(r"[​-‏­]", "", str(s)).translate(str.maketrans("0123456789", "০১২৩৪৫৬৭৮৯"))
+    return re.findall(r"[\wঀ-৿]+", s.lower())
+
+
+def top_query(page):
+    qs = [q for q in page.get("queries") or [] if q and q[0]]
+    return max(qs, key=lambda q: q[1])[0] if qs else ""
+
+
+def query_led(title, query, n=3):
+    """True when the title already opens with the first n words of the search query."""
+    q, t = _words(query)[:n], _words(title)[: n + 1]
+    return bool(q) and all(w in t for w in q)
+
+
 def propose(page, post, cur_title, cur_desc):
     queries = ", ".join(f"{q} ({imp})" for q, imp, *_ in page["queries"][:6]) or "(Google hides the queries; infer from the article)"
     user = (f"Search queries people use (impressions): {queries}\n"
@@ -144,7 +160,10 @@ def propose(page, post, cur_title, cur_desc):
         out = json.loads(llm.chat(SYSTEM, user + (f"\n\nYour previous answer was rejected: {problem}. Fix it." if problem else ""),
                                   temperature=0.5, max_tokens=600, json_mode=True))
         t, d = out["title"].strip(), out["description"].strip()
-        if not 30 <= len(t) <= 62:
+        tq = top_query(page)
+        if tq and not query_led(t, tq, 2):
+            problem = f'the title must START with the words of the top search query "{tq}"'
+        elif not 30 <= len(t) <= 62:
             problem = f"title is {len(t)} characters, must be 40-60"
         elif not 100 <= len(d) <= 158:
             problem = f"description is {len(d)} characters, must be 120-155"
@@ -198,6 +217,9 @@ def main():
             print("  - no published post for", p["url"])
             continue
         cur_t, cur_d = live_snippet(p["url"])
+        if query_led(cur_t, top_query(p)):
+            print("  = already starts with the top query:", cur_t)
+            continue
         try:
             t, d = propose(p, post, cur_t, cur_d)
         except Exception as e:
