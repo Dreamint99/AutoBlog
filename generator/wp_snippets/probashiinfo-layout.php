@@ -7,7 +7,7 @@
    card on non-Europe posts), Adsterra native (#19, boxed) + popunder. Home lists have no images.
    Data pages (#32), BMET/flight/rates tools render themselves and only get the palette.
    Rollout: PI6_PUBLIC false = only with ?v6=1 (cookie; ?v6=0 clears). Rollback = deactivate. */
-if ( ! defined( 'PI6_PUBLIC' ) ) define( 'PI6_PUBLIC', false );
+if ( ! defined( 'PI6_PUBLIC' ) ) define( 'PI6_PUBLIC', true );
 if ( ! defined( 'PI6_VERSION' ) ) define( 'PI6_VERSION', '6.0.0' );
 
 function pi6_on() {
