@@ -12,8 +12,9 @@ const activeSite = (): SiteLite => SITES.find((s) => s.id === process.env.SITE_I
 //   upload.wikimedia.org → the 500px rendition (Wikimedia only serves standard widths; 640 now 400s)
 //   ESPN team logos      → ESPN's own resizer at the displayed size
 // The PNG card URL stays the article's og:image for social previews.
-const THEME: Record<string, { a: string; b: string; accent: string }> = {
-  "infkey-noir": { a: "#0b1220", b: "#1d4ed8", accent: "#22d3ee" },
+const THEME: Record<string, { a: string; b: string; accent: string; fg?: string; head?: string; stripe?: boolean }> = {
+  // InfKey v2 (light): same look as the /card PNG — paper -> blue tint, slate ink, logo-gradient stripe
+  "infkey-noir": { a: "#ffffff", b: "#e6efff", accent: "#2563eb", fg: "#0b1220", head: "Inter Tight", stripe: true },
   "walvi-atlas": { a: "#0b1f3a", b: "#134e4a", accent: "#2dd4bf" },
   "countly-data": { a: "#1e1b4b", b: "#4f46e5", accent: "#a5b4fc" },
   "ninetymins-pitch": { a: "#052e16", b: "#15803d", accent: "#bef264" },
@@ -39,7 +40,9 @@ function wrap(title: string, width: number, maxLines: number): string[] {
 }
 
 export function cardSvg(title: string): string {
-  const t = THEME[activeSite().theme] ?? { a: "#111827", b: "#1f2937", accent: "#fbbf24" };
+  const t: { a: string; b: string; accent: string; fg?: string; head?: string; stripe?: boolean } =
+    THEME[activeSite().theme] ?? { a: "#111827", b: "#1f2937", accent: "#fbbf24" };
+  const fg = t.fg ?? "#fff";
   const n = title.length;
   const [fs, width] = n <= 36 ? [70, 20] : n <= 60 ? [60, 24] : [52, 28];
   const lines = wrap(title, width, 4);
@@ -48,12 +51,15 @@ export function cardSvg(title: string): string {
   const tx = lines.map((l, i) => `<text x="600" y="${Math.round(y0 + i * lh)}">${xml(l)}</text>`).join("");
   const svg =
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="600" height="315">` +
-    `<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${t.a}"/><stop offset="1" stop-color="${t.b}"/></linearGradient></defs>` +
+    `<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${t.a}"/><stop offset="1" stop-color="${t.b}"/></linearGradient>` +
+    (t.stripe ? `<linearGradient id="s"><stop offset="0" stop-color="#3b82f6"/><stop offset=".55" stop-color="#06b6d4"/><stop offset="1" stop-color="#22c55e"/></linearGradient>` : "") +
+    `</defs>` +
     `<rect width="1200" height="630" fill="url(#g)"/>` +
     `<circle cx="90" cy="50" r="210" fill="none" stroke="${t.accent}" stroke-opacity=".25" stroke-width="3"/>` +
     `<circle cx="1110" cy="640" r="180" fill="${t.accent}" fill-opacity=".12"/>` +
-    `<g fill="#fff" font-family="Inter,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-weight="800" font-size="${fs}" text-anchor="middle">${tx}</g>` +
-    `<g font-family="Inter,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-weight="800" font-size="24" text-anchor="middle" fill="#fff" fill-opacity=".9">` +
+    (t.stripe ? `<rect y="616" width="1200" height="14" fill="url(#s)"/>` : "") +
+    `<g fill="${fg}" font-family="${t.head ? t.head + "," : ""}Inter,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-weight="800" font-size="${fs}" text-anchor="middle">${tx}</g>` +
+    `<g font-family="Inter,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-weight="800" font-size="24" text-anchor="middle" fill="${fg}" fill-opacity="${t.fg ? ".75" : ".9"}">` +
     `<circle cx="${600 - 8 - activeSite().domain.length * 7}" cy="${Math.round(y0 + lines.length * lh + 22)}" r="6" fill="${t.accent}"/>` +
     `<text x="600" y="${Math.round(y0 + lines.length * lh + 30)}">${xml(activeSite().domain)}</text></g></svg>`;
   return "data:image/svg+xml," + encodeURIComponent(svg);

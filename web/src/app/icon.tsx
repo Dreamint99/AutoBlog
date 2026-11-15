@@ -28,7 +28,7 @@ const COLORS: Record<string, { bg: string; fg: string }> = {
   "tech-dark": { bg: "#0ea5e9", fg: "#04121f" }, // AINews
   "bd-green": { bg: "#047857", fg: "#ffffff" }, // BangladeshExpert
   "qatar-maroon": { bg: "#7a1e3a", fg: "#ffffff" }, // QatarExperts
-  "infkey-noir": { bg: "#7c3aed", fg: "#ffffff" }, // InfKey
+  "infkey-noir": { bg: "#2563eb", fg: "#ffffff" }, // InfKey
   "walvi-atlas": { bg: "#0b1f3a", fg: "#2dd4bf" }, // VisaPoint
   "countly-data": { bg: "#4f46e5", fg: "#ffffff" }, // Countly
 };

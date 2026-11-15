@@ -15,15 +15,32 @@ import { getArticle, getSite } from "@/lib/data";
 // /pins.xml lists these so Pinterest auto-publishes every new article.
 export const dynamic = "force-dynamic";
 
-type Pal = { bg: string; bg2: string; fg: string; sub: string; accent: string; chip: string; chipFg: string; track: string; card: string };
+type Pal = { bg: string; bg2: string; fg: string; sub: string; accent: string; chip: string; chipFg: string; track: string; card: string;
+  onAccent?: string; stripe?: string };
+// Sites whose v2 design has its own hand-picked pin palettes (and headline face) instead of the BASE recipe.
+const IK_GRAD = "linear-gradient(90deg, #3b82f6 0%, #06b6d4 55%, #22c55e 100%)"; // InfKey logo gradient
+const PALS: Record<string, { head?: string; pals: Pal[] }> = {
+  // InfKey v2 (light, sites/infkey/v2.css): paper, deep navy, InfKey blue — Inter Tight headlines
+  "infkey-noir": {
+    head: "Inter Tight",
+    pals: [
+      { bg: "#fafbfc", bg2: "#eef4ff", fg: "#0b1220", sub: "#475569", accent: "#2563eb", chip: "#2563eb", chipFg: "#ffffff",
+        track: "rgba(15,23,42,.07)", card: "#ffffff", onAccent: "#ffffff", stripe: IK_GRAD },
+      { bg: "#0b1220", bg2: "#172554", fg: "#ffffff", sub: "rgba(255,255,255,.8)", accent: "#60a5fa", chip: "#60a5fa", chipFg: "#0b1220",
+        track: "rgba(255,255,255,.12)", card: "rgba(255,255,255,.07)", onAccent: "#0b1220", stripe: IK_GRAD },
+      { bg: "#2563eb", bg2: "#1e3a8a", fg: "#ffffff", sub: "rgba(255,255,255,.86)", accent: "#a5f3fc", chip: "#ffffff", chipFg: "#1d4ed8",
+        track: "rgba(255,255,255,.18)", card: "rgba(11,18,32,.18)", onAccent: "#0b1220", stripe: IK_GRAD },
+    ],
+  },
+};
 const BASE: Record<string, { a: string; b: string; accent: string; light: string; ink: string }> = {
-  "infkey-noir": { a: "#1e1b4b", b: "#7c3aed", accent: "#c4b5fd", light: "#f5f3ff", ink: "#4c1d95" },
   "walvi-atlas": { a: "#0b1f3a", b: "#134e4a", accent: "#2dd4bf", light: "#ecfeff", ink: "#0f766e" },
   "countly-data": { a: "#1e1b4b", b: "#4f46e5", accent: "#a5b4fc", light: "#eef2ff", ink: "#3730a3" },
   "ninetymins-pitch": { a: "#052e16", b: "#15803d", accent: "#bef264", light: "#f7fee7", ink: "#166534" },
   "gcc-night": { a: "#0c1222", b: "#7a1e3a", accent: "#fbbf24", light: "#fffbeb", ink: "#9a3412" },
 };
 function palettes(theme: string): Pal[] {
+  if (PALS[theme]) return PALS[theme].pals;
   const t = BASE[theme] ?? { a: "#111827", b: "#1f2937", accent: "#fbbf24", light: "#f9fafb", ink: "#111827" };
   return [
     // dark gradient
@@ -97,7 +114,8 @@ export async function GET(_req: Request, { params }: { params: Promise<{ site: s
   if (!options.length) options.push(hero ? "bigstat" : "checklist");
   const layout = options[Math.floor(h / 3) % options.length];
 
-  const fonts = await ogFonts();
+  const head = PALS[site.theme]?.head;
+  const fonts = await ogFonts({ tight: !!head });
   const fs = title.length <= 40 ? 78 : title.length <= 70 ? 66 : 56;
   const max = Math.max(...rows.map((r) => r.v), 1);
 
@@ -107,11 +125,12 @@ export async function GET(_req: Request, { params }: { params: Promise<{ site: s
         padding: "10px 26px", borderRadius: 50, textTransform: "capitalize" }}>{clip(tag, 28)}</div>
     ) : <div style={{ display: "flex" }} />;
   const Title = ({ size = fs }: { size?: number }) => (
-    <div style={{ display: "flex", fontSize: size, fontWeight: 800, lineHeight: 1.06, letterSpacing: -1.5, color: pal.fg, marginTop: 28 }}>{title}</div>
+    <div style={{ display: "flex", fontSize: size, fontWeight: 800, lineHeight: 1.06, letterSpacing: head ? -0.5 : -1.5, color: pal.fg, marginTop: 28, ...(head ? { fontFamily: head } : {}) }}>{title}</div>
   );
   const Footer = ({ cta }: { cta: string }) => (
-    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "auto", padding: "34px 64px",
-      background: pal.card, borderTop: `2px solid ${pal.track}` }}>
+    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "auto", padding: "34px 64px", position: "relative",
+      background: pal.card, borderTop: pal.stripe ? "none" : `2px solid ${pal.track}` }}>
+      {pal.stripe ? <div style={{ display: "flex", position: "absolute", left: 0, right: 0, top: 0, height: 8, backgroundImage: pal.stripe }} /> : null}
       <div style={{ display: "flex", alignItems: "center", fontSize: 38, fontWeight: 800, color: pal.fg }}>
         <div style={{ display: "flex", width: 18, height: 18, borderRadius: 9, background: pal.accent, marginRight: 14 }} />
         {site.domain}
@@ -121,7 +140,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ site: s
   );
 
   let content: ReactNode;
-  const onAccent = pal.fg === "#ffffff" ? "#111111" : "#ffffff"; // text colour on an accent-filled block
+  const onAccent = pal.onAccent ?? (pal.fg === "#ffffff" ? "#111111" : "#ffffff"); // text colour on an accent-filled block
   let cta = "Read the guide →";
   if (layout === "podium") {
     const [first, ...rest] = rows;
@@ -139,10 +158,11 @@ export async function GET(_req: Request, { params }: { params: Promise<{ site: s
         {rest.map((r, i) => (
           <div key={i} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 20, padding: "26px 36px",
             background: pal.card, borderRadius: 24, color: pal.fg }}>
-            <div style={{ display: "flex", alignItems: "center", fontSize: 40, fontWeight: 500 }}>
-              <div style={{ display: "flex", width: 64, fontWeight: 800, color: pal.accent }}>{`#${i + 2}`}</div>{r.label}
+            <div style={{ display: "flex", alignItems: "center", fontSize: 40, fontWeight: 500, ...(head ? { flex: 1, minWidth: 0, lineHeight: 1.2 } : {}) }}>
+              <div style={{ display: "flex", width: 64, fontWeight: 800, color: pal.accent, ...(head ? { flexShrink: 0 } : {}) }}>{`#${i + 2}`}</div>
+              {head ? <div style={{ display: "flex", flex: 1, minWidth: 0 }}>{r.label}</div> : r.label}
             </div>
-            <div style={{ display: "flex", fontSize: 42, fontWeight: 800 }}>{r.shown}</div>
+            <div style={{ display: "flex", fontSize: 42, fontWeight: 800, ...(head ? { flexShrink: 0, marginLeft: 24, maxWidth: 330 } : {}) }}>{r.shown}</div>
           </div>
         ))}
       </div>
@@ -206,7 +226,8 @@ export async function GET(_req: Request, { params }: { params: Promise<{ site: s
     );
   } else {
     // checklist: key takeaways, else the FAQ questions people actually ask
-    const items = (facts.length >= 4 ? facts : questions).slice(0, 5);
+    // v2-design sites (head font) cap at 4: five 3-line takeaways under a 3-line title ran into the footer
+    const items = (facts.length >= 4 ? facts : questions).slice(0, head ? 4 : 5);
     cta = facts.length >= 4 ? "Save this checklist →" : "Get the answers →";
     content = (
       <div style={{ display: "flex", flexDirection: "column", marginTop: 34, padding: "34px 36px", borderRadius: 32, background: pal.card }}>
@@ -235,7 +256,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ site: s
           {layout === "bigstat" && hero ? (
             <div style={{ display: "flex", flexDirection: "column" }}>
               <div style={{ display: "flex", fontSize: hero.length <= 5 ? 250 : hero.length <= 9 ? 190 : 140, fontWeight: 800, color: pal.accent,
-                letterSpacing: -8, lineHeight: 1, marginTop: 36 }}>{hero}</div>
+                letterSpacing: head ? -4 : -8, lineHeight: 1, marginTop: 36, ...(head ? { fontFamily: head } : {}) }}>{hero}</div>
               <Title size={Math.min(fs, 60)} />
             </div>
           ) : (
