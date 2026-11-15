@@ -8,7 +8,7 @@
    Data pages (#32), BMET/flight/rates tools render themselves and only get the palette.
    Rollout: PI6_PUBLIC false = only with ?v6=1 (cookie; ?v6=0 clears). Rollback = deactivate. */
 if ( ! defined( 'PI6_PUBLIC' ) ) define( 'PI6_PUBLIC', true );
-if ( ! defined( 'PI6_VERSION' ) ) define( 'PI6_VERSION', '7.1.3' );
+if ( ! defined( 'PI6_VERSION' ) ) define( 'PI6_VERSION', '7.1.4' );
 
 function pi6_on() {
 	static $on = null;
@@ -226,6 +226,15 @@ function go(k){n=(k+im.length)%im.length;im.forEach(function(x,i){x.classList.to
 bt.forEach(function(b){b.addEventListener('click',function(){go(+b.getAttribute('data-s'))})});if(im.length>1)go(0);
 var pb=document.getElementById('pbh');if(pb)pb.remove();})();</script>
 <?php }, 50 );
+
+/* agency search: people look for Dream International, which is a Qatar company (no Bangladesh RL number) */
+add_action( 'wp_footer', function () {
+	$q = isset( $_GET['q'] ) ? (string) wp_unslash( $_GET['q'] ) : '';
+	$path = (string) parse_url( isset( $_SERVER['REQUEST_URI'] ) ? $_SERVER['REQUEST_URI'] : '', PHP_URL_PATH );
+	if ( $q === '' || strpos( $path, '/agency' ) !== 0 || ! preg_match( '/dream|ড্রিম/iu', $q ) ) return; ?>
+<div id="pi-dream-note" style="display:flex;gap:10px;align-items:flex-start;margin:12px 0;padding:14px 16px;border-radius:14px;background:#EEF6FB;border:1px solid #CFE6F3;color:#17131B;font-size:15px;line-height:1.6"><span style="font-size:20px;line-height:1.2">ℹ️</span><span><b>ড্রিম ইন্টারন্যাশনাল</b> কাতারভিত্তিক কোম্পানি, তাই বাংলাদেশে এর আরএল (রিক্রুটিং লাইসেন্স) নম্বর নেই। এটি কাতারে নিবন্ধিত প্রতিষ্ঠান।</span></div>
+<script>(function(){var n=document.getElementById('pi-dream-note'),f=document.querySelector('form.pbd-srch');if(n&&f&&f.parentNode)f.parentNode.insertBefore(n,f.nextSibling);})();</script>
+<?php }, 60 );
 
 /* category / tag / search / older posts: light header, clean rows with a small image */
 function pi_v6_list() {
