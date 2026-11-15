@@ -6,7 +6,7 @@
    Brand = the Probashi app: sunset red→orange (#E11D48→#F97316), plum ink (#3A2150), calm white cards.
    Rollout: PI_SKIN_PUBLIC false = only with ?v4=1 (cookie; ?v4=0 clears). Rollback = deactivate snippet. */
 if ( ! defined( 'PI_SKIN_PUBLIC' ) ) define( 'PI_SKIN_PUBLIC', true );
-if ( ! defined( 'PI_SKIN_VERSION' ) ) define( 'PI_SKIN_VERSION', '4.0.0' );
+if ( ! defined( 'PI_SKIN_VERSION' ) ) define( 'PI_SKIN_VERSION', '4.0.1' );
 
 function pi_skin_on() {
 	static $on = null;
@@ -129,6 +129,16 @@ body.pi-app .ft .flogo:after{font-size:24px}
 /* phone tab bar */
 body.pi-app .tabs{border-color:var(--line);box-shadow:0 14px 34px rgba(58,33,80,.22)}
 body.pi-app .tabs .hot{background:linear-gradient(135deg,var(--b),var(--g))}
+
+/* standalone tools (BMET live #15, flight tracker): same brand tokens, header and logo */
+body.bm-app,body.ft-app{--nv:#3A2150;--nv2:#7C1D4B;--b:#E11D48;--g:#F97316;--g2:#FB923C;--ink:#24162F;--ink2:#4B3D57;--mut:#7A6E80;--line:#EEE8F0;--bg:#F7F5F8;--soft:#FFF1EE;--sky:#FB923C}
+body.bm-app .ah,body.ft-app .ah{background:rgba(58,33,80,.96)}
+body.bm-app .ah .lg img,body.ft-app .ah .lg img{display:none}
+body.bm-app .ah .lg:before,body.ft-app .ah .lg:before{content:"";flex:none;width:36px;height:36px;background:url("<?php echo $mark; ?>") center/contain no-repeat}
+body.bm-app .ah .lg b i,body.ft-app .ah .lg b i{color:#FFC24B}
+body.bm-app .ah nav a,body.ft-app .ah nav a,body.bm-app .ah .home,body.ft-app .ah .home{color:#EBDDF0}
+body.bm-app .hero,body.ft-app .hero{background:radial-gradient(700px 380px at 85% -10%,rgba(249,115,22,.30),transparent 62%),linear-gradient(135deg,#2B1640,#3A2150 45%,#7C1D4B 80%,#B3123A)}
+body.bm-app .hero .dt,body.ft-app .hero .dt{color:#EBDDF0}
 
 @media(max-width:640px){
  body.pi-app .hdr2 .top{height:62px}
