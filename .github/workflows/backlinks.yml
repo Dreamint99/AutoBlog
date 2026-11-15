@@ -1,0 +1,39 @@
+name: Weekly backlink report
+
+# Mondays: referring links from Bing Webmaster (earned links only) + new news mentions of each brand.
+# Commits data/backlinks_*.json + data/mentions.json and opens an issue with data/link_report.md,
+# so the owner gets the report by email.
+on:
+  schedule:
+    - cron: "37 3 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - run: python generator/backlinks.py
+        env:
+          BING_WEBMASTER_API_KEY: ${{ secrets.BING_WEBMASTER_API_KEY }}
+      - name: Commit data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add generator/data/backlinks_*.json generator/data/mentions.json generator/data/link_report.md
+          git diff --cached --quiet || git commit -m "data: weekly backlink report"
+          git pull --rebase -q && git push
+      - name: Open the report as an issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create --title "Backlink report $(date +%F)" --body-file generator/data/link_report.md --label backlinks \
+            || gh issue create --title "Backlink report $(date +%F)" --body-file generator/data/link_report.md
