@@ -30,7 +30,7 @@ export function dataDescription(page: DataPage): string {
   if (page.kind === "stories" && d.analysis) return fit(d.analysis);
   if (d.rows?.length) {
     const top = d.rows.slice(0, 3).map(r => `${r.country} (${fmt(r.value)})`).join(", ");
-    return fit(`${d.label} by country in ${d.year}: ${top} lead ${d.coverage ?? d.rows.length} economies. Full World Bank ranking, chart and source.`);
+    return fit(`${d.label} by country in ${d.year}: ${top} lead ${d.coverage ?? d.rows.length} economies. Full World Bank ranking.`);
   }
   const [latest, prev] = d.history || [];
   if (d.country && latest) {
@@ -40,7 +40,7 @@ export function dataDescription(page: DataPage): string {
       else { const pct = ((latest.value - prev.value) / Math.abs(prev.value)) * 100; chg = `, ${pct >= 0 ? "up" : "down"} ${Math.abs(pct).toFixed(1)}% from ${prev.year}`; }
     }
     const first = d.history![d.history!.length - 1];
-    return fit(`${d.country}'s ${d.label.replace(/^Real GDP/, "real GDP")} was ${fmt(latest.value)} in ${latest.year}${chg}. World Bank data with the trend since ${first.year}, chart and source.`);
+    return fit(`${d.country}'s ${/^GDP/.test(d.label) ? d.label : d.label.charAt(0).toLowerCase() + d.label.slice(1)} was ${fmt(latest.value)} in ${latest.year}${chg}. World Bank data with the trend since ${first.year}, chart and source.`);
   }
   return fit(d.analysis || d.description || page.title);
 }
