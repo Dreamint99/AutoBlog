@@ -73,6 +73,8 @@ def bing_links(site_url: str, key: str) -> list:
     targets = []
     for page in range(20):
         d = bing("GetLinkCounts", key, siteUrl=site_url, page=page)
+        if page == 0:
+            print(f"  {site_url} GetLinkCounts → keys {list(d)[:6]} pages {d.get('TotalPages')} first {str(d)[:200]}")
         targets += [(x.get("Url"), int(x.get("Count") or 0)) for x in d.get("Links") or [] if x.get("Url")]
         if page + 1 >= int(d.get("TotalPages") or 0):
             break
