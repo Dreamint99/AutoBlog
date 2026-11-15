@@ -19,7 +19,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install requests huggingface_hub "kaggle>=1.8"
+      - run: pip install requests huggingface_hub six "kaggle>=1.8"
       - run: python generator/datasets_export.py
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
