@@ -1,9 +1,9 @@
 {
- "source": "Search Console API 2026-08-15..2026-11-13",
+ "source": "Search Console API 2026-08-16..2026-11-14",
  "pages": [
   {
    "url": "https://infkey.com/",
-   "impressions": 122,
+   "impressions": 121,
    "clicks": 4,
    "queries": [
     [
@@ -19,6 +19,12 @@
      96.2
     ],
     [
+     "batch 1key",
+     3,
+     0,
+     79.3
+    ],
+    [
      "agentkey pricing",
      2,
      0,
@@ -31,22 +37,16 @@
      83
     ],
     [
+     "ai keyer",
+     2,
+     0,
+     76
+    ],
+    [
      "ai keying software",
      2,
      0,
      69
-    ],
-    [
-     "batch 1key",
-     2,
-     0,
-     77.5
-    ],
-    [
-     "how much does an api key cost",
-     2,
-     0,
-     87
     ],
     [
      "inference.sh pricing",
@@ -61,26 +61,26 @@
      68.5
     ],
     [
-     "ai keyer",
+     "kling ai key",
+     2,
+     0,
+     11
+    ],
+    [
+     "ai keying",
      1,
      0,
-     76
+     68
     ],
     [
      "batch 1key me",
      1,
      0,
      75
-    ],
-    [
-     "batch.1key me",
-     1,
-     0,
-     71
     ]
    ],
-   "position": 47.0,
-   "ctr": 0.0328
+   "position": 44.9,
+   "ctr": 0.0331
   }
  ]
 }

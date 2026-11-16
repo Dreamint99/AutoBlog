@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-08-15..2026-11-13, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-16..2026-11-14, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "প্রাথমিক চিকিৎসা কি",
@@ -39,8 +39,8 @@
   },
   {
    "q": "প্রম্পট কি",
-   "impr": 21,
-   "pos": 9.1,
+   "impr": 25,
+   "pos": 8.9,
    "src": "gsc"
   },
   {

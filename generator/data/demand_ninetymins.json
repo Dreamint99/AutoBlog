@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-08-15..2026-11-13, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-16..2026-11-14, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "champions league quiz",
@@ -62,6 +62,12 @@
    "src": "bingkw"
   },
   {
+   "q": "fifa world cup",
+   "impr": 14271,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
    "q": "uefa champions league schedule",
    "impr": 14087,
    "pos": null,
@@ -70,12 +76,6 @@
   {
    "q": "who won the world cup 2026",
    "impr": 12948,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "champions league draw 2026",
-   "impr": 10925,
    "pos": null,
    "src": "bingkw"
   },
@@ -136,12 +136,6 @@
   {
    "q": "uefa champions league stats",
    "impr": 3772,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "where to watch champions league",
-   "impr": 3684,
    "pos": null,
    "src": "bingkw"
   },
@@ -284,12 +278,6 @@
    "src": "bingkw"
   },
   {
-   "q": "fifa world cup score",
-   "impr": 1262,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
    "q": "english premier league table",
    "impr": 1254,
    "pos": null,
@@ -302,12 +290,6 @@
    "src": "bingkw"
   },
   {
-   "q": "world cup schedule",
-   "impr": 1181,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
    "q": "soccer world cup 2026",
    "impr": 1176,
    "pos": null,
@@ -316,12 +298,6 @@
   {
    "q": "world cup games",
    "impr": 1158,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "champions league 2026-27 schedule",
-   "impr": 1139,
    "pos": null,
    "src": "bingkw"
   },
@@ -428,13 +404,13 @@
    "src": "bingkw"
   },
   {
-   "q": "la liga 2",
+   "q": "la liga games today",
    "impr": 772,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "la liga games today",
+   "q": "la liga 2",
    "impr": 772,
    "pos": null,
    "src": "bingkw"
@@ -476,6 +452,30 @@
    "src": "bingkw"
   },
   {
+   "q": "premier league news",
+   "impr": 688,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "premier league soccer",
+   "impr": 676,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "women's champions league",
+   "impr": 650,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "the world cup",
+   "impr": 642,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
    "q": "us open tennis 2026 schedule",
    "impr": 2438,
    "pos": 9.4,
@@ -495,7 +495,7 @@
   },
   {
    "q": "tennis us open 2026",
-   "impr": 508,
+   "impr": 509,
    "pos": 9.0,
    "src": "bing"
   },
@@ -794,13 +794,13 @@
    "src": "bing"
   },
   {
-   "q": "international break",
+   "q": "international break fixtures",
    "impr": 13,
    "pos": 9.0,
    "src": "bing"
   },
   {
-   "q": "international break fixtures",
+   "q": "international break",
    "impr": 13,
    "pos": 9.0,
    "src": "bing"

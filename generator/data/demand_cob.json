@@ -1,16 +1,22 @@
 {
- "_note": "Real queries (Search Console 2026-08-15..2026-11-13, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-16..2026-11-14, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "রোনান সুলিভান",
-   "impr": 46,
-   "pos": 9.5,
+   "impr": 47,
+   "pos": 9.6,
    "src": "gsc"
   },
   {
    "q": "এমিলিয়ানো মার্টিনেজ কোন ক্লাবে খেলে",
    "impr": 41,
    "pos": 9.6,
+   "src": "gsc"
+  },
+  {
+   "q": "বি বাড়িয়া জেলার আয়তন কত",
+   "impr": 20,
+   "pos": 9.7,
    "src": "gsc"
   },
   {
@@ -32,15 +38,15 @@
    "src": "gsc"
   },
   {
-   "q": "বি বাড়িয়া জেলার আয়তন কত",
-   "impr": 18,
-   "pos": 9.6,
+   "q": "ব্রাহ্মণবাড়িয়া জেলার আয়তন কত",
+   "impr": 16,
+   "pos": 10.8,
    "src": "gsc"
   },
   {
-   "q": "ব্রাহ্মণবাড়িয়া জেলার আয়তন কত",
+   "q": "বি বাড়িয়া জেলার জনসংখ্যা কত",
    "impr": 15,
-   "pos": 10.7,
+   "pos": 8.8,
    "src": "gsc"
   },
   {
@@ -62,12 +68,6 @@
    "src": "gsc"
   },
   {
-   "q": "বি বাড়িয়া জেলার জনসংখ্যা কত",
-   "impr": 11,
-   "pos": 8.9,
-   "src": "gsc"
-  },
-  {
    "q": "ব্রাহ্মণবাড়িয়া কত বর্গ কিলোমিটার",
    "impr": 11,
    "pos": 9.1,
@@ -83,6 +83,12 @@
    "q": "fazlul qadir chaudhry",
    "impr": 11,
    "pos": 9.4,
+   "src": "gsc"
+  },
+  {
+   "q": "কক্সবাজার জেলার জনসংখ্যা কত ২০২৪",
+   "impr": 10,
+   "pos": 8.8,
    "src": "gsc"
   }
  ]
