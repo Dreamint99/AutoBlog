@@ -36,6 +36,7 @@ function classify(ref, utm) {
   for (const [k, re] of SRC_RULES) if (re.test(h)) return k;
   return "referral";
 }
+const DC_ORG = /amazon|aws|google cloud|google llc|microsoft|azure|digitalocean|linode|akamai|ovh|hetzner|vultr|contabo|alibaba|tencent|huawei cloud|oracle|scaleway|leaseweb|choopa|m247|datacamp|cdn77|hostinger|ionos|cloudflare|fastly|zscaler|bytedance|byteplus|colocrossing|hostwinds|psychz|servers\.com|g-core|gcore/i;
 const BOT_UA = /bot|crawl|spider|slurp|headless|lighthouse|pagespeed|preview|facebookexternalhit|embedly|curl|wget|python|httpclient|phantom|puppeteer|playwright/i;
 // Sites that are not Cloudflare zones (no edge analytics): their visitors/pageviews come from the beacon
 // (/b.js), counted per day in the LiveRoom Durable Object and merged into /api/data.
@@ -283,6 +284,10 @@ async function handleBeat(request, env) {
   const srcOnly = b.src === 1; // source event from sites whose own inline beacon already counts the visit
   if ((!id && !srcOnly) || !SITE_IDS.has(site)) return new Response(null, { status: 400 });
   if (BOT_UA.test(request.headers.get("user-agent") || "")) return new Response(null, { status: 204, headers: { "access-control-allow-origin": "*" } });
+  // Headless browsers in cloud data centres run JS too (16 Nov: ~4,000 "visits" from Singapore on ninetymins).
+  // Real readers come from ISPs / mobile networks, not hosting companies.
+  const asOrg = String((request.cf && request.cf.asOrganization) || "");
+  if (DC_ORG.test(asOrg)) return new Response(null, { status: 204, headers: { "access-control-allow-origin": "*" } });
   const c = (request.cf && request.cf.country) || "";
   const msg = { id: srcOnly ? "" : id, site, path, c };
   // a page load (pv) or a source event carries the referrer host + utm_source → traffic channel
