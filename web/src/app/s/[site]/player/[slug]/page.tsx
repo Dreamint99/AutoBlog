@@ -5,7 +5,7 @@ import { Shell } from "@/sites/ninetymins/Chrome";
 import { JsonLd, breadcrumbSchema } from "@/lib/seo";
 import { players, playerIndexable, stat, teamFixtures, type Player } from "@/sites/ninetymins/engine";
 import { teamLogo, playerPhotos, flagUrl } from "@/sites/ninetymins/media";
-import { Crest, Avatar, Flag, TeamLink } from "@/sites/ninetymins/Media";
+import { Crest, Avatar, Flag, TeamLink } from "@/sites/ninetymins/TeamBadges";
 export const dynamic = "force-dynamic";
 type P = { params: Promise<{ site: string; slug: string }> };
 const BASE = "https://ninetymins.com";

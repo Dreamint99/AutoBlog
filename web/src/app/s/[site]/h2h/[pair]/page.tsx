@@ -10,7 +10,7 @@ import Insights from "@/sites/ninetymins/Insights";
 import { getH2H, parsePair, pairSlug, type FormGame, type H2H } from "@/sites/ninetymins/h2h";
 import { publicPath } from "@/lib/public-path";
 import { teamLogo } from "@/sites/ninetymins/media";
-import { Crest } from "@/sites/ninetymins/Media";
+import { Crest } from "@/sites/ninetymins/TeamBadges";
 
 export const dynamic = "force-dynamic";
 type P = { params: Promise<{ site: string; pair: string }> };

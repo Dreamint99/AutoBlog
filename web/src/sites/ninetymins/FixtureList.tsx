@@ -1,6 +1,6 @@
 import type { Fixture } from "./engine";
 import { teamLogo } from "./media";
-import { TeamLink } from "./Media";
+import { TeamLink } from "./TeamBadges";
 
 export default async function FixtureList({ fixtures, compact = false }: { fixtures: Fixture[]; compact?: boolean }) {
   const logos = new Map<string, string>();

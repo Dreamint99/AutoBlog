@@ -8,7 +8,7 @@ import { leagueFixtures, players, playerIndexable } from "@/sites/ninetymins/eng
 import { getStandings, getScores, slugToLeague, matchPath, NM_LEAGUES } from "@/sites/ninetymins/live";
 import FixtureList, { itemList } from "@/sites/ninetymins/FixtureList";
 import { teamLogo, playerPhotos } from "@/sites/ninetymins/media";
-import { Crest, Avatar, TeamLink } from "@/sites/ninetymins/Media";
+import { Crest, Avatar, TeamLink } from "@/sites/ninetymins/TeamBadges";
 export const dynamic = "force-dynamic";
 type P = { params: Promise<{ site: string; slug: string }> };
 export async function generateMetadata({ params }: P): Promise<Metadata> {

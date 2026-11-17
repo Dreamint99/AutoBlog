@@ -13,7 +13,7 @@ import { loadMatch, answer, sourceUrl, players, playerIndexable, stat, type Fixt
 import { getStandings } from "@/sites/ninetymins/live";
 import { wikiSummary } from "@/sites/ninetymins/free";
 import { teamLogo, playerPhotos } from "@/sites/ninetymins/media";
-import { Avatar, TeamLink } from "@/sites/ninetymins/Media";
+import { Avatar, TeamLink } from "@/sites/ninetymins/TeamBadges";
 
 function wikiHints(name: string, sport: string): string[] {
   if (sport === "basketball") return [name];
