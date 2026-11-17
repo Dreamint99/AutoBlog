@@ -4,6 +4,7 @@ import type { SiteArticleProps, TocItem } from "@/lib/types";
 import { GcShell, GuideCard, Icon } from "./Chrome";
 import { countryOf, topicOf, flag } from "./data";
 import { heroSrc } from "@/lib/img";
+import { sitePrefix } from "@/lib/public-path";
 
 function fmt(iso: string) {
   const d = new Date(iso);
@@ -40,7 +41,7 @@ function tocOf(toc: TocItem[]): TocItem[] {
 }
 
 export default function Article({ site, article, related, bodyHtml, toc }: SiteArticleProps) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const c = countryOf(article);
   const t = topicOf(article);
   const items = tocOf(toc);
@@ -60,7 +61,7 @@ export default function Article({ site, article, related, bodyHtml, toc }: SiteA
         <header className="gv-art-head">
           <div className="gv-wrap gv-art-wrap">
             <nav className="gv-crumbs" aria-label="Breadcrumb">
-              <Link href={b}>Home</Link>
+              <Link href={b || "/"}>Home</Link>
               <span aria-hidden="true">/</span>
               {c ? (
                 <>

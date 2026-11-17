@@ -1,14 +1,15 @@
 import "./theme.css";
 import Link from "next/link";
 import type { SiteArticleProps, Site, Article, TocItem } from "@/lib/types";
+import { publicPath } from "@/lib/public-path";
 
 /* ── pure helpers (no hooks / no state) ── */
 
 const NAV: ReadonlyArray<readonly [string, string]> = [
-  ["Latest", "/s/ainews"],
-  ["Models", "/s/ainews"],
-  ["Tools", "/s/ainews"],
-  ["Guides", "/s/ainews"],
+  ["Latest", publicPath("ainews", "/")],
+  ["Models", publicPath("ainews", "/")],
+  ["Tools", publicPath("ainews", "/")],
+  ["Guides", publicPath("ainews", "/")],
 ];
 
 function formatDate(iso: string): string {
@@ -29,7 +30,7 @@ function Masthead({ site }: { site: Site }) {
     <header className="masthead">
       <div className="shell masthead-row">
         <input type="checkbox" id="ai-nav" className="nav-toggle" aria-hidden="true" />
-        <Link href={`/s/${site.id}`} className="logo" aria-label={`${site.name} home`}>
+        <Link href={publicPath(site.id, "/")} className="logo" aria-label={`${site.name} home`}>
           <span className="logomark" aria-hidden="true">
             AI<span className="dot" />
           </span>
@@ -64,7 +65,7 @@ function Footer({ site }: { site: Site }) {
     <footer className="footer">
       <div className="shell">
         <div className="footer-row">
-          <Link href={`/s/${site.id}`} className="logo" aria-label={`${site.name} home`}>
+          <Link href={publicPath(site.id, "/")} className="logo" aria-label={`${site.name} home`}>
             <span className="logomark" aria-hidden="true">
               AI<span className="dot" />
             </span>
@@ -112,7 +113,7 @@ function Toc({ items, variant }: { items: TocItem[]; variant: "inline" | "rail" 
 }
 
 function RelatedCard({ site, article }: { site: Site; article: Article }) {
-  const href = `/s/${site.id}/${article.slug}`;
+  const href = publicPath(site.id, `/${article.slug}`);
   return (
     <article className="card">
       <Link href={href} className="card-media" aria-label={article.title} tabIndex={-1}>
@@ -151,11 +152,11 @@ export default function Article({ site, article, related, bodyHtml, toc }: SiteA
       <main>
         <article className="article-wrap">
           <nav className="breadcrumb" aria-label="Breadcrumb">
-            <Link href={`/s/${site.id}`}>{site.name}</Link>
+            <Link href={publicPath(site.id, "/")}>{site.name}</Link>
             <span className="sep" aria-hidden="true">
               /
             </span>
-            <Link href={`/s/${site.id}`}>Latest</Link>
+            <Link href={publicPath(site.id, "/")}>Latest</Link>
             <span className="sep" aria-hidden="true">
               /
             </span>

@@ -4,9 +4,10 @@ import { HubPage, Crumbs, PageHead, StatRow, BigStat, TrendChart, DataTable, Faq
 import type { GoldCityView } from "./gold";
 import { GOLD_CITIES, GRAMS_PER_TOLA } from "./config";
 import { fmt, dateLong, pct, int } from "./format";
+import { sitePrefix } from "@/lib/public-path";
 
 export default function GoldPage({ site, v }: { site: Site; v: GoldCityView }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const dp = v.currency === "KWD" ? 3 : 2;
   const g24 = v.rows[0];
   const g22 = v.rows[1];

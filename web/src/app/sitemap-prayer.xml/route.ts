@@ -1,4 +1,4 @@
-import { urlset, xmlResponse, siteAndBase, abs } from "@/lib/gcc-sitemaps";
+import { urlset, xmlResponse, siteAndBase, abs, gccOnly } from "@/lib/gcc-sitemaps";
 import { GULF_CURRENCIES } from "@/sites/gccguide/hub/config";
 import { GULF_CURRENCIES as G } from "@/sites/gccguide/hub/config";
 import { citiesOf, indexedCities } from "@/sites/gccguide/hub/prayer";
@@ -9,6 +9,8 @@ void GULF_CURRENCIES;
 // Indexed cities only (population >= the threshold in hub/config.ts). The rest of
 // the towns keep working pages but stay out of the sitemap.
 export async function GET() {
+  const denied = gccOnly();
+  if (denied) return denied;
   const { base } = siteAndBase();
   const lastmod = new Date().toISOString().slice(0, 10);
   const entries: { loc: string; lastmod: string; changefreq: "daily" | "weekly"; priority: number }[] = [

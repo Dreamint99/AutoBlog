@@ -9,6 +9,7 @@ import { Masthead, Footer } from "./Chrome";
 import { aiFont } from "./fonts";
 import { TOPICS, PROFESSIONS, TOOLS, PROMPT_PACKS, topicOf, bestMatch } from "./topics";
 import { heroSrc, thumb } from "@/lib/img";
+import { publicPath, sitePrefix } from "@/lib/public-path";
 
 /* InfKey home — Data-first AI data product.
    Hero: one line, search, 4 entry tiles.
@@ -21,7 +22,7 @@ function formatDate(iso: string): string {
 }
 
 function DataHero({ site }: { site: Site }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   return (
     <section className="data-hero">
       <div className="data-hero-in">
@@ -66,7 +67,7 @@ function DataHero({ site }: { site: Site }) {
 }
 
 function Professions({ site, articles }: { site: Site; articles: Article[] }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   return (
     <section className="ai-sec" id="best-ai-for">
       <div className="ai-head">
@@ -95,7 +96,7 @@ function Professions({ site, articles }: { site: Site; articles: Article[] }) {
 }
 
 function Prompts({ site, articles }: { site: Site; articles: Article[] }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   return (
     <section className="ai-sec" id="prompt-library">
       <div className="ai-head">
@@ -124,7 +125,7 @@ function Prompts({ site, articles }: { site: Site; articles: Article[] }) {
 }
 
 function Tools({ site, articles }: { site: Site; articles: Article[] }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   return (
     <section className="ai-sec" id="use-free">
       <div className="ai-head">
@@ -156,7 +157,7 @@ function Tools({ site, articles }: { site: Site; articles: Article[] }) {
 }
 
 function Card({ site, a, big = false }: { site: Site; a: Article; big?: boolean }) {
-  const href = `/s/${site.id}/${a.slug}`;
+  const href = publicPath(site.id, `/${a.slug}`);
   return (
     <article className={`ai-card${big ? " big" : ""}`}>
       <Link href={href} className="ai-card-media" tabIndex={-1} aria-label={a.title}>
@@ -228,7 +229,7 @@ function Rails({ site, articles, skip }: { site: Site; articles: Article[]; skip
 }
 
 function Builders({ site }: { site: Site }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   return (
     <section className="ai-sec ai-builders" id="calculator">
       <div className="ai-builders-copy">

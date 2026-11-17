@@ -2,9 +2,10 @@ import Link from "next/link";
 import type { Article, Site } from "@/lib/types";
 import { GcShell } from "./Chrome";
 import { countryOf, topicOf, flag } from "./data";
+import { sitePrefix } from "@/lib/public-path";
 
 export default function Search({ site, q, results }: { site: Site; q: string; results: Article[] }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   return (
     <GcShell site={site} active="search">
       <div className="gc-wrap">

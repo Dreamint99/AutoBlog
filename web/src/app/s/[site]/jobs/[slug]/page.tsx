@@ -8,6 +8,7 @@ import { WalviShell } from "@/sites/walvi/Chrome";
 import { PageBanner, DataBand, Crumbs, SalaryByCountryTable, Disclaimer } from "@/sites/walvi/data-ui";
 import { getJob, salariesForJob, DATA_VERIFIED, eur } from "@/lib/walvi";
 import { JsonLd, breadcrumbSchema, datasetSchema } from "@/lib/seo";
+import { publicPath } from "@/lib/public-path";
 
 export async function generateMetadata({
   params,
@@ -68,8 +69,8 @@ export default async function JobPage({
       <WalviShell site={site}>
         <Crumbs
           items={[
-            { name: site.name, href: `/s/${site.id}` },
-            { name: "Jobs", href: `/s/${site.id}/jobs` },
+            { name: site.name, href: publicPath(site.id, "/") },
+            { name: "Jobs", href: publicPath(site.id, "/jobs") },
             { name: job.name },
           ]}
         />

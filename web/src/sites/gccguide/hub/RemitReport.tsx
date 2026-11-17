@@ -6,6 +6,7 @@ import { fmt, dateLong, dateShort, pct } from "./format";
 import { toPath } from "./series";
 import { monthLabel, monthEnds12, type Pt } from "./remittance-math";
 import { pairOf, LICENSE_URL, type MonthReport, type HubItem, type FxData } from "./remittance";
+import { sitePrefix } from "@/lib/public-path";
 
 /* Monthly Remittance Report pages: /reports/remittance and /reports/remittance/<yyyy-mm>.
  * Server-rendered with the hub's own components; the only new pieces are the
@@ -61,7 +62,7 @@ export function UseThisData({ site, ym, label, pair }: { site: Site; ym: string 
 /* ── Hub ──────────────────────────────────────────────────────────────────── */
 
 export function RemitHubPage({ site, items, data }: { site: Site; items: HubItem[]; data: FxData }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const latest = items[0];
   const lead = latest?.lead;
   const aedInr = pairOf(data, "AED", "INR");
@@ -175,7 +176,7 @@ function MethodNote({ sources, sampling }: { sources: { key?: string; name?: str
 }
 
 export function RemitMonthPage({ site, r, data }: { site: Site; r: MonthReport; data: FxData }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const lead = r.blocks.find((x) => x.code === "AED")?.rows.find((x) => x.to === "INR")?.pm;
   const qarBdt = r.blocks.find((x) => x.code === "QAR")?.rows.find((x) => x.to === "BDT")?.pm;
   const sparkFrom = "AED";

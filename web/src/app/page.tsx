@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getSites } from "@/lib/data";
+import { publicPath } from "@/lib/public-path";
 
 export const dynamic = "force-dynamic";
 
@@ -12,7 +13,7 @@ export default function Home() {
       <p className="muted">Local preview hub — each site has its own design. In production these live on their own domains.</p>
       <div className="hub-cards">
         {sites.map((s) => (
-          <Link key={s.id} href={`/s/${s.id}`} className="hub-card">
+          <Link key={s.id} href={publicPath(s.id, "/")} className="hub-card">
             <b>{s.name}</b> — {s.tagline}
             <div className="muted">{s.domain} · {s.niche.split(",")[0]}</div>
           </Link>

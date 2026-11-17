@@ -10,6 +10,7 @@ import { getFxSnapshot, usdPer } from "@/lib/gcc";
 import { FUEL_COUNTRIES } from "@/sites/gccguide/hub/config";
 import { HubPage, Crumbs, PageHead, StatRow, BigStat, DataTable, Faq, SourceLine, Related, SectionHead, Callout, NoData } from "@/sites/gccguide/hub/ui";
 import { fmt } from "@/sites/gccguide/hub/format";
+import { sitePrefix } from "@/lib/public-path";
 
 export const dynamic = "force-dynamic";
 
@@ -39,7 +40,7 @@ export default async function Page({ params }: Props) {
   if (!site || site.id !== "gccguide" || !c) notFound();
   const v = buildFuelView(country);
   if (!v) notFound();
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const base = siteBaseUrl(site);
 
   // Cross-Gulf comparison in USD — the only honest way to compare six currencies.

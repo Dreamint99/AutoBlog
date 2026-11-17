@@ -4,6 +4,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import type { Site } from "@/lib/types";
 import { fontVars } from "./fonts";
+import { publicPath, sitePrefix } from "@/lib/public-path";
 
 /* Shared VisaPoint chrome: official-feeling but independent. Seal-style logo,
    grouped mega-menu (CSS-only dropdowns, <details> on mobile), rich footer.
@@ -14,7 +15,7 @@ type NavItem = { label: string; href: string; desc?: string };
 type NavGroup = { label: string; items: NavItem[] };
 
 export function menuFor(site: Site): NavGroup[] {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   return [
     {
       label: "Visas",
@@ -68,7 +69,7 @@ export function PinMark() {
 
 export function Logo({ site, light = false }: { site: Site; light?: boolean }) {
   return (
-    <Link href={`/s/${site.id}`} className={`vp-logo vp-logo-img${light ? " light" : ""}`} aria-label={`${site.name} home`}>
+    <Link href={publicPath(site.id, "/")} className={`vp-logo vp-logo-img${light ? " light" : ""}`} aria-label={`${site.name} home`}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={light ? "/brand/visapoint-logo-ondark.webp" : "/brand/visapoint-logo.webp"} alt="VisaPoint.net" width={176} height={60} />
     </Link>
@@ -76,7 +77,7 @@ export function Logo({ site, light = false }: { site: Site; light?: boolean }) {
 }
 
 export function Masthead({ site }: { site: Site }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const menu = menuFor(site);
   return (
     <header className="vp-header">
@@ -114,7 +115,7 @@ export function Masthead({ site }: { site: Site }) {
       </div>
       <nav className="vp-nav" aria-label="Primary">
         <div className="vp-wrap vp-nav-in">
-          <Link href={b} className="vp-nav-home">
+          <Link href={b || "/"} className="vp-nav-home">
             Home
           </Link>
           {menu.map((g) => (
@@ -142,7 +143,7 @@ export function Masthead({ site }: { site: Site }) {
             <span aria-hidden="true">☰</span> Menu
           </summary>
           <div className="vp-mnav-in">
-            <Link href={b}>Home</Link>
+            <Link href={b || "/"}>Home</Link>
             {menu.map((g) => (
               <div key={g.label}>
                 <h4>{g.label}</h4>
@@ -174,7 +175,7 @@ const POPULAR: [string, string, string][] = [
 
 export function Footer({ site }: { site: Site }) {
   const year = new Date().getFullYear();
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const menu = menuFor(site);
   return (
     <footer className="vp-footer">

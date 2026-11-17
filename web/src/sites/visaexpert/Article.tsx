@@ -1,6 +1,7 @@
 import "./theme.css";
 import Link from "next/link";
 import type { SiteArticleProps, Article, TocItem } from "@/lib/types";
+import { publicPath } from "@/lib/public-path";
 
 /* ────────────────────────────────────────────────────────────
    Inline icons (no client JS, no extra packages)
@@ -124,7 +125,7 @@ function fmtDate(iso: string): string {
 }
 
 function RelatedCard({ siteId, article }: { siteId: string; article: Article }) {
-  const href = `/s/${siteId}/${article.slug}`;
+  const href = publicPath(siteId, `/${article.slug}`);
   return (
     <article className="vx-card">
       <Link href={href} className="vx-card-media" aria-label={article.title}>
@@ -176,7 +177,7 @@ export default function Article({ site, article, related, bodyHtml, toc }: SiteA
         </div>
         <div className="vx-wrap">
           <div className="vx-bar">
-            <Link href={`/s/${site.id}`} className="vx-brand" aria-label={`${site.name} home`}>
+            <Link href={publicPath(site.id, "/")} className="vx-brand" aria-label={`${site.name} home`}>
               <span className="vx-logo">
                 <IconShield />
               </span>
@@ -188,10 +189,10 @@ export default function Article({ site, article, related, bodyHtml, toc }: SiteA
               </span>
             </Link>
             <nav className="vx-nav" aria-label="Primary">
-              <Link href={`/s/${site.id}`}>Guides</Link>
-              <Link href={`/s/${site.id}`}>Visas</Link>
-              <Link href={`/s/${site.id}`}>About</Link>
-              <Link href={`/s/${site.id}`} className="vx-nav-cta">
+              <Link href={publicPath(site.id, "/")}>Guides</Link>
+              <Link href={publicPath(site.id, "/")}>Visas</Link>
+              <Link href={publicPath(site.id, "/")}>About</Link>
+              <Link href={publicPath(site.id, "/")} className="vx-nav-cta">
                 Start here
               </Link>
             </nav>
@@ -204,11 +205,11 @@ export default function Article({ site, article, related, bodyHtml, toc }: SiteA
         <div className="vx-article-head">
           <div className="vx-wrap">
             <nav className="vx-crumbs" aria-label="Breadcrumb">
-              <Link href={`/s/${site.id}`}>Home</Link>
+              <Link href={publicPath(site.id, "/")}>Home</Link>
               <IconChevronRight />
               {primaryTag ? (
                 <>
-                  <Link href={`/s/${site.id}`}>{primaryTag}</Link>
+                  <Link href={publicPath(site.id, "/")}>{primaryTag}</Link>
                   <IconChevronRight />
                 </>
               ) : null}
@@ -338,7 +339,7 @@ export default function Article({ site, article, related, bodyHtml, toc }: SiteA
               )}
 
               <p style={{ marginTop: "2rem" }}>
-                <Link href={`/s/${site.id}`} className="vx-readmore" style={{ display: "inline-flex", alignItems: "center", gap: ".45rem", fontWeight: 700 }}>
+                <Link href={publicPath(site.id, "/")} className="vx-readmore" style={{ display: "inline-flex", alignItems: "center", gap: ".45rem", fontWeight: 700 }}>
                   <IconArrow /> Back to all guides
                 </Link>
               </p>
@@ -362,7 +363,7 @@ function SiteFooter({ siteName, siteId, domain }: { siteName: string; siteId: st
       <div className="vx-wrap">
         <div className="vx-foot-top">
           <div>
-            <Link href={`/s/${siteId}`} className="vx-brand" aria-label={`${siteName} home`}>
+            <Link href={publicPath(siteId, "/")} className="vx-brand" aria-label={`${siteName} home`}>
               <span className="vx-logo">
                 <IconShield />
               </span>
@@ -383,13 +384,13 @@ function SiteFooter({ siteName, siteId, domain }: { siteName: string; siteId: st
               <h4>Explore</h4>
               <ul>
                 <li>
-                  <Link href={`/s/${siteId}`}>All guides</Link>
+                  <Link href={publicPath(siteId, "/")}>All guides</Link>
                 </li>
                 <li>
-                  <Link href={`/s/${siteId}`}>Visa types</Link>
+                  <Link href={publicPath(siteId, "/")}>Visa types</Link>
                 </li>
                 <li>
-                  <Link href={`/s/${siteId}`}>Countries</Link>
+                  <Link href={publicPath(siteId, "/")}>Countries</Link>
                 </li>
               </ul>
             </div>
@@ -397,13 +398,13 @@ function SiteFooter({ siteName, siteId, domain }: { siteName: string; siteId: st
               <h4>Resource</h4>
               <ul>
                 <li>
-                  <Link href={`/s/${siteId}`}>About us</Link>
+                  <Link href={publicPath(siteId, "/")}>About us</Link>
                 </li>
                 <li>
-                  <Link href={`/s/${siteId}`}>Editorial policy</Link>
+                  <Link href={publicPath(siteId, "/")}>Editorial policy</Link>
                 </li>
                 <li>
-                  <Link href={`/s/${siteId}`}>Contact</Link>
+                  <Link href={publicPath(siteId, "/")}>Contact</Link>
                 </li>
               </ul>
             </div>

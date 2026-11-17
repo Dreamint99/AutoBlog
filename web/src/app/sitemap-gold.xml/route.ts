@@ -1,9 +1,11 @@
-import { urlset, xmlResponse, siteAndBase, abs } from "@/lib/gcc-sitemaps";
+import { urlset, xmlResponse, siteAndBase, abs, gccOnly } from "@/lib/gcc-sitemaps";
 import { getGold } from "@/lib/gcc";
 import { GOLD_CITIES } from "@/sites/gccguide/hub/config";
 import { gate } from "@/sites/gccguide/hub/gate";
 
 export async function GET() {
+  const denied = gccOnly();
+  if (denied) return denied;
   const { base } = siteAndBase();
   const gold = await getGold();
   const lastmod = gold.updated.slice(0, 10);

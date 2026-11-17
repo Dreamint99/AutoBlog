@@ -1,6 +1,7 @@
 import "./theme.css";
 import Link from "next/link";
 import type { SiteArticleProps, Site, Article, TocItem } from "@/lib/types";
+import { publicPath } from "@/lib/public-path";
 
 /* ────────────────────────────────────────────────────────────
    Inline icons — server-safe, no client JS, no extra packages
@@ -163,7 +164,7 @@ const NAV_LINKS: { label: string; hash: string }[] = [
 ];
 
 function RelatedCard({ siteId, article }: { siteId: string; article: Article }) {
-  const href = `/s/${siteId}/${article.slug}`;
+  const href = publicPath(siteId, `/${article.slug}`);
   return (
     <article className="qx-card">
       <Link href={href} className="qx-card-media" aria-label={article.title}>
@@ -210,11 +211,11 @@ export default function Article({ site, article, related, bodyHtml, toc }: SiteA
         <div className="qx-article-head">
           <div className="qx-wrap">
             <nav className="qx-crumbs" aria-label="Breadcrumb">
-              <Link href={`/s/${site.id}`}>Home</Link>
+              <Link href={publicPath(site.id, "/")}>Home</Link>
               <IconChevronRight />
               {primaryTag ? (
                 <>
-                  <Link href={`/s/${site.id}`}>{primaryTag}</Link>
+                  <Link href={publicPath(site.id, "/")}>{primaryTag}</Link>
                   <IconChevronRight />
                 </>
               ) : null}
@@ -349,7 +350,7 @@ export default function Article({ site, article, related, bodyHtml, toc }: SiteA
               )}
 
               <p className="qx-backlink">
-                <Link href={`/s/${site.id}`} className="qx-readmore">
+                <Link href={publicPath(site.id, "/")} className="qx-readmore">
                   <IconArrowLeft /> Back to all stories
                 </Link>
               </p>
@@ -377,7 +378,7 @@ function SiteHeader({ site }: { site: Site }) {
       </div>
       <div className="qx-wrap">
         <div className="qx-bar">
-          <Link href={`/s/${site.id}`} className="qx-brand" aria-label={`${site.name} home`}>
+          <Link href={publicPath(site.id, "/")} className="qx-brand" aria-label={`${site.name} home`}>
             <Wordmark />
           </Link>
 
@@ -394,11 +395,11 @@ function SiteHeader({ site }: { site: Site }) {
 
           <nav className="qx-nav" aria-label="Primary">
             {NAV_LINKS.map((l) => (
-              <Link key={l.label} href={`/s/${site.id}${l.hash}`}>
+              <Link key={l.label} href={publicPath(site.id, l.hash)}>
                 {l.label}
               </Link>
             ))}
-            <Link href={`/s/${site.id}`} className="qx-nav-cta">
+            <Link href={publicPath(site.id, "/")} className="qx-nav-cta">
               Explore Qatar
             </Link>
           </nav>
@@ -418,7 +419,7 @@ function SiteFooter({ site }: { site: Site }) {
       <div className="qx-wrap">
         <div className="qx-foot-top">
           <div>
-            <Link href={`/s/${site.id}`} className="qx-brand" aria-label={`${site.name} home`}>
+            <Link href={publicPath(site.id, "/")} className="qx-brand" aria-label={`${site.name} home`}>
               <Wordmark />
             </Link>
             <p className="qx-foot-about">
@@ -433,7 +434,7 @@ function SiteFooter({ site }: { site: Site }) {
               <ul>
                 {NAV_LINKS.map((l) => (
                   <li key={l.label}>
-                    <Link href={`/s/${site.id}${l.hash}`}>{l.label}</Link>
+                    <Link href={publicPath(site.id, l.hash)}>{l.label}</Link>
                   </li>
                 ))}
               </ul>
@@ -442,13 +443,13 @@ function SiteFooter({ site }: { site: Site }) {
               <h4>Magazine</h4>
               <ul>
                 <li>
-                  <Link href={`/s/${site.id}`}>About us</Link>
+                  <Link href={publicPath(site.id, "/")}>About us</Link>
                 </li>
                 <li>
-                  <Link href={`/s/${site.id}`}>Editorial policy</Link>
+                  <Link href={publicPath(site.id, "/")}>Editorial policy</Link>
                 </li>
                 <li>
-                  <Link href={`/s/${site.id}`}>Contact</Link>
+                  <Link href={publicPath(site.id, "/")}>Contact</Link>
                 </li>
               </ul>
             </div>

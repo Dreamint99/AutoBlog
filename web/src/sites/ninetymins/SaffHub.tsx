@@ -5,6 +5,7 @@ import type { NmComp } from "./comps";
 import { ago } from "./comps";
 import { RegionFixtures } from "./LiveScores";
 import { SAFF_FINALS, SAFF_TEAMS, SAFF_FAQ, saffTitles, flag } from "./saff";
+import { sitePrefix } from "@/lib/public-path";
 
 /* FIFA-tournament-style hub for the SAFF Championship: hero with key numbers,
    honours, every final, member nations, live South Asia fixtures, the latest
@@ -20,7 +21,7 @@ function Flag({ team, w = 40 }: { team: string; w?: number }) {
 }
 
 export default function SaffHub({ site, comp, articles }: { site: Site; comp: NmComp; articles: Article[] }) {
-  const s = `/s/${site.id}`;
+  const s = sitePrefix(site.id);
   const titles = saffTitles();
   const latest = SAFF_FINALS[0];
   const [lead, ...rest] = articles;
@@ -31,7 +32,7 @@ export default function SaffHub({ site, comp, articles }: { site: Site; comp: Nm
       <section className="nm-saff-hero">
         <div className="nm-wrap">
           <nav className="nm-crumbs nm-saff-crumbs" aria-label="Breadcrumb">
-            <Link href={s}>Home</Link>
+            <Link href={s || "/"}>Home</Link>
             <span>/</span>
             <Link href={`${s}/topic/football`}>Football</Link>
             <span>/</span>
