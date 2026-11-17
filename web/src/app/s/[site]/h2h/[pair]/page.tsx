@@ -9,6 +9,8 @@ import { Shell } from "@/sites/ninetymins/Chrome";
 import Insights from "@/sites/ninetymins/Insights";
 import { getH2H, parsePair, pairSlug, type FormGame, type H2H } from "@/sites/ninetymins/h2h";
 import { publicPath } from "@/lib/public-path";
+import { teamLogo } from "@/sites/ninetymins/media";
+import { Crest } from "@/sites/ninetymins/Media";
 
 export const dynamic = "force-dynamic";
 type P = { params: Promise<{ site: string; pair: string }> };
@@ -85,6 +87,9 @@ export default async function Page({ params }: P) {
   const url = `${base}/h2h/${h.slug}`;
   const n = h.next, l = h.last;
   const insightsLeague = n ? n.key.split(":")[1] : "";
+  const nat = (slug: string) => { const f = h.fixtures[0]; return f ? (f.home_slug === slug ? f.ev.home.national : f.ev.away.national) : false; };
+  const [logoA, logoB] = await Promise.all([teamLogo(h.a.slug, h.a.name, nat(h.a.slug), "small"), teamLogo(h.b.slug, h.b.name, nat(h.b.slug), "small")]);
+  const logoOf = (slug: string) => (slug === h.a.slug ? logoA : slug === h.b.slug ? logoB : "");
 
   const faq = [
     n ? { q: `When is the next ${h.a.name} vs ${h.b.name} match?`, a: `${n.ev.home.name} vs ${n.ev.away.name} is on ${kick(n.starts)} in the ${n.ev.leagueName}${n.ev.venue ? ` at ${n.ev.venue}` : ""}.` } : null,
@@ -101,8 +106,8 @@ export default async function Page({ params }: P) {
             "@context": "https://schema.org", "@type": "SportsEvent", name: `${n.ev.home.name} vs ${n.ev.away.name}`, startDate: n.starts, url: `${base}${n.path}`,
             eventStatus: "https://schema.org/EventScheduled", eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
             sport: h.sport === "football" ? "Soccer" : h.sport, superEvent: { "@type": "SportsEvent", name: n.ev.leagueName },
-            homeTeam: { "@type": "SportsTeam", name: n.ev.home.name, url: `${base}/team/${n.home_slug}` },
-            awayTeam: { "@type": "SportsTeam", name: n.ev.away.name, url: `${base}/team/${n.away_slug}` },
+            homeTeam: { "@type": "SportsTeam", name: n.ev.home.name, url: `${base}/team/${n.home_slug}`, ...(logoOf(n.home_slug) ? { logo: logoOf(n.home_slug) } : {}) },
+            awayTeam: { "@type": "SportsTeam", name: n.ev.away.name, url: `${base}/team/${n.away_slug}`, ...(logoOf(n.away_slug) ? { logo: logoOf(n.away_slug) } : {}) },
             ...(n.ev.venue ? { location: { "@type": "Place", name: n.ev.venue } } : {}),
           }] : []),
           ...(faq.length ? [{ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) }] : []),
@@ -118,6 +123,7 @@ export default async function Page({ params }: P) {
           </h1>
           <section className="h2-hero" style={{ ["--h" as string]: h.a.color || "#0a7a35", ["--a" as string]: h.b.color || "#b8430a" }}>
             <div className="h2-side">
+              <Link href={publicPath(site.id, `/team/${h.a.slug}`)} aria-label={`${h.a.name} team page`}><Crest url={logoA} name={h.a.name} size={56} color={h.a.color} eager /></Link>
               <b>{h.record.a}</b>
               <span>{h.a.name} wins</span>
             </div>
@@ -126,6 +132,7 @@ export default async function Page({ params }: P) {
               <span>draws</span>
             </div>
             <div className="h2-side">
+              <Link href={publicPath(site.id, `/team/${h.b.slug}`)} aria-label={`${h.b.name} team page`}><Crest url={logoB} name={h.b.name} size={56} color={h.b.color} eager /></Link>
               <b>{h.record.b}</b>
               <span>{h.b.name} wins</span>
             </div>

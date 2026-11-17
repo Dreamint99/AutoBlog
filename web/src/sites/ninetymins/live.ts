@@ -8,6 +8,10 @@ import "server-only";
    league per colo, and the big upstream JSON is parsed at most that often. */
 
 export interface NmTeam {
+  /** ESPN team id (football: our team slug ends in -football-<id>) */
+  id?: string;
+  /** /team/<slug> when we have a page for it (added by withMedia) */
+  slug?: string;
   name: string;
   abbr: string;
   logo: string;
@@ -28,6 +32,7 @@ export interface NmEvent {
 export interface NmStanding {
   rank: number;
   id?: string;
+  slug?: string;
   team: string;
   abbr: string;
   logo: string;
@@ -117,12 +122,29 @@ function team(c: Any | undefined): NmTeam | null {
   if (!c) return null;
   const t = c.team || c.athlete || {};
   return {
+    id: String(t.id || ""),
     name: String(t.shortDisplayName || t.displayName || t.name || ""),
     abbr: String(t.abbreviation || t.shortDisplayName || "").slice(0, 4),
     logo: String(t.logo || t.flag?.href || ""),
     score: c.score != null ? String(c.score) : "",
     winner: !!c.winner,
   };
+}
+
+/** Football only: swap ESPN crests for cached TheSportsDB badges (D1 nm_media) and attach our team slug.
+ *  Runs after the cache so new badges show up without waiting for the ESPN cache to expire. */
+async function withMedia<T extends { id?: string; logo: string; slug?: string }>(league: string, teams: (T | null | undefined)[]): Promise<void> {
+  if (!NM_LEAGUES[league]?.path.startsWith("soccer/")) return;
+  try {
+    const { teamIndex, sized } = await import("./media");
+    const idx = (await teamIndex()).byId;
+    for (const t of teams) {
+      const m = t?.id ? idx.get(t.id) : undefined;
+      if (!t || !m) continue;
+      t.slug = m.slug;
+      if (m.url) t.logo = sized(m.url, "tiny");
+    }
+  } catch { /* keep ESPN data as is */ }
 }
 
 /** URL-safe league key: "eng.1" ⇄ "eng-1" (dots in a path look like a file to the middleware). */
@@ -146,7 +168,7 @@ export async function getScores(league: string, date = ""): Promise<NmEvent[]> {
     return cricketToEvents(await getCricket());
   }
   try {
-    return await cached(`scores/${league}/${date || "now"}`, near ? FRESH_S : 300, async () => {
+    const evs = await cached(`scores/${league}/${date || "now"}`, near ? FRESH_S : 300, async () => {
       const j = await getJson(`${API}/site/v2/sports/${L.path}/scoreboard${date ? `?dates=${date}` : ""}`);
       return ((j.events as Any[]) || []).slice(0, 40).map((e): NmEvent => {
         const comp = (e.competitions || [])[0] || {};
@@ -166,16 +188,33 @@ export async function getScores(league: string, date = ""): Promise<NmEvent[]> {
         };
       });
     });
+    await withMedia(league, evs.flatMap((e) => [e.home, e.away]));
+    return evs;
   } catch {
     return [];
   }
+}
+
+/** Premier League table from football-data.org (free tier, 10 calls/min; token = Worker secret FOOTBALL_DATA_TOKEN).
+ *  Fallback only, used when ESPN's standings fail or come back empty; cached 30 min per colo. */
+async function footballDataTable(): Promise<NmStanding[]> {
+  const { getCloudflareContext } = await import("@opennextjs/cloudflare");
+  const token = (getCloudflareContext().env as unknown as { FOOTBALL_DATA_TOKEN?: string }).FOOTBALL_DATA_TOKEN;
+  if (!token) return [];
+  return cached("table/fd/PL", 1800, async () => {
+    const r = await fetch("https://api.football-data.org/v4/competitions/PL/standings", { signal: AbortSignal.timeout(5000), headers: { "X-Auth-Token": token } });
+    if (!r.ok) throw new Error(`football-data ${r.status}`);
+    const j = (await r.json()) as Any;
+    const total = ((j.standings as Any[]) || []).find((s) => s.type === "TOTAL")?.table || [];
+    return (total as Any[]).map((e) => ({ rank: Number(e.position) || 0, team: String(e.team?.shortName || e.team?.name || ""), abbr: String(e.team?.tla || ""), logo: "", played: Number(e.playedGames) || 0, points: Number(e.points) || 0, gd: Number(e.goalDifference) || 0 }));
+  });
 }
 
 export async function getStandings(league: string): Promise<NmStanding[]> {
   const L = NM_LEAGUES[league];
   if (!L?.table || league === "cricket") return [];
   try {
-    return await cached(`table/${league}`, 1800, async () => {
+    const rows = await cached(`table/${league}`, 1800, async () => {
       const j = await getJson(`${API}/v2/sports/${L.path}/standings`);
       const entries: Any[] = j.children?.[0]?.standings?.entries || j.standings?.entries || [];
       const stat = (e: Any, n: string) => Number((e.stats || []).find((s: Any) => s.name === n)?.value ?? 0);
@@ -193,7 +232,11 @@ export async function getStandings(league: string): Promise<NmStanding[]> {
         .sort((a, b) => (a.rank || 99) - (b.rank || 99) || b.points - a.points)
         .map((s, i) => ({ ...s, rank: s.rank || i + 1 }));
     });
+    if (!rows.length && league === "eng.1") return await footballDataTable();
+    await withMedia(league, rows);
+    return rows;
   } catch {
+    if (league === "eng.1") return await footballDataTable().catch(() => []);
     return [];
   }
 }
@@ -257,6 +300,7 @@ function side(c: Any | undefined): NmSide {
   const t = c?.team || {};
   const logo = t.logo || t.logos?.[0]?.href || "";
   return {
+    id: String(t.id || ""),
     name: String(t.shortDisplayName || t.displayName || t.name || "TBD"),
     full: String(t.displayName || t.name || t.shortDisplayName || "TBD"),
     abbr: String(t.abbreviation || "").slice(0, 4),
@@ -295,7 +339,7 @@ export async function getMatch(league: string, id: string): Promise<NmMatch | nu
   const L = NM_LEAGUES[league];
   if (!L || league === "cricket" || !/^\d{1,12}$/.test(id)) return null;
   try {
-    return await cached(`match/${league}/${id}`, 30, async () => {
+    const m = await cached(`match/${league}/${id}`, 30, async () => {
       const j = await getJson(`${API}/site/v2/sports/${L.path}/summary?event=${id}`);
       const comp = j.header?.competitions?.[0] || {};
       const cs: Any[] = comp.competitors || [];
@@ -379,6 +423,8 @@ export async function getMatch(league: string, id: string): Promise<NmMatch | nu
         commentary,
       } satisfies NmMatch;
     });
+    if (m) await withMedia(league, [m.home, m.away]);
+    return m;
   } catch {
     return null;
   }

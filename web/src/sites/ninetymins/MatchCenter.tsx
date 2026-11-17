@@ -24,9 +24,12 @@ function kickoff(iso: string): string {
   return d.toLocaleString([], { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
 }
 
-function Crest({ name, color }: { logo?: string; name: string; color: string }) {
-  // Club crests are third-party trademarks; show a neutral colour badge instead of hot-linking them.
-  return (
+function Crest({ logo, name, color }: { logo?: string; name: string; color: string }) {
+  // TheSportsDB badge (cached in D1, swapped in server-side) or ESPN's crest when TheSportsDB has none.
+  const src = logo ? logo.replace(/\/tiny$/, "/small") : "";
+  return src ? (
+    <img className="nm-mc-crest" src={src} alt={`${name} logo`} width={88} height={88} decoding="async" />
+  ) : (
     <span className="nm-mc-crest nm-mc-crest-ph" style={{ background: color || "#1f222b" }} aria-hidden="true">
       {name.slice(0, 3).toUpperCase()}
     </span>
@@ -130,7 +133,7 @@ export default function MatchCenter({ initial }: { initial: NmMatch }) {
           <div className="nm-mc-teams">
             <div className="nm-mc-side">
               <Crest logo={m.home.logo} name={m.home.full} color={m.home.color} />
-              <h2>{m.home.full}</h2>
+              <h2>{m.home.slug ? <a href={`/team/${m.home.slug}`}>{m.home.full}</a> : m.home.full}</h2>
               {m.home.form ? <span className="nm-mc-form">{m.home.form}</span> : null}
             </div>
             <div className="nm-mc-score" aria-live="polite">
@@ -151,7 +154,7 @@ export default function MatchCenter({ initial }: { initial: NmMatch }) {
             </div>
             <div className="nm-mc-side">
               <Crest logo={m.away.logo} name={m.away.full} color={m.away.color} />
-              <h2>{m.away.full}</h2>
+              <h2>{m.away.slug ? <a href={`/team/${m.away.slug}`}>{m.away.full}</a> : m.away.full}</h2>
               {m.away.form ? <span className="nm-mc-form">{m.away.form}</span> : null}
             </div>
           </div>

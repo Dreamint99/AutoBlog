@@ -707,3 +707,18 @@ html[data-nm-theme="dark"] .site-ninetymins .nm-root.nv .article-content a { col
 @media (max-width: 560px) {
   .site-ninetymins .nm-root.nv .nm-fixtures td, .site-ninetymins .nm-root.nv .nm-fixtures th { padding: 9px 10px; font-size: 13px; }
 }
+
+/* crests, avatars, flags (Media.tsx) */
+.nm-crest{display:inline-block;flex:none;vertical-align:middle;object-fit:contain;border-radius:4px}
+.nm-crest-ph{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;background:#1f222b;color:#fff;font-weight:700;letter-spacing:-.02em;line-height:1}
+.nm-avatar{display:inline-block;flex:none;vertical-align:middle;border-radius:50%;object-fit:cover;object-position:top;background:var(--nm-surface-2,#eef1f5)}
+.nm-avatar-ph{display:inline-flex;align-items:center;justify-content:center;color:#475066;font-weight:700}
+.nm-flag-sm{display:inline-block;vertical-align:middle;border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.08);margin:0 4px}
+.nm-team-link{display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:inherit}
+a.nm-team-link:hover span{text-decoration:underline}
+.nm-fx-match{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.nm-fx-score{font-weight:700;min-width:44px;text-align:center;text-decoration:none}
+.nm-person{display:flex;align-items:center;gap:8px}
+.nm-hero-id{display:flex;align-items:center;gap:14px}
+.nm-credit{font-size:12px;opacity:.7}
+.nm-team-grid{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px}

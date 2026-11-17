@@ -12,6 +12,8 @@ import { getMatch, slugToLeague, matchPath, type NmMatch } from "@/sites/ninetym
 import { loadMatch, answer, sourceUrl, players, playerIndexable, stat, type Fixture } from "@/sites/ninetymins/engine";
 import { getStandings } from "@/sites/ninetymins/live";
 import { wikiSummary } from "@/sites/ninetymins/free";
+import { teamLogo, playerPhotos } from "@/sites/ninetymins/media";
+import { Avatar, TeamLink } from "@/sites/ninetymins/Media";
 
 function wikiHints(name: string, sport: string): string[] {
   if (sport === "basketball") return [name];
@@ -77,6 +79,7 @@ export default async function MatchPage(p: P) {
     (w): w is NonNullable<typeof w> => !!w,
   );
 
+  const [homeLogo, awayLogo] = fixture ? await Promise.all([teamLogo(fixture.home_slug, m.home.full, fixture.ev.home.national, "small"), teamLogo(fixture.away_slug, m.away.full, fixture.ev.away.national, "small")]) : ["", ""];
   const event: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "SportsEvent",
@@ -89,8 +92,8 @@ export default async function MatchPage(p: P) {
     image: `${base}/og/ninetymins.png`,
     superEvent: { "@type": "SportsEvent", name: m.leagueLabel },
     // No club crests in structured data: they are third-party trademarks/copyright (identification only).
-    homeTeam: { "@type": "SportsTeam", name: m.home.full, ...(fixture ? { url: `${base}/team/${fixture.home_slug}` } : {}) },
-    awayTeam: { "@type": "SportsTeam", name: m.away.full, ...(fixture ? { url: `${base}/team/${fixture.away_slug}` } : {}) },
+    homeTeam: { "@type": "SportsTeam", name: m.home.full, ...(fixture ? { url: `${base}/team/${fixture.home_slug}` } : {}), ...(homeLogo ? { logo: homeLogo } : {}) },
+    awayTeam: { "@type": "SportsTeam", name: m.away.full, ...(fixture ? { url: `${base}/team/${fixture.away_slug}` } : {}), ...(awayLogo ? { logo: awayLogo } : {}) },
     competitor: [
       { "@type": "SportsTeam", name: m.home.full },
       { "@type": "SportsTeam", name: m.away.full },
@@ -100,8 +103,13 @@ export default async function MatchPage(p: P) {
   };
 
   const standings = m.state === "pre" ? await getStandings(m.league) : [];
+  // the match centre shows TheSportsDB badges when we have them (D1 cache), ESPN's crest otherwise
+  if (homeLogo) m.home.logo = homeLogo;
+  if (awayLogo) m.away.logo = awayLogo;
+  if (fixture) { m.home.slug = fixture.home_slug; m.away.slug = fixture.away_slug; }
   // match → player profiles (only pages that pass the player quality gate)
   const squads = fixture ? (await Promise.all([fixture.home_slug, fixture.away_slug].map(async (t) => ({ t, ps: (await players("team_slug", t)).filter(playerIndexable).sort((a, b) => (stat(b, "appearances") ?? 0) - (stat(a, "appearances") ?? 0)).slice(0, 11) })))).filter(x => x.ps.length) : [];
+  const photos = await playerPhotos(squads.flatMap(x => x.ps.map(p => p.path)));
   return (
     <Shell site={site}>
       <JsonLd
@@ -132,7 +140,7 @@ export default async function MatchPage(p: P) {
         <section className="nm-wrap nm-engine" aria-label="Player profiles">
           <h2>Player profiles</h2>
           {squads.map(({ t, ps }) => (
-            <p key={t}><b>{ps[0].data.team}:</b> {ps.map((x, i) => <span key={x.path}>{i ? ", " : ""}<a href={x.path}>{x.data.name}</a></span>)}</p>
+            <div key={t}><h3><TeamLink slug={t} name={ps[0].data.team} url={t === fixture?.home_slug ? homeLogo : awayLogo} size={24} /></h3><ul className="nm-team-grid">{ps.map(x => <li key={x.path} className="nm-person"><Avatar url={photos.get(x.path)} name={x.data.name} size={28} /><a href={x.path}>{x.data.name}</a></li>)}</ul></div>
           ))}
           <p className="nm-note">Season statistics per player; the confirmed line-ups appear above once the clubs announce them.</p>
         </section>

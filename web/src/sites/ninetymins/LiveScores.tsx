@@ -21,7 +21,7 @@ type Ev = {
   home: Team | null;
   away: Team | null;
 };
-type Row = { rank: number; team: string; abbr: string; logo: string; played: number; points: number; gd: number };
+type Row = { rank: number; team: string; abbr: string; logo: string; slug?: string; played: number; points: number; gd: number };
 
 const TABS: Array<[string, string]> = [
   ["eng.1,uefa.champions,esp.1,ita.1,ger.1,cricket,nba", "All"],
@@ -185,7 +185,7 @@ export function LeagueTable({ league = "eng.1", title = "Premier League table", 
                 <td>{r.rank}</td>
                 <td className="nm-t-team">
                   {r.logo ? <img src={thumb(r.logo)} alt="" width={16} height={16} loading="lazy" /> : null}
-                  {r.team}
+                  {r.slug ? <a href={`/team/${r.slug}`}>{r.team}</a> : r.team}
                 </td>
                 <td>{r.played}</td>
                 <td>{r.gd > 0 ? `+${r.gd}` : r.gd}</td>
