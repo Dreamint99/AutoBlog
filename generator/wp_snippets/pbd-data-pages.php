@@ -89,7 +89,7 @@ function pbd_match() {
         if (!$item) { return $m; }   // unknown slug → normal WordPress 404
         // The post in owned.url already ranks for this country's visa guide.
         // Serving /visa/<slug>/ as well makes two indexable URLs for one query.
-        if ($type === 'visa' && !empty($item['owned']['url'])) {
+        if ($type === 'visa' && isset($item['owned']) && is_array($item['owned']) && !empty($item['owned']['url']) && is_string($item['owned']['url'])) {
             return $m = array('type' => 'visa', 'redirect_to' => $item['owned']['url']);
         }
     }
