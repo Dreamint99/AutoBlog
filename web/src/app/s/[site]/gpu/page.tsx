@@ -10,6 +10,7 @@ import { PageHead } from "@/sites/infkey/data-ui";
 import { GPUS, estimate, fmtParams, type Gpu } from "@/sites/infkey/gpus";
 import { JsonLd, breadcrumbSchema } from "@/lib/seo";
 import { infMeta } from "@/sites/infkey/meta";
+import { sitePrefix } from "@/lib/public-path";
 
 export const dynamic = "force-dynamic";
 
@@ -36,7 +37,7 @@ export default async function GpuIndex({ params }: { params: Promise<{ site: str
   const site = getSite((await params).site);
   if (!site || site.id !== "infkey") notFound();
   const models = await getHfModels();
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const base = siteBaseUrl(site);
   const rows = GPUS.map((g) => {
     const fits = models.filter((m) => estimate(m.params, g, 0.6).fit !== "no");

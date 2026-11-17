@@ -11,6 +11,7 @@ import { PageBanner, Crumbs } from "@/sites/walvi/data-ui";
 import { JsonLd, breadcrumbSchema, websiteSchema } from "@/lib/seo";
 import { countryOf, topicOf } from "@/sites/walvi/guide-meta";
 import Flag from "@/sites/walvi/Flag";
+import { publicPath } from "@/lib/public-path";
 
 export const dynamic = "force-dynamic";
 
@@ -58,7 +59,7 @@ function GuideRow({ siteId, article }: { siteId: string; article: Article }) {
           {c ? ` · ${c.name}` : ""}
         </span>
         <h3>
-          <Link href={`/s/${siteId}/${article.slug}`}>{article.title}</Link>
+          <Link href={publicPath(siteId, `/${article.slug}`)}>{article.title}</Link>
         </h3>
         {article.excerpt ? <p>{article.excerpt}</p> : null}
         <span className="vp-date">
@@ -93,7 +94,7 @@ export default async function GuidesPage({
         ]}
       />
       <WalviShell site={site}>
-        <Crumbs items={[{ name: site.name, href: `/s/${site.id}` }, { name: "Guides" }]} />
+        <Crumbs items={[{ name: site.name, href: publicPath(site.id, "/") }, { name: "Guides" }]} />
         <PageBanner
           flag="📑"
           kicker="Guides & insights"

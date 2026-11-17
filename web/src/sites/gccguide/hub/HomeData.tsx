@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Site } from "@/lib/types";
 import "./hub.css";
+import { sitePrefix } from "@/lib/public-path";
 
 /* Home section: the daily-data hub (rates, gold, fuel, calculators, prayer, embassies, fees,
    holidays) as one scannable grid, so the home page matches what the site now offers. */
@@ -17,7 +18,7 @@ const TILES: { icon: string; title: string; text: string; path: string }[] = [
 ];
 
 export default function HomeData({ site }: { site: Site }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   return (
     <section className="gc-sec" id="data">
       <div className="gc-head">

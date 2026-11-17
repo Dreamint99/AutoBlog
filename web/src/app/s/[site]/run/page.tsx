@@ -10,6 +10,7 @@ import { PageHead } from "@/sites/infkey/data-ui";
 import { GPUS, fmtParams, needGb } from "@/sites/infkey/gpus";
 import { JsonLd, breadcrumbSchema } from "@/lib/seo";
 import { infMeta } from "@/sites/infkey/meta";
+import { sitePrefix } from "@/lib/public-path";
 
 export const dynamic = "force-dynamic";
 
@@ -23,7 +24,7 @@ export default async function RunHub({ params }: { params: Promise<{ site: strin
   const site = getSite((await params).site);
   if (!site || site.id !== "infkey") notFound();
   const models = (await getHfModels()).slice(0, 200);
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const base = siteBaseUrl(site);
   return (
     <>

@@ -5,12 +5,13 @@ import type { RateView } from "./rates";
 import { QUOTE_CURRENCIES, GULF_CURRENCIES } from "./config";
 import { fmt, money, dateLong, pct, int } from "./format";
 import { dpFor } from "./series";
+import { sitePrefix } from "@/lib/public-path";
 
 const AMOUNTS = [1, 5, 10, 25, 50, 100, 250, 500, 1000, 5000];
 const INVERSE = [100, 500, 1000, 5000, 10000, 50000];
 
 export default function RatePage({ site, v }: { site: Site; v: RateView }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const r = v.rate!;
   const amountRows: [string, string][] = AMOUNTS.map((a) => [`${int(a)} ${v.from}`, money(a * r, v.to, dpFor(a * r))]);
   const invRows: [string, string][] = INVERSE.map((a) => [`${int(a)} ${v.to}`, money(a / r, v.from, dpFor(a / r))]);

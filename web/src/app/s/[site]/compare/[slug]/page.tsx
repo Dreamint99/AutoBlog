@@ -10,6 +10,7 @@ import { InfShell } from "@/sites/infkey/Chrome";
 import { fmtUsd, fmtContext, fmtDate } from "@/sites/infkey/data-ui";
 import { JsonLd, breadcrumbSchema } from "@/lib/seo";
 import type { InfModel } from "@/lib/types";
+import { sitePrefix } from "@/lib/public-path";
 
 export const dynamic = "force-dynamic";
 
@@ -82,7 +83,7 @@ export default async function ComparePairPage({
   const [A, B] = await Promise.all([getModel(pair[0]), getModel(pair[1])]);
   if (!A || !B) notFound();
 
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const base = siteBaseUrl(site);
 
   const rows: Row[] = [
@@ -119,7 +120,7 @@ export default async function ComparePairPage({
       />
       <InfShell site={site}>
       <nav className="breadcrumb" aria-label="Breadcrumb">
-        <Link href={b}>{site.name}</Link>
+        <Link href={b || "/"}>{site.name}</Link>
         <span className="sep" aria-hidden="true">
           /
         </span>

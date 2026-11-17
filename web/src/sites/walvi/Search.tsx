@@ -1,10 +1,11 @@
 import Link from "next/link";
 import type { Article, Site } from "@/lib/types";
 import { WalviShell } from "./Chrome";
+import { sitePrefix } from "@/lib/public-path";
 
 /* VisaPoint search results (header search box). */
 export default function Search({ site, q, results }: { site: Site; q: string; results: Article[] }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   return (
     <WalviShell site={site}>
       <section className="vp-sec">

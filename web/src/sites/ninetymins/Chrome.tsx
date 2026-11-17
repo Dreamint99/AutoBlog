@@ -7,6 +7,7 @@ import { NM_COMPS, compOf, ago, type NmComp } from "./comps";
 import { ScoreStrip } from "./LiveScores";
 import { thumb } from "@/lib/img";
 import { AppBanner, AppPopup, AppTopBar } from "./AppPromo";
+import { publicPath, sitePrefix } from "@/lib/public-path";
 
 /* Shared NinetyMins chrome: watch-guide strip (scoreboard style), header with
    the sport rail, footer, and the card primitives every page uses. */
@@ -26,7 +27,7 @@ export function Badge({ comp }: { comp: NmComp }) {
 
 export function Kicker({ comp, siteId }: { comp: NmComp; siteId: string }) {
   return (
-    <Link href={`/s/${siteId}/topic/${comp.slug}`} className="nm-kicker" style={{ color: comp.color === "#111827" ? undefined : comp.color }}>
+    <Link href={publicPath(siteId, `/topic/${comp.slug}`)} className="nm-kicker" style={{ color: comp.color === "#111827" ? undefined : comp.color }}>
       {comp.label}
     </Link>
   );
@@ -45,7 +46,7 @@ function GuideStrip({ site, articles }: { site: Site; articles: Article[] }) {
           {articles.slice(0, 10).map((a) => {
             const c = compOf(a);
             return (
-              <Link href={`/s/${site.id}/${a.slug}`} className="nm-chip" key={a.id}>
+              <Link href={publicPath(site.id, `/${a.slug}`)} className="nm-chip" key={a.id}>
                 <span className="nm-chip-top">
                   <Badge comp={c} />
                   <small>{ago(a.created_at)}</small>
@@ -61,14 +62,14 @@ function GuideStrip({ site, articles }: { site: Site; articles: Article[] }) {
 }
 
 export function Header({ site }: { site: Site }) {
-  const s = `/s/${site.id}`;
+  const s = sitePrefix(site.id);
   return (
     <>
       <AppTopBar />
       <ScoreStrip />
       <header className="nm-header">
         <div className="nm-wrap nm-header-row">
-          <Link href={s} className="nm-logo" aria-label={`${site.name} home`}>
+          <Link href={s || "/"} className="nm-logo" aria-label={`${site.name} home`}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img className="nm-logo-img" src="/brand/ninetymins-logo-ondark.webp" alt="NinetyMins.com" width={230} height={36} />
           </Link>
@@ -79,7 +80,7 @@ export function Header({ site }: { site: Site }) {
         </div>
         <nav className="nm-rail" aria-label="Sports">
           <div className="nm-wrap nm-rail-in">
-            <Link href={s} className="nm-rail-home">
+            <Link href={s || "/"} className="nm-rail-home">
               Home
             </Link>
             <Link href={`${s}/scores`} className="nm-rail-live">
@@ -108,7 +109,7 @@ export function Header({ site }: { site: Site }) {
 }
 
 export function Footer({ site }: { site: Site }) {
-  const s = `/s/${site.id}`;
+  const s = sitePrefix(site.id);
   const year = new Date().getFullYear();
   return (
     <footer className="nm-footer">
@@ -116,7 +117,7 @@ export function Footer({ site }: { site: Site }) {
         <AppBanner variant="footer" medium="footer" />
         <div className="nm-foot-grid">
           <div>
-            <Link href={s} className="nm-logo" aria-label={`${site.name} home`}>
+            <Link href={s || "/"} className="nm-logo" aria-label={`${site.name} home`}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img className="nm-logo-img" src="/brand/ninetymins-logo-ondark.webp" alt="NinetyMins.com" width={230} height={36} loading="lazy" />
             </Link>
@@ -196,7 +197,7 @@ export function Thumb({ href, article, ratio = "16 / 9", children }: { href: str
 
 /** Standard story card (image, competition kicker, headline, time). */
 export function Card({ site, article, dek = false }: { site: Site; article: Article; dek?: boolean }) {
-  const href = `/s/${site.id}/${article.slug}`;
+  const href = publicPath(site.id, `/${article.slug}`);
   const c = compOf(article);
   return (
     <article className="nm-card">

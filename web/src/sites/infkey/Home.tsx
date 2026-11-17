@@ -10,6 +10,7 @@ import { topicOf } from "./topics";
 import { ModelTable, ChangeChip, fmtUsd, fmtDate, headliners, pairsOf } from "./data-ui";
 import { changePct } from "./Changes";
 import { thumb } from "@/lib/img";
+import { publicPath, sitePrefix } from "@/lib/public-path";
 
 /* InfKey home (v2) — data first, little text.
    Hero search → KPI strip → today's prices + changes/status side panels →
@@ -38,7 +39,7 @@ function Icon({ k }: { k: string }) {
 }
 
 function GuideCard({ site, a }: { site: Site; a: Article }) {
-  const href = `/s/${site.id}/${a.slug}`;
+  const href = publicPath(site.id, `/${a.slug}`);
   return (
     <article className="card">
       <Link href={href} className="card-media" tabIndex={-1} aria-label={a.title}>
@@ -60,7 +61,7 @@ function GuideCard({ site, a }: { site: Site; a: Article }) {
 }
 
 export default async function Home({ site, articles }: SiteHomeProps) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const [models, flag, statuses, days] = await Promise.all([getModels(), getFlagships(), getStatuses(), getChangeDays()]);
   const latestDay = days[0];
   const changes = latestDay ? await getDayChanges(latestDay) : null;

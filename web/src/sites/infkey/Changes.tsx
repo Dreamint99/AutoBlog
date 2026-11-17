@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Site, InfModel } from "@/lib/types";
 import { getDayChanges, getModels, getChangeDays, type PriceChange } from "@/lib/models";
 import { PageHead, ModelTable, fmtUsd, fmtDate, ChangeChip } from "./data-ui";
+import { sitePrefix } from "@/lib/public-path";
 
 /* "AI price changes" for one day, built only from the daily price snapshots (no AI writing). */
 
@@ -24,7 +25,7 @@ function cheapest(models: InfModel[]) {
 }
 
 function ChangeTable({ site, rows }: { site: Site; rows: PriceChange[] }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   return (
     <div className="itable-wrap">
       <table className="itable">
@@ -65,7 +66,7 @@ function ChangeTable({ site, rows }: { site: Site; rows: PriceChange[] }) {
 export default async function ChangesView({ site, day }: { site: Site; day: string }) {
   const [c, models, days] = await Promise.all([changeSummary(day), getModels(), getChangeDays()]);
   const ch = cheapest(models);
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const date = fmtDate(day);
   const parts = [
     c.down.length ? `${c.down.length} model${c.down.length > 1 ? "s" : ""} got cheaper` : "",

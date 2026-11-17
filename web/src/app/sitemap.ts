@@ -1,3 +1,4 @@
+import { indexableEntries } from "@/lib/indexable-url";
 import type { MetadataRoute } from "next";
 import { getArticles } from "@/lib/data";
 import { getModels, getFlagships, getChangeDays } from "@/lib/models";
@@ -151,5 +152,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  return entries;
+  return indexableEntries(entries);
 }

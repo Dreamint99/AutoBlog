@@ -4,6 +4,7 @@ import { HubPage, Crumbs, PageHead, BigStat, StatRow, DataTable, Faq, SourceLine
 import { computeGratuity, exampleSlug, type GratuityRule, type Reason } from "./gratuity";
 import { GULF_CURRENCIES } from "./config";
 import { fmt, money, int } from "./format";
+import { sitePrefix } from "@/lib/public-path";
 
 /* Gratuity calculator page.
  *
@@ -29,7 +30,7 @@ const REASONS: { key: Reason; label: string; blurb: string }[] = [
 ];
 
 export default function GratuityPage({ site, country, countryName, currency, rule, input, example }: GratuityPageProps) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const wage = input?.monthlyWage ?? 5000;
   const years = input?.years ?? 5;
   const reason = input?.reason ?? "resignation";

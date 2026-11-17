@@ -9,6 +9,7 @@ import { holidayFor, holidaySlug, holidayYearsFor, parseHolidaySlug, spanDays, c
 import { GULF_CURRENCIES, INDEX } from "@/sites/gccguide/hub/config";
 import { HubPage, Crumbs, PageHead, DataTable, Faq, SourceLine, Related, Callout, StatRow, BigStat, SectionHead } from "@/sites/gccguide/hub/ui";
 import { dateLong } from "@/sites/gccguide/hub/format";
+import { sitePrefix } from "@/lib/public-path";
 
 export const dynamic = "force-dynamic";
 
@@ -36,7 +37,7 @@ export default async function Page({ params }: Props) {
   const p = parseHolidaySlug(slug);
   const h = p ? holidayFor(p.country, p.year) : undefined;
   if (!site || site.id !== "gccguide" || !h) notFound();
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const base = siteBaseUrl(site);
   const g = GULF_CURRENCIES.find((x) => x.country === h.country);
   const name = g?.short ?? h.country;
