@@ -27,6 +27,7 @@ export interface NmEvent {
 }
 export interface NmStanding {
   rank: number;
+  id?: string;
   team: string;
   abbr: string;
   logo: string;
@@ -181,6 +182,7 @@ export async function getStandings(league: string): Promise<NmStanding[]> {
       return entries
         .map((e) => ({
           rank: stat(e, "rank") || 0,
+          id: String(e.team?.id || ""),
           team: String(e.team?.shortDisplayName || e.team?.displayName || ""),
           abbr: String(e.team?.abbreviation || ""),
           logo: String(e.team?.logos?.[0]?.href || ""),

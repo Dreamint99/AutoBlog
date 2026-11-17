@@ -36,15 +36,31 @@ export async function hubs(): Promise<{ path: string; lastmod: string }[]> {
   if (!db) return [];
   return (await db.prepare(`SELECT '/league/'||league AS path, MAX(lastmod) AS lastmod FROM seo_matches GROUP BY league
     UNION ALL SELECT '/team/'||slug AS path, MAX(lastmod) AS lastmod FROM
-    (SELECT home_slug AS slug,lastmod FROM seo_matches UNION ALL SELECT away_slug AS slug,lastmod FROM seo_matches) GROUP BY slug
-    UNION ALL SELECT path,lastmod FROM seo_players`).all<{ path: string; lastmod: string }>()).results;
+    (SELECT home_slug AS slug,lastmod FROM seo_matches UNION ALL SELECT away_slug AS slug,lastmod FROM seo_matches) GROUP BY slug`).all<{ path: string; lastmod: string }>()).results;
 }
 
-export interface Player { path: string; lastmod: string; body: string; data: { name: string; birthDate: string; height: string; nationality: string; jersey: string; position: string; team: string; teamSlug: string; league: string; season: string; stats: { key: string; label: string; value: string; numeric: number }[]; source: string } }
+export interface Player { path: string; lastmod: string; body: string; team_slug: string; league: string; data: { name: string; birthDate: string; height: string; nationality: string; jersey: string; position: string; team: string; teamSlug: string; league: string; season: string; stats: { key: string; label: string; value: string; numeric: number }[]; source: string } }
 export async function players(column: "path" | "team_slug" | "league", value: string): Promise<Player[]> {
   const db = d1();
   if (!db) return [];
-  return (await db.prepare(`SELECT path,lastmod,body FROM seo_players WHERE ${column}=?`).bind(value).all<Omit<Player, "data">>()).results.map(p => ({ ...p, data: JSON.parse(p.body) }));
+  return (await db.prepare(`SELECT path,lastmod,body,team_slug,league FROM seo_players WHERE ${column}=?`).bind(value).all<Omit<Player, "data">>()).results.map(p => ({ ...p, data: JSON.parse(p.body) }));
+}
+/** One stat value by ESPN key (undefined when the roster did not report it). */
+export const stat = (p: Player, key: string): number | undefined => p.data.stats.find(s => s.key === key)?.numeric;
+/**
+ * Quality gate for /player/ pages (robots + sitemap use the same rule): a named player with a birth date
+ * who has made at least one appearance in the listed season. Zero-appearance roster entries are thin
+ * pages (a table of zeros), so they stay noindex and out of the sitemap.
+ */
+export const playerIndexable = (p: Player) => !!p.data.name && !!p.data.birthDate && (stat(p, "appearances") ?? 0) > 0;
+/** SQL twin of playerIndexable (plus: the team page exists, i.e. the club has a stored fixture). */
+export const PLAYER_INDEXABLE_SQL = `json_extract(p.body,'$.name')<>'' AND json_extract(p.body,'$.birthDate')<>''
+  AND EXISTS(SELECT 1 FROM json_each(json_extract(p.body,'$.stats')) s WHERE json_extract(s.value,'$.key')='appearances' AND json_extract(s.value,'$.numeric')>0)
+  AND (EXISTS(SELECT 1 FROM seo_matches m WHERE m.home_slug=p.team_slug) OR EXISTS(SELECT 1 FROM seo_matches m WHERE m.away_slug=p.team_slug))`;
+export async function sitemapPlayers(): Promise<{ path: string; lastmod: string }[]> {
+  const db = d1();
+  if (!db) return [];
+  return (await db.prepare(`SELECT p.path,p.lastmod FROM seo_players p WHERE ${PLAYER_INDEXABLE_SQL} ORDER BY p.lastmod DESC LIMIT 50000`).all<{ path: string; lastmod: string }>()).results;
 }
 
 export const loadMatch = cache(async (leagueSlug: string, id: string): Promise<{ match: NmMatch; fixture: Fixture | null } | null> => {

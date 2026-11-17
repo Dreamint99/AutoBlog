@@ -97,6 +97,14 @@ export default async function Page({ params }: P) {
       <JsonLd
         data={[
           breadcrumbSchema([{ name: site.name, url: `${base}/` }, { name: "Head to head", url: `${base}/h2h/${h.slug}` }, { name: `${h.a.name} vs ${h.b.name}`, url }]),
+          ...(n ? [{
+            "@context": "https://schema.org", "@type": "SportsEvent", name: `${n.ev.home.name} vs ${n.ev.away.name}`, startDate: n.starts, url: `${base}${n.path}`,
+            eventStatus: "https://schema.org/EventScheduled", eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+            sport: h.sport === "football" ? "Soccer" : h.sport, superEvent: { "@type": "SportsEvent", name: n.ev.leagueName },
+            homeTeam: { "@type": "SportsTeam", name: n.ev.home.name, url: `${base}/team/${n.home_slug}` },
+            awayTeam: { "@type": "SportsTeam", name: n.ev.away.name, url: `${base}/team/${n.away_slug}` },
+            ...(n.ev.venue ? { location: { "@type": "Place", name: n.ev.venue } } : {}),
+          }] : []),
           ...(faq.length ? [{ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) }] : []),
         ]}
       />

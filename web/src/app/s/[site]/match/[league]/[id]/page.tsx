@@ -9,7 +9,7 @@ import { JsonLd, breadcrumbSchema } from "@/lib/seo";
 import { Shell } from "@/sites/ninetymins/Chrome";
 import MatchCenter from "@/sites/ninetymins/MatchCenter";
 import { getMatch, slugToLeague, matchPath, type NmMatch } from "@/sites/ninetymins/live";
-import { loadMatch, answer, sourceUrl, type Fixture } from "@/sites/ninetymins/engine";
+import { loadMatch, answer, sourceUrl, players, playerIndexable, stat, type Fixture } from "@/sites/ninetymins/engine";
 import { getStandings } from "@/sites/ninetymins/live";
 import { wikiSummary } from "@/sites/ninetymins/free";
 
@@ -88,8 +88,9 @@ export default async function MatchPage(p: P) {
     description: answer(m),
     image: `${base}/og/ninetymins.png`,
     superEvent: { "@type": "SportsEvent", name: m.leagueLabel },
-    homeTeam: { "@type": "SportsTeam", name: m.home.full, ...(m.home.logo ? { logo: m.home.logo } : {}) },
-    awayTeam: { "@type": "SportsTeam", name: m.away.full, ...(m.away.logo ? { logo: m.away.logo } : {}) },
+    // No club crests in structured data: they are third-party trademarks/copyright (identification only).
+    homeTeam: { "@type": "SportsTeam", name: m.home.full, ...(fixture ? { url: `${base}/team/${fixture.home_slug}` } : {}) },
+    awayTeam: { "@type": "SportsTeam", name: m.away.full, ...(fixture ? { url: `${base}/team/${fixture.away_slug}` } : {}) },
     competitor: [
       { "@type": "SportsTeam", name: m.home.full },
       { "@type": "SportsTeam", name: m.away.full },
@@ -99,6 +100,8 @@ export default async function MatchPage(p: P) {
   };
 
   const standings = m.state === "pre" ? await getStandings(m.league) : [];
+  // match → player profiles (only pages that pass the player quality gate)
+  const squads = fixture ? (await Promise.all([fixture.home_slug, fixture.away_slug].map(async (t) => ({ t, ps: (await players("team_slug", t)).filter(playerIndexable).sort((a, b) => (stat(b, "appearances") ?? 0) - (stat(a, "appearances") ?? 0)).slice(0, 11) })))).filter(x => x.ps.length) : [];
   return (
     <Shell site={site}>
       <JsonLd
@@ -125,6 +128,15 @@ export default async function MatchPage(p: P) {
         {standings.length > 0 && <p>League position before this match: {standings.filter(t => [m.home.name, m.home.full, m.away.name, m.away.full].includes(t.team)).map(t => `${t.team}: ${t.rank}, ${t.points} points from ${t.played} played`).join("; ")}. <a href={`/league/${fixture?.league || m.league.replace(/\./g, "-")}`}>Full standings</a>.</p>}
       </section>
       <MatchCenter initial={m} />
+      {squads.length > 0 && (
+        <section className="nm-wrap nm-engine" aria-label="Player profiles">
+          <h2>Player profiles</h2>
+          {squads.map(({ t, ps }) => (
+            <p key={t}><b>{ps[0].data.team}:</b> {ps.map((x, i) => <span key={x.path}>{i ? ", " : ""}<a href={x.path}>{x.data.name}</a></span>)}</p>
+          ))}
+          <p className="nm-note">Season statistics per player; the confirmed line-ups appear above once the clubs announce them.</p>
+        </section>
+      )}
       {fixture && <MatchContext fixture={fixture} />}
       {about.length ? (
         <section className="nm-wrap nm-mc-body nm-about" aria-label="About the teams">

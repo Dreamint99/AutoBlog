@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import type { NmMatch, NmKeyEvent, NmLineup } from "./live";
-import { thumb } from "@/lib/img";
 
 /* Match centre body. Server renders the first snapshot (so the page has real
    HTML for search engines); while the game is live the client re-polls
@@ -25,11 +24,10 @@ function kickoff(iso: string): string {
   return d.toLocaleString([], { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
 }
 
-function Crest({ logo, name, color }: { logo: string; name: string; color: string }) {
-  return logo ? (
-    <img className="nm-mc-crest" src={thumb(logo)} alt={`${name} crest`} width={88} height={88} />
-  ) : (
-    <span className="nm-mc-crest nm-mc-crest-ph" style={{ background: color || "#1f222b" }}>
+function Crest({ name, color }: { logo?: string; name: string; color: string }) {
+  // Club crests are third-party trademarks; show a neutral colour badge instead of hot-linking them.
+  return (
+    <span className="nm-mc-crest nm-mc-crest-ph" style={{ background: color || "#1f222b" }} aria-hidden="true">
       {name.slice(0, 3).toUpperCase()}
     </span>
   );
