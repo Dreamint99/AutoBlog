@@ -27,7 +27,7 @@ const TTL = 1800;
 // pairs old HTML with the new server.
 const CLIENT_CC = "public, max-age=0, must-revalidate";
 // image/png: the on-demand /card/ and /pin/ images (Satori renders are the most CPU-heavy requests)
-const CACHEABLE_CT = /text\/html|application\/(xml|rss)|text\/xml|image\/png/;
+const CACHEABLE_CT = /text\/html|text\/plain|application\/(xml|rss\+xml|xml|rss)|text\/xml|image\/png/;
 
 function isRscRequest(request, url) {
   const h = request.headers;
@@ -58,9 +58,81 @@ function cleanLinks(res, siteId) {
     .transform(res);
 }
 
+
+const SEO_DOC_TTL = 3600;
+
+function isSitemapPath(pathname) {
+  return pathname === "/sitemap.xml" || pathname === "/sitemap-index.xml" ||
+    /^\/sitemap-[a-z0-9][a-z0-9-]*\.xml$/.test(pathname);
+}
+
+function fallbackRobots(request, env) {
+  const origin = new URL(request.url).origin;
+  const sitemap = env && env.SITE_ID === "gccguide" ? `${origin}/sitemap-index.xml` : `${origin}/sitemap.xml`;
+  const body = `User-agent: *\nAllow: /\n\nHost: ${origin}\nSitemap: ${sitemap}\n`;
+  return new Response(body, {
+    status: 200,
+    headers: {
+      "content-type": "text/plain; charset=utf-8",
+      "cache-control": "public, max-age=3600",
+      "x-robots-fallback": "static",
+    },
+  });
+}
+
+function edgeTtl(url, env) {
+  if (url.pathname === "/robots.txt" || isSitemapPath(url.pathname)) return SEO_DOC_TTL;
+  if (env && env.SITE_ID === "ninetymins" && /^\/(match|embed|league|team|today|tomorrow)(\/|$)/.test(url.pathname)) return 30;
+  return TTL;
+}
+
+async function robotsDoc(request, url, env, ctx) {
+  const keyUrl = new URL(url.toString());
+  const ver = env.CF_VERSION_METADATA && env.CF_VERSION_METADATA.id;
+  if (ver) keyUrl.searchParams.set("__v", ver);
+  const cacheKey = new Request(keyUrl.toString());
+  const cache = caches.default;
+  try {
+    const hit = await cache.match(cacheKey);
+    if (hit && hit.status === 200 && (hit.headers.get("content-type") || "").includes("text/plain")) {
+      const h = new Headers(hit.headers);
+      h.set("x-edge-cache", "HIT");
+      h.set("cache-control", "public, max-age=3600");
+      return new Response(hit.body, { status: 200, headers: h });
+    }
+  } catch { /* cache is best-effort */ }
+  // Answer immediately with a static file so a CPU kill (error 1102) during
+  // Next's robots render cannot turn the fetch into a 5xx. The full robots.txt
+  // is filled into the edge cache in the background when the render succeeds.
+  ctx.waitUntil((async () => {
+    try {
+      const res = await worker.fetch(request, env, ctx);
+      if (!res || res.status !== 200 || !(res.headers.get("content-type") || "").includes("text/plain")) return;
+      const body = await res.text();
+      if (!body.trim()) return;
+      await cache.put(cacheKey, new Response(body, {
+        status: 200,
+        headers: { "content-type": "text/plain; charset=utf-8", "cache-control": `public, s-maxage=${SEO_DOC_TTL}` },
+      }));
+    } catch { /* static response already went out */ }
+  })());
+  const res = fallbackRobots(request, env);
+  res.headers.set("x-edge-cache", "MISS");
+  return res;
+}
+
 export default {
   async fetch(request, env, ctx) {
-    const res = await route(request, env, ctx);
+    if (request.method === "GET" && request.headers.get("sec-fetch-dest") === "iframe" && /^\/(?:embed\/|data\/embed\/)/.test(new URL(request.url).pathname)) ctx.waitUntil(logEmbedHost(request, env));
+    let res;
+    try {
+      res = await route(request, env, ctx);
+    } catch (err) {
+      // robots.txt never 5xxs — Google Search Console treats a failed fetch as a site error.
+      if (new URL(request.url).pathname === "/robots.txt") return fallbackRobots(request, env);
+      throw err;
+    }
+    if (new URL(request.url).pathname === "/robots.txt" && res.status >= 500) return fallbackRobots(request, env);
     const ct = res.headers.get("content-type") || "";
     return ct.includes("text/html") ? cleanLinks(res, env.SITE_ID) : res;
   },
@@ -69,9 +141,10 @@ export default {
 const route = async (request, env, ctx) => {
     if (request.method !== "GET") return worker.fetch(request, env, ctx);
     const url = new URL(request.url);
-    if (url.pathname.startsWith("/api/")) return worker.fetch(request, env, ctx);
+    if (url.pathname.startsWith("/admin/") || url.pathname.startsWith("/api/")) return worker.fetch(request, env, ctx);
     // Live status pages must stay fresh (data changes every 5 min).
     if (url.pathname === "/status" || url.pathname.startsWith("/status/")) return worker.fetch(request, env, ctx);
+    if (url.pathname === "/robots.txt") return robotsDoc(request, url, env, ctx);
     if (isRscRequest(request, url)) return worker.fetch(request, env, ctx);
 
     // Key on the deployed version so a deploy never serves HTML from the previous
@@ -100,7 +173,7 @@ const route = async (request, env, ctx) => {
         // A streamed SSR error still returns 200 — never store it.
         const bad = ct.includes("text/html") && new TextDecoder().decode(buf).includes("data-dgst=");
         const storeHeaders = new Headers(res.headers);
-        storeHeaders.set("cache-control", `public, s-maxage=${TTL}`);
+        storeHeaders.set("cache-control", `public, s-maxage=${edgeTtl(url, env)}`);
         storeHeaders.delete("set-cookie");
         if (!bad) ctx.waitUntil(cache.put(cacheKey, new Response(buf, { status: 200, headers: storeHeaders })));
         const h = new Headers(res.headers);
@@ -113,3 +186,18 @@ const route = async (request, env, ctx) => {
     }
     return res;
 };
+
+async function logEmbedHost(request, env) {
+  if (!["ninetymins", "countly"].includes(env.SITE_ID)) return;
+  try {
+    const ref = new URL(request.headers.get("referer") || "");
+    const own = env.SITE_ID === "ninetymins" ? "ninetymins.com" : "countly.net";
+    if (ref.hostname === own || ref.hostname.endsWith("." + own) || !/^[a-z0-9-]+(?:\.[a-z0-9-]+)+$/i.test(ref.hostname)) return;
+    const marker = new Request(`https://seo-embed-log.internal/${env.SITE_ID}/${ref.hostname}`);
+    if (await caches.default.match(marker)) return;
+    const now = new Date().toISOString();
+    // Store the host only: no visitor identifiers, query strings or private paths.
+    await env.DB.prepare("INSERT INTO seo_embed_hosts(site_id,host,first_seen,last_seen) VALUES(?,?,?,?) ON CONFLICT(site_id,host) DO UPDATE SET last_seen=excluded.last_seen").bind(env.SITE_ID, ref.hostname, now, now).run();
+    await caches.default.put(marker, new Response("logged", { headers: { "cache-control": "public, s-maxage=86400" } }));
+  } catch { /* telemetry never affects the widget response */ }
+}

@@ -3,12 +3,13 @@ import type { ReactNode } from "react";
 import type { Site } from "@/lib/types";
 import "./ai.css";
 import { aiFont } from "./fonts";
+import { publicPath, sitePrefix } from "@/lib/public-path";
 
 /* Shared InfKey chrome — masthead, footer, logo, page shell.
    Used by Home, Article and every data-product route so nav stays consistent. */
 
 export function navFor(site: Site): ReadonlyArray<readonly [string, string]> {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   return [
     ["AI prices", `${b}/models`],
     ["Compare", `${b}/compare`],
@@ -34,7 +35,7 @@ export function KeyMark() {
 export function Logo({ site }: { site: Site }) {
   /* Text wordmark: "inf" + gradient "key" + muted ".com" (Space Grotesk, set in ai.css). */
   return (
-    <Link href={`/s/${site.id}`} className="logo ik-wordmark" aria-label={`${site.name} home`}>
+    <Link href={publicPath(site.id, "/")} className="logo ik-wordmark" aria-label={`${site.name} home`}>
       <span className="ik-wm-a">inf</span>
       <span className="ik-wm-k">key</span>
       <span className="ik-wm-d">.com</span>
@@ -55,7 +56,7 @@ export function Masthead({ site }: { site: Site }) {
               {label}
             </Link>
           ))}
-          <Link href={`/s/${site.id}/search`} className="cta">
+          <Link href={publicPath(site.id, "/search")} className="cta">
             ✦ Ask InfKey
           </Link>
         </nav>
@@ -69,7 +70,7 @@ export function Masthead({ site }: { site: Site }) {
 
 export function Footer({ site }: { site: Site }) {
   const year = new Date().getFullYear();
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   return (
     <footer className="footer">
       <div className="shell">

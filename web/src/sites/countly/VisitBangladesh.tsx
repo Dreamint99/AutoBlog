@@ -3,13 +3,14 @@ import Link from "next/link";
 import { fontVars } from "./fonts";
 import type { Site, Article } from "@/lib/types";
 import { CnHeader, SiteFooter, fmtDate, IconArrow } from "./Home";
+import { publicPath } from "@/lib/public-path";
 
 // Curated Wikimedia hero — Sreemangal tea gardens, Sylhet.
 const HERO_IMG =
   "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Sreemangal_tea_garden_2017-08-20.jpg/1280px-Sreemangal_tea_garden_2017-08-20.jpg";
 
 function DestCard({ siteId, article }: { siteId: string; article: Article }) {
-  const href = `/s/${siteId}/${article.slug}`;
+  const href = publicPath(siteId, `/${article.slug}`);
   return (
     <article className="cn-vb-card">
       <Link href={href} className="cn-vb-card-media" aria-label={article.title}>

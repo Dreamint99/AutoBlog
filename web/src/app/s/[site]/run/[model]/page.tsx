@@ -10,6 +10,7 @@ import { PageHead, FitBadge } from "@/sites/infkey/data-ui";
 import { GPUS, QUANTS, estimate, fmtParams, needGb } from "@/sites/infkey/gpus";
 import { JsonLd, breadcrumbSchema } from "@/lib/seo";
 import { infMeta } from "@/sites/infkey/meta";
+import { sitePrefix } from "@/lib/public-path";
 
 export const dynamic = "force-dynamic";
 
@@ -35,7 +36,7 @@ export default async function RunModelPage({ params }: { params: Promise<{ site:
   const m = await getHfModel(p.model);
   if (!m) notFound();
   const n = hfName(m);
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const base = siteBaseUrl(site);
   const rows = GPUS.map((g) => ({ g, q: QUANTS.map((q) => estimate(m.params, g, q.bytes)) }));
   const fitsAny = rows.filter((r) => r.q[2].fit !== "no");

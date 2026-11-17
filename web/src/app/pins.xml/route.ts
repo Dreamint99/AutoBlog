@@ -1,4 +1,4 @@
-import { getArticles } from "@/lib/data";
+import { getArticles, d1 } from "@/lib/data";
 import { activeSite } from "@/lib/site-context";
 import { siteBaseUrl } from "@/lib/sites.config";
 
@@ -23,7 +23,12 @@ export async function GET() {
       `<pubDate>${new Date(a.created_at).toUTCString()}</pubDate><description>${esc(desc)}</description>` +
       `<media:content url="${esc(pin)}" medium="image" type="image/png" width="1000" height="1500"/><enclosure url="${esc(pin)}" type="image/png" length="0"/></item>`;
   }).join("");
+  const db = d1();
+  const data = db && ["ninetymins", "countly"].includes(site.id) ? (await db.prepare(site.id === "countly"
+    ? "SELECT '/data/'||kind||'/'||slug AS path,title,created_at AS published FROM seo_pages WHERE site_id='countly' ORDER BY created_at DESC LIMIT 1000"
+    : "SELECT path,json_extract(ev_json,'$.home.name')||' '||json_extract(ev_json,'$.home.score')||'–'||json_extract(ev_json,'$.away.score')||' '||json_extract(ev_json,'$.away.name')||': result' AS title,result_at AS published FROM seo_matches WHERE state='post' AND result_at IS NOT NULL ORDER BY result_at DESC LIMIT 200").all<{ path: string; title: string; published: string }>()).results : [];
+  const dataItems = data.map(p => { const url = base + p.path, image = `${base}/og/${site.id}.png`; return `<item><title>${esc(p.title)}</title><link>${esc(url)}</link><guid isPermaLink="true">${esc(url)}</guid><pubDate>${new Date(p.published).toUTCString()}</pubDate><description>${esc(p.title + " — sourced data, tables and charts.")}</description><media:content url="${image}" medium="image" type="image/png" width="1200" height="630"/><enclosure url="${image}" type="image/png" length="0"/></item>`; }).join("");
   const xml = `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel>` +
-    `<title>${esc(site.name)} — Pins</title><link>${base}</link><description>${esc(site.tagline)}</description>${items}</channel></rss>`;
+    `<title>${esc(site.name)} — Pins</title><link>${base}</link><description>${esc(site.tagline)}</description>${items}${dataItems}</channel></rss>`;
   return new Response(xml, { headers: { "content-type": "application/rss+xml; charset=utf-8", "cache-control": "public, max-age=1800" } });
 }

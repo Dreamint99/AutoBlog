@@ -222,7 +222,7 @@ def _english_slug(site: dict, title: str, data: dict) -> str:
         raw = chat("Return only a URL slug: 3-7 lowercase English words joined by hyphens, the search keyword "
                    "people type for this article (keep a year if the title has one). No other text.",
                    title, temperature=0.2, max_tokens=40)
-        slug = re.sub(r"[^a-z0-9-]+", "", re.sub(r"\s+", "-", raw.strip().lower()))[:70].strip("-")
+        slug = seo.english_slug_from_model(raw)
         return slug if re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+){2,8}", slug) else ""
     except Exception:
         return ""
@@ -231,6 +231,8 @@ def _english_slug(site: dict, title: str, data: dict) -> str:
 def generate_article(site: dict, title: str, log=lambda m: None, replace: dict | None = None) -> dict:
     """`replace` = an existing {id, slug}: rewrite that article in place (same URL),
     used by content_update.py to refresh stale posts."""
+    if site.get("id") == "infkey" or site.get("content_mode") == "data_only":
+        raise ValueError("Generic article generation is disabled for this data-only site; publish verified datasets instead.")
     article_id = (replace or {}).get("id") or uuid.uuid4().hex[:12]
 
     if have_llm():

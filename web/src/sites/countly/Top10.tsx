@@ -5,6 +5,7 @@ import type { Article, Site } from "@/lib/types";
 import { topNumber } from "./categories";
 import { CnHeader, SiteFooter, fmtDate, IconArrow, IconCompass } from "./Home";
 import { thumb } from "@/lib/img";
+import { publicPath } from "@/lib/public-path";
 
 function Trophy() {
   return (
@@ -17,7 +18,7 @@ function Trophy() {
 }
 
 function Top10Card({ siteId, article }: { siteId: string; article: Article }) {
-  const href = `/s/${siteId}/${article.slug}`;
+  const href = publicPath(siteId, `/${article.slug}`);
   const n = topNumber(article.title);
   return (
     <article className="cn-top10-card">

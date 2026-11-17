@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Site } from "@/lib/types";
 import { type Country, type Job, type SalaryEstimate, eur } from "@/lib/walvi";
+import { publicPath, sitePrefix } from "@/lib/public-path";
 
 /* Shared presentational pieces for VisaPoint data-product pages (server components). */
 
@@ -99,7 +100,7 @@ export function Crumbs({ items }: { items: { name: string; href?: string }[] }) 
 
 /** Country profile: one row per occupation. */
 export function SalaryByJobTable({ site, rows }: { site: Site; rows: SalaryEstimate[] }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   return (
     <div className="dtable-wrap">
       <table className="dtable">
@@ -140,7 +141,7 @@ export function SalaryByJobTable({ site, rows }: { site: Site; rows: SalaryEstim
 
 /** Job profile: one row per country. */
 export function SalaryByCountryTable({ site, rows }: { site: Site; rows: SalaryEstimate[] }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   return (
     <div className="dtable-wrap">
       <table className="dtable">
@@ -204,7 +205,7 @@ export function FactGrid({ country }: { country: Country }) {
 
 export function CountryCard({ site, country, headline }: { site: Site; country: Country; headline: string }) {
   return (
-    <Link className="tile" href={`/s/${site.id}/countries/${country.slug}`}>
+    <Link className="tile" href={publicPath(site.id, `/countries/${country.slug}`)}>
       <div className="tile-top">
         <span className="tile-flag" aria-hidden="true">
           {country.flag}
@@ -225,7 +226,7 @@ export function CountryCard({ site, country, headline }: { site: Site; country: 
 
 export function JobCard({ site, job, headline }: { site: Site; job: Job; headline: string }) {
   return (
-    <Link className="tile" href={`/s/${site.id}/jobs/${job.slug}`}>
+    <Link className="tile" href={publicPath(site.id, `/jobs/${job.slug}`)}>
       <div className="tile-top">
         <span className="tile-ico" aria-hidden="true">
           {job.icon}

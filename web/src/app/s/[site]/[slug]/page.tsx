@@ -1,3 +1,4 @@
+import { isPruned } from "@/sites/ninetymins/engine";
 import { publicPath } from "@/lib/site-context";
 import { notFound, permanentRedirect } from "next/navigation";
 import { isVcArticle, vcFor } from "@/sites/walvi/visacheck/data";
@@ -73,6 +74,7 @@ export async function generateMetadata({
     // 90 days (owner approved 14 Nov 2026), so they stay readable but are not indexed.
     robots: site.id === "infkey" ? { index: false, follow: true } : undefined,
     keywords: article.tags,
+    ...(["ninetymins", "countly"].includes(id) && await isPruned(id, slug) ? { robots: { index: false, follow: true } } : {}),
     openGraph: {
       title: clamp(article.title, 60),
       description,

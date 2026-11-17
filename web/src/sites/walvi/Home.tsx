@@ -10,6 +10,7 @@ import Flag from "./Flag";
 import { getPassports } from "@/lib/passports";
 import { CountUp } from "./Animated";
 import { VC, flagFor } from "./visacheck/data";
+import { publicPath, sitePrefix } from "@/lib/public-path";
 
 const TOOLS = [
   { h: "Visa status check", p: "Step-by-step: check a Qatar, Saudi, UAE, Schengen or UK visa on the official portal.", href: "/visa-check", ic: "✓", tone: "teal" },
@@ -65,7 +66,7 @@ function GuideRow({ site, a }: { site: Site; a: Article }) {
           {c ? ` · ${c.name}` : ""}
         </span>
         <h3>
-          <Link href={`/s/${site.id}/${a.slug}`}>{a.title}</Link>
+          <Link href={publicPath(site.id, `/${a.slug}`)}>{a.title}</Link>
         </h3>
         {a.excerpt ? <p>{a.excerpt}</p> : null}
         <span className="vp-date">Updated {fmtDate(a.created_at)} · {a.reading_time} min read</span>
@@ -75,7 +76,7 @@ function GuideRow({ site, a }: { site: Site; a: Article }) {
 }
 
 export default async function Home({ site, articles }: SiteHomeProps) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const latest = articles.filter((a) => !a.is_mock).slice(0, 8);
   const savings = topSavings(8);
   const sorted = [...COUNTRIES].sort((x, y) => x.name.localeCompare(y.name));

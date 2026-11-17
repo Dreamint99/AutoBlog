@@ -1,8 +1,10 @@
-import { urlset, xmlResponse, siteAndBase, abs } from "@/lib/gcc-sitemaps";
+import { urlset, xmlResponse, siteAndBase, abs, gccOnly } from "@/lib/gcc-sitemaps";
 import { visaItems, visaCountries } from "@/sites/gccguide/hub/directory";
 import { gate } from "@/sites/gccguide/hub/gate";
 
 export async function GET() {
+  const denied = gccOnly();
+  if (denied) return denied;
   const { base } = siteAndBase();
   const checked = visaItems()[0]?.checked ?? "2026-11-14";
   const entries = [

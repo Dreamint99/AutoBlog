@@ -38,17 +38,15 @@ const SPORT: Record<string, [string, string]> = {
   hockey: ["🏒", "Hockey"],
   baseball: ["⚾", "Baseball"],
 };
-const BIG = ["afc.saff.championship", "eng.1", "uefa.champions", "esp.1", "ita.1", "ger.1", "fra.1"];
+const BIG = ["eng.1", "uefa.champions", "esp.1", "ita.1", "ger.1", "fra.1"];
 const weight = (e: TodayItem) =>
-  e.league === "afc.saff.championship" || e.home.name === "Bangladesh" || e.away.name === "Bangladesh" ? 0 : BIG.includes(e.league) ? 1 + BIG.indexOf(e.league) : 20;
+  BIG.includes(e.league) ? 1 + BIG.indexOf(e.league) : 20;
 
 const FOOTBALL = [
   { title: "FIFA+ — free live football (varies by country)", url: "https://www.fifa.com/en" },
-  { title: "BTV — Bangladesh matches when on air", url: "https://www.btvlive.gov.bd/" },
 ];
 const CRICKET = [
   { title: "ICC.tv — free where available", url: "https://www.icc-cricket.com/icc-tv" },
-  { title: "BTV — Bangladesh matches when on air", url: "https://www.btvlive.gov.bd/" },
 ];
 
 const slug = (x: string) => x.toLowerCase().normalize("NFKD").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");

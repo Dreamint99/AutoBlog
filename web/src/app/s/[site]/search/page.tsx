@@ -6,12 +6,13 @@ import CountlySearch from "@/sites/countly/Search";
 import InfkeySearch from "@/sites/infkey/Search";
 import WalviSearch from "@/sites/walvi/Search";
 import GccSearch from "@/sites/gccguide/Search";
+import NmSearch from "@/sites/ninetymins/Search";
 
 export const dynamic = "force-dynamic";
 // Search results shouldn't be indexed.
 export const metadata: Metadata = { robots: { index: false, follow: true } };
 
-const SUPPORTED = new Set(["countly", "infkey", "walvi", "gccguide"]);
+const SUPPORTED = new Set(["countly", "infkey", "walvi", "gccguide", "ninetymins"]);
 const STOP = new Set("a an the of for to in on and or how is are what best with by my your free 2025 2026".split(" "));
 
 /** Cheap ranking over the cached article list (no body scan): title words count double. */
@@ -49,7 +50,7 @@ export default async function SearchPage({
 
   if (site.id !== "countly") {
     const results = q ? rankList(await getArticles(site.id), q) : [];
-    const View = site.id === "infkey" ? InfkeySearch : site.id === "gccguide" ? GccSearch : WalviSearch;
+    const View = site.id === "infkey" ? InfkeySearch : site.id === "gccguide" ? GccSearch : site.id === "ninetymins" ? NmSearch : WalviSearch;
     return <View site={site} q={q} results={results} />;
   }
 

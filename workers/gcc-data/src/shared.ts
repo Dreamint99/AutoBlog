@@ -18,6 +18,8 @@ export interface Env {
   SITE_URL: string;
   INDEXNOW_KEY: string;
   INDEXNOW_ENABLED: string;
+  /** orbit VPS IndexNow proxy key (secret); unset = call api.indexnow.org directly */
+  INDEXNOW_RELAY_KEY?: string;
 }
 
 export interface JobResult {

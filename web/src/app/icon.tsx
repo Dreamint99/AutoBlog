@@ -5,7 +5,7 @@ import { siteBaseUrl } from "../lib/sites.config";
 // Sites with a real logo mark in /public/brand use it as the favicon.
 const MARKS: Record<string, string> = {
   infkey: "/brand/infkey-mark-sq.png",
-  ninetymins: "/brand/ninetymins-mark.png",
+  ninetymins: "/brand/ninetymins-mark-90.png",
   countly: "/brand/countly-mark-sq.png",
   gccguide: "/brand/gccguide-mark.png",
   walvi: "/brand/visapoint-mark.png",
@@ -33,10 +33,26 @@ const COLORS: Record<string, { bg: string; fg: string }> = {
   "countly-data": { bg: "#4f46e5", fg: "#ffffff" }, // Countly
 };
 
-export default function Icon() {
+export default async function Icon() {
   const site = activeSite();
   const c = COLORS[site.theme] ?? { bg: "#111827", fg: "#ffffff" };
   const letter = (site.name || "A").trim().charAt(0).toUpperCase();
+  // NinetyMins: the app's "90" mark, drawn here (a Worker can't fetch its own zone's /brand file).
+  if (site.id === "ninetymins") {
+    // Anton = the app's poster font; fall back to the default font if Google Fonts is unreachable.
+    const anton = await fetch("https://fonts.gstatic.com/s/anton/v27/1Ptgg87LROyAm0K0.ttf")
+      .then((r) => (r.ok ? r.arrayBuffer() : null))
+      .catch(() => null);
+    return new ImageResponse(
+      (
+        <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", background: "#0d0d0d", borderRadius: 42, position: "relative" }}>
+          <div style={{ display: "flex", color: "#f4f1ea", fontSize: anton ? 124 : 112, fontWeight: anton ? 400 : 800, fontFamily: anton ? "Anton" : undefined, letterSpacing: anton ? -2 : -6, marginTop: -6 }}>90</div>
+          <div style={{ position: "absolute", right: 18, top: 18, width: 24, height: 24, borderRadius: 12, background: "#c6ff3d" }} />
+        </div>
+      ),
+      { ...size, ...(anton ? { fonts: [{ name: "Anton", data: anton, weight: 400 as const, style: "normal" as const }] } : {}) }
+    );
+  }
   const mark = MARKS[site.id];
   if (mark) {
     return new ImageResponse(

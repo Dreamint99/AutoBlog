@@ -1,0 +1,229 @@
+{
+  "generated": "2026-11-14",
+  "sites": {
+    "ninetymins": {
+      "gscSource": "Search Console API 2026-08-07..2026-11-05",
+      "exportPageImpressions": 26,
+      "exportPageClicks": 4,
+      "topQueries": [
+        {
+          "query": "ninetymins.com",
+          "impressions": 5,
+          "clicks": 0
+        }
+      ],
+      "bingSource": "Bing Webmaster GetQueryStats",
+      "bingQueryClicks": 183,
+      "bingTopQueries": [
+        {
+          "q": "us open tennis 2026 schedule",
+          "impr": 2438,
+          "clicks": 1,
+          "pos": 9.4
+        },
+        {
+          "q": "us open tennis 2026",
+          "impr": 2207,
+          "clicks": 1,
+          "pos": 9.0
+        },
+        {
+          "q": "watch eng vs pak online",
+          "impr": 1193,
+          "clicks": 19,
+          "pos": 7.0
+        },
+        {
+          "q": "motogp 2026",
+          "impr": 722,
+          "clicks": 3,
+          "pos": 7.4
+        },
+        {
+          "q": "us open 2026 tennis",
+          "impr": 510,
+          "clicks": 0,
+          "pos": 8.3
+        },
+        {
+          "q": "tennis us open 2026",
+          "impr": 508,
+          "clicks": 1,
+          "pos": 9.0
+        },
+        {
+          "q": "fifa world cup standings",
+          "impr": 447,
+          "clicks": 0,
+          "pos": 9.0
+        },
+        {
+          "q": "2026 us open tennis schedule",
+          "impr": 378,
+          "clicks": 1,
+          "pos": 8.7
+        },
+        {
+          "q": "us open tennis 2026 dates",
+          "impr": 357,
+          "clicks": 0,
+          "pos": 8.0
+        },
+        {
+          "q": "jag vs ara",
+          "impr": 326,
+          "clicks": 0,
+          "pos": 5.0
+        }
+      ],
+      "note": "Saved export baseline, not a live API report. New queries require another dated export. Indexed share cannot be calculated from these files."
+    },
+    "countly": {
+      "gscSource": "Search Console API 2026-08-07..2026-11-05",
+      "exportPageImpressions": 2322,
+      "exportPageClicks": 3,
+      "topQueries": [
+        {
+          "query": "site:countly.net",
+          "impressions": 214,
+          "clicks": 0
+        },
+        {
+          "query": "countly",
+          "impressions": 42,
+          "clicks": 0
+        },
+        {
+          "query": "richard warke net worth",
+          "impressions": 14,
+          "clicks": 0
+        },
+        {
+          "query": "crypto market data",
+          "impressions": 12,
+          "clicks": 0
+        },
+        {
+          "query": "quintly",
+          "impressions": 11,
+          "clicks": 0
+        },
+        {
+          "query": "crypto price data",
+          "impressions": 11,
+          "clicks": 0
+        },
+        {
+          "query": "\"countly analytics\"",
+          "impressions": 9,
+          "clicks": 0
+        },
+        {
+          "query": "live crypto market",
+          "impressions": 8,
+          "clicks": 0
+        },
+        {
+          "query": "crypto stats",
+          "impressions": 7,
+          "clicks": 0
+        },
+        {
+          "query": "\"countly\"",
+          "impressions": 6,
+          "clicks": 0
+        },
+        {
+          "query": "remitly today rate",
+          "impressions": 6,
+          "clicks": 0
+        },
+        {
+          "query": "crypto real time",
+          "impressions": 5,
+          "clicks": 0
+        },
+        {
+          "query": "etsy seller news 2026",
+          "impressions": 4,
+          "clicks": 0
+        },
+        {
+          "query": "countly analytics",
+          "impressions": 3,
+          "clicks": 0
+        },
+        {
+          "query": "countly community edition",
+          "impressions": 3,
+          "clicks": 0
+        }
+      ],
+      "bingSource": "Bing Webmaster GetQueryStats",
+      "bingQueryClicks": 858,
+      "bingTopQueries": [
+        {
+          "q": "top websites in the world",
+          "impr": 1218,
+          "clicks": 0,
+          "pos": 8.0
+        },
+        {
+          "q": "most subscribed youtube channel subscribers count may 2026",
+          "impr": 871,
+          "clicks": 0,
+          "pos": 2.9
+        },
+        {
+          "q": "stablecoin market cap usdt usdc august 2026",
+          "impr": 560,
+          "clicks": 0,
+          "pos": 3.4
+        },
+        {
+          "q": "fastest car in the world 2026",
+          "impr": 557,
+          "clicks": 6,
+          "pos": 5.2
+        },
+        {
+          "q": "the world's tallest skyscrapers 2026",
+          "impr": 348,
+          "clicks": 0,
+          "pos": 3.0
+        },
+        {
+          "q": "how many mcdonald's in the world",
+          "impr": 330,
+          "clicks": 0,
+          "pos": 7.4
+        },
+        {
+          "q": "who is the richest man in the world",
+          "impr": 315,
+          "clicks": 2,
+          "pos": 9.0
+        },
+        {
+          "q": "which language has the most native speakers worldwide?",
+          "impr": 298,
+          "clicks": 0,
+          "pos": 8.7
+        },
+        {
+          "q": "tallest building in the world 2026",
+          "impr": 278,
+          "clicks": 16,
+          "pos": 2.5
+        },
+        {
+          "q": "top 10 richest people in the world",
+          "impr": 232,
+          "clicks": 1,
+          "pos": 9.0
+        }
+      ],
+      "note": "Saved export baseline, not a live API report. New queries require another dated export. Indexed share cannot be calculated from these files."
+    }
+  }
+}

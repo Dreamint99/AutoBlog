@@ -5,11 +5,12 @@ import type { Article, Site } from "@/lib/types";
 import { InfShell } from "./Chrome";
 import { topicOf, PROMPT_PACKS } from "./topics";
 import { thumb } from "@/lib/img";
+import { sitePrefix } from "@/lib/public-path";
 
 /* InfKey search — AI-style results page. When nothing matches yet, it says so
    honestly and points to the closest pillars instead of a dead end. */
 export default function Search({ site, q, results }: { site: Site; q: string; results: Article[] }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   return (
     <InfShell site={site}>
       <section className="ai-sec">

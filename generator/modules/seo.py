@@ -12,12 +12,34 @@ except Exception:
     _slugify = None
 
 
+
+def trim_slug(slug: str, max_len: int = 70) -> str:
+    """Shorten a slug on a hyphen so the cut is never mid-word.
+
+    python-slugify's max_length slices the string, which published URLs like
+    "...-migration-servic". New slugs only — existing rows are not renamed.
+    """
+    slug = (slug or "").strip("-")
+    if len(slug) <= max_len:
+        return slug
+    head = slug[:max_len]
+    if "-" in head:
+        head = head.rsplit("-", 1)[0]
+    return head.strip("-") or slug[:max_len].strip("-")
+
+
+def english_slug_from_model(raw: str, max_len: int = 70) -> str:
+    """Sanitize an LLM slug and cut it on a word boundary."""
+    slug = re.sub(r"[^a-z0-9-]+", "", re.sub(r"\s+", "-", (raw or "").strip().lower()))
+    return trim_slug(slug.strip("-"), max_len)
+
+
 def make_slug(title: str, fallback_id: str = "") -> str:
     if _slugify:
-        s = _slugify(title, max_length=70)
+        s = trim_slug(_slugify(title))
     else:
-        s = re.sub(r"[^a-z0-9]+", "-", title.lower()).strip("-")
-    return s or f"post-{fallback_id}"[:70]
+        s = trim_slug(re.sub(r"[^a-z0-9]+", "-", title.lower()).strip("-"))
+    return s or trim_slug(f"post-{fallback_id}")
 
 
 def meta_title(title: str, site_name: str) -> str:

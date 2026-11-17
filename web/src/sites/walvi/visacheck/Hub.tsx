@@ -3,6 +3,7 @@ import type { Site, Article } from "@/lib/types";
 import { Masthead, Footer } from "../Chrome";
 import { fontVars } from "../fonts";
 import { VC, VC_REGIONS, VC_VERIFIED, flagFor, vcFor, type VcEntry } from "./data";
+import { publicPath, sitePrefix } from "@/lib/public-path";
 
 export const VC_FAQ = [
   {
@@ -58,7 +59,7 @@ function Card({ e, siteId }: { e: VcEntry; siteId: string }) {
       <header>
         <img className="vp-flag" src={flagFor(e)} alt="" width={40} height={27} loading="lazy" />
         <h3>
-          <Link href={`/s/${siteId}/visa-check/${e.slug}`}>How to check {e.country.replace(/ \(.*\)$/, "")} visa</Link>
+          <Link href={publicPath(siteId, `/visa-check/${e.slug}`)}>How to check {e.country.replace(/ \(.*\)$/, "")} visa</Link>
         </h3>
       </header>
       <p className="vc-portal">{e.portal}</p>
@@ -72,7 +73,7 @@ function Card({ e, siteId }: { e: VcEntry; siteId: string }) {
         <a className="vp-btn vp-btn-primary" href={e.url} target="_blank" rel="noopener noreferrer nofollow">
           Check on official site ↗
         </a>
-        <Link className="vp-btn vp-btn-outline" href={`/s/${siteId}/visa-check/${e.slug}`}>
+        <Link className="vp-btn vp-btn-outline" href={publicPath(siteId, `/visa-check/${e.slug}`)}>
           Step-by-step guide
         </Link>
       </div>
@@ -82,7 +83,7 @@ function Card({ e, siteId }: { e: VcEntry; siteId: string }) {
 }
 
 export default function VisaCheckHub({ site, guides }: { site: Site; guides: Article[] }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   return (
     <div className={fontVars}>
       <Masthead site={site} />
@@ -90,7 +91,7 @@ export default function VisaCheckHub({ site, guides }: { site: Site; guides: Art
         <section className="vp-pi-hero vc-hero">
           <div className="vp-wrap">
             <nav className="vp-crumbs" aria-label="Breadcrumb">
-              <Link href={b}>Home</Link>
+              <Link href={b || "/"}>Home</Link>
               <span aria-hidden="true">›</span>
               <span>Visa status check</span>
             </nav>

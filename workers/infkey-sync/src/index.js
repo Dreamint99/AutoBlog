@@ -147,9 +147,11 @@ export async function sync(env) {
   if (before.size) {
     const key = "7cb730425493bd6250188aee25110d83";
     const urlList = ["https://infkey.com/changes", `https://infkey.com/changes/${today}`, "https://infkey.com/new", "https://infkey.com/models", ...fresh.slice(0, 500).map((id) => `https://infkey.com/models/${id}`)];
+    // IndexNow 429s Cloudflare egress IPs → relay through the orbit VPS proxy when its key is set; log the result.
     try {
-      await fetch("https://api.indexnow.org/indexnow", { method: "POST", headers: { "content-type": "application/json; charset=utf-8" }, body: JSON.stringify({ host: "infkey.com", key, keyLocation: `https://infkey.com/${key}.txt`, urlList }) });
-    } catch {}
+      const r = await fetch(env.INDEXNOW_RELAY_KEY ? "https://157-245-152-189.sslip.io/indexnow-relay" : "https://api.indexnow.org/indexnow", { method: "POST", headers: { "content-type": "application/json; charset=utf-8", ...(env.INDEXNOW_RELAY_KEY ? { "x-relay-key": env.INDEXNOW_RELAY_KEY } : {}) }, body: JSON.stringify({ host: "infkey.com", key, keyLocation: `https://infkey.com/${key}.txt`, urlList }) });
+      console.log(`indexnow ${r.status} ${urlList.length} urls`);
+    } catch (e) { console.log(`indexnow error ${e}`); }
   }
   return { models: rows.length, flagship: flagship.size, fresh: fresh.length, day: today };
 }

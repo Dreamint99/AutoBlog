@@ -9,6 +9,7 @@ import { siteBaseUrl } from "@/lib/sites.config";
 import { InfShell } from "@/sites/infkey/Chrome";
 import { PageHead, ModelTable } from "@/sites/infkey/data-ui";
 import { JsonLd, breadcrumbSchema } from "@/lib/seo";
+import { sitePrefix } from "@/lib/public-path";
 
 export const dynamic = "force-dynamic";
 
@@ -57,7 +58,7 @@ export default async function ComparePage({
   const models = await getModels();
   const byId = new Map(models.map((m) => [m.id, m]));
   const verified = latestVerified(models);
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
 
   const pairs = POPULAR.filter(([a, c]) => byId.has(a) && byId.has(c));
   const base = siteBaseUrl(site);

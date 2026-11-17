@@ -1,3 +1,5 @@
+import { fixtures } from "@/sites/ninetymins/engine";
+import FixtureList, { itemList } from "@/sites/ninetymins/FixtureList";
 import { defaultOgImages } from "@/lib/og";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -42,6 +44,8 @@ export default async function TodayPage({ params }: P) {
   if (!site || site.id !== "ninetymins") notFound();
   const base = siteBaseUrl(site);
   const initial = await feed();
+  const day = new Date(); day.setUTCHours(0, 0, 0, 0);
+  const confirmed = await fixtures("starts>=? AND starts<?", [day.toISOString(), new Date(+day + 86400000).toISOString()], 500);
   const live = initial?.items.filter((e) => e.state === "in").length || 0;
 
   return (
@@ -58,6 +62,7 @@ export default async function TodayPage({ params }: P) {
       </section>
       <div className="nm-wrap nm-td-wrap">
         <Today initial={initial} />
+        <section className="nm-engine"><JsonLd data={itemList(confirmed)} /><h2>Confirmed fixtures (UTC calendar)</h2><FixtureList fixtures={confirmed} /><p><a href="/tomorrow">Tomorrow’s fixtures</a> · <a href="/widgets">Free score widgets</a></p></section>
       </div>
     </Shell>
   );

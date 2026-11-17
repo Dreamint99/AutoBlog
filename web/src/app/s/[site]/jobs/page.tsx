@@ -8,6 +8,7 @@ import { WalviShell } from "@/sites/walvi/Chrome";
 import { PageHead, DataBand, Crumbs, JobCard, Disclaimer } from "@/sites/walvi/data-ui";
 import { JOBS, DATA_VERIFIED, salariesForJob, eur } from "@/lib/walvi";
 import { JsonLd, breadcrumbSchema, datasetSchema } from "@/lib/seo";
+import { publicPath } from "@/lib/public-path";
 
 export async function generateMetadata({
   params,
@@ -61,7 +62,7 @@ export default async function JobsPage({
         ]}
       />
       <WalviShell site={site}>
-        <Crumbs items={[{ name: site.name, href: `/s/${site.id}` }, { name: "Jobs" }]} />
+        <Crumbs items={[{ name: site.name, href: publicPath(site.id, "/") }, { name: "Jobs" }]} />
         <PageHead
           kicker="Jobs & salaries"
           title="In-demand jobs in Europe"

@@ -8,6 +8,7 @@ import { defaultOgImages } from "@/lib/og";
 import { allMissions, sourceCountries, missionsIn, missionSlug, verifiedMissions } from "@/sites/gccguide/hub/embassy";
 import { GULF_CURRENCIES, INDEX } from "@/sites/gccguide/hub/config";
 import { HubPage, Crumbs, PageHead, DataTable, Faq, SectionHead, Callout, SourceLine, Related } from "@/sites/gccguide/hub/ui";
+import { sitePrefix } from "@/lib/public-path";
 
 export const dynamic = "force-dynamic";
 
@@ -29,7 +30,7 @@ export default async function Page({ params }: { params: Promise<{ site: string 
   const { site: id } = await params;
   const site = getSite(id);
   if (!site || site.id !== "gccguide") notFound();
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const base = siteBaseUrl(site);
   const missions = allMissions();
   const countries = sourceCountries();
