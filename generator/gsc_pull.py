@@ -33,6 +33,13 @@ SITES = {  # drip/site id → Search Console property
     "ninetymins": "https://ninetymins.com/",
     "cob": "https://coloursofbangladesh.com/",
     "aiu": "https://aiuniversitybd.com/",
+    # business/product sites: data appears once gsc-reader is added as a Restricted user on each property
+    "dreamint": "https://dreamintcs.com/",
+    "qount": "https://qount.net/",
+    "ghurbo": "https://ghurbo.dreamithq.com/",
+    "landd": "https://landd.dreamithq.com/",
+    "helloserbia": "https://helloserbia.dreamithq.com/",
+    "dreamit": "https://dreamithq.com/",
 }
 END = date.today() - timedelta(days=2)  # GSC data lags ~2 days
 START = END - timedelta(days=90)
