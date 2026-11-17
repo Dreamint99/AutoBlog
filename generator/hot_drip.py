@@ -8,6 +8,7 @@ Usage:
 import os
 import sys
 import time
+from urllib.parse import unquote
 from datetime import datetime
 
 for _s in (sys.stdout, sys.stderr):
@@ -20,7 +21,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from modules import store
 from modules.pipeline import generate_article, suggest_titles
 from modules.trend_radar import hot_topics
-from drip import datapage_avoid
+from drip import datapage_avoid, ranked_guard, intent_guard
 
 DRY = "--dry-run" in sys.argv
 SITES = [a for a in sys.argv[1:] if not a.startswith("--")]
@@ -33,11 +34,22 @@ def log(msg: str):
 def run(site: dict) -> bool:
     existing = store.list_articles(site["id"])
     avoid = [a.get("title", "") for a in existing] + [a.get("keyword", "") for a in existing]
+    avoid += [unquote(a.get("slug") or "").replace("-", " ") for a in existing if a.get("slug")]
     avoid += datapage_avoid(site["id"])
     picks = hot_topics(site, max_out=5, avoid=avoid, log=log)
     if not picks:  # trend scoring uses the free LLM chain; a rate-limited moment returns nothing
         time.sleep(60)
         picks = hot_topics(site, max_out=5, avoid=avoid, log=log)
+    _rank, _intent = ranked_guard(site["id"]), intent_guard(site["id"], existing)
+    ranked = lambda text: _rank(text) or _intent(text)
+    keep = []
+    for p in picks:
+        own = ranked(p["keyword"])
+        if own:
+            log(f"[{site['id']}] skip trend (already covered: {own[1]} for \"{own[0]}\"): {p['keyword']}")
+        else:
+            keep.append(p)
+    picks = keep
     log(f"[{site['id']}] {len(picks)} trending picks")
     for p in picks:
         log(f"   {p['score']:>6}  rel {p['relevance']}  ~{p['traffic']}  {'✓' if p['validated'] else ' '}  {p['keyword']}  — {p['angle']}  [{p['source']}]")
@@ -53,6 +65,10 @@ def run(site: dict) -> bool:
             if titles:
                 break
         if not titles:
+            continue
+        own = ranked(titles[0])
+        if own:
+            log(f"[{site['id']}] skip title (already covered: {own[1]} for \"{own[0]}\"): {titles[0]}")
             continue
         try:
             art = generate_article(site, titles[0])

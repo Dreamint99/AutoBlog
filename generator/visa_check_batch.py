@@ -12,6 +12,7 @@ Usage:
 import json
 import os
 import sys
+import time
 from datetime import datetime
 
 for _s in (sys.stdout, sys.stderr):
@@ -25,6 +26,15 @@ from modules import store  # noqa: E402
 from modules.pipeline import generate_article  # noqa: E402
 
 TAG = "Visa Check"
+# Stop starting new guides after this many minutes so the job ends before the 120-min Actions
+# limit (cancelled runs lost the log and looked like nothing happened). Each guide is saved to D1
+# by generate_article() the moment it is written, so finished guides are never lost.
+BUDGET_MIN = float(os.getenv("VISA_CHECK_BUDGET_MIN", "80"))
+_T0 = time.time()
+
+
+def _mins() -> float:
+    return (time.time() - _T0) / 60
 DATA = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "web", "src", "data", "visa-check.json")
 
 
@@ -81,16 +91,24 @@ def main() -> int:
             continue
         if limit is not None and done >= limit:
             break
+        if _mins() > BUDGET_MIN:
+            print(f"time budget reached ({_mins():.0f} min > {BUDGET_MIN:.0f}) — stopping; the rest go next run", flush=True)
+            break
         s = dict(site, tone=f"{site['tone']} STYLE FOR THIS GUIDE: {style_for(e)}")
         t = title_for(e)
         for attempt in (1, 2):
+            if attempt == 2 and _mins() > BUDGET_MIN:
+                print(f"[{e['slug']}] no time left for a retry", flush=True)
+                break
+            t0 = time.time()
+            print(f"[{e['slug']}] writing ({_mins():.0f} min into the run): {t}", flush=True)
             try:
-                art = generate_article(s, t)
-                print(f"[{e['slug']}] ✅ {art['title']} ({art['word_count']}w)")
+                art = generate_article(s, t, log=lambda m, sl=e["slug"]: print(f"[{sl}] {m.strip()}", flush=True))
+                print(f"[{e['slug']}] ✅ saved {art['title']} ({art['word_count']}w, {(time.time() - t0) / 60:.1f} min)", flush=True)
                 done += 1
                 break
             except Exception as ex:
-                print(f"[{e['slug']}] ❌ {t} — {ex}" + (" — retrying" if attempt == 1 else ""))
+                print(f"[{e['slug']}] ❌ {t} — {ex}" + (" — retrying" if attempt == 1 else ""), flush=True)
     print(f"=== visa-check batch: +{done} guide(s) ===")
     return 0
 

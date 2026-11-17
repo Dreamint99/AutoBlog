@@ -280,9 +280,17 @@ def apply_boost(a: dict, b: dict) -> dict:
     if faq:
         graph.append({"@type": "FAQPage", "mainEntity": [
             {"@type": "Question", "name": f["q"], "acceptedAnswer": {"@type": "Answer", "text": f["a"]}} for f in faq]})
+    from modules import prompt_leak
+    body, _ = prompt_leak.clean_body(body)
+    mt, md = b["meta_title"], b["meta_description"]
+    if prompt_leak.bad_title(mt):  # copied template text / too long → keep the current one
+        mt = a.get("meta_title") or a["title"]
+    if prompt_leak.bad_description(md):
+        md = a.get("meta_description") or md
+    art["description"] = md
     return {
-        "meta_title": b["meta_title"],
-        "meta_description": b["meta_description"],
+        "meta_title": mt,
+        "meta_description": md,
         "body_html": body,
         "faq": faq,
         "schema": {"@context": "https://schema.org", "@graph": graph},

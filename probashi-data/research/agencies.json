@@ -1,7 +1,7 @@
 {
- "accessed": "2026-11-14",
+ "accessed": "2026-11-16",
  "source": "https://raims.oep.gov.bd/agencies",
- "source_note": "RAIMS (Recruiting Agency Information Management System) of BMET/Ministry of Expatriates' Welfare, linked from bmet.gov.bd home page. Public server-rendered table; columns: License No, Agent Name, Address, Office Phone, License Status, License validity date. No email column published.",
+ "source_note": "RAIMS (Recruiting Agency Information Management System) of BMET, public table.",
  "status_counts": {
   "Expired": 261,
   "Active": 2202,
@@ -3564,8 +3564,8 @@
   {
    "rl": "RL2133",
    "name": "Al Aksa International",
-   "address": "29, Toynabee Circular Road, Dilkusha, Motijheel, Dhaka, Dhaka, Bangladesh",
-   "phone": "8801748624390",
+   "address": "61/1, Snigdha Bhaban (Ground Floor), Nayapaltan, dhaka-1000, nayapaltan, Dhaka, Dhaka, Bangladesh",
+   "phone": "01748624390",
    "email": "",
    "status": "Active",
    "expiry": "2028-08-28",
@@ -6847,7 +6847,7 @@
    "address": "Sotabdi center(9a/9th floor)292 Inner circular Road fokirapool,Dhaka-1000, , Amtali, Davidhar, Comilla, Chattagram, Bangladesh",
    "phone": "01718-806785",
    "email": "",
-   "status": "Active",
+   "status": "Expired",
    "expiry": "2026-11-15",
    "source": "https://raims.oep.gov.bd/agencies"
   },
@@ -8097,8 +8097,8 @@
    "address": "H-79, Shikder Plaza (3rd Floor), Shonik Club, Airport Road, Banani, Banani TSO, Banani, Dhaka, Dhaka, Bangladesh",
    "phone": "01775860999",
    "email": "",
-   "status": "Expired",
-   "expiry": "2026-11-06",
+   "status": "Active",
+   "expiry": "2029-11-06",
    "source": "https://raims.oep.gov.bd/agencies"
   },
   {
@@ -10034,7 +10034,7 @@
   {
    "rl": "RL2127",
    "name": "LEGEND OVERSEAS LTD",
-   "address": "145, 145 DIT EXTENTION ROAD, Dhaka GPO, Paltan, Dhaka, Dhaka, Bangladesh",
+   "address": "193/C/1, Motijheel Plaza (2nd Floor), Fakirapool, Aziz Square, GPO-1000, Motijheel, Dhaka, Dhaka, Bangladesh",
    "phone": "01824625511",
    "email": "",
    "status": "Active",
@@ -20134,7 +20134,7 @@
   {
    "rl": "RL0077",
    "name": "Meridian International (Pvt) Ltd",
-   "address": "25, Road- 04, Block- F, Banani TSO, Banani, Dhaka, Dhaka, Bangladesh",
+   "address": "165, D.I.T Extension Road, Fakirapool, Dhaka GPO, Paltan, Dhaka, Dhaka, Bangladesh",
    "phone": "8801671126666",
    "email": "",
    "status": "Active",
@@ -27864,8 +27864,8 @@
   {
    "rl": "RL2556",
    "name": "VIC Global",
-   "address": "3rd Floor, 70D Green Road, Jigatala TSO, Dhanmondi, Dhaka, Dhaka, Bangladesh",
-   "phone": "01888088855",
+   "address": "5th/B, 69/1, Panthapath, Banglamotor, Banglamotor, Dhaka, Dhaka, Bangladesh",
+   "phone": "01896442230",
    "email": "",
    "status": "Active",
    "expiry": "2029-08-05",

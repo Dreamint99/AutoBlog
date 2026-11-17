@@ -44,6 +44,11 @@ LIMIT = next((int(a) for a in sys.argv[1:] if a.isdigit()), 0)
 YEAR = datetime.now(timezone.utc).year
 # Pages whose article facts need a human check before a number goes into the title.
 SKIP = {"https://probashiinfo.com/list-of-schengen-countries-in-europe-2026/"}  # title + facts fixed by hand in the overrides file
+# Every page with a hand-written override is left alone by the weekly automatic pass.
+try:
+    SKIP |= {o["url"] for o in json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "ctr_overrides_probashiinfo.json"), encoding="utf-8"))}
+except Exception:
+    pass
 
 BASE = os.environ["PROBASHIINFO_WP_URL"].rstrip("/")
 AUTH = base64.b64encode(f"{os.environ['PROBASHIINFO_WP_USER']}:{os.environ['PROBASHIINFO_WP_APP_PASSWORD']}".encode()).decode()
@@ -65,7 +70,9 @@ SYSTEM = """You write Google search snippets for a Bangla website that helps Ban
 Return JSON: {"title": "...", "description": "..."}.
 Rules:
 - Bangla, natural, no clickbait or false promises. Use ONLY facts that appear in the article text given (costs, salaries, numbers, steps). Never invent numbers.
-- title: 40-60 characters. Put the main search query words first. Add the year %d when the topic is time-sensitive. Add one concrete hook from the article (a number, a cost, "ধাপে ধাপে", a count of countries). No site name, no pipes, no emoji.
+- title: 40-60 characters. START the title with the exact wording of the highest-impression search query
+  (keep its words and word order; write the year in Bangla digits, e.g. "মালয়েশিয়া যেতে কত টাকা লাগে ২০২৬?"),
+  then the answer. People click when the title repeats their own question. Add the year %d when the topic is time-sensitive. Add one concrete hook from the article (a number, a cost, "ধাপে ধাপে", a count of countries). No site name, no pipes, no emoji.
 - description: 120-155 characters, one or two complete sentences ending with "।". Say exactly what the reader gets (cost, salary, documents, process) and why it is current.
 - Correct, fluent Bangla grammar (e.g. "কোন কোন দেশে যাওয়া যায়", not "যায়"). Read it back before answering.
 - Never mention an earlier year than %d.
@@ -124,6 +131,22 @@ def to_bn(n):
     return str(n).translate(str.maketrans("0123456789", "০১২৩৪৫৬৭৮৯")).zfill(2)
 
 
+def _words(s):
+    s = re.sub(r"[​-‏­]", "", str(s)).translate(str.maketrans("0123456789", "০১২৩৪৫৬৭৮৯"))
+    return re.findall(r"[\wঀ-৿]+", s.lower())
+
+
+def top_query(page):
+    qs = [q for q in page.get("queries") or [] if q and q[0]]
+    return max(qs, key=lambda q: q[1])[0] if qs else ""
+
+
+def query_led(title, query, n=3):
+    """True when the title already opens with the first n words of the search query."""
+    q, t = _words(query)[:n], _words(title)[: n + 1]
+    return bool(q) and all(w in t for w in q)
+
+
 def propose(page, post, cur_title, cur_desc):
     queries = ", ".join(f"{q} ({imp})" for q, imp, *_ in page["queries"][:6]) or "(Google hides the queries; infer from the article)"
     user = (f"Search queries people use (impressions): {queries}\n"
@@ -137,7 +160,10 @@ def propose(page, post, cur_title, cur_desc):
         out = json.loads(llm.chat(SYSTEM, user + (f"\n\nYour previous answer was rejected: {problem}. Fix it." if problem else ""),
                                   temperature=0.5, max_tokens=600, json_mode=True))
         t, d = out["title"].strip(), out["description"].strip()
-        if not 30 <= len(t) <= 62:
+        tq = top_query(page)
+        if tq and not query_led(t, tq, 2):
+            problem = f'the title must START with the words of the top search query "{tq}"'
+        elif not 30 <= len(t) <= 62:
             problem = f"title is {len(t)} characters, must be 40-60"
         elif not 100 <= len(d) <= 158:
             problem = f"description is {len(d)} characters, must be 120-155"
@@ -175,7 +201,9 @@ def main():
     pages = json.load(open(DATA, encoding="utf-8"))["pages"]
     targets = [p for p in pages if p["impressions"] >= 300 and p["ctr"] < 0.03 and p["position"] <= 15]
     log = json.load(open(LOG, encoding="utf-8")) if os.path.exists(LOG) else []
-    done = {e["url"] for e in log}
+    # REDO_BEFORE=YYYY-MM-DD: pages rewritten before that date may be rewritten again (one-off full pass).
+    redo = os.environ.get("REDO_BEFORE", "")
+    done = {e["url"] for e in log if not (redo and e.get("date", "") < redo)}
     targets = [p for p in targets if p["url"] not in done and p["url"] not in SKIP]
     if LIMIT:
         targets = targets[:LIMIT]
@@ -189,6 +217,9 @@ def main():
             print("  - no published post for", p["url"])
             continue
         cur_t, cur_d = live_snippet(p["url"])
+        if query_led(cur_t, top_query(p)):
+            print("  = already starts with the top query:", cur_t)
+            continue
         try:
             t, d = propose(p, post, cur_t, cur_d)
         except Exception as e:

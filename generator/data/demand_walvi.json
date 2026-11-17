@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-08-14..2026-11-12, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-17..2026-11-15, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "japan work visa",
@@ -30,38 +30,44 @@
    "volume": 3600
   },
   {
-   "q": "visa requirements for us citizens",
-   "impr": 516,
+   "q": "o1 visa requirements",
+   "impr": 489,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "o1 visa requirements",
-   "impr": 515,
+   "q": "visa requirements for us citizens",
+   "impr": 488,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "u visa requirements",
+   "impr": 353,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "schengen visa application",
-   "impr": 326,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "work visa usa",
-   "impr": 280,
+   "impr": 322,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "travel visa requirements",
-   "impr": 280,
+   "impr": 281,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "work visa usa",
+   "impr": 268,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "tn visa requirements",
-   "impr": 231,
+   "impr": 238,
    "pos": null,
    "src": "bingkw"
   },
@@ -72,92 +78,80 @@
    "src": "bingkw"
   },
   {
-   "q": "what is visa sponsorship",
-   "impr": 207,
+   "q": "j1 visa requirements",
+   "impr": 175,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "thailand visa requirements",
-   "impr": 172,
+   "impr": 168,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "schengen visa countries",
-   "impr": 169,
+   "impr": 167,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "j1 visa requirements",
-   "impr": 160,
+   "q": "t visa requirements",
+   "impr": 156,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "schengen visa application form",
-   "impr": 144,
+   "impr": 142,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "canada work visa",
-   "impr": 120,
+   "impr": 129,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "china visa requirements",
-   "impr": 118,
+   "impr": 116,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "schengen visa requirements",
-   "impr": 115,
+   "impr": 111,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "e2 visa requirements",
-   "impr": 93,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "vietnam visa requirements",
-   "impr": 88,
+   "q": "what is a schengen visa",
+   "impr": 107,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "uk visa requirements",
-   "impr": 86,
+   "impr": 87,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "vietnam visa requirements",
+   "impr": 84,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "new zealand visa requirements",
-   "impr": 81,
+   "impr": 79,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "australia work visa",
-   "impr": 75,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "skilled worker visa uk",
-   "impr": 75,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "eb1 visa requirements",
-   "impr": 75,
+   "q": "uk skilled worker visa",
+   "impr": 77,
    "pos": null,
    "src": "bingkw"
   },
@@ -168,37 +162,37 @@
    "src": "bingkw"
   },
   {
-   "q": "uk skilled worker visa",
-   "impr": 73,
+   "q": "skilled worker visa uk",
+   "impr": 74,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "south africa visa requirements",
-   "impr": 68,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "canada visa requirements",
-   "impr": 66,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "schengen visa insurance",
-   "impr": 64,
+   "q": "australia work visa",
+   "impr": 70,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "visa sponsorship jobs",
-   "impr": 61,
+   "impr": 65,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "australia visa requirements",
+   "q": "l1 visa requirements",
+   "impr": 65,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "south africa visa requirements",
+   "impr": 64,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "canada visa requirements",
    "impr": 60,
    "pos": null,
    "src": "bingkw"
@@ -210,34 +204,46 @@
    "src": "bingkw"
   },
   {
-   "q": "spain schengen visa",
-   "impr": 56,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "l1 visa requirements",
-   "impr": 56,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "visa requirements for vietnam",
-   "impr": 51,
+   "q": "schengen visa insurance",
+   "impr": 54,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "visa requirements for japan",
+   "impr": 54,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "south korea visa requirements",
+   "impr": 53,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "spain schengen visa",
    "impr": 50,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "passport index",
-   "impr": 11,
-   "pos": 37.8,
+   "impr": 12,
+   "pos": 37.5,
    "src": "gsc"
+  },
+  {
+   "q": "visa index",
+   "impr": 10,
+   "pos": 36.7,
+   "src": "gsc"
+  },
+  {
+   "q": "poland welder salary per month in india rupees in fresher",
+   "impr": 18,
+   "pos": 10.0,
+   "src": "bing"
   }
  ]
 }

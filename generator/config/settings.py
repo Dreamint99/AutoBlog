@@ -36,10 +36,11 @@ PROVIDERS = {
     "deepseek": {"key": DEEPSEEK_API_KEY, "model": DEEPSEEK_MODEL, "base": DEEPSEEK_BASE_URL},
 }
 
-# Cloudflare Workers AI (free plan: 10k neurons/day). Reuses the D1 token unless a
-# dedicated CF_AI_API_TOKEN is set — the token needs the "Workers AI" permission.
+# Cloudflare Workers AI (free plan: 10k neurons/day). Needs a DEDICATED token with the
+# "Workers AI" permission in CF_AI_API_TOKEN. The D1/deploy token (CLOUDFLARE_API_TOKEN) is NOT
+# reused any more: it lacks that permission and every call returned 401 (audit 2026-11-15).
 CF_ACCOUNT_ID = os.getenv("CF_AI_ACCOUNT_ID") or os.getenv("CLOUDFLARE_ACCOUNT_ID", "")
-CF_AI_API_TOKEN = os.getenv("CF_AI_API_TOKEN") or os.getenv("CLOUDFLARE_API_TOKEN", "")
+CF_AI_API_TOKEN = os.getenv("CF_AI_API_TOKEN", "")
 PROVIDERS["workersai"] = {
     "key": CF_AI_API_TOKEN if CF_ACCOUNT_ID else "",
     "model": os.getenv("CF_AI_MODEL", "@cf/openai/gpt-oss-120b"),
@@ -49,28 +50,25 @@ PROVIDERS["workersai"] = {
 # chain = try LLM_CHAIN in order, falling through on quota/overload; or pin one provider name.
 LLM_PROVIDER = os.getenv("LLM_PROVIDER", "chain")
 # "provider" or "provider:model". Providers without a key are skipped automatically.
-# Best quality first; each later entry is a separate free quota to fall back on.
+# FREE models only (owner rule: free first, paid only for serious steps). Checked with the
+# "LLM chain test" workflow on 2026-11-15 (run 43725882936):
+#   OK   groq gpt-oss-120b / qwen3.8-27b / gpt-oss-20b, gemini flash-lite, openrouter nemotron-3-ultra:free
+#   404  openrouter nemotron-3-super:free and gpt-oss-120b:free (no longer free), groq llama-3.3-70b
+#   429  gemini-flash-latest at that moment (kept first: it is the best writer when its quota is up)
+# Dropped: Cerebras (402 since 2026-10-22), OpenRouter PAID routes (402, no credit — and paid),
+# Workers AI unless CF_AI_API_TOKEN is set. Groq models have separate daily token quotas, so
+# three Groq entries give three independent fallbacks.
 LLM_CHAIN = os.getenv("LLM_CHAIN", ",".join([
     "gemini:gemini-flash-latest",
-    # Cerebras is left out: its free credit ran out (402) on 2026-10-22.
-    # strong, large-quota free models next; Flash-Lite writes noticeably shorter articles, so it comes later
     "groq:openai/gpt-oss-120b",
-    "mistral:mistral-medium-latest",
-    # OpenRouter free models (daily request cap on the account)
-    "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
-    "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
-    "openrouter:google/gemma-4-31b-it:free",  # often rate-limited upstream, so after the others
-    "openrouter:google/gemma-4-26b-a4b-it:free",
-    "gemini:gemini-flash-lite-latest",
-    "workersai:@cf/openai/gpt-oss-120b",
     "groq:qwen/qwen3.8-27b",
-    "workersai:@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-    # last resort, PAID low-cost models from the OpenRouter balance, cheapest first
-    # (~$0.001-0.006 per article): only reached when every free quota is spent
-    "openrouter:qwen/qwen3.7-flash",
-    "openrouter:deepseek/deepseek-v4-flash",
-    "openrouter:openai/gpt-oss-120b",
-    # "deepseek" (paid, direct) is left out while the account has no balance; add it back here when topped up.
+    "mistral:mistral-medium-latest",  # skipped automatically while no MISTRAL_API_KEY is set
+    "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
+    "gemini:gemini-flash-lite-latest",
+    "groq:openai/gpt-oss-20b",
+    "openrouter:google/gemma-4-31b-it:free",  # often rate-limited upstream, so late
+    "openrouter:google/gemma-4-26b-a4b-it:free",
+    "workersai:@cf/openai/gpt-oss-120b",  # only with CF_AI_API_TOKEN
 ]))
 
 # === Feature + inline images ===

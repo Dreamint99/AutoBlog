@@ -154,12 +154,12 @@ def main():
     # Search Console summary (week vs last week, ranks, growing pages, rising queries): written daily by the
     # gsc-pull workflow into the public repo; the CI token cannot write KV, so this PC relays it as pulse:seo.
     try:
-        seo = requests.get("https://raw.githubusercontent.com/Dreamint99/AutoBlog/main/generator/data/seo_summary.json",
+        seo = requests.get("https://raw.githubusercontent.com/Dreamint99/AutoBlog/master/generator/data/seo_summary.json",
                            timeout=30)
         if seo.ok and seo.json().get("sites"):
             r2 = requests.put(url.replace("/values/pulse:all", "/values/pulse:seo"), headers=headers, data=seo.content, timeout=60)
             print("KV seo:", r2.status_code)
-        bing = requests.get("https://raw.githubusercontent.com/Dreamint99/AutoBlog/main/generator/data/bing_summary.json", timeout=30)
+        bing = requests.get("https://raw.githubusercontent.com/Dreamint99/AutoBlog/master/generator/data/bing_summary.json", timeout=30)
         if bing.ok and bing.json().get("sites"):
             r3 = requests.put(url.replace("/values/pulse:all", "/values/pulse:bing"), headers=headers, data=bing.content, timeout=60)
             print("KV bing:", r3.status_code)
@@ -169,5 +169,48 @@ def main():
         sys.exit(1)
 
 
+class _Tee:
+    """Copy prints to output/push_pulse.log: under pythonw (Task Scheduler) stdout is None and a failed
+    run would otherwise leave no trace."""
+    def __init__(self, stream, fh):
+        self.stream, self.fh = stream, fh
+
+    def write(self, s):
+        if self.stream is not None:
+            try:
+                self.stream.write(s)
+            except Exception:
+                pass
+        self.fh.write(s)
+        self.fh.flush()
+
+    def flush(self):
+        if self.stream is not None:
+            try:
+                self.stream.flush()
+            except Exception:
+                pass
+
+
+def _open_log():
+    log = Path(__file__).parent / "output" / "push_pulse.log"
+    log.parent.mkdir(parents=True, exist_ok=True)
+    if log.exists() and log.stat().st_size > 512_000:  # keep it small: start over past ~0.5 MB
+        log.write_text("", encoding="utf-8")
+    fh = open(log, "a", encoding="utf-8")
+    sys.stdout, sys.stderr = _Tee(sys.stdout, fh), _Tee(sys.stderr, fh)
+    print(f"--- {dt.datetime.now():%Y-%m-%d %H:%M:%S} push_pulse start")
+
+
 if __name__ == "__main__":
-    main()
+    _open_log()
+    try:
+        main()
+        print(f"--- {dt.datetime.now():%Y-%m-%d %H:%M:%S} push_pulse done")
+    except SystemExit as e:
+        print(f"--- exit {e.code}")
+        raise
+    except Exception:
+        import traceback
+        traceback.print_exc()
+        raise

@@ -1,6 +1,12 @@
 {
- "_note": "Real queries (Search Console 2026-08-14..2026-11-12, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-17..2026-11-15, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
+  {
+   "q": "রোনান সুলিভান",
+   "impr": 47,
+   "pos": 9.6,
+   "src": "gsc"
+  },
   {
    "q": "এমিলিয়ানো মার্টিনেজ কোন ক্লাবে খেলে",
    "impr": 41,
@@ -8,9 +14,9 @@
    "src": "gsc"
   },
   {
-   "q": "রোনান সুলিভান",
-   "impr": 38,
-   "pos": 9.3,
+   "q": "বি বাড়িয়া জেলার আয়তন কত",
+   "impr": 20,
+   "pos": 9.7,
    "src": "gsc"
   },
   {
@@ -32,21 +38,27 @@
    "src": "gsc"
   },
   {
-   "q": "বি বাড়িয়া জেলার আয়তন কত",
-   "impr": 15,
-   "pos": 9.7,
+   "q": "ব্রাহ্মণবাড়িয়া জেলার আয়তন কত",
+   "impr": 16,
+   "pos": 10.8,
    "src": "gsc"
   },
   {
-   "q": "ব্রাহ্মণবাড়িয়া জেলার আয়তন কত",
+   "q": "বি বাড়িয়া জেলার জনসংখ্যা কত",
    "impr": 15,
-   "pos": 10.7,
+   "pos": 8.8,
    "src": "gsc"
   },
   {
    "q": "চট্টগ্রাম বিভাগের আয়তন কত",
    "impr": 15,
    "pos": 9.8,
+   "src": "gsc"
+  },
+  {
+   "q": "সাভার উপজেলার আয়তন কত",
+   "impr": 14,
+   "pos": 8.4,
    "src": "gsc"
   },
   {
@@ -62,15 +74,21 @@
    "src": "gsc"
   },
   {
-   "q": "fazlul qadir chaudhry",
+   "q": "কক্সবাজার জেলার জনসংখ্যা কত ২০২৪",
    "impr": 11,
-   "pos": 9.4,
+   "pos": 9,
    "src": "gsc"
   },
   {
-   "q": "সাভার উপজেলার আয়তন কত",
-   "impr": 10,
-   "pos": 8.4,
+   "q": "রাজবাড়ী জেলার জনসংখ্যা কত ২০২৪",
+   "impr": 11,
+   "pos": 10.6,
+   "src": "gsc"
+  },
+  {
+   "q": "fazlul qadir chaudhry",
+   "impr": 11,
+   "pos": 9.4,
    "src": "gsc"
   }
  ]

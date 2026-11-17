@@ -13,7 +13,7 @@ define('PBD_LOADED', 1);
 define('PBD_MODE', 'live');               // 'test' | 'live'
 define('PBD_KEY', '__PBD_TEST_KEY__');
 define('PBD_API', 'https://probashi-data.iamkashimuddin.workers.dev/v1/');
-define('PBD_VER', '9');
+define('PBD_VER', '17');
 
 function pbd_enabled() {
     if (PBD_MODE === 'live') { return true; }
@@ -24,17 +24,20 @@ function pbd_enabled() {
 function pbd_data($set) {
     $t = get_transient('pbd' . PBD_VER . '_' . $set);
     if (is_array($t)) { return $t; }
-    $r = wp_remote_get(PBD_API . $set, array('timeout' => 8, 'user-agent' => 'probashiinfo-pbd/' . PBD_VER));
+    $one = strpos($set, '/') !== false;   // single item (agency/…, ramadan/…): no long-term stale copy
     $d = null;
-    if (!is_wp_error($r) && wp_remote_retrieve_response_code($r) === 200) {
-        $d = json_decode(wp_remote_retrieve_body($r), true);
+    if (!get_transient('pbd_down')) {      // worker failed in the last 5 min: don't wait on it again
+        $r = wp_remote_get(PBD_API . $set, array('timeout' => 6, 'user-agent' => 'probashiinfo-pbd/' . PBD_VER));
+        $code = is_wp_error($r) ? 0 : wp_remote_retrieve_response_code($r);
+        if ($code === 200) { $d = json_decode(wp_remote_retrieve_body($r), true); }
+        elseif ($code === 0 || $code >= 500) { set_transient('pbd_down', 1, 5 * MINUTE_IN_SECONDS); }
     }
     if (is_array($d)) {
-        set_transient('pbd' . PBD_VER . '_' . $set, $d, ($set === 'remittance' ? 3 : 6) * HOUR_IN_SECONDS);
-        update_option('pbd_stale_' . $set, $d, false);
+        set_transient('pbd' . PBD_VER . '_' . $set, $d, (strpos($set, 'ramadan') === 0 ? 1 : ($set === 'remittance' ? 3 : 6)) * HOUR_IN_SECONDS);
+        if (!$one) { update_option('pbd_stale_' . $set, $d, false); }
         return $d;
     }
-    $s = get_option('pbd_stale_' . $set);   // worker down: serve last good copy
+    $s = $one ? null : get_option('pbd_stale_' . $set);   // worker down: serve last good copy
     if (is_array($s)) { set_transient('pbd' . PBD_VER . '_' . $set, $s, 15 * MINUTE_IN_SECONDS); return $s; }
     return null;
 }
@@ -57,12 +60,19 @@ function pbd_match() {
     $m = null;
     $path = rawurldecode((string) wp_parse_url(isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '', PHP_URL_PATH));
     if (PBD_MODE === 'live' && $path === '/pbd-sitemap.xml') { return $m = array('type' => 'sitemap'); }
-    if (!preg_match('#^/(visa-check|visa|remittance|gamca|agency|migration-cost|customs|baggage)(?:/([a-z0-9-]+))?/?$#', $path, $x)) { return $m; }
+    if (!preg_match('#^/(visa-check|visa|remittance|gamca|agency|migration-cost|customs|baggage|ramadan)(?:/([a-z0-9-]+))?/?$#', $path, $x)) { return $m; }
     if (!pbd_enabled()) { return $m; }
     $type = $x[1];
     $slug = isset($x[2]) ? $x[2] : '';
     if ($type === 'migration-cost' && $slug !== '') { return $m; }
     $item = null;
+    if ($type === 'ramadan' && $slug !== '') {
+        $one = pbd_data('ramadan/' . $slug);
+        if (!$one || empty($one['city'])) { return $m; }
+        $m = array('type' => $type, 'slug' => $slug, 'data' => $one, 'item' => $one['city'], 'path' => '/ramadan/' . $slug . '/');
+        if (substr($path, -1) !== '/') { $m['redirect'] = true; }
+        return $m;
+    }
     if ($type === 'agency' && $slug !== '') {
         $one = pbd_data('agency/' . $slug);
         if (!$one || empty($one['agency'])) { return $m; }
@@ -115,11 +125,12 @@ add_action('template_redirect', function () {
         if (isset($_GET['pbd'])) { setcookie('pbd', PBD_KEY, time() + 86400, '/', '', is_ssl(), true); }
     }
     if ($m['type'] === 'remittance') { do_action('litespeed_control_set_ttl', 3 * 3600); }
+    if ($m['type'] === 'ramadan') { do_action('litespeed_control_set_ttl', 3600); }
     if ($m['type'] === 'agency' && isset($_GET['q'])) { do_action('litespeed_control_set_nocache', 'pbd search'); }
     $app = function_exists('pa_head') && function_exists('pa_foot') && function_exists('pa_app') && pa_app();
     if ($app) { pa_head(); } else { get_header(); }   // site shell (probashiinfo app snippet) or theme fallback
     echo pbd_css();
-    echo pbd_render($m);
+    echo pbd_with_en(pbd_render($m));
     if ($app) { pa_foot(); } else { get_footer(); }
     exit;
 }, 1);
@@ -176,8 +187,10 @@ function pbd_seo() {
             $a = $m['item'];
             $st = pbd_ag_status($a['status']);
             $s['index'] = $a['release'] <= gmdate('Y-m-d');
-            $s['title'] = $a['name'] . ' (আরএল-' . pbd_bn($a['rl']) . '): লাইসেন্স ' . $st[0];
-            $s['desc'] = $a['name'] . ' রিক্রুটিং এজেন্সির লাইসেন্স (আরএল-' . pbd_bn($a['rl']) . ') বিএমইটির তালিকায় ' . $st[0] . '। ঠিকানা, ফোন, লাইসেন্সের মেয়াদ ও টাকা দেওয়ার আগে যাচাইয়ের নিয়ম।';
+            // status labels already say "লাইসেন্স" for most states ("বৈধ লাইসেন্স") — don't repeat it
+            $lbl = (strpos($st[0], 'লাইসেন্স') !== false) ? $st[0] : ($a['status'] === 'Expired' ? 'লাইসেন্সের ' . $st[0] : 'লাইসেন্স: ' . $st[0]);
+            $s['title'] = $a['name'] . ' (আরএল-' . pbd_bn($a['rl']) . '): ' . $lbl;
+            $s['desc'] = $a['name'] . ' রিক্রুটিং এজেন্সি (আরএল-' . pbd_bn($a['rl']) . '): বিএমইটির তালিকায় ' . $lbl . '। ঠিকানা, ফোন, লাইসেন্সের মেয়াদ ও টাকা দেওয়ার আগে যাচাইয়ের নিয়ম।';
             $s['faq'] = pbd_ag_faq($d, $a);
         } else {
             $s['index'] = !isset($_GET['q']);
@@ -215,6 +228,30 @@ function pbd_seo() {
             $s['desc'] = 'বাংলাদেশি পাসপোর্টে ' . pbd_bn($d['counts']['free']) . 'টি দেশে ভিসা লাগে না, ' . pbd_bn($d['counts']['voa']) . 'টিতে অন-অ্যারাইভাল, ' . pbd_bn($d['counts']['evisa']) . 'টিতে ই-ভিসা — ' . pbd_bn(count($d['countries'])) . 'টি দেশের পুরো তালিকা।';
         }
     }
+    if ($m['type'] === 'ramadan') {
+        $d = $m['data'];
+        $s['index'] = true;
+        $yr = pbd_bn(substr($d['ramadan']['start'], 0, 4));
+        if ($m['item']) {
+            $c = $d['city']; $r0 = $d['rows'][0];
+            $s['title'] = pbd_rz_place($c) . ' রমজান ক্যালেন্ডার ' . $yr . ': সেহরি ও ইফতারের সময়সূচি';
+            $s['desc'] = $c['name'] . 'য় রমজান শুরু (সম্ভাব্য) ' . pbd_date($d['ramadan']['start']) . '। প্রথম রোজায় সেহরি ' . pbd_t($r0['sehri']) . ', ইফতার ' . pbd_t($r0['iftar']) . '। ৩০ দিনের সময়সূচি, আজকের নামাজের সময়, ছবি ডাউনলোড ও প্রিন্ট।';
+            $s['faq'] = pbd_rz_faq($d);
+        } else {
+            $s['title'] = 'প্রবাসে রমজান ক্যালেন্ডার ' . $yr . ': দোহা, দুবাই, ইতালি, প্যারিস, আমেরিকা, কানাডা';
+            $s['desc'] = pbd_bn(count($d['cities'])) . 'টি শহরের সেহরি ও ইফতারের সময়সূচি — মধ্যপ্রাচ্য, মালয়েশিয়া, ইউরোপ, আমেরিকা ও কানাডা। স্থানীয় সময়ে, ছবি ডাউনলোড ও প্রিন্টসহ।';
+        }
+    }
+    $en = pbd_en();   // English name next to the Bangla, for English/Banglish searchers
+    if ($en['label'] !== '') {
+        // English label only when the title stays short (the theme adds " | প্রবাসী ইনফো" after it);
+        // long agency names pushed titles past 90 characters. The description still carries it.
+        if (!function_exists('mb_strlen') || mb_strlen($s['title'] . ' | ' . $en['label']) <= 62) {
+            $s['title'] .= ' | ' . $en['label'];
+        }
+        $s['desc'] = $en['label'] . ': ' . $s['desc'];
+    }
+    if ($en['faq']) { $s['faq'] = array_merge($s['faq'], $en['faq']); }
     if (function_exists('mb_strlen') && mb_strlen($s['desc']) > 158) { $s['desc'] = mb_substr($s['desc'], 0, 155) . '…'; }
     return $s;
 }
@@ -292,10 +329,8 @@ function pbd_sitemap() {
 add_action('init', function () {
     if (PBD_MODE !== 'live' || get_option('pbd_purged') === PBD_VER) { return; }
     update_option('pbd_purged', PBD_VER, false);
-    $p = pbd_data('pages');
-    if ($p && !empty($p['pages'])) { foreach ($p['pages'] as $r) { do_action('litespeed_purge_url', home_url($r['path'])); } }
     if (class_exists('\RankMath\Sitemap\Cache')) { \RankMath\Sitemap\Cache::invalidate_storage(); }  // rebuild index with our sitemap
-    do_action('litespeed_purge_url', home_url('/sitemap_index.xml'));
+    do_action('litespeed_purge_all');   // new version: homepage tiles + every data page
 }, 99);
 
 /* ---------- rendering ---------- */
@@ -365,6 +400,7 @@ function pbd_vc_faq($c) {
 function pbd_render($m) {
     if ($m['type'] === 'visa-check') { return $m['item'] ? pbd_vc_country($m['data'], $m['item']) : pbd_vc_hub($m['data']); }
     if ($m['type'] === 'gamca') { $h = $m['item'] ? pbd_gm_city($m['data'], $m['item']) : pbd_gm_hub($m['data']); $f = ''; foreach (pbd_gm_faq($m['data'], $m['item']) as $q) { $f .= '<details><summary>' . esc_html($q[0]) . '</summary><p>' . esc_html($q[1]) . '</p></details>'; } return pbd_gm_css() . str_replace('<h2>প্রশ্ন ও উত্তর</h2>', '<h2>প্রশ্ন ও উত্তর</h2>' . $f, $h); }
+    if ($m['type'] === 'ramadan') { return pbd_gm_css() . pbd_rz_css() . ($m['item'] ? pbd_rz_city($m['data']) : pbd_rz_hub($m['data'])); }
     if ($m['type'] === 'visa') { return pbd_gm_css() . pbd_ag_css() . ($m['item'] ? pbd_vs_one($m['data'], $m['item']) : pbd_vs_hub($m['data'])); }
     if ($m['type'] === 'customs') { return pbd_rm_css() . ($m['item'] ? pbd_cu_topic($m['data'], $m['item']) : pbd_cu_hub($m['data'])); }
     if ($m['type'] === 'baggage') { return $m['item'] ? pbd_bg_one($m['data'], $m['item']) : pbd_bg_hub($m['data']); }
@@ -841,4 +877,338 @@ function pbd_vs_hub($d) {
     }
     $o .= '<p class="pbd-src">সূত্র: ' . esc_html($d['source']) . ', হালনাগাদ ' . pbd_date($d['updated']) . '। সরকারি তালিকা নয় — ভ্রমণের আগে দূতাবাসে নিশ্চিত হোন।</p>';
     return $o . pbd_foot();
+}
+
+/* ---------- Ramadan calendars for expat cities ---------- */
+function pbd_t($min) {   // minutes after midnight → ৫:২৪ (12-hour, the way Bangladeshi calendars print it)
+    $min = (($min % 1440) + 1440) % 1440;
+    $h = intdiv($min, 60) % 12; if ($h === 0) { $h = 12; }
+    return pbd_bn($h . ':' . str_pad((string) ($min % 60), 2, '0', STR_PAD_LEFT));
+}
+function pbd_wd($i) { $w = array('রবিবার', 'সোমবার', 'মঙ্গলবার', 'বুধবার', 'বৃহস্পতিবার', 'শুক্রবার', 'শনিবার'); return $w[(int) $i]; }
+function pbd_rz_year($d) { return pbd_bn(substr($d['ramadan']['start'], 0, 4)); }
+function pbd_rz_place($c) { return $c['name'] === $c['country'] ? $c['name'] : $c['name'] . ' (' . $c['country'] . ')'; }
+function pbd_rz_days_left($start) {
+    $n = (int) floor((strtotime($start . ' 00:00:00 UTC') - time()) / 86400);
+    return $n;
+}
+function pbd_rz_faq($d) {
+    $c = $d['city']; $r0 = $d['rows'][0]; $place = pbd_rz_place($c);
+    return array(
+        array($place . ' রমজান কবে শুরু হবে?', 'সম্ভাব্য ' . pbd_date($d['ramadan']['start']) . ' (' . pbd_wd($r0['wd']) . ')। চাঁদ দেখার ওপর নির্ভর করে এক দিন আগে-পরে হতে পারে — স্থানীয় মসজিদের ঘোষণা দেখুন।'),
+        array($c['name'] . 'য় প্রথম রোজার সেহরি ও ইফতার কখন?', 'সেহরির শেষ সময় ভোর ' . pbd_t($r0['sehri']) . ', ইফতার সন্ধ্যা ' . pbd_t($r0['iftar']) . ' (স্থানীয় সময়)।'),
+        array('এই সময়সূচি কোন নিয়মে হিসাব করা?', $c['methodName'] . ' পদ্ধতিতে, ' . $c['name'] . 'র স্থানাঙ্ক ও স্থানীয় সময় অঞ্চল (ডেলাইট সেভিংসহ) ধরে। আসর হানাফি মতে।'),
+    );
+}
+function pbd_rz_city($d) {
+    $c = $d['city']; $rows = $d['rows']; $place = pbd_rz_place($c); $yr = pbd_rz_year($d);
+    $left = pbd_rz_days_left($d['ramadan']['start']);
+    $o = pbd_head(array(array('রমজান ক্যালেন্ডার', '/ramadan/'), array($c['name'], '')), $place . ' রমজান ক্যালেন্ডার ' . $yr . ': সেহরি ও ইফতারের সময়');
+    $o .= '<div class="pbd-hero"><small>' . pbd_flag($c['iso2']) . ' ' . esc_html($place) . ' · স্থানীয় সময়</small>'
+        . '<div class="big" style="font-size:1.45em">রমজান শুরু (সম্ভাব্য) ' . pbd_date($d['ramadan']['start']) . '</div>'
+        . ($left > 0 ? '<span class="pbd-chip up">⏳ আর ' . pbd_bn($left) . ' দিন</span>' : '<span class="pbd-chip up">🌙 রমজান চলছে</span>')
+        . '<span class="pbd-chip">🌅 প্রথম সেহরি ' . pbd_t($rows[0]['sehri']) . '</span><span class="pbd-chip">🌇 প্রথম ইফতার ' . pbd_t($rows[0]['iftar']) . '</span></div>';
+    $o .= '<div class="pbd-rz-act"><button type="button" data-rz="download">📥 ছবি ডাউনলোড</button><button type="button" data-rz="share">📤 শেয়ার করুন</button><button type="button" onclick="window.print()">🖨️ প্রিন্ট</button></div>';
+    $today = gmdate('Y-m-d');
+    $o .= '<div class="pbd-rz"><div class="pbd-rz-ttl">' . esc_html($place) . ' — রমজান ' . pbd_bn($d['ramadan']['hijriYear']) . ' হিজরি / ' . $yr . '</div><div class="pbd-tw"><table class="pbd-rzt"><tr><th>রোজা</th><th>তারিখ</th><th>বার</th><th>সেহরি শেষ</th><th>ইফতার</th></tr>';
+    $img = array();
+    foreach ($rows as $r) {
+        $cls = $r['date'] === $today ? ' class="now"' : (($r['day'] === 10 || $r['day'] === 20) ? ' class="mark"' : '');
+        $dt = pbd_date($r['date']);
+        $dt = preg_replace('/\s\S+$/u', '', $dt); // drop the year in the table
+        $o .= '<tr' . $cls . '><td>' . pbd_bn($r['day']) . '</td><td>' . $dt . '</td><td>' . pbd_wd($r['wd']) . '</td><td><b class="s">' . pbd_t($r['sehri']) . '</b></td><td><b class="i">' . pbd_t($r['iftar']) . '</b></td></tr>';
+        $img[] = array(pbd_bn($r['day']), $dt, pbd_wd($r['wd']), pbd_t($r['sehri']), pbd_t($r['iftar']));
+    }
+    $o .= '</table></div><p class="pbd-rz-note">চাঁদ দেখা সাপেক্ষে তারিখ এক দিন এদিক-ওদিক হতে পারে · সতর্কতার জন্য সেহরি ২–৩ মিনিট আগে শেষ করুন · probashiinfo.com</p></div>';
+    $t = $d['todayTimes'];
+    $o .= '<h2>আজ ' . esc_html($c['name']) . 'য় নামাজের সময় (' . pbd_date($d['localDate']) . ')</h2><div class="pbd-pt">';
+    foreach (array(array('ফজর', 'fajr', '🌄'), array('সূর্যোদয়', 'sunrise', '☀️'), array('যোহর', 'dhuhr', '🕛'), array('আসর (হানাফি)', 'asr', '🌤️'), array('মাগরিব', 'maghrib', '🌇'), array('এশা', 'isha', '🌙')) as $p) {
+        $o .= '<div><i>' . $p[2] . '</i><span>' . $p[0] . '</span><b>' . pbd_t($t[$p[1]]) . '</b></div>';
+    }
+    $o .= '</div>';
+    $o .= '<div class="pbd-warn"><b>ℹ️ জেনে রাখুন</b><ul><li>সময় ' . esc_html($c['methodName']) . ' পদ্ধতিতে হিসাব করা — আপনার এলাকার মসজিদের সময়সূচির সাথে ১–৫ মিনিট পার্থক্য হতে পারে, মসজিদের সময়ই মেনে চলুন।</li><li>রমজান শুরুর তারিখ উম্মুল কুরা (সৌদি) ক্যালেন্ডার অনুযায়ী; স্থানীয় চাঁদ দেখা কমিটি ভিন্ন দিন ঘোষণা করতে পারে।</li></ul></div>';
+    $o .= '<h2>প্রশ্ন ও উত্তর</h2>';
+    foreach (pbd_rz_faq($d) as $f) { $o .= '<details><summary>' . esc_html($f[0]) . '</summary><p>' . esc_html($f[1]) . '</p></details>'; }
+    if (!empty($d['others'])) {
+        $o .= '<h2>আশপাশের শহর</h2><div class="pbd-tiles">';
+        foreach ($d['others'] as $x) { $o .= '<a href="' . esc_url(home_url('/ramadan/' . $x['slug'] . '/')) . '">' . pbd_flag($x['iso2']) . '<span>' . esc_html($x['name']) . '<small>' . esc_html($x['country']) . '</small></span></a>'; }
+        $o .= '</div>';
+    }
+    $o .= '<p><a href="' . esc_url(home_url('/ramadan/')) . '">সব শহরের রমজান ক্যালেন্ডার →</a></p>';
+    $o .= '<p class="pbd-src">হিসাব: জ্যোতির্বিজ্ঞানের প্রচলিত পদ্ধতি (PrayTimes), ' . esc_html($c['methodName']) . ', স্থানাঙ্ক ' . pbd_bn(round($c['lat'], 2)) . ', ' . pbd_bn(round($c['lon'], 2)) . ', সময় অঞ্চল ' . esc_html($c['zone']) . '।</p>';
+    $data = array('title' => $c['name'] . ' রমজান ক্যালেন্ডার ' . $yr, 'sub' => $c['country'] . ' · রমজান ' . pbd_bn($d['ramadan']['hijriYear']) . ' হিজরি · স্থানীয় সময়', 'rows' => $img, 'slug' => $c['slug']);
+    $o .= '<script type="application/json" id="rzData">' . wp_json_encode($data, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) . '</script>' . pbd_rz_js();
+    return $o . pbd_foot();
+}
+function pbd_rz_hub($d) {
+    $yr = pbd_rz_year($d); $left = pbd_rz_days_left($d['ramadan']['start']);
+    $o = pbd_head(array(array('রমজান ক্যালেন্ডার', '')), 'প্রবাসে রমজান ক্যালেন্ডার ' . $yr . ': শহরভিত্তিক সেহরি ও ইফতার');
+    $o .= '<div class="pbd-hero"><small>🌙 রমজান ' . pbd_bn($d['ramadan']['hijriYear']) . ' হিজরি</small><div class="big" style="font-size:1.45em">শুরু (সম্ভাব্য) ' . pbd_date($d['ramadan']['start']) . '</div>'
+        . ($left > 0 ? '<span class="pbd-chip up">⏳ আর ' . pbd_bn($left) . ' দিন</span>' : '<span class="pbd-chip up">🌙 রমজান চলছে</span>')
+        . '<span class="pbd-chip">' . pbd_bn(count($d['cities'])) . 'টি শহর</span><span class="pbd-chip">📥 ছবি · 🖨️ প্রিন্ট</span></div>';
+    $o .= '<p>মধ্যপ্রাচ্য, মালয়েশিয়া, ইউরোপ, আমেরিকা, কানাডা — যে শহরে আছেন সেটি বেছে নিন। প্রতিটি পাতায় ৩০ দিনের সেহরি-ইফতারের সময়, আজকের নামাজের সময়, আর ছবি ডাউনলোড ও প্রিন্টের সুবিধা।</p>';
+    $o .= '<input class="pbd-find" type="search" placeholder="🔍 শহর বা দেশের নাম লিখুন" oninput="var q=this.value.toLowerCase();document.querySelectorAll(\'.pbd-rzh a\').forEach(function(e){e.style.display=e.textContent.toLowerCase().indexOf(q)>-1?\'\':\'none\'})">';
+    $lab = array('gulf' => 'মধ্যপ্রাচ্য', 'asia' => 'এশিয়া', 'europe' => 'ইউরোপ', 'americas' => 'আমেরিকা ও কানাডা', 'oceania' => 'অস্ট্রেলিয়া', 'africa' => 'আফ্রিকা');
+    $g = array();
+    foreach ($d['cities'] as $c) { $g[$c['region']][] = $c; }
+    foreach ($lab as $k => $name) {
+        if (empty($g[$k])) { continue; }
+        $o .= '<h2>' . esc_html($name) . '</h2><div class="pbd-tiles pbd-rzh">';
+        foreach ($g[$k] as $c) { $o .= '<a href="' . esc_url(home_url('/ramadan/' . $c['slug'] . '/')) . '">' . pbd_flag($c['iso2']) . '<span>' . esc_html($c['name']) . '<small>' . esc_html($c['country']) . ' · ইফতার ' . pbd_t($c['first']['iftar']) . '</small></span></a>'; }
+        $o .= '</div>';
+    }
+    $o .= '<p class="pbd-src">প্রথম রোজার ইফতারের সময় দেখানো হয়েছে (স্থানীয় সময়)। তারিখ উম্মুল কুরা ক্যালেন্ডার অনুযায়ী সম্ভাব্য।</p>';
+    return $o . pbd_foot();
+}
+function pbd_rz_css() {
+    return '<style>.pbd .pbd-rz-act{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}.pbd .pbd-rz-act button{flex:1 1 140px;border:0;border-radius:14px;padding:12px 10px;font-weight:700;font-size:1em;font-family:inherit;cursor:pointer;background:var(--bs,#e9f1fd);color:var(--b2,#0a3f96)}
+.pbd .pbd-rz-act button:first-child{background:var(--g,#16a34a);color:#fff}
+.pbd .pbd-rz-ttl{display:none;font-weight:800;font-size:1.3em;margin:0 0 8px}
+.pbd .pbd-rzt td,.pbd .pbd-rzt th{text-align:center;padding:7px 6px}.pbd .pbd-rzt b.s{color:var(--g,#16a34a)}.pbd .pbd-rzt b.i{color:#c2410c}
+.pbd .pbd-rzt tr.mark td{background:#fff7df}.pbd .pbd-rzt tr.now td{background:#dcfce7;font-weight:800}
+.pbd .pbd-rz-note{font-size:.82em;color:var(--mut,#6a7a93);margin:.5em 0 0}
+.pbd .pbd-pt{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.pbd .pbd-pt div{background:var(--card,#fff);border:1px solid var(--line,#e2e8f1);border-radius:14px;padding:10px;text-align:center;min-width:0}
+.pbd .pbd-pt i{font-style:normal;font-size:1.3em;display:block}.pbd .pbd-pt span{display:block;font-size:.85em;color:var(--mut,#6a7a93)}.pbd .pbd-pt b{font-size:1.25em}
+@media(max-width:420px){.pbd .pbd-rzt{font-size:.85em}.pbd .pbd-rzt td,.pbd .pbd-rzt th{padding:6px 3px}}
+@media print{body *{visibility:hidden!important}.pbd-rz,.pbd-rz *{visibility:visible!important}.pbd-rz{position:absolute;left:0;top:0;width:100%}.pbd .pbd-rz-ttl{display:block}.pbd .pbd-tw{border:0;overflow:visible}.pbd .pbd-rzt{font-size:12pt}.pbd .pbd-rzt td,.pbd .pbd-rzt th{padding:4px;border:1px solid #999}}</style>';
+}
+function pbd_rz_js() {
+    $logo = 'https://probashiinfo.com/wp-content/uploads/2026/10/probashiinfo-wordmark.webp';
+    return '<script>(function(){var el=document.getElementById("rzData");if(!el)return;var D=JSON.parse(el.textContent);var W=1080,H=1600,B="#0b56c4",NV="#082a63",SUN="#f5b301";'
+        . 'function img(s){return new Promise(function(ok){var i=new Image();i.onload=function(){ok(i)};i.onerror=function(){ok(null)};i.src=s})}'
+        . 'function draw(){var f=document.fonts?Promise.all([\'700 40px "Hind Siliguri"\',\'800 56px "Anek Bangla"\'].map(function(x){return document.fonts.load(x,"রমজান ০১২৩")})).catch(function(){}):Promise.resolve();'
+        . 'return f.then(function(){return img(' . wp_json_encode($logo) . ')}).then(function(logo){var c=document.createElement("canvas");c.width=W;c.height=H;var x=c.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,W,H);'
+        . 'if(logo){var lw=300,lh=lw*logo.height/logo.width;x.drawImage(logo,50,30,lw,lh)}x.textAlign="right";x.fillStyle=NV;x.font=\'700 26px "Hind Siliguri",sans-serif\';x.fillText("probashiinfo.com",W-50,72);'
+        . 'var g=x.createLinearGradient(0,130,W,330);g.addColorStop(0,B);g.addColorStop(1,NV);x.fillStyle=g;x.fillRect(0,130,W,200);x.fillStyle=SUN;x.fillRect(0,330,W,8);'
+        . 'x.textAlign="left";x.fillStyle="#fff";x.font=\'800 56px "Anek Bangla","Hind Siliguri",sans-serif\';x.fillText(D.title,50,222);x.font=\'500 30px "Hind Siliguri",sans-serif\';x.fillStyle="#dbe8fb";x.fillText(D.sub,50,284);'
+        . 'x.textAlign="right";x.fillStyle=SUN;x.font=\'700 80px "Hind Siliguri",sans-serif\';x.fillText("☪",W-50,262);'
+        . 'var top=370,rh=36,cols=[100,270,470,720,945],hd=["রোজা","তারিখ","বার","সেহরি শেষ","ইফতার"];x.fillStyle=NV;x.fillRect(30,top,W-60,52);x.fillStyle="#fff";x.font=\'700 28px "Hind Siliguri",sans-serif\';x.textAlign="center";hd.forEach(function(h,i){x.fillText(h,cols[i],top+36)});'
+        . 'D.rows.forEach(function(r,i){var y=top+52+i*rh;x.fillStyle=i%2?"#f1f6fd":"#fff";if(i===9||i===19)x.fillStyle="#fff7df";x.fillRect(30,y,W-60,rh);x.fillStyle="#1d2a3a";x.font=\'500 25px "Hind Siliguri",sans-serif\';x.fillText(r[0],cols[0],y+26);x.fillText(r[1],cols[1],y+26);x.fillText(r[2],cols[2],y+26);x.font=\'700 27px "Hind Siliguri",sans-serif\';x.fillStyle="#15803d";x.fillText(r[3],cols[3],y+26);x.fillStyle="#c2410c";x.fillText(r[4],cols[4],y+26)});'
+        . 'var end=top+52+D.rows.length*rh;x.strokeStyle="#d6e2f3";x.lineWidth=2;x.strokeRect(30,top,W-60,end-top);x.fillStyle="#5f6b7a";x.font=\'500 22px "Hind Siliguri",sans-serif\';x.fillText("চাঁদ দেখা সাপেক্ষে তারিখ এক দিন এদিক-ওদিক হতে পারে · সতর্কতার জন্য সেহরি ২–৩ মিনিট আগে শেষ করুন",W/2,end+40);'
+        . 'var g2=x.createLinearGradient(0,H-80,W,H);g2.addColorStop(0,"#E11D48");g2.addColorStop(1,"#F97316");x.fillStyle=g2;x.fillRect(0,H-80,W,80);x.fillStyle="#fff";x.font=\'700 28px "Hind Siliguri",sans-serif\';x.fillText("প্রবাসী ইনফো · probashiinfo.com/ramadan",W/2,H-30);return c})}'
+        . 'function blob(){return draw().then(function(c){return new Promise(function(ok){c.toBlob(ok,"image/png")})})}var name="ramadan-calendar-"+D.slug+".png";'
+        . 'function dl(b){var a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},1500)}'
+        . 'document.querySelectorAll("[data-rz]").forEach(function(btn){btn.addEventListener("click",function(){var k=btn.getAttribute("data-rz"),t=btn.textContent;btn.textContent="তৈরি হচ্ছে…";blob().then(function(b){btn.textContent=t;if(k==="share"){var f=new File([b],name,{type:"image/png"});if(navigator.canShare&&navigator.canShare({files:[f]}))return navigator.share({files:[f],title:D.title,text:D.title+" — "+location.href}).catch(function(){});if(navigator.share)return navigator.share({title:D.title,url:location.href}).catch(function(){});window.open("https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(location.href),"_blank");return}dl(b)})})})})();</script>';
+}
+
+/* ---------- homepage: "এক ক্লিকে প্রবাসী সেবা" (data tools) under the hero ---------- */
+add_action('wp_footer', function () {
+    if (!is_front_page() || is_paged() || is_admin()) { return; }
+    $rm = pbd_data('remittance'); $vs = pbd_data('visa'); $rz = pbd_data('ramadan'); $ag = pbd_data('agency-index');
+    $gm = pbd_data('gamca'); $vc = pbd_data('visa-check'); $cu = pbd_data('customs'); $mc = pbd_data('migration-cost');
+    $sar = null;
+    if ($rm) { foreach ($rm['currencies'] as $c) { if ($c['code'] === 'sar') { $sar = $c; break; } } }
+    $vfree = $vs ? $vs['counts']['free'] + $vs['counts']['voa'] + $vs['counts']['eta'] : 0;
+    $gmn = $gm ? array_sum(array_column($gm['cities'], 'count')) : 0;
+    $tiles = array(
+        array('/ramadan/', '🌙', 'রমজান ক্যালেন্ডার', $rz ? 'শুরু ' . preg_replace('/\s\S+$/u', '', pbd_date($rz['ramadan']['start'])) . ' · ' . pbd_bn(count($rz['cities'])) . ' শহর' : 'প্রবাসের শহরে', '#7c3aed'),
+        array('/remittance/', '💱', 'টাকার হিসাব', $sar ? '১ রিয়াল = ৳' . pbd_num($sar['rate'], 2) . ' + ২.৫%' : 'প্রণোদনাসহ', '#16a34a'),
+        array('/visa-check/', '🛂', 'ভিসা চেক', $vc ? pbd_bn(count($vc['countries']) + count($vc['existing'])) . ' দেশ · সরকারি সাইট' : 'সরকারি সাইট', '#0b56c4'),
+        array('/visa/', '🌍', 'কোথায় ভিসা লাগে না', $vfree ? pbd_bn($vfree) . 'টি দেশে আগে ভিসা ছাড়া' : 'বাংলাদেশি পাসপোর্ট', '#0891b2'),
+        array('/agency/', '🏢', 'এজেন্সি যাচাই', $ag ? pbd_num(count($ag['agencies'])) . ' লাইসেন্স' : 'বিএমইটি তালিকা', '#e11d48'),
+        array('/gamca/', '🩺', 'গামকা মেডিকেল', $gmn ? pbd_bn($gmn) . 'টি সেন্টার' : 'সেন্টার তালিকা', '#db2777'),
+        array('/customs/', '🧳', 'কাস্টমস নিয়ম', '৬৫+৩৫ কেজি ফ্রি · স্বর্ণ · মোবাইল', '#d97706'),
+        array('/baggage/', '✈️', 'লাগেজ কত কেজি', $cu ? pbd_bn(count($cu['airlines'])) . 'টি এয়ারলাইন' : 'এয়ারলাইন', '#0284c7'),
+        array('/migration-cost/', '🧾', 'সরকারি খরচ', $mc ? pbd_bn(count($mc['countries'])) . ' দেশে সর্বোচ্চ কত' : 'অভিবাসন ব্যয়', '#475569'),
+    );
+    ?>
+<section class="pbh" id="pbh" aria-label="এক ক্লিকে প্রবাসী সেবা"><div class="w">
+  <div class="pbh-hd"><h2>এক ক্লিকে প্রবাসী সেবা</h2><span>সরকারি সূত্রের তথ্য · প্রতিদিন হালনাগাদ</span></div>
+  <div class="pbh-g">
+<?php foreach ($tiles as $t) { ?>
+    <a class="pbh-t" href="<?php echo esc_url(home_url($t[0])); ?>" style="--c:<?php echo esc_attr($t[4]); ?>"><i><?php echo $t[1]; ?></i><b><?php echo esc_html($t[2]); ?></b><small><?php echo esc_html($t[3]); ?></small></a>
+<?php } ?>
+  </div>
+  <form class="pbh-s" method="get" action="<?php echo esc_url(home_url('/agency/')); ?>"><span>🏢</span><input name="q" type="search" placeholder="এজেন্সির নাম বা আরএল নম্বর লিখে যাচাই করুন" aria-label="এজেন্সি যাচাই"><button type="submit">যাচাই</button></form>
+</div></section>
+<style>
+.pbh{padding:26px 0 8px}.pbh .w{box-sizing:border-box}
+.pbh-hd{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:0 0 14px}
+.pbh-hd h2{margin:0;font-size:24px}.pbh-hd span{font-size:14px;color:var(--mut,#6a7a93)}
+.pbh-g{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.pbh-t{position:relative;display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:12px;align-items:center;padding:14px;border-radius:18px;background:var(--card,#fff);border:1px solid var(--line,#e2e8f1);text-decoration:none!important;color:var(--ink,#0f1f38)!important;min-width:0;overflow:hidden;transition:transform .15s,box-shadow .15s}
+.pbh-t:before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:var(--c)}
+.pbh-t:hover{transform:translateY(-2px);box-shadow:0 10px 22px -12px var(--c)}
+.pbh-t i{grid-row:1/3;font-style:normal;font-size:26px;width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--c) 14%,#fff)}
+.pbh-t b{font-size:17px;line-height:1.3;min-width:0}.pbh-t small{font-size:13.5px;color:var(--c);font-weight:700;line-height:1.35;min-width:0;overflow-wrap:anywhere}
+.pbh-s{display:flex;align-items:center;gap:8px;margin:14px 0 0;padding:8px 8px 8px 14px;border-radius:16px;background:var(--bs,#e9f1fd)}
+.pbh-s span{font-size:20px}.pbh-s input{flex:1;min-width:0;border:0;background:transparent;font-size:16px;padding:8px 0;outline:0}
+.pbh-s button{border:0;background:var(--b,#0b56c4);color:#fff;font-weight:700;border-radius:12px;padding:10px 18px;font-size:15px;cursor:pointer}
+@media(max-width:820px){.pbh-g{grid-template-columns:repeat(2,1fr)}.pbh-t:last-child:nth-child(odd){grid-column:1/-1}}
+@media(max-width:420px){.pbh-g{gap:8px}.pbh-t{padding:11px;column-gap:9px}.pbh-t i{width:42px;height:42px;font-size:22px;border-radius:13px}.pbh-t b{font-size:15px}.pbh-t small{font-size:12px}.pbh-hd h2{font-size:20px}}
+</style>
+<script>(function(){var s=document.getElementById('pbh'),h=document.querySelector('section.hero3');if(s&&h&&h.parentNode){h.parentNode.insertBefore(s,h.nextSibling);}})();</script>
+<?php
+}, 5);
+
+/* ---------- English + Banglish: titles, one English + one Banglish FAQ per page, site search ---------- */
+// many expats type English ("oman visa check") or Banglish ("doha iftar time koto") — visible text only, no hidden keywords
+function pbd_slug_en($slug) {
+    $fix = array('uk' => 'UK', 'usa' => 'USA', 'uae' => 'UAE', 'schengen-vfs' => 'Schengen (VFS)', 'coxs-bazar' => "Cox's Bazar",
+        'kuwait-city' => 'Kuwait City', 'makkah' => 'Makkah', 'madinah' => 'Madinah', 'new-york' => 'New York', 'los-angeles' => 'Los Angeles',
+        'abu-dhabi' => 'Abu Dhabi', 'kuala-lumpur' => 'Kuala Lumpur', 'czech-republic' => 'Czech Republic', 'north-macedonia' => 'North Macedonia',
+        'new-zealand' => 'New Zealand', 'south-korea' => 'South Korea', 'sri-lanka' => 'Sri Lanka', 'tv-fridge-ac' => 'TV, fridge, AC',
+        'gold-silver' => 'gold and silver', 'mobile-phone' => 'mobile phone', 'money' => 'money and dollars');
+    return isset($fix[$slug]) ? $fix[$slug] : ucwords(str_replace('-', ' ', $slug));
+}
+function pbd_latin($s) {   // Bangla digits → 0-9 for English sentences
+    return strtr((string) $s, array('০' => '0', '১' => '1', '২' => '2', '৩' => '3', '৪' => '4', '৫' => '5', '৬' => '6', '৭' => '7', '৮' => '8', '৯' => '9', 'কেজি' => 'kg', ' টি' => '', 'টি' => ''));
+}
+function pbd_t_en($min) {
+    $min = (($min % 1440) + 1440) % 1440;
+    $h = intdiv($min, 60); $ap = $h >= 12 ? 'PM' : 'AM'; $h = $h % 12; if ($h === 0) { $h = 12; }
+    return $h . ':' . str_pad((string) ($min % 60), 2, '0', STR_PAD_LEFT) . ' ' . $ap;
+}
+function pbd_date_en($ymd) { $t = strtotime($ymd . ' 12:00:00 UTC'); return $t ? gmdate('j F Y', $t) : $ymd; }
+
+/** English label (title/description) + one English and one Banglish FAQ for the current data page. */
+function pbd_en() {
+    static $e = null;
+    if ($e !== null) { return $e; }
+    $e = array('label' => '', 'faq' => array());
+    $m = pbd_match();
+    if (!$m || $m['type'] === 'sitemap') { return $e; }
+    $d = $m['data']; $it = $m['item']; $t = $m['type'];
+    if ($t === 'visa-check') {
+        if ($it) {
+            $en = pbd_slug_en($it['slug']); $host = pbd_host($it['url']);
+            $e['label'] = $en . ' visa check online';
+            $e['faq'][] = array('How to check ' . $en . ' visa status online?', 'Only on the official government site ' . $host . ' (' . $it['portal'] . '). Checking is free — do not pay an agent or a look-alike website.');
+            $e['faq'][] = array($en . ' visa check kivabe korbo?', 'Shudhu sorkari site ' . $host . '-e giye passport number ar application/reference number diye check korun. Kono taka lage na.');
+        } else { $e['label'] = 'Visa check by country — official sites'; }
+    } elseif ($t === 'visa') {
+        if ($it) {
+            $en = $it['name_en']; $k = substr($it['code'], 0, 1); $days = preg_replace('/\D/', '', $it['code']);
+            $map = array('F' => 'Visa-free' . ($days ? ' (up to ' . $days . ' days)' : ''), 'A' => 'Visa on arrival', 'T' => 'eTA (online travel authorisation) before travel',
+                'E' => 'e-Visa (apply online before travel)', 'V' => 'Visa required (apply at the embassy or its visa centre)', 'X' => 'Entry not allowed');
+            $kind = isset($map[$k]) ? $map[$k] : 'Unknown';
+            $e['label'] = $en . ' visa for Bangladeshi passport';
+            $e['faq'][] = array('Do Bangladeshi passport holders need a visa for ' . $en . '?', $kind . '. Rules change — confirm with the embassy or airline before booking.');
+            $bl = array('F' => 'na, visa lagbe na', 'A' => 'airport-e pouchhe visa nite hobe (on arrival)', 'T' => 'jawar age online-e eTA nite hobe', 'E' => 'jawar age online-e e-visa korte hobe', 'V' => 'haan, embassy theke visa lagbe', 'X' => 'Bangladeshi passport-e probesh nishedh');
+            $e['faq'][] = array('Bangladeshi passport e ' . $en . ' jete visa lagbe?', isset($bl[$k]) ? ucfirst($bl[$k]) . '.' : '');
+        } else { $e['label'] = 'Visa-free countries for Bangladeshi passport'; }
+    } elseif ($t === 'remittance') {
+        if ($it) {
+            $en = pbd_slug_en($it['slug']); $r = number_format($it['rate'], 2);
+            $e['label'] = $en . ' to BDT rate today';
+            $e['faq'][] = array('1 ' . $en . ' = how many Bangladeshi taka today?', 'About ' . $r . ' taka (mid-market rate, ' . pbd_date_en($d['updated']) . '). With the 2.5% government incentive, 1,000 ' . $en . ' gives about ' . number_format(1000 * $it['rate'] * 1.025) . ' taka.');
+            $e['faq'][] = array('1 ' . $en . ' koto taka?', 'Aj prai ' . $r . ' taka. Boidho pothe pathale 2.5% pronodona (incentive) pabe.');
+        } else { $e['label'] = 'Remittance calculator — taka rate with 2.5% incentive'; }
+    } elseif ($t === 'gamca') {
+        if ($it) {
+            $en = pbd_slug_en($it['slug']);
+            $e['label'] = $en . ' GAMCA medical center list';
+            $e['faq'][] = array('How many GAMCA (Wafid) medical centers are in ' . $en . '?', $it['count'] . ' GCC-approved centers on the official Wafid list (' . pbd_date_en($d['updated']) . '). Book at wafid.com; the report is valid for 2 months.');
+            $e['faq'][] = array($en . ' e GAMCA medical kothay korbo?', 'Ei page-e ' . $en . '-er sob onumodito center-er thikana ar phone ache. Appointment nite hobe wafid.com theke.');
+        } else { $e['label'] = 'GAMCA medical center list Bangladesh'; }
+    } elseif ($t === 'agency') {
+        if ($it) {
+            $e['label'] = 'RL ' . $it['rl'] . ' license check';
+            $e['faq'][] = array('Is ' . $it['name'] . ' (RL ' . $it['rl'] . ') a licensed recruiting agency?', 'BMET list: license status "' . $it['status'] . '"' . ($it['expiry'] ? ', valid until ' . pbd_date_en($it['expiry']) : '') . '. Verify on raims.oep.gov.bd before paying.');
+            $e['faq'][] = array('RL ' . $it['rl'] . ' agency license valid ki?', 'BMET-er talika onujayi license: ' . $it['status'] . '. Taka deyar age raims.oep.gov.bd-e mile nin.');
+        } else { $e['label'] = 'Recruiting agency license check (BMET RL number)'; }
+    } elseif ($t === 'migration-cost') {
+        $e['label'] = 'Government migration cost by country';
+        $e['faq'][] = array('What is the government-fixed migration cost for Malaysia?', 'Tk 78,990 per worker (office order of 5 July 2022). The table above lists every country with its order date.');
+    } elseif ($t === 'customs') {
+        $lab = array('mobile-phone' => 'How many mobile phones can I bring to Bangladesh', 'gold-silver' => 'Gold allowance Bangladesh customs (100g)', 'tv-fridge-ac' => 'TV, fridge, AC customs duty Bangladesh', 'money' => 'How much money / dollars can I bring to Bangladesh');
+        $faq = array(
+            'mobile-phone' => array(array('How many mobile phones can I bring to Bangladesh duty-free?', '2 used phones and 1 new phone per year (Baggage Rules 2025).'), array('Bidesh theke koyta mobile ana jay?', '2ta puraton ar bochore 1ta notun mobile free.')),
+            'gold-silver' => array(array('How much gold can I bring to Bangladesh?', '100 g of gold jewellery a year duty-free. A gold bar up to 117 g (10 tola) once a year at Tk 5,000 per tola.'), array('Bidesh theke koto gram sona ana jay?', '100 gram gohona free. Sonar bar 117 gram porjonto, protiti bhori 5,000 taka shulko.')),
+            'tv-fridge-ac' => array(array('What is the customs duty on a TV in Bangladesh?', 'TV up to 29 inch is duty-free; 30–36 inch Tk 10,000, up to Tk 90,000 for 66 inch and above.'), array('TV anle koto tax?', '29 inch porjonto free, 30-36 inch e 10,000 taka.')),
+            'money' => array(array('How many dollars can I bring to Bangladesh?', 'Any amount, but declare above USD 10,000 on the FMJ form. Bangladeshi taka: up to Tk 10,000.'), array('Koto dollar ana jay?', 'Jotokhushi, tobe 10,000 dollar-er beshi hole FMJ form-e declare korte hobe.')),
+        );
+        if ($it) { $e['label'] = isset($lab[$it['slug']]) ? $lab[$it['slug']] : 'Bangladesh baggage rules'; $e['faq'] = isset($faq[$it['slug']]) ? $faq[$it['slug']] : array(); }
+        else { $e['label'] = 'Bangladesh baggage rules 2025 (customs)'; $e['faq'][] = array('How much baggage is duty-free in Bangladesh?', '65 kg plus 35 kg of clothes and personal items for passengers aged 12 and over (Baggage Rules 2025).'); }
+    } elseif ($t === 'baggage') {
+        if ($it) {
+            $e['label'] = $it['name_en'] . ' baggage allowance from Dhaka';
+            $f = array(); foreach ($it['fares'] as $x) { $f[] = $x[0] . ': ' . pbd_latin($x[1]); }
+            $e['faq'][] = array('What is the ' . $it['name_en'] . ' economy baggage allowance from Dhaka?', 'Checked baggage by fare (names in Bangla on this page): ' . implode('; ', array_slice($f, 0, 4)) . '. Your e-ticket shows the final figure.');
+            $e['faq'][] = array($it['name_en'] . ' e koto kg luggage newa jay?', 'Sobcheye kom bharay ' . pbd_latin($it['fares'][0][1]) . '. Ticket-er "Baggage" ghore asol ojon lekha thake.');
+        } else { $e['label'] = 'Airline baggage allowance from Dhaka'; }
+    } elseif ($t === 'ramadan') {
+        $yr = substr($d['ramadan']['start'], 0, 4);
+        if ($it) {
+            $en = pbd_slug_en($it['slug']); $r0 = $d['rows'][0];
+            $e['label'] = $en . ' Ramadan calendar ' . $yr . ' — sehri & iftar time';
+            $e['faq'][] = array('What time is iftar in ' . $en . ' on the first day of Ramadan ' . $yr . '?', 'Iftar about ' . pbd_t_en($r0['iftar']) . ', sehri ends ' . pbd_t_en($r0['sehri']) . ' (local time). Ramadan is expected to start on ' . pbd_date_en($d['ramadan']['start']) . '.');
+            $e['faq'][] = array($en . ' e iftar er somoy koto?', 'Prothom rojay iftar ' . pbd_t_en($r0['iftar']) . ', sehri sesh ' . pbd_t_en($r0['sehri']) . ' (sthaniyo somoy).');
+        } else { $e['label'] = 'Ramadan calendar ' . $yr . ' for expats — iftar time by city'; }
+    }
+    return $e;
+}
+function pbd_en_faq() { $e = pbd_en(); return $e['faq']; }
+
+/* site search: put matching data pages on top of the results (Bangla, Banglish or English queries) */
+add_action('wp_footer', function () {
+    if (!is_search()) { return; }
+    $q = strtolower(trim(get_search_query()));
+    if (mb_strlen($q) < 2) { return; }
+    // whole-word match for Latin words ("rate" must not hit "emirates"), substring for Bangla
+    $hit = function ($w) use ($q) {
+        if ($w === '') { return false; }
+        if (preg_match('/^[a-z0-9 \-]+$/', $w)) { return (bool) preg_match('/(?<![a-z])' . preg_quote(trim($w), '/') . '(?![a-z])/', $q); }
+        return mb_strpos($q, $w) !== false;
+    };
+    $has = function ($words) use ($hit) { foreach ((array) $words as $w) { if ($hit($w)) { return true; } } return false; };
+    $iso_en = array();   // country English names (from the passport data) so "italy ramadan" finds Rome/Milan/Venice
+    $vsd = pbd_data('visa');
+    if ($vsd) { foreach ($vsd['countries'] as $c) { $iso_en[strtolower($c['iso2'])] = strtolower($c['name_en']); } }
+    $kind = array(
+        'ramadan' => array('ramadan', 'ramzan', 'romjan', 'iftar', 'ifter', 'sehri', 'sehri', 'seheri', 'sahri', 'roja', 'রমজান', 'ইফতার', 'সেহরি', 'রোজা'),
+        'visa-check' => array('visa check', 'visa status', 'visa cek', 'ভিসা চেক', 'ভিসা যাচাই'),
+        'visa' => array('visa free', 'on arrival', 'visa lagbe', 'visa lage', 'ভিসা লাগে', 'ভিসা ছাড়া'),
+        'remittance' => array('rate', 'taka', 'bdt', 'remittance', 'remitance', 'রেট', 'টাকা', 'রেমিট্যান্স'),
+        'gamca' => array('gamca', 'wafid', 'medical', 'গামকা', 'মেডিকেল'),
+        'agency' => array('agency', 'agenci', 'license', 'licence', 'rl ', 'rl-', 'এজেন্সি', 'লাইসেন্স'),
+        'customs' => array('custom', 'gold', 'sona', 'mobile', 'phone', 'dollar', 'কাস্টমস', 'স্বর্ণ', 'মোবাইল'),
+        'baggage' => array('baggage', 'luggage', 'lagej', 'kg', 'লাগেজ', 'ব্যাগেজ'),
+    );
+    $want = array(); foreach ($kind as $k => $w) { if ($has($w)) { $want[$k] = 1; } }
+    $hits = array();
+    $add = function ($url, $title, $sub) use (&$hits) { if (count($hits) < 8 && !isset($hits[$url])) { $hits[$url] = array($title, $sub); } };
+    $sets = array('ramadan' => array('ramadan', 'cities'), 'visa-check' => array('visa-check', 'countries'), 'visa' => array('visa', 'countries'),
+        'remittance' => array('remittance', 'currencies'), 'gamca' => array('gamca', 'cities'), 'baggage' => array('customs', 'airlines'));
+    foreach ($sets as $type => $src) {
+        $d = pbd_data($src[0]); if (!$d || empty($d[$src[1]])) { continue; }
+        foreach ($d[$src[1]] as $x) {
+            $en = strtolower(isset($x['name_en']) ? $x['name_en'] : pbd_slug_en($x['slug']));
+            $bn = isset($x['name']) ? $x['name'] : '';
+            $alias = array($en, str_replace('-', ' ', $x['slug']), $bn);
+            if (isset($x['country'])) { $alias[] = $x['country']; }
+            if (isset($x['iso2'], $iso_en[strtolower($x['iso2'])])) { $alias[] = $iso_en[strtolower($x['iso2'])]; }
+            if (isset($x['flag'], $iso_en[$x['flag']])) { $alias[] = $iso_en[$x['flag']]; }
+            $match = false;
+            foreach ($alias as $a) { if ($a !== '' && mb_strlen($a) > 2 && $hit(mb_strtolower($a))) { $match = true; break; } }
+            if (!$match || ($want && empty($want[$type]))) { continue; }
+            $lab = array('ramadan' => 'রমজান ক্যালেন্ডার', 'visa-check' => 'ভিসা চেক', 'visa' => 'ভিসা লাগে কি না', 'remittance' => 'টাকার রেট', 'gamca' => 'গামকা মেডিকেল', 'baggage' => 'লাগেজ');
+            $add(home_url('/' . $type . '/' . $x['slug'] . '/'), $bn . ' — ' . $lab[$type], ucwords($en));
+        }
+    }
+    if (preg_match('/(?:rl[\s-]*)?(\d{2,4})/i', $q, $mm) && (isset($want['agency']) || preg_match('/^\s*(rl[\s-]*)?\d{2,4}\s*$/i', $q))) {
+        $add(home_url('/agency/rl-' . (int) $mm[1] . '/'), 'আরএল-' . pbd_bn((int) $mm[1]) . ' এজেন্সির লাইসেন্স', 'RL ' . (int) $mm[1] . ' license check');
+    }
+    $hubs = array('ramadan' => array('/ramadan/', 'প্রবাসে রমজান ক্যালেন্ডার', 'Ramadan calendar'), 'visa-check' => array('/visa-check/', 'দেশভিত্তিক ভিসা চেক', 'Visa check'),
+        'visa' => array('/visa/', 'কোন দেশে ভিসা লাগে', 'Visa-free countries'), 'remittance' => array('/remittance/', 'রেমিট্যান্স ক্যালকুলেটর', 'Taka rate'),
+        'gamca' => array('/gamca/', 'গামকা মেডিকেল সেন্টার', 'GAMCA centers'), 'agency' => array('/agency/?q=' . rawurlencode(get_search_query()), 'এজেন্সি লাইসেন্স যাচাই', 'Agency license'),
+        'customs' => array('/customs/', 'কাস্টমস নিয়ম', 'Baggage rules'), 'baggage' => array('/baggage/', 'এয়ারলাইনের লাগেজ', 'Airline baggage'));
+    foreach ($want as $k => $_) { $add(home_url($hubs[$k][0]), $hubs[$k][1], $hubs[$k][2]); }
+    if (!$hits) { return; }
+    echo '<section class="pbs" id="pbs"><div class="w"><h2>সরাসরি তথ্য</h2><div class="pbs-g">';
+    foreach ($hits as $url => $h) { echo '<a href="' . esc_url($url) . '"><b>' . esc_html($h[0]) . '</b><small>' . esc_html($h[1]) . '</small></a>'; }
+    echo '</div></div></section><style>.pbs{padding:16px 0 4px}.pbs h2{font-size:20px;margin:0 0 10px}.pbs-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}.pbs-g a{display:block;padding:12px 14px;border-radius:14px;background:var(--bs,#e9f1fd);border:1px solid var(--line,#e2e8f1);text-decoration:none!important;color:var(--ink,#0f1f38)!important;min-width:0}.pbs-g b{display:block;font-size:16px}.pbs-g small{color:var(--b,#0b56c4);font-weight:600}</style>';
+    echo '<script>(function(){var s=document.getElementById("pbs"),h=document.querySelector("section.arch-hd")||document.querySelector("main");if(s&&h){if(h.tagName==="MAIN")h.insertBefore(s,h.firstChild);else h.parentNode.insertBefore(s,h.nextSibling);}})();</script>';
+}, 6);
+
+/* visible English + Banglish questions: on top of the page's FAQ, or as a small block at the end */
+function pbd_with_en($html) {
+    $f = pbd_en_faq();
+    if (!$f) { return $html; }
+    $x = '';
+    foreach ($f as $q) { $x .= '<details lang="en"><summary>' . esc_html($q[0]) . '</summary><p>' . esc_html($q[1]) . '</p></details>'; }
+    $h = '<h2>প্রশ্ন ও উত্তর</h2>';
+    if (strpos($html, $h) !== false) { return preg_replace('/' . preg_quote($h, '/') . '/u', $h . $x, $html, 1); }
+    $end = strrpos($html, '</div></article></div></div>');
+    return $end === false ? $html . $x : substr($html, 0, $end) . '<h2>In English</h2>' . $x . substr($html, $end);
 }
