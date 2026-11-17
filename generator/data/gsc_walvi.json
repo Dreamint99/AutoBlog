@@ -1,9 +1,9 @@
 {
- "source": "Search Console API 2026-08-16..2026-11-14",
+ "source": "Search Console API 2026-08-17..2026-11-15",
  "pages": [
   {
    "url": "https://visapoint.net/visa-check/romania",
-   "impressions": 251,
+   "impressions": 252,
    "clicks": 7,
    "queries": [
     [
@@ -26,9 +26,9 @@
     ],
     [
      "romania work visa check by passport number",
-     16,
+     17,
      1,
-     7.6
+     7.8
     ],
     [
      "romania visa check online by passport number",
@@ -79,8 +79,8 @@
      7.3
     ]
    ],
-   "position": 8.2,
-   "ctr": 0.0279
+   "position": 8.3,
+   "ctr": 0.0278
   },
   {
    "url": "https://visapoint.net/visa-check/serbia",
@@ -315,7 +315,7 @@
   },
   {
    "url": "https://visapoint.net/",
-   "impressions": 95,
+   "impressions": 98,
    "clicks": 4,
    "queries": [
     [
@@ -325,16 +325,16 @@
      14.5
     ],
     [
+     "visa index",
+     6,
+     0,
+     52.3
+    ],
+    [
      "abroad visa point",
      5,
      0,
      58.8
-    ],
-    [
-     "visa index",
-     4,
-     0,
-     54.8
     ],
     [
      "visa point",
@@ -385,14 +385,14 @@
      35
     ],
     [
-     "visa check",
+     "visa by country",
      1,
      0,
-     40
+     86
     ]
    ],
-   "position": 26.8,
-   "ctr": 0.0421
+   "position": 27.9,
+   "ctr": 0.0408
   },
   {
    "url": "https://visapoint.net/moldova-visa-status-online-2026-step-by-step-guide",
@@ -459,7 +459,7 @@
   },
   {
    "url": "https://visapoint.net/passport-index",
-   "impressions": 86,
+   "impressions": 89,
    "clicks": 1,
    "queries": [
     [
@@ -470,9 +470,9 @@
     ],
     [
      "visa index",
-     8,
+     10,
      0,
-     39.4
+     36.7
     ],
     [
      "index passport",
@@ -535,8 +535,8 @@
      48
     ]
    ],
-   "position": 37.5,
-   "ctr": 0.0116
+   "position": 37.1,
+   "ctr": 0.0112
   },
   {
    "url": "https://visapoint.net/welder-salary-europe-2026-5-best-countries-to-earn-big",
@@ -3488,6 +3488,21 @@
    "ctr": 0.0
   },
   {
+   "url": "https://visapoint.net/cost-of-living-savings-in-hungary-2026-how-much-can-a-foreig-928b",
+   "impressions": 5,
+   "clicks": 0,
+   "queries": [
+    [
+     "how much can i save in a month",
+     1,
+     0,
+     1
+    ]
+   ],
+   "position": 24.8,
+   "ctr": 0.0
+  },
+  {
    "url": "https://visapoint.net/countries/italy",
    "impressions": 5,
    "clicks": 0,
@@ -3707,21 +3722,6 @@
    "clicks": 0,
    "queries": [],
    "position": 5.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/cost-of-living-savings-in-hungary-2026-how-much-can-a-foreig-928b",
-   "impressions": 4,
-   "clicks": 0,
-   "queries": [
-    [
-     "how much can i save in a month",
-     1,
-     0,
-     1
-    ]
-   ],
-   "position": 6.2,
    "ctr": 0.0
   },
   {
@@ -4707,6 +4707,21 @@
     ]
    ],
    "position": 87.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/countries/denmark",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [
+    [
+     "denmark minimum salary",
+     1,
+     0,
+     90
+    ]
+   ],
+   "position": 90.0,
    "ctr": 0.0
   },
   {
