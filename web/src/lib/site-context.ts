@@ -14,6 +14,4 @@ export function activeSite(): Site {
 }
 
 /** Public path for a redirect target: clean on a single-site deployment (no /s/<id> hop). */
-export function publicPath(siteId: string, path: string): string {
-  return activeSiteId() ? path : `/s/${siteId}${path}`;
-}
+export { publicPath, sitePrefix } from "./public-path";

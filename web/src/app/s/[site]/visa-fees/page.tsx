@@ -8,6 +8,7 @@ import { defaultOgImages } from "@/lib/og";
 import { visaItems, visaCountries, countryName } from "@/sites/gccguide/hub/directory";
 import { GULF_CURRENCIES, INDEX } from "@/sites/gccguide/hub/config";
 import { HubPage, Crumbs, PageHead, DataTable, Faq, SectionHead, SourceLine, Related, Callout } from "@/sites/gccguide/hub/ui";
+import { sitePrefix } from "@/lib/public-path";
 
 export const dynamic = "force-dynamic";
 
@@ -30,7 +31,7 @@ export default async function Page({ params }: { params: Promise<{ site: string 
   const { site: id } = await params;
   const site = getSite(id);
   if (!site || site.id !== "gccguide") notFound();
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const base = siteBaseUrl(site);
   const countries = visaCountries();
 

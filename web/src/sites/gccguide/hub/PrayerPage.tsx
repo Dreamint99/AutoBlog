@@ -5,9 +5,10 @@ import type { PrayerView, MethodKey } from "./prayer";
 import { PRAYER_METHODS, prayerLabel } from "./prayer";
 import { INDEX, GULF_CURRENCIES } from "./config";
 import { dateLong, int } from "./format";
+import { sitePrefix } from "@/lib/public-path";
 
 export default function PrayerPage({ site, v, method }: { site: Site; v: PrayerView; method: MethodKey }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const country = v.city.country;
   const countryName = GULF_CURRENCIES.find((g) => g.country === country)?.short ?? country;
   const next = v.next;

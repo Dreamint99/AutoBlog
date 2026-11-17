@@ -1,9 +1,11 @@
-import { sitemapIndex, xmlResponse, siteAndBase, abs } from "@/lib/gcc-sitemaps";
+import { sitemapIndex, xmlResponse, siteAndBase, abs, gccOnly } from "@/lib/gcc-sitemaps";
 
 // The hub's sitemap index. robots.txt points gccguide here instead of at
 // /sitemap.xml, so every family of pages is reported separately and lastmod
 // tracks the data rather than the deploy.
 export async function GET() {
+  const denied = gccOnly();
+  if (denied) return denied;
   const { base } = siteAndBase();
   const today = new Date().toISOString().slice(0, 10);
   const parts = ["rates", "gold", "fuel", "calculators", "prayer", "embassy", "visa", "holidays"];

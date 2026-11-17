@@ -6,6 +6,7 @@ import { getFxSnapshot, crossRate, getGold } from "@/lib/gcc";
 import { buildFuelView } from "./hub/fuel";
 import { GRAMS_PER_OZ } from "./hub/config";
 import { fmt, dateLong } from "./hub/format";
+import { sitePrefix } from "@/lib/public-path";
 
 /* GCCGuide home (v2): answer-first. Hero with search + today's key numbers,
    the six country hubs, live-data tools, latest guides as uniform cards and a
@@ -26,7 +27,7 @@ const TOOLS: { icon: string; title: string; text: string; path: string }[] = [
 ];
 
 export default async function Home({ site, articles }: SiteHomeProps) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const real = articles.filter((a) => !a.is_mock);
   const [snap, gold] = await Promise.all([getFxSnapshot(), getGold()]);
   const aed = snap.byCode.AED?.rate ?? 3.6725;

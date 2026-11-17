@@ -9,6 +9,7 @@ import { GULF_CURRENCIES } from "@/sites/gccguide/hub/config";
 import { HubPage, Crumbs, PageHead, DataTable, Faq, SectionHead, Callout, SourceLine, Related } from "@/sites/gccguide/hub/ui";
 import { int } from "@/sites/gccguide/hub/format";
 import Link from "next/link";
+import { sitePrefix } from "@/lib/public-path";
 
 export const dynamic = "force-dynamic";
 
@@ -29,7 +30,7 @@ export default async function Page({ params }: { params: Promise<{ site: string 
   const { site: id } = await params;
   const site = getSite(id);
   if (!site || site.id !== "gccguide") notFound();
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const base = siteBaseUrl(site);
 
   // One row per country: the capital's times, computed live.

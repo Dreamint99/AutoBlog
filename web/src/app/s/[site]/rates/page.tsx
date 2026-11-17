@@ -10,6 +10,7 @@ import { GULF_CURRENCIES, QUOTE_CURRENCIES } from "@/sites/gccguide/hub/config";
 import { HubPage, Crumbs, PageHead, StatRow, BigStat, DataTable, Faq, SourceLine, SectionHead, Callout } from "@/sites/gccguide/hub/ui";
 import { fmt, dateLong } from "@/sites/gccguide/hub/format";
 import { dpFor } from "@/sites/gccguide/hub/series";
+import { sitePrefix } from "@/lib/public-path";
 
 export const dynamic = "force-dynamic";
 
@@ -31,7 +32,7 @@ export default async function Page({ params }: { params: Promise<{ site: string 
   const { site: id } = await params;
   const site = getSite(id);
   if (!site || site.id !== "gccguide") notFound();
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const base = siteBaseUrl(site);
   const hub = await buildRateHub();
 

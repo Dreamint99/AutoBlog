@@ -2,6 +2,7 @@ import "./theme.css";
 import { fontVars } from "./fonts";
 import type { Article, Site } from "@/lib/types";
 import { CnHeader, SiteFooter, StatCard, IconSearch, IconCompass } from "./Home";
+import { publicPath } from "@/lib/public-path";
 
 export default function Search({
   site,
@@ -26,7 +27,7 @@ export default function Search({
             </div>
           </div>
 
-          <form className="cn-search cn-search-page" action={`/s/${site.id}/search`} method="get" role="search">
+          <form className="cn-search cn-search-page" action={publicPath(site.id, "/search")} method="get" role="search">
             <IconSearch />
             <input
               className="cn-search-input"

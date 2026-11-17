@@ -7,6 +7,7 @@ import { fontVars } from "../fonts";
 import WorldMap from "../WorldMap";
 import { CountUp } from "../Animated";
 import PassportTable from "./PassportTable";
+import { sitePrefix } from "@/lib/public-path";
 
 const SOUTH_ASIA = ["BD", "IN", "PK", "NP", "LK", "BT", "MV", "AF"];
 
@@ -42,7 +43,7 @@ export const PI_FAQ = [
 ];
 
 export default function PassportIndexPage({ site, rows, updatedAt }: { site: Site; rows: PassportRow[]; updatedAt: string }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const top = rows.slice(0, 3);
   const max = rows[0]?.score || 1;
   const bd = rows.find((r) => r.iso2 === "BD");
@@ -62,7 +63,7 @@ export default function PassportIndexPage({ site, rows, updatedAt }: { site: Sit
         <section className="vp-pi-hero">
           <div className="vp-wrap">
             <nav className="vp-crumbs" aria-label="Breadcrumb">
-              <Link href={b}>Home</Link>
+              <Link href={b || "/"}>Home</Link>
               <span aria-hidden="true">›</span>
               <span>Passport Index</span>
             </nav>

@@ -1,4 +1,4 @@
-import { urlset, xmlResponse, siteAndBase, abs } from "@/lib/gcc-sitemaps";
+import { urlset, xmlResponse, siteAndBase, abs, gccOnly } from "@/lib/gcc-sitemaps";
 import { getFxSnapshot, crossRate } from "@/lib/gcc";
 import { GULF_CURRENCIES, QUOTE_CURRENCIES } from "@/sites/gccguide/hub/config";
 import { gate } from "@/sites/gccguide/hub/gate";
@@ -7,6 +7,8 @@ import { buildRemitHub } from "@/sites/gccguide/hub/remittance";
 // Only the 84 forward Gulf→quote pairs are indexed; the reverse pairs are
 // noindex + canonical and therefore absent here.
 export async function GET() {
+  const denied = gccOnly();
+  if (denied) return denied;
   const { base } = siteAndBase();
   const [snap, remit] = await Promise.all([getFxSnapshot(), buildRemitHub()]);
   const lastmod = snap.updated.slice(0, 10);

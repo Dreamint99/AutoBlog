@@ -2,13 +2,14 @@ import Link from "next/link";
 import type { Site } from "@/lib/types";
 import { getFlagships, getModels, latestVerified } from "@/lib/models";
 import { ModelTable, fmtDate } from "./data-ui";
+import { sitePrefix } from "@/lib/public-path";
 
 /* Home section: today's API prices for the big labs' newest models, plus popular head-to-heads.
    Data comes from D1 (refreshed daily by workers/infkey-sync). */
 export default async function LivePrices({ site }: { site: Site }) {
   const [flag, all] = await Promise.all([getFlagships(), getModels()]);
   if (flag.length === 0) return null;
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const top = flag.filter((m) => m.category === "llm").slice(0, 12);
   const byProv = new Map<string, (typeof flag)[number]>();
   for (const m of flag) if (m.category === "llm" && !byProv.has(m.provider)) byProv.set(m.provider, m);

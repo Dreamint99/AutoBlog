@@ -8,6 +8,7 @@ import { defaultOgImages } from "@/lib/og";
 import { findMission, missionSlug, missionsFrom, missionsIn, gulfLabel, mapLink } from "@/sites/gccguide/hub/embassy";
 import { gate } from "@/sites/gccguide/hub/gate";
 import { HubPage, Crumbs, PageHead, DataTable, Faq, SourceLine, Related, Callout, SectionHead } from "@/sites/gccguide/hub/ui";
+import { sitePrefix } from "@/lib/public-path";
 
 export const dynamic = "force-dynamic";
 
@@ -34,7 +35,7 @@ export default async function Page({ params }: Props) {
   const site = getSite(id);
   const m = findMission(slug);
   if (!site || site.id !== "gccguide" || !m) notFound();
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const base = siteBaseUrl(site);
   const map = mapLink(m);
   const kind = m.type === "embassy" ? "Embassy" : m.type === "consulate-general" ? "Consulate General" : "Consulate";

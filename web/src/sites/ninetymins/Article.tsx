@@ -6,6 +6,7 @@ import { compOf, fmtDate, ago } from "./comps";
 import { LeagueFixtures } from "./LiveScores";
 import { heroSrc, thumb } from "@/lib/img";
 import { AppBanner } from "./AppPromo";
+import { sitePrefix } from "@/lib/public-path";
 
 /* Competition → ESPN feed shown in the article rail. */
 const FEED: Record<string, [string, string]> = {
@@ -67,7 +68,7 @@ function splitAfterParagraph(html: string, n: number): [string, string] {
 }
 
 export default function Article({ site, article, related, bodyHtml, toc, popular = [] }: SiteArticleProps) {
-  const s = `/s/${site.id}`;
+  const s = sitePrefix(site.id);
   const c = compOf(article);
   const feed = FEED[c.slug];
   const url = `https://${site.domain}/${article.slug}`;
@@ -79,7 +80,7 @@ export default function Article({ site, article, related, bodyHtml, toc, popular
       <article className="nm-article">
         <header className="nm-wrap nm-art-head">
           <nav className="nm-crumbs" aria-label="Breadcrumb">
-            <Link href={s}>Home</Link>
+            <Link href={s || "/"}>Home</Link>
             <span aria-hidden="true">›</span>
             <Link href={`${s}/topic/${c.slug}`}>{c.label}</Link>
           </nav>

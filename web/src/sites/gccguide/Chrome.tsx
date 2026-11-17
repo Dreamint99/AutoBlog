@@ -7,6 +7,7 @@ import type { Article, Site } from "@/lib/types";
 import { COUNTRIES, TOPICS, countryOf, topicOf, flag } from "./data";
 import { gccSans, gccHead } from "./fonts";
 import { thumb } from "@/lib/img";
+import { publicPath, sitePrefix } from "@/lib/public-path";
 
 /* GCCGuide shell (v2): one light design system. Sticky white bar with the brand
    logo, six sections + More, search; a <details> drawer on phones (no client JS);
@@ -19,7 +20,7 @@ export function Mark() {
 
 export function Logo({ site }: { site: Site }) {
   return (
-    <Link href={`/s/${site.id}`} className="gc-logo gv-logo" aria-label={`${site.name} home`}>
+    <Link href={publicPath(site.id, "/")} className="gc-logo gv-logo" aria-label={`${site.name} home`}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src="/brand/gccguide/logo.svg" alt="GCCGuide" width={475} height={77} />
     </Link>
@@ -76,7 +77,7 @@ function SearchForm({ b, className }: { b: string; className: string }) {
 }
 
 export function TopBar({ site }: { site: Site }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   return (
     <header className="gv-bar">
       <div className="gv-wrap gv-bar-in">
@@ -152,7 +153,7 @@ export function TopBar({ site }: { site: Site }) {
 export function GuideCard({ site, a }: { site: Site; a: Article }) {
   const c = countryOf(a);
   const t = topicOf(a);
-  const href = `/s/${site.id}/${a.slug}`;
+  const href = publicPath(site.id, `/${a.slug}`);
   const img = a.image_url ? thumb(a.image_url, a.title) : "";
   return (
     <article className="gv-card">
@@ -176,7 +177,7 @@ export function GuideCard({ site, a }: { site: Site; a: Article }) {
 // Footer boilerplate carries data-nosnippet: Google was quoting the legal line
 // ("GCCGuide is an independent guide…") as the search snippet for every article.
 export function Footer({ site }: { site: Site }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   return (
     <footer className="gv-foot">
       <div className="gv-wrap">
