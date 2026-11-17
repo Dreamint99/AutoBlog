@@ -4,6 +4,7 @@ import type { PassportRanking } from "@/lib/visa";
 import { Masthead, Footer } from "../Chrome";
 import { fontVars } from "../fonts";
 import { CountUp } from "../Animated";
+import { sitePrefix } from "@/lib/public-path";
 
 const SOUTH_ASIA = ["BD", "IN", "PK", "NP", "LK", "BT", "MV", "AF"];
 
@@ -46,7 +47,7 @@ export default function PassportRankingPage({
   ranking: PassportRanking[];
   dataDate: string;
 }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const top = ranking.slice(0, 3);
   const max = ranking[0]?.score || 1;
   const bd = ranking.find((r) => r.passport === "BD");
@@ -59,7 +60,7 @@ export default function PassportRankingPage({
         <section className="vp-pi-hero">
           <div className="vp-wrap">
             <nav className="vp-crumbs" aria-label="Breadcrumb">
-              <Link href={b}>Home</Link>
+              <Link href={b || "/"}>Home</Link>
               <span aria-hidden="true">›</span>
               <span>Passport Ranking</span>
             </nav>

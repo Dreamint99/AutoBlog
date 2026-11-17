@@ -7,6 +7,7 @@ import { Masthead, Footer } from "../Chrome";
 import { fontVars } from "../fonts";
 import WorldMap from "../WorldMap";
 import { CountUp } from "../Animated";
+import { sitePrefix } from "@/lib/public-path";
 
 export const REQ_COLOR: Record<Req, string> = {
   F: "#1f9d55",
@@ -47,7 +48,7 @@ export default function PassportPage({
   neighbours: PassportRow[];
   total: number;
 }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const groups = groupDestinations(p, dest);
   const colors: Record<string, string> = {};
   const labels: Record<string, string> = {};
@@ -70,7 +71,7 @@ export default function PassportPage({
         <section className="vp-pi-hero">
           <div className="vp-wrap">
             <nav className="vp-crumbs" aria-label="Breadcrumb">
-              <Link href={b}>Home</Link>
+              <Link href={b || "/"}>Home</Link>
               <span aria-hidden="true">›</span>
               <Link href={`${b}/passport-index`}>Passport Index</Link>
               <span aria-hidden="true">›</span>

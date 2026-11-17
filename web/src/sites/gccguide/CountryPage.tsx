@@ -3,15 +3,16 @@ import type { Article, Site } from "@/lib/types";
 import { GcShell } from "./Chrome";
 import { TOPICS, topicOf, flag, type Country } from "./data";
 import { CityPulse } from "./Widgets";
+import { sitePrefix } from "@/lib/public-path";
 
 export default function CountryPage({ site, c, articles }: { site: Site; c: Country; articles: Article[] }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   return (
     <GcShell site={site} active="countries">
       <section className="gc-chero" style={{ ["--ca" as string]: c.accent }}>
         <div className="gc-wrap gc-chero-in">
           <nav className="gc-crumbs" aria-label="Breadcrumb">
-            <Link href={b}>Home</Link>
+            <Link href={b || "/"}>Home</Link>
             <span>›</span>
             <span>{c.name}</span>
           </nav>

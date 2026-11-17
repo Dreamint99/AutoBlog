@@ -6,6 +6,7 @@ import { fontVars } from "./fonts";
 import { countryOf, topicOf, trustedImage, fmtDate } from "./guide-meta";
 import Flag from "./Flag";
 import { vcFor, isVcArticle, flagFor } from "./visacheck/data";
+import { publicPath, sitePrefix } from "@/lib/public-path";
 
 function Toc({ items, variant }: { items: TocItem[]; variant: "inline" | "rail" }) {
   if (!items.length) return null;
@@ -44,7 +45,7 @@ function Related({ site, items }: { site: Site; items: A[] }) {
                   {c ? ` · ${c.name}` : ""}
                 </span>
                 <h3>
-                  <Link href={`/s/${site.id}/${a.slug}`}>{a.title}</Link>
+                  <Link href={publicPath(site.id, `/${a.slug}`)}>{a.title}</Link>
                 </h3>
                 <span className="vp-date">Updated {fmtDate(a.created_at)}</span>
               </div>
@@ -57,7 +58,7 @@ function Related({ site, items }: { site: Site; items: A[] }) {
 }
 
 export default function Article({ site, article, related, bodyHtml, toc }: SiteArticleProps) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const c = countryOf(article);
   const img = trustedImage(article);
   const vc = isVcArticle(article) ? vcFor(article) : undefined;
@@ -80,7 +81,7 @@ export default function Article({ site, article, related, bodyHtml, toc }: SiteA
           <header className="vp-pagehead">
             <div className="vp-wrap">
               <nav className="vp-crumbs" aria-label="Breadcrumb">
-                <Link href={b}>Home</Link>
+                <Link href={b || "/"}>Home</Link>
                 <span aria-hidden="true">›</span>
                 <Link href={`${b}/guides`}>Work-permit guides</Link>
                 {c ? (

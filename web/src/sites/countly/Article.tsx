@@ -10,6 +10,7 @@ import { CnHeader, SiteFooter, Card, kickerOf, rootClass } from "./Home";
 import { CN_CATEGORIES } from "./categories";
 import type { SiteArticleProps, Article, TocItem } from "@/lib/types";
 import { heroSrc } from "@/lib/img";
+import { publicPath } from "@/lib/public-path";
 
 /* ────────────────────────────────────────────────────────────
    Inline icons (no client JS, no extra packages)
@@ -118,9 +119,9 @@ function cleanBody(html: string): string {
 /** Breadcrumb section for an article: its desk's topic page (Wealth → the rich lists). */
 function deskLink(siteId: string, a: Article): { label: string; href: string } {
   const label = kickerOf(a);
-  if (label === "Wealth") return { label, href: `/s/${siteId}/search?q=richest` };
+  if (label === "Wealth") return { label, href: publicPath(siteId, "/search?q=richest") };
   const cat = CN_CATEGORIES.find((c) => c.label === label);
-  return { label, href: cat ? `/s/${siteId}/topic/${cat.slug}` : `/s/${siteId}/data` };
+  return { label, href: cat ? publicPath(siteId, `/topic/${cat.slug}`) : publicPath(siteId, "/data") };
 }
 
 /* ────────────────────────────────────────────────────────────
@@ -141,7 +142,7 @@ export default function Article({ site, article, related, bodyHtml, toc, popular
         <header className="cv-ahead">
           <div className="cv-wrap">
             <nav className="cv-crumbs" aria-label="Breadcrumb">
-              <Link href={`/s/${site.id}`}>Home</Link>
+              <Link href={publicPath(site.id, "/")}>Home</Link>
               <IconChevronRight />
               <Link href={desk.href}>{desk.label}</Link>
             </nav>
@@ -223,7 +224,7 @@ export default function Article({ site, article, related, bodyHtml, toc, popular
                       .filter((p) => p.slug !== article.slug)
                       .map((p) => (
                         <li key={p.id}>
-                          <Link href={`/s/${site.id}/${p.slug}`}>{p.title}</Link>
+                          <Link href={publicPath(site.id, `/${p.slug}`)}>{p.title}</Link>
                         </li>
                       ))}
                   </ol>
@@ -238,7 +239,7 @@ export default function Article({ site, article, related, bodyHtml, toc, popular
           <div className="cv-wrap">
             <div className="cv-sechead">
               <h2>{related.length > 0 ? "Related data" : "Keep exploring"}</h2>
-              <Link href={`/s/${site.id}`} className="cv-seeall">
+              <Link href={publicPath(site.id, "/")} className="cv-seeall">
                 All statistics <IconArrow />
               </Link>
             </div>

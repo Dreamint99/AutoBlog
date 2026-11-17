@@ -5,6 +5,7 @@ import type { Article, Site } from "@/lib/types";
 import type { CnCategory } from "./categories";
 import { CN_CATEGORIES } from "./categories";
 import { CnHeader, SiteFooter, StatCard, IconArrow, IconCompass } from "./Home";
+import { publicPath } from "@/lib/public-path";
 
 /* Countly topic / category landing page. Lists every report that matches the
    category, in the same editorial style as the home page. */
@@ -30,7 +31,7 @@ export default function Category({
               <h1>{category.label}</h1>
               <p>{category.blurb}</p>
             </div>
-            <Link href={`/s/${site.id}`} className="cn-readmore">
+            <Link href={publicPath(site.id, "/")} className="cn-readmore">
               <span style={{ transform: "rotate(180deg)", display: "inline-flex" }}>
                 <IconArrow />
               </span>
@@ -70,7 +71,7 @@ export default function Category({
           </div>
           <div className="cn-cat-grid">
             {CN_CATEGORIES.filter((c) => c.slug !== category.slug).map((c, i) => (
-              <Link href={`/s/${site.id}/topic/${c.slug}`} className="cn-cat-card" key={c.slug}>
+              <Link href={publicPath(site.id, `/topic/${c.slug}`)} className="cn-cat-card" key={c.slug}>
                 <span className="cn-cat-num" aria-hidden="true">
                   {String(i + 1).padStart(2, "0")}
                 </span>

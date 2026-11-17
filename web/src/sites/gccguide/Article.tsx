@@ -4,6 +4,7 @@ import type { SiteArticleProps } from "@/lib/types";
 import { GcShell } from "./Chrome";
 import { countryOf, topicOf, flag } from "./data";
 import { heroSrc, thumb } from "@/lib/img";
+import { sitePrefix } from "@/lib/public-path";
 
 function fmt(iso: string) {
   const d = new Date(iso);
@@ -11,7 +12,7 @@ function fmt(iso: string) {
 }
 
 export default function Article({ site, article, related, bodyHtml, toc }: SiteArticleProps) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const c = countryOf(article);
   const t = topicOf(article);
   return (
@@ -20,7 +21,7 @@ export default function Article({ site, article, related, bodyHtml, toc }: SiteA
         <header className="gc-art-head">
           <div className="gc-wrap">
             <nav className="gc-crumbs" aria-label="Breadcrumb">
-              <Link href={b}>Home</Link>
+              <Link href={b || "/"}>Home</Link>
               <span>›</span>
               {c ? (
                 <>

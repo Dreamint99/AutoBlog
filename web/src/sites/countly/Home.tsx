@@ -12,6 +12,7 @@ import NewsletterForm from "./NewsletterForm";
 import HouseAd from "./HouseAd";
 import type { SiteHomeProps, Article } from "@/lib/types";
 import { heroSrc, thumb } from "@/lib/img";
+import { publicPath, sitePrefix } from "@/lib/public-path";
 
 /** Countly feature image: always the data-art built from the title (the /card/ path, which
  *  img.ts renders as art on countly). The auto-picked stock photos were often off-topic. The
@@ -149,7 +150,7 @@ const MORE: Array<[string, string]> = [
 ];
 
 export function CnHeader({ site }: { site: { id: string; name: string } }) {
-  const s = `/s/${site.id}`;
+  const s = sitePrefix(site.id);
   return (
     <>
       <LiveTicker />
@@ -160,7 +161,7 @@ export function CnHeader({ site }: { site: { id: string; name: string } }) {
               <IconMenu />
             </summary>
             <nav className="cv-drawer" aria-label="All sections">
-              <Link href={s}>Latest</Link>
+              <Link href={s || "/"}>Latest</Link>
               {[...PRIMARY, ...MORE].map(([h, l]) => (
                 <Link href={`${s}${h}`} key={h}>
                   {l}
@@ -169,7 +170,7 @@ export function CnHeader({ site }: { site: { id: string; name: string } }) {
             </nav>
           </details>
 
-          <Link href={s} className="cv-logo" aria-label={`${site.name} home`}>
+          <Link href={s || "/"} className="cv-logo" aria-label={`${site.name} home`}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/brand/countly-mark-96.webp" alt="" width={40} height={40} />
             <span className="cv-word">
@@ -224,7 +225,7 @@ function Art({ a, priority = false }: { a: Article; priority?: boolean }) {
 
 /** The one story card used across the site: art, category tag, headline, date. */
 export function Card({ siteId, article, priority = false }: { siteId: string; article: Article; priority?: boolean }) {
-  const href = `/s/${siteId}/${article.slug}`;
+  const href = publicPath(siteId, `/${article.slug}`);
   return (
     <article className="cv-card">
       <Link href={href} className="cv-card-art" tabIndex={-1} aria-hidden="true">
@@ -263,7 +264,7 @@ const DESKS = ["ai-chatgpt", "social-media", "companies", "internet", "countries
    Page
    ──────────────────────────────────────────────────────────── */
 export default function Home({ site, articles }: SiteHomeProps) {
-  const s = `/s/${site.id}`;
+  const s = sitePrefix(site.id);
   const href = (a: Article) => `${s}/${a.slug}`;
   const take = picker(articles);
 
@@ -448,14 +449,14 @@ export default function Home({ site, articles }: SiteHomeProps) {
    ──────────────────────────────────────────────────────────── */
 export function SiteFooter({ siteName, siteId, domain }: { siteName: string; siteId: string; domain: string }) {
   const year = new Date().getFullYear();
-  const s = `/s/${siteId}`;
+  const s = sitePrefix(siteId);
   return (
     <footer className="cv-footer">
       <div className="cv-wrap">
         <HouseAd />
         <div className="cv-foot-top">
           <div className="cv-foot-brand">
-            <Link href={s} className="cv-logo" aria-label={`${siteName} home`}>
+            <Link href={s || "/"} className="cv-logo" aria-label={`${siteName} home`}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/brand/countly-mark-96.webp" alt="" width={36} height={36} loading="lazy" />
               <span className="cv-word">

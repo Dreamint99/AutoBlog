@@ -4,6 +4,7 @@ import { GcShell } from "./Chrome";
 import { COUNTRIES, TOPICS, countryOf, topicOf, flag } from "./data";
 import { Clocks, Converter, CityPulse } from "./Widgets";
 import { heroSrc, thumb } from "@/lib/img";
+import { publicPath, sitePrefix } from "@/lib/public-path";
 
 const QUICK: [string, string][] = [
   ["🛂", "Check visa status"],
@@ -40,7 +41,7 @@ function Skyline() {
 function Card({ site, a, big = false }: { site: Site; a: Article; big?: boolean }) {
   const c = countryOf(a);
   const t = topicOf(a);
-  const href = `/s/${site.id}/${a.slug}`;
+  const href = publicPath(site.id, `/${a.slug}`);
   return (
     <article className={`gc-acard${big ? " big" : ""}`}>
       <Link href={href} className="gc-amedia" tabIndex={-1} aria-label={a.title}>
@@ -64,7 +65,7 @@ function Card({ site, a, big = false }: { site: Site; a: Article; big?: boolean 
 }
 
 export default function Home({ site, articles }: SiteHomeProps) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const real = articles.filter((a) => !a.is_mock);
   const [lead, ...rest] = real;
   return (

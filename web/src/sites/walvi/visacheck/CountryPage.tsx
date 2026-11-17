@@ -4,6 +4,7 @@ import type { TocItem } from "@/lib/types";
 import { Masthead, Footer } from "../Chrome";
 import { fontVars } from "../fonts";
 import { VC, VC_VERIFIED, flagFor, type VcEntry } from "./data";
+import { sitePrefix } from "@/lib/public-path";
 
 export function vcName(e: VcEntry): string {
   return e.country.replace(/ \(.*\)$/, "");
@@ -51,7 +52,7 @@ export default function VisaCheckCountry({
   toc?: TocItem[];
   others: VcEntry[];
 }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const n = vcName(e);
   const host = e.url.replace(/^https?:\/\//, "").replace(/\/.*$/, "");
   const faq = vcFaq(e);
@@ -65,7 +66,7 @@ export default function VisaCheckCountry({
           <div className="vp-wrap vc-c-hero">
             <div>
               <nav className="vp-crumbs" aria-label="Breadcrumb">
-                <Link href={b}>Home</Link>
+                <Link href={b || "/"}>Home</Link>
                 <span aria-hidden="true">›</span>
                 <Link href={`${b}/visa-check`}>Visa check</Link>
                 <span aria-hidden="true">›</span>
