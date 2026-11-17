@@ -1,7 +1,7 @@
 {
  "site": "aiu",
  "property": "https://aiuniversitybd.com/",
- "checked": "2026-11-16T10:11:59+00:00",
+ "checked": "2026-11-17T11:14:06+00:00",
  "sitemaps": [
   {
    "path": "https://aiuniversitybd.com/sitemap.xml",
@@ -21,11 +21,11 @@
    ]
   }
  ],
- "sitemap_count": 560,
+ "sitemap_count": 754,
  "byState": {
   "Submitted and indexed": 34,
-  "URL is unknown to Google": 4,
-  "Discovered - currently not indexed": 3
+  "URL is unknown to Google": 6,
+  "Discovered - currently not indexed": 1
  },
  "urls": [
   {
@@ -54,7 +54,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/courses",
    "userCanonical": "https://aiuniversitybd.com/courses",
-   "lastCrawlTime": "2026-11-16T02:11:07Z",
+   "lastCrawlTime": "2026-11-16T19:55:18Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/courses?fac=language",
@@ -290,7 +290,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/kids",
    "userCanonical": "https://aiuniversitybd.com/kids",
-   "lastCrawlTime": "2026-11-03T14:39:33Z",
+   "lastCrawlTime": "2026-11-17T10:03:45Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/kids"
@@ -299,20 +299,15 @@
   {
    "url": "https://aiuniversitybd.com/subscription",
    "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
+   "coverageState": "URL is unknown to Google",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": [
-    "http://www.aiuniversitybd.com/subscription?plan=12m&course=biggan-velki",
-    "https://www.aiuniversitybd.com/subscription",
-    "https://www.aiuniversitybd.com/subscription?course=computer-basics",
-    "https://www.aiuniversitybd.com/subscription?next=%2Fkids"
-   ]
+   "crawledAs": null,
+   "referringUrls": null
   },
   {
    "url": "https://aiuniversitybd.com/reviews",
@@ -352,7 +347,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/course/computer-basics",
    "userCanonical": "https://aiuniversitybd.com/course/computer-basics",
-   "lastCrawlTime": "2026-11-09T07:59:47Z",
+   "lastCrawlTime": "2026-11-16T10:40:51Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/course/computer-basics",
@@ -501,17 +496,15 @@
   {
    "url": "https://aiuniversitybd.com/course/digital-marketing",
    "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
+   "coverageState": "URL is unknown to Google",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": [
-    "https://www.aiuniversitybd.com/course/digital-marketing"
-   ]
+   "crawledAs": null,
+   "referringUrls": null
   },
   {
    "url": "https://aiuniversitybd.com/course/freelancing",
@@ -562,17 +555,15 @@
   {
    "url": "https://aiuniversitybd.com/course/personal-branding",
    "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
+   "coverageState": "URL is unknown to Google",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": [
-    "https://www.aiuniversitybd.com/course/personal-branding"
-   ]
+   "crawledAs": null,
+   "referringUrls": null
   },
   {
    "url": "https://aiuniversitybd.com/course/youtube-creator",
@@ -583,7 +574,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/course/youtube-creator",
    "userCanonical": "https://aiuniversitybd.com/course/youtube-creator",
-   "lastCrawlTime": "2026-10-19T15:08:19Z",
+   "lastCrawlTime": "2026-11-16T12:58:22Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/course/youtube-creator"
@@ -614,7 +605,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/course/food-business",
    "userCanonical": "https://aiuniversitybd.com/course/food-business",
-   "lastCrawlTime": "2026-10-20T05:33:52Z",
+   "lastCrawlTime": "2026-11-17T05:58:21Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/course/food-business"
@@ -623,15 +614,17 @@
   {
    "url": "https://aiuniversitybd.com/course/first-aid",
    "verdict": "NEUTRAL",
-   "coverageState": "URL is unknown to Google",
+   "coverageState": "Discovered - currently not indexed",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": null,
-   "referringUrls": null
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": [
+    "https://www.aiuniversitybd.com/course/first-aid"
+   ]
   },
   {
    "url": "https://aiuniversitybd.com/course/personal-finance",
