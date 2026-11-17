@@ -9,6 +9,7 @@ import { Shell } from "@/sites/ninetymins/Chrome";
 import { Scoreboard, LeagueTable } from "@/sites/ninetymins/LiveScores";
 import { BOARD_LEAGUES } from "@/sites/ninetymins/comps";
 import { getScores, NM_LEAGUES } from "@/sites/ninetymins/live";
+import { publicPath } from "@/lib/public-path";
 
 export const dynamic = "force-dynamic";
 
@@ -60,7 +61,7 @@ export default async function ScoresPage({ params }: P) {
               ))}
             </ul>
             <p className="nm-box-note">
-              Looking for South Asia? See the <Link href={`/s/${site.id}/topic/saff-championship`}>SAFF Championship hub</Link>.
+              Looking for South Asia? See the <Link href={publicPath(site.id, "/topic/saff-championship")}>SAFF Championship hub</Link>.
             </p>
           </section>
         </aside>

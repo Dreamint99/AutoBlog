@@ -9,6 +9,7 @@ import HouseAd from "./HouseAd";
 import { CnHeader } from "./Home";
 import type { SiteArticleProps, Article, TocItem } from "@/lib/types";
 import { heroSrc, thumb } from "@/lib/img";
+import { publicPath } from "@/lib/public-path";
 
 /* ────────────────────────────────────────────────────────────
    Inline icons (no client JS, no extra packages)
@@ -128,7 +129,7 @@ function fmtDate(iso: string): string {
 }
 
 function RelatedCard({ siteId, article }: { siteId: string; article: Article }) {
-  const href = `/s/${siteId}/${article.slug}`;
+  const href = publicPath(siteId, `/${article.slug}`);
   return (
     <article className="cn-card">
       <Link href={href} className="cn-card-media" aria-label={article.title}>
@@ -178,11 +179,11 @@ export default function Article({ site, article, related, bodyHtml, toc, popular
         <div className="cn-article-head">
           <div className="cn-wrap">
             <nav className="cn-crumbs" aria-label="Breadcrumb">
-              <Link href={`/s/${site.id}`}>Home</Link>
+              <Link href={publicPath(site.id, "/")}>Home</Link>
               <IconChevronRight />
               {primaryTag ? (
                 <>
-                  <Link href={`/s/${site.id}`}>{primaryTag}</Link>
+                  <Link href={publicPath(site.id, "/")}>{primaryTag}</Link>
                   <IconChevronRight />
                 </>
               ) : null}
@@ -330,7 +331,7 @@ export default function Article({ site, article, related, bodyHtml, toc, popular
                       .filter((p) => p.slug !== article.slug)
                       .map((p) => (
                         <li key={p.id}>
-                          <Link href={`/s/${site.id}/${p.slug}`}>{p.title}</Link>
+                          <Link href={publicPath(site.id, `/${p.slug}`)}>{p.title}</Link>
                         </li>
                       ))}
                   </ul>
@@ -339,7 +340,7 @@ export default function Article({ site, article, related, bodyHtml, toc, popular
 
               <p style={{ marginTop: "2rem" }}>
                 <Link
-                  href={`/s/${site.id}`}
+                  href={publicPath(site.id, "/")}
                   className="cn-readmore"
                   style={{ display: "inline-flex", alignItems: "center", gap: ".45rem", fontWeight: 700 }}
                 >
@@ -367,7 +368,7 @@ function SiteFooter({ siteName, siteId, domain }: { siteName: string; siteId: st
         <HouseAd />
         <div className="cn-foot-top">
           <div>
-            <Link href={`/s/${siteId}`} className="cn-brand" aria-label={`${siteName} home`}>
+            <Link href={publicPath(siteId, "/")} className="cn-brand" aria-label={`${siteName} home`}>
               <span className="cn-logo cn-logo-img">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/brand/countly-mark.webp" alt="" width={34} height={21} />
@@ -389,13 +390,13 @@ function SiteFooter({ siteName, siteId, domain }: { siteName: string; siteId: st
               <h4>Topics</h4>
               <ul>
                 <li>
-                  <Link href={`/s/${siteId}`}>AI &amp; internet</Link>
+                  <Link href={publicPath(siteId, "/")}>AI &amp; internet</Link>
                 </li>
                 <li>
-                  <Link href={`/s/${siteId}`}>Social media</Link>
+                  <Link href={publicPath(siteId, "/")}>Social media</Link>
                 </li>
                 <li>
-                  <Link href={`/s/${siteId}`}>Companies</Link>
+                  <Link href={publicPath(siteId, "/")}>Companies</Link>
                 </li>
               </ul>
             </div>
@@ -403,13 +404,13 @@ function SiteFooter({ siteName, siteId, domain }: { siteName: string; siteId: st
               <h4>About</h4>
               <ul>
                 <li>
-                  <Link href={`/s/${siteId}`}>Methodology</Link>
+                  <Link href={publicPath(siteId, "/")}>Methodology</Link>
                 </li>
                 <li>
-                  <Link href={`/s/${siteId}`}>Sources</Link>
+                  <Link href={publicPath(siteId, "/")}>Sources</Link>
                 </li>
                 <li>
-                  <Link href={`/s/${siteId}`}>Contact</Link>
+                  <Link href={publicPath(siteId, "/")}>Contact</Link>
                 </li>
               </ul>
             </div>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { InfModel, Site } from "@/lib/types";
+import { sitePrefix } from "@/lib/public-path";
 
 /* Shared presentational pieces for InfKey data-product pages (server components). */
 
@@ -73,7 +74,7 @@ export function Caps({ model }: { model: InfModel }) {
 }
 
 export function ModelTable({ site, models }: { site: Site; models: InfModel[] }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   return (
     <div className="itable-wrap">
       <table className="itable">

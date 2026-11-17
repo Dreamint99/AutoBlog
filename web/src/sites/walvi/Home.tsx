@@ -7,6 +7,7 @@ import { getPassports, getPiMeta } from "@/lib/passports";
 import { VC, flagFor } from "./visacheck/data";
 import { GuideCard } from "./cards";
 import Flag from "./Flag";
+import { sitePrefix } from "@/lib/public-path";
 
 /* VisaPoint home (v2): one job up front — "do I need a visa?" — then popular
    passports, official visa-status checks, latest guides, tools and the
@@ -49,7 +50,7 @@ function Ic({ d }: { d: string }) {
 }
 
 export default async function Home({ site, articles }: SiteHomeProps) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const latest = articles.filter((a) => !a.is_mock).slice(0, 8);
   const sorted = [...COUNTRIES].sort((x, y) => x.name.localeCompare(y.name));
   const [passports, meta] = await Promise.all([getPassports(), getPiMeta()]);

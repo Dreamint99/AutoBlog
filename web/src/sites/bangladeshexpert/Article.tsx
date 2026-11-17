@@ -1,6 +1,7 @@
 import "./theme.css";
 import Link from "next/link";
 import type { SiteArticleProps, Site, Article as ArticleType, TocItem } from "@/lib/types";
+import { publicPath } from "@/lib/public-path";
 
 /* ---------- shared presentational helpers (server-safe, no hooks) ---------- */
 
@@ -53,7 +54,7 @@ function SiteHeader({ site }: { site: Site }) {
   return (
     <header className="bd-header">
       <div className="bd-wrap bd-header__bar">
-        <Link href={`/s/${site.id}`} className="bd-brand" aria-label={`${site.name} home`}>
+        <Link href={publicPath(site.id, "/")} className="bd-brand" aria-label={`${site.name} home`}>
           <BrandMark />
           <span className="bd-brand__name">
             <b>Bangladesh</b>
@@ -71,11 +72,11 @@ function SiteHeader({ site }: { site: Site }) {
 
         <nav className="bd-nav" aria-label="Primary">
           {NAV_LINKS.map((l) => (
-            <Link key={l.label} href={`/s/${site.id}${l.hash}`}>
+            <Link key={l.label} href={publicPath(site.id, l.hash)}>
               {l.label}
             </Link>
           ))}
-          <Link href={`/s/${site.id}`} className="bd-nav__cta">
+          <Link href={publicPath(site.id, "/")} className="bd-nav__cta">
             Explore
           </Link>
         </nav>
@@ -90,7 +91,7 @@ function SiteFooter({ site }: { site: Site }) {
     <footer className="bd-footer">
       <div className="bd-wrap bd-footer__top">
         <div className="bd-footer__brand-col">
-          <Link href={`/s/${site.id}`} className="bd-footer__brand">
+          <Link href={publicPath(site.id, "/")} className="bd-footer__brand">
             <BrandMark />
             <span>BangladeshExpert</span>
           </Link>
@@ -106,7 +107,7 @@ function SiteFooter({ site }: { site: Site }) {
           <ul>
             {NAV_LINKS.map((l) => (
               <li key={l.label}>
-                <Link href={`/s/${site.id}${l.hash}`}>{l.label}</Link>
+                <Link href={publicPath(site.id, l.hash)}>{l.label}</Link>
               </li>
             ))}
           </ul>
@@ -116,13 +117,13 @@ function SiteFooter({ site }: { site: Site }) {
           <h4>About</h4>
           <ul>
             <li>
-              <Link href={`/s/${site.id}`}>Our mission</Link>
+              <Link href={publicPath(site.id, "/")}>Our mission</Link>
             </li>
             <li>
-              <Link href={`/s/${site.id}`}>Write for us</Link>
+              <Link href={publicPath(site.id, "/")}>Write for us</Link>
             </li>
             <li>
-              <Link href={`/s/${site.id}`}>Contact</Link>
+              <Link href={publicPath(site.id, "/")}>Contact</Link>
             </li>
           </ul>
         </div>
@@ -132,7 +133,7 @@ function SiteFooter({ site }: { site: Site }) {
           © {year} {site.name}. Made with care in Bangladesh.
         </span>
         <span>
-          A <Link href={`/s/${site.id}`}>local expert</Link> publication.
+          A <Link href={publicPath(site.id, "/")}>local expert</Link> publication.
         </span>
       </div>
     </footer>
@@ -143,7 +144,7 @@ function SiteFooter({ site }: { site: Site }) {
 
 function RelatedCard({ site, article }: { site: Site; article: ArticleType }) {
   return (
-    <Link href={`/s/${site.id}/${article.slug}`} className="bd-card">
+    <Link href={publicPath(site.id, `/${article.slug}`)} className="bd-card">
       <div className="bd-card__media">
         {article.image_url ? (
           <img className="bd-card__img" src={article.image_url} alt={article.title} loading="lazy" />
@@ -210,9 +211,9 @@ export default function Article({ site, article, related, bodyHtml, toc }: SiteA
           {/* breadcrumb */}
           <div className="bd-wrap">
             <nav className="bd-crumbs" aria-label="Breadcrumb">
-              <Link href={`/s/${site.id}`}>Home</Link>
+              <Link href={publicPath(site.id, "/")}>Home</Link>
               <span aria-hidden="true">/</span>
-              <Link href={`/s/${site.id}`}>{categoryOf(article)}</Link>
+              <Link href={publicPath(site.id, "/")}>{categoryOf(article)}</Link>
               <span aria-hidden="true">/</span>
               <span className="bd-crumbs__current">{article.title}</span>
             </nav>
@@ -300,7 +301,7 @@ export default function Article({ site, article, related, bodyHtml, toc }: SiteA
                 <div className="bd-art-tags">
                   <span className="bd-art-tags__label">Topics:</span>
                   {article.tags.map((tag) => (
-                    <Link key={tag} href={`/s/${site.id}`} className="bd-tag">
+                    <Link key={tag} href={publicPath(site.id, "/")} className="bd-tag">
                       #{tag}
                     </Link>
                   ))}

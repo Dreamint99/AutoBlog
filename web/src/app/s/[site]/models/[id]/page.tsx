@@ -9,6 +9,7 @@ import { siteBaseUrl } from "@/lib/sites.config";
 import { InfShell } from "@/sites/infkey/Chrome";
 import { fmtUsd, fmtContext, fmtDate } from "@/sites/infkey/data-ui";
 import { JsonLd, breadcrumbSchema } from "@/lib/seo";
+import { sitePrefix } from "@/lib/public-path";
 
 export const dynamic = "force-dynamic";
 
@@ -49,7 +50,7 @@ export default async function ModelDetailPage({
   const model = await getModel(modelId);
   if (!model) notFound();
 
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const base = siteBaseUrl(site);
   const others = (await getModels(model.category)).filter((m) => m.id !== model.id).slice(0, 4);
 
@@ -79,7 +80,7 @@ export default async function ModelDetailPage({
       />
       <InfShell site={site}>
       <nav className="breadcrumb" aria-label="Breadcrumb">
-        <Link href={b}>{site.name}</Link>
+        <Link href={b || "/"}>{site.name}</Link>
         <span className="sep" aria-hidden="true">
           /
         </span>

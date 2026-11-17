@@ -8,6 +8,7 @@ import Flag from "./Flag";
 import { vcFor, isVcArticle, flagFor } from "./visacheck/data";
 import { GuideCard } from "./cards";
 import ImgGuard from "./ImgGuard";
+import { sitePrefix } from "@/lib/public-path";
 
 function Toc({ items, variant }: { items: TocItem[]; variant: "inline" | "rail" }) {
   if (!items.length) return null;
@@ -51,7 +52,7 @@ function cleanBody(html: string): string {
 }
 
 export default function Article({ site, article, related, bodyHtml, toc }: SiteArticleProps) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const c = countryOf(article);
   // Title-card renders (/card/…) only repeat the headline — show the flag banner instead.
   const img = ((u) => (u && !/\/card\//.test(u) ? u : ""))(trustedImage(article));
@@ -71,7 +72,7 @@ export default function Article({ site, article, related, bodyHtml, toc }: SiteA
           <header className="vx-arthead">
             <div className="vx-wrap vx-arthead-in">
               <nav className="vx-crumbs" aria-label="Breadcrumb">
-                <Link href={b}>Home</Link>
+                <Link href={b || "/"}>Home</Link>
                 <span aria-hidden="true">/</span>
                 <Link href={`${b}/guides`}>Guides</Link>
                 {c ? (

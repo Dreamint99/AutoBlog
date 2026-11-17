@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import type { Site } from "@/lib/types";
 import { fontVars } from "./fonts";
+import { publicPath, sitePrefix } from "@/lib/public-path";
 
 /* Shared VisaPoint chrome (v2, 2026-11): one light sticky header — logo, six
    links + More, search — and a quiet light footer. VisaPoint is an INDEPENDENT
@@ -14,7 +15,7 @@ type NavItem = { label: string; href: string; desc?: string };
 type NavGroup = { label: string; items: NavItem[] };
 
 export function menuFor(site: Site): NavGroup[] {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   return [
     {
       label: "Visas",
@@ -52,7 +53,7 @@ export function navFor(site: Site): ReadonlyArray<readonly [string, string]> {
 
 export function Logo({ site }: { site: Site; light?: boolean }) {
   return (
-    <Link href={`/s/${site.id}`} className="vx-logo" aria-label={`${site.name} home`}>
+    <Link href={publicPath(site.id, "/")} className="vx-logo" aria-label={`${site.name} home`}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src="/brand/visapoint/logo.svg" alt="VisaPoint" width={427} height={81} />
     </Link>
@@ -69,7 +70,7 @@ function SearchIcon() {
 }
 
 export function Masthead({ site }: { site: Site }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const main: [string, string][] = [
     ["Visa checker", `${b}/visa-checker`],
     ["Visa status", `${b}/visa-check`],
@@ -131,7 +132,7 @@ export function Masthead({ site }: { site: Site }) {
               <input name="q" type="search" placeholder="Search VisaPoint" aria-label="Search VisaPoint" />
               <button type="submit">Search</button>
             </form>
-            <Link href={b}>Home</Link>
+            <Link href={b || "/"}>Home</Link>
             {[...main, ...more].map(([l, h]) => (
               <Link href={h} key={h}>
                 {l}
@@ -157,7 +158,7 @@ const POPULAR: [string, string, string][] = [
 
 export function Footer({ site }: { site: Site }) {
   const year = new Date().getFullYear();
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const menu = menuFor(site);
   return (
     <footer className="vx-foot">

@@ -1,3 +1,4 @@
+import { publicPath } from "@/lib/public-path";
 /**
  * Shared legal / policy page content for the AutoBlog network sites.
  *
@@ -44,7 +45,7 @@ export function aboutContent(site: Site): ReactNode {
       <h2>Get in touch</h2>
       <p>
         Questions, corrections or feedback are welcome — please use our{" "}
-        <a href={`/s/${site.id}/contact`}>contact page</a>. We especially appreciate source links and
+        <a href={publicPath(site.id, "/contact")}>contact page</a>. We especially appreciate source links and
         updated figures for any of our reports.
       </p>
     </>
@@ -126,7 +127,7 @@ export function privacyContent(site: Site): ReactNode {
         You can block or delete cookies in your browser settings, opt out of personalised ads via the
         links above, and unsubscribe from any email at any time. To request access to or deletion of
         information you have sent us, contact us via the{" "}
-        <a href={`/s/${site.id}/contact`}>contact page</a>.
+        <a href={publicPath(site.id, "/contact")}>contact page</a>.
       </p>
 
       <h2>Children</h2>
@@ -139,7 +140,7 @@ export function privacyContent(site: Site): ReactNode {
       <p>
         Questions about this policy? Email{" "}
         <a href={`mailto:${contactEmail(site)}`}>{contactEmail(site)}</a> or use our{" "}
-        <a href={`/s/${site.id}/contact`}>contact page</a>.
+        <a href={publicPath(site.id, "/contact")}>contact page</a>.
       </p>
     </>
   );
@@ -179,14 +180,14 @@ export function termsContent(site: Site): ReactNode {
       <p>
         The site displays third-party advertising and links to external sources and tools. We are not
         responsible for the content, products or policies of third parties. See our{" "}
-        <a href={`/s/${site.id}/privacy`}>Privacy Policy</a> for how advertising cookies are used.
+        <a href={publicPath(site.id, "/privacy")}>Privacy Policy</a> for how advertising cookies are used.
       </p>
 
       <h2>Changes</h2>
       <p>We may update these terms at any time. Continued use of the site means you accept the current version.</p>
 
       <h2>Contact</h2>
-      <p>Questions? See our <a href={`/s/${site.id}/contact`}>contact page</a>.</p>
+      <p>Questions? See our <a href={publicPath(site.id, "/contact")}>contact page</a>.</p>
     </>
   );
 }
@@ -256,7 +257,7 @@ export function contactContent(site: Site): ReactNode {
       </p>
       <p>
         For details on how we handle any information you send us, see our{" "}
-        <a href={`/s/${site.id}/privacy`}>Privacy Policy</a>.
+        <a href={publicPath(site.id, "/privacy")}>Privacy Policy</a>.
       </p>
     </>
   );

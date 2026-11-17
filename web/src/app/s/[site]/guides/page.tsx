@@ -10,6 +10,7 @@ import { PageBanner, Crumbs } from "@/sites/walvi/data-ui";
 import { JsonLd, breadcrumbSchema, websiteSchema } from "@/lib/seo";
 import { topicOf } from "@/sites/walvi/guide-meta";
 import { GuideCard } from "@/sites/walvi/cards";
+import { publicPath, sitePrefix } from "@/lib/public-path";
 
 export const dynamic = "force-dynamic";
 
@@ -90,7 +91,7 @@ export default async function GuidesPage({
   const sp = await searchParams;
   const articles = (await getArticles(site.id)).filter((a) => !a.is_mock);
   const base = siteBaseUrl(site);
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
 
   const counts = new Map<string, number>();
   for (const a of articles) counts.set(topicOf(a), (counts.get(topicOf(a)) || 0) + 1);
@@ -114,7 +115,7 @@ export default async function GuidesPage({
         ]}
       />
       <WalviShell site={site}>
-        <Crumbs items={[{ name: site.name, href: `/s/${site.id}` }, { name: "Guides" }]} />
+        <Crumbs items={[{ name: site.name, href: publicPath(site.id, "/") }, { name: "Guides" }]} />
         <PageBanner
           flag="📑"
           kicker="Guides & insights"

@@ -1,6 +1,7 @@
 import "./theme.css";
 import Link from "next/link";
 import type { SiteHomeProps, Site, Article } from "@/lib/types";
+import { publicPath } from "@/lib/public-path";
 
 /* ---------- tiny presentational helpers (server-safe, no hooks) ---------- */
 
@@ -53,7 +54,7 @@ function SiteHeader({ site }: { site: Site }) {
   return (
     <header className="bd-header">
       <div className="bd-wrap bd-header__bar">
-        <Link href={`/s/${site.id}`} className="bd-brand" aria-label={`${site.name} home`}>
+        <Link href={publicPath(site.id, "/")} className="bd-brand" aria-label={`${site.name} home`}>
           <BrandMark />
           <span className="bd-brand__name">
             <b>Bangladesh</b>
@@ -72,11 +73,11 @@ function SiteHeader({ site }: { site: Site }) {
 
         <nav className="bd-nav" aria-label="Primary">
           {NAV_LINKS.map((l) => (
-            <Link key={l.label} href={`/s/${site.id}${l.hash}`}>
+            <Link key={l.label} href={publicPath(site.id, l.hash)}>
               {l.label}
             </Link>
           ))}
-          <Link href={`/s/${site.id}`} className="bd-nav__cta">
+          <Link href={publicPath(site.id, "/")} className="bd-nav__cta">
             Explore
           </Link>
         </nav>
@@ -91,7 +92,7 @@ function SiteFooter({ site }: { site: Site }) {
     <footer className="bd-footer">
       <div className="bd-wrap bd-footer__top">
         <div className="bd-footer__brand-col">
-          <Link href={`/s/${site.id}`} className="bd-footer__brand">
+          <Link href={publicPath(site.id, "/")} className="bd-footer__brand">
             <BrandMark />
             <span>BangladeshExpert</span>
           </Link>
@@ -107,7 +108,7 @@ function SiteFooter({ site }: { site: Site }) {
           <ul>
             {NAV_LINKS.map((l) => (
               <li key={l.label}>
-                <Link href={`/s/${site.id}${l.hash}`}>{l.label}</Link>
+                <Link href={publicPath(site.id, l.hash)}>{l.label}</Link>
               </li>
             ))}
           </ul>
@@ -117,13 +118,13 @@ function SiteFooter({ site }: { site: Site }) {
           <h4>About</h4>
           <ul>
             <li>
-              <Link href={`/s/${site.id}`}>Our mission</Link>
+              <Link href={publicPath(site.id, "/")}>Our mission</Link>
             </li>
             <li>
-              <Link href={`/s/${site.id}`}>Write for us</Link>
+              <Link href={publicPath(site.id, "/")}>Write for us</Link>
             </li>
             <li>
-              <Link href={`/s/${site.id}`}>Contact</Link>
+              <Link href={publicPath(site.id, "/")}>Contact</Link>
             </li>
           </ul>
         </div>
@@ -133,7 +134,7 @@ function SiteFooter({ site }: { site: Site }) {
           © {year} {site.name}. Made with care in Bangladesh.
         </span>
         <span>
-          A <Link href={`/s/${site.id}`}>local expert</Link> publication.
+          A <Link href={publicPath(site.id, "/")}>local expert</Link> publication.
         </span>
       </div>
     </footer>
@@ -162,7 +163,7 @@ function CardImage({ article }: { article: Article }) {
 
 function StoryCard({ site, article }: { site: Site; article: Article }) {
   return (
-    <Link href={`/s/${site.id}/${article.slug}`} className="bd-card">
+    <Link href={publicPath(site.id, `/${article.slug}`)} className="bd-card">
       <div className="bd-card__media">
         <CardImage article={article} />
         <span className="bd-chip bd-card__tag">{categoryOf(article)}</span>
@@ -184,7 +185,7 @@ function StoryCard({ site, article }: { site: Site; article: Article }) {
 
 function RailItem({ site, article }: { site: Site; article: Article }) {
   return (
-    <Link href={`/s/${site.id}/${article.slug}`} className="bd-rail__item">
+    <Link href={publicPath(site.id, `/${article.slug}`)} className="bd-rail__item">
       {article.image_url ? (
         <img className="bd-rail__thumb" src={article.image_url} alt={article.title} loading="lazy" />
       ) : (
@@ -249,7 +250,7 @@ export default function Home({ site, articles }: SiteHomeProps) {
             {/* HERO */}
             <section className="bd-hero" aria-label="Featured stories">
               <div className="bd-wrap bd-hero__inner">
-                <Link href={`/s/${site.id}/${featured.slug}`} className="bd-hero__feature">
+                <Link href={publicPath(site.id, `/${featured.slug}`)} className="bd-hero__feature">
                   {featured.image_url ? (
                     <img
                       className="bd-hero__media"
@@ -291,7 +292,7 @@ export default function Home({ site, articles }: SiteHomeProps) {
             {categories.length > 0 ? (
               <nav className="bd-wrap bd-ribbon" aria-label="Browse by topic">
                 {categories.map((c) => (
-                  <Link key={c} href={`/s/${site.id}`} className="bd-ribbon__pill">
+                  <Link key={c} href={publicPath(site.id, "/")} className="bd-ribbon__pill">
                     {c}
                   </Link>
                 ))}

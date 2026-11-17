@@ -10,6 +10,7 @@ import { JsonLd, breadcrumbSchema } from "@/lib/seo";
 import { Masthead, Footer } from "@/sites/walvi/Chrome";
 import { fontVars } from "@/sites/walvi/fonts";
 import Checker from "@/sites/walvi/passport/Checker";
+import { sitePrefix } from "@/lib/public-path";
 
 export const dynamic = "force-dynamic";
 
@@ -42,7 +43,7 @@ export default async function Page({
   const sp = await searchParams;
   const [rows, meta] = await Promise.all([getPassports(), getPiMeta()]);
   if (!rows.length || !meta) notFound();
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const base = siteBaseUrl(site);
   const passports = [...rows].sort((x, y) => x.name.localeCompare(y.name)).map(({ iso2, name, slug }) => ({ iso2, name, slug }));
   const dest = [...meta.dest].sort((x, y) => x.name.localeCompare(y.name));
@@ -77,7 +78,7 @@ export default async function Page({
         <section className="vp-pi-hero vp-chk-hero">
           <div className="vp-wrap">
             <nav className="vp-crumbs" aria-label="Breadcrumb">
-              <Link href={b}>Home</Link>
+              <Link href={b || "/"}>Home</Link>
               <span aria-hidden="true">›</span>
               <span>Visa checker</span>
             </nav>

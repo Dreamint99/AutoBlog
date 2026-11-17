@@ -7,6 +7,7 @@ import { JsonLd, breadcrumbSchema } from "@/lib/seo";
 import { Shell } from "@/sites/ninetymins/Chrome";
 import CricketCenter from "@/sites/ninetymins/CricketCenter";
 import { getCricketMatch, type CrMatch } from "@/sites/ninetymins/cricket";
+import { publicPath } from "@/lib/public-path";
 
 export const dynamic = "force-dynamic";
 
@@ -79,9 +80,9 @@ export default async function CricketPage(p: P) {
         ]}
       />
       <nav className="nm-wrap nm-crumbs nm-mc-crumbs" aria-label="Breadcrumb">
-        <a href={`/s/${site.id}`}>Home</a>
+        <a href={publicPath(site.id, "/")}>Home</a>
         <span>/</span>
-        <a href={`/s/${site.id}/topic/cricket`}>Cricket</a>
+        <a href={publicPath(site.id, "/topic/cricket")}>Cricket</a>
         <span>/</span>
         <span>{m.type || "Match"}</span>
       </nav>

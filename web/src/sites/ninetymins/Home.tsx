@@ -4,6 +4,7 @@ import { Shell, Card, Badge, Kicker, Thumb } from "./Chrome";
 import { NM_COMPS, compOf, ago } from "./comps";
 import { LeagueTable, LeagueFixtures } from "./LiveScores";
 import { heroSrc } from "@/lib/img";
+import { sitePrefix } from "@/lib/public-path";
 
 /** Hands out articles once per page; real reports before mock ones. */
 function picker(all: Article[]) {
@@ -25,7 +26,7 @@ function picker(all: Article[]) {
 const ROWS = ["saff-championship", "champions-league", "premier-league", "world-cup", "cricket", "basketball", "formula-1", "tennis", "football"];
 
 export default function Home({ site, articles }: SiteHomeProps) {
-  const s = `/s/${site.id}`;
+  const s = sitePrefix(site.id);
   const href = (a: Article) => `${s}/${a.slug}`;
   const take = picker(articles);
 

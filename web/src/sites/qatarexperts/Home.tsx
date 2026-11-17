@@ -1,6 +1,7 @@
 import "./theme.css";
 import Link from "next/link";
 import type { SiteHomeProps, Site, Article } from "@/lib/types";
+import { publicPath } from "@/lib/public-path";
 
 /* ────────────────────────────────────────────────────────────
    Inline icons — server-safe, no client JS, no extra packages
@@ -141,7 +142,7 @@ function ArticleMeta({ article }: { article: Article }) {
 }
 
 function StoryCard({ siteId, article }: { siteId: string; article: Article }) {
-  const href = `/s/${siteId}/${article.slug}`;
+  const href = publicPath(siteId, `/${article.slug}`);
   return (
     <article className="qx-card">
       <Link href={href} className="qx-card-media" aria-label={article.title}>
@@ -186,7 +187,7 @@ export default function Home({ site, articles }: SiteHomeProps) {
           {featured ? (
             <div className="qx-hero-feat">
               <Link
-                href={`/s/${site.id}/${featured.slug}`}
+                href={publicPath(site.id, `/${featured.slug}`)}
                 className="qx-hero-media"
                 aria-label={featured.title}
               >
@@ -208,12 +209,12 @@ export default function Home({ site, articles }: SiteHomeProps) {
                   {(site.niche || "Qatar Living & Lifestyle").split(",")[0]}
                 </span>
                 <h1>
-                  <Link href={`/s/${site.id}/${featured.slug}`}>{featured.title}</Link>
+                  <Link href={publicPath(site.id, `/${featured.slug}`)}>{featured.title}</Link>
                 </h1>
                 <p className="qx-hero-excerpt">
                   {featured.excerpt || featured.meta_description || site.tagline}
                 </p>
-                <Link href={`/s/${site.id}/${featured.slug}`} className="qx-readmore">
+                <Link href={publicPath(site.id, `/${featured.slug}`)} className="qx-readmore">
                   Read the story <IconArrow />
                 </Link>
 
@@ -260,14 +261,14 @@ export default function Home({ site, articles }: SiteHomeProps) {
                 <span className="qx-sec-kicker">Editor&rsquo;s pick</span>
                 <h2>This week&rsquo;s must-read</h2>
               </div>
-              <Link href={`/s/${site.id}`} className="qx-sec-link">
+              <Link href={publicPath(site.id, "/")} className="qx-sec-link">
                 All stories <IconArrow />
               </Link>
             </div>
 
             <article className="qx-feature">
               <Link
-                href={`/s/${site.id}/${editorsPick.slug}`}
+                href={publicPath(site.id, `/${editorsPick.slug}`)}
                 className="qx-feature-media"
                 aria-label={editorsPick.title}
               >
@@ -283,11 +284,11 @@ export default function Home({ site, articles }: SiteHomeProps) {
               <div className="qx-feature-body">
                 <span className="qx-chip qx-chip-cat">{categoryOf(editorsPick)}</span>
                 <h3>
-                  <Link href={`/s/${site.id}/${editorsPick.slug}`}>{editorsPick.title}</Link>
+                  <Link href={publicPath(site.id, `/${editorsPick.slug}`)}>{editorsPick.title}</Link>
                 </h3>
                 <p className="qx-excerpt">{editorsPick.excerpt || editorsPick.meta_description}</p>
                 <ArticleMeta article={editorsPick} />
-                <Link href={`/s/${site.id}/${editorsPick.slug}`} className="qx-readmore">
+                <Link href={publicPath(site.id, `/${editorsPick.slug}`)} className="qx-readmore">
                   Read the full feature <IconArrow />
                 </Link>
               </div>
@@ -399,7 +400,7 @@ function SiteHeader({ site }: { site: Site }) {
       </div>
       <div className="qx-wrap">
         <div className="qx-bar">
-          <Link href={`/s/${site.id}`} className="qx-brand" aria-label={`${site.name} home`}>
+          <Link href={publicPath(site.id, "/")} className="qx-brand" aria-label={`${site.name} home`}>
             <Wordmark />
           </Link>
 
@@ -416,11 +417,11 @@ function SiteHeader({ site }: { site: Site }) {
 
           <nav className="qx-nav" aria-label="Primary">
             {NAV_LINKS.map((l) => (
-              <Link key={l.label} href={`/s/${site.id}${l.hash}`}>
+              <Link key={l.label} href={publicPath(site.id, l.hash)}>
                 {l.label}
               </Link>
             ))}
-            <Link href={`/s/${site.id}`} className="qx-nav-cta">
+            <Link href={publicPath(site.id, "/")} className="qx-nav-cta">
               Explore Qatar
             </Link>
           </nav>
@@ -440,7 +441,7 @@ function SiteFooter({ site }: { site: Site }) {
       <div className="qx-wrap">
         <div className="qx-foot-top">
           <div>
-            <Link href={`/s/${site.id}`} className="qx-brand" aria-label={`${site.name} home`}>
+            <Link href={publicPath(site.id, "/")} className="qx-brand" aria-label={`${site.name} home`}>
               <Wordmark />
             </Link>
             <p className="qx-foot-about">
@@ -455,7 +456,7 @@ function SiteFooter({ site }: { site: Site }) {
               <ul>
                 {NAV_LINKS.map((l) => (
                   <li key={l.label}>
-                    <Link href={`/s/${site.id}${l.hash}`}>{l.label}</Link>
+                    <Link href={publicPath(site.id, l.hash)}>{l.label}</Link>
                   </li>
                 ))}
               </ul>
@@ -464,13 +465,13 @@ function SiteFooter({ site }: { site: Site }) {
               <h4>Magazine</h4>
               <ul>
                 <li>
-                  <Link href={`/s/${site.id}`}>About us</Link>
+                  <Link href={publicPath(site.id, "/")}>About us</Link>
                 </li>
                 <li>
-                  <Link href={`/s/${site.id}`}>Editorial policy</Link>
+                  <Link href={publicPath(site.id, "/")}>Editorial policy</Link>
                 </li>
                 <li>
-                  <Link href={`/s/${site.id}`}>Contact</Link>
+                  <Link href={publicPath(site.id, "/")}>Contact</Link>
                 </li>
               </ul>
             </div>
