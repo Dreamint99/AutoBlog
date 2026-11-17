@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Article, Site } from "@/lib/types";
 import { countryOf, topicOf, fmtDate, flagUrl } from "./guide-meta";
+import { publicPath } from "@/lib/public-path";
 
 /* Uniform guide cards with drawn "art" instead of feature photos: the stored
    feature images are AI renders, title cards or dead links, so every card gets a
@@ -56,7 +57,7 @@ export function GuideCard({ site, a, headingLevel = 3 }: { site: Site; a: Articl
   const H = headingLevel === 2 ? "h2" : "h3";
   return (
     <article className="vx-card">
-      <Link href={`/s/${site.id}/${a.slug}`} className="vx-card-link" tabIndex={-1} aria-hidden="true">
+      <Link href={publicPath(site.id, `/${a.slug}`)} className="vx-card-link" tabIndex={-1} aria-hidden="true">
         <CardArt a={a} />
       </Link>
       <div className="vx-card-body">
@@ -65,7 +66,7 @@ export function GuideCard({ site, a, headingLevel = 3 }: { site: Site; a: Articl
           {c ? ` · ${c.name}` : ""}
         </span>
         <H>
-          <Link href={`/s/${site.id}/${a.slug}`}>{a.title}</Link>
+          <Link href={publicPath(site.id, `/${a.slug}`)}>{a.title}</Link>
         </H>
         <span className="vx-meta">
           {fmtDate(a.created_at)}

@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import type { Site } from "@/lib/types";
 import { COUNTRIES, TOPICS, flag } from "./data";
 import { gccFont } from "./fonts";
+import { publicPath, sitePrefix } from "@/lib/public-path";
 
 /* GCCGuide app shell: glass top bar with search, a country rail, a mobile
    bottom tab bar (app feel), and a rich footer. Independent — not a government site. */
@@ -26,7 +27,7 @@ export function Mark() {
 
 export function Logo({ site }: { site: Site }) {
   return (
-    <Link href={`/s/${site.id}`} className="gc-logo" aria-label={`${site.name} home`}>
+    <Link href={publicPath(site.id, "/")} className="gc-logo" aria-label={`${site.name} home`}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src="/brand/gccguide-logo.webp" alt="GCCGuide.com" width={140} height={40} />
     </Link>
@@ -34,7 +35,7 @@ export function Logo({ site }: { site: Site }) {
 }
 
 export function TopBar({ site }: { site: Site }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   return (
     <header className="gc-top">
       <div className="gc-wrap gc-top-in">
@@ -71,7 +72,7 @@ export function TopBar({ site }: { site: Site }) {
 }
 
 export function BottomTabs({ site, active = "home" }: { site: Site; active?: string }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const tabs: [string, string, string, string][] = [
     ["home", "Home", b, "M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"],
     ["countries", "Countries", `${b}#countries`, "M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 0c3 3 3 17 0 20m0-20c-3 3-3 17 0 20M2 12h20"],
@@ -95,7 +96,7 @@ export function BottomTabs({ site, active = "home" }: { site: Site; active?: str
 // Footer boilerplate carries data-nosnippet: Google was quoting the legal line
 // ("GCCGuide is an independent guide…") as the search snippet for every article.
 export function Footer({ site }: { site: Site }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   return (
     <footer className="gc-foot">
       <div className="gc-wrap">

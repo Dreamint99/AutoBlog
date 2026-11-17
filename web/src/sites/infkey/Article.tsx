@@ -6,6 +6,7 @@ import { Masthead, Footer } from "./Chrome";
 import { aiFont } from "./fonts";
 import { topicOf } from "./topics";
 import { heroSrc, thumb } from "@/lib/img";
+import { publicPath } from "@/lib/public-path";
 
 function formatDate(iso: string): string {
   const d = new Date(iso);
@@ -34,7 +35,7 @@ function Toc({ items, variant }: { items: TocItem[]; variant: "inline" | "rail" 
 }
 
 function RelatedCard({ site, article }: { site: Site; article: Article }) {
-  const href = `/s/${site.id}/${article.slug}`;
+  const href = publicPath(site.id, `/${article.slug}`);
   return (
     <article className="card">
       <Link href={href} className="card-media" aria-label={article.title} tabIndex={-1}>
@@ -69,11 +70,11 @@ export default function Article({ site, article, related, bodyHtml, toc }: SiteA
       <main>
         <article className="article-wrap">
           <nav className="breadcrumb" aria-label="Breadcrumb">
-            <Link href={`/s/${site.id}`}>{site.name}</Link>
+            <Link href={publicPath(site.id, "/")}>{site.name}</Link>
             <span className="sep" aria-hidden="true">
               /
             </span>
-            <Link href={`/s/${site.id}#guides`}>Guides</Link>
+            <Link href={publicPath(site.id, "#guides")}>Guides</Link>
             <span className="sep" aria-hidden="true">
               /
             </span>
