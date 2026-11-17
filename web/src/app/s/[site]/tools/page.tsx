@@ -10,6 +10,7 @@ import SalaryCalculator from "@/sites/walvi/SalaryCalculator";
 import CompareCalculator from "@/sites/walvi/CompareCalculator";
 import { countriesLite, jobsLite, estimatesLite, DATA_VERIFIED } from "@/lib/walvi";
 import { JsonLd, webAppSchema, breadcrumbSchema } from "@/lib/seo";
+import { publicPath } from "@/lib/public-path";
 
 const COMING: ReadonlyArray<{ ico: string; h: string; p: string }> = [
   { ico: "⏱️", h: "Overtime salary calculator", p: "Hourly base, overtime multiplier and weekly hours → real monthly take-home." },
@@ -69,7 +70,7 @@ export default async function ToolsPage({
         ]}
       />
       <WalviShell site={site}>
-        <Crumbs items={[{ name: site.name, href: `/s/${site.id}` }, { name: "Tools" }]} />
+        <Crumbs items={[{ name: site.name, href: publicPath(site.id, "/") }, { name: "Tools" }]} />
         <PageBanner
           flag="🧮"
           kicker="Free tools · no sign-up"

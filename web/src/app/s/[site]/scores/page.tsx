@@ -10,6 +10,7 @@ import { LeagueTable } from "@/sites/ninetymins/LiveScores";
 import { Livescore, type LsEvent } from "@/sites/ninetymins/Livescore";
 import { LS_SPORTS } from "@/sites/ninetymins/sports";
 import { getScores, NM_LEAGUES } from "@/sites/ninetymins/live";
+import { publicPath } from "@/lib/public-path";
 
 export const dynamic = "force-dynamic";
 
@@ -57,7 +58,7 @@ export default async function ScoresPage({ params }: P) {
               <ul className="nm-railist">
                 {Object.entries(NM_LEAGUES).map(([l, v]) => (
                   <li key={l}>
-                    <Link href={l === "cricket" ? `/s/${site.id}/cricket` : `/s/${site.id}/league/${l.replace(/\./g, "-")}`}>{v.label}</Link>
+                    <Link href={l === "cricket" ? publicPath(site.id, "/cricket") : publicPath(site.id, `/league/${l.replace(/\./g, "-")}`)}>{v.label}</Link>
                   </li>
                 ))}
               </ul>

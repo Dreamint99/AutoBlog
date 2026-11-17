@@ -5,6 +5,7 @@ import { REQ_LABELS, REQ_COLORS } from "@/lib/visa";
 import { Masthead, Footer } from "../Chrome";
 import { fontVars } from "../fonts";
 import { VC } from "../visacheck/data";
+import { sitePrefix } from "@/lib/public-path";
 
 export default function VisaPairPage({
   site,
@@ -19,7 +20,7 @@ export default function VisaPairPage({
   pair: VisaPair;
   dataDate: string;
 }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const reqLabel = REQ_LABELS[pair.requirement];
   const reqColor = REQ_COLORS[pair.requirement];
   const isAccessible = ["visa_free", "visa_on_arrival", "eta"].includes(pair.requirement);
@@ -34,7 +35,7 @@ export default function VisaPairPage({
         <section className="vp-visa-hero vp-visa-pair-hero">
           <div className="vp-wrap">
             <nav className="vp-crumbs" aria-label="Breadcrumb">
-              <Link href={b}>Home</Link>
+              <Link href={b || "/"}>Home</Link>
               <span aria-hidden="true">›</span>
               <Link href={`${b}/visa-checker`}>Visa Checker</Link>
               <span aria-hidden="true">›</span>

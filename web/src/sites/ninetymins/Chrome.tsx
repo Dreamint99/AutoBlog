@@ -10,6 +10,7 @@ import { AppBanner, AppPopup, AppTopBar } from "./AppPromo";
 import { ThemeToggle } from "./Livescore";
 import { PLAY_URL } from "./sports";
 import { NavMore } from "./NavMore";
+import { publicPath, sitePrefix } from "@/lib/public-path";
 
 /* Shared NinetyMins chrome: header (quick links, theme, app, sports row), footer, and the card primitives every page uses. */
 
@@ -24,7 +25,7 @@ export function Badge({ comp }: { comp: NmComp }) {
 
 export function Kicker({ comp, siteId }: { comp: NmComp; siteId: string }) {
   return (
-    <Link href={`/s/${siteId}/topic/${comp.slug}`} className="nm-kicker" style={comp.color === "#111827" ? undefined : ({ "--kc": comp.color } as CSSProperties)}>
+    <Link href={publicPath(siteId, `/topic/${comp.slug}`)} className="nm-kicker" style={comp.color === "#111827" ? undefined : ({ "--kc": comp.color } as CSSProperties)}>
       {comp.label}
     </Link>
   );
@@ -94,13 +95,13 @@ export function Logo({ href, name, className = "nv-logo" }: { href: string; name
 }
 
 export function Header({ site }: { site: Site; home?: boolean }) {
-  const s = `/s/${site.id}`;
+  const s = sitePrefix(site.id);
   return (
     <>
       <AppTopBar />
       <header className="nm-hd nv-hd">
         <div className="nm-wrap nv-hd-row">
-          <Logo href={s} name={site.name} />
+          <Logo href={s || "/"} name={site.name} />
           <nav className="nv-nav" aria-label="Main">
             {NAV.map(([p, label]) => (
               <Link href={`${s}${p}`} key={label} className={p === "" ? "nv-nav-live" : undefined}>
@@ -137,7 +138,7 @@ export function Header({ site }: { site: Site; home?: boolean }) {
 }
 
 export function Footer({ site }: { site: Site }) {
-  const s = `/s/${site.id}`;
+  const s = sitePrefix(site.id);
   const year = new Date().getFullYear();
   return (
     <footer className="nm-footer nv-footer">
@@ -145,7 +146,7 @@ export function Footer({ site }: { site: Site }) {
         <AppBanner variant="footer" medium="footer" />
         <div className="nv-foot-grid">
           <div className="nv-foot-brand">
-            <Logo href={s} name={site.name} />
+            <Logo href={s || "/"} name={site.name} />
             <p data-nosnippet="">
               Live scores and legal viewing guides. Not affiliated with any league, club or broadcaster.
             </p>
@@ -153,7 +154,7 @@ export function Footer({ site }: { site: Site }) {
           <div>
             <h4>Scores</h4>
             <ul>
-              <li><Link href={s}>Live scores</Link></li>
+              <li><Link href={s || "/"}>Live scores</Link></li>
               <li><Link href={`${s}/today`}>Today&apos;s matches</Link></li>
               <li><Link href={`${s}/tomorrow`}>Tomorrow</Link></li>
               <li><Link href={`${s}/scores`}>Football</Link></li>
@@ -240,7 +241,7 @@ export function Thumb({ href, article, ratio = "16 / 9", children }: { href: str
 
 /** Standard story card (image, competition kicker, headline, time). */
 export function Card({ site, article, dek = false }: { site: Site; article: Article; dek?: boolean }) {
-  const href = `/s/${site.id}/${article.slug}`;
+  const href = publicPath(site.id, `/${article.slug}`);
   const c = compOf(article);
   return (
     <article className="nm-card">

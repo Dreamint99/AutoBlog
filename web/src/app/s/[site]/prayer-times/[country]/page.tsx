@@ -9,6 +9,7 @@ import { citiesOf, buildPrayerView, indexedCities } from "@/sites/gccguide/hub/p
 import { GULF_CURRENCIES, INDEX } from "@/sites/gccguide/hub/config";
 import { HubPage, Crumbs, PageHead, DataTable, Faq, SectionHead, SourceLine, Related } from "@/sites/gccguide/hub/ui";
 import { int } from "@/sites/gccguide/hub/format";
+import { sitePrefix } from "@/lib/public-path";
 
 export const dynamic = "force-dynamic";
 
@@ -35,7 +36,7 @@ export default async function Page({ params }: Props) {
   const site = getSite(id);
   const g = GULF_CURRENCIES.find((c) => c.country === country);
   if (!site || site.id !== "gccguide" || !g) notFound();
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const base = siteBaseUrl(site);
   const cities = citiesOf(country);
   if (!cities.length) notFound();

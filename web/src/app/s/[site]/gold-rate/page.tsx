@@ -9,6 +9,7 @@ import { getGold, getFxSnapshot, usdPer } from "@/lib/gcc";
 import { GOLD_CITIES, GRAMS_PER_OZ, GRAMS_PER_TOLA, KARATS } from "@/sites/gccguide/hub/config";
 import { HubPage, Crumbs, PageHead, StatRow, BigStat, DataTable, Faq, SourceLine, SectionHead, Callout } from "@/sites/gccguide/hub/ui";
 import { fmt, dateLong } from "@/sites/gccguide/hub/format";
+import { sitePrefix } from "@/lib/public-path";
 
 export const dynamic = "force-dynamic";
 
@@ -30,7 +31,7 @@ export default async function Page({ params }: { params: Promise<{ site: string 
   const { site: id } = await params;
   const site = getSite(id);
   if (!site || site.id !== "gccguide") notFound();
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const base = siteBaseUrl(site);
   const [gold, snap] = await Promise.all([getGold(), getFxSnapshot()]);
 

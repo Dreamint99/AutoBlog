@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
+import { publicPath } from "@/lib/public-path";
 
 type Opt = { iso2: string; name: string; slug: string };
 type Res = { iso2: string; name: string; slug: string; rank: number; score: number; codes: string[] };
@@ -137,12 +138,12 @@ export default function Checker({
             <p className="vp-chk-warn">Tourist/business entry only. Working always needs a work permit and the right visa.</p>
             <div className="vp-chk-actions">
               {guides[to] ? (
-                <Link className="vp-btn vp-btn-primary" href={`/s/${siteId}/countries/${guides[to]}`}>
+                <Link className="vp-btn vp-btn-primary" href={publicPath(siteId, `/countries/${guides[to]}`)}>
                   Work permit &amp; salaries in {toName}
                 </Link>
               ) : null}
               {res ? (
-                <Link className="vp-btn vp-btn-outline" href={`/s/${siteId}/passport/${res.slug}`}>
+                <Link className="vp-btn vp-btn-outline" href={publicPath(siteId, `/passport/${res.slug}`)}>
                   Everywhere a {fromName} passport can go
                 </Link>
               ) : null}

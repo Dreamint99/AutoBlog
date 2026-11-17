@@ -222,7 +222,7 @@ def _english_slug(site: dict, title: str, data: dict) -> str:
         raw = chat("Return only a URL slug: 3-7 lowercase English words joined by hyphens, the search keyword "
                    "people type for this article (keep a year if the title has one). No other text.",
                    title, temperature=0.2, max_tokens=40)
-        slug = re.sub(r"[^a-z0-9-]+", "", re.sub(r"\s+", "-", raw.strip().lower()))[:70].strip("-")
+        slug = seo.english_slug_from_model(raw)
         return slug if re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+){2,8}", slug) else ""
     except Exception:
         return ""

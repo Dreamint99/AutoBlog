@@ -7,6 +7,7 @@ import { siteBaseUrl } from "@/lib/sites.config";
 import { JsonLd, breadcrumbSchema } from "@/lib/seo";
 import { Shell } from "@/sites/ninetymins/Chrome";
 import SaffCentre, { SAFF_API, type SaffFeed } from "@/sites/ninetymins/SaffCentre";
+import { publicPath } from "@/lib/public-path";
 
 export const dynamic = "force-dynamic";
 
@@ -56,7 +57,7 @@ export default async function SaffPage({ params }: P) {
           <h1>SAFF Live</h1>
           <p>
             Live scores, fixtures, tables, scorers and squads for every SAFF tournament — updated automatically. History and winners list:{" "}
-            <Link href={`/s/${site.id}/topic/saff-championship`}>SAFF Championship hub</Link>.
+            <Link href={publicPath(site.id, "/topic/saff-championship")}>SAFF Championship hub</Link>.
           </p>
         </div>
       </section>

@@ -8,6 +8,7 @@ import { WalviShell } from "@/sites/walvi/Chrome";
 import { PageHead, DataBand, Crumbs, CountryCard, Disclaimer } from "@/sites/walvi/data-ui";
 import { COUNTRIES, JOBS, DATA_VERIFIED, estimate, eur } from "@/lib/walvi";
 import { JsonLd, breadcrumbSchema, datasetSchema } from "@/lib/seo";
+import { publicPath } from "@/lib/public-path";
 
 export async function generateMetadata({
   params,
@@ -61,7 +62,7 @@ export default async function CountriesPage({
         ]}
       />
       <WalviShell site={site}>
-        <Crumbs items={[{ name: site.name, href: `/s/${site.id}` }, { name: "Countries" }]} />
+        <Crumbs items={[{ name: site.name, href: publicPath(site.id, "/") }, { name: "Countries" }]} />
         <PageHead
           kicker="Countries"
           title="Work in Europe, by country"

@@ -10,6 +10,7 @@ import { PageHead, FitBadge } from "@/sites/infkey/data-ui";
 import { estimate, fmtParams, getGpu } from "@/sites/infkey/gpus";
 import { JsonLd, breadcrumbSchema } from "@/lib/seo";
 import { infMeta } from "@/sites/infkey/meta";
+import { sitePrefix } from "@/lib/public-path";
 
 export const dynamic = "force-dynamic";
 
@@ -29,7 +30,7 @@ export default async function GpuPage({ params }: { params: Promise<{ site: stri
   const all = await getHfModels();
   const rows = all.map((m) => ({ m, e4: estimate(m.params, g, 0.6), e8: estimate(m.params, g, 1.07) })).filter((r) => r.e4.fit !== "no");
   const biggest = [...rows].sort((a, c) => c.m.params - a.m.params)[0];
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const base = siteBaseUrl(site);
   return (
     <>

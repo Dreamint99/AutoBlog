@@ -9,6 +9,7 @@ import { InfShell } from "@/sites/infkey/Chrome";
 import { PageHead, fmtDate, StatusBadge } from "@/sites/infkey/data-ui";
 import { JsonLd, breadcrumbSchema } from "@/lib/seo";
 import { infMeta } from "@/sites/infkey/meta";
+import { sitePrefix } from "@/lib/public-path";
 
 export const dynamic = "force-dynamic";
 
@@ -22,7 +23,7 @@ export default async function StatusPage({ params }: { params: Promise<{ site: s
   const site = getSite((await params).site);
   if (!site || site.id !== "infkey") notFound();
   const list = await getStatuses();
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const base = siteBaseUrl(site);
   const latest = list.reduce((a, s) => (s.checked_at > a ? s.checked_at : a), "");
   const allUp = list.every((s) => s.indicator === "none");

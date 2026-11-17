@@ -112,9 +112,9 @@ export default async function MatchPage(p: P) {
         ]}
       />
       <nav className="nm-wrap nm-crumbs nm-mc-crumbs" aria-label="Breadcrumb">
-        <a href={`/s/${site.id}`}>Home</a>
+        <a href={publicPath(site.id, "/")}>Home</a>
         <span>/</span>
-        <a href={`/s/${site.id}/scores`}>Live scores</a>
+        <a href={publicPath(site.id, "/scores")}>Live scores</a>
         <span>/</span>
         <span>{m.leagueLabel}</span>
       </nav>

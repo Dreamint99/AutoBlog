@@ -3,6 +3,7 @@ import type { Site } from "@/lib/types";
 import { getStatuses, statusWord } from "@/lib/aidata";
 import { getDayChanges, getNewModels } from "@/lib/models";
 import { fmtUsd, fmtDate } from "./data-ui";
+import { sitePrefix } from "@/lib/public-path";
 
 /* Server components for the InfKey home page data widgets. */
 
@@ -10,7 +11,7 @@ import { fmtUsd, fmtDate } from "./data-ui";
 export async function StatusStrip({ site }: { site: Site }) {
   const list = await getStatuses();
   if (!list.length) return null;
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const dotClass = (ind: string) =>
     ind === "none" ? "ok" : ind === "minor" || ind === "maintenance" ? "warn" : "bad";
   return (
@@ -31,7 +32,7 @@ export async function ChangesSummary({ site }: { site: Site }) {
   const c = await getDayChanges(today);
   const n = c.up.length + c.down.length + c.added.length;
   if (n === 0 && !c.first) return null;
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   return (
     <section className="ai-sec" id="changes-today">
       <div className="section-head">
@@ -78,7 +79,7 @@ export async function ChangesSummary({ site }: { site: Site }) {
 export async function NewModels({ site }: { site: Site }) {
   const models = await getNewModels(7);
   if (!models.length) return null;
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   return (
     <section className="ai-sec" id="new-models">
       <div className="section-head">

@@ -9,6 +9,7 @@ import { Shell } from "@/sites/ninetymins/Chrome";
 import HighlightsList, { HlGrid } from "@/sites/ninetymins/HighlightsList";
 import { YouTube } from "@/sites/ninetymins/Video";
 import { fixtures } from "@/sites/ninetymins/engine";
+import { publicPath } from "@/lib/public-path";
 import {
   HL_SPORTS, cleanTitle, countHighlights, duration, getHighlight, hlPath, hlSlug, idFromSlug, isoDuration, listHighlights, relatedHighlights,
 } from "@/sites/ninetymins/highlights";
@@ -97,8 +98,8 @@ export default async function Page({ params, searchParams }: P) {
       <div className="lv-page">
         <div className="nm-wrap hl-watch">
           <nav className="nm-crumbs" aria-label="Breadcrumb">
-            <Link href={`/s/${site.id}/highlights`}>Highlights</Link> <span>/</span>{" "}
-            <Link href={`/s/${site.id}/highlights/${HL_SPORTS.some(([k]) => k === h.sport) ? h.sport : ""}`}>{h.sport}</Link>
+            <Link href={publicPath(site.id, "/highlights")}>Highlights</Link> <span>/</span>{" "}
+            <Link href={publicPath(site.id, `/highlights/${HL_SPORTS.some(([k]) => k === h.sport) ? h.sport : ""}`)}>{h.sport}</Link>
           </nav>
           <h1 className="hl-title">{t}</h1>
           <YouTube id={h.id} title={t} thumb={h.thumb} />
@@ -110,17 +111,17 @@ export default async function Page({ params, searchParams }: P) {
           {e && fx ? (
             <section className="hl-match">
               <span className="hl-sport">{e.leagueName}</span>
-              <Link href={`/s/${site.id}${fx.path}`} className="hl-score">
+              <Link href={publicPath(site.id, fx.path)} className="hl-score">
                 <span>{e.home.name}</span>
                 <b>{e.state === "pre" ? "vs" : `${e.home.score} – ${e.away.score}`}</b>
                 <span>{e.away.name}</span>
               </Link>
               <p>
                 {e.state === "post" ? `Full time${e.detail ? ` (${e.detail})` : ""}.` : e.state === "in" ? "Live now." : `Kick-off ${fmtDate(e.date)}.`}{" "}
-                <Link href={`/s/${site.id}${fx.path}`}>Match centre: line-ups, stats and timeline →</Link>
+                <Link href={publicPath(site.id, fx.path)}>Match centre: line-ups, stats and timeline →</Link>
               </p>
               <p className="hl-links">
-                <Link href={`/s/${site.id}/team/${fx.home_slug}`}>{e.home.name} fixtures</Link> · <Link href={`/s/${site.id}/team/${fx.away_slug}`}>{e.away.name} fixtures</Link> · <Link href={`/s/${site.id}/league/${fx.league}`}>{e.leagueName}</Link>
+                <Link href={publicPath(site.id, `/team/${fx.home_slug}`)}>{e.home.name} fixtures</Link> · <Link href={publicPath(site.id, `/team/${fx.away_slug}`)}>{e.away.name} fixtures</Link> · <Link href={publicPath(site.id, `/league/${fx.league}`)}>{e.leagueName}</Link>
               </p>
             </section>
           ) : null}

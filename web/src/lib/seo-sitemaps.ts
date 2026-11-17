@@ -1,7 +1,9 @@
+import { indexableLoc, indexableEntries } from "./indexable-url";
 import { races } from "@/sites/ninetymins/F1Hub";
 import { activeSite } from "./site-context";
 import { getArticles, d1 } from "./data";
 import { fixtures, hubs, months, prunedSlugs } from "@/sites/ninetymins/engine";
+import { NM_LEAGUES } from "@/sites/ninetymins/live";
 import { sitemapHighlights, hlPath, cleanTitle, HL_SPORTS } from "@/sites/ninetymins/highlights";
 import { allPairs } from "@/sites/ninetymins/h2h";
 import legacySitemap from "./legacy-sitemap";
@@ -9,7 +11,10 @@ import { dataIndex, comparisonLinks } from "@/sites/countly/data-engine";
 const BASE = "https://ninetymins.com";
 export const xmlEscape = (s: string) => s.replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&apos;" })[c]!);
 const xml = (body: string) => new Response(`<?xml version="1.0" encoding="UTF-8"?>${body}`, { headers: { "content-type": "application/xml; charset=utf-8", "cache-control": "public, max-age=60" } });
-const urls = (items: { url: string; lastmod?: string }[]) => xml(`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${items.map(i => `<url><loc>${xmlEscape(i.url)}</loc>${i.lastmod ? `<lastmod>${xmlEscape(i.lastmod)}</lastmod>` : ""}</url>`).join("")}</urlset>`);
+const urls = (items: { url: string; lastmod?: string }[]) => {
+  const clean = indexableEntries(items);
+  return xml(`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${clean.map(i => `<url><loc>${xmlEscape(i.url)}</loc>${i.lastmod ? `<lastmod>${xmlEscape(i.lastmod)}</lastmod>` : ""}</url>`).join("")}</urlset>`);
+};
 
 export async function sitemapResponse(name: string): Promise<Response> {
   if (activeSite().id === "countly") return countlySitemap(name);
@@ -21,7 +26,7 @@ export async function sitemapResponse(name: string): Promise<Response> {
     const maps = ["sitemap-hubs.xml", "sitemap-articles.xml", "sitemap-news.xml", "sitemap-videos.xml", "sitemap-h2h.xml", ...(await monthMaps())];
     return xml(`<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${maps.map(m => `<sitemap><loc>${BASE}/${m}</loc></sitemap>`).join("")}</sitemapindex>`);
   }
-  if (name === "sitemap-hubs.xml") return urls([{ url: BASE + "/" }, { url: BASE + "/league/f1" }, ...(await races()).map(r => ({ url: BASE + "/race/" + r.slug, lastmod: r.lastmod })), ...(d1() ? (await d1()!.prepare("SELECT slug,lastmod FROM seo_pages WHERE site_id=\'ninetymins\' AND kind=\'stories\'").all<{ slug: string; lastmod: string }>()).results.map(r => ({ url: BASE + "/stories/" + r.slug, lastmod: r.lastmod })) : []), ...["today", "tomorrow", "scores", "widgets", "archive", "live-tv", "highlights", ...HL_SPORTS.filter(([k]) => k).map(([k]) => `highlights/${k}`)].map(p => ({ url: `${BASE}/${p}` })), ...(await hubs()).map(h => ({ url: BASE + h.path, lastmod: h.lastmod }))]);
+  if (name === "sitemap-hubs.xml") return urls([{ url: BASE + "/" }, ...(await races()).map(r => ({ url: BASE + "/race/" + r.slug, lastmod: r.lastmod })), ...(d1() ? (await d1()!.prepare("SELECT slug,lastmod FROM seo_pages WHERE site_id=\'ninetymins\' AND kind=\'stories\'").all<{ slug: string; lastmod: string }>()).results.map(r => ({ url: BASE + "/stories/" + r.slug, lastmod: r.lastmod })) : []), ...["today", "tomorrow", "scores", "widgets", "archive", "live-tv", "highlights", ...HL_SPORTS.filter(([k]) => k).map(([k]) => `highlights/${k}`)].map(p => ({ url: `${BASE}/${p}` })), ...(await hubs()).filter(h => { const m = h.path.match(/^\/league\/([^/]+)$/); return !(m && NM_LEAGUES[m[1]]); }).map(h => ({ url: BASE + h.path, lastmod: h.lastmod }))]);
   if (name === "sitemap-h2h.xml") return urls((await allPairs()).map(p => ({ url: `${BASE}/h2h/${p.slug}`, lastmod: p.lastmod })));
   if (name === "sitemap-videos.xml") {
     // Google video sitemap: one watch page per official highlight (player = YouTube embed).
@@ -52,10 +57,10 @@ async function countlySitemap(name: string): Promise<Response> {
   const hidden = await prunedSlugs("countly");
   const articles = await getArticles("countly");
   if (name === "sitemap-articles.xml") return urls(articles.filter(a => !hidden.has(a.slug)).map(a => ({ url: `${base}/${a.slug}`, lastmod: a.created_at })));
-  if (name === "sitemap-data.xml") return urls([...(await dataIndex()).map(p => ({ url: `${base}/data/${p.kind}/${p.slug}`, lastmod: p.lastmod })), ...(await comparisonLinks()).map(c => ({ url: base + c.path }))]);
+  if (name === "sitemap-data.xml") return urls([...(await dataIndex()).filter(p => p.kind !== "embed" && p.kind !== "compare").map(p => ({ url: `${base}/data/${p.kind}/${p.slug}`, lastmod: p.lastmod })), ...(await comparisonLinks()).map(c => ({ url: base + c.path }))]);
   if (name === "sitemap-hubs.xml") {
     const articleUrls = new Set(articles.map(a => `${base}/${a.slug}`));
-    return urls([{ url: base + "/data" }, ...(await legacySitemap()).filter(p => !articleUrls.has(p.url)).map(p => ({ url: p.url }))]);
+    return urls([{ url: base + "/data" }, ...(await legacySitemap()).filter(p => !articleUrls.has(p.url) && indexableLoc(p.url)).map(p => ({ url: indexableLoc(p.url)! }))]);
   }
   return new Response("Not found", { status: 404 });
 }

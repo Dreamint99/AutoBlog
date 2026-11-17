@@ -5,6 +5,7 @@ import { REQ_LABELS, REQ_SHORT, REQ_COLORS } from "@/lib/visa";
 import { Masthead, Footer } from "../Chrome";
 import { fontVars } from "../fonts";
 import { CountUp } from "../Animated";
+import { publicPath, sitePrefix } from "@/lib/public-path";
 
 const CATEGORIES: VisaRequirement[] = ["visa_free", "visa_on_arrival", "eta", "e_visa", "visa_required", "no_admission"];
 
@@ -34,7 +35,7 @@ function CategorySection({
         {destinations.map((d) => (
           <Link
             key={d.destination}
-            href={`/s/${siteId}/visa/${d.slug}`}
+            href={publicPath(siteId, `/visa/${d.slug}`)}
             className={`vp-visa-card${isAccessible ? " accessible" : ""}`}
           >
             <img
@@ -75,7 +76,7 @@ export default function VisaFreeCountriesPage({
   dataDate: string;
   neighbours: PassportRanking[];
 }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const totalDest = Object.values(grouped).flat().length;
 
   return (
@@ -85,7 +86,7 @@ export default function VisaFreeCountriesPage({
         <section className="vp-visa-hero">
           <div className="vp-wrap">
             <nav className="vp-crumbs" aria-label="Breadcrumb">
-              <Link href={b}>Home</Link>
+              <Link href={b || "/"}>Home</Link>
               <span aria-hidden="true">›</span>
               <Link href={`${b}/visa-checker`}>Visa Checker</Link>
               <span aria-hidden="true">›</span>

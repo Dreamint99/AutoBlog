@@ -2,10 +2,11 @@ import Link from "next/link";
 import type { Article, Site } from "@/lib/types";
 import { Shell, Card } from "./Chrome";
 import { NM_LEAGUES, leagueToSlug } from "./live";
+import { sitePrefix } from "@/lib/public-path";
 
 /* /search on ninetymins: competitions whose name matches + stories (noindex page). */
 export default function Search({ site, q, results }: { site: Site; q: string; results: Article[] }) {
-  const s = `/s/${site.id}`;
+  const s = sitePrefix(site.id);
   const ql = q.toLowerCase();
   const comps = ql.length >= 2 ? Object.entries(NM_LEAGUES).filter(([, v]) => v.label.toLowerCase().includes(ql)).slice(0, 8) : [];
   return (

@@ -7,6 +7,7 @@ import { LS_SPORTS } from "./sports";
 import { getScores, NM_LEAGUES, leagueToSlug } from "./live";
 import { listHighlights, type Highlight } from "./highlights";
 import { HlGrid } from "./HighlightsList";
+import { sitePrefix } from "@/lib/public-path";
 
 /* Home (v2, 2026-11-15): the live board front and centre (grouped by competition,
    with sport tabs, a 7-day strip and filters) + the Premier League table beside it;
@@ -33,7 +34,7 @@ function leagueHref(l: string) {
 const sportOf = (l: string) => LS_SPORTS.find((s) => s.leagues.includes(l))?.label ?? (l === "wta" ? "Tennis" : "Football");
 
 export default async function Home({ site, articles }: SiteHomeProps) {
-  const s = `/s/${site.id}`;
+  const s = sitePrefix(site.id);
   const stories = [...articles.filter((a) => !a.is_mock), ...articles.filter((a) => a.is_mock)].slice(0, 8);
   // Server day in UTC; the client re-fetches if the visitor's local day differs.
   const day = new Date().toISOString().slice(0, 10).replace(/-/g, "");

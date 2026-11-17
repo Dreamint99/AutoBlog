@@ -8,6 +8,7 @@ import { JsonLd, breadcrumbSchema } from "@/lib/seo";
 import { Shell } from "@/sites/ninetymins/Chrome";
 import Insights from "@/sites/ninetymins/Insights";
 import { getH2H, parsePair, pairSlug, type FormGame, type H2H } from "@/sites/ninetymins/h2h";
+import { publicPath } from "@/lib/public-path";
 
 export const dynamic = "force-dynamic";
 type P = { params: Promise<{ site: string; pair: string }> };
@@ -102,7 +103,7 @@ export default async function Page({ params }: P) {
       <div className="lv-page">
         <div className="nm-wrap">
           <nav className="nm-crumbs" aria-label="Breadcrumb">
-            <Link href={`/s/${site.id}/team/${h.a.slug}`}>{h.a.name}</Link> <span>/</span> <Link href={`/s/${site.id}/team/${h.b.slug}`}>{h.b.name}</Link>
+            <Link href={publicPath(site.id, `/team/${h.a.slug}`)}>{h.a.name}</Link> <span>/</span> <Link href={publicPath(site.id, `/team/${h.b.slug}`)}>{h.b.name}</Link>
           </nav>
           <h1 className="hl-title">
             {h.a.name} vs {h.b.name}: head to head
@@ -178,7 +179,7 @@ export default async function Page({ params }: P) {
           ) : null}
           <p className="mx-note mx-wide">
             Data: ESPN and NinetyMins match records. Win probability is a model estimate from recent form, not a tip.{" "}
-            <Link href={`/s/${site.id}/team/${h.a.slug}`}>{h.a.name} fixtures</Link> · <Link href={`/s/${site.id}/team/${h.b.slug}`}>{h.b.name} fixtures</Link>
+            <Link href={publicPath(site.id, `/team/${h.a.slug}`)}>{h.a.name} fixtures</Link> · <Link href={publicPath(site.id, `/team/${h.b.slug}`)}>{h.b.name} fixtures</Link>
           </p>
         </div>
       </div>

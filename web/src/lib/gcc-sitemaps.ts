@@ -1,6 +1,7 @@
 import "server-only";
 import { activeSite } from "@/lib/site-context";
 import { siteBaseUrl } from "@/lib/sites.config";
+import { indexableLoc } from "@/lib/indexable-url";
 
 /* Sitemap helpers for the hub.
  *
@@ -22,7 +23,8 @@ function esc(s: string): string {
 }
 
 export function urlset(entries: Entry[]): string {
-  const body = entries
+  const clean = entries.filter((e) => indexableLoc(e.loc));
+  const body = clean
     .map(
       (e) =>
         `  <url><loc>${esc(e.loc)}</loc>` +
@@ -60,4 +62,14 @@ export function siteAndBase(): { id: string; base: string } {
 /** Absolute URL for a site-relative path. */
 export function abs(base: string, path: string): string {
   return `${base}${path.startsWith("/") ? path : `/${path}`}`;
+}
+
+/** Hub sitemaps describe gccguide.com only. Other sites 404 them so Google
+ *  never receives /rates, /gold-rate, … URLs that do not exist there. */
+export function gccOnly(): Response | null {
+  if (activeSite().id === "gccguide") return null;
+  return new Response("Not found", {
+    status: 404,
+    headers: { "content-type": "text/plain; charset=utf-8", "x-robots-tag": "noindex" },
+  });
 }

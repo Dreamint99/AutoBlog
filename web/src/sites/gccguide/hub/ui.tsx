@@ -5,6 +5,7 @@ import type { Site } from "@/lib/types";
 import { GcShell } from "../Chrome";
 import { toPath, thin, type Pt } from "./series";
 import { dateLong, dateShort, fmt, pct } from "./format";
+import { publicPath } from "@/lib/public-path";
 
 /* Reusable server-rendered building blocks for the Gulf Expat Data Hub.
  * No "use client", no hooks, no chart library: every page is plain HTML + one
@@ -23,7 +24,7 @@ export function HubPage({ site, children, active }: { site: Site; children: Reac
 export function Crumbs({ site, items }: { site: Site; items: { label: string; href?: string }[] }) {
   return (
     <nav className="gh-crumbs" aria-label="Breadcrumb">
-      <Link href={`/s/${site.id}`}>{site.name}</Link>
+      <Link href={publicPath(site.id, "/")}>{site.name}</Link>
       {items.map((it) => (
         <span key={it.label}>
           <i aria-hidden="true">›</i>

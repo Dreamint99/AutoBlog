@@ -9,6 +9,7 @@ import { Masthead, Footer } from "@/sites/walvi/Chrome";
 import { fontVars } from "@/sites/walvi/fonts";
 import TravelMap from "@/sites/walvi/travel/TravelMap";
 import { travelFont } from "@/sites/walvi/travel/fonts";
+import { sitePrefix } from "@/lib/public-path";
 
 export const dynamic = "force-dynamic";
 
@@ -52,7 +53,7 @@ export default async function Page({ params }: { params: Promise<{ site: string 
   const { site: id } = await params;
   const site = getSite(id);
   if (!site || site.id !== "walvi") notFound();
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const base = siteBaseUrl(site);
   return (
     <div className={`${fontVars} ${travelFont.variable}`}>
@@ -84,7 +85,7 @@ export default async function Page({ params }: { params: Promise<{ site: string 
         <section className="vp-pi-hero tm-hero">
           <div className="vp-wrap">
             <nav className="vp-crumbs" aria-label="Breadcrumb">
-              <Link href={b}>Home</Link>
+              <Link href={b || "/"}>Home</Link>
               <span aria-hidden="true">›</span>
               <span>Travel map</span>
             </nav>

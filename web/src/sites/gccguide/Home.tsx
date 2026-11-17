@@ -6,6 +6,7 @@ import { Clocks, Converter, CityPulse } from "./Widgets";
 import TodayStrip from "./hub/TodayStrip";
 import HomeData from "./hub/HomeData";
 import { heroSrc, thumb } from "@/lib/img";
+import { publicPath, sitePrefix } from "@/lib/public-path";
 
 // [icon, label, page]. A page value sends the chip straight to a hub page; otherwise it searches the label.
 const QUICK: [string, string, string?][] = [
@@ -43,7 +44,7 @@ function Skyline() {
 function Card({ site, a, big = false }: { site: Site; a: Article; big?: boolean }) {
   const c = countryOf(a);
   const t = topicOf(a);
-  const href = `/s/${site.id}/${a.slug}`;
+  const href = publicPath(site.id, `/${a.slug}`);
   return (
     <article className={`gc-acard${big ? " big" : ""}`}>
       <Link href={href} className="gc-amedia" tabIndex={-1} aria-label={a.title}>
@@ -67,7 +68,7 @@ function Card({ site, a, big = false }: { site: Site; a: Article; big?: boolean 
 }
 
 export default function Home({ site, articles }: SiteHomeProps) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const real = articles.filter((a) => !a.is_mock);
   const [lead, ...rest] = real;
   return (
