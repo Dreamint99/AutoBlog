@@ -1,6 +1,7 @@
 import "./theme.css";
 import Link from "next/link";
 import type { SiteHomeProps, Site, Article } from "@/lib/types";
+import { publicPath } from "@/lib/public-path";
 
 /* ── small pure helpers (no hooks / no state) ── */
 
@@ -75,7 +76,7 @@ function Masthead({ site }: { site: Site }) {
       <div className="shell masthead-row">
         {/* CSS-only mobile menu toggle */}
         <input type="checkbox" id="ai-nav" className="nav-toggle" aria-hidden="true" />
-        <Link href={`/s/${site.id}`} className="logo" aria-label={`${site.name} home`}>
+        <Link href={publicPath(site.id, "/")} className="logo" aria-label={`${site.name} home`}>
           <span className="logomark" aria-hidden="true">
             AI<span className="dot" />
           </span>
@@ -110,7 +111,7 @@ function Footer({ site }: { site: Site }) {
     <footer className="footer">
       <div className="shell">
         <div className="footer-row">
-          <Link href={`/s/${site.id}`} className="logo" aria-label={`${site.name} home`}>
+          <Link href={publicPath(site.id, "/")} className="logo" aria-label={`${site.name} home`}>
             <span className="logomark" aria-hidden="true">
               AI<span className="dot" />
             </span>
@@ -144,7 +145,7 @@ function Footer({ site }: { site: Site }) {
 /* ── cards ── */
 
 function Lead({ site, article }: { site: Site; article: Article }) {
-  const href = `/s/${site.id}/${article.slug}`;
+  const href = publicPath(site.id, `/${article.slug}`);
   return (
     <article className="lead">
       <Link href={href} className="lead-media" aria-label={article.title} tabIndex={-1}>
@@ -180,7 +181,7 @@ function Lead({ site, article }: { site: Site; article: Article }) {
 }
 
 function Card({ site, article }: { site: Site; article: Article }) {
-  const href = `/s/${site.id}/${article.slug}`;
+  const href = publicPath(site.id, `/${article.slug}`);
   return (
     <article className="card">
       <Link href={href} className="card-media" aria-label={article.title} tabIndex={-1}>

@@ -1,9 +1,11 @@
-import { urlset, xmlResponse, siteAndBase, abs } from "@/lib/gcc-sitemaps";
+import { urlset, xmlResponse, siteAndBase, abs, gccOnly } from "@/lib/gcc-sitemaps";
 import { FUEL_COUNTRIES } from "@/sites/gccguide/hub/config";
 import { buildFuelView, fuelMonth } from "@/sites/gccguide/hub/fuel";
 import { gate } from "@/sites/gccguide/hub/gate";
 
 export async function GET() {
+  const denied = gccOnly();
+  if (denied) return denied;
   const { base } = siteAndBase();
   const lastmod = `${fuelMonth()}-01`;
   const views = FUEL_COUNTRIES.map((c) => buildFuelView(c.slug)).filter((v) => v != null);

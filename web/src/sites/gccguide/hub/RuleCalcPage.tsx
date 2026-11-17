@@ -4,6 +4,7 @@ import { HubPage, Crumbs, PageHead, StatRow, BigStat, DataTable, Faq, SourceLine
 import { hourlyWage, overtimePay, tierDays, dailyWage, daysPay, type OvertimeRule, type LeaveRule, type NoticeRule } from "./leave";
 import { GULF_CURRENCIES } from "./config";
 import { fmt } from "./format";
+import { sitePrefix } from "@/lib/public-path";
 
 /* One page component for the three simpler statutory calculators. The law is a
  * data record; the page shows the arithmetic for the reader's own numbers, then
@@ -43,7 +44,7 @@ const META: Record<CalcKind, { title: string; verb: string; dek: string; path: s
 };
 
 export default function RuleCalcPage({ site, kind, country, countryName, currency, rule, input }: RuleCalcProps) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const m = META[kind];
   const confirmed = Boolean(rule?.confirmed);
 

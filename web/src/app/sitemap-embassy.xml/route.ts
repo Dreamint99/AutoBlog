@@ -1,8 +1,10 @@
-import { urlset, xmlResponse, siteAndBase, abs } from "@/lib/gcc-sitemaps";
+import { urlset, xmlResponse, siteAndBase, abs, gccOnly } from "@/lib/gcc-sitemaps";
 import { verifiedMissions, missionSlug } from "@/sites/gccguide/hub/embassy";
 import { gate } from "@/sites/gccguide/hub/gate";
 
 export async function GET() {
+  const denied = gccOnly();
+  if (denied) return denied;
   const { base } = siteAndBase();
   const lastmod = new Date().toISOString().slice(0, 10);
   const entries = [

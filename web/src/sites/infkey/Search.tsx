@@ -4,11 +4,12 @@ import type { Article, Site } from "@/lib/types";
 import { InfShell } from "./Chrome";
 import { topicOf, PROMPT_PACKS } from "./topics";
 import { thumb } from "@/lib/img";
+import { sitePrefix } from "@/lib/public-path";
 
 /* InfKey guide search. When nothing matches yet it says so and offers close topics instead of a dead end.
    (Model prices have their own instant filter on /models.) */
 export default function Search({ site, q, results }: { site: Site; q: string; results: Article[] }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   return (
     <InfShell site={site}>
       <header className="page-head">

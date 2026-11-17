@@ -4,6 +4,7 @@ import { getFxSnapshot, crossRate, getGold } from "@/lib/gcc";
 import { buildFuelView } from "./fuel";
 import { GRAMS_PER_OZ, INDEX } from "./config";
 import { fmt, dateLong } from "./format";
+import { sitePrefix } from "@/lib/public-path";
 
 /* "Today in the Gulf" — the home page strip.
  *
@@ -15,7 +16,7 @@ import { fmt, dateLong } from "./format";
  */
 
 export default async function TodayStrip({ site }: { site: Site }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const [snap, gold] = await Promise.all([getFxSnapshot(), getGold()]);
   const aedInr = crossRate(snap, "AED", "INR");
   const g22 = (gold.usdPerOz / GRAMS_PER_OZ) * (snap.byCode.AED?.rate ?? 3.6725) * 0.916;

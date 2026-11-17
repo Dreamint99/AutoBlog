@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { InfModel, Site } from "@/lib/types";
+import { sitePrefix } from "@/lib/public-path";
 
 /* Shared presentational pieces for InfKey data-product pages (server components). */
 
@@ -73,7 +74,7 @@ export function Caps({ model }: { model: InfModel }) {
 }
 
 export function ModelTable({ site, models, id, sortable = false }: { site: Site; models: InfModel[]; id?: string; sortable?: boolean }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const sort = (kind: "num" | "text") => (sortable ? { "data-sort": kind } : {});
   const ts = (iso: string | null) => {
     const t = iso ? Date.parse(iso) : NaN;

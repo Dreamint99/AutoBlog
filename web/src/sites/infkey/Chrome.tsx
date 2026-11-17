@@ -3,13 +3,14 @@ import type { ReactNode } from "react";
 import type { Site } from "@/lib/types";
 import "./v2.css";
 import { aiFont } from "./fonts";
+import { publicPath, sitePrefix } from "@/lib/public-path";
 
 /* Shared InfKey chrome (v2) — sticky header, footer, page shell.
    Used by Home, Article and every data route so the nav stays consistent.
    No client JS: the "More" menu and the phone drawer are <details>. */
 
 export function navFor(site: Site): ReadonlyArray<readonly [string, string]> {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   return [
     ["Models", `${b}/models`],
     ["Compare", `${b}/compare`],
@@ -21,7 +22,7 @@ export function navFor(site: Site): ReadonlyArray<readonly [string, string]> {
 }
 
 function moreFor(site: Site): ReadonlyArray<readonly [string, string]> {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   return [
     ["New models", `${b}/new`],
     ["GPU guide", `${b}/gpu`],
@@ -44,7 +45,7 @@ export function KeyMark() {
 export function Logo({ site }: { site: Site }) {
   /* Brand wordmark: "inf" + gradient "key" + muted ".com" (Space Grotesk). */
   return (
-    <Link href={`/s/${site.id}`} className="ik-logo" aria-label={`${site.name} home`}>
+    <Link href={publicPath(site.id, "/")} className="ik-logo" aria-label={`${site.name} home`}>
       <span className="ik-wm-a">inf</span>
       <span className="ik-wm-k">key</span>
       <span className="ik-wm-d">.com</span>
@@ -72,7 +73,7 @@ const IMG_GUARD =
 export function Masthead({ site }: { site: Site }) {
   const nav = navFor(site);
   const more = moreFor(site);
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   return (
     <header className={`ik-bar ${aiFont.variable}`}>
       <script dangerouslySetInnerHTML={{ __html: IMG_GUARD }} />
@@ -124,7 +125,7 @@ export function Masthead({ site }: { site: Site }) {
 
 export function Footer({ site }: { site: Site }) {
   const year = new Date().getFullYear();
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const cols: ReadonlyArray<[string, ReadonlyArray<[string, string]>]> = [
     [
       "Data",

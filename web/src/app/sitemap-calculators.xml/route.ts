@@ -1,4 +1,4 @@
-import { urlset, xmlResponse, siteAndBase, abs } from "@/lib/gcc-sitemaps";
+import { urlset, xmlResponse, siteAndBase, abs, gccOnly } from "@/lib/gcc-sitemaps";
 import { GULF_CURRENCIES } from "@/sites/gccguide/hub/config";
 import { allRules } from "@/sites/gccguide/hub/rules";
 import { gate, INDEXED_EXAMPLE_YEARS } from "@/sites/gccguide/hub/gate";
@@ -8,6 +8,8 @@ import { exampleSlug } from "@/sites/gccguide/hub/gratuity";
 const EXAMPLE_WAGES = [3000, 5000, 8000, 10000];
 
 export async function GET() {
+  const denied = gccOnly();
+  if (denied) return denied;
   const { base } = siteAndBase();
   const lastmod = "2026-11-14";
   const entries: { loc: string; lastmod: string; changefreq: "monthly" | "weekly"; priority: number }[] = [

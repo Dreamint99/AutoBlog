@@ -10,6 +10,7 @@ import NewsletterForm from "./NewsletterForm";
 import HouseAd from "./HouseAd";
 import type { SiteHomeProps, Article } from "@/lib/types";
 import { heroSrc, thumb } from "@/lib/img";
+import { publicPath, sitePrefix } from "@/lib/public-path";
 
 /* ────────────────────────────────────────────────────────────
    Inline icons (no client JS, no extra packages)
@@ -133,7 +134,7 @@ function todayLine(): string {
    other Countly page (topic, Top 10, search, info, AI tools).
    ──────────────────────────────────────────────────────────── */
 export function CnHeader({ site }: { site: { id: string; name: string } }) {
-  const s = `/s/${site.id}`;
+  const s = sitePrefix(site.id);
   return (
     <header className="cx-masthead">
       <div className="cx-util">
@@ -147,7 +148,7 @@ export function CnHeader({ site }: { site: { id: string; name: string } }) {
         </div>
       </div>
       <div className="cx-brandrow">
-        <Link href={s} className="cx-logo cx-logo-img" aria-label={`${site.name} home`}>
+        <Link href={s || "/"} className="cx-logo cx-logo-img" aria-label={`${site.name} home`}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/brand/countly-logo-dark.webp" alt="Countly" width={92} height={86} />
           <small>The World in Numbers</small>
@@ -156,7 +157,7 @@ export function CnHeader({ site }: { site: { id: string; name: string } }) {
       <div className="cx-navrow">
         <div className="cx-wrap">
           <nav className="cx-nav" aria-label="Sections">
-            <Link href={s}>Latest</Link>
+            <Link href={s || "/"}>Latest</Link>
             <Link href={`${s}/top10`} className="cx-nav-gold">
               Top 10 Lists
             </Link>
@@ -242,7 +243,7 @@ function CardChips({ tags }: { tags: string[] }) {
 }
 
 export function StatCard({ siteId, article, index }: { siteId: string; article: Article; index: number }) {
-  const href = `/s/${siteId}/${article.slug}`;
+  const href = publicPath(siteId, `/${article.slug}`);
   return (
     <article className="cn-card">
       <Link href={href} className="cn-card-media" aria-label={article.title}>
@@ -271,7 +272,7 @@ const DESKS = ["ai-chatgpt", "social-media", "companies", "internet", "countries
    Page
    ──────────────────────────────────────────────────────────── */
 export default function Home({ site, articles }: SiteHomeProps) {
-  const s = `/s/${site.id}`;
+  const s = sitePrefix(site.id);
   const href = (a: Article) => `${s}/${a.slug}`;
   const take = picker(articles);
 
@@ -564,7 +565,7 @@ export function SiteFooter({ siteName, siteId, domain }: { siteName: string; sit
         <HouseAd />
         <div className="cn-foot-top">
           <div>
-            <Link href={`/s/${siteId}`} className="cn-brand" aria-label={`${siteName} home`}>
+            <Link href={publicPath(siteId, "/")} className="cn-brand" aria-label={`${siteName} home`}>
               <span className="cn-logo cn-logo-img">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/brand/countly-mark.webp" alt="" width={34} height={21} />
@@ -586,13 +587,13 @@ export function SiteFooter({ siteName, siteId, domain }: { siteName: string; sit
               <h4>Topics</h4>
               <ul>
                 <li>
-                  <Link href={`/s/${siteId}/topic/ai-chatgpt`}>AI &amp; ChatGPT</Link>
+                  <Link href={publicPath(siteId, "/topic/ai-chatgpt")}>AI &amp; ChatGPT</Link>
                 </li>
                 <li>
-                  <Link href={`/s/${siteId}/topic/social-media`}>Social media</Link>
+                  <Link href={publicPath(siteId, "/topic/social-media")}>Social media</Link>
                 </li>
                 <li>
-                  <Link href={`/s/${siteId}/topic/companies`}>Companies</Link>
+                  <Link href={publicPath(siteId, "/topic/companies")}>Companies</Link>
                 </li>
               </ul>
             </div>
@@ -600,22 +601,22 @@ export function SiteFooter({ siteName, siteId, domain }: { siteName: string; sit
               <h4>About</h4>
               <ul>
                 <li>
-                  <Link href={`/s/${siteId}/about`}>About us</Link>
+                  <Link href={publicPath(siteId, "/about")}>About us</Link>
                 </li>
                 <li>
-                  <Link href={`/s/${siteId}/contact`}>Contact</Link>
+                  <Link href={publicPath(siteId, "/contact")}>Contact</Link>
                 </li>
                 <li>
-                  <Link href={`/s/${siteId}/privacy`}>Privacy Policy</Link>
+                  <Link href={publicPath(siteId, "/privacy")}>Privacy Policy</Link>
                 </li>
                 <li>
-                  <Link href={`/s/${siteId}/terms`}>Terms of Service</Link>
+                  <Link href={publicPath(siteId, "/terms")}>Terms of Service</Link>
                 </li>
                 <li>
-                  <Link href={`/s/${siteId}/disclaimer`}>Disclaimer</Link>
+                  <Link href={publicPath(siteId, "/disclaimer")}>Disclaimer</Link>
                 </li>
                 <li>
-                  <Link href={`/s/${siteId}/archive`}>All articles</Link>
+                  <Link href={publicPath(siteId, "/archive")}>All articles</Link>
                 </li>
               </ul>
             </div>

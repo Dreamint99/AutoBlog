@@ -10,6 +10,7 @@ import { PageHead, FitBadge, MemoryBar } from "@/sites/infkey/data-ui";
 import { QUANTS, estimate, fmtParams, getGpu } from "@/sites/infkey/gpus";
 import { JsonLd, breadcrumbSchema } from "@/lib/seo";
 import { infMeta } from "@/sites/infkey/meta";
+import { sitePrefix } from "@/lib/public-path";
 
 export const dynamic = "force-dynamic";
 
@@ -33,7 +34,7 @@ export default async function RunPairPage({ params }: { params: Promise<{ site: 
   const { site, m, g } = await load(await params);
   if (!site || site.id !== "infkey" || !m || !g) notFound();
   const n = hfName(m);
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const base = siteBaseUrl(site);
   const res = QUANTS.map((q) => ({ q, e: estimate(m.params, g, q.bytes) }));
   const best = res.find((r) => r.e.fit === "fits") ?? res.find((r) => r.e.fit === "tight");

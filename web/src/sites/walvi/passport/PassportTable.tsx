@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { publicPath } from "@/lib/public-path";
 
 export type TRow = {
   iso2: string;
@@ -49,7 +50,7 @@ export default function PassportTable({ rows, siteId }: { rows: TRow[]; siteId: 
             <li key={r.iso2} className="vp-pt-row" style={{ animationDelay: `${Math.min(i, 30) * 25}ms` }}>
               <span className="vp-pt-rank">{r.rank}</span>
               <img className="vp-flag" src={`https://flagcdn.com/w80/${r.iso2.toLowerCase()}.png`} alt="" width={30} height={20} loading="lazy" />
-              <Link className="vp-pt-name" href={`/s/${siteId}/passport/${r.slug}`}>
+              <Link className="vp-pt-name" href={publicPath(siteId, `/passport/${r.slug}`)}>
                 {r.name}
               </Link>
               <span className="vp-pt-bar" aria-hidden="true">

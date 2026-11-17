@@ -10,6 +10,7 @@ import { InfShell } from "@/sites/infkey/Chrome";
 import { PageHead, ModelTable, headliners, pairsOf } from "@/sites/infkey/data-ui";
 import TableTools from "@/sites/infkey/TableTools";
 import { JsonLd, breadcrumbSchema } from "@/lib/seo";
+import { sitePrefix } from "@/lib/public-path";
 
 export const dynamic = "force-dynamic";
 
@@ -49,7 +50,7 @@ export default async function ComparePage({
 
   const models = await getModels();
   const verified = latestVerified(models);
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
 
   // popular head-to-heads: the headline model of each big lab
   const pairs = pairsOf(headliners(models, 6), 15);

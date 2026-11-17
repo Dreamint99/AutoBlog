@@ -9,6 +9,7 @@ import { buildFuelView, monthName, fuelMonth } from "@/sites/gccguide/hub/fuel";
 import { FUEL_COUNTRIES } from "@/sites/gccguide/hub/config";
 import { HubPage, Crumbs, PageHead, DataTable, Faq, SourceLine, SectionHead, Callout } from "@/sites/gccguide/hub/ui";
 import { fmt } from "@/sites/gccguide/hub/format";
+import { sitePrefix } from "@/lib/public-path";
 
 export const dynamic = "force-dynamic";
 
@@ -29,7 +30,7 @@ export default async function Page({ params }: { params: Promise<{ site: string 
   const { site: id } = await params;
   const site = getSite(id);
   if (!site || site.id !== "gccguide") notFound();
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
   const base = siteBaseUrl(site);
   const month = fuelMonth();
 

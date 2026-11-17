@@ -5,6 +5,7 @@ import { GULF_CURRENCIES } from "./config";
 import { allRules } from "./rules";
 import { computeGratuity } from "./gratuity";
 import { fmt } from "./format";
+import { sitePrefix } from "@/lib/public-path";
 
 /* /calculators for gccguide. The route file also serves infkey's AI-cost
  * calculators, so this component is mounted from there for site === gccguide. */
@@ -23,7 +24,7 @@ export const gccCalculatorsMeta = {
 };
 
 export default function CalculatorsHub({ site }: { site: Site }) {
-  const b = `/s/${site.id}`;
+  const b = sitePrefix(site.id);
 
   const rows = GULF_CURRENCIES.map((g) => {
     const rule = allRules().find((r) => r.country === g.country)?.gratuity;
