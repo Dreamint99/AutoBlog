@@ -7,7 +7,7 @@
    Snippets #6, #7, #8 and #11 (v2) step aside when pa_app() is on;
    their ads are redrawn here in the same design language. Writer names are not shown. */
 if ( ! defined( 'PA_APP_PUBLIC' ) ) define( 'PA_APP_PUBLIC', true );
-if ( ! defined( 'PA_APP_VERSION' ) ) define( 'PA_APP_VERSION', '3.6.2' );
+if ( ! defined( 'PA_APP_VERSION' ) ) define( 'PA_APP_VERSION', '3.6.3' );
 define( 'PA_LOGO', 'https://probashiinfo.com/wp-content/uploads/2026/10/probashiinfo-wordmark.webp' );
 define( 'PA_ICON', 'https://probashiinfo.com/wp-content/uploads/2026/10/probashiinfo-icon.png' );
 define( 'PA_PB', 'https://www.probashibondu.online' );
@@ -24,6 +24,16 @@ function pa_app() {
 	}
 	return $on = ( PA_APP_PUBLIC || ! empty( $_COOKIE['pi_app'] ) );
 }
+
+/* The site is Bengali. WordPress is still set to en-US, and language_attributes()
+   (used by pa_head()) would otherwise emit lang="en-US". */
+add_filter( 'language_attributes', function ( $output ) {
+	if ( ! pa_app() ) return $output;
+	$n = 0;
+	$output = preg_replace( '/\blang="[^"]*"/', 'lang="bn-BD"', $output, 1, $n );
+	if ( ! $n ) $output = trim( 'lang="bn-BD" ' . $output );
+	return $output;
+} );
 
 add_action( 'init', function () {
 	if ( PA_APP_PUBLIC && get_option( 'pa_app_purged' ) !== PA_APP_VERSION ) {

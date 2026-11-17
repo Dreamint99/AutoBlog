@@ -13,7 +13,7 @@ define('PBD_LOADED', 1);
 define('PBD_MODE', 'live');               // 'test' | 'live'
 define('PBD_KEY', '__PBD_TEST_KEY__');
 define('PBD_API', 'https://probashi-data.iamkashimuddin.workers.dev/v1/');
-define('PBD_VER', '16');
+define('PBD_VER', '17');
 
 function pbd_enabled() {
     if (PBD_MODE === 'live') { return true; }
@@ -87,6 +87,11 @@ function pbd_match() {
         $list = $d[isset($lists[$type]) ? $lists[$type] : 'countries'];
         foreach ($list as $c) { if ($c['slug'] === $slug) { $item = $c; break; } }
         if (!$item) { return $m; }   // unknown slug → normal WordPress 404
+        // The post in owned.url already ranks for this country's visa guide.
+        // Serving /visa/<slug>/ as well makes two indexable URLs for one query.
+        if ($type === 'visa' && !empty($item['owned']['url'])) {
+            return $m = array('type' => 'visa', 'redirect_to' => $item['owned']['url']);
+        }
     }
     $m = array('type' => $type, 'slug' => $slug, 'data' => $d, 'item' => $item, 'path' => '/' . $type . '/' . ($slug !== '' ? $slug . '/' : ''));
     if (substr($path, -1) !== '/') { $m['redirect'] = true; }
@@ -111,6 +116,7 @@ add_action('wp', function () {
     global $wp_query;
     $wp_query->is_home = false; $wp_query->is_front_page = false; $wp_query->is_404 = false;
     $wp_query->is_archive = false; $wp_query->is_singular = false; $wp_query->is_page = false;
+    if (!empty($m['redirect_to']) || !empty($m['redirect'])) { return; }
     status_header(200);
 }, 1);
 
@@ -118,6 +124,7 @@ add_action('template_redirect', function () {
     $m = pbd_match();
     if (!$m) { return; }
     if ($m['type'] === 'sitemap') { pbd_sitemap(); exit; }
+    if (!empty($m['redirect_to'])) { wp_safe_redirect($m['redirect_to'], 301); exit; }
     if (!empty($m['redirect'])) { wp_safe_redirect(home_url($m['path']) . (PBD_MODE === 'test' ? '?pbd=' . rawurlencode(PBD_KEY) : ''), 301); exit; }
     if (PBD_MODE === 'test') {
         do_action('litespeed_control_set_nocache', 'pbd test');
