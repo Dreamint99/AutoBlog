@@ -8,7 +8,7 @@
    Data pages (#32), BMET/flight/rates tools render themselves and only get the palette.
    Rollout: PI6_PUBLIC false = only with ?v6=1 (cookie; ?v6=0 clears). Rollback = deactivate. */
 if ( ! defined( 'PI6_PUBLIC' ) ) define( 'PI6_PUBLIC', true );
-if ( ! defined( 'PI6_VERSION' ) ) define( 'PI6_VERSION', '7.2.1' );
+if ( ! defined( 'PI6_VERSION' ) ) define( 'PI6_VERSION', '7.3.0' );
 
 function pi6_on() {
 	static $on = null;
@@ -250,6 +250,19 @@ if(['bm-app','ft-app','fx-app'].some(function(c){return b.classList.contains(c)}
 document.querySelectorAll('details').forEach(function(d){if(/অ্যাপ হিসেবে ইনস্টল/.test(d.textContent))d.remove();});
 })();</script>
 <?php }, 70 );
+
+/* "অ্যাপ ডাউনলোড" in every header menu (desktop bar, phone drawer, tool pages) */
+add_action( 'wp_footer', function () {
+	if ( ! pi6_on() ) return;
+	$play = 'https://play.google.com/store/apps/details?id=com.probashibondu.probashi_bondu&referrer=' . rawurlencode( 'utm_source=probashiinfo&utm_medium=menu&utm_campaign=app' ); ?>
+<script>(function(){var U=<?php echo wp_json_encode( $play ); ?>;
+function mk(cls,txt){var a=document.createElement('a');a.href=U;a.target='_blank';a.rel='noopener';a.className=cls;a.textContent=txt;return a;}
+var c=document.querySelector('.cat2 .w');if(c&&!c.querySelector('.pi-dl')){var m=c.querySelector('.more');var a=mk('pi-dl','📲 অ্যাপ ডাউনলোড');m?c.insertBefore(a,m):c.appendChild(a);}
+var d=document.querySelector('.drw-c');if(d&&!d.querySelector('.pi-dl')){d.insertBefore(mk('pi-dl','📲 অ্যাপ ডাউনলোড'),d.children[1]||null);}
+var n=document.querySelector('.ah nav');if(n&&!n.querySelector('.pi-dl')){n.appendChild(mk('pi-dl','📲 অ্যাপ ডাউনলোড'));}
+var t=document.querySelector('.tabs');if(t&&!t.querySelector('.pi-dl')){var sh=t.querySelector('.share-now');var x=mk('pi-dl','');x.innerHTML='<i>📲</i>অ্যাপ';sh?t.replaceChild(x,sh):t.appendChild(x);}
+})();</script>
+<?php }, 72 );
 
 /* category / tag / search / older posts: light header, clean rows with a small image */
 function pi_v6_list() {
@@ -542,5 +555,10 @@ html body.bm-app .ah .w,html body.ft-app .ah .w,html body.fx-app .ah .w{gap:16px
 html body.bm-app .ah nav,html body.ft-app .ah nav,html body.fx-app .ah nav{gap:2px;flex:1;min-width:0;overflow-x:auto;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 92%,transparent);mask-image:linear-gradient(90deg,#000 92%,transparent)}
 html body.bm-app .ah nav a,html body.ft-app .ah nav a,html body.fx-app .ah nav a{flex:none;padding:7px 12px!important;font-size:14.5px!important;font-weight:600;border-radius:999px;white-space:nowrap}
 html body.bm-app .ah .home,html body.ft-app .ah .home,html body.fx-app .ah .home{flex:none;font-size:14px;font-weight:600;padding:7px 12px;border-radius:999px;border:1px solid var(--line);color:var(--ink2)!important}
+/* app download menu item */
+body.pi-app .cat2 a.pi-dl{color:var(--b)!important;font-weight:700}
+body.pi-app .drw-c a.pi-dl{color:var(--b)!important;font-weight:700;background:#FFF1F3}
+html body.bm-app .ah nav a.pi-dl,html body.ft-app .ah nav a.pi-dl,html body.fx-app .ah nav a.pi-dl{background:var(--b)!important;color:#fff!important}
+body.pi-app .tabs a.pi-dl{color:var(--b)}
 </style>
 <?php }, 101 );

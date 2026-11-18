@@ -56,7 +56,7 @@ add_filter( 'the_content', function ( $content ) {
 	return $parts[0] . $parts[1] . $parts[2] . $parts[3] . $card . $parts[4];
 }, 30 );
 
-// Popup: after 10 s or 40% scroll, at most once every 3 days.
+// Popup: 1.5 s after the page opens, at most once a day.
 add_action( 'wp_footer', function () { if ( ! pba_on() ) return; ?>
 <div class="pba-pop" id="pba-pop" role="dialog" aria-modal="true" aria-label="Probashi Info অ্যাপ">
 	<div class="pba-box">
@@ -66,13 +66,13 @@ add_action( 'wp_footer', function () { if ( ! pba_on() ) return; ?>
 		<button class="pba-later" type="button">পরে</button>
 	</div>
 </div>
-<script>(function(){try{if(/iPhone|iPad|iPod/.test(navigator.userAgent))return;var p=document.getElementById('pba-pop'),K='pba-pop-next';if(+localStorage.getItem(K)>Date.now())return;var shown=false;function show(){if(shown||document.querySelector('.pb-pop.on'))return;shown=true;p.classList.add('on');localStorage.setItem(K,Date.now()+3*864e5)}function hide(){p.classList.remove('on')}setTimeout(show,10000);addEventListener('scroll',function(){if(scrollY>(document.body.scrollHeight-innerHeight)*.4)show()},{passive:true});p.querySelector('.pba-x').onclick=hide;p.querySelector('.pba-later').onclick=hide;p.querySelector('.pba-cta').onclick=hide;p.onclick=function(e){if(e.target===p)hide()};addEventListener('keydown',function(e){if(e.key==='Escape')hide()})}catch(e){}})();</script>
+<script>(function(){try{if(/iPhone|iPad|iPod/.test(navigator.userAgent))return;var p=document.getElementById('pba-pop'),K='pba-pop-next';if(+localStorage.getItem(K)>Date.now())return;var shown=false;function show(){if(shown||document.querySelector('.pb-pop.on'))return;shown=true;p.classList.add('on');localStorage.setItem(K,Date.now()+864e5)}function hide(){p.classList.remove('on')}setTimeout(show,1500);addEventListener('scroll',function(){if(scrollY>(document.body.scrollHeight-innerHeight)*.4)show()},{passive:true});p.querySelector('.pba-x').onclick=hide;p.querySelector('.pba-later').onclick=hide;p.querySelector('.pba-cta').onclick=hide;p.onclick=function(e){if(e.target===p)hide()};addEventListener('keydown',function(e){if(e.key==='Escape')hide()})}catch(e){}})();</script>
 <?php }, 30 );
 
 // one LiteSpeed purge per promo version, so cached pages pick it up
 add_action( 'init', function () {
-	if ( get_option( 'pba_purged' ) !== '2' ) {
-		update_option( 'pba_purged', '2', false );
+	if ( get_option( 'pba_purged' ) !== '3' ) {
+		update_option( 'pba_purged', '3', false );
 		do_action( 'litespeed_purge_all' );
 	}
 } );
