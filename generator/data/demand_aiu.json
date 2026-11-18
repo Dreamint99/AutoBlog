@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-08-17..2026-11-15, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-18..2026-11-16, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "প্রাথমিক চিকিৎসা কি",
@@ -44,6 +44,12 @@
    "src": "gsc"
   },
   {
+   "q": "শূন্য থেকে ielts প্রস্তুতি",
+   "impr": 20,
+   "pos": 8.5,
+   "src": "gsc"
+  },
+  {
    "q": "চন্দ্রবোড়া সাপের কামড়ের লক্ষণ",
    "impr": 20,
    "pos": 9.4,
@@ -59,12 +65,6 @@
    "q": "প্রাথমিক চিকিৎসা বলতে কি বুঝায়",
    "impr": 19,
    "pos": 8.6,
-   "src": "gsc"
-  },
-  {
-   "q": "শূন্য থেকে ielts প্রস্তুতি",
-   "impr": 18,
-   "pos": 8.4,
    "src": "gsc"
   },
   {
@@ -95,6 +95,12 @@
    "q": "প্রাথমিক চিকিৎসা কী",
    "impr": 11,
    "pos": 11.9,
+   "src": "gsc"
+  },
+  {
+   "q": "স্পোকেন ইংলিশ বাংলা টু ইংরেজি",
+   "impr": 10,
+   "pos": 11.8,
    "src": "gsc"
   }
  ]

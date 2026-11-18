@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-08-17..2026-11-15, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-18..2026-11-16, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "richest countries in world",
@@ -683,12 +683,6 @@
    "src": "bing"
   },
   {
-   "q": "the fastest car in the world",
-   "impr": 57,
-   "pos": 8.0,
-   "src": "bing"
-  },
-  {
    "q": "reddit users in india",
    "impr": 54,
    "pos": 8.3,
@@ -704,6 +698,12 @@
    "q": "what is the fastest car",
    "impr": 50,
    "pos": 8.5,
+   "src": "bing"
+  },
+  {
+   "q": "the fastest car in the world",
+   "impr": 38,
+   "pos": 8.0,
    "src": "bing"
   },
   {
@@ -744,8 +744,8 @@
   },
   {
    "q": "most starred github repo",
-   "impr": 21,
-   "pos": 8.2,
+   "impr": 23,
+   "pos": 8.3,
    "src": "bing"
   },
   {
@@ -824,12 +824,6 @@
    "q": "richest perosn in argentina",
    "impr": 10,
    "pos": 8.0,
-   "src": "bing"
-  },
-  {
-   "q": "most subscribed youtube channel",
-   "impr": 10,
-   "pos": 8.4,
    "src": "bing"
   },
   {

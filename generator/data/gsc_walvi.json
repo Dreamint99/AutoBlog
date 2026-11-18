@@ -1,5 +1,5 @@
 {
- "source": "Search Console API 2026-08-17..2026-11-15",
+ "source": "Search Console API 2026-08-18..2026-11-16",
  "pages": [
   {
    "url": "https://visapoint.net/visa-check/romania",
@@ -246,7 +246,7 @@
   },
   {
    "url": "https://visapoint.net/visa-check/moldova",
-   "impressions": 100,
+   "impressions": 101,
    "clicks": 2,
    "queries": [
     [
@@ -308,14 +308,20 @@
      1,
      0,
      8
+    ],
+    [
+     "moldova invitation letter check",
+     1,
+     0,
+     32
     ]
    ],
-   "position": 8.6,
-   "ctr": 0.02
+   "position": 8.9,
+   "ctr": 0.0198
   },
   {
    "url": "https://visapoint.net/",
-   "impressions": 98,
+   "impressions": 99,
    "clicks": 4,
    "queries": [
     [
@@ -391,82 +397,19 @@
      86
     ]
    ],
-   "position": 27.9,
-   "ctr": 0.0408
-  },
-  {
-   "url": "https://visapoint.net/moldova-visa-status-online-2026-step-by-step-guide",
-   "impressions": 89,
-   "clicks": 3,
-   "queries": [
-    [
-     "moldova visa status check",
-     8,
-     0,
-     9.6
-    ],
-    [
-     "moldova visa check online by passport number",
-     6,
-     1,
-     10
-    ],
-    [
-     "how to check moldova visa online",
-     3,
-     1,
-     11
-    ],
-    [
-     "moldova e visa check online",
-     3,
-     0,
-     9.3
-    ],
-    [
-     "e visa check moldova",
-     2,
-     0,
-     10
-    ],
-    [
-     "evisa gov md check my visa",
-     2,
-     0,
-     9
-    ],
-    [
-     "moldova e visa check by passport number",
-     1,
-     0,
-     7
-    ],
-    [
-     "moldova visa check",
-     1,
-     0,
-     9
-    ],
-    [
-     "moldova work permit check online",
-     1,
-     0,
-     15
-    ]
-   ],
-   "position": 8.3,
-   "ctr": 0.0337
+   "position": 27.7,
+   "ctr": 0.0404
   },
   {
    "url": "https://visapoint.net/passport-index",
-   "impressions": 89,
+   "impressions": 91,
    "clicks": 1,
    "queries": [
     [
      "passport index",
-     12,
+     13,
      0,
-     37.5
+     36.5
     ],
     [
      "visa index",
@@ -535,8 +478,71 @@
      48
     ]
    ],
-   "position": 37.1,
-   "ctr": 0.0112
+   "position": 36.8,
+   "ctr": 0.011
+  },
+  {
+   "url": "https://visapoint.net/moldova-visa-status-online-2026-step-by-step-guide",
+   "impressions": 89,
+   "clicks": 3,
+   "queries": [
+    [
+     "moldova visa status check",
+     8,
+     0,
+     9.6
+    ],
+    [
+     "moldova visa check online by passport number",
+     6,
+     1,
+     10
+    ],
+    [
+     "how to check moldova visa online",
+     3,
+     1,
+     11
+    ],
+    [
+     "moldova e visa check online",
+     3,
+     0,
+     9.3
+    ],
+    [
+     "e visa check moldova",
+     2,
+     0,
+     10
+    ],
+    [
+     "evisa gov md check my visa",
+     2,
+     0,
+     9
+    ],
+    [
+     "moldova e visa check by passport number",
+     1,
+     0,
+     7
+    ],
+    [
+     "moldova visa check",
+     1,
+     0,
+     9
+    ],
+    [
+     "moldova work permit check online",
+     1,
+     0,
+     15
+    ]
+   ],
+   "position": 8.3,
+   "ctr": 0.0337
   },
   {
    "url": "https://visapoint.net/welder-salary-europe-2026-5-best-countries-to-earn-big",
@@ -672,7 +678,7 @@
   },
   {
    "url": "https://visapoint.net/malta-work-visa-processing-time-step-by-step-process-2026",
-   "impressions": 43,
+   "impressions": 44,
    "clicks": 0,
    "queries": [
     [
@@ -706,13 +712,19 @@
      83
     ],
     [
+     "malta work permit visa for bangladeshi",
+     1,
+     0,
+     82
+    ],
+    [
      "malta work permit visa processing time",
      1,
      0,
      4
     ]
    ],
-   "position": 16.4,
+   "position": 17.9,
    "ctr": 0.0
   },
   {
