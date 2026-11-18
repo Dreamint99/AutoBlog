@@ -8,7 +8,7 @@
    Data pages (#32), BMET/flight/rates tools render themselves and only get the palette.
    Rollout: PI6_PUBLIC false = only with ?v6=1 (cookie; ?v6=0 clears). Rollback = deactivate. */
 if ( ! defined( 'PI6_PUBLIC' ) ) define( 'PI6_PUBLIC', true );
-if ( ! defined( 'PI6_VERSION' ) ) define( 'PI6_VERSION', '7.2.0' );
+if ( ! defined( 'PI6_VERSION' ) ) define( 'PI6_VERSION', '7.2.1' );
 
 function pi6_on() {
 	static $on = null;
@@ -242,7 +242,7 @@ add_action( 'wp_footer', function () {
 <script>(function(){
 window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();},true);
 var b=document.body;if(!b)return;
-if(/(bm|ft|fx)-app/.test(b.className)){
+if(['bm-app','ft-app','fx-app'].some(function(c){return b.classList.contains(c)})){
  var map={'সার্বিয়া·মলদোভা·মেসিডোনিয়া':'⭐ ইউরোপ','রিপোর্ট কার্ড':'কার্ড','দৈনিক রিপোর্ট':'রিপোর্ট','প্রশ্নোত্তর':'প্রশ্ন','হিসাব ও চার্ট':'চার্ট'};
  document.querySelectorAll('.ah nav a').forEach(function(a){var t=a.textContent.replace(/^[^ঀ-৿A-Za-z]+/,'').trim();if(map[t])a.textContent=map[t];});
  var h=document.querySelector('.ah .home');if(h)h.textContent='🏠 প্রবাসী ইনফো';
