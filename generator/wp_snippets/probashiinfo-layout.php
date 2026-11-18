@@ -8,7 +8,7 @@
    Data pages (#32), BMET/flight/rates tools render themselves and only get the palette.
    Rollout: PI6_PUBLIC false = only with ?v6=1 (cookie; ?v6=0 clears). Rollback = deactivate. */
 if ( ! defined( 'PI6_PUBLIC' ) ) define( 'PI6_PUBLIC', true );
-if ( ! defined( 'PI6_VERSION' ) ) define( 'PI6_VERSION', '7.1.4' );
+if ( ! defined( 'PI6_VERSION' ) ) define( 'PI6_VERSION', '7.2.0' );
 
 function pi6_on() {
 	static $on = null;
@@ -236,6 +236,21 @@ add_action( 'wp_footer', function () {
 <script>(function(){var n=document.getElementById('pi-dream-note'),f=document.querySelector('form.pbd-srch');if(n&&f&&f.parentNode)f.parentNode.insertBefore(n,f.nextSibling);})();</script>
 <?php }, 60 );
 
+/* tool pages: short menu labels, no PWA install prompt, no "install as app" FAQ */
+add_action( 'wp_footer', function () {
+	if ( ! pi6_on() ) return; ?>
+<script>(function(){
+window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();},true);
+var b=document.body;if(!b)return;
+if(/(bm|ft|fx)-app/.test(b.className)){
+ var map={'সার্বিয়া·মলদোভা·মেসিডোনিয়া':'⭐ ইউরোপ','রিপোর্ট কার্ড':'কার্ড','দৈনিক রিপোর্ট':'রিপোর্ট','প্রশ্নোত্তর':'প্রশ্ন','হিসাব ও চার্ট':'চার্ট'};
+ document.querySelectorAll('.ah nav a').forEach(function(a){var t=a.textContent.replace(/^[^ঀ-৿A-Za-z]+/,'').trim();if(map[t])a.textContent=map[t];});
+ var h=document.querySelector('.ah .home');if(h)h.textContent='🏠 প্রবাসী ইনফো';
+}
+document.querySelectorAll('details').forEach(function(d){if(/অ্যাপ হিসেবে ইনস্টল/.test(d.textContent))d.remove();});
+})();</script>
+<?php }, 70 );
+
 /* category / tag / search / older posts: light header, clean rows with a small image */
 function pi_v6_list() {
 	$o = get_queried_object();
@@ -411,7 +426,7 @@ body.pi-app .pbb-strip a{background:var(--ink)!important;color:#fff!important}
 body.pi-app .pbb-strip button{background:#F4F3F6!important;color:var(--ink)!important}
 .pbb-ft .pbb-card{background:#fff!important;color:var(--ink)!important;border:1px solid var(--line);box-shadow:none!important}
 /* extra app promos off: the popup (#28) and the top bar (#33); header button, footer card and in-article card stay */
-#pba-pop,body.pi-app .pbb-strip{display:none!important}
+body.pi-app .pbb-strip{display:none!important}
 body.pi-app .pba-card{background:#fff!important;color:var(--ink)!important;border:1px solid var(--line)!important;box-shadow:none!important;border-radius:14px!important}
 body.pi-app .pba-card b{color:var(--ink)!important}
 .pbb-card:after{display:none!important}
@@ -502,7 +517,7 @@ body.home #pbh{display:none!important}
 }
 @media(prefers-reduced-motion:reduce){.v7imgs img.on,.v7svc a,.v7strip button.on i{animation:none}.v7strip button.on i{width:100%}}
 /* ---------- tool pages (BMET live, flight tracker, taka rate): same header, logo, hero and footer as the main site ---------- */
-#pba-pop,.pbb-strip{display:none!important}
+.pbb-strip{display:none!important}
 html body.bm-app .ah,html body.ft-app .ah,html body.fx-app .ah{background:rgba(255,255,255,.97)!important;border-bottom:1px solid var(--line);box-shadow:none}
 html body.bm-app .ah .lg img,html body.ft-app .ah .lg img,html body.fx-app .ah .lg img{display:none!important}
 html body.bm-app .ah .lg:before,html body.ft-app .ah .lg:before,html body.fx-app .ah .lg:before{content:"";flex:none;width:38px;height:38px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23E11D48'/%3E%3Cstop offset='1' stop-color='%23F97316'/%3E%3C/linearGradient%3E%3CclipPath id='c'%3E%3Crect width='64' height='64' rx='16'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg clip-path='url(%23c)'%3E%3Crect width='64' height='64' fill='url(%23a)'/%3E%3Cpath d='M0 50c10-4 22-4 32-1s20 3 32-1v16H0z' fill='%23B3123A' opacity='.55'/%3E%3Ccircle cx='37' cy='27' r='15' fill='%23FFF7EC'/%3E%3Ccircle cx='37' cy='20' r='3.2' fill='%23E11D48'/%3E%3Crect x='34' y='25.5' width='6' height='12.5' rx='3' fill='%23E11D48'/%3E%3Cg fill='%23FFE2B8'%3E%3Ccircle cx='9' cy='47' r='2.4'/%3E%3Ccircle cx='13' cy='41.5' r='1.7'/%3E%3Ccircle cx='17.5' cy='37' r='1.5'/%3E%3Ccircle cx='22' cy='33.6' r='1.3'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat}
@@ -520,5 +535,12 @@ html body.bm-app .af a:hover,html body.ft-app .af a:hover,html body.fx-app .af a
 html body.bm-app .af .dl,html body.ft-app .af .dl,html body.fx-app .af .dl{color:var(--b)!important}
 html body.bm-app .af img,html body.ft-app .af img,html body.fx-app .af img{display:none!important}
 html body.bm-app .af .base,html body.ft-app .af .base,html body.fx-app .af .base{border-top-color:var(--line)!important}
+/* old Probashi Bondhu / PWA bits: the app is now "Probashi Info" on Google Play */
+a[href*="probashibondu.online"],#pw-install{display:none!important}
+/* tool-page menus (BMET live, flight, rates): one tidy row */
+html body.bm-app .ah .w,html body.ft-app .ah .w,html body.fx-app .ah .w{gap:16px}
+html body.bm-app .ah nav,html body.ft-app .ah nav,html body.fx-app .ah nav{gap:2px;flex:1;min-width:0;overflow-x:auto;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 92%,transparent);mask-image:linear-gradient(90deg,#000 92%,transparent)}
+html body.bm-app .ah nav a,html body.ft-app .ah nav a,html body.fx-app .ah nav a{flex:none;padding:7px 12px!important;font-size:14.5px!important;font-weight:600;border-radius:999px;white-space:nowrap}
+html body.bm-app .ah .home,html body.ft-app .ah .home,html body.fx-app .ah .home{flex:none;font-size:14px;font-weight:600;padding:7px 12px;border-radius:999px;border:1px solid var(--line);color:var(--ink2)!important}
 </style>
 <?php }, 101 );

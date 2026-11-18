@@ -1,6 +1,6 @@
 <?php
 /**
- * PBA app bar — probashiinfo.com: প্রবাসী বন্ধু Android app download in the header and above the footer.
+ * PBA app bar — probashiinfo.com: Probashi Info Android app download in the header and above the footer.
  *  1) "📲 অ্যাপ" button inside the header (#hdr2), always visible;
  *  2) slim sunset strip under the header with a download button (closable, back after 3 days);
  *  3) big download section above the footer (icon, features, Google Play button, QR code on desktop).
@@ -13,7 +13,7 @@ if (!defined('ABSPATH') || defined('PBB_LOADED')) { return; }
 define('PBB_LOADED', 1);
 define('PBB_MODE', 'live');               // 'test' | 'live'
 define('PBB_KEY', '__PBD_TEST_KEY__');
-define('PBB_VER', '1');
+define('PBB_VER', '1-pi');
 define('PBB_PLAY', 'https://play.google.com/store/apps/details?id=com.probashibondu.probashi_bondu');
 define('PBB_ICON', 'https://play-lh.googleusercontent.com/N_cSEMyLrkO0A9HRwkJeYt5p7hjHnT9BV-r078dBAgdhtxvPbM-DQ4nsMib0B5e8zUxhe9PCQg1p_dRdsu_0Gg=s128-rw');
 
@@ -73,9 +73,9 @@ add_action('wp_footer', function () {
     if (!pbb_on()) { return; }
     $qr = 'https://api.qrserver.com/v1/create-qr-code/?size=224x224&margin=0&data=' . rawurlencode(PBB_PLAY . '&referrer=utm_source%3Dprobashiinfo%26utm_medium%3Dqr');
     ?>
-<template id="pbb-tpl-btn"><a class="pbb-hbtn" href="<?php echo pbb_link('header'); ?>" target="_blank" rel="noopener" aria-label="প্রবাসী বন্ধু অ্যাপ ডাউনলোড"><i>📲</i><span>অ্যাপ</span></a></template>
-<template id="pbb-tpl-strip"><div class="pbb-strip" role="region" aria-label="প্রবাসী বন্ধু অ্যাপ"><img src="<?php echo esc_url(PBB_ICON); ?>" alt="" width="34" height="34"><p><b>প্রবাসী বন্ধু অ্যাপ · ফ্রি</b><small>নামাজ, টাকার রেট, দূতাবাস, প্রবাস কার্ড এক অ্যাপে</small></p><a href="<?php echo pbb_link('strip'); ?>" target="_blank" rel="noopener">ডাউনলোড</a><button type="button" aria-label="বন্ধ করুন">×</button></div></template>
-<template id="pbb-tpl-ft"><section class="pbb-ft" aria-label="প্রবাসী বন্ধু অ্যাপ"><div class="pbb-card"><img src="<?php echo esc_url(PBB_ICON); ?>" alt="প্রবাসী বন্ধু অ্যাপ" width="96" height="96" loading="lazy"><div style="position:relative;z-index:1"><h3>প্রবাসী বন্ধু অ্যাপ</h3><p>প্রবাসীদের নিজের অ্যাপ — বাংলায়, একদম ফ্রি।</p><div class="pbb-feat"><span>🕌 নামাজ ও কিবলা</span><span>💱 টাকার রেট</span><span>🏛 দূতাবাস</span><span>🏅 প্রবাস কার্ড</span></div></div><div class="pbb-get"><a class="pbb-play" href="<?php echo pbb_link('footer'); ?>" target="_blank" rel="noopener"><?php echo pbb_play_svg(); ?><span><small>ডাউনলোড করুন</small><b>Google Play</b></span></a><span class="pbb-qr"><img src="<?php echo esc_url($qr); ?>" alt="প্লে স্টোরের কিউআর কোড" width="112" height="112" loading="lazy"></span><em>ফোনের ক্যামেরায় স্ক্যান করুন</em></div></div></section></template>
+<template id="pbb-tpl-btn"><a class="pbb-hbtn" href="<?php echo pbb_link('header'); ?>" target="_blank" rel="noopener" aria-label="Probashi Info অ্যাপ ডাউনলোড"><i>📲</i><span>অ্যাপ</span></a></template>
+<template id="pbb-tpl-strip"><div class="pbb-strip" role="region" aria-label="Probashi Info অ্যাপ"><img src="<?php echo esc_url(PBB_ICON); ?>" alt="" width="34" height="34"><p><b>অ্যাপে আরও সুন্দর দেখুন · ফ্রি</b><small>নামাজ, টাকার রেট, দূতাবাস, প্রবাস কার্ড এক অ্যাপে</small></p><a href="<?php echo pbb_link('strip'); ?>" target="_blank" rel="noopener">ডাউনলোড</a><button type="button" aria-label="বন্ধ করুন">×</button></div></template>
+<template id="pbb-tpl-ft"><section class="pbb-ft" aria-label="Probashi Info অ্যাপ"><div class="pbb-card"><img src="<?php echo esc_url(PBB_ICON); ?>" alt="Probashi Info অ্যাপ" width="96" height="96" loading="lazy"><div style="position:relative;z-index:1"><h3>Probashi Info অ্যাপ</h3><p>এই সাইটের সব তথ্য অ্যাপে আরও সুন্দর ও দ্রুত দেখুন — একদম ফ্রি।</p><div class="pbb-feat"><span>📊 বিএমইটি লাইভ</span><span>💱 টাকার রেট</span><span>🛂 ভিসা চেক</span><span>🕌 নামাজ</span></div></div><div class="pbb-get"><a class="pbb-play" href="<?php echo pbb_link('footer'); ?>" target="_blank" rel="noopener"><?php echo pbb_play_svg(); ?><span><small>ডাউনলোড করুন</small><b>Google Play</b></span></a><span class="pbb-qr"><img src="<?php echo esc_url($qr); ?>" alt="প্লে স্টোরের কিউআর কোড" width="112" height="112" loading="lazy"></span><em>ফোনের ক্যামেরায় স্ক্যান করুন</em></div></div></section></template>
 <script>(function(){try{
 if(/iPhone|iPad|iPod/.test(navigator.userAgent))return;
 function tpl(id){var t=document.getElementById(id);return t?t.content.firstElementChild.cloneNode(true):null}
