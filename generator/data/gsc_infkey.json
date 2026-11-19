@@ -1,9 +1,9 @@
 {
- "source": "Search Console API 2026-08-18..2026-11-16",
+ "source": "Search Console API 2026-08-19..2026-11-17",
  "pages": [
   {
    "url": "https://infkey.com/",
-   "impressions": 115,
+   "impressions": 116,
    "clicks": 4,
    "queries": [
     [
@@ -29,6 +29,12 @@
      3,
      0,
      79.3
+    ],
+    [
+     "key ai",
+     3,
+     0,
+     69
     ],
     [
      "agentkey pricing",
@@ -61,12 +67,6 @@
      87.5
     ],
     [
-     "key ai",
-     2,
-     0,
-     68.5
-    ],
-    [
      "kling ai key",
      2,
      0,
@@ -79,8 +79,8 @@
      68
     ]
    ],
-   "position": 42.1,
-   "ctr": 0.0348
+   "position": 39.5,
+   "ctr": 0.0345
   }
  ]
 }

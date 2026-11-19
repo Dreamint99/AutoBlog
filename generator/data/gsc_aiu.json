@@ -1,9 +1,9 @@
 {
- "source": "Search Console API 2026-08-18..2026-11-16",
+ "source": "Search Console API 2026-08-19..2026-11-17",
  "pages": [
   {
    "url": "https://aiuniversitybd.com/blog/prothomik-chikitsa-kake-bole",
-   "impressions": 1334,
+   "impressions": 1337,
    "clicks": 9,
    "queries": [
     [
@@ -79,12 +79,12 @@
      8.2
     ]
    ],
-   "position": 7.7,
+   "position": 7.8,
    "ctr": 0.0067
   },
   {
    "url": "https://aiuniversitybd.com/blog/computer-parts-bangla",
-   "impressions": 749,
+   "impressions": 779,
    "clicks": 3,
    "queries": [
     [
@@ -161,16 +161,16 @@
     ]
    ],
    "position": 8.1,
-   "ctr": 0.004
+   "ctr": 0.0039
   },
   {
    "url": "https://aiuniversitybd.com/blog/bishadhor-sap-chenar-upay",
-   "impressions": 587,
+   "impressions": 595,
    "clicks": 5,
    "queries": [
     [
      "গোখরা সাপ চেনার উপায়",
-     144,
+     145,
      0,
      7.8
     ],
@@ -242,11 +242,11 @@
     ]
    ],
    "position": 7.4,
-   "ctr": 0.0085
+   "ctr": 0.0084
   },
   {
    "url": "https://aiuniversitybd.com/blog/fish-feeding-management-rules",
-   "impressions": 512,
+   "impressions": 520,
    "clicks": 6,
    "queries": [
     [
@@ -287,18 +287,24 @@
     ]
    ],
    "position": 6.4,
-   "ctr": 0.0117
+   "ctr": 0.0115
   },
   {
    "url": "https://aiuniversitybd.com/",
-   "impressions": 278,
-   "clicks": 39,
+   "impressions": 345,
+   "clicks": 40,
    "queries": [
     [
      "ai university",
-     20,
+     22,
      4,
-     4.5
+     5.1
+    ],
+    [
+     "ai35658",
+     9,
+     0,
+     5.1
     ],
     [
      "ai51585",
@@ -307,7 +313,19 @@
      3.6
     ],
     [
-     "ai35658",
+     "ai29567",
+     7,
+     0,
+     3.6
+    ],
+    [
+     "ai35079",
+     7,
+     0,
+     4
+    ],
+    [
+     "ai58095",
      7,
      0,
      4.6
@@ -325,54 +343,36 @@
      2.7
     ],
     [
+     "ai58157",
+     6,
+     0,
+     2
+    ],
+    [
      "ai89581",
      6,
      0,
      3.7
     ],
     [
-     "ai35079",
+     "ai23558",
      5,
      0,
-     4.8
+     3.2
     ],
     [
-     "ai58095",
+     "ai24081",
      5,
      0,
      5.4
-    ],
-    [
-     "ai23558",
-     4,
-     0,
-     3.5
-    ],
-    [
-     "ai29507",
-     4,
-     0,
-     5.2
-    ],
-    [
-     "ai29567",
-     4,
-     0,
-     4
-    ],
-    [
-     "ai40229",
-     4,
-     0,
-     9.5
     ]
    ],
    "position": 4.8,
-   "ctr": 0.1403
+   "ctr": 0.1159
   },
   {
    "url": "https://aiuniversitybd.com/app",
-   "impressions": 255,
+   "impressions": 262,
    "clicks": 0,
    "queries": [
     [
@@ -424,6 +424,12 @@
      3.2
     ],
     [
+     "ai58058",
+     4,
+     0,
+     6.8
+    ],
+    [
      "ai29079",
      3,
      0,
@@ -436,70 +442,19 @@
      4
     ],
     [
-     "ai37758",
-     2,
+     "ai58079",
+     3,
      0,
-     6.5
-    ],
-    [
-     "ai41582",
-     2,
-     0,
-     2
+     6.7
     ]
    ],
    "position": 4.4,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/blog/computer-course-learning-guide",
-   "impressions": 206,
-   "clicks": 2,
-   "queries": [
-    [
-     "কম্পিউটার শেখার প্রথম ধাপ",
-     12,
-     0,
-     6
-    ],
-    [
-     "কম্পিউটার শিখতে কি কি লাগে",
-     3,
-     0,
-     8.3
-    ],
-    [
-     "কম্পিউটার শেখার সহজ পদ্ধতি",
-     2,
-     0,
-     10
-    ],
-    [
-     "computer sekhar sohoj upay",
-     1,
-     0,
-     2
-    ],
-    [
-     "কম্পিউটার শিখার পদ্ধতি",
-     1,
-     0,
-     8
-    ],
-    [
-     "কম্পিউটার শেখার শীট",
-     1,
-     0,
-     3
-    ]
-   ],
-   "position": 7.4,
-   "ctr": 0.0097
-  },
-  {
    "url": "https://aiuniversitybd.com/blog/tense-koto-prokar-o-ki-ki",
-   "impressions": 191,
-   "clicks": 3,
+   "impressions": 212,
+   "clicks": 4,
    "queries": [
     [
      "tense এর গঠন",
@@ -556,8 +511,53 @@
      80
     ]
    ],
-   "position": 8.8,
-   "ctr": 0.0157
+   "position": 8.4,
+   "ctr": 0.0189
+  },
+  {
+   "url": "https://aiuniversitybd.com/blog/computer-course-learning-guide",
+   "impressions": 212,
+   "clicks": 3,
+   "queries": [
+    [
+     "কম্পিউটার শেখার প্রথম ধাপ",
+     12,
+     0,
+     6
+    ],
+    [
+     "কম্পিউটার শিখতে কি কি লাগে",
+     3,
+     0,
+     8.3
+    ],
+    [
+     "কম্পিউটার শেখার সহজ পদ্ধতি",
+     2,
+     0,
+     10
+    ],
+    [
+     "computer sekhar sohoj upay",
+     1,
+     0,
+     2
+    ],
+    [
+     "কম্পিউটার শিখার পদ্ধতি",
+     1,
+     0,
+     8
+    ],
+    [
+     "কম্পিউটার শেখার শীট",
+     1,
+     0,
+     3
+    ]
+   ],
+   "position": 7.4,
+   "ctr": 0.0142
   },
   {
    "url": "https://aiuniversitybd.com/blog/biman-ticket-cancel-rules",
@@ -587,16 +587,8 @@
    "ctr": 0.0055
   },
   {
-   "url": "https://aiuniversitybd.com/blog/computer-basics-for-beginners-bangla",
-   "impressions": 151,
-   "clicks": 0,
-   "queries": [],
-   "position": 5.9,
-   "ctr": 0.0
-  },
-  {
    "url": "https://aiuniversitybd.com/blog/prompt-writing-rules-bangla",
-   "impressions": 148,
+   "impressions": 175,
    "clicks": 3,
    "queries": [
     [
@@ -630,31 +622,39 @@
      10
     ]
    ],
-   "position": 6.9,
-   "ctr": 0.0203
+   "position": 6.5,
+   "ctr": 0.0171
+  },
+  {
+   "url": "https://aiuniversitybd.com/blog/computer-basics-for-beginners-bangla",
+   "impressions": 174,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.0,
+   "ctr": 0.0
   },
   {
    "url": "https://aiuniversitybd.com/blog/ielts-kivabe-shuru-korbo",
-   "impressions": 130,
+   "impressions": 132,
    "clicks": 2,
    "queries": [
     [
      "শূন্য থেকে ielts প্রস্তুতি",
-     20,
+     21,
      0,
-     8.5
+     8.6
+    ],
+    [
+     "আইইএলটিএস প্রস্তুতি কিভাবে শুরু করবো",
+     2,
+     0,
+     16
     ],
     [
      "আইইএলটিএস",
      1,
      0,
      49
-    ],
-    [
-     "আইইএলটিএস প্রস্তুতি কিভাবে শুরু করবো",
-     1,
-     0,
-     19
     ],
     [
      "আইলস করতে কি কি লাগে",
@@ -664,11 +664,11 @@
     ]
    ],
    "position": 8.4,
-   "ctr": 0.0154
+   "ctr": 0.0152
   },
   {
    "url": "https://aiuniversitybd.com/blog/russell-viper-identification-safety",
-   "impressions": 125,
+   "impressions": 126,
    "clicks": 0,
    "queries": [
     [
@@ -694,8 +694,89 @@
    "ctr": 0.0
   },
   {
+   "url": "https://aiuniversitybd.com/help",
+   "impressions": 115,
+   "clicks": 0,
+   "queries": [
+    [
+     "ai23558",
+     16,
+     0,
+     5.9
+    ],
+    [
+     "ai23583",
+     9,
+     0,
+     7.2
+    ],
+    [
+     "ai29558",
+     8,
+     0,
+     7.1
+    ],
+    [
+     "ai29582",
+     8,
+     0,
+     5.8
+    ],
+    [
+     "ai28558",
+     7,
+     0,
+     6.1
+    ],
+    [
+     "ai29567",
+     6,
+     0,
+     3.8
+    ],
+    [
+     "ai29585",
+     6,
+     0,
+     8.5
+    ],
+    [
+     "ai29670",
+     5,
+     0,
+     2
+    ],
+    [
+     "ai29671",
+     5,
+     0,
+     2
+    ],
+    [
+     "ai35958",
+     5,
+     0,
+     9.8
+    ],
+    [
+     "ai23079",
+     4,
+     0,
+     3.2
+    ],
+    [
+     "ai29079",
+     4,
+     0,
+     8.2
+    ]
+   ],
+   "position": 7.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://aiuniversitybd.com/about",
-   "impressions": 109,
+   "impressions": 110,
    "clicks": 10,
    "queries": [
     [
@@ -718,7 +799,34 @@
     ]
    ],
    "position": 7.5,
-   "ctr": 0.0917
+   "ctr": 0.0909
+  },
+  {
+   "url": "https://aiuniversitybd.com/blog/english-sentence-structure-rules",
+   "impressions": 106,
+   "clicks": 1,
+   "queries": [
+    [
+     "ইংরেজি বাক্য গঠনের নিয়ম",
+     10,
+     0,
+     5.6
+    ],
+    [
+     "boka choda",
+     1,
+     0,
+     7
+    ],
+    [
+     "ইংরেজি বাক্য তৈরি করার নিয়ম",
+     1,
+     0,
+     1
+    ]
+   ],
+   "position": 6.3,
+   "ctr": 0.0094
   },
   {
    "url": "https://aiuniversitybd.com/blog/ielts-ki",
@@ -736,25 +844,12 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/blog/english-sentence-structure-rules",
-   "impressions": 96,
-   "clicks": 1,
-   "queries": [
-    [
-     "ইংরেজি বাক্য গঠনের নিয়ম",
-     10,
-     0,
-     5.6
-    ],
-    [
-     "boka choda",
-     1,
-     0,
-     7
-    ]
-   ],
-   "position": 6.3,
-   "ctr": 0.0104
+   "url": "https://aiuniversitybd.com/blog/tense-chenar-upay-bangla",
+   "impressions": 91,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.5,
+   "ctr": 0.0
   },
   {
    "url": "https://aiuniversitybd.com/blog/vibe-coding-ki",
@@ -796,14 +891,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/blog/tense-chenar-upay-bangla",
-   "impressions": 84,
-   "clicks": 0,
-   "queries": [],
-   "position": 5.4,
-   "ctr": 0.0
-  },
-  {
    "url": "https://aiuniversitybd.com/blog/ielts-syllabus-preparation-guide",
    "impressions": 83,
    "clicks": 0,
@@ -819,104 +906,23 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/help",
-   "impressions": 75,
-   "clicks": 0,
-   "queries": [
-    [
-     "ai23558",
-     15,
-     0,
-     6.2
-    ],
-    [
-     "ai23583",
-     7,
-     0,
-     8.4
-    ],
-    [
-     "ai28558",
-     7,
-     0,
-     6.1
-    ],
-    [
-     "ai29582",
-     7,
-     0,
-     6
-    ],
-    [
-     "ai29585",
-     6,
-     0,
-     8.5
-    ],
-    [
-     "ai35958",
-     5,
-     0,
-     9.8
-    ],
-    [
-     "ai29558",
-     4,
-     0,
-     6.8
-    ],
-    [
-     "ai29567",
-     3,
-     0,
-     3.7
-    ],
-    [
-     "ai29671",
-     2,
-     0,
-     2
-    ],
-    [
-     "ai23079",
-     1,
-     0,
-     3
-    ],
-    [
-     "ai29079",
-     1,
-     0,
-     8
-    ],
-    [
-     "ai29583",
-     1,
-     0,
-     10
-    ]
-   ],
-   "position": 8.3,
-   "ctr": 0.0
-  },
-  {
    "url": "https://aiuniversitybd.com/blog/english-interview-tips-bangla",
-   "impressions": 72,
+   "impressions": 75,
    "clicks": 2,
    "queries": [],
    "position": 6.9,
-   "ctr": 0.0278
+   "ctr": 0.0267
   },
   {
    "url": "https://aiuniversitybd.com/course/spoken-english",
-   "impressions": 67,
+   "impressions": 73,
    "clicks": 0,
    "queries": [
     [
      "স্পোকেন ইংলিশ বাংলা টু ইংরেজি",
-     10,
+     11,
      0,
-     11.8
+     13.3
     ],
     [
      "অনলাইন স্পোকেন ইংলিশ কোর্স ইন বাংলাদেশ",
@@ -925,27 +931,27 @@
      61
     ]
    ],
-   "position": 10.9,
+   "position": 11.0,
    "ctr": 0.0
   },
   {
    "url": "https://aiuniversitybd.com/blog/amadeus-gds-what-is-it",
-   "impressions": 60,
+   "impressions": 63,
    "clicks": 2,
    "queries": [],
    "position": 6.2,
-   "ctr": 0.0333
+   "ctr": 0.0317
   },
   {
    "url": "https://aiuniversitybd.com/course/air-ticketing",
-   "impressions": 57,
+   "impressions": 59,
    "clicks": 5,
    "queries": [
     [
      "এয়ার টিকেটিং কোর্স",
-     5,
+     6,
      1,
-     4.4
+     5.5
     ],
     [
      "airline ticketing course free online with certificate",
@@ -955,19 +961,11 @@
     ]
    ],
    "position": 5.7,
-   "ctr": 0.0877
-  },
-  {
-   "url": "https://aiuniversitybd.com/blog/ielts-academic-vs-general-training-difference",
-   "impressions": 56,
-   "clicks": 0,
-   "queries": [],
-   "position": 5.6,
-   "ctr": 0.0
+   "ctr": 0.0847
   },
   {
    "url": "https://aiuniversitybd.com/blog/advantages-disadvantages-of-ai-bangla",
-   "impressions": 52,
+   "impressions": 59,
    "clicks": 0,
    "queries": [
     [
@@ -989,43 +987,36 @@
      6.5
     ]
    ],
-   "position": 6.2,
+   "position": 6.5,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/blog/gds-course-air-ticketing-bangla",
-   "impressions": 50,
-   "clicks": 2,
-   "queries": [],
-   "position": 5.2,
-   "ctr": 0.04
-  },
-  {
-   "url": "https://aiuniversitybd.com/verify",
-   "impressions": 41,
+   "url": "https://aiuniversitybd.com/blog/ielts-academic-vs-general-training-difference",
+   "impressions": 56,
    "clicks": 0,
-   "queries": [
-    [
-     "উন্মুক্ত বিশ্ববিদ্যালয়ের সার্টিফিকেট যাচাই",
-     1,
-     0,
-     14
-    ]
-   ],
-   "position": 6.2,
+   "queries": [],
+   "position": 5.6,
    "ctr": 0.0
   },
   {
    "url": "https://aiuniversitybd.com/blog/how-to-book-flight-ticket-bangla",
-   "impressions": 40,
+   "impressions": 52,
    "clicks": 1,
    "queries": [],
-   "position": 7.5,
-   "ctr": 0.025
+   "position": 7.4,
+   "ctr": 0.0192
+  },
+  {
+   "url": "https://aiuniversitybd.com/blog/gds-course-air-ticketing-bangla",
+   "impressions": 51,
+   "clicks": 2,
+   "queries": [],
+   "position": 5.2,
+   "ctr": 0.0392
   },
   {
    "url": "https://aiuniversitybd.com/blog/ai-image-creation-guide-bangla",
-   "impressions": 40,
+   "impressions": 50,
    "clicks": 0,
    "queries": [
     [
@@ -1035,12 +1026,12 @@
      8.2
     ]
    ],
-   "position": 6.8,
+   "position": 7.3,
    "ctr": 0.0
   },
   {
    "url": "https://aiuniversitybd.com/blog/operating-system-bangla-guide",
-   "impressions": 40,
+   "impressions": 50,
    "clicks": 0,
    "queries": [
     [
@@ -1080,28 +1071,43 @@
      4
     ]
    ],
-   "position": 8.6,
+   "position": 8.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/verify",
+   "impressions": 41,
+   "clicks": 0,
+   "queries": [
+    [
+     "উন্মুক্ত বিশ্ববিদ্যালয়ের সার্টিফিকেট যাচাই",
+     1,
+     0,
+     14
+    ]
+   ],
+   "position": 6.2,
    "ctr": 0.0
   },
   {
    "url": "https://aiuniversitybd.com/blog/ai-learning-course-bangla",
-   "impressions": 38,
+   "impressions": 40,
    "clicks": 0,
    "queries": [],
-   "position": 7.9,
+   "position": 7.8,
    "ctr": 0.0
   },
   {
    "url": "https://aiuniversitybd.com/blog/ielts-writing-task-1-structure",
-   "impressions": 34,
+   "impressions": 36,
    "clicks": 0,
    "queries": [],
-   "position": 5.0,
+   "position": 5.1,
    "ctr": 0.0
   },
   {
    "url": "https://aiuniversitybd.com/courses",
-   "impressions": 34,
+   "impressions": 36,
    "clicks": 0,
    "queries": [
     [
@@ -1112,33 +1118,41 @@
     ],
     [
      "artificial intelligence classes near me",
-     1,
+     2,
      0,
-     11
+     7.5
     ]
    ],
-   "position": 4.4,
+   "position": 4.3,
    "ctr": 0.0
   },
   {
    "url": "https://aiuniversitybd.com/blog/ai-tools-types-and-uses",
-   "impressions": 32,
+   "impressions": 35,
    "clicks": 0,
    "queries": [],
-   "position": 7.6,
+   "position": 7.2,
    "ctr": 0.0
   },
   {
    "url": "https://aiuniversitybd.com/blog/ai-course-learning-guide-bangla",
-   "impressions": 30,
+   "impressions": 31,
    "clicks": 0,
    "queries": [],
    "position": 8.8,
    "ctr": 0.0
   },
   {
+   "url": "https://aiuniversitybd.com/blog",
+   "impressions": 30,
+   "clicks": 1,
+   "queries": [],
+   "position": 4.4,
+   "ctr": 0.0333
+  },
+  {
    "url": "https://aiuniversitybd.com/blog/freelancing-how-to-learn",
-   "impressions": 29,
+   "impressions": 30,
    "clicks": 0,
    "queries": [
     [
@@ -1166,7 +1180,7 @@
      23.5
     ]
    ],
-   "position": 22.2,
+   "position": 21.6,
    "ctr": 0.0
   },
   {
@@ -1178,20 +1192,98 @@
    "ctr": 0.0714
   },
   {
-   "url": "https://aiuniversitybd.com/blog/english-speaking-tips-bangla",
-   "impressions": 23,
+   "url": "https://aiuniversitybd.com/offer",
+   "impressions": 27,
    "clicks": 0,
-   "queries": [],
-   "position": 7.7,
+   "queries": [
+    [
+     "ai65829",
+     9,
+     0,
+     6.9
+    ],
+    [
+     "ai58097",
+     4,
+     0,
+     6
+    ],
+    [
+     "ai58153",
+     4,
+     0,
+     7.2
+    ],
+    [
+     "ai58897",
+     3,
+     0,
+     10
+    ],
+    [
+     "ai58057",
+     1,
+     0,
+     9
+    ],
+    [
+     "ai58095",
+     1,
+     0,
+     7
+    ]
+   ],
+   "position": 7.4,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/blog",
-   "impressions": 22,
-   "clicks": 1,
+   "url": "https://aiuniversitybd.com/blog/ms-word-learning-rules-bangla",
+   "impressions": 26,
+   "clicks": 0,
    "queries": [],
-   "position": 5.1,
-   "ctr": 0.0455
+   "position": 5.3,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/guide/news",
+   "impressions": 25,
+   "clicks": 0,
+   "queries": [
+    [
+     "ai23583",
+     10,
+     0,
+     2
+    ],
+    [
+     "ai23558",
+     9,
+     0,
+     5.1
+    ],
+    [
+     "ai58058",
+     4,
+     0,
+     3
+    ],
+    [
+     "ai24058",
+     1,
+     0,
+     4
+    ]
+   ],
+   "position": 3.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/blog/english-speaking-tips-bangla",
+   "impressions": 24,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.6,
+   "ctr": 0.0
   },
   {
    "url": "https://aiuniversitybd.com/blog/air-ticketing-course-guide",
@@ -1199,6 +1291,27 @@
    "clicks": 1,
    "queries": [],
    "position": 4.0,
+   "ctr": 0.0455
+  },
+  {
+   "url": "https://aiuniversitybd.com/course/ielts-prep",
+   "impressions": 22,
+   "clicks": 1,
+   "queries": [
+    [
+     "ielts free",
+     1,
+     0,
+     11
+    ],
+    [
+     "ielts in bangla",
+     1,
+     0,
+     41
+    ]
+   ],
+   "position": 7.8,
    "ctr": 0.0455
   },
   {
@@ -1235,27 +1348,6 @@
    "ctr": 0.0455
   },
   {
-   "url": "https://aiuniversitybd.com/course/ielts-prep",
-   "impressions": 21,
-   "clicks": 1,
-   "queries": [
-    [
-     "ielts free",
-     1,
-     0,
-     11
-    ],
-    [
-     "ielts in bangla",
-     1,
-     0,
-     41
-    ]
-   ],
-   "position": 7.7,
-   "ctr": 0.0476
-  },
-  {
    "url": "https://aiuniversitybd.com/blog/ielts-vocabulary-improvement-tips",
    "impressions": 21,
    "clicks": 0,
@@ -1265,7 +1357,7 @@
   },
   {
    "url": "https://aiuniversitybd.com/course/biggan-velki",
-   "impressions": 20,
+   "impressions": 21,
    "clicks": 0,
    "queries": [
     [
@@ -1276,20 +1368,20 @@
     ],
     [
      "kochu biggani",
-     1,
+     2,
      0,
-     8
+     7.5
     ]
    ],
    "position": 6.5,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/blog/ms-word-learning-rules-bangla",
+   "url": "https://aiuniversitybd.com/blog/free-computer-course-certificate-bangla",
    "impressions": 19,
    "clicks": 0,
    "queries": [],
-   "position": 5.2,
+   "position": 7.4,
    "ctr": 0.0
   },
   {
@@ -1301,30 +1393,15 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/blog/spoken-english-course-bangladesh",
-   "impressions": 18,
-   "clicks": 0,
-   "queries": [
-    [
-     "spoken english course in bangladesh",
-     1,
-     0,
-     89
-    ]
-   ],
-   "position": 14.3,
-   "ctr": 0.0
-  },
-  {
    "url": "https://aiuniversitybd.com/course/mobile-repair",
-   "impressions": 17,
+   "impressions": 18,
    "clicks": 1,
    "queries": [
     [
      "phone course",
-     3,
+     4,
      0,
-     29.7
+     31.2
     ],
     [
      "phone me course",
@@ -1357,15 +1434,22 @@
      9
     ]
    ],
-   "position": 12.5,
-   "ctr": 0.0588
+   "position": 13.8,
+   "ctr": 0.0556
   },
   {
-   "url": "https://aiuniversitybd.com/blog/free-computer-course-certificate-bangla",
-   "impressions": 17,
+   "url": "https://aiuniversitybd.com/blog/spoken-english-course-bangladesh",
+   "impressions": 18,
    "clicks": 0,
-   "queries": [],
-   "position": 7.7,
+   "queries": [
+    [
+     "spoken english course in bangladesh",
+     1,
+     0,
+     89
+    ]
+   ],
+   "position": 14.3,
    "ctr": 0.0
   },
   {
@@ -1374,6 +1458,39 @@
    "clicks": 0,
    "queries": [],
    "position": 7.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/privacy",
+   "impressions": 17,
+   "clicks": 0,
+   "queries": [
+    [
+     "ai23587",
+     5,
+     0,
+     6.4
+    ],
+    [
+     "ai28558",
+     2,
+     0,
+     4
+    ],
+    [
+     "ai25887",
+     1,
+     0,
+     10
+    ],
+    [
+     "ai28358",
+     1,
+     0,
+     8
+    ]
+   ],
+   "position": 7.1,
    "ctr": 0.0
   },
   {
@@ -1404,105 +1521,6 @@
     ]
    ],
    "position": 10.4,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/offer",
-   "impressions": 15,
-   "clicks": 0,
-   "queries": [
-    [
-     "ai58153",
-     3,
-     0,
-     6.3
-    ],
-    [
-     "ai58897",
-     3,
-     0,
-     10
-    ],
-    [
-     "ai65829",
-     3,
-     0,
-     6.7
-    ],
-    [
-     "ai58097",
-     2,
-     0,
-     4.5
-    ],
-    [
-     "ai58057",
-     1,
-     0,
-     9
-    ]
-   ],
-   "position": 7.3,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/privacy",
-   "impressions": 15,
-   "clicks": 0,
-   "queries": [
-    [
-     "ai23587",
-     3,
-     0,
-     5.3
-    ],
-    [
-     "ai28558",
-     2,
-     0,
-     4
-    ],
-    [
-     "ai25887",
-     1,
-     0,
-     10
-    ],
-    [
-     "ai28358",
-     1,
-     0,
-     8
-    ]
-   ],
-   "position": 7.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/guide/news",
-   "impressions": 14,
-   "clicks": 0,
-   "queries": [
-    [
-     "ai23558",
-     6,
-     0,
-     4.7
-    ],
-    [
-     "ai23583",
-     6,
-     0,
-     2
-    ],
-    [
-     "ai58058",
-     1,
-     0,
-     4
-    ]
-   ],
-   "position": 3.7,
    "ctr": 0.0
   },
   {
@@ -1611,6 +1629,14 @@
    "ctr": 0.0
   },
   {
+   "url": "https://aiuniversitybd.com/course/ai-for-everyone",
+   "impressions": 8,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.5,
+   "ctr": 0.0
+  },
+  {
    "url": "https://aiuniversitybd.com/kids?c=arabi",
    "impressions": 8,
    "clicks": 0,
@@ -1626,11 +1652,47 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/course/ai-for-everyone",
+   "url": "https://aiuniversitybd.com/airport",
+   "impressions": 7,
+   "clicks": 1,
+   "queries": [
+    [
+     "has airport code",
+     1,
+     0,
+     2
+    ]
+   ],
+   "position": 10.3,
+   "ctr": 0.1429
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/mxp",
+   "impressions": 7,
+   "clicks": 0,
+   "queries": [
+    [
+     "mxp",
+     5,
+     0,
+     3.2
+    ],
+    [
+     "airport code mxp",
+     1,
+     0,
+     19
+    ]
+   ],
+   "position": 6.1,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/blog/ielts-speaking-part-1-questions-guide",
    "impressions": 7,
    "clicks": 0,
    "queries": [],
-   "position": 5.4,
+   "position": 5.6,
    "ctr": 0.0
   },
   {
@@ -1649,19 +1711,31 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport",
+   "url": "https://aiuniversitybd.com/airport/hkt",
    "impressions": 6,
-   "clicks": 1,
+   "clicks": 0,
    "queries": [
     [
-     "has airport code",
+     "phuket airport code",
+     3,
+     0,
+     83.7
+    ],
+    [
+     "phuket international airport code",
+     2,
+     0,
+     76
+    ],
+    [
+     "hkt airport code",
      1,
      0,
-     2
+     58
     ]
    ],
-   "position": 10.8,
-   "ctr": 0.1667
+   "position": 76.8,
+   "ctr": 0.0
   },
   {
    "url": "https://aiuniversitybd.com/blog/category/ielts",
@@ -1672,7 +1746,7 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/blog/ielts-speaking-part-1-questions-guide",
+   "url": "https://aiuniversitybd.com/blog/ielts-speaking-part-2-cue-card",
    "impressions": 6,
    "clicks": 0,
    "queries": [],
@@ -1680,19 +1754,34 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/blog/ielts-speaking-part-2-cue-card",
-   "impressions": 5,
+   "url": "https://aiuniversitybd.com/course/prompt-engineering",
+   "impressions": 6,
    "clicks": 0,
    "queries": [],
-   "position": 5.8,
+   "position": 10.0,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/course/prompt-engineering",
+   "url": "https://aiuniversitybd.com/blog/google-gemini-ai-guide-bangla",
+   "impressions": 5,
+   "clicks": 0,
+   "queries": [
+    [
+     "এই",
+     1,
+     0,
+     53
+    ]
+   ],
+   "position": 17.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/blog/sabre-gds-what-is-it-bangla",
    "impressions": 5,
    "clicks": 0,
    "queries": [],
-   "position": 10.2,
+   "position": 6.8,
    "ctr": 0.0
   },
   {
@@ -1719,14 +1808,6 @@
    "ctr": 0.25
   },
   {
-   "url": "https://aiuniversitybd.com/blog/sabre-gds-what-is-it-bangla",
-   "impressions": 4,
-   "clicks": 0,
-   "queries": [],
-   "position": 6.0,
-   "ctr": 0.0
-  },
-  {
    "url": "https://aiuniversitybd.com/book?id=air-ticketing",
    "impressions": 4,
    "clicks": 0,
@@ -1743,11 +1824,49 @@
    "ctr": 0.0
   },
   {
+   "url": "https://aiuniversitybd.com/course/arabic-gulf",
+   "impressions": 4,
+   "clicks": 0,
+   "queries": [
+    [
+     "আরবি টু বাংলা ভাষা কাতার",
+     1,
+     0,
+     1
+    ]
+   ],
+   "position": 4.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://aiuniversitybd.com/course/family-health",
    "impressions": 4,
    "clicks": 0,
    "queries": [],
    "position": 4.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/ist",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [
+    [
+     "ist airport",
+     1,
+     0,
+     5
+    ]
+   ],
+   "position": 16.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/blog/air-ticketing-what-is-it-bangla",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 1.3,
    "ctr": 0.0
   },
   {
@@ -1767,19 +1886,19 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/course/arabic-gulf",
-   "impressions": 3,
-   "clicks": 0,
-   "queries": [],
-   "position": 5.0,
-   "ctr": 0.0
-  },
-  {
    "url": "https://aiuniversitybd.com/course/tour-guide",
    "impressions": 3,
    "clicks": 0,
    "queries": [],
    "position": 6.3,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/ielts/vocabulary",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.0,
    "ctr": 0.0
   },
   {
@@ -1791,11 +1910,24 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/blog/air-ticketing-what-is-it-bangla",
+   "url": "https://aiuniversitybd.com/airport/bfs",
    "impressions": 2,
    "clicks": 0,
-   "queries": [],
-   "position": 1.0,
+   "queries": [
+    [
+     "airport code bfs",
+     1,
+     0,
+     58
+    ],
+    [
+     "bfs airport code",
+     1,
+     0,
+     87
+    ]
+   ],
+   "position": 72.5,
    "ctr": 0.0
   },
   {
@@ -1807,6 +1939,14 @@
    "ctr": 0.0
   },
   {
+   "url": "https://aiuniversitybd.com/blog/chatgpt-accuracy-and-verification-bangla",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.5,
+   "ctr": 0.0
+  },
+  {
    "url": "https://aiuniversitybd.com/blog/graphics-design-kivabe-shikhbo",
    "impressions": 2,
    "clicks": 0,
@@ -1815,41 +1955,57 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/hkt",
+   "url": "https://aiuniversitybd.com/blog/snake-bite-koronio",
    "impressions": 1,
-   "clicks": 0,
-   "queries": [
-    [
-     "phuket airport code",
-     1,
-     0,
-     74
-    ]
-   ],
-   "position": 74.0,
-   "ctr": 0.0
+   "clicks": 1,
+   "queries": [],
+   "position": 2.0,
+   "ctr": 1.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/ist",
+   "url": "https://aiuniversitybd.com/airport/ahb",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
-   "position": 34.0,
+   "position": 4.0,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/mxp",
+   "url": "https://aiuniversitybd.com/airport/fco",
    "impressions": 1,
    "clicks": 0,
    "queries": [
     [
-     "mxp",
+     "fco",
      1,
      0,
-     4
+     54
     ]
    ],
-   "position": 4.0,
+   "position": 54.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/wae",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [
+    [
+     "wae airport",
+     1,
+     0,
+     1
+    ]
+   ],
+   "position": 1.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/yny",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 1.0,
    "ctr": 0.0
   },
   {
@@ -1893,6 +2049,30 @@
    "ctr": 0.0
   },
   {
+   "url": "https://aiuniversitybd.com/blog/chatgpt-usage-rules-bangla",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/blog/computer-delivered-ielts-guide-bangla",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 9.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/blog/computer-what-and-how-it-works",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 9.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://aiuniversitybd.com/blog/daily-used-english-sentences-bangla",
    "impressions": 1,
    "clicks": 0,
@@ -1901,11 +2081,26 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/blog/google-gemini-ai-guide-bangla",
+   "url": "https://aiuniversitybd.com/blog/english-speaking-vocabulary-bangla",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [
+    [
+     "ইংরেজিতে কথা বলার জন্য প্রয়োজনীয় শব্দ",
+     1,
+     0,
+     9
+    ]
+   ],
+   "position": 9.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/blog/ielts-band-score-calculation-rules",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
-   "position": 9.0,
+   "position": 5.0,
    "ctr": 0.0
   },
   {

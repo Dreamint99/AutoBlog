@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-08-18..2026-11-16, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-19..2026-11-17, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "প্রাথমিক চিকিৎসা কি",
@@ -45,8 +45,8 @@
   },
   {
    "q": "শূন্য থেকে ielts প্রস্তুতি",
-   "impr": 20,
-   "pos": 8.5,
+   "impr": 21,
+   "pos": 8.6,
    "src": "gsc"
   },
   {
@@ -99,8 +99,8 @@
   },
   {
    "q": "স্পোকেন ইংলিশ বাংলা টু ইংরেজি",
-   "impr": 10,
-   "pos": 11.8,
+   "impr": 11,
+   "pos": 13.3,
    "src": "gsc"
   }
  ]

@@ -140,12 +140,6 @@
    "pos": 5.7
   },
   {
-   "q": "top 10 richest people in the world 2026",
-   "impr": 112,
-   "clicks": 0,
-   "pos": 7.5
-  },
-  {
    "q": "which language has the most native speakers worldwide",
    "impr": 109,
    "clicks": 0,
@@ -164,22 +158,28 @@
    "pos": 6.5
   },
   {
+   "q": "top 10 richest people in the world 2026",
+   "impr": 93,
+   "clicks": 0,
+   "pos": 7.4
+  },
+  {
    "q": "like nastya 2026 132 million subscribers",
    "impr": 92,
    "clicks": 0,
    "pos": 6.7
   },
   {
+   "q": "top billionaires 2026",
+   "impr": 91,
+   "clicks": 0,
+   "pos": 5.8
+  },
+  {
    "q": "top 10 fastest cars in the world 2026",
    "impr": 86,
    "clicks": 0,
    "pos": 3.3
-  },
-  {
-   "q": "top billionaires 2026",
-   "impr": 82,
-   "clicks": 0,
-   "pos": 5.7
   },
   {
    "q": "fastest growing companies in 2026",
@@ -260,10 +260,22 @@
    "pos": 9.0
   },
   {
+   "q": "the fastest car in the world 2026",
+   "impr": 57,
+   "clicks": 3,
+   "pos": 5.4
+  },
+  {
    "q": "top ten richest people in the world",
    "impr": 57,
    "clicks": 1,
    "pos": 9.0
+  },
+  {
+   "q": "the fastest car in the world",
+   "impr": 57,
+   "clicks": 0,
+   "pos": 8.0
   },
   {
    "q": "reddit users in india",
@@ -282,12 +294,6 @@
    "impr": 53,
    "clicks": 0,
    "pos": 5.0
-  },
-  {
-   "q": "the fastest car in the world 2026",
-   "impr": 52,
-   "clicks": 3,
-   "pos": 5.3
   },
   {
    "q": "tallest buildings in the world 2026",
@@ -342,12 +348,6 @@
    "impr": 38,
    "clicks": 0,
    "pos": 5.1
-  },
-  {
-   "q": "the fastest car in the world",
-   "impr": 38,
-   "clicks": 0,
-   "pos": 8.0
   },
   {
    "q": "language with 10 million speakers",
@@ -482,16 +482,16 @@
    "pos": 9.0
   },
   {
-   "q": "how many billionaires are there in the world in 2026?",
-   "impr": 24,
-   "clicks": 0,
-   "pos": 4.0
-  },
-  {
    "q": "how many individual starbucks stores are operating worldwide as of 2026?",
    "impr": 24,
    "clicks": 0,
    "pos": 2.0
+  },
+  {
+   "q": "how many billionaires are there in the world in 2026?",
+   "impr": 24,
+   "clicks": 0,
+   "pos": 4.0
   },
   {
    "q": "top 10 most spoken languages",
@@ -536,22 +536,10 @@
    "pos": 7.6
   },
   {
-   "q": "who is the highest paid athlete in 2026",
-   "impr": 21,
-   "clicks": 0,
-   "pos": 4.4
-  },
-  {
    "q": "languages with over 10 million speakers",
    "impr": 20,
    "clicks": 0,
    "pos": 8.0
-  },
-  {
-   "q": "github trending repositories today 2026 july",
-   "impr": 19,
-   "clicks": 3,
-   "pos": 3.1
   },
   {
    "q": "german software companies",
@@ -596,6 +584,12 @@
    "pos": 5.8
   },
   {
+   "q": "who is the highest paid athlete in 2026",
+   "impr": 18,
+   "clicks": 0,
+   "pos": 4.4
+  },
+  {
    "q": "openai earnings",
    "impr": 18,
    "clicks": 2,
@@ -612,6 +606,12 @@
    "impr": 17,
    "clicks": 0,
    "pos": 9.0
+  },
+  {
+   "q": "github trending repositories today 2026 july",
+   "impr": 16,
+   "clicks": 3,
+   "pos": 3.2
   },
   {
    "q": "github trending repositories july 2026",
@@ -782,25 +782,25 @@
    "pos": 9.0
   },
   {
-   "q": "what are the top 5 world languages and how many speakers do they have?",
-   "impr": 11,
-   "clicks": 0,
-   "pos": 6.0
-  },
-  {
    "q": "how many mcdonalds stores across the world",
    "impr": 11,
    "clicks": 0,
    "pos": 6.0
   },
   {
-   "q": "what main language is spoken by most resid...",
+   "q": "what are the top 5 world languages and how many speakers do they have?",
    "impr": 11,
    "clicks": 0,
    "pos": 6.0
   },
   {
    "q": "similarweb top 10 websites",
+   "impr": 11,
+   "clicks": 0,
+   "pos": 6.0
+  },
+  {
+   "q": "what main language is spoken by most resid...",
    "impr": 11,
    "clicks": 0,
    "pos": 6.0
@@ -908,22 +908,10 @@
    "pos": 3.0
   },
   {
-   "q": "most spoken language in the world 2026",
-   "impr": 9,
-   "clicks": 2,
-   "pos": 3.2
-  },
-  {
    "q": "most spoken languages in the world 2026",
    "impr": 9,
    "clicks": 1,
    "pos": 2.8
-  },
-  {
-   "q": "top country use instagram",
-   "impr": 9,
-   "clicks": 0,
-   "pos": 7.0
   },
   {
    "q": "popular youtube channels 2026",
@@ -942,6 +930,12 @@
    "impr": 8,
    "clicks": 0,
    "pos": 6.0
+  },
+  {
+   "q": "github trending repositories this week july 2026",
+   "impr": 8,
+   "clicks": 0,
+   "pos": 6.4
   },
   {
    "q": "who is the highest paid athlete in the world",
@@ -974,6 +968,12 @@
    "pos": 6.5
   },
   {
+   "q": "how many countries have starbucks",
+   "impr": 8,
+   "clicks": 0,
+   "pos": 7.8
+  },
+  {
    "q": "most subscribed youtube channels 2026",
    "impr": 8,
    "clicks": 1,
@@ -992,28 +992,28 @@
    "pos": 5.0
   },
   {
-   "q": "facebook monthly active users 2026",
-   "impr": 8,
-   "clicks": 0,
-   "pos": 6.0
-  },
-  {
-   "q": "best countries to sell websites 2026 demand ranking",
-   "impr": 8,
-   "clicks": 0,
-   "pos": 4.0
-  },
-  {
    "q": "2026 internet growth countries latest",
    "impr": 8,
    "clicks": 0,
    "pos": 2.0
   },
   {
+   "q": "facebook monthly active users 2026",
+   "impr": 8,
+   "clicks": 0,
+   "pos": 6.0
+  },
+  {
    "q": "datareportal digital 2026 internet users by country china india indonesia",
    "impr": 8,
    "clicks": 0,
    "pos": 5.0
+  },
+  {
+   "q": "best countries to sell websites 2026 demand ranking",
+   "impr": 8,
+   "clicks": 0,
+   "pos": 4.0
   },
   {
    "q": "pinterest users by country 2026 us majority official",
@@ -1026,6 +1026,12 @@
    "impr": 8,
    "clicks": 0,
    "pos": 3.0
+  },
+  {
+   "q": "google market share",
+   "impr": 8,
+   "clicks": 0,
+   "pos": 7.0
   },
   {
    "q": "how many mcdonald's are franchised",
@@ -1136,12 +1142,6 @@
    "pos": 6.0
   },
   {
-   "q": "mask menard",
-   "impr": 7,
-   "clicks": 0,
-   "pos": 9.0
-  },
-  {
    "q": "10 richest people in the world",
    "impr": 7,
    "clicks": 0,
@@ -1152,6 +1152,12 @@
    "impr": 7,
    "clicks": 0,
    "pos": 7.0
+  },
+  {
+   "q": "mask menard",
+   "impr": 7,
+   "clicks": 0,
+   "pos": 9.0
   },
   {
    "q": "top 10 highest paid athletes forbes",
@@ -1172,21 +1178,9 @@
    "pos": 14.0
   },
   {
-   "q": "github trending repositories this week july 2026",
-   "impr": 6,
-   "clicks": 0,
-   "pos": 7.5
-  },
-  {
    "q": "what was the last reported subscribers numbers of netflix by country",
    "impr": 6,
    "clicks": 1,
-   "pos": 4.0
-  },
-  {
-   "q": "reddit users by country 2026 top countries",
-   "impr": 6,
-   "clicks": 0,
    "pos": 4.0
   },
   {
@@ -1196,16 +1190,16 @@
    "pos": 4.0
   },
   {
-   "q": "youtube users by country 2026 brazil indonesia mexico turkey egypt",
+   "q": "reddit users by country 2026 top countries",
    "impr": 6,
    "clicks": 0,
    "pos": 4.0
   },
   {
-   "q": "how many countries have starbucks",
+   "q": "youtube users by country 2026 brazil indonesia mexico turkey egypt",
    "impr": 6,
    "clicks": 0,
-   "pos": 8.0
+   "pos": 4.0
   },
   {
    "q": "e-commerce revenue for 2026",
@@ -1232,16 +1226,16 @@
    "pos": 3.0
   },
   {
-   "q": "top 10 billionaires in the world 2026",
-   "impr": 6,
-   "clicks": 0,
-   "pos": 6.0
-  },
-  {
    "q": "top ten richest billionaires 2026",
    "impr": 6,
    "clicks": 0,
    "pos": 3.0
+  },
+  {
+   "q": "top 10 billionaires in the world 2026",
+   "impr": 6,
+   "clicks": 0,
+   "pos": 6.0
   },
   {
    "q": "top 10 most subscribed youtube channels",
@@ -1250,10 +1244,10 @@
    "pos": 4.0
   },
   {
-   "q": "discord user count by country",
+   "q": "countried with the highest internet users",
    "impr": 6,
    "clicks": 0,
-   "pos": 4.0
+   "pos": 8.0
   },
   {
    "q": "signal users by country",
@@ -1304,16 +1298,16 @@
    "pos": 6.3
   },
   {
-   "q": "global languages",
-   "impr": 6,
-   "clicks": 0,
-   "pos": 8.0
-  },
-  {
    "q": "top 10 ranked airlines",
    "impr": 6,
    "clicks": 0,
    "pos": 9.0
+  },
+  {
+   "q": "global languages",
+   "impr": 6,
+   "clicks": 0,
+   "pos": 8.0
   },
   {
    "q": "top 10 airlines in the world",
@@ -1388,22 +1382,16 @@
    "pos": 5.4
   },
   {
-   "q": "top 50 country with top internet users 2026",
-   "impr": 5,
-   "clicks": 0,
-   "pos": 5.0
-  },
-  {
    "q": "top 10 billionaires list 2026",
    "impr": 5,
    "clicks": 0,
    "pos": 7.0
   },
   {
-   "q": "how amny roblox players in each country",
+   "q": "top 50 country with top internet users 2026",
    "impr": 5,
    "clicks": 0,
-   "pos": 6.0
+   "pos": 5.0
   },
   {
    "q": "who is the richest person in the planet in 2026",
@@ -1424,10 +1412,10 @@
    "pos": 4.0
   },
   {
-   "q": "richest people in the world 2026",
+   "q": "how amny roblox players in each country",
    "impr": 5,
    "clicks": 0,
-   "pos": 9.0
+   "pos": 6.0
   },
   {
    "q": "mandarin most spoken",
@@ -1466,10 +1454,10 @@
    "pos": 7.0
   },
   {
-   "q": "how many mcdonald's are there",
+   "q": "how many roblox users are there",
    "impr": 5,
    "clicks": 0,
-   "pos": 9.0
+   "pos": 4.0
   },
   {
    "q": "is english the most spoken language",
@@ -1478,10 +1466,10 @@
    "pos": 8.0
   },
   {
-   "q": "how many roblox users are there",
+   "q": "how many mcdonald's are there",
    "impr": 5,
    "clicks": 0,
-   "pos": 4.0
+   "pos": 9.0
   },
   {
    "q": "top websites in the world143 305 70",
@@ -1538,6 +1526,12 @@
    "pos": 6.0
   },
   {
+   "q": "who has the most money in the world 2026",
+   "impr": 4,
+   "clicks": 0,
+   "pos": 9.0
+  },
+  {
    "q": "how many snapchat users are there 2026 total",
    "impr": 4,
    "clicks": 0,
@@ -1556,18 +1550,6 @@
    "pos": 2.0
   },
   {
-   "q": "who has the most money in the world 2026",
-   "impr": 4,
-   "clicks": 0,
-   "pos": 9.0
-  },
-  {
-   "q": "how many global users have snapchat 2026 in total",
-   "impr": 4,
-   "clicks": 0,
-   "pos": 4.0
-  },
-  {
    "q": "thread users by country",
    "impr": 4,
    "clicks": 0,
@@ -1578,6 +1560,12 @@
    "impr": 4,
    "clicks": 0,
    "pos": 1.0
+  },
+  {
+   "q": "how many global users have snapchat 2026 in total",
+   "impr": 4,
+   "clicks": 0,
+   "pos": 4.0
   },
   {
    "q": "top ten bank in bangladesh 2026",
@@ -1646,10 +1634,10 @@
    "pos": 6.0
   },
   {
-   "q": "how many countries does uber eats operate in",
+   "q": "how many internet users are in greenland 2026",
    "impr": 4,
    "clicks": 0,
-   "pos": 8.0
+   "pos": 6.0
   },
   {
    "q": "most subscribed youtuber 2026",
@@ -1658,10 +1646,10 @@
    "pos": 6.0
   },
   {
-   "q": "how many internet users are in greenland 2026",
+   "q": "how many countries does uber eats operate in",
    "impr": 4,
    "clicks": 0,
-   "pos": 6.0
+   "pos": 8.0
   },
   {
    "q": "how many people are on instagram 2026",
@@ -1688,16 +1676,16 @@
    "pos": 6.0
   },
   {
-   "q": "most common languages of the world 2026",
-   "impr": 4,
-   "clicks": 3,
-   "pos": 2.0
-  },
-  {
    "q": "most downloaded app 2026",
    "impr": 4,
    "clicks": 2,
    "pos": 3.0
+  },
+  {
+   "q": "most common languages of the world 2026",
+   "impr": 4,
+   "clicks": 3,
+   "pos": 2.0
   },
   {
    "q": "mcdonalds worldwide store count by nation",
@@ -1707,12 +1695,6 @@
   },
   {
    "q": "linkedin poll results by country",
-   "impr": 4,
-   "clicks": 0,
-   "pos": 10.0
-  },
-  {
-   "q": "top 10 retail bank assets around the world",
    "impr": 4,
    "clicks": 0,
    "pos": 10.0
@@ -1734,6 +1716,12 @@
    "impr": 4,
    "clicks": 0,
    "pos": 6.0
+  },
+  {
+   "q": "top 10 retail bank assets around the world",
+   "impr": 4,
+   "clicks": 0,
+   "pos": 10.0
   },
   {
    "q": "is it have the official ranking of app in the world ?",
@@ -1772,10 +1760,10 @@
    "pos": 2.0
   },
   {
-   "q": "spotify users by country 2026​",
+   "q": "most spoken language in the world 2026",
    "impr": 4,
-   "clicks": 1,
-   "pos": 5.0
+   "clicks": 2,
+   "pos": 3.5
   },
   {
    "q": "grokipedia / gsma data. (2026). list of countries by smartphone penetration.",
@@ -1784,16 +1772,16 @@
    "pos": 4.0
   },
   {
+   "q": "spotify users by country 2026​",
+   "impr": 4,
+   "clicks": 1,
+   "pos": 5.0
+  },
+  {
    "q": "elon musk net worth august 2026 bloomberg billionaires index",
    "impr": 4,
    "clicks": 1,
    "pos": 3.0
-  },
-  {
-   "q": "what is the most spoken language in the world? total speaker rankings",
-   "impr": 4,
-   "clicks": 1,
-   "pos": 2.0
   },
   {
    "q": "how many mcafe store are there across the world",
@@ -1814,6 +1802,12 @@
    "pos": 6.0
   },
   {
+   "q": "what is the most spoken language in the world? total speaker rankings",
+   "impr": 4,
+   "clicks": 1,
+   "pos": 2.0
+  },
+  {
    "q": "how many mcdonalds in the usa and globally",
    "impr": 4,
    "clicks": 2,
@@ -1832,16 +1826,16 @@
    "pos": 3.5
   },
   {
-   "q": "tiktok taxonomic rank",
+   "q": "how many starbucks stores are there in the world",
    "impr": 4,
    "clicks": 0,
-   "pos": 8.0
+   "pos": 6.0
   },
   {
-   "q": "top 10 most spoken languages in the world",
+   "q": "is french 6th most spoken language in the world",
    "impr": 4,
    "clicks": 0,
-   "pos": 8.0
+   "pos": 6.0
   },
   {
    "q": "internet user in the world by geographic regions - september 2026",
@@ -1854,6 +1848,12 @@
    "impr": 4,
    "clicks": 3,
    "pos": 2.0
+  },
+  {
+   "q": "top 10 tallest buildings 2026",
+   "impr": 4,
+   "clicks": 1,
+   "pos": 1.0
   },
   {
    "q": "internet users in the world by geographics region as of september 2026",
@@ -1872,12 +1872,6 @@
    "impr": 4,
    "clicks": 1,
    "pos": 3.0
-  },
-  {
-   "q": "top 10 tallest buildings 2026",
-   "impr": 4,
-   "clicks": 1,
-   "pos": 1.0
   },
   {
    "q": "linkedin users in altvia vs estonia",
@@ -1916,13 +1910,13 @@
    "pos": 4.0
   },
   {
-   "q": "top 10 richest person in 2026",
+   "q": "how manu resturants dose mcdonalds have in 2026",
    "impr": 4,
    "clicks": 1,
    "pos": 4.0
   },
   {
-   "q": "how manu resturants dose mcdonalds have in 2026",
+   "q": "top 10 richest person in 2026",
    "impr": 4,
    "clicks": 1,
    "pos": 4.0
@@ -1946,12 +1940,6 @@
    "pos": 4.0
   },
   {
-   "q": "7/9/2026 wealthiest person in south korea",
-   "impr": 3,
-   "clicks": 0,
-   "pos": 8.0
-  },
-  {
    "q": "is paypal growing in the us?",
    "impr": 3,
    "clicks": 0,
@@ -1970,10 +1958,10 @@
    "pos": 10.0
   },
   {
-   "q": "number of facebook users by country",
+   "q": "netflix global rankings",
    "impr": 3,
    "clicks": 0,
-   "pos": 7.0
+   "pos": 10.0
   },
   {
    "q": "countries with the most roblox users",
@@ -1982,22 +1970,28 @@
    "pos": 5.0
   },
   {
-   "q": "netflix global rankings",
+   "q": "7/9/2026 wealthiest person in south korea",
    "impr": 3,
    "clicks": 0,
-   "pos": 10.0
+   "pos": 8.0
   },
   {
-   "q": "youtube monthly active users 2026 per country",
+   "q": "number of facebook users by country",
    "impr": 3,
    "clicks": 0,
-   "pos": 6.0
+   "pos": 7.0
   },
   {
    "q": "how many billionaires in brazil",
    "impr": 3,
    "clicks": 0,
    "pos": 7.0
+  },
+  {
+   "q": "youtube monthly active users 2026 per country",
+   "impr": 3,
+   "clicks": 0,
+   "pos": 6.0
   },
   {
    "q": "openai revenue 2026 annual report",
@@ -2018,12 +2012,6 @@
    "pos": 1.7
   },
   {
-   "q": "around how many business customers use aws cloud computing?",
-   "impr": 3,
-   "clicks": 0,
-   "pos": 8.0
-  },
-  {
    "q": "what is the most subscribed youtube channel",
    "impr": 3,
    "clicks": 0,
@@ -2036,13 +2024,19 @@
    "pos": 6.0
   },
   {
-   "q": "ambani net worth 2026",
+   "q": "around how many business customers use aws cloud computing?",
+   "impr": 3,
+   "clicks": 0,
+   "pos": 8.0
+  },
+  {
+   "q": "richest people in kazakhstan",
    "impr": 3,
    "clicks": 0,
    "pos": 7.0
   },
   {
-   "q": "richest people in kazakhstan",
+   "q": "ambani net worth 2026",
    "impr": 3,
    "clicks": 0,
    "pos": 7.0
@@ -2060,16 +2054,22 @@
    "pos": 4.3
   },
   {
-   "q": "how many players are in roblox 2026",
+   "q": "best ten banks",
    "impr": 3,
    "clicks": 0,
-   "pos": 6.0
+   "pos": 10.0
   },
   {
-   "q": "richest person in germany",
+   "q": "countries with the most internet users",
    "impr": 3,
    "clicks": 0,
    "pos": 8.0
+  },
+  {
+   "q": "dubai billionaires",
+   "impr": 3,
+   "clicks": 0,
+   "pos": 10.0
   },
   {
    "q": "world richest man 2026 top 10",
@@ -2078,28 +2078,28 @@
    "pos": 6.0
   },
   {
-   "q": "how many people play roblox in the u. k.",
-   "impr": 3,
-   "clicks": 0,
-   "pos": 7.0
-  },
-  {
-   "q": "best ten banks",
-   "impr": 3,
-   "clicks": 0,
-   "pos": 10.0
-  },
-  {
    "q": "who is the richest man in thailand?",
    "impr": 3,
    "clicks": 0,
    "pos": 5.0
   },
   {
-   "q": "countries with the most internet users",
+   "q": "how many people play roblox in the u. k.",
    "impr": 3,
    "clicks": 0,
-   "pos": 8.0
+   "pos": 7.0
+  },
+  {
+   "q": "how many players are in roblox 2026",
+   "impr": 3,
+   "clicks": 0,
+   "pos": 6.0
+  },
+  {
+   "q": "how is the richest man in germany 2026",
+   "impr": 3,
+   "clicks": 0,
+   "pos": 5.0
   },
   {
    "q": "forbes 2026 highest-paid athletes",
@@ -2114,12 +2114,6 @@
    "pos": 10.0
   },
   {
-   "q": "austrian wealthiest families",
-   "impr": 3,
-   "clicks": 1,
-   "pos": 7.0
-  },
-  {
    "q": "daftar negara dengan pengguna internet terbanyak 2026",
    "impr": 3,
    "clicks": 1,
@@ -2132,22 +2126,16 @@
    "pos": 7.0
   },
   {
+   "q": "austrian wealthiest families",
+   "impr": 3,
+   "clicks": 1,
+   "pos": 7.0
+  },
+  {
    "q": "top bank in bangladesh",
    "impr": 3,
    "clicks": 2,
    "pos": 2.3
-  },
-  {
-   "q": "what is the current tallest building in the world? 2026",
-   "impr": 3,
-   "clicks": 0,
-   "pos": 3.0
-  },
-  {
-   "q": "largest building in the world 2026 square feet",
-   "impr": 3,
-   "clicks": 0,
-   "pos": 2.0
   },
   {
    "q": "top ten richest people in the world 2026",
@@ -2162,12 +2150,6 @@
    "pos": 8.0
   },
   {
-   "q": "4 richest people counter 2026",
-   "impr": 3,
-   "clicks": 0,
-   "pos": 3.0
-  },
-  {
    "q": "how many active roblox accounts",
    "impr": 3,
    "clicks": 0,
@@ -2175,6 +2157,24 @@
   },
   {
    "q": "digital adoption index",
+   "impr": 3,
+   "clicks": 0,
+   "pos": 6.0
+  },
+  {
+   "q": "4 richest people counter 2026",
+   "impr": 3,
+   "clicks": 0,
+   "pos": 3.0
+  },
+  {
+   "q": "largest building in the world 2026 square feet",
+   "impr": 3,
+   "clicks": 0,
+   "pos": 2.0
+  },
+  {
+   "q": "japan net worth",
    "impr": 3,
    "clicks": 0,
    "pos": 6.0
@@ -2192,40 +2192,22 @@
    "pos": 9.0
   },
   {
-   "q": "bangladesh bank piority service",
-   "impr": 3,
-   "clicks": 1,
-   "pos": 4.0
-  },
-  {
    "q": "internet users in the world 2026",
    "impr": 3,
    "clicks": 1,
    "pos": 5.0
   },
   {
+   "q": "bangladesh bank piority service",
+   "impr": 3,
+   "clicks": 1,
+   "pos": 4.0
+  },
+  {
    "q": "chatgpt mau",
    "impr": 3,
    "clicks": 2,
    "pos": 3.0
-  },
-  {
-   "q": "who has the most subs on youtube 2026",
-   "impr": 3,
-   "clicks": 0,
-   "pos": 3.0
-  },
-  {
-   "q": "top 20 country with top internet users 2026",
-   "impr": 3,
-   "clicks": 0,
-   "pos": 4.0
-  },
-  {
-   "q": "which country has the least roblox players",
-   "impr": 3,
-   "clicks": 0,
-   "pos": 5.0
   },
   {
    "q": "top 10 company most woth in the world 2026",
@@ -2270,10 +2252,28 @@
    "pos": 3.0
   },
   {
-   "q": "youtubers with most subscribers 2026",
+   "q": "which country has the least roblox players",
    "impr": 3,
    "clicks": 0,
-   "pos": 6.0
+   "pos": 5.0
+  },
+  {
+   "q": "top 10 subscribed youtubers",
+   "impr": 3,
+   "clicks": 0,
+   "pos": 8.0
+  },
+  {
+   "q": "internet users by country",
+   "impr": 3,
+   "clicks": 0,
+   "pos": 9.0
+  },
+  {
+   "q": "most roblox players list per country",
+   "impr": 3,
+   "clicks": 0,
+   "pos": 5.0
   },
   {
    "q": "how many users does facebook have 2026",
@@ -2283,6 +2283,18 @@
   },
   {
    "q": "thrift store boom in the united states",
+   "impr": 3,
+   "clicks": 1,
+   "pos": 5.0
+  },
+  {
+   "q": "what country has the most roblox players 2026",
+   "impr": 3,
+   "clicks": 1,
+   "pos": 1.0
+  },
+  {
+   "q": "топ 10 самых высоких зданий в мире 2026",
    "impr": 3,
    "clicks": 1,
    "pos": 5.0
@@ -2300,25 +2312,13 @@
    "pos": 3.0
   },
   {
-   "q": "what country has the most roblox players 2026",
-   "impr": 3,
-   "clicks": 1,
-   "pos": 1.0
-  },
-  {
-   "q": "топ 10 самых высоких зданий в мире 2026",
-   "impr": 3,
-   "clicks": 1,
-   "pos": 5.0
-  },
-  {
-   "q": "bangladesh top 10 bank list 2026",
+   "q": "the biggest sport hypermarkets in qatar",
    "impr": 3,
    "clicks": 1,
    "pos": 2.0
   },
   {
-   "q": "the biggest sport hypermarkets in qatar",
+   "q": "bangladesh top 10 bank list 2026",
    "impr": 3,
    "clicks": 1,
    "pos": 2.0
@@ -2372,16 +2372,16 @@
    "pos": 3.0
   },
   {
-   "q": "what is wechat is in which country",
-   "impr": 3,
-   "clicks": 1,
-   "pos": 2.0
-  },
-  {
    "q": "16-64 internet user",
    "impr": 3,
    "clicks": 1,
    "pos": 4.0
+  },
+  {
+   "q": "what is wechat is in which country",
+   "impr": 3,
+   "clicks": 1,
+   "pos": 2.0
   },
   {
    "q": "highest smartphone penetration rates",
@@ -2444,10 +2444,10 @@
    "pos": 6.0
   },
   {
-   "q": "coffee consumption by country",
+   "q": "duolingo presence in countries",
    "impr": 3,
    "clicks": 1,
-   "pos": 6.0
+   "pos": 1.0
   },
   {
    "q": "tea consumption by country",
@@ -2462,16 +2462,22 @@
    "pos": 1.0
   },
   {
-   "q": "duolingo presence in countries",
+   "q": "coffee consumption by country",
    "impr": 3,
    "clicks": 1,
-   "pos": 1.0
+   "pos": 6.0
   },
   {
    "q": "top daily active users by platform",
    "impr": 3,
    "clicks": 3,
    "pos": 1.0
+  },
+  {
+   "q": "richest men in us",
+   "impr": 3,
+   "clicks": 1,
+   "pos": 8.0
   },
   {
    "q": "richest men in the world",
@@ -2486,19 +2492,13 @@
    "pos": 5.0
   },
   {
-   "q": "ranking of ai model users",
-   "impr": 3,
-   "clicks": 1,
-   "pos": 8.0
-  },
-  {
    "q": "what countries does aldi operate in",
    "impr": 3,
    "clicks": 1,
    "pos": 2.0
   },
   {
-   "q": "richest men in us",
+   "q": "ranking of ai model users",
    "impr": 3,
    "clicks": 1,
    "pos": 8.0
@@ -2516,12 +2516,6 @@
    "pos": 5.0
   },
   {
-   "q": "nb de subscribers de amazon prime en europe en france",
-   "impr": 3,
-   "clicks": 1,
-   "pos": 3.0
-  },
-  {
    "q": "who are the top 10 ai billionaires",
    "impr": 3,
    "clicks": 1,
@@ -2529,6 +2523,12 @@
   },
   {
    "q": "english language has the highest number of native speakers in the world",
+   "impr": 3,
+   "clicks": 1,
+   "pos": 3.0
+  },
+  {
+   "q": "nb de subscribers de amazon prime en europe en france",
    "impr": 3,
    "clicks": 1,
    "pos": 3.0
@@ -2546,6 +2546,18 @@
    "pos": 1.0
   },
   {
+   "q": "number of chinese billionaires",
+   "impr": 2,
+   "clicks": 0,
+   "pos": 4.0
+  },
+  {
+   "q": "billionaires in chile",
+   "impr": 2,
+   "clicks": 0,
+   "pos": 6.0
+  },
+  {
    "q": "net worth of the world's richest person in 2026",
    "impr": 2,
    "clicks": 0,
@@ -2556,36 +2568,6 @@
    "impr": 2,
    "clicks": 0,
    "pos": 8.0
-  },
-  {
-   "q": "number of chinese billionaires",
-   "impr": 2,
-   "clicks": 0,
-   "pos": 4.0
-  },
-  {
-   "q": "\"starbucks\" number of locations worldwide",
-   "impr": 2,
-   "clicks": 0,
-   "pos": 8.0
-  },
-  {
-   "q": "billionaires in chile",
-   "impr": 2,
-   "clicks": 0,
-   "pos": 6.0
-  },
-  {
-   "q": "which countries is linkedin growing",
-   "impr": 2,
-   "clicks": 0,
-   "pos": 2.0
-  },
-  {
-   "q": "hong kong's richest people 2026",
-   "impr": 2,
-   "clicks": 0,
-   "pos": 1.0
   },
   {
    "q": "who is the richest person in china?",
@@ -2600,22 +2582,34 @@
    "pos": 6.0
   },
   {
+   "q": "which countries is linkedin growing",
+   "impr": 2,
+   "clicks": 0,
+   "pos": 2.0
+  },
+  {
    "q": "number of china's billionaires",
    "impr": 2,
    "clicks": 0,
    "pos": 7.0
   },
   {
+   "q": "\"starbucks\" number of locations worldwide",
+   "impr": 2,
+   "clicks": 0,
+   "pos": 8.0
+  },
+  {
+   "q": "hong kong's richest people 2026",
+   "impr": 2,
+   "clicks": 0,
+   "pos": 1.0
+  },
+  {
    "q": "best 2 day itinerary in rajshahi bangladesh including mango orchard for foreigners",
    "impr": 2,
    "clicks": 2,
    "pos": 4.0
-  },
-  {
-   "q": "banking rank bangldash",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 2.0
   },
   {
    "q": "statcounter global stats. (2026). mobile vendor market share in ireland.",
@@ -2628,6 +2622,24 @@
    "impr": 2,
    "clicks": 1,
    "pos": 7.0
+  },
+  {
+   "q": "banking rank bangldash",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 2.0
+  },
+  {
+   "q": "netherlands rich list",
+   "impr": 2,
+   "clicks": 0,
+   "pos": 9.0
+  },
+  {
+   "q": "strongest passport in the world 2026",
+   "impr": 2,
+   "clicks": 0,
+   "pos": 9.0
   },
   {
    "q": "how many linkedin users are there in thailand",
@@ -2666,40 +2678,10 @@
    "pos": 3.0
   },
   {
-   "q": "snapchat usage by country",
+   "q": "is signal app users declining or growing",
    "impr": 2,
    "clicks": 0,
-   "pos": 8.0
-  },
-  {
-   "q": "netherlands rich list",
-   "impr": 2,
-   "clicks": 0,
-   "pos": 9.0
-  },
-  {
-   "q": "strongest passport in the world 2026",
-   "impr": 2,
-   "clicks": 0,
-   "pos": 9.0
-  },
-  {
-   "q": "largest employers in the world",
-   "impr": 2,
-   "clicks": 0,
-   "pos": 10.0
-  },
-  {
-   "q": "cox's bazar",
-   "impr": 2,
-   "clicks": 0,
-   "pos": 5.0
-  },
-  {
-   "q": "number of whatsapp users by country",
-   "impr": 2,
-   "clicks": 0,
-   "pos": 8.0
+   "pos": 7.0
   },
   {
    "q": "top 100 wealthiest people in usa",
@@ -2714,10 +2696,16 @@
    "pos": 2.0
   },
   {
-   "q": "is signal app users declining or growing",
+   "q": "cox's bazar",
    "impr": 2,
    "clicks": 0,
-   "pos": 7.0
+   "pos": 5.0
+  },
+  {
+   "q": "largest employers in the world",
+   "impr": 2,
+   "clicks": 0,
+   "pos": 10.0
   },
   {
    "q": "richest person in japan 2026",
@@ -2732,6 +2720,18 @@
    "pos": 4.0
   },
   {
+   "q": "snapchat usage by country",
+   "impr": 2,
+   "clicks": 0,
+   "pos": 8.0
+  },
+  {
+   "q": "number of whatsapp users by country",
+   "impr": 2,
+   "clicks": 0,
+   "pos": 8.0
+  },
+  {
    "q": "how many paying customers for icloud +",
    "impr": 2,
    "clicks": 2,
@@ -2744,16 +2744,16 @@
    "pos": 2.0
   },
   {
-   "q": "what country has the most facebook users density",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 4.0
-  },
-  {
    "q": "countly.net",
    "impr": 2,
    "clicks": 1,
    "pos": 2.0
+  },
+  {
+   "q": "what country has the most facebook users density",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 4.0
   },
   {
    "q": "how many facebook active users in 2026",
@@ -2778,30 +2778,6 @@
    "impr": 2,
    "clicks": 0,
    "pos": 8.0
-  },
-  {
-   "q": "forbes list 2026 germany",
-   "impr": 2,
-   "clicks": 0,
-   "pos": 10.0
-  },
-  {
-   "q": "forbes athelete 2026",
-   "impr": 2,
-   "clicks": 0,
-   "pos": 4.0
-  },
-  {
-   "q": "maior streamers da twitch 2026  global",
-   "impr": 2,
-   "clicks": 0,
-   "pos": 2.0
-  },
-  {
-   "q": "maior streamers da twitch 2026  global america",
-   "impr": 2,
-   "clicks": 0,
-   "pos": 3.0
   },
   {
    "q": "july 2026 release stars github",
@@ -2840,18 +2816,6 @@
    "pos": 6.0
   },
   {
-   "q": "instagram users by country",
-   "impr": 2,
-   "clicks": 0,
-   "pos": 6.0
-  },
-  {
-   "q": "how many facebook users per country",
-   "impr": 2,
-   "clicks": 0,
-   "pos": 5.0
-  },
-  {
    "q": "does norway have billionaires?",
    "impr": 2,
    "clicks": 0,
@@ -2882,19 +2846,37 @@
    "pos": 5.0
   },
   {
-   "q": "facebook current users by country",
-   "impr": 2,
-   "clicks": 0,
-   "pos": 7.0
-  },
-  {
-   "q": "mc donalds worldwide 2026",
+   "q": "instagram users by country",
    "impr": 2,
    "clicks": 0,
    "pos": 6.0
   },
   {
-   "q": "most downloaded apps 2026 till now",
+   "q": "how many facebook users per country",
+   "impr": 2,
+   "clicks": 0,
+   "pos": 5.0
+  },
+  {
+   "q": "maior streamers da twitch 2026  global",
+   "impr": 2,
+   "clicks": 0,
+   "pos": 2.0
+  },
+  {
+   "q": "number of x users in brazil",
+   "impr": 2,
+   "clicks": 0,
+   "pos": 8.0
+  },
+  {
+   "q": "who is the richest person in japan",
+   "impr": 2,
+   "clicks": 0,
+   "pos": 10.0
+  },
+  {
+   "q": "signal app users kenya",
    "impr": 2,
    "clicks": 0,
    "pos": 2.0
@@ -2912,10 +2894,16 @@
    "pos": 1.0
   },
   {
-   "q": "list of japanese cars brands",
+   "q": "facebook current users by country",
    "impr": 2,
    "clicks": 0,
-   "pos": 2.0
+   "pos": 7.0
+  },
+  {
+   "q": "mc donalds worldwide 2026",
+   "impr": 2,
+   "clicks": 0,
+   "pos": 6.0
   },
   {
    "q": "india smartphone penetration",
@@ -2924,22 +2912,28 @@
    "pos": 7.0
   },
   {
-   "q": "most visited websites from different countries.",
-   "impr": 2,
-   "clicks": 2,
-   "pos": 1.0
-  },
-  {
    "q": "duolingo users statistics by country",
    "impr": 2,
    "clicks": 2,
    "pos": 6.0
   },
   {
+   "q": "most visited websites from different countries.",
+   "impr": 2,
+   "clicks": 2,
+   "pos": 1.0
+  },
+  {
    "q": "bank ranking 2026",
    "impr": 2,
    "clicks": 3,
    "pos": 1.0
+  },
+  {
+   "q": "richest family name in romania 2026",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 3.0
   },
   {
    "q": "discord use by country japan",
@@ -2978,24 +2972,6 @@
    "pos": 2.0
   },
   {
-   "q": "richest family name in romania 2026",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 3.0
-  },
-  {
-   "q": "snapchat number one in country",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 5.0
-  },
-  {
-   "q": "richest man in usa 2026",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 2.0
-  },
-  {
    "q": "most used app in 2026",
    "impr": 2,
    "clicks": 1,
@@ -3008,16 +2984,34 @@
    "pos": 4.0
   },
   {
-   "q": "richest person in france",
+   "q": "richest man in usa 2026",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 2.0
+  },
+  {
+   "q": "snapchat number one in country",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 5.0
+  },
+  {
+   "q": "whats the richwst person in japam in yen",
+   "impr": 2,
+   "clicks": 0,
+   "pos": 8.0
+  },
+  {
+   "q": "wie viele spieler hat roblox im monat 2026",
+   "impr": 2,
+   "clicks": 0,
+   "pos": 4.0
+  },
+  {
+   "q": "popular apps 2026",
    "impr": 2,
    "clicks": 0,
    "pos": 9.0
-  },
-  {
-   "q": "how many mcdonald's are in the us",
-   "impr": 2,
-   "clicks": 0,
-   "pos": 10.0
   },
   {
    "q": "powerful passport in the world 2026",
@@ -3026,22 +3020,16 @@
    "pos": 8.0
   },
   {
-   "q": "fastest cars 2026",
+   "q": "top starred github repos",
    "impr": 2,
    "clicks": 0,
-   "pos": 5.0
+   "pos": 7.0
   },
   {
-   "q": "how many canadians have amizon prime",
+   "q": "richest person in france",
    "impr": 2,
    "clicks": 0,
    "pos": 9.0
-  },
-  {
-   "q": "which country use cell phone the least",
-   "impr": 2,
-   "clicks": 0,
-   "pos": 6.0
   },
   {
    "q": "rich philantropist in switzerland",
@@ -3050,22 +3038,28 @@
    "pos": 6.0
   },
   {
-   "q": "how many roblox accounts in pakistan",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 1.0
-  },
-  {
    "q": "how many listings does airbnb have globallu",
    "impr": 2,
    "clicks": 1,
    "pos": 2.0
   },
   {
+   "q": "rich list usa 2026",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 1.0
+  },
+  {
    "q": "spotify premium users in thailand",
    "impr": 2,
    "clicks": 1,
    "pos": 7.0
+  },
+  {
+   "q": "countries with the most roblox accounts",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 3.0
   },
   {
    "q": "oman smartphone penetration",
@@ -3086,13 +3080,7 @@
    "pos": 4.0
   },
   {
-   "q": "countries with the most roblox accounts",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 3.0
-  },
-  {
-   "q": "rich list usa 2026",
+   "q": "how many roblox accounts in pakistan",
    "impr": 2,
    "clicks": 1,
    "pos": 1.0
@@ -3146,7 +3134,7 @@
    "pos": 1.0
   },
   {
-   "q": "which countries has starbucks entered in 2026",
+   "q": "how many mcdonalds resutarnats are there 2026",
    "impr": 2,
    "clicks": 1,
    "pos": 2.0
@@ -3164,10 +3152,22 @@
    "pos": 8.0
   },
   {
-   "q": "tesla global sales analysis tesla’s june 2026 global sales divergence",
+   "q": "which countries has starbucks entered in 2026",
    "impr": 2,
    "clicks": 1,
    "pos": 2.0
+  },
+  {
+   "q": "what is the population of temu",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 2.0
+  },
+  {
+   "q": "apple icloud users in australia",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 5.0
   },
   {
    "q": "starbucks enter new countries 2026",
@@ -3188,28 +3188,10 @@
    "pos": 2.0
   },
   {
-   "q": "what is the population of temu",
+   "q": "chatgpt mau monthly active users 2026 july market share ai chatbot",
    "impr": 2,
    "clicks": 1,
-   "pos": 2.0
-  },
-  {
-   "q": "apple icloud users in australia",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 5.0
-  },
-  {
-   "q": "how many mcdonalds resutarnats are there 2026",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 2.0
-  },
-  {
-   "q": "christopher top 100 wealthiest people in the united states",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 2.0
+   "pos": 4.0
   },
   {
    "q": "countries by number of starbucks",
@@ -3218,22 +3200,28 @@
    "pos": 4.0
   },
   {
-   "q": "chatgpt mau monthly active users 2026 july market share ai chatbot",
+   "q": "christopher top 100 wealthiest people in the united states",
    "impr": 2,
    "clicks": 1,
-   "pos": 4.0
+   "pos": 2.0
   },
   {
-   "q": "global internet penetration rate 2026",
+   "q": "tesla global sales analysis tesla’s june 2026 global sales divergence",
    "impr": 2,
-   "clicks": 2,
-   "pos": 4.0
+   "clicks": 1,
+   "pos": 2.0
   },
   {
    "q": "leading countries based on instagram audience doi isbn",
    "impr": 2,
    "clicks": 2,
    "pos": 6.0
+  },
+  {
+   "q": "global internet penetration rate 2026",
+   "impr": 2,
+   "clicks": 2,
+   "pos": 4.0
   },
   {
    "q": "starbucks total stored worldwide 2026 latest totalllllllllllllllll",
@@ -3254,12 +3242,6 @@
    "pos": 4.0
   },
   {
-   "q": "ten most powerful passports",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 5.0
-  },
-  {
    "q": "largest commercial bank in bangladesh with nos of branches",
    "impr": 2,
    "clicks": 1,
@@ -3272,22 +3254,34 @@
    "pos": 3.0
   },
   {
+   "q": "ten most powerful passports",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 5.0
+  },
+  {
+   "q": "what are the earnings of the top 10 ai companies in us",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 2.0
+  },
+  {
+   "q": "openai chatgpt weekly active users 2026 gpt-5 revenue subscription price",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 4.0
+  },
+  {
    "q": "what is the most downloaded app in august 2026",
    "impr": 2,
    "clicks": 1,
    "pos": 2.0
   },
   {
-   "q": "information about richest person alive",
+   "q": "how many locations does starbucks have 2026",
    "impr": 2,
    "clicks": 1,
    "pos": 4.0
-  },
-  {
-   "q": "skyscrapers completed in 2026 around the world",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 5.0
   },
   {
    "q": "openai chatgpt 2026 gpt-5 users subscription enterprise revenue latest",
@@ -3300,12 +3294,6 @@
    "impr": 2,
    "clicks": 1,
    "pos": 2.0
-  },
-  {
-   "q": "how many locations does starbucks have 2026",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 4.0
   },
   {
    "q": "list of reddit accounts by country",
@@ -3326,46 +3314,16 @@
    "pos": 2.0
   },
   {
-   "q": "openai chatgpt weekly active users 2026 gpt-5 revenue subscription price",
+   "q": "information about richest person alive",
    "impr": 2,
    "clicks": 1,
    "pos": 4.0
   },
   {
-   "q": "what are the earnings of the top 10 ai companies in us",
+   "q": "skyscrapers completed in 2026 around the world",
    "impr": 2,
    "clicks": 1,
-   "pos": 2.0
-  },
-  {
-   "q": "how many people use i cloud",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 3.0
-  },
-  {
-   "q": "chatgpt weekly active users 2026 monthly active users statistics",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 4.0
-  },
-  {
-   "q": "the first billionaires in the workd2026.",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 2.0
-  },
-  {
-   "q": "how users of tiktok are there in \"ireland\" in 2026",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 2.0
-  },
-  {
-   "q": "top five internet stores that make money on the internet",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 1.0
+   "pos": 5.0
   },
   {
    "q": "bangladesh number one bank",
@@ -3386,28 +3344,58 @@
    "pos": 7.0
   },
   {
-   "q": "bank rankin by bangladesh bank",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 3.0
-  },
-  {
    "q": "thrift store chains are actually billion-dollar",
    "impr": 2,
    "clicks": 1,
    "pos": 2.0
   },
   {
-   "q": "github most starred repositories all time top 10 2026",
+   "q": "how users of tiktok are there in \"ireland\" in 2026",
    "impr": 2,
-   "clicks": 2,
-   "pos": 6.0
+   "clicks": 1,
+   "pos": 2.0
+  },
+  {
+   "q": "top five internet stores that make money on the internet",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 1.0
+  },
+  {
+   "q": "chatgpt weekly active users 2026 monthly active users statistics",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 4.0
+  },
+  {
+   "q": "the first billionaires in the workd2026.",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 2.0
+  },
+  {
+   "q": "how many people use i cloud",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 3.0
+  },
+  {
+   "q": "bank rankin by bangladesh bank",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 3.0
   },
   {
    "q": "what is the most popular youtube channel in 2026",
    "impr": 2,
    "clicks": 2,
    "pos": 1.0
+  },
+  {
+   "q": "github most starred repositories all time top 10 2026",
+   "impr": 2,
+   "clicks": 2,
+   "pos": 6.0
   },
   {
    "q": "how rich is elon musk today(26/08/2026)?",
@@ -3440,6 +3428,84 @@
    "pos": 1.5
   },
   {
+   "q": "forbes top 100 richest people in usa",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 5.0
+  },
+  {
+   "q": "sptofiy user by country",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 4.0
+  },
+  {
+   "q": "starbucks co op store counts by country",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 5.0
+  },
+  {
+   "q": "openai chatgpt users 2026 revenue commercialization model gpt-5",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 8.0
+  },
+  {
+   "q": "what are the biggest private banks in bangladesh",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 4.0
+  },
+  {
+   "q": "ecommerce website in india",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 10.0
+  },
+  {
+   "q": "how many peoples in the usa use whatsapp in 2026",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 8.0
+  },
+  {
+   "q": "how many mcdonald's are in the world updated in 2026",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 2.0
+  },
+  {
+   "q": "what is the ranking for copilot in ai usage",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 1.0
+  },
+  {
+   "q": "2026 thrift store trends",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 5.0
+  },
+  {
+   "q": "global map user linkedin, how much is linkedin used in each country globally",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 2.0
+  },
+  {
+   "q": "roblox player country in the world",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 3.0
+  },
+  {
+   "q": "how many billionaires in usa in 2026",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 9.0
+  },
+  {
    "q": "what is the top 10 most common apps that are downloaded and that does not automatically come with the decvice like google",
    "impr": 2,
    "clicks": 1,
@@ -3452,94 +3518,16 @@
    "pos": 1.0
   },
   {
-   "q": "global map user linkedin, how much is linkedin used in each country globally",
+   "q": "openai chatgpt weekly active users 2026 paid subscribers gpt-5.6 revenue valuation",
    "impr": 2,
    "clicks": 1,
-   "pos": 2.0
-  },
-  {
-   "q": "how many mcdonald's are in the world updated in 2026",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 2.0
-  },
-  {
-   "q": "how many billionaires in usa in 2026",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 9.0
-  },
-  {
-   "q": "sptofiy user by country",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 4.0
-  },
-  {
-   "q": "ecommerce website in india",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 10.0
-  },
-  {
-   "q": "openai chatgpt users 2026 revenue commercialization model gpt-5",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 8.0
-  },
-  {
-   "q": "how many peoples in the usa use whatsapp in 2026",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 8.0
-  },
-  {
-   "q": "what are the biggest private banks in bangladesh",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 4.0
+   "pos": 6.0
   },
   {
    "q": "duolingo monthly active users mau 2026 q2 million 130 million",
    "impr": 2,
    "clicks": 1,
    "pos": 7.0
-  },
-  {
-   "q": "starbucks co op store counts by country",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 5.0
-  },
-  {
-   "q": "forbes top 100 richest people in usa",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 5.0
-  },
-  {
-   "q": "2026 thrift store trends",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 5.0
-  },
-  {
-   "q": "roblox player country in the world",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 3.0
-  },
-  {
-   "q": "what is the ranking for copilot in ai usage",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 1.0
-  },
-  {
-   "q": "openai chatgpt weekly active users 2026 paid subscribers gpt-5.6 revenue valuation",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 6.0
   },
   {
    "q": "why 7eleven koparkhairane is closed?",
@@ -3560,16 +3548,22 @@
    "pos": 3.0
   },
   {
+   "q": "openai chatgpt weekly active users 2026 paid subscribers gpt-5 model commercialization api pricing",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 8.0
+  },
+  {
    "q": "najbolj priljubljena družbena omrežja razvrščena po številu mesečno aktivnih uporabnikov 2026",
    "impr": 2,
    "clicks": 1,
    "pos": 2.0
   },
   {
-   "q": "tiktok highest active users 2026",
+   "q": "tiktok youtube 2026 user statistics by country indonesia philippines brazil mexico united states average time spent",
    "impr": 2,
    "clicks": 1,
-   "pos": 1.0
+   "pos": 4.0
   },
   {
    "q": "icloud has more than 850 million users 850 million icloud",
@@ -3584,18 +3578,6 @@
    "pos": 4.0
   },
   {
-   "q": "ake a look at the current richest under 40 list what do all these people have in common",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 1.0
-  },
-  {
-   "q": "snapchat monthly users august 2026",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 9.0
-  },
-  {
    "q": "how many \"max\" users on duolingo",
    "impr": 2,
    "clicks": 1,
@@ -3608,46 +3590,34 @@
    "pos": 6.0
   },
   {
-   "q": "openai chatgpt weekly active users 2026 paid subscribers gpt-5 model commercialization api pricing",
+   "q": "ake a look at the current richest under 40 list what do all these people have in common",
    "impr": 2,
    "clicks": 1,
-   "pos": 8.0
+   "pos": 1.0
   },
   {
-   "q": "tiktok youtube 2026 user statistics by country indonesia philippines brazil mexico united states average time spent",
+   "q": "snapchat monthly users august 2026",
    "impr": 2,
    "clicks": 1,
-   "pos": 4.0
+   "pos": 9.0
   },
   {
-   "q": "estimated subscriber count netflix 2026",
+   "q": "tiktok highest active users 2026",
    "impr": 2,
    "clicks": 1,
-   "pos": 8.0
-  },
-  {
-   "q": "indonesia tiktok users 2026 number active users statistics",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 4.0
-  },
-  {
-   "q": "brac bank account ranking 2026",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 2.0
-  },
-  {
-   "q": "tiktok users by country 2026 indonesia pakistan thailand bangladesh monthly active users",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 2.0
+   "pos": 1.0
   },
   {
    "q": "top mobile producing countries 2026",
    "impr": 2,
    "clicks": 1,
    "pos": 6.0
+  },
+  {
+   "q": "tiktok users by country 2026 indonesia pakistan thailand bangladesh monthly active users",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 2.0
   },
   {
    "q": "2026 the estimated number of internet users worldwide was",
@@ -3662,10 +3632,28 @@
    "pos": 4.0
   },
   {
+   "q": "indonesia tiktok users 2026 number active users statistics",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 4.0
+  },
+  {
    "q": "reddit users divided by countries 2026",
    "impr": 2,
    "clicks": 1,
    "pos": 3.0
+  },
+  {
+   "q": "estimated subscriber count netflix 2026",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 8.0
+  },
+  {
+   "q": "brac bank account ranking 2026",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 2.0
   },
   {
    "q": "how many people are active on instagram worldwide/in the us/in florida",
@@ -3686,16 +3674,28 @@
    "pos": 2.0
   },
   {
+   "q": "top ten banks in bangladesh",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 4.0
+  },
+  {
+   "q": "total starbucks stores in 2026",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 4.0
+  },
+  {
+   "q": "whatsapp monthly active users 2026",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 6.0
+  },
+  {
    "q": "the world’s most powerful languages 2026",
    "impr": 2,
    "clicks": 1,
    "pos": 1.0
-  },
-  {
-   "q": "how many youtube premium subscribers are there",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 4.0
   },
   {
    "q": "how many countries can use instagram",
@@ -3704,46 +3704,16 @@
    "pos": 2.0
   },
   {
-   "q": "how many people play roblox in different countries",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 1.0
-  },
-  {
    "q": "openai chatgpt users scale revenue business model 2025 2026 gpt-5",
    "impr": 2,
    "clicks": 1,
    "pos": 7.0
   },
   {
-   "q": "how many users does have thread in uzbekistan",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 2.0
-  },
-  {
-   "q": "top ten banks in bangladesh",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 4.0
-  },
-  {
-   "q": "laestest fastest car 2026",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 4.0
-  },
-  {
-   "q": "magic billionaire 2026",
+   "q": "youtube monthly active users 2026 statistics",
    "impr": 2,
    "clicks": 1,
    "pos": 5.0
-  },
-  {
-   "q": "avenue z chat gpt user statistics 2026",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 6.0
   },
   {
    "q": "as of august 2026, openai's chatgpt has overtaken tiktok as the most downloaded free app on both ios and android.",
@@ -3770,43 +3740,37 @@
    "pos": 1.0
   },
   {
-   "q": "whatsapp monthly active users 2026",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 6.0
-  },
-  {
-   "q": "youtube monthly active users 2026 statistics",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 5.0
-  },
-  {
    "q": "how many mcdonald's restaurants was there at the end of 2025?",
    "impr": 2,
    "clicks": 1,
    "pos": 7.0
   },
   {
-   "q": "total starbucks stores in 2026",
+   "q": "how many youtube premium subscribers are there",
    "impr": 2,
    "clicks": 1,
    "pos": 4.0
   },
   {
-   "q": "top ten buildings in the world 2026",
+   "q": "how many people play roblox in different countries",
    "impr": 2,
    "clicks": 1,
    "pos": 1.0
   },
   {
-   "q": "how many people use instagram worldwide, and in florida",
+   "q": "laestest fastest car 2026",
    "impr": 2,
    "clicks": 1,
-   "pos": 1.0
+   "pos": 4.0
   },
   {
-   "q": "national language ranking",
+   "q": "magic billionaire 2026",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 5.0
+  },
+  {
+   "q": "avenue z chat gpt user statistics 2026",
    "impr": 2,
    "clicks": 1,
    "pos": 6.0
@@ -3818,10 +3782,28 @@
    "pos": 1.0
   },
   {
+   "q": "national language ranking",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 6.0
+  },
+  {
+   "q": "how many people use instagram worldwide, and in florida",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 1.0
+  },
+  {
    "q": "netflix market per country",
    "impr": 2,
    "clicks": 1,
    "pos": 4.0
+  },
+  {
+   "q": "top ten buildings in the world 2026",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 1.0
   },
   {
    "q": "what is th emost used app in the world 2026",
@@ -3836,6 +3818,12 @@
    "pos": 4.0
   },
   {
+   "q": "how many users does have thread in uzbekistan",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 2.0
+  },
+  {
    "q": "find information about saudi arabia richest man",
    "impr": 2,
    "clicks": 2,
@@ -3845,12 +3833,6 @@
    "q": "application download version year 2026 2027 all applications in the world are available",
    "impr": 2,
    "clicks": 3,
-   "pos": 2.0
-  },
-  {
-   "q": "how many starbucks store worldwide sept 2026",
-   "impr": 2,
-   "clicks": 2,
    "pos": 2.0
   },
   {
@@ -3878,22 +3860,22 @@
    "pos": 2.0
   },
   {
+   "q": "how many starbucks store worldwide sept 2026",
+   "impr": 2,
+   "clicks": 2,
+   "pos": 2.0
+  },
+  {
    "q": "top 100 richest person in india 2026",
    "impr": 2,
    "clicks": 1,
    "pos": 4.0
   },
   {
-   "q": "largest consumers of tea per head",
+   "q": "snapchat uk demographics september 2026 -ai",
    "impr": 2,
    "clicks": 1,
    "pos": 3.0
-  },
-  {
-   "q": "what is the most downloaded app of 2026",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 2.0
   },
   {
    "q": "subway number of locations worldwide 2026 approximately 37000 restaurants",
@@ -3920,16 +3902,16 @@
    "pos": 6.0
   },
   {
-   "q": "how many facebook users are there worldwide in 2026",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 4.0
-  },
-  {
    "q": "internet users growth in country wise",
    "impr": 2,
    "clicks": 1,
    "pos": 6.0
+  },
+  {
+   "q": "how many facebook users are there worldwide in 2026",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 4.0
   },
   {
    "q": "2026 baseline data global internet users billion smartphone penetration ev share generative ai adoption rate",
@@ -3938,19 +3920,31 @@
    "pos": 4.0
   },
   {
+   "q": "what is the most downloaded app of 2026",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 2.0
+  },
+  {
    "q": "most popular youtubers 2026",
    "impr": 2,
    "clicks": 1,
    "pos": 3.0
   },
   {
-   "q": "snapchat uk demographics september 2026 -ai",
+   "q": "bloomberg billionaires index top 20 richest people 2026",
    "impr": 2,
    "clicks": 1,
-   "pos": 3.0
+   "pos": 2.0
   },
   {
-   "q": "who has the most subscribers on youtube top 10",
+   "q": "what is the most downloaded app of 2026 so far",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 2.0
+  },
+  {
+   "q": "10 most downloaded apps in 2026",
    "impr": 2,
    "clicks": 1,
    "pos": 2.0
@@ -3968,22 +3962,16 @@
    "pos": 6.0
   },
   {
+   "q": "largest consumers of tea per head",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 3.0
+  },
+  {
    "q": "tiktok users country wise 2020",
    "impr": 2,
    "clicks": 1,
    "pos": 17.0
-  },
-  {
-   "q": "what is the most downloaded app of 2026 so far",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 2.0
-  },
-  {
-   "q": "10 most downloaded apps in 2026",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 2.0
   },
   {
    "q": "openai annualized revenue 2026 billion users chatgpt weekly",
@@ -3992,7 +3980,7 @@
    "pos": 4.0
   },
   {
-   "q": "bloomberg billionaires index top 20 richest people 2026",
+   "q": "who has the most subscribers on youtube top 10",
    "impr": 2,
    "clicks": 1,
    "pos": 2.0
@@ -4004,16 +3992,16 @@
    "pos": 5.0
   },
   {
-   "q": "top 10 famous git repo in globally 2026 on reddit",
-   "impr": 2,
-   "clicks": 2,
-   "pos": 3.0
-  },
-  {
    "q": "cuantos paises tienen mcdonalds 2026",
    "impr": 2,
    "clicks": 2,
    "pos": 4.0
+  },
+  {
+   "q": "top 10 famous git repo in globally 2026 on reddit",
+   "impr": 2,
+   "clicks": 2,
+   "pos": 3.0
   },
   {
    "q": "reddit usage in asia 2026",
@@ -4028,16 +4016,10 @@
    "pos": 4.0
   },
   {
-   "q": "instagram audience size by country 2026 largest markets",
+   "q": "top 20 country most roblox users 2026",
    "impr": 2,
    "clicks": 1,
-   "pos": 3.0
-  },
-  {
-   "q": "jumlah pengguna instagram di dunia 206",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 2.0
+   "pos": 1.0
   },
   {
    "q": "how many stores does mcdonald's have globally",
@@ -4058,10 +4040,22 @@
    "pos": 6.0
   },
   {
-   "q": "top 20 country most roblox users 2026",
+   "q": "jumlah pengguna instagram di dunia 206",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 2.0
+  },
+  {
+   "q": "compare ranking between midland bank & city bank",
    "impr": 2,
    "clicks": 1,
    "pos": 1.0
+  },
+  {
+   "q": "how many restaurants in how many countries mc donalds",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 5.0
   },
   {
    "q": "as of june 2026, starbucks had more than 41000 company- operated and licensed stores across 90 markets worldwide.",
@@ -4082,28 +4076,10 @@
    "pos": 2.0
   },
   {
-   "q": "how many restaurants in how many countries mc donalds",
+   "q": "instagram audience size by country 2026 largest markets",
    "impr": 2,
    "clicks": 1,
-   "pos": 5.0
-  },
-  {
-   "q": "compare ranking between midland bank & city bank",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 1.0
-  },
-  {
-   "q": "global internet user as of sept 2026",
-   "impr": 2,
-   "clicks": 2,
-   "pos": 5.0
-  },
-  {
-   "q": "internet userd in the world by geographic by september 2026",
-   "impr": 2,
-   "clicks": 2,
-   "pos": 4.0
+   "pos": 3.0
   },
   {
    "q": "top ten global language influences in the next 20 years",
@@ -4112,10 +4088,28 @@
    "pos": 1.0
   },
   {
+   "q": "internet userd in the world by geographic by september 2026",
+   "impr": 2,
+   "clicks": 2,
+   "pos": 4.0
+  },
+  {
+   "q": "global internet user as of sept 2026",
+   "impr": 2,
+   "clicks": 2,
+   "pos": 5.0
+  },
+  {
    "q": "how many starbucks in india vs boston us vs montreal",
    "impr": 2,
    "clicks": 1,
    "pos": 4.0
+  },
+  {
+   "q": "how many aldi stores in istanbul?  do they have the same food items as usa?",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 2.0
   },
   {
    "q": "internet users in the world by geographic regions —september 2026 (updated estimate)",
@@ -4136,10 +4130,10 @@
    "pos": 2.0
   },
   {
-   "q": "how many aldi stores in istanbul?  do they have the same food items as usa?",
+   "q": "linkedin users kyrgyzstan number penetration 2026",
    "impr": 2,
    "clicks": 1,
-   "pos": 2.0
+   "pos": 5.0
   },
   {
    "q": "how many countries does subway have stores",
@@ -4154,13 +4148,7 @@
    "pos": 3.0
   },
   {
-   "q": "linkedin users kyrgyzstan number penetration 2026",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 5.0
-  },
-  {
-   "q": "whats the number of sales of bath mats on flipkart amazon and other shopping website",
+   "q": "how many users snapchat hvae in 2026 in the uk",
    "impr": 2,
    "clicks": 2,
    "pos": 1.0
@@ -4178,22 +4166,22 @@
    "pos": 6.0
   },
   {
-   "q": "how many users snapchat hvae in 2026 in the uk",
+   "q": "whats the number of sales of bath mats on flipkart amazon and other shopping website",
    "impr": 2,
    "clicks": 2,
    "pos": 1.0
   },
   {
-   "q": "telegram top countries by users 2026 india russia iran brazil indonesia million",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 2.0
-  },
-  {
-   "q": "tiktok users by country top 40 list italy poland netherlands romania ukraine south korea taiwan million users",
+   "q": "how many roblox players in nepal",
    "impr": 2,
    "clicks": 1,
    "pos": 4.0
+  },
+  {
+   "q": "whichcountry has the highest use of mobile phones",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 2.0
   },
   {
    "q": "big tech companies 2026 per share",
@@ -4202,40 +4190,10 @@
    "pos": 1.0
   },
   {
-   "q": "hur mycket kaffe dricker all länder i världen",
+   "q": "how many roblox accounts are there in septemer 2026",
    "impr": 2,
    "clicks": 1,
-   "pos": 6.0
-  },
-  {
-   "q": "istagram vs whatsapp by mau",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 2.0
-  },
-  {
-   "q": "skyscraper rank world 2026",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 2.0
-  },
-  {
-   "q": "face book par total kitne user hain",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 3.0
-  },
-  {
-   "q": "chatgpt weekly active users 2026 openai",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 5.0
-  },
-  {
-   "q": "amazon prime member in the us",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 9.0
+   "pos": 1.0
   },
   {
    "q": "how many mcdonals restuarants 2026",
@@ -4250,54 +4208,6 @@
    "pos": 2.0
   },
   {
-   "q": "how many roblox players in nepal",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 4.0
-  },
-  {
-   "q": "global interneft penetration rate 2026",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 4.0
-  },
-  {
-   "q": "most powerful & top rated bank in bangladesh",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 2.0
-  },
-  {
-   "q": "internet users by continent 2026",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 4.0
-  },
-  {
-   "q": "does mcdonalds have a restaurant inevery country in the world today",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 3.0
-  },
-  {
-   "q": "how many roblox accounts are there in septemer 2026",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 1.0
-  },
-  {
-   "q": "openai chatgpt weekly active users 2026 latest",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 2.0
-  },
-  {
-   "q": "top 10 biggest banks in bangladesh",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 1.0
-  },
-  {
    "q": "number of roblox user in the philippines according to reliable source",
    "impr": 2,
    "clicks": 1,
@@ -4310,16 +4220,34 @@
    "pos": 1.0
   },
   {
-   "q": "chatgpt education resources 103 million in numbers",
+   "q": "hur mycket kaffe dricker all länder i världen",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 6.0
+  },
+  {
+   "q": "openai chatgpt weekly active users 2026 latest",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 2.0
+  },
+  {
+   "q": "face book par total kitne user hain",
    "impr": 2,
    "clicks": 1,
    "pos": 3.0
   },
   {
-   "q": "top rankin  bank bangladesh বর্তমান অবস্থা",
+   "q": "amazon prime member in the us",
    "impr": 2,
    "clicks": 1,
-   "pos": 1.0
+   "pos": 9.0
+  },
+  {
+   "q": "chatgpt education resources 103 million in numbers",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 3.0
   },
   {
    "q": "mcdonald's world wide number of restaurant 2026",
@@ -4334,16 +4262,76 @@
    "pos": 4.0
   },
   {
+   "q": "istagram vs whatsapp by mau",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 2.0
+  },
+  {
+   "q": "top 10 biggest banks in bangladesh",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 1.0
+  },
+  {
+   "q": "internet users by continent 2026",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 4.0
+  },
+  {
+   "q": "does mcdonalds have a restaurant inevery country in the world today",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 3.0
+  },
+  {
+   "q": "skyscraper rank world 2026",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 2.0
+  },
+  {
+   "q": "global interneft penetration rate 2026",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 4.0
+  },
+  {
+   "q": "most powerful & top rated bank in bangladesh",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 2.0
+  },
+  {
+   "q": "chatgpt weekly active users 2026 openai",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 5.0
+  },
+  {
+   "q": "telegram top countries by users 2026 india russia iran brazil indonesia million",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 2.0
+  },
+  {
+   "q": "top rankin  bank bangladesh বর্তমান অবস্থা",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 1.0
+  },
+  {
    "q": "datareportal digital 2026 global report internet users social media users statistics",
    "impr": 2,
    "clicks": 1,
    "pos": 7.0
   },
   {
-   "q": "whichcountry has the highest use of mobile phones",
+   "q": "tiktok users by country top 40 list italy poland netherlands romania ukraine south korea taiwan million users",
    "impr": 2,
    "clicks": 1,
-   "pos": 2.0
+   "pos": 4.0
   },
   {
    "q": "1000000 languages",
@@ -4352,52 +4340,22 @@
    "pos": 7.0
   },
   {
-   "q": "top ten mobile internet users 2026",
-   "impr": 2,
-   "clicks": 2,
-   "pos": 2.0
-  },
-  {
    "q": "全球手机使用报告各国家版",
    "impr": 2,
    "clicks": 2,
    "pos": 3.0
   },
   {
-   "q": "how many accounts are on roblox 2026",
+   "q": "top ten mobile internet users 2026",
    "impr": 2,
-   "clicks": 1,
-   "pos": 3.0
-  },
-  {
-   "q": "how mnay discord users ina autralia",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 8.0
-  },
-  {
-   "q": "youtube monthly active users 2026 2.5 billion pinterest 2026 mau",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 3.0
-  },
-  {
-   "q": "6.17million subscribrd ma",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 4.0
+   "clicks": 2,
+   "pos": 2.0
   },
   {
    "q": "numero de utilizadores de internet 2026 por continente",
    "impr": 2,
    "clicks": 1,
    "pos": 2.0
-  },
-  {
-   "q": "netflix subscribers per country",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 10.0
   },
   {
    "q": "who masw chat gpt any indians in the us",
@@ -4418,12 +4376,6 @@
    "pos": 1.0
   },
   {
-   "q": "statistics comprehension chat gpt",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 2.0
-  },
-  {
    "q": "linkedin uzbekistan users 2026 statistics availability business networking",
    "impr": 2,
    "clicks": 1,
@@ -4436,10 +4388,64 @@
    "pos": 5.0
   },
   {
+   "q": "statistics comprehension chat gpt",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 2.0
+  },
+  {
+   "q": "6.17million subscribrd ma",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 4.0
+  },
+  {
    "q": "top 20 billionaire by amount",
    "impr": 2,
    "clicks": 1,
    "pos": 5.0
+  },
+  {
+   "q": "how many accounts are on roblox 2026",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 3.0
+  },
+  {
+   "q": "how mnay discord users ina autralia",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 8.0
+  },
+  {
+   "q": "youtube monthly active users 2026 2.5 billion pinterest 2026 mau",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 3.0
+  },
+  {
+   "q": "netflix subscribers per country",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 10.0
+  },
+  {
+   "q": "usuariosde internet por continentes",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 4.0
+  },
+  {
+   "q": "coffee consumption european countries 2026",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 1.0
+  },
+  {
+   "q": "cell phone adoption by country per capita",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 4.0
   },
   {
    "q": "top 10 pone chanels in the world",
@@ -4460,31 +4466,7 @@
    "pos": 4.0
   },
   {
-   "q": "cell phone adoption by country per capita",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 4.0
-  },
-  {
-   "q": "usuariosde internet por continentes",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 4.0
-  },
-  {
-   "q": "coffee consumption european countries 2026",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 1.0
-  },
-  {
    "q": "skyscrapers over 600meters",
-   "impr": 2,
-   "clicks": 2,
-   "pos": 4.0
-  },
-  {
-   "q": "koja drzava vo svetot coriti najmnogu internet",
    "impr": 2,
    "clicks": 2,
    "pos": 4.0
@@ -4496,22 +4478,28 @@
    "pos": 4.0
   },
   {
-   "q": "top 10 social media user on world",
+   "q": "koja drzava vo svetot coriti najmnogu internet",
    "impr": 2,
-   "clicks": 1,
-   "pos": 1.0
+   "clicks": 2,
+   "pos": 4.0
   },
   {
-   "q": "the stats for a number of internet users, mobile users and social media users in 2025",
+   "q": "youtuber+top+2026",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 9.0
+  },
+  {
+   "q": "forbes 2026 list of worlds highest paid athletes",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 4.0
+  },
+  {
+   "q": "how many restaurant of mcdonald's",
    "impr": 2,
    "clicks": 1,
    "pos": 6.0
-  },
-  {
-   "q": "top 10 tallest buildings in the world 2026",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 3.0
   },
   {
    "q": "total number of rich people in the us 2026 list",
@@ -4532,22 +4520,22 @@
    "pos": 2.0
   },
   {
-   "q": "what is the top 10 skyscrapers",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 2.0
-  },
-  {
    "q": "worlds tallest building 2026",
    "impr": 2,
    "clicks": 1,
    "pos": 1.0
   },
   {
-   "q": "how many restaurant of mcdonald's",
+   "q": "what is the top 10 skyscrapers",
    "impr": 2,
    "clicks": 1,
-   "pos": 6.0
+   "pos": 2.0
+  },
+  {
+   "q": "top 10 social media user on world",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 1.0
   },
   {
    "q": "how many roblox accounts are there in the world",
@@ -4556,22 +4544,34 @@
    "pos": 2.0
   },
   {
-   "q": "forbes 2026 list of worlds highest paid athletes",
+   "q": "how big is big tech now",
    "impr": 2,
    "clicks": 1,
-   "pos": 4.0
+   "pos": 3.0
   },
   {
-   "q": "youtuber+top+2026",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 9.0
-  },
-  {
-   "q": "ai companies revenue v profit",
+   "q": "what country has the highest numberof internet use",
    "impr": 2,
    "clicks": 1,
    "pos": 5.0
+  },
+  {
+   "q": "how many marine professionals are on linkedin in ireland and europe",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 5.0
+  },
+  {
+   "q": "the stats for a number of internet users, mobile users and social media users in 2025",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 6.0
+  },
+  {
+   "q": "top 10 tallest buildings in the world 2026",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 3.0
   },
   {
    "q": "what makes more spoken languages grow and spread globally at the moment?",
@@ -4586,19 +4586,7 @@
    "pos": 5.0
   },
   {
-   "q": "what country has the highest numberof internet use",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 5.0
-  },
-  {
-   "q": "how big is big tech now",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 3.0
-  },
-  {
-   "q": "how many marine professionals are on linkedin in ireland and europe",
+   "q": "ai companies revenue v profit",
    "impr": 2,
    "clicks": 1,
    "pos": 5.0
@@ -4608,30 +4596,6 @@
    "impr": 2,
    "clicks": 2,
    "pos": 6.0
-  },
-  {
-   "q": "richest 100 people in usa 2026",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 1.0
-  },
-  {
-   "q": "otop 10 social medias for computers",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 3.0
-  },
-  {
-   "q": "how many starbucks stores in the world 2026",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 3.0
-  },
-  {
-   "q": "where's the biggest stadiums in the world",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 8.0
   },
   {
    "q": "tallest skyscrpaers on the world 2026",
@@ -4652,10 +4616,22 @@
    "pos": 4.0
   },
   {
-   "q": "smartphone adoption by country/region",
+   "q": "where's the biggest stadiums in the world",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 8.0
+  },
+  {
+   "q": "richest 100 people in usa 2026",
    "impr": 2,
    "clicks": 1,
    "pos": 1.0
+  },
+  {
+   "q": "how many starbucks stores in the world 2026",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 3.0
   },
   {
    "q": "best online shopping websites in india",
@@ -4664,16 +4640,22 @@
    "pos": 4.0
   },
   {
+   "q": "otop 10 social medias for computers",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 3.0
+  },
+  {
+   "q": "smartphone adoption by country/region",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 1.0
+  },
+  {
    "q": "urutan berapa indonesia dengan pengguna smartphone di dunia 2026",
    "impr": 2,
    "clicks": 3,
    "pos": 1.0
-  },
-  {
-   "q": "fastest car in the world 2026 top speed",
-   "impr": 2,
-   "clicks": 2,
-   "pos": 2.0
   },
   {
    "q": "what is the largest bookstore chain in asia pacifc",
@@ -4688,16 +4670,28 @@
    "pos": 3.0
   },
   {
+   "q": "fastest car in the world 2026 top speed",
+   "impr": 2,
+   "clicks": 2,
+   "pos": 2.0
+  },
+  {
    "q": "richest person in saudi arabia",
    "impr": 2,
    "clicks": 1,
    "pos": 2.0
   },
   {
-   "q": "which country has been affected by rising mobile phones today 2026",
+   "q": "all roblox users 2026 with password",
    "impr": 2,
    "clicks": 1,
-   "pos": 2.0
+   "pos": 39.0
+  },
+  {
+   "q": "top 10 bank in bangladesh in 2026",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 4.0
   },
   {
    "q": "top 10 ai billionaires ai companies",
@@ -4730,28 +4724,10 @@
    "pos": 6.0
   },
   {
-   "q": "top 10 bank in bangladesh in 2026",
+   "q": "which country has been affected by rising mobile phones today 2026",
    "impr": 2,
    "clicks": 1,
-   "pos": 4.0
-  },
-  {
-   "q": "all roblox users 2026 with password",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 39.0
-  },
-  {
-   "q": "2026 forbes united states ranking",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 3.0
-  },
-  {
-   "q": "list of languages by number native speakers 2026",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 4.0
+   "pos": 2.0
   },
   {
    "q": "copilot rankings in the ai industry",
@@ -4778,10 +4754,16 @@
    "pos": 3.0
   },
   {
-   "q": "highest building in the world in 2026",
+   "q": "2026 forbes united states ranking",
    "impr": 2,
-   "clicks": 2,
-   "pos": 2.0
+   "clicks": 1,
+   "pos": 3.0
+  },
+  {
+   "q": "list of languages by number native speakers 2026",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 4.0
   },
   {
    "q": "number of stores starbucks hs worldwide",
@@ -4796,28 +4778,10 @@
    "pos": 6.0
   },
   {
-   "q": "billionaires 2026 how we crunch the numbers methodology net worth stock prices snapshot",
+   "q": "highest building in the world in 2026",
    "impr": 2,
-   "clicks": 1,
-   "pos": 8.0
-  },
-  {
-   "q": "big ai tech companies earnings",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 3.0
-  },
-  {
-   "q": "90 megabite of internrt by countries in 2026",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 4.0
-  },
-  {
-   "q": "smart phone users india 2026",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 4.0
+   "clicks": 2,
+   "pos": 2.0
   },
   {
    "q": "what are advanced machine intelligence's current gross revenues",
@@ -4832,7 +4796,19 @@
    "pos": 4.0
   },
   {
-   "q": "roblox inde 2026",
+   "q": "chatgpt.com user world wide county count user",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 3.0
+  },
+  {
+   "q": "billionaires 2026 how we crunch the numbers methodology net worth stock prices snapshot",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 8.0
+  },
+  {
+   "q": "big ai tech companies earnings",
    "impr": 2,
    "clicks": 1,
    "pos": 3.0
@@ -4844,28 +4820,40 @@
    "pos": 2.0
   },
   {
+   "q": "top ten fastest road cars 2026",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 1.0
+  },
+  {
+   "q": "smart phone users india 2026",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 4.0
+  },
+  {
+   "q": "roblox inde 2026",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 3.0
+  },
+  {
+   "q": "90 megabite of internrt by countries in 2026",
+   "impr": 2,
+   "clicks": 1,
+   "pos": 4.0
+  },
+  {
    "q": "where does aldi operate uk and international companies",
    "impr": 2,
    "clicks": 1,
    "pos": 4.0
   },
   {
-   "q": "chatgpt.com user world wide county count user",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 3.0
-  },
-  {
    "q": "evaluate the main tourist destination of the world according to visitor numbers and income generation",
    "impr": 2,
    "clicks": 1,
    "pos": 6.0
-  },
-  {
-   "q": "top ten fastest road cars 2026",
-   "impr": 2,
-   "clicks": 1,
-   "pos": 1.0
   },
   {
    "q": "https://countly.net/s/countly/top-10-banks-in-bangladesh-2026-updated-ranking-data",
@@ -4886,10 +4874,28 @@
    "pos": 9.0
   },
   {
-   "q": "the grand duchy of luxembourg's gdp per capita ranking in europe",
+   "q": "globalmediainsight youtube users by country 2026 germany france uk italy spain netherlands",
    "impr": 1,
    "clicks": 0,
-   "pos": 9.0
+   "pos": 4.0
+  },
+  {
+   "q": "elon musk net worth forbes",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 4.0
+  },
+  {
+   "q": "how many spotify users 2026",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 1.0
+  },
+  {
+   "q": "rich people in france",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 7.0
   },
   {
    "q": "richest in sweden net worth",
@@ -4904,7 +4910,7 @@
    "pos": 5.0
   },
   {
-   "q": "countly 分析",
+   "q": "germany billionaires count",
    "impr": 1,
    "clicks": 0,
    "pos": 8.0
@@ -4928,55 +4934,19 @@
    "pos": 7.0
   },
   {
-   "q": "asean countries' gdp per capita ranking",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 9.0
-  },
-  {
-   "q": "2 richest men in france",
+   "q": "countly 分析",
    "impr": 1,
    "clicks": 0,
    "pos": 8.0
   },
   {
-   "q": "billionairesin austria",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 7.0
-  },
-  {
-   "q": "perplexity claude mau monthly active users 2025 2026 copilot",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 3.0
-  },
-  {
-   "q": "united states facebook users 2026 daily active users dau monthly active users mau",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 2.0
-  },
-  {
-   "q": "list of hypermarkets in qatar",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 4.0
-  },
-  {
-   "q": "billionaires in russia 2026",
+   "q": "the grand duchy of luxembourg's gdp per capita ranking in europe",
    "impr": 1,
    "clicks": 0,
    "pos": 9.0
   },
   {
-   "q": "globalmediainsight youtube users by country 2026 germany france uk italy spain netherlands",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 4.0
-  },
-  {
-   "q": "elon musk net worth forbes",
+   "q": "countries with the lowest rate of smartphone penetration",
    "impr": 1,
    "clicks": 0,
    "pos": 4.0
@@ -4988,10 +4958,16 @@
    "pos": 4.0
   },
   {
-   "q": "rich people in france",
+   "q": "top ten richest people in china before 2026",
    "impr": 1,
    "clicks": 0,
    "pos": 7.0
+  },
+  {
+   "q": "number of china's billionaires in 2026",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 4.0
   },
   {
    "q": "top 10 forbes global billionaires for 2026: converted wealth exceeds 1 trillion yuan",
@@ -5018,30 +4994,6 @@
    "pos": 3.0
   },
   {
-   "q": "number of china's billionaires in 2026",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 4.0
-  },
-  {
-   "q": "github trending repositories june 23-30 2026",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 10.0
-  },
-  {
-   "q": "how much is the fortune of hong kong's richest person in billions of hong kong dollars?",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 2.0
-  },
-  {
-   "q": "who is the richest person in mexico",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 10.0
-  },
-  {
    "q": "billionaire romania",
    "impr": 1,
    "clicks": 0,
@@ -5060,22 +5012,10 @@
    "pos": 6.0
   },
   {
-   "q": "iea global ev outlook 2026 total electric cars worldwide stock",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 10.0
-  },
-  {
    "q": "top 10 car brands reliability",
    "impr": 1,
    "clicks": 0,
    "pos": 1.0
-  },
-  {
-   "q": "gemini claude grok perplexity copilot mau 2026 monthly active users",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 3.0
   },
   {
    "q": "google youtube monthly active users 2026 mau latest",
@@ -5084,85 +5024,73 @@
    "pos": 4.0
   },
   {
-   "q": "germany billionaires count",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 8.0
-  },
-  {
-   "q": "top ten richest people in china before 2026",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 7.0
-  },
-  {
-   "q": "how many spotify users 2026",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 1.0
-  },
-  {
-   "q": "countries with the lowest rate of smartphone penetration",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 4.0
-  },
-  {
-   "q": "richest people in canada 2026",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 9.0
-  },
-  {
-   "q": "top ten travel agency in bangladesh",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 6.0
-  },
-  {
-   "q": "how many starbucks stores are there in china?",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 5.0
-  },
-  {
-   "q": "top 10 travel agents in qatar",
+   "q": "gemini claude grok perplexity copilot mau 2026 monthly active users",
    "impr": 1,
    "clicks": 0,
    "pos": 3.0
   },
   {
-   "q": "richest man in denmark",
+   "q": "how much is the fortune of hong kong's richest person in billions of hong kong dollars?",
    "impr": 1,
    "clicks": 0,
-   "pos": 6.0
+   "pos": 2.0
   },
   {
-   "q": "count.ly",
+   "q": "iea global ev outlook 2026 total electric cars worldwide stock",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 10.0
+  },
+  {
+   "q": "who is the richest person in mexico",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 10.0
+  },
+  {
+   "q": "billionaires in russia 2026",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 9.0
+  },
+  {
+   "q": "github trending repositories june 23-30 2026",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 10.0
+  },
+  {
+   "q": "perplexity claude mau monthly active users 2025 2026 copilot",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 3.0
+  },
+  {
+   "q": "list of hypermarkets in qatar",
    "impr": 1,
    "clicks": 0,
    "pos": 4.0
   },
   {
-   "q": "lebanon billionaires",
+   "q": "github most starred repositories june 2026",
    "impr": 1,
    "clicks": 0,
-   "pos": 4.0
+   "pos": 3.0
   },
   {
-   "q": "top richest people in china",
+   "q": "global gdp per capita ranking of uruguay in 2026",
    "impr": 1,
    "clicks": 0,
-   "pos": 8.0
+   "pos": 2.0
   },
   {
-   "q": "gdp per capita ranking of germany in the world",
+   "q": "country.c0m",
    "impr": 1,
    "clicks": 0,
-   "pos": 7.0
+   "pos": 5.0
   },
   {
-   "q": "world's richest people ranking list",
+   "q": "in norway how many billionaires",
    "impr": 1,
    "clicks": 0,
    "pos": 7.0
@@ -5228,28 +5156,100 @@
    "pos": 9.0
   },
   {
-   "q": "github most starred repositories june 2026",
+   "q": "count.ly",
    "impr": 1,
    "clicks": 0,
-   "pos": 3.0
+   "pos": 4.0
   },
   {
-   "q": "global gdp per capita ranking of uruguay in 2026",
+   "q": "lebanon billionaires",
    "impr": 1,
    "clicks": 0,
-   "pos": 2.0
+   "pos": 4.0
   },
   {
-   "q": "country.c0m",
+   "q": "top richest people in china",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 8.0
+  },
+  {
+   "q": "world's richest people ranking list",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 7.0
+  },
+  {
+   "q": "top ten travel agency in bangladesh",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 6.0
+  },
+  {
+   "q": "how many starbucks stores are there in china?",
    "impr": 1,
    "clicks": 0,
    "pos": 5.0
   },
   {
-   "q": "in norway how many billionaires",
+   "q": "top 10 travel agents in qatar",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 3.0
+  },
+  {
+   "q": "united states facebook users 2026 daily active users dau monthly active users mau",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 2.0
+  },
+  {
+   "q": "richest man in denmark",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 6.0
+  },
+  {
+   "q": "asean countries' gdp per capita ranking",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 9.0
+  },
+  {
+   "q": "2 richest men in france",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 8.0
+  },
+  {
+   "q": "billionairesin austria",
    "impr": 1,
    "clicks": 0,
    "pos": 7.0
+  },
+  {
+   "q": "richest people in canada 2026",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 9.0
+  },
+  {
+   "q": "gdp per capita ranking of germany in the world",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 7.0
+  },
+  {
+   "q": "global smartphone penetration rate in 2026",
+   "impr": 1,
+   "clicks": 1,
+   "pos": 2.0
+  },
+  {
+   "q": "github trending repositories most starred last week july 2026",
+   "impr": 1,
+   "clicks": 1,
+   "pos": 2.0
   },
   {
    "q": "country wie smart phone penetration",
@@ -5264,46 +5264,16 @@
    "pos": 7.0
   },
   {
-   "q": "richest person june 5 2026 in real time",
+   "q": "richest people in brazil",
    "impr": 1,
    "clicks": 1,
    "pos": 3.0
   },
   {
-   "q": "popular websites by country 2026",
+   "q": "which public company has the largest number of employees in the world 2026",
    "impr": 1,
    "clicks": 1,
-   "pos": 1.0
-  },
-  {
-   "q": "openai revenue arr 2026 financials annualized",
-   "impr": 1,
-   "clicks": 1,
-   "pos": 8.0
-  },
-  {
-   "q": "github trending repositories this week july 2026 most starred",
-   "impr": 1,
-   "clicks": 1,
-   "pos": 1.0
-  },
-  {
-   "q": "global smartphone penetration rate in 2026",
-   "impr": 1,
-   "clicks": 1,
-   "pos": 2.0
-  },
-  {
-   "q": "how many tiktok users in 2026 scholary article",
-   "impr": 1,
-   "clicks": 1,
-   "pos": 2.0
-  },
-  {
-   "q": "github trending repositories most starred last week july 2026",
-   "impr": 1,
-   "clicks": 1,
-   "pos": 2.0
+   "pos": 6.0
   },
   {
    "q": "bank ranking 2026 bd",
@@ -5348,28 +5318,16 @@
    "pos": 4.0
   },
   {
-   "q": "which public company has the largest number of employees in the world 2026",
-   "impr": 1,
-   "clicks": 1,
-   "pos": 6.0
-  },
-  {
-   "q": "bashundhara group , bd net worth in 2026",
-   "impr": 1,
-   "clicks": 1,
-   "pos": 3.0
-  },
-  {
-   "q": "how are the tallest buildings coming in 2026",
+   "q": "how many tiktok users in 2026 scholary article",
    "impr": 1,
    "clicks": 1,
    "pos": 2.0
   },
   {
-   "q": "richest people in brazil",
+   "q": "github trending repositories this week july 2026 most starred",
    "impr": 1,
    "clicks": 1,
-   "pos": 3.0
+   "pos": 1.0
   },
   {
    "q": "github repositories most stars gained this week july 2026",
@@ -5378,76 +5336,34 @@
    "pos": 4.0
   },
   {
-   "q": "how many youtube accounts exist 2026",
+   "q": "bashundhara group , bd net worth in 2026",
    "impr": 1,
-   "clicks": 0,
-   "pos": 9.0
+   "clicks": 1,
+   "pos": 3.0
   },
   {
-   "q": "top 50 gdp countries 2026",
+   "q": "richest person june 5 2026 in real time",
    "impr": 1,
-   "clicks": 0,
-   "pos": 9.0
+   "clicks": 1,
+   "pos": 3.0
   },
   {
-   "q": "how many tesla vehicles are there on the road, any model",
+   "q": "popular websites by country 2026",
    "impr": 1,
-   "clicks": 0,
+   "clicks": 1,
    "pos": 1.0
   },
   {
-   "q": "richest person in denmark",
+   "q": "openai revenue arr 2026 financials annualized",
    "impr": 1,
-   "clicks": 0,
+   "clicks": 1,
    "pos": 8.0
   },
   {
-   "q": "does czech republic have any billionaires",
+   "q": "how are the tallest buildings coming in 2026",
    "impr": 1,
-   "clicks": 0,
-   "pos": 5.0
-  },
-  {
-   "q": "how many people play roblox in 2026",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 7.0
-  },
-  {
-   "q": "richest people in qatar forbes",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 10.0
-  },
-  {
-   "q": "luxen bok gdp per capita 2026",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 5.0
-  },
-  {
-   "q": "which country has the most biggest stadiums",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 8.0
-  },
-  {
-   "q": "github trending july 2026 first week top repositories stars",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 6.0
-  },
-  {
-   "q": "how many tiktok accounts exist 2026",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 4.0
-  },
-  {
-   "q": "richest men in lebanon",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 6.0
+   "clicks": 1,
+   "pos": 2.0
   },
   {
    "q": "how many roblox accountsare there as of 2026",
@@ -5456,10 +5372,16 @@
    "pos": 3.0
   },
   {
-   "q": "qatar richest man 2026",
+   "q": "singapore richest person 2026",
    "impr": 1,
    "clicks": 0,
-   "pos": 5.0
+   "pos": 9.0
+  },
+  {
+   "q": "fastest car 2026 pictures",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 4.0
   },
   {
    "q": "riche tpwopel in vietnam",
@@ -5474,16 +5396,64 @@
    "pos": 4.0
   },
   {
-   "q": "best japanese car brands 2026",
+   "q": "top 50 gdp countries 2026",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 9.0
+  },
+  {
+   "q": "how many tesla vehicles are there on the road, any model",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 1.0
+  },
+  {
+   "q": "most star repo on github",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 10.0
+  },
+  {
+   "q": "top 10 richest men in japan",
    "impr": 1,
    "clicks": 0,
    "pos": 8.0
+  },
+  {
+   "q": "how many youtube accounts exist 2026",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 9.0
+  },
+  {
+   "q": "ai spendings 725b",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 6.0
+  },
+  {
+   "q": "gilinski fortune",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 5.0
   },
   {
    "q": "ireland rich list rank",
    "impr": 1,
    "clicks": 0,
    "pos": 6.0
+  },
+  {
+   "q": "billionaires in qatar 2026",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 3.0
+  },
+  {
+   "q": "how many zoom users are there?",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 10.0
   },
   {
    "q": "does japan have billionaires",
@@ -5516,18 +5486,6 @@
    "pos": 3.0
   },
   {
-   "q": "how many zoom users are there?",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 10.0
-  },
-  {
-   "q": "rbro.count.ly",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 2.0
-  },
-  {
    "q": "richest persons in qatar",
    "impr": 1,
    "clicks": 0,
@@ -5552,22 +5510,46 @@
    "pos": 7.0
   },
   {
-   "q": "most secured bank in bangladesh",
-   "impr": 1,
-   "clicks": 0,
-   "pos": 5.0
-  },
-  {
    "q": "github trending july 2026 new repositories developers",
    "impr": 1,
    "clicks": 0,
    "pos": 7.0
   },
   {
-   "q": "best private bank in bangladesh 2026",
+   "q": "wealthiest person in germany",
    "impr": 1,
-   "clicks": 2,
+   "clicks": 0,
+   "pos": 10.0
+  },
+  {
+   "q": "most secured bank in bangladesh",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 5.0
+  },
+  {
+   "q": "rbro.count.ly",
+   "impr": 1,
+   "clicks": 0,
    "pos": 2.0
+  },
+  {
+   "q": "best japanese car brands 2026",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 8.0
+  },
+  {
+   "q": "who is the richest person in qatar",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 6.0
+  },
+  {
+   "q": "richest men in lebanon",
+   "impr": 1,
+   "clicks": 0,
+   "pos": 6.0
   },
   {
    "q": "chatgpt earining",
@@ -5582,10 +5564,22 @@
    "pos": 3.0
   },
   {
-   "q": "smartphone by country",
+   "q": "best private bank in bangladesh 2026",
+   "impr": 1,
+   "clicks": 2,
+   "pos": 2.0
+  },
+  {
+   "q": "smartphone penetration rate",
    "impr": 1,
    "clicks": 1,
-   "pos": 5.0
+   "pos": 9.0
+  },
+  {
+   "q": "india top 100 richest person 2026 list",
+   "impr": 1,
+   "clicks": 1,
+   "pos": 1.0
   },
   {
    "q": "what % of the world’s smartphone users are in china and india",
@@ -5600,22 +5594,22 @@
    "pos": 2.0
   },
   {
-   "q": "india top 100 richest person 2026 list",
-   "impr": 1,
-   "clicks": 1,
-   "pos": 1.0
-  },
-  {
-   "q": "bảng xếp hạng app được sử dụng 2026",
+   "q": "smartphone by country",
    "impr": 1,
    "clicks": 1,
    "pos": 5.0
   },
   {
-   "q": "smartphone penetration rate",
+   "q": "ai assistant market share 2026 chatgpt claude gemini monthly active users statistics",
    "impr": 1,
    "clicks": 1,
-   "pos": 9.0
+   "pos": 4.0
+  },
+  {
+   "q": "monthly active users ai apps united states 2026 ranking similarweb sensor tower",
+   "impr": 1,
+   "clicks": 1,
+   "pos": 7.0
   },
   {
    "q": "openai revenue 2026 profit",
@@ -5636,25 +5630,19 @@
    "pos": 5.0
   },
   {
-   "q": "ai assistant market share 2026 chatgpt claude gemini monthly active users statistics",
+   "q": "bảng xếp hạng app được sử dụng 2026",
+   "impr": 1,
+   "clicks": 1,
+   "pos": 5.0
+  },
+  {
+   "q": "what is the tallest building in the world in 2026?",
    "impr": 1,
    "clicks": 1,
    "pos": 4.0
   },
   {
-   "q": "how many roblox users in europe",
-   "impr": 1,
-   "clicks": 1,
-   "pos": 2.0
-  },
-  {
-   "q": "monthly active users ai apps united states 2026 ranking similarweb sensor tower",
-   "impr": 1,
-   "clicks": 1,
-   "pos": 7.0
-  },
-  {
-   "q": "where is georg schaeffler onforbes list",
+   "q": "github trending july 2026 most popular repositories",
    "impr": 1,
    "clicks": 1,
    "pos": 3.0
@@ -5672,16 +5660,16 @@
    "pos": 4.0
   },
   {
-   "q": "what is the tallest building in the world in 2026?",
-   "impr": 1,
-   "clicks": 1,
-   "pos": 4.0
-  },
-  {
-   "q": "github trending july 2026 most popular repositories",
+   "q": "where is georg schaeffler onforbes list",
    "impr": 1,
    "clicks": 1,
    "pos": 3.0
+  },
+  {
+   "q": "how many roblox users in europe",
+   "impr": 1,
+   "clicks": 1,
+   "pos": 2.0
   },
   {
    "q": "cuantos starbucks hay en cada pais",
@@ -5690,16 +5678,16 @@
    "pos": 7.0
   },
   {
-   "q": "exchange rate july 26,2026",
-   "impr": 1,
-   "clicks": 3,
-   "pos": 4.0
-  },
-  {
    "q": "list of top ten best youtubers 2026",
    "impr": 1,
    "clicks": 3,
    "pos": 1.0
+  },
+  {
+   "q": "exchange rate july 26,2026",
+   "impr": 1,
+   "clicks": 3,
+   "pos": 4.0
   },
   {
    "q": "is roblox popular in colombia",
@@ -5714,39 +5702,15 @@
    "pos": 3.0
   },
   {
-   "q": "top bank ranking in bd 2026",
-   "impr": 1,
-   "clicks": 2,
-   "pos": 1.0
-  },
-  {
    "q": "top 10 companies in saudi arabia 2026",
    "impr": 1,
    "clicks": 2,
    "pos": 1.0
   },
   {
-   "q": "openai annual revenue run rate 2026 chatgpt users growth slowdown",
+   "q": "top bank ranking in bd 2026",
    "impr": 1,
-   "clicks": 1,
-   "pos": 5.0
-  },
-  {
-   "q": "most visited websites from different countries",
-   "impr": 1,
-   "clicks": 1,
-   "pos": 1.0
-  },
-  {
-   "q": "openai arr 2026 run rate billion latest may june",
-   "impr": 1,
-   "clicks": 1,
-   "pos": 2.0
-  },
-  {
-   "q": "top bank list in bangladesh  2026",
-   "impr": 1,
-   "clicks": 1,
+   "clicks": 2,
    "pos": 1.0
   },
   {
@@ -5774,10 +5738,10 @@
    "pos": 2.0
   },
   {
-   "q": "stablecoin usdt usdc total market cap july 2026 defillama",
+   "q": "most visited websites from different countries",
    "impr": 1,
    "clicks": 1,
-   "pos": 7.0
+   "pos": 1.0
   },
   {
    "q": "github repositories most stars gained today 2026-07-17",
@@ -5828,58 +5792,28 @@
    "pos": 2.0
   },
   {
-   "q": "biggest lulu hypermarket in qatar with highest sales",
-   "impr": 1,
-   "clicks": 1,
-   "pos": 2.0
-  },
-  {
    "q": "howq many billionaires in  the world 2026",
    "impr": 1,
    "clicks": 1,
    "pos": 7.0
   },
   {
-   "q": "tesla sales by country 2026",
-   "impr": 1,
-   "clicks": 1,
-   "pos": 3.0
-  },
-  {
-   "q": "github trending most starred repositories this week july 2026",
+   "q": "top bank list in bangladesh  2026",
    "impr": 1,
    "clicks": 1,
    "pos": 1.0
   },
   {
-   "q": "biggest bangladesh private and public sector banks",
+   "q": "openai annual revenue run rate 2026 chatgpt users growth slowdown",
    "impr": 1,
    "clicks": 1,
    "pos": 5.0
   },
   {
-   "q": "city bank ranking in bangladesh 2026",
-   "impr": 1,
-   "clicks": 1,
-   "pos": 1.0
-  },
-  {
-   "q": "internet user worldwide 2026",
-   "impr": 1,
-   "clicks": 1,
-   "pos": 3.0
-  },
-  {
-   "q": "tiktok creator analytics geographic distribution audience country",
+   "q": "stablecoin usdt usdc total market cap july 2026 defillama",
    "impr": 1,
    "clicks": 1,
    "pos": 7.0
-  },
-  {
-   "q": "map of all global starbuks 2026",
-   "impr": 1,
-   "clicks": 1,
-   "pos": 2.0
   },
   {
    "q": "top notch bank app in bd 2026",
@@ -5900,6 +5834,60 @@
    "pos": 1.0
   },
   {
+   "q": "internet user worldwide 2026",
+   "impr": 1,
+   "clicks": 1,
+   "pos": 3.0
+  },
+  {
+   "q": "tiktok creator analytics geographic distribution audience country",
+   "impr": 1,
+   "clicks": 1,
+   "pos": 7.0
+  },
+  {
+   "q": "city bank ranking in bangladesh 2026",
+   "impr": 1,
+   "clicks": 1,
+   "pos": 1.0
+  },
+  {
+   "q": "tesla sales by country 2026",
+   "impr": 1,
+   "clicks": 1,
+   "pos": 3.0
+  },
+  {
+   "q": "github trending most starred repositories this week july 2026",
+   "impr": 1,
+   "clicks": 1,
+   "pos": 1.0
+  },
+  {
+   "q": "biggest bangladesh private and public sector banks",
+   "impr": 1,
+   "clicks": 1,
+   "pos": 5.0
+  },
+  {
+   "q": "map of all global starbuks 2026",
+   "impr": 1,
+   "clicks": 1,
+   "pos": 2.0
+  },
+  {
+   "q": "biggest lulu hypermarket in qatar with highest sales",
+   "impr": 1,
+   "clicks": 1,
+   "pos": 2.0
+  },
+  {
+   "q": "openai arr 2026 run rate billion latest may june",
+   "impr": 1,
+   "clicks": 1,
+   "pos": 2.0
+  },
+  {
    "q": "rich philantropist in \"switzerland\"",
    "impr": 1,
    "clicks": 4,
@@ -5910,6 +5898,12 @@
    "impr": 1,
    "clicks": 3,
    "pos": 6.0
+  },
+  {
+   "q": "biggest bank in terms of branch in bangladsesh",
+   "impr": 1,
+   "clicks": 2,
+   "pos": 1.0
   },
   {
    "q": "e-commerce revenues 2026 pays",
@@ -5924,28 +5918,10 @@
    "pos": 1.0
   },
   {
-   "q": "biggest bank in terms of branch in bangladsesh",
-   "impr": 1,
-   "clicks": 2,
-   "pos": 1.0
-  },
-  {
-   "q": "rishest man in singapore 2026",
-   "impr": 1,
-   "clicks": 1,
-   "pos": 7.0
-  },
-  {
    "q": "market share by country comparison italy netflix",
    "impr": 1,
    "clicks": 1,
    "pos": 9.0
-  },
-  {
-   "q": "top ten worlds tallest buildings 2026",
-   "impr": 1,
-   "clicks": 1,
-   "pos": 2.0
   },
   {
    "q": "the country with the largest stadium in the world",
@@ -5960,46 +5936,70 @@
    "pos": 5.0
   },
   {
-   "q": "sepuluh negara pengguna internet terbanyak 2026",
+   "q": "rishest man in singapore 2026",
    "impr": 1,
    "clicks": 1,
-   "pos": 1.0
+   "pos": 7.0
   },
   {
-   "q": "top visited sites live by country",
+   "q": "top ten worlds tallest buildings 2026",
    "impr": 1,
    "clicks": 1,
    "pos": 2.0
   },
   {
-   "q": "top 100 wealthiest americans 2026",
+   "q": "open ai earnings 2026",
    "impr": 1,
    "clicks": 1,
    "pos": 1.0
   },
   {
-   "q": "how many mcdonalds in the workd",
+   "q": "top 50 countries ranked by population in 2026",
    "impr": 1,
    "clicks": 1,
    "pos": 4.0
   },
   {
-   "q": "youtube top performing channels  2026 data set",
+   "q": "thai population use canva",
+   "impr": 1,
+   "clicks": 1,
+   "pos": 3.0
+  },
+  {
+   "q": "countly ltd contact number",
    "impr": 1,
    "clicks": 1,
    "pos": 1.0
   },
   {
-   "q": "10 wealthiest men f july 30 2026",
-   "impr": 1,
-   "clicks": 1,
-   "pos": 1.0
-  },
-  {
-   "q": "emuflight github stars count 2026",
+   "q": "openai revenue arr 2026 july milestone billion",
    "impr": 1,
    "clicks": 1,
    "pos": 9.0
+  },
+  {
+   "q": "fastest growing revenue stocks in usa 2026",
+   "impr": 1,
+   "clicks": 1,
+   "pos": 3.0
+  },
+  {
+   "q": "who are the 10 richest people on earth 2026",
+   "impr": 1,
+   "clicks": 1,
+   "pos": 3.0
+  },
+  {
+   "q": "tiktok user in europe update 2026",
+   "impr": 1,
+   "clicks": 1,
+   "pos": 3.0
+  },
+  {
+   "q": "largest comanys in saudia",
+   "impr": 1,
+   "clicks": 1,
+   "pos": 8.0
   }
  ]
 }
