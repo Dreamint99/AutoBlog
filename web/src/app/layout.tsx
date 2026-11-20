@@ -55,7 +55,7 @@ const native = (pl: string, hash: string): AdsterraUnits => ({
 const ADSTERRA: Record<string, AdsterraUnits> = {
   countly: {
     ...native("30263460", "07db29087a1a24463680898243b16f48"),
-    popunder: `${AD}31806315.profitableratecpmnetwork.com/6c/61/43/6c6143c1e092621e9c70d616eba3065d.js`,
+    // popunder off: first-click hijack + stacked UI. Native banner stays.
   },
   walvi: {
     ...native("31806356", "6e566cfcffc2647ea872900f34e52da7"),
@@ -71,7 +71,7 @@ const ADSTERRA: Record<string, AdsterraUnits> = {
   },
   ninetymins: {
     ...native("31806377", "246da2b154d653a03cf4403294c4f9a1"),
-    popunder: `${AD}31806376.profitableratecpmnetwork.com/18/57/f6/1857f6edff93fa184b3f68d819315f3b.js`,
+    // popunder off: first-click hijack + stacked UI. Native banner stays.
   },
 };
 const ads = ADSTERRA[process.env.SITE_ID || ""] || {};
