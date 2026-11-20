@@ -1,5 +1,5 @@
 {
- "source": "Search Console API 2026-08-19..2026-11-17",
+ "source": "Search Console API 2026-08-20..2026-11-18",
  "pages": [
   {
    "url": "https://visapoint.net/visa-check/romania",
@@ -246,7 +246,7 @@
   },
   {
    "url": "https://visapoint.net/",
-   "impressions": 101,
+   "impressions": 104,
    "clicks": 4,
    "queries": [
     [
@@ -266,6 +266,12 @@
      5,
      0,
      58.8
+    ],
+    [
+     "immigration point",
+     4,
+     0,
+     3.8
     ],
     [
      "visa point",
@@ -310,20 +316,14 @@
      51
     ],
     [
-     "immigration point",
-     1,
-     0,
-     4
-    ],
-    [
      "index visa",
      1,
      0,
      35
     ]
    ],
-   "position": 27.5,
-   "ctr": 0.0396
+   "position": 26.8,
+   "ctr": 0.0385
   },
   {
    "url": "https://visapoint.net/visa-check/moldova",
@@ -402,7 +402,7 @@
   },
   {
    "url": "https://visapoint.net/passport-index",
-   "impressions": 93,
+   "impressions": 95,
    "clicks": 1,
    "queries": [
     [
@@ -413,9 +413,9 @@
     ],
     [
      "visa index",
-     10,
+     11,
      0,
-     36.7
+     34.7
     ],
     [
      "index passport",
@@ -430,6 +430,12 @@
      42.2
     ],
     [
+     "index visa",
+     3,
+     0,
+     19.7
+    ],
+    [
      "global passport index",
      2,
      0,
@@ -440,12 +446,6 @@
      2,
      0,
      35.5
-    ],
-    [
-     "index visa",
-     2,
-     0,
-     21.5
     ],
     [
      "passeport ranking",
@@ -478,8 +478,8 @@
      70.5
     ]
    ],
-   "position": 36.7,
-   "ctr": 0.0108
+   "position": 36.2,
+   "ctr": 0.0105
   },
   {
    "url": "https://visapoint.net/moldova-visa-status-online-2026-step-by-step-guide",
@@ -2046,6 +2046,45 @@
    "ctr": 0.0
   },
   {
+   "url": "https://visapoint.net/visa-check",
+   "impressions": 17,
+   "clicks": 0,
+   "queries": [
+    [
+     "visa open data",
+     2,
+     0,
+     30
+    ],
+    [
+     "all country visa check website",
+     1,
+     0,
+     7
+    ],
+    [
+     "mosaic visa sorgulama",
+     1,
+     0,
+     62
+    ],
+    [
+     "visa check online by passport number nepal",
+     1,
+     0,
+     68
+    ],
+    [
+     "visa validity check online",
+     1,
+     0,
+     4
+    ]
+   ],
+   "position": 17.6,
+   "ctr": 0.0
+  },
+  {
    "url": "https://visapoint.net/bangladesh-to-bulgaria-work-permit-2026-cost-process-salary",
    "impressions": 16,
    "clicks": 0,
@@ -2066,39 +2105,6 @@
     ]
    ],
    "position": 4.9,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/visa-check",
-   "impressions": 16,
-   "clicks": 0,
-   "queries": [
-    [
-     "visa open data",
-     2,
-     0,
-     30
-    ],
-    [
-     "all country visa check website",
-     1,
-     0,
-     7
-    ],
-    [
-     "visa check online by passport number nepal",
-     1,
-     0,
-     68
-    ],
-    [
-     "visa validity check online",
-     1,
-     0,
-     4
-    ]
-   ],
-   "position": 14.9,
    "ctr": 0.0
   },
   {
@@ -2481,16 +2487,8 @@
    "ctr": 0.0
   },
   {
-   "url": "https://visapoint.net/guides",
-   "impressions": 11,
-   "clicks": 0,
-   "queries": [],
-   "position": 6.7,
-   "ctr": 0.0
-  },
-  {
    "url": "https://visapoint.net/romania-work-visa-saudi-arabia-to-romania-guide-2025",
-   "impressions": 11,
+   "impressions": 12,
    "clicks": 0,
    "queries": [
     [
@@ -2506,7 +2504,15 @@
      8
     ]
    ],
-   "position": 4.6,
+   "position": 5.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/guides",
+   "impressions": 11,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.7,
    "ctr": 0.0
   },
   {
