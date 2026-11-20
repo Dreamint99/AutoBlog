@@ -125,21 +125,43 @@ _WIKI_DROP = re.compile(r"\b(logo|building|exterior|interior|office|headquarters
                         r"photo|image|picture|aerial|view|sign|signage)\b", re.IGNORECASE)
 
 
-def _wikimedia(query: str) -> str | None:
+# Sports sites: a search for "Premier League Bangladesh" returned a portrait of a head of state,
+# "football matches today" a protest photo. Never use these subjects on a sports post.
+_SPORT_SITE = re.compile(r"sport|football|soccer|cricket|basketball|ninetymins", re.IGNORECASE)
+_OFF_TOPIC_SPORTS = re.compile(
+    r"\b(politician|president|prime minister|statesman|stateswoman|head of state|minister|monarch|"
+    r"king of|queen of|sultan|emir|dictator|founding father|father of the nation|revolutionary|activist|"
+    r"political party|election|protest|rally|demonstration|encampment|riot|war|military|army|"
+    r"mixed martial|wrestler|boxer|bicycle|skyline|city in|capital of|logo of a company)\b", re.IGNORECASE)
+_OFF_TOPIC_FILE = re.compile(r"portrait|bangabandhu|mujib|rally|protest|encampment|ausschreitungen|riot|"
+                             r"flag_of|coat_of_arms|emblem|seal_of|map_of|locator", re.IGNORECASE)
+
+
+def _tokens(text: str) -> set:
+    return {w[:6] for w in re.findall(r"[a-z]{3,}", (text or "").lower()) if w not in _STOP}
+
+
+def _wikimedia(query: str, sports: bool = False) -> str | None:
     """Real, on-topic image for a NAMED entity (a bank, university, company, place)
     from Wikipedia's page image — e.g. 'Bangladesh Bank logo' → the actual
-    Bangladesh Bank logo/building. Returns an upload.wikimedia.org URL, or None."""
+    Bangladesh Bank logo/building. Returns an upload.wikimedia.org URL, or None.
+
+    Entity match: the article whose image we take must share at least half of the
+    query's significant words in its title (otherwise a loose full-text hit wins, e.g.
+    "Premier League Bangladesh" → a head-of-state portrait). With sports=True, pages
+    described as politicians, protests, wars etc. and portrait/flag files are rejected."""
     q = _WIKI_DROP.sub(" ", query or "").strip()
     q = re.sub(r"\s+", " ", q)
     if len(q) < 3:
         return None
+    want = _tokens(q)
     try:
         r = requests.get(
             "https://en.wikipedia.org/w/api.php",
             params={
-                "action": "query", "format": "json", "prop": "pageimages",
-                "piprop": "thumbnail", "pithumbsize": 1000,
-                "generator": "search", "gsrsearch": q, "gsrlimit": 4,
+                "action": "query", "format": "json", "prop": "pageimages|pageterms",
+                "piprop": "thumbnail", "pithumbsize": 1000, "wbptterms": "description",
+                "generator": "search", "gsrsearch": q, "gsrlimit": 6,
             },
             headers={"User-Agent": _WIKI_UA},
             timeout=15,
@@ -147,8 +169,17 @@ def _wikimedia(query: str) -> str | None:
         pages = (r.json().get("query") or {}).get("pages") or {}
         for p in sorted(pages.values(), key=lambda x: x.get("index", 99)):
             thumb = (p.get("thumbnail") or {}).get("source")
-            if thumb:
-                return thumb
+            if not thumb or thumb in _USED:
+                continue
+            have = _tokens(p.get("title", ""))
+            if want and len(want & have) < max(1, (len(want) + 1) // 2):
+                continue
+            if sports:
+                desc = " ".join((p.get("terms") or {}).get("description") or [])
+                if _OFF_TOPIC_SPORTS.search(desc) or _OFF_TOPIC_FILE.search(thumb):
+                    continue
+            _USED.add(thumb)
+            return thumb
     except Exception:
         pass
     return None
@@ -238,9 +269,10 @@ def feature_image(title: str, site: dict, query: str | None = None) -> str:
     # Sites can opt out of Wikipedia matching (`"wiki_images": false` in sites_config):
     # it is great for named entities but picks wrong photos for generic topics
     # (VisaPoint got club crests and a 1941 flag as visa-guide heroes).
+    sports = bool(_SPORT_SITE.search(f"{site.get('id', '')} {niche}"))
     if site.get("wiki_images", True):
         for c in candidates:
-            w = _wikimedia(c)
+            w = _wikimedia(c, sports)
             if w:
                 return w
     # Pollinations now needs a paid key (HTTP 402) — use free CC0 photos instead.
@@ -251,11 +283,11 @@ def feature_image(title: str, site: dict, query: str | None = None) -> str:
     return pool_image(site.get("id", ""), title)
 
 
-def inline_image(keyword: str, use_wiki: bool = True) -> str:
+def inline_image(keyword: str, use_wiki: bool = True, sports: bool = False) -> str:
     """PERMANENT, on-topic in-article image. Wikipedia's real image first (great for
     named entities), Pollinations AI as a permanent fallback. No Pixabay — its
     hotlink URLs expire and start returning 400."""
-    wiki = _wikimedia(keyword) if use_wiki else None
+    wiki = _wikimedia(keyword, sports) if use_wiki else None
     if wiki:
         return wiki
     return _openverse(keyword, 1000) or ""
@@ -273,7 +305,7 @@ def embed_inline_images(body_html: str, max_images: int = 4, use_wiki: bool = Tr
             return ""
         count["n"] += 1
         kw = m.group(1).strip()
-        url = inline_image(kw, use_wiki) or (pool_image(site_id, kw + " " + context) if site_id else "")
+        url = inline_image(kw, use_wiki, bool(_SPORT_SITE.search(site_id or ""))) or (pool_image(site_id, kw + " " + context) if site_id else "")
         if not url:  # no free photo found: drop the marker rather than a broken image
             count["n"] -= 1
             return ""
