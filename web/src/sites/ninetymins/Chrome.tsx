@@ -127,7 +127,7 @@ export function Header({ site }: { site: Site; home?: boolean }) {
               <SearchIcon />
             </Link>
             <ThemeToggle />
-            <a className="nv-getapp" href={PLAY_URL("header")} target="_blank" rel="noopener">
+            <a className="nv-getapp" href={PLAY_URL("header")} target="_blank" rel="noopener" data-google-vignette="false" onClick={() => { try { (window as unknown as { gtag?: (...a: unknown[]) => void }).gtag?.("event", "app_download_click", { placement: "header", store: "play" }); } catch {} }}>
               Get the app
             </a>
           </div>

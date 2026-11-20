@@ -1349,3 +1349,20 @@ html[data-nm-theme="dark"] .site-ninetymins .h2-chip.r-w, html[data-nm-theme="da
   .site-ninetymins .h2-mid { min-width: 70px; }
   .site-ninetymins .h2-form li { grid-template-columns: 78px 1fr auto; }
 }
+
+/* Sticky mobile install bar (fixed, no CLS). Hidden on desktop. */
+.site-ninetymins .nm-appbar-dock { display: none; }
+@media (max-width: 900px) {
+  .site-ninetymins .nm-appbar-dock {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9990;
+    display: flex;
+    border-bottom: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 0px));
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.25);
+  }
+}

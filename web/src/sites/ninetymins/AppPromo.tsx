@@ -3,15 +3,24 @@
 import { useEffect, useState } from "react";
 
 /* "Get the NinetyMins app" promos → the Play Store listing.
-   - AppPopup: small bottom sheet, after 12 s or half a page of scrolling, at most once a day,
-     never again once closed (or tapped). Not shown on iPhone/iPad (Android-only app).
-   - AppBanner: static strip for the footer and inside articles (no JS, no layout shift). */
+   - AppTopBar: mobile sticky bottom bar, after scroll or 20s, at most once per 7 days,
+     never on the first screen of the first visit. Android-only app (hidden on iOS).
+   - AppBanner: static strip for the footer and inside articles (no JS, no layout shift).
+   - AppPopup: kept as a no-op so existing imports compile; the old sheet stacked with
+     the top bar and the Adsterra popunder. */
 
 const PLAY = "https://play.google.com/store/apps/details?id=com.ninetymins.app";
-export const playUrl = (medium: string) => `${PLAY}&referrer=${encodeURIComponent(`utm_source=ninetymins.com&utm_medium=${medium}`)}`;
+export const playUrl = (medium: string) =>
+  `${PLAY}&referrer=${encodeURIComponent(`utm_source=ninetymins.com&utm_medium=${medium}&utm_campaign=web_to_app`)}`;
 
-const CLOSED = "nm-app-closed";
-const SEEN = "nm-app-seen";
+function track(placement: string, store = "play") {
+  try {
+    const gtag = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag;
+    gtag?.("event", "app_download_click", { placement, store });
+  } catch {
+    /* gtag may be delayed */
+  }
+}
 
 function store(k: string, v?: string): string | null {
   try {
@@ -30,9 +39,17 @@ function PlayIcon() {
   );
 }
 
+const linkProps = (medium: string) => ({
+  href: playUrl(medium),
+  target: "_blank" as const,
+  rel: "noopener",
+  "data-google-vignette": "false",
+  onClick: () => track(medium),
+});
+
 export function AppBanner({ variant, medium }: { variant: "footer" | "article"; medium: string }) {
   return (
-    <a className={`nm-appban nm-appban-${variant}`} href={playUrl(medium)} target="_blank" rel="noopener">
+    <a className={`nm-appban nm-appban-${variant}`} {...linkProps(medium)}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src="/brand/ninetymins-app-icon.webp" alt="" width={48} height={48} loading="lazy" />
       <span className="nm-appban-txt">
@@ -46,16 +63,37 @@ export function AppBanner({ variant, medium }: { variant: "footer" | "article"; 
   );
 }
 
-/* Slim "open in app" bar above the header, like the smart banners big sites use.
-   Android only (the app is Android-only), hidden for 7 days after the close button. */
 const BAR_CLOSED = "nm-appbar-closed";
+const BAR_SEEN = "nm-appbar-seen";
+
 export function AppTopBar() {
   const [open, setOpen] = useState(false);
   useEffect(() => {
-    if (!/Android/i.test(navigator.userAgent)) return;
+    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) return;
+    if (window.matchMedia && !window.matchMedia("(max-width: 900px)").matches) return;
     const until = Number(store(BAR_CLOSED) || 0);
     if (until > Date.now()) return;
-    setOpen(true);
+    const first = !store(BAR_SEEN);
+    const pastFold = () => scrollY > Math.min(innerHeight * 0.6, 400);
+    let shown = false;
+    const show = () => {
+      if (shown) return;
+      if (first && !pastFold()) return;
+      shown = true;
+      store(BAR_SEEN, "1");
+      setOpen(true);
+    };
+    const onScroll = () => {
+      if (pastFold()) show();
+    };
+    addEventListener("scroll", onScroll, { passive: true });
+    const t = setTimeout(() => {
+      if (!first || pastFold()) show();
+    }, 20000);
+    return () => {
+      clearTimeout(t);
+      removeEventListener("scroll", onScroll);
+    };
   }, []);
   if (!open) return null;
   const close = () => {
@@ -63,72 +101,24 @@ export function AppTopBar() {
     setOpen(false);
   };
   return (
-    <div className="nm-appbar" role="region" aria-label="NinetyMins app">
+    <div className="nm-appbar nm-appbar-dock" role="region" aria-label="NinetyMins app">
       <button className="nm-appbar-x" onPointerUp={close} onClick={close} aria-label="Close">
         ×
       </button>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src="/brand/ninetymins-app-icon.webp" alt="" width={36} height={36} />
       <span className="nm-appbar-txt">
-        <b>NinetyMins app</b>
-        <small>Live scores &amp; goal alerts · free</small>
+        <b>Live scores in the app</b>
+        <small>Goal alerts &amp; SAFF — free</small>
       </span>
-      <a className="nm-appbar-btn" href={playUrl("topbar")} target="_blank" rel="noopener">
-        Open
+      <a className="nm-appbar-btn" {...linkProps("sticky_bar")}>
+        Get the app
       </a>
     </div>
   );
 }
 
+/** @deprecated Full-sheet popup removed; bottom bar covers this. */
 export function AppPopup() {
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) return;
-    if (store(CLOSED)) return;
-    const today = new Date().toISOString().slice(0, 10);
-    if (store(SEEN) === today) return;
-    let done = false;
-    const show = () => {
-      if (done) return;
-      done = true;
-      store(SEEN, today);
-      setOpen(true);
-      cleanup();
-    };
-    const onScroll = () => {
-      const h = document.documentElement.scrollHeight - innerHeight;
-      if (h > 0 && scrollY / h > 0.5) show();
-    };
-    const t = setTimeout(show, 12000);
-    addEventListener("scroll", onScroll, { passive: true });
-    const cleanup = () => {
-      clearTimeout(t);
-      removeEventListener("scroll", onScroll);
-    };
-    return cleanup;
-  }, []);
-
-  if (!open) return null;
-  const close = () => {
-    store(CLOSED, "1");
-    setOpen(false);
-  };
-  return (
-    <div className="nm-apppop" role="dialog" aria-label="Get the NinetyMins app">
-      {/* pointerup as well as click: the Adsterra popunder swallows the first click on the page. */}
-      <button className="nm-apppop-x" onPointerUp={close} onClick={close} aria-label="Close">
-        ×
-      </button>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/brand/ninetymins-app-icon.webp" alt="" width={56} height={56} />
-      <div className="nm-apppop-txt">
-        <b>NinetyMins app</b>
-        <span>Live scores, SAFF Championship &amp; goal alerts on your phone.</span>
-      </div>
-      <a className="nm-apppop-btn" href={playUrl("popup")} target="_blank" rel="noopener" onPointerUp={() => store(CLOSED, "1")} onClick={close}>
-        <PlayIcon /> Get it free
-      </a>
-    </div>
-  );
+  return null;
 }
