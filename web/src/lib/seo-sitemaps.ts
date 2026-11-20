@@ -3,7 +3,8 @@ import { races } from "@/sites/ninetymins/F1Hub";
 import { activeSite } from "./site-context";
 import { getArticles, d1 } from "./data";
 import { fixtures, hubs, prunedSlugs, sitemapPlayers } from "@/sites/ninetymins/engine";
-import { NM_LEAGUES } from "@/sites/ninetymins/live";
+import { NM_COMPS } from "@/sites/ninetymins/comps";
+import { getCricket } from "@/sites/ninetymins/cricket";
 import { sitemapHighlights, hlPath, cleanTitle, HL_SPORTS } from "@/sites/ninetymins/highlights";
 import { allPairs } from "@/sites/ninetymins/h2h";
 import legacySitemap from "./legacy-sitemap";
@@ -26,7 +27,15 @@ export async function sitemapResponse(name: string): Promise<Response> {
     const maps = ["sitemap-hubs.xml", "sitemap-articles.xml", "sitemap-news.xml", "sitemap-videos.xml", "sitemap-players.xml", "sitemap-h2h.xml", ...(await monthMaps())];
     return xml(`<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${maps.map(m => `<sitemap><loc>${BASE}/${m}</loc></sitemap>`).join("")}</sitemapindex>`);
   }
-  if (name === "sitemap-hubs.xml") return urls([{ url: BASE + "/" }, ...(await races()).map(r => ({ url: BASE + "/race/" + r.slug, lastmod: r.lastmod })), ...(d1() ? (await d1()!.prepare("SELECT slug,lastmod FROM seo_pages WHERE site_id=\'ninetymins\' AND kind=\'stories\'").all<{ slug: string; lastmod: string }>()).results.map(r => ({ url: BASE + "/stories/" + r.slug, lastmod: r.lastmod })) : []), ...["today", "tomorrow", "scores", "widgets", "archive", "live-tv", "highlights", ...HL_SPORTS.filter(([k]) => k).map(([k]) => `highlights/${k}`)].map(p => ({ url: `${BASE}/${p}` })), ...(await hubs()).filter(h => { const m = h.path.match(/^\/league\/([^/]+)$/); return !(m && NM_LEAGUES[m[1]]); }).map(h => ({ url: BASE + h.path, lastmod: h.lastmod }))]);
+  if (name === "sitemap-hubs.xml") {
+    // Every indexable hub: /league/<x> pages from hubs() all have stored fixtures (the page is only
+    // noindex when a known league has none), F1, competition topics, cricket/SAFF centres, today's
+    // cricket match pages (UUID ids only; the page 404s otherwise) and the static trust pages.
+    const slug = (x: string) => x.toLowerCase().normalize("NFKD").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+    const cricket = (await getCricket().catch(() => [])).filter(m => /^[0-9a-f-]{36}$/i.test(m.id) && m.teams?.length >= 2)
+      .map(m => ({ url: `${BASE}/cricket/${m.id}-${`${slug(m.teams[0].name)}-vs-${slug(m.teams[1].name)}`.slice(0, 80)}` }));
+    return urls([{ url: BASE + "/" }, { url: BASE + "/league/f1" }, ...(await races()).map(r => ({ url: BASE + "/race/" + r.slug, lastmod: r.lastmod })), ...(d1() ? (await d1()!.prepare("SELECT slug,lastmod FROM seo_pages WHERE site_id=\'ninetymins\' AND kind=\'stories\'").all<{ slug: string; lastmod: string }>()).results.map(r => ({ url: BASE + "/stories/" + r.slug, lastmod: r.lastmod })) : []), ...["today", "tomorrow", "scores", "widgets", "archive", "live-tv", "cricket", "saff", "highlights", ...HL_SPORTS.filter(([k]) => k).map(([k]) => `highlights/${k}`)].map(p => ({ url: `${BASE}/${p}` })), ...[...new Set(NM_COMPS.map(c => c.slug))].map(c => ({ url: `${BASE}/topic/${c}` })), ...(await hubs()).map(h => ({ url: BASE + h.path, lastmod: h.lastmod })), ...cricket, ...["about", "contact", "privacy", "terms", "disclaimer"].map(p => ({ url: `${BASE}/${p}` }))]);
+  }
   if (name === "sitemap-players.xml") return urls((await sitemapPlayers()).map(p => ({ url: BASE + p.path, lastmod: p.lastmod })));
   if (name === "sitemap-h2h.xml") return urls((await allPairs()).map(p => ({ url: `${BASE}/h2h/${p.slug}`, lastmod: p.lastmod })));
   if (name === "sitemap-videos.xml") {

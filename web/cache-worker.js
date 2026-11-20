@@ -81,7 +81,9 @@ function fallbackRobots(request, env) {
 }
 
 function edgeTtl(url, env) {
-  if (url.pathname === "/robots.txt" || isSitemapPath(url.pathname)) return SEO_DOC_TTL;
+  if (url.pathname === "/robots.txt") return SEO_DOC_TTL;
+  // Sitemaps: 15 min at the edge so new posts show up quickly (key is per deploy version).
+  if (isSitemapPath(url.pathname)) return 900;
   if (env && env.SITE_ID === "ninetymins" && /^\/(match|embed|league|team|today|tomorrow)(\/|$)/.test(url.pathname)) return 30;
   return TTL;
 }
