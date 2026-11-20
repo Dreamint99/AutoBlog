@@ -58,7 +58,8 @@ add_action( 'wp_footer', function () {
   }
   function track(name, params) {
     try {
-      if (typeof w.gtag === "function") w.gtag("event", name, params || {});
+      var g = w.gtag;
+      if (typeof g === "function") g("event", name, params || {});
     } catch (e) {}
   }
   function bumpPv() {
