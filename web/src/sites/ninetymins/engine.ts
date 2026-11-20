@@ -97,3 +97,12 @@ export async function prunedSlugs(site: string): Promise<Set<string>> {
   if (!db) return new Set();
   return new Set((await db.prepare("SELECT slug FROM seo_pruning WHERE site_id=?").bind(site).all<{ slug: string }>()).results.map(x => x.slug));
 }
+
+/** The single /player/<sport>-<id>-<slug> path for a bare name slug, or null when none or ambiguous. */
+export async function playerPathByNameSlug(slug: string): Promise<string | null> {
+  const db = d1();
+  if (!db) return null;
+  const r = await db.prepare("SELECT path FROM seo_players WHERE path LIKE ? LIMIT 3").bind(`/player/%-${slug}`).all<{ path: string }>();
+  const hits = r.results.filter((x) => /^\/player\/[a-z]+-\d+-/.test(x.path) && x.path.replace(/^\/player\/[a-z]+-\d+-/, "") === slug);
+  return hits.length === 1 ? hits[0].path : null;
+}
