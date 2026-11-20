@@ -247,8 +247,12 @@ add_action( 'wp_footer', function () {
     });
   }
 
-  var pv = (parseInt(ls("ret-pv") || "0", 10) || 0) + 1;
-  ls("ret-pv", pv);
+  var pv = parseInt(ls("ret-pv") || "0", 10) || 0;
+  if (!w.__RET_PV_DONE__) {
+    w.__RET_PV_DONE__ = true;
+    pv += 1;
+    ls("ret-pv", pv);
+  }
   var visits = parseInt(ls("ret-visits") || "0", 10) || 0;
   try {
     if (!sessionStorage.getItem("ret-visit-sess")) {
