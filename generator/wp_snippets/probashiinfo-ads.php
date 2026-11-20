@@ -1,11 +1,9 @@
 <?php
 /* প্রবাসী ইনফো — Adsterra ads (front end only).
-   Popunder (one per page view) in wp_head; Native Banner printed in wp_footer and moved just above
-   the page footer so it sits after the article instead of below the footer. Works with the v3 app
-   (#14), which keeps wp_head()/wp_footer(). Logged-in editors don't see ads, so their clicks and
-   views don't count as invalid traffic.
-   The ad <script> tags are built from pieces: in Oct 2026 the saved copy of this snippet lost both
-   Adsterra <script src> tags (code shrank to 1059 chars, the native div stayed), so ads stopped. */
+   Native Banner printed in wp_footer and moved just above the page footer so it sits after the
+   article instead of below the footer. The popunder that used to load in wp_head is off: it fired
+   on the first click (including app download / internal clicks) and stacked with the old full-screen
+   app popup, Ezoic, and AdSense auto ads. Native Banner stays. Logged-in editors don't see ads. */
 if ( ! function_exists( 'pi_ads_tag' ) ) {
 	function pi_ads_tag( $path, $extra = '' ) {
 		$t = 'scr' . 'ipt';
@@ -14,8 +12,8 @@ if ( ! function_exists( 'pi_ads_tag' ) ) {
 }
 // one LiteSpeed purge per ad-code version, so cached pages pick the ads up (same idea as #14 / BMET)
 add_action( 'init', function () {
-	if ( get_option( 'pi_ads_purged' ) !== '2' ) {
-		update_option( 'pi_ads_purged', '2', false );
+	if ( get_option( 'pi_ads_purged' ) !== '3' ) {
+		update_option( 'pi_ads_purged', '3', false );
 		do_action( 'litespeed_purge_all' );
 	}
 } );
@@ -24,11 +22,6 @@ if ( ! function_exists( 'pi_ads_on' ) ) {
 		return ! is_admin() && ! is_user_logged_in() && ! is_feed();
 	}
 }
-
-add_action( 'wp_head', function () {
-	if ( ! pi_ads_on() ) return;
-	echo pi_ads_tag( '6394.profitable' . 'ratecpmnetwork.com/17/7a/d8/177ad8bbea12383020e7a27806a29fdb.js' ) . "\n";
-}, 99 );
 
 add_action( 'wp_footer', function () {
 	if ( ! pi_ads_on() ) return;
