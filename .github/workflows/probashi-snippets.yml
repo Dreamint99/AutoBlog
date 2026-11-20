@@ -30,6 +30,9 @@ on:
         description: "Apply the change (otherwise dry run)"
         type: boolean
         default: false
+      set_active:
+        description: "Optional: '<id> on' or '<id> off' to activate/deactivate a snippet (reversible)"
+        default: ""
 
 jobs:
   snippets:
@@ -53,8 +56,13 @@ jobs:
           UFILE: ${{ github.event.inputs.upsert_file }}
           UNAME: ${{ github.event.inputs.upsert_name }}
           DATA_CMD: ${{ github.event.inputs.data_cmd }}
+          SET_ACTIVE: ${{ github.event.inputs.set_active }}
           PBD_TEST_KEY: ${{ secrets.PBD_TEST_KEY }}
         run: |
+          if [ -n "$SET_ACTIVE" ]; then
+            python wp_snippets.py set-active $SET_ACTIVE
+            exit $?
+          fi
           if [ -n "$DATA_CMD" ]; then
             case "$DATA_CMD" in push*) php -l "$(echo $DATA_CMD | awk '{print $2}')" || exit 1;; esac
             python wp_probashi_data.py $DATA_CMD

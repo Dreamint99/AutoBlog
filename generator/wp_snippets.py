@@ -65,6 +65,22 @@ def main():
             print("activate", a.status_code, a.text[:200])
         r.raise_for_status()
         return
+    if cmd == "set-active":
+        # set-active <id> on|off  — reversible activate/deactivate, no code changes
+        sid = int(sys.argv[2])
+        want = sys.argv[3].lower() in ("on", "1", "true", "active")
+        x = next((i for i in items if i.get("id") == sid), None)
+        if not x:
+            print("refuse: not found", sid)
+            sys.exit(1)
+        action = "activate" if want else "deactivate"
+        r = requests.post(f"{API}/{sid}/{action}", headers=H, timeout=60)
+        print(action, sid, x.get("name"), r.status_code, r.text[:200])
+        if not r.ok:
+            r2 = requests.post(f"{API}/{sid}", headers=H, json={"active": want}, timeout=60)
+            print("fallback active=", want, r2.status_code, r2.text[:200])
+            r2.raise_for_status()
+        return
     if cmd == "delete-inactive-copy":
         # delete <id> only if it is INACTIVE and is a duplicate copy of an active snippet's code
         sid = int(sys.argv[2])
