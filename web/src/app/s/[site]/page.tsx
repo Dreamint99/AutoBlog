@@ -32,17 +32,17 @@ export async function generateMetadata({
     ninetymins: {
       title: "NinetyMins — Live Scores, Fixtures & How to Watch Today",
       description:
-        "Live football and cricket scores, today's fixtures and kick-off times in your timezone, plus where to watch the Premier League, Champions League, IPL, NBA and F1 legally.",
+        "Live football and cricket scores, today's fixtures and kick-off times in your timezone, plus where to watch the Premier League, Champions League and IPL.",
     },
     gccguide: {
-      title: "GCCGuide — Qatar, UAE, Saudi, Kuwait, Oman & Bahrain Guide: Visas, Jobs, Driving",
+      title: "GCCGuide — Gulf Expat Guide: Visa Checks, Jobs & Driving",
       description:
-        "The all-in-one GCC guide: visa and residency status checks, jobs and salaries, driving licences, laws for expats, cost of living, prayer times and live tools for all six Gulf countries.",
+        "Expat guide to Qatar, UAE, Saudi, Kuwait, Oman and Bahrain: visa and QID status checks, jobs and salaries, driving licences, laws and prayer times.",
     },
     countly: {
       title: "Countly — World Statistics, Rankings & Data, by the Numbers",
       description:
-        "Up-to-date statistics and rankings: social media users by country, richest people, AI usage, the biggest companies and more — sourced, dated and easy to compare.",
+        "Up-to-date statistics and rankings: social media users by country, richest people, AI usage, the biggest companies and more, sourced and dated.",
     },
   };
   if (HOME[site.id]) {
@@ -55,7 +55,7 @@ export async function generateMetadata({
   if (site.id === "walvi") {
     const title = "VisaPoint — Visa Check, Passport Index & Work Permits Worldwide";
     const description =
-      "Check if you need a visa, check your visa status online, see how strong your passport is, and follow official work-permit routes with real salaries — free and independent.";
+      "Check if you need a visa, track your visa status online, see how strong your passport is and follow official work-permit routes with real salaries.";
     meta.title = title;
     meta.description = description;
     meta.openGraph = { title, description, type: "website", url: "/", siteName: "VisaPoint", images: [{ url: "/og/walvi.png", width: 1200, height: 630 }] };
