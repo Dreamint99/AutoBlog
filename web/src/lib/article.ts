@@ -27,6 +27,8 @@ export function processBody(html: string): { html: string; toc: TocItem[] } {
   out = out
     .replace(/<table/gi, '<div class="table-wrap"><table')
     .replace(/<\/table>/gi, "</table></div>");
+  // Body images sit below the hero: lazy-load them and decode off the main thread (LCP, bandwidth).
+  out = out.replace(/<img\b(?![^>]*\bloading=)([^>]*)>/gi, (_m, attrs: string) => `<img loading="lazy" decoding="async"${attrs}>`);
   return { html: out, toc };
 }
 

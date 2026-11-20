@@ -293,15 +293,15 @@
 .site-countly .cv .cv-hero-grid { display: grid; gap: 28px; }
 .site-countly .cv .cv-feature { display: grid; gap: 14px; min-width: 0; }
 .site-countly .cv .cv-feature .cv-card-art { margin: 0; border-radius: 16px; }
-.site-countly .cv .cv-feature h1 {
+.site-countly .cv .cv-feature .cv-lead-hl {
   margin: 6px 0 10px;
   font-size: clamp(28px, 4.4vw, 44px);
   font-weight: 800;
   line-height: 1.08;
   letter-spacing: -0.035em;
 }
-.site-countly .cv .cv-feature h1 a { text-decoration: none; }
-.site-countly .cv .cv-feature h1 a:hover { color: var(--cv-green-ink); }
+.site-countly .cv .cv-feature .cv-lead-hl a { text-decoration: none; }
+.site-countly .cv .cv-feature .cv-lead-hl a:hover { color: var(--cv-green-ink); }
 .site-countly .cv .cv-dek { margin: 0 0 12px; font-size: 17px; line-height: 1.55; color: var(--cv-ink-2); max-width: 62ch; }
 .site-countly .cv .cv-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 16px; font-size: 13.5px; color: var(--cv-mute); }
 .site-countly .cv .cv-meta > :first-child { font-weight: 600; color: var(--cv-ink); }
@@ -694,7 +694,7 @@
 /* ── refinements after the first preview ── */
 @media (min-width: 960px) {
   .site-countly .cv .cv-feature { grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); }
-  .site-countly .cv .cv-feature h1 { font-size: clamp(28px, 2.9vw, 40px); }
+  .site-countly .cv .cv-feature .cv-lead-hl { font-size: clamp(28px, 2.9vw, 40px); }
 }
 .site-countly .cv .cd-charts .cd-card { display: flex; flex-direction: column; }
 .site-countly .cv .cd-charts .cd-ladder { flex: 1; height: auto; min-height: 220px; }
@@ -722,7 +722,7 @@
 /* hero: the featured art runs the full column width, text below */
 @media (min-width: 960px) {
   .site-countly .cv .cv-feature { grid-template-columns: minmax(0, 1fr); gap: 18px; }
-  .site-countly .cv .cv-feature h1 { font-size: clamp(30px, 3.2vw, 44px); max-width: 24ch; }
+  .site-countly .cv .cv-feature .cv-lead-hl { font-size: clamp(30px, 3.2vw, 44px); max-width: 24ch; }
 }
 /* phones: compact story rows (headline left, art right) instead of tall stacked cards */
 @media (max-width: 559px) {

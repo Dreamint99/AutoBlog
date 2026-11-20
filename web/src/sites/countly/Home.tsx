@@ -306,10 +306,11 @@ export default function Home({ site, articles }: SiteHomeProps) {
                   <Art a={lead} priority />
                 </Link>
                 <div className="cv-feature-body">
+                  <h1 className="sr-only">Countly: world statistics, rankings and data</h1>
                   <span className="cv-tag">{kickerOf(lead)}</span>
-                  <h1>
+                  <h2 className="cv-lead-hl">
                     <Link href={href(lead)}>{lead.title}</Link>
-                  </h1>
+                  </h2>
                   <p className="cv-dek">{lead.excerpt || lead.meta_description}</p>
                   <div className="cv-meta">
                     <span>Countly Data Desk</span>

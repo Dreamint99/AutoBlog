@@ -41,6 +41,10 @@ export function websiteSchema(name: string, base: string) {
     // naming the domain as an alternate helps it settle on `name`.
     ...(isRoot ? { alternateName: [u.hostname.replace(/^www\./, "")] } : {}),
     url: base,
+    // Sites with a real /search page (app/s/[site]/search SUPPORTED list) advertise it.
+    ...(isRoot && ["countly", "infkey", "walvi", "gccguide"].includes(process.env.SITE_ID || "")
+      ? { potentialAction: { "@type": "SearchAction", target: { "@type": "EntryPoint", urlTemplate: `${u.origin}/search?q={search_term_string}` }, "query-input": "required name=search_term_string" } }
+      : {}),
   } as Record<string, unknown>;
 }
 
