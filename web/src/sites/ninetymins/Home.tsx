@@ -8,6 +8,7 @@ import { getScores, NM_LEAGUES, leagueToSlug } from "./live";
 import { listHighlights, type Highlight } from "./highlights";
 import { HlGrid } from "./HighlightsList";
 import { sitePrefix } from "@/lib/public-path";
+import { HUBS } from "./events/catalog";
 
 /* Home (v2, 2026-11-15): the live board front and centre (grouped by competition,
    with sport tabs, a 7-day strip and filters) + the Premier League table beside it;
@@ -83,6 +84,23 @@ export default async function Home({ site, articles }: SiteHomeProps) {
             <HlGrid site={site} items={highlights} />
           </section>
         ) : null}
+
+        <section className="nm-wrap nv-sec" aria-labelledby="nv-up">
+          <div className="nv-sec-head">
+            <h2 id="nv-up">Coming up</h2>
+            <Link href={`${s}/event`}>All event hubs →</Link>
+          </div>
+          <ul className="nv-tiles">
+            {HUBS.map((h) => (
+              <li key={h.slug}>
+                <Link href={`${s}/event/${h.slug}`}>
+                  <b>{h.h1}</b>
+                  <small>{h.window}</small>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
 
         <section className="nm-wrap nv-sec" aria-labelledby="nv-comp">
           <div className="nv-sec-head">

@@ -6,7 +6,7 @@ import type { ReactNode } from "react";
 
 /* Header "More" menu: a plain <details> (works without JS) that also closes on
    route change, outside click and Escape. Links are server-rendered children. */
-export function NavMore({ children }: { children: ReactNode }) {
+export function NavMore({ label = "More", className = "", children }: { label?: string; className?: string; children: ReactNode }) {
   const ref = useRef<HTMLDetailsElement>(null);
   const path = usePathname();
   useEffect(() => {
@@ -26,9 +26,9 @@ export function NavMore({ children }: { children: ReactNode }) {
     };
   }, []);
   return (
-    <details className="nv-more" ref={ref}>
+    <details className={`nv-more${className ? ` ${className}` : ""}`} ref={ref}>
       <summary>
-        More
+        {label}
         <svg viewBox="0 0 12 12" width="10" height="10" aria-hidden="true">
           <path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
         </svg>

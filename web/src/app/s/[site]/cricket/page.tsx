@@ -4,9 +4,12 @@ import type { Metadata } from "next";
 import { getSite } from "@/lib/data";
 import { siteBaseUrl } from "@/lib/sites.config";
 import { JsonLd, breadcrumbSchema } from "@/lib/seo";
+import Link from "next/link";
 import { Shell } from "@/sites/ninetymins/Chrome";
 import { Livescore, type LsEvent } from "@/sites/ninetymins/Livescore";
 import { getScores } from "@/sites/ninetymins/live";
+import { HUBS } from "@/sites/ninetymins/events/catalog";
+import { sitePrefix } from "@/lib/public-path";
 
 export const dynamic = "force-dynamic";
 
@@ -30,6 +33,7 @@ export default async function CricketPage({ params }: P) {
   const site = getSite((await params).site);
   if (!site || site.id !== "ninetymins") notFound();
   const base = siteBaseUrl(site);
+  const s = sitePrefix(site.id);
   const day = new Date().toISOString().slice(0, 10).replace(/-/g, "");
   let initial: LsEvent[] = [];
   try {
@@ -48,6 +52,22 @@ export default async function CricketPage({ params }: P) {
         <div className="nm-wrap">
           <Livescore initial={initial} day={day} sport="cricket" />
         </div>
+        <section className="nm-wrap nv-sec" aria-labelledby="nv-cr-ev">
+          <div className="nv-sec-head">
+            <h2 id="nv-cr-ev">Competitions ahead</h2>
+            <Link href={`${s}/event`}>All hubs</Link>
+          </div>
+          <ul className="nv-tiles">
+            {HUBS.filter((h) => h.sport === "cricket").map((h) => (
+              <li key={h.slug}>
+                <Link href={`${s}/event/${h.slug}`}>
+                  <b>{h.h1}</b>
+                  <small>{h.window}</small>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
       </div>
     </Shell>
   );

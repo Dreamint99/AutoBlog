@@ -1,0 +1,36 @@
+name: Event hub refresh
+
+# Live digest every 6 hours from the cricket feed already in D1 (no extra CricAPI call).
+# Monday 07:00 UTC also re-downloads Cricsheet and stores derived stats.
+# Squads, auction results and broadcasters are printed as manual items, not scraped.
+on:
+  schedule:
+    - cron: "15 */6 * * *"
+    - cron: "0 7 * * 1"
+  workflow_dispatch:
+    inputs:
+      full:
+        description: Re-download Cricsheet
+        type: boolean
+        default: false
+
+concurrency:
+  group: event-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: npm install -g wrangler@4
+      - name: Refresh event hub data in D1
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          FULL: ${{ github.event.schedule == '0 7 * * 1' || github.event.inputs.full == true }}
+        run: python generator/event_refresh.py
