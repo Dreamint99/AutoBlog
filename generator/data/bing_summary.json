@@ -2,32 +2,41 @@
  "sites": {
   "probashiinfo": {
    "weeks": [
-    "2026-09-04",
     "2026-09-11",
     "2026-09-18",
     "2026-10-16",
     "2026-10-23",
     "2026-10-30",
     "2026-11-06",
-    "2026-11-13"
+    "2026-11-13",
+    "2026-11-20"
    ],
    "week": {
+    "clicks": 15,
+    "impr": 148,
+    "pos": 5.3
+   },
+   "prevWeek": {
     "clicks": 8,
     "impr": 158,
     "pos": 5.3
    },
-   "prevWeek": {
-    "clicks": 4,
-    "impr": 186,
-    "pos": 4.8
-   },
    "range": [
-    "2026-11-13",
-    "2026-11-06"
+    "2026-11-20",
+    "2026-11-13"
    ],
    "topQueries": [
     {
-     "key": "লাইভ ফ্লাইট শিডিউল",
+     "key": "ইউরোপ যাবার ভাল এজেন্ছী",
+     "clicks": 2,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 1.0,
+     "posPrev": null
+    },
+    {
+     "key": "কাতার বিচা ছেক",
      "clicks": 2,
      "clicksPrev": 0,
      "impr": 1,
@@ -36,7 +45,43 @@
      "posPrev": null
     },
     {
-     "key": "মালয়েশিয়া abdedon 2026",
+     "key": "ইতালিতে ভিসা সরকারি ভাবে",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 6.0,
+     "posPrev": null
+    },
+    {
+     "key": "provasi kollan card what is benefit",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 8.0,
+     "posPrev": null
+    },
+    {
+     "key": "পোল্যান্ড এ কর্মী ভিসায় গেলে কি কখনো স্থায়ী হওা যাবে",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 6.0,
+     "posPrev": null
+    },
+    {
+     "key": "সাইপ্রাস কাজের ভিসায় যেতে কত টাকা খরচ হঢ়",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 6.0,
+     "posPrev": null
+    },
+    {
+     "key": "বাংলাদেশ থেকে মালদ্বীপ কাজের ভিসার মেয়াদ ও কত টাকা খরচ বহন করতে হয়",
      "clicks": 1,
      "clicksPrev": 0,
      "impr": 2,
@@ -45,7 +90,7 @@
      "posPrev": null
     },
     {
-     "key": "ইউরোপ সেনজেন কোন কোন দেশে স্টুডেন ভিসা টিউশন ফ্রি পরে নে",
+     "key": "মালয়শিয়করমি",
      "clicks": 1,
      "clicksPrev": 0,
      "impr": 2,
@@ -54,25 +99,25 @@
      "posPrev": null
     },
     {
-     "key": "তারা কোন কোন দেশের ভিসা প্রসেসিং করে ইউরো",
+     "key": "নর্থ মেসিডনিয়াতে  ওয়ার্ক পারমিট ও এপ্রোভাল পেতে কি কি লাগে",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 4.0,
+     "posPrev": null
+    },
+    {
+     "key": "lithuania work permit bangladesh agency  name",
      "clicks": 1,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 8.0,
+     "pos": 4.0,
      "posPrev": null
     },
     {
-     "key": "মালদ্বীপের এম্বাসি ভিসা আবেদন করা মাধ্যম",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 2.0,
-     "posPrev": null
-    },
-    {
-     "key": "কানাডায় মোট কয়টি প্রদেশ আছে",
+     "key": "ইতালিতে কেমন",
      "clicks": 1,
      "clicksPrev": 0,
      "impr": 1,
@@ -81,84 +126,39 @@
      "posPrev": null
     },
     {
-     "key": "বাংলাদেশি প্রবাসী সম্প্রদায়ের বণ্টন",
+     "key": "সরকারিভাবে ইতালি জাওয়ার নিয়ম",
      "clicks": 1,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 2.0,
+     "pos": 3.0,
+     "posPrev": null
+    },
+    {
+     "key": "ভিজিট ভিসায় ইউরোপ যেতে কি লাতে?",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 9.0,
      "posPrev": null
     },
     {
      "key": "কাতার ভিসা চেক",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 10,
-     "imprPrev": 0,
-     "pos": 8.0,
-     "posPrev": null
+     "impr": 16,
+     "imprPrev": 10,
+     "pos": 6.0,
+     "posPrev": 8.0
     },
     {
-     "key": "কাতারের বিশা হতে কতো দিন লাগে কাজের বিশা",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 6,
-     "imprPrev": 0,
-     "pos": 2.0,
-     "posPrev": null
-    },
-    {
-     "key": "কুয়েতী ভিসা যাচাই করার পদ্দতি কী",
+     "key": "mufti sofi kasemi waz jamea asrafia pabna 2026",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 5,
      "imprPrev": 0,
-     "pos": 7.0,
-     "posPrev": null
-    },
-    {
-     "key": "ওমানের  ভিসা অ্যাকাউন্ট্যান্ট পেসা বেতন কত",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 5,
-     "imprPrev": 0,
-     "pos": 2.0,
-     "posPrev": null
-    },
-    {
-     "key": "ওমানে বর্তমানে ব্যাংক কার্ড বানাতে কি কি লাগবে",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 4,
-     "imprPrev": 0,
-     "pos": 2.0,
-     "posPrev": null
-    },
-    {
-     "key": "মালয়েশিয়া প্রবাসী শ্রমিক ভিসা নিয়ম 2026",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 4,
-     "imprPrev": 0,
-     "pos": 4.0,
-     "posPrev": null
-    },
-    {
-     "key": "ইটালি যাওয়ার নিয়ম",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 3,
-     "imprPrev": 0,
-     "pos": 9.0,
-     "posPrev": null
-    },
-    {
-     "key": "কোন কোন দেশের ভিসা বন্ধ সৌদি আরবের",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 3,
-     "imprPrev": 0,
-     "pos": 2.0,
+     "pos": 10.0,
      "posPrev": null
     }
    ],
@@ -167,289 +167,271 @@
      "key": "কাতার ভিসা চেক",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 10,
-     "imprPrev": 0,
-     "pos": 8.0,
-     "posPrev": null
+     "impr": 16,
+     "imprPrev": 10,
+     "pos": 6.0,
+     "posPrev": 8.0
     },
     {
-     "key": "কাতারের বিশা হতে কতো দিন লাগে কাজের বিশা",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 6,
-     "imprPrev": 0,
-     "pos": 2.0,
-     "posPrev": null
-    },
-    {
-     "key": "কুয়েতী ভিসা যাচাই করার পদ্দতি কী",
+     "key": "mufti sofi kasemi waz jamea asrafia pabna 2026",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 5,
      "imprPrev": 0,
-     "pos": 7.0,
+     "pos": 10.0,
      "posPrev": null
     },
     {
-     "key": "ওমানের  ভিসা অ্যাকাউন্ট্যান্ট পেসা বেতন কত",
+     "key": "প্রবাসী কল্যাণ ব্যাংক লোন নিয়ম 2026",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 5,
      "imprPrev": 0,
-     "pos": 2.0,
+     "pos": 5.0,
      "posPrev": null
     }
    ]
   },
   "countly": {
    "weeks": [
-    "2026-09-25",
     "2026-10-02",
     "2026-10-09",
     "2026-10-16",
     "2026-10-23",
     "2026-10-30",
     "2026-11-06",
-    "2026-11-13"
+    "2026-11-13",
+    "2026-11-20"
    ],
    "week": {
+    "clicks": 130,
+    "impr": 4638,
+    "pos": 5.5
+   },
+   "prevWeek": {
     "clicks": 117,
     "impr": 6864,
     "pos": 2.8
    },
-   "prevWeek": {
-    "clicks": 95,
-    "impr": 5153,
-    "pos": 4.0
-   },
    "range": [
-    "2026-11-13",
-    "2026-11-06"
+    "2026-11-20",
+    "2026-11-13"
    ],
    "topQueries": [
     {
-     "key": "fastest car in the world 2026",
+     "key": "in 2026 what is the top 10 skyscrapers in the world",
      "clicks": 7,
-     "clicksPrev": 3,
-     "impr": 95,
-     "imprPrev": 111,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 1.0,
+     "posPrev": null
+    },
+    {
+     "key": "fastest car in the world 2026",
+     "clicks": 5,
+     "clicksPrev": 7,
+     "impr": 57,
+     "imprPrev": 95,
      "pos": 2.0,
      "posPrev": 2.0
     },
     {
-     "key": "world fastest car 2026",
-     "clicks": 6,
+     "key": "fastest car in world 2026",
+     "clicks": 3,
      "clicksPrev": 0,
-     "impr": 50,
+     "impr": 4,
+     "imprPrev": 0,
+     "pos": 1.0,
+     "posPrev": null
+    },
+    {
+     "key": "2026世界10大高楼（英文版）",
+     "clicks": 3,
+     "clicksPrev": 0,
+     "impr": 3,
      "imprPrev": 0,
      "pos": 2.0,
      "posPrev": null
     },
     {
-     "key": "asia richest person list on 10 november 2026",
-     "clicks": 6,
+     "key": "capitalizzazione big tech",
+     "clicks": 3,
      "clicksPrev": 0,
      "impr": 3,
+     "imprPrev": 0,
+     "pos": 11.0,
+     "posPrev": null
+    },
+    {
+     "key": "number 1 car in the world for speed",
+     "clicks": 3,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 1.0,
+     "posPrev": null
+    },
+    {
+     "key": "what is the second tallest building in the world 2026-11-20 rank 1-10",
+     "clicks": 3,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 1.0,
+     "posPrev": null
+    },
+    {
+     "key": "top 100 rikeste personer i usa",
+     "clicks": 3,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 1.0,
+     "posPrev": null
+    },
+    {
+     "key": "world fastest car 2026",
+     "clicks": 2,
+     "clicksPrev": 6,
+     "impr": 34,
+     "imprPrev": 50,
+     "pos": 2.0,
+     "posPrev": 2.0
+    },
+    {
+     "key": "the fastest car in the world 2026",
+     "clicks": 2,
+     "clicksPrev": 0,
+     "impr": 12,
+     "imprPrev": 0,
+     "pos": 2.0,
+     "posPrev": null
+    },
+    {
+     "key": "who has the most subscribers on youtube 2026",
+     "clicks": 2,
+     "clicksPrev": 0,
+     "impr": 5,
+     "imprPrev": 0,
+     "pos": 2.0,
+     "posPrev": null
+    },
+    {
+     "key": "top 10 fastest cars in the world",
+     "clicks": 2,
+     "clicksPrev": 0,
+     "impr": 5,
      "imprPrev": 0,
      "pos": 5.0,
      "posPrev": null
     },
     {
-     "key": "pubali bank vs islami bank",
-     "clicks": 4,
+     "key": "bangladesh billionaires",
+     "clicks": 2,
      "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 3.0,
-     "posPrev": null
-    },
-    {
-     "key": "what is the most spoken language in 2026",
-     "clicks": 3,
-     "clicksPrev": 2,
      "impr": 3,
-     "imprPrev": 2,
-     "pos": 1.0,
-     "posPrev": 1.0
-    },
-    {
-     "key": "tallest building in the northamerica 2026",
-     "clicks": 3,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 2.0,
-     "posPrev": null
-    },
-    {
-     "key": "how much does openai make from chatgpt",
-     "clicks": 3,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 1.0,
-     "posPrev": null
-    },
-    {
-     "key": "how many mcdonalds restaurants are there in the world 2026",
-     "clicks": 3,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 1.0,
-     "posPrev": null
-    },
-    {
-     "key": "what is the tallest building in the world in 2026",
-     "clicks": 2,
-     "clicksPrev": 2,
-     "impr": 2,
-     "imprPrev": 2,
-     "pos": 1.0,
-     "posPrev": 1.0
-    },
-    {
-     "key": "number of stores starbucks hs worldwide",
-     "clicks": 2,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 2.0,
-     "posPrev": null
-    },
-    {
-     "key": "highest building in the world in 2026",
-     "clicks": 2,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 2.0,
-     "posPrev": null
-    },
-    {
-     "key": "how many users does spotify have in each country",
-     "clicks": 2,
-     "clicksPrev": 0,
-     "impr": 2,
      "imprPrev": 0,
      "pos": 6.0,
      "posPrev": null
     },
     {
-     "key": "internet world stats 2026",
+     "key": "top 10 most spoken languages 2026",
      "clicks": 2,
      "clicksPrev": 0,
-     "impr": 1,
+     "impr": 3,
      "imprPrev": 0,
      "pos": 2.0,
      "posPrev": null
     },
     {
-     "key": "the biggest bank in bangladesh",
+     "key": "top ten richest people in asia as of november 26",
      "clicks": 2,
      "clicksPrev": 0,
-     "impr": 1,
+     "impr": 2,
      "imprPrev": 0,
-     "pos": 1.0,
-     "posPrev": null
-    },
-    {
-     "key": "barnes & noble market share",
-     "clicks": 2,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 8.0,
+     "pos": 2.0,
      "posPrev": null
     }
    ],
    "risingQueries": [
     {
-     "key": "top websites in the world",
+     "key": "who is the richest man in the world",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 266,
-     "imprPrev": 0,
+     "impr": 319,
+     "imprPrev": 163,
      "pos": 9.0,
+     "posPrev": 9.0
+    },
+    {
+     "key": "top 10  most valuable bussiness in 2026",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 63,
+     "imprPrev": 0,
+     "pos": 4.0,
      "posPrev": null
     },
     {
-     "key": "what is the fastest car in the world",
+     "key": "who has the most subscribers on youtube",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 233,
-     "imprPrev": 104,
-     "pos": 8.0,
-     "posPrev": 8.0
-    },
-    {
-     "key": "fastest car in the world",
-     "clicks": 0,
-     "clicksPrev": 1,
-     "impr": 285,
-     "imprPrev": 175,
+     "impr": 77,
+     "imprPrev": 20,
      "pos": 7.0,
      "posPrev": 8.0
     },
     {
-     "key": "op websites in the world",
+     "key": "top 10 richest people in the world 2026",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 109,
+     "impr": 46,
+     "imprPrev": 0,
+     "pos": 7.0,
+     "posPrev": null
+    },
+    {
+     "key": "taylor swift net worth 2026",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 40,
      "imprPrev": 0,
      "pos": 9.0,
      "posPrev": null
     },
     {
-     "key": "languages with more than 10 million speakers",
-     "clicks": 0,
+     "key": "the fastest car in the world 2026",
+     "clicks": 2,
      "clicksPrev": 0,
-     "impr": 76,
-     "imprPrev": 0,
-     "pos": 5.0,
-     "posPrev": null
-    },
-    {
-     "key": "world fastest car 2026",
-     "clicks": 6,
-     "clicksPrev": 0,
-     "impr": 50,
+     "impr": 12,
      "imprPrev": 0,
      "pos": 2.0,
      "posPrev": null
     },
     {
-     "key": "language with more than 10 million speakers",
-     "clicks": 0,
+     "key": "top 10 richest people today",
+     "clicks": 1,
      "clicksPrev": 0,
-     "impr": 47,
+     "impr": 5,
      "imprPrev": 0,
-     "pos": 5.0,
+     "pos": 7.0,
      "posPrev": null
     },
     {
-     "key": "languages with 10 million speakers",
-     "clicks": 0,
+     "key": "who has the most subscribers on youtube 2026",
+     "clicks": 2,
      "clicksPrev": 0,
-     "impr": 44,
+     "impr": 5,
      "imprPrev": 0,
-     "pos": 6.0,
+     "pos": 2.0,
      "posPrev": null
     },
     {
-     "key": "country linkedin",
-     "clicks": 0,
+     "key": "top 10 fastest cars in the world",
+     "clicks": 2,
      "clicksPrev": 0,
-     "impr": 92,
-     "imprPrev": 48,
-     "pos": 5.0,
-     "posPrev": 7.0
-    },
-    {
-     "key": "language with 10 million speakers",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 38,
+     "impr": 5,
      "imprPrev": 0,
      "pos": 5.0,
      "posPrev": null
@@ -461,25 +443,35 @@
     "2026-10-23",
     "2026-10-30",
     "2026-11-06",
-    "2026-11-13"
+    "2026-11-13",
+    "2026-11-20"
    ],
    "week": {
+    "clicks": 14,
+    "impr": 183,
+    "pos": 6.7
+   },
+   "prevWeek": {
     "clicks": 13,
     "impr": 161,
     "pos": 7.1
    },
-   "prevWeek": {
-    "clicks": 5,
-    "impr": 106,
-    "pos": 7.4
-   },
    "range": [
-    "2026-11-13",
-    "2026-11-06"
+    "2026-11-20",
+    "2026-11-13"
    ],
    "topQueries": [
     {
-     "key": "saudi visa check online enjaz",
+     "key": "visa mofa enjaz status",
+     "clicks": 2,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 8.0,
+     "posPrev": null
+    },
+    {
+     "key": "passport diye saudi visa check",
      "clicks": 2,
      "clicksPrev": 0,
      "impr": 1,
@@ -488,7 +480,7 @@
      "posPrev": null
     },
     {
-     "key": "cleaner gross salary in portugal",
+     "key": "how to check serbia visa real or fake",
      "clicks": 2,
      "clicksPrev": 0,
      "impr": 1,
@@ -497,199 +489,16 @@
      "posPrev": null
     },
     {
-     "key": "kuwait visa check",
+     "key": "mofa.gov.sa visa application status",
      "clicks": 1,
      "clicksPrev": 0,
-     "impr": 8,
-     "imprPrev": 5,
-     "pos": 9.0,
-     "posPrev": 9.0
-    },
-    {
-     "key": "visapoint",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 2,
+     "impr": 4,
      "imprPrev": 2,
-     "pos": 3.0,
-     "posPrev": 6.0
-    },
-    {
-     "key": "as a welda man in europe and a barba who is wel payed",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 1.0,
-     "posPrev": null
-    },
-    {
-     "key": "which is better salary slovakia or croatia",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 3.0,
-     "posPrev": null
-    },
-    {
-     "key": "hungary circular for bangladesh",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 2.0,
-     "posPrev": null
-    },
-    {
-     "key": "japan visa status check online bangladesh online",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 7.0,
-     "posPrev": null
-    },
-    {
-     "key": "how much does a welder get paid monthly",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 1.0,
-     "posPrev": null
-    },
-    {
-     "key": "visa application status check kuwait",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 5.0,
-     "posPrev": null
-    },
-    {
-     "key": "italy company direct sponsor work permit for bangladeshi workers employment",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 3.0,
-     "posPrev": null
-    },
-    {
-     "key": "poland welder salary per month in india rupees in fresher",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 18,
-     "imprPrev": 0,
-     "pos": 10.0,
-     "posPrev": null
-    },
-    {
-     "key": "japan visa status check online",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 13,
-     "imprPrev": 0,
-     "pos": 9.0,
-     "posPrev": null
-    },
-    {
-     "key": "kuwait visa check online",
-     "clicks": 0,
-     "clicksPrev": 1,
-     "impr": 6,
-     "imprPrev": 5,
-     "pos": 7.0,
-     "posPrev": 9.0
-    },
-    {
-     "key": "kuwait e visa check online",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 5,
-     "imprPrev": 3,
      "pos": 7.0,
      "posPrev": 7.0
-    }
-   ],
-   "risingQueries": [
-    {
-     "key": "poland welder salary per month in india rupees in fresher",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 18,
-     "imprPrev": 0,
-     "pos": 10.0,
-     "posPrev": null
     },
     {
-     "key": "japan visa status check online",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 13,
-     "imprPrev": 0,
-     "pos": 9.0,
-     "posPrev": null
-    },
-    {
-     "key": "kuwait visa check online by passport number",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 5,
-     "imprPrev": 1,
-     "pos": 6.0,
-     "posPrev": 8.0
-    },
-    {
-     "key": "kuwait visa check",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 8,
-     "imprPrev": 5,
-     "pos": 9.0,
-     "posPrev": 9.0
-    },
-    {
-     "key": "kuwait e visa check online",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 5,
-     "imprPrev": 3,
-     "pos": 7.0,
-     "posPrev": 7.0
-    }
-   ]
-  },
-  "infkey": {
-   "weeks": [
-    "2026-09-25",
-    "2026-10-02",
-    "2026-10-09",
-    "2026-10-16",
-    "2026-10-23",
-    "2026-10-30",
-    "2026-11-06",
-    "2026-11-13"
-   ],
-   "week": {
-    "clicks": 3,
-    "impr": 110,
-    "pos": 6.0
-   },
-   "prevWeek": {
-    "clicks": 2,
-    "impr": 102,
-    "pos": 5.8
-   },
-   "range": [
-    "2026-11-13",
-    "2026-11-06"
-   ],
-   "topQueries": [
-    {
-     "key": "d270 model expected price",
+     "key": "slovenian work permit processing time",
      "clicks": 1,
      "clicksPrev": 0,
      "impr": 4,
@@ -698,16 +507,52 @@
      "posPrev": null
     },
     {
-     "key": "opencode vs copilot monthly",
+     "key": "italy work permit visa from bangladesh 2026",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 4,
+     "imprPrev": 0,
+     "pos": 5.0,
+     "posPrev": null
+    },
+    {
+     "key": "visa check of kuwait for nepal",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 3,
+     "imprPrev": 0,
+     "pos": 5.0,
+     "posPrev": null
+    },
+    {
+     "key": "how to check visit visa status in kuwait",
      "clicks": 1,
      "clicksPrev": 0,
      "impr": 2,
      "imprPrev": 0,
-     "pos": 2.0,
+     "pos": 3.0,
      "posPrev": null
     },
     {
-     "key": "x ai api pricing text to speech best free",
+     "key": "https://kuwait visa check",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 3.0,
+     "posPrev": null
+    },
+    {
+     "key": "salary for visa sponsorship uk",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 7.0,
+     "posPrev": null
+    },
+    {
+     "key": "check kuwait visa status online",
      "clicks": 1,
      "clicksPrev": 0,
      "impr": 1,
@@ -716,97 +561,199 @@
      "posPrev": null
     },
     {
-     "key": "opencode ai pricing",
+     "key": "kuwait visa check",
+     "clicks": 0,
+     "clicksPrev": 1,
+     "impr": 16,
+     "imprPrev": 8,
+     "pos": 8.0,
+     "posPrev": 9.0
+    },
+    {
+     "key": "portal.mofa2026.cc",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 5,
      "imprPrev": 0,
-     "pos": 9.0,
+     "pos": 6.0,
      "posPrev": null
     },
     {
-     "key": "should i download muse",
+     "key": "korea visa check visa",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 3,
-     "imprPrev": 0,
-     "pos": 9.0,
-     "posPrev": null
-    },
-    {
-     "key": "intel d270",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 3,
-     "imprPrev": 2,
-     "pos": 10.0,
-     "posPrev": 10.0
-    },
-    {
-     "key": "opencode unlimited",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 3,
-     "imprPrev": 0,
-     "pos": 10.0,
-     "posPrev": null
-    },
-    {
-     "key": "intel d270 price",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 3,
-     "imprPrev": 2,
-     "pos": 2.0,
-     "posPrev": 4.0
-    },
-    {
-     "key": "https://opencode.ai price",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 9.0,
-     "posPrev": null
-    },
-    {
-     "key": "opencode tiers",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 9.0,
-     "posPrev": null
-    },
-    {
-     "key": "intel d270 tflops",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 3.0,
-     "posPrev": null
-    },
-    {
-     "key": "bing zero cost of",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 2,
+     "impr": 5,
      "imprPrev": 0,
      "pos": 8.0,
      "posPrev": null
     },
     {
-     "key": "intel d270 pricing",
+     "key": "kuwait visa status",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 4,
+     "imprPrev": 0,
+     "pos": 8.0,
+     "posPrev": null
+    }
+   ],
+   "risingQueries": [
+    {
+     "key": "kuwait visa check",
+     "clicks": 0,
+     "clicksPrev": 1,
+     "impr": 16,
+     "imprPrev": 8,
+     "pos": 8.0,
+     "posPrev": 9.0
+    },
+    {
+     "key": "portal.mofa2026.cc",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 5,
+     "imprPrev": 0,
+     "pos": 6.0,
+     "posPrev": null
+    },
+    {
+     "key": "korea visa check visa",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 5,
+     "imprPrev": 0,
+     "pos": 8.0,
+     "posPrev": null
+    }
+   ]
+  },
+  "infkey": {
+   "weeks": [
+    "2026-10-02",
+    "2026-10-09",
+    "2026-10-16",
+    "2026-10-23",
+    "2026-10-30",
+    "2026-11-06",
+    "2026-11-13",
+    "2026-11-20"
+   ],
+   "week": {
+    "clicks": 8,
+    "impr": 124,
+    "pos": 4.9
+   },
+   "prevWeek": {
+    "clicks": 3,
+    "impr": 110,
+    "pos": 6.0
+   },
+   "range": [
+    "2026-11-20",
+    "2026-11-13"
+   ],
+   "topQueries": [
+    {
+     "key": "intel d270 price",
+     "clicks": 2,
+     "clicksPrev": 0,
+     "impr": 45,
+     "imprPrev": 3,
+     "pos": 4.0,
+     "posPrev": 2.0
+    },
+    {
+     "key": "intel gpu d270 price",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 13,
+     "imprPrev": 0,
+     "pos": 5.0,
+     "posPrev": null
+    },
+    {
+     "key": "d270 price",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 6,
+     "imprPrev": 0,
+     "pos": 4.0,
+     "posPrev": null
+    },
+    {
+     "key": "intel ex39p d270 price",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 4.0,
+     "posPrev": null
+    },
+    {
+     "key": "intel d720 cost",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 4.0,
+     "posPrev": null
+    },
+    {
+     "key": "intel d270 kosten",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 5.0,
+     "posPrev": null
+    },
+    {
+     "key": "intel gpu s270 price",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 10.0,
+     "posPrev": null
+    },
+    {
+     "key": "opencode prices",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 4,
+     "imprPrev": 0,
+     "pos": 10.0,
+     "posPrev": null
+    },
+    {
+     "key": "intel d270 gpu price",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 3,
+     "imprPrev": 0,
+     "pos": 4.0,
+     "posPrev": null
+    },
+    {
+     "key": "intel gpu d270 buy price eur germany",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 2,
      "imprPrev": 0,
-     "pos": 2.0,
+     "pos": 5.0,
      "posPrev": null
     },
     {
-     "key": "pricing opencode",
+     "key": "ai video api batch discount",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 9.0,
+     "posPrev": null
+    },
+    {
+     "key": "opencode和git copilot 10美元哪个值",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 2,
@@ -815,23 +762,59 @@
      "posPrev": null
     },
     {
-     "key": "copy of copy of rag budget 2026 versus current november 2026",
+     "key": "how to create 4k ai video cost",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 2,
      "imprPrev": 0,
      "pos": 1.0,
      "posPrev": null
+    },
+    {
+     "key": "midjourney api vs dalle api price",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 2.0,
+     "posPrev": null
+    },
+    {
+     "key": "cheap tts api comparison pricing per character",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 3.0,
+     "posPrev": null
     }
    ],
    "risingQueries": [
     {
-     "key": "opencode ai pricing",
-     "clicks": 0,
+     "key": "intel d270 price",
+     "clicks": 2,
      "clicksPrev": 0,
-     "impr": 5,
+     "impr": 45,
+     "imprPrev": 3,
+     "pos": 4.0,
+     "posPrev": 2.0
+    },
+    {
+     "key": "intel gpu d270 price",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 13,
      "imprPrev": 0,
-     "pos": 9.0,
+     "pos": 5.0,
+     "posPrev": null
+    },
+    {
+     "key": "d270 price",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 6,
+     "imprPrev": 0,
+     "pos": 4.0,
      "posPrev": null
     }
    ]
@@ -840,35 +823,54 @@
    "weeks": [
     "2026-10-30",
     "2026-11-06",
-    "2026-11-13"
+    "2026-11-13",
+    "2026-11-20"
    ],
    "week": {
+    "clicks": 14,
+    "impr": 153,
+    "pos": 5.9
+   },
+   "prevWeek": {
     "clicks": 13,
     "impr": 144,
     "pos": 5.6
    },
-   "prevWeek": {
-    "clicks": 6,
-    "impr": 94,
-    "pos": 5.9
-   },
    "range": [
-    "2026-11-13",
-    "2026-11-06"
+    "2026-11-20",
+    "2026-11-13"
    ],
    "topQueries": [
     {
-     "key": "abud dhabi expat salary",
+     "key": "saba medical cost for iqama physical",
      "clicks": 2,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 1.0,
+     "posPrev": null
+    },
+    {
+     "key": "kuwait basic salary for indian",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 3,
+     "imprPrev": 0,
+     "pos": 4.0,
+     "posPrev": null
+    },
+    {
+     "key": "oman visa online cost",
+     "clicks": 1,
      "clicksPrev": 0,
      "impr": 2,
      "imprPrev": 0,
-     "pos": 2.0,
+     "pos": 6.0,
      "posPrev": null
     },
     {
-     "key": "bahrain traffic violation",
-     "clicks": 2,
+     "key": "golden visa bahrain approval time review 2026",
+     "clicks": 1,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
@@ -876,25 +878,7 @@
      "posPrev": null
     },
     {
-     "key": "traffic fine",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 13,
-     "imprPrev": 3,
-     "pos": 4.0,
-     "posPrev": 5.0
-    },
-    {
-     "key": "kuwait visa check online by passport number",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 6,
-     "imprPrev": 1,
-     "pos": 8.0,
-     "posPrev": 7.0
-    },
-    {
-     "key": "oman residence visa charges 2026",
+     "key": "car fine check bahrain online portal",
      "clicks": 1,
      "clicksPrev": 0,
      "impr": 1,
@@ -903,16 +887,7 @@
      "posPrev": null
     },
     {
-     "key": "can indian get personal motor bike license in oman",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 3.0,
-     "posPrev": null
-    },
-    {
-     "key": "private light licence to light licence conversion in oman",
+     "key": "petrol price in gulf countries",
      "clicks": 1,
      "clicksPrev": 0,
      "impr": 1,
@@ -921,16 +896,34 @@
      "posPrev": null
     },
     {
-     "key": "bahrain traffic fine",
+     "key": "kuwait verfify the visa link",
      "clicks": 1,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 3.0,
+     "pos": 10.0,
      "posPrev": null
     },
     {
-     "key": "average salaries in london gate montreal  uae",
+     "key": "etraffic bh'",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 5.0,
+     "posPrev": null
+    },
+    {
+     "key": "amount for driving license",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 10.0,
+     "posPrev": null
+    },
+    {
+     "key": "jubail driving license fees",
      "clicks": 1,
      "clicksPrev": 0,
      "impr": 1,
@@ -939,7 +932,16 @@
      "posPrev": null
     },
     {
-     "key": "check traffic violations bahrain",
+     "key": "top management salary in saudi arabia for oil and gas",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 2.0,
+     "posPrev": null
+    },
+    {
+     "key": "vehicle fine check",
      "clicks": 1,
      "clicksPrev": 0,
      "impr": 1,
@@ -948,394 +950,331 @@
      "posPrev": null
     },
     {
-     "key": "kuwait visa mibile verficateion takes time ?",
+     "key": "how much it admin salary in kuwait in indian rupees",
      "clicks": 1,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 8.0,
+     "pos": 1.0,
      "posPrev": null
     },
     {
-     "key": "traffic contravention",
+     "key": "traffic fine",
      "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 6,
-     "imprPrev": 0,
-     "pos": 7.0,
-     "posPrev": null
+     "clicksPrev": 1,
+     "impr": 15,
+     "imprPrev": 13,
+     "pos": 5.0,
+     "posPrev": 4.0
     },
     {
-     "key": "kuwait visa moi",
+     "key": "eid al fitr 2027 uae dates",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 4,
      "imprPrev": 0,
-     "pos": 8.0,
-     "posPrev": null
-    },
-    {
-     "key": "moi visa checks",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 3,
-     "imprPrev": 0,
-     "pos": 4.0,
-     "posPrev": null
-    },
-    {
-     "key": "self employment qatar voiko tehdä töitä omaan kotimaahan",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 3,
-     "imprPrev": 0,
-     "pos": 4.0,
+     "pos": 5.0,
      "posPrev": null
     }
    ],
-   "risingQueries": [
-    {
-     "key": "traffic fine",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 13,
-     "imprPrev": 3,
-     "pos": 4.0,
-     "posPrev": 5.0
-    },
-    {
-     "key": "traffic contravention",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 6,
-     "imprPrev": 0,
-     "pos": 7.0,
-     "posPrev": null
-    },
-    {
-     "key": "kuwait visa check online by passport number",
-     "clicks": 1,
-     "clicksPrev": 0,
-     "impr": 6,
-     "imprPrev": 1,
-     "pos": 8.0,
-     "posPrev": 7.0
-    }
-   ]
+   "risingQueries": []
   },
   "ninetymins": {
    "weeks": [
-    "2026-09-25",
     "2026-10-02",
     "2026-10-09",
     "2026-10-16",
     "2026-10-23",
     "2026-10-30",
     "2026-11-06",
-    "2026-11-13"
+    "2026-11-13",
+    "2026-11-20"
    ],
    "week": {
+    "clicks": 167,
+    "impr": 3398,
+    "pos": 5.1
+   },
+   "prevWeek": {
     "clicks": 150,
     "impr": 4633,
     "pos": 6.1
    },
-   "prevWeek": {
-    "clicks": 88,
-    "impr": 1833,
-    "pos": 6.2
-   },
    "range": [
-    "2026-11-13",
-    "2026-11-06"
+    "2026-11-20",
+    "2026-11-13"
    ],
    "topQueries": [
     {
-     "key": "saff championship",
-     "clicks": 16,
-     "clicksPrev": 15,
-     "impr": 1280,
-     "imprPrev": 588,
-     "pos": 5.0,
-     "posPrev": 5.0
-    },
-    {
-     "key": "suff fotball 2026",
+     "key": "saff championship live streaming",
      "clicks": 14,
      "clicksPrev": 7,
-     "impr": 15,
-     "imprPrev": 8,
-     "pos": 1.0,
-     "posPrev": 2.0
-    },
-    {
-     "key": "saff championship live streaming",
-     "clicks": 7,
-     "clicksPrev": 0,
-     "impr": 19,
-     "imprPrev": 0,
-     "pos": 4.0,
-     "posPrev": null
-    },
-    {
-     "key": "saff championship 2026",
-     "clicks": 6,
-     "clicksPrev": 1,
-     "impr": 510,
-     "imprPrev": 256,
-     "pos": 6.0,
-     "posPrev": 6.0
-    },
-    {
-     "key": "saff",
-     "clicks": 6,
-     "clicksPrev": 0,
-     "impr": 196,
-     "imprPrev": 79,
-     "pos": 7.0,
-     "posPrev": 8.0
-    },
-    {
-     "key": "saff 2026",
-     "clicks": 5,
-     "clicksPrev": 1,
-     "impr": 55,
-     "imprPrev": 27,
-     "pos": 6.0,
-     "posPrev": 6.0
-    },
-    {
-     "key": "saff live",
-     "clicks": 5,
-     "clicksPrev": 2,
-     "impr": 35,
-     "imprPrev": 16,
+     "impr": 46,
+     "imprPrev": 19,
      "pos": 2.0,
-     "posPrev": 2.0
-    },
-    {
-     "key": "saff championship match live streaming",
-     "clicks": 5,
-     "clicksPrev": 0,
-     "impr": 14,
-     "imprPrev": 0,
-     "pos": 4.0,
-     "posPrev": null
-    },
-    {
-     "key": "saf football",
-     "clicks": 4,
-     "clicksPrev": 2,
-     "impr": 33,
-     "imprPrev": 15,
-     "pos": 2.0,
-     "posPrev": 3.0
-    },
-    {
-     "key": "saff championship live stream",
-     "clicks": 4,
-     "clicksPrev": 0,
-     "impr": 11,
-     "imprPrev": 0,
-     "pos": 5.0,
-     "posPrev": null
-    },
-    {
-     "key": "what time is england kick off today",
-     "clicks": 3,
-     "clicksPrev": 0,
-     "impr": 100,
-     "imprPrev": 0,
-     "pos": 5.0,
-     "posPrev": null
-    },
-    {
-     "key": "saff championship live streaming channels",
-     "clicks": 3,
-     "clicksPrev": 0,
-     "impr": 11,
-     "imprPrev": 0,
-     "pos": 2.0,
-     "posPrev": null
-    },
-    {
-     "key": "saff football 2026",
-     "clicks": 3,
-     "clicksPrev": 1,
-     "impr": 9,
-     "imprPrev": 4,
-     "pos": 4.0,
      "posPrev": 4.0
     },
     {
-     "key": "saff tv broadcust",
-     "clicks": 3,
-     "clicksPrev": 0,
-     "impr": 4,
-     "imprPrev": 0,
-     "pos": 2.0,
-     "posPrev": null
+     "key": "saff live",
+     "clicks": 9,
+     "clicksPrev": 5,
+     "impr": 123,
+     "imprPrev": 35,
+     "pos": 3.0,
+     "posPrev": 2.0
     },
     {
-     "key": "shaf chimpoin",
-     "clicks": 3,
-     "clicksPrev": 0,
-     "impr": 3,
-     "imprPrev": 0,
+     "key": "suff fotball 2026",
+     "clicks": 7,
+     "clicksPrev": 14,
+     "impr": 7,
+     "imprPrev": 15,
      "pos": 1.0,
-     "posPrev": null
-    }
-   ],
-   "risingQueries": [
+     "posPrev": 1.0
+    },
     {
      "key": "saff championship",
-     "clicks": 16,
-     "clicksPrev": 15,
-     "impr": 1280,
-     "imprPrev": 588,
+     "clicks": 6,
+     "clicksPrev": 16,
+     "impr": 1195,
+     "imprPrev": 1280,
      "pos": 5.0,
      "posPrev": 5.0
     },
     {
-     "key": "premier league records quiz",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 580,
-     "imprPrev": 13,
-     "pos": 9.0,
-     "posPrev": 10.0
+     "key": "saff championship live streaming channels",
+     "clicks": 6,
+     "clicksPrev": 3,
+     "impr": 34,
+     "imprPrev": 11,
+     "pos": 3.0,
+     "posPrev": 2.0
     },
     {
-     "key": "saff championship standings",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 386,
-     "imprPrev": 32,
-     "pos": 8.0,
+     "key": "saff championship 2026 live streaming",
+     "clicks": 6,
+     "clicksPrev": 2,
+     "impr": 26,
+     "imprPrev": 20,
+     "pos": 5.0,
+     "posPrev": 5.0
+    },
+    {
+     "key": "saff championship live stream",
+     "clicks": 6,
+     "clicksPrev": 4,
+     "impr": 20,
+     "imprPrev": 11,
+     "pos": 2.0,
+     "posPrev": 5.0
+    },
+    {
+     "key": "saff",
+     "clicks": 5,
+     "clicksPrev": 6,
+     "impr": 290,
+     "imprPrev": 196,
+     "pos": 6.0,
      "posPrev": 7.0
     },
     {
-     "key": "saff championship 2026",
-     "clicks": 6,
-     "clicksPrev": 1,
-     "impr": 510,
-     "imprPrev": 256,
-     "pos": 6.0,
-     "posPrev": 6.0
+     "key": "saff championship fixtures",
+     "clicks": 5,
+     "clicksPrev": 2,
+     "impr": 4,
+     "imprPrev": 6,
+     "pos": 2.0,
+     "posPrev": 4.0
     },
     {
-     "key": "saff championship score",
-     "clicks": 0,
+     "key": "ashes test matches 2026",
+     "clicks": 5,
      "clicksPrev": 0,
-     "impr": 193,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 4.0,
+     "posPrev": null
+    },
+    {
+     "key": "saff championship watch online",
+     "clicks": 4,
+     "clicksPrev": 0,
+     "impr": 27,
      "imprPrev": 0,
      "pos": 3.0,
      "posPrev": null
     },
     {
-     "key": "saff",
-     "clicks": 6,
-     "clicksPrev": 0,
-     "impr": 196,
-     "imprPrev": 79,
-     "pos": 7.0,
-     "posPrev": 8.0
+     "key": "saff  live streaming",
+     "clicks": 4,
+     "clicksPrev": 1,
+     "impr": 8,
+     "imprPrev": 5,
+     "pos": 2.0,
+     "posPrev": 7.0
     },
     {
-     "key": "what time is england kick off today",
-     "clicks": 3,
+     "key": "saff champion 2026",
+     "clicks": 4,
      "clicksPrev": 0,
-     "impr": 100,
+     "impr": 1,
      "imprPrev": 0,
      "pos": 5.0,
      "posPrev": null
     },
     {
-     "key": "bangladesh players soccer",
-     "clicks": 0,
+     "key": "saff football championship live stream",
+     "clicks": 3,
      "clicksPrev": 0,
-     "impr": 93,
+     "impr": 8,
      "imprPrev": 0,
-     "pos": 6.0,
+     "pos": 4.0,
      "posPrev": null
     },
     {
-     "key": "saff championship schedule",
-     "clicks": 0,
+     "key": "saff final live stream",
+     "clicks": 3,
      "clicksPrev": 0,
-     "impr": 123,
-     "imprPrev": 47,
-     "pos": 8.0,
+     "impr": 5,
+     "imprPrev": 0,
+     "pos": 3.0,
+     "posPrev": null
+    }
+   ],
+   "risingQueries": [
+    {
+     "key": "bangladesh soccer team",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 216,
+     "imprPrev": 50,
+     "pos": 5.0,
      "posPrev": 8.0
     },
     {
-     "key": "saff football championship",
+     "key": "asia cup under 19 live score",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 82,
-     "imprPrev": 29,
+     "impr": 120,
+     "imprPrev": 0,
+     "pos": 8.0,
+     "posPrev": null
+    },
+    {
+     "key": "saff live",
+     "clicks": 9,
+     "clicksPrev": 5,
+     "impr": 123,
+     "imprPrev": 35,
+     "pos": 3.0,
+     "posPrev": 2.0
+    },
+    {
+     "key": "bangladesh national football team",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 52,
+     "imprPrev": 4,
      "pos": 7.0,
      "posPrev": 8.0
+    },
+    {
+     "key": "saff championship live streaming",
+     "clicks": 14,
+     "clicksPrev": 7,
+     "impr": 46,
+     "imprPrev": 19,
+     "pos": 2.0,
+     "posPrev": 4.0
+    },
+    {
+     "key": "saff championship watch online",
+     "clicks": 4,
+     "clicksPrev": 0,
+     "impr": 27,
+     "imprPrev": 0,
+     "pos": 3.0,
+     "posPrev": null
+    },
+    {
+     "key": "bangladesh football team",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 46,
+     "imprPrev": 21,
+     "pos": 6.0,
+     "posPrev": 7.0
+    },
+    {
+     "key": "saaf championship",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 29,
+     "imprPrev": 4,
+     "pos": 6.0,
+     "posPrev": 8.0
+    },
+    {
+     "key": "saff championship live streaming channels",
+     "clicks": 6,
+     "clicksPrev": 3,
+     "impr": 34,
+     "imprPrev": 11,
+     "pos": 3.0,
+     "posPrev": 2.0
+    },
+    {
+     "key": "saff championship live",
+     "clicks": 2,
+     "clicksPrev": 2,
+     "impr": 64,
+     "imprPrev": 42,
+     "pos": 5.0,
+     "posPrev": 4.0
     }
    ]
   },
   "cob": {
    "weeks": [
     "2026-11-06",
-    "2026-11-13"
+    "2026-11-13",
+    "2026-11-20"
    ],
    "week": {
+    "clicks": 0,
+    "impr": 12,
+    "pos": 7.0
+   },
+   "prevWeek": {
     "clicks": 0,
     "impr": 17,
     "pos": 5.6
    },
-   "prevWeek": {
-    "clicks": 1,
-    "impr": 7,
-    "pos": 2.1
-   },
    "range": [
-    "2026-11-13",
-    "2026-11-06"
+    "2026-11-20",
+    "2026-11-13"
    ],
    "topQueries": [
     {
-     "key": "lalmai upazila",
+     "key": "আদিতমারী উপজেলা",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 7,
+     "impr": 3,
      "imprPrev": 0,
      "pos": 9.0,
      "posPrev": null
     },
     {
-     "key": "বটিয়াঘাটা মোট জনসংখ্যা কত",
+     "key": "জালালাবাদ নাটোর সদর কোন উইনিয়ন",
      "clicks": 0,
      "clicksPrev": 0,
-     "impr": 5,
-     "imprPrev": 0,
-     "pos": 1.0,
-     "posPrev": null
-    },
-    {
-     "key": "বটিয়াঘাটা ইউনিয়ন মোট জনসংখ্যা কত",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 1,
-     "imprPrev": 0,
-     "pos": 3.0,
-     "posPrev": null
-    },
-    {
-     "key": "হাসন রাজা কে?",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 1,
+     "impr": 2,
      "imprPrev": 0,
      "pos": 7.0,
      "posPrev": null
     },
     {
-     "key": "মধ্যনগর ্এসটি সুনামগঞ্জ",
+     "key": "মধ্যনগর উপজেলা",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
@@ -1344,7 +1283,34 @@
      "posPrev": null
     },
     {
-     "key": "jagadish chandra bose bangladesh er gourob kno",
+     "key": "atwari bangladesh",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 10.0,
+     "posPrev": null
+    },
+    {
+     "key": "ঘিওর উপজেলা",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 8.0,
+     "posPrev": null
+    },
+    {
+     "key": "zakiganj upazila",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 7.0,
+     "posPrev": null
+    },
+    {
+     "key": "jamal nazrul islam",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
@@ -1353,77 +1319,122 @@
      "posPrev": null
     },
     {
-     "key": "য়ন গাজীপুর সদর উপজেলা, গা",
+     "key": "মুসা ইব্রাহিম",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 3.0,
+     "posPrev": null
+    },
+    {
+     "key": "https://coloursofbangladesh.com/",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 2.0,
+     "posPrev": null
+    }
+   ],
+   "risingQueries": []
+  },
+  "aiu": {
+   "weeks": [
+    "2026-10-30",
+    "2026-11-06",
+    "2026-11-13",
+    "2026-11-20"
+   ],
+   "week": {
+    "clicks": 2,
+    "impr": 24,
+    "pos": 4.7
+   },
+   "prevWeek": {
+    "clicks": 0,
+    "impr": 7,
+    "pos": 6.0
+   },
+   "range": [
+    "2026-11-20",
+    "2026-11-13"
+   ],
+   "topQueries": [
+    {
+     "key": "ড্রাইভিং শিক্ষা,কসাই বাড়ি উত্তরা",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 1.0,
+     "posPrev": null
+    },
+    {
+     "key": "ai coach instruction name bangladesh university",
+     "clicks": 1,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 1.0,
+     "posPrev": null
+    },
+    {
+     "key": "ai centre",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 3,
+     "imprPrev": 0,
+     "pos": 4.0,
+     "posPrev": null
+    },
+    {
+     "key": "aiopprep",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 3.0,
+     "posPrev": null
+    },
+    {
+     "key": "ielts writing and readi ng kivabe shuru korbo",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 2,
+     "imprPrev": 0,
+     "pos": 2.0,
+     "posPrev": null
+    },
+    {
+     "key": "gre aiyaz website",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 10.0,
+     "posPrev": null
+    },
+    {
+     "key": "এক্সেলের ফরমুলা",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
      "pos": 5.0,
      "posPrev": null
-    }
-   ],
-   "risingQueries": [
-    {
-     "key": "lalmai upazila",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 7,
-     "imprPrev": 0,
-     "pos": 9.0,
-     "posPrev": null
     },
     {
-     "key": "বটিয়াঘাটা মোট জনসংখ্যা কত",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 5,
-     "imprPrev": 0,
-     "pos": 1.0,
-     "posPrev": null
-    }
-   ]
-  },
-  "aiu": {
-   "weeks": [
-    "2026-10-30",
-    "2026-11-06",
-    "2026-11-13"
-   ],
-   "week": {
-    "clicks": 0,
-    "impr": 7,
-    "pos": 6.0
-   },
-   "prevWeek": {
-    "clicks": 1,
-    "impr": 21,
-    "pos": 6.6
-   },
-   "range": [
-    "2026-11-13",
-    "2026-11-06"
-   ],
-   "topQueries": [
-    {
-     "key": "ielts preparation kivabe shuru korbo ar kun mdule theke shuru korbo",
-     "clicks": 0,
-     "clicksPrev": 0,
-     "impr": 2,
-     "imprPrev": 0,
-     "pos": 4.0,
-     "posPrev": null
-    },
-    {
-     "key": "a man driving a car bangla",
+     "key": "ai course cox's bazar",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 9.0,
+     "pos": 8.0,
      "posPrev": null
     },
     {
-     "key": "avy truck driving শিখতে",
+     "key": "excell e table banano",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
@@ -1432,7 +1443,34 @@
      "posPrev": null
     },
     {
-     "key": "ielts ki amader schoole ase",
+     "key": "indanchudai",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 3.0,
+     "posPrev": null
+    },
+    {
+     "key": "https://theaouniversity.com",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 5.0,
+     "posPrev": null
+    },
+    {
+     "key": "aiuyak",
+     "clicks": 0,
+     "clicksPrev": 0,
+     "impr": 1,
+     "imprPrev": 0,
+     "pos": 9.0,
+     "posPrev": null
+    },
+    {
+     "key": "aiajsbe",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
@@ -1441,21 +1479,21 @@
      "posPrev": null
     },
     {
-     "key": "driving course level 3",
+     "key": "www.ainaldunia",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 9.0,
+     "pos": 10.0,
      "posPrev": null
     },
     {
-     "key": "dmrsti edu bd blog car",
+     "key": "কোর্সেরা জনপ্রিয় কোর্স",
      "clicks": 0,
      "clicksPrev": 0,
      "impr": 1,
      "imprPrev": 0,
-     "pos": 7.0,
+     "pos": 4.0,
      "posPrev": null
     }
    ],

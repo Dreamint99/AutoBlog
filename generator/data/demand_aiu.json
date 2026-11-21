@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-08-20..2026-11-18, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-21..2026-11-19, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "প্রাথমিক চিকিৎসা কি",
@@ -32,15 +32,15 @@
    "src": "gsc"
   },
   {
-   "q": "প্রাথমিক চিকিৎসা বলতে কী বোঝো",
+   "q": "প্রম্পট কি",
    "impr": 29,
-   "pos": 8.8,
+   "pos": 9.4,
    "src": "gsc"
   },
   {
-   "q": "প্রম্পট কি",
-   "impr": 28,
-   "pos": 9.3,
+   "q": "প্রাথমিক চিকিৎসা বলতে কী বোঝো",
+   "impr": 29,
+   "pos": 8.8,
    "src": "gsc"
   },
   {
