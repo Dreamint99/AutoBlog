@@ -3,6 +3,7 @@ name: ninetymins preview
 # Upload a Worker version and a preview alias. Does not create a production deployment.
 on:
   workflow_dispatch:
+  pull_request:
 
 concurrency:
   group: ninetymins-preview
