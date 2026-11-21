@@ -16,7 +16,8 @@ export async function generateMetadata({ params }: P): Promise<Metadata> {
   const fs = await teamFixtures(slug), f = fs[0];
   if (!f) return { robots: { index: false, follow: true } };
   const team = f.home_slug === slug ? f.ev.home : f.ev.away;
-  return { title: `${team.name}: fixtures, live scores & results`, alternates: { canonical: `/team/${slug}` }, robots: { index: true, follow: true, "max-image-preview": "large" }, openGraph: { images: [{ url: "/og/ninetymins.png", width: 1200, height: 630 }] } };
+  const up = fs.filter(x => x.state === "pre").length, done = fs.filter(x => x.state === "post").length;
+  return { title: `${team.name}: fixtures, live scores & results`, description: `${team.name} fixtures, live scores and results${[up ? `${up} upcoming ${up === 1 ? "match" : "matches"}` : "", done ? `${done} recent ${done === 1 ? "result" : "results"}` : ""].filter(Boolean).join(", ").replace(/^(.)/, ": $1")}, plus head-to-head records. Data from ESPN.`, alternates: { canonical: `/team/${slug}` }, robots: { index: true, follow: true, "max-image-preview": "large" }, openGraph: { images: [{ url: "/og/ninetymins.png", width: 1200, height: 630 }] } };
 }
 export default async function TeamPage({ params }: P) {
   const { site: sid, slug } = await params, site = getSite(sid);

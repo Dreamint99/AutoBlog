@@ -14,12 +14,12 @@ type P = { params: Promise<{ site: string; slug: string }> };
 export async function generateMetadata({ params }: P): Promise<Metadata> {
   const { site, slug } = await params;
   if (site !== "ninetymins") return {};
-  if (slug === "f1") return { title: "Formula 1 sessions & results", alternates: { canonical: "/league/f1" } };
+  if (slug === "f1") return { title: "Formula 1 sessions & results", description: "Formula 1 race weekends on NinetyMins: session start times and results for the current season.", alternates: { canonical: "/league/f1" } };
   const fs = await leagueFixtures(slug);
   // known league with nothing stored right now (e.g. international break): live fallback page, kept out of the index
   const known = !fs.length ? slugToLeague(slug) : null;
-  if (known) return { title: `${NM_LEAGUES[known].label}: fixtures, scores & standings`, alternates: { canonical: `/league/${slug}` }, robots: { index: false, follow: true } };
-  return { title: `${fs[0]?.ev.leagueName || "Competition"}: fixtures, scores & standings`, alternates: { canonical: `/league/${slug}` }, robots: { index: fs.length > 0, follow: true, "max-image-preview": "large" }, openGraph: { images: [{ url: "/og/ninetymins.png", width: 1200, height: 630 }] } };
+  if (known) return { title: `${NM_LEAGUES[known].label}: fixtures, scores & standings`, description: `${NM_LEAGUES[known].label} fixtures, live scores and standings. The next round appears here as soon as it is scheduled.`, alternates: { canonical: `/league/${slug}` }, robots: { index: false, follow: true } };
+  return { title: `${fs[0]?.ev.leagueName || "Competition"}: fixtures, scores & standings`, description: `${fs[0]?.ev.leagueName || "Competition"} fixtures, live scores, results, standings and top scorers on NinetyMins. Data from ESPN.`, alternates: { canonical: `/league/${slug}` }, robots: { index: fs.length > 0, follow: true, "max-image-preview": "large" }, openGraph: { images: [{ url: "/og/ninetymins.png", width: 1200, height: 630 }] } };
 }
 export default async function LeaguePage({ params }: P) {
   const { site: sid, slug } = await params, site = getSite(sid);
