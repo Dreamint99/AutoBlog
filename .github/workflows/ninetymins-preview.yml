@@ -4,6 +4,7 @@ name: ninetymins preview
 on:
   workflow_dispatch:
   pull_request:
+    branches: [fix/web-to-app-cta]
 
 concurrency:
   group: ninetymins-preview
