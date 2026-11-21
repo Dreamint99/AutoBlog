@@ -207,6 +207,7 @@ export const HUBS: Hub[] = [
     links: links("/event/ipl-2027", [{ href: "/cricket", label: "Live cricket" }]),
     sources: [
       { label: "BCCI / IPL retention advisory, 18 Nov 2026", url: "https://www.iplt20.com/news/article/tata-ipl-2027-player-retentions-announced" },
+      { label: "IPL trade advisory, Hardik Pandya to PBKS and Arshdeep Singh to MI, 11 Nov 2026", url: "https://www.iplt20.com/news/article/hardik-pandya-and-arshdeep-singh-complete-major-trade-between-pbks-and-mi" },
       { label: "TATA IPL 2027 auction page", url: "https://www.iplt20.com/auction/2027" },
     ],
   },

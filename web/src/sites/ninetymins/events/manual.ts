@@ -1,5 +1,4 @@
-/** Facts with no structured feed. The page and the weekly job flag these when reviewAfter has passed.
- *  Dates are calendar dates (UTC). Nothing here is scraped. */
+/** Operator log only. These gaps are printed by event-refresh.yml. They are not rendered on the site. */
 
 export type ManualFact = {
   id: string;
@@ -24,6 +23,9 @@ export const MANUAL_FACTS: ManualFact[] = [
   { id: "psl-fx", slug: "psl-2027", label: "PSL fixtures, venues and auction", reviewAfter: "2027-01-15", detail: "The 8 Oct 2026 PCB release confirms the window only." },
   { id: "ucl-ties", slug: "champions-league-2026-27", label: "UCL knockout ties and kick-off times", reviewAfter: "2027-02-01", detail: "UEFA published matchweeks and the final, not the clubs or a clock time." },
   { id: "ucl-tv", slug: "champions-league-2026-27", label: "UCL broadcasters", reviewAfter: "2027-02-01", detail: "The UEFA dates page does not list country channels." },
+  { id: "captain-coach", slug: "all", label: "Captains and coaches", reviewAfter: "2026-11-21", detail: "No free feed used here publishes a verified captain or coach for these squads." },
+  { id: "home-ground", slug: "all", label: "Official home grounds", reviewAfter: "2026-11-21", detail: "City on a fixture is not treated as a franchise's home ground unless the feed names the ground." },
+  { id: "broadcasters", slug: "all", label: "Broadcasters", reviewAfter: "2026-11-21", detail: "No free structured feed lists legal broadcasters for these seasons. BBL Australia TV stays the Cricket Australia sentence already on that hub." },
 ];
 
 export function dueFacts(slug: string, today = new Date().toISOString().slice(0, 10)) {
