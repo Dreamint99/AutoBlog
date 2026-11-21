@@ -180,6 +180,7 @@ html[data-nm-theme="dark"] .site-ninetymins .nm-root.nv .nv-logo-90 { background
 .site-ninetymins .nm-root.nv .nv-more-panel b { font: 600 11.5px/1 var(--nm-sans); letter-spacing: 0.06em; text-transform: uppercase; color: var(--nv-faint); padding: 6px 8px 8px; }
 .site-ninetymins .nm-root.nv .nv-more-panel a { padding: 7px 8px; border-radius: 8px; font: 500 14px/1.2 var(--nm-sans); color: var(--nv-ink); text-decoration: none; }
 .site-ninetymins .nm-root.nv .nv-more-panel a:hover { background: var(--nv-soft); }
+.site-ninetymins .nm-root.nv .nv-events .nv-more-panel { width: 220px; grid-template-columns: 1fr; }
 
 .site-ninetymins .nm-root.nv .nv-hd-act { display: flex; align-items: center; gap: 6px; margin-left: auto; flex: none; }
 .site-ninetymins .nm-root.nv .nv-icon,
@@ -240,6 +241,8 @@ html[data-nm-theme="dark"] .site-ninetymins .nm-root.nv .nv-getapp { background:
   }
   .site-ninetymins .nm-root.nv .nv-more-panel > div:last-child { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .site-ninetymins .nm-root.nv .nv-more-panel > div:last-child b { grid-column: 1 / -1; }
+  .site-ninetymins .nm-root.nv .nv-events .nv-more-panel,
+  .site-ninetymins .nm-root.nv .nv-events .nv-more-panel > div:last-child { grid-template-columns: 1fr; }
 }
 @media (max-width: 380px) {
   .site-ninetymins .nm-root.nv .nv-getapp { padding: 9px 11px; font-size: 12px; }

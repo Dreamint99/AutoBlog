@@ -6,9 +6,8 @@ import type { Site, Article } from "@/lib/types";
 import { fontVars } from "./fonts";
 import { NM_COMPS, compOf, ago, type NmComp } from "./comps";
 import { thumb } from "@/lib/img";
-import { AppBanner, AppPopup, AppTopBar } from "./AppPromo";
+import { AppBanner, AppHeaderLink, AppPopup, AppTopBar } from "./AppPromo";
 import { ThemeToggle } from "./Livescore";
-import { PLAY_URL } from "./sports";
 import { NavMore } from "./NavMore";
 import { publicPath, sitePrefix } from "@/lib/public-path";
 
@@ -35,9 +34,23 @@ const NAV: Array<[string, string]> = [
   ["", "Live scores"],
   ["/today", "Today"],
   ["/cricket", "Cricket"],
-  ["/saff", "SAFF"],
+  ["/event/ilt20-2026-27", "ILT20"],
+  ["/event/bbl-2026-27", "BBL"],
+  ["/event/ipl-2027", "IPL"],
   ["/highlights", "Highlights"],
   ["/live-tv", "Live TV"],
+];
+
+/** SAFF stays at /saff. It is no longer in this menu. */
+const EVENTS: Array<[string, string]> = [
+  ["/event", "All events"],
+  ["/event/ilt20-2026-27", "ILT20"],
+  ["/event/bbl-2026-27", "BBL"],
+  ["/event/ipl-2027", "IPL 2027"],
+  ["/event/sa20-2027", "SA20"],
+  ["/event/psl-2027", "PSL"],
+  ["/event/champions-league-2026-27", "Champions League"],
+  ["/event/icc-mens-odi-world-cup-2027", "ODI World Cup"],
 ];
 
 const MORE: Array<{ h: string; links: Array<[string, string]> }> = [
@@ -109,6 +122,16 @@ export function Header({ site }: { site: Site; home?: boolean }) {
                 {label}
               </Link>
             ))}
+            <NavMore label="Events" className="nv-events">
+              <div>
+                <b>Upcoming</b>
+                {EVENTS.map(([p, label]) => (
+                  <Link href={`${s}${p}`} key={p}>
+                    {label}
+                  </Link>
+                ))}
+              </div>
+            </NavMore>
             <NavMore>
               {MORE.map((g) => (
                 <div key={g.h}>
@@ -127,9 +150,7 @@ export function Header({ site }: { site: Site; home?: boolean }) {
               <SearchIcon />
             </Link>
             <ThemeToggle />
-            <a className="nv-getapp" href={PLAY_URL("header")} target="_blank" rel="noopener" data-google-vignette="false" onClick={() => { try { (window as unknown as { gtag?: (...a: unknown[]) => void }).gtag?.("event", "app_download_click", { placement: "header", store: "play" }); } catch {} }}>
-              Get the app
-            </a>
+            <AppHeaderLink />
           </div>
         </div>
       </header>

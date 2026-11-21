@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { PLAY_URL } from "./sports";
 
 /* "Get the NinetyMins app" promos → the Play Store listing.
    - AppTopBar: mobile sticky bottom bar, after scroll or 20s, at most once per 7 days,
@@ -121,4 +122,13 @@ export function AppTopBar() {
 /** @deprecated Full-sheet popup removed; bottom bar covers this. */
 export function AppPopup() {
   return null;
+}
+
+/** Header store link. Client-only so the click handler is not serialized from the server shell. */
+export function AppHeaderLink() {
+  return (
+    <a className="nv-getapp" href={PLAY_URL("header")} target="_blank" rel="noopener" data-google-vignette="false" onClick={() => track("header")}>
+      Get the app
+    </a>
+  );
 }
