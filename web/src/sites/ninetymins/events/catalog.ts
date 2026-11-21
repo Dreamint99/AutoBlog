@@ -1,0 +1,372 @@
+import type { Fx, Hub } from "./types";
+
+/** Organizer facts only. A missing clock time stays missing. */
+
+const GST = "+04:00";
+
+function ilt(date: string, time: "14:00" | "18:30", home: string, away: string, city: string, stage = "League"): Fx {
+  const named = Boolean(home && away);
+  return {
+    id: `ilt-${date}-${time}-${(home || stage).slice(0, 12)}`,
+    name: named ? `${home} vs ${away}` : stage,
+    stage,
+    start: `${date}T${time}:00${GST}`,
+    home: named ? home : undefined,
+    away: named ? away : undefined,
+    city,
+    country: "AE",
+    venue: city,
+    note: named ? undefined : "Teams depend on the table.",
+    schema: "sports",
+  };
+}
+
+const ILT: Fx[] = [
+  ilt("2026-11-21", "18:30", "Desert Vipers", "MI Emirates", "Dubai"),
+  ilt("2026-11-22", "14:00", "Sharjah Warriorz", "Gulf Giants", "Sharjah"),
+  ilt("2026-11-22", "18:30", "Dubai Capitals", "Abu Dhabi Knight Riders", "Dubai"),
+  ilt("2026-11-23", "18:30", "Sharjah Warriorz", "Desert Vipers", "Sharjah"),
+  ilt("2026-11-24", "18:30", "Gulf Giants", "MI Emirates", "Dubai"),
+  ilt("2026-11-25", "18:30", "Dubai Capitals", "Desert Vipers", "Dubai"),
+  ilt("2026-11-26", "18:30", "Abu Dhabi Knight Riders", "MI Emirates", "Abu Dhabi"),
+  ilt("2026-11-27", "18:30", "Sharjah Warriorz", "Dubai Capitals", "Sharjah"),
+  ilt("2026-11-28", "14:00", "MI Emirates", "Desert Vipers", "Abu Dhabi"),
+  ilt("2026-11-28", "18:30", "Gulf Giants", "Dubai Capitals", "Dubai"),
+  ilt("2026-11-29", "14:00", "Abu Dhabi Knight Riders", "Sharjah Warriorz", "Abu Dhabi"),
+  ilt("2026-11-29", "18:30", "Desert Vipers", "Gulf Giants", "Dubai"),
+  ilt("2026-11-30", "18:30", "MI Emirates", "Abu Dhabi Knight Riders", "Abu Dhabi"),
+  ilt("2026-12-01", "18:30", "Gulf Giants", "Sharjah Warriorz", "Sharjah"),
+  ilt("2026-12-02", "14:00", "Abu Dhabi Knight Riders", "Desert Vipers", "Abu Dhabi"),
+  ilt("2026-12-02", "18:30", "Dubai Capitals", "MI Emirates", "Dubai"),
+  ilt("2026-12-03", "18:30", "Gulf Giants", "Abu Dhabi Knight Riders", "Dubai"),
+  ilt("2026-12-04", "18:30", "Desert Vipers", "Sharjah Warriorz", "Sharjah"),
+  ilt("2026-12-05", "18:30", "Abu Dhabi Knight Riders", "Gulf Giants", "Abu Dhabi"),
+  ilt("2026-12-06", "14:00", "MI Emirates", "Sharjah Warriorz", "Abu Dhabi"),
+  ilt("2026-12-06", "18:30", "Desert Vipers", "Dubai Capitals", "Dubai"),
+  ilt("2026-12-07", "18:30", "MI Emirates", "Gulf Giants", "Abu Dhabi"),
+  ilt("2026-12-08", "18:30", "Dubai Capitals", "Sharjah Warriorz", "Dubai"),
+  ilt("2026-12-09", "18:30", "Sharjah Warriorz", "Abu Dhabi Knight Riders", "Sharjah"),
+  ilt("2026-12-10", "18:30", "Dubai Capitals", "Gulf Giants", "Dubai"),
+  ilt("2026-12-11", "18:30", "Sharjah Warriorz", "MI Emirates", "Sharjah"),
+  ilt("2026-12-12", "18:30", "Desert Vipers", "Abu Dhabi Knight Riders", "Dubai"),
+  ilt("2026-12-13", "14:00", "MI Emirates", "Dubai Capitals", "Abu Dhabi"),
+  ilt("2026-12-13", "18:30", "Gulf Giants", "Desert Vipers", "Dubai"),
+  ilt("2026-12-14", "18:30", "Abu Dhabi Knight Riders", "Dubai Capitals", "Abu Dhabi"),
+  ilt("2026-12-16", "18:30", "", "", "Abu Dhabi", "Qualifier 1 · seed 1 vs seed 2"),
+  ilt("2026-12-17", "18:30", "", "", "Dubai", "Eliminator · seed 3 vs seed 4"),
+  ilt("2026-12-18", "18:30", "", "", "Sharjah", "Qualifier 2 · loser of Q1 vs winner of the eliminator"),
+  ilt("2026-12-20", "18:30", "", "", "Dubai", "Final · winner of Q1 vs winner of Q2"),
+];
+
+function dated(id: string, name: string, stage: string, localDate: string, extra: Partial<Fx> = {}): Fx {
+  return { id, name, stage, localDate, schema: extra.home && extra.away ? "sports" : "sports", ...extra };
+}
+
+const BBL: Fx[] = [
+  dated("bbl-open", "Melbourne Renegades vs Perth Scorchers", "Opener", "2026-12-12", { home: "Melbourne Renegades", away: "Perth Scorchers", venue: "MA Chidambaram Stadium", city: "Chennai", country: "IN", note: "Clock time was not in the Cricket Australia release." }),
+  dated("bbl-gabba", "Brisbane Heat vs Sydney Sixers", "League", "2026-12-15", { home: "Brisbane Heat", away: "Sydney Sixers", venue: "The Gabba", city: "Brisbane", country: "AU" }),
+  dated("bbl-manuka-1", "Sydney Thunder vs Adelaide Strikers", "League", "2026-12-16", { home: "Sydney Thunder", away: "Adelaide Strikers", venue: "Manuka Oval", city: "Canberra", country: "AU" }),
+  dated("bbl-smash-1", "Sydney Thunder vs Sydney Sixers", "Sydney Smash", "2026-12-19", { home: "Sydney Thunder", away: "Sydney Sixers", venue: "Engie Stadium", city: "Sydney", country: "AU" }),
+  dated("bbl-jo-1", "Melbourne Stars vs Brisbane Heat", "League", "2026-12-21", { home: "Melbourne Stars", away: "Brisbane Heat", venue: "Junction Oval", city: "Melbourne", country: "AU" }),
+  dated("bbl-xmas", "Melbourne Renegades vs Hobart Hurricanes", "League", "2026-12-24", { home: "Melbourne Renegades", away: "Hobart Hurricanes", venue: "Junction Oval", city: "Melbourne", country: "AU" }),
+  dated("bbl-nye", "Adelaide Strikers vs Melbourne Stars", "League", "2026-12-31", { home: "Adelaide Strikers", away: "Melbourne Stars", venue: "Adelaide Oval", city: "Adelaide", country: "AU" }),
+  dated("bbl-manuka-2", "Sydney Sixers vs Adelaide Strikers", "League", "2027-01-03", { home: "Sydney Sixers", away: "Adelaide Strikers", venue: "Manuka Oval", city: "Canberra", country: "AU" }),
+  dated("bbl-derby-1", "Melbourne derby", "League", "2027-01-04", { venue: "MCG", city: "Melbourne", country: "AU", note: "Cricket Australia named the derby and the ground, not which side is home.", schema: "none" }),
+  dated("bbl-lanc", "Hobart Hurricanes vs Adelaide Strikers", "League", "2027-01-09", { home: "Hobart Hurricanes", away: "Adelaide Strikers", city: "Launceston", country: "AU" }),
+  dated("bbl-scg-sc", "Sydney Sixers vs Perth Scorchers", "League", "2027-01-10", { home: "Sydney Sixers", away: "Perth Scorchers", venue: "SCG", city: "Sydney", country: "AU" }),
+  dated("bbl-manuka-3", "Sydney Thunder vs Melbourne Stars", "League", "2027-01-11", { home: "Sydney Thunder", away: "Melbourne Stars", venue: "Manuka Oval", city: "Canberra", country: "AU" }),
+  dated("bbl-smash-2", "Sydney Sixers vs Sydney Thunder", "Sydney Smash", "2027-01-15", { home: "Sydney Sixers", away: "Sydney Thunder", venue: "SCG", city: "Sydney", country: "AU" }),
+  dated("bbl-derby-2", "Melbourne derby", "League", "2027-01-16", { venue: "MCG", city: "Melbourne", country: "AU", note: "Second Melbourne derby. Home side not stated.", schema: "none" }),
+  dated("bbl-hobart", "Hobart Hurricanes vs Sydney Sixers", "League", "2027-01-17", { home: "Hobart Hurricanes", away: "Sydney Sixers", city: "Hobart", country: "AU", note: "Described as the last day of the home-and-away season." }),
+  dated("bbl-qual", "Qualifier", "Finals", "2027-01-19", { note: "Top four. Teams and venue not in the summary we used.", schema: "none" }),
+  dated("bbl-final", "Final", "Final", "2027-01-26", { note: "A reserve day is available. Venue not stated in the 13 July release.", schema: "none" }),
+];
+
+const SA: Fx[] = [
+  dated("sa-open", "Sunrisers Eastern Cape vs Pretoria Capitals", "Opener", "2027-01-17", { home: "Sunrisers Eastern Cape", away: "Pretoria Capitals", venue: "St George's Park", city: "Gqeberha", country: "ZA" }),
+  dated("sa-23a", "Durban's Super Giants vs Pretoria Capitals", "League", "2027-01-23", { home: "Durban's Super Giants", away: "Pretoria Capitals", venue: "Kingsmead", city: "Durban", country: "ZA" }),
+  dated("sa-23b", "Joburg Super Kings vs Sunrisers Eastern Cape", "League", "2027-01-23", { home: "Joburg Super Kings", away: "Sunrisers Eastern Cape", venue: "Wanderers", city: "Johannesburg", country: "ZA", note: "The later match of the 23 January double-header. Clock time not published." }),
+  dated("sa-q1", "Qualifier 1", "Finals", "2027-02-16", { venue: "Boland Park", city: "Paarl", country: "ZA", schema: "none" }),
+  dated("sa-elim", "Eliminator", "Finals", "2027-02-17", { venue: "Wanderers", city: "Johannesburg", country: "ZA", schema: "none" }),
+  dated("sa-q2", "Qualifier 2", "Finals", "2027-02-19", { venue: "Wanderers", city: "Johannesburg", country: "ZA", schema: "none" }),
+  dated("sa-final", "Final", "Final", "2027-02-21", { venue: "Newlands", city: "Cape Town", country: "ZA", schema: "none" }),
+];
+
+const WC: Fx[] = [
+  dated("wc-ss", "Super Series begins", "Super Series", "2027-10-02", { city: "Windhoek", country: "NA", venue: "Namibia", note: "Three-team round robin. The three sides are the qualifier's second, third and fourth. Pairings were not listed.", schema: "none" }),
+  dated("wc-aus-ind", "Australia vs India", "Group", "2027-10-07", { home: "Australia", away: "India", venue: "Newlands", city: "Cape Town", country: "ZA" }),
+  dated("wc-afg-pak", "Afghanistan vs Pakistan", "Group", "2027-10-08", { home: "Afghanistan", away: "Pakistan", city: "Centurion", country: "ZA" }),
+  dated("wc-eng-ban", "England vs Bangladesh", "Group", "2027-10-08", { home: "England", away: "Bangladesh", city: "Windhoek", country: "NA" }),
+  dated("wc-zim", "Zimbabwe vs Qualifier A", "Group", "2027-10-09", { home: "Zimbabwe", venue: "Queen's Sports Club", city: "Bulawayo", country: "ZW", schema: "none" }),
+  dated("wc-ind-pak", "India vs Pakistan", "Group", "2027-10-10", { home: "India", away: "Pakistan", venue: "Wanderers Stadium", city: "Johannesburg", country: "ZA" }),
+  dated("wc-sl", "Sri Lanka vs Qualifier B", "Group", "2027-10-10", { home: "Sri Lanka", city: "Windhoek", country: "NA", schema: "none" }),
+  dated("wc-sf1", "Semi-final 1", "Semi-final", "2027-11-17", { city: "Cape Town", country: "ZA", note: "Reserve day applies. Teams follow the Super 7 table.", schema: "none" }),
+  dated("wc-sf2", "Semi-final 2", "Semi-final", "2027-11-18", { city: "Tshwane", country: "ZA", note: "The ICC release also says Centurion, which sits in Tshwane. Reserve day applies.", schema: "none" }),
+  dated("wc-final", "Final", "Final", "2027-11-21", { city: "Johannesburg", country: "ZA", note: "Reserve day 22 November. The release names the city, not the ground.", schema: "sports" }),
+];
+
+const UCL: Fx[] = [
+  dated("ucl-po1", "Knockout play-offs, first leg", "Play-offs", "2027-02-16", { note: "UEFA lists 16/17 February. Ties are not published here.", schema: "none" }),
+  dated("ucl-po2", "Knockout play-offs, second leg", "Play-offs", "2027-02-23", { note: "UEFA lists 23/24 February.", schema: "none" }),
+  dated("ucl-r16a", "Round of 16, first leg", "Round of 16", "2027-03-09", { note: "UEFA lists 9/10 March.", schema: "none" }),
+  dated("ucl-r16b", "Round of 16, second leg", "Round of 16", "2027-03-16", { note: "UEFA lists 16/17 March.", schema: "none" }),
+  dated("ucl-qfa", "Quarter-finals, first leg", "Quarter-final", "2027-04-06", { note: "UEFA lists 6/7 April.", schema: "none" }),
+  dated("ucl-qfb", "Quarter-finals, second leg", "Quarter-final", "2027-04-13", { note: "UEFA lists 13/14 April.", schema: "none" }),
+  dated("ucl-sfa", "Semi-finals, first leg", "Semi-final", "2027-04-27", { note: "UEFA lists 27/28 April.", schema: "none" }),
+  dated("ucl-sfb", "Semi-finals, second leg", "Semi-final", "2027-05-04", { note: "UEFA lists 4/5 May.", schema: "none" }),
+  dated("ucl-final", "Final", "Final", "2027-06-05", { venue: "Estadio Metropolitano", city: "Madrid", country: "ES", note: "Kick-off time was not on the UEFA page. UEFA says dates can change." }),
+];
+
+const SIBLINGS = [
+  ["/event/ilt20-2026-27", "ILT20"],
+  ["/event/bbl-2026-27", "BBL"],
+  ["/event/ipl-2027", "IPL 2027"],
+  ["/event/sa20-2027", "SA20"],
+  ["/event/psl-2027", "PSL"],
+  ["/event/champions-league-2026-27", "UCL knockouts"],
+  ["/event/icc-mens-odi-world-cup-2027", "ODI World Cup"],
+];
+
+function links(self: string, extra: { href: string; label: string }[]) {
+  return [...extra, ...SIBLINGS.filter(([href]) => href !== self).map(([href, label]) => ({ href, label }))];
+}
+
+export const HUBS: Hub[] = [
+  {
+    slug: "ilt20-2026-27",
+    h1: "DP World ILT20 2026-27",
+    title: "ILT20 2026-27 schedule, live scores and times by country",
+    description: "All 34 DP World ILT20 Season 5 matches from the league schedule, in your time zone, plus chase and toss rates computed from Cricsheet. Live scores use the same cricket board as the rest of NinetyMins.",
+    sport: "cricket",
+    kicker: "Cricket · UAE · Season 5",
+    lede: [
+      "Season 5 runs from Saturday 21 November to Sunday 20 December 2026. The league published every match with a Gulf Standard Time start. This page converts those clocks and does not add any.",
+      "Each side plays the other twice. The top four play Qualifier 1, an eliminator, Qualifier 2 and a final. From the first match, a Playing XI needs at least two UAE players, two Afghanistan players and one Associate player, and that mix has to survive a Super Sub.",
+      "Wides are judged on a new batter zone on both sides of the wicket. The 60-second stop clock now also binds the batting side: two warnings an innings, then five penalty runs.",
+    ],
+    window: "21 November – 20 December 2026",
+    windowStatus: "confirmed",
+    facts: [
+      { label: "Matches", value: "34, including four finals matches" },
+      { label: "Cities on the schedule", value: "Dubai, Abu Dhabi, Sharjah" },
+      { label: "League games", value: "Each of six teams plays the other twice" },
+      { label: "Final", value: "20 December, 18:30 GST, Dubai" },
+    ],
+    fixtures: ILT,
+    fixtureNote: "Times are the league's local times (GST, UTC+4). The schedule names the city, not a stadium, so this page does not guess a ground.",
+    watch: [],
+    watchNote: "The 7 November playing-conditions note does not list broadcasters. Secondary country lists disagree with each other, so no channel list is shown. Use the league's own site for where to watch legally.",
+    statsKey: "ilt20",
+    live: {
+      kind: "cricket",
+      series: ["ILT20", "International League T20"],
+      teams: ["Desert Vipers", "MI Emirates", "Sharjah Warriorz", "Gulf Giants", "Dubai Capitals", "Abu Dhabi Knight Riders"],
+    },
+    links: links("/event/ilt20-2026-27", [{ href: "/cricket", label: "Live cricket" }]),
+    sources: [{ label: "DP World ILT20 playing conditions and schedule, 7 Nov 2026", url: "https://www.ilt20.ae/news/dp-world-ilt20-season-5-playing-conditions-batter-zone-wide-stop-clock" }],
+  },
+  {
+    slug: "ipl-2027",
+    h1: "TATA IPL 2027",
+    title: "IPL 2027 auction time, retained squads and past-season numbers",
+    description: "The IPL 2027 auction is 16 December 2026 at 11:00 IST in Goa. Retained players are the BCCI list. Match fixtures are not published yet, so none are invented. Historical chase, toss and venue figures are computed from Cricsheet.",
+    sport: "cricket",
+    kicker: "Cricket · India · auction confirmed, fixtures not released",
+    lede: [
+      "What is on the clock is the auction, not the season. The BCCI advisory of 18 November 2026 puts the player auction at ITC Grand Goa on Wednesday 16 December 2026, starting at 11:00 IST.",
+      "Ten franchises retained 184 players, 55 of them overseas, and released 89, including 34 overseas. They have spent ₹1,002.05 crore and have ₹297.95 crore and 66 squad places, 25 of them overseas, still to fill.",
+      "No match list for the 2027 season is on the IPL site pages checked for this hub. Until the BCCI publishes fixtures, this page will not show a season opener, a final date or a venue.",
+    ],
+    window: "Auction 16 December 2026, 11:00 IST. Season fixtures TBC.",
+    windowStatus: "partial",
+    facts: [
+      { label: "Auction", value: "16 Dec 2026, 11:00 IST, ITC Grand Goa" },
+      { label: "Retained", value: "184 players, 55 overseas" },
+      { label: "Still to spend", value: "₹297.95 crore across 66 places" },
+      { label: "Largest retained squad", value: "Gujarat Titans, 22" },
+      { label: "Most overseas retained", value: "Royal Challengers Bengaluru, 7" },
+      { label: "Match schedule", value: "Not published — omitted" },
+    ],
+    fixtures: [
+      {
+        id: "ipl-auction",
+        name: "TATA IPL 2027 player auction",
+        stage: "Auction",
+        start: "2026-12-16T11:00:00+05:30",
+        venue: "ITC Grand Goa",
+        city: "Goa",
+        country: "IN",
+        schema: "event",
+      },
+    ],
+    fixtureNote: "One confirmed clock time: the auction. There is no fixture list to convert into other zones.",
+    watch: [],
+    watchNote: "Broadcast partners for the 2027 season were not on the retention advisory or the auction page. No channel list is shown.",
+    statsKey: "ipl",
+    live: { kind: "cricket", series: ["Indian Premier League", "IPL"], teams: ["Chennai Super Kings", "Mumbai Indians", "Kolkata Knight Riders", "Royal Challengers Bengaluru", "Rajasthan Royals", "Sunrisers Hyderabad", "Delhi Capitals", "Punjab Kings", "Lucknow Super Giants", "Gujarat Titans"] },
+    links: links("/event/ipl-2027", [{ href: "/cricket", label: "Live cricket" }]),
+    sources: [
+      { label: "BCCI / IPL retention advisory, 18 Nov 2026", url: "https://www.iplt20.com/news/article/tata-ipl-2027-player-retentions-announced" },
+      { label: "TATA IPL 2027 auction page", url: "https://www.iplt20.com/auction/2027" },
+    ],
+  },
+  {
+    slug: "icc-mens-odi-world-cup-2027",
+    h1: "ICC Men's ODI World Cup 2027",
+    title: "ODI World Cup 2027: format, venues and the fixtures ICC has actually dated",
+    description: "The ICC Men's Cricket World Cup 2027 is 2 October to 21 November in South Africa, Zimbabwe and Namibia. This page lists only the matches and rounds the ICC release dates, and skips the one fixture the same release places in two venues.",
+    sport: "cricket",
+    kicker: "Cricket · South Africa, Zimbabwe, Namibia",
+    lede: [
+      "The ICC dated the tournament from 2 October to 21 November 2027: 14 teams, 57 matches, 12 venues. Clock times were not in the media release, so nothing below is given a kick-off.",
+      "Round 1 is a three-match Super Series in Namibia among the qualifier's second, third and fourth. The winner joins 10 direct qualifiers and the qualifier winner in two groups of six (30 matches). Seven sides then play a full round robin (21 matches). Semi-finals and the final make 57.",
+      "The group lists name India, Australia, Pakistan, Afghanistan and Zimbabwe, with Qualifier A, in Group A, and New Zealand, South Africa, Sri Lanka, England and Bangladesh, with Qualifier B, in Group B. Super 7 seeds published by the ICC are India, Australia, Pakistan, England, New Zealand, South Africa and Sri Lanka. A side that finishes above a seed takes that seed's slot.",
+    ],
+    window: "2 October – 21 November 2027",
+    windowStatus: "confirmed",
+    facts: [
+      { label: "Hosts", value: "South Africa, Zimbabwe, Namibia" },
+      { label: "Teams / matches", value: "14 teams, 57 matches" },
+      { label: "Venues", value: "8 in South Africa, 3 in Zimbabwe, 1 in Namibia" },
+      { label: "Semi-finals", value: "17 Nov Cape Town, 18 Nov Tshwane / Centurion" },
+      { label: "Final", value: "21 November, Johannesburg (reserve day 22 Nov)" },
+      { label: "Ticket ballot", value: "Open until 23:59 SAST on 21 November 2026" },
+    ],
+    fixtures: WC,
+    fixtureNote: "South Africa vs New Zealand is not in the list. The same ICC release puts that match in Centurion / Tshwane on 8 October and also at Newlands, so the venue is left out until one fixture file agrees with itself. Zimbabwe vs India at Victoria Falls is named as match 33 with no date, so it is not given a day either.",
+    watch: [],
+    watchNote: "The ICC page about where to watch the 1 October 2026 schedule launch is for that show, not for the 2027 matches. Tournament broadcasters are omitted.",
+    live: { kind: "cricket", series: ["World Cup 2027", "Cricket World Cup 2027"], teams: [] },
+    links: links("/event/icc-mens-odi-world-cup-2027", [{ href: "/cricket", label: "Live cricket" }]),
+    sources: [{ label: "ICC media release, 1 Oct 2026", url: "https://www.icc-cricket.com/media-releases/icc-men-s-cricket-world-cup-2027-schedule-revealed-and-ballot-system-opens" }],
+  },
+  {
+    slug: "bbl-2026-27",
+    h1: "BBL 2026-27",
+    title: "BBL 2026-27: opener, Christmas Eve and the matches Cricket Australia named",
+    description: "KFC BBL|16 runs from 12 December 2026 to 26 January 2027, opening in Chennai. This page lists the matches Cricket Australia's schedule story names, and leaves the rest of the 44-game list off rather than reconstructing it.",
+    sport: "cricket",
+    kicker: "Cricket · Australia · BBL|16",
+    lede: [
+      "Cricket Australia released a 44-game season from 12 December 2026 to 26 January 2027. The opener is Melbourne Renegades against Perth Scorchers at the MA Chidambaram Stadium in Chennai, after play on day four of the Trans-Tasman Test. The first match in Australia is Brisbane Heat against Sydney Sixers at the Gabba on 15 December.",
+      "The summary names a run of grounds and dates: Christmas Eve at Junction Oval, New Year's Eve at Adelaide Oval, three Canberra games at Manuka, both Melbourne derbies at the MCG, and a final on 26 January with a reserve day. It does not print a clock time for those games, so this page does not invent one.",
+      "Finals stay a four-game series. The qualifier is 19 January. The decider is 26 January. The final's ground was not in the story we used.",
+    ],
+    window: "12 December 2026 – 26 January 2027",
+    windowStatus: "partial",
+    facts: [
+      { label: "Games", value: "44, including finals" },
+      { label: "Opener", value: "12 Dec, Renegades vs Scorchers, Chennai" },
+      { label: "Christmas Eve", value: "Renegades vs Hurricanes, Junction Oval" },
+      { label: "Final", value: "26 January, reserve day available, venue not stated" },
+      { label: "Australia TV", value: "Seven / 7plus, Kayo, Foxtel, Fox Cricket" },
+    ],
+    fixtures: BBL,
+    fixtureNote: "These are the matches the 13 July 2026 Cricket Australia story names. The other games exist on the official schedule and are not reconstructed here. No kick-off times were in that story.",
+    watch: [
+      { place: "Australia", how: "Every match on Kayo Sports and Foxtel, 10 of them only on Fox Cricket. 30 home-and-away matches and all four finals free on Seven and 7plus." },
+    ],
+    watchNote: "That split is what Cricket Australia published for BBL|16. Other countries were not in the story, so they are not listed.",
+    statsKey: "bbl",
+    live: { kind: "cricket", series: ["Big Bash", "BBL"], teams: ["Melbourne Renegades", "Melbourne Stars", "Perth Scorchers", "Sydney Sixers", "Sydney Thunder", "Brisbane Heat", "Adelaide Strikers", "Hobart Hurricanes"] },
+    links: links("/event/bbl-2026-27", [{ href: "/cricket", label: "Live cricket" }]),
+    sources: [{ label: "Cricket Australia BBL|16 schedule story, 13 Jul 2026", url: "https://www.cricket.com.au/news/4534480/bbl16-big-bash-league-season-schedule-fixture-announced-dates-chennai-christmas-eve-canberra-melbourne-sydney-perth-launceston" }],
+  },
+  {
+    slug: "sa20-2027",
+    h1: "Betway SA20 2027",
+    title: "SA20 2027 opener, double-headers and playoff grounds",
+    description: "Betway SA20 Season 5 starts on 17 January 2027 at St George's Park and ends with the final at Newlands on 21 February. Named matches and playoff grounds come from the league. The rest of the fixture list is not filled in.",
+    sport: "cricket",
+    kicker: "Cricket · South Africa · Season 5",
+    lede: [
+      "The league's 23 July 2026 fixture release opens Season 5 on Sunday 17 January 2027 with Sunrisers Eastern Cape against Pretoria Capitals at St George's Park in Gqeberha, a rematch of the Season 4 final.",
+      "Saturday 23 January is a double-header the release actually names: Durban's Super Giants against Pretoria Capitals at Kingsmead, then Joburg Super Kings against Sunrisers Eastern Cape at the Wanderers. Further Saturday double-headers are set for 30 January, 6 February and 13 February, without the sides, so those days are noted and not turned into matches.",
+      "Playoffs: Qualifier 1 on 16 February at Boland Park in Paarl, the eliminator on 17 February and Qualifier 2 on 19 February at the Wanderers, and the final on 21 February at Newlands.",
+    ],
+    window: "17 January – 21 February 2027",
+    windowStatus: "partial",
+    facts: [
+      { label: "Opener", value: "17 Jan, SEC vs PC, St George's Park" },
+      { label: "Named double-header", value: "23 Jan, Kingsmead then Wanderers" },
+      { label: "Qualifier 1", value: "16 Feb, Boland Park, Paarl" },
+      { label: "Final", value: "21 Feb, Newlands, Cape Town" },
+    ],
+    fixtures: SA,
+    fixtureNote: "Clock times were not in the fixture story. Double-header days of 30 January, 6 February and 13 February are real, and the matches on them are not listed because the story did not name them.",
+    watch: [],
+    watchNote: "The fixture announcement does not list broadcasters. None are added from other sites.",
+    statsKey: "sa20",
+    live: { kind: "cricket", series: ["SA20"], teams: ["Sunrisers Eastern Cape", "Pretoria Capitals", "Durban's Super Giants", "Joburg Super Kings", "MI Cape Town", "Paarl Royals"] },
+    links: links("/event/sa20-2027", [{ href: "/cricket", label: "Live cricket" }]),
+    sources: [{ label: "Betway SA20 Season 5 fixtures, 23 Jul 2026", url: "https://www.sa20.co.za/news/betway-sa20-season-5-fixtures-announced" }],
+  },
+  {
+    slug: "psl-2027",
+    h1: "HBL PSL 2027",
+    title: "PSL 2027 window and what the last season's numbers say",
+    description: "The PCB has set HBL PSL 12 for 18 March to 2 May 2027, eight teams. Fixtures, venues and the auction are not announced, so they are not guessed. Venue and toss figures are computed from Cricsheet's PSL files.",
+    sport: "cricket",
+    kicker: "Cricket · Pakistan · window confirmed, fixtures TBC",
+    lede: [
+      "The PCB press release of 8 October 2026 sets the 12th edition from 18 March to 2 May 2027. All eight franchises return. Direct signings, retentions, the trade window and the auction were still to be announced, and the release says the match schedule, venues and ticketing will follow.",
+      "That is the whole confirmed calendar. A day-by-day fixture list does not exist on that page, so this hub does not draw one.",
+      "What can be computed now is the previous edition in the Cricsheet files: in 2026 the recorded matches sit at two grounds, National Bank Cricket Arena in Karachi and Gaddafi Stadium in Lahore, and the chase won more often in Lahore than in Karachi.",
+    ],
+    window: "18 March – 2 May 2027",
+    windowStatus: "confirmed",
+    facts: [
+      { label: "Teams", value: "Eight, same franchises as 2026" },
+      { label: "Fixtures", value: "Not announced" },
+      { label: "Auction", value: "Not announced" },
+      { label: "2026 file", value: "43 matches, two grounds" },
+    ],
+    fixtures: [],
+    fixtureNote: "No individual match is listed because the PCB has not published one.",
+    watch: [],
+    watchNote: "Broadcasters for 2027 were not in the window announcement.",
+    statsKey: "psl",
+    live: { kind: "cricket", series: ["Pakistan Super League", "PSL"], teams: ["Peshawar Zalmi", "Islamabad United", "Karachi Kings", "Lahore Qalandars", "Multan Sultans", "Quetta Gladiators", "Hyderabad Kingsmen"] },
+    links: links("/event/psl-2027", [{ href: "/cricket", label: "Live cricket" }]),
+    sources: [{ label: "PCB press release, 8 Oct 2026", url: "https://www.pcb.com.pk/press-release-detail/hbl-psl-12-window-confirmed-eight-teams-one-champion-the-countdown-begins.html" }],
+  },
+  {
+    slug: "champions-league-2026-27",
+    h1: "Champions League 2026-27 knockouts",
+    title: "Champions League 2026-27 knockout dates and the Madrid final",
+    description: "UEFA's knockout windows for the 2026/27 Champions League, and the final on 5 June 2027 at the Estadio Metropolitano. Live matches use the existing Champions League scoreboard. Individual ties are not invented.",
+    sport: "football",
+    kicker: "Football · knockout windows confirmed",
+    lede: [
+      "UEFA has the 2026/27 final at the Estadio Metropolitano in Madrid on Saturday 5 June 2027. The same guide gives the knockout matchweeks and says the dates can still change. It does not give a kick-off time for the final.",
+      "Play-off legs are 16/17 and 23/24 February 2027, the round of 16 is 9/10 and 16/17 March, the quarter-finals 6/7 and 13/14 April, and the semi-finals 27/28 April and 4/5 May. Those are matchweeks, not a list of clubs.",
+      "Clubs still in the competition, and any match already on the calendar, are on the live Champions League board. This page does not copy that fixture list into a second schedule.",
+    ],
+    window: "Knockouts from 16 February 2027 · final 5 June 2027",
+    windowStatus: "confirmed",
+    facts: [
+      { label: "Final", value: "Saturday 5 June 2027, Estadio Metropolitano, Madrid" },
+      { label: "Play-offs", value: "16/17 and 23/24 February 2027" },
+      { label: "Round of 16", value: "9/10 and 16/17 March 2027" },
+      { label: "Quarter-finals", value: "6/7 and 13/14 April 2027" },
+      { label: "Semi-finals", value: "27/28 April and 4/5 May 2027" },
+      { label: "Kick-off times", value: "Not published on the page we used" },
+    ],
+    fixtures: UCL,
+    fixtureNote: "Each row is the first day of a UEFA matchweek. The second day of a two-day window is in the note. No club is attached, because the ties are a different document.",
+    watch: [],
+    watchNote: "UEFA's dates page does not list country broadcasters for these rounds. The live match pages carry a TV field only when the existing score feed has one.",
+    live: { kind: "ucl" },
+    links: links("/event/champions-league-2026-27", [
+      { href: "/league/uefa-champions", label: "Champions League scores" },
+      { href: "/scores", label: "Football scores" },
+    ]),
+    sources: [{ label: "UEFA 2026/27 dates, final and format", url: "https://www.uefa.com/uefachampionsleague/news/02a6-20d57cfcd03e-407c22a7f465-1000--2026-27-champions-league-teams-dates-draws-format-final/" }],
+  },
+];
+
+export function getHub(slug: string): Hub | undefined {
+  return HUBS.find((h) => h.slug === slug);
+}
+
+export const EVENT_PATHS = HUBS.map((h) => `/event/${h.slug}`);

@@ -160,6 +160,9 @@ export function Footer({ site }: { site: Site }) {
               <li><Link href={`${s}/scores`}>Football</Link></li>
               <li><Link href={`${s}/cricket`}>Cricket</Link></li>
               <li><Link href={`${s}/saff`}>SAFF live centre</Link></li>
+              <li><Link href={`${s}/event`}>Upcoming events</Link></li>
+              <li><Link href={`${s}/event/ilt20-2026-27`}>ILT20</Link></li>
+              <li><Link href={`${s}/event/ipl-2027`}>IPL 2027</Link></li>
             </ul>
           </div>
           <div>

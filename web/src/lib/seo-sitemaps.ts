@@ -7,6 +7,7 @@ import { NM_COMPS } from "@/sites/ninetymins/comps";
 import { getCricket } from "@/sites/ninetymins/cricket";
 import { sitemapHighlights, hlPath, cleanTitle, HL_SPORTS } from "@/sites/ninetymins/highlights";
 import { allPairs } from "@/sites/ninetymins/h2h";
+import { EVENT_PATHS } from "@/sites/ninetymins/events/catalog";
 import legacySitemap from "./legacy-sitemap";
 import { dataIndex, comparisonLinks } from "@/sites/countly/data-engine";
 const BASE = "https://ninetymins.com";
@@ -34,7 +35,7 @@ export async function sitemapResponse(name: string): Promise<Response> {
     const slug = (x: string) => x.toLowerCase().normalize("NFKD").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
     const cricket = (await getCricket().catch(() => [])).filter(m => /^[0-9a-f-]{36}$/i.test(m.id) && m.teams?.length >= 2)
       .map(m => ({ url: `${BASE}/cricket/${m.id}-${`${slug(m.teams[0].name)}-vs-${slug(m.teams[1].name)}`.slice(0, 80)}` }));
-    return urls([{ url: BASE + "/" }, { url: BASE + "/league/f1" }, ...(await races()).map(r => ({ url: BASE + "/race/" + r.slug, lastmod: r.lastmod })), ...(d1() ? (await d1()!.prepare("SELECT slug,lastmod FROM seo_pages WHERE site_id=\'ninetymins\' AND kind=\'stories\'").all<{ slug: string; lastmod: string }>()).results.map(r => ({ url: BASE + "/stories/" + r.slug, lastmod: r.lastmod })) : []), ...["today", "tomorrow", "scores", "widgets", "archive", "live-tv", "cricket", "saff", "highlights", ...HL_SPORTS.filter(([k]) => k).map(([k]) => `highlights/${k}`)].map(p => ({ url: `${BASE}/${p}` })), ...[...new Set(NM_COMPS.map(c => c.slug))].map(c => ({ url: `${BASE}/topic/${c}` })), ...(await hubs()).map(h => ({ url: BASE + h.path, lastmod: h.lastmod })), ...cricket, ...["about", "contact", "privacy", "terms", "disclaimer"].map(p => ({ url: `${BASE}/${p}` }))]);
+    return urls([{ url: BASE + "/" }, { url: BASE + "/league/f1" }, ...(await races()).map(r => ({ url: BASE + "/race/" + r.slug, lastmod: r.lastmod })), ...(d1() ? (await d1()!.prepare("SELECT slug,lastmod FROM seo_pages WHERE site_id=\'ninetymins\' AND kind=\'stories\'").all<{ slug: string; lastmod: string }>()).results.map(r => ({ url: BASE + "/stories/" + r.slug, lastmod: r.lastmod })) : []), ...["today", "tomorrow", "scores", "widgets", "archive", "live-tv", "cricket", "saff", "event", "highlights", ...HL_SPORTS.filter(([k]) => k).map(([k]) => `highlights/${k}`)].map(p => ({ url: `${BASE}/${p}` })), ...[...new Set(NM_COMPS.map(c => c.slug))].map(c => ({ url: `${BASE}/topic/${c}` })), ...(await hubs()).map(h => ({ url: BASE + h.path, lastmod: h.lastmod })), ...cricket, ...["about", "contact", "privacy", "terms", "disclaimer"].map(p => ({ url: `${BASE}/${p}` })), ...EVENT_PATHS.map(p => ({ url: BASE + p }))]);
   }
   if (name === "sitemap-players.xml") return urls((await sitemapPlayers()).map(p => ({ url: BASE + p.path, lastmod: p.lastmod })));
   if (name === "sitemap-h2h.xml") return urls((await allPairs()).map(p => ({ url: `${BASE}/h2h/${p.slug}`, lastmod: p.lastmod })));
