@@ -791,6 +791,11 @@ a.nm-team-link:hover span{text-decoration:underline}
 .site-ninetymins .nm-root.nv .nv-ev-src { display: grid; gap: 6px; font: 400 14px/1.45 var(--nm-sans); }
 .site-ninetymins .nm-root.nv .nv-ev-src a, .site-ninetymins .nm-root.nv .nv-ev-more a { color: var(--nv-acc); }
 .site-ninetymins .nm-root.nv .nv-ev-index { margin-bottom: 36px; }
+.site-ninetymins .nm-root.nv .nv-ev-manual, .site-ninetymins .nm-root.nv .nv-ev-table { margin: 8px auto 18px; }
+.site-ninetymins .nm-root.nv .nv-ev-manual h2, .site-ninetymins .nm-root.nv .nv-ev-table h2 { font: 800 18px/1.2 var(--nv-head); margin: 0 0 8px; }
+.site-ninetymins .nm-root.nv .nv-ev-manual ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.site-ninetymins .nm-root.nv .nv-ev-manual li { display: grid; gap: 2px; padding: 10px 12px; border-radius: var(--nv-r); background: var(--nv-card); border: 1px solid var(--nv-line); }
+.site-ninetymins .nm-root.nv .nv-ev-manual span { color: var(--nv-mute); font: 400 13.5px/1.45 var(--nm-sans); }
 .site-ninetymins .nm-root.nv .nv-ev-more { margin-top: 28px; }
 @media (max-width: 640px) {
   .site-ninetymins .nm-root.nv .nv-ev-next { top: 58px; }

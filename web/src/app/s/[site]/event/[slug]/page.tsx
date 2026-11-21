@@ -8,6 +8,9 @@ import { sitePrefix } from "@/lib/public-path";
 import { getHub } from "@/sites/ninetymins/events/catalog";
 import { HubView } from "@/sites/ninetymins/events/HubView";
 import { liveFor } from "@/sites/ninetymins/events/liveBoard";
+import { storedStats } from "@/sites/ninetymins/events/feed";
+import { dueFacts } from "@/sites/ninetymins/events/manual";
+import { buildTable, extraFixtures } from "@/sites/ninetymins/events/table";
 import type { Fx, Hub } from "@/sites/ninetymins/events/types";
 import statsJson from "@/sites/ninetymins/events/stats.json";
 import type { LeagueStats } from "@/sites/ninetymins/events/stats-type";
@@ -70,7 +73,12 @@ export default async function EventHubPage({ params }: P) {
   const pageUrl = `${base}/event/${hub.slug}`;
   const prefix = sitePrefix(site.id);
   const live = await liveFor(hub);
-  const stats = hub.statsKey ? STATS[hub.statsKey] : null;
+  const stored = await storedStats();
+  const stats = (hub.statsKey && stored?.[hub.statsKey]) || (hub.statsKey ? STATS[hub.statsKey] : null);
+  const teams = hub.live.kind === "cricket" ? hub.live.teams : [];
+  const table = buildTable(stats, live, teams);
+  const schedule = [...hub.fixtures, ...extraFixtures(hub.fixtures, live, teams)];
+  const manual = dueFacts(hub.slug).map((f) => ({ label: f.label, detail: f.detail }));
   return (
     <Shell site={site}>
       <JsonLd
@@ -80,7 +88,7 @@ export default async function EventHubPage({ params }: P) {
             { name: "Events", url: `${base}/event` },
             { name: hub.h1, url: pageUrl },
           ]),
-          ...ld(hub, pageUrl),
+          ...ld({ ...hub, fixtures: schedule }, pageUrl),
         ]}
       />
       <nav className="nm-wrap nm-crumbs" aria-label="Breadcrumb">
@@ -90,7 +98,7 @@ export default async function EventHubPage({ params }: P) {
         <span aria-hidden="true"> / </span>
         <span>{hub.h1}</span>
       </nav>
-      <HubView hub={hub} live={live} stats={stats} prefix={prefix} />
+      <HubView hub={hub} live={live} stats={stats} prefix={prefix} schedule={schedule} table={table} manual={manual} />
     </Shell>
   );
 }

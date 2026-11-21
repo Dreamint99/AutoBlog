@@ -30,20 +30,22 @@ export async function liveFor(hub: Hub): Promise<LiveHit[]> {
           const names = m.teams.map((t) => t.name.toLowerCase());
           return q.teams.some((t) => names.includes(t.toLowerCase()));
         })
-        .slice(0, 8)
         .map((m) => {
           const [a, b] = m.teams;
           const score = [a.score, b.score].filter(Boolean).join(" · ");
+          const status = m.status || "";
+          const winner = [a.name, b.name].find((n) => status.toLowerCase().startsWith(n.toLowerCase()));
           return {
             id: m.id,
             name: m.name,
             state: m.state,
-            detail: m.status,
+            detail: status,
             date: m.date,
             href: cricketHref(m.id, a.name, b.name),
             home: a.name,
             away: b.name,
             score,
+            winner,
           };
         });
     }

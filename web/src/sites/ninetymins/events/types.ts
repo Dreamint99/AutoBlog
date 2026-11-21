@@ -54,4 +54,5 @@ export type LiveHit = {
   home: string;
   away: string;
   score: string;
+  winner?: string;
 };

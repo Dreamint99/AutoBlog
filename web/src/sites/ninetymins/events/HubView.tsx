@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import type { Fx, Hub, LiveHit } from "./types";
+import type { TableRow } from "./table";
 import { ZONES, countdown, formatKick, formatVenueDate } from "./zones";
 import { IPL_PURSE, IPL_RETAINED } from "./retentions";
 import type { LeagueStats } from "./stats-type";
@@ -14,7 +15,7 @@ function pad(n: number) {
   return String(n).padStart(2, "0");
 }
 
-export function HubView({ hub, live, stats, prefix = "" }: { hub: Hub; live: LiveHit[]; stats: LeagueStats | null; prefix?: string }) {
+export function HubView({ hub, live, stats, prefix = "", schedule, table, manual = [] }: { hub: Hub; live: LiveHit[]; stats: LeagueStats | null; prefix?: string; schedule?: Fx[]; table?: { title: string; note: string; rows: TableRow[] } | null; manual?: { label: string; detail: string }[] }) {
   const [zone, setZone] = useState("");
   const [tab, setTab] = useState<Tab>("Schedule");
   const [stage, setStage] = useState("All");
@@ -28,18 +29,19 @@ export function HubView({ hub, live, stats, prefix = "" }: { hub: Hub; live: Liv
     return () => clearInterval(id);
   }, []);
 
-  const stages = useMemo(() => ["All", ...Array.from(new Set(hub.fixtures.map((f) => f.stage)))], [hub.fixtures]);
+  const board = schedule || hub.fixtures;
+  const stages = useMemo(() => ["All", ...Array.from(new Set(board.map((f) => f.stage)))], [board]);
   const sides = useMemo(() => {
     const s = new Set<string>();
-    for (const f of hub.fixtures) {
+    for (const f of board) {
       if (f.home) s.add(f.home);
       if (f.away) s.add(f.away);
     }
     return ["All", ...Array.from(s).sort()];
-  }, [hub.fixtures]);
+  }, [board]);
 
-  const fixtures = hub.fixtures.filter((f) => (stage === "All" || f.stage === stage) && (side === "All" || f.home === side || f.away === side));
-  const next = hub.fixtures.find((f) => f.start && new Date(f.start).getTime() > now);
+  const fixtures = board.filter((f) => (stage === "All" || f.stage === stage) && (side === "All" || f.home === side || f.away === side));
+  const next = board.find((f) => f.start && new Date(f.start).getTime() > now);
   const left = next?.start ? countdown(next.start, now) : null;
   const showSquads = hub.slug === "ipl-2027";
   const tabs = TABS.filter((t) => t !== "Squads" || showSquads);
@@ -82,6 +84,35 @@ export function HubView({ hub, live, stats, prefix = "" }: { hub: Hub; live: Liv
         ))}
       </div>
 
+      {manual.length ? (
+        <section className="nm-wrap nv-ev-manual" aria-label="Needs a manual update">
+          <h2>Needs a manual update</h2>
+          <ul>
+            {manual.map((m) => (
+              <li key={m.label}><b>{m.label}</b><span>{m.detail}</span></li>
+            ))}
+          </ul>
+          <p className="nv-ev-fine">These items have no structured feed. The weekly job lists them; it does not scrape other sites to fill them.</p>
+        </section>
+      ) : null}
+
+      {table && table.rows.length ? (
+        <section className="nm-wrap nv-ev-table" aria-label="Points">
+          <h2>{table.title}</h2>
+          <div className="nv-ev-tablewrap">
+            <table className="nm-fixtures">
+              <caption>{table.note}</caption>
+              <thead><tr><th>Team</th><th>P</th><th>W</th><th>L</th><th>NR</th><th>Pts</th><th>Last</th></tr></thead>
+              <tbody>
+                {table.rows.map((r) => (
+                  <tr key={r.name}><td>{r.name}</td><td>{r.p}</td><td>{r.w}</td><td>{r.l}</td><td>{r.nr}</td><td>{r.pts}</td><td>{r.form}</td></tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      ) : null}
+
       {live.length ? (
         <section className="nm-wrap nv-ev-live" aria-label="On the live board">
           <div className="nv-sec-head">
@@ -89,7 +120,7 @@ export function HubView({ hub, live, stats, prefix = "" }: { hub: Hub; live: Liv
             <Link href={`${prefix}${hub.sport === "football" ? "/league/uefa-champions" : "/cricket"}`}>Open the full board</Link>
           </div>
           <ul>
-            {live.map((m) => (
+            {live.slice(0, 8).map((m) => (
               <li key={m.id}>
                 <Link href={m.href.startsWith("/") ? `${prefix}${m.href}` : m.href}>
                   <i className={m.state === "in" ? "is-live" : ""}>{m.state === "in" ? "Live" : m.state === "post" ? "FT" : "Soon"}</i>

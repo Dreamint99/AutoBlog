@@ -211,6 +211,7 @@ def summarise(matches: list[dict], label: str, filename: str) -> dict:
 
 def main() -> int:
     root = Path(sys.argv[1] if len(sys.argv) > 1 else "/tmp/cricsheet")
+    dest_arg = Path(sys.argv[2]) if len(sys.argv) > 2 else None
     out = {}
     for key, (filename, label) in LEAGUES.items():
         path = root / filename
@@ -221,7 +222,7 @@ def main() -> int:
         out[key] = summarise(matches, label, filename)
         latest = out[key]["latest"]
         print(f"{key}: {out[key]['matches']} matches, latest {latest['season']} ({latest['matches']})")
-    dest = Path(__file__).resolve().parents[1] / "src/sites/ninetymins/events/stats.json"
+    dest = dest_arg or (Path(__file__).resolve().parents[1] / "src/sites/ninetymins/events/stats.json")
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     print(f"wrote {dest} ({dest.stat().st_size} bytes)")
