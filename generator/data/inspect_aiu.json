@@ -1,30 +1,31 @@
 {
  "site": "aiu",
  "property": "https://aiuniversitybd.com/",
- "checked": "2026-11-19T10:46:47+00:00",
+ "checked": "2026-11-21T10:16:06+00:00",
  "sitemaps": [
   {
    "path": "https://aiuniversitybd.com/sitemap.xml",
-   "lastSubmitted": "2026-10-17T13:19:51.670Z",
+   "lastSubmitted": "2026-11-20T16:28:39.331Z",
    "isPending": false,
    "isSitemapsIndex": false,
    "type": "sitemap",
-   "lastDownloaded": "2026-11-17T19:31:12.424Z",
+   "lastDownloaded": "2026-11-20T16:28:41.425Z",
    "warnings": "0",
    "errors": "0",
    "contents": [
     {
      "type": "web",
-     "submitted": "811",
+     "submitted": "1315",
      "indexed": "0"
     }
    ]
   }
  ],
- "sitemap_count": 1089,
+ "sitemap_count": 1426,
  "byState": {
   "Submitted and indexed": 37,
-  "Discovered - currently not indexed": 4
+  "Discovered - currently not indexed": 2,
+  "URL is unknown to Google": 2
  },
  "urls": [
   {
@@ -36,7 +37,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/",
    "userCanonical": "https://aiuniversitybd.com/",
-   "lastCrawlTime": "2026-11-18T03:11:01Z",
+   "lastCrawlTime": "2026-11-21T03:28:48Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/",
@@ -53,7 +54,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/courses",
    "userCanonical": "https://aiuniversitybd.com/courses",
-   "lastCrawlTime": "2026-11-18T21:12:25Z",
+   "lastCrawlTime": "2026-11-19T13:24:05Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/courses?fac=language",
@@ -100,7 +101,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/community",
    "userCanonical": "https://aiuniversitybd.com/community",
-   "lastCrawlTime": "2026-11-18T22:22:59Z",
+   "lastCrawlTime": "2026-11-19T19:55:16Z",
    "crawledAs": "MOBILE",
    "referringUrls": null
   },
@@ -216,7 +217,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/privacy",
    "userCanonical": "https://aiuniversitybd.com/privacy",
-   "lastCrawlTime": "2026-11-09T11:32:17Z",
+   "lastCrawlTime": "2026-11-20T11:15:43Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://aiuniversitybd.com/"
@@ -261,7 +262,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/help",
    "userCanonical": "https://aiuniversitybd.com/help",
-   "lastCrawlTime": "2026-11-16T03:19:53Z",
+   "lastCrawlTime": "2026-11-20T13:19:10Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/help",
@@ -293,7 +294,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/kids",
    "userCanonical": "https://aiuniversitybd.com/kids",
-   "lastCrawlTime": "2026-11-17T10:03:45Z",
+   "lastCrawlTime": "2026-11-21T08:28:47Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/kids"
@@ -326,7 +327,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/reviews",
    "userCanonical": "https://aiuniversitybd.com/reviews",
-   "lastCrawlTime": "2026-11-13T04:04:01Z",
+   "lastCrawlTime": "2026-11-19T14:27:11Z",
    "crawledAs": "MOBILE",
    "referringUrls": null
   },
@@ -339,7 +340,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/gds-lab",
    "userCanonical": "https://aiuniversitybd.com/gds-lab",
-   "lastCrawlTime": "2026-11-14T20:00:56Z",
+   "lastCrawlTime": "2026-11-20T21:15:34Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/gds-lab",
@@ -418,7 +419,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/course/fish-feed",
    "userCanonical": "https://aiuniversitybd.com/course/fish-feed",
-   "lastCrawlTime": "2026-11-18T16:48:21Z",
+   "lastCrawlTime": "2026-11-20T21:47:39Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "http://www.aiuniversitybd.com/learn?c=fish-feed&l=quiz-m6",
@@ -506,17 +507,15 @@
   {
    "url": "https://aiuniversitybd.com/course/digital-marketing",
    "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
+   "coverageState": "URL is unknown to Google",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": [
-    "https://www.aiuniversitybd.com/course/digital-marketing"
-   ]
+   "crawledAs": null,
+   "referringUrls": null
   },
   {
    "url": "https://aiuniversitybd.com/course/freelancing",
@@ -558,7 +557,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/course/ielts-prep",
    "userCanonical": "https://aiuniversitybd.com/course/ielts-prep",
-   "lastCrawlTime": "2026-11-18T05:57:11Z",
+   "lastCrawlTime": "2026-11-20T21:29:41Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://aiuniversitybd.com/blog/category/ielts"
@@ -567,17 +566,15 @@
   {
    "url": "https://aiuniversitybd.com/course/personal-branding",
    "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
+   "coverageState": "URL is unknown to Google",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": [
-    "https://www.aiuniversitybd.com/course/personal-branding"
-   ]
+   "crawledAs": null,
+   "referringUrls": null
   },
   {
    "url": "https://aiuniversitybd.com/course/youtube-creator",
