@@ -9,7 +9,6 @@ import { getHub } from "@/sites/ninetymins/events/catalog";
 import { HubView } from "@/sites/ninetymins/events/HubView";
 import { liveFor } from "@/sites/ninetymins/events/liveBoard";
 import { storedStats } from "@/sites/ninetymins/events/feed";
-import { dueFacts } from "@/sites/ninetymins/events/manual";
 import { buildTable, extraFixtures } from "@/sites/ninetymins/events/table";
 import type { Fx, Hub } from "@/sites/ninetymins/events/types";
 import statsJson from "@/sites/ninetymins/events/stats.json";
@@ -78,7 +77,6 @@ export default async function EventHubPage({ params }: P) {
   const teams = hub.live.kind === "cricket" ? hub.live.teams : [];
   const table = buildTable(stats, live, teams);
   const schedule = [...hub.fixtures, ...extraFixtures(hub.fixtures, live, teams)];
-  const manual = dueFacts(hub.slug).map((f) => ({ label: f.label, detail: f.detail }));
   return (
     <Shell site={site}>
       <JsonLd
@@ -98,7 +96,7 @@ export default async function EventHubPage({ params }: P) {
         <span aria-hidden="true"> / </span>
         <span>{hub.h1}</span>
       </nav>
-      <HubView hub={hub} live={live} stats={stats} prefix={prefix} schedule={schedule} table={table} manual={manual} />
+      <HubView hub={hub} live={live} stats={stats} prefix={prefix} schedule={schedule} table={table} />
     </Shell>
   );
 }

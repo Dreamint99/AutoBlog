@@ -46,6 +46,7 @@ export async function liveFor(hub: Hub): Promise<LiveHit[]> {
             away: b.name,
             score,
             winner,
+            venue: m.venue,
           };
         });
     }

@@ -22,6 +22,7 @@ import re
 import subprocess
 import sys
 import tempfile
+import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
@@ -151,6 +152,10 @@ def upsert(key: str, payload: str, now: str) -> None:
     )
 
 
+def slugify(value: str) -> str:
+    return re.sub(r"^-+|-+$", "", re.sub(r"[^a-z0-9]+", "-", (value or "").lower()))
+
+
 def live_pass(hubs: dict, now: str) -> list[str]:
     rows = d1_query("SELECT json FROM nm_feed WHERE key = 'cricapi_current' LIMIT 1")
     if not rows:
@@ -163,6 +168,7 @@ def live_pass(hubs: dict, now: str) -> list[str]:
     old_digest = dict(prev.get("digest") or {})
     digest = {}
     changed = []
+    paths = []
     for slug, spec in hubs.items():
         if spec.get("kind") != "cricket":
             continue
@@ -172,7 +178,16 @@ def live_pass(hubs: dict, now: str) -> list[str]:
             lastmod[slug] = now
             changed.append(slug)
             log(f"live change {slug}: {len(picked)} matches in the cricket feed")
-    upsert("event_live", json.dumps({"lastmod": lastmod, "digest": digest}, separators=(",", ":")), now)
+        for m in picked:
+            teams = [t for t in (m.get("teams") or []) if isinstance(t, str)]
+            when = m.get("dateTimeGMT") or m.get("date")
+            if len(teams) < 2 or not when or not m.get("venue"):
+                continue
+            path = f"/event/{slug}/match/{slugify('feed-' + str(m.get('id')))}"
+            paths.append({"path": path, "lastmod": now if digest[slug] != old_digest.get(slug) else lastmod.get(path, now)})
+            if digest[slug] != old_digest.get(slug):
+                changed.append(path)
+    upsert("event_live", json.dumps({"lastmod": lastmod, "digest": digest, "paths": paths}, separators=(",", ":")), now)
     return changed
 
 
@@ -199,6 +214,76 @@ def full_pass() -> bool:
     return True
 
 
+def football_pass(now: str) -> None:
+    """One UCL fixture call per run, cached 12 hours. football-data.org first, API-Football only if that token is absent."""
+    prev = d1_query("SELECT updated_at FROM nm_feed WHERE key = 'event_football' LIMIT 1")
+    if prev:
+        try:
+            age = (datetime.now(timezone.utc) - datetime.fromisoformat(prev[0]["updated_at"].replace("Z", "+00:00"))).total_seconds()
+            if age < 12 * 3600:
+                log("event_football still fresh")
+                return
+        except Exception:
+            pass
+    token = os.getenv("FOOTBALL_DATA_TOKEN", "").strip()
+    key = os.getenv("API_FOOTBALL_KEY", "").strip()
+    try:
+        if token:
+            req = urllib.request.Request("https://api.football-data.org/v4/competitions/CL/matches?status=SCHEDULED", headers={"X-Auth-Token": token})
+            with urllib.request.urlopen(req, timeout=20) as r:
+                payload = r.read().decode()
+            upsert("event_football", payload, now)
+            log("stored UCL fixtures from football-data.org")
+            return
+        if key:
+            req = urllib.request.Request("https://v3.football.api-sports.io/fixtures?league=2&next=20", headers={"x-apisports-key": key})
+            with urllib.request.urlopen(req, timeout=20) as r:
+                payload = r.read().decode()
+            upsert("event_football", payload, now)
+            log("stored UCL fixtures from API-Football")
+            return
+        log("no FOOTBALL_DATA_TOKEN or API_FOOTBALL_KEY — UCL feed skipped")
+    except Exception as e:
+        log(f"football feed skipped: {e}")
+
+
+def squad_pass(hubs: dict) -> None:
+    """Weekly TheSportsDB squads, at most 12 teams, for the free public key."""
+    stored: dict = {}
+    used = 0
+    for event, spec in hubs.items():
+        for name in spec.get("teams") or []:
+            if used >= 12:
+                break
+            used += 1
+            url = "https://www.thesportsdb.com/api/v1/json/123/searchplayers.php?t=" + urllib.parse.quote(name)
+            try:
+                with urllib.request.urlopen(url, timeout=20) as r:
+                    data = json.loads(r.read().decode())
+            except Exception as e:
+                log(f"thesportsdb {name}: {e}")
+                continue
+            players = []
+            for p in data.get("player") or []:
+                if str(p.get("strSport") or "").lower() != "cricket":
+                    continue
+                if p.get("strPlayer"):
+                    players.append(p["strPlayer"])
+            if players:
+                stored.setdefault(event, {})[slugify(name)] = players[:25]
+                log(f"thesportsdb {event} {name}: {len(players)} cricket players")
+            time_sleep()
+        if used >= 12:
+            break
+    if stored:
+        upsert("event_squads", json.dumps(stored, separators=(",", ":")), datetime.now(timezone.utc).isoformat())
+
+
+def time_sleep() -> None:
+    import time
+    time.sleep(2)
+
+
 def main() -> int:
     if not os.getenv("CLOUDFLARE_API_TOKEN") or not os.getenv("CLOUDFLARE_ACCOUNT_ID"):
         log("CLOUDFLARE_API_TOKEN or CLOUDFLARE_ACCOUNT_ID missing — skipping")
@@ -213,11 +298,19 @@ def main() -> int:
     stats_changed = False
     if os.getenv("FULL", "").lower() in {"1", "true", "yes"}:
         stats_changed = full_pass()
+        squad_pass(hubs)
         if stats_changed:
-            changed = sorted(set(changed) | {s for s, spec in hubs.items() if spec.get("kind") == "cricket"})
+            changed = sorted(set(list(changed)) | {s for s, spec in hubs.items() if spec.get("kind") == "cricket"})
+    football_pass(now)
     if changed:
-        urls = [f"https://ninetymins.com/event/{s}" for s in changed] + ["https://ninetymins.com/event"]
-        ping(urls)
+        urls = []
+        for item in changed:
+            if str(item).startswith("/event/"):
+                urls.append(f"https://ninetymins.com{item}")
+            else:
+                urls.append(f"https://ninetymins.com/event/{item}")
+        urls.append("https://ninetymins.com/event")
+        ping(list(dict.fromkeys(urls)))
     else:
         log("no event page change — IndexNow not called")
     return 0

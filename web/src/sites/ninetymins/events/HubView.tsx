@@ -3,6 +3,8 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import type { Fx, Hub, LiveHit } from "./types";
+import { matchPath, teamPath } from "./paths";
+import { knownTeam } from "./directory";
 import type { TableRow } from "./table";
 import { ZONES, countdown, formatKick, formatVenueDate } from "./zones";
 import { IPL_PURSE, IPL_RETAINED } from "./retentions";
@@ -15,7 +17,7 @@ function pad(n: number) {
   return String(n).padStart(2, "0");
 }
 
-export function HubView({ hub, live, stats, prefix = "", schedule, table, manual = [] }: { hub: Hub; live: LiveHit[]; stats: LeagueStats | null; prefix?: string; schedule?: Fx[]; table?: { title: string; note: string; rows: TableRow[] } | null; manual?: { label: string; detail: string }[] }) {
+export function HubView({ hub, live, stats, prefix = "", schedule, table }: { hub: Hub; live: LiveHit[]; stats: LeagueStats | null; prefix?: string; schedule?: Fx[]; table?: { title: string; note: string; rows: TableRow[] } | null }) {
   const [zone, setZone] = useState("");
   const [tab, setTab] = useState<Tab>("Schedule");
   const [stage, setStage] = useState("All");
@@ -84,18 +86,6 @@ export function HubView({ hub, live, stats, prefix = "", schedule, table, manual
         ))}
       </div>
 
-      {manual.length ? (
-        <section className="nm-wrap nv-ev-manual" aria-label="Needs a manual update">
-          <h2>Needs a manual update</h2>
-          <ul>
-            {manual.map((m) => (
-              <li key={m.label}><b>{m.label}</b><span>{m.detail}</span></li>
-            ))}
-          </ul>
-          <p className="nv-ev-fine">These items have no structured feed. The weekly job lists them; it does not scrape other sites to fill them.</p>
-        </section>
-      ) : null}
-
       {table && table.rows.length ? (
         <section className="nm-wrap nv-ev-table" aria-label="Points">
           <h2>{table.title}</h2>
@@ -105,7 +95,7 @@ export function HubView({ hub, live, stats, prefix = "", schedule, table, manual
               <thead><tr><th>Team</th><th>P</th><th>W</th><th>L</th><th>NR</th><th>Pts</th><th>Last</th></tr></thead>
               <tbody>
                 {table.rows.map((r) => (
-                  <tr key={r.name}><td>{r.name}</td><td>{r.p}</td><td>{r.w}</td><td>{r.l}</td><td>{r.nr}</td><td>{r.pts}</td><td>{r.form}</td></tr>
+                  <tr key={r.name}><td>{knownTeam(hub.slug, r.name) ? <Link href={`${prefix}${teamPath(hub.slug, r.name)}`}>{r.name}</Link> : r.name}</td><td>{r.p}</td><td>{r.w}</td><td>{r.l}</td><td>{r.nr}</td><td>{r.pts}</td><td>{r.form}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -175,7 +165,7 @@ export function HubView({ hub, live, stats, prefix = "", schedule, table, manual
           <p className="nv-ev-fine">{hub.fixtureNote}</p>
           {fixtures.length ? (
             <ol className="nv-ev-cards">
-              {fixtures.map((f) => <Card key={f.id} f={f} zone={zone} />)}
+              {fixtures.map((f) => <Card key={f.id} f={f} zone={zone} event={hub.slug} prefix={prefix} />)}
             </ol>
           ) : (
             <p className="nv-ev-empty">No matches in this filter. Fixtures that are not published stay off the page.</p>
@@ -184,7 +174,7 @@ export function HubView({ hub, live, stats, prefix = "", schedule, table, manual
       ) : null}
 
       {tab === "Numbers" ? <Numbers stats={stats} aTeam={aTeam} bTeam={bTeam} setA={setATeam} setB={setBTeam} /> : null}
-      {tab === "Squads" && showSquads ? <Squads /> : null}
+      {tab === "Squads" && showSquads ? <Squads prefix={prefix} /> : null}
       {tab === "Watch" ? (
         <section className="nm-wrap nv-ev-prose" role="tabpanel">
           <h2>Where to watch</h2>
@@ -219,12 +209,13 @@ export function HubView({ hub, live, stats, prefix = "", schedule, table, manual
   );
 }
 
-function Card({ f, zone }: { f: Fx; zone: string }) {
+function Card({ f, zone, event, prefix }: { f: Fx; zone: string; event: string; prefix: string }) {
   const when = f.start ? formatKick(f.start, zone) : f.localDate ? `${formatVenueDate(f.localDate)} · venue date` : "Date not published";
+  const side = (name?: string) => name && knownTeam(event, name) ? <Link href={`${prefix}${teamPath(event, name)}`}>{name}</Link> : name;
   return (
     <li className="nv-ev-card">
       <p className="nv-ev-stage">{f.stage}</p>
-      <h3>{f.name}</h3>
+      <h3><Link href={`${prefix}${matchPath(event, f.id)}`}>{f.home && f.away ? <>{side(f.home)} vs {side(f.away)}</> : f.name}</Link></h3>
       <p className="nv-ev-when">{when}</p>
       <p className="nv-ev-place">{[f.venue, f.city].filter((x, i, a) => x && a.indexOf(x) === i).join(" · ") || "Venue TBC"}</p>
       {f.start ? (
@@ -319,7 +310,7 @@ function pct(v: number | null) {
   return v == null ? "–" : `${Math.round(v * 100)}%`;
 }
 
-function Squads() {
+function Squads({ prefix }: { prefix: string }) {
   const overseas = IPL_RETAINED.reduce((n, t) => n + t.players.filter((p) => p.overseas).length, 0);
   const total = IPL_RETAINED.reduce((n, t) => n + t.players.length, 0);
   return (
@@ -333,7 +324,7 @@ function Squads() {
       <div className="nv-ev-franchises">
         {IPL_RETAINED.map((t) => (
           <article key={t.short}>
-            <h3>{t.team} <small>{t.players.length}{t.purseLeftCr ? ` · ₹${t.purseLeftCr} cr left` : ""}</small></h3>
+            <h3><Link href={`${prefix}${teamPath("ipl-2027", t.team)}`}>{t.team}</Link> <small>{t.players.length}{t.purseLeftCr ? ` · ₹${t.purseLeftCr} cr left` : ""}</small></h3>
             <ul>
               {t.players.map((p) => (
                 <li key={p.name}>{p.name}{p.overseas ? " *" : ""}{p.traded ? " (T)" : ""}</li>
