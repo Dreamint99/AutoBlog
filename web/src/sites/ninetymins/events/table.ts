@@ -110,7 +110,7 @@ export function extraFixtures(existing: Fx[], live: LiveHit[], teams: string[]):
     if (have.has(key) || have.has(swap)) continue;
     have.add(key);
     out.push({
-      id: `live-${hit.id}`,
+      id: `feed-${hit.id}`,
       name: `${hit.home} vs ${hit.away}`,
       stage: "Live board",
       start: hit.date,

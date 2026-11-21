@@ -99,7 +99,7 @@ function buildEvent(event: string) {
     const h2h = fx.home && fx.away ? pairH2H(stats, fx.home, fx.away) : undefined;
     const index = matchIndex(fx);
     const when = fx.start || fx.localDate || "a date that has not been published";
-    const place = [fx.venue, fx.city].filter(Boolean).join(", ") || "a venue that has not been published";
+    const place = [...new Set([fx.venue, fx.city].filter(Boolean))].join(", ") || "a venue that has not been published";
     const summary = fx.home && fx.away
       ? `${fx.home} play ${fx.away} in ${hub.h1} on ${when} at ${place}.${h2h ? ` Cricsheet ${h2h.season} has ${h2h.matches} meetings, ${h2h.homeWins} won by ${fx.home}.` : " Cricsheet has no meeting for this pair in the latest season file."}`
       : `${fx.name} in ${hub.h1} is scheduled for ${when} at ${place}. The two teams are not in the organizer list yet.`;
@@ -127,35 +127,46 @@ export function knownTeam(event: string, name: string): boolean {
   return built(event).teams.some((t) => t.slug === slugify(name));
 }
 
-/** Feed fixtures that are not already on the organizer list. Index only when both sides, a time and a venue exist. */
+/** A live-board row with both sides. The page exists even when the feed has no kick-off; it stays noindex until a time and a venue are present. */
 export function feedMatch(event: string, hit: LiveHit): MatchPage | null {
   const hub = HUBS.find((h) => h.slug === event);
-  if (!hub || !hit.home || !hit.away || !hit.date) return null;
+  if (!hub || !hit.home || !hit.away) return null;
   const id = `feed-${hit.id}`;
   const fx: Fx = {
     id,
     name: `${hit.home} vs ${hit.away}`,
     stage: "Live board",
-    start: hit.date,
+    ...(hit.date ? { start: hit.date } : {}),
     home: hit.home,
     away: hit.away,
     venue: hit.venue,
     city: hit.venue,
-    note: "From the cricket scoreboard stored in D1. It was not in the organizer list shipped with the site.",
+    note: "On the live board. It was not in the organizer list shipped with this page.",
     schema: "sports",
   };
   const stats = hub.statsKey ? STATS[hub.statsKey] : undefined;
   const h2h = pairH2H(stats, hit.home, hit.away);
-  const index = matchIndex(fx);
+  const when = hit.date ? ` at ${hit.date}` : "";
+  const where = hit.venue ? ` (${hit.venue})` : "";
   return {
     event,
     eventTitle: hub.h1,
     slug: slugify(id),
-    index,
+    index: matchIndex(fx),
     fx,
     h2h,
-    summary: `${hit.home} play ${hit.away} in ${hub.h1}. The cricket feed lists this match at ${hit.date}${hit.venue ? ` (${hit.venue})` : ""}.`,
+    summary: `${hit.home} play ${hit.away} in ${hub.h1}. The live board lists this match${when}${where}.`,
   };
+}
+
+/** Hub cards used to link `live-<id>` while this file stored `feed-<id>`. Both resolve. */
+export function feedMatchBySlug(event: string, slug: string, hits: LiveHit[]): MatchPage | undefined {
+  for (const hit of hits) {
+    const page = feedMatch(event, hit);
+    if (!page) continue;
+    if (page.slug === slug || slugify(`live-${hit.id}`) === slug) return page;
+  }
+  return undefined;
 }
 
 export function sitemapEventPages(): { path: string }[] {

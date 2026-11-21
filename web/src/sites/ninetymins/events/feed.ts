@@ -49,6 +49,17 @@ export async function eventFeedPaths(): Promise<{ path: string; lastmod?: string
   }
 }
 
+/** Portraits cached by the weekly job. Keyed by a normalised player name. */
+export async function storedPortraits(): Promise<Record<string, import("./faces").Face>> {
+  const row = await read("event_portraits");
+  if (!row) return {};
+  try {
+    return JSON.parse(row.json) as Record<string, import("./faces").Face>;
+  } catch {
+    return {};
+  }
+}
+
 /** TheSportsDB squads cached by the weekly job. Keyed by event slug then team slug. */
 export async function storedSquads(): Promise<Record<string, Record<string, string[]>>> {
   const row = await read("event_squads");

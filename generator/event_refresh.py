@@ -279,6 +279,18 @@ def squad_pass(hubs: dict) -> None:
         upsert("event_squads", json.dumps(stored, separators=(",", ":")), datetime.now(timezone.utc).isoformat())
 
 
+def portraits_pass() -> None:
+    dest = Path(tempfile.mkdtemp(prefix="portraits-")) / "portraits.json"
+    script = ROOT / "generator/event_portraits.py"
+    r = subprocess.run([sys.executable, str(script), str(dest)], capture_output=True, text=True)
+    log(r.stdout.strip() or r.stderr[-300:])
+    if r.returncode != 0 or not dest.exists():
+        log("portraits skipped")
+        return
+    upsert("event_portraits", dest.read_text(encoding="utf-8"), datetime.now(timezone.utc).isoformat())
+    log("stored event_portraits")
+
+
 def time_sleep() -> None:
     import time
     time.sleep(2)
@@ -299,6 +311,7 @@ def main() -> int:
     if os.getenv("FULL", "").lower() in {"1", "true", "yes"}:
         stats_changed = full_pass()
         squad_pass(hubs)
+        portraits_pass()
         if stats_changed:
             changed = sorted(set(list(changed)) | {s for s, spec in hubs.items() if spec.get("kind") == "cricket"})
     football_pass(now)

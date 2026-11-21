@@ -4,7 +4,8 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import type { Fx, Hub, LiveHit } from "./types";
 import { matchPath, teamPath } from "./paths";
-import { knownTeam } from "./directory";
+import { eventTeams, knownTeam } from "./directory";
+import { initials, teamColour } from "./colours";
 import type { TableRow } from "./table";
 import { ZONES, countdown, formatKick, formatVenueDate } from "./zones";
 import { IPL_PURSE, IPL_RETAINED } from "./retentions";
@@ -86,6 +87,20 @@ export function HubView({ hub, live, stats, prefix = "", schedule, table }: { hu
         ))}
       </div>
 
+      {eventTeams(hub.slug).length ? (
+        <section className="nm-wrap nv-sides" aria-label="Teams">
+          {eventTeams(hub.slug).map((t) => {
+            const c = teamColour(t.name);
+            return (
+              <Link key={t.slug} href={`${prefix}${teamPath(hub.slug, t.name)}`} className="nv-side" style={{ ["--a" as string]: c.a, ["--b" as string]: c.b }}>
+                <span className="nv-avatar" aria-hidden="true">{initials(t.name)}</span>
+                <b>{t.name}</b>
+              </Link>
+            );
+          })}
+        </section>
+      ) : null}
+
       {table && table.rows.length ? (
         <section className="nm-wrap nv-ev-table" aria-label="Points">
           <h2>{table.title}</h2>
@@ -110,15 +125,17 @@ export function HubView({ hub, live, stats, prefix = "", schedule, table }: { hu
             <Link href={`${prefix}${hub.sport === "football" ? "/league/uefa-champions" : "/cricket"}`}>Open the full board</Link>
           </div>
           <ul>
-            {live.slice(0, 8).map((m) => (
-              <li key={m.id}>
-                <Link href={m.href.startsWith("/") ? `${prefix}${m.href}` : m.href}>
+            {live.slice(0, 8).map((m) => {
+              const href = m.home && m.away ? `${prefix}${matchPath(hub.slug, `feed-${m.id}`)}` : "";
+              const body = (
+                <>
                   <i className={m.state === "in" ? "is-live" : ""}>{m.state === "in" ? "Live" : m.state === "post" ? "FT" : "Soon"}</i>
                   <b>{m.home} <span>vs</span> {m.away}</b>
                   <small>{m.score || m.detail}</small>
-                </Link>
-              </li>
-            ))}
+                </>
+              );
+              return <li key={m.id}>{href ? <Link href={href}>{body}</Link> : <span>{body}</span>}</li>;
+            })}
           </ul>
           <p className="nv-ev-fine">Same feed as the rest of the site. This page does not call a second score API.</p>
         </section>
@@ -319,7 +336,7 @@ function Squads({ prefix }: { prefix: string }) {
       <p className="nv-ev-fine">
         Names are the BCCI advisory of 18 November 2026. Counting the names on this page gives {total} players and {overseas} marked overseas.
         The advisory also states {IPL_PURSE.retained} retained, {IPL_PURSE.overseas} overseas, ₹{IPL_PURSE.spentCr} crore spent and ₹{IPL_PURSE.leftCr} crore left, with {IPL_PURSE.slots} places and {IPL_PURSE.overseasSlots} overseas places still open.
-        {IPL_PURSE.released} players were released, {IPL_PURSE.releasedOverseas} of them overseas. A star is an overseas player. (T) was traded.
+        {IPL_PURSE.released} players were released, {IPL_PURSE.releasedOverseas} of them overseas. A star is an overseas player. (T) means traded into this squad. The IPL advisory of 11 November 2026 is the trade note: Hardik Pandya to Punjab Kings, Arshdeep Singh to Mumbai Indians.
       </p>
       <div className="nv-ev-franchises">
         {IPL_RETAINED.map((t) => (
