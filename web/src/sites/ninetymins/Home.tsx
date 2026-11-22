@@ -1,18 +1,20 @@
 import Link from "next/link";
 import type { SiteHomeProps } from "@/lib/types";
-import { Shell, Card } from "./Chrome";
+import { Shell } from "./Chrome";
 import { LeagueTable } from "./LiveScores";
 import { Livescore, type LsEvent } from "./Livescore";
 import { LS_SPORTS } from "./sports";
 import { getScores, NM_LEAGUES, leagueToSlug } from "./live";
 import { listHighlights, type Highlight } from "./highlights";
 import { HlGrid } from "./HighlightsList";
+import HomeLive from "./HomeLive";
+import { loadTvFeed } from "./tv";
 import { sitePrefix } from "@/lib/public-path";
 import { HUBS } from "./events/catalog";
 
-/* Home (v2, 2026-11-15): the live board front and centre (grouped by competition,
-   with sport tabs, a 7-day strip and filters) + the Premier League table beside it;
-   then top stories, the newest official highlights and competition tiles.
+/* Home: the live board front and centre (grouped by competition, with sport tabs,
+   a 7-day strip and filters) + the Premier League table beside it; then official
+   YouTube streams that are on now and the newest highlights. Stories stay on /archive.
    Article URLs are unchanged. */
 
 const TILES = ["eng.1", "uefa.champions", "esp.1", "ita.1", "ger.1", "fra.1", "uefa.europa", "afc.saff.championship", "ind.1", "cricket", "nba", "atp", "wta", "nfl", "nhl", "mlb", "ufc", "f1"];
@@ -34,12 +36,15 @@ function leagueHref(l: string) {
 
 const sportOf = (l: string) => LS_SPORTS.find((s) => s.leagues.includes(l))?.label ?? (l === "wta" ? "Tennis" : "Football");
 
-export default async function Home({ site, articles }: SiteHomeProps) {
+export default async function Home({ site }: SiteHomeProps) {
   const s = sitePrefix(site.id);
-  const stories = [...articles.filter((a) => !a.is_mock), ...articles.filter((a) => a.is_mock)].slice(0, 8);
   // Server day in UTC; the client re-fetches if the visitor's local day differs.
   const day = new Date().toISOString().slice(0, 10).replace(/-/g, "");
-  const [initial, highlights] = await Promise.all([todayFootball(day), listHighlights("", 4).catch((): Highlight[] => [])]);
+  const [initial, highlights, tv] = await Promise.all([
+    todayFootball(day),
+    listHighlights("", 4).catch((): Highlight[] => []),
+    loadTvFeed(),
+  ]);
 
   return (
     <Shell site={site} home>
@@ -61,29 +66,22 @@ export default async function Home({ site, articles }: SiteHomeProps) {
           </aside>
         </div>
 
-        {stories.length ? (
-          <section className="nm-wrap nv-sec" aria-labelledby="nv-top">
-            <div className="nv-sec-head">
-              <h2 id="nv-top">Top stories</h2>
+        <section className="nm-wrap nv-sec" aria-labelledby="nv-live">
+          <div className="nv-sec-head">
+            <h2 id="nv-live">Live streams and highlights</h2>
+            <span className="nv-sec-links">
+              <Link href={`${s}/live-tv`}>Live TV →</Link>
               <Link href={`${s}/archive`}>All stories →</Link>
-            </div>
-            <div className="nv-grid4">
-              {stories.map((a) => (
-                <Card site={site} article={a} key={a.id} />
-              ))}
-            </div>
-          </section>
-        ) : null}
-
-        {highlights.length ? (
-          <section className="nm-wrap nv-sec" aria-labelledby="nv-hl">
-            <div className="nv-sec-head">
-              <h2 id="nv-hl">Highlights</h2>
-              <Link href={`${s}/highlights`}>All videos →</Link>
-            </div>
-            <HlGrid site={site} items={highlights} />
-          </section>
-        ) : null}
+            </span>
+          </div>
+          <p className="hl-lede nv-live-lede">Official free YouTube streams that are on right now, then the latest match highlights from leagues, boards and broadcasters.</p>
+          <HomeLive initial={tv} liveHref={`${s}/live-tv`} />
+          <div className="nv-subhead">
+            <h3 id="nv-hl">Highlights</h3>
+            <Link href={`${s}/highlights`}>All videos →</Link>
+          </div>
+          {highlights.length ? <HlGrid site={site} items={highlights} /> : <p className="hl-lede">No official highlights yet. New videos land here within minutes of upload.</p>}
+        </section>
 
         <section className="nm-wrap nv-sec" aria-labelledby="nv-up">
           <div className="nv-sec-head">

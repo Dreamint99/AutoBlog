@@ -2,13 +2,9 @@
 // Official free live streams (league / board / broadcaster YouTube channels), from nm-api tv.ts.
 import { useEffect, useState } from "react";
 import { YouTube } from "./Video";
+import { TV_FEED, type TvFeed, type TvStream } from "./tv";
 
-export const TV_FEED = "https://feed.ninetymins.com/v1/tv.json";
-export interface TvStream {
-  id: string; kind: string; url?: string; title: string; channel: string; sport: string; state: "live" | "upcoming"; start: string;
-  thumb?: string; viewers?: number; embeddable?: boolean; match?: { sport: string; league: string; id: string; name: string };
-}
-export interface TvFeed { t: number; live: TvStream[]; upcoming: TvStream[] }
+export { TV_FEED, type TvFeed, type TvStream };
 
 const when = (iso: string) => new Date(iso).toLocaleString(undefined, { weekday: "short", hour: "2-digit", minute: "2-digit" });
 

@@ -5,7 +5,8 @@ import { siteBaseUrl } from "@/lib/sites.config";
 import { defaultOgImages } from "@/lib/og";
 import { JsonLd, breadcrumbSchema } from "@/lib/seo";
 import { Shell } from "@/sites/ninetymins/Chrome";
-import LiveTv, { TV_FEED, type TvFeed } from "@/sites/ninetymins/LiveTv";
+import LiveTv from "@/sites/ninetymins/LiveTv";
+import { loadTvFeed } from "@/sites/ninetymins/tv";
 
 export const dynamic = "force-dynamic";
 type P = { params: Promise<{ site: string }> };
@@ -18,15 +19,6 @@ export async function generateMetadata({ params }: P): Promise<Metadata> {
   return { title, description, metadataBase: new URL(siteBaseUrl(site)), alternates: { canonical: "/live-tv" }, openGraph: { images: defaultOgImages(), title, description, url: "/live-tv" } };
 }
 
-async function feed(): Promise<TvFeed | null> {
-  try {
-    const r = await fetch(TV_FEED, { signal: AbortSignal.timeout(4000), cache: "no-store" });
-    return r.ok ? ((await r.json()) as TvFeed) : null;
-  } catch {
-    return null;
-  }
-}
-
 export default async function Page({ params }: P) {
   const site = getSite((await params).site);
   if (!site || site.id !== "ninetymins") notFound();
@@ -34,7 +26,7 @@ export default async function Page({ params }: P) {
   return (
     <Shell site={site}>
       <JsonLd data={breadcrumbSchema([{ name: site.name, url: `${base}/` }, { name: "Live TV", url: `${base}/live-tv` }])} />
-      <LiveTv initial={await feed()} />
+      <LiveTv initial={await loadTvFeed()} />
     </Shell>
   );
 }
