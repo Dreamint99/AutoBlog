@@ -380,10 +380,20 @@ html[data-nm-theme="dark"] .site-ninetymins .nm-root.nv .nv-getapp { background:
 .site-ninetymins .nm-root.nv .nv-sidelink { font: 600 13.5px/1 var(--nm-sans); color: var(--nv-acc); padding: 4px 4px 0; text-decoration: none; }
 .site-ninetymins .nm-root.nv .nv-sidelink:hover { text-decoration: underline; }
 .site-ninetymins .nm-root.nv .nv-sec { margin-top: 44px; }
-.site-ninetymins .nm-root.nv .nv-sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+.site-ninetymins .nm-root.nv .nv-sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
 .site-ninetymins .nm-root.nv .nv-sec-head h2 { margin: 0; font: 800 22px/1.2 var(--nv-head); letter-spacing: -0.02em; }
+.site-ninetymins .nm-root.nv .nv-sec-links { display: flex; flex-wrap: wrap; gap: 6px 16px; justify-content: flex-end; }
 .site-ninetymins .nm-root.nv .nv-sec-head a { font: 600 14px/1 var(--nm-sans); color: var(--nv-acc); text-decoration: none; white-space: nowrap; }
 .site-ninetymins .nm-root.nv .nv-sec-head a:hover { text-decoration: underline; }
+.site-ninetymins .nm-root.nv .nv-subhead { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin: 22px 0 14px; flex-wrap: wrap; }
+.site-ninetymins .nm-root.nv .nv-subhead h3 { margin: 0; font: 800 18px/1.2 var(--nv-head); letter-spacing: -0.02em; }
+.site-ninetymins .nm-root.nv .nv-subhead a { font: 600 14px/1 var(--nm-sans); color: var(--nv-acc); text-decoration: none; white-space: nowrap; }
+.site-ninetymins .nm-root.nv .nv-subhead a:hover { text-decoration: underline; }
+.site-ninetymins .nm-root.nv .nv-live-lede { margin-top: 0; }
+.site-ninetymins .nm-root.nv .nv-live-now .nv-subhead { margin-top: 4px; }
+.site-ninetymins .nm-root.nv .nv-live-n { color: var(--nv-mute); font-weight: 600; }
+.site-ninetymins .nm-root.nv .nv-live-now .hl-note { margin: 10px 0 0; }
+.site-ninetymins .nm-root.nv .nv-live-empty a { color: var(--nv-acc); font-weight: 600; }
 @media (max-width: 1000px) {
   .site-ninetymins .nm-root.nv .nv-home-grid { grid-template-columns: minmax(0, 1fr); }
   .site-ninetymins .nm-root.nv .nv-home-side { position: static; }
@@ -474,8 +484,9 @@ html[data-nm-theme="dark"] .site-ninetymins .nm-root.nv .nm-kicker { color: colo
 .site-ninetymins .nm-root.nv .hl-body { padding: 10px 0 0; gap: 5px; }
 .site-ninetymins .nm-root.nv .hl-sport { background: none; color: var(--nv-acc); padding: 0; font: 700 11px/1 var(--nm-sans); letter-spacing: 0.05em; }
 html[data-nm-theme="dark"] .site-ninetymins .nm-root.nv .hl-sport { background: none; color: var(--nv-acc); }
-.site-ninetymins .nm-root.nv .hl-body h3 { font: 700 15.5px/1.32 var(--nv-head); letter-spacing: -0.005em; }
-.site-ninetymins .nm-root.nv .hl-body h3 a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.site-ninetymins .nm-root.nv .hl-body :is(h3, h4) { margin: 0; font: 700 15.5px/1.32 var(--nv-head); letter-spacing: -0.005em; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.site-ninetymins .nm-root.nv .hl-body :is(h3, h4) a { color: inherit; text-decoration: none; }
+.site-ninetymins .nm-root.nv .hl-body :is(h3, h4) a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .site-ninetymins .nm-root.nv .hl-meta { color: var(--nv-faint); }
 .site-ninetymins .nm-root.nv .hl-lede { color: var(--nv-mute); }
 .site-ninetymins .nm-root.nv .hl-pages a { border: 1px solid var(--nv-line); background: var(--nv-card); }
@@ -487,7 +498,7 @@ html[data-nm-theme="dark"] .site-ninetymins .nm-root.nv .hl-sport { background: 
 @media (max-width: 560px) {
   .site-ninetymins .nm-root.nv .hl-grid { gap: 20px 12px; }
   .site-ninetymins .nm-root.nv .nv-sec .hl-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .site-ninetymins .nm-root.nv .hl-body h3 { font-size: 14px; }
+  .site-ninetymins .nm-root.nv .hl-body :is(h3, h4) { font-size: 14px; }
 }
 
 /* ── data pages: league / team / player / today / tomorrow ── */
