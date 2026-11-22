@@ -59,7 +59,11 @@ jobs:
           LIMIT: ${{ github.event.inputs.limit || '25' }}
           REDO_BEFORE: ${{ github.event.inputs.redo_before }}
         run: |
-          if [ "${{ github.event.inputs.overrides }}" = "true" ]; then python wp_ctr.py --overrides; exit 0; fi
+          if [ "${{ github.event.inputs.overrides }}" = "true" ]; then
+            python wp_ctr.py --overrides
+            python wp_seo_t124.py --apply
+            exit 0
+          fi
           if [ "$APPLY" = "true" ]; then python wp_ctr.py --apply "$LIMIT"; else python wp_ctr.py "$LIMIT"; fi
       - name: Commit change log
         if: github.event_name == 'schedule' || github.event.inputs.apply == 'true'
