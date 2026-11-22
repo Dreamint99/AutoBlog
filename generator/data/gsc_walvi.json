@@ -1,5 +1,5 @@
 {
- "source": "Search Console API 2026-08-21..2026-11-19",
+ "source": "Search Console API 2026-08-22..2026-11-20",
  "pages": [
   {
    "url": "https://visapoint.net/visa-check/romania",
@@ -327,7 +327,7 @@
   },
   {
    "url": "https://visapoint.net/visa-check/moldova",
-   "impressions": 101,
+   "impressions": 102,
    "clicks": 2,
    "queries": [
     [
@@ -395,14 +395,20 @@
      1,
      0,
      32
+    ],
+    [
+     "moldova invitation letter check online",
+     1,
+     0,
+     27
     ]
    ],
-   "position": 8.9,
-   "ctr": 0.0198
+   "position": 9.0,
+   "ctr": 0.0196
   },
   {
    "url": "https://visapoint.net/passport-index",
-   "impressions": 98,
+   "impressions": 99,
    "clicks": 1,
    "queries": [
     [
@@ -418,16 +424,16 @@
      33.2
     ],
     [
+     "index visa",
+     5,
+     0,
+     27.4
+    ],
+    [
      "index passport",
      4,
      0,
      36.2
-    ],
-    [
-     "index visa",
-     4,
-     0,
-     23
     ],
     [
      "passport ranking",
@@ -478,8 +484,8 @@
      70.5
     ]
    ],
-   "position": 35.9,
-   "ctr": 0.0102
+   "position": 36.0,
+   "ctr": 0.0101
   },
   {
    "url": "https://visapoint.net/moldova-visa-status-online-2026-step-by-step-guide",
@@ -912,7 +918,7 @@
   },
   {
    "url": "https://visapoint.net/serbia-work-permit-2025-cost-documents-timeline-for-bangladeshi",
-   "impressions": 37,
+   "impressions": 38,
    "clicks": 0,
    "queries": [
     [
@@ -929,12 +935,12 @@
     ],
     [
      "serbia work permit",
-     1,
+     2,
      0,
-     62
+     79
     ]
    ],
-   "position": 17.2,
+   "position": 19.3,
    "ctr": 0.0
   },
   {

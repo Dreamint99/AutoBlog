@@ -1,9 +1,9 @@
 {
- "source": "Search Console API 2026-08-21..2026-11-19",
+ "source": "Search Console API 2026-08-22..2026-11-20",
  "pages": [
   {
    "url": "https://countly.net/",
-   "impressions": 365,
+   "impressions": 357,
    "clicks": 2,
    "queries": [
     [
@@ -49,12 +49,6 @@
      70
     ],
     [
-     "countbubble",
-     1,
-     0,
-     84
-    ],
-    [
      "countly analytics",
      1,
      0,
@@ -77,14 +71,20 @@
      1,
      0,
      61
+    ],
+    [
+     "found.ly pricing",
+     1,
+     0,
+     95
     ]
    ],
-   "position": 36.4,
-   "ctr": 0.0055
+   "position": 35.7,
+   "ctr": 0.0056
   },
   {
    "url": "https://countly.net/top-21-richest-people-in-greece-2026",
-   "impressions": 138,
+   "impressions": 136,
    "clicks": 0,
    "queries": [
     [
@@ -99,7 +99,7 @@
   },
   {
    "url": "https://countly.net/crypto",
-   "impressions": 69,
+   "impressions": 67,
    "clicks": 0,
    "queries": [
     [
@@ -133,16 +133,16 @@
      92.8
     ],
     [
-     "crypto stats",
-     4,
-     0,
-     96
-    ],
-    [
      "crypto market live",
      2,
      0,
      86.5
+    ],
+    [
+     "crypto stats",
+     2,
+     0,
+     99
     ],
     [
      "cryptocurrency market live",
@@ -175,7 +175,7 @@
      89
     ]
    ],
-   "position": 68.9,
+   "position": 68.1,
    "ctr": 0.0
   },
   {
@@ -216,7 +216,7 @@
   },
   {
    "url": "https://countly.net/top-25-richest-people-in-bangladesh-2026-estimated-net-worth",
-   "impressions": 55,
+   "impressions": 52,
    "clicks": 0,
    "queries": [
     [
@@ -323,27 +323,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/top-82-richest-people-in-canada-2026",
-   "impressions": 29,
-   "clicks": 0,
-   "queries": [
-    [
-     "richard warke net worth",
-     14,
-     0,
-     18
-    ],
-    [
-     "site:countly.net",
-     2,
-     0,
-     28
-    ]
-   ],
-   "position": 14.0,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/topic/rankings",
    "impressions": 28,
    "clicks": 0,
@@ -377,6 +356,27 @@
     ]
    ],
    "position": 14.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/top-82-richest-people-in-canada-2026",
+   "impressions": 27,
+   "clicks": 0,
+   "queries": [
+    [
+     "richard warke net worth",
+     14,
+     0,
+     18
+    ],
+    [
+     "site:countly.net",
+     2,
+     0,
+     28
+    ]
+   ],
+   "position": 14.4,
    "ctr": 0.0
   },
   {
@@ -441,7 +441,7 @@
   },
   {
    "url": "https://countly.net/top-71-richest-people-in-brazil-2026",
-   "impressions": 21,
+   "impressions": 20,
    "clicks": 0,
    "queries": [
     [
@@ -478,13 +478,13 @@
      2
     ],
     [
-     "top ten lists",
+     "top 1 in world",
      1,
      0,
-     13
+     84
     ]
    ],
-   "position": 3.0,
+   "position": 6.7,
    "ctr": 0.0
   },
   {
@@ -1028,21 +1028,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/top-12-richest-people-in-czech-republic-2026",
-   "impressions": 9,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     2,
-     0,
-     40
-    ]
-   ],
-   "position": 22.9,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/top-41-richest-people-in-israel-2026",
    "impressions": 9,
    "clicks": 0,
@@ -1070,21 +1055,6 @@
     ]
    ],
    "position": 27.8,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/fastest-growing-companies-2026-top-revenue-growth-leaders",
-   "impressions": 8,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     2,
-     0,
-     35
-    ]
-   ],
-   "position": 22.1,
    "ctr": 0.0
   },
   {
@@ -1222,6 +1192,21 @@
    "ctr": 0.0
   },
   {
+   "url": "https://countly.net/fastest-growing-companies-2026-top-revenue-growth-leaders",
+   "impressions": 7,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     2,
+     0,
+     35
+    ]
+   ],
+   "position": 16.7,
+   "ctr": 0.0
+  },
+  {
    "url": "https://countly.net/game-store-industry-2026-definitive-market-size-retailer-stats",
    "impressions": 7,
    "clicks": 0,
@@ -1329,6 +1314,21 @@
     ]
    ],
    "position": 33.1,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/top-12-richest-people-in-czech-republic-2026",
+   "impressions": 7,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     2,
+     0,
+     40
+    ]
+   ],
+   "position": 26.6,
    "ctr": 0.0
   },
   {
@@ -1963,22 +1963,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/time-spent-on-social-media-by-country-2026-daily-minutes-ranked",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [],
-   "position": 45.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/top-100-richest-people-in-germany-2026",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [],
-   "position": 1.5,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/top-59-richest-people-in-united-kingdom-2026",
    "impressions": 2,
    "clicks": 0,
@@ -2240,6 +2224,22 @@
    "clicks": 0,
    "queries": [],
    "position": 10.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/time-spent-on-social-media-by-country-2026-daily-minutes-ranked",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 11.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/top-100-richest-people-in-germany-2026",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 2.0,
    "ctr": 0.0
   },
   {

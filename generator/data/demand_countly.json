@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-08-21..2026-11-19, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-22..2026-11-20, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "richest countries in world",
@@ -683,12 +683,6 @@
    "src": "bing"
   },
   {
-   "q": "the fastest car in the world",
-   "impr": 57,
-   "pos": 8.0,
-   "src": "bing"
-  },
-  {
    "q": "reddit users in india",
    "impr": 54,
    "pos": 8.3,
@@ -704,6 +698,12 @@
    "q": "what is the fastest car",
    "impr": 50,
    "pos": 8.5,
+   "src": "bing"
+  },
+  {
+   "q": "the fastest car in the world",
+   "impr": 38,
+   "pos": 8.0,
    "src": "bing"
   },
   {
@@ -732,8 +732,8 @@
   },
   {
    "q": "who is the richest person in the world 2026",
-   "impr": 26,
-   "pos": 8.1,
+   "impr": 31,
+   "pos": 8.4,
    "src": "bing"
   },
   {
@@ -743,15 +743,21 @@
    "src": "bing"
   },
   {
-   "q": "most starred github repo",
-   "impr": 21,
-   "pos": 8.2,
-   "src": "bing"
-  },
-  {
    "q": "languages with over 10 million speakers",
    "impr": 20,
    "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "top 10 richest people 2026",
+   "impr": 19,
+   "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "most starred github repo",
+   "impr": 18,
+   "pos": 8.4,
    "src": "bing"
   },
   {
@@ -788,6 +794,12 @@
    "q": "top 10 most visited websites in the world",
    "impr": 13,
    "pos": 10.0,
+   "src": "bing"
+  },
+  {
+   "q": "which is the world's largest company based on the number of employees?",
+   "impr": 12,
+   "pos": 8.8,
    "src": "bing"
   },
   {
