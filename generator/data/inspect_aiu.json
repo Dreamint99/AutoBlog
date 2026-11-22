@@ -1,7 +1,7 @@
 {
  "site": "aiu",
  "property": "https://aiuniversitybd.com/",
- "checked": "2026-11-21T10:16:06+00:00",
+ "checked": "2026-11-22T10:22:47+00:00",
  "sitemaps": [
   {
    "path": "https://aiuniversitybd.com/sitemap.xml",
@@ -21,11 +21,11 @@
    ]
   }
  ],
- "sitemap_count": 1426,
+ "sitemap_count": 1591,
  "byState": {
   "Submitted and indexed": 37,
-  "Discovered - currently not indexed": 2,
-  "URL is unknown to Google": 2
+  "URL is unknown to Google": 2,
+  "Discovered - currently not indexed": 2
  },
  "urls": [
   {
@@ -37,7 +37,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/",
    "userCanonical": "https://aiuniversitybd.com/",
-   "lastCrawlTime": "2026-11-21T03:28:48Z",
+   "lastCrawlTime": "2026-11-21T14:55:09Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/",
@@ -101,7 +101,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/community",
    "userCanonical": "https://aiuniversitybd.com/community",
-   "lastCrawlTime": "2026-11-19T19:55:16Z",
+   "lastCrawlTime": "2026-11-21T13:17:54Z",
    "crawledAs": "MOBILE",
    "referringUrls": null
   },
@@ -114,7 +114,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/board",
    "userCanonical": "https://aiuniversitybd.com/board",
-   "lastCrawlTime": "2026-11-18T15:43:15Z",
+   "lastCrawlTime": "2026-11-21T11:16:59Z",
    "crawledAs": "MOBILE",
    "referringUrls": null
   },
@@ -372,7 +372,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/course/ai-for-everyone",
    "userCanonical": "https://aiuniversitybd.com/course/ai-for-everyone",
-   "lastCrawlTime": "2026-11-17T10:56:47Z",
+   "lastCrawlTime": "2026-11-21T19:51:54Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/course/ai-for-everyone",
@@ -451,7 +451,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/course/air-ticketing",
    "userCanonical": "https://aiuniversitybd.com/course/air-ticketing",
-   "lastCrawlTime": "2026-11-17T23:32:56Z",
+   "lastCrawlTime": "2026-11-22T08:21:02Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/course/air-ticketing"
@@ -460,17 +460,15 @@
   {
    "url": "https://aiuniversitybd.com/course/ai-video",
    "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
+   "coverageState": "URL is unknown to Google",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": [
-    "https://www.aiuniversitybd.com/course/ai-video"
-   ]
+   "crawledAs": null,
+   "referringUrls": null
   },
   {
    "url": "https://aiuniversitybd.com/course/prompt-engineering",
@@ -481,7 +479,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/course/prompt-engineering",
    "userCanonical": "https://aiuniversitybd.com/course/prompt-engineering",
-   "lastCrawlTime": "2026-11-18T14:26:15Z",
+   "lastCrawlTime": "2026-11-21T14:32:56Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/course/prompt-engineering",
@@ -507,15 +505,17 @@
   {
    "url": "https://aiuniversitybd.com/course/digital-marketing",
    "verdict": "NEUTRAL",
-   "coverageState": "URL is unknown to Google",
+   "coverageState": "Discovered - currently not indexed",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": null,
-   "referringUrls": null
+   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+   "referringUrls": [
+    "https://www.aiuniversitybd.com/course/digital-marketing"
+   ]
   },
   {
    "url": "https://aiuniversitybd.com/course/freelancing",
@@ -585,7 +585,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/course/youtube-creator",
    "userCanonical": "https://aiuniversitybd.com/course/youtube-creator",
-   "lastCrawlTime": "2026-11-18T00:53:12Z",
+   "lastCrawlTime": "2026-11-21T13:12:46Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/course/youtube-creator"
