@@ -84,7 +84,7 @@ function edgeTtl(url, env) {
   if (url.pathname === "/robots.txt") return SEO_DOC_TTL;
   // Sitemaps: 15 min at the edge so new posts show up quickly (key is per deploy version).
   if (isSitemapPath(url.pathname)) return 900;
-  if (env && env.SITE_ID === "ninetymins" && /^\/(match|embed|league|team|today|tomorrow)(\/|$)/.test(url.pathname)) return 30;
+  if (env && env.SITE_ID === "ninetymins" && /^\/(match|embed|league|team|today|tomorrow)(\/|$)/.test(url.pathname)) return /^\/team(\/|$)/.test(url.pathname) ? 600 : /^\/league(\/|$)/.test(url.pathname) ? 300 : 30; /* team/league pages change slowly; longer edge TTL = fewer cold SSR renders (error 1102/timeouts seen as crawler 5xx) */
   return TTL;
 }
 
