@@ -1,4 +1,4 @@
-name: probashiinfo CTR titles
+﻿name: probashiinfo CTR titles
 
 # Manual: rewrite Rank Math titles/descriptions of high-impression, low-CTR posts
 # (generator/wp_ctr.py). Dry run unless "apply" is ticked; the change log is committed.
@@ -62,6 +62,7 @@ jobs:
           if [ "${{ github.event.inputs.overrides }}" = "true" ]; then
             python wp_ctr.py --overrides
             python wp_seo_t124.py --apply
+            python wp_seo_n1123.py --apply
             exit 0
           fi
           if [ "$APPLY" = "true" ]; then python wp_ctr.py --apply "$LIMIT"; else python wp_ctr.py "$LIMIT"; fi
