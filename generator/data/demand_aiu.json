@@ -1,9 +1,9 @@
 {
- "_note": "Real queries (Search Console 2026-08-22..2026-11-20, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-23..2026-11-21, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "প্রাথমিক চিকিৎসা কি",
-   "impr": 50,
+   "impr": 51,
    "pos": 8.9,
    "src": "gsc"
   },
@@ -68,6 +68,12 @@
    "src": "gsc"
   },
   {
+   "q": "phone course",
+   "impr": 16,
+   "pos": 10.1,
+   "src": "gsc"
+  },
+  {
    "q": "কম্পিউটারের হার্ডওয়্যার এর কয়টি অংশ ও কি কি",
    "impr": 15,
    "pos": 8.9,
@@ -95,12 +101,6 @@
    "q": "প্রাথমিক চিকিৎসা কী",
    "impr": 11,
    "pos": 11.9,
-   "src": "gsc"
-  },
-  {
-   "q": "phone course",
-   "impr": 11,
-   "pos": 12.9,
    "src": "gsc"
   },
   {

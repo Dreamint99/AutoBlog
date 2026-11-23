@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-08-22..2026-11-20, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-23..2026-11-21, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "japan work visa",
@@ -78,8 +78,8 @@
    "src": "bingkw"
   },
   {
-   "q": "j1 visa requirements",
-   "impr": 175,
+   "q": "what is visa sponsorship",
+   "impr": 207,
    "pos": null,
    "src": "bingkw"
   },
@@ -144,6 +144,12 @@
    "src": "bingkw"
   },
   {
+   "q": "e2 visa requirements",
+   "impr": 82,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
    "q": "new zealand visa requirements",
    "impr": 79,
    "pos": null,
@@ -180,12 +186,6 @@
    "src": "bingkw"
   },
   {
-   "q": "l1 visa requirements",
-   "impr": 65,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
    "q": "south africa visa requirements",
    "impr": 64,
    "pos": null,
@@ -212,12 +212,6 @@
   {
    "q": "visa requirements for japan",
    "impr": 54,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "south korea visa requirements",
-   "impr": 53,
    "pos": null,
    "src": "bingkw"
   },

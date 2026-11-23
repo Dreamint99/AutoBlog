@@ -1,9 +1,9 @@
 {
- "_note": "Real queries (Search Console 2026-08-22..2026-11-20, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-23..2026-11-21, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "রোনান সুলিভান",
-   "impr": 49,
+   "impr": 50,
    "pos": 10.2,
    "src": "gsc"
   },
@@ -14,15 +14,15 @@
    "src": "gsc"
   },
   {
-   "q": "jamuna bridge",
-   "impr": 27,
-   "pos": 8.0,
-   "src": "gsc"
-  },
-  {
    "q": "বি বাড়িয়া জেলার আয়তন কত",
    "impr": 21,
    "pos": 9.7,
+   "src": "gsc"
+  },
+  {
+   "q": "jaya ahsan",
+   "impr": 21,
+   "pos": 15.0,
    "src": "gsc"
   },
   {
@@ -44,15 +44,21 @@
    "src": "gsc"
   },
   {
+   "q": "ব্রাহ্মণবাড়িয়া জেলার আয়তন কত",
+   "impr": 17,
+   "pos": 10.6,
+   "src": "gsc"
+  },
+  {
    "q": "বি বাড়িয়া জেলার জনসংখ্যা কত",
    "impr": 16,
    "pos": 8.9,
    "src": "gsc"
   },
   {
-   "q": "ব্রাহ্মণবাড়িয়া জেলার আয়তন কত",
-   "impr": 16,
-   "pos": 10.8,
+   "q": "কক্সবাজার জেলার জনসংখ্যা কত ২০২৪",
+   "impr": 15,
+   "pos": 8.5,
    "src": "gsc"
   },
   {
@@ -63,26 +69,32 @@
   },
   {
    "q": "সাভার উপজেলার আয়তন কত",
-   "impr": 14,
-   "pos": 8.4,
+   "impr": 15,
+   "pos": 8.6,
    "src": "gsc"
   },
   {
    "q": "ব্রাহ্মণবাড়িয়া কত বর্গ কিলোমিটার",
-   "impr": 13,
+   "impr": 14,
    "pos": 9.4,
-   "src": "gsc"
-  },
-  {
-   "q": "কক্সবাজার জেলার জনসংখ্যা কত ২০২৪",
-   "impr": 13,
-   "pos": 8.5,
    "src": "gsc"
   },
   {
    "q": "রোনান সুলিভান কোন দেশের",
    "impr": 13,
    "pos": 9.5,
+   "src": "gsc"
+  },
+  {
+   "q": "ronan sullivan",
+   "impr": 12,
+   "pos": 15.4,
+   "src": "gsc"
+  },
+  {
+   "q": "ব্রাহ্মণবাড়িয়া জনসংখ্যা কত",
+   "impr": 11,
+   "pos": 8.2,
    "src": "gsc"
   },
   {
@@ -95,12 +107,6 @@
    "q": "fazlul qadir chaudhry",
    "impr": 11,
    "pos": 9.4,
-   "src": "gsc"
-  },
-  {
-   "q": "ব্রাহ্মণবাড়িয়া জনসংখ্যা কত",
-   "impr": 10,
-   "pos": 8.2,
    "src": "gsc"
   }
  ]

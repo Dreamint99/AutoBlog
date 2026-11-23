@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-08-22..2026-11-20, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-23..2026-11-21, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "champions league quiz",
@@ -82,6 +82,12 @@
   {
    "q": "english premier league",
    "impr": 11160,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "champions league draw 2026",
+   "impr": 10909,
    "pos": null,
    "src": "bingkw"
   },
@@ -248,6 +254,18 @@
    "src": "bingkw"
   },
   {
+   "q": "world cup winners",
+   "impr": 1506,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "rugby world cup",
+   "impr": 1494,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
    "q": "premier league teams",
    "impr": 1485,
    "pos": null,
@@ -350,6 +368,18 @@
    "src": "bingkw"
   },
   {
+   "q": "world cup schedule",
+   "impr": 1042,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "rugby league world cup",
+   "impr": 1012,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
    "q": "premier league today",
    "impr": 1004,
    "pos": null,
@@ -446,36 +476,6 @@
    "src": "bingkw"
   },
   {
-   "q": "afc champions league",
-   "impr": 730,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "women's world cup 2026",
-   "impr": 727,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "premier league schedule 2026",
-   "impr": 713,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "premier league news",
-   "impr": 701,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "premier league soccer",
-   "impr": 693,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
    "q": "us open tennis 2026 schedule",
    "impr": 2438,
    "pos": 9.4,
@@ -513,7 +513,7 @@
   },
   {
    "q": "us open tennis 2026 dates",
-   "impr": 358,
+   "impr": 357,
    "pos": 8.0,
    "src": "bing"
   },
@@ -782,13 +782,13 @@
    "src": "bing"
   },
   {
-   "q": "world cup 2026 group standings",
+   "q": "fifa 2026 group standings",
    "impr": 14,
    "pos": 8.0,
    "src": "bing"
   },
   {
-   "q": "fifa 2026 group standings",
+   "q": "world cup 2026 group standings",
    "impr": 14,
    "pos": 8.0,
    "src": "bing"
@@ -800,13 +800,13 @@
    "src": "bing"
   },
   {
-   "q": "international break",
+   "q": "international break fixtures",
    "impr": 13,
    "pos": 9.0,
    "src": "bing"
   },
   {
-   "q": "international break fixtures",
+   "q": "international break",
    "impr": 13,
    "pos": 9.0,
    "src": "bing"

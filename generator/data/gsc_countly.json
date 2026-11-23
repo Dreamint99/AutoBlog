@@ -1,9 +1,9 @@
 {
- "source": "Search Console API 2026-08-22..2026-11-20",
+ "source": "Search Console API 2026-08-23..2026-11-21",
  "pages": [
   {
    "url": "https://countly.net/",
-   "impressions": 357,
+   "impressions": 343,
    "clicks": 2,
    "queries": [
     [
@@ -79,12 +79,12 @@
      95
     ]
    ],
-   "position": 35.7,
-   "ctr": 0.0056
+   "position": 34.7,
+   "ctr": 0.0058
   },
   {
    "url": "https://countly.net/top-21-richest-people-in-greece-2026",
-   "impressions": 136,
+   "impressions": 132,
    "clicks": 0,
    "queries": [
     [
@@ -540,7 +540,7 @@
   },
   {
    "url": "https://countly.net/top-54-richest-people-in-singapore-2026",
-   "impressions": 18,
+   "impressions": 17,
    "clicks": 0,
    "queries": [
     [
@@ -562,7 +562,7 @@
      79
     ]
    ],
-   "position": 20.4,
+   "position": 21.2,
    "ctr": 0.0
   },
   {
@@ -680,6 +680,27 @@
    "ctr": 0.0
   },
   {
+   "url": "https://countly.net/how-many-roblox-users-are-there-in-2026-global-by-country",
+   "impressions": 14,
+   "clicks": 0,
+   "queries": [
+    [
+     "roblox dau",
+     1,
+     0,
+     23
+    ],
+    [
+     "site:countly.net",
+     1,
+     0,
+     77
+    ]
+   ],
+   "position": 10.3,
+   "ctr": 0.0
+  },
+  {
    "url": "https://countly.net/richest-people-in-the-world-2026-net-worth-rankings-trends",
    "impressions": 14,
    "clicks": 0,
@@ -728,27 +749,6 @@
     ]
    ],
    "position": 17.8,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/how-many-roblox-users-are-there-in-2026-global-by-country",
-   "impressions": 13,
-   "clicks": 0,
-   "queries": [
-    [
-     "roblox dau",
-     1,
-     0,
-     23
-    ],
-    [
-     "site:countly.net",
-     1,
-     0,
-     77
-    ]
-   ],
-   "position": 10.5,
    "ctr": 0.0
   },
   {
@@ -1192,21 +1192,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/fastest-growing-companies-2026-top-revenue-growth-leaders",
-   "impressions": 7,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     2,
-     0,
-     35
-    ]
-   ],
-   "position": 16.7,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/game-store-industry-2026-definitive-market-size-retailer-stats",
    "impressions": 7,
    "clicks": 0,
@@ -1219,21 +1204,6 @@
     ]
    ],
    "position": 25.1,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/how-many-electric-vehicle-charging-stations-are-there-in-202",
-   "impressions": 7,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     2,
-     0,
-     64
-    ]
-   ],
-   "position": 43.9,
    "ctr": 0.0
   },
   {
@@ -1377,6 +1347,21 @@
    "ctr": 0.0
   },
   {
+   "url": "https://countly.net/fastest-growing-companies-2026-top-revenue-growth-leaders",
+   "impressions": 6,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     2,
+     0,
+     35
+    ]
+   ],
+   "position": 19.3,
+   "ctr": 0.0
+  },
+  {
    "url": "https://countly.net/how-many-linkedin-users-are-there-in-2026-global-by-country",
    "impressions": 6,
    "clicks": 0,
@@ -1427,6 +1412,21 @@
     ]
    ],
    "position": 18.2,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/how-many-electric-vehicle-charging-stations-are-there-in-202",
+   "impressions": 5,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     2,
+     0,
+     64
+    ]
+   ],
+   "position": 29.0,
    "ctr": 0.0
   },
   {
@@ -2133,14 +2133,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/how-many-zoom-users-are-there-in-2026-global-by-country",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 73.0,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/internet-users-by-country-2026-global-ranking-key-stats",
    "impressions": 1,
    "clicks": 0,
@@ -2294,14 +2286,6 @@
    "clicks": 0,
    "queries": [],
    "position": 4.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/topic/companies",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 85.0,
    "ctr": 0.0
   }
  ]
