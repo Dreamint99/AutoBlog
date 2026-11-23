@@ -22,7 +22,7 @@ export default async function Embed({ params }: { params: Promise<{ site: string
     if (sep < 0) notFound();
     const f = await fixtureById(slug.slice(0, sep), slug.slice(sep + 1));
     fs = f ? [f] : [];
-  } else fs = (await leagueFixtures(slug)).filter(f => Date.parse(f.starts) > Date.now() - 2 * 86400000).slice(0, 20);
+  } else { const all = await leagueFixtures(slug); fs = all.filter(f => Date.parse(f.starts) > Date.now() - 2 * 86400000).slice(0, 20); /* league page links here for every league it lists: when nothing is recent (break/off-season), show the latest fixtures instead of a 404 */ if (!fs.length) fs = [...all].sort((a, b) => Date.parse(b.starts) - Date.parse(a.starts)).slice(0, 20); }
   if (!fs.length) notFound();
   return <><meta httpEquiv="refresh" content="30" /><main className="nm-engine nm-embed" style={{ padding: 12 }}><h1 style={{ fontSize: 18 }}>Live scores</h1><FixtureList fixtures={fs} compact /><p><a href="https://ninetymins.com/" target="_blank" rel="nofollow noopener">Live scores by NinetyMins</a> · <a href="/widgets" target="_blank" rel="noopener">Get this widget</a></p><p style={{ fontSize: 12 }}>Refreshes every 30 seconds · Source: ESPN · UTC times</p></main></>;
 }
