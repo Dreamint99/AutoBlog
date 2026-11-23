@@ -1,15 +1,15 @@
 {
- "accessed": "2026-11-16",
+ "accessed": "2026-11-23",
  "source": "https://raims.oep.gov.bd/agencies",
  "source_note": "RAIMS (Recruiting Agency Information Management System) of BMET, public table.",
  "status_counts": {
-  "Expired": 261,
-  "Active": 2202,
+  "Expired": 258,
+  "Active": 2207,
   "Cancelled": 235,
-  "Suspended": 151,
-  "Server Locked": 10
+  "Suspended": 149,
+  "Server Locked": 11
  },
- "count": 2859,
+ "count": 2860,
  "agencies": [
   {
    "rl": "RL2058",
@@ -652,6 +652,16 @@
    "source": "https://raims.oep.gov.bd/agencies"
   },
   {
+   "rl": "RL1370",
+   "name": "AIM OVERSEAS",
+   "address": "Dr. Halim Palace, 3rd Floor, 60/2, Naya Paltan, Dhaka GPO, Paltan, Dhaka, Dhaka, Bangladesh",
+   "phone": "01720528315",
+   "email": "",
+   "status": "Active",
+   "expiry": "2028-12-31",
+   "source": "https://raims.oep.gov.bd/agencies"
+  },
+  {
    "rl": "RL0716",
    "name": "AIR CONNECTION OVERSEAS LTD",
    "address": "166/167 AL RAZI COMPLEX, PURANA PALTAN, Dhaka GPO, Paltan, Dhaka, Dhaka, Bangladesh",
@@ -837,8 +847,8 @@
    "address": "80, KAKRAIL, RUPAYN KARIM TOWER, 6/D, (6TH FLOOR), Ramna, Ramna, Dhaka, Dhaka, Bangladesh",
    "phone": "01672223980",
    "email": "",
-   "status": "Expired",
-   "expiry": "2026-06-21",
+   "status": "Active",
+   "expiry": "2029-06-21",
    "source": "https://raims.oep.gov.bd/agencies"
   },
   {
@@ -1777,7 +1787,7 @@
    "address": "70/D, (4th Floor),Purana Paltan Line,VIP ROad,Dhaka-1000, , Amtali, Davidhar, Comilla, Chattagram, Bangladesh",
    "phone": "01711408668",
    "email": "",
-   "status": "Active",
+   "status": "Expired",
    "expiry": "2026-11-20",
    "source": "https://raims.oep.gov.bd/agencies"
   },
@@ -2528,7 +2538,7 @@
    "phone": "02222220706",
    "email": "",
    "status": "Active",
-   "expiry": "2026-11-29",
+   "expiry": "2029-11-29",
    "source": "https://raims.oep.gov.bd/agencies"
   },
   {
@@ -2878,7 +2888,7 @@
    "phone": "029850452",
    "email": "",
    "status": "Active",
-   "expiry": "2026-12-31",
+   "expiry": "2029-12-31",
    "source": "https://raims.oep.gov.bd/agencies"
   },
   {
@@ -4277,8 +4287,8 @@
    "address": "28/1/B, BN TOWER 28/1/B, TOYANABEE CIRCULOR ROAD, MOTHIJHEEL,DHAKA-1000, Ramna, Ramna, Dhaka, Dhaka, Bangladesh",
    "phone": "01712244182",
    "email": "",
-   "status": "Expired",
-   "expiry": "2026-09-02",
+   "status": "Active",
+   "expiry": "2029-09-02",
    "source": "https://raims.oep.gov.bd/agencies"
   },
   {
@@ -4384,7 +4394,7 @@
   {
    "rl": "RL2560",
    "name": "BARON OVERSEAS LIMITED",
-   "address": "Saiham Sky View (2nd Floor), 45 Bijaynagar, Ramna, Ramna, Dhaka, Dhaka, Bangladesh",
+   "address": "Saiham Sky View Tower (6th Floor), Flat No: C-06, 45 Bijaynagar, Ramna, Ramna, Dhaka, Dhaka, Bangladesh",
    "phone": "02226664361",
    "email": "",
    "status": "Server Locked",
@@ -5179,6 +5189,16 @@
    "email": "",
    "status": "Active",
    "expiry": "2029-02-24",
+   "source": "https://raims.oep.gov.bd/agencies"
+  },
+  {
+   "rl": "RL3008",
+   "name": "CELESTIAL TECH LTD.",
+   "address": "18, 18,college street, Jigatala TSO, Dhanmondi, Dhaka, Dhaka, Bangladesh",
+   "phone": "01911310594",
+   "email": "",
+   "status": "Active",
+   "expiry": "2029-03-15",
    "source": "https://raims.oep.gov.bd/agencies"
   },
   {
@@ -6847,8 +6867,8 @@
    "address": "Sotabdi center(9a/9th floor)292 Inner circular Road fokirapool,Dhaka-1000, , Amtali, Davidhar, Comilla, Chattagram, Bangladesh",
    "phone": "01718-806785",
    "email": "",
-   "status": "Expired",
-   "expiry": "2026-11-15",
+   "status": "Active",
+   "expiry": "2029-11-14",
    "source": "https://raims.oep.gov.bd/agencies"
   },
   {
@@ -6877,7 +6897,7 @@
    "address": "104, GLOBE CHAMBER (4TH FLOOR), MOTIJHEEL C/A, DHAKA-1000, , Amtali, Davidhar, Comilla, Chattagram, Bangladesh",
    "phone": "01711-565079",
    "email": "",
-   "status": "Active",
+   "status": "Expired",
    "expiry": "2026-11-16",
    "source": "https://raims.oep.gov.bd/agencies"
   },
@@ -8838,7 +8858,7 @@
    "phone": "01309035165",
    "email": "",
    "status": "Active",
-   "expiry": "2027-02-03",
+   "expiry": "2030-02-03",
    "source": "https://raims.oep.gov.bd/agencies"
   },
   {
@@ -12997,8 +13017,8 @@
    "address": "49, 17, Banani TSO, Banani, Dhaka, Dhaka, Bangladesh",
    "phone": "01758079966",
    "email": "",
-   "status": "Expired",
-   "expiry": "2026-10-11",
+   "status": "Active",
+   "expiry": "2029-10-11",
    "source": "https://raims.oep.gov.bd/agencies"
   },
   {
@@ -13402,16 +13422,6 @@
    "source": "https://raims.oep.gov.bd/agencies"
   },
   {
-   "rl": "RL0774",
-   "name": "M/S. A. R. Trade Ltd.",
-   "address": "101-104, gulshan shoping center (2nd floor) gulshan-1, dhaka, , Amtali, Davidhar, Comilla, Chattagram, Bangladesh",
-   "phone": "8856220, 8819331",
-   "email": "",
-   "status": "Suspended",
-   "expiry": "2009-12-31",
-   "source": "https://raims.oep.gov.bd/agencies"
-  },
-  {
    "rl": "RL0524",
    "name": "M/S. A. R. Trade Ltd.",
    "address": "N/A, , Amtali, Davidhar, Comilla, Chattagram, Bangladesh",
@@ -13419,6 +13429,16 @@
    "email": "",
    "status": "Cancelled",
    "expiry": "2027-08-29",
+   "source": "https://raims.oep.gov.bd/agencies"
+  },
+  {
+   "rl": "RL0774",
+   "name": "M/S. A. R. Trade Ltd.",
+   "address": "101-104, gulshan shoping center (2nd floor) gulshan-1, dhaka, , Amtali, Davidhar, Comilla, Chattagram, Bangladesh",
+   "phone": "8856220, 8819331",
+   "email": "",
+   "status": "Suspended",
+   "expiry": "2009-12-31",
    "source": "https://raims.oep.gov.bd/agencies"
   },
   {
@@ -15554,8 +15574,8 @@
   {
    "rl": "RL1294",
    "name": "M/S. KM International",
-   "address": "CHA-73/2,Ocean Tower(2nd fLOOR),North Badda,Dhaka-1212. ,Dhaka-1000, , Amtali, Davidhar, Comilla, Chattagram, Bangladesh",
-   "phone": "1234567890",
+   "address": "Cha-73/2, Ocean Tower(2nd Floor), North Badda, Dhaka-1212, Bangladesh, Progoti shoroni, gulshan 1212, Gulshan, Dhaka, Dhaka, Bangladesh",
+   "phone": "01713005463",
    "email": "",
    "status": "Active",
    "expiry": "2028-12-31",
@@ -16944,7 +16964,7 @@
   {
    "rl": "RL1577",
    "name": "M/S. Ras Overseas Ltd",
-   "address": "205/1,Shahid Sayed Nazrul Islam Sarani,2nd Floor,Bijoynagar,Dhaka, , Amtali, Davidhar, Comilla, Chattagram, Bangladesh",
+   "address": "Chaina Town, 67/1, 68,70, 70/3, Naya Paltan Dhaka, VIP Road, dhaka-1000, nayapaltan, Dhaka, Dhaka, Bangladesh",
    "phone": "+88029557650",
    "email": "",
    "status": "Active",
@@ -20247,7 +20267,7 @@
    "address": "65/2/1, Purana Paltan, Paramount Height, 4th Floor, D-1,, Culvert Road, Dhaka GPO, Paltan, Dhaka, Dhaka, Bangladesh",
    "phone": "01819955614",
    "email": "",
-   "status": "Active",
+   "status": "Expired",
    "expiry": "2026-11-19",
    "source": "https://raims.oep.gov.bd/agencies"
   },
@@ -20447,7 +20467,7 @@
    "address": "413, Nayanagar, Cocacola Road, Badda, Badda, Dhaka, Dhaka, Bangladesh",
    "phone": "+8809611522500",
    "email": "",
-   "status": "Suspended",
+   "status": "Active",
    "expiry": "2028-12-31",
    "source": "https://raims.oep.gov.bd/agencies"
   },
@@ -20517,8 +20537,8 @@
    "address": "HOUSE NO 111/FLOT NO 3/A, SHANTI NAGAR, dhaka-1000, nayapaltan, Dhaka, Dhaka, Bangladesh",
    "phone": "0249349377",
    "email": "",
-   "status": "Expired",
-   "expiry": "2026-10-03",
+   "status": "Active",
+   "expiry": "2029-10-03",
    "source": "https://raims.oep.gov.bd/agencies"
   },
   {
@@ -21084,7 +21104,7 @@
   {
    "rl": "RL1877",
    "name": "NIPPON OUTSOURCING (BD) LIMITED",
-   "address": "Ma-Moni Bhabhan, Room no- 304, KA-2, KhilkhetTSO, Khilkhet, Dhaka, Dhaka, Bangladesh",
+   "address": "02, Dr. Sofi Sarani Road, 100 Feet Madani Avenue, Notun Bazar, Vatara, Vatara, Dhaka, Dhaka, Bangladesh",
    "phone": "01711324532",
    "email": "",
    "status": "Active",
@@ -22068,7 +22088,7 @@
    "phone": "01841297777",
    "email": "",
    "status": "Active",
-   "expiry": "2026-12-06",
+   "expiry": "2029-12-06",
    "source": "https://raims.oep.gov.bd/agencies"
   },
   {
@@ -23907,7 +23927,7 @@
    "address": "263, MAHI HASAN TOWER MALIBAGH, Ramna, Ramna, Dhaka, Dhaka, Bangladesh",
    "phone": "01817384524",
    "email": "",
-   "status": "Active",
+   "status": "Expired",
    "expiry": "2026-11-21",
    "source": "https://raims.oep.gov.bd/agencies"
   },
@@ -25437,8 +25457,8 @@
    "address": "40/1 A, Nurjahan Trade Center, vip road, Nayapaltan, Dhaka GPO, Paltan, Dhaka, Dhaka, Bangladesh",
    "phone": "01913809370",
    "email": "",
-   "status": "Expired",
-   "expiry": "2026-08-24",
+   "status": "Active",
+   "expiry": "2029-08-23",
    "source": "https://raims.oep.gov.bd/agencies"
   },
   {
@@ -27197,7 +27217,7 @@
    "address": "67/1, 68,70, 70/3, PALTAN CHINA TOWN, EAST TOWER (LEVEL-11/1) LIFT-10, NAYA PALTAN, ,DHAKA-1000,BANGLADESH, VIP Road, Dhaka GPO, Paltan, Dhaka, Dhaka, Bangladesh",
    "phone": "01794534722",
    "email": "",
-   "status": "Suspended",
+   "status": "Active",
    "expiry": "2029-10-03",
    "source": "https://raims.oep.gov.bd/agencies"
   },
@@ -27862,16 +27882,6 @@
    "source": "https://raims.oep.gov.bd/agencies"
   },
   {
-   "rl": "RL2556",
-   "name": "VIC Global",
-   "address": "5th/B, 69/1, Panthapath, Banglamotor, Banglamotor, Dhaka, Dhaka, Bangladesh",
-   "phone": "01896442230",
-   "email": "",
-   "status": "Active",
-   "expiry": "2029-08-05",
-   "source": "https://raims.oep.gov.bd/agencies"
-  },
-  {
    "rl": "RL1978",
    "name": "VICTORIA OVERSEAS",
    "address": "101, fazil pur, Unknown, Sadarsouth, Comilla, Chattagram, Bangladesh",
@@ -28067,7 +28077,7 @@
    "address": "G-NAT TOWER, 116-117.D.I.T.EXTENSION ROAD.FAKIRAPOOL.DHAKA-1000, Dhaka GPO, Paltan, Dhaka, Dhaka, Bangladesh",
    "phone": "01919104097",
    "email": "",
-   "status": "Expired",
+   "status": "Server Locked",
    "expiry": "2025-05-18",
    "source": "https://raims.oep.gov.bd/agencies"
   },
