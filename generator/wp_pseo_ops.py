@@ -156,6 +156,9 @@ def ping():
 def rmping():
     code = PHP.replace("__KEY__", INDEXNOW_KEY)
     ex = next((s for s in snippets() if s.get("name") == SN_NAME), None)
+    if not ex:
+        g = wp("GET", f"{API}/44"); ex = g.json() if g.ok and g.json().get("name") == SN_NAME else None
+    if not ex: print("snippet not found"); sys.exit(1)
     r = wp("POST", f"{API}/{ex['id']}", json={"name": SN_NAME, "code": code, "scope": "global", "active": True})
     print("snippet update", r.status_code, "" if r.ok else r.text[:300])
     r = wp("POST", "pbd-ops/v1/indexnow", json={"urls": URLS})
