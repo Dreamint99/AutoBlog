@@ -1,4 +1,4 @@
-﻿name: probashiinfo CTR titles
+name: probashiinfo CTR titles
 
 # Manual: rewrite Rank Math titles/descriptions of high-impression, low-CTR posts
 # (generator/wp_ctr.py). Dry run unless "apply" is ticked; the change log is committed.
@@ -59,17 +59,14 @@ jobs:
           LIMIT: ${{ github.event.inputs.limit || '25' }}
           REDO_BEFORE: ${{ github.event.inputs.redo_before }}
         run: |
+          # branch seo/probashi-pseo-mw: overrides run = minimum-wage batch 1 + Greece fix only
           if [ "${{ github.event.inputs.overrides }}" = "true" ] && [ "$APPLY" != "true" ]; then
-            python wp_seo_n1124.py --dump
-            python wp_seo_n1124.py
-            exit 0
+            python wp_pseo_mw.py
+            exit $?
           fi
           if [ "${{ github.event.inputs.overrides }}" = "true" ]; then
-            python wp_ctr.py --overrides
-            python wp_seo_t124.py --apply
-            python wp_seo_n1123.py --apply
-            python wp_seo_n1124.py --apply
-            exit 0
+            python wp_pseo_mw.py --apply
+            exit $?
           fi
           if [ "$APPLY" = "true" ]; then python wp_ctr.py --apply "$LIMIT"; else python wp_ctr.py "$LIMIT"; fi
       - name: Commit change log
