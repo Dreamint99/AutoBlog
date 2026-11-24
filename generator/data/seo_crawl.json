@@ -1,76 +1,76 @@
 {
  "gccguide": {
-  "sitemap_urls": 229,
-  "crawled_ok": 892,
+  "sitemap_urls": 216,
+  "crawled_ok": 867,
   "orphans": [],
   "depth_histogram": {
    "0": 1,
-   "1": 31,
-   "2": 197
+   "1": 25,
+   "2": 190
   },
   "redirect_links": [],
   "redirect_link_count": 0,
   "broken_links": [],
   "broken_link_count": 0,
   "noindex": [
-   "https://gccguide.com/embassy/philippines-consulate-general-in-uae-dubai",
-   "https://gccguide.com/embassy/india-consulate-general-in-saudi-arabia-jeddah",
    "https://gccguide.com/embassy/philippines-embassy-in-oman",
-   "https://gccguide.com/embassy/philippines-embassy-in-kuwait",
-   "https://gccguide.com/embassy/philippines-consulate-general-in-saudi-arabia-jeddah",
-   "https://gccguide.com/embassy/pakistan-embassy-in-saudi-arabia",
-   "https://gccguide.com/embassy/philippines-embassy-in-bahrain",
-   "https://gccguide.com/embassy/philippines-embassy-in-saudi-arabia",
-   "https://gccguide.com/embassy/pakistan-consulate-general-in-uae-dubai",
+   "https://gccguide.com/embassy/india-consulate-general-in-saudi-arabia-jeddah",
+   "https://gccguide.com/embassy/philippines-consulate-general-in-uae-dubai",
    "https://gccguide.com/embassy/philippines-embassy-in-uae",
+   "https://gccguide.com/embassy/pakistan-embassy-in-saudi-arabia",
+   "https://gccguide.com/embassy/philippines-embassy-in-saudi-arabia",
+   "https://gccguide.com/embassy/philippines-consulate-general-in-saudi-arabia-jeddah",
+   "https://gccguide.com/embassy/philippines-embassy-in-bahrain",
+   "https://gccguide.com/embassy/philippines-embassy-in-kuwait",
    "https://gccguide.com/embassy/philippines-embassy-in-qatar",
-   "https://gccguide.com/overtime/kuwait",
+   "https://gccguide.com/embassy/pakistan-consulate-general-in-uae-dubai",
    "https://gccguide.com/overtime/qatar",
-   "https://gccguide.com/gratuity/qatar",
-   "https://gccguide.com/gratuity/kuwait",
-   "https://gccguide.com/annual-leave/qatar",
-   "https://gccguide.com/annual-leave/kuwait",
-   "https://gccguide.com/notice-period/qatar",
    "https://gccguide.com/notice-period/kuwait",
-   "https://gccguide.com/gratuity/uae/basic-5000-aed-15-years",
+   "https://gccguide.com/overtime/kuwait",
+   "https://gccguide.com/notice-period/qatar",
+   "https://gccguide.com/gratuity/kuwait",
+   "https://gccguide.com/annual-leave/kuwait",
+   "https://gccguide.com/gratuity/qatar",
+   "https://gccguide.com/annual-leave/qatar",
+   "https://gccguide.com/gratuity/uae/basic-5000-aed-7-years",
+   "https://gccguide.com/gratuity/uae/basic-5000-aed-3-years",
+   "https://gccguide.com/gratuity/uae/basic-5000-aed-5-years",
    "https://gccguide.com/gratuity/uae/basic-5000-aed-1-years",
-   "https://gccguide.com/gratuity/saudi-arabia/basic-5000-sar-1-years",
+   "https://gccguide.com/gratuity/uae/basic-5000-aed-15-years",
+   "https://gccguide.com/gratuity/uae/basic-5000-aed-10-years",
+   "https://gccguide.com/gratuity/bahrain/basic-5000-bhd-3-years",
+   "https://gccguide.com/gratuity/bahrain/basic-5000-bhd-15-years",
+   "https://gccguide.com/gratuity/bahrain/basic-5000-bhd-1-years",
+   "https://gccguide.com/gratuity/bahrain/basic-5000-bhd-7-years",
+   "https://gccguide.com/gratuity/bahrain/basic-5000-bhd-5-years",
+   "https://gccguide.com/gratuity/bahrain/basic-5000-bhd-10-years",
+   "https://gccguide.com/gratuity/saudi-arabia/basic-5000-sar-3-years",
+   "https://gccguide.com/gratuity/saudi-arabia/basic-5000-sar-10-years",
    "https://gccguide.com/gratuity/saudi-arabia/basic-5000-sar-15-years",
+   "https://gccguide.com/gratuity/saudi-arabia/basic-5000-sar-7-years",
+   "https://gccguide.com/gratuity/saudi-arabia/basic-5000-sar-1-years",
+   "https://gccguide.com/gratuity/saudi-arabia/basic-5000-sar-5-years",
    "https://gccguide.com/gratuity/oman/basic-5000-omr-1-years",
    "https://gccguide.com/gratuity/oman/basic-5000-omr-15-years",
-   "https://gccguide.com/gratuity/bahrain/basic-5000-bhd-1-years",
-   "https://gccguide.com/gratuity/bahrain/basic-5000-bhd-15-years",
-   "https://gccguide.com/prayer-times/bahrain/sanabis",
-   "https://gccguide.com/prayer-times/bahrain/madinat-isa",
-   "https://gccguide.com/prayer-times/bahrain/al-hadd",
-   "https://gccguide.com/prayer-times/bahrain/az-zallaq",
-   "https://gccguide.com/prayer-times/bahrain/sar",
-   "https://gccguide.com/prayer-times/oman/liwa",
-   "https://gccguide.com/prayer-times/oman/madha-al-jadidah",
-   "https://gccguide.com/prayer-times/oman/badiyah",
-   "https://gccguide.com/prayer-times/oman/lima",
-   "https://gccguide.com/prayer-times/oman/ibra",
-   "https://gccguide.com/prayer-times/oman/shinas",
-   "https://gccguide.com/prayer-times/oman/sufalat-sama-il",
-   "https://gccguide.com/prayer-times/oman/bidbid",
-   "https://gccguide.com/prayer-times/oman/hayma",
-   "https://gccguide.com/prayer-times/oman/thamarit",
-   "https://gccguide.com/prayer-times/oman/hilf",
-   "https://gccguide.com/prayer-times/oman/khasab",
-   "https://gccguide.com/prayer-times/oman/dib-dibba",
-   "https://gccguide.com/prayer-times/oman/adam",
-   "https://gccguide.com/prayer-times/oman/bayt-al-awabi",
-   "https://gccguide.com/prayer-times/oman/mina-daba",
-   "https://gccguide.com/prayer-times/oman/al-wadan",
-   "https://gccguide.com/prayer-times/oman/izki"
+   "https://gccguide.com/gratuity/oman/basic-5000-omr-7-years",
+   "https://gccguide.com/gratuity/oman/basic-5000-omr-3-years",
+   "https://gccguide.com/gratuity/oman/basic-5000-omr-10-years",
+   "https://gccguide.com/gratuity/oman/basic-5000-omr-5-years",
+   "https://gccguide.com/prayer-times/kuwait/as-salimiyah",
+   "https://gccguide.com/prayer-times/kuwait/al-mahbulah",
+   "https://gccguide.com/prayer-times/kuwait/al-farwaniyah",
+   "https://gccguide.com/prayer-times/kuwait/ar-rabiyah",
+   "https://gccguide.com/prayer-times/kuwait/ad-dasmah",
+   "https://gccguide.com/prayer-times/kuwait/bayan",
+   "https://gccguide.com/prayer-times/kuwait/abu-fatira"
   ],
   "canonical_mismatch": [],
   "duplicate_titles": [],
-  "checked": "2026-11-17T13:58:15+00:00"
+  "checked": "2026-11-24T15:42:15+00:00"
  },
  "countly": {
   "sitemap_urls": 3,
-  "crawled_ok": 1053,
+  "crawled_ok": 1080,
   "orphans": [
    "https://countly.net/sitemap-articles.xml",
    "https://countly.net/sitemap-data.xml",
@@ -81,24 +81,14 @@
   },
   "redirect_links": [
    {
-    "url": "https://countly.net/chatgpt-users-2026-complete-growth-guide",
-    "to": "/chatgpt-users-2026-400m-monthly-active-demographics",
-    "on": "https://countly.net/chatgpt-users-vs-claude-1-1b-vs-1b-mau-in-2026"
+    "url": "https://countly.net/linkedin-users-by-country-2026-top-rankings-growth",
+    "to": "/linkedin-users-by-country-2026-updated-global-numbers-insights",
+    "on": "https://countly.net/linkedin-users-by-country-2026-updated-global-numbers-insights"
    },
    {
-    "url": "https://countly.net/chatgpt-users-2026-987m-and-surging-fast",
-    "to": "/chatgpt-users-2026-400m-monthly-active-demographics",
-    "on": "https://countly.net/chatgpt-users-vs-claude-1-1b-vs-1b-mau-in-2026"
-   },
-   {
-    "url": "https://countly.net/richest-billionaires-2026-the-complete-top-10-ranking",
+    "url": "https://countly.net/richest-billionaires-2026-updated-top-10-net-worth",
     "to": "/richest-billionaires-2026-updated-top-20-net-worth-ranking",
-    "on": "https://countly.net/richest-billionaires-net-worth-2026-top-10-tracker"
-   },
-   {
-    "url": "https://countly.net/internet-users-by-country-2026-global-penetration-growth",
-    "to": "/internet-users-by-country-2026-global-ranking-key-stats",
-    "on": "https://countly.net/internet-users-by-country-2026-global-ranking-key-stats"
+    "on": "https://countly.net/richest-billionaires-2026-top-10-net-worth-ai-shift"
    },
    {
     "url": "https://countly.net/richest-billionaires-2026-top-10-net-worth-wealth-sources",
@@ -111,14 +101,24 @@
     "on": "https://countly.net/richest-billionaires-2026-top-10-net-worth-ai-shift"
    },
    {
-    "url": "https://countly.net/richest-billionaires-2026-updated-top-10-net-worth",
+    "url": "https://countly.net/richest-billionaires-2026-the-complete-top-10-ranking",
     "to": "/richest-billionaires-2026-updated-top-20-net-worth-ranking",
-    "on": "https://countly.net/richest-billionaires-2026-top-10-net-worth-ai-shift"
+    "on": "https://countly.net/how-many-billionaires-in-2026-complete-global-count"
    },
    {
-    "url": "https://countly.net/linkedin-users-by-country-2026-top-rankings-growth",
-    "to": "/linkedin-users-by-country-2026-updated-global-numbers-insights",
-    "on": "https://countly.net/linkedin-users-by-country-2026-updated-global-numbers-insights"
+    "url": "https://countly.net/internet-users-by-country-2026-global-penetration-growth",
+    "to": "/internet-users-by-country-2026-global-ranking-key-stats",
+    "on": "https://countly.net/internet-users-by-country-2026-global-ranking-key-stats"
+   },
+   {
+    "url": "https://countly.net/chatgpt-users-2026-987m-and-surging-fast",
+    "to": "/chatgpt-users-2026-400m-monthly-active-demographics",
+    "on": "https://countly.net/chatgpt-users-vs-claude-1-1b-vs-1b-mau-in-2026"
+   },
+   {
+    "url": "https://countly.net/chatgpt-users-2026-complete-growth-guide",
+    "to": "/chatgpt-users-2026-400m-monthly-active-demographics",
+    "on": "https://countly.net/chatgpt-users-vs-claude-1-1b-vs-1b-mau-in-2026"
    }
   ],
   "redirect_link_count": 8,
@@ -126,9 +126,9 @@
   "broken_link_count": 0,
   "noindex": [
    "https://countly.net/data/compare",
-   "https://countly.net/data/embed/gdp-growth",
    "https://countly.net/data/embed/population",
    "https://countly.net/data/embed/gdp-per-capita",
+   "https://countly.net/data/embed/gdp-growth",
    "https://countly.net/data/embed/2026-11"
   ],
   "canonical_mismatch": [],
@@ -136,42 +136,97 @@
    "Compare country statistics",
    "Country data, rankings &amp; charts"
   ],
-  "checked": "2026-11-17T13:43:00+00:00"
+  "checked": "2026-11-24T15:31:13+00:00"
  },
  "walvi": {
-  "sitemap_urls": 624,
-  "crawled_ok": 662,
+  "sitemap_urls": 651,
+  "crawled_ok": 690,
   "orphans": [],
   "depth_histogram": {
    "0": 1,
    "1": 79,
-   "2": 544
+   "2": 571
   },
   "redirect_links": [
    {
-    "url": "https://visapoint.net/south-korea-visa-status-4-ways-to-check-online-in-2026",
-    "to": "/visa-check/south-korea",
+    "url": "https://visapoint.net/check-japan-visa-status-online-2026-mofa-vfs-global-steps",
+    "to": "/visa-check/japan",
     "on": "https://visapoint.net/"
    },
    {
-    "url": "https://visapoint.net/uae-visa-status-online-2026-fast-4-step-verification-guide",
-    "to": "/visa-check/uae",
-    "on": "https://visapoint.net/visa-check/uae"
+    "url": "https://visapoint.net/saudi-visa-status-2026-essential-guide",
+    "to": "/saudi-visa-status-2026-official-check-guide",
+    "on": "https://visapoint.net/visa-check/saudi-arabia"
    },
    {
-    "url": "https://visapoint.net/how-to-check-uae-visa-status-online-2026-step-by-step-guide",
-    "to": "/visa-check/uae",
-    "on": "https://visapoint.net/visa-check/uae"
+    "url": "https://visapoint.net/saudi-arabia-visa-status-online-2026-check-guide",
+    "to": "/visa-check/saudi-arabia",
+    "on": "https://visapoint.net/visa-check/saudi-arabia"
    },
    {
-    "url": "https://visapoint.net/united-arab-emirates-visa-status-free-check-2026-guide",
-    "to": "/visa-check/uae",
-    "on": "https://visapoint.net/visa-check/uae"
+    "url": "https://visapoint.net/saudi-arabia-visa-status-2026-step-by-step-guide",
+    "to": "/saudi-visa-status-2026-official-check-guide",
+    "on": "https://visapoint.net/visa-check/saudi-arabia"
    },
    {
-    "url": "https://visapoint.net/uae-visa-status-online-check-in-2-mins-2026-fees",
-    "to": "/visa-check/uae",
-    "on": "https://visapoint.net/visa-check/uae"
+    "url": "https://visapoint.net/saudi-arabia-visa-status-2026-official-check-guide",
+    "to": "/saudi-visa-status-2026-official-check-guide",
+    "on": "https://visapoint.net/visa-check/saudi-arabia"
+   },
+   {
+    "url": "https://visapoint.net/check-singapore-visa-status-online-2026-free-ica-portal-steps",
+    "to": "/visa-check/singapore",
+    "on": "https://visapoint.net/visa-check/singapore"
+   },
+   {
+    "url": "https://visapoint.net/check-singapore-visa-status-2026-online-guide",
+    "to": "/visa-check/singapore",
+    "on": "https://visapoint.net/visa-check/singapore"
+   },
+   {
+    "url": "https://visapoint.net/oman-visa-status-online-3-ways-to-check-in-2026",
+    "to": "/visa-check/oman",
+    "on": "https://visapoint.net/visa-check/oman"
+   },
+   {
+    "url": "https://visapoint.net/check-oman-visa-status-online-2026-3-methods-fees-steps",
+    "to": "/visa-check/oman",
+    "on": "https://visapoint.net/visa-check/oman"
+   },
+   {
+    "url": "https://visapoint.net/oman-visa-status-check-2026-passport-only-1-3-day-tourist",
+    "to": "/visa-check/oman",
+    "on": "https://visapoint.net/visa-check/oman"
+   },
+   {
+    "url": "https://visapoint.net/oman-visa-status-check-in-3-steps-2026",
+    "to": "/visa-check/oman",
+    "on": "https://visapoint.net/visa-check/oman"
+   },
+   {
+    "url": "https://visapoint.net/malaysia-visa-status-check-online-in-5-steps-2026",
+    "to": "/visa-check/malaysia",
+    "on": "https://visapoint.net/visa-check/malaysia"
+   },
+   {
+    "url": "https://visapoint.net/check-malaysia-visa-status-rm-150-fee-2-4-day-processing-2026",
+    "to": "/visa-check/malaysia",
+    "on": "https://visapoint.net/visa-check/malaysia"
+   },
+   {
+    "url": "https://visapoint.net/check-south-korea-visa-status-2026-5-10-days-fees-steps",
+    "to": "/visa-check/south-korea",
+    "on": "https://visapoint.net/guides"
+   },
+   {
+    "url": "https://visapoint.net/serbia-visa-status-online-2026-tracking-guide",
+    "to": "/visa-check/serbia",
+    "on": "https://visapoint.net/visa-check/moldova"
+   },
+   {
+    "url": "https://visapoint.net/bahrain-visa-status-online-2026-check-guide-steps",
+    "to": "/visa-check/bahrain",
+    "on": "https://visapoint.net/visa-check/bahrain"
    },
    {
     "url": "https://visapoint.net/bahrain-visa-status-2026-check-in-3-minutes",
@@ -194,99 +249,24 @@
     "on": "https://visapoint.net/visa-check/kuwait"
    },
    {
-    "url": "https://visapoint.net/malaysia-visa-status-online-2026-3-step-check-guide",
-    "to": "/visa-check/malaysia",
-    "on": "https://visapoint.net/guides"
-   },
-   {
-    "url": "https://visapoint.net/check-oman-visa-status-free-2026-rop-portal-app-steps",
-    "to": "/visa-check/oman",
-    "on": "https://visapoint.net/guides"
-   },
-   {
-    "url": "https://visapoint.net/bahrain-visa-status-online-2026-check-guide-steps",
-    "to": "/visa-check/bahrain",
-    "on": "https://visapoint.net/guides"
-   },
-   {
-    "url": "https://visapoint.net/singapore-visa-status-5-outcomes-3-5-day-processing-free-ica-check",
-    "to": "/visa-check/singapore",
-    "on": "https://visapoint.net/guides"
-   },
-   {
-    "url": "https://visapoint.net/bahrain-visa-status-check-2026-3-portals-fees-bhd-29-1000-steps",
-    "to": "/visa-check/bahrain",
-    "on": "https://visapoint.net/guides"
-   },
-   {
-    "url": "https://visapoint.net/check-uae-visa-status-free-on-3-official-portals-2026",
+    "url": "https://visapoint.net/uae-visa-status-online-2026-fast-4-step-verification-guide",
     "to": "/visa-check/uae",
-    "on": "https://visapoint.net/guides"
+    "on": "https://visapoint.net/visa-check/uae"
    },
    {
-    "url": "https://visapoint.net/check-singapore-visa-status-online-2026-free-ica-portal-steps",
-    "to": "/visa-check/singapore",
-    "on": "https://visapoint.net/guides"
+    "url": "https://visapoint.net/how-to-check-uae-visa-status-online-2026-step-by-step-guide",
+    "to": "/visa-check/uae",
+    "on": "https://visapoint.net/visa-check/uae"
    },
    {
-    "url": "https://visapoint.net/check-singapore-visa-status-2026-online-guide",
-    "to": "/visa-check/singapore",
-    "on": "https://visapoint.net/visa-check/singapore"
+    "url": "https://visapoint.net/uae-visa-status-online-check-in-2-mins-2026-fees",
+    "to": "/visa-check/uae",
+    "on": "https://visapoint.net/visa-check/uae"
    },
    {
-    "url": "https://visapoint.net/saudi-arabia-visa-status-online-2026-check-guide",
-    "to": "/visa-check/saudi-arabia",
-    "on": "https://visapoint.net/visa-check/saudi-arabia"
-   },
-   {
-    "url": "https://visapoint.net/saudi-arabia-visa-status-2026-official-check-guide",
-    "to": "/saudi-visa-status-2026-official-check-guide",
-    "on": "https://visapoint.net/visa-check/saudi-arabia"
-   },
-   {
-    "url": "https://visapoint.net/saudi-arabia-visa-status-2026-step-by-step-guide",
-    "to": "/saudi-visa-status-2026-official-check-guide",
-    "on": "https://visapoint.net/visa-check/saudi-arabia"
-   },
-   {
-    "url": "https://visapoint.net/saudi-visa-status-2026-essential-guide",
-    "to": "/saudi-visa-status-2026-official-check-guide",
-    "on": "https://visapoint.net/visa-check/saudi-arabia"
-   },
-   {
-    "url": "https://visapoint.net/serbia-visa-status-online-2026-tracking-guide",
-    "to": "/visa-check/serbia",
-    "on": "https://visapoint.net/visa-check/moldova"
-   },
-   {
-    "url": "https://visapoint.net/oman-visa-status-check-in-3-steps-2026",
-    "to": "/visa-check/oman",
-    "on": "https://visapoint.net/visa-check/oman"
-   },
-   {
-    "url": "https://visapoint.net/oman-visa-status-check-2026-passport-only-1-3-day-tourist",
-    "to": "/visa-check/oman",
-    "on": "https://visapoint.net/visa-check/oman"
-   },
-   {
-    "url": "https://visapoint.net/check-oman-visa-status-online-2026-3-methods-fees-steps",
-    "to": "/visa-check/oman",
-    "on": "https://visapoint.net/visa-check/oman"
-   },
-   {
-    "url": "https://visapoint.net/oman-visa-status-online-3-ways-to-check-in-2026",
-    "to": "/visa-check/oman",
-    "on": "https://visapoint.net/visa-check/oman"
-   },
-   {
-    "url": "https://visapoint.net/malaysia-visa-status-check-online-in-5-steps-2026",
-    "to": "/visa-check/malaysia",
-    "on": "https://visapoint.net/visa-check/malaysia"
-   },
-   {
-    "url": "https://visapoint.net/check-malaysia-visa-status-rm-150-fee-2-4-day-processing-2026",
-    "to": "/visa-check/malaysia",
-    "on": "https://visapoint.net/visa-check/malaysia"
+    "url": "https://visapoint.net/united-arab-emirates-visa-status-free-check-2026-guide",
+    "to": "/visa-check/uae",
+    "on": "https://visapoint.net/visa-check/uae"
    },
    {
     "url": "https://visapoint.net/north-macedonia-visa-status-online-2026-guide",
@@ -294,32 +274,67 @@
     "on": "https://visapoint.net/north-macedonia-visa-check-2026"
    },
    {
-    "url": "https://visapoint.net/poland-work-permit-2025-complete-guide-for-bangladeshi-workers",
-    "to": "/poland-work-permit-2026-costs-salary-visa-guide",
-    "on": "https://visapoint.net/hvac-jobs-poland-2026-eur1800-eur2550-salary-visa-costs"
+    "url": "https://visapoint.net/bahrain-visa-status-check-online-2026-fees-codes-3-step-guide",
+    "to": "/visa-check/bahrain",
+    "on": "https://visapoint.net/north-macedonia-visa-check-2026"
    },
    {
-    "url": "https://visapoint.net/check-saudi-arabia-visa-status-online-4-portals-fees-sar-2600-3200-202",
-    "to": "/visa-check/saudi-arabia",
+    "url": "https://visapoint.net/poland-work-permit-2025-complete-guide-for-bangladeshi-workers",
+    "to": "/poland-work-permit-2026-costs-salary-visa-guide",
+    "on": "https://visapoint.net/poland-work-permit-2026-apply-online-step-by-step"
+   },
+   {
+    "url": "https://visapoint.net/bahrain-visa-status-check-2026-3-portals-fees-bhd-29-1000-steps",
+    "to": "/visa-check/bahrain",
+    "on": "https://visapoint.net/armenia-visa-check-2026"
+   },
+   {
+    "url": "https://visapoint.net/singapore-visa-status-5-outcomes-3-5-day-processing-free-ica-check",
+    "to": "/visa-check/singapore",
     "on": "https://visapoint.net/armenia-visa-check-2026"
    },
    {
     "url": "https://visapoint.net/check-saudi-arabia-visa-status-online-2026-passport-number-steps",
     "to": "/visa-check/saudi-arabia",
-    "on": "https://visapoint.net/south-korea-visa-2026-fees-40-80-documents-5-15-day-processing"
+    "on": "https://visapoint.net/saudi-visa-status-check-2026-complete-guide"
+   },
+   {
+    "url": "https://visapoint.net/qatar-visa-status-2026-essential-guide",
+    "to": "/visa-check/qatar",
+    "on": "https://visapoint.net/saudi-visa-status-check-2026-complete-guide"
+   },
+   {
+    "url": "https://visapoint.net/check-saudi-arabia-visa-status-online-4-portals-fees-sar-2600-3200-202",
+    "to": "/visa-check/saudi-arabia",
+    "on": "https://visapoint.net/saudi-visa-status-check-2026-complete-guide"
+   },
+   {
+    "url": "https://visapoint.net/moldova-visa-status-online-2026-step-by-step-guide",
+    "to": "/visa-check/moldova",
+    "on": "https://visapoint.net/saudi-visa-status-check-2026-complete-guide"
+   },
+   {
+    "url": "https://visapoint.net/check-oman-visa-status-free-2026-rop-portal-app-steps",
+    "to": "/visa-check/oman",
+    "on": "https://visapoint.net/thailand-visa-requirements-2026-fees-tdac-entry-rules"
    },
    {
     "url": "https://visapoint.net/qatar-visa-status-online-2026-check-steps-fees",
     "to": "/visa-check/qatar",
-    "on": "https://visapoint.net/check-saudi-visa-status-online-2026-passport-number-steps-fees"
+    "on": "https://visapoint.net/how-to-check-serbia-visa-online-2026"
    },
    {
-    "url": "https://visapoint.net/qatar-visa-status-2026-complete-guide",
-    "to": "/visa-check/qatar",
-    "on": "https://visapoint.net/best-visa-consultancy-in-qatar-2026-top-travel-agency-migration-servic"
+    "url": "https://visapoint.net/south-korea-visa-status-4-ways-to-check-online-in-2026",
+    "to": "/visa-check/south-korea",
+    "on": "https://visapoint.net/south-korea-visa-2026-fees-40-80-documents-5-15-day-processing"
    },
    {
-    "url": "https://visapoint.net/check-uae-visa-status-free-2026-step-by-step-guide",
+    "url": "https://visapoint.net/croatia-work-permit-2024-qatar-to-croatia-guide-for-skilled-workers",
+    "to": "/croatia-work-permit-2025-complete-guide-for-bangladeshi-workers",
+    "on": "https://visapoint.net/turkey-to-croatia-work-permit-2026-cost-process-salary"
+   },
+   {
+    "url": "https://visapoint.net/check-uae-visa-status-free-on-3-official-portals-2026",
     "to": "/visa-check/uae",
     "on": "https://visapoint.net/saudi-visa-status-2026-official-check-guide"
    },
@@ -332,47 +347,26 @@
     "url": "https://visapoint.net/qatar-visa-status-check-online-2026-step-by-step",
     "to": "/visa-check/qatar",
     "on": "https://visapoint.net/saudi-visa-status-2026-official-check-guide"
-   },
-   {
-    "url": "https://visapoint.net/moldova-visa-status-online-2026-step-by-step-guide",
-    "to": "/visa-check/moldova",
-    "on": "https://visapoint.net/saudi-visa-status-check-2026-complete-guide"
-   },
-   {
-    "url": "https://visapoint.net/qatar-visa-status-2026-essential-guide",
-    "to": "/visa-check/qatar",
-    "on": "https://visapoint.net/saudi-visa-status-check-2026-complete-guide"
-   },
-   {
-    "url": "https://visapoint.net/croatia-work-permit-2024-qatar-to-croatia-guide-for-skilled-workers",
-    "to": "/croatia-work-permit-2025-complete-guide-for-bangladeshi-workers",
-    "on": "https://visapoint.net/turkey-to-croatia-work-permit-2026-cost-process-salary"
    }
   ],
   "redirect_link_count": 40,
-  "broken_links": [
-   {
-    "url": "https://visapoint.net/etias-work-visa-u-s-citizens-guide-2026",
-    "status": 0,
-    "on": "https://visapoint.net/guides"
-   }
-  ],
-  "broken_link_count": 1,
+  "broken_links": [],
+  "broken_link_count": 0,
   "noindex": [],
   "canonical_mismatch": [],
   "duplicate_titles": [
    "After European Work Visa Approval: Documents, Steps &amp;"
   ],
-  "checked": "2026-11-17T13:43:32+00:00"
+  "checked": "2026-11-24T15:31:40+00:00"
  },
  "infkey": {
-  "sitemap_urls": 499,
-  "crawled_ok": 20264,
+  "sitemap_urls": 510,
+  "crawled_ok": 20627,
   "orphans": [],
   "depth_histogram": {
    "0": 1,
-   "1": 34,
-   "2": 464
+   "1": 33,
+   "2": 476
   },
   "redirect_links": [
    {
@@ -381,19 +375,19 @@
     "on": "https://infkey.com/provable-inference-llm-2026-cost-reliability-guide"
    },
    {
-    "url": "https://infkey.com/ai-video-api-pricing-2026-real-cost-per-second",
-    "to": "/ai-video-api-pricing-2026-the-definitive-cost-guide",
-    "on": "https://infkey.com/ai-video-api-pricing-2026-runway-vs-sora-vs-veo"
+    "url": "https://infkey.com/llm-api-pricing-2026-real-cost-per-1m-tokens-30-models",
+    "to": "/llm-api-pricing-2026-complete-guide",
+    "on": "https://infkey.com/llm-pricing-table-2026-cheapest-long-context-apis"
    },
    {
     "url": "https://infkey.com/llm-api-pricing-complete-2026-cost-breakdown-calculator",
     "to": "/llm-api-pricing-2026-complete-guide",
-    "on": "https://infkey.com/ai-api-cost-comparison-2026-complete-pricing-guide"
+    "on": "https://infkey.com/llm-pricing-table-2026-cheapest-long-context-apis"
    },
    {
-    "url": "https://infkey.com/llm-api-pricing-2026-real-cost-per-1m-tokens-30-models",
-    "to": "/llm-api-pricing-2026-complete-guide",
-    "on": "https://infkey.com/llm-pricing-table-2026-cheapest-long-context-apis"
+    "url": "https://infkey.com/ai-video-api-pricing-2026-real-cost-per-second",
+    "to": "/ai-video-api-pricing-2026-the-definitive-cost-guide",
+    "on": "https://infkey.com/ai-video-generation-api-pricing-2026-sora-vs-veo-vs-kling-cost-per-sec"
    },
    {
     "url": "https://infkey.com/llm-api-pricing-tokens-costs-estimation-guide-2025",
@@ -407,172 +401,130 @@
    }
   ],
   "redirect_link_count": 6,
-  "broken_links": [
-   {
-    "url": "https://infkey.com/compare/thinkingmachines-inkling-2-small-free-vs-x-ai-grok-build-0-1",
-    "status": 502,
-    "on": "https://infkey.com/models/thinkingmachines-inkling-2-small-free"
-   },
-   {
-    "url": "https://infkey.com/run/huggingfacetb-smollm3-3b-base/rtx-5080",
-    "status": 0,
-    "on": "https://infkey.com/run/huggingfacetb-smollm3-3b-base"
-   },
-   {
-    "url": "https://infkey.com/run/huggingfacetb-smollm3-3b-base/l40s",
-    "status": 0,
-    "on": "https://infkey.com/run/huggingfacetb-smollm3-3b-base"
-   },
-   {
-    "url": "https://infkey.com/run/huggingfacetb-smollm3-3b-base/a100-40gb",
-    "status": 0,
-    "on": "https://infkey.com/run/huggingfacetb-smollm3-3b-base"
-   },
-   {
-    "url": "https://infkey.com/run/ccore-qwen3-5-4b-glb-3d-coder/h200",
-    "status": 0,
-    "on": "https://infkey.com/run/ccore-qwen3-5-4b-glb-3d-coder"
-   },
-   {
-    "url": "https://infkey.com/run/ccore-qwen3-5-4b-glb-3d-coder/rx-9070-xt",
-    "status": 0,
-    "on": "https://infkey.com/run/ccore-qwen3-5-4b-glb-3d-coder"
-   },
-   {
-    "url": "https://infkey.com/run/ccore-qwen3-5-4b-glb-3d-coder/gtx-1080-ti",
-    "status": 0,
-    "on": "https://infkey.com/run/ccore-qwen3-5-4b-glb-3d-coder"
-   },
-   {
-    "url": "https://infkey.com/run/jackkozmo29-depguard-jev-style-1-5b/rtx-4060",
-    "status": 0,
-    "on": "https://infkey.com/run/jackkozmo29-depguard-jev-style-1-5b"
-   },
-   {
-    "url": "https://infkey.com/run/lmstudio-community-lfm2-5-1-2b-instruct-mlx-8bit/rtx-4060-ti",
-    "status": 409,
-    "on": "https://infkey.com/run/lmstudio-community-lfm2-5-1-2b-instruct-mlx-8bit"
-   }
-  ],
-  "broken_link_count": 9,
+  "broken_links": [],
+  "broken_link_count": 0,
   "noindex": [
-   "https://infkey.com/viral-ai-video-prompt-generator-7-free-tools-for-2026",
    "https://infkey.com/cisco-ai-infrastructure-revenue-hits-9-3b-in-fiscal-2026",
-   "https://infkey.com/nifty-ai-tools-2026-20-vs-16-vs-free-tier-breakdown",
    "https://infkey.com/gemini-hydrogen-2026-3-photo-prompt-tricks",
+   "https://infkey.com/nifty-ai-tools-2026-20-vs-16-vs-free-tier-breakdown",
    "https://infkey.com/compare/anthropic-claude-fable-5-2-vs-deepseek-deepseek-v4-pro-0813",
-   "https://infkey.com/compare/deepseek-deepseek-v4-pro-0813-vs-openai-gpt-6-1-terra-pro",
-   "https://infkey.com/ai-video-cost-per-minute-2025-pricing-breakdown",
-   "https://infkey.com/ai-video-generator-pricing-2026-1-50-12-per-minute-compared",
-   "https://infkey.com/best-ai-for-content-creators-7-top-tools-ranked-for-2026",
-   "https://infkey.com/canva-ai-generator-50-free-images-limits-2026",
-   "https://infkey.com/free-ai-video-generator-2026-5-tools-tested-credits-watermarks",
-   "https://infkey.com/viral-ai-video-prompts-7-proven-templates-to-skyrocket-reach",
-   "https://infkey.com/ai-photo-prompt-generator-2026-ultimate-cost-guide",
-   "https://infkey.com/rag-cost-calculator-what-retrieval-augmented-generation-really-costs",
-   "https://infkey.com/self-hosted-llm-cost-2026-vllm-vs-tgi-break-even-calculator",
+   "https://infkey.com/viral-ai-video-prompt-generator-7-free-tools-for-2026",
+   "https://infkey.com/compare/deepseek-deepseek-v4-pro-0813-vs-openai-gpt-6-2-astra-pro",
+   "https://infkey.com/compare/mistralai-pixtral-large-2502-vs-openai-gpt-6-2-astra-pro",
+   "https://infkey.com/compare/anthropic-claude-fable-5-2-vs-mistralai-pixtral-large-2502",
+   "https://infkey.com/compare/deepseek-deepseek-v4-pro-0813-vs-x-ai-grok-4-7",
+   "https://infkey.com/compare/mistralai-pixtral-large-2502-vs-x-ai-grok-4-7",
+   "https://infkey.com/compare/meta-muse-ember-vs-mistralai-pixtral-large-2502",
+   "https://infkey.com/compare/deepseek-deepseek-v4-pro-0813-vs-meta-muse-ember",
+   "https://infkey.com/compare/deepseek-deepseek-v4-pro-0813-vs-mistralai-pixtral-large-2502",
    "https://infkey.com/provable-inference-llm-2026-cost-reliability-guide",
    "https://infkey.com/amazon-ai-cost-savings-enterprise-llm-swapping-strategies-2026",
-   "https://infkey.com/llm-cost-optimization-9-proven-tactics-cut-api-bills-60",
+   "https://infkey.com/rag-cost-calculator-what-retrieval-augmented-generation-really-costs",
    "https://infkey.com/vector-database-cost-2026-pinecone-vs-weaviate-vs-pgvector",
-   "https://infkey.com/compare/openai-gpt-6-1-terra-pro-vs-z-ai-glm-5-3-batch",
-   "https://infkey.com/compare/x-ai-grok-build-0-1-vs-z-ai-glm-5-3-batch",
-   "https://infkey.com/compare/anthropic-claude-haiku-5-5-vs-z-ai-glm-5-3-batch",
-   "https://infkey.com/compare/qwen-qwen3-8-omni-flash-vs-z-ai-glm-5-3-batch",
-   "https://infkey.com/compare/moonshotai-kimi-k2-6-vs-z-ai-glm-5-3-batch",
-   "https://infkey.com/compare/deepseek-deepseek-v4-flash-vs-z-ai-glm-5-3-batch",
-   "https://infkey.com/compare/meta-muse-spark-1-3-contributor-vs-z-ai-glm-5-3-batch",
-   "https://infkey.com/compare/mistralai-mistral-small-3-2-24b-instruct-vs-z-ai-glm-5-3-batch",
-   "https://infkey.com/gpu/rtx-pro-6000",
+   "https://infkey.com/llm-cost-optimization-9-proven-tactics-cut-api-bills-60",
+   "https://infkey.com/self-hosted-llm-cost-2026-vllm-vs-tgi-break-even-calculator",
    "https://infkey.com/gpu/m3-ultra-512gb",
-   "https://infkey.com/gpu/rx-7600",
-   "https://infkey.com/gpu/a10g",
-   "https://infkey.com/gpu/m3-ultra-192gb",
-   "https://infkey.com/gpu/m2-16gb",
    "https://infkey.com/gpu/rtx-6000-ada",
-   "https://infkey.com/gpu/l40s",
-   "https://infkey.com/gpu/gtx-1660-super",
-   "https://infkey.com/gpu/l4",
-   "https://infkey.com/gpu/rx-7900-xt",
-   "https://infkey.com/gpu/gtx-1080-ti",
-   "https://infkey.com/gpu/rtx-2080-ti",
-   "https://infkey.com/gpu/b200",
-   "https://infkey.com/gpu/m1-8gb",
-   "https://infkey.com/gpu/a100-40gb",
    "https://infkey.com/gpu/arc-a770",
+   "https://infkey.com/gpu/l40s",
+   "https://infkey.com/gpu/l4",
+   "https://infkey.com/gpu/m2-16gb",
+   "https://infkey.com/gpu/rx-7600",
+   "https://infkey.com/gpu/m1-8gb",
+   "https://infkey.com/gpu/rx-7900-xt",
+   "https://infkey.com/gpu/gtx-1660-super",
+   "https://infkey.com/gpu/m3-ultra-192gb",
+   "https://infkey.com/gpu/b200",
+   "https://infkey.com/gpu/rtx-pro-6000",
+   "https://infkey.com/gpu/rtx-2080-ti",
+   "https://infkey.com/gpu/a10g",
+   "https://infkey.com/gpu/a100-40gb",
    "https://infkey.com/gpu/rtx-2060",
-   "https://infkey.com/changes/2026-11-13",
-   "https://infkey.com/best-ai-for-small-business-7-free-tools-tested-on-0",
+   "https://infkey.com/gpu/gtx-1080-ti",
+   "https://infkey.com/gemini-photo-editing-prompt-10-viral-styles-for-2026",
+   "https://infkey.com/nano-banana-prompts-25-best-viral-photo-styles-2026",
+   "https://infkey.com/gemini-4-carbon-2-input-cost-87-2-benchmark-score-2026",
+   "https://infkey.com/ai-photo-prompt-generator-2026-ultimate-cost-guide",
+   "https://infkey.com/chatgpt-photo-editing-7-prompts-fix-blurry-dark-overexposed-shots-2026",
+   "https://infkey.com/gemini-4-argon-2m-token-context-powers-starcraft-ai-2026",
+   "https://infkey.com/gemini-prompt-engineering-5-tweaks-for-confident-outputs-2026",
    "https://infkey.com/ai-subscription-prices-5-plans-at-20-mo-compared-2026",
+   "https://infkey.com/best-ai-for-small-business-7-free-tools-tested-on-0",
+   "https://infkey.com/chatgpt-plus-is-the-20-plan-worth-it-in-2026",
+   "https://infkey.com/best-ai-tools-for-students-2026-7-essential-picks",
    "https://infkey.com/ai-tools-pricing-2026-20-chatgpt-0-025-min-video-85-120-mo-smb",
    "https://infkey.com/how-to-use-copilot-free-7-setup-steps-limits-in-2026"
   ],
   "canonical_mismatch": [],
   "duplicate_titles": [
-   "Can I run Llama-3.2-1B-Instruct locally? VRAM needed &amp; which GPUs work",
-   "Can I run Llama-3.2-1B locally? VRAM needed &amp; which GPUs work",
    "Can I run Llama-3.2-3B-Instruct locally? VRAM needed &amp; which GPUs work",
    "Can I run Llama-3.1-8B-Instruct locally? VRAM needed &amp; which GPUs work",
-   "Can I run gemma-3-1b-it locally? VRAM needed &amp; which GPUs work",
    "Can I run Qwen3-0.6B locally? VRAM needed &amp; which GPUs work",
-   "Can I run Qwen3-1.7B locally? VRAM needed &amp; which GPUs work",
+   "Can I run Llama-3.2-1B-Instruct locally? VRAM needed &amp; which GPUs work",
+   "Can I run gemma-2-2b-it locally? VRAM needed &amp; which GPUs work",
    "Can I run Qwen2.5-7B-Instruct locally? VRAM needed &amp; which GPUs work",
-   "Can I run Qwen2.5-Coder-7B-Instruct locally? VRAM needed &amp; which GPUs work",
-   "Can Apple M3 Ultra (192GB) run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can NVIDIA RTX 4080 Super run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can NVIDIA RTX 2080 Ti run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can NVIDIA RTX 4070 run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can NVIDIA A10G run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can NVIDIA RTX 5070 run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can NVIDIA RTX PRO 6000 Blackwell run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can NVIDIA RTX 4070 Super run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can NVIDIA DGX Spark (128GB) run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can NVIDIA RTX 5090 run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can NVIDIA B200 192GB run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can NVIDIA RTX 4060 Ti 8GB run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can Apple M4 Max (128GB) run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can NVIDIA RTX 5080 run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can NVIDIA RTX 4090 run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can NVIDIA RTX 3090 run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can AMD Radeon RX 7800 XT run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
+   "Can I run Llama-3.2-1B locally? VRAM needed &amp; which GPUs work",
+   "Can I run Qwen3-1.7B locally? VRAM needed &amp; which GPUs work",
+   "Can I run Llama-3.2-3B locally? VRAM needed &amp; which GPUs work",
+   "Can I run gemma-3-1b-it locally? VRAM needed &amp; which GPUs work",
+   "Can NVIDIA RTX 5070 Ti run Llama-3.2-3B-Instruct? Yes — VRAM &amp; speed",
+   "Can NVIDIA RTX 5070 Ti run Llama-3.1-8B-Instruct? Yes — VRAM &amp; speed",
+   "Can NVIDIA RTX 5070 Ti run Qwen3-1.7B? Yes — VRAM &amp; speed",
+   "Can NVIDIA RTX 5070 Ti run Llama-3.2-3B? Yes — VRAM &amp; speed",
+   "Can NVIDIA RTX 5070 Ti run Llama-3.2-1B? Yes — VRAM &amp; speed",
+   "Can NVIDIA RTX 5070 Ti run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
+   "Can NVIDIA RTX 5070 Ti run Qwen3-0.6B? Yes — VRAM &amp; speed",
+   "Can NVIDIA RTX 5070 Ti run Meta-Llama-3.1-8B-Instruct? Yes — VRAM &amp; speed",
+   "Can NVIDIA RTX 5070 Ti run gemma-2-2b-it? Yes — VRAM &amp; speed",
+   "Can NVIDIA RTX 5070 Ti run Qwen2.5-7B-Instruct? Yes — VRAM &amp; speed",
+   "Can NVIDIA RTX 5070 Ti run gemma-3-1b-it? Yes — VRAM &amp; speed",
+   "Can Apple M3 Ultra (512GB) run Llama-3.2-1B? Yes — VRAM &amp; speed",
+   "Can Apple M3 Ultra (512GB) run Qwen2.5-7B-Instruct? Yes — VRAM &amp; speed",
+   "Can Apple M3 Ultra (512GB) run Llama-3.1-8B-Instruct? Yes — VRAM &amp; speed",
+   "Can Apple M3 Ultra (512GB) run Llama-3.2-3B? Yes — VRAM &amp; speed",
+   "Can Apple M3 Ultra (512GB) run Qwen3-0.6B? Yes — VRAM &amp; speed",
+   "Can Apple M3 Ultra (512GB) run Llama-3.2-3B-Instruct? Yes — VRAM &amp; speed",
    "Can Apple M3 Ultra (512GB) run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can NVIDIA RTX 4060 Ti 16GB run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can NVIDIA L40S run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can NVIDIA RTX 4060 run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can Apple M1 (8GB) run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can AMD Radeon RX 7900 XT run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can NVIDIA A100 40GB run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can Intel Arc A770 16GB run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can NVIDIA H200 141GB run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can NVIDIA RTX 3080 10GB run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can AMD Radeon RX 7600 run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can NVIDIA RTX 6000 Ada run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can Apple M4 (16GB) run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can NVIDIA RTX 2060 run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can Apple M4 Pro (48GB) run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can Apple M2 (16GB) run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can NVIDIA RTX 4070 Ti Super run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can NVIDIA GTX 1660 Super run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can NVIDIA GTX 1080 Ti run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can NVIDIA L4 run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can NVIDIA A100 80GB run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
+   "Can Apple M3 Ultra (512GB) run Qwen3-1.7B? Yes — VRAM &amp; speed",
+   "Can Apple M4 Pro (24GB) run Llama-3.2-3B? Yes — VRAM &amp; speed",
+   "Can Apple M4 Pro (24GB) run gemma-3-1b-it? Yes — VRAM &amp; speed",
+   "Can Apple M4 Pro (24GB) run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
+   "Can Apple M4 Pro (24GB) run Qwen3-1.7B? Yes — VRAM &amp; speed",
+   "Can Apple M4 Pro (24GB) run Llama-3.2-1B? Yes — VRAM &amp; speed",
+   "Can Apple M4 Pro (24GB) run Llama-3.1-8B-Instruct? Yes — VRAM &amp; speed",
+   "Can Apple M4 Pro (24GB) run Llama-3.2-3B-Instruct? Yes — VRAM &amp; speed",
+   "Can Apple M4 Pro (24GB) run gemma-2-2b-it? Yes — VRAM &amp; speed",
+   "Can Apple M4 Pro (24GB) run Qwen3-0.6B? Yes — VRAM &amp; speed",
+   "Can Apple M4 Pro (24GB) run Qwen2.5-7B-Instruct? Yes — VRAM &amp; speed",
+   "Can Apple M4 Pro (24GB) run Meta-Llama-3.1-8B-Instruct? Yes — VRAM &amp; speed",
+   "Can NVIDIA H100 80GB (SXM) run Llama-3.2-3B? Yes — VRAM &amp; speed",
+   "Can NVIDIA H100 80GB (SXM) run Qwen3-0.6B? Yes — VRAM &amp; speed",
+   "Can NVIDIA H100 80GB (SXM) run Qwen3-1.7B? Yes — VRAM &amp; speed",
+   "Can NVIDIA H100 80GB (SXM) run Llama-3.1-8B-Instruct? Yes — VRAM &amp; speed",
+   "Can NVIDIA H100 80GB (SXM) run gemma-2-2b-it? Yes — VRAM &amp; speed",
    "Can NVIDIA H100 80GB (SXM) run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can NVIDIA RTX 5060 Ti 16GB run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed",
-   "Can NVIDIA RTX 3060 12GB run Llama-3.2-1B-Instruct? Yes — VRAM &amp; speed"
+   "Can NVIDIA H100 80GB (SXM) run Llama-3.2-1B? Yes — VRAM &amp; speed",
+   "Can NVIDIA H100 80GB (SXM) run Qwen2.5-7B-Instruct? Yes — VRAM &amp; speed",
+   "Can NVIDIA H100 80GB (SXM) run Llama-3.2-3B-Instruct? Yes — VRAM &amp; speed",
+   "Can NVIDIA RTX 4070 Super run Meta-Llama-3.1-8B-Instruct? Yes — VRAM &amp; speed"
   ],
-  "checked": "2026-11-17T13:57:25+00:00"
+  "checked": "2026-11-24T15:41:49+00:00"
  },
  "ninetymins": {
-  "sitemap_urls": 4,
-  "crawled_ok": 6619,
+  "sitemap_urls": 8,
+  "crawled_ok": 13201,
   "orphans": [
    "https://ninetymins.com/sitemap-articles.xml",
+   "https://ninetymins.com/sitemap-h2h.xml",
    "https://ninetymins.com/sitemap-hubs.xml",
+   "https://ninetymins.com/sitemap-matches-2026-11.xml",
+   "https://ninetymins.com/sitemap-matches-2026-12.xml",
    "https://ninetymins.com/sitemap-news.xml",
+   "https://ninetymins.com/sitemap-players.xml",
    "https://ninetymins.com/sitemap-videos.xml"
   ],
   "depth_histogram": {
-   "not reached": 4
+   "not reached": 8
   },
   "redirect_links": [
    {
@@ -589,147 +541,100 @@
   "redirect_link_count": 2,
   "broken_links": [
    {
-    "url": "https://ninetymins.com/match/fifa-friendly/401930895-argentina-vs-costa-rica",
-    "status": 0,
-    "on": "https://ninetymins.com/"
-   },
-   {
-    "url": "https://ninetymins.com/rma-la-liga-schedule-2026-27-2-november-fixtures-tv-channels-36-titles",
-    "status": 0,
-    "on": "https://ninetymins.com/"
-   },
-   {
-    "url": "https://ninetymins.com/match/fifa-friendly/401930242-kyrgyz-rep-vs-vietnam",
-    "status": 0,
-    "on": "https://ninetymins.com/"
-   },
-   {
-    "url": "https://ninetymins.com/highlights/d-AekDrIGIE-nba-s-top-10-plays-of-the-night-november-16",
-    "status": 0,
-    "on": "https://ninetymins.com/highlights"
-   },
-   {
-    "url": "https://ninetymins.com/team/le-mans-football-2697",
-    "status": 0,
-    "on": "https://ninetymins.com/league/fra-1"
-   },
-   {
-    "url": "https://ninetymins.com/premier-league-schedule-2026-27-380-matches-12-timezones-tv-stream-gui",
-    "status": 0,
-    "on": "https://ninetymins.com/archive"
-   },
-   {
-    "url": "https://ninetymins.com/ashes-2026-27-full-schedule-start-times-how-to-watch",
-    "status": 0,
-    "on": "https://ninetymins.com/archive"
-   },
-   {
-    "url": "https://ninetymins.com/eintracht-frankfurt-vs-cologne-live-2026-us-tv-guide",
-    "status": 0,
-    "on": "https://ninetymins.com/archive"
-   },
-   {
-    "url": "https://ninetymins.com/mbappe-injury-update-out-vs-italy-13-nov-return-date-tv-streams",
-    "status": 0,
-    "on": "https://ninetymins.com/archive"
-   },
-   {
-    "url": "https://ninetymins.com/player/football-258963-ridle-baku",
-    "status": 0,
-    "on": "https://ninetymins.com/league/uefa-champions"
-   },
-   {
-    "url": "https://ninetymins.com/embed/league/cricket-8818",
+    "url": "https://ninetymins.com/event/psl-2027/team/rawalpindiz",
     "status": 404,
-    "on": "https://ninetymins.com/league/cricket-8818"
+    "on": "https://ninetymins.com/event/psl-2027/team/quetta-gladiators"
    },
    {
-    "url": "https://ninetymins.com/embed/league/cricket-8656",
+    "url": "https://ninetymins.com/cricket/ashes-ticket-guide",
     "status": 404,
-    "on": "https://ninetymins.com/league/cricket-8656"
-   },
-   {
-    "url": "https://ninetymins.com/embed/league/cricket-24799",
-    "status": 404,
-    "on": "https://ninetymins.com/league/cricket-24799"
+    "on": "https://ninetymins.com/ashes-2026-27-full-schedule-start-times-how-to-watch"
    }
   ],
-  "broken_link_count": 13,
+  "broken_link_count": 2,
   "noindex": [
    "https://ninetymins.com/league/mlb",
-   "https://ninetymins.com/league/uefa-europa",
-   "https://ninetymins.com/embed/match/fifa-friendly_401931495",
-   "https://ninetymins.com/embed/match/fifa-friendly_401921304",
-   "https://ninetymins.com/embed/match/fifa-friendly_401930899",
-   "https://ninetymins.com/embed/match/fifa-friendly_401930237",
-   "https://ninetymins.com/embed/match/fifa-friendly_401932718",
-   "https://ninetymins.com/embed/match/fifa-friendly_401931477",
-   "https://ninetymins.com/embed/league/fra-1",
-   "https://ninetymins.com/embed/league/eng-1",
-   "https://ninetymins.com/embed/league/ufc",
-   "https://ninetymins.com/embed/match/fifa-friendly_401930880",
-   "https://ninetymins.com/embed/league/uefa-champions",
-   "https://ninetymins.com/embed/match/fifa-friendly_401933615",
-   "https://ninetymins.com/league/wnba",
-   "https://ninetymins.com/league/fifa-worldq-afc",
-   "https://ninetymins.com/league/afc-asian-cupq",
-   "https://ninetymins.com/embed/league/fifa-friendly",
-   "https://ninetymins.com/embed/match/fifa-friendly_401933879",
-   "https://ninetymins.com/embed/league/ger-1",
-   "https://ninetymins.com/embed/match/fifa-friendly_401916336",
-   "https://ninetymins.com/embed/league/nhl",
-   "https://ninetymins.com/embed/league/nba",
    "https://ninetymins.com/embed/league/ind-1",
-   "https://ninetymins.com/embed/match/fifa-friendly_401916335",
-   "https://ninetymins.com/embed/match/fifa-friendly_401930978",
-   "https://ninetymins.com/embed/league/nfl",
-   "https://ninetymins.com/embed/match/fifa-friendly_401932215",
+   "https://ninetymins.com/embed/match/uefa-champions_401915380",
+   "https://ninetymins.com/embed/match/uefa-champions_401915379",
+   "https://ninetymins.com/embed/league/uefa-europa",
+   "https://ninetymins.com/embed/league/nba",
+   "https://ninetymins.com/embed/match/nhl_401892838",
+   "https://ninetymins.com/embed/match/nba_401910075",
+   "https://ninetymins.com/embed/league/nhl",
+   "https://ninetymins.com/embed/match/nhl_401892837",
+   "https://ninetymins.com/embed/match/nhl_401892839",
+   "https://ninetymins.com/embed/match/nba_401910074",
    "https://ninetymins.com/embed/league/wta",
-   "https://ninetymins.com/embed/match/fifa-friendly_401933635",
-   "https://ninetymins.com/embed/league/afc-saff-championship",
+   "https://ninetymins.com/embed/league/nfl",
+   "https://ninetymins.com/embed/match/uefa-champions_401915297",
+   "https://ninetymins.com/event/ipl-2027/match/ipl-auction",
+   "https://ninetymins.com/event/icc-mens-odi-world-cup-2027/team/zimbabwe",
+   "https://ninetymins.com/event/icc-mens-odi-world-cup-2027/team/sri-lanka",
+   "https://ninetymins.com/event/icc-mens-odi-world-cup-2027/team/bangladesh",
+   "https://ninetymins.com/event/icc-mens-odi-world-cup-2027/match/wc-zim",
+   "https://ninetymins.com/event/icc-mens-odi-world-cup-2027/team/england",
+   "https://ninetymins.com/event/icc-mens-odi-world-cup-2027/match/wc-sf1",
+   "https://ninetymins.com/event/icc-mens-odi-world-cup-2027/match/wc-sf2",
+   "https://ninetymins.com/event/icc-mens-odi-world-cup-2027/match/wc-ss",
+   "https://ninetymins.com/event/icc-mens-odi-world-cup-2027/match/wc-final",
+   "https://ninetymins.com/event/icc-mens-odi-world-cup-2027/team/australia",
+   "https://ninetymins.com/event/icc-mens-odi-world-cup-2027/team/afghanistan",
+   "https://ninetymins.com/event/icc-mens-odi-world-cup-2027/match/wc-sl",
+   "https://ninetymins.com/embed/match/uefa-champions_401915296",
    "https://ninetymins.com/embed/league/atp",
+   "https://ninetymins.com/event/ilt20-2026-27/match/ilt-2026-12-20-18-30-final-winn",
+   "https://ninetymins.com/event/ilt20-2026-27/match/ilt-2026-12-16-18-30-qualifier-1",
+   "https://ninetymins.com/event/ilt20-2026-27/match/ilt-2026-12-17-18-30-eliminator",
+   "https://ninetymins.com/event/ilt20-2026-27/match/ilt-2026-12-18-18-30-qualifier-2",
    "https://ninetymins.com/embed/league/ita-1",
-   "https://ninetymins.com/embed/match/afc-saff-championship_401934455",
-   "https://ninetymins.com/embed/match/fifa-friendly_401919974",
-   "https://ninetymins.com/embed/match/fifa-friendly_401931956",
-   "https://ninetymins.com/embed/match/usa-1_401933738",
-   "https://ninetymins.com/embed/match/nba_401909316",
-   "https://ninetymins.com/embed/match/nba_401909315",
-   "https://ninetymins.com/embed/league/usa-1",
-   "https://ninetymins.com/embed/match/nhl_401892780",
-   "https://ninetymins.com/embed/match/nba_401909314",
-   "https://ninetymins.com/embed/league/esp-1",
-   "https://ninetymins.com/embed/match/fra-1_401876398",
-   "https://ninetymins.com/embed/match/fra-1_401876395",
-   "https://ninetymins.com/embed/match/fra-1_401876402",
-   "https://ninetymins.com/embed/match/fra-1_401876401",
-   "https://ninetymins.com/h2h/lens-football-175-vs-rb-leipzig-football-11420",
-   "https://ninetymins.com/embed/match/fra-1_401876403",
-   "https://ninetymins.com/embed/match/fra-1_401876397"
+   "https://ninetymins.com/event/champions-league-2026-27/match/feed-401915380",
+   "https://ninetymins.com/event/champions-league-2026-27/match/feed-401915300",
+   "https://ninetymins.com/event/champions-league-2026-27/match/feed-401915295",
+   "https://ninetymins.com/event/champions-league-2026-27/match/feed-401915294",
+   "https://ninetymins.com/event/champions-league-2026-27/match/feed-401915296",
+   "https://ninetymins.com/event/champions-league-2026-27/match/feed-401915298",
+   "https://ninetymins.com/event/champions-league-2026-27/match/ucl-po2",
+   "https://ninetymins.com/event/champions-league-2026-27/match/ucl-sfb",
+   "https://ninetymins.com/event/champions-league-2026-27/match/ucl-r16b",
+   "https://ninetymins.com/event/champions-league-2026-27/match/ucl-final",
+   "https://ninetymins.com/event/champions-league-2026-27/match/ucl-qfb",
+   "https://ninetymins.com/event/champions-league-2026-27/match/feed-401915299",
+   "https://ninetymins.com/event/champions-league-2026-27/match/feed-401915379",
+   "https://ninetymins.com/event/champions-league-2026-27/match/ucl-sfa",
+   "https://ninetymins.com/event/champions-league-2026-27/match/ucl-r16a"
   ],
   "canonical_mismatch": [],
   "duplicate_titles": [
    "NinetyMins live score widget",
+   "England: fixtures, live scores &amp; results",
    "Spurs: fixtures, live scores &amp; results",
-   "New Zealand: fixtures, live scores &amp; results",
-   "Australia: fixtures, live scores &amp; results",
-   "Costa Rica: fixtures, live scores &amp; results",
-   "India: fixtures, live scores &amp; results",
-   "Pakistan: fixtures, live scores &amp; results",
-   "Sri Lanka: fixtures, live scores &amp; results",
    "Kings: fixtures, live scores &amp; results",
+   "China Women: fixtures, live scores &amp; results",
+   "Australia: fixtures, live scores &amp; results",
+   "Southern Rocks: fixtures, live scores &amp; results",
    "Jets: fixtures, live scores &amp; results",
+   "Matabeleland Tuskers: fixtures, live scores &amp; results",
+   "Sparta: fixtures, live scores &amp; results",
+   "Alexandra Osborne: fixtures, live scores &amp; results",
+   "Lions: fixtures, live scores &amp; results",
+   "Dolphins: fixtures, live scores &amp; results",
+   "Titans: fixtures, live scores &amp; results",
    "Panthers: fixtures, live scores &amp; results",
    "Warriors: fixtures, live scores &amp; results",
-   "Lions: fixtures, live scores &amp; results",
-   "Endrick: player statistics &amp; profile",
-   "INSANE clash | France v South Africa | Nations Championship 2026 | E… — Video | NinetyMins",
-   "UNBELIEVABLE ending | France v South Africa | Nations Championship 2… — Video | NinetyMins",
-   "England: fixtures, live scores &amp; results",
-   "2nd &amp; 3rd Session Highlights | Pakistan vs Sri Lanka | 1st Test Day … — Video | NinetyMins",
-   "Nico González: player statistics &amp; profile",
-   "Falkland Islands vs Costa Rica live score, line-ups &amp; where to watch — 2026-11-19 | NinetyMins"
+   "National League HIGHLIGHTS Roundup | MATCHDAY 18 — Video | NinetyMins",
+   "Vegas Golden Knights 3-4 Dallas Stars: result, goals &amp; stats — NHL | NinetyMins",
+   "Salt Lake: fixtures, live scores &amp; results",
+   "Sri Lanka Women: fixtures, live scores &amp; results",
+   "Melbourne derby — BBL 2026-27 | NinetyMins",
+   "PELICANS at SPURS | FULL GAME HIGHLIGHTS | November 21, 2026 — Video | NinetyMins",
+   "2nd &amp; 3rd Session Highlights | Pakistan vs Sri Lanka | 2nd Test Day … — Video | NinetyMins",
+   "Sri Lanka: fixtures, live scores &amp; results",
+   "Pakistan: fixtures, live scores &amp; results",
+   "UAE Bulls: fixtures, live scores &amp; results",
+   "Burgher Recreation Club: fixtures, live scores &amp; results",
+   "Sinhalese Sports Club: fixtures, live scores &amp; results"
   ],
-  "checked": "2026-11-17T14:03:21+00:00"
+  "checked": "2026-11-24T15:56:46+00:00"
  }
 }
