@@ -32,6 +32,10 @@ for p in json.load(open(os.path.join(HERE, "data", "pseo_greece.json"), encoding
     if not post: print("no post", p["url"]); bad += 1; continue
     raw = post["content"]["raw"]
     print("# greece", post["id"], post["slug"], "modified", post.get("modified"))
+    if p.get("meta") and APPLY:
+        w = t.wp("POST", f"wp/v2/posts/{post['id']}", json={"meta": p["meta"]})
+        print("  greece meta", w.status_code, all(w.json().get("meta", {}).get(k) == v for k, v in p["meta"].items()) if w.ok else w.text[:200])
+        if not w.ok: bad += 1
     if GMARK in raw: print("= greece already applied"); continue
     new = raw
     for old, rep in p["replace"]:
