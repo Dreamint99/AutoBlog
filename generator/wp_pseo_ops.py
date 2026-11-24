@@ -25,6 +25,27 @@ add_action( 'init', function () {
 	}
 }, 0 );
 add_action( 'rest_api_init', function () {
+	register_rest_route( 'pbd-ops/v1', '/indexnow', array(
+		'methods' => 'POST',
+		'permission_callback' => function () { return current_user_can( 'manage_options' ); },
+		'callback' => function ( $req ) {
+			$o = get_option( 'rank-math-options-instant-indexing' );
+			$key = is_array( $o ) && ! empty( $o['indexnow_api_key'] ) ? $o['indexnow_api_key'] : '';
+			$out = array( 'rm_key_set' => $key !== '', 'opt_keys' => is_array( $o ) ? array_keys( $o ) : null );
+			if ( $key === '' ) { return $out; }
+			$loc = home_url( '/' . $key . '.txt' );
+			$k = wp_remote_get( $loc, array( 'timeout' => 20 ) );
+			$out['rm_keyfile_code'] = wp_remote_retrieve_response_code( $k );
+			$out['rm_keyfile_match'] = trim( wp_remote_retrieve_body( $k ) ) === $key;
+			$urls = (array) $req->get_param( 'urls' );
+			$body = wp_json_encode( array( 'host' => wp_parse_url( home_url(), PHP_URL_HOST ), 'key' => $key, 'keyLocation' => $loc, 'urlList' => array_values( $urls ) ) );
+			foreach ( array( 'https://api.indexnow.org/indexnow', 'https://www.bing.com/indexnow' ) as $ep ) {
+				$r = wp_remote_post( $ep, array( 'timeout' => 30, 'headers' => array( 'Content-Type' => 'application/json; charset=utf-8' ), 'body' => $body ) );
+				$out['ping'][ $ep ] = is_wp_error( $r ) ? $r->get_error_message() : wp_remote_retrieve_response_code( $r ) . ' ' . substr( str_replace( $key, '***', wp_remote_retrieve_body( $r ) ), 0, 160 );
+			}
+			return $out;
+		},
+	) );
 	register_rest_route( 'pbd-ops/v1', '/sitemap', array(
 		'methods' => array( 'GET', 'POST' ),
 		'permission_callback' => function () { return current_user_can( 'manage_options' ); },
@@ -131,6 +152,15 @@ def ping():
             r = requests.post(ep, json=body, timeout=30, headers={"Content-Type": "application/json; charset=utf-8"})
             print("ping", ep, r.status_code, r.text[:160].replace(INDEXNOW_KEY, "***"))
         except Exception as e: print("ping", ep, "ERR", e)
-if "--ping" in sys.argv: ping()
+
+def rmping():
+    code = PHP.replace("__KEY__", INDEXNOW_KEY)
+    ex = next((s for s in snippets() if s.get("name") == SN_NAME), None)
+    r = wp("POST", f"{API}/{ex['id']}", json={"name": SN_NAME, "code": code, "scope": "global", "active": True})
+    print("snippet update", r.status_code, "" if r.ok else r.text[:300])
+    r = wp("POST", "pbd-ops/v1/indexnow", json={"urls": URLS})
+    print("rm indexnow", r.status_code, r.text[:900])
+if "--rmping" in sys.argv: rmping()
+elif "--ping" in sys.argv: ping()
 elif "--apply" in sys.argv: apply()
 else: inspect(); live_sitemap()
