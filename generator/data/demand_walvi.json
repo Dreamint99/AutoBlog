@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-08-23..2026-11-21, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-24..2026-11-22, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "japan work visa",
@@ -30,193 +30,217 @@
    "volume": 3600
   },
   {
-   "q": "o1 visa requirements",
-   "impr": 489,
+   "q": "visa requirements for us citizens",
+   "impr": 527,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "visa requirements for us citizens",
-   "impr": 488,
+   "q": "o1 visa requirements",
+   "impr": 516,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "u visa requirements",
-   "impr": 353,
+   "impr": 385,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "schengen visa application",
-   "impr": 322,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "travel visa requirements",
-   "impr": 281,
+   "impr": 340,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "work visa usa",
-   "impr": 268,
+   "impr": 289,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "travel visa requirements",
+   "impr": 286,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "tn visa requirements",
-   "impr": 238,
+   "impr": 258,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "japan visa requirements",
-   "impr": 225,
+   "impr": 237,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "what is visa sponsorship",
-   "impr": 207,
+   "impr": 219,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "thailand visa requirements",
-   "impr": 168,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "schengen visa countries",
-   "impr": 167,
+   "impr": 184,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "t visa requirements",
-   "impr": 156,
+   "impr": 178,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "schengen visa countries",
+   "impr": 175,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "schengen visa application form",
-   "impr": 142,
+   "impr": 148,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "canada work visa",
-   "impr": 129,
+   "impr": 133,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "china visa requirements",
-   "impr": 116,
+   "impr": 125,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "schengen visa requirements",
-   "impr": 111,
+   "impr": 115,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "what is a schengen visa",
-   "impr": 107,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "uk visa requirements",
-   "impr": 87,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "vietnam visa requirements",
-   "impr": 84,
+   "impr": 111,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "e2 visa requirements",
-   "impr": 82,
+   "impr": 97,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "new zealand visa requirements",
-   "impr": 79,
+   "q": "vietnam visa requirements",
+   "impr": 96,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "uk visa requirements",
+   "impr": 96,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "uk skilled worker visa",
-   "impr": 77,
+   "impr": 85,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "uk work visa",
-   "impr": 74,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "skilled worker visa uk",
-   "impr": 74,
+   "q": "new zealand visa requirements",
+   "impr": 84,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "australia work visa",
-   "impr": 70,
+   "impr": 79,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "uk work visa",
+   "impr": 78,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "skilled worker visa uk",
+   "impr": 75,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "visa sponsorship jobs",
-   "impr": 65,
+   "impr": 73,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "south africa visa requirements",
-   "impr": 64,
-   "pos": null,
-   "src": "bingkw"
-  },
-  {
-   "q": "canada visa requirements",
-   "impr": 60,
+   "impr": 67,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "us work visa",
-   "impr": 57,
+   "impr": 65,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "schengen visa insurance",
-   "impr": 54,
+   "q": "canada visa requirements",
+   "impr": 62,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "visa requirements for japan",
-   "impr": 54,
+   "impr": 58,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "schengen visa insurance",
+   "impr": 55,
    "pos": null,
    "src": "bingkw"
   },
   {
    "q": "spain schengen visa",
+   "impr": 53,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "tanzania immigration visa",
+   "impr": 53,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "australia visa requirements",
+   "impr": 52,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "schengen visa application online",
+   "impr": 50,
+   "pos": null,
+   "src": "bingkw"
+  },
+  {
+   "q": "singapore visa requirements",
    "impr": 50,
    "pos": null,
    "src": "bingkw"
