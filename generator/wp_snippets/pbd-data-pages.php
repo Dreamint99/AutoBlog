@@ -13,7 +13,7 @@ define('PBD_LOADED', 1);
 define('PBD_MODE', 'live');               // 'test' | 'live'
 define('PBD_KEY', '__PBD_TEST_KEY__');
 define('PBD_API', 'https://probashi-data.iamkashimuddin.workers.dev/v1/');
-define('PBD_VER', '17');
+define('PBD_VER', '18');
 
 function pbd_enabled() {
     if (PBD_MODE === 'live') { return true; }
@@ -60,11 +60,18 @@ function pbd_match() {
     $m = null;
     $path = rawurldecode((string) wp_parse_url(isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '', PHP_URL_PATH));
     if (PBD_MODE === 'live' && $path === '/pbd-sitemap.xml') { return $m = array('type' => 'sitemap'); }
-    if (!preg_match('#^/(visa-check|visa|remittance|gamca|agency|migration-cost|customs|baggage|ramadan)(?:/([a-z0-9-]+))?/?$#', $path, $x)) { return $m; }
+    if (!preg_match('#^/(visa-check|visa|remittance|gamca|agency|migration-cost|customs|baggage|ramadan|passport-office)(?:/([a-z0-9-]+))?/?$#', $path, $x)) { return $m; }
     if (!pbd_enabled()) { return $m; }
     $type = $x[1];
     $slug = isset($x[2]) ? $x[2] : '';
     if ($type === 'migration-cost' && $slug !== '') { return $m; }
+    if ($type === 'passport-office') {   // static official data, no worker call
+        $po = pbd_po_all();
+        if ($slug !== '' && !isset($po[$slug])) { return $m; }
+        $m = array('type' => $type, 'slug' => $slug, 'data' => array(), 'item' => $slug !== '' ? $po[$slug] : null, 'path' => '/passport-office/' . ($slug !== '' ? $slug . '/' : ''));
+        if (substr($path, -1) !== '/') { $m['redirect'] = true; }
+        return $m;
+    }
     $item = null;
     if ($type === 'ramadan' && $slug !== '') {
         $one = pbd_data('ramadan/' . $slug);
@@ -192,10 +199,48 @@ function pbd_seo() {
             $s['title'] = $a['name'] . ' (আরএল-' . pbd_bn($a['rl']) . '): ' . $lbl;
             $s['desc'] = $a['name'] . ' রিক্রুটিং এজেন্সি (আরএল-' . pbd_bn($a['rl']) . '): বিএমইটির তালিকায় ' . $lbl . '। ঠিকানা, ফোন, লাইসেন্সের মেয়াদ ও টাকা দেওয়ার আগে যাচাইয়ের নিয়ম।';
             $s['faq'] = pbd_ag_faq($d, $a);
+            if (pbd_ag_v2($a)) {   // v18 template: gate flag x = noindex
+                $r = pbd_ag_xi($a['rl']); $man = pbd_ag_manual($a['rl']);
+                $s['index'] = $s['index'] && empty($r['x']);
+                $bnm = isset($man['bn']) ? ' — ' . $man['bn'] : '';
+                $s['title'] = $a['name'] . ' (RL ' . $a['rl'] . ')' . $bnm . ': ' . $lbl . ($a['status'] === 'Active' && $a['expiry'] ? ', মেয়াদ ' . pbd_date($a['expiry']) : '');
+                $n = $a['expiry'] ? pbd_days_to($a['expiry']) : null;
+                $s['desc'] = $a['name'] . (isset($man['bn']) ? ' (' . $man['bn'] . ')' : '') . ' — বিএমইটি RAIMS তালিকায় লাইসেন্স ' . $a['status'] . ($a['expiry'] ? ', মেয়াদ ' . pbd_date($a['expiry']) . ($n !== null && $n >= 0 ? ' (আর ' . pbd_bn($n) . ' দিন)' : '') : '') . '। ঠিকানা, ফোন, যাচাইয়ের নিয়ম। যাচাই ' . pbd_date($d['updated']) . '।';
+                $s['faq'] = pbd_ag_faq2($d, $a);
+                $org = array('@type' => 'Organization', '@id' => $s['canonical'] . '#org', 'name' => $a['name'], 'url' => $s['canonical'],
+                    'identifier' => array('@type' => 'PropertyValue', 'propertyID' => 'BMET Recruiting Licence', 'value' => pbd_ag_rlpad($a['rl'])));
+                if (isset($man['bn'])) { $org['alternateName'] = $man['bn']; }
+                if ($a['address']) { $org['address'] = array('@type' => 'PostalAddress', 'streetAddress' => $a['address'], 'addressCountry' => 'BD'); }
+                if ($a['phone']) { $org['telephone'] = $a['phone']; }
+                $s['nodes'] = array('pbdOrg' => $org, 'pbdCrumbs' => pbd_crumbs_ld(array(array('এজেন্সি যাচাই', '/agency/'), array('RL ' . $a['rl'], $m['path']))));
+            }
         } else {
             $s['index'] = !isset($_GET['q']);
             $s['title'] = 'রিক্রুটিং এজেন্সির লাইসেন্স যাচাই: নাম বা আরএল নম্বর দিয়ে খুঁজুন';
             $s['desc'] = 'বিএমইটির তালিকার ' . pbd_bn(count($d['agencies'])) . 'টি রিক্রুটিং এজেন্সি — লাইসেন্স সক্রিয়, মেয়াদোত্তীর্ণ, স্থগিত না বাতিল, নাম বা আরএল নম্বর দিয়ে দেখুন।';
+            if (pbd_ag_x()) {
+                $s['title'] = 'RL নম্বর চেক ২০২৬: রিক্রুটিং এজেন্সির লাইসেন্স যাচাই (আর এল নাম্বার চেক)';
+                $s['desc'] = 'RL number check: নাম বা আরএল নম্বর লিখে ' . pbd_bn(count($d['agencies'])) . 'টি রিক্রুটিং এজেন্সির লাইসেন্স অবস্থা ও মেয়াদ দেখুন। সূত্র বিএমইটি RAIMS, যাচাই ' . pbd_date($d['updated']) . '।';
+                $s['faq'] = pbd_ag_hub_faq();
+                $s['nodes'] = array('pbdCrumbs' => pbd_crumbs_ld(array(array('এজেন্সি যাচাই', '/agency/'))));
+            }
+        }
+    }
+    if ($m['type'] === 'passport-office') {
+        if ($m['item']) {
+            $o = $m['item'];
+            $s['index'] = $o['addr'] !== '' && $o['phone'] !== '';   // critical data present
+            $s['title'] = $o['short'] . ' পাসপোর্ট অফিস: ঠিকানা, ফোন নম্বর ও ই-পাসপোর্ট স্ট্যাটাস চেক';
+            $s['desc'] = $o['name'] . ' — সরকারি সূত্রে ঠিকানা ' . $o['addr'] . ', ফোন ' . $o['phone'] . ', ফি ও ই-পাসপোর্ট স্ট্যাটাস চেকের ধাপ। যাচাই ২৫ নভেম্বর ২০২৬।';
+            $s['faq'] = pbd_po_faq($o);
+            $s['nodes'] = array('pbdGov' => array('@type' => 'GovernmentOffice', '@id' => $s['canonical'] . '#office', 'name' => $o['name'], 'alternateName' => $o['en'], 'url' => $o['portal'],
+                'telephone' => array($o['phone'], $o['mobile']), 'email' => $o['email'], 'address' => array('@type' => 'PostalAddress', 'streetAddress' => $o['addr'], 'addressCountry' => 'BD'),
+                'parentOrganization' => array('@type' => 'GovernmentOrganization', 'name' => 'Department of Immigration and Passports', 'url' => 'https://www.dip.gov.bd/')),
+                'pbdCrumbs' => pbd_crumbs_ld(array(array('পাসপোর্ট অফিস', '/passport-office/'), array($o['short'], $m['path']))));
+        } else {
+            $s['index'] = false;   // hub stays noindex until more offices are added
+            $s['title'] = 'পাসপোর্ট অফিসের ঠিকানা ও ফোন নম্বর (সরকারি সূত্রে)';
+            $s['desc'] = 'উত্তরা, কুমিল্লা ও সিলেট পাসপোর্ট অফিসের ঠিকানা, ফোন ও ই-পাসপোর্ট স্ট্যাটাস চেকের ধাপ — শুধু সরকারি সূত্রে।';
         }
     }
     if ($m['type'] === 'migration-cost') {
@@ -286,6 +331,7 @@ add_filter('rank_math/json_ld', function ($data) {
         foreach ($s['faq'] as $f) { $q[] = array('@type' => 'Question', 'name' => $f[0], 'acceptedAnswer' => array('@type' => 'Answer', 'text' => $f[1])); }
         $data['pbdFaq'] = array('@type' => 'FAQPage', 'mainEntity' => $q);
     }
+    if (!empty($s['nodes'])) { foreach ($s['nodes'] as $k => $v) { $data[$k] = $v; } }
     return $data;
 }, 99);
 add_filter('wp_robots', function ($r) {
@@ -319,9 +365,11 @@ function pbd_sitemap() {
     if ($p && !empty($p['pages'])) {
         foreach ($p['pages'] as $r) {
             if (empty($r['index'])) { continue; }
+            if (preg_match('#^/agency/rl-(\d+)/$#', $r['path'], $mm)) { $y = pbd_ag_xi($mm[1]); if ($y && !empty($y['v']) && !empty($y['x'])) { continue; } }
             echo '<url><loc>' . esc_url(home_url($r['path'])) . '</loc><lastmod>' . esc_html($r['lastmod']) . '</lastmod></url>';
         }
     }
+    foreach (pbd_po_all() as $k => $o) { if ($o['addr'] !== '' && $o['phone'] !== '') { echo '<url><loc>' . esc_url(home_url('/passport-office/' . $k . '/')) . '</loc><lastmod>2026-11-25</lastmod></url>'; } }
     echo '</urlset>';
 }
 
@@ -404,7 +452,8 @@ function pbd_render($m) {
     if ($m['type'] === 'visa') { return pbd_gm_css() . pbd_ag_css() . ($m['item'] ? pbd_vs_one($m['data'], $m['item']) : pbd_vs_hub($m['data'])); }
     if ($m['type'] === 'customs') { return pbd_rm_css() . ($m['item'] ? pbd_cu_topic($m['data'], $m['item']) : pbd_cu_hub($m['data'])); }
     if ($m['type'] === 'baggage') { return $m['item'] ? pbd_bg_one($m['data'], $m['item']) : pbd_bg_hub($m['data']); }
-    if ($m['type'] === 'agency') { return pbd_ag_css() . ($m['item'] ? pbd_ag_one($m['data'], $m['item']) : pbd_ag_hub($m['data'])); }
+    if ($m['type'] === 'agency') { return pbd_ag_css() . pbd_v18_css() . ($m['item'] ? (pbd_ag_v2($m['item']) ? pbd_ag_one2($m['data'], $m['item']) : pbd_ag_one($m['data'], $m['item'])) : pbd_ag_hub2($m['data'])); }
+    if ($m['type'] === 'passport-office') { return pbd_ag_css() . pbd_v18_css() . ($m['item'] ? pbd_po_one($m['slug'], $m['item']) : pbd_po_hub()); }
     if ($m['type'] === 'migration-cost') { return pbd_ag_css() . pbd_mc_page($m['data']); }
     if ($m['type'] === 'remittance') { return $m['item'] ? pbd_rm_one($m['data'], $m['item']) : pbd_rm_hub($m['data']); }
     return '';
@@ -676,8 +725,9 @@ function pbd_ag_hub($d) {
         . '<span class="pbd-chip">📅 ' . pbd_date($d['updated']) . '</span></div>';
     $o .= '<form class="pbd-srch" method="get" action="' . esc_url(home_url('/agency/')) . '"><input name="q" type="search" value="' . esc_attr($q) . '" placeholder="এজেন্সির নাম বা আরএল নম্বর (যেমন 1857)" aria-label="এজেন্সি খুঁজুন"><button type="submit">খুঁজুন</button></form>';
     if ($q !== '') {
-        $qq = strtolower(preg_replace('/^rl[-\s]*/i', '', strtr($q, array('০' => '0', '১' => '1', '২' => '2', '৩' => '3', '৪' => '4', '৫' => '5', '৬' => '6', '৭' => '7', '৮' => '8', '৯' => '9'))));
+        $qq = strtolower(preg_replace('/^(?:r\.?\s*l\.?|আর\s*এল|আরএল)[-\s.:]*/iu', '', strtr($q, array('০' => '0', '১' => '1', '২' => '2', '৩' => '3', '৪' => '4', '৫' => '5', '৬' => '6', '৭' => '7', '৮' => '8', '৯' => '9'))));
         $hits = array();
+        if (ctype_digit($qq)) { $qq = ltrim($qq, '0'); }   // RL0746 / 0746 → 746
         foreach ($d['agencies'] as $a) {
             if ((ctype_digit($qq) && (string) $a['rl'] === $qq) || (!ctype_digit($qq) && strlen($qq) > 1 && strpos(strtolower($a['name']), $qq) !== false)) { $hits[] = $a; }
             if (count($hits) >= 60) { break; }
@@ -1101,6 +1151,11 @@ function pbd_en() {
             $e['faq'][] = array('How many GAMCA (Wafid) medical centers are in ' . $en . '?', $it['count'] . ' GCC-approved centers on the official Wafid list (' . pbd_date_en($d['updated']) . '). Book at wafid.com; the report is valid for 2 months.');
             $e['faq'][] = array($en . ' e GAMCA medical kothay korbo?', 'Ei page-e ' . $en . '-er sob onumodito center-er thikana ar phone ache. Appointment nite hobe wafid.com theke.');
         } else { $e['label'] = 'GAMCA medical center list Bangladesh'; }
+    } elseif ($t === 'passport-office') {
+        if ($it) {
+            $e['label'] = $it['en'];
+            $e['faq'][] = array('What is the address and phone number of the ' . $it['en'] . '?', 'Official portal: ' . pbd_latin($it['addr']) . '. Phone ' . pbd_latin($it['phone']) . ', email ' . $it['email'] . '. Passport helpline 16445.');
+        } else { $e['label'] = 'Passport office address and phone'; }
     } elseif ($t === 'agency') {
         if ($it) {
             $e['label'] = 'RL ' . $it['rl'] . ' license check';
@@ -1211,4 +1266,230 @@ function pbd_with_en($html) {
     if (strpos($html, $h) !== false) { return preg_replace('/' . preg_quote($h, '/') . '/u', $h . $x, $html, 1); }
     $end = strrpos($html, '</div></article></div></div>');
     return $end === false ? $html . $x : substr($html, 0, $end) . '<h2>In English</h2>' . $x . substr($html, $end);
+}
+
+/* ---------- v18: agency page v2 (area, nearby, BAIRA, gate) + passport offices ---------- */
+/* Data: option pbd_ag_extra, uploaded by AutoBlog wp_probashi_data.py (extra …) from the BMET RAIMS list and the
+   BAIRA member list. Row: n name, t thana, s status, e expiry, b BAIRA member (RL + name match), tt/ta agencies/active
+   in the thana, l active agencies expiring later, nb nearby active RLs, x gate noindex, v template v2 on. */
+function pbd_ag_x() {
+    static $x = null;
+    if ($x === null) { $x = get_option('pbd_ag_extra'); if (!is_array($x) || empty($x['a'])) { $x = array(); } }
+    return $x;
+}
+function pbd_ag_xi($rl) { $x = pbd_ag_x(); $k = (string) (int) $rl; return ($x && isset($x['a'][$k])) ? $x['a'][$k] : null; }
+function pbd_ag_v2($a) { $r = pbd_ag_xi($a['rl']); return $r && !empty($r['v']); }
+function pbd_days_to($ymd) {
+    $t = strtotime($ymd . ' 00:00:00 UTC');
+    return $t ? (int) floor(($t - strtotime(gmdate('Y-m-d') . ' 00:00:00 UTC')) / 86400) : null;
+}
+function pbd_ag_rlpad($rl) { return 'RL' . str_pad((string) (int) $rl, 4, '0', STR_PAD_LEFT); }
+/* hand-checked extras only (Bangla name, BAIRA address differing from RAIMS) — nothing auto-generated */
+function pbd_ag_manual($rl) {
+    $m = array(
+        1398 => array('bn' => 'খান জাহান আলী ওভারসিজ', 'baira_addr' => 'Tower-A, 4th Floor, Plot No.-13, Road No.-17, Banani Commercial Area, Banani, Dhaka-1213.'),
+        746 => array('bn' => 'নেইবার অ্যাসোসিয়েটস লিমিটেড'),
+        320 => array('bn' => 'জেনারেল ট্রেডিং কোম্পানি'),
+    );
+    return isset($m[(int) $rl]) ? $m[(int) $rl] : array();
+}
+function pbd_ag_computed($d, $a) {
+    $r = pbd_ag_xi($a['rl']); $x = pbd_ag_x(); $o = array();
+    if (!empty($a['expiry'])) {
+        $n = pbd_days_to($a['expiry']);
+        if ($n !== null && $n >= 0) { $o[] = 'মেয়াদ শেষ হতে বাকি ' . pbd_bn($n) . ' দিন (প্রায় ' . pbd_bn((int) round($n / 30.44)) . ' মাস)।'; }
+        elseif ($n !== null) { $o[] = 'সরকারি তালিকার মেয়াদের তারিখ (' . pbd_date($a['expiry']) . ') পেরিয়ে গেছে ' . pbd_bn(-$n) . ' দিন আগে।'; }
+    }
+    if ($r) {
+        $tail = ($r['l'] >= 0) ? '; এদের মধ্যে ' . pbd_bn($r['l']) . 'টির মেয়াদ এই এজেন্সির চেয়ে পরে শেষ হবে।' : '।';
+        if (!empty($r['t']) && $r['tt'] > 1) { $o[] = 'সরকারি তালিকায় ' . $r['t'] . ' থানার ঠিকানায় মোট ' . pbd_bn($r['tt']) . 'টি এজেন্সি আছে, যার মধ্যে সক্রিয় ' . pbd_bn($r['ta']) . 'টি' . $tail; }
+        else { $o[] = 'সরকারি তালিকার ' . pbd_bn($x['total']) . 'টি এজেন্সির মধ্যে সক্রিয় ' . pbd_bn($x['active']) . 'টি' . $tail; }
+    }
+    return $o;
+}
+function pbd_ag_faq2($d, $a) {
+    $r = pbd_ag_xi($a['rl']); $x = pbd_ag_x(); $st = pbd_ag_status($a['status']); $f = array();
+    $f[] = array('RL ' . $a['rl'] . ' কোন এজেন্সির লাইসেন্স নম্বর?', pbd_ag_rlpad($a['rl']) . ' — ' . $a['name'] . ' (' . $st[0] . ', বিএমইটি RAIMS)।');
+    if (!empty($a['expiry'])) {
+        $f[] = array($a['name'] . '-এর লাইসেন্স কবে পর্যন্ত বৈধ?', $a['status'] === 'Active'
+            ? pbd_date($a['expiry']) . ' পর্যন্ত।'
+            : 'অবস্থা ' . $st[0] . '; তালিকায় মেয়াদের তারিখ ' . pbd_date($a['expiry']) . '। এই অবস্থায় কর্মী পাঠানো বৈধ নয়।');
+    }
+    if (!empty($a['address'])) { $f[] = array($a['name'] . '-এর অফিস কোথায়?', $a['address'] . ($r && !empty($r['t']) ? ' (' . $r['t'] . ' থানা)' : '') . '।'); }
+    if (!empty($a['phone'])) { $f[] = array($a['name'] . '-এর ফোন নম্বর কত?', $a['phone'] . ' (সরকারি তালিকার অফিস নম্বর)।'); }
+    if ($r && !empty($r['b'])) { $f[] = array($a['name'] . ' কি BAIRA-র সদস্য?', 'হ্যাঁ, BAIRA সদস্য তালিকায় RL ' . $a['rl'] . ' নম্বরে আছে।'); }
+    return $f;
+}
+function pbd_ag_one2($d, $a) {
+    $st = pbd_ag_status($a['status']); $r = pbd_ag_xi($a['rl']); $x = pbd_ag_x(); $man = pbd_ag_manual($a['rl']);
+    $bn = isset($man['bn']) ? ' — ' . $man['bn'] : '';
+    $o = pbd_head(array(array('এজেন্সি যাচাই', '/agency/'), array('আরএল-' . pbd_bn($a['rl']), '')), $a['name'] . ' (RL ' . $a['rl'] . ')' . $bn . ': লাইসেন্স যাচাই');
+    $o .= '<!--pbd-u--><div class="pbd-hero"><small>🏢 রিক্রুটিং এজেন্সি · আরএল-' . pbd_bn($a['rl']) . ' · ' . pbd_ag_rlpad($a['rl']) . '</small><div class="big" style="font-size:1.4em">' . esc_html($a['name']) . '</div>'
+        . '<span class="pbd-chip ' . $st[1] . '">' . $st[2] . ' ' . esc_html($st[0]) . '</span>'
+        . ($a['expiry'] ? '<span class="pbd-chip">⏳ মেয়াদ ' . pbd_date($a['expiry']) . '</span>' : '')
+        . '</div>';
+    $c = pbd_ag_computed($d, $a);
+    if ($c) { $o .= '<p class="pbd-calc">' . esc_html(implode(' ', $c)) . '</p>'; }
+    $src = '<a href="' . esc_url($d['source_url']) . '" target="_blank" rel="nofollow noopener">RAIMS</a>';
+    $rows = array(array('লাইসেন্স নম্বর', pbd_ag_rlpad($a['rl']), $src), array('নাম (সরকারি তালিকায়)', $a['name'], $src), array('অবস্থা', $st[0] . ' (' . $a['status'] . ')', $src));
+    if ($a['expiry']) { $rows[] = array('লাইসেন্সের মেয়াদ', pbd_date($a['expiry']), $src); }
+    if ($a['address']) { $rows[] = array('ঠিকানা', $a['address'], $src); }
+    if ($a['phone']) { $rows[] = array('অফিসের ফোন', $a['phone'], $src); }
+    if ($r && !empty($r['b'])) { $rows[] = array('BAIRA সদস্য', 'হ্যাঁ (RL ' . $a['rl'] . ')', '<a href="' . esc_url('https://www.baira.org.bd/dir/agency-information/' . (int) $a['rl']) . '" target="_blank" rel="nofollow noopener">BAIRA</a>'); }
+    $o .= '<div class="pbd-tw"><table>';
+    foreach ($rows as $w) { $o .= '<tr><th>' . esc_html($w[0]) . '</th><td>' . esc_html($w[1]) . '</td><td>' . $w[2] . '</td></tr>'; }
+    $o .= '</table></div>';
+    if (!empty($man['baira_addr']) && $a['address']) {
+        $o .= '<div class="pbd-warn"><b>⚠️ ঠিকানা দুই সূত্রে আলাদা</b><p>সরকারি তালিকায় (RAIMS): “' . esc_html($a['address']) . '”। BAIRA সদস্য তালিকায়: “' . esc_html($man['baira_addr']) . '”। অফিস বদল হয়ে থাকতে পারে — যাওয়ার আগে সরকারি তালিকার অফিস ফোনে' . ($a['phone'] ? ' (' . esc_html($a['phone']) . ')' : '') . ' ফোন করে বর্তমান ঠিকানা নিশ্চিত হোন। এটি কোনো অভিযোগ নয়, শুধু দুই তালিকার পার্থক্য।</p></div>';
+    }
+    $o .= '<h2>প্রশ্ন ও উত্তর</h2>';
+    foreach (pbd_ag_faq2($d, $a) as $f) { $o .= '<details><summary>' . esc_html($f[0]) . '</summary><p>' . esc_html($f[1]) . '</p></details>'; }
+    $o .= '<!--/pbd-u-->';
+    $o .= '<p class="pbd-src">📅 সরকারি তালিকা যাচাই: ' . pbd_date($d['updated']) . ' (আজ ' . pbd_date(gmdate('Y-m-d')) . ')।</p>';
+    $o .= '<details><summary>অবস্থা বা ঠিকানা কি বদলাতে পারে?</summary><p>হ্যাঁ। তালিকা বিএমইটি হালনাগাদ করে; টাকা দেওয়ার আগে oep.gov.bd/agencies-এ আবার দেখুন, আর অন্য কোনো নম্বর (যেমন WhatsApp) থেকে যোগাযোগ করলে সরকারি তালিকার অফিস ফোনে নিশ্চিত হোন। BAIRA ব্যবসায়ীদের সংগঠন — লাইসেন্স দেয় বিএমইটি।</p></details>';
+    $o .= '<div class="pbd-st"><div><i>' . $st[2] . '</i><span><b>' . esc_html($st[0]) . ' মানে</b>' . esc_html($st[3]) . '</span></div></div>';
+    if ($r && !empty($r['nb'])) {
+        $o .= '<h2>' . (!empty($r['t']) ? esc_html($r['t']) . ' এলাকার' : 'কাছাকাছি নম্বরের') . ' আরও সক্রিয় এজেন্সি</h2><ul class="pbd-nb">';
+        foreach ($r['nb'] as $n) {
+            $y = isset($x['a'][(string) $n]) ? $x['a'][(string) $n] : null; if (!$y) { continue; }
+            $o .= '<li><a href="' . esc_url(home_url('/agency/rl-' . (int) $n . '/')) . '">' . esc_html($y['n']) . ' (RL ' . (int) $n . ')</a>' . ($y['e'] ? ' — মেয়াদ ' . pbd_date($y['e']) : '') . '</li>';
+        }
+        $o .= '</ul><p class="pbd-src">এলাকার হিসাব: সরকারি তালিকা, ' . pbd_date($x['upd']) . '।</p>';
+    }
+    $o .= '<details><summary>লাইসেন্স বাতিল বা স্থগিত এজেন্সিকে টাকা দিয়ে ফেললে কী করব?</summary><p>টাকা দেওয়ার রসিদ ও কাগজ নিয়ে বিএমইটি বা জেলা কর্মসংস্থান ও জনশক্তি অফিসে লিখিত অভিযোগ দিন।</p></details>';
+    $o .= '<h2>টাকা দেওয়ার আগে ৫টি যাচাই</h2><ol class="pbd-steps">'
+        . '<li>এজেন্সির লাইসেন্স সক্রিয় কি না সরকারি তালিকায় দেখুন: <a href="https://oep.gov.bd/agencies" target="_blank" rel="nofollow noopener">oep.gov.bd/agencies</a> (পুরোনো ঠিকানা raims.oep.gov.bd/agencies)।</li>'
+        . '<li>ভিসা আসল কি না সেই দেশের সরকারি সাইটে মিলিয়ে নিন — <a href="' . esc_url(home_url('/visa-check/')) . '">দেশভিত্তিক ভিসা চেক</a>।</li>'
+        . '<li>সরকার নির্ধারিত খরচের চেয়ে বেশি চাইলে লিখিত হিসাব চান — <a href="' . esc_url(home_url('/migration-cost/')) . '">সরকার নির্ধারিত অভিবাসন ব্যয়</a>।</li>'
+        . '<li>প্রতিটি টাকার রসিদ নিন, এজেন্সির নাম ও আরএল নম্বরসহ।</li>'
+        . '<li>বিএমইটি ছাড়পত্র (স্মার্ট কার্ড) ছাড়া কাজের ভিসায় বিদেশ যাবেন না।</li></ol>';
+    $o .= '<h2>নিজে কীভাবে যাচাই করবেন</h2><ol class="pbd-steps"><li>oep.gov.bd/agencies খুলে Search বক্সে RL নম্বর (চার অঙ্কে, যেমন ' . pbd_ag_rlpad($a['rl']) . ') বা নাম লিখুন।</li><li>“License Status” কলামে Active আর “License validity date” ভবিষ্যতের তারিখ কি না দেখুন।</li><li>যে অফিসে আপনাকে ডাকা হচ্ছে তার ঠিকানা ও ফোন সরকারি তালিকার সাথে মিলিয়ে নিন। না মিললে টাকা দেবেন না।</li></ol>';
+    $o .= '<div class="pbd-warn"><b>⚠️ সতর্কতা</b><p>প্রতারকরা অনেক সময় বৈধ এজেন্সির নাম ও RL নম্বর ব্যবহার করে অন্য ঠিকানা, WhatsApp নম্বর বা ওয়েবসাইট দিয়ে যোগাযোগ করে। লাইসেন্স বৈধ হলেই যোগাযোগকারী ব্যক্তি সেই এজেন্সির লোক — এমন নয়।</p></div>';
+    $o .= '<p><a href="' . esc_url(home_url('/agency/')) . '">অন্য এজেন্সি খুঁজুন →</a></p>';
+    $o .= '<p class="pbd-src">সূত্র: ' . esc_html($d['source']) . ', ' . pbd_date($d['updated']) . ' তারিখের তালিকা' . ($r && !empty($r['b']) ? '; BAIRA সদস্য তালিকা (baira.org.bd), ' . pbd_date($x['baira_upd']) : '') . '। BAIRA তালিকার ব্যক্তিগত তথ্য (মালিকের নাম, ব্যক্তিগত মোবাইল, ইমেইল) এখানে দেখানো হয় না। অবস্থা বদলাতে পারে — চূড়ান্ত যাচাই সরকারি সাইটে করুন। ভুল দেখলে মন্তব্যে জানান।</p>';
+    return $o . pbd_foot();
+}
+function pbd_ag_hub2($d) {
+    $x = pbd_ag_x(); $h = pbd_ag_hub($d);
+    if (!$x || isset($_GET['q'])) { return $h; }
+    $soon = 0; $areas = array(); $act = 0;
+    foreach ($d['agencies'] as $y) { $act += ($y['status'] === 'Active'); }
+    foreach ($x['a'] as $y) {
+        if ($y['s'] !== 'Active') { continue; }
+        if ($y['e']) { $n = pbd_days_to($y['e']); if ($n !== null && $n >= 0 && $n <= 90) { $soon++; } }
+        if (!empty($y['t'])) { $areas[$y['t']] = (isset($areas[$y['t']]) ? $areas[$y['t']] : 0) + 1; }
+    }
+    arsort($areas); $areas = array_slice($areas, 0, 6, true);
+    $tot = count($d['agencies']);
+    $add = '<h2>আর এল নাম্বার চেক: এক নজরে</h2><p class="pbd-calc">' . pbd_date($d['updated']) . ' তারিখের সরকারি তালিকার ' . pbd_bn($tot) . 'টি এজেন্সির মধ্যে ' . pbd_bn($act) . 'টি (' . pbd_bn((int) round($act * 100 / max(1, $tot))) . '%) সক্রিয়; বাকি ' . pbd_bn($tot - $act) . 'টি দিয়ে এখন বৈধভাবে কর্মী পাঠানো যায় না। সক্রিয়দের মধ্যে ' . pbd_bn($soon) . 'টির মেয়াদ আগামী ৯০ দিনের মধ্যে শেষ হবে — এদের সাথে লেনদেনের আগে নবায়ন হয়েছে কি না দেখুন।</p>';
+    $add .= '<p>RL নম্বর দিয়ে খুঁজতে উপরের বক্সে লিখুন — “1398”, “RL1398”, “আর এল ১৩৯৮” সব লেখাই চলে।</p>';
+    if ($areas) { $add .= '<h2>যেসব থানায় সবচেয়ে বেশি সক্রিয় এজেন্সি</h2><ul>'; foreach ($areas as $t => $n) { $add .= '<li>' . esc_html($t) . ' — ' . pbd_bn($n) . 'টি</li>'; } $add .= '</ul><p class="pbd-src">মেয়াদ ও থানার হিসাব: সরকারি তালিকা, ' . pbd_date($x['upd']) . '।</p>'; }
+    $add .= '<h2>প্রশ্ন ও উত্তর</h2>';
+    foreach (pbd_ag_hub_faq() as $f) { $add .= '<details><summary>' . esc_html($f[0]) . '</summary><p>' . esc_html($f[1]) . '</p></details>'; }
+    $mark = '<h2>লাইসেন্সের অবস্থার মানে</h2>';
+    $h = (strpos($h, $mark) !== false) ? str_replace($mark, $add . $mark, $h) : $h;
+    return str_replace('</p>' . pbd_foot(), ' সদস্যপদ: <a href="https://www.baira.org.bd/dir/all-member-list/sorting/rl" target="_blank" rel="nofollow noopener">BAIRA সদস্য তালিকা</a>; সরকারি খোঁজ: <a href="https://oep.gov.bd/agencies" target="_blank" rel="nofollow noopener">oep.gov.bd/agencies</a>।</p>' . pbd_foot(), $h);
+}
+function pbd_ag_hub_faq() {
+    return array(
+        array('RL নম্বর কী, কোথায় পাব?', 'RL (Recruiting Licence) নম্বর বিএমইটির দেওয়া লাইসেন্স নম্বর; সরকারি তালিকায় চার অঙ্কে লেখা থাকে (যেমন RL0746)। বৈধ এজেন্সি অফিসে ও রসিদে এটি লেখে।'),
+        array('সরকারি সাইটে আর এল নাম্বার চেক কীভাবে করব?', 'oep.gov.bd/agencies (পুরোনো ঠিকানা raims.oep.gov.bd/agencies) খুলে Search বক্সে নম্বর বা নাম লিখুন। লগইন লাগে না, ফ্রি।'),
+        array('এই পাতার তথ্য কত দিন পর পর হালনাগাদ হয়?', 'প্রতি সপ্তাহে সরকারি তালিকা মিলিয়ে দেখা হয়; যে এজেন্সির অবস্থা বদলায় তার পাতায় নতুন অবস্থা ও তারিখ দেখায়।'),
+        array('BAIRA সদস্য হলেই কি এজেন্সি বৈধ?', 'না। BAIRA ব্যবসায়ীদের সংগঠন। লাইসেন্সের চূড়ান্ত সূত্র বিএমইটির সরকারি তালিকা।'),
+    );
+}
+
+/* ---------- passport offices (official DIP / office portal data only; missing field = "সরকারি তালিকায় নেই") ---------- */
+function pbd_po_all() {
+    $fee = array('নিয়মিত ফি, ৪৮ পৃষ্ঠা', '৫ বছর ৪,০২৫ টাকা / ১০ বছর ৫,৭৫০ টাকা (১৫% ভ্যাটসহ)', 'সিটিজেন চার্টার (সিলেট ও উত্তরা অফিস)');
+    $del = array('নিয়মিত ডেলিভারি', '১৫ কর্মদিবস (পুলিশ ক্লিয়ারেন্স ও তথ্য সঠিক থাকা সাপেক্ষে)', 'সিটিজেন চার্টার');
+    return array(
+        'uttara' => array('name' => 'আঞ্চলিক পাসপোর্ট অফিস, উত্তরা, ঢাকা', 'short' => 'উত্তরা', 'en' => 'Regional Passport Office, Uttara, Dhaka', 'portal' => 'https://diputtara.dhaka.gov.bd/',
+            'addr' => 'প্লট নং-০৫, রোড নং-৩/বি, ব্লক-এইচ, সেক্টর-১৫, উত্তরা, ঢাকা', 'phone' => '০২-৫৫০৮৭০২০', 'mobile' => '০১৭৩৩৩৯৩৩২৮', 'email' => 'rpouttara@passport.gov.bd',
+            'src' => 'https://diputtara.dhaka.gov.bd/pages/static-pages/6995df8235ce18e1c07b05ce', 'src_label' => 'অফিসের পোর্টাল — যোগাযোগ (হালনাগাদ ২৩ মার্চ ২০২৪)', 'page_upd' => '2024-03-23',
+            'hours' => '', 'area' => '', 'admin' => 'ঢাকা বিভাগের আঞ্চলিক অফিস', 'note' => '', 'fee' => $fee, 'del' => $del),
+        'comilla' => array('name' => 'আঞ্চলিক পাসপোর্ট অফিস, কুমিল্লা', 'short' => 'কুমিল্লা', 'en' => 'Regional Passport Office, Cumilla', 'portal' => 'https://passport.comilla.gov.bd/',
+            'addr' => 'নোয়াপাড়া, ডাকঘর: হালিমানগর, থানা: কোতয়ালী, জেলা: কুমিল্লা', 'phone' => '০৮১-৬৫৭৮৫', 'mobile' => '০১৭৩৩৩৯৩৩৫২', 'email' => 'rpocomilla@passport.gov.bd',
+            'src' => 'https://passport.comilla.gov.bd/pages/static-pages/6990e67b35ce18e1c0727f4a', 'src_label' => 'অফিসের পোর্টাল — যোগাযোগ (হালনাগাদ ৭ জুন ২০২১)', 'page_upd' => '2021-06-07',
+            'hours' => '', 'area' => '', 'admin' => 'চট্টগ্রাম বিভাগীয় পাসপোর্ট ও ভিসা অফিসের আওতাধীন আঞ্চলিক অফিস (চট্টগ্রাম বিভাগীয় অফিসের সিটিজেন চার্টার)', 'note' => '', 'fee' => $fee, 'del' => $del),
+        'sylhet' => array('name' => 'বিভাগীয় পাসপোর্ট ও ভিসা অফিস, সিলেট', 'short' => 'সিলেট', 'en' => 'Divisional Passport and Visa Office, Sylhet', 'portal' => 'https://passport.sylhetdiv.gov.bd/',
+            'addr' => 'আলমপুর, সিলেট', 'phone' => '০২-৯৯৭৭০৪০০৫', 'mobile' => '০১৭৩৩৩৯৩৩৬১', 'email' => 'rpo.sylhet@passport.gov.bd',
+            'src' => 'https://passport.sylhetdiv.gov.bd/pages/static-pages/696cb57cc4774958d7ba617b', 'src_label' => 'অফিসের পোর্টাল — যোগাযোগ (হালনাগাদ ১১ অক্টোবর ২০২৬)', 'page_upd' => '2026-10-11',
+            'hours' => 'আবেদন জমা নেওয়া হয় সকাল ৯টা থেকে দুপুর ২টা পর্যন্ত (অফিসের নোটিশ, ২ জুন ২০২৬)', 'area' => 'সিলেট জেলা (ইমিগ্রেশন ও পাসপোর্ট অধিদপ্তরের তালিকা)',
+            'admin' => 'সিলেট বিভাগের বিভাগীয় অফিস; আওতাধীন আঞ্চলিক অফিস: মৌলভীবাজার, হবিগঞ্জ, সুনামগঞ্জ', 'note' => 'অফিসের যোগাযোগ পাতায় দুটি ইমেইল লেখা: rposylhet@passport.gov.bd ও rpo.sylhet@passport.gov.bd।', 'fee' => $fee, 'del' => $del),
+    );
+}
+function pbd_po_faq($o) {
+    $s = $o['short'];
+    return array(
+        array($o['name'] . '-এর ঠিকানা কোথায়?', 'সরকারি পোর্টাল অনুযায়ী: ' . $o['addr'] . '।'),
+        array($s . ' পাসপোর্ট অফিসের ফোন নম্বর কত?', 'অফিস ফোন ' . $o['phone'] . ', মোবাইল ' . $o['mobile'] . ', ইমেইল ' . $o['email'] . ' (সরকারি সূত্র)।'),
+        array($s . ' পাসপোর্ট অফিস কখন খোলা থাকে?', $o['hours'] !== '' ? $o['hours'] . '।' : 'অফিস সময় সরকারি তালিকায় লেখা নেই। যাওয়ার আগে ' . $o['mobile'] . ' নম্বরে ফোন করে জেনে নিন।'),
+        array($s . ' অফিসে কোন এলাকার মানুষ আবেদন করবেন?', $o['area'] !== '' ? 'আওতা: ' . $o['area'] . '। নিয়ম হলো বর্তমান ঠিকানা যে অফিসের আওতায়, সেখানে আবেদন।' : 'এই অফিসের আওতাধীন এলাকার তালিকা সরকারি সূত্রে পাওয়া যায়নি। নিয়ম হলো বর্তমান ঠিকানা যে অফিসের আওতায়, সেখানে আবেদন — নিশ্চিত হতে অফিসে ফোন করুন।'),
+    );
+}
+function pbd_po_one($k, $o) {
+    $age = -pbd_days_to($o['page_upd']);
+    $o2 = pbd_head(array(array('পাসপোর্ট অফিস', '/passport-office/'), array($o['short'], '')), $o['name'] . ': ঠিকানা, ফোন ও সেবা');
+    $o2 .= '<!--pbd-u--><div class="pbd-hero"><small>🛂 ইমিগ্রেশন ও পাসপোর্ট অধিদপ্তর</small><div class="big" style="font-size:1.35em">' . esc_html($o['name']) . '</div><span class="pbd-chip">📅 সরকারি সূত্র যাচাই ২৫ নভেম্বর ২০২৬</span></div>';
+    $o2 .= '<p class="pbd-calc">১০ বছরের পাসপোর্টে বছরপ্রতি খরচ পড়ে প্রায় ৫৭৫ টাকা, ৫ বছরেরটায় ৮০৫ টাকা — অর্থাৎ ১০ বছরেরটা বছরপ্রতি প্রায় ২৯% সস্তা। ' . esc_html($o['short']) . ' অফিসের যে সরকারি পাতা থেকে যোগাযোগের তথ্য নেওয়া হয়েছে, সেটি শেষ হালনাগাদ হয়েছে ' . pbd_date($o['page_upd']) . ' — আজ থেকে ' . pbd_bn($age) . ' দিন আগে' . ($age > 180 ? '; তাই যাওয়ার আগে ফোন করে নিশ্চিত হোন।' : '।') . '</p>';
+    $na = 'সরকারি তালিকায় নেই';
+    $rows = array(array('ঠিকানা', $o['addr'], $o['src_label']), array('অফিস ফোন', $o['phone'], $o['src_label']), array('মোবাইল', $o['mobile'], 'ইমিগ্রেশন ও পাসপোর্ট অধিদপ্তর / অফিসের পোর্টাল'),
+        array('ইমেইল', $o['email'], 'ইমিগ্রেশন ও পাসপোর্ট অধিদপ্তর / অফিসের পোর্টাল'), array('আবেদন জমার সময়', $o['hours'] !== '' ? $o['hours'] : $na, $o['hours'] !== '' ? 'অফিসের পোর্টাল' : '—'),
+        array('সেবা এলাকা (আওতা)', $o['area'] !== '' ? $o['area'] : $na, $o['area'] !== '' ? 'dip.gov.bd' : '—'), array('প্রশাসনিক অবস্থান', $o['admin'], 'সরকারি পোর্টাল / সিটিজেন চার্টার'), $o['fee'], $o['del']);
+    $o2 .= '<div class="pbd-tw"><table><caption>সরকারি তথ্য, প্রতিটির সূত্রসহ</caption>';
+    foreach ($rows as $w) { $o2 .= '<tr><th>' . esc_html($w[0]) . '</th><td>' . esc_html($w[1]) . '</td><td>' . esc_html($w[2]) . '</td></tr>'; }
+    $o2 .= '</table></div><p class="pbd-src"><a href="' . esc_url($o['src']) . '" target="_blank" rel="nofollow noopener">সরকারি যোগাযোগ পাতা</a> · <a href="' . esc_url($o['portal']) . '" target="_blank" rel="nofollow noopener">অফিসের পোর্টাল</a></p>';
+    if ($o['note'] !== '') { $o2 .= '<div class="pbd-warn"><b>⚠️ জেনে রাখুন</b><p>' . esc_html($o['note']) . '</p></div>'; }
+    $o2 .= '<h2>প্রশ্ন ও উত্তর</h2>';
+    foreach (pbd_po_faq($o) as $f) { $o2 .= '<details><summary>' . esc_html($f[0]) . '</summary><p>' . esc_html($f[1]) . '</p></details>'; }
+    $o2 .= '<!--/pbd-u-->';
+    $o2 .= '<h2>ই-পাসপোর্ট স্ট্যাটাস চেক করার ধাপ</h2><ol class="pbd-steps"><li><a href="https://www.epassport.gov.bd/" target="_blank" rel="nofollow noopener">epassport.gov.bd</a> খুলে “Check Status” অংশে যান।</li><li>ডেলিভারি স্লিপে থাকা Online Registration ID বা Application ID লিখুন।</li><li>আবেদনে দেওয়া জন্মতারিখ হুবহু লিখে ক্যাপচা পূরণ করে Check চাপুন।</li><li>অনলাইনে না পারলে পাসপোর্ট হেল্পলাইন: দেশে ১৬৪৪৫, বিদেশ থেকে ০৯৬৬৬৭১৬৪৪৫।</li></ol>';
+    $o2 .= '<p>আবেদন জমা দিতে হয় বর্তমান ঠিকানা যে অফিসের আওতায়, সেখানে (সূত্র: পাসপোর্ট অফিসের সিটিজেন চার্টার)।</p>';
+    $o2 .= '<p><a href="' . esc_url(home_url('/passport-office/')) . '">← সব পাসপোর্ট অফিস</a></p>';
+    $o2 .= '<p class="pbd-src">সূত্র: ইমিগ্রেশন ও পাসপোর্ট অধিদপ্তর (dip.gov.bd) ও অফিসের সরকারি পোর্টাল, যাচাই ২৫ নভেম্বর ২০২৬। সরকারি সূত্রে না থাকা তথ্য এখানে বসানো হয়নি।</p>';
+    return $o2 . pbd_foot();
+}
+function pbd_po_hub() {
+    $o = pbd_head(array(array('পাসপোর্ট অফিস', '')), 'পাসপোর্ট অফিস: ঠিকানা, ফোন ও সেবা (সরকারি সূত্রে)');
+    $o .= '<p>যেসব অফিসের তথ্য সরকারি সূত্রে যাচাই করা হয়েছে:</p><ul class="pbd-nb">';
+    foreach (pbd_po_all() as $k => $x) { $o .= '<li><a href="' . esc_url(home_url('/passport-office/' . $k . '/')) . '">' . esc_html($x['name']) . '</a></li>'; }
+    return $o . '</ul><p class="pbd-src">আরও অফিস যোগ হচ্ছে — শুধু সরকারি সূত্রে তথ্য পাওয়া গেলে।</p>' . pbd_foot();
+}
+
+/* admin-only: AutoBlog uploads the agency extra data (never public input) */
+add_action('rest_api_init', function () {
+    register_rest_route('pbd-data/v1', '/agency-extra', array(
+        'methods' => array('GET', 'POST'),
+        'permission_callback' => function () { return current_user_can('manage_options'); },
+        'callback' => function ($req) {
+            if ($req->get_method() === 'POST') {
+                $d = $req->get_json_params();
+                $d = is_array($d) && isset($d['data']) ? $d['data'] : null;
+                if (!is_array($d) || empty($d['a']) || !is_array($d['a']) || empty($d['upd'])) { return new WP_Error('bad', 'bad data', array('status' => 400)); }
+                $old = get_option('pbd_ag_extra');
+                update_option('pbd_ag_extra', $d, false);
+                $purged = 0;
+                foreach ($d['a'] as $rl => $y) {   // purge pages whose template/gate flag changed
+                    $o = (is_array($old) && isset($old['a'][$rl])) ? $old['a'][$rl] : array();
+                    if (!isset($o['v']) || $o['v'] !== $y['v'] || !isset($o['x']) || $o['x'] !== $y['x']) { do_action('litespeed_purge_url', home_url('/agency/rl-' . (int) $rl . '/')); $purged++; }
+                }
+                do_action('litespeed_purge_url', home_url('/agency/'));
+                do_action('litespeed_purge_url', home_url('/pbd-sitemap.xml'));
+                return array('ok' => 1, 'n' => count($d['a']), 'purged' => $purged);
+            }
+            $x = get_option('pbd_ag_extra'); $v = 0; $nx = 0;
+            if (is_array($x) && !empty($x['a'])) { foreach ($x['a'] as $y) { $v += !empty($y['v']); $nx += !empty($y['x']); } }
+            return array('upd' => is_array($x) ? $x['upd'] : null, 'n' => is_array($x) && !empty($x['a']) ? count($x['a']) : 0, 'v2' => $v, 'noindex' => $nx, 'ver' => PBD_VER);
+        },
+    ));
+});
+
+function pbd_crumbs_ld($c) {
+    $l = array(array('@type' => 'ListItem', 'position' => 1, 'name' => 'হোম', 'item' => home_url('/')));
+    foreach ($c as $i => $x) { $l[] = array('@type' => 'ListItem', 'position' => $i + 2, 'name' => $x[0], 'item' => home_url($x[1])); }
+    return array('@type' => 'BreadcrumbList', '@id' => home_url($c[count($c) - 1][1]) . '#crumbs', 'itemListElement' => $l);
+}
+function pbd_v18_css() {
+    return '<style>.pbd .pbd-calc{background:var(--bs,#e9f1fd);border-left:4px solid var(--b,#0b56c4);padding:10px 14px;border-radius:10px}.pbd .pbd-tw{overflow-x:auto}.pbd .pbd-tw caption{text-align:left;font-weight:700;padding:4px 0}.pbd .pbd-tw th{white-space:nowrap}.pbd .pbd-tw td:last-child{font-size:.85em}.pbd ul.pbd-nb li{margin:.25em 0}</style>';
 }

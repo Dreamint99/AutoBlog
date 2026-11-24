@@ -8,6 +8,12 @@ Run only from GitHub Actions (probashi-snippets.yml, input data_cmd); never prin
     python wp_probashi_data.py push <file> on PBA app bar   # any other snippet: name after the state
     python wp_probashi_data.py status               # list snippets (id, active, name)
     python wp_probashi_data.py health               # homepage, 10 posts, sitemap, wp-login → 200
+    python wp_probashi_data.py backup [tag]         # copy the live "PBD data pages" code into an INACTIVE snippet "PBD data pages (backup <tag>)"
+    python wp_probashi_data.py restore [tag]        # put that backup code back into "PBD data pages" (rollback)
+    python wp_probashi_data.py extra <file.json>    # upload agency extra data (pbd-data/v1/agency-extra, admin only)
+    python wp_probashi_data.py verify <path> …      # live check: HTTP code, <title>, robots, JSON-LD types
+    python wp_probashi_data.py flush                # Rank Math sitemap flush (snippet #44 route pbd-ops/v1/sitemap)
+    python wp_probashi_data.py indexnow <file.txt>  # IndexNow through Rank Math's key (pbd-ops/v1/indexnow), ≤100 URLs per call
 
 The snippet's test key comes from env PBD_TEST_KEY and replaces __PBD_TEST_KEY__ in the file.
 """
@@ -97,6 +103,102 @@ def health():
     return bad == 0
 
 
+def _wp(m, route, **kw):
+    for i in range(3):
+        r = requests.request(m, f"{BASE}/wp-json/{route}", headers=_h(), timeout=120, **kw)
+        if r.status_code < 500:
+            return r
+        time.sleep(5 * (i + 1))
+    return r
+
+
+def _bname(tag):
+    return f"{NAME} (backup {tag})"
+
+
+def backup(tag):
+    import hashlib
+    ex = _find()
+    if not ex:
+        sys.exit("live snippet not found")
+    code = ex.get("code") or ""
+    if len(code) < 1000:
+        sys.exit("live code looks empty, not backing up")
+    bn = _bname(tag)
+    old = _find(bn)
+    body = {"name": bn, "code": code, "scope": ex.get("scope") or "front-end", "active": False}
+    r = requests.post(f"{API}/{old['id']}" if old else API, headers=_h(), json=body, timeout=90)
+    print("backup", r.status_code, (r.json().get("id"), r.json().get("active")) if r.ok else r.text[:300])
+    r.raise_for_status()
+    if r.json().get("active"):
+        _toggle(r.json()["id"], False)
+    ver = next((l.strip() for l in code.splitlines() if "PBD_VER" in l and "define" in l), "?")
+    print("live snippet id", ex["id"], "active", ex.get("active"), "|", ver, "| chars", len(code), "| sha256", hashlib.sha256(code.encode()).hexdigest()[:16])
+
+
+def restore(tag):
+    b = _find(_bname(tag))
+    ex = _find()
+    if not b or not ex:
+        sys.exit("backup or live snippet not found")
+    r = requests.post(f"{API}/{ex['id']}", headers=_h(), json={"name": NAME, "code": b["code"], "scope": ex.get("scope") or "front-end"}, timeout=90)
+    print("restore", r.status_code, "" if r.ok else r.text[:300])
+    r.raise_for_status()
+    time.sleep(5)
+    sys.exit(0 if health() else 1)
+
+
+def extra(path):
+    import json
+    data = json.load(open(path, encoding="utf-8"))
+    r = _wp("POST", "pbd-data/v1/agency-extra", json={"data": data})
+    print("extra upload", r.status_code, r.text[:300])
+    g = _wp("GET", "pbd-data/v1/agency-extra")
+    print("extra now", g.status_code, g.text[:300])
+    if not r.ok:
+        sys.exit(1)
+
+
+def verify(paths):
+    import re
+    bad = 0
+    for p in paths:
+        u = p if p.startswith("http") else BASE + p
+        try:
+            r = requests.get(u, headers=UA, timeout=60, params={"pbdv": int(time.time())})
+        except Exception as e:
+            print("ERR", u, str(e)[:80]); bad += 1; continue
+        h = r.text
+        t = re.search(r"<title>(.*?)</title>", h, re.S)
+        rob = re.search(r'<meta name=["\']robots["\'] content=["\']([^"\']*)', h)
+        can = re.search(r'<link rel=["\']canonical["\'] href=["\']([^"\']*)', h)
+        types = sorted(set(re.findall(r'"@type"\s*:\s*"(Organization|GovernmentOffice|FAQPage|BreadcrumbList|WebPage)"', h)))
+        v2 = "pbd-u" in h
+        print(r.status_code, u, "| v2" if v2 else "| old", "|", rob.group(1) if rob else "-", "|", ",".join(types), "|", (t.group(1).strip()[:150] if t else "-"), "| canon", can.group(1) if can else "-")
+        bad += r.status_code != 200
+    print("VERIFY", "OK" if not bad else f"FAIL ({bad})")
+    return bad == 0
+
+
+def flush():
+    r = _wp("POST", "pbd-ops/v1/sitemap", params={"flush": 1})
+    print("sitemap flush", r.status_code, r.text[:400])
+    for u in ("/sitemap_index.xml", "/pbd-sitemap.xml"):
+        x = requests.get(BASE + u, headers=UA, timeout=60, params={"nc": int(time.time())})
+        print(" ", x.status_code, u, "locs", x.text.count("<loc>"), "passport-office", x.text.count("/passport-office/"))
+    return r.ok
+
+
+def indexnow(path):
+    urls = [l.strip() for l in open(path, encoding="utf-8") if l.strip().startswith("http")]
+    ok = True
+    for i in range(0, len(urls), 100):
+        r = _wp("POST", "pbd-ops/v1/indexnow", json={"urls": urls[i:i + 100]})
+        print("indexnow", i, len(urls[i:i + 100]), r.status_code, r.text[:400])
+        ok &= r.ok
+    sys.exit(0 if ok else 1)
+
+
 def main():
     cmd = sys.argv[1] if len(sys.argv) > 1 else "status"
     if cmd == "status":
@@ -105,6 +207,21 @@ def main():
         return
     if cmd == "health":
         sys.exit(0 if health() else 1)
+    if cmd == "backup":
+        return backup(" ".join(sys.argv[2:]) or "before v18")
+    if cmd == "restore":
+        return restore(" ".join(sys.argv[2:]) or "before v18")
+    if cmd == "extra":
+        return extra(sys.argv[2])
+    if cmd == "verify":
+        paths = sys.argv[2:]
+        if len(paths) == 1 and paths[0].endswith(".txt"):
+            paths = [l.strip() for l in open(paths[0], encoding="utf-8") if l.strip()]
+        sys.exit(0 if verify(paths) else 1)
+    if cmd == "flush":
+        sys.exit(0 if flush() else 1)
+    if cmd == "indexnow":
+        return indexnow(sys.argv[2])
     if cmd == "perm-test":
         body = {"name": "zz PBD permission test (safe to delete)", "code": "/* PBD permission test: does nothing */",
                 "scope": "front-end", "active": False}
