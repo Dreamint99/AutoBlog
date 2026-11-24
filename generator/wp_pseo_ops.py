@@ -117,5 +117,20 @@ def apply():
         indexnow.submit_urls("probashiinfo.com", URLS, log=print)
     return n
 
-if "--apply" in sys.argv: apply()
+
+def ping():
+    ku = f"{SITE}/{INDEXNOW_KEY}.txt"
+    for name, h in [("bingbot", {"User-Agent": "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)"}), ("none", {"User-Agent": ""}), ("python", {})]:
+        try:
+            k = requests.get(ku, headers=h, timeout=30, allow_redirects=False)
+            print("keyfile", name, k.status_code, "match", k.text.strip() == INDEXNOW_KEY, k.headers.get("server"), k.headers.get("cf-mitigated"))
+        except Exception as e: print("keyfile", name, "ERR", e)
+    body = {"host": "probashiinfo.com", "key": INDEXNOW_KEY, "keyLocation": ku, "urlList": URLS}
+    for ep in ["https://api.indexnow.org/indexnow", "https://www.bing.com/indexnow", "https://yandex.com/indexnow"]:
+        try:
+            r = requests.post(ep, json=body, timeout=30, headers={"Content-Type": "application/json; charset=utf-8"})
+            print("ping", ep, r.status_code, r.text[:160].replace(INDEXNOW_KEY, "***"))
+        except Exception as e: print("ping", ep, "ERR", e)
+if "--ping" in sys.argv: ping()
+elif "--apply" in sys.argv: apply()
 else: inspect(); live_sitemap()

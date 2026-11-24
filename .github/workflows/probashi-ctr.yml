@@ -61,7 +61,7 @@ jobs:
         run: |
           # branch seo/probashi-ops-sitemap-indexnow: overrides run = sitemap flush + IndexNow key only
           if [ "${{ github.event.inputs.overrides }}" = "true" ] && [ "$APPLY" != "true" ]; then
-            python wp_pseo_ops.py --inspect
+            python wp_pseo_ops.py --ping
             exit $?
           fi
           if [ "${{ github.event.inputs.overrides }}" = "true" ]; then
