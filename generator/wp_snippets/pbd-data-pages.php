@@ -230,17 +230,17 @@ function pbd_seo() {
         if ($m['item']) {
             $o = $m['item'];
             $s['index'] = $o['addr'] !== '' && $o['phone'] !== '';   // critical data present
-            $s['title'] = $o['short'] . ' পাসপোর্ট অফিস: ঠিকানা, ফোন নম্বর ও ই-পাসপোর্ট স্ট্যাটাস চেক';
-            $s['desc'] = $o['name'] . ' — সরকারি সূত্রে ঠিকানা ' . $o['addr'] . ', ফোন ' . $o['phone'] . ', ফি ও ই-পাসপোর্ট স্ট্যাটাস চেকের ধাপ। যাচাই ২৫ নভেম্বর ২০২৬।';
+            $s['title'] = $o['short'] . ' পাসপোর্ট অফিস (' . pbd_po_q($o) . '): ঠিকানা, ফোন, সময় 2026';
+            $s['desc'] = pbd_po_desc($o);
             $s['faq'] = pbd_po_faq($o);
-            $s['nodes'] = array('pbdGov' => array('@type' => 'GovernmentOffice', '@id' => $s['canonical'] . '#office', 'name' => $o['name'], 'alternateName' => $o['en'], 'url' => $o['portal'],
+            $s['nodes'] = array('pbdGov' => array('@type' => 'GovernmentOffice', '@id' => $s['canonical'] . '#office', 'name' => $o['name'], 'alternateName' => pbd_po_aka($o), 'url' => $o['portal'],
                 'telephone' => array($o['phone'], $o['mobile']), 'email' => $o['email'], 'address' => array('@type' => 'PostalAddress', 'streetAddress' => $o['addr'], 'addressCountry' => 'BD'),
                 'parentOrganization' => array('@type' => 'GovernmentOrganization', 'name' => 'Department of Immigration and Passports', 'url' => 'https://www.dip.gov.bd/')),
                 'pbdCrumbs' => pbd_crumbs_ld(array(array('পাসপোর্ট অফিস', '/passport-office/'), array($o['short'], $m['path']))));
         } else {
             $s['index'] = false;   // hub stays noindex until more offices are added
-            $s['title'] = 'পাসপোর্ট অফিসের ঠিকানা ও ফোন নম্বর (সরকারি সূত্রে)';
-            $s['desc'] = 'উত্তরা, কুমিল্লা ও সিলেট পাসপোর্ট অফিসের ঠিকানা, ফোন ও ই-পাসপোর্ট স্ট্যাটাস চেকের ধাপ — শুধু সরকারি সূত্রে।';
+            $s['title'] = 'পাসপোর্ট অফিসের ঠিকানা ও ফোন নম্বর (Passport Office Address)';
+            $s['desc'] = 'Passport office address and phone for Uttara, Comilla (Cumilla) and Sylhet — official DIP sources only. উত্তরা, কুমিল্লা ও সিলেট পাসপোর্ট অফিসের ঠিকানা ও ফোন।';
         }
     }
     if ($m['type'] === 'migration-cost') {
@@ -291,10 +291,13 @@ function pbd_seo() {
     if ($en['label'] !== '') {
         // English label only when the title stays short (the theme adds " | প্রবাসী ইনফো" after it);
         // long agency names pushed titles past 90 characters. The description still carries it.
-        if (!function_exists('mb_strlen') || mb_strlen($s['title'] . ' | ' . $en['label']) <= 62) {
-            $s['title'] .= ' | ' . $en['label'];
+        // Passport-office titles already mix in the English/Banglish search name.
+        if ($m['type'] !== 'passport-office') {
+            if (!function_exists('mb_strlen') || mb_strlen($s['title'] . ' | ' . $en['label']) <= 62) {
+                $s['title'] .= ' | ' . $en['label'];
+            }
+            $s['desc'] = $en['label'] . ': ' . $s['desc'];
         }
-        $s['desc'] = $en['label'] . ': ' . $s['desc'];
     }
     if ($en['faq']) { $s['faq'] = array_merge($s['faq'], $en['faq']); }
     if (function_exists('mb_strlen') && mb_strlen($s['desc']) > 158) { $s['desc'] = mb_substr($s['desc'], 0, 155) . '…'; }
@@ -427,12 +430,14 @@ function pbd_css() {
 @media(max-width:560px){.pbd .pbd-hero .big{font-size:1.7em}}
 </style>';
 }
-function pbd_head($crumbs, $h1) {
+function pbd_head($crumbs, $h1, $sub = '') {
     $o = '<div class="art-hd"><div class="w"><nav class="crumbs" aria-label="ব্রেডক্রাম্ব"><a href="' . esc_url(home_url('/')) . '">হোম</a>';
     foreach ($crumbs as $c) {
         $o .= '<span>›</span>' . ($c[1] ? '<a href="' . esc_url(home_url($c[1])) . '">' . esc_html($c[0]) . '</a>' : '<span>' . esc_html($c[0]) . '</span>');
     }
-    return $o . '</nav><h1>' . esc_html($h1) . '</h1></div></div><div class="w"><div class="art" style="grid-template-columns:minmax(0,1fr)"><article class="art-main"><div class="ct pbd">';
+    $o .= '</nav><h1>' . esc_html($h1) . '</h1>';
+    if ($sub !== '') { $o .= '<p class="pbd-en" lang="en">' . esc_html($sub) . '</p>'; }
+    return $o . '</div></div><div class="w"><div class="art" style="grid-template-columns:minmax(0,1fr)"><article class="art-main"><div class="ct pbd">';
 }
 function pbd_foot() { return '</div></article></div></div>'; }
 
@@ -1153,8 +1158,14 @@ function pbd_en() {
         } else { $e['label'] = 'GAMCA medical center list Bangladesh'; }
     } elseif ($t === 'passport-office') {
         if ($it) {
-            $e['label'] = $it['en'];
-            $e['faq'][] = array('What is the address and phone number of the ' . $it['en'] . '?', 'Official portal: ' . pbd_latin($it['addr']) . '. Phone ' . pbd_latin($it['phone']) . ', email ' . $it['email'] . '. Passport helpline 16445.');
+            $q = pbd_po_q($it);
+            $city = !empty($it['city_en']) ? $it['city_en'] : $q;
+            $e['label'] = $q;
+            $hours_en = $it['hours'] !== '' ? 'Office time: ' . pbd_latin($it['hours']) . '.' : 'Office time (somoy) is not listed on the official portal — call ' . pbd_latin($it['mobile']) . ' before you go.';
+            $e['faq'][] = array('What is the address and phone number of ' . $q . '?',
+                'Official name: ' . $it['en'] . '. Address (official portal): ' . pbd_latin($it['addr']) . '. Phone ' . pbd_latin($it['phone']) . ', mobile ' . pbd_latin($it['mobile']) . ', email ' . $it['email'] . '. Passport helpline 16445.');
+            $e['faq'][] = array($city . ' passport office kothay? Phone number koto?',
+                'Thikana (sorkari portal): ' . pbd_latin($it['addr']) . '. Office phone ' . pbd_latin($it['phone']) . ', mobile ' . pbd_latin($it['mobile']) . '. ' . $hours_en . ' Helpline 16445.');
         } else { $e['label'] = 'Passport office address and phone'; }
     } elseif ($t === 'agency') {
         if ($it) {
@@ -1219,6 +1230,7 @@ add_action('wp_footer', function () {
         'agency' => array('agency', 'agenci', 'license', 'licence', 'rl ', 'rl-', 'এজেন্সি', 'লাইসেন্স'),
         'customs' => array('custom', 'gold', 'sona', 'mobile', 'phone', 'dollar', 'কাস্টমস', 'স্বর্ণ', 'মোবাইল'),
         'baggage' => array('baggage', 'luggage', 'lagej', 'kg', 'লাগেজ', 'ব্যাগেজ'),
+        'passport-office' => array('passport office', 'passport ofice', 'পাসপোর্ট অফিস', 'e-passport office', 'epassport office', 'regional passport office', 'divisional passport office'),
     );
     $want = array(); foreach ($kind as $k => $w) { if ($has($w)) { $want[$k] = 1; } }
     $hits = array();
@@ -1244,11 +1256,21 @@ add_action('wp_footer', function () {
     if (preg_match('/(?:rl[\s-]*)?(\d{2,4})/i', $q, $mm) && (isset($want['agency']) || preg_match('/^\s*(rl[\s-]*)?\d{2,4}\s*$/i', $q))) {
         $add(home_url('/agency/rl-' . (int) $mm[1] . '/'), 'আরএল-' . pbd_bn((int) $mm[1]) . ' এজেন্সির লাইসেন্স', 'RL ' . (int) $mm[1] . ' license check');
     }
+    foreach (pbd_po_all() as $k => $o) {
+        $alias = array($k, isset($o['short']) ? $o['short'] : '', isset($o['en']) ? strtolower($o['en']) : '', isset($o['en_q']) ? strtolower($o['en_q']) : '', isset($o['city_en']) ? strtolower($o['city_en']) : '');
+        if (!empty($o['aliases'])) { foreach ($o['aliases'] as $a) { $alias[] = strtolower($a); } }
+        $match = false;
+        foreach ($alias as $a) { if ($a !== '' && mb_strlen($a) > 2 && $hit(mb_strtolower($a))) { $match = true; break; } }
+        if ($match && (isset($want['passport-office']) || $has(array('passport', 'পাসপোর্ট')))) {
+            $add(home_url('/passport-office/' . $k . '/'), $o['short'] . ' পাসপোর্ট অফিস', pbd_po_q($o));
+        }
+    }
     $hubs = array('ramadan' => array('/ramadan/', 'প্রবাসে রমজান ক্যালেন্ডার', 'Ramadan calendar'), 'visa-check' => array('/visa-check/', 'দেশভিত্তিক ভিসা চেক', 'Visa check'),
         'visa' => array('/visa/', 'কোন দেশে ভিসা লাগে', 'Visa-free countries'), 'remittance' => array('/remittance/', 'রেমিট্যান্স ক্যালকুলেটর', 'Taka rate'),
         'gamca' => array('/gamca/', 'গামকা মেডিকেল সেন্টার', 'GAMCA centers'), 'agency' => array('/agency/?q=' . rawurlencode(get_search_query()), 'এজেন্সি লাইসেন্স যাচাই', 'Agency license'),
-        'customs' => array('/customs/', 'কাস্টমস নিয়ম', 'Baggage rules'), 'baggage' => array('/baggage/', 'এয়ারলাইনের লাগেজ', 'Airline baggage'));
-    foreach ($want as $k => $_) { $add(home_url($hubs[$k][0]), $hubs[$k][1], $hubs[$k][2]); }
+        'customs' => array('/customs/', 'কাস্টমস নিয়ম', 'Baggage rules'), 'baggage' => array('/baggage/', 'এয়ারলাইনের লাগেজ', 'Airline baggage'),
+        'passport-office' => array('/passport-office/', 'পাসপোর্ট অফিসের ঠিকানা', 'Passport office address'));
+    foreach ($want as $k => $_) { if (isset($hubs[$k])) { $add(home_url($hubs[$k][0]), $hubs[$k][1], $hubs[$k][2]); } }
     if (!$hits) { return; }
     echo '<section class="pbs" id="pbs"><div class="w"><h2>সরাসরি তথ্য</h2><div class="pbs-g">';
     foreach ($hits as $url => $h) { echo '<a href="' . esc_url($url) . '"><b>' . esc_html($h[0]) . '</b><small>' . esc_html($h[1]) . '</small></a>'; }
@@ -1400,19 +1422,45 @@ function pbd_ag_hub_faq() {
 }
 
 /* ---------- passport offices (official DIP / office portal data only; missing field = "সরকারি তালিকায় নেই") ---------- */
+function pbd_po_q($o) {
+    return !empty($o['en_q']) ? $o['en_q'] : $o['en'];
+}
+function pbd_po_aka($o) {
+    $a = array($o['en'], pbd_po_q($o));
+    if (!empty($o['aliases']) && is_array($o['aliases'])) { $a = array_merge($a, $o['aliases']); }
+    $out = array(); $seen = array();
+    foreach ($a as $x) {
+        $k = strtolower(trim($x));
+        if ($k === '' || isset($seen[$k])) { continue; }
+        $seen[$k] = 1; $out[] = $x;
+    }
+    return $out;
+}
+function pbd_po_sub($o) {
+    $aka = array();
+    foreach (pbd_po_aka($o) as $x) { if (strcasecmp($x, $o['en']) !== 0) { $aka[] = $x; } }
+    $s = 'English: ' . $o['en'];
+    if ($aka) { $s .= ' — also searched as ' . implode(', ', array_slice($aka, 0, 3)); }
+    return $s;
+}
+function pbd_po_desc($o) {
+    $q = pbd_po_q($o);
+    $alt = (stripos($q, 'Comilla') !== false && stripos($q, 'Cumilla') === false) ? ' (Cumilla)' : '';
+    return $q . $alt . ' — সরকারি সূত্রে ঠিকানা ' . $o['addr'] . ', ফোন ' . $o['phone'] . ', মোবাইল ' . $o['mobile'] . '। যাচাই ২৫ নভেম্বর ২০২৬।';
+}
 function pbd_po_all() {
     $fee = array('নিয়মিত ফি, ৪৮ পৃষ্ঠা', '৫ বছর ৪,০২৫ টাকা / ১০ বছর ৫,৭৫০ টাকা (১৫% ভ্যাটসহ)', 'সিটিজেন চার্টার (সিলেট ও উত্তরা অফিস)');
     $del = array('নিয়মিত ডেলিভারি', '১৫ কর্মদিবস (পুলিশ ক্লিয়ারেন্স ও তথ্য সঠিক থাকা সাপেক্ষে)', 'সিটিজেন চার্টার');
     return array(
-        'uttara' => array('name' => 'আঞ্চলিক পাসপোর্ট অফিস, উত্তরা, ঢাকা', 'short' => 'উত্তরা', 'en' => 'Regional Passport Office, Uttara, Dhaka', 'portal' => 'https://diputtara.dhaka.gov.bd/',
+        'uttara' => array('name' => 'আঞ্চলিক পাসপোর্ট অফিস, উত্তরা, ঢাকা', 'short' => 'উত্তরা', 'en' => 'Regional Passport Office, Uttara, Dhaka', 'en_q' => 'Regional Passport Office Uttara', 'city_en' => 'Uttara', 'aliases' => array('Passport Office Uttara', 'Uttara Passport Office'), 'portal' => 'https://diputtara.dhaka.gov.bd/',
             'addr' => 'প্লট নং-০৫, রোড নং-৩/বি, ব্লক-এইচ, সেক্টর-১৫, উত্তরা, ঢাকা', 'phone' => '০২-৫৫০৮৭০২০', 'mobile' => '০১৭৩৩৩৯৩৩২৮', 'email' => 'rpouttara@passport.gov.bd',
             'src' => 'https://diputtara.dhaka.gov.bd/pages/static-pages/6995df8235ce18e1c07b05ce', 'src_label' => 'অফিসের পোর্টাল — যোগাযোগ (হালনাগাদ ২৩ মার্চ ২০২৪)', 'page_upd' => '2024-03-23',
             'hours' => '', 'area' => '', 'admin' => 'ঢাকা বিভাগের আঞ্চলিক অফিস', 'note' => '', 'fee' => $fee, 'del' => $del),
-        'comilla' => array('name' => 'আঞ্চলিক পাসপোর্ট অফিস, কুমিল্লা', 'short' => 'কুমিল্লা', 'en' => 'Regional Passport Office, Cumilla', 'portal' => 'https://passport.comilla.gov.bd/',
+        'comilla' => array('name' => 'আঞ্চলিক পাসপোর্ট অফিস, কুমিল্লা', 'short' => 'কুমিল্লা', 'en' => 'Regional Passport Office, Cumilla', 'en_q' => 'Passport Office Comilla', 'city_en' => 'Comilla', 'aliases' => array('Comilla Passport Office', 'Passport Office Cumilla', 'Cumilla Passport Office', 'Regional Passport Office Cumilla', 'Regional Passport Office Comilla'), 'portal' => 'https://passport.comilla.gov.bd/',
             'addr' => 'নোয়াপাড়া, ডাকঘর: হালিমানগর, থানা: কোতয়ালী, জেলা: কুমিল্লা', 'phone' => '০৮১-৬৫৭৮৫', 'mobile' => '০১৭৩৩৩৯৩৩৫২', 'email' => 'rpocomilla@passport.gov.bd',
             'src' => 'https://passport.comilla.gov.bd/pages/static-pages/6990e67b35ce18e1c0727f4a', 'src_label' => 'অফিসের পোর্টাল — যোগাযোগ (হালনাগাদ ৭ জুন ২০২১)', 'page_upd' => '2021-06-07',
             'hours' => '', 'area' => '', 'admin' => 'চট্টগ্রাম বিভাগীয় পাসপোর্ট ও ভিসা অফিসের আওতাধীন আঞ্চলিক অফিস (চট্টগ্রাম বিভাগীয় অফিসের সিটিজেন চার্টার)', 'note' => '', 'fee' => $fee, 'del' => $del),
-        'sylhet' => array('name' => 'বিভাগীয় পাসপোর্ট ও ভিসা অফিস, সিলেট', 'short' => 'সিলেট', 'en' => 'Divisional Passport and Visa Office, Sylhet', 'portal' => 'https://passport.sylhetdiv.gov.bd/',
+        'sylhet' => array('name' => 'বিভাগীয় পাসপোর্ট ও ভিসা অফিস, সিলেট', 'short' => 'সিলেট', 'en' => 'Divisional Passport and Visa Office, Sylhet', 'en_q' => 'Passport Office Sylhet', 'city_en' => 'Sylhet', 'aliases' => array('Sylhet Passport Office', 'Divisional Passport Office Sylhet', 'Divisional Passport and Visa Office Sylhet'), 'portal' => 'https://passport.sylhetdiv.gov.bd/',
             'addr' => 'আলমপুর, সিলেট', 'phone' => '০২-৯৯৭৭০৪০০৫', 'mobile' => '০১৭৩৩৩৯৩৩৬১', 'email' => 'rpo.sylhet@passport.gov.bd',
             'src' => 'https://passport.sylhetdiv.gov.bd/pages/static-pages/696cb57cc4774958d7ba617b', 'src_label' => 'অফিসের পোর্টাল — যোগাযোগ (হালনাগাদ ১১ অক্টোবর ২০২৬)', 'page_upd' => '2026-10-11',
             'hours' => 'আবেদন জমা নেওয়া হয় সকাল ৯টা থেকে দুপুর ২টা পর্যন্ত (অফিসের নোটিশ, ২ জুন ২০২৬)', 'area' => 'সিলেট জেলা (ইমিগ্রেশন ও পাসপোর্ট অধিদপ্তরের তালিকা)',
@@ -1430,7 +1478,7 @@ function pbd_po_faq($o) {
 }
 function pbd_po_one($k, $o) {
     $age = -pbd_days_to($o['page_upd']);
-    $o2 = pbd_head(array(array('পাসপোর্ট অফিস', '/passport-office/'), array($o['short'], '')), $o['name'] . ': ঠিকানা, ফোন ও সেবা');
+    $o2 = pbd_head(array(array('পাসপোর্ট অফিস', '/passport-office/'), array($o['short'], '')), $o['short'] . ' পাসপোর্ট অফিস (' . pbd_po_q($o) . '): ঠিকানা, ফোন ও সেবা', pbd_po_sub($o));
     $o2 .= '<!--pbd-u--><div class="pbd-hero"><small>🛂 ইমিগ্রেশন ও পাসপোর্ট অধিদপ্তর</small><div class="big" style="font-size:1.35em">' . esc_html($o['name']) . '</div><span class="pbd-chip">📅 সরকারি সূত্র যাচাই ২৫ নভেম্বর ২০২৬</span></div>';
     $o2 .= '<p class="pbd-calc">১০ বছরের পাসপোর্টে বছরপ্রতি খরচ পড়ে প্রায় ৫৭৫ টাকা, ৫ বছরেরটায় ৮০৫ টাকা — অর্থাৎ ১০ বছরেরটা বছরপ্রতি প্রায় ২৯% সস্তা। ' . esc_html($o['short']) . ' অফিসের যে সরকারি পাতা থেকে যোগাযোগের তথ্য নেওয়া হয়েছে, সেটি শেষ হালনাগাদ হয়েছে ' . pbd_date($o['page_upd']) . ' — আজ থেকে ' . pbd_bn($age) . ' দিন আগে' . ($age > 180 ? '; তাই যাওয়ার আগে ফোন করে নিশ্চিত হোন।' : '।') . '</p>';
     $na = 'সরকারি তালিকায় নেই';
@@ -1451,9 +1499,9 @@ function pbd_po_one($k, $o) {
     return $o2 . pbd_foot();
 }
 function pbd_po_hub() {
-    $o = pbd_head(array(array('পাসপোর্ট অফিস', '')), 'পাসপোর্ট অফিস: ঠিকানা, ফোন ও সেবা (সরকারি সূত্রে)');
+    $o = pbd_head(array(array('পাসপোর্ট অফিস', '')), 'পাসপোর্ট অফিস: ঠিকানা, ফোন ও সেবা (Passport Office Address)', 'Official addresses and phone numbers — Uttara, Comilla (Cumilla) and Sylhet.');
     $o .= '<p>যেসব অফিসের তথ্য সরকারি সূত্রে যাচাই করা হয়েছে:</p><ul class="pbd-nb">';
-    foreach (pbd_po_all() as $k => $x) { $o .= '<li><a href="' . esc_url(home_url('/passport-office/' . $k . '/')) . '">' . esc_html($x['name']) . '</a></li>'; }
+    foreach (pbd_po_all() as $k => $x) { $o .= '<li><a href="' . esc_url(home_url('/passport-office/' . $k . '/')) . '">' . esc_html($x['name']) . '</a> <span lang="en">(' . esc_html(pbd_po_q($x)) . ')</span></li>'; }
     return $o . '</ul><p class="pbd-src">আরও অফিস যোগ হচ্ছে — শুধু সরকারি সূত্রে তথ্য পাওয়া গেলে।</p>' . pbd_foot();
 }
 
@@ -1491,5 +1539,5 @@ function pbd_crumbs_ld($c) {
     return array('@type' => 'BreadcrumbList', '@id' => home_url($c[count($c) - 1][1]) . '#crumbs', 'itemListElement' => $l);
 }
 function pbd_v18_css() {
-    return '<style>.pbd .pbd-calc{background:var(--bs,#e9f1fd);border-left:4px solid var(--b,#0b56c4);padding:10px 14px;border-radius:10px}.pbd .pbd-tw{overflow-x:auto}.pbd .pbd-tw caption{text-align:left;font-weight:700;padding:4px 0}.pbd .pbd-tw th{white-space:nowrap}.pbd .pbd-tw td:last-child{font-size:.85em}.pbd ul.pbd-nb li{margin:.25em 0}</style>';
+    return '<style>.pbd .pbd-calc{background:var(--bs,#e9f1fd);border-left:4px solid var(--b,#0b56c4);padding:10px 14px;border-radius:10px}.pbd .pbd-tw{overflow-x:auto}.pbd .pbd-tw caption{text-align:left;font-weight:700;padding:4px 0}.pbd .pbd-tw th{white-space:nowrap}.pbd .pbd-tw td:last-child{font-size:.85em}.pbd ul.pbd-nb li{margin:.25em 0}.art-hd .pbd-en{margin:6px 0 0;font-size:.95em;color:var(--b,#0b56c4);font-weight:600}</style>';
 }
