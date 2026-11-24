@@ -59,13 +59,13 @@ jobs:
           LIMIT: ${{ github.event.inputs.limit || '25' }}
           REDO_BEFORE: ${{ github.event.inputs.redo_before }}
         run: |
-          # branch seo/probashi-pseo-mw: overrides run = minimum-wage batch 1 + Greece fix only
+          # branch seo/probashi-ops-sitemap-indexnow: overrides run = sitemap flush + IndexNow key only
           if [ "${{ github.event.inputs.overrides }}" = "true" ] && [ "$APPLY" != "true" ]; then
-            python wp_pseo_mw.py
+            python wp_pseo_ops.py --inspect
             exit $?
           fi
           if [ "${{ github.event.inputs.overrides }}" = "true" ]; then
-            python wp_pseo_mw.py --apply
+            python wp_pseo_ops.py --apply
             exit $?
           fi
           if [ "$APPLY" = "true" ]; then python wp_ctr.py --apply "$LIMIT"; else python wp_ctr.py "$LIMIT"; fi
