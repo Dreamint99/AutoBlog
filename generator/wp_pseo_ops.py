@@ -163,7 +163,26 @@ def rmping():
     print("snippet update", r.status_code, "" if r.ok else r.text[:300])
     r = wp("POST", "pbd-ops/v1/indexnow", json={"urls": URLS})
     print("rm indexnow", r.status_code, r.text[:900])
-if "--rmping" in sys.argv: rmping()
+
+def bing():
+    import os
+    key = os.environ.get("BING_WEBMASTER_API_KEY", "")
+    if not key: print("bing: no key in env"); return
+    api = "https://ssl.bing.com/webmaster/api.svc/json/"
+    site = "https://probashiinfo.com/"
+    def feeds(tag):
+        r = requests.get(api + "GetFeeds", params={"siteUrl": site, "apikey": key}, timeout=60)
+        print("bing GetFeeds", tag, r.status_code)
+        if r.ok:
+            for f in (r.json().get("d") or []):
+                print("  ", f.get("Url"), "status", f.get("Status"), "urls", f.get("UrlCount"), "lastCrawled", f.get("LastCrawled"), "submitted", f.get("Submitted"))
+        else: print("  ", r.text[:200].replace(key, "***"))
+    feeds("before")
+    r = requests.post(api + "SubmitFeed", params={"apikey": key}, json={"siteUrl": site, "feedUrl": site + "sitemap_index.xml"}, timeout=60)
+    print("bing SubmitFeed sitemap_index", r.status_code, r.text[:200].replace(key, "***"))
+    feeds("after")
+if "--bing" in sys.argv: bing()
+elif "--rmping" in sys.argv: rmping()
 elif "--ping" in sys.argv: ping()
 elif "--apply" in sys.argv: apply()
 else: inspect(); live_sitemap()

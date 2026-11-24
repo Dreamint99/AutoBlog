@@ -49,6 +49,7 @@ jobs:
           PROBASHIINFO_WP_URL: ${{ secrets.PROBASHIINFO_WP_URL }}
           PROBASHIINFO_WP_USER: ${{ secrets.PROBASHIINFO_WP_USER }}
           PROBASHIINFO_WP_APP_PASSWORD: ${{ secrets.PROBASHIINFO_WP_APP_PASSWORD }}
+          BING_WEBMASTER_API_KEY: ${{ secrets.BING_WEBMASTER_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
@@ -61,7 +62,7 @@ jobs:
         run: |
           # branch seo/probashi-ops-sitemap-indexnow: overrides run = sitemap flush + IndexNow key only
           if [ "${{ github.event.inputs.overrides }}" = "true" ] && [ "$APPLY" != "true" ]; then
-            python wp_pseo_ops.py --rmping
+            python wp_pseo_ops.py --bing
             exit $?
           fi
           if [ "${{ github.event.inputs.overrides }}" = "true" ]; then
