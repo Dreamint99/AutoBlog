@@ -41,6 +41,8 @@ for p in json.load(open(os.path.join(HERE, "data", "pseo_greece.json"), encoding
         new = new.replace(old, rep)
     left = new.count("৮৮০")
     print("  remaining ৮৮০:", left)
+    import re as _re
+    for m in _re.finditer("৮৮০", new): print("  CTX", repr(new[max(0,m.start()-150):m.end()+60]))
     if APPLY:
         if bad: print("abort greece: missing replacements"); sys.exit(1)
         w = t.wp("POST", f"wp/v2/posts/{post['id']}", json={"content": GMARK + "\n" + new})
