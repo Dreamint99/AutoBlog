@@ -1,9 +1,8 @@
-"""v18 agency extra data: see generator/data/pbd (gate_v18.json). Gate flags v/x are added after the offline render gate."""
 """Build pbd_ag_extra (area stats, nearby, BAIRA membership, batch flags) from the RAIMS snapshot + BAIRA member list.
 Gate flags (noindex) are filled later by gate.php output."""
 import json, re, datetime as dt, sys, collections
 from difflib import SequenceMatcher
-B = sys.argv[1] if len(sys.argv) > 1 else "."  # folder holding code-samples/sources (RAIMS snapshot) and rollout/baira (BAIRA list)
+B = sys.argv[1] if len(sys.argv) > 1 else "."  # folder holding code-samples/sources and rollout/baira
 SNAP = dt.date(2026, 11, 25)
 MON = {m: i for i, m in enumerate("Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split(), 1)}
 def iso(s):
@@ -24,7 +23,8 @@ def same_name(a, b):
     A, Bt = toks(a), toks(b)
     if not A or not Bt: return False
     j = len(A & Bt) / len(A | Bt)
-    return j >= 0.5 or SequenceMatcher(None, " ".join(sorted(A)), " ".join(sorted(Bt))).ratio() >= 0.85
+    sa, sb = "".join(w for w in re.sub(r"[^a-z0-9 ]", " ", a.lower().replace("m/s", " ")).split() if w not in STOP), "".join(w for w in re.sub(r"[^a-z0-9 ]", " ", b.lower().replace("m/s", " ")).split() if w not in STOP)
+    return j >= 0.5 or sa == sb or SequenceMatcher(None, " ".join(sorted(A)), " ".join(sorted(Bt))).ratio() >= 0.85 or SequenceMatcher(None, sa, sb).ratio() >= 0.9
 rows = {}
 for r in [r for r in recs if r["rl"] > 0]:
     rows[r["rl"]] = dict(n=" ".join(r["name"].split()), t=thana(r), s=r["status"], e=iso(r["valid"]) if r["valid"] else "")
