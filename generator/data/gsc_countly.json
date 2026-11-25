@@ -1,16 +1,16 @@
 {
- "source": "Search Console API 2026-08-24..2026-11-22",
+ "source": "Search Console API 2026-08-25..2026-11-23",
  "pages": [
   {
    "url": "https://countly.net/",
-   "impressions": 330,
+   "impressions": 321,
    "clicks": 2,
    "queries": [
     [
      "countly",
-     24,
+     23,
      0,
-     43.8
+     45.4
     ],
     [
      "site:countly.net",
@@ -79,8 +79,8 @@
      95
     ]
    ],
-   "position": 33.8,
-   "ctr": 0.0061
+   "position": 32.8,
+   "ctr": 0.0062
   },
   {
    "url": "https://countly.net/top-21-richest-people-in-greece-2026",
@@ -216,7 +216,7 @@
   },
   {
    "url": "https://countly.net/top-25-richest-people-in-bangladesh-2026-estimated-net-worth",
-   "impressions": 51,
+   "impressions": 50,
    "clicks": 0,
    "queries": [
     [
@@ -226,22 +226,7 @@
      58
     ]
    ],
-   "position": 8.9,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/best-ai-tools",
-   "impressions": 36,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     9,
-     0,
-     9
-    ]
-   ],
-   "position": 5.8,
+   "position": 9.0,
    "ctr": 0.0
   },
   {
@@ -269,6 +254,21 @@
     ]
    ],
    "position": 3.2,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/best-ai-tools",
+   "impressions": 35,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     9,
+     0,
+     9
+    ]
+   ],
+   "position": 6.1,
    "ctr": 0.0
   },
   {
@@ -440,33 +440,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/top-71-richest-people-in-brazil-2026",
-   "impressions": 20,
-   "clicks": 0,
-   "queries": [
-    [
-     "richest families in brazil",
-     2,
-     0,
-     8.5
-    ],
-    [
-     "site:countly.net",
-     2,
-     0,
-     24
-    ],
-    [
-     "top 10 richest people in brazil",
-     1,
-     0,
-     70
-    ]
-   ],
-   "position": 10.9,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/top10",
    "impressions": 20,
    "clicks": 0,
@@ -491,6 +464,27 @@
     ]
    ],
    "position": 7.1,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/top-71-richest-people-in-brazil-2026",
+   "impressions": 19,
+   "clicks": 0,
+   "queries": [
+    [
+     "richest families in brazil",
+     2,
+     0,
+     8.5
+    ],
+    [
+     "site:countly.net",
+     2,
+     0,
+     24
+    ]
+   ],
+   "position": 7.8,
    "ctr": 0.0
   },
   {
@@ -1272,21 +1266,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/top-12-richest-people-in-czech-republic-2026",
-   "impressions": 7,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     2,
-     0,
-     40
-    ]
-   ],
-   "position": 26.6,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/top-30-richest-people-in-indonesia-2026",
    "impressions": 7,
    "clicks": 0,
@@ -1362,14 +1341,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/how-many-linkedin-users-are-there-in-2026-global-by-country",
-   "impressions": 6,
-   "clicks": 0,
-   "queries": [],
-   "position": 69.8,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/how-many-snapchat-users-are-there-in-2026-global-by-country",
    "impressions": 6,
    "clicks": 0,
@@ -1415,6 +1386,21 @@
    "ctr": 0.0
   },
   {
+   "url": "https://countly.net/top-12-richest-people-in-czech-republic-2026",
+   "impressions": 6,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     2,
+     0,
+     40
+    ]
+   ],
+   "position": 29.8,
+   "ctr": 0.0
+  },
+  {
    "url": "https://countly.net/how-many-electric-vehicle-charging-stations-are-there-in-202",
    "impressions": 5,
    "clicks": 0,
@@ -1427,6 +1413,14 @@
     ]
    ],
    "position": 29.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/how-many-linkedin-users-are-there-in-2026-global-by-country",
+   "impressions": 5,
+   "clicks": 0,
+   "queries": [],
+   "position": 67.0,
    "ctr": 0.0
   },
   {

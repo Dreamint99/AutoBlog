@@ -1,9 +1,9 @@
 {
- "_note": "Real queries (Search Console 2026-08-24..2026-11-22, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-25..2026-11-23, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "রোনান সুলিভান",
-   "impr": 52,
+   "impr": 56,
    "pos": 10.2,
    "src": "gsc"
   },
@@ -15,26 +15,38 @@
   },
   {
    "q": "jaya ahsan",
-   "impr": 26,
-   "pos": 16.2,
+   "impr": 28,
+   "pos": 15.1,
+   "src": "gsc"
+  },
+  {
+   "q": "munshiganj district",
+   "impr": 25,
+   "pos": 10.0,
    "src": "gsc"
   },
   {
    "q": "বি বাড়িয়া জেলার আয়তন কত",
-   "impr": 22,
-   "pos": 9.7,
+   "impr": 23,
+   "pos": 9.8,
    "src": "gsc"
   },
   {
    "q": "বি বাড়িয়া জেলার জনসংখ্যা কত",
-   "impr": 21,
-   "pos": 9.0,
+   "impr": 23,
+   "pos": 9.1,
    "src": "gsc"
   },
   {
    "q": "এমি মার্টিনেজ কোন ক্লাবে খেলে",
    "impr": 20,
    "pos": 9.2,
+   "src": "gsc"
+  },
+  {
+   "q": "সাদিয়া আয়মান",
+   "impr": 20,
+   "pos": 9.9,
    "src": "gsc"
   },
   {
@@ -50,9 +62,9 @@
    "src": "gsc"
   },
   {
-   "q": "সাদিয়া আয়মান",
-   "impr": 19,
-   "pos": 10.4,
+   "q": "কক্সবাজার জেলার জনসংখ্যা কত ২০২৪",
+   "impr": 18,
+   "pos": 8.7,
    "src": "gsc"
   },
   {
@@ -62,9 +74,9 @@
    "src": "gsc"
   },
   {
-   "q": "কক্সবাজার জেলার জনসংখ্যা কত ২০২৪",
-   "impr": 15,
-   "pos": 8.5,
+   "q": "সাভার উপজেলার আয়তন কত",
+   "impr": 16,
+   "pos": 8.7,
    "src": "gsc"
   },
   {
@@ -74,15 +86,9 @@
    "src": "gsc"
   },
   {
-   "q": "সাভার উপজেলার আয়তন কত",
-   "impr": 15,
-   "pos": 8.6,
-   "src": "gsc"
-  },
-  {
-   "q": "munshiganj district",
+   "q": "ronan sullivan",
    "impr": 14,
-   "pos": 9.9,
+   "pos": 14.9,
    "src": "gsc"
   },
   {
@@ -92,27 +98,39 @@
    "src": "gsc"
   },
   {
+   "q": "ব্রাহ্মণবাড়িয়া জনসংখ্যা কত",
+   "impr": 12,
+   "pos": 8.1,
+   "src": "gsc"
+  },
+  {
    "q": "রাজবাড়ী জেলার জনসংখ্যা কত ২০২৪",
    "impr": 12,
    "pos": 10.4,
    "src": "gsc"
   },
   {
-   "q": "ronan sullivan",
+   "q": "apu biswas",
    "impr": 12,
-   "pos": 15.4,
-   "src": "gsc"
-  },
-  {
-   "q": "ব্রাহ্মণবাড়িয়া জনসংখ্যা কত",
-   "impr": 11,
-   "pos": 8.2,
+   "pos": 21.2,
    "src": "gsc"
   },
   {
    "q": "fazlul qadir chaudhry",
    "impr": 11,
    "pos": 9.4,
+   "src": "gsc"
+  },
+  {
+   "q": "national university post code",
+   "impr": 11,
+   "pos": 8,
+   "src": "gsc"
+  },
+  {
+   "q": "অপু বিশ্বাস",
+   "impr": 10,
+   "pos": 32.6,
    "src": "gsc"
   }
  ]

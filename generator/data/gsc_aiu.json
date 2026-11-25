@@ -1,16 +1,22 @@
 {
- "source": "Search Console API 2026-08-24..2026-11-22",
+ "source": "Search Console API 2026-08-25..2026-11-23",
  "pages": [
   {
    "url": "https://aiuniversitybd.com/airport/orf",
-   "impressions": 5241,
+   "impressions": 7371,
    "clicks": 0,
    "queries": [
     [
      "orf",
-     5155,
+     7262,
      0,
-     2.7
+     2.6
+    ],
+    [
+     "orft",
+     3,
+     0,
+     2
     ],
     [
      "oorf",
@@ -29,20 +35,14 @@
      1,
      0,
      42
-    ],
-    [
-     "orft",
-     1,
-     0,
-     2
     ]
    ],
-   "position": 2.8,
+   "position": 2.6,
    "ctr": 0.0
   },
   {
    "url": "https://aiuniversitybd.com/blog/prothomik-chikitsa-kake-bole",
-   "impressions": 1347,
+   "impressions": 1351,
    "clicks": 9,
    "queries": [
     [
@@ -123,7 +123,7 @@
   },
   {
    "url": "https://aiuniversitybd.com/blog/computer-parts-bangla",
-   "impressions": 839,
+   "impressions": 843,
    "clicks": 4,
    "queries": [
     [
@@ -187,20 +187,20 @@
      32
     ],
     [
+     "কম্পিউটারের প্রধান অংশ কয়টি",
+     3,
+     0,
+     18.3
+    ],
+    [
      "কম্পিউটারের মূল অংশ কি",
      3,
      0,
      10
-    ],
-    [
-     "কম্পিউটারের প্রধান অংশ কয়টি",
-     2,
-     0,
-     10.5
     ]
    ],
-   "position": 8.6,
-   "ctr": 0.0048
+   "position": 8.7,
+   "ctr": 0.0047
   },
   {
    "url": "https://aiuniversitybd.com/blog/bishadhor-sap-chenar-upay",
@@ -285,7 +285,7 @@
   },
   {
    "url": "https://aiuniversitybd.com/blog/fish-feeding-management-rules",
-   "impressions": 532,
+   "impressions": 540,
    "clicks": 7,
    "queries": [
     [
@@ -325,25 +325,31 @@
      6
     ]
    ],
-   "position": 6.4,
-   "ctr": 0.0132
+   "position": 6.5,
+   "ctr": 0.013
   },
   {
    "url": "https://aiuniversitybd.com/",
-   "impressions": 453,
+   "impressions": 465,
    "clicks": 49,
    "queries": [
     [
      "ai university",
-     24,
+     27,
      6,
-     5.0
+     5.3
     ],
     [
      "ai58099",
      16,
      0,
      5.4
+    ],
+    [
+     "ai28458",
+     13,
+     0,
+     3.6
     ],
     [
      "ai35058",
@@ -364,10 +370,10 @@
      4.3
     ],
     [
-     "ai28458",
-     11,
+     "ai58097",
+     12,
      0,
-     3.5
+     4.2
     ],
     [
      "ai58079",
@@ -380,12 +386,6 @@
      9,
      0,
      5.1
-    ],
-    [
-     "ai58097",
-     9,
-     0,
-     3.6
     ],
     [
      "ai58157",
@@ -407,19 +407,82 @@
     ]
    ],
    "position": 4.6,
-   "ctr": 0.1082
+   "ctr": 0.1054
   },
   {
    "url": "https://aiuniversitybd.com/blog/computer-basics-for-beginners-bangla",
-   "impressions": 306,
+   "impressions": 329,
    "clicks": 1,
    "queries": [],
    "position": 5.6,
-   "ctr": 0.0033
+   "ctr": 0.003
+  },
+  {
+   "url": "https://aiuniversitybd.com/blog/computer-course-learning-guide",
+   "impressions": 300,
+   "clicks": 5,
+   "queries": [
+    [
+     "কম্পিউটার শেখার প্রথম ধাপ",
+     13,
+     0,
+     6.1
+    ],
+    [
+     "কম্পিউটার শিখতে কি কি লাগে",
+     5,
+     0,
+     5.4
+    ],
+    [
+     "কম্পিউটার শেখার সহজ পদ্ধতি",
+     4,
+     0,
+     10
+    ],
+    [
+     "computer sekhar sohoj upay",
+     3,
+     0,
+     6
+    ],
+    [
+     "kibabe computer shikbo",
+     1,
+     0,
+     9
+    ],
+    [
+     "কম্পিউটার শিখবো কিভাবে",
+     1,
+     0,
+     9
+    ],
+    [
+     "কম্পিউটার শিখার পদ্ধতি",
+     1,
+     0,
+     8
+    ],
+    [
+     "কম্পিউটার শেখার শীট",
+     1,
+     0,
+     3
+    ],
+    [
+     "ল্যাপটপ শেখার নিয়ম",
+     1,
+     0,
+     3
+    ]
+   ],
+   "position": 7.4,
+   "ctr": 0.0167
   },
   {
    "url": "https://aiuniversitybd.com/app",
-   "impressions": 286,
+   "impressions": 290,
    "clicks": 0,
    "queries": [
     [
@@ -499,61 +562,85 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/blog/computer-course-learning-guide",
-   "impressions": 281,
+   "url": "https://aiuniversitybd.com/blog/tense-koto-prokar-o-ki-ki",
+   "impressions": 248,
    "clicks": 5,
    "queries": [
     [
-     "কম্পিউটার শেখার প্রথম ধাপ",
-     13,
+     "tense এর গঠন",
+     10,
      0,
-     6.1
+     26.8
     ],
     [
-     "কম্পিউটার শেখার সহজ পদ্ধতি",
-     4,
-     0,
-     10
+     "tense এর গঠন ও উদাহরণ",
+     7,
+     1,
+     10.3
     ],
     [
-     "কম্পিউটার শিখতে কি কি লাগে",
-     3,
-     0,
-     8.3
+     "টেন্স কত প্রকার ও কি কি উদাহরণ সহ",
+     5,
+     1,
+     9.6
     ],
     [
-     "computer sekhar sohoj upay",
+     "টেন্স এর গঠন",
      2,
      0,
-     5.5
+     19
     ],
     [
-     "কম্পিউটার শিখবো কিভাবে",
+     "tens koto prokar",
      1,
      0,
      9
     ],
     [
-     "কম্পিউটার শিখার পদ্ধতি",
+     "tens koto prokar o ki ki",
      1,
      0,
      8
     ],
     [
-     "কম্পিউটার শেখার শীট",
+     "tense koto pokar",
      1,
      0,
-     3
+     9
     ],
     [
-     "ল্যাপটপ শেখার নিয়ম",
+     "tense koto prokar",
      1,
      0,
-     3
+     41
+    ],
+    [
+     "tense কাকে বলে কত প্রকার ও কি কি উদাহরণসহ",
+     1,
+     0,
+     35
+    ],
+    [
+     "tense কাকে বলে কত প্রকার ও কি কি উদাহরণসহ pdf",
+     1,
+     0,
+     33
+    ],
+    [
+     "টেনস",
+     1,
+     0,
+     80
+    ],
+    [
+     "টেন্স কত প্রকার",
+     1,
+     0,
+     37
     ]
    ],
-   "position": 7.5,
-   "ctr": 0.0178
+   "position": 9.1,
+   "ctr": 0.0202
   },
   {
    "url": "https://aiuniversitybd.com/help",
@@ -637,94 +724,13 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/blog/tense-koto-prokar-o-ki-ki",
-   "impressions": 241,
-   "clicks": 5,
-   "queries": [
-    [
-     "tense এর গঠন",
-     9,
-     0,
-     23.9
-    ],
-    [
-     "tense এর গঠন ও উদাহরণ",
-     7,
-     1,
-     10.3
-    ],
-    [
-     "টেন্স কত প্রকার ও কি কি উদাহরণ সহ",
-     5,
-     1,
-     9.6
-    ],
-    [
-     "টেন্স এর গঠন",
-     2,
-     0,
-     19
-    ],
-    [
-     "tens koto prokar",
-     1,
-     0,
-     9
-    ],
-    [
-     "tens koto prokar o ki ki",
-     1,
-     0,
-     8
-    ],
-    [
-     "tense koto pokar",
-     1,
-     0,
-     9
-    ],
-    [
-     "tense koto prokar",
-     1,
-     0,
-     41
-    ],
-    [
-     "tense কাকে বলে কত প্রকার ও কি কি উদাহরণসহ",
-     1,
-     0,
-     35
-    ],
-    [
-     "tense কাকে বলে কত প্রকার ও কি কি উদাহরণসহ pdf",
-     1,
-     0,
-     33
-    ],
-    [
-     "টেনস",
-     1,
-     0,
-     80
-    ],
-    [
-     "টেন্স কত প্রকার",
-     1,
-     0,
-     37
-    ]
-   ],
-   "position": 9.0,
-   "ctr": 0.0207
-  },
-  {
    "url": "https://aiuniversitybd.com/blog/prompt-writing-rules-bangla",
-   "impressions": 214,
+   "impressions": 236,
    "clicks": 3,
    "queries": [
     [
      "প্রম্পট কি",
-     31,
+     36,
      0,
      9.4
     ],
@@ -766,11 +772,11 @@
     ]
    ],
    "position": 6.9,
-   "ctr": 0.014
+   "ctr": 0.0127
   },
   {
    "url": "https://aiuniversitybd.com/blog/biman-ticket-cancel-rules",
-   "impressions": 198,
+   "impressions": 203,
    "clicks": 1,
    "queries": [
     [
@@ -793,18 +799,18 @@
     ]
    ],
    "position": 4.7,
-   "ctr": 0.0051
+   "ctr": 0.0049
   },
   {
    "url": "https://aiuniversitybd.com/blog/english-sentence-structure-rules",
-   "impressions": 158,
+   "impressions": 164,
    "clicks": 4,
    "queries": [
     [
      "ইংরেজি বাক্য গঠনের নিয়ম",
-     12,
+     13,
      0,
-     6.2
+     6.5
     ],
     [
      "boka choda",
@@ -820,11 +826,11 @@
     ]
    ],
    "position": 6.4,
-   "ctr": 0.0253
+   "ctr": 0.0244
   },
   {
    "url": "https://aiuniversitybd.com/blog/ielts-kivabe-shuru-korbo",
-   "impressions": 146,
+   "impressions": 147,
    "clicks": 2,
    "queries": [
     [
@@ -870,12 +876,69 @@
      10
     ]
    ],
-   "position": 9.3,
-   "ctr": 0.0137
+   "position": 9.4,
+   "ctr": 0.0136
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/rsw",
+   "impressions": 138,
+   "clicks": 0,
+   "queries": [
+    [
+     "rsw",
+     111,
+     0,
+     2.3
+    ],
+    [
+     "rzsw",
+     8,
+     0,
+     4.1
+    ],
+    [
+     "zrsw",
+     5,
+     0,
+     3.2
+    ],
+    [
+     "rsw airport code",
+     1,
+     0,
+     88
+    ],
+    [
+     "rsw airport customer service",
+     1,
+     0,
+     5
+    ],
+    [
+     "rsw airport meaning",
+     1,
+     0,
+     12
+    ],
+    [
+     "rsw-wh",
+     1,
+     0,
+     10
+    ],
+    [
+     "what is rsw?",
+     1,
+     0,
+     11
+    ]
+   ],
+   "position": 3.3,
+   "ctr": 0.0
   },
   {
    "url": "https://aiuniversitybd.com/blog/russell-viper-identification-safety",
-   "impressions": 135,
+   "impressions": 138,
    "clicks": 0,
    "queries": [
     [
@@ -903,13 +966,109 @@
      3
     ]
    ],
-   "position": 8.2,
+   "position": 8.4,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/hnl",
+   "impressions": 126,
+   "clicks": 0,
+   "queries": [
+    [
+     "hnl",
+     97,
+     0,
+     1.9
+    ],
+    [
+     "yhnl",
+     4,
+     0,
+     3
+    ],
+    [
+     "honolulu international airport code",
+     2,
+     0,
+     67.5
+    ],
+    [
+     "airport daniel k inouye",
+     1,
+     0,
+     18
+    ],
+    [
+     "airport in oahu code",
+     1,
+     0,
+     60
+    ],
+    [
+     "hnl airport code",
+     1,
+     0,
+     78
+    ],
+    [
+     "honolulu hawaii airport code",
+     1,
+     0,
+     74
+    ],
+    [
+     "port lotniczy honolulu",
+     1,
+     0,
+     82
+    ]
+   ],
+   "position": 6.2,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/smf",
+   "impressions": 122,
+   "clicks": 0,
+   "queries": [
+    [
+     "smf",
+     116,
+     0,
+     4.3
+    ],
+    [
+     "sacramento airport code smf",
+     2,
+     0,
+     2
+    ],
+    [
+     "airport codes smf",
+     1,
+     0,
+     84
+    ],
+    [
+     "sacramento international airport code",
+     1,
+     0,
+     23
+    ],
+    [
+     "what does smf stand for?",
+     1,
+     0,
+     11
+    ]
+   ],
+   "position": 5.1,
    "ctr": 0.0
   },
   {
    "url": "https://aiuniversitybd.com/about",
-   "impressions": 117,
-   "clicks": 11,
+   "impressions": 120,
+   "clicks": 12,
    "queries": [
     [
      "ai58104",
@@ -930,46 +1089,124 @@
      11
     ]
    ],
-   "position": 7.4,
-   "ctr": 0.094
+   "position": 7.3,
+   "ctr": 0.1
   },
   {
-   "url": "https://aiuniversitybd.com/airport/rsw",
-   "impressions": 108,
+   "url": "https://aiuniversitybd.com/blog/hardware-software-difference-bangla",
+   "impressions": 112,
+   "clicks": 1,
+   "queries": [
+    [
+     "hardware o software er parthokko",
+     5,
+     0,
+     6.2
+    ],
+    [
+     "হার্ডওয়্যার ও সফটওয়্যার এর মধ্যে পার্থক্য",
+     5,
+     0,
+     6
+    ],
+    [
+     "হার্ডওয়্যার ও সফটওয়্যার এর মধ্যে পার্থক্য লেখ",
+     5,
+     0,
+     4.8
+    ],
+    [
+     "hardware o software er modhye parthokko",
+     3,
+     0,
+     9.3
+    ],
+    [
+     "হার্ডওয়্যার ও সফটওয়্যার এর মধ্যে ১০টি পার্থক্য",
+     2,
+     0,
+     10.5
+    ],
+    [
+     "hardwar o software er modhye parthokko",
+     1,
+     0,
+     11
+    ],
+    [
+     "হার্ডওয়ার ও সফটওয়ার এর মধ্যে পার্থক্য লেখ",
+     1,
+     0,
+     1
+    ],
+    [
+     "হার্ডওয়্যার এবং সফটওয়্যার এর মধ্যে পার্থক্য",
+     1,
+     0,
+     1
+    ],
+    [
+     "হার্ডওয়্যার ও সফটওয়্যার কি",
+     1,
+     0,
+     34
+    ]
+   ],
+   "position": 7.1,
+   "ctr": 0.0089
+  },
+  {
+   "url": "https://aiuniversitybd.com/blog/ai-image-creation-guide-bangla",
+   "impressions": 109,
    "clicks": 0,
    "queries": [
     [
-     "rsw",
-     90,
+     "ai দিয়ে ছবি তৈরি করার লেখা",
+     9,
      0,
-     2.2
-    ],
-    [
-     "rzsw",
-     7,
-     0,
-     4.3
-    ],
-    [
-     "zrsw",
-     4,
-     0,
-     3.2
-    ],
-    [
-     "rsw airport code",
-     1,
-     0,
-     88
-    ],
-    [
-     "rsw-wh",
-     1,
-     0,
-     10
+     8.2
     ]
    ],
-   "position": 3.3,
+   "position": 7.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/tys",
+   "impressions": 107,
+   "clicks": 0,
+   "queries": [
+    [
+     "tys",
+     98,
+     0,
+     7.1
+    ],
+    [
+     "airport code tys",
+     1,
+     0,
+     2
+    ],
+    [
+     "knoxville airport abbreviation",
+     1,
+     0,
+     5
+    ],
+    [
+     "tys airport code",
+     1,
+     0,
+     2
+    ],
+    [
+     "tys.com",
+     1,
+     0,
+     72
+    ]
+   ],
+   "position": 7.4,
    "ctr": 0.0
   },
   {
@@ -988,58 +1225,68 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/blog/ielts-syllabus-preparation-guide",
-   "impressions": 98,
+   "url": "https://aiuniversitybd.com/airport/fll",
+   "impressions": 105,
    "clicks": 0,
    "queries": [
     [
-     "আইলস করতে কি কি লাগে",
-     1,
+     "fll",
+     97,
      0,
-     10
-    ]
-   ],
-   "position": 5.3,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/blog/tense-chenar-upay-bangla",
-   "impressions": 97,
-   "clicks": 0,
-   "queries": [],
-   "position": 5.3,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/smf",
-   "impressions": 95,
-   "clicks": 0,
-   "queries": [
-    [
-     "smf",
-     92,
-     0,
-     3.9
+     2.8
     ],
     [
-     "sacramento airport code smf",
+     "abbreviation fort lauderdale",
+     1,
+     0,
+     63
+    ],
+    [
+     "what does fll airport stand for?",
+     1,
+     0,
+     5
+    ]
+   ],
+   "position": 3.4,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/grr",
+   "impressions": 104,
+   "clicks": 0,
+   "queries": [
+    [
+     "grr",
+     96,
+     0,
+     2.4
+    ],
+    [
+     "grand rapids airport code",
      2,
+     0,
+     17.5
+    ],
+    [
+     "grand rapids airport grr",
+     1,
      0,
      2
     ],
     [
-     "airport codes smf",
+     "the grr",
      1,
      0,
-     84
+     7
     ]
    ],
-   "position": 4.7,
+   "position": 2.9,
    "ctr": 0.0
   },
   {
    "url": "https://aiuniversitybd.com/blog/operating-system-bangla-guide",
-   "impressions": 95,
+   "impressions": 104,
    "clicks": 0,
    "queries": [
     [
@@ -1083,135 +1330,110 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/tys",
-   "impressions": 90,
+   "url": "https://aiuniversitybd.com/blog/ielts-syllabus-preparation-guide",
+   "impressions": 101,
    "clicks": 0,
    "queries": [
     [
-     "tys",
-     84,
-     0,
-     7.1
-    ],
-    [
-     "knoxville airport abbreviation",
+     "আইলস করতে কি কি লাগে",
      1,
      0,
-     5
-    ],
-    [
-     "tys airport code",
-     1,
-     0,
-     2
-    ],
-    [
-     "tys.com",
-     1,
-     0,
-     72
+     10
     ]
    ],
-   "position": 7.6,
+   "position": 5.2,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/blog/ai-image-creation-guide-bangla",
-   "impressions": 90,
+   "url": "https://aiuniversitybd.com/airport/vtz",
+   "impressions": 98,
    "clicks": 0,
    "queries": [
     [
-     "ai দিয়ে ছবি তৈরি করার লেখা",
-     9,
+     "vtz",
+     97,
      0,
-     8.2
+     5.6
+    ],
+    [
+     "visakhapatnam airport code",
+     1,
+     0,
+     92
     ]
    ],
-   "position": 7.2,
+   "position": 6.4,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/grr",
-   "impressions": 89,
+   "url": "https://aiuniversitybd.com/blog/tense-chenar-upay-bangla",
+   "impressions": 98,
    "clicks": 0,
-   "queries": [
-    [
-     "grr",
-     81,
-     0,
-     2.3
-    ],
-    [
-     "grand rapids airport code",
-     2,
-     0,
-     17.5
-    ],
-    [
-     "grand rapids airport grr",
-     1,
-     0,
-     2
-    ],
-    [
-     "the grr",
-     1,
-     0,
-     7
-    ]
-   ],
-   "position": 2.9,
+   "queries": [],
+   "position": 5.3,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/hnl",
-   "impressions": 89,
+   "url": "https://aiuniversitybd.com/airport/mdw",
+   "impressions": 92,
    "clicks": 0,
    "queries": [
     [
-     "hnl",
+     "mdw",
      73,
      0,
-     2.0
+     2
     ],
     [
-     "yhnl",
-     2,
+     "airport mdw stands for",
+     4,
      0,
-     3
+     84
     ],
     [
-     "airport daniel k inouye",
+     "mdwy",
+     3,
+     0,
+     10.7
+    ],
+    [
+     "airport code for chicago midway",
      1,
      0,
-     18
+     50
     ],
     [
-     "airport in oahu code",
+     "chicago midway international airport code",
      1,
      0,
-     60
+     50
     ],
     [
-     "hnl airport code",
+     "mdqw",
      1,
      0,
-     78
+     9
     ],
     [
-     "honolulu hawaii airport code",
-     1,
-     0,
-     74
-    ],
-    [
-     "honolulu international airport code",
+     "mdw acronym",
      1,
      0,
      69
+    ],
+    [
+     "midway airport code",
+     1,
+     0,
+     51
+    ],
+    [
+     "what does mdw stand for?",
+     1,
+     0,
+     5
     ]
    ],
-   "position": 5.3,
+   "position": 8.4,
    "ctr": 0.0
   },
   {
@@ -1254,117 +1476,47 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/fll",
-   "impressions": 83,
+   "url": "https://aiuniversitybd.com/airport/tpa",
+   "impressions": 82,
    "clicks": 0,
    "queries": [
     [
-     "fll",
-     79,
+     "tpa",
+     69,
      0,
-     2.8
+     3.1
     ],
     [
-     "abbreviation fort lauderdale",
+     "tampa international airport code",
      1,
      0,
-     63
+     59
+    ],
+    [
+     "tampa international airport wiki",
+     1,
+     0,
+     66
+    ],
+    [
+     "where is tpa",
+     1,
+     0,
+     94
+    ],
+    [
+     "where is tpa?",
+     1,
+     0,
+     4
     ]
    ],
-   "position": 3.5,
+   "position": 5.7,
    "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/blog/english-interview-tips-bangla",
-   "impressions": 80,
-   "clicks": 2,
-   "queries": [],
-   "position": 6.8,
-   "ctr": 0.025
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/mdw",
-   "impressions": 80,
-   "clicks": 0,
-   "queries": [
-    [
-     "mdw",
-     64,
-     0,
-     1.8
-    ],
-    [
-     "airport mdw stands for",
-     4,
-     0,
-     84
-    ],
-    [
-     "mdwy",
-     3,
-     0,
-     10.7
-    ],
-    [
-     "chicago midway international airport code",
-     1,
-     0,
-     50
-    ],
-    [
-     "mdqw",
-     1,
-     0,
-     9
-    ],
-    [
-     "mdw acronym",
-     1,
-     0,
-     69
-    ],
-    [
-     "midway airport code",
-     1,
-     0,
-     51
-    ]
-   ],
-   "position": 8.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/vtz",
-   "impressions": 80,
-   "clicks": 0,
-   "queries": [
-    [
-     "vtz",
-     79,
-     0,
-     5.5
-    ],
-    [
-     "visakhapatnam airport code",
-     1,
-     0,
-     92
-    ]
-   ],
-   "position": 6.6,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/blog/how-to-book-flight-ticket-bangla",
-   "impressions": 79,
-   "clicks": 1,
-   "queries": [],
-   "position": 7.4,
-   "ctr": 0.0127
   },
   {
    "url": "https://aiuniversitybd.com/guide/news",
-   "impressions": 79,
+   "impressions": 82,
    "clicks": 0,
    "queries": [
     [
@@ -1375,13 +1527,13 @@
     ],
     [
      "ai23558",
-     21,
+     22,
      0,
-     5
+     4.9
     ],
     [
      "ai24058",
-     15,
+     17,
      0,
      3.7
     ],
@@ -1396,29 +1548,105 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/course/spoken-english",
-   "impressions": 77,
-   "clicks": 0,
+   "url": "https://aiuniversitybd.com/blog/how-to-book-flight-ticket-bangla",
+   "impressions": 81,
+   "clicks": 1,
+   "queries": [],
+   "position": 7.3,
+   "ctr": 0.0123
+  },
+  {
+   "url": "https://aiuniversitybd.com/blog/english-interview-tips-bangla",
+   "impressions": 80,
+   "clicks": 2,
+   "queries": [],
+   "position": 6.8,
+   "ctr": 0.025
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport",
+   "impressions": 79,
+   "clicks": 1,
    "queries": [
     [
-     "স্পোকেন ইংলিশ বাংলা টু ইংরেজি",
-     12,
+     "আন্তর্জাতিক বিমানবন্দর কয়টি",
+     3,
      0,
-     13.7
+     30
     ],
     [
-     "অনলাইন স্পোকেন ইংলিশ কোর্স ইন বাংলাদেশ",
+     "chinggis khaan international airport code",
+     2,
+     0,
+     4
+    ],
+    [
+     "gautam buddha international airport code",
+     2,
+     0,
+     3.5
+    ],
+    [
+     "otp airport code",
+     2,
+     0,
+     4
+    ],
+    [
+     "sphinx international airport code",
+     2,
+     0,
+     3
+    ],
+    [
+     "airport code world",
      1,
      0,
-     61
+     10
+    ],
+    [
+     "alkasim airport code",
+     1,
+     0,
+     10
+    ],
+    [
+     "bey airport code country",
+     1,
+     0,
+     3
+    ],
+    [
+     "bhutan international airport code",
+     1,
+     0,
+     5
+    ],
+    [
+     "cai airport code country",
+     1,
+     0,
+     3
+    ],
+    [
+     "hamad international airport code",
+     1,
+     0,
+     5
+    ],
+    [
+     "has airport code",
+     1,
+     0,
+     2
     ]
    ],
-   "position": 11.1,
-   "ctr": 0.0
+   "position": 8.7,
+   "ctr": 0.0127
   },
   {
    "url": "https://aiuniversitybd.com/blog/advantages-disadvantages-of-ai-bangla",
-   "impressions": 73,
+   "impressions": 77,
    "clicks": 0,
    "queries": [
     [
@@ -1444,12 +1672,33 @@
    "ctr": 0.0
   },
   {
+   "url": "https://aiuniversitybd.com/course/spoken-english",
+   "impressions": 77,
+   "clicks": 0,
+   "queries": [
+    [
+     "স্পোকেন ইংলিশ বাংলা টু ইংরেজি",
+     12,
+     0,
+     13.7
+    ],
+    [
+     "অনলাইন স্পোকেন ইংলিশ কোর্স ইন বাংলাদেশ",
+     1,
+     0,
+     61
+    ]
+   ],
+   "position": 11.1,
+   "ctr": 0.0
+  },
+  {
    "url": "https://aiuniversitybd.com/blog/amadeus-gds-what-is-it",
-   "impressions": 71,
+   "impressions": 73,
    "clicks": 3,
    "queries": [],
-   "position": 6.1,
-   "ctr": 0.0423
+   "position": 6.0,
+   "ctr": 0.0411
   },
   {
    "url": "https://aiuniversitybd.com/airport/mxp",
@@ -1491,67 +1740,226 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/tpa",
-   "impressions": 68,
+   "url": "https://aiuniversitybd.com/airport/sdf",
+   "impressions": 67,
    "clicks": 0,
    "queries": [
     [
-     "tpa",
-     59,
+     "sdf",
+     53,
      0,
-     3.0
+     6.3
     ],
     [
-     "tampa international airport code",
+     "louisville airport code",
      1,
      0,
-     59
+     2
     ],
     [
-     "tampa international airport wiki",
+     "sdf airport",
      1,
      0,
-     66
+     2
     ],
     [
-     "where is tpa",
+     "sdf airport code",
      1,
      0,
-     94
+     57
+    ],
+    [
+     "sdf#",
+     1,
+     0,
+     9
+    ],
+    [
+     "sdf$",
+     1,
+     0,
+     9
+    ],
+    [
+     "why is louisville airport called sdf?",
+     1,
+     0,
+     2
     ]
    ],
-   "position": 6.1,
+   "position": 9.0,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/course/air-ticketing",
-   "impressions": 59,
-   "clicks": 5,
+   "url": "https://aiuniversitybd.com/airport/ewr",
+   "impressions": 65,
+   "clicks": 0,
    "queries": [
     [
-     "এয়ার টিকেটিং কোর্স",
-     6,
-     1,
-     5.5
+     "ewr airport",
+     5,
+     0,
+     3.6
     ],
     [
-     "airline ticketing course free online with certificate",
+     "ewr",
+     4,
+     0,
+     69.5
+    ],
+    [
+     "port lotniczy newark",
+     4,
+     0,
+     2
+    ],
+    [
+     "ewqr",
+     3,
+     0,
+     4.7
+    ],
+    [
+     "newark airport code",
+     3,
+     0,
+     12.7
+    ],
+    [
+     "newark liberty",
+     3,
+     0,
+     2
+    ],
+    [
+     "airport codes ewr",
      2,
      0,
      11
+    ],
+    [
+     "ewr newark international",
+     2,
+     0,
+     72
+    ],
+    [
+     "new york newark airport code",
+     2,
+     0,
+     6
+    ],
+    [
+     "newark ewr",
+     2,
+     0,
+     46
+    ],
+    [
+     "nowy jork ewr",
+     2,
+     0,
+     7
+    ],
+    [
+     "airport code ewr",
+     1,
+     0,
+     8
     ]
    ],
-   "position": 5.7,
-   "ctr": 0.0847
+   "position": 15.3,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/course/mobile-repair",
+   "impressions": 63,
+   "clicks": 1,
+   "queries": [
+    [
+     "phone course",
+     19,
+     0,
+     8.7
+    ],
+    [
+     "meaning course phone",
+     3,
+     0,
+     6.7
+    ],
+    [
+     "course me phone",
+     2,
+     0,
+     4
+    ],
+    [
+     "course phone to",
+     2,
+     0,
+     3.5
+    ],
+    [
+     "how course phone",
+     2,
+     0,
+     1
+    ],
+    [
+     "learn phone loan",
+     2,
+     0,
+     8.5
+    ],
+    [
+     "phone fix course",
+     2,
+     0,
+     3.5
+    ],
+    [
+     "phone me course",
+     2,
+     0,
+     20.5
+    ],
+    [
+     "course loan phone",
+     1,
+     0,
+     1
+    ],
+    [
+     "course phone me",
+     1,
+     0,
+     1
+    ],
+    [
+     "fix phone course",
+     1,
+     0,
+     10
+    ],
+    [
+     "loan phone learn",
+     1,
+     0,
+     1
+    ]
+   ],
+   "position": 7.2,
+   "ctr": 0.0159
   },
   {
    "url": "https://aiuniversitybd.com/offer",
-   "impressions": 59,
+   "impressions": 62,
    "clicks": 2,
    "queries": [
     [
      "ai65829",
-     22,
+     24,
      0,
      6.9
     ],
@@ -1592,6 +2000,12 @@
      10
     ],
     [
+     "ai65834",
+     1,
+     0,
+     6
+    ],
+    [
      "coursera offer",
      1,
      0,
@@ -1599,127 +2013,91 @@
     ]
    ],
    "position": 6.9,
-   "ctr": 0.0339
+   "ctr": 0.0323
   },
   {
-   "url": "https://aiuniversitybd.com/airport/sdf",
-   "impressions": 58,
-   "clicks": 0,
+   "url": "https://aiuniversitybd.com/course/air-ticketing",
+   "impressions": 59,
+   "clicks": 5,
    "queries": [
     [
-     "sdf",
-     48,
-     0,
-     6.5
+     "এয়ার টিকেটিং কোর্স",
+     6,
+     1,
+     5.5
     ],
     [
-     "sdf airport",
-     1,
+     "airline ticketing course free online with certificate",
+     2,
      0,
-     2
-    ],
-    [
-     "sdf airport code",
-     1,
-     0,
-     57
-    ],
-    [
-     "sdf#",
-     1,
-     0,
-     9
-    ],
-    [
-     "sdf$",
-     1,
-     0,
-     9
+     11
     ]
    ],
-   "position": 8.4,
-   "ctr": 0.0
+   "position": 5.7,
+   "ctr": 0.0847
   },
   {
-   "url": "https://aiuniversitybd.com/course/mobile-repair",
-   "impressions": 57,
+   "url": "https://aiuniversitybd.com/blog/article-a-an-the-rules-bangla",
+   "impressions": 58,
    "clicks": 1,
    "queries": [
     [
-     "phone course",
-     18,
-     0,
-     9.1
+     "article a an the এর ব্যবহার",
+     10,
+     1,
+     9.9
     ],
     [
-     "meaning course phone",
-     3,
+     "a an the এর ব্যবহার",
+     4,
      0,
-     6.7
+     10.5
     ],
     [
-     "course phone to",
-     2,
-     0,
-     3.5
-    ],
-    [
-     "learn phone loan",
-     2,
-     0,
-     8.5
-    ],
-    [
-     "phone fix course",
-     2,
-     0,
-     3.5
-    ],
-    [
-     "phone me course",
-     2,
-     0,
-     20.5
-    ],
-    [
-     "course loan phone",
+     "article kake bole",
      1,
      0,
-     1
+     10
     ],
     [
-     "course phone me",
+     "article এর ব্যবহার",
      1,
      0,
-     1
+     34
     ],
     [
-     "how course phone",
+     "article কাকে বলে",
      1,
      0,
-     1
+     7
     ],
     [
-     "loan phone learn",
+     "articles এর ব্যবহার",
      1,
      0,
-     1
+     38
     ],
     [
-     "meaning phone course",
+     "the এর ব্যবহার",
      1,
      0,
-     16
+     26
     ],
     [
-     "phone course insurance",
+     "আর্টিকেল",
      1,
      0,
-     12
+     10
+    ],
+    [
+     "আর্টিকেল কাকে বলে",
+     1,
+     0,
+     21
     ]
    ],
-   "position": 7.6,
-   "ctr": 0.0175
+   "position": 10.5,
+   "ctr": 0.0172
   },
   {
    "url": "https://aiuniversitybd.com/blog/ielts-academic-vs-general-training-difference",
@@ -1730,87 +2108,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport",
-   "impressions": 54,
-   "clicks": 1,
-   "queries": [
-    [
-     "chinggis khaan international airport code",
-     2,
-     0,
-     4
-    ],
-    [
-     "otp airport code",
-     2,
-     0,
-     4
-    ],
-    [
-     "sphinx international airport code",
-     2,
-     0,
-     3
-    ],
-    [
-     "airport code world",
-     1,
-     0,
-     10
-    ],
-    [
-     "alkasim airport code",
-     1,
-     0,
-     10
-    ],
-    [
-     "bey airport code country",
-     1,
-     0,
-     3
-    ],
-    [
-     "gautam buddha international airport code",
-     1,
-     0,
-     2
-    ],
-    [
-     "hamad international airport code",
-     1,
-     0,
-     5
-    ],
-    [
-     "has airport code",
-     1,
-     0,
-     2
-    ],
-    [
-     "international airports",
-     1,
-     0,
-     71
-    ],
-    [
-     "qr airport code",
-     1,
-     0,
-     2
-    ],
-    [
-     "vellore airport code",
-     1,
-     0,
-     5
-    ]
-   ],
-   "position": 9.0,
-   "ctr": 0.0185
-  },
-  {
    "url": "https://aiuniversitybd.com/blog/gds-course-air-ticketing-bangla",
    "impressions": 53,
    "clicks": 3,
@@ -1819,156 +2116,8 @@
    "ctr": 0.0566
   },
   {
-   "url": "https://aiuniversitybd.com/airport/ewr",
-   "impressions": 52,
-   "clicks": 0,
-   "queries": [
-    [
-     "ewr",
-     4,
-     0,
-     69.5
-    ],
-    [
-     "ewr airport",
-     4,
-     0,
-     3.2
-    ],
-    [
-     "ewqr",
-     3,
-     0,
-     4.7
-    ],
-    [
-     "newark airport code",
-     3,
-     0,
-     12.7
-    ],
-    [
-     "port lotniczy newark",
-     3,
-     0,
-     2
-    ],
-    [
-     "ewr newark international",
-     2,
-     0,
-     72
-    ],
-    [
-     "new york newark airport code",
-     2,
-     0,
-     6
-    ],
-    [
-     "newark ewr",
-     2,
-     0,
-     46
-    ],
-    [
-     "newark liberty",
-     2,
-     0,
-     2
-    ],
-    [
-     "nowy jork ewr",
-     2,
-     0,
-     7
-    ],
-    [
-     "airport code ewr",
-     1,
-     0,
-     8
-    ],
-    [
-     "airport code for newark liberty international airport",
-     1,
-     0,
-     22
-    ]
-   ],
-   "position": 17.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/blog/hardware-software-difference-bangla",
-   "impressions": 49,
-   "clicks": 0,
-   "queries": [
-    [
-     "hardware o software er parthokko",
-     4,
-     0,
-     6
-    ],
-    [
-     "হার্ডওয়্যার ও সফটওয়্যার এর মধ্যে পার্থক্য",
-     4,
-     0,
-     7.2
-    ],
-    [
-     "হার্ডওয়্যার ও সফটওয়্যার এর মধ্যে পার্থক্য লেখ",
-     2,
-     0,
-     1
-    ],
-    [
-     "hardwar o software er modhye parthokko",
-     1,
-     0,
-     11
-    ],
-    [
-     "হার্ডওয়্যার এবং সফটওয়্যার এর মধ্যে পার্থক্য",
-     1,
-     0,
-     1
-    ],
-    [
-     "হার্ডওয়্যার ও সফটওয়্যার এর মধ্যে ১০টি পার্থক্য",
-     1,
-     0,
-     11
-    ],
-    [
-     "হার্ডওয়্যার ও সফটওয়্যার কি",
-     1,
-     0,
-     34
-    ]
-   ],
-   "position": 7.7,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/blog/ai-learning-course-bangla",
-   "impressions": 47,
-   "clicks": 1,
-   "queries": [],
-   "position": 7.3,
-   "ctr": 0.0213
-  },
-  {
-   "url": "https://aiuniversitybd.com/blog/ai-tools-types-and-uses",
-   "impressions": 45,
-   "clicks": 0,
-   "queries": [],
-   "position": 6.8,
-   "ctr": 0.0
-  },
-  {
    "url": "https://aiuniversitybd.com/courses",
-   "impressions": 45,
+   "impressions": 48,
    "clicks": 0,
    "queries": [
     [
@@ -1996,7 +2145,143 @@
      6
     ]
    ],
-   "position": 6.2,
+   "position": 6.3,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/blog/ai-learning-course-bangla",
+   "impressions": 47,
+   "clicks": 1,
+   "queries": [],
+   "position": 7.3,
+   "ctr": 0.0213
+  },
+  {
+   "url": "https://aiuniversitybd.com/blog/ai-tools-types-and-uses",
+   "impressions": 47,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/cvg",
+   "impressions": 46,
+   "clicks": 0,
+   "queries": [
+    [
+     "cincinnati airport code",
+     1,
+     0,
+     63
+    ],
+    [
+     "covington cincinnati airport",
+     1,
+     0,
+     73
+    ],
+    [
+     "cvg airport code",
+     1,
+     0,
+     94
+    ],
+    [
+     "cvg wiki",
+     1,
+     0,
+     1
+    ],
+    [
+     "what is airport code cvg",
+     1,
+     0,
+     60
+    ]
+   ],
+   "position": 10.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/las",
+   "impressions": 46,
+   "clicks": 0,
+   "queries": [
+    [
+     "las airport code",
+     6,
+     0,
+     35.3
+    ],
+    [
+     "airport code las",
+     4,
+     0,
+     20.5
+    ],
+    [
+     "las vegas airport code",
+     3,
+     0,
+     2.3
+    ],
+    [
+     "airport code of las vegas",
+     2,
+     0,
+     2
+    ],
+    [
+     "las airport",
+     2,
+     0,
+     71.5
+    ],
+    [
+     "las vegas airport code las",
+     2,
+     0,
+     24.5
+    ],
+    [
+     "las vegas airport codes",
+     2,
+     0,
+     33
+    ],
+    [
+     "what is airport code for las vegas",
+     2,
+     0,
+     25
+    ],
+    [
+     "what is the airport code for las vegas",
+     2,
+     0,
+     46.5
+    ],
+    [
+     "what is the airport code for las vegas nevada",
+     2,
+     0,
+     21.5
+    ],
+    [
+     "airport code for las vegas",
+     1,
+     0,
+     94
+    ],
+    [
+     "airport in las vegas nevada airport code",
+     1,
+     0,
+     58
+    ]
+   ],
+   "position": 22.5,
    "ctr": 0.0
   },
   {
@@ -2052,100 +2337,118 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/cvg",
-   "impressions": 38,
+   "url": "https://aiuniversitybd.com/airport/ord",
+   "impressions": 39,
    "clicks": 0,
    "queries": [
     [
-     "covington cincinnati airport",
-     1,
+     "ord",
+     13,
      0,
-     73
+     5.8
     ],
     [
-     "cvg airport code",
-     1,
+     "ord airport code",
+     3,
      0,
-     94
+     54.3
     ],
     [
-     "cvg wiki",
-     1,
+     "airport code of chicago",
+     2,
      0,
-     1
+     4.5
     ],
     [
-     "what is airport code cvg",
-     1,
+     "airport codes for chicago",
+     2,
      0,
-     60
-    ]
-   ],
-   "position": 9.3,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/blog/article-a-an-the-rules-bangla",
-   "impressions": 36,
-   "clicks": 1,
-   "queries": [
-    [
-     "article a an the এর ব্যবহার",
-     4,
-     1,
-     9.8
+     16.5
     ],
     [
-     "a an the এর ব্যবহার",
+     "chicago airport icao",
+     2,
+     0,
+     74.5
+    ],
+    [
+     "airport abbreviations ord",
+     1,
+     0,
+     9
+    ],
+    [
+     "airport code o'hare",
+     1,
+     0,
+     99
+    ],
+    [
+     "airport code ord",
+     1,
+     0,
+     5
+    ],
+    [
+     "airport codes ord",
      1,
      0,
      11
     ],
     [
-     "article kake bole",
+     "chicago airport code",
      1,
      0,
-     10
+     81
     ],
     [
-     "article এর ব্যবহার",
+     "chicago il airport code",
      1,
      0,
-     34
+     11
     ],
     [
-     "article কাকে বলে",
+     "international airport code ord",
      1,
      0,
-     7
-    ],
-    [
-     "articles এর ব্যবহার",
-     1,
-     0,
-     38
-    ],
-    [
-     "the এর ব্যবহার",
-     1,
-     0,
-     26
-    ],
-    [
-     "আর্টিকেল",
-     1,
-     0,
-     10
-    ],
-    [
-     "আর্টিকেল কাকে বলে",
-     1,
-     0,
-     21
+     73
     ]
    ],
-   "position": 11.3,
-   "ctr": 0.0278
+   "position": 22.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/blog/freelancing-how-to-learn",
+   "impressions": 38,
+   "clicks": 0,
+   "queries": [
+    [
+     "নতুনদের জন্য ফ্রিল্যান্সিং",
+     10,
+     0,
+     24.8
+    ],
+    [
+     "ফ্রিল্যান্সিং শেখার উপায়",
+     9,
+     0,
+     20
+    ],
+    [
+     "ফ্রিল্যান্সিং কিভাবে শিখবো",
+     4,
+     0,
+     18.2
+    ],
+    [
+     "ফ্রিল্যান্সিং শিখতে চাই",
+     3,
+     0,
+     29.3
+    ]
+   ],
+   "position": 20.9,
+   "ctr": 0.0
   },
   {
    "url": "https://aiuniversitybd.com/airport/rno",
@@ -2169,36 +2472,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/blog/freelancing-how-to-learn",
+   "url": "https://aiuniversitybd.com/blog/email-account-opening-rules-bangla",
    "impressions": 36,
    "clicks": 0,
-   "queries": [
-    [
-     "নতুনদের জন্য ফ্রিল্যান্সিং",
-     10,
-     0,
-     24.8
-    ],
-    [
-     "ফ্রিল্যান্সিং শেখার উপায়",
-     7,
-     0,
-     20.9
-    ],
-    [
-     "ফ্রিল্যান্সিং কিভাবে শিখবো",
-     4,
-     0,
-     18.2
-    ],
-    [
-     "ফ্রিল্যান্সিং শিখতে চাই",
-     3,
-     0,
-     29.3
-    ]
-   ],
-   "position": 21.2,
+   "queries": [],
+   "position": 7.1,
    "ctr": 0.0
   },
   {
@@ -2238,10 +2516,91 @@
   },
   {
    "url": "https://aiuniversitybd.com/blog/ms-word-learning-rules-bangla",
-   "impressions": 34,
+   "impressions": 35,
    "clicks": 0,
    "queries": [],
    "position": 5.1,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/msp",
+   "impressions": 34,
+   "clicks": 0,
+   "queries": [
+    [
+     "minneapolis st paul mn airport code",
+     3,
+     0,
+     81.3
+    ],
+    [
+     "st paul mn airport code",
+     3,
+     0,
+     77
+    ],
+    [
+     "airport code msp",
+     2,
+     0,
+     64.5
+    ],
+    [
+     "minneapolis airport name",
+     2,
+     0,
+     62.5
+    ],
+    [
+     "what airport is msp",
+     2,
+     0,
+     33
+    ],
+    [
+     "airport codes msp",
+     1,
+     0,
+     73
+    ],
+    [
+     "international/wold- chamberlain",
+     1,
+     0,
+     60
+    ],
+    [
+     "minneapolis-st paul international/wold-chamberlain airport",
+     1,
+     0,
+     11
+    ],
+    [
+     "mpls airport",
+     1,
+     0,
+     79
+    ],
+    [
+     "mpls-st paul airport code",
+     1,
+     0,
+     68
+    ],
+    [
+     "msp airport",
+     1,
+     0,
+     2
+    ],
+    [
+     "msp airport code",
+     1,
+     0,
+     56
+    ]
+   ],
+   "position": 47.1,
    "ctr": 0.0
   },
   {
@@ -2284,105 +2643,41 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/las",
-   "impressions": 32,
+   "url": "https://aiuniversitybd.com/airport/mke",
+   "impressions": 31,
    "clicks": 0,
    "queries": [
     [
-     "airport code las",
-     4,
+     "mke",
+     23,
      0,
-     20.5
+     9.8
     ],
     [
-     "las airport code",
-     3,
-     0,
-     68.7
-    ],
-    [
-     "las vegas airport code",
-     3,
-     0,
-     2.3
-    ],
-    [
-     "airport code of las vegas",
-     2,
-     0,
-     2
-    ],
-    [
-     "las vegas airport code las",
-     2,
-     0,
-     24.5
-    ],
-    [
-     "las vegas airport codes",
-     2,
-     0,
-     33
-    ],
-    [
-     "what is airport code for las vegas",
-     2,
-     0,
-     25
-    ],
-    [
-     "what is the airport code for las vegas",
-     2,
-     0,
-     46.5
-    ],
-    [
-     "what is the airport code for las vegas nevada",
-     2,
-     0,
-     21.5
-    ],
-    [
-     "airport code for las vegas",
+     "\"mke\"",
      1,
      0,
-     94
+     9
     ],
     [
-     "airport in las vegas nevada airport code",
+     "general mitchell international airport code",
      1,
      0,
-     58
+     7
     ],
     [
-     "airport las vegas code",
+     "where is mke",
      1,
      0,
-     4
+     64
     ]
    ],
-   "position": 26.3,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/blog/online-spoken-english-course-selection",
-   "impressions": 29,
-   "clicks": 2,
-   "queries": [],
-   "position": 7.1,
-   "ctr": 0.069
-  },
-  {
-   "url": "https://aiuniversitybd.com/blog/free-computer-course-certificate-bangla",
-   "impressions": 26,
-   "clicks": 0,
-   "queries": [],
-   "position": 7.3,
+   "position": 11.3,
    "ctr": 0.0
   },
   {
    "url": "https://aiuniversitybd.com/airport/maa",
-   "impressions": 25,
+   "impressions": 30,
    "clicks": 0,
    "queries": [
     [
@@ -2416,6 +2711,12 @@
      23
     ],
     [
+     "maa airport full form",
+     2,
+     0,
+     33.5
+    ],
+    [
      "madras airport name",
      2,
      0,
@@ -2434,75 +2735,79 @@
      76
     ],
     [
-     "full form of maa airport",
+     "chennai airport name",
+     1,
+     0,
+     4
+    ],
+    [
+     "chennai international airport name",
      1,
      0,
      2
     ],
     [
-     "maa airport code",
-     1,
-     0,
-     18
-    ],
-    [
-     "maa airport full form",
+     "full form of maa airport",
      1,
      0,
      2
     ]
    ],
-   "position": 19.0,
+   "position": 18.6,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/blog/bangla-typing-learning-rules",
-   "impressions": 24,
+   "url": "https://aiuniversitybd.com/blog/online-spoken-english-course-selection",
+   "impressions": 29,
+   "clicks": 2,
+   "queries": [],
+   "position": 7.1,
+   "ctr": 0.069
+  },
+  {
+   "url": "https://aiuniversitybd.com/blog/free-computer-course-certificate-bangla",
+   "impressions": 28,
    "clicks": 0,
    "queries": [],
    "position": 7.1,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/blog/english-speaking-tips-bangla",
-   "impressions": 24,
-   "clicks": 0,
-   "queries": [],
-   "position": 7.6,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/course/biggan-velki",
-   "impressions": 24,
+   "url": "https://aiuniversitybd.com/airport/dca",
+   "impressions": 27,
    "clicks": 0,
    "queries": [
     [
-     "কচু বিজ্ঞানী",
-     10,
+     "dca",
+     16,
      0,
-     6
+     22.8
     ],
     [
-     "kochu biggani",
-     4,
+     "bangoraeropuerto de dca",
+     1,
      0,
-     7.5
+     7
+    ],
+    [
+     "dca international",
+     1,
+     0,
+     2
+    ],
+    [
+     "dcavx",
+     1,
+     0,
+     10
     ]
    ],
-   "position": 6.4,
+   "position": 16.3,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/blog/air-ticketing-course-guide",
-   "impressions": 23,
-   "clicks": 2,
-   "queries": [],
-   "position": 3.8,
-   "ctr": 0.087
-  },
-  {
    "url": "https://aiuniversitybd.com/airport/san",
-   "impressions": 23,
+   "impressions": 26,
    "clicks": 0,
    "queries": [
     [
@@ -2572,14 +2877,92 @@
      5
     ],
     [
-     "สนามบินซานดิเอโก",
+     "what airport code is san?",
      1,
      0,
      8
     ]
    ],
-   "position": 38.4,
+   "position": 34.7,
    "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/tir",
+   "impressions": 24,
+   "clicks": 0,
+   "queries": [
+    [
+     "tirupati airport",
+     20,
+     0,
+     2.5
+    ],
+    [
+     "renigunta airport code",
+     1,
+     0,
+     60
+    ],
+    [
+     "tirupati airport code",
+     1,
+     0,
+     92
+    ],
+    [
+     "tirupati international airport",
+     1,
+     0,
+     6
+    ]
+   ],
+   "position": 9.3,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/blog/bangla-typing-learning-rules",
+   "impressions": 24,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.1,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/blog/english-speaking-tips-bangla",
+   "impressions": 24,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/course/biggan-velki",
+   "impressions": 24,
+   "clicks": 0,
+   "queries": [
+    [
+     "কচু বিজ্ঞানী",
+     10,
+     0,
+     6
+    ],
+    [
+     "kochu biggani",
+     4,
+     0,
+     7.5
+    ]
+   ],
+   "position": 6.4,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/blog/air-ticketing-course-guide",
+   "impressions": 23,
+   "clicks": 2,
+   "queries": [],
+   "position": 3.8,
+   "ctr": 0.087
   },
   {
    "url": "https://aiuniversitybd.com/course/ielts-prep",
@@ -2636,84 +3019,93 @@
    "ctr": 0.0455
   },
   {
-   "url": "https://aiuniversitybd.com/airport/msp",
+   "url": "https://aiuniversitybd.com/airport/sag",
    "impressions": 22,
    "clicks": 0,
    "queries": [
     [
-     "st paul mn airport code",
-     3,
+     "shirdi airport",
+     19,
      0,
-     77
+     2.3
     ],
     [
-     "airport code msp",
-     2,
-     0,
-     64.5
-    ],
-    [
-     "minneapolis airport name",
-     2,
-     0,
-     62.5
-    ],
-    [
-     "what airport is msp",
-     2,
-     0,
-     33
-    ],
-    [
-     "airport codes msp",
+     "sag airport code",
      1,
      0,
-     73
+     55
     ],
     [
-     "minneapolis-st paul international/wold-chamberlain airport",
+     "shirdi airport code",
+     1,
+     0,
+     2
+    ]
+   ],
+   "position": 4.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/koa",
+   "impressions": 21,
+   "clicks": 0,
+   "queries": [
+    [
+     "koa hawaii",
+     6,
+     0,
+     20
+    ],
+    [
+     "airport code kona",
      1,
      0,
      11
     ],
     [
-     "mpls airport",
+     "koa airport location",
      1,
      0,
-     79
+     66
     ],
     [
-     "mpls-st paul airport code",
+     "koa kona",
      1,
      0,
-     68
+     72
     ],
     [
-     "msp airport code",
-     1,
-     0,
-     56
-    ],
-    [
-     "msp airport usa",
-     1,
-     0,
-     77
-    ],
-    [
-     "msp international airport",
+     "kona hawaii airports",
      1,
      0,
      2
     ],
     [
-     "msp intl airport",
+     "kona international airport address",
      1,
      0,
-     70
+     4
+    ],
+    [
+     "kona intl airport at keahole koa",
+     1,
+     0,
+     2
+    ],
+    [
+     "onkoa",
+     1,
+     0,
+     1
+    ],
+    [
+     "pkoa",
+     1,
+     0,
+     2
     ]
    ],
-   "position": 48.9,
+   "position": 15.0,
    "ctr": 0.0
   },
   {
@@ -2725,36 +3117,153 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/mke",
+   "url": "https://aiuniversitybd.com/airport/clt",
    "impressions": 20,
    "clicks": 0,
    "queries": [
     [
-     "mke",
-     13,
+     "airport city code for charlotte nc",
+     3,
      0,
-     13.1
+     38.3
     ],
     [
-     "\"mke\"",
-     1,
+     "airport abbreviation clt",
+     2,
      0,
-     9
+     51.5
     ],
     [
-     "general mitchell international airport code",
+     "clt airport",
+     2,
+     0,
+     2
+    ],
+    [
+     "airport code for charlotte north carolina",
      1,
+     0,
+     2
+    ],
+    [
+     "charlotte airport code",
+     1,
+     0,
+     38
+    ],
+    [
+     "charlotte airport wikipedia",
+     1,
+     0,
+     1
+    ],
+    [
+     "charlotte nc airport abbreviation",
+     1,
+     0,
+     6
+    ],
+    [
+     "clt airport abbreviation",
+     1,
+     0,
+     80
+    ],
+    [
+     "port lotniczy charlotte",
+     1,
+     0,
+     6
+    ],
+    [
+     "what is the airport code clt",
+     1,
+     0,
+     52
+    ],
+    [
+     "year 2099 clt",
+     1,
+     0,
+     3
+    ]
+   ],
+   "position": 22.3,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/isk",
+   "impressions": 20,
+   "clicks": 0,
+   "queries": [
+    [
+     "nashik airport",
+     19,
+     0,
+     3.6
+    ]
+   ],
+   "position": 4.4,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/kmq",
+   "impressions": 20,
+   "clicks": 0,
+   "queries": [
+    [
+     "komatsu airport",
+     20,
+     0,
+     7.5
+    ]
+   ],
+   "position": 7.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/yow",
+   "impressions": 20,
+   "clicks": 0,
+   "queries": [
+    [
+     "yxow",
+     6,
      0,
      7
     ],
     [
-     "where is mke",
+     "yyow",
+     3,
+     0,
+     2
+    ],
+    [
+     "yow",
+     2,
+     0,
+     39.5
+    ],
+    [
+     "airport code for ottawa",
      1,
      0,
-     64
+     2
+    ],
+    [
+     "airport code ottawa canada",
+     1,
+     0,
+     2
+    ],
+    [
+     "ottawa international airport name",
+     1,
+     0,
+     3
     ]
    ],
-   "position": 14.6,
+   "position": 8.2,
    "ctr": 0.0
   },
   {
@@ -2797,155 +3306,23 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/ord",
-   "impressions": 19,
-   "clicks": 0,
-   "queries": [
-    [
-     "airport code of chicago",
-     2,
-     0,
-     4.5
-    ],
-    [
-     "airport codes for chicago",
-     2,
-     0,
-     16.5
-    ],
-    [
-     "chicago airport icao",
-     2,
-     0,
-     74.5
-    ],
-    [
-     "ord airport code",
-     2,
-     0,
-     79
-    ],
-    [
-     "airport abbreviations ord",
-     1,
-     0,
-     9
-    ],
-    [
-     "airport code o'hare",
-     1,
-     0,
-     99
-    ],
-    [
-     "airport code ord",
-     1,
-     0,
-     5
-    ],
-    [
-     "airport codes ord",
-     1,
-     0,
-     11
-    ],
-    [
-     "chicago airport code",
-     1,
-     0,
-     81
-    ],
-    [
-     "chicago il airport code",
-     1,
-     0,
-     11
-    ],
-    [
-     "international airport code ord",
-     1,
-     0,
-     73
-    ],
-    [
-     "o hare international airport",
-     1,
-     0,
-     11
-    ]
-   ],
-   "position": 38.8,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/course/computer-basics",
-   "impressions": 19,
+   "url": "https://aiuniversitybd.com/blog/gds-ki-amadeus-sabre-travelport",
+   "impressions": 20,
    "clicks": 0,
    "queries": [],
-   "position": 7.3,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/koa",
-   "impressions": 18,
-   "clicks": 0,
-   "queries": [
-    [
-     "koa hawaii",
-     6,
-     0,
-     20
-    ],
-    [
-     "koa airport location",
-     1,
-     0,
-     66
-    ],
-    [
-     "koa kona",
-     1,
-     0,
-     72
-    ],
-    [
-     "kona international airport address",
-     1,
-     0,
-     4
-    ],
-    [
-     "kona intl airport at keahole koa",
-     1,
-     0,
-     2
-    ],
-    [
-     "onkoa",
-     1,
-     0,
-     1
-    ],
-    [
-     "pkoa",
-     1,
-     0,
-     2
-    ]
-   ],
-   "position": 16.4,
+   "position": 4.2,
    "ctr": 0.0
   },
   {
    "url": "https://aiuniversitybd.com/blog/google-gemini-ai-guide-bangla",
-   "impressions": 18,
+   "impressions": 20,
    "clicks": 0,
    "queries": [
     [
      "এই",
-     2,
+     3,
      0,
-     61.5
+     55.3
     ],
     [
      "এ এ আই",
@@ -2960,35 +3337,188 @@
      81
     ]
    ],
-   "position": 20.7,
+   "position": 21.2,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/blog/spoken-english-course-bangladesh",
-   "impressions": 18,
+   "url": "https://aiuniversitybd.com/airport/can",
+   "impressions": 19,
    "clicks": 0,
    "queries": [
     [
-     "spoken english course in bangladesh",
+     "airport code can",
+     4,
+     0,
+     81
+    ],
+    [
+     "can airport code",
+     4,
+     0,
+     77.5
+    ],
+    [
+     "can code airport",
+     4,
+     0,
+     77.2
+    ],
+    [
+     "can airport code china",
+     3,
+     0,
+     92
+    ],
+    [
+     "can airport",
      1,
      0,
-     89
+     80
+    ],
+    [
+     "can airports",
+     1,
+     0,
+     66
+    ],
+    [
+     "can guangzhou airport",
+     1,
+     0,
+     72
     ]
    ],
-   "position": 14.3,
+   "position": 75.9,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/blog/how-chatgpt-works-bangla",
-   "impressions": 17,
+   "url": "https://aiuniversitybd.com/airport/dtw",
+   "impressions": 19,
+   "clicks": 0,
+   "queries": [
+    [
+     "dytw",
+     5,
+     0,
+     6.2
+    ],
+    [
+     "detroit airport code",
+     2,
+     0,
+     45
+    ],
+    [
+     "airport code dtw",
+     1,
+     0,
+     72
+    ],
+    [
+     "airport codes dtw",
+     1,
+     0,
+     64
+    ],
+    [
+     "dtw wiki",
+     1,
+     0,
+     1
+    ],
+    [
+     "what does dtw stand for?",
+     1,
+     0,
+     9
+    ]
+   ],
+   "position": 17.9,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/fra",
+   "impressions": 19,
+   "clicks": 0,
+   "queries": [
+    [
+     "frankfurt airport code",
+     4,
+     0,
+     75.5
+    ],
+    [
+     "airport code fra",
+     3,
+     0,
+     73.7
+    ],
+    [
+     "frankfurt am main airport code",
+     3,
+     0,
+     73.3
+    ],
+    [
+     "frankfurt airport code fra",
+     1,
+     0,
+     57
+    ],
+    [
+     "frankfurt code airport",
+     1,
+     0,
+     70
+    ],
+    [
+     "frankfurt flughafen code",
+     1,
+     0,
+     56
+    ],
+    [
+     "frankfurt germany airport code",
+     1,
+     0,
+     78
+    ],
+    [
+     "frankfurt main airport code",
+     1,
+     0,
+     80
+    ]
+   ],
+   "position": 58.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/course/computer-basics",
+   "impressions": 19,
    "clicks": 0,
    "queries": [],
-   "position": 7.8,
+   "position": 7.3,
    "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/blog/travel-agency-work-bangla",
+   "impressions": 18,
+   "clicks": 1,
+   "queries": [
+    [
+     "travel agency ki",
+     1,
+     0,
+     12
+    ]
+   ],
+   "position": 7.3,
+   "ctr": 0.0556
   },
   {
    "url": "https://aiuniversitybd.com/airport/country/my",
-   "impressions": 16,
+   "impressions": 18,
    "clicks": 0,
    "queries": [
     [
@@ -3022,380 +3552,173 @@
      9
     ]
    ],
-   "position": 14.9,
+   "position": 14.0,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/dca",
-   "impressions": 16,
+   "url": "https://aiuniversitybd.com/airport/del",
+   "impressions": 18,
    "clicks": 0,
    "queries": [
     [
-     "dca",
-     10,
+     "দিল্লি এয়ারপোর্ট কোড",
+     3,
      0,
-     32.5
+     5
     ],
     [
-     "bangoraeropuerto de dca",
+     "delhi airport name",
+     2,
+     0,
+     6.5
+    ],
+    [
+     "airport code delhi",
+     1,
+     0,
+     99
+    ],
+    [
+     "delhi airport icao code",
+     1,
+     0,
+     22
+    ],
+    [
+     "delhi airport names",
+     1,
+     0,
+     4
+    ],
+    [
+     "indira gandhi airport code",
      1,
      0,
      7
     ],
     [
-     "dca international",
+     "new delhi airport code",
      1,
-     0,
-     2
-    ],
-    [
-     "dcavx",
-     1,
-     0,
-     10
-    ]
-   ],
-   "position": 23.4,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/blog/computer-slow-solutions-bangla",
-   "impressions": 16,
-   "clicks": 0,
-   "queries": [
-    [
-     "কম্পিউটার স্লো হওয়ার কারণ কি",
-     1,
-     0,
-     1
-    ]
-   ],
-   "position": 7.1,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/blog/travel-agency-work-bangla",
-   "impressions": 15,
-   "clicks": 1,
-   "queries": [
-    [
-     "travel agency ki",
-     1,
-     0,
-     12
-    ]
-   ],
-   "position": 6.9,
-   "ctr": 0.0667
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/can",
-   "impressions": 15,
-   "clicks": 0,
-   "queries": [
-    [
-     "can airport code",
-     3,
-     0,
-     79
-    ],
-    [
-     "can airport code china",
-     3,
-     0,
-     92
-    ],
-    [
-     "can code airport",
-     3,
-     0,
-     77
-    ],
-    [
-     "airport code can",
-     2,
-     0,
-     77.5
-    ],
-    [
-     "can airport",
-     1,
-     0,
-     80
-    ],
-    [
-     "can airports",
-     1,
-     0,
-     66
-    ],
-    [
-     "can guangzhou airport",
-     1,
-     0,
-     72
-    ]
-   ],
-   "position": 74.9,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/fra",
-   "impressions": 15,
-   "clicks": 0,
-   "queries": [
-    [
-     "airport code fra",
-     3,
-     0,
-     73.7
-    ],
-    [
-     "frankfurt am main airport code",
-     3,
-     0,
-     73.3
-    ],
-    [
-     "frankfurt airport code",
-     2,
      0,
      68
     ],
     [
-     "frankfurt airport code fra",
+     "port code for delhi airport",
      1,
      0,
-     57
-    ],
-    [
-     "frankfurt code airport",
-     1,
-     0,
-     70
-    ],
-    [
-     "frankfurt flughafen code",
-     1,
-     0,
-     56
-    ],
-    [
-     "frankfurt germany airport code",
-     1,
-     0,
-     78
-    ],
-    [
-     "frankfurt main airport code",
-     1,
-     0,
-     80
+     5
     ]
    ],
-   "position": 62.3,
+   "position": 15.8,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/yow",
-   "impressions": 15,
+   "url": "https://aiuniversitybd.com/airport/nqy",
+   "impressions": 18,
    "clicks": 0,
    "queries": [
     [
-     "yxow",
-     5,
+     "nqy",
+     17,
      0,
-     6.6
-    ],
-    [
-     "yyow",
-     3,
-     0,
-     2
-    ],
-    [
-     "yow",
-     2,
-     0,
-     39.5
-    ],
-    [
-     "airport code for ottawa",
-     1,
-     0,
-     2
-    ],
-    [
-     "airport code ottawa canada",
-     1,
-     0,
-     2
-    ],
-    [
-     "ottawa international airport name",
-     1,
-     0,
-     3
+     1.8
     ]
    ],
-   "position": 9.1,
+   "position": 1.8,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/blog/gds-ki-amadeus-sabre-travelport",
-   "impressions": 15,
-   "clicks": 0,
-   "queries": [],
-   "position": 4.1,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/course/snake-rescue",
-   "impressions": 15,
+   "url": "https://aiuniversitybd.com/airport/pvd",
+   "impressions": 18,
    "clicks": 0,
    "queries": [
     [
-     "সর্পদংশন",
-     1,
-     0,
-     66
-    ]
-   ],
-   "position": 10.4,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/course/fish-feed",
-   "impressions": 14,
-   "clicks": 1,
-   "queries": [],
-   "position": 5.7,
-   "ctr": 0.0714
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/tir",
-   "impressions": 14,
-   "clicks": 0,
-   "queries": [
-    [
-     "tirupati airport",
-     10,
-     0,
-     2
-    ],
-    [
-     "renigunta airport code",
-     1,
-     0,
-     60
-    ],
-    [
-     "tirupati airport code",
-     1,
-     0,
-     92
-    ],
-    [
-     "tirupati international airport",
-     1,
-     0,
-     6
-    ]
-   ],
-   "position": 13.8,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/blog/email-account-opening-rules-bangla",
-   "impressions": 14,
-   "clicks": 0,
-   "queries": [],
-   "position": 7.8,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/clt",
-   "impressions": 13,
-   "clicks": 0,
-   "queries": [
-    [
-     "airport city code for charlotte nc",
-     3,
-     0,
-     38.3
-    ],
-    [
-     "clt airport",
+     "rhode island airport code",
      2,
      0,
      2
     ],
     [
-     "airport code for charlotte north carolina",
+     "airport warwick ri",
      1,
      0,
-     2
+     4
     ],
     [
-     "charlotte airport code",
-     1,
-     0,
-     38
-    ],
-    [
-     "charlotte airport wikipedia",
+     "providence ri pvd airport",
      1,
      0,
      1
     ],
     [
-     "charlotte nc airport abbreviation",
+     "pvd",
+     1,
+     0,
+     2
+    ],
+    [
+     "pvd airport code",
+     1,
+     0,
+     1
+    ],
+    [
+     "pvd airport providence",
+     1,
+     0,
+     2
+    ],
+    [
+     "pvd city code",
      1,
      0,
      6
-    ],
-    [
-     "port lotniczy charlotte",
-     1,
-     0,
-     6
-    ],
-    [
-     "what is the airport code clt",
-     1,
-     0,
-     52
     ]
    ],
-   "position": 17.9,
+   "position": 7.7,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/blog/chatgpt-accuracy-and-verification-bangla",
-   "impressions": 13,
+   "url": "https://aiuniversitybd.com/blog/how-chatgpt-works-bangla",
+   "impressions": 18,
    "clicks": 0,
    "queries": [],
-   "position": 7.6,
+   "position": 8.0,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/blog/ielts-preparation-online-free",
-   "impressions": 12,
-   "clicks": 2,
+   "url": "https://aiuniversitybd.com/blog/spoken-english-course-bangladesh",
+   "impressions": 18,
+   "clicks": 0,
+   "queries": [
+    [
+     "spoken english course in bangladesh",
+     1,
+     0,
+     89
+    ]
+   ],
+   "position": 14.3,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/ielts/cue-card/describe-a-person-who-has-a-successful-business",
+   "impressions": 18,
+   "clicks": 0,
    "queries": [],
-   "position": 6.5,
-   "ctr": 0.1667
+   "position": 6.1,
+   "ctr": 0.0
   },
   {
    "url": "https://aiuniversitybd.com/airport/country/pl",
-   "impressions": 12,
+   "impressions": 17,
    "clicks": 0,
    "queries": [
     [
      "international airport",
-     2,
+     5,
      0,
-     3.5
+     8.8
     ],
     [
      "international airport of poland",
@@ -3440,84 +3763,221 @@
      81
     ]
    ],
-   "position": 50.4,
+   "position": 38.4,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/del",
-   "impressions": 12,
+   "url": "https://aiuniversitybd.com/airport/itm",
+   "impressions": 17,
    "clicks": 0,
    "queries": [
     [
-     "দিল্লি এয়ারপোর্ট কোড",
-     2,
+     "itami airport",
+     16,
      0,
-     5
+     2.1
+    ]
+   ],
+   "position": 3.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/ixd",
+   "impressions": 16,
+   "clicks": 0,
+   "queries": [
+    [
+     "prayagraj airport",
+     14,
+     0,
+     6.1
     ],
     [
-     "airport code delhi",
-     1,
-     0,
-     99
-    ],
-    [
-     "delhi airport names",
-     1,
-     0,
-     4
-    ],
-    [
-     "indira gandhi airport code",
-     1,
-     0,
-     7
-    ],
-    [
-     "new delhi airport code",
+     "allahabad airport code",
      1,
      0,
      68
-    ],
-    [
-     "port code for delhi airport",
-     1,
-     0,
-     5
     ]
    ],
-   "position": 19.2,
+   "position": 9.9,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/goi",
-   "impressions": 12,
+   "url": "https://aiuniversitybd.com/blog/computer-slow-solutions-bangla",
+   "impressions": 16,
    "clicks": 0,
    "queries": [
     [
-     "goa goi",
+     "কম্পিউটার স্লো হওয়ার কারণ কি",
+     1,
+     0,
+     1
+    ]
+   ],
+   "position": 7.1,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/cmh",
+   "impressions": 15,
+   "clicks": 0,
+   "queries": [
+    [
+     "columbus oh airport code",
      2,
+     0,
+     18.5
+    ],
+    [
+     "what does cmh stand for",
+     2,
+     0,
+     59
+    ],
+    [
+     "john glenn columbus international airport",
+     1,
+     0,
+     6
+    ],
+    [
+     "john glenn columbus international airport cmh",
+     1,
+     0,
+     5
+    ],
+    [
+     "kcmh",
+     1,
+     0,
+     3
+    ],
+    [
+     "ohio airport code",
+     1,
+     0,
+     2
+    ],
+    [
+     "where is cmh?",
+     1,
+     0,
+     2
+    ]
+   ],
+   "position": 17.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/sjc",
+   "impressions": 15,
+   "clicks": 0,
+   "queries": [
+    [
+     "san jose international airport code",
+     2,
+     0,
+     5
+    ],
+    [
+     "san jose airport size",
+     1,
+     0,
+     2
+    ],
+    [
+     "san jose ca airport code",
+     1,
+     0,
+     5
+    ],
+    [
+     "sjc airport code",
+     1,
+     0,
+     85
+    ],
+    [
+     "what airport code is sjc",
+     1,
+     0,
+     85
+    ],
+    [
+     "where is sjc",
+     1,
+     0,
+     67
+    ]
+   ],
+   "position": 18.9,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/course/snake-rescue",
+   "impressions": 15,
+   "clicks": 0,
+   "queries": [
+    [
+     "সর্পদংশন",
+     1,
+     0,
+     66
+    ]
+   ],
+   "position": 10.4,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/course/fish-feed",
+   "impressions": 14,
+   "clicks": 1,
+   "queries": [],
+   "position": 5.7,
+   "ctr": 0.0714
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/bom",
+   "impressions": 14,
+   "clicks": 0,
+   "queries": [
+    [
+     "name of mumbai international airport",
+     2,
+     0,
+     36
+    ],
+    [
+     "bom airport",
+     1,
+     0,
+     75
+    ],
+    [
+     "mumbai airport iata code",
+     1,
+     0,
+     81
+    ],
+    [
+     "mumbai airport name",
+     1,
      0,
      4
     ],
     [
-     "goa iata code",
-     2,
+     "mumbai international airport name",
+     1,
      0,
-     34
-    ],
-    [
-     "goi airport code",
-     2,
-     0,
-     74
+     6
     ]
    ],
-   "position": 23.3,
+   "position": 21.7,
    "ctr": 0.0
   },
   {
    "url": "https://aiuniversitybd.com/airport/lax",
-   "impressions": 12,
+   "impressions": 14,
    "clicks": 0,
    "queries": [
     [
@@ -3569,7 +4029,233 @@
      3
     ]
    ],
-   "position": 46.1,
+   "position": 40.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/lis",
+   "impressions": 14,
+   "clicks": 0,
+   "queries": [
+    [
+     "lisbon airport code",
+     5,
+     0,
+     43.4
+    ],
+    [
+     "lisbon portela airport code",
+     3,
+     0,
+     86.3
+    ],
+    [
+     "lis airport code",
+     2,
+     0,
+     67
+    ],
+    [
+     "lisbon airport name",
+     1,
+     0,
+     88
+    ],
+    [
+     "name of lisbon international airport",
+     1,
+     0,
+     87
+    ],
+    [
+     "portugal lisbon airport code",
+     1,
+     0,
+     61
+    ]
+   ],
+   "position": 60.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/blog/chatgpt-accuracy-and-verification-bangla",
+   "impressions": 14,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.4,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/gop",
+   "impressions": 13,
+   "clicks": 0,
+   "queries": [
+    [
+     "gorakhpur airport",
+     13,
+     0,
+     2.2
+    ]
+   ],
+   "position": 2.2,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/blog/ielts-preparation-online-free",
+   "impressions": 12,
+   "clicks": 2,
+   "queries": [],
+   "position": 6.5,
+   "ctr": 0.1667
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/bur",
+   "impressions": 12,
+   "clicks": 0,
+   "queries": [
+    [
+     "airport code bur",
+     1,
+     0,
+     88
+    ],
+    [
+     "bob hope airport code",
+     1,
+     0,
+     73
+    ],
+    [
+     "bur air",
+     1,
+     0,
+     5
+    ],
+    [
+     "hollywood burbank airport code",
+     1,
+     0,
+     2
+    ],
+    [
+     "is burbank an international airport",
+     1,
+     0,
+     64
+    ]
+   ],
+   "position": 23.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/cgn",
+   "impressions": 12,
+   "clicks": 0,
+   "queries": [
+    [
+     "cgn",
+     4,
+     0,
+     16.8
+    ],
+    [
+     "cologne bonn airport code",
+     2,
+     0,
+     81
+    ],
+    [
+     "cgn cologne",
+     1,
+     0,
+     81
+    ],
+    [
+     "cgn cologne airport",
+     1,
+     0,
+     70
+    ],
+    [
+     "cgn cologne bonn",
+     1,
+     0,
+     55
+    ],
+    [
+     "cologne airport code",
+     1,
+     0,
+     75
+    ],
+    [
+     "welcher flughafen ist cgn?",
+     1,
+     0,
+     10
+    ]
+   ],
+   "position": 43.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/goi",
+   "impressions": 12,
+   "clicks": 0,
+   "queries": [
+    [
+     "goa goi",
+     2,
+     0,
+     4
+    ],
+    [
+     "goa iata code",
+     2,
+     0,
+     34
+    ],
+    [
+     "goi airport code",
+     2,
+     0,
+     74
+    ]
+   ],
+   "position": 23.3,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/vga",
+   "impressions": 12,
+   "clicks": 0,
+   "queries": [
+    [
+     "vijayawada airport",
+     6,
+     0,
+     4.2
+    ],
+    [
+     "vijayawada airport code",
+     4,
+     0,
+     4.2
+    ],
+    [
+     "vga airport code",
+     1,
+     0,
+     2
+    ],
+    [
+     "vijayawada airport pin code",
+     1,
+     0,
+     59
+    ]
+   ],
+   "position": 8.6,
    "ctr": 0.0
   },
   {
@@ -3578,6 +4264,14 @@
    "clicks": 0,
    "queries": [],
    "position": 5.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/course/ai-for-everyone",
+   "impressions": 12,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.2,
    "ctr": 0.0
   },
   {
@@ -3599,6 +4293,108 @@
     ]
    ],
    "position": 8.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/blr",
+   "impressions": 11,
+   "clicks": 0,
+   "queries": [
+    [
+     "bangalore airport pin code",
+     2,
+     0,
+     51
+    ],
+    [
+     "bangalore airport code",
+     1,
+     0,
+     2
+    ],
+    [
+     "bangalore airport name",
+     1,
+     0,
+     2
+    ],
+    [
+     "bengaluru airport pin code",
+     1,
+     0,
+     67
+    ],
+    [
+     "blr",
+     1,
+     0,
+     10
+    ]
+   ],
+   "position": 20.4,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/cos",
+   "impressions": 11,
+   "clicks": 0,
+   "queries": [
+    [
+     "city of colorado springs municipal airport",
+     3,
+     0,
+     60
+    ],
+    [
+     "is there an airport in colorado springs",
+     1,
+     0,
+     19
+    ],
+    [
+     "is there an airport in colorado springs co",
+     1,
+     0,
+     44
+    ]
+   ],
+   "position": 23.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/country/mv",
+   "impressions": 11,
+   "clicks": 0,
+   "queries": [
+    [
+     "মালদ্বীপ এয়ারপোর্ট কোড",
+     7,
+     0,
+     6.4
+    ]
+   ],
+   "position": 6.4,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/jai",
+   "impressions": 11,
+   "clicks": 0,
+   "queries": [
+    [
+     "jaipur airport code",
+     3,
+     0,
+     79.3
+    ],
+    [
+     "jaipur code airport",
+     1,
+     0,
+     8
+    ]
+   ],
+   "position": 24.0,
    "ctr": 0.0
   },
   {
@@ -3659,69 +4455,42 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/pvd",
+   "url": "https://aiuniversitybd.com/airport/sea",
    "impressions": 11,
    "clicks": 0,
    "queries": [
     [
-     "rhode island airport code",
+     "airport sea",
      2,
      0,
-     2
+     68.5
     ],
     [
-     "airport warwick ri",
+     "airport code sea",
      1,
      0,
-     4
+     65
     ],
     [
-     "providence ri pvd airport",
+     "airport code seattle washington",
      1,
      0,
-     1
+     53
     ],
     [
-     "pvd airport code",
+     "airport codes sea",
      1,
      0,
-     1
+     63
     ],
     [
-     "pvd airport providence",
+     "seattle tacoma international airport code",
      1,
      0,
-     2
+     69
     ]
    ],
-   "position": 10.9,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/sag",
-   "impressions": 11,
-   "clicks": 0,
-   "queries": [
-    [
-     "shirdi airport",
-     9,
-     0,
-     2.8
-    ],
-    [
-     "sag airport code",
-     1,
-     0,
-     55
-    ],
-    [
-     "shirdi airport code",
-     1,
-     0,
-     2
-    ]
-   ],
-   "position": 7.5,
+   "position": 39.8,
    "ctr": 0.0
   },
   {
@@ -3740,6 +4509,48 @@
    "ctr": 0.0
   },
   {
+   "url": "https://aiuniversitybd.com/airport/srq",
+   "impressions": 11,
+   "clicks": 0,
+   "queries": [
+    [
+     "srqo",
+     2,
+     0,
+     1.5
+    ],
+    [
+     "sarasota bradenton airport code",
+     1,
+     0,
+     4
+    ],
+    [
+     "srqq",
+     1,
+     0,
+     3
+    ]
+   ],
+   "position": 2.2,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/blog/category/ielts",
+   "impressions": 11,
+   "clicks": 0,
+   "queries": [
+    [
+     "আইইএলটিএস",
+     2,
+     0,
+     16
+    ]
+   ],
+   "position": 7.2,
+   "ctr": 0.0
+  },
+  {
    "url": "https://aiuniversitybd.com/blog/how-to-choose-good-ielts-course",
    "impressions": 11,
    "clicks": 0,
@@ -3748,12 +4559,19 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/ielts/cue-card/describe-a-person-who-has-a-successful-business",
-   "impressions": 11,
-   "clicks": 0,
-   "queries": [],
-   "position": 8.0,
-   "ctr": 0.0
+   "url": "https://aiuniversitybd.com/blog/ai-course-online-free-bangla",
+   "impressions": 10,
+   "clicks": 1,
+   "queries": [
+    [
+     "ai shikhun",
+     1,
+     0,
+     5
+    ]
+   ],
+   "position": 5.3,
+   "ctr": 0.1
   },
   {
    "url": "https://aiuniversitybd.com/course/driving",
@@ -3764,95 +4582,242 @@
    "ctr": 0.1
   },
   {
-   "url": "https://aiuniversitybd.com/airport/jai",
+   "url": "https://aiuniversitybd.com/airport/bbi",
    "impressions": 10,
    "clicks": 0,
    "queries": [
     [
-     "jaipur airport code",
-     3,
+     "bbi airport code",
+     2,
      0,
-     79.3
+     85.5
+    ]
+   ],
+   "position": 22.4,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/chq",
+   "impressions": 10,
+   "clicks": 0,
+   "queries": [
+    [
+     "chq",
+     6,
+     0,
+     20.8
+    ]
+   ],
+   "position": 15.7,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/dfw",
+   "impressions": 10,
+   "clicks": 0,
+   "queries": [
+    [
+     "airport codes dfw",
+     1,
+     0,
+     78
     ],
     [
-     "jaipur code airport",
+     "code for dallas fort worth airport",
+     1,
+     0,
+     71
+    ],
+    [
+     "dallas airport codes",
+     1,
+     0,
+     82
+    ],
+    [
+     "dallas fort worth international airport code",
+     1,
+     0,
+     98
+    ],
+    [
+     "dallas texas iata code",
+     1,
+     0,
+     3
+    ],
+    [
+     "dallas texas international airport code",
+     1,
+     0,
+     99
+    ],
+    [
+     "what is dfw airport code",
+     1,
+     0,
+     65
+    ]
+   ],
+   "position": 56.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/ont",
+   "impressions": 10,
+   "clicks": 0,
+   "queries": [
+    [
+     "ontario airport abbreviation",
+     1,
+     0,
+     50
+    ],
+    [
+     "ontario airport canada code",
+     1,
+     0,
+     48
+    ],
+    [
+     "ontario airport code",
+     1,
+     0,
+     33
+    ]
+   ],
+   "position": 19.1,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/pnq",
+   "impressions": 10,
+   "clicks": 0,
+   "queries": [
+    [
+     "pnq airport code",
+     2,
+     0,
+     27
+    ],
+    [
+     "pnq viman nagar",
+     1,
+     0,
+     3
+    ],
+    [
+     "which city is pnq",
+     1,
+     0,
+     7
+    ]
+   ],
+   "position": 10.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/shj",
+   "impressions": 10,
+   "clicks": 0,
+   "queries": [
+    [
+     "sharjah airport code",
+     1,
+     0,
+     7
+    ],
+    [
+     "shj",
+     1,
+     0,
+     71
+    ],
+    [
+     "shj full form",
+     1,
+     0,
+     67
+    ]
+   ],
+   "position": 19.7,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/ylw",
+   "impressions": 10,
+   "clicks": 0,
+   "queries": [
+    [
+     "ylwb",
+     3,
+     0,
+     1
+    ]
+   ],
+   "position": 2.9,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/yyc",
+   "impressions": 10,
+   "clicks": 0,
+   "queries": [
+    [
+     "yyc airport code",
+     2,
+     0,
+     41
+    ],
+    [
+     "airport code calgary",
+     1,
+     0,
+     7
+    ],
+    [
+     "airport code yyc",
+     1,
+     0,
+     69
+    ],
+    [
+     "calgary airport code",
+     1,
+     0,
+     2
+    ],
+    [
+     "yyc",
+     1,
+     0,
+     9
+    ],
+    [
+     "yyc calgary",
      1,
      0,
      8
     ]
    ],
-   "position": 25.4,
+   "position": 18.5,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/kmq",
-   "impressions": 10,
-   "clicks": 0,
-   "queries": [
-    [
-     "komatsu airport",
-     10,
-     0,
-     7.8
-    ]
-   ],
-   "position": 7.8,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/lis",
-   "impressions": 10,
-   "clicks": 0,
-   "queries": [
-    [
-     "lisbon airport code",
-     3,
-     0,
-     69.7
-    ],
-    [
-     "lisbon portela airport code",
-     3,
-     0,
-     86.3
-    ],
-    [
-     "lis airport code",
-     1,
-     0,
-     76
-    ],
-    [
-     "lisbon airport name",
-     1,
-     0,
-     88
-    ],
-    [
-     "name of lisbon international airport",
-     1,
-     0,
-     87
-    ]
-   ],
-   "position": 72.1,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/course/ai-for-everyone",
+   "url": "https://aiuniversitybd.com/blog/computer-delivered-ielts-guide-bangla",
    "impressions": 10,
    "clicks": 0,
    "queries": [],
-   "position": 6.0,
+   "position": 7.7,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/blog/ai-course-online-free-bangla",
-   "impressions": 9,
-   "clicks": 1,
+   "url": "https://aiuniversitybd.com/ielts/cue-card/describe-a-beautiful-place",
+   "impressions": 10,
+   "clicks": 0,
    "queries": [],
-   "position": 5.3,
-   "ctr": 0.1111
+   "position": 6.1,
+   "ctr": 0.0
   },
   {
    "url": "https://aiuniversitybd.com/refund",
@@ -3876,144 +4841,45 @@
    "ctr": 0.1111
   },
   {
-   "url": "https://aiuniversitybd.com/airport/cgn",
+   "url": "https://aiuniversitybd.com/airport/atw",
    "impressions": 9,
    "clicks": 0,
    "queries": [
     [
-     "cgn",
-     4,
+     "atw",
+     9,
      0,
-     16.8
-    ],
-    [
-     "cgn cologne",
-     1,
-     0,
-     81
-    ],
-    [
-     "cgn cologne airport",
-     1,
-     0,
-     70
-    ],
-    [
-     "cgn cologne bonn",
-     1,
-     0,
-     55
-    ],
-    [
-     "cologne airport code",
-     1,
-     0,
-     75
+     1.4
     ]
    ],
-   "position": 39.0,
+   "position": 1.4,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/cmh",
+   "url": "https://aiuniversitybd.com/airport/bwi",
    "impressions": 9,
    "clicks": 0,
    "queries": [
     [
-     "what does cmh stand for",
-     2,
+     "bwyi",
+     5,
      0,
-     59
+     4.2
     ],
     [
-     "columbus oh airport code",
+     "baltimore maryland airport code",
      1,
      0,
-     35
+     57
     ],
     [
-     "john glenn columbus international airport",
+     "bwi",
      1,
      0,
-     6
-    ],
-    [
-     "john glenn columbus international airport cmh",
-     1,
-     0,
-     5
-    ],
-    [
-     "ohio airport code",
-     1,
-     0,
-     2
+     7
     ]
    ],
-   "position": 28.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/cos",
-   "impressions": 9,
-   "clicks": 0,
-   "queries": [
-    [
-     "city of colorado springs municipal airport",
-     3,
-     0,
-     60
-    ],
-    [
-     "is there an airport in colorado springs",
-     1,
-     0,
-     19
-    ],
-    [
-     "is there an airport in colorado springs co",
-     1,
-     0,
-     44
-    ]
-   ],
-   "position": 28.1,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/country/mv",
-   "impressions": 9,
-   "clicks": 0,
-   "queries": [
-    [
-     "মালদ্বীপ এয়ারপোর্ট কোড",
-     6,
-     0,
-     6.8
-    ]
-   ],
-   "position": 7.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/dtw",
-   "impressions": 9,
-   "clicks": 0,
-   "queries": [
-    [
-     "dytw",
-     3,
-     0,
-     5
-    ],
-    [
-     "detroit airport code",
-     2,
-     0,
-     45
-    ]
-   ],
-   "position": 14.8,
+   "position": 10.2,
    "ctr": 0.0
   },
   {
@@ -4032,52 +4898,183 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/vga",
+   "url": "https://aiuniversitybd.com/airport/iah",
    "impressions": 9,
    "clicks": 0,
    "queries": [
     [
-     "vijayawada airport code",
-     4,
+     "iah",
+     5,
      0,
-     4.2
+     39.8
     ],
     [
-     "vijayawada airport",
-     3,
-     0,
-     3.7
-    ],
-    [
-     "vga airport code",
+     "what does iah stand for?",
      1,
      0,
      2
+    ]
+   ],
+   "position": 30.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/idr",
+   "impressions": 9,
+   "clicks": 0,
+   "queries": [
+    [
+     "indore airport",
+     3,
+     0,
+     5.3
     ],
     [
-     "vijayawada airport pin code",
+     "idr airport",
+     2,
+     0,
+     62
+    ]
+   ],
+   "position": 17.7,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/roc",
+   "impressions": 9,
+   "clicks": 0,
+   "queries": [
+    [
+     "roc airport code",
+     2,
+     0,
+     52.5
+    ],
+    [
+     "rochester international",
+     1,
+     0,
+     12
+    ]
+   ],
+   "position": 15.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/sav",
+   "impressions": 9,
+   "clicks": 0,
+   "queries": [
+    [
+     "sav",
+     6,
+     0,
+     5.8
+    ],
+    [
+     "airport code sav",
+     1,
+     0,
+     85
+    ],
+    [
+     "savannah georgia airport code",
      1,
      0,
      59
     ]
    ],
-   "position": 9.9,
+   "position": 20.3,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/blog/category/ielts",
+   "url": "https://aiuniversitybd.com/airport/slc",
    "impressions": 9,
    "clicks": 0,
-   "queries": [],
-   "position": 5.2,
+   "queries": [
+    [
+     "what is the airport code for salt lake city",
+     4,
+     0,
+     97.8
+    ],
+    [
+     "kslc icao",
+     1,
+     0,
+     66
+    ],
+    [
+     "salt lake airport code",
+     1,
+     0,
+     4
+    ],
+    [
+     "salt lake city international airport code",
+     1,
+     0,
+     77
+    ],
+    [
+     "slc airport code",
+     1,
+     0,
+     73
+    ]
+   ],
+   "position": 69.0,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/blog/computer-delivered-ielts-guide-bangla",
+   "url": "https://aiuniversitybd.com/airport/yhm",
    "impressions": 9,
    "clicks": 0,
-   "queries": [],
-   "position": 7.4,
+   "queries": [
+    [
+     "airport code yhm",
+     1,
+     0,
+     4
+    ],
+    [
+     "hamilton airport code",
+     1,
+     0,
+     8
+    ],
+    [
+     "hamilton airport yhm",
+     1,
+     0,
+     5
+    ],
+    [
+     "hamilton canada airport code",
+     1,
+     0,
+     4
+    ],
+    [
+     "hamilton ontario airport code",
+     1,
+     0,
+     6
+    ],
+    [
+     "yhm airport",
+     1,
+     0,
+     4
+    ],
+    [
+     "yhm airport code",
+     1,
+     0,
+     77
+    ]
+   ],
+   "position": 12.6,
    "ctr": 0.0
   },
   {
@@ -4104,6 +5101,51 @@
    "ctr": 0.0
   },
   {
+   "url": "https://aiuniversitybd.com/blog/kritrim-buddhimotta-ki",
+   "impressions": 9,
+   "clicks": 0,
+   "queries": [
+    [
+     "ai37437",
+     3,
+     0,
+     3
+    ],
+    [
+     "ai37468",
+     2,
+     0,
+     2.5
+    ],
+    [
+     "ai20159",
+     1,
+     0,
+     2
+    ],
+    [
+     "ai74993",
+     1,
+     0,
+     4
+    ],
+    [
+     "কৃত্রিম বুদ্ধিমত্তা",
+     1,
+     0,
+     12
+    ],
+    [
+     "কৃত্রিম বুদ্ধিমত্তা কি",
+     1,
+     0,
+     25
+    ]
+   ],
+   "position": 6.3,
+   "ctr": 0.0
+  },
+  {
    "url": "https://aiuniversitybd.com/pocket",
    "impressions": 9,
    "clicks": 0,
@@ -4112,33 +5154,39 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/bbi",
+   "url": "https://aiuniversitybd.com/airport/doh",
    "impressions": 8,
    "clicks": 0,
    "queries": [
     [
-     "bbi airport code",
+     "doha airport code",
      2,
      0,
-     85.5
+     29.5
+    ],
+    [
+     "হামাদ ইন্টারন্যাশনাল এয়ারপোর্ট",
+     1,
+     0,
+     7
     ]
    ],
-   "position": 26.5,
+   "position": 16.8,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/gop",
+   "url": "https://aiuniversitybd.com/airport/gwl",
    "impressions": 8,
    "clicks": 0,
    "queries": [
     [
-     "gorakhpur airport",
-     8,
+     "gwalior airport",
+     7,
      0,
-     1.8
+     4
     ]
    ],
-   "position": 1.8,
+   "position": 4.5,
    "ctr": 0.0
   },
   {
@@ -4163,111 +5211,275 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/ixd",
+   "url": "https://aiuniversitybd.com/airport/ind",
    "impressions": 8,
    "clicks": 0,
    "queries": [
     [
-     "prayagraj airport",
-     7,
+     "indianapolis international airport code",
+     3,
      0,
-     5.9
+     55.3
     ],
     [
-     "allahabad airport code",
+     "ind airport code",
      1,
      0,
      68
     ]
    ],
-   "position": 13.6,
+   "position": 35.9,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/sjc",
+   "url": "https://aiuniversitybd.com/airport/ixc",
    "impressions": 8,
    "clicks": 0,
    "queries": [
     [
-     "san jose airport size",
+     "ixc airport",
+     2,
+     0,
+     29
+    ],
+    [
+     "chandigarh international airport name",
+     1,
+     0,
+     4
+    ],
+    [
+     "ixc iata code",
+     1,
+     0,
+     41
+    ],
+    [
+     "which airport is ixc?",
+     1,
+     0,
+     8
+    ]
+   ],
+   "position": 15.9,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/lko",
+   "impressions": 8,
+   "clicks": 0,
+   "queries": [
+    [
+     "lko city",
+     2,
+     0,
+     71
+    ],
+    [
+     "lko",
+     1,
+     0,
+     6
+    ]
+   ],
+   "position": 23.4,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/oma",
+   "impressions": 8,
+   "clicks": 0,
+   "queries": [
+    [
+     "eppley airfield",
+     2,
+     0,
+     4
+    ],
+    [
+     "airport code for omaha nebraska",
+     1,
+     0,
+     93
+    ],
+    [
+     "omaha nebraska airport code",
      1,
      0,
      2
-    ],
-    [
-     "san jose ca airport code",
-     1,
-     0,
-     5
-    ],
-    [
-     "where is sjc",
-     1,
-     0,
-     67
     ]
    ],
-   "position": 12.2,
+   "position": 15.0,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/slc",
+   "url": "https://aiuniversitybd.com/airport/rdu",
    "impressions": 8,
    "clicks": 0,
    "queries": [
     [
-     "what is the airport code for salt lake city",
+     "airport codes rdu",
+     2,
+     0,
+     78.5
+    ],
+    [
+     "airport code rdu",
+     1,
+     0,
+     48
+    ],
+    [
+     "raleigh durham airport code",
+     1,
+     0,
+     80
+    ],
+    [
+     "raleigh-durham airport code",
+     1,
+     0,
+     68
+    ],
+    [
+     "rdu wiki",
+     1,
+     0,
+     62
+    ]
+   ],
+   "position": 54.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/wsi",
+   "impressions": 8,
+   "clicks": 0,
+   "queries": [
+    [
+     "ywsi",
      4,
-     0,
-     97.8
-    ],
-    [
-     "kslc icao",
-     1,
-     0,
-     66
-    ],
-    [
-     "salt lake airport code",
-     1,
-     0,
-     4
-    ],
-    [
-     "salt lake city international airport code",
-     1,
-     0,
-     77
-    ]
-   ],
-   "position": 68.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/srq",
-   "impressions": 8,
-   "clicks": 0,
-   "queries": [
-    [
-     "sarasota bradenton airport code",
-     1,
-     0,
-     4
-    ],
-    [
-     "srqo",
-     1,
      0,
      1
     ],
     [
-     "srqq",
+     "what is wsi",
+     2,
+     0,
+     78
+    ],
+    [
+     "wsi",
      1,
      0,
-     3
+     8
     ]
    ],
-   "position": 2.0,
+   "position": 21.9,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/yeg",
+   "impressions": 8,
+   "clicks": 0,
+   "queries": [
+    [
+     "airport code yeg",
+     3,
+     0,
+     10.3
+    ],
+    [
+     "yyeg",
+     2,
+     0,
+     4.5
+    ],
+    [
+     "what does yeg stand for?",
+     1,
+     0,
+     10
+    ]
+   ],
+   "position": 8.9,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/yyj",
+   "impressions": 8,
+   "clicks": 0,
+   "queries": [
+    [
+     "vyyj",
+     3,
+     0,
+     6
+    ],
+    [
+     "victoria canada airport code",
+     1,
+     0,
+     9
+    ],
+    [
+     "wyyj",
+     1,
+     0,
+     9
+    ],
+    [
+     "yyj",
+     1,
+     0,
+     7
+    ]
+   ],
+   "position": 7.2,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/blog/air-ticketing-what-is-it-bangla",
+   "impressions": 8,
+   "clicks": 0,
+   "queries": [],
+   "position": 3.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/blog/pnr-check-guide-bangla",
+   "impressions": 8,
+   "clicks": 0,
+   "queries": [
+    [
+     "check pnr status",
+     1,
+     0,
+     6
+    ],
+    [
+     "pnr check",
+     1,
+     0,
+     52
+    ]
+   ],
+   "position": 11.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/ielts/vocabulary/unemployment",
+   "impressions": 8,
+   "clicks": 0,
+   "queries": [
+    [
+     "unemployment meaning in bengali",
+     1,
+     0,
+     52
+    ]
+   ],
+   "position": 12.9,
    "ctr": 0.0
   },
   {
@@ -4313,21 +5525,6 @@
    "queries": [],
    "position": 5.9,
    "ctr": 0.1429
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/atw",
-   "impressions": 7,
-   "clicks": 0,
-   "queries": [
-    [
-     "atw",
-     7,
-     0,
-     1.3
-    ]
-   ],
-   "position": 1.3,
-   "ctr": 0.0
   },
   {
    "url": "https://aiuniversitybd.com/airport/bdq",
@@ -4384,57 +5581,24 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/blr",
+   "url": "https://aiuniversitybd.com/airport/cdg",
    "impressions": 7,
    "clicks": 0,
    "queries": [
     [
-     "bangalore airport code",
+     "cdg 51",
      1,
      0,
-     2
+     31
     ],
     [
-     "bangalore airport name",
+     "paris charles de gaulle airport code",
      1,
      0,
-     2
-    ],
-    [
-     "bengaluru airport pin code",
-     1,
-     0,
-     67
-    ],
-    [
-     "blr",
-     1,
-     0,
-     10
+     60
     ]
    ],
-   "position": 15.9,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/bur",
-   "impressions": 7,
-   "clicks": 0,
-   "queries": [
-    [
-     "bur air",
-     1,
-     0,
-     5
-    ],
-    [
-     "is burbank an international airport",
-     1,
-     0,
-     64
-    ]
-   ],
-   "position": 13.9,
+   "position": 22.4,
    "ctr": 0.0
   },
   {
@@ -4459,146 +5623,179 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/itm",
+   "url": "https://aiuniversitybd.com/airport/cle",
    "impressions": 7,
    "clicks": 0,
    "queries": [
     [
-     "itami airport",
-     6,
+     "cle wiki",
+     1,
      0,
-     2
+     3
+    ],
+    [
+     "clv airport",
+     1,
+     0,
+     4
     ]
    ],
-   "position": 5.9,
+   "position": 4.0,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/sea",
+   "url": "https://aiuniversitybd.com/airport/dbr",
    "impressions": 7,
    "clicks": 0,
    "queries": [
     [
-     "airport sea",
-     2,
+     "darbhanga airport",
+     7,
      0,
-     68.5
-    ],
-    [
-     "airport code sea",
-     1,
-     0,
-     65
-    ],
-    [
-     "airport code seattle washington",
-     1,
-     0,
-     53
-    ],
-    [
-     "seattle tacoma international airport code",
-     1,
-     0,
-     69
+     4.7
     ]
    ],
-   "position": 52.3,
+   "position": 4.7,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/shj",
-   "impressions": 7,
-   "clicks": 0,
-   "queries": [
-    [
-     "sharjah airport code",
-     1,
-     0,
-     7
-    ],
-    [
-     "shj",
-     1,
-     0,
-     71
-    ],
-    [
-     "shj full form",
-     1,
-     0,
-     67
-    ]
-   ],
-   "position": 25.4,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/ylw",
-   "impressions": 7,
-   "clicks": 0,
-   "queries": [
-    [
-     "ylwb",
-     1,
-     0,
-     1
-    ]
-   ],
-   "position": 3.6,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/yyc",
-   "impressions": 7,
-   "clicks": 0,
-   "queries": [
-    [
-     "yyc airport code",
-     2,
-     0,
-     41
-    ],
-    [
-     "airport code calgary",
-     1,
-     0,
-     7
-    ],
-    [
-     "airport code yyc",
-     1,
-     0,
-     69
-    ],
-    [
-     "calgary airport code",
-     1,
-     0,
-     2
-    ],
-    [
-     "yyc",
-     1,
-     0,
-     9
-    ],
-    [
-     "yyc calgary",
-     1,
-     0,
-     8
-    ]
-   ],
-   "position": 25.3,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/blog/air-ticketing-what-is-it-bangla",
+   "url": "https://aiuniversitybd.com/airport/elp",
    "impressions": 7,
    "clicks": 0,
    "queries": [],
-   "position": 3.3,
+   "position": 3.4,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/kqh",
+   "impressions": 7,
+   "clicks": 0,
+   "queries": [
+    [
+     "kishangarh airport",
+     4,
+     0,
+     5.5
+    ],
+    [
+     "ajmer airport",
+     2,
+     0,
+     8
+    ],
+    [
+     "kishangarh airport contact number",
+     1,
+     0,
+     22
+    ]
+   ],
+   "position": 8.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/pdx",
+   "impressions": 7,
+   "clicks": 0,
+   "queries": [
+    [
+     "airport code pdx",
+     2,
+     0,
+     91.5
+    ],
+    [
+     "portland international airport code",
+     2,
+     0,
+     83.5
+    ],
+    [
+     "portland airport wiki",
+     1,
+     0,
+     3
+    ],
+    [
+     "portland's airport code pdx",
+     1,
+     0,
+     58
+    ]
+   ],
+   "position": 67.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/sfo",
+   "impressions": 7,
+   "clicks": 0,
+   "queries": [
+    [
+     "san francisco ca airport code",
+     1,
+     0,
+     4
+    ],
+    [
+     "sfo airport code",
+     1,
+     0,
+     69
+    ]
+   ],
+   "position": 19.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/vns",
+   "impressions": 7,
+   "clicks": 0,
+   "queries": [
+    [
+     "vebn airport",
+     2,
+     0,
+     62.5
+    ]
+   ],
+   "position": 22.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/yqb",
+   "impressions": 7,
+   "clicks": 0,
+   "queries": [
+    [
+     "yqb airport code",
+     1,
+     0,
+     7
+    ],
+    [
+     "yqqb",
+     1,
+     0,
+     4
+    ]
+   ],
+   "position": 2.4,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/blog/english-pronunciation-improvement-tips",
+   "impressions": 7,
+   "clicks": 0,
+   "queries": [
+    [
+     "ইংরেজি উচ্চারণ কৌশল",
+     2,
+     0,
+     10.5
+    ]
+   ],
+   "position": 5.9,
    "ctr": 0.0
   },
   {
@@ -4610,11 +5807,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/ielts/cue-card/describe-a-beautiful-place",
+   "url": "https://aiuniversitybd.com/ielts/cue-card/describe-a-crowded-place-you-have-been-to",
    "impressions": 7,
    "clicks": 0,
    "queries": [],
-   "position": 7.0,
+   "position": 6.6,
    "ctr": 0.0
   },
   {
@@ -4624,6 +5821,60 @@
    "queries": [],
    "position": 11.8,
    "ctr": 0.1667
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/agr",
+   "impressions": 6,
+   "clicks": 0,
+   "queries": [
+    [
+     "agra airport",
+     2,
+     0,
+     5
+    ],
+    [
+     "is there any airport in agra?",
+     1,
+     0,
+     2
+    ]
+   ],
+   "position": 3.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/bcn",
+   "impressions": 6,
+   "clicks": 0,
+   "queries": [
+    [
+     "airport code for barcelona",
+     1,
+     0,
+     92
+    ],
+    [
+     "barcelona airport code",
+     1,
+     0,
+     88
+    ],
+    [
+     "barcelona code airport",
+     1,
+     0,
+     82
+    ],
+    [
+     "code iata barcelona",
+     1,
+     0,
+     64
+    ]
+   ],
+   "position": 57.2,
+   "ctr": 0.0
   },
   {
    "url": "https://aiuniversitybd.com/airport/cgq",
@@ -4641,18 +5892,71 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/chq",
+   "url": "https://aiuniversitybd.com/airport/cjb",
    "impressions": 6,
    "clicks": 0,
    "queries": [
     [
-     "chq",
-     6,
+     "cjb airport",
+     1,
      0,
-     20.8
+     2
+    ],
+    [
+     "cjb airport code",
+     1,
+     0,
+     8
+    ],
+    [
+     "coimbatore airport code",
+     1,
+     0,
+     81
+    ],
+    [
+     "coimbatore international airport",
+     1,
+     0,
+     6
     ]
    ],
-   "position": 20.8,
+   "position": 17.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/cmb",
+   "impressions": 6,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.3,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/cok",
+   "impressions": 6,
+   "clicks": 0,
+   "queries": [
+    [
+     "cok kochi",
+     2,
+     0,
+     70
+    ],
+    [
+     "cok airport code",
+     1,
+     0,
+     2
+    ],
+    [
+     "kochi airport cok",
+     1,
+     0,
+     3
+    ]
+   ],
+   "position": 27.8,
    "ctr": 0.0
   },
   {
@@ -4683,45 +5987,18 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/iah",
+   "url": "https://aiuniversitybd.com/airport/mad",
    "impressions": 6,
    "clicks": 0,
    "queries": [
     [
-     "iah",
-     5,
-     0,
-     39.8
-    ]
-   ],
-   "position": 33.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/kqh",
-   "impressions": 6,
-   "clicks": 0,
-   "queries": [
-    [
-     "kishangarh airport",
-     3,
-     0,
-     5.3
-    ],
-    [
-     "ajmer airport",
-     2,
-     0,
-     8
-    ],
-    [
-     "kishangarh airport contact number",
+     "airport code mad",
      1,
      0,
-     22
+     80
     ]
    ],
-   "position": 9.0,
+   "position": 17.7,
    "ctr": 0.0
   },
   {
@@ -4752,153 +6029,84 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/nqy",
+   "url": "https://aiuniversitybd.com/airport/otp",
    "impressions": 6,
    "clicks": 0,
    "queries": [
     [
-     "nqy",
-     6,
-     0,
-     1.3
-    ]
-   ],
-   "position": 1.3,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/ont",
-   "impressions": 6,
-   "clicks": 0,
-   "queries": [
-    [
-     "ontario airport abbreviation",
-     1,
-     0,
-     50
-    ],
-    [
-     "ontario airport canada code",
-     1,
-     0,
-     48
-    ],
-    [
-     "ontario airport code",
-     1,
-     0,
-     33
-    ]
-   ],
-   "position": 28.3,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/rdu",
-   "impressions": 6,
-   "clicks": 0,
-   "queries": [
-    [
-     "airport codes rdu",
+     "is otopeni airport the same as henri coanda?",
      2,
      0,
-     78.5
+     5.5
     ],
     [
-     "airport code rdu",
+     "what is otp airport?",
+     2,
+     0,
+     2
+    ]
+   ],
+   "position": 3.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/pie",
+   "impressions": 6,
+   "clicks": 0,
+   "queries": [
+    [
+     "st petersburg airport code",
+     2,
+     0,
+     60
+    ],
+    [
+     "pie airport code",
      1,
      0,
-     48
+     59
     ],
     [
-     "raleigh durham airport code",
-     1,
-     0,
-     80
-    ],
-    [
-     "raleigh-durham airport code",
-     1,
-     0,
-     68
-    ],
-    [
-     "rdu wiki",
+     "st pete clearwater airport code",
      1,
      0,
      62
-    ]
-   ],
-   "position": 69.2,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/vns",
-   "impressions": 6,
-   "clicks": 0,
-   "queries": [
-    [
-     "vebn airport",
-     2,
-     0,
-     62.5
-    ]
-   ],
-   "position": 23.8,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/yqb",
-   "impressions": 6,
-   "clicks": 0,
-   "queries": [
-    [
-     "yqb airport code",
-     1,
-     0,
-     7
     ],
     [
-     "yqqb",
+     "st petersburg florida airport code",
+     1,
+     0,
+     60
+    ]
+   ],
+   "position": 50.7,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/sna",
+   "impressions": 6,
+   "clicks": 0,
+   "queries": [
+    [
+     "code for orange county airport",
+     1,
+     0,
+     9
+    ],
+    [
+     "orange county airport code",
+     1,
+     0,
+     55
+    ],
+    [
+     "united terminal at sna",
      1,
      0,
      4
     ]
    ],
-   "position": 2.7,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/yyj",
-   "impressions": 6,
-   "clicks": 0,
-   "queries": [
-    [
-     "vyyj",
-     2,
-     0,
-     6.5
-    ],
-    [
-     "victoria canada airport code",
-     1,
-     0,
-     9
-    ],
-    [
-     "wyyj",
-     1,
-     0,
-     9
-    ],
-    [
-     "yyj",
-     1,
-     0,
-     7
-    ]
-   ],
-   "position": 7.5,
+   "position": 16.2,
    "ctr": 0.0
   },
   {
@@ -4910,24 +6118,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/blog/pnr-check-guide-bangla",
+   "url": "https://aiuniversitybd.com/blog/spoken-english-learning-rules",
    "impressions": 6,
    "clicks": 0,
-   "queries": [
-    [
-     "check pnr status",
-     1,
-     0,
-     6
-    ],
-    [
-     "pnr check",
-     1,
-     0,
-     52
-    ]
-   ],
-   "position": 13.2,
+   "queries": [],
+   "position": 6.5,
    "ctr": 0.0
   },
   {
@@ -4939,18 +6134,27 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/ielts/vocabulary/unemployment",
+   "url": "https://aiuniversitybd.com/excel-lab",
    "impressions": 6,
    "clicks": 0,
-   "queries": [
-    [
-     "unemployment meaning in bengali",
-     1,
-     0,
-     52
-    ]
-   ],
-   "position": 14.2,
+   "queries": [],
+   "position": 4.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/ielts/cue-card/describe-a-place-you-visited-and-enjoyed-in-the-countryside",
+   "impressions": 6,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/ielts/cue-card/describe-an-object-example",
+   "impressions": 6,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.5,
    "ctr": 0.0
   },
   {
@@ -4992,6 +6196,68 @@
    "ctr": 0.0
   },
   {
+   "url": "https://aiuniversitybd.com/airport/avp",
+   "impressions": 5,
+   "clicks": 0,
+   "queries": [],
+   "position": 3.4,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/bhm",
+   "impressions": 5,
+   "clicks": 0,
+   "queries": [
+    [
+     "birmingham al airport code",
+     1,
+     0,
+     49
+    ],
+    [
+     "what airport is bhm?",
+     1,
+     0,
+     4
+    ]
+   ],
+   "position": 12.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/bna",
+   "impressions": 5,
+   "clicks": 0,
+   "queries": [
+    [
+     "airport code for nashville international airport",
+     1,
+     0,
+     4
+    ],
+    [
+     "nashville international airport bna",
+     1,
+     0,
+     1
+    ],
+    [
+     "nashville international airport code",
+     1,
+     0,
+     11
+    ],
+    [
+     "what airport code is bna?",
+     1,
+     0,
+     2
+    ]
+   ],
+   "position": 4.2,
+   "ctr": 0.0
+  },
+  {
    "url": "https://aiuniversitybd.com/airport/bne",
    "impressions": 5,
    "clicks": 0,
@@ -5013,45 +6279,18 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/bom",
+   "url": "https://aiuniversitybd.com/airport/cai",
    "impressions": 5,
    "clicks": 0,
    "queries": [
     [
-     "bom airport",
+     "cai airport wiki",
      1,
      0,
-     75
-    ],
-    [
-     "mumbai airport name",
-     1,
-     0,
-     4
+     3
     ]
    ],
-   "position": 20.4,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/bwi",
-   "impressions": 5,
-   "clicks": 0,
-   "queries": [
-    [
-     "bwyi",
-     3,
-     0,
-     2
-    ],
-    [
-     "baltimore maryland airport code",
-     1,
-     0,
-     57
-    ]
-   ],
-   "position": 13.2,
+   "position": 6.4,
    "ctr": 0.0
   },
   {
@@ -5076,24 +6315,102 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/idr",
+   "url": "https://aiuniversitybd.com/airport/cgp",
    "impressions": 5,
    "clicks": 0,
    "queries": [
     [
-     "idr airport",
-     2,
+     "chittagong airport code",
+     1,
      0,
-     62
-    ],
-    [
-     "indore airport",
-     2,
-     0,
-     4.5
+     73
     ]
    ],
-   "position": 27.4,
+   "position": 22.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/dxb",
+   "impressions": 5,
+   "clicks": 0,
+   "queries": [
+    [
+     "dxb full form",
+     1,
+     0,
+     84
+    ]
+   ],
+   "position": 24.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/mci",
+   "impressions": 5,
+   "clicks": 0,
+   "queries": [
+    [
+     "kci vs mci",
+     2,
+     0,
+     8
+    ],
+    [
+     "mci international",
+     1,
+     0,
+     59
+    ],
+    [
+     "what airport code is mci?",
+     1,
+     0,
+     5
+    ],
+    [
+     "what does mci stand for airport",
+     1,
+     0,
+     53
+    ]
+   ],
+   "position": 26.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/mcy",
+   "impressions": 5,
+   "clicks": 0,
+   "queries": [
+    [
+     "maroochydore airport code",
+     1,
+     0,
+     5
+    ],
+    [
+     "mcy airport",
+     1,
+     0,
+     83
+    ]
+   ],
+   "position": 19.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/mia",
+   "impressions": 5,
+   "clicks": 0,
+   "queries": [
+    [
+     "miami international airport code",
+     1,
+     0,
+     2
+    ]
+   ],
+   "position": 5.6,
    "ctr": 0.0
   },
   {
@@ -5130,63 +6447,105 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/pie",
+   "url": "https://aiuniversitybd.com/airport/nmi",
    "impressions": 5,
    "clicks": 0,
    "queries": [
     [
-     "st petersburg airport code",
-     2,
-     0,
-     60
-    ],
-    [
-     "pie airport code",
-     1,
-     0,
-     59
-    ],
-    [
-     "st pete clearwater airport code",
-     1,
-     0,
-     62
-    ],
-    [
-     "st petersburg florida airport code",
-     1,
-     0,
-     60
-    ]
-   ],
-   "position": 60.2,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/sna",
-   "impressions": 5,
-   "clicks": 0,
-   "queries": [
-    [
-     "code for orange county airport",
-     1,
-     0,
-     9
-    ],
-    [
-     "orange county airport code",
+     "$nmi",
      1,
      0,
      55
     ],
     [
-     "united terminal at sna",
+     "navi mumbai international airport location",
      1,
      0,
-     4
+     5
+    ],
+    [
+     "nmi",
+     1,
+     0,
+     8
+    ],
+    [
+     "nmi airport code",
+     1,
+     0,
+     11
     ]
    ],
    "position": 16.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/per",
+   "impressions": 5,
+   "clicks": 0,
+   "queries": [
+    [
+     "perth airport code",
+     1,
+     0,
+     66
+    ],
+    [
+     "perth airport wiki",
+     1,
+     0,
+     1
+    ]
+   ],
+   "position": 16.2,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/sat",
+   "impressions": 5,
+   "clicks": 0,
+   "queries": [
+    [
+     "airport codes sat",
+     1,
+     0,
+     99
+    ],
+    [
+     "airport sat",
+     1,
+     0,
+     2
+    ],
+    [
+     "san antonio texas airport code",
+     1,
+     0,
+     4
+    ],
+    [
+     "sat airport code",
+     1,
+     0,
+     81
+    ]
+   ],
+   "position": 38.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/trz",
+   "impressions": 5,
+   "clicks": 0,
+   "queries": [
+    [
+     "trichy airport code",
+     2,
+     0,
+     42.5
+    ]
+   ],
+   "position": 20.0,
    "ctr": 0.0
   },
   {
@@ -5219,36 +6578,18 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/yhm",
+   "url": "https://aiuniversitybd.com/airport/yxe",
    "impressions": 5,
    "clicks": 0,
    "queries": [
     [
-     "airport code yhm",
+     "yxe airport code",
      1,
      0,
-     4
-    ],
-    [
-     "hamilton airport code",
-     1,
-     0,
-     8
-    ],
-    [
-     "yhm airport",
-     1,
-     0,
-     4
-    ],
-    [
-     "yhm airport code",
-     1,
-     0,
-     77
+     46
     ]
    ],
-   "position": 18.8,
+   "position": 13.6,
    "ctr": 0.0
   },
   {
@@ -5264,21 +6605,6 @@
     ]
    ],
    "position": 4.4,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/blog/english-pronunciation-improvement-tips",
-   "impressions": 5,
-   "clicks": 0,
-   "queries": [
-    [
-     "ইংরেজি উচ্চারণ কৌশল",
-     2,
-     0,
-     10.5
-    ]
-   ],
-   "position": 6.4,
    "ctr": 0.0
   },
   {
@@ -5328,11 +6654,36 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/ielts/cue-card/describe-a-place-you-visited-and-enjoyed-in-the-countryside",
+   "url": "https://aiuniversitybd.com/jobs/office/fisheries.gov.bd",
    "impressions": 5,
    "clicks": 0,
-   "queries": [],
-   "position": 6.2,
+   "queries": [
+    [
+     "মৎস্য অধিদপ্তর আবেদন",
+     1,
+     0,
+     8
+    ],
+    [
+     "মৎস্য অধিদপ্তর নিয়োগ বিজ্ঞপ্তি",
+     1,
+     0,
+     34
+    ],
+    [
+     "মৎস্য অধিদপ্তর নিয়োগ বিজ্ঞপ্তি 2025",
+     1,
+     0,
+     28
+    ],
+    [
+     "মৎস্য অধিদপ্তর বাংলাদেশ",
+     1,
+     0,
+     19
+    ]
+   ],
+   "position": 19.8,
    "ctr": 0.0
   },
   {
@@ -5367,6 +6718,36 @@
    "ctr": 0.25
   },
   {
+   "url": "https://aiuniversitybd.com/airport/adk",
+   "impressions": 4,
+   "clicks": 0,
+   "queries": [
+    [
+     "adak airport",
+     4,
+     0,
+     3
+    ]
+   ],
+   "position": 3.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/alb",
+   "impressions": 4,
+   "clicks": 0,
+   "queries": [
+    [
+     "albany international",
+     2,
+     0,
+     3.5
+    ]
+   ],
+   "position": 5.5,
+   "ctr": 0.0
+  },
+  {
    "url": "https://aiuniversitybd.com/airport/atq",
    "impressions": 4,
    "clicks": 0,
@@ -5382,183 +6763,81 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/bcn",
+   "url": "https://aiuniversitybd.com/airport/ber",
    "impressions": 4,
    "clicks": 0,
    "queries": [
     [
-     "airport code for barcelona",
+     "berlin airport code germany",
      1,
      0,
-     92
+     72
     ],
     [
-     "code iata barcelona",
+     "berlin international airport code",
      1,
      0,
-     64
+     62
     ]
    ],
-   "position": 43.2,
+   "position": 37.0,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/bna",
+   "url": "https://aiuniversitybd.com/airport/country/th",
    "impressions": 4,
    "clicks": 0,
    "queries": [
     [
-     "airport code for nashville international airport",
+     "thailand code airport",
      1,
      0,
-     4
+     77
     ],
     [
-     "nashville international airport bna",
-     1,
-     0,
-     1
-    ],
-    [
-     "nashville international airport code",
-     1,
-     0,
-     11
-    ]
-   ],
-   "position": 4.8,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/cai",
-   "impressions": 4,
-   "clicks": 0,
-   "queries": [
-    [
-     "cai airport wiki",
-     1,
-     0,
-     3
-    ]
-   ],
-   "position": 5.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/cjb",
-   "impressions": 4,
-   "clicks": 0,
-   "queries": [
-    [
-     "cjb airport",
-     1,
-     0,
-     2
-    ],
-    [
-     "cjb airport code",
+     "thailand international airport code",
      1,
      0,
      8
-    ],
-    [
-     "coimbatore airport code",
-     1,
-     0,
-     81
-    ],
-    [
-     "coimbatore international airport",
-     1,
-     0,
-     6
     ]
    ],
    "position": 24.2,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/cok",
+   "url": "https://aiuniversitybd.com/airport/eyw",
    "impressions": 4,
    "clicks": 0,
    "queries": [
     [
-     "cok kochi",
-     2,
+     "eyw",
+     4,
      0,
-     70
-    ],
-    [
-     "kochi airport cok",
-     1,
-     0,
-     3
+     5.8
     ]
    ],
-   "position": 38.5,
+   "position": 5.8,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/dfw",
+   "url": "https://aiuniversitybd.com/airport/fat",
    "impressions": 4,
    "clicks": 0,
    "queries": [
     [
-     "airport codes dfw",
+     "airport code fat",
      1,
      0,
-     78
+     4
     ],
     [
-     "code for dallas fort worth airport",
+     "fat airport code",
      1,
      0,
-     71
-    ],
-    [
-     "dallas texas international airport code",
-     1,
-     0,
-     99
-    ],
-    [
-     "what is dfw airport code",
-     1,
-     0,
-     65
+     64
     ]
    ],
-   "position": 78.2,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/doh",
-   "impressions": 4,
-   "clicks": 0,
-   "queries": [
-    [
-     "হামাদ ইন্টারন্যাশনাল এয়ারপোর্ট",
-     1,
-     0,
-     7
-    ]
-   ],
-   "position": 15.2,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/dxb",
-   "impressions": 4,
-   "clicks": 0,
-   "queries": [
-    [
-     "dxb full form",
-     1,
-     0,
-     84
-    ]
-   ],
-   "position": 28.5,
+   "position": 19.8,
    "ctr": 0.0
   },
   {
@@ -5657,42 +6936,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/isk",
-   "impressions": 4,
-   "clicks": 0,
-   "queries": [
-    [
-     "nashik airport",
-     4,
-     0,
-     2.5
-    ]
-   ],
-   "position": 2.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/ixc",
-   "impressions": 4,
-   "clicks": 0,
-   "queries": [
-    [
-     "ixc airport",
-     2,
-     0,
-     29
-    ],
-    [
-     "ixc iata code",
-     1,
-     0,
-     41
-    ]
-   ],
-   "position": 27.0,
-   "ctr": 0.0
-  },
-  {
    "url": "https://aiuniversitybd.com/airport/kmg",
    "impressions": 4,
    "clicks": 0,
@@ -5750,132 +6993,39 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/pdx",
+   "url": "https://aiuniversitybd.com/airport/mme",
    "impressions": 4,
    "clicks": 0,
    "queries": [
     [
-     "airport code pdx",
-     1,
+     "teeside airport code",
+     2,
      0,
-     97
+     52.5
     ],
     [
-     "portland airport wiki",
+     "teesside airport code",
      1,
      0,
-     3
-    ],
-    [
-     "portland's airport code pdx",
-     1,
-     0,
-     58
+     55
     ]
    ],
-   "position": 54.0,
+   "position": 42.0,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/per",
+   "url": "https://aiuniversitybd.com/airport/sbd",
    "impressions": 4,
    "clicks": 0,
    "queries": [
     [
-     "perth airport code",
+     "sbd airport",
      1,
      0,
-     66
-    ],
-    [
-     "perth airport wiki",
-     1,
-     0,
-     1
+     60
     ]
    ],
-   "position": 17.8,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/pnq",
-   "impressions": 4,
-   "clicks": 0,
-   "queries": [
-    [
-     "pnq airport code",
-     1,
-     0,
-     50
-    ],
-    [
-     "pnq viman nagar",
-     1,
-     0,
-     3
-    ],
-    [
-     "which city is pnq",
-     1,
-     0,
-     7
-    ]
-   ],
-   "position": 17.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/sat",
-   "impressions": 4,
-   "clicks": 0,
-   "queries": [
-    [
-     "airport sat",
-     1,
-     0,
-     2
-    ],
-    [
-     "san antonio texas airport code",
-     1,
-     0,
-     4
-    ],
-    [
-     "sat airport code",
-     1,
-     0,
-     81
-    ]
-   ],
-   "position": 23.8,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/sav",
-   "impressions": 4,
-   "clicks": 0,
-   "queries": [
-    [
-     "airport code sav",
-     1,
-     0,
-     85
-    ],
-    [
-     "sav",
-     1,
-     0,
-     6
-    ],
-    [
-     "savannah georgia airport code",
-     1,
-     0,
-     59
-    ]
-   ],
-   "position": 38.5,
+   "position": 19.5,
    "ctr": 0.0
   },
   {
@@ -5939,53 +7089,26 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/wsi",
-   "impressions": 4,
-   "clicks": 0,
-   "queries": [
-    [
-     "what is wsi",
-     2,
-     0,
-     78
-    ],
-    [
-     "ywsi",
-     1,
-     0,
-     1
-    ]
-   ],
-   "position": 41.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/yeg",
-   "impressions": 4,
-   "clicks": 0,
-   "queries": [
-    [
-     "airport code yeg",
-     3,
-     0,
-     10.3
-    ],
-    [
-     "yyeg",
-     1,
-     0,
-     6
-    ]
-   ],
-   "position": 9.2,
-   "ctr": 0.0
-  },
-  {
    "url": "https://aiuniversitybd.com/airport/yny",
    "impressions": 4,
    "clicks": 0,
    "queries": [],
    "position": 3.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/yqg",
+   "impressions": 4,
+   "clicks": 0,
+   "queries": [
+    [
+     "yqg",
+     2,
+     0,
+     56.5
+    ]
+   ],
+   "position": 29.2,
    "ctr": 0.0
   },
   {
@@ -6004,19 +7127,27 @@
    "ctr": 0.0
   },
   {
+   "url": "https://aiuniversitybd.com/blog/online-travel-agency-course-bangla",
+   "impressions": 4,
+   "clicks": 0,
+   "queries": [],
+   "position": 12.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/community",
+   "impressions": 4,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.2,
+   "ctr": 0.0
+  },
+  {
    "url": "https://aiuniversitybd.com/course/family-health",
    "impressions": 4,
    "clicks": 0,
    "queries": [],
    "position": 4.8,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/excel-lab",
-   "impressions": 4,
-   "clicks": 0,
-   "queries": [],
-   "position": 2.8,
    "ctr": 0.0
   },
   {
@@ -6035,11 +7166,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/ielts/cue-card/describe-an-object-example",
+   "url": "https://aiuniversitybd.com/ielts/cue-card/describe-a-place-good-for-people-to-live-in",
    "impressions": 4,
    "clicks": 0,
    "queries": [],
-   "position": 6.0,
+   "position": 3.5,
    "ctr": 0.0
   },
   {
@@ -6056,6 +7187,33 @@
    "clicks": 0,
    "queries": [],
    "position": 6.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/agp",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [
+    [
+     "agp airport code",
+     1,
+     0,
+     72
+    ],
+    [
+     "airport code agp",
+     1,
+     0,
+     70
+    ],
+    [
+     "malaga airport code",
+     1,
+     0,
+     56
+    ]
+   ],
+   "position": 66.0,
    "ctr": 0.0
   },
   {
@@ -6080,39 +7238,45 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/ber",
+   "url": "https://aiuniversitybd.com/airport/avv",
    "impressions": 3,
    "clicks": 0,
    "queries": [
     [
-     "berlin international airport code",
-     1,
+     "melbourne avalon airport code",
+     2,
      0,
-     62
-    ]
-   ],
-   "position": 25.3,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/cle",
-   "impressions": 3,
-   "clicks": 0,
-   "queries": [
-    [
-     "cle wiki",
-     1,
-     0,
-     3
+     29.5
     ],
     [
-     "clv airport",
+     "avalon airport code",
      1,
      0,
      4
     ]
    ],
-   "position": 5.0,
+   "position": 21.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/cgo",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [
+    [
+     "cgo",
+     2,
+     0,
+     43.5
+    ],
+    [
+     "cgo port code",
+     1,
+     0,
+     45
+    ]
+   ],
+   "position": 44.0,
    "ctr": 0.0
   },
   {
@@ -6121,14 +7285,6 @@
    "clicks": 0,
    "queries": [],
    "position": 5.7,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/cmb",
-   "impressions": 3,
-   "clicks": 0,
-   "queries": [],
-   "position": 7.3,
    "ctr": 0.0
   },
   {
@@ -6147,23 +7303,36 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/elp",
-   "impressions": 3,
-   "clicks": 0,
-   "queries": [],
-   "position": 4.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/gwl",
+   "url": "https://aiuniversitybd.com/airport/gau",
    "impressions": 3,
    "clicks": 0,
    "queries": [
     [
-     "gwalior airport",
-     3,
+     "gau airport india",
+     1,
      0,
-     4.7
+     3
+    ]
+   ],
+   "position": 6.3,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/grb",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [
+    [
+     "green bay airport code",
+     2,
+     0,
+     5
+    ],
+    [
+     "grbde",
+     1,
+     0,
+     4
     ]
    ],
    "position": 4.7,
@@ -6185,24 +7354,18 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/ind",
+   "url": "https://aiuniversitybd.com/airport/hty",
    "impressions": 3,
    "clicks": 0,
    "queries": [
     [
-     "ind airport code",
-     1,
+     "hty airport",
+     3,
      0,
-     68
-    ],
-    [
-     "indianapolis international airport code",
-     1,
-     0,
-     74
+     5.3
     ]
    ],
-   "position": 60.7,
+   "position": 5.3,
    "ctr": 0.0
   },
   {
@@ -6248,6 +7411,21 @@
    "ctr": 0.0
   },
   {
+   "url": "https://aiuniversitybd.com/airport/jax",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [
+    [
+     "jacksonville international airport code",
+     1,
+     0,
+     48
+    ]
+   ],
+   "position": 18.7,
+   "ctr": 0.0
+  },
+  {
    "url": "https://aiuniversitybd.com/airport/khg",
    "impressions": 3,
    "clicks": 0,
@@ -6286,22 +7464,22 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/lko",
+   "url": "https://aiuniversitybd.com/airport/lih",
    "impressions": 3,
    "clicks": 0,
    "queries": [
     [
-     "lko",
+     "kauai airport name",
      1,
      0,
-     6
+     60
     ]
    ],
-   "position": 6.3,
+   "position": 21.3,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/mad",
+   "url": "https://aiuniversitybd.com/airport/okc",
    "impressions": 3,
    "clicks": 0,
    "queries": [],
@@ -6309,66 +7487,53 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/mci",
+   "url": "https://aiuniversitybd.com/airport/phl",
    "impressions": 3,
    "clicks": 0,
    "queries": [
     [
-     "kci vs mci",
-     2,
-     0,
-     8
-    ],
-    [
-     "what does mci stand for airport",
-     1,
-     0,
-     53
-    ]
-   ],
-   "position": 23.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/mia",
-   "impressions": 3,
-   "clicks": 0,
-   "queries": [
-    [
-     "miami international airport code",
-     1,
-     0,
-     2
-    ]
-   ],
-   "position": 5.3,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/nmi",
-   "impressions": 3,
-   "clicks": 0,
-   "queries": [
-    [
-     "$nmi",
-     1,
-     0,
-     55
-    ],
-    [
-     "navi mumbai international airport location",
+     "abbreviation for philadelphia airport",
      1,
      0,
      5
-    ],
-    [
-     "nmi airport code",
-     1,
-     0,
-     11
     ]
    ],
-   "position": 23.7,
+   "position": 3.3,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/phx",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [
+    [
+     "$phx",
+     1,
+     0,
+     71
+    ],
+    [
+     "phoenix airport code",
+     1,
+     0,
+     4
+    ],
+    [
+     "what is phx",
+     1,
+     0,
+     38
+    ]
+   ],
+   "position": 37.7,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/pkx",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.7,
    "ctr": 0.0
   },
   {
@@ -6393,27 +7558,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/sfo",
-   "impressions": 3,
-   "clicks": 0,
-   "queries": [
-    [
-     "san francisco ca airport code",
-     1,
-     0,
-     4
-    ],
-    [
-     "sfo airport code",
-     1,
-     0,
-     69
-    ]
-   ],
-   "position": 27.0,
-   "ctr": 0.0
-  },
-  {
    "url": "https://aiuniversitybd.com/airport/sjw",
    "impressions": 3,
    "clicks": 0,
@@ -6422,48 +7566,19 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/trz",
+   "url": "https://aiuniversitybd.com/airport/tfu",
    "impressions": 3,
    "clicks": 0,
-   "queries": [
-    [
-     "trichy airport code",
-     2,
-     0,
-     42.5
-    ]
-   ],
-   "position": 30.3,
+   "queries": [],
+   "position": 35.3,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/yqg",
+   "url": "https://aiuniversitybd.com/blog/ai-die-ingreji-shekha",
    "impressions": 3,
    "clicks": 0,
-   "queries": [
-    [
-     "yqg",
-     2,
-     0,
-     56.5
-    ]
-   ],
-   "position": 38.7,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/yxe",
-   "impressions": 3,
-   "clicks": 0,
-   "queries": [
-    [
-     "yxe airport code",
-     1,
-     0,
-     46
-    ]
-   ],
-   "position": 19.0,
+   "queries": [],
+   "position": 8.7,
    "ctr": 0.0
   },
   {
@@ -6491,14 +7606,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/blog/online-travel-agency-course-bangla",
-   "impressions": 3,
-   "clicks": 0,
-   "queries": [],
-   "position": 15.0,
-   "ctr": 0.0
-  },
-  {
    "url": "https://aiuniversitybd.com/blog/present-perfect-tense-usage-bangla",
    "impressions": 3,
    "clicks": 0,
@@ -6523,7 +7630,15 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/ielts/cue-card/describe-a-crowded-place-you-have-been-to",
+   "url": "https://aiuniversitybd.com/ielts/cue-card/describe-a-person-adjectives",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 8.7,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/ielts/cue-card/describe-a-person-who-always-help-others",
    "impressions": 3,
    "clicks": 0,
    "queries": [],
@@ -6531,11 +7646,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/ielts/cue-card/describe-a-place-good-for-people-to-live-in",
+   "url": "https://aiuniversitybd.com/ielts/cue-card/describe-a-person-who-enjoys-cooking-for-others",
    "impressions": 3,
    "clicks": 0,
    "queries": [],
-   "position": 2.0,
+   "position": 7.3,
    "ctr": 0.0
   },
   {
@@ -6547,32 +7662,19 @@
    "ctr": 0.0
   },
   {
+   "url": "https://aiuniversitybd.com/ielts/vocabulary/housing-and-accommodation",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 3.7,
+   "ctr": 0.0
+  },
+  {
    "url": "https://aiuniversitybd.com/ielts/vocabulary/population-growth",
    "impressions": 3,
    "clicks": 0,
    "queries": [],
    "position": 9.3,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/jobs/office/fisheries.gov.bd",
-   "impressions": 3,
-   "clicks": 0,
-   "queries": [
-    [
-     "মৎস্য অধিদপ্তর নিয়োগ বিজ্ঞপ্তি",
-     1,
-     0,
-     34
-    ],
-    [
-     "মৎস্য অধিদপ্তর বাংলাদেশ",
-     1,
-     0,
-     19
-    ]
-   ],
-   "position": 21.0,
    "ctr": 0.0
   },
   {
@@ -6600,68 +7702,24 @@
    "ctr": 0.5
   },
   {
-   "url": "https://aiuniversitybd.com/airport/adk",
+   "url": "https://aiuniversitybd.com/airport/ath",
    "impressions": 2,
    "clicks": 0,
    "queries": [
     [
-     "adak airport",
-     2,
-     0,
-     5
-    ]
-   ],
-   "position": 5.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/agp",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [
-    [
-     "agp airport code",
+     "athens airport code",
      1,
      0,
-     72
+     88
     ],
     [
-     "airport code agp",
+     "code iata athenes",
      1,
      0,
-     70
+     81
     ]
    ],
-   "position": 71.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/avp",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [],
-   "position": 1.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/avv",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [
-    [
-     "avalon airport code",
-     1,
-     0,
-     4
-    ],
-    [
-     "melbourne avalon airport code",
-     1,
-     0,
-     4
-    ]
-   ],
-   "position": 4.0,
+   "position": 84.5,
    "ctr": 0.0
   },
   {
@@ -6686,6 +7744,14 @@
    "ctr": 0.0
   },
   {
+   "url": "https://aiuniversitybd.com/airport/bgw",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [],
+   "position": 8.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://aiuniversitybd.com/airport/bgy",
    "impressions": 2,
    "clicks": 0,
@@ -6698,21 +7764,6 @@
     ]
    ],
    "position": 36.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/bhm",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [
-    [
-     "birmingham al airport code",
-     1,
-     0,
-     49
-    ]
-   ],
-   "position": 28.0,
    "ctr": 0.0
   },
   {
@@ -6737,21 +7788,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/cgp",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [
-    [
-     "chittagong airport code",
-     1,
-     0,
-     73
-    ]
-   ],
-   "position": 38.0,
-   "ctr": 0.0
-  },
-  {
    "url": "https://aiuniversitybd.com/airport/ckg",
    "impressions": 2,
    "clicks": 0,
@@ -6764,6 +7800,74 @@
     ]
    ],
    "position": 41.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/cnn",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [],
+   "position": 4.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/den",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [
+    [
+     "denver airport codes",
+     1,
+     0,
+     2
+    ]
+   ],
+   "position": 3.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/dsm",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [
+    [
+     "dsm des moines",
+     1,
+     0,
+     94
+    ]
+   ],
+   "position": 48.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/efl",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [
+    [
+     "efl",
+     2,
+     0,
+     31.5
+    ]
+   ],
+   "position": 31.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/ezs",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [
+    [
+     "ezs airport",
+     2,
+     0,
+     4
+    ]
+   ],
+   "position": 4.0,
    "ctr": 0.0
   },
   {
@@ -6797,11 +7901,34 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/gau",
+   "url": "https://aiuniversitybd.com/airport/haj",
    "impressions": 2,
    "clicks": 0,
    "queries": [],
-   "position": 8.0,
+   "position": 10.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/het",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [
+    [
+     "het airport",
+     1,
+     0,
+     70
+    ]
+   ],
+   "position": 36.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/hkg",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [],
+   "position": 3.5,
    "ctr": 0.0
   },
   {
@@ -6820,6 +7947,21 @@
    "ctr": 0.0
   },
   {
+   "url": "https://aiuniversitybd.com/airport/jhg",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [
+    [
+     "$jhg",
+     1,
+     0,
+     39
+    ]
+   ],
+   "position": 20.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://aiuniversitybd.com/airport/kix",
    "impressions": 2,
    "clicks": 0,
@@ -6828,33 +7970,40 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/lih",
+   "url": "https://aiuniversitybd.com/airport/kkj",
    "impressions": 2,
    "clicks": 0,
    "queries": [
     [
-     "kauai airport name",
+     "kkj",
      1,
      0,
-     60
+     3
+    ],
+    [
+     "kkjjs",
+     1,
+     0,
+     1
     ]
    ],
-   "position": 31.0,
+   "position": 2.0,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/mcy",
+   "url": "https://aiuniversitybd.com/airport/kum",
    "impressions": 2,
    "clicks": 0,
-   "queries": [
-    [
-     "mcy airport",
-     1,
-     0,
-     83
-    ]
-   ],
-   "position": 42.5,
+   "queries": [],
+   "position": 23.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/mah",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [],
+   "position": 24.0,
    "ctr": 0.0
   },
   {
@@ -6873,32 +8022,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/okc",
+   "url": "https://aiuniversitybd.com/airport/ngo",
    "impressions": 2,
    "clicks": 0,
    "queries": [],
-   "position": 3.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/oma",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [
-    [
-     "airport code for omaha nebraska",
-     1,
-     0,
-     93
-    ],
-    [
-     "omaha nebraska airport code",
-     1,
-     0,
-     2
-    ]
-   ],
-   "position": 47.5,
+   "position": 6.0,
    "ctr": 0.0
   },
   {
@@ -6923,32 +8051,39 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/phx",
+   "url": "https://aiuniversitybd.com/airport/pit",
    "impressions": 2,
    "clicks": 0,
    "queries": [
     [
-     "phoenix airport code",
+     "airport code pit",
      1,
      0,
-     4
-    ],
-    [
-     "what is phx",
-     1,
-     0,
-     38
+     62
     ]
    ],
-   "position": 21.0,
+   "position": 36.5,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/pkx",
+   "url": "https://aiuniversitybd.com/airport/poz",
    "impressions": 2,
    "clicks": 0,
-   "queries": [],
-   "position": 6.0,
+   "queries": [
+    [
+     "aeroporto poznan",
+     1,
+     0,
+     78
+    ],
+    [
+     "poznan aeroporto",
+     1,
+     0,
+     74
+    ]
+   ],
+   "position": 76.0,
    "ctr": 0.0
   },
   {
@@ -6960,26 +8095,19 @@
    "ctr": 0.0
   },
   {
+   "url": "https://aiuniversitybd.com/airport/pwm",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [],
+   "position": 4.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://aiuniversitybd.com/airport/rah",
    "impressions": 2,
    "clicks": 0,
    "queries": [],
    "position": 3.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/sbd",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [
-    [
-     "sbd airport",
-     1,
-     0,
-     60
-    ]
-   ],
-   "position": 32.5,
    "ctr": 0.0
   },
   {
@@ -6996,6 +8124,37 @@
    "clicks": 0,
    "queries": [],
    "position": 4.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/szx",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [],
+   "position": 8.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/trs",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [],
+   "position": 4.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/tul",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [
+    [
+     "tul 機場",
+     1,
+     0,
+     4
+    ]
+   ],
+   "position": 2.5,
    "ctr": 0.0
   },
   {
@@ -7029,11 +8188,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/blog/ai-die-ingreji-shekha",
+   "url": "https://aiuniversitybd.com/blog/air-ticket-reissue-guide-bangla",
    "impressions": 2,
    "clicks": 0,
    "queries": [],
-   "position": 9.5,
+   "position": 2.0,
    "ctr": 0.0
   },
   {
@@ -7042,6 +8201,14 @@
    "clicks": 0,
    "queries": [],
    "position": 6.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/blog/galileo-gds-ki-ebong-kaj",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [],
+   "position": 1.0,
    "ctr": 0.0
   },
   {
@@ -7069,11 +8236,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/ielts/cue-card/describe-a-person-adjectives",
+   "url": "https://aiuniversitybd.com/ielts/cue-card/describe-a-person-who-choose-career-in-medical-field",
    "impressions": 2,
    "clicks": 0,
    "queries": [],
-   "position": 7.5,
+   "position": 10.0,
    "ctr": 0.0
   },
   {
@@ -7180,14 +8347,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/agr",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 7.0,
-   "ctr": 0.0
-  },
-  {
    "url": "https://aiuniversitybd.com/airport/ahb",
    "impressions": 1,
    "clicks": 0,
@@ -7211,11 +8370,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/alb",
+   "url": "https://aiuniversitybd.com/airport/amm",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
-   "position": 5.0,
+   "position": 4.0,
    "ctr": 0.0
   },
   {
@@ -7249,18 +8408,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/ath",
+   "url": "https://aiuniversitybd.com/airport/ayj",
    "impressions": 1,
    "clicks": 0,
-   "queries": [
-    [
-     "code iata athenes",
-     1,
-     0,
-     81
-    ]
-   ],
-   "position": 81.0,
+   "queries": [],
+   "position": 17.0,
    "ctr": 0.0
   },
   {
@@ -7280,11 +8432,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/bgw",
+   "url": "https://aiuniversitybd.com/airport/boh",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
-   "position": 8.0,
+   "position": 5.0,
    "ctr": 0.0
   },
   {
@@ -7293,6 +8445,22 @@
    "clicks": 0,
    "queries": [],
    "position": 5.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/bql",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 3.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/bti",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 10.0,
    "ctr": 0.0
   },
   {
@@ -7311,56 +8479,50 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/cdg",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [
-    [
-     "paris charles de gaulle airport code",
-     1,
-     0,
-     60
-    ]
-   ],
-   "position": 60.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/cgo",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [
-    [
-     "cgo port code",
-     1,
-     0,
-     45
-    ]
-   ],
-   "position": 45.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/cnn",
+   "url": "https://aiuniversitybd.com/airport/country/hk",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
-   "position": 4.0,
+   "position": 9.0,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/country/th",
+   "url": "https://aiuniversitybd.com/airport/country/jp",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 10.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/cts",
    "impressions": 1,
    "clicks": 0,
    "queries": [
     [
-     "thailand international airport code",
+     "tss airport code",
      1,
      0,
-     8
+     32
     ]
    ],
-   "position": 8.0,
+   "position": 32.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/cuf",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 36.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/cxb",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 12.0,
    "ctr": 0.0
   },
   {
@@ -7369,36 +8531,6 @@
    "clicks": 0,
    "queries": [],
    "position": 3.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/dbr",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [
-    [
-     "darbhanga airport",
-     1,
-     0,
-     5
-    ]
-   ],
-   "position": 5.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/den",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [
-    [
-     "denver airport codes",
-     1,
-     0,
-     2
-    ]
-   ],
-   "position": 2.0,
    "ctr": 0.0
   },
   {
@@ -7418,33 +8550,34 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/dsm",
+   "url": "https://aiuniversitybd.com/airport/drs",
    "impressions": 1,
    "clicks": 0,
    "queries": [
     [
-     "dsm des moines",
+     "flughafenkürzel dresden",
      1,
      0,
-     94
+     12
     ]
    ],
-   "position": 94.0,
+   "position": 12.0,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/efl",
+   "url": "https://aiuniversitybd.com/airport/ehu",
    "impressions": 1,
    "clicks": 0,
-   "queries": [
-    [
-     "efl",
-     1,
-     0,
-     59
-    ]
-   ],
-   "position": 59.0,
+   "queries": [],
+   "position": 5.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/fai",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.0,
    "ctr": 0.0
   },
   {
@@ -7479,11 +8612,26 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/haj",
+   "url": "https://aiuniversitybd.com/airport/fsz",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
-   "position": 14.0,
+   "position": 25.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/gox",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [
+    [
+     "gox",
+     1,
+     0,
+     75
+    ]
+   ],
+   "position": 75.0,
    "ctr": 0.0
   },
   {
@@ -7525,14 +8673,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/het",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 3.0,
-   "ctr": 0.0
-  },
-  {
    "url": "https://aiuniversitybd.com/airport/hgh",
    "impressions": 1,
    "clicks": 0,
@@ -7541,11 +8681,18 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/hkg",
+   "url": "https://aiuniversitybd.com/airport/hid",
    "impressions": 1,
    "clicks": 0,
-   "queries": [],
-   "position": 1.0,
+   "queries": [
+    [
+     "hid",
+     1,
+     0,
+     6
+    ]
+   ],
+   "position": 6.0,
    "ctr": 0.0
   },
   {
@@ -7569,6 +8716,21 @@
    "impressions": 1,
    "clicks": 0,
    "queries": [],
+   "position": 6.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/hrg",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [
+    [
+     "كود مطار الغردقه",
+     1,
+     0,
+     6
+    ]
+   ],
    "position": 6.0,
    "ctr": 0.0
   },
@@ -7602,6 +8764,21 @@
    "clicks": 0,
    "queries": [],
    "position": 8.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/inl",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [
+    [
+     "international falls airport code",
+     1,
+     0,
+     50
+    ]
+   ],
+   "position": 50.0,
    "ctr": 0.0
   },
   {
@@ -7643,6 +8820,14 @@
    "ctr": 0.0
   },
   {
+   "url": "https://aiuniversitybd.com/airport/ixp",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://aiuniversitybd.com/airport/ixr",
    "impressions": 1,
    "clicks": 0,
@@ -7658,26 +8843,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/jax",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [
-    [
-     "jacksonville international airport code",
-     1,
-     0,
-     48
-    ]
-   ],
-   "position": 48.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/jhg",
+   "url": "https://aiuniversitybd.com/airport/jaf",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
-   "position": 1.0,
+   "position": 3.0,
    "ctr": 0.0
   },
   {
@@ -7693,6 +8863,14 @@
     ]
    ],
    "position": 84.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/kcz",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.0,
    "ctr": 0.0
   },
   {
@@ -7712,18 +8890,18 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/kkj",
+   "url": "https://aiuniversitybd.com/airport/ksf",
    "impressions": 1,
    "clicks": 0,
    "queries": [
     [
-     "kkjjs",
+     "kassel airport wiki",
      1,
      0,
-     1
+     65
     ]
    ],
-   "position": 1.0,
+   "position": 65.0,
    "ctr": 0.0
   },
   {
@@ -7732,14 +8910,6 @@
    "clicks": 0,
    "queries": [],
    "position": 14.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/kum",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 35.0,
    "ctr": 0.0
   },
   {
@@ -7783,6 +8953,14 @@
    "ctr": 0.0
   },
   {
+   "url": "https://aiuniversitybd.com/airport/lya",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 11.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://aiuniversitybd.com/airport/lys",
    "impressions": 1,
    "clicks": 0,
@@ -7795,14 +8973,6 @@
     ]
    ],
    "position": 62.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/mah",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 8.0,
    "ctr": 0.0
   },
   {
@@ -7821,26 +8991,27 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/mme",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [
-    [
-     "teesside airport code",
-     1,
-     0,
-     55
-    ]
-   ],
-   "position": 55.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/ngo",
+   "url": "https://aiuniversitybd.com/airport/mru",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
-   "position": 3.0,
+   "position": 1.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/myr",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/nce",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.0,
    "ctr": 0.0
   },
   {
@@ -7913,14 +9084,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/otp",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 5.0,
-   "ctr": 0.0
-  },
-  {
    "url": "https://aiuniversitybd.com/airport/peg",
    "impressions": 1,
    "clicks": 0,
@@ -7929,45 +9092,15 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/phl",
+   "url": "https://aiuniversitybd.com/airport/phs",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
-   "position": 1.0,
+   "position": 4.0,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/pit",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [
-    [
-     "airport code pit",
-     1,
-     0,
-     62
-    ]
-   ],
-   "position": 62.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/poz",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [
-    [
-     "poznan aeroporto",
-     1,
-     0,
-     74
-    ]
-   ],
-   "position": 74.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/pwm",
+   "url": "https://aiuniversitybd.com/airport/psd",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
@@ -8006,18 +9139,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/roc",
+   "url": "https://aiuniversitybd.com/airport/rzv",
    "impressions": 1,
    "clicks": 0,
-   "queries": [
-    [
-     "rochester international",
-     1,
-     0,
-     12
-    ]
-   ],
-   "position": 12.0,
+   "queries": [],
+   "position": 4.0,
    "ctr": 0.0
   },
   {
@@ -8029,6 +9155,14 @@
    "ctr": 0.0
   },
   {
+   "url": "https://aiuniversitybd.com/airport/spx",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 8.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://aiuniversitybd.com/airport/stv",
    "impressions": 1,
    "clicks": 0,
@@ -8037,19 +9171,26 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/airport/szx",
+   "url": "https://aiuniversitybd.com/airport/syr",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [
+    [
+     "syr syracuse",
+     1,
+     0,
+     70
+    ]
+   ],
+   "position": 70.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/airport/syy",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
    "position": 7.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/tfu",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 75.0,
    "ctr": 0.0
   },
   {
@@ -8064,14 +9205,6 @@
      1
     ]
    ],
-   "position": 1.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/airport/tul",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
    "position": 1.0,
    "ctr": 0.0
   },
@@ -8131,6 +9264,14 @@
    "ctr": 0.0
   },
   {
+   "url": "https://aiuniversitybd.com/airport/yyt",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 9.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://aiuniversitybd.com/airport/zth",
    "impressions": 1,
    "clicks": 0,
@@ -8151,14 +9292,6 @@
    "clicks": 0,
    "queries": [],
    "position": 1.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/blog/air-ticket-reissue-guide-bangla",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 3.0,
    "ctr": 0.0
   },
   {
@@ -8249,14 +9382,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/blog/galileo-gds-ki-ebong-kaj",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 1.0,
-   "ctr": 0.0
-  },
-  {
    "url": "https://aiuniversitybd.com/blog/how-to-get-ielts-band-7",
    "impressions": 1,
    "clicks": 0,
@@ -8296,19 +9421,19 @@
    "ctr": 0.0
   },
   {
+   "url": "https://aiuniversitybd.com/blog/online-safety-tips-bangla",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://aiuniversitybd.com/blog?page=3",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
    "position": 3.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/community",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 8.0,
    "ctr": 0.0
   },
   {
@@ -8352,19 +9477,27 @@
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/ielts/cue-card/describe-a-person-who-choose-career-in-medical-field",
+   "url": "https://aiuniversitybd.com/ielts/cue-card/describe-a-film-actor-from-bangladesh-who-is-very-popular",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
-   "position": 15.0,
+   "position": 10.0,
    "ctr": 0.0
   },
   {
-   "url": "https://aiuniversitybd.com/ielts/cue-card/describe-a-person-who-enjoys-cooking-for-others",
+   "url": "https://aiuniversitybd.com/ielts/cue-card/describe-a-gothic-novel",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
-   "position": 7.0,
+   "position": 6.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/ielts/cue-card/describe-a-habit-you-want-to-develop",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 10.0,
    "ctr": 0.0
   },
   {
@@ -8384,6 +9517,14 @@
    "ctr": 0.0
   },
   {
+   "url": "https://aiuniversitybd.com/ielts/cue-card/describe-a-time-when-the-electricity-went-off",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 11.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://aiuniversitybd.com/ielts/cue-card/describe-a-time-you-gave-advice-to-someone",
    "impressions": 1,
    "clicks": 0,
@@ -8392,7 +9533,23 @@
    "ctr": 0.0
   },
   {
+   "url": "https://aiuniversitybd.com/ielts/cue-card/describe-about-any-place",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 4.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://aiuniversitybd.com/ielts/cue-card/describe-an-object-that-you-think-is-beautiful",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 9.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/ielts/cue-card/describe-event-bubbling",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
@@ -8413,14 +9570,6 @@
    "clicks": 0,
    "queries": [],
    "position": 10.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://aiuniversitybd.com/ielts/vocabulary/housing-and-accommodation",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 9.0,
    "ctr": 0.0
   },
   {
@@ -8524,6 +9673,21 @@
    "clicks": 0,
    "queries": [],
    "position": 4.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://aiuniversitybd.com/pocket-course?id=ors",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [
+    [
+     "খাবার স্যালাইন তৈরির নিয়ম",
+     1,
+     0,
+     3
+    ]
+   ],
+   "position": 3.0,
    "ctr": 0.0
   },
   {

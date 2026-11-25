@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-08-24..2026-11-22, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-25..2026-11-23, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "richest countries in world",
@@ -683,6 +683,12 @@
    "src": "bing"
   },
   {
+   "q": "the fastest car in the world",
+   "impr": 57,
+   "pos": 8.0,
+   "src": "bing"
+  },
+  {
    "q": "reddit users in india",
    "impr": 54,
    "pos": 8.3,
@@ -698,12 +704,6 @@
    "q": "what is the fastest car",
    "impr": 50,
    "pos": 8.5,
-   "src": "bing"
-  },
-  {
-   "q": "the fastest car in the world",
-   "impr": 38,
-   "pos": 8.0,
    "src": "bing"
   },
   {
@@ -725,15 +725,15 @@
    "src": "bing"
   },
   {
-   "q": "countries with the most roblox players",
-   "impr": 33,
-   "pos": 8.0,
+   "q": "who is the richest person in the world 2026",
+   "impr": 34,
+   "pos": 8.4,
    "src": "bing"
   },
   {
-   "q": "who is the richest person in the world 2026",
-   "impr": 26,
-   "pos": 8.1,
+   "q": "countries with the most roblox players",
+   "impr": 33,
+   "pos": 8.0,
    "src": "bing"
   },
   {
