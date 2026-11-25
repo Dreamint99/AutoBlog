@@ -1,7 +1,7 @@
 {
  "site": "aiu",
  "property": "https://aiuniversitybd.com/",
- "checked": "2026-11-24T12:57:38+00:00",
+ "checked": "2026-11-25T11:46:47+00:00",
  "sitemaps": [
   {
    "path": "https://aiuniversitybd.com/sitemap.xml",
@@ -21,11 +21,10 @@
    ]
   }
  ],
- "sitemap_count": 1946,
+ "sitemap_count": 2097,
  "byState": {
-  "Submitted and indexed": 39,
-  "Discovered - currently not indexed": 1,
-  "Crawled - currently not indexed": 1
+  "Submitted and indexed": 40,
+  "Discovered - currently not indexed": 1
  },
  "urls": [
   {
@@ -37,7 +36,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/",
    "userCanonical": "https://aiuniversitybd.com/",
-   "lastCrawlTime": "2026-11-22T14:21:10Z",
+   "lastCrawlTime": "2026-11-25T08:20:36Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/",
@@ -144,7 +143,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/guide",
    "userCanonical": "https://aiuniversitybd.com/guide",
-   "lastCrawlTime": "2026-11-18T23:27:22Z",
+   "lastCrawlTime": "2026-11-24T15:58:43Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://aiuniversitybd.com/guide/c/help"
@@ -159,7 +158,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/books",
    "userCanonical": "https://aiuniversitybd.com/books",
-   "lastCrawlTime": "2026-11-19T10:04:02Z",
+   "lastCrawlTime": "2026-11-24T15:41:52Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/books"
@@ -296,7 +295,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/subscription",
    "userCanonical": "https://aiuniversitybd.com/subscription",
-   "lastCrawlTime": "2026-11-18T11:31:06Z",
+   "lastCrawlTime": "2026-11-24T15:00:48Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/subscription",
@@ -314,7 +313,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/reviews",
    "userCanonical": "https://aiuniversitybd.com/reviews",
-   "lastCrawlTime": "2026-11-19T14:27:11Z",
+   "lastCrawlTime": "2026-11-24T15:34:48Z",
    "crawledAs": "MOBILE",
    "referringUrls": null
   },
@@ -438,7 +437,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/course/air-ticketing",
    "userCanonical": "https://aiuniversitybd.com/course/air-ticketing",
-   "lastCrawlTime": "2026-11-22T19:44:12Z",
+   "lastCrawlTime": "2026-11-24T20:29:48Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/course/air-ticketing"
@@ -484,7 +483,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/course/no-code-automation",
    "userCanonical": "https://aiuniversitybd.com/course/no-code-automation",
-   "lastCrawlTime": "2026-11-18T15:25:21Z",
+   "lastCrawlTime": "2026-11-25T09:34:18Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/course/no-code-automation",
@@ -493,13 +492,13 @@
   },
   {
    "url": "https://aiuniversitybd.com/course/digital-marketing",
-   "verdict": "NEUTRAL",
-   "coverageState": "Crawled - currently not indexed",
+   "verdict": "PASS",
+   "coverageState": "Submitted and indexed",
    "robotsTxtState": "ALLOWED",
-   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "indexingState": "INDEXING_ALLOWED",
    "pageFetchState": "SUCCESSFUL",
-   "googleCanonical": null,
-   "userCanonical": null,
+   "googleCanonical": "https://aiuniversitybd.com/course/digital-marketing",
+   "userCanonical": "https://aiuniversitybd.com/course/digital-marketing",
    "lastCrawlTime": "2026-11-24T08:01:39Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
