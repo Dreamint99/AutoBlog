@@ -1538,6 +1538,15 @@ function pbd_crumbs_ld($c) {
     foreach ($c as $i => $x) { $l[] = array('@type' => 'ListItem', 'position' => $i + 2, 'name' => $x[0], 'item' => home_url($x[1])); }
     return array('@type' => 'BreadcrumbList', '@id' => home_url($c[count($c) - 1][1]) . '#crumbs', 'itemListElement' => $l);
 }
+/* one-shot: drop LiteSpeed cache of passport office pages after the English/Banglish title update */
+add_action('init', function () {
+    if (get_option('pbd_poen_purged') === '18en') { return; }
+    foreach (array('/passport-office/', '/passport-office/uttara/', '/passport-office/comilla/', '/passport-office/sylhet/') as $p) {
+        do_action('litespeed_purge_url', home_url($p));
+    }
+    update_option('pbd_poen_purged', '18en', false);
+}, 20);
+
 function pbd_v18_css() {
     return '<style>.pbd .pbd-calc{background:var(--bs,#e9f1fd);border-left:4px solid var(--b,#0b56c4);padding:10px 14px;border-radius:10px}.pbd .pbd-tw{overflow-x:auto}.pbd .pbd-tw caption{text-align:left;font-weight:700;padding:4px 0}.pbd .pbd-tw th{white-space:nowrap}.pbd .pbd-tw td:last-child{font-size:.85em}.pbd ul.pbd-nb li{margin:.25em 0}.art-hd .pbd-en{margin:6px 0 0;font-size:.95em;color:var(--b,#0b56c4);font-weight:600}</style>';
 }
