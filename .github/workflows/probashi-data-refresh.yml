@@ -56,3 +56,36 @@ jobs:
           git add probashi-data/data/agency.json probashi-data/data/agency.sql probashi-data/research/agencies.json
           git commit -m "probashiinfo agency list $(date -u +%F)"
           git pull --rebase && git push
+
+  # /embassy/ pages: compare the MOFA mission list with the data inside the PBD snippet. A country page
+  # (kind=country) turns into a mission page under the same slug when MOFA lists a new mission there.
+  embassy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - name: MOFA mission list -> /embassy/ pages
+        working-directory: generator
+        env:
+          PYTHONUTF8: "1"
+          PROBASHIINFO_WP_URL: ${{ secrets.PROBASHIINFO_WP_URL }}
+          PROBASHIINFO_WP_USER: ${{ secrets.PROBASHIINFO_WP_USER }}
+          PROBASHIINFO_WP_APP_PASSWORD: ${{ secrets.PROBASHIINFO_WP_APP_PASSWORD }}
+          PBD_TEST_KEY: ${{ secrets.PBD_TEST_KEY }}
+        run: |
+          python embassy_refresh.py
+          if [ ! -s wp_snippets/embassy-changed.txt ]; then echo "embassy list unchanged"; exit 0; fi
+          php -l wp_snippets/pbd-data-pages.php
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add wp_snippets/pbd-data-pages.php wp_snippets/embassy-changed.txt
+          git commit -m "probashiinfo embassy pages: new MOFA mission(s) $(date -u +%F)"
+          git pull --rebase && git push
+          python wp_probashi_data.py backup "auto-embassy $(date -u +%F)"
+          python wp_probashi_data.py push wp_snippets/pbd-data-pages.php on
+          python wp_probashi_data.py flush
+          python wp_probashi_data.py indexnow wp_snippets/embassy-changed.txt
