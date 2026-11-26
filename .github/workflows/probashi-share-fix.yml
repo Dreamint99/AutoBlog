@@ -1,0 +1,33 @@
+name: probashiinfo share svg fix
+
+# Upserts the Code Snippet that stops Ezoic from breaking Simple Social Buttons SVGs.
+# Runs only on this feature branch — do not merge to master.
+on:
+  push:
+    branches: [seo/probashi-share-fix-20261126]
+    paths:
+      - "generator/wp_snippets/probashiinfo-share-fix.php"
+      - ".github/workflows/probashi-share-fix.yml"
+  workflow_dispatch:
+
+jobs:
+  upsert:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: generator
+    env:
+      PROBASHIINFO_WP_URL: ${{ secrets.PROBASHIINFO_WP_URL }}
+      PROBASHIINFO_WP_USER: ${{ secrets.PROBASHIINFO_WP_USER }}
+      PROBASHIINFO_WP_APP_PASSWORD: ${{ secrets.PROBASHIINFO_WP_APP_PASSWORD }}
+      PYTHONUTF8: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - name: PHP lint
+        run: php -l wp_snippets/probashiinfo-share-fix.php
+      - name: Upsert snippet
+        run: python wp_snippets.py upsert "Probashiinfo share SVG fix" wp_snippets/probashiinfo-share-fix.php
