@@ -17,8 +17,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 add_action( 'init', 'pi_share_fix_purge_once', 20 );
 function pi_share_fix_purge_once() {
-	if ( get_option( 'pi_share_fix_purged' ) !== '1' ) {
-		update_option( 'pi_share_fix_purged', '1', false );
+	if ( get_option( 'pi_share_fix_purged' ) !== '2' ) {
+		update_option( 'pi_share_fix_purged', '2', false );
 		do_action( 'litespeed_purge_all' );
 	}
 }
@@ -40,6 +40,30 @@ function pi_share_fix_ssb_above_only( $value ) {
 		$value['location'] = 'above';
 	}
 	return $value;
+}
+
+// Code Snippets load after Simple Social Buttons has already copied ssb_inline
+// into the plugin object, so the option filter above may be too late.
+// Strip the trailing (below-content) SSB block; the theme .share row remains.
+add_filter( 'the_content', 'pi_share_fix_strip_below_ssb', 13 );
+function pi_share_fix_strip_below_ssb( $content ) {
+	if ( ! is_string( $content ) ) {
+		return $content;
+	}
+	$needle = '<div class="simplesocialbuttons';
+	$first  = strpos( $content, $needle );
+	if ( false === $first ) {
+		return $content;
+	}
+	$last = strrpos( $content, $needle );
+	if ( $last === $first ) {
+		// A single block at the end of a long post is the "below" placement.
+		if ( $last > (int) ( strlen( $content ) * 0.3 ) ) {
+			return rtrim( substr( $content, 0, $last ) );
+		}
+		return $content;
+	}
+	return rtrim( substr( $content, 0, $last ) );
 }
 
 add_action( 'template_redirect', 'pi_share_fix_buffer', 0 );
