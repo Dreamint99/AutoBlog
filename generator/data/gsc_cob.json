@@ -1,22 +1,22 @@
 {
- "source": "Search Console API 2026-08-25..2026-11-23",
+ "source": "Search Console API 2026-08-26..2026-11-24",
  "pages": [
   {
    "url": "https://coloursofbangladesh.com/data/district/brahmanbaria",
-   "impressions": 428,
+   "impressions": 445,
    "clicks": 1,
    "queries": [
+    [
+     "বি বাড়িয়া জেলার জনসংখ্যা কত",
+     24,
+     0,
+     9.2
+    ],
     [
      "বি বাড়িয়া জেলার আয়তন কত",
      23,
      0,
      9.8
-    ],
-    [
-     "বি বাড়িয়া জেলার জনসংখ্যা কত",
-     23,
-     0,
-     9.1
     ],
     [
      "ব্রাহ্মণবাড়িয়া জেলার আয়তন কত",
@@ -32,21 +32,21 @@
     ],
     [
      "ব্রাহ্মণবাড়িয়া জনসংখ্যা কত",
-     12,
+     13,
      0,
      8.1
+    ],
+    [
+     "ব্রাহ্মণবাড়িয়া জেলার জনসংখ্যা কত",
+     4,
+     0,
+     9
     ],
     [
      "ব্রাহ্মণবাড়িয়া জনসংখ্যা কত ২০২৬",
      3,
      0,
      8.7
-    ],
-    [
-     "ব্রাহ্মণবাড়িয়া জেলার জনসংখ্যা কত",
-     3,
-     0,
-     8.3
     ],
     [
      "brahmanbaria district",
@@ -79,12 +79,12 @@
      6
     ]
    ],
-   "position": 9.1,
-   "ctr": 0.0023
+   "position": 9.0,
+   "ctr": 0.0022
   },
   {
    "url": "https://coloursofbangladesh.com/data/people/emiliano-martinez",
-   "impressions": 226,
+   "impressions": 233,
    "clicks": 0,
    "queries": [
     [
@@ -165,7 +165,7 @@
   },
   {
    "url": "https://coloursofbangladesh.com/data/district/gopalganj",
-   "impressions": 220,
+   "impressions": 230,
    "clicks": 0,
    "queries": [
     [
@@ -199,12 +199,12 @@
      11
     ]
    ],
-   "position": 9.3,
+   "position": 9.2,
    "ctr": 0.0
   },
   {
    "url": "https://coloursofbangladesh.com/data/upazila/savar",
-   "impressions": 187,
+   "impressions": 190,
    "clicks": 1,
    "queries": [
     [
@@ -215,9 +215,9 @@
     ],
     [
      "savar",
-     4,
+     5,
      0,
-     58.2
+     61.6
     ],
     [
      "savar bangladesh",
@@ -280,12 +280,12 @@
      62
     ]
    ],
-   "position": 15.3,
+   "position": 15.5,
    "ctr": 0.0053
   },
   {
    "url": "https://coloursofbangladesh.com/data/people/declan-sullivan",
-   "impressions": 176,
+   "impressions": 180,
    "clicks": 0,
    "queries": [
     [
@@ -296,9 +296,9 @@
     ],
     [
      "ডেক্লান সুলিভান",
-     22,
+     23,
      0,
-     5
+     5.0
     ],
     [
      "declan sullivan bangladesh",
@@ -329,171 +329,27 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/data/people/ronan-sullivan",
-   "impressions": 126,
-   "clicks": 0,
-   "queries": [
-    [
-     "রোনান সুলিভান",
-     56,
-     0,
-     10.2
-    ],
-    [
-     "ronan sullivan",
-     14,
-     0,
-     14.9
-    ],
-    [
-     "রোনান সুলিভান কোন দেশের",
-     13,
-     0,
-     9.5
-    ],
-    [
-     "রোনান সুলিভান কোন ক্লাবে খেলে",
-     2,
-     0,
-     11.5
-    ],
-    [
-     "ronan sullivan age",
-     1,
-     0,
-     28
-    ],
-    [
-     "ronan sullivan wikipedia",
-     1,
-     0,
-     9
-    ],
-    [
-     "রোনান সুলিভান এর পরিচয়",
-     1,
-     0,
-     10
-    ],
-    [
-     "রোনান সুলিভান ধর্ম",
-     1,
-     0,
-     15
-    ],
-    [
-     "রোনান সুলিভান মার্কেট ভেলু",
-     1,
-     0,
-     8
-    ],
-    [
-     "রোনাল সুলিভান",
-     1,
-     0,
-     10
-    ]
-   ],
-   "position": 10.8,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/data/district/coxs-bazar",
-   "impressions": 122,
-   "clicks": 2,
-   "queries": [
-    [
-     "কক্সবাজার জেলার জনসংখ্যা কত ২০২৪",
-     18,
-     0,
-     8.7
-    ],
-    [
-     "কক্সবাজার জেলার জনসংখ্যা কত ২০২৬",
-     5,
-     0,
-     7
-    ],
-    [
-     "কক্সবাজার জেলার আয়তন কত",
-     2,
-     0,
-     10
-    ],
-    [
-     "cox bazar district",
-     1,
-     0,
-     58
-    ],
-    [
-     "cox's bazar district",
-     1,
-     0,
-     52
-    ],
-    [
-     "coxsbazar",
-     1,
-     0,
-     49
-    ],
-    [
-     "কক্সবাজার",
-     1,
-     0,
-     73
-    ],
-    [
-     "কক্সবাজার জনসংখ্যা কত",
-     1,
-     0,
-     11
-    ],
-    [
-     "কক্সবাজার জেলার আয়তন",
-     1,
-     0,
-     10
-    ],
-    [
-     "কক্সবাজার জেলার উপজেলা কয়টি ও কি কি",
-     1,
-     0,
-     11
-    ],
-    [
-     "কক্সবাজার জেলার উপজেলা সমূহ",
-     1,
-     0,
-     33
-    ]
-   ],
-   "position": 10.4,
-   "ctr": 0.0164
-  },
-  {
    "url": "https://coloursofbangladesh.com/data/district/gazipur",
-   "impressions": 122,
+   "impressions": 138,
    "clicks": 1,
    "queries": [
     [
      "গাজীপুর জেলার জনসংখ্যা কত ২০২৪",
-     19,
+     22,
      0,
-     6.6
+     6.5
     ],
     [
      "গাজীপুর জেলার জনসংখ্যা কত",
-     7,
+     9,
      0,
-     8.1
+     7.6
     ],
     [
      "ghazipur district",
-     3,
+     5,
      0,
-     24.7
+     15.2
     ],
     [
      "gazipur",
@@ -550,50 +406,17 @@
      70
     ]
    ],
-   "position": 14.4,
-   "ctr": 0.0082
-  },
-  {
-   "url": "https://coloursofbangladesh.com/data/district/chandpur",
-   "impressions": 113,
-   "clicks": 0,
-   "queries": [
-    [
-     "চাঁদপুর জেলার জনসংখ্যা কত ২০২৬",
-     19,
-     0,
-     10.2
-    ],
-    [
-     "চাঁদপুর জেলার জনসংখ্যা কত",
-     1,
-     0,
-     10
-    ],
-    [
-     "চাঁদপুর জেলার জনসংখ্যা কত ২০২৪",
-     1,
-     0,
-     7
-    ],
-    [
-     "চাঁদপুর জেলার মোট জনসংখ্যা কত",
-     1,
-     0,
-     9
-    ]
-   ],
-   "position": 11.0,
-   "ctr": 0.0
+   "position": 13.4,
+   "ctr": 0.0072
   },
   {
    "url": "https://coloursofbangladesh.com/data/best/jamuna-bridge",
-   "impressions": 105,
+   "impressions": 136,
    "clicks": 0,
    "queries": [
     [
      "jamuna bridge",
-     87,
+     117,
      0,
      6.4
     ],
@@ -634,12 +457,189 @@
      70
     ]
    ],
-   "position": 11.5,
+   "position": 10.3,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/people/ronan-sullivan",
+   "impressions": 132,
+   "clicks": 0,
+   "queries": [
+    [
+     "রোনান সুলিভান",
+     57,
+     0,
+     10.2
+    ],
+    [
+     "ronan sullivan",
+     19,
+     0,
+     14.3
+    ],
+    [
+     "রোনান সুলিভান কোন দেশের",
+     13,
+     0,
+     9.5
+    ],
+    [
+     "রোনান সুলিভান কোন ক্লাবে খেলে",
+     2,
+     0,
+     11.5
+    ],
+    [
+     "ronan sullivan age",
+     1,
+     0,
+     28
+    ],
+    [
+     "ronan sullivan wikipedia",
+     1,
+     0,
+     9
+    ],
+    [
+     "রোনান সুলিভান এর পরিচয়",
+     1,
+     0,
+     10
+    ],
+    [
+     "রোনান সুলিভান ধর্ম",
+     1,
+     0,
+     15
+    ],
+    [
+     "রোনান সুলিভান মার্কেট ভেলু",
+     1,
+     0,
+     8
+    ],
+    [
+     "রোনাল সুলিভান",
+     1,
+     0,
+     10
+    ]
+   ],
+   "position": 10.9,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/district/coxs-bazar",
+   "impressions": 128,
+   "clicks": 2,
+   "queries": [
+    [
+     "কক্সবাজার জেলার জনসংখ্যা কত ২০২৪",
+     20,
+     0,
+     8.3
+    ],
+    [
+     "কক্সবাজার জেলার জনসংখ্যা কত ২০২৬",
+     5,
+     0,
+     7
+    ],
+    [
+     "কক্সবাজার জেলার আয়তন কত",
+     3,
+     0,
+     9.7
+    ],
+    [
+     "কক্সবাজার জনসংখ্যা কত",
+     2,
+     0,
+     7
+    ],
+    [
+     "cox bazar district",
+     1,
+     0,
+     58
+    ],
+    [
+     "cox's bazar district",
+     1,
+     0,
+     52
+    ],
+    [
+     "coxsbazar",
+     1,
+     0,
+     49
+    ],
+    [
+     "কক্সবাজার",
+     1,
+     0,
+     73
+    ],
+    [
+     "কক্সবাজার জেলার আয়তন",
+     1,
+     0,
+     10
+    ],
+    [
+     "কক্সবাজার জেলার উপজেলা কয়টি ও কি কি",
+     1,
+     0,
+     11
+    ],
+    [
+     "কক্সবাজার জেলার উপজেলা সমূহ",
+     1,
+     0,
+     33
+    ]
+   ],
+   "position": 10.2,
+   "ctr": 0.0156
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/district/chandpur",
+   "impressions": 114,
+   "clicks": 0,
+   "queries": [
+    [
+     "চাঁদপুর জেলার জনসংখ্যা কত ২০২৬",
+     19,
+     0,
+     10.2
+    ],
+    [
+     "চাঁদপুর জেলার জনসংখ্যা কত",
+     1,
+     0,
+     10
+    ],
+    [
+     "চাঁদপুর জেলার জনসংখ্যা কত ২০২৪",
+     1,
+     0,
+     7
+    ],
+    [
+     "চাঁদপুর জেলার মোট জনসংখ্যা কত",
+     1,
+     0,
+     9
+    ]
+   ],
+   "position": 11.0,
    "ctr": 0.0
   },
   {
    "url": "https://coloursofbangladesh.com/data/district/sylhet",
-   "impressions": 99,
+   "impressions": 100,
    "clicks": 0,
    "queries": [
     [
@@ -649,12 +649,12 @@
      7.5
     ]
    ],
-   "position": 8.5,
+   "position": 8.6,
    "ctr": 0.0
   },
   {
    "url": "https://coloursofbangladesh.com/data/upazila/sarail",
-   "impressions": 94,
+   "impressions": 100,
    "clicks": 0,
    "queries": [
     [
@@ -662,6 +662,12 @@
      1,
      0,
      43
+    ],
+    [
+     "sarail brahmanbaria",
+     1,
+     0,
+     9
     ],
     [
      "sarail upazila",
@@ -676,13 +682,19 @@
      37
     ],
     [
+     "সরাইল উপজেলা",
+     1,
+     0,
+     29
+    ],
+    [
      "সরাইল উপজেলার ইউনিয়ন সমূহ",
      1,
      0,
      6
     ]
    ],
-   "position": 8.1,
+   "position": 8.4,
    "ctr": 0.0
   },
   {
@@ -731,8 +743,23 @@
    "ctr": 0.0
   },
   {
+   "url": "https://coloursofbangladesh.com/postcode/bhola",
+   "impressions": 75,
+   "clicks": 0,
+   "queries": [
+    [
+     "চরফ্যাশন পোস্ট কোড",
+     7,
+     0,
+     8.1
+    ]
+   ],
+   "position": 7.8,
+   "ctr": 0.0
+  },
+  {
    "url": "https://coloursofbangladesh.com/data/people/sadia-ayman",
-   "impressions": 69,
+   "impressions": 74,
    "clicks": 1,
    "queries": [
     [
@@ -743,9 +770,9 @@
     ],
     [
      "sadia ayman",
-     13,
+     16,
      0,
-     6.6
+     5.8
     ],
     [
      "সাদিয়া আয়মান পরিচয়",
@@ -778,309 +805,34 @@
      31
     ]
    ],
-   "position": 11.7,
-   "ctr": 0.0145
-  },
-  {
-   "url": "https://coloursofbangladesh.com/data/district/sirajganj",
-   "impressions": 61,
-   "clicks": 1,
-   "queries": [],
-   "position": 8.6,
-   "ctr": 0.0164
+   "position": 11.3,
+   "ctr": 0.0135
   },
   {
    "url": "https://coloursofbangladesh.com/postcode/munshiganj",
-   "impressions": 59,
+   "impressions": 72,
    "clicks": 1,
    "queries": [
     [
      "munshiganj district",
-     25,
+     30,
      0,
-     10.0
+     9.6
     ]
    ],
-   "position": 8.2,
-   "ctr": 0.0169
-  },
-  {
-   "url": "https://coloursofbangladesh.com/data/division/chattogram",
-   "impressions": 57,
-   "clicks": 0,
-   "queries": [
-    [
-     "চট্টগ্রাম বিভাগের আয়তন কত",
-     15,
-     0,
-     9.8
-    ],
-    [
-     "চট্টগ্রাম বিভাগের আয়তন",
-     3,
-     0,
-     10
-    ],
-    [
-     "চট্টগ্রাম বিভাগ",
-     1,
-     0,
-     46
-    ],
-    [
-     "চট্টগ্রাম বিভাগ কয়টি জেলা",
-     1,
-     0,
-     78
-    ]
-   ],
-   "position": 10.9,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/data/people/jaya-ahsan",
-   "impressions": 53,
-   "clicks": 0,
-   "queries": [
-    [
-     "jaya ahsan",
-     28,
-     0,
-     15.1
-    ],
-    [
-     "জয়া আহসান",
-     6,
-     0,
-     25.2
-    ],
-    [
-     "joya ahsan",
-     5,
-     0,
-     25.6
-    ],
-    [
-     "faisal ahsan",
-     2,
-     0,
-     5.5
-    ],
-    [
-     "জয়া আহসান উইকিপিডিয়া",
-     1,
-     0,
-     10
-    ],
-    [
-     "জয়া আহসান",
-     1,
-     0,
-     121
-    ],
-    [
-     "বাংলাদেশের নায়ক নায়িকাদের নামের তালিকা",
-     1,
-     0,
-     1
-    ]
-   ],
-   "position": 17.2,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/data/upazila/hajiganj",
-   "impressions": 53,
-   "clicks": 0,
-   "queries": [
-    [
-     "হাজীগঞ্জ থানা",
-     2,
-     0,
-     46.5
-    ],
-    [
-     "hajiganj",
-     1,
-     0,
-     63
-    ],
-    [
-     "haziganj",
-     1,
-     0,
-     66
-    ],
-    [
-     "হাজীগঞ্জ চাঁদপুর",
-     1,
-     0,
-     43
-    ]
-   ],
-   "position": 15.1,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/bhola",
-   "impressions": 52,
-   "clicks": 0,
-   "queries": [
-    [
-     "চরফ্যাশন পোস্ট কোড",
-     6,
-     0,
-     8.3
-    ]
-   ],
-   "position": 8.4,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/bazar/lobon",
-   "impressions": 51,
-   "clicks": 0,
-   "queries": [
-    [
-     "১ কেজি লবণের দাম কত ২০২৬",
-     18,
-     0,
-     4.3
-    ],
-    [
-     "লবণের দাম ২০২৬",
-     12,
-     0,
-     5
-    ],
-    [
-     "লবণ দাম ২০২৬",
-     3,
-     0,
-     6.3
-    ]
-   ],
-   "position": 4.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/data/people/apu-biswas",
-   "impressions": 49,
-   "clicks": 1,
-   "queries": [
-    [
-     "apu biswas",
-     12,
-     0,
-     21.2
-    ],
-    [
-     "অপু বিশ্বাস",
-     10,
-     0,
-     32.6
-    ],
-    [
-     "apubiswas",
-     2,
-     1,
-     50
-    ],
-    [
-     "নাইকা অপু বিশ্বাস",
-     2,
-     0,
-     16
-    ],
-    [
-     "অপু বিশ্বাস এর প্রথম ছবি",
-     1,
-     0,
-     41
-    ],
-    [
-     "অপু বিশ্বাস ছবি",
-     1,
-     0,
-     6
-    ],
-    [
-     "অপু বিশ্বাসের",
-     1,
-     0,
-     58
-    ],
-    [
-     "নায়িকা অপু বিশ্বাস",
-     1,
-     0,
-     47
-    ],
-    [
-     "নায়িকা অপু বিশ্বাসের",
-     1,
-     0,
-     7
-    ]
-   ],
-   "position": 23.2,
-   "ctr": 0.0204
-  },
-  {
-   "url": "https://coloursofbangladesh.com/data/upazila/jagannathpur",
-   "impressions": 49,
-   "clicks": 0,
-   "queries": [
-    [
-     "jagannathpur upazila",
-     4,
-     0,
-     52.2
-    ],
-    [
-     "jagannathpur sunamganj",
-     3,
-     0,
-     53.7
-    ],
-    [
-     "bangladesh jagannathpur",
-     1,
-     0,
-     10
-    ],
-    [
-     "jagannathpur bangladesh",
-     1,
-     0,
-     61
-    ],
-    [
-     "jagannathpur darbhanga bihar",
-     1,
-     0,
-     93
-    ],
-    [
-     "jagannathpur sylhet bangladesh",
-     1,
-     0,
-     24
-    ]
-   ],
-   "position": 21.9,
-   "ctr": 0.0
+   "position": 8.1,
+   "ctr": 0.0139
   },
   {
    "url": "https://coloursofbangladesh.com/bazar/murgi",
-   "impressions": 48,
+   "impressions": 68,
    "clicks": 1,
    "queries": [
     [
      "আজকের মুরগির বাজার দর 2026",
-     2,
+     4,
      0,
-     5.5
+     7.8
     ],
     [
      "21/11/2026",
@@ -1137,8 +889,363 @@
      1
     ]
    ],
-   "position": 4.7,
-   "ctr": 0.0208
+   "position": 4.2,
+   "ctr": 0.0147
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/district/sirajganj",
+   "impressions": 66,
+   "clicks": 1,
+   "queries": [],
+   "position": 8.5,
+   "ctr": 0.0152
+  },
+  {
+   "url": "https://coloursofbangladesh.com/jobs/govt/15393-security-guard",
+   "impressions": 62,
+   "clicks": 0,
+   "queries": [
+    [
+     "বেপজা নিরাপত্তা প্রহরী",
+     15,
+     0,
+     8.9
+    ],
+    [
+     "বেপজা নিরাপত্তা প্রহরী নিয়োগ",
+     3,
+     0,
+     9.7
+    ]
+   ],
+   "position": 7.3,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/people/apu-biswas",
+   "impressions": 59,
+   "clicks": 1,
+   "queries": [
+    [
+     "apu biswas",
+     18,
+     0,
+     14.5
+    ],
+    [
+     "অপু বিশ্বাস",
+     12,
+     0,
+     30.9
+    ],
+    [
+     "apubiswas",
+     2,
+     1,
+     50
+    ],
+    [
+     "নাইকা অপু বিশ্বাস",
+     2,
+     0,
+     16
+    ],
+    [
+     "bangladeshi apu biswas",
+     1,
+     0,
+     20
+    ],
+    [
+     "অপু বিশ্বাস এর প্রথম ছবি",
+     1,
+     0,
+     41
+    ],
+    [
+     "অপু বিশ্বাস ছবি",
+     1,
+     0,
+     6
+    ],
+    [
+     "অপু বিশ্বাসের",
+     1,
+     0,
+     58
+    ],
+    [
+     "অপু বিসাস",
+     1,
+     0,
+     64
+    ],
+    [
+     "নায়িকা অপু বিশ্বাস",
+     1,
+     0,
+     47
+    ],
+    [
+     "নায়িকা অপু বিশ্বাসের",
+     1,
+     0,
+     7
+    ]
+   ],
+   "position": 21.5,
+   "ctr": 0.0169
+  },
+  {
+   "url": "https://coloursofbangladesh.com/bazar/lobon",
+   "impressions": 58,
+   "clicks": 0,
+   "queries": [
+    [
+     "১ কেজি লবণের দাম কত ২০২৬",
+     20,
+     0,
+     4.0
+    ],
+    [
+     "লবণের দাম ২০২৬",
+     12,
+     0,
+     5
+    ],
+    [
+     "লবণ দাম ২০২৬",
+     4,
+     0,
+     6.8
+    ]
+   ],
+   "position": 3.7,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/division/chattogram",
+   "impressions": 57,
+   "clicks": 0,
+   "queries": [
+    [
+     "চট্টগ্রাম বিভাগের আয়তন কত",
+     15,
+     0,
+     9.8
+    ],
+    [
+     "চট্টগ্রাম বিভাগের আয়তন",
+     3,
+     0,
+     10
+    ],
+    [
+     "চট্টগ্রাম বিভাগ",
+     1,
+     0,
+     46
+    ],
+    [
+     "চট্টগ্রাম বিভাগ কয়টি জেলা",
+     1,
+     0,
+     78
+    ]
+   ],
+   "position": 10.9,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/people/jaya-ahsan",
+   "impressions": 54,
+   "clicks": 0,
+   "queries": [
+    [
+     "jaya ahsan",
+     28,
+     0,
+     15.1
+    ],
+    [
+     "জয়া আহসান",
+     6,
+     0,
+     25.2
+    ],
+    [
+     "joya ahsan",
+     5,
+     0,
+     25.6
+    ],
+    [
+     "faisal ahsan",
+     2,
+     0,
+     5.5
+    ],
+    [
+     "জয়া আহসান উইকিপিডিয়া",
+     1,
+     0,
+     10
+    ],
+    [
+     "জয়া আহসান",
+     1,
+     0,
+     121
+    ],
+    [
+     "বাংলাদেশের নায়ক নায়িকাদের নামের তালিকা",
+     1,
+     0,
+     1
+    ]
+   ],
+   "position": 16.9,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/upazila/hajiganj",
+   "impressions": 53,
+   "clicks": 0,
+   "queries": [
+    [
+     "হাজীগঞ্জ থানা",
+     2,
+     0,
+     46.5
+    ],
+    [
+     "hajiganj",
+     1,
+     0,
+     63
+    ],
+    [
+     "haziganj",
+     1,
+     0,
+     66
+    ],
+    [
+     "হাজীগঞ্জ চাঁদপুর",
+     1,
+     0,
+     43
+    ]
+   ],
+   "position": 15.1,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/upazila/jagannathpur",
+   "impressions": 53,
+   "clicks": 0,
+   "queries": [
+    [
+     "jagannathpur sunamganj",
+     5,
+     0,
+     59.8
+    ],
+    [
+     "jagannathpur upazila",
+     4,
+     0,
+     52.2
+    ],
+    [
+     "bangladesh jagannathpur",
+     1,
+     0,
+     10
+    ],
+    [
+     "jagannathpur bangladesh",
+     1,
+     0,
+     61
+    ],
+    [
+     "jagannathpur darbhanga bihar",
+     1,
+     0,
+     93
+    ],
+    [
+     "jagannathpur sylhet bangladesh",
+     1,
+     0,
+     24
+    ],
+    [
+     "jagannathpur upazila bangladesh",
+     1,
+     0,
+     66
+    ]
+   ],
+   "position": 24.2,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/seat/zila/narayanganj",
+   "impressions": 50,
+   "clicks": 1,
+   "queries": [
+    [
+     "narayanganj mp",
+     2,
+     0,
+     10
+    ],
+    [
+     "নারায়ণগঞ্জের এমপি",
+     2,
+     0,
+     8
+    ],
+    [
+     "politician in narayanganj",
+     1,
+     0,
+     69
+    ],
+    [
+     "নারায়ণগঞ্জ বর্তমান এমপি কে",
+     1,
+     0,
+     9
+    ]
+   ],
+   "position": 8.6,
+   "ctr": 0.02
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/district/sunamganj",
+   "impressions": 49,
+   "clicks": 0,
+   "queries": [
+    [
+     "sunamganj district",
+     1,
+     0,
+     64
+    ]
+   ],
+   "position": 8.4,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/satkhira",
+   "impressions": 47,
+   "clicks": 2,
+   "queries": [],
+   "position": 7.9,
+   "ctr": 0.0426
   },
   {
    "url": "https://coloursofbangladesh.com/data/upazila/nazirpur",
@@ -1168,73 +1275,8 @@
    "ctr": 0.0213
   },
   {
-   "url": "https://coloursofbangladesh.com/data/district/sunamganj",
-   "impressions": 47,
-   "clicks": 0,
-   "queries": [
-    [
-     "sunamganj district",
-     1,
-     0,
-     64
-    ]
-   ],
-   "position": 8.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/satkhira",
-   "impressions": 43,
-   "clicks": 1,
-   "queries": [],
-   "position": 8.0,
-   "ctr": 0.0233
-  },
-  {
-   "url": "https://coloursofbangladesh.com/seat/zila/narayanganj",
-   "impressions": 40,
-   "clicks": 1,
-   "queries": [
-    [
-     "narayanganj mp",
-     2,
-     0,
-     10
-    ],
-    [
-     "নারায়ণগঞ্জের এমপি",
-     2,
-     0,
-     8
-    ],
-    [
-     "politician in narayanganj",
-     1,
-     0,
-     69
-    ]
-   ],
-   "position": 8.9,
-   "ctr": 0.025
-  },
-  {
-   "url": "https://coloursofbangladesh.com/data/upazila/derai",
-   "impressions": 38,
-   "clicks": 0,
-   "queries": [
-    [
-     "দিরাই উপজেলা ম্যাপ",
-     1,
-     0,
-     50
-    ]
-   ],
-   "position": 11.3,
-   "ctr": 0.0
-  },
-  {
    "url": "https://coloursofbangladesh.com/bazar/dal",
-   "impressions": 35,
+   "impressions": 44,
    "clicks": 1,
    "queries": [
     [
@@ -1262,18 +1304,45 @@
      1
     ],
     [
+     "ছোলার দাম ২০২৬",
+     1,
+     0,
+     9
+    ],
+    [
      "ডাল কেজি কত ২০২৬",
+     1,
+     0,
+     1
+    ],
+    [
+     "মোটা মসুর ডাল কত টাকা কেজি",
      1,
      0,
      1
     ]
    ],
-   "position": 2.8,
-   "ctr": 0.0286
+   "position": 2.7,
+   "ctr": 0.0227
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/upazila/derai",
+   "impressions": 39,
+   "clicks": 0,
+   "queries": [
+    [
+     "দিরাই উপজেলা ম্যাপ",
+     1,
+     0,
+     50
+    ]
+   ],
+   "position": 11.3,
+   "ctr": 0.0
   },
   {
    "url": "https://coloursofbangladesh.com/data/people/delwar-hossain-sayeedi",
-   "impressions": 35,
+   "impressions": 38,
    "clicks": 0,
    "queries": [
     [
@@ -1313,6 +1382,12 @@
      5
     ],
     [
+     "delowar hossain",
+     1,
+     0,
+     29
+    ],
+    [
      "দেলোয়ার হোসেন",
      1,
      0,
@@ -1325,72 +1400,65 @@
      7
     ]
    ],
-   "position": 26.0,
+   "position": 27.4,
    "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/data/upazila/dharmapasha",
-   "impressions": 34,
-   "clicks": 0,
-   "queries": [
-    [
-     "dharmapasha upazila",
-     1,
-     0,
-     29
-    ],
-    [
-     "ধর্মপাশা উপজেলা",
-     1,
-     0,
-     28
-    ]
-   ],
-   "position": 12.9,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/",
-   "impressions": 32,
-   "clicks": 2,
-   "queries": [
-    [
-     "colors bangladesh",
-     1,
-     0,
-     4
-    ]
-   ],
-   "position": 2.3,
-   "ctr": 0.0625
-  },
-  {
-   "url": "https://coloursofbangladesh.com/data/district/pirojpur",
-   "impressions": 31,
-   "clicks": 0,
-   "queries": [],
-   "position": 8.2,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/data/district/joypurhat",
-   "impressions": 29,
-   "clicks": 1,
-   "queries": [],
-   "position": 8.8,
-   "ctr": 0.0345
   },
   {
    "url": "https://coloursofbangladesh.com/postcode/nilphamari",
-   "impressions": 29,
+   "impressions": 37,
    "clicks": 1,
    "queries": [],
-   "position": 6.5,
-   "ctr": 0.0345
+   "position": 6.7,
+   "ctr": 0.027
+  },
+  {
+   "url": "https://coloursofbangladesh.com/ain/75/151",
+   "impressions": 36,
+   "clicks": 1,
+   "queries": [
+    [
+     "ফৌজদারি কার্যবিধি ১৫১ ধারা কি",
+     10,
+     0,
+     4.3
+    ],
+    [
+     "ফৌজদারী কার্যবিধি ১৫১ ধারা",
+     4,
+     0,
+     4
+    ],
+    [
+     "১৫১ ধারা কি",
+     4,
+     0,
+     8
+    ],
+    [
+     "ফৌজদারি কার্যবিধি ১৫১ ধারা",
+     3,
+     0,
+     2
+    ],
+    [
+     "১৫১ ধারা ফৌজদারি কার্যবিধি",
+     3,
+     0,
+     2
+    ],
+    [
+     "সিআরপিসি ১৫১ ধারা",
+     1,
+     0,
+     1
+    ]
+   ],
+   "position": 4.1,
+   "ctr": 0.0278
   },
   {
    "url": "https://coloursofbangladesh.com/data/division/mymensingh",
-   "impressions": 27,
+   "impressions": 36,
    "clicks": 0,
    "queries": [
     [
@@ -1406,18 +1474,154 @@
      11
     ],
     [
+     "ময়মনসিংহ বিভাগের জনসংখ্যা কত",
+     1,
+     0,
+     7
+    ],
+    [
      "ময়মনসিংহ বিভাগের জেলা কয়টি",
      1,
      0,
      65
     ]
    ],
-   "position": 13.4,
+   "position": 12.2,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/upazila/dharmapasha",
+   "impressions": 36,
+   "clicks": 0,
+   "queries": [
+    [
+     "dharmapasha upazila",
+     1,
+     0,
+     29
+    ],
+    [
+     "ধর্মপাশা উপজেলা",
+     1,
+     0,
+     28
+    ]
+   ],
+   "position": 12.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/",
+   "impressions": 34,
+   "clicks": 2,
+   "queries": [
+    [
+     "colors bangladesh",
+     1,
+     0,
+     4
+    ]
+   ],
+   "position": 2.2,
+   "ctr": 0.0588
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/district/pirojpur",
+   "impressions": 34,
+   "clicks": 0,
+   "queries": [],
+   "position": 8.1,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/3546",
+   "impressions": 31,
+   "clicks": 0,
+   "queries": [
+    [
+     "হোমনা পোস্ট কোড",
+     2,
+     0,
+     8
+    ]
+   ],
+   "position": 5.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/1704",
+   "impressions": 30,
+   "clicks": 0,
+   "queries": [
+    [
+     "national university post code",
+     13,
+     0,
+     8
+    ],
+    [
+     "gazipur post office",
+     1,
+     0,
+     1
+    ]
+   ],
+   "position": 6.2,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/district/joypurhat",
+   "impressions": 29,
+   "clicks": 1,
+   "queries": [],
+   "position": 8.8,
+   "ctr": 0.0345
+  },
+  {
+   "url": "https://coloursofbangladesh.com/ain/75/344",
+   "impressions": 29,
+   "clicks": 0,
+   "queries": [
+    [
+     "৩৪৪ ধারা কি",
+     3,
+     0,
+     1
+    ],
+    [
+     "344 dhara in bengali",
+     2,
+     0,
+     4.5
+    ]
+   ],
+   "position": 5.1,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/1450",
+   "impressions": 27,
+   "clicks": 0,
+   "queries": [
+    [
+     "araihazar post office",
+     1,
+     0,
+     1
+    ],
+    [
+     "আড়াইহাজার পোস্ট কোড",
+     1,
+     0,
+     1
+    ]
+   ],
+   "position": 4.4,
    "ctr": 0.0
   },
   {
    "url": "https://coloursofbangladesh.com/data/upazila/bishwambarpur",
-   "impressions": 25,
+   "impressions": 26,
    "clicks": 1,
    "queries": [
     [
@@ -1440,48 +1644,93 @@
     ]
    ],
    "position": 9.0,
-   "ctr": 0.04
+   "ctr": 0.0385
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/1704",
-   "impressions": 25,
+   "url": "https://coloursofbangladesh.com/data/people/shakib-khan",
+   "impressions": 26,
    "clicks": 0,
    "queries": [
     [
-     "national university post code",
-     11,
+     "shakib khan",
+     2,
      0,
-     8
+     23
     ],
     [
-     "gazipur post office",
+     "সাকিব খানের",
      1,
      0,
-     1
+     35
     ]
    ],
-   "position": 6.5,
+   "position": 13.0,
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/ain/75/344",
+   "url": "https://coloursofbangladesh.com/postcode/chuadanga",
+   "impressions": 26,
+   "clicks": 0,
+   "queries": [],
+   "position": 8.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/3560",
+   "impressions": 25,
+   "clicks": 1,
+   "queries": [
+    [
+     "বরুড়া পোস্ট কোড",
+     5,
+     0,
+     6
+    ]
+   ],
+   "position": 5.3,
+   "ctr": 0.04
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/panchagarh",
+   "impressions": 25,
+   "clicks": 0,
+   "queries": [],
+   "position": 10.2,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/joypurhat",
+   "impressions": 24,
+   "clicks": 1,
+   "queries": [],
+   "position": 7.4,
+   "ctr": 0.0417
+  },
+  {
+   "url": "https://coloursofbangladesh.com/ain/11/352",
    "impressions": 24,
    "clicks": 0,
    "queries": [
     [
-     "৩৪৪ ধারা কি",
-     3,
+     "352 ধারা কি",
+     1,
      0,
-     1
+     4
     ],
     [
-     "344 dhara in bengali",
+     "criminal force penal code",
+     1,
+     0,
+     8
+    ],
+    [
+     "৩৫২ ধারা কি",
      1,
      0,
      1
     ]
    ],
-   "position": 5.0,
+   "position": 4.0,
    "ctr": 0.0
   },
   {
@@ -1524,53 +1773,18 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/data/people/shakib-khan",
+   "url": "https://coloursofbangladesh.com/data/people/rajnath-singh",
    "impressions": 24,
    "clicks": 0,
    "queries": [
     [
-     "shakib khan",
-     2,
-     0,
-     23
-    ],
-    [
-     "সাকিব খানের",
+     "রাজনাথ সিং কি মন্ত্রী",
      1,
      0,
-     35
+     9
     ]
    ],
-   "position": 13.3,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/1450",
-   "impressions": 24,
-   "clicks": 0,
-   "queries": [
-    [
-     "araihazar post office",
-     1,
-     0,
-     1
-    ],
-    [
-     "আড়াইহাজার পোস্ট কোড",
-     1,
-     0,
-     1
-    ]
-   ],
-   "position": 4.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/panchagarh",
-   "impressions": 24,
-   "clicks": 0,
-   "queries": [],
-   "position": 10.2,
+   "position": 8.9,
    "ctr": 0.0
   },
   {
@@ -1601,36 +1815,6 @@
    "ctr": 0.0435
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/3560",
-   "impressions": 23,
-   "clicks": 1,
-   "queries": [
-    [
-     "বরুড়া পোস্ট কোড",
-     5,
-     0,
-     6
-    ]
-   ],
-   "position": 5.4,
-   "ctr": 0.0435
-  },
-  {
-   "url": "https://coloursofbangladesh.com/data/people/rajnath-singh",
-   "impressions": 23,
-   "clicks": 0,
-   "queries": [
-    [
-     "রাজনাথ সিং কি মন্ত্রী",
-     1,
-     0,
-     9
-    ]
-   ],
-   "position": 8.8,
-   "ctr": 0.0
-  },
-  {
    "url": "https://coloursofbangladesh.com/data/upazila/zakiganj",
    "impressions": 23,
    "clicks": 0,
@@ -1646,37 +1830,33 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/ain/75/151",
+   "url": "https://coloursofbangladesh.com/ain/11/408",
    "impressions": 22,
    "clicks": 1,
    "queries": [
     [
-     "ফৌজদারি কার্যবিধি ১৫১ ধারা কি",
-     8,
+     "408 penal code",
+     2,
      0,
-     4
+     6
     ],
     [
-     "ফৌজদারী কার্যবিধি ১৫১ ধারা",
-     3,
-     0,
-     4
-    ],
-    [
-     "১৫১ ধারা ফৌজদারি কার্যবিধি",
-     3,
-     0,
-     2
-    ],
-    [
-     "সিআরপিসি ১৫১ ধারা",
+     "পেনাল কোড ৪০৮ ধারা",
      1,
      0,
      1
     ]
    ],
-   "position": 3.1,
+   "position": 3.5,
    "ctr": 0.0455
+  },
+  {
+   "url": "https://coloursofbangladesh.com/ain/11/64",
+   "impressions": 22,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.2,
+   "ctr": 0.0
   },
   {
    "url": "https://coloursofbangladesh.com/data/upazila/chandpur-sadar",
@@ -1726,18 +1906,53 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/3546",
+   "url": "https://coloursofbangladesh.com/postcode/5880",
    "impressions": 22,
    "clicks": 0,
    "queries": [
     [
-     "হোমনা পোস্ট কোড",
+     "dupchanchia postal code",
      2,
      0,
-     8
+     9
+    ],
+    [
+     "দুপচাঁচিয়া",
+     1,
+     0,
+     4
+    ],
+    [
+     "দুপচাঁচিয়া উপজেলা",
+     1,
+     0,
+     12
     ]
    ],
-   "position": 6.1,
+   "position": 7.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/jobs/govt/15331-telex-operator",
+   "impressions": 21,
+   "clicks": 1,
+   "queries": [
+    [
+     "টেলেক্স অপারেটর",
+     12,
+     1,
+     3.2
+    ]
+   ],
+   "position": 3.5,
+   "ctr": 0.0476
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/division/khulna",
+   "impressions": 21,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.2,
    "ctr": 0.0
   },
   {
@@ -1770,50 +1985,27 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/data/division/khulna",
+   "url": "https://coloursofbangladesh.com/data/upazila/chhatak",
    "impressions": 20,
    "clicks": 0,
    "queries": [],
-   "position": 7.0,
+   "position": 8.9,
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/jobs/govt/15393-security-guard",
+   "url": "https://coloursofbangladesh.com/data/upazila/madhyanagar",
    "impressions": 20,
    "clicks": 0,
    "queries": [
     [
-     "বেপজা নিরাপত্তা প্রহরী",
-     6,
+     "মধ্যনগর উপজেলা",
+     1,
      0,
      9
     ]
    ],
-   "position": 6.8,
+   "position": 6.6,
    "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/ain/11/64",
-   "impressions": 19,
-   "clicks": 0,
-   "queries": [],
-   "position": 6.3,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/ain/11/408",
-   "impressions": 18,
-   "clicks": 1,
-   "queries": [
-    [
-     "408 penal code",
-     2,
-     0,
-     6
-    ]
-   ],
-   "position": 3.8,
-   "ctr": 0.0556
   },
   {
    "url": "https://coloursofbangladesh.com/data/people/mohammad-ashraful",
@@ -1835,6 +2027,22 @@
    ],
    "position": 21.7,
    "ctr": 0.0556
+  },
+  {
+   "url": "https://coloursofbangladesh.com/ain/11/19",
+   "impressions": 18,
+   "clicks": 0,
+   "queries": [],
+   "position": 3.4,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/ain/11/28",
+   "impressions": 18,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.3,
+   "ctr": 0.0
   },
   {
    "url": "https://coloursofbangladesh.com/ain/26",
@@ -1891,73 +2099,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/data/upazila/madhyanagar",
-   "impressions": 18,
-   "clicks": 0,
-   "queries": [
-    [
-     "মধ্যনগর উপজেলা",
-     1,
-     0,
-     9
-    ]
-   ],
-   "position": 5.9,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/jobs/govt/15331-telex-operator",
-   "impressions": 17,
-   "clicks": 1,
-   "queries": [
-    [
-     "টেলেক্স অপারেটর",
-     9,
-     1,
-     3.4
-    ]
-   ],
-   "position": 3.4,
-   "ctr": 0.0588
-  },
-  {
-   "url": "https://coloursofbangladesh.com/ain/11/19",
-   "impressions": 17,
-   "clicks": 0,
-   "queries": [],
-   "position": 3.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/ain/11/28",
-   "impressions": 17,
-   "clicks": 0,
-   "queries": [],
-   "position": 5.4,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/ain/11/352",
-   "impressions": 17,
-   "clicks": 0,
-   "queries": [
-    [
-     "352 ধারা কি",
-     1,
-     0,
-     4
-    ],
-    [
-     "criminal force penal code",
-     1,
-     0,
-     8
-    ]
-   ],
-   "position": 4.1,
-   "ctr": 0.0
-  },
-  {
    "url": "https://coloursofbangladesh.com/data",
    "impressions": 17,
    "clicks": 0,
@@ -1973,11 +2114,45 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/chuadanga",
-   "impressions": 17,
+   "url": "https://coloursofbangladesh.com/ain/75/205a",
+   "impressions": 16,
    "clicks": 0,
-   "queries": [],
+   "queries": [
+    [
+     "ফৌজদারি কার্যবিধি ২০৫ ধারা",
+     4,
+     0,
+     6.8
+    ],
+    [
+     "২০৫ ধারা কি",
+     1,
+     0,
+     11
+    ]
+   ],
    "position": 8.3,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/people/mahmudullah",
+   "impressions": 16,
+   "clicks": 0,
+   "queries": [
+    [
+     "mahmudullah",
+     2,
+     0,
+     78.5
+    ],
+    [
+     "মাহমুদুল্লাহ রিয়াদ",
+     1,
+     0,
+     13
+    ]
+   ],
+   "position": 17.7,
    "ctr": 0.0
   },
   {
@@ -2008,32 +2183,24 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/data/upazila/chhatak",
-   "impressions": 16,
-   "clicks": 0,
-   "queries": [],
-   "position": 9.1,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/5880",
+   "url": "https://coloursofbangladesh.com/postcode/3530",
    "impressions": 16,
    "clicks": 0,
    "queries": [
     [
-     "dupchanchia postal code",
+     "কুমিল্লা দেবিদ্বার পোস্ট কোড",
      1,
      0,
-     8
+     6
     ],
     [
-     "দুপচাঁচিয়া",
+     "দেবিদ্বার পোস্ট কোড",
      1,
      0,
-     4
+     11
     ]
    ],
-   "position": 6.5,
+   "position": 6.9,
    "ctr": 0.0
   },
   {
@@ -2099,6 +2266,21 @@
    "ctr": 0.0
   },
   {
+   "url": "https://coloursofbangladesh.com/postcode/coxs-bazar",
+   "impressions": 15,
+   "clicks": 0,
+   "queries": [
+    [
+     "কুতুবদিয়া পোস্ট কোড",
+     2,
+     0,
+     7.5
+    ]
+   ],
+   "position": 9.2,
+   "ctr": 0.0
+  },
+  {
    "url": "https://coloursofbangladesh.com/reels",
    "impressions": 15,
    "clicks": 0,
@@ -2107,18 +2289,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/data/people/mahmudullah",
+   "url": "https://coloursofbangladesh.com/data/people/mushfiqur-rahim",
    "impressions": 14,
    "clicks": 0,
-   "queries": [
-    [
-     "mahmudullah",
-     2,
-     0,
-     78.5
-    ]
-   ],
-   "position": 18.8,
+   "queries": [],
+   "position": 13.6,
    "ctr": 0.0
   },
   {
@@ -2130,12 +2305,51 @@
    "ctr": 0.0
   },
   {
+   "url": "https://coloursofbangladesh.com/postcode/3520",
+   "impressions": 14,
+   "clicks": 0,
+   "queries": [
+    [
+     "বুড়িচং পোস্ট কোড",
+     3,
+     0,
+     7
+    ]
+   ],
+   "position": 6.9,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/5420",
+   "impressions": 14,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/6740",
+   "impressions": 14,
+   "clicks": 0,
+   "queries": [],
+   "position": 3.7,
+   "ctr": 0.0
+  },
+  {
    "url": "https://coloursofbangladesh.com/video",
    "impressions": 14,
    "clicks": 0,
    "queries": [],
    "position": 7.4,
    "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/3890",
+   "impressions": 13,
+   "clicks": 1,
+   "queries": [],
+   "position": 6.3,
+   "ctr": 0.0769
   },
   {
    "url": "https://coloursofbangladesh.com/c/national",
@@ -2209,21 +2423,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/3520",
-   "impressions": 13,
-   "clicks": 0,
-   "queries": [
-    [
-     "বুড়িচং পোস্ট কোড",
-     3,
-     0,
-     7
-    ]
-   ],
-   "position": 7.2,
-   "ctr": 0.0
-  },
-  {
    "url": "https://coloursofbangladesh.com/postcode/thakurgaon",
    "impressions": 13,
    "clicks": 0,
@@ -2237,6 +2436,35 @@
    "clicks": 0,
    "queries": [],
    "position": 5.2,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/ain/11/471",
+   "impressions": 12,
+   "clicks": 0,
+   "queries": [
+    [
+     "৪৭১ ধারা কি",
+     2,
+     0,
+     7
+    ],
+    [
+     "পেনাল কোড ৪৭১ ধারা",
+     1,
+     0,
+     10
+    ]
+   ],
+   "position": 6.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/ain/11/90",
+   "impressions": 12,
+   "clicks": 0,
+   "queries": [],
+   "position": 4.9,
    "ctr": 0.0
   },
   {
@@ -2324,33 +2552,35 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/3530",
+   "url": "https://coloursofbangladesh.com/live",
+   "impressions": 12,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.1,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/1208",
+   "impressions": 12,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/tools/land/shotangsho-to-ojutangsho",
    "impressions": 12,
    "clicks": 0,
    "queries": [
     [
-     "কুমিল্লা দেবিদ্বার পোস্ট কোড",
+     "কত অযুতাংশে এক শতক",
      1,
      0,
-     6
-    ],
-    [
-     "দেবিদ্বার পোস্ট কোড",
-     1,
-     0,
-     11
+     10
     ]
    ],
-   "position": 6.7,
+   "position": 6.0,
    "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/joypurhat",
-   "impressions": 11,
-   "clicks": 1,
-   "queries": [],
-   "position": 6.9,
-   "ctr": 0.0909
   },
   {
    "url": "https://coloursofbangladesh.com/ain/11/431",
@@ -2358,6 +2588,14 @@
    "clicks": 0,
    "queries": [],
    "position": 3.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/c/international",
+   "impressions": 11,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.2,
    "ctr": 0.0
   },
   {
@@ -2458,19 +2696,80 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/live",
+   "url": "https://coloursofbangladesh.com/postcode/2130",
    "impressions": 11,
    "clicks": 0,
    "queries": [],
-   "position": 6.9,
+   "position": 6.1,
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/c/international",
-   "impressions": 10,
+   "url": "https://coloursofbangladesh.com/postcode/3402",
+   "impressions": 11,
+   "clicks": 0,
+   "queries": [
+    [
+     "আশুগঞ্জ পোস্ট কোড",
+     4,
+     0,
+     8.5
+    ]
+   ],
+   "position": 7.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/3430",
+   "impressions": 11,
    "clicks": 0,
    "queries": [],
-   "position": 5.4,
+   "position": 4.4,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/3581",
+   "impressions": 11,
+   "clicks": 0,
+   "queries": [],
+   "position": 8.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/4392",
+   "impressions": 11,
+   "clicks": 0,
+   "queries": [
+    [
+     "বাঁশখালী পোস্ট কোড",
+     3,
+     0,
+     11
+    ]
+   ],
+   "position": 8.2,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/7340",
+   "impressions": 11,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.3,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/c/blog",
+   "impressions": 10,
+   "clicks": 0,
+   "queries": [
+    [
+     "সামিট গ্রুপ বাংলাদেশ",
+     1,
+     0,
+     40
+    ]
+   ],
+   "position": 8.4,
    "ctr": 0.0
   },
   {
@@ -2511,26 +2810,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/2130",
+   "url": "https://coloursofbangladesh.com/postcode/3804",
    "impressions": 10,
    "clicks": 0,
    "queries": [],
-   "position": 6.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/4392",
-   "impressions": 10,
-   "clicks": 0,
-   "queries": [
-    [
-     "বাঁশখালী পোস্ট কোড",
-     3,
-     0,
-     11
-    ]
-   ],
-   "position": 8.2,
+   "position": 4.9,
    "ctr": 0.0
   },
   {
@@ -2539,21 +2823,6 @@
    "clicks": 0,
    "queries": [],
    "position": 8.8,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/tools/land/shotangsho-to-ojutangsho",
-   "impressions": 10,
-   "clicks": 0,
-   "queries": [
-    [
-     "কত অযুতাংশে এক শতক",
-     1,
-     0,
-     10
-    ]
-   ],
-   "position": 5.7,
    "ctr": 0.0
   },
   {
@@ -2592,145 +2861,16 @@
    "ctr": 0.1111
   },
   {
-   "url": "https://coloursofbangladesh.com/ain/11/90",
+   "url": "https://coloursofbangladesh.com/postcode/5610",
    "impressions": 9,
-   "clicks": 0,
+   "clicks": 1,
    "queries": [],
-   "position": 5.4,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/ain/75/195",
-   "impressions": 9,
-   "clicks": 0,
-   "queries": [],
-   "position": 6.1,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/ain/75/205a",
-   "impressions": 9,
-   "clicks": 0,
-   "queries": [
-    [
-     "ফৌজদারি কার্যবিধি ২০৫ ধারা",
-     3,
-     0,
-     6
-    ],
-    [
-     "২০৫ ধারা কি",
-     1,
-     0,
-     11
-    ]
-   ],
-   "position": 8.3,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/ain/75/265i",
-   "impressions": 9,
-   "clicks": 0,
-   "queries": [],
-   "position": 6.2,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/c/blog",
-   "impressions": 9,
-   "clicks": 0,
-   "queries": [
-    [
-     "সামিট গ্রুপ বাংলাদেশ",
-     1,
-     0,
-     40
-    ]
-   ],
-   "position": 8.4,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/c/entertainment",
-   "impressions": 9,
-   "clicks": 0,
-   "queries": [],
-   "position": 4.8,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/data/people/mushfiqur-rahim",
-   "impressions": 9,
-   "clicks": 0,
-   "queries": [],
-   "position": 16.3,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/data/people/orchita-sporshia",
-   "impressions": 9,
-   "clicks": 0,
-   "queries": [
-    [
-     "orchita sporshia",
-     1,
-     0,
-     49
-    ],
-    [
-     "orchita sporshia family",
-     1,
-     0,
-     54
-    ]
-   ],
-   "position": 16.8,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/3804",
-   "impressions": 9,
-   "clicks": 0,
-   "queries": [],
-   "position": 5.3,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/6740",
-   "impressions": 9,
-   "clicks": 0,
-   "queries": [],
-   "position": 4.1,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/7340",
-   "impressions": 9,
-   "clicks": 0,
-   "queries": [],
-   "position": 6.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/coxs-bazar",
-   "impressions": 9,
-   "clicks": 0,
-   "queries": [],
-   "position": 9.7,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/ain/11/185",
-   "impressions": 8,
-   "clicks": 0,
-   "queries": [],
-   "position": 3.2,
-   "ctr": 0.0
+   "position": 7.8,
+   "ctr": 0.1111
   },
   {
    "url": "https://coloursofbangladesh.com/ain/11/302",
-   "impressions": 8,
+   "impressions": 9,
    "clicks": 0,
    "queries": [
     [
@@ -2758,7 +2898,189 @@
      11
     ]
    ],
-   "position": 37.4,
+   "position": 35.9,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/ain/11/441",
+   "impressions": 9,
+   "clicks": 0,
+   "queries": [
+    [
+     "৪৪১ ধারা কি",
+     1,
+     0,
+     10
+    ]
+   ],
+   "position": 6.9,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/ain/75/195",
+   "impressions": 9,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.1,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/ain/75/265i",
+   "impressions": 9,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.2,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/ain/75/476",
+   "impressions": 9,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.7,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/ain/75/565",
+   "impressions": 9,
+   "clicks": 0,
+   "queries": [],
+   "position": 3.2,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/ain/86/35",
+   "impressions": 9,
+   "clicks": 0,
+   "queries": [],
+   "position": 4.7,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/c/entertainment",
+   "impressions": 9,
+   "clicks": 0,
+   "queries": [],
+   "position": 4.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/people/orchita-sporshia",
+   "impressions": 9,
+   "clicks": 0,
+   "queries": [
+    [
+     "orchita sporshia",
+     1,
+     0,
+     49
+    ],
+    [
+     "orchita sporshia family",
+     1,
+     0,
+     54
+    ]
+   ],
+   "position": 16.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/jobs/govt/15216-assistant-directorate-of-posts",
+   "impressions": 9,
+   "clicks": 0,
+   "queries": [
+    [
+     "dgbpo teletalk",
+     2,
+     0,
+     17
+    ],
+    [
+     "dgbpo job circular 2021",
+     1,
+     0,
+     39
+    ]
+   ],
+   "position": 12.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/3010",
+   "impressions": 9,
+   "clicks": 0,
+   "queries": [],
+   "position": 3.1,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/4100",
+   "impressions": 9,
+   "clicks": 0,
+   "queries": [],
+   "position": 8.4,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/4440",
+   "impressions": 9,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.7,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/4470",
+   "impressions": 9,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.9,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/6311",
+   "impressions": 9,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.2,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/5870",
+   "impressions": 8,
+   "clicks": 2,
+   "queries": [
+    [
+     "kahaloo post code",
+     1,
+     0,
+     11
+    ],
+    [
+     "kahaloo postal code",
+     1,
+     0,
+     9
+    ]
+   ],
+   "position": 7.9,
+   "ctr": 0.25
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/4202",
+   "impressions": 8,
+   "clicks": 1,
+   "queries": [],
+   "position": 7.5,
+   "ctr": 0.125
+  },
+  {
+   "url": "https://coloursofbangladesh.com/ain/11/185",
+   "impressions": 8,
+   "clicks": 0,
+   "queries": [],
+   "position": 3.2,
    "ctr": 0.0
   },
   {
@@ -2770,26 +3092,26 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/ain/11/471",
+   "url": "https://coloursofbangladesh.com/ain/75/113",
    "impressions": 8,
    "clicks": 0,
    "queries": [
     [
-     "৪৭১ ধারা কি",
-     1,
+     "১১৩ ধারা কি",
+     3,
      0,
-     5
+     5.3
     ]
    ],
-   "position": 6.1,
+   "position": 4.5,
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/ain/75/565",
+   "url": "https://coloursofbangladesh.com/c/country",
    "impressions": 8,
    "clicks": 0,
    "queries": [],
-   "position": 2.8,
+   "position": 8.1,
    "ctr": 0.0
   },
   {
@@ -2809,6 +3131,22 @@
    "ctr": 0.0
   },
   {
+   "url": "https://coloursofbangladesh.com/data/best",
+   "impressions": 8,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.1,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/people/sabina-khatun",
+   "impressions": 8,
+   "clicks": 0,
+   "queries": [],
+   "position": 8.2,
+   "ctr": 0.0
+  },
+  {
    "url": "https://coloursofbangladesh.com/data/places",
    "impressions": 8,
    "clicks": 0,
@@ -2817,64 +3155,57 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/jobs/govt/15216-assistant-directorate-of-posts",
+   "url": "https://coloursofbangladesh.com/postcode/3070",
+   "impressions": 8,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/3450",
    "impressions": 8,
    "clicks": 0,
    "queries": [
     [
-     "dgbpo teletalk",
-     2,
-     0,
-     17
-    ],
-    [
-     "dgbpo job circular 2021",
+     "আখাউড়া পোস্ট কোড",
      1,
      0,
-     39
+     8
     ]
    ],
-   "position": 14.1,
+   "position": 7.5,
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/3010",
+   "url": "https://coloursofbangladesh.com/postcode/3820",
    "impressions": 8,
    "clicks": 0,
    "queries": [],
-   "position": 3.2,
+   "position": 6.2,
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/3430",
+   "url": "https://coloursofbangladesh.com/postcode/5310",
    "impressions": 8,
    "clicks": 0,
-   "queries": [],
-   "position": 4.5,
+   "queries": [
+    [
+     "syedpur",
+     2,
+     0,
+     60
+    ]
+   ],
+   "position": 21.6,
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/3581",
-   "impressions": 8,
-   "clicks": 0,
-   "queries": [],
-   "position": 8.8,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/3890",
+   "url": "https://coloursofbangladesh.com/postcode/5510",
    "impressions": 8,
    "clicks": 0,
    "queries": [],
    "position": 6.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/5420",
-   "impressions": 8,
-   "clicks": 0,
-   "queries": [],
-   "position": 6.0,
    "ctr": 0.0
   },
   {
@@ -2886,12 +3217,42 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/4202",
+   "url": "https://coloursofbangladesh.com/seat/kushtia-1",
+   "impressions": 8,
+   "clicks": 0,
+   "queries": [
+    [
+     "কুষ্টিয়া ১ আসনের এমপি",
+     1,
+     0,
+     10
+    ]
+   ],
+   "position": 6.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/ain/11/192",
    "impressions": 7,
    "clicks": 1,
    "queries": [],
-   "position": 7.0,
+   "position": 3.1,
    "ctr": 0.1429
+  },
+  {
+   "url": "https://coloursofbangladesh.com/ain/11/477",
+   "impressions": 7,
+   "clicks": 0,
+   "queries": [
+    [
+     "৪৭৭ ধারা",
+     5,
+     0,
+     6.4
+    ]
+   ],
+   "position": 5.6,
+   "ctr": 0.0
   },
   {
    "url": "https://coloursofbangladesh.com/ain/462",
@@ -2921,19 +3282,18 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/c/country",
+   "url": "https://coloursofbangladesh.com/ain/75/418",
    "impressions": 7,
    "clicks": 0,
-   "queries": [],
-   "position": 7.9,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/data/best",
-   "impressions": 7,
-   "clicks": 0,
-   "queries": [],
-   "position": 6.3,
+   "queries": [
+    [
+     "৪১৮ ধারা কি",
+     4,
+     0,
+     6.5
+    ]
+   ],
+   "position": 6.7,
    "ctr": 0.0
   },
   {
@@ -2945,11 +3305,18 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/data/people/sabina-khatun",
+   "url": "https://coloursofbangladesh.com/data/people/jibanananda-das",
    "impressions": 7,
    "clicks": 0,
-   "queries": [],
-   "position": 8.1,
+   "queries": [
+    [
+     "jibanananda das",
+     1,
+     0,
+     7
+    ]
+   ],
+   "position": 7.4,
    "ctr": 0.0
   },
   {
@@ -2961,6 +3328,14 @@
    "ctr": 0.0
   },
   {
+   "url": "https://coloursofbangladesh.com/jobs/govt/15370-upper-division-assistant",
+   "impressions": 7,
+   "clicks": 0,
+   "queries": [],
+   "position": 11.3,
+   "ctr": 0.0
+  },
+  {
    "url": "https://coloursofbangladesh.com/postcode/1462",
    "impressions": 7,
    "clicks": 0,
@@ -2969,26 +3344,42 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/3070",
+   "url": "https://coloursofbangladesh.com/postcode/3060",
    "impressions": 7,
    "clicks": 0,
    "queries": [],
-   "position": 5.0,
+   "position": 5.7,
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/3402",
+   "url": "https://coloursofbangladesh.com/postcode/3440",
    "impressions": 7,
    "clicks": 0,
    "queries": [
     [
-     "আশুগঞ্জ পোস্ট কোড",
-     4,
+     "brahmanbaria nasirnagar",
+     1,
      0,
-     8.5
+     10
     ]
    ],
-   "position": 8.3,
+   "position": 5.4,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/3526",
+   "impressions": 7,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.4,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/4349",
+   "impressions": 7,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.9,
    "ctr": 0.0
   },
   {
@@ -3000,22 +3391,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/4440",
-   "impressions": 7,
-   "clicks": 0,
-   "queries": [],
-   "position": 6.9,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/4470",
-   "impressions": 7,
-   "clicks": 0,
-   "queries": [],
-   "position": 6.3,
-   "ctr": 0.0
-  },
-  {
    "url": "https://coloursofbangladesh.com/postcode/5450",
    "impressions": 7,
    "clicks": 0,
@@ -3024,11 +3399,27 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/5510",
+   "url": "https://coloursofbangladesh.com/postcode/5860",
    "impressions": 7,
    "clicks": 0,
    "queries": [],
-   "position": 6.9,
+   "position": 4.4,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/6421",
+   "impressions": 7,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.3,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/6683",
+   "impressions": 7,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.3,
    "ctr": 0.0
   },
   {
@@ -3064,11 +3455,11 @@
    "ctr": 0.3333
   },
   {
-   "url": "https://coloursofbangladesh.com/ain/11/192",
+   "url": "https://coloursofbangladesh.com/postcode/3931",
    "impressions": 6,
    "clicks": 1,
    "queries": [],
-   "position": 3.2,
+   "position": 5.3,
    "ctr": 0.1667
   },
   {
@@ -3084,6 +3475,14 @@
     ]
    ],
    "position": 7.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/ain/11/358",
+   "impressions": 6,
+   "clicks": 0,
+   "queries": [],
+   "position": 11.0,
    "ctr": 0.0
   },
   {
@@ -3108,47 +3507,65 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/ain/11/441",
+   "url": "https://coloursofbangladesh.com/ain/75/135",
+   "impressions": 6,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/ain/75/148",
    "impressions": 6,
    "clicks": 0,
    "queries": [
     [
-     "৪৪১ ধারা কি",
-     1,
+     "১৪৮ ধারা মামলা কি",
+     2,
      0,
      10
     ]
    ],
-   "position": 6.5,
+   "position": 5.5,
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/ain/75/113",
+   "url": "https://coloursofbangladesh.com/ain/75/361",
    "impressions": 6,
    "clicks": 0,
-   "queries": [
-    [
-     "১১৩ ধারা কি",
-     3,
-     0,
-     5.3
-    ]
-   ],
-   "position": 5.0,
+   "queries": [],
+   "position": 11.5,
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/data/people/jibanananda-das",
+   "url": "https://coloursofbangladesh.com/data/division/rajshahi",
    "impressions": 6,
    "clicks": 0,
-   "queries": [
-    [
-     "jibanananda das",
-     1,
-     0,
-     7
-    ]
-   ],
+   "queries": [],
+   "position": 6.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/people/meher-afroz-shaon",
+   "impressions": 6,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/places/sundarbans",
+   "impressions": 6,
+   "clicks": 0,
+   "queries": [],
+   "position": 9.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/upazila/ranisankail",
+   "impressions": 6,
+   "clicks": 0,
+   "queries": [],
    "position": 7.5,
    "ctr": 0.0
   },
@@ -3161,27 +3578,51 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/1208",
+   "url": "https://coloursofbangladesh.com/jobs/govt/15367-office-assistant-cum-computer-typist",
    "impressions": 6,
    "clicks": 0,
    "queries": [],
-   "position": 7.8,
+   "position": 6.2,
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/3450",
+   "url": "https://coloursofbangladesh.com/postcode/3200",
    "impressions": 6,
    "clicks": 0,
    "queries": [],
-   "position": 8.0,
+   "position": 7.3,
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/4100",
+   "url": "https://coloursofbangladesh.com/postcode/3420",
    "impressions": 6,
    "clicks": 0,
    "queries": [],
-   "position": 8.3,
+   "position": 4.3,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/3920",
+   "impressions": 6,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/4376",
+   "impressions": 6,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/4540",
+   "impressions": 6,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.3,
    "ctr": 0.0
   },
   {
@@ -3193,11 +3634,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/6421",
+   "url": "https://coloursofbangladesh.com/postcode/5670",
    "impressions": 6,
    "clicks": 0,
    "queries": [],
-   "position": 5.5,
+   "position": 8.3,
    "ctr": 0.0
   },
   {
@@ -3209,11 +3650,35 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/6683",
+   "url": "https://coloursofbangladesh.com/postcode/6640",
    "impressions": 6,
    "clicks": 0,
    "queries": [],
-   "position": 7.2,
+   "position": 5.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/6772",
+   "impressions": 6,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.7,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/7010",
+   "impressions": 6,
+   "clicks": 0,
+   "queries": [],
+   "position": 9.7,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/7042",
+   "impressions": 6,
+   "clicks": 0,
+   "queries": [],
+   "position": 8.2,
    "ctr": 0.0
   },
   {
@@ -3225,38 +3690,59 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/seat/kushtia-1",
+   "url": "https://coloursofbangladesh.com/seat/bhola-1",
    "impressions": 6,
    "clicks": 0,
    "queries": [
     [
-     "কুষ্টিয়া ১ আসনের এমপি",
+     "ভোলা ১",
      1,
      0,
-     10
+     61
+    ],
+    [
+     "ভোলা ১ আসনের এমপি",
+     1,
+     0,
+     43
     ]
    ],
-   "position": 6.3,
+   "position": 23.3,
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/5870",
-   "impressions": 5,
-   "clicks": 2,
-   "queries": [],
-   "position": 7.2,
-   "ctr": 0.4
+   "url": "https://coloursofbangladesh.com/seat/comilla-10",
+   "impressions": 6,
+   "clicks": 0,
+   "queries": [
+    [
+     "কুমিল্লা ১০",
+     1,
+     0,
+     35
+    ]
+   ],
+   "position": 13.2,
+   "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/news/uk-asylum-fraud-bangladeshi-musician-pequ",
+   "url": "https://coloursofbangladesh.com/seat/rajbari-1",
+   "impressions": 6,
+   "clicks": 0,
+   "queries": [],
+   "position": 8.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/jobs/govt/15347-office-assistant-cum-computer-typist",
    "impressions": 5,
    "clicks": 1,
    "queries": [],
-   "position": 6.2,
+   "position": 7.2,
    "ctr": 0.2
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/3931",
+   "url": "https://coloursofbangladesh.com/news/uk-asylum-fraud-bangladeshi-musician-pequ",
    "impressions": 5,
    "clicks": 1,
    "queries": [],
@@ -3287,6 +3773,21 @@
    "ctr": 0.0
   },
   {
+   "url": "https://coloursofbangladesh.com/ain/11/348",
+   "impressions": 5,
+   "clicks": 0,
+   "queries": [
+    [
+     "section 348",
+     1,
+     0,
+     1
+    ]
+   ],
+   "position": 6.2,
+   "ctr": 0.0
+  },
+  {
    "url": "https://coloursofbangladesh.com/ain/11/36",
    "impressions": 5,
    "clicks": 0,
@@ -3310,41 +3811,69 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/ain/75/135",
+   "url": "https://coloursofbangladesh.com/ain/1256",
+   "impressions": 5,
+   "clicks": 0,
+   "queries": [
+    [
+     "যৌতুক আইনের ৩ ধারা",
+     1,
+     0,
+     4
+    ],
+    [
+     "যৌতুক নিরোধ আইন ২০১৮",
+     1,
+     0,
+     62
+    ],
+    [
+     "যৌতুক নিরোধ আইন ২০১৮ এর ৩ ধারা",
+     1,
+     0,
+     48
+    ]
+   ],
+   "position": 25.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/ain/75/236",
    "impressions": 5,
    "clicks": 0,
    "queries": [],
-   "position": 6.6,
+   "position": 2.8,
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/ain/75/148",
+   "url": "https://coloursofbangladesh.com/ain/75/394",
    "impressions": 5,
    "clicks": 0,
    "queries": [
     [
-     "১৪৮ ধারা মামলা কি",
+     "ফৌজদারি কার্যবিধি ধারা সমূহ",
      1,
      0,
-     11
+     8
     ]
    ],
-   "position": 4.8,
+   "position": 8.8,
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/ain/75/418",
+   "url": "https://coloursofbangladesh.com/ain/86/43",
    "impressions": 5,
    "clicks": 0,
-   "queries": [
-    [
-     "৪১৮ ধারা কি",
-     3,
-     0,
-     6.3
-    ]
-   ],
-   "position": 6.8,
+   "queries": [],
+   "position": 4.6,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/c/lifestyle",
+   "impressions": 5,
+   "clicks": 0,
+   "queries": [],
+   "position": 8.4,
    "ctr": 0.0
   },
   {
@@ -3385,14 +3914,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/data/division/rajshahi",
-   "impressions": 5,
-   "clicks": 0,
-   "queries": [],
-   "position": 7.4,
-   "ctr": 0.0
-  },
-  {
    "url": "https://coloursofbangladesh.com/data/people/anusheh-anadil",
    "impressions": 5,
    "clicks": 0,
@@ -3408,19 +3929,18 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/data/people/meher-afroz-shaon",
+   "url": "https://coloursofbangladesh.com/data/people/tarique-rahman",
    "impressions": 5,
    "clicks": 0,
-   "queries": [],
-   "position": 6.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/data/places/sundarbans",
-   "impressions": 5,
-   "clicks": 0,
-   "queries": [],
-   "position": 9.4,
+   "queries": [
+    [
+     "তারেক রহমানের জন্ম তারিখ",
+     1,
+     0,
+     3
+    ]
+   ],
+   "position": 25.0,
    "ctr": 0.0
   },
   {
@@ -3432,19 +3952,27 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/3440",
+   "url": "https://coloursofbangladesh.com/postcode/3230",
+   "impressions": 5,
+   "clicks": 0,
+   "queries": [],
+   "position": 4.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/3400",
+   "impressions": 5,
+   "clicks": 0,
+   "queries": [],
+   "position": 10.4,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/3541",
    "impressions": 5,
    "clicks": 0,
    "queries": [],
    "position": 5.2,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/3526",
-   "impressions": 5,
-   "clicks": 0,
-   "queries": [],
-   "position": 6.8,
    "ctr": 0.0
   },
   {
@@ -3456,15 +3984,7 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/3820",
-   "impressions": 5,
-   "clicks": 0,
-   "queries": [],
-   "position": 7.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/5860",
+   "url": "https://coloursofbangladesh.com/postcode/4212",
    "impressions": 5,
    "clicks": 0,
    "queries": [],
@@ -3472,27 +3992,27 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/6640",
+   "url": "https://coloursofbangladesh.com/postcode/4225",
    "impressions": 5,
    "clicks": 0,
    "queries": [],
-   "position": 5.4,
+   "position": 8.8,
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/7010",
+   "url": "https://coloursofbangladesh.com/postcode/4370",
    "impressions": 5,
    "clicks": 0,
    "queries": [],
-   "position": 9.6,
+   "position": 5.0,
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/7042",
+   "url": "https://coloursofbangladesh.com/postcode/5800",
    "impressions": 5,
    "clicks": 0,
    "queries": [],
-   "position": 8.2,
+   "position": 9.2,
    "ctr": 0.0
   },
   {
@@ -3504,18 +4024,18 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/seat/comilla-10",
+   "url": "https://coloursofbangladesh.com/seat/chapainababgonj-1",
    "impressions": 5,
    "clicks": 0,
    "queries": [
     [
-     "কুমিল্লা ১০",
+     "চাঁপাইনবাবগঞ্জ ১ আসনের এমপি",
      1,
      0,
-     35
+     29
     ]
    ],
-   "position": 13.8,
+   "position": 14.8,
    "ctr": 0.0
   },
   {
@@ -3549,14 +4069,6 @@
    "ctr": 0.25
   },
   {
-   "url": "https://coloursofbangladesh.com/jobs/govt/15347-office-assistant-cum-computer-typist",
-   "impressions": 4,
-   "clicks": 1,
-   "queries": [],
-   "position": 7.5,
-   "ctr": 0.25
-  },
-  {
    "url": "https://coloursofbangladesh.com/ain/11/225b",
    "impressions": 4,
    "clicks": 0,
@@ -3565,33 +4077,26 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/ain/11/348",
+   "url": "https://coloursofbangladesh.com/ain/11/316",
    "impressions": 4,
    "clicks": 0,
-   "queries": [
-    [
-     "section 348",
-     1,
-     0,
-     1
-    ]
-   ],
-   "position": 6.0,
+   "queries": [],
+   "position": 5.8,
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/ain/11/477",
+   "url": "https://coloursofbangladesh.com/ain/11/404",
    "impressions": 4,
    "clicks": 0,
    "queries": [
     [
-     "৪৭৭ ধারা",
-     2,
+     "৪০৪ ধারা কি",
+     1,
      0,
-     6.5
+     7
     ]
    ],
-   "position": 5.0,
+   "position": 5.8,
    "ctr": 0.0
   },
   {
@@ -3603,63 +4108,26 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/ain/1256",
+   "url": "https://coloursofbangladesh.com/ain/11/91",
+   "impressions": 4,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/ain/75/507",
    "impressions": 4,
    "clicks": 0,
    "queries": [
     [
-     "যৌতুক নিরোধ আইন ২০১৮",
+     "৫০৭ ধারা মামলা কি",
      1,
      0,
-     62
-    ],
-    [
-     "যৌতুক নিরোধ আইন ২০১৮ এর ৩ ধারা",
-     1,
-     0,
-     48
+     5
     ]
    ],
-   "position": 31.2,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/ain/75/236",
-   "impressions": 4,
-   "clicks": 0,
-   "queries": [],
-   "position": 3.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/ain/75/361",
-   "impressions": 4,
-   "clicks": 0,
-   "queries": [],
-   "position": 7.8,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/ain/75/394",
-   "impressions": 4,
-   "clicks": 0,
-   "queries": [
-    [
-     "ফৌজদারি কার্যবিধি ধারা সমূহ",
-     1,
-     0,
-     8
-    ]
-   ],
-   "position": 9.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/ain/75/476",
-   "impressions": 4,
-   "clicks": 0,
-   "queries": [],
-   "position": 10.0,
+   "position": 6.5,
    "ctr": 0.0
   },
   {
@@ -3668,6 +4136,14 @@
    "clicks": 0,
    "queries": [],
    "position": 8.2,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/ain/75/528",
+   "impressions": 4,
+   "clicks": 0,
+   "queries": [],
+   "position": 3.0,
    "ctr": 0.0
   },
   {
@@ -3691,14 +4167,6 @@
     ]
    ],
    "position": 21.8,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/c/lifestyle",
-   "impressions": 4,
-   "clicks": 0,
-   "queries": [],
-   "position": 10.2,
    "ctr": 0.0
   },
   {
@@ -3757,18 +4225,19 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/data/people/tarique-rahman",
+   "url": "https://coloursofbangladesh.com/data/people/salahuddin-ahmed",
    "impressions": 4,
    "clicks": 0,
-   "queries": [
-    [
-     "তারেক রহমানের জন্ম তারিখ",
-     1,
-     0,
-     3
-    ]
-   ],
-   "position": 28.5,
+   "queries": [],
+   "position": 3.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/data/places/himchari-national-park",
+   "impressions": 4,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.8,
    "ctr": 0.0
   },
   {
@@ -3792,6 +4261,14 @@
     ]
    ],
    "position": 16.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/epaper",
+   "impressions": 4,
+   "clicks": 0,
+   "queries": [],
+   "position": 2.5,
    "ctr": 0.0
   },
   {
@@ -3826,6 +4303,14 @@
    "ctr": 0.0
   },
   {
+   "url": "https://coloursofbangladesh.com/jobs/govt/15355-programmer-it",
+   "impressions": 4,
+   "clicks": 0,
+   "queries": [],
+   "position": 3.5,
+   "ctr": 0.0
+  },
+  {
    "url": "https://coloursofbangladesh.com/jobs/govt/15363-sub-assistant-engineer-planning-and-development",
    "impressions": 4,
    "clicks": 0,
@@ -3834,19 +4319,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/jobs/govt/15367-office-assistant-cum-computer-typist",
+   "url": "https://coloursofbangladesh.com/jobs/govt/15369-head-assistant",
    "impressions": 4,
    "clicks": 0,
    "queries": [],
-   "position": 6.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/jobs/govt/15370-upper-division-assistant",
-   "impressions": 4,
-   "clicks": 0,
-   "queries": [],
-   "position": 9.5,
+   "position": 6.2,
    "ctr": 0.0
   },
   {
@@ -3890,19 +4367,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/3200",
+   "url": "https://coloursofbangladesh.com/postcode/3210",
    "impressions": 4,
    "clicks": 0,
    "queries": [],
    "position": 6.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/3230",
-   "impressions": 4,
-   "clicks": 0,
-   "queries": [],
-   "position": 5.0,
    "ctr": 0.0
   },
   {
@@ -3914,27 +4383,35 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/3420",
+   "url": "https://coloursofbangladesh.com/postcode/3410",
    "impressions": 4,
    "clicks": 0,
    "queries": [],
-   "position": 4.8,
+   "position": 6.8,
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/4212",
+   "url": "https://coloursofbangladesh.com/postcode/3620",
    "impressions": 4,
    "clicks": 0,
    "queries": [],
-   "position": 5.8,
+   "position": 7.0,
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/4225",
+   "url": "https://coloursofbangladesh.com/postcode/3803",
    "impressions": 4,
    "clicks": 0,
    "queries": [],
-   "position": 8.8,
+   "position": 2.2,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/4207",
+   "impressions": 4,
+   "clicks": 0,
+   "queries": [],
+   "position": 2.0,
    "ctr": 0.0
   },
   {
@@ -3953,6 +4430,22 @@
    "ctr": 0.0
   },
   {
+   "url": "https://coloursofbangladesh.com/postcode/4327",
+   "impressions": 4,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/4355",
+   "impressions": 4,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://coloursofbangladesh.com/postcode/4366",
    "impressions": 4,
    "clicks": 0,
@@ -3961,72 +4454,19 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/4370",
+   "url": "https://coloursofbangladesh.com/postcode/5890",
    "impressions": 4,
    "clicks": 0,
    "queries": [],
-   "position": 5.5,
+   "position": 5.2,
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/5610",
+   "url": "https://coloursofbangladesh.com/postcode/7102",
    "impressions": 4,
    "clicks": 0,
    "queries": [],
-   "position": 6.2,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/5670",
-   "impressions": 4,
-   "clicks": 0,
-   "queries": [],
-   "position": 8.8,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/5800",
-   "impressions": 4,
-   "clicks": 0,
-   "queries": [],
-   "position": 10.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/6772",
-   "impressions": 4,
-   "clicks": 0,
-   "queries": [],
-   "position": 7.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/seat/bhola-1",
-   "impressions": 4,
-   "clicks": 0,
-   "queries": [
-    [
-     "ভোলা ১",
-     1,
-     0,
-     61
-    ],
-    [
-     "ভোলা ১ আসনের এমপি",
-     1,
-     0,
-     43
-    ]
-   ],
-   "position": 30.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/seat/chapainababgonj-1",
-   "impressions": 4,
-   "clicks": 0,
-   "queries": [],
-   "position": 11.2,
+   "position": 8.2,
    "ctr": 0.0
   },
   {
@@ -4053,6 +4493,21 @@
    "ctr": 0.0
   },
   {
+   "url": "https://coloursofbangladesh.com/ain/75/34",
+   "impressions": 3,
+   "clicks": 1,
+   "queries": [
+    [
+     "art 34 co",
+     1,
+     0,
+     3
+    ]
+   ],
+   "position": 2.7,
+   "ctr": 0.3333
+  },
+  {
    "url": "https://coloursofbangladesh.com/data/people/humayun-ahmed",
    "impressions": 3,
    "clicks": 1,
@@ -4076,6 +4531,14 @@
    "ctr": 0.3333
   },
   {
+   "url": "https://coloursofbangladesh.com/postcode/6580",
+   "impressions": 3,
+   "clicks": 1,
+   "queries": [],
+   "position": 7.0,
+   "ctr": 0.3333
+  },
+  {
    "url": "https://coloursofbangladesh.com/ain/11/247",
    "impressions": 3,
    "clicks": 0,
@@ -4084,11 +4547,19 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/ain/11/358",
+   "url": "https://coloursofbangladesh.com/ain/11/279",
    "impressions": 3,
    "clicks": 0,
    "queries": [],
-   "position": 1.7,
+   "position": 6.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/ain/11/297",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 4.0,
    "ctr": 0.0
   },
   {
@@ -4100,19 +4571,19 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/ain/11/404",
-   "impressions": 3,
-   "clicks": 0,
-   "queries": [],
-   "position": 5.3,
-   "ctr": 0.0
-  },
-  {
    "url": "https://coloursofbangladesh.com/ain/11/46",
    "impressions": 3,
    "clicks": 0,
    "queries": [],
    "position": 6.7,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/ain/11/484",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 4.3,
    "ctr": 0.0
   },
   {
@@ -4163,19 +4634,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/ain/75/528",
+   "url": "https://coloursofbangladesh.com/ain/75/191",
    "impressions": 3,
    "clicks": 0,
    "queries": [],
-   "position": 3.7,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/ain/86/35",
-   "impressions": 3,
-   "clicks": 0,
-   "queries": [],
-   "position": 4.3,
+   "position": 4.7,
    "ctr": 0.0
   },
   {
@@ -4200,22 +4663,6 @@
    "clicks": 0,
    "queries": [],
    "position": 4.3,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/data/people/salahuddin-ahmed",
-   "impressions": 3,
-   "clicks": 0,
-   "queries": [],
-   "position": 4.3,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/data/places/himchari-national-park",
-   "impressions": 3,
-   "clicks": 0,
-   "queries": [],
-   "position": 7.3,
    "ctr": 0.0
   },
   {
@@ -4249,27 +4696,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/data/upazila/ranisankail",
-   "impressions": 3,
-   "clicks": 0,
-   "queries": [],
-   "position": 9.7,
-   "ctr": 0.0
-  },
-  {
    "url": "https://coloursofbangladesh.com/data/upazila/south-sunamganj",
    "impressions": 3,
    "clicks": 0,
    "queries": [],
    "position": 7.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/epaper",
-   "impressions": 3,
-   "clicks": 0,
-   "queries": [],
-   "position": 2.0,
    "ctr": 0.0
   },
   {
@@ -4288,19 +4719,27 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/jobs/govt/15355-programmer-it",
+   "url": "https://coloursofbangladesh.com/jobs/govt/15175-steno-typist",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.3,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/jobs/govt/15238-wireman",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.7,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/jobs/govt/15337-accounts-assistant",
    "impressions": 3,
    "clicks": 0,
    "queries": [],
    "position": 3.3,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/jobs/govt/15369-head-assistant",
-   "impressions": 3,
-   "clicks": 0,
-   "queries": [],
-   "position": 6.0,
    "ctr": 0.0
   },
   {
@@ -4309,6 +4748,14 @@
    "clicks": 0,
    "queries": [],
    "position": 4.7,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/jobs/govt/15385-head-assistant",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 1.3,
    "ctr": 0.0
   },
   {
@@ -4376,6 +4823,37 @@
    "ctr": 0.0
   },
   {
+   "url": "https://coloursofbangladesh.com/postcode/3040",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 2.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/3129",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [
+    [
+     "3,129",
+     1,
+     0,
+     10
+    ]
+   ],
+   "position": 7.7,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/3170",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.7,
+   "ctr": 0.0
+  },
+  {
    "url": "https://coloursofbangladesh.com/postcode/3320",
    "impressions": 3,
    "clicks": 0,
@@ -4384,63 +4862,30 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/3400",
+   "url": "https://coloursofbangladesh.com/postcode/3332",
    "impressions": 3,
    "clicks": 0,
    "queries": [],
-   "position": 10.0,
+   "position": 1.7,
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/3410",
+   "url": "https://coloursofbangladesh.com/postcode/3372",
    "impressions": 3,
    "clicks": 0,
-   "queries": [],
-   "position": 5.0,
+   "queries": [
+    [
+     "নবীগঞ্জ পোস্ট কোড",
+     1,
+     0,
+     11
+    ]
+   ],
+   "position": 9.7,
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/3541",
-   "impressions": 3,
-   "clicks": 0,
-   "queries": [],
-   "position": 5.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/3620",
-   "impressions": 3,
-   "clicks": 0,
-   "queries": [],
-   "position": 6.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/4207",
-   "impressions": 3,
-   "clicks": 0,
-   "queries": [],
-   "position": 2.3,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/4327",
-   "impressions": 3,
-   "clicks": 0,
-   "queries": [],
-   "position": 5.3,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/4349",
-   "impressions": 3,
-   "clicks": 0,
-   "queries": [],
-   "position": 6.7,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/4355",
+   "url": "https://coloursofbangladesh.com/postcode/3660",
    "impressions": 3,
    "clicks": 0,
    "queries": [],
@@ -4448,11 +4893,59 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/4376",
+   "url": "https://coloursofbangladesh.com/postcode/3829",
    "impressions": 3,
    "clicks": 0,
    "queries": [],
-   "position": 8.3,
+   "position": 4.3,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/3845",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 3.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/3891",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 9.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/3902",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 2.7,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/3911",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.3,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/4338",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 2.7,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/4354",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 4.7,
    "ctr": 0.0
   },
   {
@@ -4464,11 +4957,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/4540",
+   "url": "https://coloursofbangladesh.com/postcode/4650",
    "impressions": 3,
    "clicks": 0,
    "queries": [],
-   "position": 7.0,
+   "position": 7.3,
    "ctr": 0.0
   },
   {
@@ -4488,11 +4981,27 @@
    "ctr": 0.0
   },
   {
+   "url": "https://coloursofbangladesh.com/postcode/5760",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 4.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://coloursofbangladesh.com/postcode/6250",
    "impressions": 3,
    "clicks": 0,
    "queries": [],
    "position": 4.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/6260",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.7,
    "ctr": 0.0
   },
   {
@@ -4504,6 +5013,14 @@
    "ctr": 0.0
   },
   {
+   "url": "https://coloursofbangladesh.com/postcode/6711",
+   "impressions": 3,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.3,
+   "ctr": 0.0
+  },
+  {
    "url": "https://coloursofbangladesh.com/postcode/6773",
    "impressions": 3,
    "clicks": 0,
@@ -4512,11 +5029,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/7102",
+   "url": "https://coloursofbangladesh.com/postcode/7021",
    "impressions": 3,
    "clicks": 0,
    "queries": [],
-   "position": 9.3,
+   "position": 2.7,
    "ctr": 0.0
   },
   {
@@ -4535,12 +5052,12 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/seat/rajbari-1",
-   "impressions": 3,
-   "clicks": 0,
+   "url": "https://coloursofbangladesh.com/jobs/govt/15346-nazir-cum-cashier",
+   "impressions": 2,
+   "clicks": 1,
    "queries": [],
-   "position": 9.3,
-   "ctr": 0.0
+   "position": 3.0,
+   "ctr": 0.5
   },
   {
    "url": "https://coloursofbangladesh.com/news/dhaka-mymensingh-highway-project-cancelled-1fpv",
@@ -4551,11 +5068,11 @@
    "ctr": 0.5
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/6580",
+   "url": "https://coloursofbangladesh.com/seat/gaibandha-3",
    "impressions": 2,
    "clicks": 1,
    "queries": [],
-   "position": 8.5,
+   "position": 9.0,
    "ctr": 0.5
   },
   {
@@ -4591,15 +5108,7 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/ain/11/279",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [],
-   "position": 6.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/ain/11/297",
+   "url": "https://coloursofbangladesh.com/ain/11/296",
    "impressions": 2,
    "clicks": 0,
    "queries": [],
@@ -4607,11 +5116,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/ain/11/316",
+   "url": "https://coloursofbangladesh.com/ain/11/388",
    "impressions": 2,
    "clicks": 0,
    "queries": [],
-   "position": 8.0,
+   "position": 4.5,
    "ctr": 0.0
   },
   {
@@ -4628,14 +5137,6 @@
    "clicks": 0,
    "queries": [],
    "position": 1.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/ain/11/91",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [],
-   "position": 6.0,
    "ctr": 0.0
   },
   {
@@ -4662,18 +5163,74 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/ain/75/507",
+   "url": "https://coloursofbangladesh.com/ain/75/11",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [],
+   "position": 2.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/ain/75/117",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [],
+   "position": 4.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/ain/75/352",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [],
+   "position": 2.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/ain/75/54",
    "impressions": 2,
    "clicks": 0,
    "queries": [
     [
-     "৫০৭ ধারা মামলা কি",
+     "৫৪ ধারা কি",
      1,
      0,
-     5
+     10
     ]
    ],
-   "position": 5.0,
+   "position": 5.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/ain/75/56",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/ain/86/25",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [],
+   "position": 30.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/ain/86/47",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/ain/86/55",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [],
+   "position": 8.0,
    "ctr": 0.0
   },
   {
@@ -4794,6 +5351,14 @@
    "ctr": 0.0
   },
   {
+   "url": "https://coloursofbangladesh.com/data/places/jagannath-university",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [],
+   "position": 11.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://coloursofbangladesh.com/data/places/kantajew-temple",
    "impressions": 2,
    "clicks": 0,
@@ -4850,6 +5415,14 @@
    "ctr": 0.0
   },
   {
+   "url": "https://coloursofbangladesh.com/jobs/govt/15082-personal-assistant",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [],
+   "position": 4.5,
+   "ctr": 0.0
+  },
+  {
    "url": "https://coloursofbangladesh.com/jobs/govt/15093-assistant-manager-hr-and-administration?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
    "impressions": 2,
    "clicks": 0,
@@ -4866,27 +5439,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/jobs/govt/15175-steno-typist",
+   "url": "https://coloursofbangladesh.com/jobs/govt/15335-cashier",
    "impressions": 2,
    "clicks": 0,
    "queries": [],
-   "position": 6.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/jobs/govt/15337-accounts-assistant",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [],
-   "position": 2.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/jobs/govt/15385-head-assistant",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [],
-   "position": 1.5,
+   "position": 1.0,
    "ctr": 0.0
   },
   {
@@ -4895,6 +5452,22 @@
    "clicks": 0,
    "queries": [],
    "position": 9.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/metro?a=মতিঝিল&b=কারওয়ান বাজার",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/metro?a=শাহবাগ&b=উত্তরা উত্তর",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [],
+   "position": 8.0,
    "ctr": 0.0
   },
   {
@@ -4930,6 +5503,14 @@
    "ctr": 0.0
   },
   {
+   "url": "https://coloursofbangladesh.com/postcode/1440",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.5,
+   "ctr": 0.0
+  },
+  {
    "url": "https://coloursofbangladesh.com/postcode/1938",
    "impressions": 2,
    "clicks": 0,
@@ -4962,19 +5543,19 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/3040",
+   "url": "https://coloursofbangladesh.com/postcode/2440",
    "impressions": 2,
    "clicks": 0,
    "queries": [],
-   "position": 2.0,
+   "position": 5.5,
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/3060",
+   "url": "https://coloursofbangladesh.com/postcode/3130",
    "impressions": 2,
    "clicks": 0,
    "queries": [],
-   "position": 6.5,
+   "position": 3.5,
    "ctr": 0.0
   },
   {
@@ -4986,19 +5567,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/3170",
+   "url": "https://coloursofbangladesh.com/postcode/3182",
    "impressions": 2,
    "clicks": 0,
    "queries": [],
    "position": 9.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/3210",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [],
-   "position": 7.0,
    "ctr": 0.0
   },
   {
@@ -5010,19 +5583,19 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/3372",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [],
-   "position": 9.0,
-   "ctr": 0.0
-  },
-  {
    "url": "https://coloursofbangladesh.com/postcode/3519",
    "impressions": 2,
    "clicks": 0,
    "queries": [],
    "position": 2.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/3602",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [],
+   "position": 1.0,
    "ctr": 0.0
   },
   {
@@ -5042,27 +5615,27 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/3845",
+   "url": "https://coloursofbangladesh.com/postcode/3844",
    "impressions": 2,
    "clicks": 0,
    "queries": [],
-   "position": 3.0,
+   "position": 6.0,
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/3891",
+   "url": "https://coloursofbangladesh.com/postcode/3850",
    "impressions": 2,
    "clicks": 0,
    "queries": [],
-   "position": 8.5,
+   "position": 7.0,
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/3911",
+   "url": "https://coloursofbangladesh.com/postcode/3871",
    "impressions": 2,
    "clicks": 0,
    "queries": [],
-   "position": 3.5,
+   "position": 7.5,
    "ctr": 0.0
   },
   {
@@ -5078,14 +5651,6 @@
     ]
    ],
    "position": 10.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/3920",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [],
-   "position": 7.0,
    "ctr": 0.0
   },
   {
@@ -5105,27 +5670,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/4338",
+   "url": "https://coloursofbangladesh.com/postcode/4388",
    "impressions": 2,
    "clicks": 0,
    "queries": [],
-   "position": 1.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/4354",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [],
-   "position": 5.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/4650",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [],
-   "position": 8.0,
+   "position": 2.0,
    "ctr": 0.0
   },
   {
@@ -5134,14 +5683,6 @@
    "clicks": 0,
    "queries": [],
    "position": 6.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/5310",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [],
-   "position": 7.5,
    "ctr": 0.0
   },
   {
@@ -5161,15 +5702,7 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/5760",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [],
-   "position": 4.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/5890",
+   "url": "https://coloursofbangladesh.com/postcode/5850",
    "impressions": 2,
    "clicks": 0,
    "queries": [],
@@ -5185,19 +5718,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/6260",
+   "url": "https://coloursofbangladesh.com/postcode/6202",
    "impressions": 2,
    "clicks": 0,
    "queries": [],
-   "position": 7.5,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/6311",
-   "impressions": 2,
-   "clicks": 0,
-   "queries": [],
-   "position": 5.0,
+   "position": 1.0,
    "ctr": 0.0
   },
   {
@@ -5206,6 +5731,14 @@
    "clicks": 0,
    "queries": [],
    "position": 6.5,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/6520",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.5,
    "ctr": 0.0
   },
   {
@@ -5273,6 +5806,14 @@
    "ctr": 0.0
   },
   {
+   "url": "https://coloursofbangladesh.com/train/738-egarosindhur-provati",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [],
+   "position": 9.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://coloursofbangladesh.com/train/live/748-simanta-express",
    "impressions": 2,
    "clicks": 0,
@@ -5296,6 +5837,14 @@
    "ctr": 0.0
   },
   {
+   "url": "https://coloursofbangladesh.com/ain/75/105",
+   "impressions": 1,
+   "clicks": 1,
+   "queries": [],
+   "position": 1.0,
+   "ctr": 1.0
+  },
+  {
    "url": "https://coloursofbangladesh.com/ain/75/539a",
    "impressions": 1,
    "clicks": 1,
@@ -5304,11 +5853,11 @@
    "ctr": 1.0
   },
   {
-   "url": "https://coloursofbangladesh.com/jobs/govt/15346-nazir-cum-cashier",
+   "url": "https://coloursofbangladesh.com/launch/route/65",
    "impressions": 1,
    "clicks": 1,
    "queries": [],
-   "position": 1.0,
+   "position": 4.0,
    "ctr": 1.0
   },
   {
@@ -5340,6 +5889,14 @@
     ]
    ],
    "position": 93.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/ain/11/127",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 1.0,
    "ctr": 0.0
   },
   {
@@ -5375,6 +5932,14 @@
    "ctr": 0.0
   },
   {
+   "url": "https://coloursofbangladesh.com/ain/11/360",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://coloursofbangladesh.com/ain/11/4",
    "impressions": 1,
    "clicks": 0,
@@ -5407,19 +5972,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/ain/75/11",
+   "url": "https://coloursofbangladesh.com/ain/75/139a",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
-   "position": 3.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/ain/75/117",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 1.0,
+   "position": 6.0,
    "ctr": 0.0
   },
   {
@@ -5431,30 +5988,7 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/ain/75/191",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 5.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/ain/75/34",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [
-    [
-     "art 34 co",
-     1,
-     0,
-     3
-    ]
-   ],
-   "position": 3.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/ain/75/352",
+   "url": "https://coloursofbangladesh.com/ain/75/226",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
@@ -5470,7 +6004,23 @@
    "ctr": 0.0
   },
   {
+   "url": "https://coloursofbangladesh.com/ain/75/403",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 10.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://coloursofbangladesh.com/ain/75/41",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 1.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/ain/75/417a",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
@@ -5483,6 +6033,14 @@
    "clicks": 0,
    "queries": [],
    "position": 10.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/ain/75/485",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 2.0,
    "ctr": 0.0
   },
   {
@@ -5510,14 +6068,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/ain/75/56",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 9.0,
-   "ctr": 0.0
-  },
-  {
    "url": "https://coloursofbangladesh.com/ain/75/73",
    "impressions": 1,
    "clicks": 0,
@@ -5526,35 +6076,19 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/ain/86/25",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 9.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/ain/86/47",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 5.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/ain/86/55",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 15.0,
-   "ctr": 0.0
-  },
-  {
    "url": "https://coloursofbangladesh.com/c/opinion",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
    "position": 10.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/c/sports?page=3",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 7.0,
    "ctr": 0.0
   },
   {
@@ -5605,11 +6139,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/data/places/jagannath-university",
+   "url": "https://coloursofbangladesh.com/data/people/sufia-kamal",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
-   "position": 12.0,
+   "position": 10.0,
    "ctr": 0.0
   },
   {
@@ -5669,14 +6203,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/jobs/govt/15238-wireman",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 11.0,
-   "ctr": 0.0
-  },
-  {
    "url": "https://coloursofbangladesh.com/jobs/govt/15255-dental-surgeon",
    "impressions": 1,
    "clicks": 0,
@@ -5693,19 +6219,35 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/jobs/govt/15335-cashier",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 1.0,
-   "ctr": 0.0
-  },
-  {
    "url": "https://coloursofbangladesh.com/jobs/govt/15341-stenographer-cum-computer-operator",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
    "position": 5.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/jobs/govt/15357-assistant-manager-finance",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 10.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/jobs/govt/15379-upper-division-assistant",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 10.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/jobs/govt/15402-accounts-assistant",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 2.0,
    "ctr": 0.0
   },
   {
@@ -5717,19 +6259,19 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/metro?a=মতিঝিল&b=কারওয়ান বাজার",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 6.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/metro?a=শাহবাগ&b=উত্তরা উত্তর",
+   "url": "https://coloursofbangladesh.com/launch/route/51",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
    "position": 10.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/launch/route/8",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 14.0,
    "ctr": 0.0
   },
   {
@@ -5941,14 +6483,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/1440",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 8.0,
-   "ctr": 0.0
-  },
-  {
    "url": "https://coloursofbangladesh.com/postcode/1464",
    "impressions": 1,
    "clicks": 0,
@@ -5989,27 +6523,19 @@
    "ctr": 0.0
   },
   {
+   "url": "https://coloursofbangladesh.com/postcode/3050",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 1.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://coloursofbangladesh.com/postcode/3121",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
    "position": 9.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/3129",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 4.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/3130",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 4.0,
    "ctr": 0.0
   },
   {
@@ -6036,11 +6562,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/3332",
+   "url": "https://coloursofbangladesh.com/postcode/3300",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
-   "position": 3.0,
+   "position": 5.0,
    "ctr": 0.0
   },
   {
@@ -6076,11 +6602,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/3602",
+   "url": "https://coloursofbangladesh.com/postcode/3624",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
-   "position": 1.0,
+   "position": 9.0,
    "ctr": 0.0
   },
   {
@@ -6100,22 +6626,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/3660",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 6.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/3803",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 2.0,
-   "ctr": 0.0
-  },
-  {
    "url": "https://coloursofbangladesh.com/postcode/3808",
    "impressions": 1,
    "clicks": 0,
@@ -6124,19 +6634,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/3829",
+   "url": "https://coloursofbangladesh.com/postcode/3823",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
-   "position": 8.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/3844",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 5.0,
+   "position": 1.0,
    "ctr": 0.0
   },
   {
@@ -6148,23 +6650,7 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/3850",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 4.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/3871",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 10.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/3902",
+   "url": "https://coloursofbangladesh.com/postcode/3878",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
@@ -6177,6 +6663,14 @@
    "clicks": 0,
    "queries": [],
    "position": 74.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/4208",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 9.0,
    "ctr": 0.0
   },
   {
@@ -6193,6 +6687,14 @@
    "clicks": 0,
    "queries": [],
    "position": 9.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/4315",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 5.0,
    "ctr": 0.0
   },
   {
@@ -6220,11 +6722,19 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/4388",
+   "url": "https://coloursofbangladesh.com/postcode/4352",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
-   "position": 2.0,
+   "position": 5.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://coloursofbangladesh.com/postcode/4630",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 9.0,
    "ctr": 0.0
   },
   {
@@ -6244,6 +6754,14 @@
    "ctr": 0.0
   },
   {
+   "url": "https://coloursofbangladesh.com/postcode/5621",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 10.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://coloursofbangladesh.com/postcode/5631",
    "impressions": 1,
    "clicks": 0,
@@ -6257,14 +6775,6 @@
    "clicks": 0,
    "queries": [],
    "position": 9.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/postcode/5850",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 7.0,
    "ctr": 0.0
   },
   {
@@ -6291,11 +6801,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/6520",
+   "url": "https://coloursofbangladesh.com/postcode/6211",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
-   "position": 11.0,
+   "position": 9.0,
    "ctr": 0.0
   },
   {
@@ -6322,6 +6832,14 @@
    "ctr": 0.0
   },
   {
+   "url": "https://coloursofbangladesh.com/postcode/6622",
+   "impressions": 1,
+   "clicks": 0,
+   "queries": [],
+   "position": 6.0,
+   "ctr": 0.0
+  },
+  {
    "url": "https://coloursofbangladesh.com/postcode/7001",
    "impressions": 1,
    "clicks": 0,
@@ -6330,11 +6848,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/postcode/7021",
+   "url": "https://coloursofbangladesh.com/postcode/7050",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
-   "position": 3.0,
+   "position": 5.0,
    "ctr": 0.0
   },
   {
@@ -6393,11 +6911,11 @@
    "ctr": 0.0
   },
   {
-   "url": "https://coloursofbangladesh.com/seat/gaibandha-3",
+   "url": "https://coloursofbangladesh.com/seat/chittagong-5",
    "impressions": 1,
    "clicks": 0,
    "queries": [],
-   "position": 10.0,
+   "position": 45.0,
    "ctr": 0.0
   },
   {
@@ -6460,14 +6978,6 @@
    "clicks": 0,
    "queries": [],
    "position": 9.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://coloursofbangladesh.com/train/738-egarosindhur-provati",
-   "impressions": 1,
-   "clicks": 0,
-   "queries": [],
-   "position": 10.0,
    "ctr": 0.0
   },
   {

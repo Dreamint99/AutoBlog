@@ -1,9 +1,9 @@
 {
- "_note": "Real queries (Search Console 2026-08-25..2026-11-23, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-26..2026-11-24, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "রোনান সুলিভান",
-   "impr": 56,
+   "impr": 57,
    "pos": 10.2,
    "src": "gsc"
   },
@@ -14,15 +14,21 @@
    "src": "gsc"
   },
   {
+   "q": "munshiganj district",
+   "impr": 30,
+   "pos": 9.6,
+   "src": "gsc"
+  },
+  {
    "q": "jaya ahsan",
    "impr": 28,
    "pos": 15.1,
    "src": "gsc"
   },
   {
-   "q": "munshiganj district",
-   "impr": 25,
-   "pos": 10.0,
+   "q": "বি বাড়িয়া জেলার জনসংখ্যা কত",
+   "impr": 24,
+   "pos": 9.2,
    "src": "gsc"
   },
   {
@@ -32,9 +38,9 @@
    "src": "gsc"
   },
   {
-   "q": "বি বাড়িয়া জেলার জনসংখ্যা কত",
-   "impr": 23,
-   "pos": 9.1,
+   "q": "কক্সবাজার জেলার জনসংখ্যা কত ২০২৪",
+   "impr": 20,
+   "pos": 8.3,
    "src": "gsc"
   },
   {
@@ -62,9 +68,15 @@
    "src": "gsc"
   },
   {
-   "q": "কক্সবাজার জেলার জনসংখ্যা কত ২০২৪",
+   "q": "ronan sullivan",
+   "impr": 19,
+   "pos": 14.3,
+   "src": "gsc"
+  },
+  {
+   "q": "apu biswas",
    "impr": 18,
-   "pos": 8.7,
+   "pos": 14.5,
    "src": "gsc"
   },
   {
@@ -86,9 +98,15 @@
    "src": "gsc"
   },
   {
-   "q": "ronan sullivan",
-   "impr": 14,
-   "pos": 14.9,
+   "q": "বেপজা নিরাপত্তা প্রহরী",
+   "impr": 15,
+   "pos": 8.9,
+   "src": "gsc"
+  },
+  {
+   "q": "ব্রাহ্মণবাড়িয়া জনসংখ্যা কত",
+   "impr": 13,
+   "pos": 8.1,
    "src": "gsc"
   },
   {
@@ -98,9 +116,9 @@
    "src": "gsc"
   },
   {
-   "q": "ব্রাহ্মণবাড়িয়া জনসংখ্যা কত",
-   "impr": 12,
-   "pos": 8.1,
+   "q": "national university post code",
+   "impr": 13,
+   "pos": 8,
    "src": "gsc"
   },
   {
@@ -110,27 +128,15 @@
    "src": "gsc"
   },
   {
-   "q": "apu biswas",
+   "q": "অপু বিশ্বাস",
    "impr": 12,
-   "pos": 21.2,
+   "pos": 30.9,
    "src": "gsc"
   },
   {
    "q": "fazlul qadir chaudhry",
    "impr": 11,
    "pos": 9.4,
-   "src": "gsc"
-  },
-  {
-   "q": "national university post code",
-   "impr": 11,
-   "pos": 8,
-   "src": "gsc"
-  },
-  {
-   "q": "অপু বিশ্বাস",
-   "impr": 10,
-   "pos": 32.6,
    "src": "gsc"
   }
  ]

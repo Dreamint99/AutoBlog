@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-08-25..2026-11-23, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-26..2026-11-24, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "richest countries in world",
@@ -623,12 +623,6 @@
    "src": "gsc"
   },
   {
-   "q": "crypto price data",
-   "impr": 10,
-   "pos": 92.8,
-   "src": "gsc"
-  },
-  {
    "q": "what is the fastest car in the world",
    "impr": 541,
    "pos": 8.1,
@@ -683,12 +677,6 @@
    "src": "bing"
   },
   {
-   "q": "the fastest car in the world",
-   "impr": 57,
-   "pos": 8.0,
-   "src": "bing"
-  },
-  {
    "q": "reddit users in india",
    "impr": 54,
    "pos": 8.3,
@@ -704,6 +692,12 @@
    "q": "what is the fastest car",
    "impr": 50,
    "pos": 8.5,
+   "src": "bing"
+  },
+  {
+   "q": "the fastest car in the world",
+   "impr": 38,
+   "pos": 8.0,
    "src": "bing"
   },
   {
@@ -743,15 +737,15 @@
    "src": "bing"
   },
   {
-   "q": "languages with over 10 million speakers",
-   "impr": 20,
-   "pos": 8.0,
+   "q": "most starred github repo",
+   "impr": 21,
+   "pos": 8.2,
    "src": "bing"
   },
   {
-   "q": "most starred github repo",
-   "impr": 18,
-   "pos": 8.4,
+   "q": "languages with over 10 million speakers",
+   "impr": 20,
+   "pos": 8.0,
    "src": "bing"
   },
   {
@@ -791,12 +785,6 @@
    "src": "bing"
   },
   {
-   "q": "which is the world's largest company based on the number of employees?",
-   "impr": 12,
-   "pos": 8.8,
-   "src": "bing"
-  },
-  {
    "q": "german software company",
    "impr": 12,
    "pos": 8.0,
@@ -830,6 +818,12 @@
    "q": "richest perosn in argentina",
    "impr": 10,
    "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "most subscribed youtube channel",
+   "impr": 10,
+   "pos": 8.4,
    "src": "bing"
   },
   {

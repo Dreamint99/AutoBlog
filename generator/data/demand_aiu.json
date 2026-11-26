@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-08-25..2026-11-23, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-26..2026-11-24, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "প্রাথমিক চিকিৎসা কি",
@@ -21,14 +21,14 @@
   },
   {
    "q": "prathomik chikitsa kake bole",
-   "impr": 38,
-   "pos": 9.1,
+   "impr": 40,
+   "pos": 9.2,
    "src": "gsc"
   },
   {
    "q": "প্রম্পট কি",
-   "impr": 36,
-   "pos": 9.4,
+   "impr": 38,
+   "pos": 9.5,
    "src": "gsc"
   },
   {
@@ -40,6 +40,12 @@
   {
    "q": "প্রাথমিক চিকিৎসা বলতে কী বোঝো",
    "impr": 29,
+   "pos": 8.8,
+   "src": "gsc"
+  },
+  {
+   "q": "phone course",
+   "impr": 28,
    "pos": 8.8,
    "src": "gsc"
   },
@@ -68,15 +74,15 @@
    "src": "gsc"
   },
   {
-   "q": "phone course",
-   "impr": 19,
-   "pos": 8.7,
-   "src": "gsc"
-  },
-  {
    "q": "কম্পিউটারের হার্ডওয়্যার এর কয়টি অংশ ও কি কি",
    "impr": 15,
    "pos": 8.9,
+   "src": "gsc"
+  },
+  {
+   "q": "এক্সেল এর কাজ ও শেখার নিয়ম",
+   "impr": 15,
+   "pos": 9.3,
    "src": "gsc"
   },
   {
