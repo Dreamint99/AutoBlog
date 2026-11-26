@@ -1,0 +1,46 @@
+name: probashiinfo publish articles
+
+# Creates NEW posts from articles/probashiinfo/*.json (hand-written, fact-checked).
+# Never edits existing posts: a slug that already exists is skipped.
+# Triggered on this feature branch only (do not run from master/main).
+on:
+  push:
+    branches:
+      - seo/probashi-articles-2026-11-26
+    paths:
+      - "articles/probashiinfo/**.json"
+      - ".github/workflows/probashi-publish-articles.yml"
+      - "generator/wp_publish_articles.py"
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: "Publish (otherwise dry run: auth check + list)"
+        type: boolean
+        default: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: generator
+    env:
+      PROBASHIINFO_WP_URL: ${{ secrets.PROBASHIINFO_WP_URL }}
+      PROBASHIINFO_WP_USER: ${{ secrets.PROBASHIINFO_WP_USER }}
+      PROBASHIINFO_WP_APP_PASSWORD: ${{ secrets.PROBASHIINFO_WP_APP_PASSWORD }}
+      PYTHONUTF8: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+          cache-dependency-path: generator/requirements.txt
+      - run: pip install -r requirements.txt
+      - name: Publish
+        run: |
+          if [ "${{ github.event_name }}" = "push" ] || [ "${{ github.event.inputs.apply }}" = "true" ]; then
+            python wp_publish_articles.py --apply
+          else
+            python wp_publish_articles.py
+          fi
