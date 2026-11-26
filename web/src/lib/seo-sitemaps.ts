@@ -27,7 +27,7 @@ export async function sitemapResponse(name: string): Promise<Response> {
     return urls((await legacySitemap()).map(i => ({ url: i.url, lastmod: i.lastModified instanceof Date ? i.lastModified.toISOString() : i.lastModified })));
   }
   if (name === "sitemap.xml") {
-    const maps = ["sitemap-hubs.xml", "sitemap-articles.xml", "sitemap-news.xml", "sitemap-videos.xml", "sitemap-players.xml", "sitemap-h2h.xml", ...(await monthMaps())];
+    const maps = ["sitemap-hubs.xml", "sitemap-articles.xml", "sitemap-news.xml", "sitemap-videos.xml", "sitemap-matches-window.xml"];
     return xml(`<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${maps.map(m => `<sitemap><loc>${BASE}/${m}</loc></sitemap>`).join("")}</sitemapindex>`);
   }
   if (name === "sitemap-hubs.xml") {
@@ -40,13 +40,21 @@ export async function sitemapResponse(name: string): Promise<Response> {
     const slug = (x: string) => x.toLowerCase().normalize("NFKD").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
     const cricket = (await getCricket().catch(() => [])).filter(m => /^[0-9a-f-]{36}$/i.test(m.id) && m.teams?.length >= 2)
       .map(m => ({ url: `${BASE}/cricket/${m.id}-${`${slug(m.teams[0].name)}-vs-${slug(m.teams[1].name)}`.slice(0, 80)}` }));
-    return urls([{ url: BASE + "/" }, { url: BASE + "/league/f1" }, ...(await races()).map(r => ({ url: BASE + "/race/" + r.slug, lastmod: r.lastmod })), ...(d1() ? (await d1()!.prepare("SELECT slug,lastmod FROM seo_pages WHERE site_id=\'ninetymins\' AND kind=\'stories\'").all<{ slug: string; lastmod: string }>()).results.map(r => ({ url: BASE + "/stories/" + r.slug, lastmod: r.lastmod })) : []), ...["today", "tomorrow", "scores", "widgets", "archive", "live-tv", "cricket", "saff", "highlights", ...HL_SPORTS.filter(([k]) => k).map(([k]) => `highlights/${k}`)].map(p => ({ url: `${BASE}/${p}` })), ...[...new Set(NM_COMPS.map(c => c.slug))].map(c => ({ url: `${BASE}/topic/${c}` })), ...(await hubs()).map(h => ({ url: BASE + h.path, lastmod: h.lastmod })), ...cricket, ...["about", "contact", "privacy", "terms", "disclaimer"].map(p => ({ url: `${BASE}/${p}` })), { url: BASE + "/event", ...(eventStamp ? { lastmod: eventStamp } : {}) }, ...EVENT_PATHS.map(p => ({ url: BASE + p, ...(eventTimes[p.split("/").pop()!] ? { lastmod: eventTimes[p.split("/").pop()!] } : {}) })), ...sitemapEventPages().map(p => ({ url: BASE + p.path })), ...feedPages.map(p => ({ url: BASE + p.path, ...(p.lastmod ? { lastmod: p.lastmod } : {}) }))]);
+    return urls([{ url: BASE + "/" }, { url: BASE + "/league/f1" }, ...(await races()).map(r => ({ url: BASE + "/race/" + r.slug, lastmod: r.lastmod })), ...(d1() ? (await d1()!.prepare("SELECT slug,lastmod FROM seo_pages WHERE site_id=\'ninetymins\' AND kind=\'stories\'").all<{ slug: string; lastmod: string }>()).results.map(r => ({ url: BASE + "/stories/" + r.slug, lastmod: r.lastmod })) : []), ...["today", "tomorrow", "scores", "widgets", "archive", "live-tv", "cricket", "saff", "highlights", ...HL_SPORTS.filter(([k]) => k).map(([k]) => `highlights/${k}`)].map(p => ({ url: `${BASE}/${p}` })), ...[...new Set(NM_COMPS.map(c => c.slug))].map(c => ({ url: `${BASE}/topic/${c}` })), ...(await sitemapHubs()).map(h => ({ url: BASE + h.path, lastmod: h.lastmod })), ...cricket, ...["about", "contact", "privacy", "terms", "disclaimer"].map(p => ({ url: `${BASE}/${p}` })), { url: BASE + "/event", ...(eventStamp ? { lastmod: eventStamp } : {}) }, ...EVENT_PATHS.map(p => ({ url: BASE + p, ...(eventTimes[p.split("/").pop()!] ? { lastmod: eventTimes[p.split("/").pop()!] } : {}) })), ...sitemapEventPages().map(p => ({ url: BASE + p.path })), ...feedPages.map(p => ({ url: BASE + p.path, ...(p.lastmod ? { lastmod: p.lastmod } : {}) }))]);
   }
-  if (name === "sitemap-players.xml") return urls((await sitemapPlayers()).map(p => ({ url: BASE + p.path, lastmod: p.lastmod })));
+  // Plan 2 (26 Nov 2026): player and h2h templates are noindex,follow (cache-worker), so their sitemaps are empty.
+  if (name === "sitemap-players.xml" || name === "sitemap-h2h.xml") return urls([]);
+  if (name === "sitemap-matches-window.xml") {
+    const db = d1(); if (!db) return urls([]);
+    const rows = (await db.prepare("SELECT path,lastmod FROM seo_matches WHERE starts>=? AND starts<? AND path LIKE '/match/%' ORDER BY starts").bind(new Date(Date.now() - 2 * 864e5).toISOString(), new Date(Date.now() + 7 * 864e5).toISOString()).all<{ path: string; lastmod: string }>()).results;
+    return urls(rows.map(r => ({ url: BASE + r.path, lastmod: r.lastmod })));
+  }
+  if (name === "sitemap-players-legacy.xml") return urls((await sitemapPlayers()).map(p => ({ url: BASE + p.path, lastmod: p.lastmod })));
   if (name === "sitemap-h2h.xml") return urls((await allPairs()).map(p => ({ url: `${BASE}/h2h/${p.slug}`, lastmod: p.lastmod })));
   if (name === "sitemap-videos.xml") {
     // Google video sitemap: one watch page per official highlight (player = YouTube embed).
-    const vids = await sitemapHighlights();
+    const vidCut = Date.now() - 90 * 864e5;
+    const vids = (await sitemapHighlights()).filter(v => Date.parse(v.date) >= vidCut);
     return xml(`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">${vids.map(v => `<url><loc>${xmlEscape(BASE + hlPath(v))}</loc><lastmod>${xmlEscape(v.date)}</lastmod><video:video><video:thumbnail_loc>${xmlEscape(v.thumb)}</video:thumbnail_loc><video:title>${xmlEscape(cleanTitle(v.title).slice(0, 100))}</video:title><video:description>${xmlEscape(`Official highlights from ${v.channel.trim()}.`)}</video:description><video:player_loc>${xmlEscape(`https://www.youtube.com/embed/${v.id}`)}</video:player_loc><video:duration>${Math.max(1, v.dur | 0)}</video:duration><video:publication_date>${xmlEscape(v.date)}</video:publication_date><video:family_friendly>yes</video:family_friendly></video:video></url>`).join("")}</urlset>`);
   }
   const pruned = await prunedSlugs("ninetymins");
@@ -86,4 +94,16 @@ async function monthMaps(): Promise<string[]> {
   const db = d1(); if (!db) return [];
   const rows = (await db.prepare("SELECT substr(starts,1,7) AS month,COUNT(*) AS n FROM seo_matches GROUP BY substr(starts,1,7)").all<{ month: string; n: number }>()).results;
   return rows.flatMap(r => Array.from({ length: Math.ceil(r.n / 50000) }, (_, i) => `sitemap-matches-${r.month}${i ? `-${i + 1}` : ""}.xml`));
+}
+
+/** Plan 2: league hubs stay; /team/ pages only for flagship-league clubs with a fixture in the rolling window. Tennis/MMA athletes never. */
+const PRIORITY_LEAGUES = ["eng-1", "esp-1", "ita-1", "ger-1", "fra-1", "uefa-champions", "uefa-europa", "ksa-1", "nba", "nfl"];
+async function sitemapHubs(): Promise<{ path: string; lastmod: string }[]> {
+  const all = await hubs();
+  const db = d1(); if (!db) return all.filter(h => !h.path.startsWith("/team/"));
+  const a = new Date(Date.now() - 7 * 864e5).toISOString(), b = new Date(Date.now() + 14 * 864e5).toISOString();
+  const ph = PRIORITY_LEAGUES.map(() => "?").join(",");
+  const rows = (await db.prepare(`SELECT DISTINCT s FROM (SELECT home_slug s FROM seo_matches WHERE starts>=? AND starts<? AND league IN (${ph}) UNION ALL SELECT away_slug s FROM seo_matches WHERE starts>=? AND starts<? AND league IN (${ph}))`).bind(a, b, ...PRIORITY_LEAGUES, a, b, ...PRIORITY_LEAGUES).all<{ s: string }>()).results;
+  const keep = new Set(rows.map(r => "/team/" + r.s));
+  return all.filter(h => !h.path.startsWith("/team/") || (keep.has(h.path) && !/-(tennis|mma)-\d+$/.test(h.path)));
 }

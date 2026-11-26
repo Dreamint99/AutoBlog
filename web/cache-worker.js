@@ -80,6 +80,8 @@ function fallbackRobots(request, env) {
   });
 }
 
+const NM_NOINDEX = /^\/(?:player\/football-|h2h\/|team\/[^/]*-(?:tennis|mma)-\d+\/?$)/;
+
 function edgeTtl(url, env) {
   if (url.pathname === "/robots.txt") return SEO_DOC_TTL;
   // Sitemaps: 15 min at the edge so new posts show up quickly (key is per deploy version).
@@ -136,7 +138,14 @@ export default {
     }
     if (new URL(request.url).pathname === "/robots.txt" && res.status >= 500) return fallbackRobots(request, env);
     const ct = res.headers.get("content-type") || "";
-    return ct.includes("text/html") ? cleanLinks(res, env.SITE_ID) : res;
+    const out = ct.includes("text/html") ? await cleanLinks(res, env.SITE_ID) : res;
+    // Plan 2 (26 Nov 2026): thin templates (football players, h2h, tennis/MMA athletes filed under /team/) are noindex,follow.
+    if (env.SITE_ID === "ninetymins" && ct.includes("text/html") && NM_NOINDEX.test(new URL(request.url).pathname)) {
+      const h = new Headers(out.headers);
+      h.set("x-robots-tag", "noindex, follow");
+      return new Response(out.body, { status: out.status, statusText: out.statusText, headers: h });
+    }
+    return out;
   },
 };
 
