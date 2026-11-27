@@ -1,7 +1,7 @@
 {
  "site": "aiu",
  "property": "https://aiuniversitybd.com/",
- "checked": "2026-11-26T11:32:24+00:00",
+ "checked": "2026-11-27T11:27:41+00:00",
  "sitemaps": [
   {
    "path": "https://aiuniversitybd.com/sitemap.xml",
@@ -9,22 +9,22 @@
    "isPending": false,
    "isSitemapsIndex": false,
    "type": "sitemap",
-   "lastDownloaded": "2026-11-24T10:30:02.462Z",
+   "lastDownloaded": "2026-11-26T12:34:17.519Z",
    "warnings": "0",
    "errors": "0",
    "contents": [
     {
      "type": "web",
-     "submitted": "1926",
+     "submitted": "2285",
      "indexed": "0"
     }
    ]
   }
  ],
- "sitemap_count": 2273,
+ "sitemap_count": 2450,
  "byState": {
   "Submitted and indexed": 40,
-  "Discovered - currently not indexed": 1
+  "URL is unknown to Google": 1
  },
  "urls": [
   {
@@ -248,7 +248,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/help",
    "userCanonical": "https://aiuniversitybd.com/help",
-   "lastCrawlTime": "2026-11-20T13:19:10Z",
+   "lastCrawlTime": "2026-11-27T05:41:47Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/help",
@@ -421,7 +421,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/course/driving",
    "userCanonical": "https://aiuniversitybd.com/course/driving",
-   "lastCrawlTime": "2026-11-24T12:00:37Z",
+   "lastCrawlTime": "2026-11-25T21:13:57Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/course/driving",
@@ -446,17 +446,15 @@
   {
    "url": "https://aiuniversitybd.com/course/ai-video",
    "verdict": "NEUTRAL",
-   "coverageState": "Discovered - currently not indexed",
+   "coverageState": "URL is unknown to Google",
    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
    "indexingState": "INDEXING_STATE_UNSPECIFIED",
    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
    "googleCanonical": null,
    "userCanonical": null,
    "lastCrawlTime": null,
-   "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
-   "referringUrls": [
-    "https://www.aiuniversitybd.com/course/ai-video"
-   ]
+   "crawledAs": null,
+   "referringUrls": null
   },
   {
    "url": "https://aiuniversitybd.com/course/prompt-engineering",
@@ -529,7 +527,7 @@
    "pageFetchState": "SUCCESSFUL",
    "googleCanonical": "https://aiuniversitybd.com/course/spoken-english",
    "userCanonical": "https://aiuniversitybd.com/course/spoken-english",
-   "lastCrawlTime": "2026-11-22T18:01:32Z",
+   "lastCrawlTime": "2026-11-27T04:52:43Z",
    "crawledAs": "MOBILE",
    "referringUrls": [
     "https://www.aiuniversitybd.com/course/spoken-english",
