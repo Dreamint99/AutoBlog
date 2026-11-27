@@ -1,5 +1,5 @@
 {
- "source": "Search Console API 2026-08-26..2026-11-24",
+ "source": "Search Console API 2026-08-27..2026-11-25",
  "pages": [
   {
    "url": "https://visapoint.net/visa-check/romania",
@@ -84,7 +84,7 @@
   },
   {
    "url": "https://visapoint.net/visa-check/serbia",
-   "impressions": 208,
+   "impressions": 209,
    "clicks": 8,
    "queries": [
     [
@@ -113,9 +113,9 @@
     ],
     [
      "serbia visa check online",
-     8,
+     9,
      0,
-     10.1
+     9.9
     ],
     [
      "serbia online visa check",
@@ -161,7 +161,7 @@
     ]
    ],
    "position": 9.1,
-   "ctr": 0.0385
+   "ctr": 0.0383
   },
   {
    "url": "https://visapoint.net/bangladesh-to-italy-work-visa-2026-cost-process-salary",
@@ -327,20 +327,20 @@
   },
   {
    "url": "https://visapoint.net/passport-index",
-   "impressions": 105,
+   "impressions": 108,
    "clicks": 1,
    "queries": [
     [
      "passport index",
-     14,
+     15,
      0,
-     35.6
+     35.3
     ],
     [
      "visa index",
-     13,
+     14,
      0,
-     33
+     32.8
     ],
     [
      "index visa",
@@ -359,6 +359,12 @@
      4,
      0,
      42.2
+    ],
+    [
+     "visaindex",
+     3,
+     0,
+     29
     ],
     [
      "global passport index",
@@ -395,16 +401,10 @@
      2,
      0,
      50
-    ],
-    [
-     "passports ranks",
-     2,
-     0,
-     70.5
     ]
    ],
-   "position": 34.8,
-   "ctr": 0.0095
+   "position": 34.6,
+   "ctr": 0.0093
   },
   {
    "url": "https://visapoint.net/visa-check/moldova",
@@ -1634,7 +1634,7 @@
   },
   {
    "url": "https://visapoint.net/serbia-work-permit-2025-complete-guide-from-qatar",
-   "impressions": 21,
+   "impressions": 22,
    "clicks": 0,
    "queries": [
     [
@@ -1644,8 +1644,23 @@
      3
     ]
    ],
-   "position": 5.1,
+   "position": 4.9,
    "ctr": 0.0
+  },
+  {
+   "url": "https://visapoint.net/nepal-to-bulgaria-work-permit-2026-step-by-step-guide-salary",
+   "impressions": 20,
+   "clicks": 2,
+   "queries": [
+    [
+     "i am from nepal",
+     1,
+     0,
+     3
+    ]
+   ],
+   "position": 8.4,
+   "ctr": 0.1
   },
   {
    "url": "https://visapoint.net/europe-work-permit-without-ielts-7-countries-2026-guide-8505",
@@ -1691,21 +1706,6 @@
    ],
    "position": 16.6,
    "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/nepal-to-bulgaria-work-permit-2026-step-by-step-guide-salary",
-   "impressions": 19,
-   "clicks": 2,
-   "queries": [
-    [
-     "i am from nepal",
-     1,
-     0,
-     3
-    ]
-   ],
-   "position": 5.0,
-   "ctr": 0.1053
   },
   {
    "url": "https://visapoint.net/electrician-jobs-in-europe-2026-full-salary-visa-guide",
@@ -3032,6 +3032,45 @@
    "ctr": 0.0
   },
   {
+   "url": "https://visapoint.net/visa-check/south-korea",
+   "impressions": 8,
+   "clicks": 0,
+   "queries": [
+    [
+     "application status korean visa",
+     1,
+     0,
+     76
+    ],
+    [
+     "check korean visa status",
+     1,
+     0,
+     55
+    ],
+    [
+     "hi korea visa expiry date check by passport number",
+     1,
+     0,
+     34
+    ],
+    [
+     "korea visa application status",
+     1,
+     0,
+     75
+    ],
+    [
+     "kvac visa status",
+     1,
+     0,
+     49
+    ]
+   ],
+   "position": 39.9,
+   "ctr": 0.0
+  },
+  {
    "url": "https://visapoint.net/india-to-portugal-work-permit-2026-step-by-step-guide-salary",
    "impressions": 7,
    "clicks": 1,
@@ -3157,39 +3196,6 @@
     ]
    ],
    "position": 9.4,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://visapoint.net/visa-check/south-korea",
-   "impressions": 7,
-   "clicks": 0,
-   "queries": [
-    [
-     "application status korean visa",
-     1,
-     0,
-     76
-    ],
-    [
-     "check korean visa status",
-     1,
-     0,
-     55
-    ],
-    [
-     "korea visa application status",
-     1,
-     0,
-     75
-    ],
-    [
-     "kvac visa status",
-     1,
-     0,
-     49
-    ]
-   ],
-   "position": 40.7,
    "ctr": 0.0
   },
   {

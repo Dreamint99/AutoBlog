@@ -1,10 +1,16 @@
 {
- "_note": "Real queries (Search Console 2026-08-26..2026-11-24, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-27..2026-11-25, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "রোনান সুলিভান",
    "impr": 57,
    "pos": 10.2,
+   "src": "gsc"
+  },
+  {
+   "q": "munshiganj district",
+   "impr": 46,
+   "pos": 9.1,
    "src": "gsc"
   },
   {
@@ -14,20 +20,14 @@
    "src": "gsc"
   },
   {
-   "q": "munshiganj district",
-   "impr": 30,
-   "pos": 9.6,
-   "src": "gsc"
-  },
-  {
    "q": "jaya ahsan",
-   "impr": 28,
-   "pos": 15.1,
+   "impr": 31,
+   "pos": 14.6,
    "src": "gsc"
   },
   {
    "q": "বি বাড়িয়া জেলার জনসংখ্যা কত",
-   "impr": 24,
+   "impr": 26,
    "pos": 9.2,
    "src": "gsc"
   },
@@ -39,14 +39,20 @@
   },
   {
    "q": "কক্সবাজার জেলার জনসংখ্যা কত ২০২৪",
-   "impr": 20,
-   "pos": 8.3,
+   "impr": 21,
+   "pos": 8.2,
    "src": "gsc"
   },
   {
    "q": "এমি মার্টিনেজ কোন ক্লাবে খেলে",
+   "impr": 21,
+   "pos": 10.1,
+   "src": "gsc"
+  },
+  {
+   "q": "ronan sullivan",
    "impr": 20,
-   "pos": 9.2,
+   "pos": 14.2,
    "src": "gsc"
   },
   {
@@ -68,21 +74,27 @@
    "src": "gsc"
   },
   {
-   "q": "ronan sullivan",
-   "impr": 19,
-   "pos": 14.3,
-   "src": "gsc"
-  },
-  {
    "q": "apu biswas",
    "impr": 18,
    "pos": 14.5,
    "src": "gsc"
   },
   {
+   "q": "national university post code",
+   "impr": 17,
+   "pos": 8.1,
+   "src": "gsc"
+  },
+  {
    "q": "ব্রাহ্মণবাড়িয়া কত বর্গ কিলোমিটার",
    "impr": 16,
    "pos": 9.5,
+   "src": "gsc"
+  },
+  {
+   "q": "রোনান সুলিভান কোন দেশের",
+   "impr": 16,
+   "pos": 9.2,
    "src": "gsc"
   },
   {
@@ -98,27 +110,9 @@
    "src": "gsc"
   },
   {
-   "q": "বেপজা নিরাপত্তা প্রহরী",
-   "impr": 15,
-   "pos": 8.9,
-   "src": "gsc"
-  },
-  {
    "q": "ব্রাহ্মণবাড়িয়া জনসংখ্যা কত",
    "impr": 13,
    "pos": 8.1,
-   "src": "gsc"
-  },
-  {
-   "q": "রোনান সুলিভান কোন দেশের",
-   "impr": 13,
-   "pos": 9.5,
-   "src": "gsc"
-  },
-  {
-   "q": "national university post code",
-   "impr": 13,
-   "pos": 8,
    "src": "gsc"
   },
   {
