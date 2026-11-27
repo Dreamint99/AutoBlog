@@ -59,16 +59,16 @@ jobs:
           LIMIT: ${{ github.event.inputs.limit || '25' }}
           REDO_BEFORE: ${{ github.event.inputs.redo_before }}
         run: |
+          if [ "${{ github.event.inputs.overrides }}" = "true" ] && [ "$LIMIT" = "rollback" ]; then
+            python wp_seo_n1127.py --rollback
+            exit 0
+          fi
           if [ "${{ github.event.inputs.overrides }}" = "true" ] && [ "$APPLY" != "true" ]; then
-            python wp_seo_n1124.py --dump
-            python wp_seo_n1124.py
+            python wp_seo_n1127.py
             exit 0
           fi
           if [ "${{ github.event.inputs.overrides }}" = "true" ]; then
-            python wp_ctr.py --overrides
-            python wp_seo_t124.py --apply
-            python wp_seo_n1123.py --apply
-            python wp_seo_n1124.py --apply
+            python wp_seo_n1127.py --apply
             exit 0
           fi
           if [ "$APPLY" = "true" ]; then python wp_ctr.py --apply "$LIMIT"; else python wp_ctr.py "$LIMIT"; fi
