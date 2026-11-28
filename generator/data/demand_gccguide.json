@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-08-27..2026-11-25, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-28..2026-11-26, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "average dubai salary",
@@ -1067,6 +1067,24 @@
    "impr": 11,
    "pos": 68.5,
    "src": "gsc"
+  },
+  {
+   "q": "uae public holidays 2027",
+   "impr": 33,
+   "pos": 9.0,
+   "src": "bing"
+  },
+  {
+   "q": "prayer time bahrain",
+   "impr": 14,
+   "pos": 9.0,
+   "src": "bing"
+  },
+  {
+   "q": "uae holidays 2027",
+   "impr": 12,
+   "pos": 8.0,
+   "src": "bing"
   }
  ]
 }

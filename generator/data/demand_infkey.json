@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-08-27..2026-11-25, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-28..2026-11-26, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "best ai laptop 2026",
@@ -483,7 +483,7 @@
   },
   {
    "q": "rag pipelines subscription cost",
-   "impr": 14,
+   "impr": 15,
    "pos": 9.7,
    "src": "bing"
   }

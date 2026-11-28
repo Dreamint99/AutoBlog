@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-08-27..2026-11-25, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-28..2026-11-26, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "প্রাথমিক চিকিৎসা কি",
@@ -32,6 +32,12 @@
    "src": "gsc"
   },
   {
+   "q": "এক্সেল এর কাজ ও শেখার নিয়ম",
+   "impr": 35,
+   "pos": 9.4,
+   "src": "gsc"
+  },
+  {
    "q": "বিষধর সাপ চেনার উপায়",
    "impr": 29,
    "pos": 8,
@@ -41,12 +47,6 @@
    "q": "প্রাথমিক চিকিৎসা বলতে কী বোঝো",
    "impr": 29,
    "pos": 8.8,
-   "src": "gsc"
-  },
-  {
-   "q": "এক্সেল এর কাজ ও শেখার নিয়ম",
-   "impr": 26,
-   "pos": 9.3,
    "src": "gsc"
   },
   {
@@ -74,6 +74,12 @@
    "src": "gsc"
   },
   {
+   "q": "a an the এর ব্যবহার",
+   "impr": 15,
+   "pos": 9.2,
+   "src": "gsc"
+  },
+  {
    "q": "কম্পিউটারের হার্ডওয়্যার এর কয়টি অংশ ও কি কি",
    "impr": 15,
    "pos": 8.9,
@@ -92,15 +98,15 @@
    "src": "gsc"
   },
   {
-   "q": "a an the এর ব্যবহার",
-   "impr": 12,
-   "pos": 8.8,
-   "src": "gsc"
-  },
-  {
    "q": "স্পোকেন ইংলিশ বাংলা টু ইংরেজি",
    "impr": 12,
    "pos": 13.7,
+   "src": "gsc"
+  },
+  {
+   "q": "article a an the এর ব্যবহার",
+   "impr": 11,
+   "pos": 9.8,
    "src": "gsc"
   },
   {
@@ -116,9 +122,9 @@
    "src": "gsc"
   },
   {
-   "q": "article a an the এর ব্যবহার",
+   "q": "কম্পিউটারের বিভিন্ন অংশের নাম ও ছবি",
    "impr": 10,
-   "pos": 9.9,
+   "pos": 44.9,
    "src": "gsc"
   },
   {

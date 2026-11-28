@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-08-27..2026-11-25, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-28..2026-11-26, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "richest countries in world",
@@ -456,13 +456,13 @@
    "src": "bingkw"
   },
   {
-   "q": "chris brown net worth",
+   "q": "barack obama net worth",
    "impr": 1384,
    "pos": null,
    "src": "bingkw"
   },
   {
-   "q": "barack obama net worth",
+   "q": "chris brown net worth",
    "impr": 1384,
    "pos": null,
    "src": "bingkw"
@@ -624,19 +624,19 @@
   },
   {
    "q": "what is the fastest car in the world",
-   "impr": 541,
+   "impr": 693,
    "pos": 8.1,
    "src": "bing"
   },
   {
    "q": "top 10 richest people in the world",
-   "impr": 513,
-   "pos": 9.0,
+   "impr": 639,
+   "pos": 8.8,
    "src": "bing"
   },
   {
    "q": "who has the most subscribers on youtube",
-   "impr": 307,
+   "impr": 388,
    "pos": 8.1,
    "src": "bing"
   },
@@ -671,12 +671,6 @@
    "src": "bing"
   },
   {
-   "q": "top ten richest people in the world",
-   "impr": 57,
-   "pos": 9.0,
-   "src": "bing"
-  },
-  {
    "q": "reddit users in india",
    "impr": 54,
    "pos": 8.3,
@@ -695,18 +689,6 @@
    "src": "bing"
   },
   {
-   "q": "the fastest car in the world",
-   "impr": 38,
-   "pos": 8.0,
-   "src": "bing"
-  },
-  {
-   "q": "highest paid athletes 2026",
-   "impr": 37,
-   "pos": 8.1,
-   "src": "bing"
-  },
-  {
    "q": "global linkedin",
    "impr": 37,
    "pos": 9.0,
@@ -719,6 +701,12 @@
    "src": "bing"
   },
   {
+   "q": "highest paid athletes 2026",
+   "impr": 34,
+   "pos": 8.1,
+   "src": "bing"
+  },
+  {
    "q": "who is the richest person in the world 2026",
    "impr": 34,
    "pos": 8.4,
@@ -727,6 +715,12 @@
   {
    "q": "countries with the most roblox players",
    "impr": 33,
+   "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "tom brady net worth 2026",
+   "impr": 29,
    "pos": 8.0,
    "src": "bing"
   },
@@ -745,6 +739,12 @@
   {
    "q": "languages with over 10 million speakers",
    "impr": 20,
+   "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "top 10 richest people 2026",
+   "impr": 19,
    "pos": 8.0,
    "src": "bing"
   },
@@ -782,12 +782,6 @@
    "q": "top 10 most visited websites in the world",
    "impr": 13,
    "pos": 10.0,
-   "src": "bing"
-  },
-  {
-   "q": "which is the world's largest company based on the number of employees?",
-   "impr": 12,
-   "pos": 8.8,
    "src": "bing"
   },
   {

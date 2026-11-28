@@ -1,5 +1,5 @@
 {
- "_note": "Real queries (Search Console 2026-08-27..2026-11-25, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
+ "_note": "Real queries (Search Console 2026-08-28..2026-11-26, position 8+), refreshed weekly by gsc_pull.py; other sources kept.",
  "queries": [
   {
    "q": "premier league standings",
@@ -495,7 +495,7 @@
   },
   {
    "q": "tennis us open 2026",
-   "impr": 509,
+   "impr": 508,
    "pos": 9.0,
    "src": "bing"
   },
@@ -572,9 +572,21 @@
    "src": "bing"
   },
   {
+   "q": "pep chavarria",
+   "impr": 95,
+   "pos": 9.0,
+   "src": "bing"
+  },
+  {
    "q": "world cup 2030",
    "impr": 81,
    "pos": 8.2,
+   "src": "bing"
+  },
+  {
+   "q": "nba cup schedule",
+   "impr": 77,
+   "pos": 9.0,
    "src": "bing"
   },
   {
@@ -638,6 +650,12 @@
    "src": "bing"
   },
   {
+   "q": "is the assesmetn on foxtel",
+   "impr": 39,
+   "pos": 9.0,
+   "src": "bing"
+  },
+  {
    "q": "saff championship 2026 schedule",
    "impr": 37,
    "pos": 9.1,
@@ -662,9 +680,21 @@
    "src": "bing"
   },
   {
+   "q": "england match today",
+   "impr": 33,
+   "pos": 8.0,
+   "src": "bing"
+  },
+  {
    "q": "world cup 2026 fixtures",
    "impr": 32,
    "pos": 9.0,
+   "src": "bing"
+  },
+  {
+   "q": "nba cup schedule 2026",
+   "impr": 31,
+   "pos": 8.0,
    "src": "bing"
   },
   {
@@ -716,9 +746,15 @@
    "src": "bing"
   },
   {
-   "q": "england match today",
-   "impr": 20,
+   "q": "esp vs ath",
+   "impr": 19,
    "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "nba cup 2026 schedule",
+   "impr": 18,
+   "pos": 8.2,
    "src": "bing"
   },
   {
@@ -782,13 +818,13 @@
    "src": "bing"
   },
   {
-   "q": "world cup 2026 group standings",
+   "q": "fifa 2026 group standings",
    "impr": 14,
    "pos": 8.0,
    "src": "bing"
   },
   {
-   "q": "fifa 2026 group standings",
+   "q": "world cup 2026 group standings",
    "impr": 14,
    "pos": 8.0,
    "src": "bing"
@@ -818,6 +854,12 @@
    "src": "bing"
   },
   {
+   "q": "nba cup 2026",
+   "impr": 12,
+   "pos": 9.0,
+   "src": "bing"
+  },
+  {
    "q": "us open tennis 2026 shedule",
    "impr": 12,
    "pos": 8.0,
@@ -836,13 +878,19 @@
    "src": "bing"
   },
   {
-   "q": "bosnia and herzegovina world cup 2026",
-   "impr": 11,
+   "q": "ucl schedule",
+   "impr": 12,
    "pos": 8.0,
    "src": "bing"
   },
   {
    "q": "switzerland world cup squad",
+   "impr": 11,
+   "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "bosnia and herzegovina world cup 2026",
    "impr": 11,
    "pos": 8.0,
    "src": "bing"
@@ -878,13 +926,25 @@
    "src": "bing"
   },
   {
+   "q": "what time are england playing today",
+   "impr": 11,
+   "pos": 8.0,
+   "src": "bing"
+  },
+  {
    "q": "saff cup",
    "impr": 11,
    "pos": 8.0,
    "src": "bing"
   },
   {
-   "q": "what time are england playing today",
+   "q": "monaco vs auxerre",
+   "impr": 11,
+   "pos": 8.0,
+   "src": "bing"
+  },
+  {
+   "q": "paris saint-germain vs as roma",
    "impr": 11,
    "pos": 8.0,
    "src": "bing"

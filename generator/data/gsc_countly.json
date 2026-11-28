@@ -1,16 +1,16 @@
 {
- "source": "Search Console API 2026-08-27..2026-11-25",
+ "source": "Search Console API 2026-08-28..2026-11-26",
  "pages": [
   {
    "url": "https://countly.net/",
-   "impressions": 288,
+   "impressions": 272,
    "clicks": 2,
    "queries": [
     [
      "countly",
-     26,
+     27,
      0,
-     43.7
+     42.3
     ],
     [
      "site:countly.net",
@@ -20,9 +20,9 @@
     ],
     [
      "quintly",
-     6,
+     5,
      0,
-     43.8
+     44.4
     ],
     [
      "# role act as an evidence-bound visual knowledge analyst. extract useful background only for entities clearly identifiable from the image. # evidence policy - acceptable: visible names, logos, emblems, signatures, labels, seals, text, unique product forms, distinctive designs. - unacceptable: unsupported guesses, loose associations, general knowledge, unconnected facts. - keep reasoning internal. # response - state recognizable visual cues first. - follow with compact background facts. - make every statement concise, factual, checkable. - do not hedge: no \"maybe,\" \"likely,\" \"possibly,\" \"appears to be.\" - exclude anything unverifiable. # prohibitions - no greeting or closing. - no emojis. - no process explanation. - no unrelated knowledge.",
@@ -35,12 +35,6 @@
      1,
      0,
      90
-    ],
-    [
-     "count top 100",
-     1,
-     0,
-     70
     ],
     [
      "countly community edition",
@@ -77,14 +71,20 @@
      1,
      0,
      82
+    ],
+    [
+     "numbers only",
+     1,
+     0,
+     87
     ]
    ],
-   "position": 31.6,
-   "ctr": 0.0069
+   "position": 29.5,
+   "ctr": 0.0074
   },
   {
    "url": "https://countly.net/top-21-richest-people-in-greece-2026",
-   "impressions": 122,
+   "impressions": 121,
    "clicks": 0,
    "queries": [
     [
@@ -120,7 +120,7 @@
   },
   {
    "url": "https://countly.net/crypto",
-   "impressions": 61,
+   "impressions": 60,
    "clicks": 0,
    "queries": [
     [
@@ -196,7 +196,7 @@
      89
     ]
    ],
-   "position": 65.6,
+   "position": 65.1,
    "ctr": 0.0
   },
   {
@@ -344,8 +344,23 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/top-100-richest-people-in-russia-2026",
+   "url": "https://countly.net/topic/rankings",
    "impressions": 26,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     10,
+     0,
+     7.7
+    ]
+   ],
+   "position": 7.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/top-100-richest-people-in-russia-2026",
+   "impressions": 25,
    "clicks": 0,
    "queries": [
     [
@@ -361,22 +376,7 @@
      18
     ]
    ],
-   "position": 15.0,
-   "ctr": 0.0
-  },
-  {
-   "url": "https://countly.net/topic/rankings",
-   "impressions": 26,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     10,
-     0,
-     7.7
-    ]
-   ],
-   "position": 7.0,
+   "position": 15.2,
    "ctr": 0.0
   },
   {
@@ -794,21 +794,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/richest-people-in-finland-2026-billionaires-net-worth",
-   "impressions": 12,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     1,
-     0,
-     35
-    ]
-   ],
-   "position": 9.8,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/how-many-youtube-music-subscribers-are-there-in-2026-global",
    "impressions": 11,
    "clicks": 0,
@@ -917,6 +902,21 @@
     ]
    ],
    "position": 14.1,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/richest-people-in-finland-2026-billionaires-net-worth",
+   "impressions": 10,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     1,
+     0,
+     35
+    ]
+   ],
+   "position": 10.5,
    "ctr": 0.0
   },
   {
@@ -1156,27 +1156,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/richest-people-in-austria-2026-billionaires-net-worth",
-   "impressions": 7,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     2,
-     0,
-     32.5
-    ],
-    [
-     "richest man in austria",
-     1,
-     0,
-     56
-    ]
-   ],
-   "position": 22.7,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/top-10-banks-in-bangladesh-2026-updated-ranking-data",
    "impressions": 7,
    "clicks": 0,
@@ -1252,27 +1231,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/how-many-paypal-users-are-there-in-2026-global-by-country",
-   "impressions": 6,
-   "clicks": 0,
-   "queries": [
-    [
-     "site:countly.net",
-     2,
-     0,
-     73.5
-    ],
-    [
-     "which country use paypal most",
-     1,
-     0,
-     37
-    ]
-   ],
-   "position": 42.2,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/how-many-snapchat-users-are-there-in-2026-global-by-country",
    "impressions": 6,
    "clicks": 0,
@@ -1293,6 +1251,21 @@
    "clicks": 0,
    "queries": [],
    "position": 29.8,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/richest-people-in-austria-2026-billionaires-net-worth",
+   "impressions": 6,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     2,
+     0,
+     32.5
+    ]
+   ],
+   "position": 17.2,
    "ctr": 0.0
   },
   {
@@ -1391,6 +1364,27 @@
    "clicks": 0,
    "queries": [],
    "position": 67.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/how-many-paypal-users-are-there-in-2026-global-by-country",
+   "impressions": 5,
+   "clicks": 0,
+   "queries": [
+    [
+     "site:countly.net",
+     2,
+     0,
+     73.5
+    ],
+    [
+     "which country use paypal most",
+     1,
+     0,
+     37
+    ]
+   ],
+   "position": 40.2,
    "ctr": 0.0
   },
   {
@@ -1788,14 +1782,6 @@
    "ctr": 0.0
   },
   {
-   "url": "https://countly.net/top-54-richest-people-in-france-2026",
-   "impressions": 3,
-   "clicks": 0,
-   "queries": [],
-   "position": 1.7,
-   "ctr": 0.0
-  },
-  {
    "url": "https://countly.net/top-universities-in-the-world-2026-global-rankings-for-researchers",
    "impressions": 3,
    "clicks": 0,
@@ -1969,6 +1955,14 @@
    "clicks": 0,
    "queries": [],
    "position": 1.0,
+   "ctr": 0.0
+  },
+  {
+   "url": "https://countly.net/top-54-richest-people-in-france-2026",
+   "impressions": 2,
+   "clicks": 0,
+   "queries": [],
+   "position": 2.0,
    "ctr": 0.0
   },
   {
