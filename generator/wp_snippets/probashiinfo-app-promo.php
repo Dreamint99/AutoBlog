@@ -1,5 +1,5 @@
 <?php
-/* প্রবাসী বন্ধু Android app promo on probashiinfo.com (Code Snippets, front end).
+/* Probashi Info (formerly প্রবাসী বন্ধু) Android app promo on probashiinfo.com (Code Snippets, front end).
    The app went live on Google Play on 28 Oct 2026. Works with the v3 app front end (#14), where the old
    website promo (#6) steps aside:
    1) a download card inside every post, after the 2nd paragraph (top part of the article);
@@ -50,29 +50,29 @@ add_action( 'wp_head', function () { if ( ! pba_on() ) return; ?>
 // Download card after the 2nd paragraph of every post (or at the top when the post is shorter).
 add_filter( 'the_content', function ( $content ) {
 	if ( ! pba_on() || ! is_singular( 'post' ) || ! is_main_query() || strpos( $content, 'pba-card' ) !== false ) return $content;
-	$card = '<a class="pba-card" href="' . pba_link( 'post-card' ) . '" target="_blank" rel="noopener"><img src="' . esc_url( PBA_ICON ) . '" alt="প্রবাসী বন্ধু অ্যাপ" width="60" height="60" loading="lazy"><div><b>প্রবাসী বন্ধু অ্যাপ এখন প্লে স্টোরে</b><span>নামাজ, টাকার রেট, সোনার দাম, দূতাবাস, সব এক অ্যাপে, ফ্রি</span></div><em>⬇ ডাউনলোড</em></a>';
+	$card = '<a class="pba-card" href="' . pba_link( 'post-card' ) . '" target="_blank" rel="noopener"><img src="' . esc_url( PBA_ICON ) . '" alt="Probashi Info অ্যাপ" width="60" height="60" loading="lazy"><div><b>অ্যাপে আরও সুন্দর ও দ্রুত দেখুন</b><span>Probashi Info অ্যাপ: বিএমইটি লাইভ, টাকার রেট, ভিসা চেক, নামাজ — ফ্রি</span></div><em>⬇ ডাউনলোড</em></a>';
 	$parts = preg_split( '~(</p>)~i', $content, 3, PREG_SPLIT_DELIM_CAPTURE );
 	if ( count( $parts ) < 5 ) return $card . $content;
 	return $parts[0] . $parts[1] . $parts[2] . $parts[3] . $card . $parts[4];
 }, 30 );
 
-// Popup: after 10 s or 40% scroll, at most once every 3 days.
+// Popup: 1.5 s after the page opens, at most once a day.
 add_action( 'wp_footer', function () { if ( ! pba_on() ) return; ?>
-<div class="pba-pop" id="pba-pop" role="dialog" aria-modal="true" aria-label="প্রবাসী বন্ধু অ্যাপ">
+<div class="pba-pop" id="pba-pop" role="dialog" aria-modal="true" aria-label="Probashi Info অ্যাপ">
 	<div class="pba-box">
-		<div class="pba-top"><button class="pba-x" type="button" aria-label="বন্ধ করুন">×</button><img src="<?php echo esc_url( PBA_ICON ); ?>" alt="" width="84" height="84"><h3>প্রবাসী বন্ধু</h3><p>নতুন অ্যাপ · একদম ফ্রি</p></div>
-		<div class="pba-feat"><span>🕌 নামাজ ও কিবলা</span><span>💱 টাকার রেট</span><span>🏛 দূতাবাস</span><span>🏅 প্রবাস কার্ড</span></div>
+		<div class="pba-top"><button class="pba-x" type="button" aria-label="বন্ধ করুন">×</button><img src="<?php echo esc_url( PBA_ICON ); ?>" alt="" width="84" height="84"><h3>অ্যাপে আরও সুন্দর দেখুন</h3><p>Probashi Info অ্যাপ · দ্রুত ও একদম ফ্রি</p></div>
+		<div class="pba-feat"><span>📊 বিএমইটি লাইভ</span><span>💱 টাকার রেট</span><span>🛂 ভিসা চেক</span><span>🕌 নামাজ</span></div>
 		<a class="pba-cta" href="<?php echo pba_link( 'popup' ); ?>" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#34A853" d="M3.6 1.8 13.4 12l-9.8 10.2c-.4-.2-.6-.6-.6-1.1V2.9c0-.5.2-.9.6-1.1z"/><path fill="#FBBC04" d="m16.7 15.3-3.3-3.3 3.3-3.3 3.8 2.2c1 .6 1 1.6 0 2.2z"/><path fill="#EA4335" d="M16.7 15.3 13.4 12l-9.8 10.2c.4.2.9.2 1.4-.1z"/><path fill="#4285F4" d="M16.7 8.7 5 1.9c-.5-.3-1-.3-1.4-.1L13.4 12z"/></svg>Google Play থেকে নিন</a>
 		<button class="pba-later" type="button">পরে</button>
 	</div>
 </div>
-<script>(function(){try{if(/iPhone|iPad|iPod/.test(navigator.userAgent))return;var p=document.getElementById('pba-pop'),K='pba-pop-next';if(+localStorage.getItem(K)>Date.now())return;var shown=false;function show(){if(shown||document.querySelector('.pb-pop.on'))return;shown=true;p.classList.add('on');localStorage.setItem(K,Date.now()+3*864e5)}function hide(){p.classList.remove('on')}setTimeout(show,10000);addEventListener('scroll',function(){if(scrollY>(document.body.scrollHeight-innerHeight)*.4)show()},{passive:true});p.querySelector('.pba-x').onclick=hide;p.querySelector('.pba-later').onclick=hide;p.querySelector('.pba-cta').onclick=hide;p.onclick=function(e){if(e.target===p)hide()};addEventListener('keydown',function(e){if(e.key==='Escape')hide()})}catch(e){}})();</script>
+<script>(function(){try{if(/iPhone|iPad|iPod/.test(navigator.userAgent))return;var p=document.getElementById('pba-pop'),K='pba-pop-next';if(+localStorage.getItem(K)>Date.now())return;var shown=false;function show(){if(shown||document.querySelector('.pb-pop.on'))return;shown=true;p.classList.add('on');localStorage.setItem(K,Date.now()+864e5)}function hide(){p.classList.remove('on')}setTimeout(show,1500);addEventListener('scroll',function(){if(scrollY>(document.body.scrollHeight-innerHeight)*.4)show()},{passive:true});p.querySelector('.pba-x').onclick=hide;p.querySelector('.pba-later').onclick=hide;p.querySelector('.pba-cta').onclick=hide;p.onclick=function(e){if(e.target===p)hide()};addEventListener('keydown',function(e){if(e.key==='Escape')hide()})}catch(e){}})();</script>
 <?php }, 30 );
 
 // one LiteSpeed purge per promo version, so cached pages pick it up
 add_action( 'init', function () {
-	if ( get_option( 'pba_purged' ) !== '1' ) {
-		update_option( 'pba_purged', '1', false );
+	if ( get_option( 'pba_purged' ) !== '3' ) {
+		update_option( 'pba_purged', '3', false );
 		do_action( 'litespeed_purge_all' );
 	}
 } );
